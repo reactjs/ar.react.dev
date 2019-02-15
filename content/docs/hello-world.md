@@ -7,6 +7,7 @@ next: introducing-jsx.html
 ---
 
 The smallest React example looks like this:
+أصغر مثال ريآكت يبدو كالتالي:
 
 ```js
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
 ```
 
 It displays a heading saying "Hello, world!" on the page.
+يعرض المثال عنوانا يقول "مرحبًا، أيها العالم!" في الصفحة
 
 [](codepen://hello-world)
 
