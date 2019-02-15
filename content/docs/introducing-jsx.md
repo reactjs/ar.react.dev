@@ -22,11 +22,9 @@ const element = <h1>Hello, world!</h1>;
 
 تتقبّل React حقيقة أنّ منطق التصيير مرتبط بشكل متوارث مع المنطق الآخر لواجهة المستخدم، والذي نقصد به كيفية التعامل مع الأحداث، وكيفية تغيّر الحالة مع مرور الزمن، وكيفية تحضير البيانات لعرضها.
 
-Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both. We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.
+بدلًا من الفصل بين *التقنيات* عن طريق وضع اللغة الترميزيّة (markup) والمنطق في ملفّات منفصلة، [تفصل](https://en.wikipedia.org/wiki/Separation_of_concerns) React بين المهام عبر وحدات مرتبطة بإحكام تدعى المكونات "components" والتي تحتوي على كليهما معًا. سنعود للحديث عن المكونات في [ القسم الخاص به](/docs/components-and-props.html), ولكن إن لم تكن مرتاحًا لوضع اللغة الترميزيّة ضمن JS فاطلع على [هذه المناقشة](https://www.youtube.com/watch?v=x7cQ3mrcKaY) التي قد تقنعك بعكس ذلك.
 
-React [doesn't require](/docs/react-without-jsx.html) using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
-
-With that out of the way, let's get started!
+[لا تشترط React استخدام JSX](/docs/react-without-jsx.html), ولكن يجدها الغالبيّة كمساعدة بصريّة عند التعامل مع واجهة المستخدم بداخل شيفرة JavaScript، فهي تسمح لمكتبة React بأن تُظهِر المزيد من الأخطاء المفيدة والرسائل التحذيريّة.
 
 ### Embedding Expressions in JSX {#embedding-expressions-in-jsx}
 
