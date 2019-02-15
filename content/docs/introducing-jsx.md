@@ -1,26 +1,26 @@
 ---
 id: introducing-jsx
-title: Introducing JSX
+title: مقدمة إلى JSX
 permalink: docs/introducing-jsx.html
 prev: hello-world.html
 next: rendering-elements.html
 ---
 
-Consider this variable declaration:
+فلننظر إلى تعريف هذا المتغير:
 
 ```js
 const element = <h1>Hello, world!</h1>;
 ```
 
-This funny tag syntax is neither a string nor HTML.
+إنّ الصّياغة الغريبة السّابقة التي تحتوي على وسم هي ليست سلسلة نصيّة ولا حتى HTML.
 
-It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+تُدعى الصّياغة السّابقة JSX وهي عبارة عن امتداد لصياغة JavaScript، نوصي باستخدامها مع React لوصف المظهر الذي ينبغي أن تكون عليه واجهة المستخدم. قد تُذكِّرك JSX بلغات القوالب، ولكنها تمتلك قوة JavaScript الكاملة.
 
-JSX produces React "elements". We will explore rendering them to the DOM in the [next section](/docs/rendering-elements.html). Below, you can find the basics of JSX necessary to get you started.
+تُنتِج JSX عناصر React. سنستعرض إظهار هذه العناصر في DOM في [القسم التالي](/docs/rendering-elements.html). سنتحدّث في الفقرات التالية عن أساسيّات JSX الضرورية للبدء.
 
-### Why JSX? {#why-jsx}
+### لماذا JSX؟ {#why-jsx}
 
-React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
+تتقبّل React حقيقة أنّ منطق التصيير مرتبط بشكل متوارث مع المنطق الآخر لواجهة المستخدم، والذي نقصد به كيفية التعامل مع الأحداث، وكيفية تغيّر الحالة مع مرور الزمن، وكيفية تحضير البيانات لعرضها.
 
 Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both. We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.
 
