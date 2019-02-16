@@ -26,9 +26,9 @@ const element = <h1>Hello, world!</h1>;
 
 [لا تشترط React استخدام JSX](/docs/react-without-jsx.html), ولكن يجدها الغالبيّة كمساعدة بصريّة عند التعامل مع واجهة المستخدم بداخل شيفرة JavaScript، فهي تسمح لمكتبة React بأن تُظهِر المزيد من الأخطاء المفيدة والرسائل التحذيريّة.
 
-### Embedding Expressions in JSX {#embedding-expressions-in-jsx}
+### تضمين التعابير في JSX {#embedding-expressions-in-jsx}
 
-In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:
+نُعرِّف في المثال التالي متغيّرًا يُدعى name ونستخدمه بداخل JSX عن طريق تغليفه بين قوسين:
 
 ```js{1,2}
 const name = 'Josh Perez';
@@ -40,9 +40,9 @@ ReactDOM.render(
 );
 ```
 
-You can put any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) inside the curly braces in JSX. For example, `2 + 2`, `user.firstName`, or `formatName(user)` are all valid JavaScript expressions.
+بإمكانك وضع أي [تعبير صحيح في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) داخل القوسين في JSX، على سبيل المثال `2 + 2`, `user.firstName`, أو `formatName(user)` جميعها تعابير JavaScript صحيحة.
 
-In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<h1>` element.
+نُضمِّن في المثال التالي نتيجة استدعاء دالة JavaScript، وهي `formatName(user)`, بداخل عنصر `<h1>`.
 
 ```js{12}
 function formatName(user) {
@@ -68,13 +68,13 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](http://stackoverflow.com/q/2846283).
+فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](http://stackoverflow.com/q/2846283).
 
-### JSX is an Expression Too {#jsx-is-an-expression-too}
+### JSX هي عبارة عن تعبير أيضًا {#jsx-is-an-expression-too}
 
-After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+بعد انتهاء مرحلة تصريف الشيفرة (compilation)، تُصبِح تعابير JSX استدعاءات لدوال JavaScript اعتياديّة وتُقيَّم إلى كائنات JavaScript.
 
-This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
+يعني هذا أنّك تستطيع استخدام JSX بداخل جمل `if` الشرطيّة وحلقات `for`، بتعيينها إلى متغيّرات، وقبولها كوسائط، وإعادتها من الدوال:
 
 ```js{3,5}
 function getGreeting(user) {
@@ -85,37 +85,37 @@ function getGreeting(user) {
 }
 ```
 
-### Specifying Attributes with JSX {#specifying-attributes-with-jsx}
+### تحديد خاصيّات  Attributes" HTML" عن طريق JSX {#specifying-attributes-with-jsx}
 
-You may use quotes to specify string literals as attributes:
+بإمكانك استخدام علامتي الاقتباس لتحديد قيم ثابتة نصيّة لخاصيّات HTML:
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-You may also use curly braces to embed a JavaScript expression in an attribute:
+بإمكانك أيضًا استخدام الأقواس لتضمين تعبير JavaScript بداخل خاصيّة HTML:
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
+لا تضع علامتي اقتباس حول القوسين عند تضمين تعابير JavaScript بداخل الخاصيّات، حيث ينبغي أن تستخدم علامتي الاقتباس فقط من أجل القيم النصيّة والأقواس من أجل التعابير وليس كلاهما معًا.
 
->**Warning:**
+>**تحذيرa:**
 >
->Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.
+>لمّا كانت JSX أقرب إلى JavaScript من HTML، فتستخدم React DOM طريقة تسمية خاصيّات الكائنات `camelCase` بدلًا من أسماء خاصيّات HTML
 >
->For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
+>على سبيل المثال, الخاصيّة `class` تُصبِح  [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) في JSX, و `tabindex` تُصبِح [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
 
-### Specifying Children with JSX {#specifying-children-with-jsx}
+### تحديد العناصر الأبناء باستخدام JSX {#specifying-children-with-jsx}
 
-If a tag is empty, you may close it immediately with `/>`, like XML:
+إن كان العنصر من عناصر HTML الفارغة فبإمكانك إغلاقه مباشرةً باستخدام `/>`, كما في XML:
 
 ```js
 const element = <img src={user.avatarUrl} />;
 ```
 
-JSX tags may contain children:
+يُمكِن لعناصر JSX أن تحتوي على عناصر أبناء:
 
 ```js
 const element = (
@@ -126,9 +126,9 @@ const element = (
 );
 ```
 
-### JSX Prevents Injection Attacks {#jsx-prevents-injection-attacks}
+### تمنع JSX هجمات الحقن {#jsx-prevents-injection-attacks}
 
-It is safe to embed user input in JSX:
+من الآمن تضمين مُدخلات المستخدم في JSX:
 
 ```js
 const title = response.potentiallyMaliciousInput;
@@ -136,13 +136,11 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-By default, React DOM [escapes](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+حيث أنّ React DOM [تُهرِّب (escape)](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) أي قيم مُضمَّنة افتراضيًّا في JSX قبل عرضها، وبهذا تضمن أنّه لن يكون بإمكانك حقن أي شيء غير مكتوب بشكل صريح في تطبيقك. تُحوَّل أي قيمة إلى سلسلة نصيّة قبل عرضها، والذي يُساعِد على منع هجمات [cross-site-scripting) XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
 
-### JSX Represents Objects {#jsx-represents-objects}
+### تمثل الكائنات في JSX {#jsx-represents-objects}
 
-Babel compiles JSX down to `React.createElement()` calls.
-
-These two examples are identical:
+ يُترجِم Babel صياغة JSX إلى استدعاءات للتابع `React.createElement()` لذلك يكون المثالان التاليان متطابقين:
 
 ```js
 const element = (
@@ -160,7 +158,7 @@ const element = React.createElement(
 );
 ```
 
-`React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
+يُنفِّذ التّابع `React.createElement()` بعض الاختبارات ليُساعدك على كتابة شيفرة خالية من الأخطاء، ولكنّه بشكل أساسي يُنشِئ كائنًا مُشابِهًا لما يلي:
 
 ```js
 // Note: this structure is simplified
@@ -173,10 +171,10 @@ const element = {
 };
 ```
 
-These objects are called "React elements". You can think of them as descriptions of what you want to see on the screen. React reads these objects and uses them to construct the DOM and keep it up to date.
+تُدعى هذه الكائنات عناصر React. بإمكانك اعتبارها كتوصيفات لما ترغب برؤيته على الشّاشة. تقرأ React هذه الكائنات وتستخدمها لبناء DOM وإبقائه مُحدَّثًا.
 
-We will explore rendering React elements to the DOM in the next section.
+سيتم تغطية تصيير عناصر React إلى DOM في القسم التالي.
 
->**Tip:**
+>**ملاحظة:**
 >
->We recommend using the ["Babel" language definition](http://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted. This website uses the [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) color scheme which is compatible with it.
+>نوصي باستخدام [تعريف لغة Babel](http://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
