@@ -16,13 +16,13 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+تتيح لنا المُكوِّنات (Components) تقسيم واجهة المستخدم إلى قطع مُستقِلَّة قابلة لإعادة الاستخدام، والتفكير بكل قطعة على انفراد. سنتحدّث في هذه الصفحة عن مُقدّمة إلى مفهوم المُكوِّنات،  بإمكانك أن تجد مرجعًا مُفصَّلًا حول [واجهة برمجة التطبيق (API) الخاصّة بالمُكوِّنات من هنا](/docs/react-component.html).
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+تُشبِه المُكوِّنات من الناحية النظريّة دوال JavaScript، فهي تقبل مُدخَلات المستخدم (والتي تُدعى props اختصارًا للكلمة properties وتعني الخاصيّات) وتُعيد عناصر React وصف ما الذي ينبغي عرضه على الشّاشة.
 
-## Function and Class Components {#function-and-class-components}
+## مكونات الأصناف والدوال {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+إنّ أبسط طريقة لتعريف مُكوِّن هي كتابة دالة JavaScript:
 
 ```js
 function Welcome(props) {
@@ -30,9 +30,9 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
+تُعدّ هذه الدالة مُكوِّنًا صالحًا في React لأنّها تقبل وسيطًا واحدًا من خاصيّات الكائن "props" (اختصارًا للكلمة properties وتعني الخاصيّات) مع بياناته وتُعيد عنصر React. ندعو مثل هذه المُكوِّنات بالمُكوِّنات الداليّة "function components" لأنّها عبارة عن دوال JavaScript.
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+بإمكانك أيضًا أن تستخدم [الأصناف "ES6 class"](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) لتعريف المُكوِّنات كما يلي:
 
 ```js
 class Welcome extends React.Component {
@@ -42,27 +42,27 @@ class Welcome extends React.Component {
 }
 ```
 
-The above two components are equivalent from React's point of view.
+إنّ المُكوِّنين السابقين مُتكافِئان من وجهة نظر React.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+تمتلك الأصناف بعض الميّزات الإضافيّة التي سنتحدّث عنها في قسم [القسم التالي](/docs/state-and-lifecycle.html). وحتى ذلك الوقت سنستخدم المُكوِّنات الداليّة لبساطتها.
 
-## Rendering a Component {#rendering-a-component}
+## تصيير المكوّنات (Rendering) {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+م نصادف حتى الآن إلّا عناصر React تُمثِّل عناصر DOM المُعتادة:
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined components:
+ولكن يُمكِن للعناصر أن تُمثِّل مُكوِّنات مُعرَّفة من قبل المستخدم:
 
 ```js
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+عندما تجد React عنصرًا يُمثِّل مُكوِّنًا مُعرَّفًا من قبل المستخدم، فستُمرِّر خاصيّات JSX إليه على شكل كائن وحيد، ندعو هذا الكائن "props".
 
-For example, this code renders "Hello, Sara" on the page:
+لى سبيل المثال تعرض هذه الشيفرة عبارة "Hello, Sara" في الصّفحة:
 
 ```js{1,5}
 function Welcome(props) {
@@ -78,18 +78,18 @@ ReactDOM.render(
 
 [](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+تلخيص ما حدث في هذا المثال:
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+1. نستدعي التّابع `ReactDOM.render()` مع العنصر `<Welcome name="Sara" />`.
+2. تستدعي React المُكوِّن `Welcome` مع تمرير `{name: 'Sara'}` كخاصيّة props.
+3. يُعيد العنصر `Welcome` العنصر `<h1>Hello, Sara</h1>` كنتيجة له.
+4. تُحدِّث React DOM بكفاءة DOM ليُطابِق `<h1>Hello, Sara</h1>`.
 
->**Note:** Always start component names with a capital letter.
+>**ملاحظة:** يجب أن تبدأ أسماء المُكوِّنات دومًا بأحرف كبيرة.
 >
->React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
+>تُعامِل React المُكوِّنات التي تبدأ بأحرف صغيرة كعناصر DOM، على سبيل المثال يُمثِّل `<div />` عنصر HTML الذي يُدعى div، بينما تُمثِّل `<Welcome />` مُكوِّنًا في React وتتطلَّب أن يكون تعريف هذا المُكوِّن موجودًا ضمن المجال المُحدَّد.
 >
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+>بإمكانك قراءة المزيد عن المنطق الكامن وراء هذه الاتفاقيّة [من هنا](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
 
 ## Composing Components {#composing-components}
 
