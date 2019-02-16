@@ -91,11 +91,11 @@ ReactDOM.render(
 >
 >بإمكانك قراءة المزيد عن المنطق الكامن وراء هذه الاتفاقيّة [من هنا](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
 
-## Composing Components {#composing-components}
+## تركيب المكونات {#composing-components}
 
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+يُمكِن للمُكوِّنات أن تشير إلى مُكوِّنات أخرى في ناتجها، يسمح لنا هذا باستخدام نفس المُكوِّن المُجرَّد لأي درجة من التفصيل، زر (button)، أو حقل إدخال (form)، أو مربّع حوار (dialog)، أو شاشة (screen)، ففي React يُعبَّر عنها جميعها بالمُكوِّنات.
 
-For example, we can create an `App` component that renders `Welcome` many times:
+على سبيل المثال يُمكننا إنشاء مُكوِّن اسمه `App` يعرض في ناتجه المُكوِّن `Welcome` عدّة مرّات:
 
 ```js{8-10}
 function Welcome(props) {
@@ -120,13 +120,13 @@ ReactDOM.render(
 
 [](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+تحتوي تطبيقات React الجديدة عادةً على المُكوِّن `App` في المستوى الأعلى وتنحدر عنه باقي المُكوِّنات، ولكن إن كنت تدمج React مع تطبيق موجود مُسبقًا فقد تبدأ من المستوى السفلي بمُكوِّن صغير مثل الزر `Button` وتصعد تدريجيًّا حتى المستوى الأعلى في هيكليّة التطبيق.
 
-## Extracting Components {#extracting-components}
+## استخراج المكونات {#extracting-components}
 
-Don't be afraid to split components into smaller components.
+لا تتردد بتقسيم المُكوِّنات إلى مُكوِّنات أصغر.
 
-For example, consider this `Comment` component:
+على سبيل المثال انظر إلى مُكوِّن التعليقات `Comment` التالي:
 
 ```js
 function Comment(props) {
@@ -154,11 +154,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+يقبل هذا المُكوِّن الكائن `author`، والسلسلة النصيّة `text`، والتاريخ `date` كخاصيات props له، ويُمثِّل تعليقًا على مواقع التواصل الاجتماعي.
 
-This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few components from it.
+من الصعب تغيير هذا المُكوِّن بسبب هذه التداخلات، ومن الصعب أيضًا إعادة استخدام أجزاء منه، فلنحاول استخراج بعض المُكوِّنات منه.
 
-First, we will extract `Avatar`:
+سنستخرج في البداية مُكوِّن الصورة الرمزيّة `Avatar`:
 
 ```js{3-6}
 function Avatar(props) {
@@ -171,11 +171,11 @@ function Avatar(props) {
 }
 ```
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+لا يحتاج المُكوِّن `Avatar` إلى معرفة أنّه مُستخدَم في المُكوِّن `Comment`. ولذلك أعطينا خاصيّاته prop اسمًا أكثر عموميّةً وهو: `user` بدلًا من `author`.
 
-We recommend naming props from the component's own point of view rather than the context in which it is being used.
+نوصي بتسمية الخاصيّات props من وجهة نظر المُكوِّن نفسه وليس في السياق الذي تُستخدَم فيه.
 
-We can now simplify `Comment` a tiny bit:
+بإمكاننا الآن تبسيط المُكوِّن `Comment` قليلًا:
 
 ```js{5}
 function Comment(props) {
@@ -198,7 +198,7 @@ function Comment(props) {
 }
 ```
 
-Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:
+سنستخرج الآن مُكوِّن معلومات المستخدم `UserInfo` والذي يعرض المُكوِّن `Avatar` بجانب اسم المستخدم:
 
 ```js{3-8}
 function UserInfo(props) {
@@ -213,7 +213,7 @@ function UserInfo(props) {
 }
 ```
 
-This lets us simplify `Comment` even further:
+يُتيح لنا هذا تبسيط المُكوِّن `Comment` أكثر:
 
 ```js{4}
 function Comment(props) {
@@ -233,11 +233,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components-continued)
 
-Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
+يبدو استخراج المُكوِّنات في البداية عملًا مجهدًا، ولكن سنرى الفائدة الكبيرة لامتلاك عدّة مُكوِّنات قابلة لإعادة الاستخدام عند بناء تطبيقات كبيرة. القاعدة هنا هي: إن استخدمنا أجزاء واجهة المستخدم عدّة مرّات (مثل الزر `Button`، و اللوحة `Panel`، والصورة الرمزيّة `Avatar`)، أو كانت هذه الأجزاء مُعقّدة بحد ذاتها (مثل مُكوِّن التطبيق `App`، و `FeedStory`، والتعليق `Comment`)، فهي مُرشَّحة بشكل كبير لأن نجعلها مُكوِّنات قابلة لإعادة الاستخدام.
 
-## Props are Read-Only {#props-are-read-only}
+## الخاصيات props قابلة للقراءة فقط {#props-are-read-only}
 
-Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+لا يجب تعديل خاصيّات المُكوِّنات، سواءً صرّحنا عنها [كدالة أو كصنف](#function-and-class-components)، فلنأخذ هذا المثال عن دالة الجمع `sum`:
 
 ```js
 function sum(a, b) {
@@ -245,9 +245,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+تُدعى هذه الدوال [بالدوال النقيّة (Pure Functions)](https://en.wikipedia.org/wiki/Pure_function) لأنّها لا تحاول تغيير مُدخلاتها وتُعيد دومًا نفس النتيجة لنفس المُدخلات.
 
-In contrast, this function is impure because it changes its own input:
+على العكس من ذلك نجد أنّ هذه الدالة غير نقية لأنّها تُغيِّر مُدخلاتها:
 
 ```js
 function withdraw(account, amount) {
@@ -255,8 +255,8 @@ function withdraw(account, amount) {
 }
 ```
 
-React is pretty flexible but it has a single strict rule:
+إنّ React مرنة جدًّا ولكن لديها قاعدة واحدة صارمة وهي:
 
-**All React components must act like pure functions with respect to their props.**
+**يجب أن تسلك مُكوِّنات React سلوك الدوال النقيّة مع احترامها لخاصيّاتها (props).**
 
-Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
+تتغيّر واجهات المستخدم الخاصّة بالتطبيق مع الزمن بالطبع، سنتحدّث في [القسم التالي](/docs/state-and-lifecycle.html)، حول مفهوم جديد وهو الحالة (state). حيث تسمح الحالة لمُكوِّنات React بتغيير ناتجها مع مرور الزمن استجابةً لتفاعل المستخدم، والردود القادمة من الشبكة، وأي شيء آخر، بدون خرق هذه القاعدة.
