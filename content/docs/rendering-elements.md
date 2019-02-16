@@ -8,7 +8,7 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-Elements are the smallest building blocks of React apps.
+العناصر (Elements) هي أصغر الوحدات البنائية في التطبيقات المبنية باستخدام رياكت (React).
 
 An element describes what you want to see on the screen:
 
