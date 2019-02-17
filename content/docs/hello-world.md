@@ -6,7 +6,6 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
 أصغر مثال ريآكت يبدو كالتالي:
 
 ```js
@@ -16,37 +15,42 @@ ReactDOM.render(
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
-يعرض المثال عنوانا يقول "مرحبًا، أيها العالم!" في الصفحة
+يعرض المثال عنوانًا في الصفحة يقول أو "Hello, world!"
+"مرحبًا، أيها العالم!"
 
-[](codepen://hello-world)
+[رابط المحرر عبر الانترنت](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+اضغط على الرابط في الأعلى لفتح محرّر عبر الإنترنت،
+،يمكنك بكل أريحية عمل بعض التغييرات
+ومشاهدة كيف يؤثر ذلك على المُخرج.
+معظم الصفحات في هذا الدليل ستحتوي أمثلة قابلة للتعديل كمثل هذا المثال.
 
+## كيف تقرأ هذا الدليل
+في هذا الدليل، سوف نختبر اللّبنات في تطبيقات الريآكت:العناصر والمكوِّنات. ما أن تجيد ذلك، يمكنك عمل تطبيقات معقّدة من جزئيات صغيرة قابلة لإعادة الاستخدام.
 
-## How to Read This Guide {#how-to-read-this-guide}
-
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
-
->Tip
+> نصيحة
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>هذا الدليل صُمِّم لمن يفضلون **تعلّم المفاهيم خطوةً بخطوة**، إذا كنت تفضّل التعلم عن طريق التجريب، راجع
+>[الدورة التدريبية العملية](/tutorial/tutorial.html)
+>لربما ستجد أن هذا الدليل والدورة التعليمية العملية مكمّلين لبعضهما البعض.
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+هذا هو الجزء الأول من دليل خطوة-بخطوة عن مفاهيم ريآكت  الأساسية، يمكنك أن تجد لائحة بكل الأجزاء في شريط التنقل الجانبي، إذا كنت تقرأ هذا من جهاز محمول، يمكنك الوصول إلى شريط التنقل عن طريق ضغط الزر في الزاوية السفلى اليمين من شاشتك.
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+كل جزء في هذا الدليل سيُبنى على المعرفة المقدّمة في الأجزاء السابقة. **يمكنك تعلّم الريآكت أكثر عن طريق قراءة أجزاء "المفاهيم الأساسية" في الدليل بالترتيب الظاهر في شريط التنقل** على سبيل المثال،
+ [مقدمة لJSX](/docs/introducing-jsx.html)
+هو الجزء التالي بعد هذا الجزء.
 
-## Knowledge Level Assumptions {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+## افتراضات مستوى المعرفة
 
->Note
+ريآكت تعتبر مكتبة جافاسكريبت، وتبعًا لذلك سنفترض أن لديك فهم أساسي للغة جافاسكريبت، **إذا لم تشعر أنك واثق بقدراتك، ننصحك ب [المرور على دورة تعليمية لجافاسكريبت](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) لمراجعة مستوى معرفتك**  ولمساعدتك على تتبُّع هذا الدليل بدون أن تشعر بالضياع، لربما سيأخذ منك حوالي من 30دقيقة إلى ساعة، لكن كنتيجة لذلك سيوفّر عليك أن تشعر وكأنك تتعلّم ريآكت وجافاسكريبت في ذات الوقت.
+
+>ملاحظة
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>هذا الدليل من آنٍ لآخر يستخدم أحدث طرق الكتابة في جافاسكريبت في الأمثلة، إذا لم تعمل في السنين القليلة الماضية في جافاسكريبت
+[هذه النقاط الثلاثة](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) ينبغي أن تختصر لك الطريق.
 
 
-## Let's Get Started! {#lets-get-started}
+## لنبـــــدأ
 
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
-
-
+استمر بالنزول لأسفل وستجد رابطًا  ل [الجزء التالي من هذا الدليل](/docs/introducing-jsx.html) مباشرةً قبل تذييل الموقع.
