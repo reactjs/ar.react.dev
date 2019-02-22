@@ -68,11 +68,7 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-<<<<<<< HEAD
-فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](http://stackoverflow.com/q/2846283).
-=======
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
 
 ### JSX هي عبارة عن تعبير أيضًا {#jsx-is-an-expression-too}
 
@@ -140,13 +136,7 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-<<<<<<< HEAD
-حيث أنّ React DOM [تُهرِّب (escape)](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) أي قيم مُضمَّنة افتراضيًّا في JSX قبل عرضها، وبهذا تضمن أنّه لن يكون بإمكانك حقن أي شيء غير مكتوب بشكل صريح في تطبيقك. تُحوَّل أي قيمة إلى سلسلة نصيّة قبل عرضها، والذي يُساعِد على منع هجمات [cross-site-scripting) XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
-=======
-By default, React DOM [escapes](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
-
-### JSX Represents Objects {#jsx-represents-objects}
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+حيث أنّ React DOM [تُهرِّب (escape)](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) أي قيم مُضمَّنة افتراضيًّا في JSX قبل عرضها، وبهذا تضمن أنّه لن يكون بإمكانك حقن أي شيء غير مكتوب بشكل صريح في تطبيقك. تُحوَّل أي قيمة إلى سلسلة نصيّة قبل عرضها، والذي يُساعِد على منع هجمات [cross-site-scripting) XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
 
 ### تمثل الكائنات في JSX {#jsx-represents-objects}
 
@@ -187,8 +177,4 @@ const element = {
 
 >**ملاحظة:**
 >
-<<<<<<< HEAD
->نوصي باستخدام [تعريف لغة Babel](http://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted. This website uses the [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) color scheme which is compatible with it.
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+>نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
