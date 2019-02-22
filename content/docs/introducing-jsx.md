@@ -68,7 +68,7 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](http://stackoverflow.com/q/2846283).
+فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
 
 ### JSX هي عبارة عن تعبير أيضًا {#jsx-is-an-expression-too}
 
@@ -136,7 +136,7 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-حيث أنّ React DOM [تُهرِّب (escape)](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) أي قيم مُضمَّنة افتراضيًّا في JSX قبل عرضها، وبهذا تضمن أنّه لن يكون بإمكانك حقن أي شيء غير مكتوب بشكل صريح في تطبيقك. تُحوَّل أي قيمة إلى سلسلة نصيّة قبل عرضها، والذي يُساعِد على منع هجمات [cross-site-scripting) XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
+حيث أنّ React DOM [تُهرِّب (escape)](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) أي قيم مُضمَّنة افتراضيًّا في JSX قبل عرضها، وبهذا تضمن أنّه لن يكون بإمكانك حقن أي شيء غير مكتوب بشكل صريح في تطبيقك. تُحوَّل أي قيمة إلى سلسلة نصيّة قبل عرضها، والذي يُساعِد على منع هجمات [cross-site-scripting) XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
 
 ### تمثل الكائنات في JSX {#jsx-represents-objects}
 
@@ -177,4 +177,4 @@ const element = {
 
 >**ملاحظة:**
 >
->نوصي باستخدام [تعريف لغة Babel](http://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
+>نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
