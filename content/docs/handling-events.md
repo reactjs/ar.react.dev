@@ -15,6 +15,13 @@ Handling events with React elements is very similar to handling events on DOM el
 
 For example, the HTML:
 
+تُشبه معالجة الأحداث لعناصر React معالجة الأحداث لعناصر DOM، ولكن هنالك فروق تتعلّق بالصياغة:
+
+تُسمَّى أحداث *
+ React باستخدام حالة الأحرف camelCase (أي عند وجود اسم مؤلف من عدة كلمات نجعل الحرف الأول من الكلمة الأولى بالشكل الصغير أمّا باقي الكلمات نجعل حرفها الأول بالشكل الكبير) بدلًا من استخدام الشكل الصغير للأحرف.
+نُمرِّر في * JSX دالة كمُعالِج للأحداث، بدلًا من سلسلة نصيّة.
+على سبيل المثال لنأخذ شيفرة HTML التالية:
+
 ```html
 <button onclick="activateLasers()">
   Activate Lasers
