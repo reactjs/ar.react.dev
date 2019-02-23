@@ -123,8 +123,6 @@ class EssayForm extends React.Component {
 }
 ```
 
-Notice that `this.state.value` is initialized in the constructor, so that the text area starts off with some text in it.
-
 لاحظ أنّنا هيَّأنا `this.state.value` بقيمة مبدئيّة في الدالة البانية (constructor)، وبذلك نضمن وجود نص ضمن العنصر `<textarea>` منذ البداية.
 
 ## العنصر select {#the-select-tag}
@@ -207,7 +205,6 @@ class FlavorForm extends React.Component {
 
 ## التعامل مع إدخالات متعددة {#handling-multiple-inputs}
 
-When you need to handle multiple controlled `input` elements, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.
 عندما تحتاج إلى التعامل مع عناصر `input` مُتعدِّدة مضبوطة فبإمكانك إضافة الخاصيّة `name` إلى كل عنصر وتترك لدالة معالجة الأحداث أن تختار ما ستفعله بناءً على قيمة `event.target.name`، فلنأخذ هذا المثال:
 
 For example:
@@ -301,7 +298,7 @@ setTimeout(function() {
 ([uncontrolled components](/docs/uncontrolled-components.html))
 ، وهي تقنيّة بديلة للتعامل مع حقول الإدخال.
 
-## حلول متناهية-الصغر {#fully-fledged-solutions}
+## حلول أخرى متكاملة {#fully-fledged-solutions}
 
 إذا كنت تبحث عن حل كامل بما في ذلك التحقق من صحة الحقول، وتتبع الحقول التي قمت بزيارتها، والتعامل مع إرسال النموذج، فإن 
 [Formik](https://jaredpalmer.com/formik)
