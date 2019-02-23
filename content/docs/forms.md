@@ -14,10 +14,10 @@ redirect_from:
 ```html
 <form>
   <label>
-    الاسم:
+    Name:
     <input type="text" name="name" />
   </label>
-  <input type="submit" value="تقديم البيانات" />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -46,7 +46,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('قُدِّم الاسم: ' + this.state.value);
+    alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -54,10 +54,10 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          الاسم:
+          Name:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="تقديم البيانات" />
+        <input type="submit" value="Submit" />
       </form>
     );
   }
@@ -82,7 +82,7 @@ handleChange(event) {
 
 ```html
 <textarea>
-  مرحبًا، هذا نص ما موجود ضمن العنصر
+  Hello there, this is some text in a text area
 </textarea>
 ```
 
@@ -93,7 +93,7 @@ class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'اكتب من فضلك مقالًا حول العنصر المفضّل لديك في DOM'
+      value: 'Please write an essay about your favorite DOM element.'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -105,7 +105,7 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('قُدِّم المقال: ' + this.state.value);
+    alert('An essay was submitted: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -113,10 +113,10 @@ class EssayForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          المقال:
+          Essay:
           <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="تقديم المقال" />
+        <input type="submit" value="Submit" />
       </form>
     );
   }
@@ -133,10 +133,10 @@ Notice that `this.state.value` is initialized in the constructor, so that the te
 
 ```html
 <select>
-  <option value="Banana">موز</option>
-  <option value="apple">تفّاح</option>
-  <option selected value="Orange">برتقال</option>
-  <option value="mango">مانجو</option>
+  <option value="grapefruit">Grapefruit</option>
+  <option value="lime">Lime</option>
+  <option selected value="coconut">Coconut</option>
+  <option value="mango">Mango</option>
 </select>
 ```
 
@@ -146,7 +146,7 @@ Notice that `this.state.value` is initialized in the constructor, so that the te
 class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'orange'};
+    this.state = {value: 'coconut'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -157,7 +157,7 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('فاكهتك المفضّلة هي: ' + this.state.value);
+    alert('Your favorite flavor is: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -165,15 +165,15 @@ class FlavorForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          اختر فاكهتك المفضّلة
+          Pick your favorite flavor:
           <select value={this.state.value} onChange={this.handleChange}>
-              <option value="banana">موز</option>
-			  <option value="apple">تفّاح</option>
-			  <option value="orange">برتقال</option>
-			  <option value="mango">مانجو</option>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
           </select>
         </label>
-        <input type="submit" value="تقديم البيانات" />
+        <input type="submit" value="Submit" />
       </form>
     );
   }
@@ -238,7 +238,7 @@ class Reservation extends React.Component {
     return (
       <form>
         <label>
-          الذاهبون:
+          Is going:
           <input
             name="isGoing"
             type="checkbox"
@@ -247,7 +247,7 @@ class Reservation extends React.Component {
         </label>
         <br />
         <label>
-          عدد الضيوف:
+          Number of guests:
           <input
             name="numberOfGuests"
             type="number"
@@ -305,4 +305,4 @@ setTimeout(function() {
 
 إذا كنت تبحث عن حل كامل بما في ذلك التحقق من الصحة ، وتتبع الحقول التي قمت بزيارتها ، والتعامل مع إرسال النموذج ، فإن 
 [Formik](https://jaredpalmer.com/formik)
- هو أحد الخيارات الشائعة. ومع ذلك ، فهو مبني على نفس المبادئ للمكونات الخاضعة للرقابة وإدارة الحالة - لذا لا تهمل تعلمها.
+ هو أحد الخيارات الشائعة. ومع ذلك ، فهو مبني على نفس المبادئ للمكونات الخاضعة للرقابة وإدارة الحالة(state) - لذا لا تهمل تعلمها.
