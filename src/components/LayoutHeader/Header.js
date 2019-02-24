@@ -18,7 +18,6 @@ import logoSvg from 'icons/logo.svg';
 
 const Header = ({location}: {location: Location}) => (
   <header
-    dir="rtl"
     css={{
       backgroundColor: colors.darker,
       color: colors.white,
