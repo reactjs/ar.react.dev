@@ -6,9 +6,9 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-First, let's review how you transform lists in JavaScript.
+.JavaScript في (list) أولا, سنرى كيفية تحويل القائمة 
 
-Given the code below, we use the [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function to take an array of `numbers` and double their values. We assign the new array returned by `map()` to the variable `doubled` and log it:
+بالنظر إلى الكود أدناه ، نستخدم الدال  [`()map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لأخذ المصفوفة ` numbers` ومضاعفة قيمها. نقوم بتعيين المصفوفة الجديدة الذي تم إرجاعها بواسطة `map ()` إلى المتغير `doubled` وتسجيله:
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,15 +16,15 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-This code logs `[2, 4, 6, 8, 10]` to the console.
+تكون النتيجة: `[2 ، 4 ، 6 ، 8 ، 10]`.
 
-In React, transforming arrays into lists of [elements](/docs/rendering-elements.html) is nearly identical.
+في React, تحويل المصفوفة إلى قائمة عناصر [elements](/docs/rendering-elements.html) تحويل شبه مماثل.
 
-### Rendering Multiple Components {#rendering-multiple-components}
+###  تصيير عدة مكونات {#rendering-multiple-components} 
 
-You can build collections of elements and [include them in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) using curly braces `{}`.
+يمكنك بناء مجموعة من عناصر و [إحوائهم في JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx)   بإستخدام العارضتين `{}`.
 
-Below, we loop through the `numbers` array using the JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function. We return a `<li>` element for each item. Finally, we assign the resulting array of elements to `listItems`:
+أدناه, نلف داخل المصفوفة `numbers` بإستخدام دالة [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) تابعة لـ JavaScript. نرجع عنصر `<li>` من أجل كل عناصر المصفوفة, و نعينها في `listItems`:
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-We include the entire `listItems` array inside a `<ul>` element, and [render it to the DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+ندخل المصفوفة `listItems` داخلة العنصر `<ul>`, و [تصييره إلى DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
@@ -42,15 +42,15 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
-This code displays a bullet list of numbers between 1 and 5.
+تعرض هذه الشيفرة قائمة منقطة مؤلفة من الأرقام بين 1 و 5. 
 
-### Basic List Component {#basic-list-component}
+### مكون يحتوي على قائمة بسيطة {#basic-list-component}
 
-Usually you would render lists inside a [component](/docs/components-and-props.html).
+نُصيِّر عادةً القوائم بداخل [المُكوِّنات](/docs/components-and-props.html).
 
-We can refactor the previous example into a component that accepts an array of `numbers` and outputs a list of elements.
+بإمكاننا إعادة كتابة المثال السابق باستخدام مُكوِّن يقبل مصفوفة من الأرقام تُدعى `numbers` ويعرض عناصرها على شكل قائمة غير مرتبة:
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -70,9 +70,9 @@ ReactDOM.render(
 );
 ```
 
-When you run this code, you'll be given a warning that a key should be provided for list items. A "key" is a special string attribute you need to include when creating lists of elements. We'll discuss why it's important in the next section.
+عندما تُنفَّذ هذه الشيفرة ستتلقى تحذيرًا أنّه يجب تزويد مفتاح (key) لعناصر القائمة. والمفتاح هو عبارة عن خاصيّة على شكل سلسلة نصيّة يجب إضافتها عند إنشاء قوائم من العناصر. سنتحدث لاحقا عن أهميته في موضوع القادم.
 
-Let's assign a `key` to our list items inside `numbers.map()` and fix the missing key issue.
+فلنُعيِّن مفتاح `key` لعناصر القائمة بداخل التابع `numbers.map()` وبذلك نُصلِح مشكلة المفتاح المفقود:
 
 ```javascript{4}
 function NumberList(props) {
@@ -94,11 +94,11 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
-## Keys {#keys}
+## المفاتيح (Keys) {#keys}
 
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+تُساعِد المفاتيح React على معرفة العناصر التي تغيرت، أو أُضيفت، أو أُزيلت. يجب أن تُعطَى المفاتيح للعناصر بداخل المصفوفة وذلك لإعطاء هذه العناصر هوية مستقرة:
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -109,7 +109,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
+أفضل طريقة لانتقاء مفتاح هي استخدام سلسلة نصيّة تُعرِّف بشكل فريد عنصر القائمة عن العناصر الأخرى، نستخدم غالبًا المُعرِّفات (IDs) من بياناتنا كمفاتيح:
 
 ```js{2}
 const todoItems = todos.map((todo) =>
@@ -119,34 +119,34 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort:
+عندما لا تملك مُعرِّفات مستقرة للعناصر، فبإمكانك استخدام فهرس العنصر `index` كمفتاح كملاذ أخير:
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
-  // Only do this if items have no stable IDs
+  // افعل ذلك فقط إن لم لكن للعناصر معرّفات مستقرة
   <li key={index}>
     {todo.text}
   </li>
 );
 ```
 
-We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+لا نُفضِّل استخدام فهارس العناصر إن كان ترتيبها عُرضةً للتغيير، فقد يُؤثِّر هذا بشكل سلبي على الأداء وقد يسبب مشاكل مع حالة المُكوِّن. اطّلع على  [هذا المقال للحصول على شرح مُفصّل للتأثيرات السلبية لاستخدام الفهرس كمفتاح](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)  . إن اخترت عدم تعيين مفتاح لعناصر القائمة فستستخدم React الفهارس كمفاتيح بشكل افتراضي.
 
-Here is an [in-depth explanation about why keys are necessary](/docs/reconciliation.html#recursing-on-children) if you're interested in learning more.
+إن كنت ترغب بمعرفة المزيد ستجد هنا  [ شرحا مفصلا حول أهمية المفاتيح](/docs/reconciliation.html#recursing-on-children).
 
-### Extracting Components with Keys {#extracting-components-with-keys}
+### استخراج المكونات ذات المفاتيح {#extracting-components-with-keys}
 
-Keys only make sense in the context of the surrounding array.
+يكون للمفاتيح معنى فقط في سياق المصفوفة الموجودة ضمنها.
 
-For example, if you [extract](/docs/components-and-props.html#extracting-components) a `ListItem` component, you should keep the key on the `<ListItem />` elements in the array rather than on the `<li>` element in the `ListItem` itself.
+فمثلًا إن استخرجت المُكوِّن `ListItem` فيجب أن تحتفظ بالمفتاح ضمن العناصر `<ListItem />` الموجودة في المصفوفة بدلًا من وضعه في العنصر `<li>` لموجود في المُكوِّن `ListItem`.
 
-**Example: Incorrect Key Usage**
+**مثال: الاستخدام الخاطئ للمفتاح**
 
 ```javascript{4,5,14,15}
 function ListItem(props) {
   const value = props.value;
   return (
-    // Wrong! There is no need to specify the key here:
+    // .خطأ! فليس هنالك حاجة لتحديد المفتاح هنا
     <li key={value.toString()}>
       {value}
     </li>
@@ -156,7 +156,7 @@ function ListItem(props) {
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    // Wrong! The key should have been specified here:
+    // .خطأ! فليس هنالك حاجة لتحديد المفتاح هنا
     <ListItem value={number} />
   );
   return (
@@ -173,18 +173,18 @@ ReactDOM.render(
 );
 ```
 
-**Example: Correct Key Usage**
+**مثال: الاستخدام الصحيح للمفتاح**
 
 ```javascript{2,3,9,10}
 function ListItem(props) {
-  // Correct! There is no need to specify the key here:
+  // .صحيح! فليس هنالك حاجة لتحديد المفتاح هنا
   return <li>{props.value}</li>;
 }
 
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    // Correct! Key should be specified inside the array.
+    // .صحيح! يجب تحديد المفتاح بداخل المصفوفة
     <ListItem key={number.toString()}
               value={number} />
   );
@@ -202,13 +202,13 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-A good rule of thumb is that elements inside the `map()` call need keys.
+وكقاعدة عامة تحتاج العناصر المُستدعاة من قبل التابع `map()`‎ إلى مفاتيح. 
 
-### Keys Must Only Be Unique Among Siblings {#keys-must-only-be-unique-among-siblings}
+### ينبغي أن تكون المفاتيح فريدة فقط ضمن العناصر الأشقاء {#keys-must-only-be-unique-among-siblings}
 
-Keys used within arrays should be unique among their siblings. However they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+يجب أن تكون العناصر المستخدمة ضمن المصفوفات فريدة من بين العناصر الأشقاء لها، ولكن ليس بالضرورة أن تكون فريدة بشكل عام، فيمكننا استخدام نفس المفاتيح عند إنتاج مصفوفتين مختلفتين:
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -246,9 +246,9 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-Keys serve as a hint to React but they don't get passed to your components. If you need the same value in your component, pass it explicitly as a prop with a different name:
+تعمل المفاتيح كتلميح في React، ولكنها لا تُمرَّر إلى المُكوِّنات. إن احتجت نفس القيمة في مُكوِّناتك فمرّرها بشكل صريح كخاصيّة prop مع استخدام اسم آخر:
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -259,11 +259,11 @@ const content = posts.map((post) =>
 );
 ```
 
-With the example above, the `Post` component can read `props.id`, but not `props.key`.
+في المثال السّابق يستطيع المُكوِّن `Post` قراءة `props.id` ولكن لا يُمكنه قراءة `props.key`. 
 
-### Embedding map() in JSX {#embedding-map-in-jsx}
+### تضمين التابع map()‎ في JSX {#embedding-map-in-jsx}
 
-In the examples above we declared a separate `listItems` variable and included it in JSX:
+صرّحنا في الأمثلة السّابقة عن المتغير `listItems` بشكلٍ مُنفصل وضمّناه في JSX:
 
 ```js{3-6}
 function NumberList(props) {
@@ -280,7 +280,7 @@ function NumberList(props) {
 }
 ```
 
-JSX allows [embedding any expression](/docs/introducing-jsx.html#embedding-expressions-in-jsx) in curly braces so we could inline the `map()` result:
+تسمح JSX [بتضمين أي تعبير](/docs/introducing-jsx.html#embedding-expressions-in-jsx) موجود بين قوسين لذا يمكننا وضع نتيجة التابع `map()` بشكل سطري (inline):
 
 ```js{5-8}
 function NumberList(props) {
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-Sometimes this results in clearer code, but this style can also be abused. Like in JavaScript, it is up to you to decide whether it is worth extracting a variable for readability. Keep in mind that if the `map()` body is too nested, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+يُؤدّي هذا أحيانًا إلى شيفرةٍ مفهومةٍ بشكلٍ أكبر، ولكن قد يُساء استخدام هذا التنسيق. كما هو الحال في JavaScript لك حريّة القرار إذا ما كان استخراج المتغيرات لسهولة القراءة يستحق العناء. إن كان جسم التابع `map()‎` متداخلًا كثيرًا فمن الأفضل [استخراج المُكوِّن](/docs/components-and-props.html#extracting-components).
