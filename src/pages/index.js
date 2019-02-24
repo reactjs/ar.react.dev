@@ -53,7 +53,7 @@ class Home extends Component {
           title="React &ndash; A JavaScript library for building user interfaces"
           ogUrl={createOgUrl('index.html')}
         />
-        <div dir="rtl" css={{width: '100%'}}>
+        <div css={{width: '100%'}}>
           <header
             css={{
               backgroundColor: colors.dark,

@@ -62,7 +62,6 @@ class DocSearch extends Component<{}, State> {
           },
         }}>
         <input
-          dir="rtl"
           css={{
             appearance: 'none',
             background: 'transparent',
