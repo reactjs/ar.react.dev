@@ -6,7 +6,7 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-.JavaScript في (list) أولا, سنرى كيفية تحويل القائمة 
+فلنتذكّر أولًا كيفيّة تحويل القوائم في JavaScript. 
 
 بالنظر إلى الكود أدناه ، نستخدم الدال  [`()map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لأخذ المصفوفة ` numbers` ومضاعفة قيمها. نقوم بتعيين المصفوفة الجديدة الذي تم إرجاعها بواسطة `map ()` إلى المتغير `doubled` وتسجيله:
 
