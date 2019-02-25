@@ -101,6 +101,7 @@ class DocSearch extends Component<{}, State> {
           type="search"
           placeholder="Search"
           aria-label="Search docs"
+          dir="rtl"
         />
       </form>
     ) : null;
