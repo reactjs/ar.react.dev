@@ -7,16 +7,17 @@ redirect_from:
 prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
+          .على نموذج تركيبي قوي ، ونوصي باستخدام التركيب بدلاً من التوريث لإعادة استخدام الرمز بين المكونات React يحتوي
 
-React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+           في كثير من الأحيان من أجل الميراث React في هذا القسم ، سننظر في بعض المشكلات التي يواجهها المطورون الجدد في
+                                                                                     .ويظهروا كيف يمكننا حلها مع التركيب،
 
-In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
+## { الاحتواء { #الاحتواء
 
-## Containment {#containment}
+                                                 
+التي تمثل" مربعات "عامة "Sidebar" أو `Dialog` مثل بعض المكونات لا تعرف أطفالهم في وقت مبكر. هذا أمر شائع خاصة لمكونات           
 
-Some components don't know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".
-
-We recommend that such components use the special `children` prop to pass children elements directly into their output:
+                        :الخاصة لتمرير عناصر الأطفال مباشرةً إلى مخرجاتهم`children` نوصي بأن تستخدم هذه المكونات دعامة
 
 ```js{4}
 function FancyBorder(props) {
@@ -28,7 +29,7 @@ function FancyBorder(props) {
 }
 ```
 
-This lets other components pass arbitrary children to them by nesting the JSX:
+:JSX هذا يتيح لمكونات أخرى تمرير الأطفال التعسفي لهم عن طريق تداخل
 
 ```js{4-9}
 function WelcomeDialog() {
@@ -47,9 +48,10 @@ function WelcomeDialog() {
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
-Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` component as a `children` prop. Since `FancyBorder` renders `{props.children}` inside a `<div>`, the passed elements appear in the final output.
-
-While this is less common, sometimes you might need multiple "holes" in a component. In such cases you may come up with your own convention instead of using `children`:
+  يعرض `FancyBorder` بما أن.children` كطفل` `FancyBorder` إلى مكون `FancyBorder>` JSX  يتم تمرير أي شيء داخل علامة    
+                                 .تظهر العناصر التي تم تمريرها في الإخراج النهائي.  ،`<div> داخل ` {props.children}                               
+                في حين أن هذا أقل شيوعًا ، فقد تحتاج أحيانًا إلى "ثقوب" متعددة في أحد المكونات. في مثل هذه الحالات 
+                                                           :`children` قد تأتي مع الاتفاقية الخاصة بك بدلا من استخدام  
 
 ```js{5,8,18,21}
 function SplitPane(props) {
@@ -80,13 +82,13 @@ function App() {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
 
-React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.
+كدعامات مثل أي بيانات أخرى. قد يذكرك هذا النهج بـ "الفتحات" في المكتبات الأخرى ،   `<Contacts />` و `<Chat />` مثل  React إن عناصر
+                                                                              React  ولكن لا توجد قيود على ما يمكنك تمريره كدعامات في   
+## ( التخصص (#التخصص
 
-## Specialization {#specialization}
+.`Dialog`هي حالة خاصة لـ`WelcomeDialog`أحيانا نفكر في المكونات بأنها "حالات خاصة" من المكونات الأخرى. على سبيل المثال ، قد نقول إن 
 
-Sometimes we think about components as being "special cases" of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
-
-In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:
+                :يتحقق ذلك أيضًا من خلال التكوين ، حيث يؤدي مكون "محدد" أكثر إلى عرض "عام" أكثر وتكوينه باستخدام الدعائم ،React في
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -113,7 +115,7 @@ function WelcomeDialog() {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-Composition works equally well for components defined as classes:
+:يعمل التركيب بشكل جيد للمكونات المحددة كطبقات
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -163,10 +165,13 @@ class SignUpDialog extends React.Component {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-## So What About Inheritance? {#so-what-about-inheritance}
 
-At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.
+## {إذن ماذا عن الوراثة؟ {# ذلك، ما-حول الميراث
 
-Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+               في آلاف المكونات ، ولم نعثر على أي حالات استخدام نوصي فيها بإنشاء تسلسلات هرمية للمكونات React نستخدم ،Facebook في
 
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it.
+تمنحك الدعامات والتكوينات كل المرونة التي تحتاج إليها لتخصيص مظهر وسلوك أحد المكونات بطريقة صريحة وآمنة. تذكر أن المكونات قد 
+                                                  .تقبل الدعائم التعسفية ، بما في ذلك القيم البدائية أو عناصر التفاعل أو الوظائف  
+
+   إذا كنت ترغب في إعادة استخدام وظائف غير تابعة لواجهة المستخدم بين المكونات ، فإننا نقترح عليك استخلاصها في وحدة جافا سكريبت 
+                                 .منفصلة. قد تقوم المكونات باستيرادها واستخدام هذه الوظيفة ، أو الكائن ، أو الفئة ، دون تمديدها    
