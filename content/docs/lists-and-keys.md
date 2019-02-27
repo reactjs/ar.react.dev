@@ -8,7 +8,7 @@ next: forms.html
 
 فلنتذكّر أولًا كيفيّة تحويل القوائم في JavaScript. 
 
-بالنظر إلى الكود أدناه ، نستخدم الدال  [`()map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لأخذ المصفوفة ` numbers` ومضاعفة قيمها. نقوم بتعيين المصفوفة الجديدة الذي تم إرجاعها بواسطة `map ()` إلى المتغير `doubled` وتسجيله:
+في المثال التالي سنستخدم الدالة  [`()map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) لمضاعفة قيم مصفوفة من الأرقام اسمها `numbers`، وسنُعيِّن المصفوفة الجديدة التي تُعيدها الدالة `map ()`‎ إلى المتغير `doubled` ثم نعرض محتواه عبر التابع `console.log()‎`:
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,15 +16,17 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-تكون النتيجة: `[2 ، 4 ، 6 ، 8 ، 10]`.
+نتيجة تنفيذ هذا المثال هي `[2 ، 4 ، 6 ، 8 ، 10]`.
 
-في React, تحويل المصفوفة إلى قائمة عناصر [elements](/docs/rendering-elements.html) تحويل شبه مماثل.
+يكون تحويل المصفوفات في React إلى قوائم من العناصر مماثلًا تقريبًا لذلك. 
 
 ###  تصيير عدة مكونات {#rendering-multiple-components} 
 
 يمكنك بناء مجموعة من عناصر و [إحوائهم في JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx)   بإستخدام العارضتين `{}`.
 
-أدناه, نلف داخل المصفوفة `numbers` بإستخدام دالة [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) تابعة لـ JavaScript. نرجع عنصر `<li>` من أجل كل عناصر المصفوفة, و نعينها في `listItems`:
+
+في المثال التالي سنستخدم الدالة [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)‎ للمرور على جميع عناصر مصفوفة الأرقام `numbers` بحيث نُعيد عنصر `<li>` لكل عنصر من هذه المصفوفة. وأخيرا نُعيِّن مصفوفة العناصر الناتجة إلى المتغير `listItems`:
+
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -33,7 +35,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-ندخل المصفوفة `listItems` داخلة العنصر `<ul>`, و [تصييره إلى DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+نضع الآن كامل المصفوفة `listItems` بداخل عنصر `<ul>`، ونُصيِّره إلى [DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
@@ -48,9 +50,7 @@ ReactDOM.render(
 
 ### مكون يحتوي على قائمة بسيطة {#basic-list-component}
 
-نُصيِّر عادةً القوائم بداخل [المُكوِّنات](/docs/components-and-props.html).
-
-بإمكاننا إعادة كتابة المثال السابق باستخدام مُكوِّن يقبل مصفوفة من الأرقام تُدعى `numbers` ويعرض عناصرها على شكل قائمة غير مرتبة:
+نُصيِّر عادةً القوائم بداخل  [المُكوِّنات](/docs/components-and-props.html). لذلك بإمكاننا إعادة كتابة المثال السابق باستخدام مُكوِّن يقبل مصفوفة من الأرقام تُدعى `numbers` ويعرض عناصرها على شكل قائمة غير مرتبة:
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -94,7 +94,7 @@ ReactDOM.render(
 );
 ```
 
-[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## المفاتيح (Keys) {#keys}
 
@@ -202,7 +202,7 @@ ReactDOM.render(
 );
 ```
 
-[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 وكقاعدة عامة تحتاج العناصر المُستدعاة من قبل التابع `map()`‎ إلى مفاتيح. 
 
@@ -246,7 +246,7 @@ ReactDOM.render(
 );
 ```
 
-[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
 تعمل المفاتيح كتلميح في React، ولكنها لا تُمرَّر إلى المُكوِّنات. إن احتجت نفس القيمة في مُكوِّناتك فمرّرها بشكل صريح كخاصيّة prop مع استخدام اسم آخر:
 
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[**جرب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
 يُؤدّي هذا أحيانًا إلى شيفرةٍ مفهومةٍ بشكلٍ أكبر، ولكن قد يُساء استخدام هذا التنسيق. كما هو الحال في JavaScript لك حريّة القرار إذا ما كان استخراج المتغيرات لسهولة القراءة يستحق العناء. إن كان جسم التابع `map()‎` متداخلًا كثيرًا فمن الأفضل [استخراج المُكوِّن](/docs/components-and-props.html#extracting-components).
