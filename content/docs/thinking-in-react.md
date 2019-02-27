@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Thinking in React
+title: التفكير بطريقة React
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -8,17 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+برأينا (React) هو الطريقة الاساسية لبناء تطبيقات ويب كبيرة وسريعة بإستخدام الجافاسكريبت (Javascript) لقد ساعدنا في التوسع في التطبيقات بشكل جيد بفيسبوك (Facebook) وانستجرام (Instagram).
 
-One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
+واحدة من المزايا العظيمة ل (React) هي كيف انه يجعلك تفكر في التطبيقات اثناء بناءها. في هذه الصفحة سنقوم معاَ بعملية التفكير لبناء جدول بيانات منتج قابل للبحث به بإستخدام (React)
 
-## Start With A Mock {#start-with-a-mock}
+## ابدأ بنموذج التطبيق {#start-with-a-mock}
 
-Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
+تصور أننا نملك واجهة برمجة تطبيقات  (API JSON) جاهزة ونموذج من المصمم. هذا النموذج يشبه الآتي:
 
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
-Our JSON API returns some data that looks like this:
+واجهة برمجة التطبيقات ترسل بعض البيانات كالآتي:
 
 ```
 [
@@ -31,27 +31,27 @@ Our JSON API returns some data that looks like this:
 ];
 ```
 
-## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+### الخطوة الأولي: قم بتقسيم واجهة المستخدم (UI) لتسلسل هرمي لمكونات الواجهة (Component) {#step-1-break-the-ui-into-a-component-hierarchy}
 
-The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
+اول شئ يجب عليك فعله هو رسم مستطيلات حول كل مكون (component) ومكون فرعي(subcomponent) بالنموذج واعطاء كل منهم أسم. إذا كنت تعمل مع مصمم تحدث معه فعلي الأرجح هو فعل ذلك! فأسماء طبقات الفوتوشوب (Photoshop layers) من الممكن أن تصلح كأسماء لمكوناتك (React component)!
 
-But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+ولكن كيف تعرف ما يجب أن تحدده كمكون؟ فقط إستخدم نفس الأساليب أثناء أخذ قرار بإنشاء دالة (Function) او (Object) جديدة . كمثال علي أسلوب هو (مبدأ المسئولية الأحادية) [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) وهي أن المكون (component) بشكل مثالي يجب أن يكون مسئول عن فعل شئ واحد فقط وإذا بدأ في التنامي يجب تقسيمه لمكونات فرعية (subcomponent) أصغر.
 
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*, which means the work of separating your UI into components is often trivial. Just break it up into components that represent exactly one piece of your data model.
+حيث أننا غالباَ ما نعرض نموذج البيانات (JSON data model) للمستخدم ستجد أنه إذا كان هذا النموذج مبني بشكل جيد فإنه سيتطابق مع واجهة المستخدم (UI) خاصتك بشكل رائع وبالتالي مع بناء مكوناتك (component structure) وهذا لأن واجهة المستخدم (UI) ونموذج البيانات (data models) يميلان الي التقيد بنفس *(الشكل البنائي للمعلومات information architecture)* وهو مايعني ان العمل علي تقسيم واجهة المستخدم (UI) لمكونات (components) غالباَ مايكون بسيط فقط قم بتقسيمها الي مكونات (component) تمثل تحديداَ جزء واحد من نموذج البيانات (data model) خاصتك.
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
-You'll see here that we have five components in our simple app. We've italicized the data each component represents.
+ستري هنا أن لدينا خمس مكونات (components) في تطبيقنا البسيط ولقد قمنا بالكتابة بخط مائل كل مكون ومايمثله من بيانات.
 
-  1. **`FilterableProductTable` (orange):** contains the entirety of the example
-  2. **`SearchBar` (blue):** receives all *user input*
-  3. **`ProductTable` (green):** displays and filters the *data collection* based on *user input*
-  4. **`ProductCategoryRow` (turquoise):** displays a heading for each *category*
-  5. **`ProductRow` (red):** displays a row for each *product*
+  1. **`FilterableProductTable` (باللون البرتقالي):** يحتوي المثال بكامله
+  2. **`SearchBar` (باللون الأزرق):** يستقبل ما يدخله المستخدم *(user input)*
+  3. **`ProductTable` (باللون الأخضر):** يعرض و ينقح (filter) مجموعة البيانات *(data collection)* طبقاَ لما ادخله المستخدم *(user input)*
+  4. **`ProductCategoryRow` (باللون الفيروزي):** يعرض عنوان (heading) لكل  *فئة (category)*
+  5. **`ProductRow` (باللون الأحمر):** يعرض صف لكل *منتج (product)*
 
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (i.e. if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
+إذا نظرت الي المكون `ProductTable` ستري أن عنوان الجدول (المحتوي علي الأسم والسعر) ليس مكون (component) منفصل بذاته هي مسألة تفضيل وهناك حجة لكل الطريقتين. لهذا المثال نحن تركناه كجزء من المكون `ProductTable`لأنه جزء من تصيير (rendering) *مجموعة البيانات (data collection)* والتي هي من مسئولية المكون `ProductTable`، ومع ذلك إذا تنامي عنوان الجدول بشكل معقد (كمثال إضافة إمكانية الفرز (sorting)) سيكون بالتأكيد من المنطقي جعله مكون منفصل `ProductTableHeader`.
 
-Now that we've identified the components in our mock, let's arrange them into a hierarchy. This is easy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+والأن بعد أن حددنا المكونات (components) في نموذج التصميم خاصتنا، لنقم برتيبهم في تسلسل هرمي وهذا سهل، المكونات التي تظهر بداخل مكونات أخري في النموذج يجب أن تكون إبن (child) داخل التسلسل:
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -59,24 +59,25 @@ Now that we've identified the components in our mock, let's arrange them into a 
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Step 2: Build A Static Version in React {#step-2-build-a-static-version-in-react}
+## الخطوة الثانية: بناء نسخة ثابتة (static version) بال (React) {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">شاهد النتيجة <a href="https://codepen.io/gaearon/pen/BwWzwm">التفكير بطريقة (React): الخطوة الثانية</a> علي <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Now that you have your component hierarchy, it's time to implement your app. The easiest way is to build a version that takes your data model and renders the UI but has no interactivity. It's best to decouple these processes because building a static version requires a lot of typing and no thinking, and adding interactivity requires a lot of thinking and not a lot of typing. We'll see why.
+والأن ونحن لدينا التسلسل الهرمي للمكونات، حان وقت تنفيذ التطبيق. الطريقة السهلة هي بناء نسخة تستخدم نموذج البيانات (data model) لتصيير (renders) واجهة المستخدم (UI) ولكن بدون إمكانية للتفاعل مع التطبيق، من الأفضل فصل هذه العمليات لأن بناء نسخة ثابتة تحتاج للكثير من الكتابة بدون تفكير وإضافة التفاعلية (interactivity) تحتاج للكثير من التفكير والقليل من الكتابة، سنري لماذا.
 
-To build a static version of your app that renders your data model, you'll want to build components that reuse other components and pass data using *props*. *props* are a way of passing data from parent to child. If you're familiar with the concept of *state*, **don't use state at all** to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.
+لبناء نسخة ثابتة من التطبيق ستحتاج الي بناء مكونات تستخدم مكونات أخري وترسل لها البيانات بإستخدام *الخاصيات (props)*، وهي طريقة لتمرير البيانات من المكون الأب الي المكون الأبن، إذا كنت علي معرفة بمبدأ *الحالة (state)*
+**لا تستخدم الحالة (state) ابداَ** لبناء نسخة ثابتة. الحالة (state) تستخدم لغرض التفاعلية فقط، وهو أن البيانات تتغير بأستمرار وحيث أن هذه النسخة ثابتة أنت لا تحتاجها.
 
-You can build top-down or bottom-up. That is, you can either start with building the components higher up in the hierarchy (i.e. starting with `FilterableProductTable`) or with the ones lower in it (`ProductRow`). In simpler examples, it's usually easier to go top-down, and on larger projects, it's easier to go bottom-up and write tests as you build.
+يمكنك البناء من أعلي لأسفل او من أسفل لأعلي. وذلك أنه يمكنك البدء ببناء المكونات في أعلي التسلسل الهرمي (كمثال أبدأ ب `FilterableProductTable`) او بمكون في اسفله (`ProductRow`)، في الأمثلة البسيطة من الأسهل عادة البدء من أعلي لأسفل، وفي المشاريع الأكبر من الأسهل البدء من أسفل الي أعلي مع كتابة إختبارات (tests) كلما تبني.
 
-At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `ReactDOM.render()` again, the UI will be updated. It's easy to see how your UI is updated and where to make changes since there's nothing complicated going on. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+بنهاية هذه الخطوة، سيكون لديك مكتبة من المكونات القابلة لإعادة الإستخدام (reusable) التي تقوم بتصيير نموذج البيانات. المكونات ستحتوي فقط علي دالات (`render()` methods) حيث أن هذه نسخة ثابتة من تطبيقك. المكون بأعلي التسلسل الهرمي (`FilterableProductTable`) سيحصل علي نموذج البيانات كخاصية (prop). إذا قمت بعمل تغيير في نموذج البيانات وقمت بإستدعاء الدالة (`ReactDOM.render()`) مرة أخري فإن واجهة المستخدم سيتم تحديثها. من السهل رؤية كيف يتم تحديث واجهة المستخدم واين تحدث التغييرات حيث أنه لايوجد شئ معقد يحدث، طريقة تدفق البيانات في اتجاه واحد (**one-way data flow**) لل (React) وتدعي أيضاَ (*one-way binding*) تحافظ علي كل شئ وسريع وكوحدة (modular) واحدة.
 
-Simply refer to the [React docs](/docs/) if you need help executing this step.
+ببساطة انتقل الي [React docs](/docs/) إذا كنت بحاجة للمساعدة لتنفيذ هذه الخطوة
 
-### A Brief Interlude: Props vs State {#a-brief-interlude-props-vs-state}
+### نبذه بسيطة: الخاصية (Props) مقابل الحالة (State){#a-brief-interlude-props-vs-state}
 
-There are two types of "model" data in React: props and state. It's important to understand the distinction between the two; skim [the official React docs](/docs/interactivity-and-dynamic-uis.html) if you aren't sure what the difference is.
+هناك نوعان من نماذج البيانات في (React): الحالة (state) و الخاصية (props)، من المهم فهم الأختلاف بين الأثنين، تصفح [the official React docs](/docs/interactivity-and-dynamic-uis.html) إذا لم تكن متأكد من الأختلاف.
 
 ## Step 3: Identify The Minimal (but complete) Representation Of UI State {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
