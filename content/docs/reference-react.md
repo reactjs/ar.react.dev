@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: React Top-Level API
+title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى في React.
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -13,7 +13,9 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
-`React` is the entry point to the React library. If you load React from a `<script>` tag, these top-level APIs are available on the `React` global. If you use ES6 with npm, you can write `import React from 'react'`. If you use ES5 with npm, you can write `var React = require('react')`.
+`React` هو نقطة الدخول إلى مكتبة React. إن قتم بتنزيل React عن طريق العنصر ‎`<script>`‎ فستكون هذه الواجهة ذات المستوى الأعلى متوفرة عبر الكائن العام `React`. وإن استخدمت ES6 مع npm فتستطيع كتابة `‎import React from 'react'`‎. إن استخدمت ES5 مع npm فتستطيع كتابة ‎`var React = require('react')`‎.
+
+
 
 ## Overview {#overview}
 
