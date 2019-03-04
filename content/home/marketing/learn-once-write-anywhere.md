@@ -1,8 +1,10 @@
 ---
-title: Learn Once, Write Anywhere
+title:  تعلم مرة، واكتب الشيفرة في أي مكان 
 order: 2
 ---
 
-We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+نحن لا نضع أي فرضيات مسبقة عن التكنولوجيا الأخرى التي تستخدمها، فلهذا يمكنك تطوير ميزات و إضافات باستخدام React  دون الحاجة الى إعادة كتابة أي شيفرة مكتوبة سابقاً.
 
-React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).
+React يستطيع ان يعمل ضمن مخدم  Node و يدعم تطبيقات الهواتف الذكية باستخدام[React Native](https://facebook.github.io/react-native/)
+
+
