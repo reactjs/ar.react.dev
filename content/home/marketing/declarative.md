@@ -1,8 +1,7 @@
 ---
-title: Declarative
+title: تصريحي
 order: 0
 ---
+React يجعل انشاء واجهات المستخدم التفاعلية سهل للغاية، فقط يجب عليك  تصميم واجهة بسيطة لكل حالة من حالات التطبيق و بعدها React يتكفل وبفاعلية بتحديث و اعادة رسم المكّون المعني بالتحديث فقط عند تغيُّر البيانات.
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
-
-Declarative views make your code more predictable and easier to debug.
+الواجهات المعرّفة (التصريحية)، تجعل الشيفرة الخاصة بالبرنامج سهلة التوقع عند تنفيذيها و سهلة التصحيح في حالة وجود أخطاء.

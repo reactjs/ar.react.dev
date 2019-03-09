@@ -1,8 +1,8 @@
 ---
-title: Component-Based
+title: يستند على المكوّن
 order: 1
 ---
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+يعتمد React بشكل أساسي على مفهوم المكوّنات (Components). حيث يجب عليك بناء مكوّنات مُغلَّفة تُدير حالتها الخاصّة، ومن ثمّ تُركِّب هذه المكوّنات مع بعضها لإنشاء واجهات مستخدم مُعقّدة.
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+ ولمّا كان منطق المكوّنات مكتوب باستخدام JavaScript بدلًا من صيغة القوالب، فبإمكانك تمرير الكثير من البيانات عبر تطبيقك بسهولة وإبقاء الحالة بعيدة عن DOM. 
