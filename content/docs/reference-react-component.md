@@ -314,25 +314,24 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 ### حدود الأخطاء {#error-boundaries}
 
-[Error boundaries](/docs/error-boundaries.html) are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+[حدود الأخطاء](/docs/error-boundaries.html) هي مكوّنات React التي تُمسِك أخطاء JavaScript في أي مكان من شجرة المكوّنات المتفرعة عنها، وتُسجل الأخطاء، وتعرض واجهة مستخدم بديلة عن شجرة المكوّنات التي انهارت. تُمسِك حدود الأخطاء بالأخطاء خلال التصيير، وفي توابع دورة حياة المكوّنات، وفي الدوال البانية لكل شجرة المكوّنات الأدنى منها.
 
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`. Updating state from these lifecycles lets you capture an unhandled JavaScript error in the below tree and display a fallback UI.
+يُصبح مكوّن الصنف حدًّا للأخطاء إن كان يُعرِّف تابع دورة الحياة `componentDidCatch()‎`. يسمح لك استدعاء التابع `setState()`‎ في التقاط أخطاء JavaScript التي لم تعالج في المستوى الأدنى من الشجرة مع عرض واجهة مستخدم بديلة
 
-Only use error boundaries for recovering from unexpected exceptions; **don't try to use them for control flow.**
+استخدم حدود الأخطاء فقط من أجل التعافي من الأخطاء غير المتوقعة; **لا تحاول استخدامها للتحكم بتدفق البيانات.**
 
-For more details, see [*Error Handling in React 16*](/blog/2017/07/26/error-handling-in-react-16.html).
+للمزيد من المعلومات، انظر إلى [*التعامل مع الأخطاء في React 16*](/blog/2017/07/26/error-handling-in-react-16.html).
 
-> Note
+> ملاحظة
 > 
-> Error boundaries only catch errors in the components **below** them in the tree. An error boundary can’t catch an error within itself.
+> تُمسِك حدود الأخطاء فقط الأخطاء في المستويات الأدنى منها في شجرة المكوّنات، فلا يستطيع حد الخطأ أن يُمسِك بالأخطاء الحاصلة ضمنه.
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
 ```javascript
 static getDerivedStateFromError(error)
 ```
 
-This lifecycle is invoked after an error has been thrown by a descendant component.
-It receives the error that was thrown as a parameter and should return a value to update state.
+يُستدعَى تابع دورة الحياة هذا بعد أن يُرمَى الخطأ عبر مكون سليل (descendant component). يستقبل هذا التابع الخطأ الذي رُمِيَ كوسيط ويجب أن يعيد قيمةً لتحديث الحالة.
 
 ```js{7-10,13-16}
 class ErrorBoundary extends React.Component {
