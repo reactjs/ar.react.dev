@@ -37,13 +37,13 @@ class Welcome extends React.Component {
 >
 >لا تُجبِرك React على استخدام صياغة أصناف ES6. إن كنت تفضّل تجنّب ذلك فبإمكانك استخدام الوحدة `create-react-class` أو أي تجريد مُخصَّص مماثل بدلًا من ذلك. انظر إلى [استخدام React بدون ES6](/docs/react-without-es6.html) لتعلّم المزيد.
 
-### The Component Lifecycle {#the-component-lifecycle}
+### دورة حياة المكوّن {#the-component-lifecycle}
 
-Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+يمتلك كل مكوّن توابع دورة حياة متعدّدة والتي تستطيع تجاوزها لتنفيذ الشيفرة في أوقات مُحدَّدة.  **تستطيع استخدام  [مُخطّط دورة حياة المكوّنات هذا](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)** في القائمة التالية سنكتب أسماء توابع دورة الحياة الشائعة بالخط العريض. أما البقية فهي موجودة لحالات الاستخدام النادرة نسبيًّا.
 
-#### Mounting {#mounting}
+#### الوصل (mounting) {#mounting}
 
-These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+تُستدعى هذه التوابع بالترتيب التالي عند إنشاء نسخة من المكوّن وإدخالها إلى DOM:
 
 - [**`constructor()`**](#constructor)
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
@@ -52,13 +52,13 @@ These methods are called in the following order when an instance of a component 
 
 >Note:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>ملاحظة: يُعتبر هذا التابع قديمًا ويجب أن [تتجنّب](/blog/2018/03/27/update-on-async-rendering.html) استخدامه في الشيفرة الجديدة:
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
-#### Updating {#updating}
+#### التحديث {#updating}
 
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+يُمكِن أن يحصل التحديث عن طريق التغييرات في الخاصيّات أو الحالة. تُستدعى هذه التوابع بالترتيب التالي عند إعادة تصيير المكوّن:
 
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [`shouldComponentUpdate()`](#shouldcomponentupdate)
@@ -68,48 +68,48 @@ An update can be caused by changes to props or state. These methods are called i
 
 >Note:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>ملاحظة: يُعتبر هذا التابع قديمًا ويجب أن [تتجنّب](/blog/2018/03/27/update-on-async-rendering.html) استخدامه في الشيفرة الجديدة:
 >
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
-#### Unmounting {#unmounting}
+#### الفصل (unmounting) {#unmounting}
 
-This method is called when a component is being removed from the DOM:
+يُستدعى هذا التابع عند إزالة المكون من DOM:
 
 - [**`componentWillUnmount()`**](#componentwillunmount)
 
-#### Error Handling {#error-handling}
+#### معالجة الأخطاء {#error-handling}
 
-These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+يُستدعى هذا التابع عند وجود خطأ أثناء التصيير، أو في تابع دورة حياة المكوّن، أو في الدالة البانية لأي من المكوّنات الأبناء.
 
 - [`static getDerivedStateFromError()`](#static-getderivedstatefromerror)
 - [`componentDidCatch()`](#componentdidcatch)
 
-### Other APIs {#other-apis}
+### واجهات برمجة التطبيق الأخرى {#other-apis}
 
-Each component also provides some other APIs:
+يُعطينا كل مكوّن بواجهات برمجة تطبيق أخرى:
 
   - [`setState()`](#setstate)
   - [`forceUpdate()`](#forceupdate)
 
-### Class Properties {#class-properties}
+### خاصيّات الصنف {#class-properties}
 
   - [`defaultProps`](#defaultprops)
   - [`displayName`](#displayname)
 
-### Instance Properties {#instance-properties}
+### خاصيّات النسخة (Instance) {#instance-properties}
 
   - [`props`](#props)
   - [`state`](#state)
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
-### Commonly Used Lifecycle Methods {#commonly-used-lifecycle-methods}
+### توابع دورة الحياة شائعة الاستخدام {#commonly-used-lifecycle-methods}
 
-The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+تُغطّي التوابع في هذا القسم معظم حالات الاستخدام التي ستصادفها أثناء إنشاء مكوّنات React. **للحصول على مرجع لمخطط بصري انظر إلى [مخطط دورة حياة المكوّنات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
 
 ### `render()` {#render}
 
@@ -117,23 +117,23 @@ The methods in this section cover the vast majority of use cases you'll encounte
 render()
 ```
 
-The `render()` method is the only required method in a class component.
+التابع  `render()` هو التابع الوحيد المطلوب وجوده في مكوّنات الأصناف.
 
-When called, it should examine `this.props` and `this.state` and return one of the following types:
+عند استدعائه, يجب أن يفحص `this.props` و `this.state` ويُعيد إحدى الأنواع التالية:
 
-- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
-- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
-- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
-- **String and numbers.** These are rendered as text nodes in the DOM.
-- **Booleans or `null`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean.)
+- **React عناصر .**  تُنشَأ عادةً عن طريق [JSX](/docs/introducing-jsx.html). على سبيل المثال, `<div />` و `<MyComponent />` هي عناصر React والتي تأمر React بتصيير عقدة DOM ومكوّن مُعرَّف من قبل المستخدم على التوالي وبالترتيب.
+- **الأجزاء والمصفوفات:** تسمح لك بإعادة عناصر متعددة من التابع انظر إلى توثيق [الأجزاء](/docs/fragments.html) للمزيد من التفاصيل.
+- **المداخل (Portals):**. تسمح لك بتصيير العناصر الأبناء إلى تفرعات مختلفة من DOM. انظر إلى توثيق [portals](/docs/portals.html) للمزيد من التفاصيل.
+- **الأعداد والسلاسل النصيّة:** تُصيَّر كعقد نصيّة في DOM.
+- **القيم المنطقية (Booleans) أو `null`:**. لا تُصيِّر شيئًا.  (موجودة في معظم الأحيان لدعم النمط `return test && <Child />` pattern, حيث يكون `test` هو قيمة منطقيّة.)
 
-The `render()` function should be pure, meaning that it does not modify component state, it returns the same result each time it's invoked, and it does not directly interact with the browser.
+يجب أن يكون التابع `render()` نقيًّا, أي لا يُعدِّل حالة المكوّن، ويعيد نفس النتيجة في كل مرة يُستدعى فيها، ولا يتفاعل بشكل مباشر مع المتصفح.
 
-If you need to interact with the browser, perform your work in `componentDidMount()` or the other lifecycle methods instead. Keeping `render()` pure makes components easier to think about.
+إن أردت التفاعل مع المتصفح فأنجز العمل المطلوب ضمن التابع  `componentDidMount()` أو أي تابع من توابع دورة الحياة. إنّ الحفاظ على التابع `render()` نقيًّا يزيد سهولة التفكير بمكوّناتك.
 
-> Note
+> ملاحظة
 >
-> `render()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.
+>  لن يُستدعى التابع `render()` إن أعاد التابع [`shouldComponentUpdate()`](#shouldcomponentupdate) القيمة false.
 
 * * *
 
@@ -143,33 +143,33 @@ If you need to interact with the browser, perform your work in `componentDidMoun
 constructor(props)
 ```
 
-**If you don't initialize state and you don't bind methods, you don't need to implement a constructor for your React component.**
+**إن لم تضع قيمة بدئية للحالة ولم تربط التوابع، فلن تحتاج إلى إضافة دالة بانية إلى مكوناتك.**
 
-The constructor for a React component is called before it is mounted. When implementing the constructor for a `React.Component` subclass, you should call `super(props)` before any other statement. Otherwise, `this.props` will be undefined in the constructor, which can lead to bugs.
+تُستدعى الدالة البانية لمكوّن React قبل الوصل. عند إضافة الدالة البانية لصنف فرعي عن الصنف `React.Component` فيجب أن تستدعي `super(props)`  قبل أي جملة أخرى وإلّا ستكون `this.props` غير معرفة في الدالة البانية والذي قد يؤدي إلى أخطاء.
 
-Typically, in React constructors are only used for two purposes:
+تستخدم الدوال البانية في React فقط لغرضين عادةً:
 
-* Initializing [local state](/docs/state-and-lifecycle.html) by assigning an object to `this.state`.
-* Binding [event handler](/docs/handling-events.html) methods to an instance.
+* تهيئة [الحالة المحلية](/docs/state-and-lifecycle.html) عن طريق تعيين كائن إلى `this.state`.
+* ربط توابع [معالج الأحداث](/docs/handling-events.html) إلى النسخة (instance).
 
-You **should not call `setState()`** in the `constructor()`. Instead, if your component needs to use local state, **assign the initial state to `this.state`** directly in the constructor:
+**يجب ألّا تستدعي `()setState`**  في الدالة البانية، وإن كان مكوّنك يحتاج استخدام الحالة المحليّة فعيّن الحالة المبدئية إلى `this.state` مباشرة في الدالة البانية:
 
 ```js
 constructor(props) {
   super(props);
-  // Don't call this.setState() here!
+  // هنا this.setState() لا تستدعي
   this.state = { counter: 0 };
   this.handleClick = this.handleClick.bind(this);
 }
 ```
 
-Constructor is the only place where you should assign `this.state` directly. In all other methods, you need to use `this.setState()` instead.
+الدالة البانية هي المكان الوحيد الذي يجب أن تّعين فيه `this.state` بشكل مباشر، ففي جميع التوابع الأخرى يجب استخدام `this.setState()` بدلًا من ذلك..
 
-Avoid introducing any side-effects or subscriptions in the constructor. For those use cases, use `componentDidMount()` instead.
+تجنّب تقديم أي تأثيرات جانبية أو اشتراكات في الدالة البانية، ولتلك الحالات استخدم التابع`componentDidMount()`.
 
->Note
+>ملاحظة
 >
->**Avoid copying props into state! This is a common mistake:**
+>**تجنّب نسخ الخاصيّات إلى الحالة، فهذا خطأ شائع:**
 >
 >```js
 >constructor(props) {
@@ -179,11 +179,11 @@ Avoid introducing any side-effects or subscriptions in the constructor. For thos
 >}
 >```
 >
->The problem is that it's both unnecessary (you can use `this.props.color` directly instead), and creates bugs (updates to the `color` prop won't be reflected in the state).
+>المشكلة هي أنّ هذا غير ضروري (حيث تستطيع استخدام `this.props.color` بشكل مباشر), ويُعطي أخطاء (لن تنعكس التحديثات على الخاصيّة `color` في الحالة).
 >
->**Only use this pattern if you intentionally want to ignore prop updates.** In that case, it makes sense to rename the prop to be called `initialColor` or `defaultColor`. You can then force a component to "reset" its internal state by [changing its `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) when necessary.
+>**استخدم هذا النمط إن كنت تريد عن قصد تجاهل تحديثات الخاصيّات.** في تلك الحالة من المنطقي إعادة تسمية الخاصيّة إلى `initialColor` أو `defaultColor`. إمكانك بعدها إجبار المكوّن على "إعادة تعيين" حالته الداخلية عن طريق [تغيير `المفتاح`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) عند الضرورة.
 >
->Read our [blog post on avoiding derived state](/blog/2018/06/07/you-probably-dont-need-derived-state.html) to learn about what to do if you think you need some state to depend on the props.
+>اقرأ [هذا المنشور حول تجنب الحالات المشتقة](/blog/2018/06/07/you-probably-dont-need-derived-state.html) لتتعلم ما يجب فعله إن أردت أن تعتمد الحالة على الخاصيّات.
 
 
 * * *
@@ -194,11 +194,11 @@ Avoid introducing any side-effects or subscriptions in the constructor. For thos
 componentDidMount()
 ```
 
-`componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+يُستدعى  `componentDidMount()` مباشرة بعد وصل المكوّن (إدخاله ضمن الشجرة). يجب أن نضع هنا التهيئة التي تتطلّب عقدة DOM. إن احتجت إلى تحميل بيانات من نقطة بعيدة فهذا التابع مكان جيد لبدء طلبات الشبكة.
 
-This method is a good place to set up any subscriptions. If you do that, don't forget to unsubscribe in `componentWillUnmount()`.
+يُعد هذا التابع أيضًا مكانًا جيّدًا لإعداد أي اشتراكات. إن فعلت ذلك فلا تنسَ إزالة الاشتراك في التابع `componentWillUnmount()`.
 
-You **may call `setState()` immediately** in `componentDidMount()`. It will trigger an extra rendering, but it will happen before the browser updates the screen. This guarantees that even though the `render()` will be called twice in this case, the user won't see the intermediate state. Use this pattern with caution because it often causes performance issues. In most cases, you should be able to assign the initial state in the `constructor()` instead. It can, however, be necessary for cases like modals and tooltips when you need to measure a DOM node before rendering something that depends on its size or position.
+بإمكانك **استدعاء  `setState()` مباشرة في التابع** `componentDidMount()`. . سيُطلِق تصييرًا إضافيًّا ولكن سيحدث ذلك قبل أن يُحدِّث المتصفح الشاشة. يضمن ذلك عدم رؤية المستخدم للحالة مباشرة على الرغم من استدعاء التابع  `render()` مرتين. استخدم هذا النمط بحذر لأنّه يسبب غالبًا مشاكل بالأداء. يجب في معظم الحالات أن تُعيّن الحالة المبدئية في الدالة البانية بدلًا من ذلك. ولكن قد يكون ذلك ضروريًّا لحالات مثل تلميحات الأدوات (tooltips) عندما تحتاج إلى تقدير عقدة DOM قبل تصيير شيء يعتمد على حجمه أو موقعه.
 
 * * *
 
@@ -208,26 +208,26 @@ You **may call `setState()` immediately** in `componentDidMount()`. It will trig
 componentDidUpdate(prevProps, prevState, snapshot)
 ```
 
-`componentDidUpdate()` is invoked immediately after updating occurs. This method is not called for the initial render.
+يُستدعى التابع  `componentDidUpdate()` i مباشرة بعد حصول التحديث. لا يُستدعى هذا التابع من أجل التصيير المبدئي.
 
-Use this as an opportunity to operate on the DOM when the component has been updated. This is also a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed).
+استخدم هذا التابع كفرصة للعمل على DOM عند تحديث المكوّن. يُعد هذا التابع مكانًا جيّدًا لإتمام طلبات الشبكة طالما تُقارِن الخاصيّات الحالية مع الخاصيّات السابقة (أي قد يكون طلب الشبكة غير ضروريّ إن لم تتغير الخاصيّات):
 
 ```js
 componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
+  // استخدام نموذجي (لا تنس مقارنة الخاصيات)
   if (this.props.userID !== prevProps.userID) {
     this.fetchData(this.props.userID);
   }
 }
 ```
 
-You **may call `setState()` immediately** in `componentDidUpdate()` but note that **it must be wrapped in a condition** like in the example above, or you'll cause an infinite loop. It would also cause an extra re-rendering which, while not visible to the user, can affect the component performance. If you're trying to "mirror" some state to a prop coming from above, consider using the prop directly instead. Read more about [why copying props into state causes bugs](/blog/2018/06/07/you-probably-dont-need-derived-state.html).
+بإمكانك  **استدعاء `()setState`  مباشرة في التابع** `componentDidUpdate()` ولكن انتبه أنّه **أنّه يجب تغليفه ضمن شرط** مثل المثال السابق وإلّا ستسبب حدوث حلقة لا نهائيّة وإعادة تصيير إضافيّة والتي رغم عدم وضوحها للمستخدم إلاّ أنّها تؤثّر على أداء المكوّن. إن كنت تحاول أن تعكس الحالة إلى الخاصيّة الآتية من الأعلى فيجب أن تستخدم الخاصيّة بشكل مباشر. اقرأ المزيد في تدوينة [لماذا يُسبب نسخ الخاصيّات إلى الحالة أخطاء](/blog/2018/06/07/you-probably-dont-need-derived-state.html).
 
-If your component implements the `getSnapshotBeforeUpdate()` lifecycle (which is rare), the value it returns will be passed as a third "snapshot" parameter to `componentDidUpdate()`. Otherwise this parameter will be undefined.
+إن كان يعتمد مكوّنك تابع `getSnapshotBeforeUpdate()` دورة الحياة  (وهو أمرٌ نادر), فستُمرَّر القيمة التي يُعيدها كُمعامل ثالث إلى التابع `componentDidUpdate()`. فيما عدا ذلك يكون هذا المُعامِل غير مُعرَّفًا.
 
-> Note
+> ملاحظة
 >
-> `componentDidUpdate()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.
+>  لن يُستدعى التابع `componentDidUpdate()`  إن أعاد التابع [`shouldComponentUpdate()`](#shouldcomponentupdate) القيمة  false.
 
 * * *
 
@@ -237,15 +237,15 @@ If your component implements the `getSnapshotBeforeUpdate()` lifecycle (which is
 componentWillUnmount()
 ```
 
-`componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
+يُستدعى التابع  `componentWillUnmount()` مباشرةً قبل فصل المكوّن وتدميره. نفّذ أي مسح ضروري في هذا التابع، مثل تعطيل العدادات، وإلغاء طلبات الشبكة، ومسح أي اشتراكات أنشأها التابع `componentDidMount()`.
 
-You **should not call `setState()`** in `componentWillUnmount()` because the component will never be re-rendered. Once a component instance is unmounted, it will never be mounted again.
+**لا يجب أن تستدعي التابع `setState()`**  في التابع `componentWillUnmount()` لأنّ المكوّن لن يُعاد تصييره. حالما تُفصَل نسخة المكوّن فلن تُوصل مرة أخرى.
 
 * * *
 
-### Rarely Used Lifecycle Methods {#rarely-used-lifecycle-methods}
+### توابع دورة الحياة نادرة الاستخدام {#rarely-used-lifecycle-methods}
 
-The methods in this section correspond to uncommon use cases. They're handy once in a while, but most of your components probably don't need any of them. **You can see most of the methods below on [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) if you click the "Show less common lifecycles" checkbox at the top of it.**
+تستخدم التوابع المذكورة في هذا القسم في حالات نادرة، وهي مفيدة من حين لآخر، ولكن لن تحتاجها معظم مكوّناتك.**تستطيع أن ترى معظم هذه التوابع في [مخطط توابع دورة حياة المكوّنات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) إن ضغطت على مربع التأشير "Show less common lifecycles" الموجود في الأعلى.**
 
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
@@ -254,17 +254,17 @@ The methods in this section correspond to uncommon use cases. They're handy once
 shouldComponentUpdate(nextProps, nextState)
 ```
 
-Use `shouldComponentUpdate()` to let React know if a component's output is not affected by the current change in state or props. The default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior.
+استخدم التابع `shouldComponentUpdate()` لتُعلِم React إن كان ناتج المكوّن لا يتأثر بالتغيير الحالي للخاصيّات أو الحالة. السلوك الافتراضي هو إعادة التصيير عند كل تغيير للحالة، وفي معظم الحالات ستعتمد على هذا السلوك.
 
-`shouldComponentUpdate()` is invoked before rendering when new props or state are being received. Defaults to `true`. This method is not called for the initial render or when `forceUpdate()` is used.
+يُستدعى التابع  `shouldComponentUpdate()`  قبل التصيير عند استقبال الخاصيّات أو الحالة. القيمة الافتراضية هي `true`.  لا يُستدعى هذا التابع للتصيير المبدئي أو عند استخدام التابع `forceUpdate()`.
 
-This method only exists as a **[performance optimization](/docs/optimizing-performance.html).** Do not rely on it to "prevent" a rendering, as this can lead to bugs. **Consider using the built-in [`PureComponent`](/docs/react-api.html#reactpurecomponent)** instead of writing `shouldComponentUpdate()` by hand. `PureComponent` performs a shallow comparison of props and state, and reduces the chance that you'll skip a necessary update.
+يتواجد هذا التابع **[كتحسين للأداء](/docs/optimizing-performance.html).** لا تعتمد عليه لمنع التصيير, حيث يقود ذلك إلى أخطاء. انظر في استخدام الصنف [`PureComponent`](/docs/react-api.html#reactpurecomponent) المُضمَّن بدلًا من كتابة التابع `shouldComponentUpdate()` بشكلٍ يدوي.يُنفِّذ الصنف  `PureComponent` مقارنة ضئيلة للخاصيّات والحالة ويُقلِّل فرصة تجاوز تحديث ضروري.
 
-If you are confident you want to write it by hand, you may compare `this.props` with `nextProps` and `this.state` with `nextState` and return `false` to tell React the update can be skipped. Note that returning `false` does not prevent child components from re-rendering when *their* state changes.
+إن كنت متأكدًا من أنّك تريد كتابته بشكل يدوي فيجب أن تقارن `this.props` مع `nextProps` و `this.state` مع `nextState` وتُعيد القيمة `false` لتخبر React بإمكانية تجاوز التحديث. انتبه إلى أنّ إعادة القيمة `false`  لا تمنع المكوّنات الأبناء من إعادة التصيير عند تغيير حالتها.
 
-We do not recommend doing deep equality checks or using `JSON.stringify()` in `shouldComponentUpdate()`. It is very inefficient and will harm performance.
+لا نوصي بإجراء اختبارات مفصلة للتساوي أو استخدام التابع  `JSON.stringify()` ضمن `shouldComponentUpdate()`. فهذا غير فعال وسيؤثر على الأداء بشكل كبير.
 
-Currently, if `shouldComponentUpdate()` returns `false`, then [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), and [`componentDidUpdate()`](#componentdidupdate) will not be invoked. In the future React may treat `shouldComponentUpdate()` as a hint rather than a strict directive, and returning `false` may still result in a re-rendering of the component.
+حاليًّا إن أعاد التابع `shouldComponentUpdate()` القيمة `false`,  فلن تُستدعى التوابع [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), و [`componentDidUpdate()`](#componentdidupdate).  في المستقبل قد تُعامل React التابع `shouldComponentUpdate()` كتلميح بدلًا من توجيه صارم، وقد تؤدي إعادة القيمة `false` لى إعادة تصيير المكوّن.
 
 * * *
 
@@ -274,22 +274,22 @@ Currently, if `shouldComponentUpdate()` returns `false`, then [`UNSAFE_component
 static getDerivedStateFromProps(props, state)
 ```
 
-`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or null to update nothing.
+يُستدعى التابع `getDerivedStateFromProps` مباشرةً قبل استدعاء تابع التصيير خلال الوصل المبدئي والتحديثات اللاحقة. يجب أن يُعيد كائنًا لتحديث الحالة، أو `null` لعدم تحديث شيء.
 
-This method exists for [rare use cases](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) where the state depends on changes in props over time. For example, it might be handy for implementing a `<Transition>` component that compares its previous and next children to decide which of them to animate in and out.
+يوجد هذا التابع من أجل  [استخدامات نادرة](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) ندما تعتمد الحالة على التغييرات في الخاصيّات مع مرور الوقت. على سبيل المثال قد يكون من المفيد تنفيذ المكوّن `<Transition>` والذي يقارن بين الأبناء السابقين واللاحقين ليقرر ما ينبغي تحريكه منها للداخل وللخارج.
 
-Deriving state leads to verbose code and makes your components difficult to think about.  
-[Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+يؤدي اشتقاق الحالة إلى تعقيد الشيفرة وصعوبة التفكير بمكوّناتك.  
+[احرص على أن تكون على اطلاع على البدائل البسيطة له:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
-* If you need to **perform a side effect** (for example, data fetching or an animation) in response to a change in props, use [`componentDidUpdate`](#componentdidupdate) lifecycle instead.
+* إن أردت إنجاز **تأثير جانبي (side effect)** (مثل الحصول على البيانات أو التحريك) (مثل الحصول على البيانات أو التحريك) استجابةً للتغيّر في الخاصيّات، فاستخدم تابع دورة الحياة [`componentDidUpdate`](#componentdidupdate).
 
-* If you want to **re-compute some data only when a prop changes**, [use a memoization helper instead](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).
+* إن أردت **ردت إعادة حساب بعض البيانات فقط عند تغيير الخاصيّات**, [فاستخدم مساعد التذكير](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization) بدلًا من ذلك.
 
-* If you want to **"reset" some state when a prop changes**, consider either making a component [fully controlled](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) or [fully uncontrolled with a `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) instead.
+* إن أردت **أردت إعادة تعيين حالة ما عند تغيّر الخاصيّة**, فانظر في إمكانية جعل المكوّن [مضبوطًا بشكل كامل](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)أو [غير مضبوط مع استخدام المفاتيح](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key).
 
-This method doesn't have access to the component instance. If you'd like, you can reuse some code between `getDerivedStateFromProps()` and the other class methods by extracting pure functions of the component props and state outside the class definition.
+لا يمتلك هذا التابع الوصول إلى نسخة المكوّن. إن أردت فبإمكانك إعادة استخدام بعض الشيفرة بين  `getDerivedStateFromProps()` و توابع أخرى للصنف عن طريق استخراج الدوال النقية لخاصيّات وحالة المكوّن خارج تعريف الصنف.
 
-Note that this method is fired on *every* render, regardless of the cause. This is in contrast to `UNSAFE_componentWillReceiveProps`, which only fires when the parent causes a re-render and not as a result of a local `setState`.
+انتبه إلى إطلاق هذا التابع عند كل تصيير بغض النظر عن السبب، وهذا على عكس `UNSAFE_componentWillReceiveProps`, والذي يُطلَق فقط عندما يُسبِّب المكوّن الأب إعادة التصيير وليس كنتيجة عن التابع `setState` المحلّي.
 
 * * *
 
@@ -299,21 +299,20 @@ Note that this method is fired on *every* render, regardless of the cause. This 
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle will be passed as a parameter to `componentDidUpdate()`.
+يُستدعى التابع `getSnapshotBeforeUpdate()`‎ مباشرة قبل تطبيق الناتج الأخير المُصَّير إلى DOM. يُمكّننا من التقاط بعض المعلومات من DOM (مثل موضع النزول في الصفحة scroll) قبل أن تتغيّر. تُمرَّر أي قيمة مُعادة من هذا التابع كمعامل إلى `componentDidUpdate()`‎.
+حالة الاستخدام هذه ليست شائعة، ولكن قد تحدث في واجهات مستخدم مثل محادثة في تطبيق للدردشة يحتاج للتعامل مع موضع النزول في الصفحة بطريقة معينة.
 
-This use case is not common, but it may occur in UIs like a chat thread that need to handle scroll position in a special way.
+يجب إعادة قيمة snapshot (أو `null`).
 
-A snapshot value (or `null`) should be returned.
-
-For example:
+على سبيل المثال:
 
 `embed:react-component-reference/get-snapshot-before-update.js`
 
-In the above examples, it is important to read the `scrollHeight` property in `getSnapshotBeforeUpdate` because there may be delays between "render" phase lifecycles (like `render`) and "commit" phase lifecycles (like `getSnapshotBeforeUpdate` and `componentDidUpdate`).
+من المهم في المثال السابق قراءة الخاصيّة `scrollHeight` في `getSnapshotBeforeUpdate` لأنّه قد توجد تأخيرات بين توابع طور التصيير (مثل التابع render) وتوابع طور التطبيق (مثل `getSnapshotBeforeUpdate` و `componentDidUpdate`).
 
 * * *
 
-### Error boundaries {#error-boundaries}
+### حدود الأخطاء {#error-boundaries}
 
 [Error boundaries](/docs/error-boundaries.html) are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
 
@@ -587,7 +586,7 @@ Normally you should try to avoid all uses of `forceUpdate()` and only read from 
 
 ### `defaultProps` {#defaultprops}
 
-`defaultProps` can be defined as a property on the component class itself, to set the default props for the class. This is used for undefined props, but not for null props. For example:
+`defaultProps` can be defined as a property on the component class itself, to set the default props for the class. This is used for undefined props, but not for `null` props. For example:
 
 ```js
 class CustomButton extends React.Component {
