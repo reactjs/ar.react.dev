@@ -15,11 +15,11 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
+تحتوي هذه الصفحة على مرجع مُفصَّل لواجهة برمجة التطبيقات (API) لتعريف صنف مكوّن React. سنفترض أنك على معرفة بمفاهيم React الأساسية، مثل [الخاصيّات props والمكوّنات](/docs/components-and-props.html)، بالإضافة إلى  [الحالة ودورة حياة المكوّنات](/docs/state-and-lifecycle.html). إن لم تكن كذلك فاطلع عليها أولًا.
 
-## Overview {#overview}
+## لمحة عامة {#overview}
 
-React lets you define components as classes or functions. Components defined as classes currently provide more features which are described in detail on this page. To define a React component class, you need to extend `React.Component`:
+تُتيح لك React أن تُعرِّف المكوّنات كأصناف أو دوال. تُزوّدنا المكوّنات المُعرَّفة كأصناف بميزات أكثر حاليًّا والتي سنشرحها بالتفصيل هنا. لتعريف صنف مكوّن React تحتاج إلى أن تمتد إلى الصنف `React.Component`:
 
 ```js
 class Welcome extends React.Component {
@@ -29,13 +29,13 @@ class Welcome extends React.Component {
 }
 ```
 
-The only method you *must* define in a `React.Component` subclass is called [`render()`](#render). All the other methods described on this page are optional.
+التابع الوحيد الذي *يجب*  عليك تعريفه في الصنف الفرعي الناتج عن الصنف  `React.Component` هو [`render()`](#render)، أمّا بقية التوابع المذكورة في هذه الصفحة هي اختياريّة.
 
-**We strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
+**نوصي بشدّة ألّا تُنشِئ أصنافًا أساسيّة للمكوّنات خاصّة بك.** ففي مكوّنات React تتحقّق , [إعادة استخدام الشيفرة بشكل أساسي عبر التركيب (composition) بدلًا من الوراثة (inheritance)](/docs/composition-vs-inheritance.html).
 
->Note:
+>ملاحظة:
 >
->React doesn't force you to use the ES6 class syntax. If you prefer to avoid it, you may use the `create-react-class` module or a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
+>لا تُجبِرك React على استخدام صياغة أصناف ES6. إن كنت تفضّل تجنّب ذلك فبإمكانك استخدام الوحدة `create-react-class` أو أي تجريد مُخصَّص مماثل بدلًا من ذلك. انظر إلى [استخدام React بدون ES6](/docs/react-without-es6.html) لتعلّم المزيد.
 
 ### The Component Lifecycle {#the-component-lifecycle}
 
