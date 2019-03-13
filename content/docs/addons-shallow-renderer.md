@@ -1,6 +1,6 @@
 ---
 id: shallow-renderer
-title: Shallow Renderer
+title: التصيير السطحي (Shallow Rendering) في React
 permalink: docs/shallow-renderer.html
 layout: docs
 category: Reference
