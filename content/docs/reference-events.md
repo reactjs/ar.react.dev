@@ -1,6 +1,6 @@
 ---
 id: events
-title: SyntheticEvent
+title: الأحداث المصطنعة (Synthetic Events)
 permalink: docs/events.html
 layout: docs
 category: Reference
