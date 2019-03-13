@@ -1,13 +1,13 @@
 ---
 id: glossary
-title: Glossary of React Terms
+title: قاموس لمصطلحات React
 layout: docs
 category: Reference
 permalink: docs/glossary.html
 
 ---
 
-## Single-page Application {#single-page-application}
+## التطبيق أحادى الصفحة (Single page application) {#single-page-application}
 
 A single-page application is an application that loads a single HTML page and all the necessary assets (such as JavaScript and CSS) required for the application to run. Any interactions with the page or subsequent pages do not require a round trip to the server which means the page is not reloaded.
 
@@ -31,7 +31,7 @@ Package managers are tools that allow you to manage dependencies in your project
 
 ## CDN {#cdn}
 
-CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe. 
+CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe.
 
 ## JSX {#jsx}
 
@@ -45,7 +45,7 @@ ReactDOM.render(
   <h1 className="hello">My name is {name}!</h1>,
   document.getElementById('root')
 );
-```  
+```
 
 ## [Elements](/docs/rendering-elements.html) {#elements}
 
@@ -77,7 +77,7 @@ class Welcome extends React.Component {
 }
 ```
 
-Components can be broken down into distinct pieces of functionality and used within other components. Components can return other components, arrays, strings and numbers. A good rule of thumb is that if a part of your UI is used several times (Button, Panel, Avatar), or is complex enough on its own (App, FeedStory, Comment), it is a good candidate to be a reusable component. Component names should also always start with a capital letter (`<Wrapper/>` **not** `<wrapper/>`). See [this documentation](/docs/components-and-props.html#rendering-a-component) for more information on rendering components. 
+Components can be broken down into distinct pieces of functionality and used within other components. Components can return other components, arrays, strings and numbers. A good rule of thumb is that if a part of your UI is used several times (Button, Panel, Avatar), or is complex enough on its own (App, FeedStory, Comment), it is a good candidate to be a reusable component. Component names should also always start with a capital letter (`<Wrapper/>` **not** `<wrapper/>`). See [this documentation](/docs/components-and-props.html#rendering-a-component) for more information on rendering components.
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
@@ -132,7 +132,7 @@ Lifecycle methods are custom functionality that gets executed during the differe
 
  ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
 
-React has two different approaches to dealing with form inputs. 
+React has two different approaches to dealing with form inputs.
 
 An input form element whose value is controlled by React is called a *controlled component*. When a user enters data into a controlled component a change event handler is triggered and your code decides whether the input is valid (by re-rendering with the updated value). If you do not re-render then the form element will remain unchanged.
 
