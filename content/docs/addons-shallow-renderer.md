@@ -15,9 +15,9 @@ var ShallowRenderer = require('react-test-renderer/shallow'); // ES5 with npm
 
 ## Overview {#overview}
 
-When writing unit tests for React, shallow rendering can be helpful. Shallow rendering lets you render a component "one level deep" and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.
+عند كتابة وحدات اختبار لمكتبة React يكون التصيير السطحي مفيدًا لك. يُتيح لك التصيير السطحي تصيير مكوّن على عمق مستوى واحد وتوضيح الحقائق حول ما يُعيده تابع التصيير، بدون القلق حول سلوك المكوّنات الأبناء والتي لم تُصيَّر أو ينشأ عنها نسخة. لا يحتاج ذلك إلى DOM.
 
-For example, if you have the following component:
+على سبيل المثال إن كان لديك المكوّن التالي:
 
 ```javascript
 function MyComponent() {
@@ -30,7 +30,7 @@ function MyComponent() {
 }
 ```
 
-Then you can assert:
+بإمكانك كتابة ما يلي:
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
@@ -47,22 +47,23 @@ expect(result.props.children).toEqual([
 ]);
 ```
 
-Shallow testing currently has some limitations, namely not supporting refs.
+يمتلك الاختبار السطحي حاليًّا بعض المحدوديات، منها عدم دعم المراجع.
 
-> Note:
+> ملاحظة:
 >
-> We also recommend checking out Enzyme's [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html). It provides a nicer higher-level API over the same functionality.
+> نوصي بالتحقق من واجهة[ واجهة برمجة تطبيق التصيير السطحي](https://airbnb.io/enzyme/docs/api/shallow.html). فهي تُزوِّدنا بواجهة برمجة تطبيق ذات مستوى أعلى وأفضل وبنفس الوظيفة.
 
-## Reference {#reference}
+## مرجع {#reference}
 
-### `shallowRenderer.render()` {#shallowrendererrender}
+### `()shallowRenderer.render` {#shallowrendererrender}
 
-You can think of the shallowRenderer as a "place" to render the component you're testing, and from which you can extract the component's output.
+بإمكانك التفكير بالتصيير السطحي كمكان لتصيير المكوّن الذي تختبره، والذي منه تستطيع استخراج ناتج المكوّن.
 
-`shallowRenderer.render()` is similar to [`ReactDOM.render()`](/docs/react-dom.html#render) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+إنّ التابع `shallowRenderer.render()`‎ مشابه للتابع `ReactDOM.render()`‎ ولكنّه لا يتطلّب DOM ويُصيِّر فقط مستوى أدنى وحيد. يعني هذا أنّك تستطيع اختبار المكوّنات بشكل معزول عن مكوّناتها الأبناء.
 
-### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
+### `()shallowRenderer.getRenderOutput` {#shallowrenderergetrenderoutput}
 
-After `shallowRenderer.render()` has been called, you can use `shallowRenderer.getRenderOutput()` to get the shallowly rendered output.
+بعد استدعاء التابع `shallowRenderer.render()`‎ بإمكانك استخدام التابع `shallowRenderer.getRenderOutput()‎` للحصول على الناتج المُصيَّر.
 
-You can then begin to assert facts about the output.
+بإمكانك بعدها البدء بتجميع الحقائق حول الناتج.
+
