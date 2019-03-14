@@ -29,9 +29,9 @@ This repo contains the source code and documentation powering [ar.reactjs.org](h
 The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/ar.reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
 
 ### Steps
-1- Check that no one else has claimed your page in the checklist and comments of [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) and the pull requests.
-2- Comment at [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) with the name of the page you would like to translate. Please take only one page at a time.
-3- [Fork and Setup Repo](https://github.com/reactjs/ar.reactjs.org#fork-and-setup-repo), translate your page, and submit a pull request!
+1. Check that no one else has claimed your page in the checklist and comments of [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) and the pull requests.
+2. Comment at [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) with the name of the page you would like to translate. Please take only one page at a time.
+3. [Fork and Setup Repo](https://github.com/reactjs/ar.reactjs.org#fork-and-setup-repo), translate your page, and submit a pull request!
 
 Before contributing, read the [glossary](https://github.com/reactjs/ar.reactjs.org/wiki/Glossary) and [style guide](https://github.com/reactjs/reactjs.org-translation/blob/master/style-guide.md) to understand how to translate various technical and React-specific terms.
 
