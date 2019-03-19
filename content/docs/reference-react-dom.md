@@ -20,7 +20,7 @@ permalink: docs/react-dom.html
 
 ### دعم المتصفح {#browser-support}
 
-تدعم React جميع المتصفحات الشائعة، بما في ذلك Internet Explorer 9 فما فوق، رغم الحاجة إلى توفير دعم للمتصفحات القديمة مثل Internet Explorer 9 و Internet Explorer 10.
+تدعم React جميع المتصفحات الشائعة، بما في ذلك Internet Explorer 9 فما فوق، رغم [الحاجة إلى توفير دعم](/docs/javascript-environment-requirements.html) للمتصفحات القديمة مثل Internet Explorer 9 و Internet Explorer 10.
 
 > ملاحظة
 >
@@ -44,7 +44,7 @@ ReactDOM.render(element, container[, callback])
 
 > ملاحظة:
 >
-> يتحكّم التابع `ReactDOM.render()` بمحتويات العقدة الحاوية التي تُمرِّرها. تُستبدَل أي عناصر موجودة بداخلها عند أول استدعاء. تستخدم الاستدعاءات اللاحقة خوارزمية المقارنة من أجل التحديث بكفاءة.
+> يتحكّم التابع `ReactDOM.render()` بمحتويات container node التي تُمرِّرها. تُستبدَل أي عناصر موجودة بداخلها عند أول استدعاء. تستخدم الاستدعاءات اللاحقة خوارزمية المقارنة من أجل التحديث بكفاءة.
 >
 > لا يُعدِّل التابع `ReactDOM.render()`   العقدة الحاوية (بل يُعدِّل فقط العناصر الأبناء لها). من الممكن إدخال مكوّن إلى عقدة DOM موجودة مسبقًا بدون الكتابة فوق العناصر الأبناء الموجودين داخلها.
 >
@@ -87,7 +87,7 @@ ReactDOM.unmountComponentAtNode(container)
 
 > ملاحظة:
 >
-> التابع `findDOMNode` و وسيلة هروب مستخدمة للوصول إلى عقدة DOM التحتية. من غير المفضل في معظم الأحيان استخدام وسيلة الهروب هذه لأنّها تخرق تجريد المكوّنات. لقد . [أهمل في الوضع الصارم `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+> التابع `findDOMNode` و وسيلة هروب مستخدمة للوصول إلى عقدة DOM التحتية. من غير المفضل في معظم الأحيان استخدام وسيلة الهروب هذه لأنّها تخرق تجريد المكوّنات. لقد  [أهمل في الوضع الصارم `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
 ReactDOM.findDOMNode(component)
