@@ -122,22 +122,22 @@ const Header = ({location}: {location: Location}) => (
           }}>
           <HeaderLink
             isActive={location.pathname.includes('/docs/')}
-            title="مستندات"
+            title="المستندات"
             to="/docs/getting-started.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/tutorial/')}
-            title="دورة تعليمية"
+            title="الدليل التطبيقي"
             to="/tutorial/tutorial.html"
           />
           <HeaderLink
             isActive={location.pathname.includes('/blog')}
-            title="مدونة"
+            title="المدونة"
             to="/blog/"
           />
           <HeaderLink
             isActive={location.pathname.includes('/community/')}
-            title="مجتمع"
+            title="مجتمع المطورين"
             to="/community/support.html"
           />
         </nav>
@@ -179,7 +179,7 @@ const Header = ({location}: {location: Location}) => (
               },
             }}
             to="/versions">
-            اصدار{version}
+            اصدار {version}
           </Link>
           <Link
             css={{
