@@ -133,7 +133,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    مكتبة JavaScript لبناء واجهات المستخدم 
+                    مكتبة JavaScript لبناء واجهات المستخدم
                   </p>
                   <Flex
                     valign="center"
@@ -153,7 +153,7 @@ class Home extends Component {
                     </CtaItem>
                     <CtaItem>
                       <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                         احصل على الدورة التعليمية
+                        الدليل التطبيقي
                       </ButtonLink>
                     </CtaItem>
                   </Flex>
@@ -285,12 +285,12 @@ class Home extends Component {
               <Flex valign="center">
                 <CtaItem>
                   <ButtonLink to="/docs/getting-started.html" type="primary">
-                   ابدأ
+                    ابدأ
                   </ButtonLink>
                 </CtaItem>
                 <CtaItem>
                   <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                  احصل على الدورة التعليمية
+                    الدليل التطبيقي
                   </ButtonLink>
                 </CtaItem>
               </Flex>
