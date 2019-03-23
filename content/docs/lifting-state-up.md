@@ -1,6 +1,6 @@
 ---
 id: lifting-state-up
-title: رفع الحالات المستوى الأعلى
+title: رفع الحالات للمستوى الأعلى
 permalink: docs/lifting-state-up.html
 prev: forms.html
 next: composition-vs-inheritance.html
