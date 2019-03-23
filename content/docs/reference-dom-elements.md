@@ -34,7 +34,7 @@ redirect_from:
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
 
-الخاصيّة `dangerouslySetInnerHTML` هي بديل React لاستخدام `innerHTML` في DOM المتصفح. يكون تعيين HTML من الشيفرة أمرًا خطيرًا بشكلٍ عام لأنّه من السهل تعريق مستخدميك إلى [هجمات (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attack `dangerouslySetInnerHTML`وتمرير كائن مع المفتاح `__html` key, لتذكير نفسك بخطر فعل ذلك. على سبيل المثال:
+الخاصيّة `dangerouslySetInnerHTML` هي بديل React لاستخدام `innerHTML` في DOM المتصفح. يكون تعيين HTML من الشيفرة أمرًا خطيرًا بشكلٍ عام لأنّه من السهل تعريق مستخدميك إلى [هجمات XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) (اختصارًا للعبارة cross-site scripting). لذا يمكنك تعيين HTML بشكل مباشر من React، ولكن يجب عليك كتابة الخاصيّة `dangerouslySetInnerHTML` وتمرير كائن مع المفتاح `__html` key, لتذكير نفسك بخطر فعل ذلك. على سبيل المثال:
 
 ```js
 function createMarkup() {
@@ -62,7 +62,7 @@ function MyComponent() {
 
 >ملاحظة
 >
-> تستخدم بعض الأمثلة في التوثيق الخاصيّة `style` للسهولة، ولكنّ استخدام الخاصيّة `‎<option>‎` كوسيلة أساسية لتنسيق العناصر هو أمر غير مفضّل بشكلٍ عام. يجب في معظم الحالات استخدام الخاصيّة `className` للإشارة إلى الأصناف المعرّفة في ملف تنسيق `CSS` خارجي. تُستخدَم الخاصيّة `style` غالبًا في تطبيقات React لإضافة تنسيقات محسوبة بشكل ديناميكي في الزمن الحقيقي. انظر أيضًا: [الأسئلة الأكثر شيوعًا: التنسيق و CSS](/docs/faq-styling.html).
+> تستخدم بعض الأمثلة في التوثيق الخاصيّة `style` للسهولة، ولكنّ **استخدام الخاصيّة `‎<option>‎` كوسيلة أساسية لتنسيق العناصر هو أمر غير مفضّل بشكلٍ عام**. يجب في معظم الحالات استخدام الخاصيّة `className` للإشارة إلى الأصناف المعرّفة في ملف تنسيق `CSS` خارجي. تُستخدَم الخاصيّة `style` غالبًا في تطبيقات React لإضافة تنسيقات محسوبة بشكل ديناميكي في الزمن الحقيقي. انظر أيضًا: [الأسئلة الأكثر شيوعًا: التنسيق و CSS](/docs/faq-styling.html).
 
 تقبل الخاصيّة `style` كائن JavaScript مع خاصيّات مكتوبة بشكل camelCase بدلًا من سلاسل نصيّة في CSS. يتوافق ذلك مع خاصيّة `style` في JavaScript، وهو أكثر كفاءة، ويمنع هجمات XSS. على سبيل المثال:
 
@@ -92,7 +92,7 @@ function ComponentWithTransition() {
 
 مفاتيح التنسيق مكتوبة بالشكل camelCase لكي تكون متوافقة مع الوصول إلى الخاصيّات في عقد DOM من JavaScript (مثل `node.style.backgroundImage`). أي بادئة [ما عدا `ms`](https://www.andismith.com/blogs/2012/02/modernizr-prefixed/) يجب أن تبدأ بحرف كبير، ولهذا السبب تبدأ`WebkitTransition` بحرف  "W" كبير.
 
-تُضيف React بشكل تلقائي اللاحقة `px` لبعض الخاصيّات العددية السطرية. إن أردت استخدام وحدات أخرى غير `px` فحدد القيمة كسلسلة نصية باسم الواحدة المطلوبة، على سبيل المثال:
+تُضيف React بشكل تلقائي اللاحقة `px` لبعض الخاصيّات العددية السطرية. إن أردت استخدام وحدات أخرى غير `px` فحدد القيمة كسلسلة نصية باسم الوحدة المطلوبة، على سبيل المثال:
 
 ```js
 // Result style: '10px'
@@ -106,7 +106,7 @@ function ComponentWithTransition() {
 </div>
 ```
 
-انتبه إلى تحويل كافة خاصيّات التنسيق إلى الواحدة `pixel` على الرغم من ذلك. وتبقى بعض الخاصيّات بدون واحدات مثل `zoom`، و `order`، و `flex`). للحصول على لائحة كاملة بالخاصيّات التي لا تملك واحدة [انظر هنا](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
+انتبه إلى تحويل كافة خاصيّات التنسيق إلى الوحدة `pixel` على الرغم من ذلك. وتبقى بعض الخاصيّات بدون وحدات مثل `zoom`، `order`، `flex`). للحصول على لائحة كاملة بالخاصيّات التي لا تملك وحدة [انظر هنا](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
@@ -134,8 +134,9 @@ function ComponentWithTransition() {
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
 
-تعمل هذه الخاصيّات بشكل مماثل لخاصيّات HTML الموافقة لها باستثناء الحالات الخاصيّة التي وثقناها بالأعلى. تتضمّن بعض خاصيّات DOM المدعومة من React:
+تعمل هذه الخاصيّات بشكل مماثل لخاصيّات HTML الموافقة لها باستثناء الحالات الخاصة التي وثقناها بالأعلى.
 
+تتضمّن بعض خاصيّات DOM المدعومة من React:
 ```
 accept acceptCharset accessKey action allowFullScreen alt async autoComplete
 autoFocus autoPlay capture cellPadding cellSpacing challenge charSet checked
