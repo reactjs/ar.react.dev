@@ -15,7 +15,7 @@ import ReactDOMServer from 'react-dom/server';
 var ReactDOMServer = require('react-dom/server');
 ```
 
-## Overview {#overview}
+## لمحة عامة {#overview}
 
 يُمكِن استخدام التوابع التالية في بيئة الخادم وبيئة المتصفح:
 
@@ -29,7 +29,7 @@ var ReactDOMServer = require('react-dom/server');
 
 * * *
 
-## Reference {#reference}
+## مرجع {#reference}
 
 ### `()renderToString` {#rendertostring}
 
