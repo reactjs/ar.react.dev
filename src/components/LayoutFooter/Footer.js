@@ -60,7 +60,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>مستندات</MetaTitle>
+            <MetaTitle onDark={true}>المستندات</MetaTitle>
             {sectionListDocs.map(section => {
               const defaultItem = section.items[0];
               return (
@@ -73,7 +73,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             })}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>قنوات</MetaTitle>
+            <MetaTitle onDark={true}>قنوات أخرى</MetaTitle>
             <ExternalFooterLink
               href="https://github.com/facebook/react"
               target="_blank"
@@ -96,13 +96,13 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://discord.gg/0ZcbPKXt5bZjGY5n"
               target="_blank"
               rel="noopener">
-              محادثة Reactiflux 
+              محادثة Reactiflux
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://dev.to/t/react"
               target="_blank"
               rel="noopener">
-              مجتمع المطورين
+              مجتمع DEV
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://www.facebook.com/react"
@@ -118,7 +118,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>مجتمع</MetaTitle>
+            <MetaTitle onDark={true}>المجتمع</MetaTitle>
             {sectionListCommunity.map(section => (
               <FooterLink
                 to={`/community/${section.items[0].id}.html`}
@@ -128,12 +128,12 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             ))}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>مزيد</MetaTitle>
-            <FooterLink to="/tutorial/tutorial.html">دورة تعليمية</FooterLink>
-            <FooterLink to="/blog/">المدونة</FooterLink>
-            <FooterLink to="/acknowledgements.html">
-              شكر و تقدير
+            <MetaTitle onDark={true}>المزيد</MetaTitle>
+            <FooterLink to="/tutorial/tutorial.html">
+              الدليل التطبيقي
             </FooterLink>
+            <FooterLink to="/blog/">المدونة</FooterLink>
+            <FooterLink to="/acknowledgements.html">شكر و تقدير</FooterLink>
             <ExternalFooterLink
               href="https://facebook.github.io/react-native/"
               target="_blank"
@@ -181,7 +181,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            {` © ${new Date().getFullYear()} Facebook Inc.جميع الحقوق محفوظة`}
+            {` © ${new Date().getFullYear()} Facebook Inc. جميع الحقوق محفوظة`}
           </p>
         </section>
       </div>
