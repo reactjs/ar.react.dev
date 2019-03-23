@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: البدء
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -18,37 +18,37 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+هذه الصفحة عبارة عن لمحة حول توثيق React والمصادر المرتبطة بها.
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**React** عبارة عن مكتبة من مكتبات JavaScript المخصصة لبناء واجهات المستخدم (UI). انتقل الى [الصفحة الرئيسية](/) أو [إلى الشروحات](/tutorial/tutorial.html) لمعرفة المزيد حول React.
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [جرب React](#try-react)
+- [تعلم React](#learn-react)
+- [إبقاء على معرفة](#staying-informed)
+- [توثيق الاصدارات](#versioned-documentation)
+- [شيء ناقص؟](#something-missing)
 
-## Try React {#try-react}
+## جرب React {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+React تم تصميمة لاعتمادة تدريجيً, اي **بامكانك استخدام أقل او أكثر قدر من React بحسب حاجتك.** اذا كنت  تريد تجريب React أو إضافة بعض الحيوية لصفحة HTML بسيطة أو بدء تطبيق معقد باستخدام قوة React, الروابط في هذا الجزء ستساعدك للبدء.
 
-### Online Playgrounds {#online-playgrounds}
+### التجريب السحابي {#online-playgrounds}
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Glitch](https://glitch.com/edit/#!/remix/starter-react-template).
+إذا كنت مهتم بتجريب React, بامكانك إستخدام الشفرة البرمجية المرفوعة على الانترنت. جرب قالب أهلاً بالعالم على [CodePen](codepen://hello-world) أو [CodeSandbox](https://codesandbox.io/s/new) أو [Glitch](https://glitch.com/edit/#!/remix/starter-react-template).
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+إذا كنت تفضل إستخدم المحرر النصي الخاص بك, تستطيع اذاً [تنزيل ملف HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) والتعديل عليه وفتحه من نظام ملفاتك المحلي في المتصفح , يعمل تحويل الشفرة في تشغيل الملف بشكل بطي , لذلك ننصح باستخدامه للاستعراضات البسيطة.
 
-### Add React to a Website {#add-react-to-a-website}
+### إضافة React للموقع {#add-react-to-a-website}
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+بإمكانك [إضافة React لصفحة HTML في دقيقة](/docs/add-react-to-a-website.html). بإمكانك أيضاً توسيع وجودها تدريجياً أو الاحتفاظ بها في عدد قليل من الاحتياجات الحيوية.
 
-### Create a New React App {#create-a-new-react-app}
+### إنشأ تطبيق React جديد {#create-a-new-react-app}
 
-When starting a React project, [a simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+عند بدء مشروع React, قد يكون الخيار الافضل [صفحة HTML بسيطة مع وسوم script ](/docs/add-react-to-a-website.html). لانه تاخذ دقيقة للتنصيب!
 
-As your application grows, you might want to consider a more integrated setup. There are [several JavaScript toolchains](/docs/create-a-new-react-app.html) we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.
+وكلما كبر تطبيقك, قد تحط في عين الاعتبار ربط وتنصيب أكثر. وهنالك [مجموعة من أدوات JavaScript](/docs/create-a-new-react-app.html) نستحسنها للتطبيقات الكبيرة. يمكن لكل منها العمل دون اي تغيير يذكر, ويتيح لك الاستفاذة الكاملة من نظام React.
 
 ## Learn React {#learn-react}
 
