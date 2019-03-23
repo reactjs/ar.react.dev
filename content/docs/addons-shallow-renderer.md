@@ -6,14 +6,14 @@ layout: docs
 category: Reference
 ---
 
-**Importing**
+**الاستيراد**
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow'; // ES6
 var ShallowRenderer = require('react-test-renderer/shallow'); // ES5 with npm
 ```
 
-## Overview {#overview}
+## لمحة عامة {#overview}
 
 عند كتابة وحدات اختبار لمكتبة React يكون التصيير السطحي مفيدًا لك. يُتيح لك التصيير السطحي تصيير مكوّن على عمق مستوى واحد وتوضيح الحقائق حول ما يُعيده تابع التصيير، بدون القلق حول سلوك المكوّنات الأبناء والتي لم تُصيَّر أو ينشأ عنها نسخة. لا يحتاج ذلك إلى DOM.
 
@@ -59,7 +59,7 @@ expect(result.props.children).toEqual([
 
 بإمكانك التفكير بالتصيير السطحي كمكان لتصيير المكوّن الذي تختبره، والذي منه تستطيع استخراج ناتج المكوّن.
 
-إنّ التابع `shallowRenderer.render()`‎ مشابه للتابع `ReactDOM.render()`‎ ولكنّه لا يتطلّب DOM ويُصيِّر فقط مستوى أدنى وحيد. يعني هذا أنّك تستطيع اختبار المكوّنات بشكل معزول عن مكوّناتها الأبناء.
+إنّ التابع `shallowRenderer.render()` مشابه للتابع [`()ReactDOM.render`](/docs/react-dom.html#render) ولكنّه لا يتطلّب DOM ويُصيِّر فقط مستوى أدنى وحيد. يعني هذا أنّك تستطيع اختبار المكوّنات بشكل معزول عن مكوّناتها الأبناء.
 
 ### `()shallowRenderer.getRenderOutput` {#shallowrenderergetrenderoutput}
 
