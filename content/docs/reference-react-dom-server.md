@@ -1,6 +1,6 @@
 ---
 id: react-dom-server
-title: ReactDOMServer
+title: الكائن ReactDOMServer
 layout: docs
 category: Reference
 permalink: docs/react-dom-server.html
