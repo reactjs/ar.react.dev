@@ -1,6 +1,6 @@
 ---
 id: hooks-rules
-title: Rules of Hooks
+title: قواعد استعمال الخطافات في React
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
