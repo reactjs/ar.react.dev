@@ -22,11 +22,11 @@ next: cdn-links.html
 
 ## قد لا ترغب باستعمال سلسلة من الأدوات{#you-might-not-need-a-toolchain}
 
-إن لم تكن لك سابق خبرة بالمشكلات التي ذُكرت آنفًا، أو لم تشعر بالراحة عند استعمال أدوات JavaScript بعد، [أضف React كوسوم <script> مجرَّدة في صفحة HTML](/docs/add-react-to-a-website.html), وافترض أنَّ [استعمال JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx) أمر اختياري.
+إن لم تكن لك سابق خبرة بالمشكلات التي ذُكرت آنفًا، أو لم تشعر بالراحة عند استعمال أدوات JavaScript بعد، [أضف React كوسوم `<script>` مجرَّدة في صفحة HTML](/docs/add-react-to-a-website.html), وافترض أنَّ [استعمال JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx) أمر اختياري.
 
 هذه الطريقة أيضًا **هي أبسطة طريقة لدمج React مع صفحة ويب.** يمكن في أي وقت استعمال أي سلسلة من الأدوات مهما كانت ضخمة إن وجدت أنها مفيدة.
 
-## سلسلة الأدوات المقترحة{#recommended-toolchains}
+## سلسلة الأدوات المقترحة {#recommended-toolchains}
 
 يوصي فريق React بشكل أساسي الحلول التالية:
 
@@ -37,7 +37,7 @@ next: cdn-links.html
 
 ### البيئة Create React App {#create-react-app}
 
-إنَّ [Create React App](https://github.com/facebookincubator/create-react-app) هي بيئة مناسبة ومريحة **لتعلم React**, هي أفضل طريقة لبدء بناء تطبيق جديدة ذي **a new [صفحة وحيدة ](/docs/glossary.html#single-page-application) application** في React.
+إنَّ [Create React App](https://github.com/facebookincubator/create-react-app) هي بيئة مناسبة ومريحة **لتعلم React**, هي أفضل طريقة لبدء بناء تطبيق جديدة ذي **[صفحة وحيدة ](/docs/glossary.html#single-page-application)** في React.
 
 يضبط الأمر `create-react-app` البيئة التطويرية الخاصة بك، وبذلك تستطيع استعمال أحدث ميزات JavaScript، والحصول على أفضل تجربة تطوير، بالإضافة إلى تحسين تطبيقك وتهيئته للإنتاج. ستحتاج إلى الإصدار 6 من Node.js أو ما بعده والإصدار 5.2 من npm أو ما بعده على جهازك. لإنشاء مشروع جديد، نفذ ما يلي:
 
@@ -53,7 +53,7 @@ npm start
 
 إنشاء تطبيق React لا يملئ فراغ الواجهة الخلفية أو قواعد البيانات. جلَّ ما يحدث هو إنشاء أنبوب بناء واجهة أمامية (frontend build pipeline)، لذا تستطيع استعماله مع أية واجهة خلفية تريد؛ على أي حال، لا تحتاج الآن إلى معرفة أي شي عن الواجهات الخلفية. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
 
-عندما تصبح جاهزًا للنشر على البيئة الإنتاجية، سينشئ تنفيذ الأمر `npm run build` نسخة مبنية محسَّنة من تطبيقك في المجلد `build`. ستطيع تعلم المزيد حول البيئة Create React App من ملف [اقرأني](https://github.com/facebookincubator/create-react-app#create-react-app-) README) الخاص بها و [دليل المستخدم](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+عندما تصبح جاهزًا للنشر على البيئة الإنتاجية، سينشئ تنفيذ الأمر `npm run build` نسخة مبنية محسَّنة من تطبيقك في المجلد `build`. ستطيع تعلم المزيد حول البيئة Create React App من ملف [اقرأني](https://github.com/facebookincubator/create-react-app#create-react-app-) (README) الخاص بها و [دليل المستخدم](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
 
 ### Next.js {#nextjs}
 
@@ -67,8 +67,7 @@ npm start
 
 يمكنك تعلم الأداة Gatsby من [الدليل الرسمي](https://www.gatsbyjs.org/docs/) لها و [معرض عدة البدء](https://www.gatsbyjs.org/docs/gatsby-starters/).
 
-### سلاسلة أدوات ذات مرونة أكبر 
-{#more-flexible-toolchains}
+### سلاسلة أدوات ذات مرونة أكبر {#more-flexible-toolchains}
 
 سلاسل الأدوات التالية توفر مرونةً أكبر وخيارات أكثر. ننصح المستخدمين ذوي الخبرة باستعمالها:
 
