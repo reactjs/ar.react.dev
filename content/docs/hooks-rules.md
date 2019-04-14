@@ -1,38 +1,38 @@
 ---
 id: hooks-rules
-title: Rules of Hooks
+title: قواعد استعمال الخطافات في React
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف:
 
-Hooks are JavaScript functions, but you need to follow two rules when using them. We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically:
+الخطافات هي دوال JavaScript، ولكن تحتاج إلى اتباع قاعدتين عند استعمالها. نوفر [إضافة تصحيح أخطاء الصياغة](https://www.npmjs.com/package/eslint-plugin-react-hooks) تجبرك على تطبيق هاتين القاعدتين تلقائيًّا.
 
-### Only Call Hooks at the Top Level {#only-call-hooks-at-the-top-level}
+### استدعي الخطافات في المستوى الأعلى فقط {#only-call-hooks-at-the-top-level}
 
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
+**لا تستدعي الخطافات داخل حلقات التكرار، أو التعابير الشرطية، أو الدوال المتشعبة.** بدلًا من ذلك، استعمل الخطافات دومًا في المستوى الأعلى (top level) من دالة React. بتطبيق هذه القاعدة، تتأكد من أن الخطافات تُستدَعى بالترتيب نفسه في كل مرة يصيَّر فيها مكونٌ. هذا يسمح لـ React بحفظ حالة الخطافات بين الاستدعاءات `useState` و `useEffect` المتعددة بشكل صحيح. (إن شدَّك فضولك للتعلم أكثر، سنشرح هذا الأمر بالتفصيل في [الأسفل](#explanation).)
 
-### Only Call Hooks from React Functions {#only-call-hooks-from-react-functions}
+### استدعي الخطافات من دوال React فقط {#only-call-hooks-from-react-functions}
 
-**Don't call Hooks from regular JavaScript functions.** Instead, you can:
+**لا تستدعي الخطافات من دوال JavaScript العادية.** بدلًا من ذلك، يمكنك:
 
-* ✅ Call Hooks from React function components.
-* ✅ Call Hooks from custom Hooks (we'll learn about them [on the next page](/docs/hooks-custom.html)).
+* ✅ استدعاء الخطافات من مكونات دالة React.
+* ✅ استدعاء الخطافات من خطافات مخصصة (سنتعرف عليهم في [الصفحة التالية](/docs/hooks-custom.html)).
 
-By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+باتباع هذه القاعدة، تتأكد من أنَّ الشيفرة ذات الحالة (stateful logic) في مكونٍ ما مرئيةٌ بوضوح من شيفرتها المصدرية.
 
-## ESLint Plugin {#eslint-plugin}
+## الإضافة ESLint {#eslint-plugin}
 
-We released an ESLint plugin called [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces these two rules. You can add this plugin to your project if you'd like to try it:
+أطلقنا إضافةً لتصحيح الأخطاء تدعى [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) تجبر على تطبيق هاتين القاعدتين. يمكنك إضافة هذه الإضافة إلى مشروعك إن أحببت تجريبها:
 
 ```bash
 npm install eslint-plugin-react-hooks
 ```
 
 ```js
-// Your ESLint configuration
+// الخاص بك ESLint ضبط الإضافة
 {
   "plugins": [
     // ...
@@ -46,28 +46,28 @@ npm install eslint-plugin-react-hooks
 }
 ```
 
-In the future, we intend to include this plugin by default into Create React App and similar toolkits.
+في المستقبل، ننوي تضمين هذه الإضافة افتراضيًّا عند بناء تطبيقات جديدة باستعمال الأمر Create React App أو أية مجموعة أدوات أخرى (toolkits).
 
-**You can skip to the next page explaining how to write [your own Hooks](/docs/hooks-custom.html) now.** On this page, we'll continue by explaining the reasoning behind these rules.
+**يمكنك تخطي بقية هذه الصفحة إلى الصفحة التالية: [بناء خطافات خاصة بك](/docs/hooks-custom.html) الآن.** إذ سنكمل شرح سبب وجود هاتين القاعدتين.
 
-## Explanation {#explanation}
+## الشرح {#explanation}
 
-As we [learned earlier](/docs/hooks-state.html#tip-using-multiple-state-variables), we can use multiple State or Effect Hooks in a single component:
+كما [تعلمنا سابقًا](/docs/hooks-state.html#tip-using-multiple-state-variables), يمكننا استعمال خطافات حالة أو تأثير متعددة في مكون واحد:
 
 ```js
 function Form() {
-  // 1. Use the name state variable
+  // 1. نفسه name استعمال متغير الحالة 
   const [name, setName] = useState('Mary');
 
-  // 2. Use an effect for persisting the form
+  // 2. استعمال تأثير من أجل استمرار النموذج
   useEffect(function persistForm() {
     localStorage.setItem('formData', name);
   });
 
-  // 3. Use the surname state variable
+  // 3. surname استعمال متغير الحالة
   const [surname, setSurname] = useState('Poppins');
 
-  // 4. Use an effect for updating the title
+  // 4. استعمال تأثير من أجل تحديث العنوان
   useEffect(function updateTitle() {
     document.title = name + ' ' + surname;
   });
@@ -76,32 +76,33 @@ function Form() {
 }
 ```
 
-So how does React know which state corresponds to which `useState` call? The answer is that **React relies on the order in which Hooks are called**. Our example works because the order of the Hook calls is the same on every render:
+إذًا، كيف تعرف React أية حالة توافق أي استدعاء للخطاف `useState`؟ الجواب هو أنَّ **React تعتمد على الترتيب الذي استدعيت الخطافات به**. مثالنا السابق يعمل بشكل صحيح لأنَّ ترتيب استدعاء الخطافات هو نفسه في كل تصيير:
 
 ```js
 // ------------
-// First render
+// أول تصيير
 // ------------
-useState('Mary')           // 1. Initialize the name state variable with 'Mary'
-useEffect(persistForm)     // 2. Add an effect for persisting the form
-useState('Poppins')        // 3. Initialize the surname state variable with 'Poppins'
-useEffect(updateTitle)     // 4. Add an effect for updating the title
+useState('Mary')           // 1. 'Mary' إلى name ضبط متغير الحالة
+useEffect(persistForm)     // 2. persistForm إضافى تأثير من أجل استمرار النموذج
+useState('Poppins')        // 3. 'Poppins' إلى surname ضبط متغير الحالة
+useEffect(updateTitle)     // 4. إضافة تأثير من أجل تحديث العنوان
 
 // -------------
-// Second render
+// ثاني تصيير
 // -------------
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-useEffect(persistForm)     // 2. Replace the effect for persisting the form
-useState('Poppins')        // 3. Read the surname state variable (argument is ignored)
-useEffect(updateTitle)     // 4. Replace the effect for updating the title
+useState('Mary')           // 1. (يتجاهل الوسيط) name قراءة متغير الحالة
+useEffect(persistForm)     // 2. استبدال التأثير من أجل استمرار النموذج
+useState('Poppins')        // 3. (يتجاهل الوسيط) surname قراءة متغير الحالة
+useEffect(updateTitle)     // 4. استبدال التأثير من أجل تحديث العنوان
 
 // ...
 ```
 
-As long as the order of the Hook calls is the same between renders, React can associate some local state with each of them. But what happens if we put a Hook call (for example, the `persistForm` effect) inside a condition?
+طالمًا أنَّ ترتيب استدعاءات الخطاف هو نفسه بين عمليات التصيير، تستطيع React من ربط بعض الحالات المحلية مع بعضها بعضًا. ولكن، ماذا يحصل إن وضعنا استدعاء خطاف (التأثير `persistForm` مثلًا) داخل تعبير شرطي؟
 
 ```js
-  // 🔴 We're breaking the first rule by using a Hook in a condition
+  // 🔴 نكسر الآن القاعدة الأولى عبر استعمال خطاف داخل تعبير شرطي
+
   if (name !== '') {
     useEffect(function persistForm() {
       localStorage.setItem('formData', name);
@@ -109,30 +110,30 @@ As long as the order of the Hook calls is the same between renders, React can as
   }
 ```
 
-The `name !== ''` condition is `true` on the first render, so we run this Hook. However, on the next render the user might clear the form, making the condition `false`. Now that we skip this Hook during rendering, the order of the Hook calls becomes different:
+الشرط  `name !== ''` هو `true` في عملية التصيير الأولى، لذا يُنفَّذ هذا الخطاف. مع ذلك، في عملية التصيير التالية، قد يمسح المستخدم النموذج مما يؤدي إلى تغيِّر قيمة الشرط إلى `false`. الآن وبعد أن تخطينا هذا الخطاف أثناء عملية التصيير، أصبح ترتيب استدعاءات الخطاف مختلفًا:
 
 ```js
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-// useEffect(persistForm)  // 🔴 This Hook was skipped!
-useState('Poppins')        // 🔴 2 (but was 3). Fail to read the surname state variable
-useEffect(updateTitle)     // 🔴 3 (but was 4). Fail to replace the effect
+useState('Mary')           // 1. (يتجاهل الوسيط) name قراءة متغير الحالة
+// useEffect(persistForm)  // 🔴 يُتخطَى هذا الخطاف
+useState('Poppins')        // 🔴 2 (يجب أن تكون 3) surname فشل قراءة متغير الحالة
+useEffect(updateTitle)     // 🔴 3 (فشل استبدال التأثير (يجب أن تكون 4
 ```
 
-React wouldn't know what to return for the second `useState` Hook call. React expected that the second Hook call in this component corresponds to the `persistForm` effect, just like during the previous render, but it doesn't anymore. From that point, every next Hook call after the one we skipped would also shift by one, leading to bugs.
+لن تعرف React ما الذي ستعيده من أجل استدعاء الخطاف `useState` الثاني. تتوقع React أن استدعاء الخطاف الثاني في هذا المكون يقابل التأثير `persistForm` مثل عملية التصيير السابقة، ولكن الحالة الآن لم تعد مشابه لها. بدءًا من تلك النقطة، كل استدعاء خطاف لاحق بعد ذلك الخطاف الذي جرى تخطيه سينزاح مرةً واحدةً مما يؤدي إلى حصول أخطاء.
 
-**This is why Hooks must be called on the top level of our components.** If we want to run an effect conditionally, we can put that condition *inside* our Hook:
+**هذا هو سبب وجوب استدعاء الخطافات في المستوى الأعلى من مكوناتنا.** إن أردنا تنفيذ تأثير شرطيًّا، يمكننا وضع هذا الشرط *داخل* خطافنا:
 
 ```js
   useEffect(function persistForm() {
-    // 👍 We're not breaking the first rule anymore
+    // 👍 لم نخرق القاعدة الأولى
     if (name !== '') {
       localStorage.setItem('formData', name);
     }
   });
 ```
 
-**Note that you don't need to worry about this problem if you use the [provided lint rule](https://www.npmjs.com/package/eslint-plugin-react-hooks).** But now you also know *why* Hooks work this way, and which issues the rule is preventing.
+**لاحظ أنَّه لا داعي للقلق حول هذه المشكلة إن كنت تستعمل [إضافة التصحيح](https://www.npmjs.com/package/eslint-plugin-react-hooks).** الذي أشرنا إليها في الأعلى. على أية، أصبحت الآن تعرف سبب عمل الخطافات بهذه الطريقة، وما هي المشكلات التي تمنع القاعدة من حدوثها.
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-Finally, we're ready to learn about [writing your own Hooks](/docs/hooks-custom.html)! Custom Hooks let you combine Hooks provided by React into your own abstractions, and reuse common stateful logic between different components.
+أخيرًا، أصبحنا جاهزين لنتعلم كيفية [كتابة خطافات مخصصة](/docs/hooks-custom.html)! تخدم الغرض الذي نريد. الخطافات المخصصة تمكِّننا من دمج الخطافات التي توفرها React سويةً، وإعادة استعمال شيفرة شائعة ذات حالة بين مختلف المكونات.
