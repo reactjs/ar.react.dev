@@ -91,7 +91,7 @@ import("./math").then(math => {
 إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة
 [ دليل Webpack حول تقسيم الشيفرة](https://webpack.js.org/guides/code-splitting/). يجب أن تبدو إعدادات Webpack لديك [مثل هذا](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
-عند استخدامك [Babel](https://babeljs.io/), yيجب أن تتأكد من قدرته على تصريف صياغة الاستيراد  (`import()‎`) الديناميكية بدون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
+عند استخدامك [Babel](https://babeljs.io/), يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية بدون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
