@@ -22,9 +22,10 @@ The majority of websites aren't, and don't need to be, single-page apps. With **
 
 ## إضافة React في دقيقة واحدة {#add-react-in-one-minute}
 
-In this section, we will show how to add a React component to an existing HTML page. You can follow along with your own website, or create an empty HTML file to practice.
+في هذه الفقرة، سنقوم بعرض كيفية اضافة مكون React لصفحة HTML موجودة.
+يمكنك المتابعة على موقعك الخاص، أو اضافة ملف HTML فارغ للتطبيق عليه.
 
-There will be no complicated tools or install requirements -- **to complete this section, you only need an internet connection, and a minute of your time.**
+ليس هناك معدّات صعبة أو لوازم تنصيب -- لاكمال هذه الفقرة، لن تحتاج إلا لاتصال بشبكة الأنترنت ولدقيقة من وقتك.**
 
 Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
