@@ -20,7 +20,7 @@ The majority of websites aren't, and don't need to be, single-page apps. With **
 - [Add React in One Minute](#add-react-in-one-minute)
 - [Optional: Try React with JSX](#optional-try-react-with-jsx) (no bundler necessary!)
 
-## Add React in One Minute {#add-react-in-one-minute}
+## إضافة React في دقيقة واحدة {#add-react-in-one-minute}
 
 In this section, we will show how to add a React component to an existing HTML page. You can follow along with your own website, or create an empty HTML file to practice.
 
