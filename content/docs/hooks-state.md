@@ -1,6 +1,6 @@
 ---
 id: hooks-state
-title: استعمال خطاف الحالة
+title: Using the State Hook
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html
