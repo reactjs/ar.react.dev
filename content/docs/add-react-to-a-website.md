@@ -12,7 +12,7 @@ next: create-a-new-react-app.html
 
 تم تصميم React ابتداء للدمج التدريجي، ويمكنك **استعماله بالقلة أو الكثرة التي تريد**.
 من الممكن أنك تريد إضاف. قليل من التفاعلية لصفحة موجودة.
-React components هي وسيلة جيدة لفعل ذلك.
+مكونات React هي وسيلة جيدة لفعل ذلك.
 
 The majority of websites aren't, and don't need to be, single-page apps. With **a few lines of code and no build tooling**, try React in a small part of your website. You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
 
