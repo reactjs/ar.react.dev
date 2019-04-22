@@ -32,13 +32,16 @@ prev: hooks-reference.html
   * [	ما الذي يحصل بالضبط عند فرض تطبيق قواعد إضافة تصحيح الأخطاء ESLint؟](#what-exactly-do-the-lint-rules-enforce)
 * **[من الأصناف إلى الخطافات](#from-classes-to-hooks)**
   * [	كيف تتوافق توابع دورة الحياة مع الخطافات؟](#how-do-lifecycle-methods-correspond-to-hooks)
+  * [كيف يمكنني أن أحصل على معلمات بواسطة الخطافات؟](#how-can-i-do-data-fetching-with-hooks)
   * [	هل هنالك شيء شبيه بمتغيرات النسخة؟](#is-there-something-like-instance-variables)
   * [	هل يجب أن استعمل متغير حالة واحد أم عدة متغيرات؟](#should-i-use-one-or-many-state-variables)
   * [	هل يمكنني تنفيذ تأثير عند إجراء التحديثات فقط؟](#can-i-run-an-effect-only-on-updates)
   * [كيف يمكن جلب الخاصية أو الحالة السابقة؟](#how-to-get-the-previous-props-or-state)
+  * [لماذا أرى الخصائص قديمة أو الحالة داخل الدالة؟](#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * [	كيف أنفِّذ getDerivedStateFromProps؟](#how-do-i-implement-getderivedstatefromprops)
   * [	هل يوجد شيء يشبه forceUpdate؟](#is-there-something-like-forceupdate)
   * [	أيمكنني إنشاء مرجع إلى مكون دالة؟](#can-i-make-a-ref-to-a-function-component)
+  * [كيف يمكنني قياس عقدة DOM؟](#how-can-i-measure-a-dom-node)
   * [	ما الذي يعينه const [thing, setThing] = useState()‎؟](#what-does-const-thing-setthing--usestate-mean)
 * **[	تحسينات الأداء](#performance-optimizations)**
   * [	أيمكنني تخطي تأثير ما في عمليات التحديث؟](#can-i-skip-an-effect-on-updates)
@@ -204,6 +207,10 @@ it('can render and update a counter', () => {
 
 * `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
 
+### كيف يمكنني أن أحصل على معلمات بواسطة الخطافات؟ {#how-can-i-do-data-fetching-with-hooks}
+
+إليك [عرض تجريبي صغير](https://codesandbox.io/s/jvvkoo8pq3) لتبدأ به. لمعرفة المزيد, راجع هذا [المقال](https://www.robinwieruch.de/react-hooks-fetch-data/) حول جلب البيانات باستخدام الخصافات.
+
 ### هل هنالك شيء شبيه بمتغيرات النسخة؟ {#is-there-something-like-instance-variables}
 
 نعم. الخطاف  [`()useRef`](/docs/hooks-reference.html#useref) ليس مخصص لمراجع DOM فقط. الكائن "ref" هو حاوية عامة (generic container)، إذ الخاصية `current` فيه قابلةٌ للتعديل وتستطيع تخزين أية قيمة بشكل مشابه لنسخة أية خاصية في صنف ما. يمكنك الوصول إليها من داخل
@@ -362,6 +369,44 @@ function Counter() {
 
 انظر أيضًا [إلى السؤال التالي للاطلاع على النمط الموصى به من أجل الحالة المشتقة.](#how-do-i-implement-getderivedstatefromprops).
 
+### لماذا أرى الخصائص قديمة أو الحالة داخل الدالة؟ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
+
+أي دالة داخل مكون ، بما في ذلك معالجات الأحداث والتأثيرات ، "ترى" الخصائص والحالة من تصيير الذي تم إنشاؤه فيه. على سبيل المثال ، أنظر إلى شيفرة التالية:
+
+```js
+function Example() {
+  const [count, setCount] = useState(0);
+
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert('You clicked on: ' + count);
+    }, 3000);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+      <button onClick={handleAlertClick}>
+        Show alert
+      </button>
+    </div>
+  );
+}
+```
+
+إذا نقرت أولاً على "إظهار التنبيه" ثم قمت بزيادة العداد ، فسيظهر التنبيه المتغير `count` **في الوقت الذي قمت فيه بالنقر فوق الزر "إظهار التنبيه"**.  هذا يمنع الأخطاء الناتجة عن الكود بافتراض أن الخصائص والحالة لا تتغير.
+
+إذا كنت تريد قرائة *آخر* حالة من بعض رد الاتصال غير متزامن عن قصد، يمكنك الاحتفاظ به في [مرجع](/docs/hooks-faq.html#is-there-something-like-instance-variables), تحويله ، وقراءة منه.
+
+أخيرًا , هناك سبب آخر محتمل لرأيتك الخصائص القديمة أو الحالة, هي إذا كنت تستخدم تحسين " التبعية المصفوفة" ولكنك لم تحدد جميع التبعيات بشكل صحيح. على سبيل المثال ، إذا حدد التأثير `[]` الوسيطة الثانية ولكن يقرأ `someProp` في الداخل ، فسوف يحتفظ بـ“ رؤية ”القيمة الأولية لـ` someProp`. الحل هو إزالة صفيف التبعية أو إصلاحه. من هنا [كيف يمكنك التعامل مع الدوال](#is-it-safe-to-omit-functions-from-the-list-of-dependencies),  وهنا [استراتيجيات شائعة أخرى](#what-can-i-do-if-my-effect-dependencies-change-too-often)   لتشغيل التأثيرات في كثير من الأحيان دون تخطي التبعيات بشكل غير صحيح.
+
+>ملاحظة
+>
+> نحن نقدم [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) قاعدة ESLint كجزء من حزمة [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
+
 ### كيف أنفِّذ `getDerivedStateFromProps`؟ {#how-do-i-implement-getderivedstatefromprops}
 
 رغم أنَّك [لن تحتاج إليه](/blog/2018/06/07/you-probably-dont-need-derived-state.html) على الأرجح، فيمكنك في حالات نادرة فعل ذلك (مثل تنفيذ المكون`<Transition>`) عبر تحديث الحالة بشكل صحيح أثناء عملية التصيير. ستعيد React تنفيذ المكون مع الحالة المحدَّثة مباشرةً بعد الخروج من أول عملية تصيير، لذا لن يؤثر ذلك على الأداء.
@@ -404,6 +449,59 @@ function ScrollView({row}) {
 ### أيمكنني إنشاء مرجع إلى مكون دالة؟ {#can-i-make-a-ref-to-a-function-component}
 
 رغم أنّه لا يجب أن تحتاج إلى تنفيذ ذلك في أغلب الأحيان، قد تعرض بعض التوابع الأمرية على مكون أب (parent component) مع الخطاف [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle).
+
+### كيف يمكنني قياس عقدة DOM؟ {#how-can-i-measure-a-dom-node}
+
+من أجل قياس موضع أو حجم عقدة DOM ، يمكنك استخدام [مرجع رد النداء](/docs/refs-and-the-dom.html#callback-refs). تستدعي React رد النداء هذا كلما تم ربط المرجع بعقدة مختلفة. هنا [عرض صغير](https://codesandbox.io/s/l7m0v5x4v9):
+
+```js{4-8,12}
+function MeasureExample() {
+  const [height, setHeight] = useState(0);
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return (
+    <>
+      <h1 ref={measuredRef}>Hello, world</h1>
+      <h2>The above header is {Math.round(height)}px tall</h2>
+    </>
+  );
+}
+```
+
+لم نختار `useRef` في هذا المثال لأن مرجع كائن لا يخطرنا بشأن * التغييرات * في قيمة المرجع الحالية. باستخدام المرجع رد النداء يضمن ذلك [حتى لو عرض أحد العناصر التابعة العقدة المقاسة لاحقًا](https://codesandbox.io/s/818zzk8m78) (e.g. in response to a click), ما زلنا نتلقى إشعارًا بذلك في المكون الرئيسي ويمكننا تحديث القياسات.
+
+لاحظ أننا نقوم بتمرير `[]` كمصفوفة تبعية إلى ` useCallback ` . هذا يضمن أن رد النداء المرجعي الخاص بنا لا يتغير بين عمليات إعادة التصيير ، وبالتالي فإن React لن يناديها بشكل غير ضروري.
+
+يمكنك اذا اردت [استخراج هذا المنطق](https://codesandbox.io/s/m5o42082xy) في خطاف قابلة لإعادة الاستخدام:
+
+```js{2}
+function MeasureExample() {
+  const [rect, ref] = useClientRect();
+  return (
+    <>
+      <h1 ref={ref}>Hello, world</h1>
+      {rect !== null &&
+        <h2>The above header is {Math.round(rect.height)}px tall</h2>
+      }
+    </>
+  );
+}
+
+function useClientRect() {
+  const [rect, setRect] = useState(null);
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
+  }, []);
+  return [rect, ref];
+}
+```
 
 ### ما الذي يعينه `const [thing, setThing] = useState()`؟ {#what-does-const-thing-setthing--usestate-mean}
 
