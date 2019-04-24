@@ -28,7 +28,7 @@ prev: hooks-effect.html
 أطلقنا إضافةً لتصحيح الأخطاء تدعى [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) تجبر على تطبيق هاتين القاعدتين. يمكنك إضافة هذه الإضافة إلى مشروعك إن أحببت تجريبها:
 
 ```bash
-npm install eslint-plugin-react-hooks
+npm install eslint-plugin-react-hooks --save-dev
 ```
 
 ```js
