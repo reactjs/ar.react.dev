@@ -53,7 +53,11 @@ npm start
 
 إنشاء تطبيق React لا يملئ فراغ الواجهة الخلفية أو قواعد البيانات. جلَّ ما يحدث هو إنشاء أنبوب بناء واجهة أمامية (frontend build pipeline)، لذا تستطيع استعماله مع أية واجهة خلفية تريد؛ على أي حال، لا تحتاج الآن إلى معرفة أي شي عن الواجهات الخلفية. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
 
+<<<<<<< HEAD
 عندما تصبح جاهزًا للنشر على البيئة الإنتاجية، سينشئ تنفيذ الأمر `npm run build` نسخة مبنية محسَّنة من تطبيقك في المجلد `build`. ستطيع تعلم المزيد حول البيئة Create React App من ملف [اقرأني](https://github.com/facebookincubator/create-react-app#create-react-app-) (README) الخاص بها و [دليل المستخدم](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+=======
+When you're ready to deploy to production, running `npm run build` will create an optimized build of your app in the `build` folder. You can learn more about Create React App [from its README](https://github.com/facebookincubator/create-react-app#create-react-app--) and the [User Guide](https://facebook.github.io/create-react-app/).
+>>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
 
 ### Next.js {#nextjs}
 
@@ -69,7 +73,11 @@ npm start
 
 ### سلاسلة أدوات ذات مرونة أكبر {#more-flexible-toolchains}
 
+<<<<<<< HEAD
 سلاسل الأدوات التالية توفر مرونةً أكبر وخيارات أكثر. ننصح المستخدمين ذوي الخبرة باستعمالها:
+=======
+The following toolchains offer more flexibility and choice. We recommend them to more experienced users:
+>>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
 
 - **[Neutrino](https://neutrinojs.org/)**  تدمج قوة [webpack](https://webpack.js.org/) مع بساطة الضبط المسبق الافتراضي (presets)، وتُضمِّن ضبطًا مسبقًا [لتطبيقات React](https://neutrinojs.org/packages/react/) و [مكونات React](https://neutrinojs.org/packages/react-components/).
 
