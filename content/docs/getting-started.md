@@ -101,7 +101,11 @@ redirect_from:
 
 ### مفاهيم متقدمة {#advanced-concepts}
 
+<<<<<<< HEAD
 متى ما شعرت أنَّ [المفاهيم الأساسية](#main-concepts) أصبحت سهلةً لك وبدأت بممارسة React وشعرت أنَّ نفسك تطلب المزيد، فأنت حينئذٍ بحاجة إلى الانتقال إلى مستوى متقدم. هذا القسم سيقدم لك ميزات متقدمة في React وقوية ولكن أقل استخدامًا مثل [السياق](/docs/context.html) و [refs](/docs/refs-and-the-dom.html).
+=======
+Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 ### مرجع إلى الواجهة البرمجية {#api-reference}
 
