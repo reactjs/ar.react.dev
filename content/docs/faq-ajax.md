@@ -50,9 +50,9 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+       	// ملاحظة: من الهام التعامل مع الأخطاء هنا
+        // catch() بدلًا من من استخدام الكتلة 
+        // لكي لا نقبل الاستثناءات من أخطاء فعليّة في المكوّنات
         (error) => {
           this.setState({
             isLoaded: true,
