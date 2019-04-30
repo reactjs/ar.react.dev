@@ -136,7 +136,7 @@
 - title: الأسئلة الأكثر تكراراً
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: AJAX و APIs
     - id: faq-build
       title: Babel, JSX, and Build Steps
     - id: faq-functions

@@ -1,24 +1,24 @@
 ---
 id: faq-ajax
-title: AJAX and APIs
+title: AJAX و APIs
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+### كيف يمكنني إجراء استدعاء في AJAX؟ {#how-can-i-make-an-ajax-call}
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+بإمكانك استخدام أي مكتبة AJAX تريدها مع React. من المكتبات الشائعة هنالك [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), والمكتبة المُضمَّنة مع المتصفح والتي تُدعى [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### في أي تابع من توابع دورة الحياة يجب عليّ إجراء استدعاء AJAX؟ {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+يجب عليك الحصول على البيانات عن طريق استدعاء AJAX في تابع دور الحياة [`componentDidMount`](/docs/react-component.html#mounting).  وهذا لكي تستطيع استخدام التابع  `setState` لتحديث مكوّنك عند استقبال البيانات.
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+### مثال: استخدام نتائج AJAX لتعيين الحالة المحلية {#example-using-ajax-results-to-set-local-state}
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
+يُوضّح المكوّن التالي كيفيّة إجراء استدعاء AJAX ضمن التابع `componentDidMount` لتعيين الحالة المحليّة للمكوّن. 
 
-The example API returns a JSON object like this:
+تُعيد واجهة برمجة التطبيق في هذا المثال كائن JSON مشابه لما يلي:
 
 ```
 {
