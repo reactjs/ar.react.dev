@@ -19,7 +19,7 @@ You should populate data with AJAX calls in the [`componentDidMount`](/docs/reac
 The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
 
 The example API returns a JSON object like this:
-
+ 
 ```
 {
   "items": [
