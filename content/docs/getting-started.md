@@ -121,11 +121,7 @@ Once you're comfortable with the [main concepts](/docs/hello-world.html) and pla
 
 يمكن أيضًا متابعتنا على [حساب تويتر ‎@reactjs](https://twitter.com/reactjs) ولكن لن يفوتك أي شيء إن تابعت المدونة فقط.
 
-<<<<<<< HEAD
-لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react) أيضًا.
-=======
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
+لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
 
 ## توثيق الإصدار {#versioned-documentation}
 
