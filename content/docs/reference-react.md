@@ -202,11 +202,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-<<<<<<< HEAD
-يُعيد دالة تُنتِج عناصر React من النوع المُعطى. وكما هو الحال مع التابع [`React.createElement()`](#createElement)‎ يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل ‎`'div'‎` أو `‎'span'`‎)، أو نوع  [لمكوّن React](/docs/components-and-props.html) (مثل صنف أو دالة)، أو نوع  [لجزء React](#reactfragment) (أي fragment).
-=======
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createelement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
+يُعيد دالة تُنتِج عناصر React من النوع المُعطى. وكما هو الحال مع التابع [`React.createElement()`](#createelement)‎ يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل ‎`'div'‎` أو `‎'span'`‎)، أو نوع  [لمكوّن React](/docs/components-and-props.html) (مثل صنف أو دالة)، أو نوع  [لجزء React](#reactfragment) (أي fragment).
 
 يُعتبَر هذا التابع قديمًا في React ونوصي باستخدام JSX أو التابع `React.createElement()`‎ بشكل مباشر بدلًا من ذلك.
 

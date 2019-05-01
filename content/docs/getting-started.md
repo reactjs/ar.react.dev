@@ -101,7 +101,7 @@ redirect_from:
 
 ### مفاهيم متقدمة {#advanced-concepts}
 
-متى ما شعرت أنَّ [المفاهيم الأساسية](#main-concepts) أصبحت سهلةً لك وبدأت بممارسة React وشعرت أنَّ نفسك تطلب المزيد، فأنت حينئذٍ بحاجة إلى الانتقال إلى مستوى متقدم. هذا القسم سيقدم لك ميزات متقدمة في React وقوية ولكن أقل استخدامًا مثل [السياق](/docs/context.html) و [refs](/docs/refs-and-the-dom.html).
+متى ما شعرت أنَّ [المفاهيم الأساسية](/docs/hello-world.html) أصبحت سهلةً لك وبدأت بممارسة React وشعرت أنَّ نفسك تطلب المزيد، فأنت حينئذٍ بحاجة إلى الانتقال إلى مستوى متقدم. هذا القسم سيقدم لك ميزات متقدمة في React وقوية ولكن أقل استخدامًا مثل [السياق](/docs/context.html) و [refs](/docs/refs-and-the-dom.html).
 
 ### مرجع إلى الواجهة البرمجية {#api-reference}
 
@@ -117,11 +117,7 @@ redirect_from:
 
 يمكن أيضًا متابعتنا على [حساب تويتر ‎@reactjs](https://twitter.com/reactjs) ولكن لن يفوتك أي شيء إن تابعت المدونة فقط.
 
-<<<<<<< HEAD
-لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react) أيضًا.
-=======
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
+لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
 
 ## توثيق الإصدار {#versioned-documentation}
 
