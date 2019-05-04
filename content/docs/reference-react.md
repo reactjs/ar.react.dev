@@ -38,7 +38,7 @@ redirect_from:
 - [`createElement()`](#createelement)
 - [`createFactory()`](#createfactory)
 
-See [Using React without JSX](/docs/react-without-jsx.html) for more information.
+إنظر في [إستخدام React بدون JSX](/docs/react-without-jsx.html) للمزيد من المعلومات.
 
 ### تحويل العناصر {#transforming-elements}
 
