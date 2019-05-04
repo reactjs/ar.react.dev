@@ -1,14 +1,14 @@
 ---
 id: hooks-state
-title: Using the Effect Hook
+title: استعمال خطاف التأثير
 permalink: docs/hooks-effect.html
 next: hooks-rules.html
-prev: hooks-intro.html
+prev: hooks-state.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
-The *Effect Hook* lets you perform side effects in function components:
+يمكِّن *خطاف التأثير (Effect Hook)* من إحداث تأثيرات جانبية (side effects) في مكونات دالة:
 
 ```js{1,6-10}
 import React, { useState, useEffect } from 'react';
@@ -33,25 +33,26 @@ function Example() {
 }
 ```
 
-This snippet is based on the [counter example from the previous page](/docs/hooks-state.html), but we added a new feature to it: we set the document title to a custom message including the number of clicks.
+هذا المثال معتمد على مثال [العداد المستقى من الصفحة السابقة](/docs/hooks-state.html)، ولكن أضفنا إليه ميزة جديدة هي ضبط عنوان الصفحة إلى رسالة مخصصة تتضمن عدد الضغطات.
 
-Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects. Whether or not you're used to calling these operations "side effects" (or just "effects"), you've likely performed them in your components before.
+جلب البيانات، وضبط اشتراك (subscription)، وتغيير شجرة DOM يدويًّا في مكونات React كلها أمثلة عن التأثيرات الجانبية. سواءً أكنت اعتدت على تسمية هذه العمليات "بالتأثيرات الجانبية" (أو "التأثيرات") فقط أم لا، فلا بد أنك قد نفَّذت هذه العمليات في مكوناتك مسبقًا.
 
->Tip
+
+>نصيحة
 >
->If you're familiar with React class lifecycle methods, you can think of `useEffect` Hook as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` combined.
+>إن كانت توابع دورة حياة الأصناف مألوفةً لديك، فيمكنك التفكير بالخطاف `useEffect` بأنه ناتج دمج `componentDidMount` و `componentDidUpdate` و `componentWillUnmount`.
 
-There are two common kinds of side effects in React components: those that don't require cleanup, and those that do. Let's look at this distinction in more detail.
+هنالك نوعان شائعان للتأثيرات الجانبية في مكونات React هما: الأول هو تلك التي لا تتطلب تنفيذ عملية تنظيف، والثاني هو تلك التي تتطلب ذلك. دعنا نطلع عليهما بمزيد من التفصيل.
 
-## Effects Without Cleanup {#effects-without-cleanup}
+## تأثيرات بدون عملية تنظيف {#effects-without-cleanup}
 
-Sometimes, we want to **run some additional code after React has updated the DOM.** Network requests, manual DOM mutations, and logging are common examples of effects that don't require a cleanup. We say that because we can run them and immediately forget about them. Let's compare how classes and Hooks let us express such side effects.
+نريد أحيانًا **تنفيذ بعض الشيفرات الإضافية بعد تحديث React شجرة DOM**. طلبيات الشبكة (Network requests)، والتعديلات اليدوية على DOM، والتسجيل (logging) هي أمثلةٌ شائعةٌ عن التأثيرات التي لا تتطلب إجراء تنظيف (cleanup)، وذلك لأنَّنا نستطيع تنفيذها ثم نسيان أمرها مباشرةً. إذًا، دعنا نوازن كيف تمكننا الأصناف والخطافات من التعبير عن مثل هذه التأثيرات الجانبية.
 
-### Example Using Classes {#example-using-classes}
+### مثال باستعمال الأصناف {#example-using-classes}
 
-In React class components, the `render` method itself shouldn't cause side effects. It would be too early -- we typically want to perform our effects *after* React has updated the DOM.
+في مكونات صنف في React، التابع `render` نفسه لا يجب أن يسبِّب أي تأثيرات جانبية، إذ يكون ذلك مبكرًا جدًا. نريد عادةً تنفيذ التأثيرات الجانبية الخاصة بنا *بعد* تحديث React شجرة DOM.
 
-This is why in React classes, we put side effects into `componentDidMount` and `componentDidUpdate`. Coming back to our example, here is a React counter class component that updates the document title right after React makes changes to the DOM:
+هذا هو سبب وضع التأثيرات الجانبية في أصناف React ضمن `componentDidMount` و `componentDidUpdate`. بالعودة إلى مثالنا، إليك مكون صنفٍ عدادٍ في React يحدِّث عنوان الصفحة بعد تنفيذ React التغييرات في DOM:
 
 ```js{9-15}
 class Example extends React.Component {
@@ -83,15 +84,16 @@ class Example extends React.Component {
 }
 ```
 
-Note how **we have to duplicate the code between these two lifecycle methods in class.**
+لاحظ كيف **يتوجب علينا مضاعفة الشيفرة بين دورتي حياة هذين التابعين في الصنف**.  
 
-This is because in many cases we want to perform the same side effect regardless of whether the component just mounted, or if it has been updated. Conceptually, we want it to happen after every render -- but React class components don't have a method like this. We could extract a separate method but we would still have to call it in two places.
+هذا بسبب أنَّنا نريد في حالات عديدة تنفيذ نفس التأثير الجانبي بغض النظر عن ما إذا كان المكون قد وُصِلَ (mounted) للتو أو حُدِّث. نظريًّا، نريد أن يحدث ذلك بعد كل عملية تصيير (render)، ولكن مكونات صنف React لا تملك أي تابع يؤدي هذا الغرض. نستطيع استخراج تابع منفصل ولكن لا يزال يتوجب علينا استدعائه في موضعين.
+من جهة أخرى.  
+ 
+دعنا نرى كيف نستطيع القيام بالأمر نفسه باستعمال الخطاف `useEffect`.
 
-Now let's see how we can do the same with the `useEffect` Hook.
+### مثال باستعمال الخطافات {#example-using-hooks}
 
-### Example Using Hooks {#example-using-hooks}
-
-We've already seen this example at the top of this page, but let's take a closer look at it:
+المثال التالي رأيناه في بداية هذه الصفحة، ولكن دعنا نلقِ نظرة قريبة عليه:
 
 ```js{1,6-8}
 import React, { useState, useEffect } from 'react';
@@ -114,15 +116,15 @@ function Example() {
 }
 ```
 
-**What does `useEffect` do?** By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we'll refer to it as our "effect"), and call it later after performing the DOM updates. In this effect, we set the document title, but we could also perform data fetching or call some other imperative API.
+**ما الذي يفعله الخطاف `useEffect` ؟** باستعمال هذا الخطاف، أنت تخبر React بأنَّ مكونك يحتاج إلى تنفيذ أمر ما بعد عملية التصيير. ستتذكر React الدالة التي مررتها (سنشير إليها بأنَّها "التأثير" [effect] الخاص بنا)، وتستدعيها لاحقًا بعد إجراء تحديث على DOM. نضبط في هذا التأثير عنوان الصفحة، ولكن يمكننا أيضًا تنفيذ عملية جلب بياناتٍ أو استدعاء واجهة برمجية أمرية (imperative API) أخرى.
 
-**Why is `useEffect` called inside a component?** Placing `useEffect` inside the component lets us access the `count` state variable (or any props) right from the effect. We don't need a special API to read it -- it's already in the function scope. Hooks embrace JavaScript closures and avoid introducing React-specific APIs where JavaScript already provides a solution.
+**لماذا يُستدعَى `useEffect` داخل مكون؟** وضع `useEffect` داخل المكون يمكننا من الوصول إلى متغير الحالة count (أو أية خاصية) بشكل صحيح من التأثير. لا نحتاج إلى واجهة برمجية خاصة لقراءته، إذ يكون ضمن مجال الدالة مسبقًا. تتبنى الخطافات مفهوم مغلفات JavaScript (أي JavaScript closures) وتتجنب تعريف واجهات React برمجية مخصصة، إذ وفرت JavaScript حلًا مسبقًا.
 
-**Does `useEffect` run after every render?** Yes! By default, it runs both after the first render *and* after every update. (We will later talk about [how to customize this](#tip-optimizing-performance-by-skipping-effects).) Instead of thinking in terms of "mounting" and "updating", you might find it easier to think that effects happen "after render". React guarantees the DOM has been updated by the time it runs the effects.
+**هل يُنفَّذ الخطاف useEffect بعد كل عملية تصيير؟** نعم. افتراضيًّا، يُنفَّذ بعد أول عملية تصيير وبعد كل عملية تحديث. (سنتحدث لاحقًا عن [كيفية تخصيص ذلك](#tip-optimizing-performance-by-skipping-effects).) بدلًا من التفكير من ناحية الوصل (mounting) والتحديث (updating)، ربما تجد أنَّه من السهل التفكير بأنَّ تلك التأثيرات تحدث "بعد التصيير". تضمن React بأنَّ شجرة DOM قد حُدِّثَت في الوقت الذي تُنفِّذ فيه التأثيرات.
 
-### Detailed Explanation {#detailed-explanation}
+### تفصيل أوسع {#detailed-explanation}
 
-Now that we know more about effects, these lines should make sense:
+لآن وبعد التعرف على التأثيرات، يجب أن تصبح أسطر الشيفرة التالية مفهومةً لك:
 
 ```js
 function Example() {
@@ -133,21 +135,21 @@ function Example() {
   });
 ```
 
-We declare the `count` state variable, and then we tell React we need to use an effect. We pass a function to the `useEffect` Hook. This function we pass *is* our effect. Inside our effect, we set the document title using the `document.title` browser API. We can read the latest `count` inside the effect because it's in the scope of our function. When React renders our component, it will remember the effect we used, and then run our effect after updating the DOM. This happens for every render, including the first one.
+صرَّحنا عن متغير الحالة `count`، وأخبرنا بعدئذٍ React أننا نحتاج إلى استعمال تأثير. مرَّرنا دالةً إلى الخطاف `useEffect` والتي تمثِّل التأثير الخاص بنا. داخل هذا التأثير، ضبطنا عنوان الصفحة باستعمال الواجهة البرمجية `document.title` للمتصفح. يمكننا الآن قراءة أحدث قيمة للمتغير `count` داخل التأثير لأنَّه يتوضع داخل نطاق الدالة. عندما تصيِّر React المكون الخاص بنا، ستتذكر التأثير الذي استعملناه ثم ستُنفِّذ هذا التأثير بعد تحديث DOM. هذا يحدث من أجل كل عملية تصيير بما فيها عملية التصيير الأولى.
 
-Experienced JavaScript developers might notice that the function passed to `useEffect` is going to be different on every render. This is intentional. In fact, this is what lets us read the `count` value from inside the effect without worrying about it getting stale. Every time we re-render, we schedule a _different_ effect, replacing the previous one. In a way, this makes the effects behave more like a part of the render result -- each effect "belongs" to a particular render. We will see more clearly why this is useful [later on this page](#explanation-why-effects-run-on-each-update).
+قد يلاحظ مطورو JavaScript المتمرسون أنَّ الدالة التي مررناها إلى الخطاف `useEffect` ستكون مختلفة في كل عملية تصيير. صحيح، فهذا الأمر متعمَّد، إذ هذا، في الحقيقة، هو الذي يمكننا من قراءة قيمة `count` من داخل التأثير دون القلق من تقادمها. في كل مرة نكرِّر فيها عملية التصيير، نجدول تأثيرًا جديدًا باستبدال التأثير السابق. بطريقةٍ ما، هذا يجعل التأثير يتصرف بطريقة أشبه بكونه جزءًا من ناتج عملية التصيير، إذ كل تأثير "يتبع" إلى عملية تصيير محدَّدة. سنلقِ نظرة تفصيلية عن سبب كون هذا السلوك مفيدًا في قسم لاحق من هذه الصفحة.
 
->Tip
+>نصيحة
 >
->Unlike `componentDidMount` or `componentDidUpdate`, effects scheduled with `useEffect` don't block the browser from updating the screen. This makes your app feel more responsive. The majority of effects don't need to happen synchronously. In the uncommon cases where they do (such as measuring the layout), there is a separate [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook with an API identical to `useEffect`.
+>بخلاف `componentDidMount` أو `componentDidUpdate`، التأثيرات المجدولة مع `useEffect` لا تحجز المتصفح من تحديث الصفحة مما يزيد من تجاوبية تطبيقك. أغلبية التأثيرات لا تحتاج إلى تحدث بشكل متزامن. في الحالات النادرة التي تحدث فيها (مثل ضبط التخطيط [measuring the layout])، يوجد خطاف منفصل يدعى [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) مع واجهة برمجية مماثلة للخطاف `useEffect`.
 
-## Effects with Cleanup {#effects-with-cleanup}
+## تأثيرات مع عملية تنظيف {#effects-with-cleanup}
 
-Earlier, we looked at how to express side effects that don't require any cleanup. However, some effects do. For example, **we might want to set up a subscription** to some external data source. In that case, it is important to clean up so that we don't introduce a memory leak! Let's compare how we can do it with classes and with Hooks.
+فيما سبق، اطلعنا على كيفية عمل التأثيرات الجانبية التي لا تتطلب أية إجراءات تنظيف. على أي حال، هنالك بعض التأثيرات التي تتطلب ذلك؛ على سبيل المثال، **ربما كنا نريد ضبط اشتراك** إلى بعض موارد البيانات الخارجية. في هذه الحالة، من الضروري إجراء عملية تنظيف، وبذلك لا نتسبَّب في حدوث تسريب في الذاكرة (memory leak). دعنا نوازن كيفية القيام بذلك مع الأصناف ومع الخطافات.
 
-### Example Using Classes {#example-using-classes-1}
+### مثال باستعمال الأصناف {#example-using-classes-1}
 
-In a React class, you would typically set up a subscription in `componentDidMount`, and clean it up in `componentWillUnmount`. For example, let's say we have a `ChatAPI` module that lets us subscribe to a friend's online status. Here's how we might subscribe and display that status using a class:
+في صنف React، ستحتاج عادةً إلى ضبط أي اشتراك في `componentDidMount`، وإجراء عملية التنظيف في `componentWillUnmount`. على سبيل المثال، دعنا نفترض أنَّه لدينا الوحدة `ChatAPI` التي تمكننا من الاشتراك بحالة اتصال صديق (friend’s online status). إليك كيفية إجراء ذلك وإظهار تلك الحالة باستعمال صنف:
 
 ```js{8-26}
 class FriendStatus extends React.Component {
@@ -186,29 +188,29 @@ class FriendStatus extends React.Component {
 }
 ```
 
-Notice how `componentDidMount` and `componentWillUnmount` need to mirror each other. Lifecycle methods force us to split this logic even though conceptually code in both of them is related to the same effect.
+لاحظ كيف يحتاج `componentDidMount` و `componentWillUnmount` إلى أن يعكس كل منهما الآخر. تجبرنا توابع دورة الحياة (Lifecycle methods) بفصل هذه الشيفرة رغم أنَّ الشيفرة من الناحية النظرية في كليهما متعلقة بنفس التأثير.
 
->Note
+>ملاحظة
 >
->Eagle-eyed readers may notice that this example also needs a `componentDidUpdate` method to be fully correct. We'll ignore this for now but will come back to it in a [later section](#explanation-why-effects-run-on-each-update) of this page.
+>قد تلاحظ عمليات التصيير الدقيقة (Eagle-eyed readers) أنَّ هذا المثال يحتاج أيضًا إلى التابع `componentDidUpdate` ليكون صحيحًا بالمجمل. سنتغاضى عن هذا الأمر الآن ولكن سنعود إليه في [قسم أخر لاحق](#explanation-why-effects-run-on-each-update) من هذه الصفحة.
 
-### Example Using Hooks {#example-using-hooks-1}
+### مثال باستعمال الخطافات {#example-using-hooks-1}
 
-Let's see how we could write this component with Hooks.
+دعنا نرى كيف يمكننا كتابة هذا المكون باستعمال الخطافات.
 
-You might be thinking that we'd need a separate effect to perform the cleanup. But code for adding and removing a subscription is so tightly related that `useEffect` is designed to keep it together. If your effect returns a function, React will run it when it is time to clean up:
+قد تفكر أنَّنا نحتاج إلى تأثير منفصل لتنفيذ عملية التنظيف، ولكننا في الحقيقة لا نحتاج إلى ذلك، إذ شيفرة إضافة وإزالة اشتراك مرتبطة بإحكام بالخطاف `useEffect` المصمم لإبقائهما في كيان واحد. إن كان التأثير الخاص بك يعيد دالة، فستُنفِّذها React عندما يحين وقت إجراء التنظيف:
 
-```js{10-16}
+```js{6-16}
 import React, { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
 
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     // Specify how to clean up after this effect:
     return function cleanup() {
@@ -223,20 +225,24 @@ function FriendStatus(props) {
 }
 ```
 
-**Why did we return a function from our effect?** This is the optional cleanup mechanism for effects. Every effect may return a function that cleans up after it. This lets us keep the logic for adding and removing subscriptions close to each other. They're part of the same effect!
+**لماذا أعدنا دالة من التأثير؟** هذا السلوك هو آلية اختيارية لإجراء عملية تنظيف للتأثيرات.قد يعيد كل تأثير دالةً مهمتها إجراء عملية تنظيف خلفه. هذا يمكننا من إبقاء شيفرة إضافة وإزالة الاشتراكات قريبةً من بعضها بعضًا، إذ كلٌّ منهما جزءٌ من التأثير نفسه.
 
-**When exactly does React clean up an effect?** React performs the cleanup when the component unmounts. However, as we learned earlier, effects run for every render and not just once. This is why React *also* cleans up effects from the previous render before running the effects next time. We'll discuss [why this helps avoid bugs](#explanation-why-effects-run-on-each-update) and [how to opt out of this behavior in case it creates performance issues](#tip-optimizing-performance-by-skipping-effects) later below.
+**متى تجري React عملية تنظيف للتأثير؟** تنفِّذ React عملية التنظيف عندما يجري فصل (unmount) المكون. على أي حال وكما تعلمنا سابقًا، تُنفَّذ التأثيرات في كل عملية تصيير وليس مرةً واحدةً. هذا هو سبب تنفيذ React عملية تنظيف للتأثيرات أيضًا من عملية التصيير السابقة قبل تنفيذ التأثير في المرة اللاحقة. سنناقش لاحقًا سبب مساعدة هذا الأمر [بتجنب حصول أخطاء](#explanation-why-effects-run-on-each-update) وكيفية [تجنب هذا السلوك في حال تسبب بمشاكل متعلقة بالأداء](#tip-optimizing-performance-by-skipping-effects).
 
->Note
+>ملاحظة
 >
->We don't have to return a named function from the effect. We called it `cleanup` here to clarify its purpose, but you could return an arrow function or call it something different.
+>لا يتوجب علينا إعادة دالة مسماة من التأثير. لقد أطلقنا عليها `cleanup` هنا لتوضيح وظيفتها، ولكن يمكنك أن تعيد دالة سهمية أو تطلق عليها أي اسم آخر.
 
-## Recap {#recap}
+## الخلاصة {#recap}
 
-We've learned that `useEffect` lets us express different kinds of side effects after a component renders. Some effects might require cleanup so they return a function:
+تعلمنا إلى الآن أنَّ الخطاف `useEffect` يمكِّننا من التعبير عن مختلف أنواع التأثيرات الجانبية بعد تنفيذ عمليات تصيير لمكون. قد تتطلب بعض التأثيرات إجراء عملية تنظيف، لذا تعيد دالة:
 
 ```js
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -244,7 +250,7 @@ We've learned that `useEffect` lets us express different kinds of side effects a
   });
 ```
 
-Other effects might not have a cleanup phase, and don't return anything.
+بينما قد لا تتطلب تأثيرات أخرى إجراء عملية تنظيف، فلا تعيد آنذاك أي شيء:
 
 ```js
   useEffect(() => {
@@ -252,21 +258,21 @@ Other effects might not have a cleanup phase, and don't return anything.
   });
 ```
 
-The Effect Hook unifies both use cases with a single API.
+يوحِّد خطاف التأثير كلا الحالتين السابقتين في واجهة برمجية واحدة.
 
 -------------
 
-**If you feel like you have a decent grasp on how the Effect Hook works, or if you feel overwhelmed, you can jump to the [next page about Rules of Hooks](/docs/hooks-rules.html) now.**
+**إن كنت تشعر أنَّ لديك معرفة جيدة بكيفية عمل خطافات التأثير، أو إن كنت تشعر بالإرهاق والغرق في كم هائل من المعلومات، فيمكنك الآن الانتقال إلى الصفحة التالية:  ["قواعد استعمال الخطافات"](/docs/hooks-rules.html).**
 
 -------------
 
-## Tips for Using Effects {#tips-for-using-effects}
+## نصائح لاستعمال التأثيرات {#tips-for-using-effects}
 
-We'll continue this page with an in-depth look at some aspects of `useEffect` that experienced React users will likely be curious about. Don't feel obligated to dig into them now. You can always come back to this page to learn more details about the Effect Hook.
+سنكمل هذه الصفحة بإلقاء نظرة تفصيلية على بعض نواحي الخطاف `useEffect` التي قد يكون مستخدمو React الخبيرون متشوقين للاطلاع عليها. لا تجبر نفسك بالاطلاع عليها الآن. يمكنك في أي وقت العودة إلى هذه الصفحة لتعلُّم تفاصيل أوسع عن خطاف التأثير.
 
-### Tip: Use Multiple Effects to Separate Concerns {#tip-use-multiple-effects-to-separate-concerns}
+### نصيحة: استعمال تأثيرات متعددة لفصل الشيفرات ذات الصلة {#tip-use-multiple-effects-to-separate-concerns}
 
-One of the problems we outlined in the [Motivation](/docs/hooks-intro.html#complex-components-become-hard-to-understand) for Hooks is that class lifecycle methods often contain unrelated logic, but related logic gets broken up into several methods. Here is a component that combines the counter and the friend status indicator logic from the previous examples:
+إحدى المشكلات التي أشرنا إليها في قسم " [الحافز](/docs/hooks-intro.html#complex-components-become-hard-to-understand) لإضافة الخطافات" هي أنَّ توابع دورة حياة صنف تحوي غالبًا شيفرةً غير مترابطة، ولكنَّ الشيفرة المترابطة تقسَّم إلى توابع متعددة. إليك مكون يدمج العداد ومؤشر حالة الصديق من الأمثلة السابقة:
 
 ```js
 class FriendStatusWithCounter extends React.Component {
@@ -303,9 +309,9 @@ class FriendStatusWithCounter extends React.Component {
   // ...
 ```
 
-Note how the logic that sets `document.title` is split between `componentDidMount` and `componentDidUpdate`. The subscription logic is also spread between `componentDidMount` and `componentWillUnmount`. And `componentDidMount` contains code for both tasks.
+لاحظ كيف أنَّ الشيفرة التي تضبط `document.title` تنقسم بين `componentDidMount` و `componentDidUpdate`. شيفرة الاشتراك تتوزع أيضًا على `componentDidMount` و `componentWillUnmount`. ويحوي `componentDidMount` شيفرة لكلا المهمَّتين.  
 
-So, how can Hooks solve this problem? Just like [you can use the *State* Hook more than once](/docs/hooks-state.html#tip-using-multiple-state-variables), you can also use several effects. This lets us separate unrelated logic into different effects:
+لذلك، كيف يمكن للخطافات أن تحل هذه المشكلة؟ بشكل مشابه لتمكنك من [استعمال خطاف *الحالة* أكثر من مرة واحدة](/docs/hooks-state.html#tip-using-multiple-state-variables)، يمكنك أيضًا استعمال عدة تأثيرات. هذا يمكِّننا من فصل الشيفرة الغير مترابطة إلى تأثيرات مختلفة:
 
 ```js{3,8}
 function FriendStatusWithCounter(props) {
@@ -316,26 +322,26 @@ function FriendStatusWithCounter(props) {
 
   const [isOnline, setIsOnline] = useState(null);
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
   // ...
 }
 ```
 
-**Hooks lets us split the code based on what it is doing** rather than a lifecycle method name. React will apply *every* effect used by the component, in the order they were specified.
+**تسمح الخطافات بفصل الشيفرة بناءً على وظيفتها** بدلًا من اسم تابع دورة الحياة. ستطبق React كل تأثير استُعمِل عبر المكون وفقًا للترتيب الذي عُرِّف به.
 
-### Explanation: Why Effects Run on Each Update {#explanation-why-effects-run-on-each-update}
+### شرح: لماذا تُنفَّذ التأثيرات على كل تحديث {#explanation-why-effects-run-on-each-update}
 
-If you're used to classes, you might be wondering why the effect cleanup phase happens after every re-render, and not just once during unmounting. Let's look at a practical example to see why this design helps us create components with fewer bugs.
+إن كنت معتادًا على الأصناف، فقد تتساءل عن سبب حدوث مرحلة التنظيف في التأثيرات بعد كل عملية إعادة تصيير، وليس مرةً واحدةً أثناء الفصل (unmounting). دعنا نشرح بمثال عملي لماذا يساعدنا هذا السلوك بإنشاء مكونات مع نسبة أخطاء أقل.
 
-[Earlier on this page](#example-using-classes-1), we introduced an example `FriendStatus` component that displays whether a friend is online or not. Our class reads `friend.id` from `this.props`, subscribes to the friend status after the component mounts, and unsubscribes during unmounting:
+[فيما سبق من هذه الصفحة](#example-using-classes-1)، عرَّفنا مثالًا يحوي المكون `FriendStatus` الذي يظهر إذا كانت حالة صديق "متصل" أم "غير متصل". يقرأ الصنف الخاص بنا الخاصية `friend.id` من `this.props`، ثم يشترك بحال الصديق بعد وصل المكون، ثم يلغي الاشتراك أثناء عملية الفصل:
 
 ```js
   componentDidMount() {
@@ -353,9 +359,9 @@ If you're used to classes, you might be wondering why the effect cleanup phase h
   }
 ```
 
-**But what happens if the `friend` prop changes** while the component is on the screen? Our component would continue displaying the online status of a different friend. This is a bug. We would also cause a memory leak or crash when unmounting since the unsubscribe call would use the wrong friend ID.
+***لكن ماذا يحدث إن تغيَّرت خاصية `friend`*** أثناء عرض المكون على الشاشة. سيستمر المكون الخاص بنا بإظهار حالة الاتصال لصديق مختلف، وهذا بالتأكيد خطأ. أضف إلى ذلك أنَّنا سنتسبَّب بحدوث تسريب في الذاكرة أو انهيار العملية أثناء الفصل، إذ سيستعمل استدعاء إلغاء الاشتراك معرِّف صديق خطأ.  
 
-In a class component, we would need to add `componentDidUpdate` to handle this case:
+في مكون صنف، سنحتاج إلى إضافة `componentDidUpdate` لمعالجة هذه الحالة:
 
 ```js{8-19}
   componentDidMount() {
@@ -386,14 +392,15 @@ In a class component, we would need to add `componentDidUpdate` to handle this c
   }
 ```
 
-Forgetting to handle `componentDidUpdate` properly is a common source of bugs in React applications.
+نسيان المعالج `componentDidUpdate` هو مصدر شائع لحصول أخطاء منطقية في تطبيقات React.  
 
-Now consider the version of this component that uses Hooks:
+افترض الآن نسخة أخرى مشابهة لهذا المكون ولكن تستعمل الخطافات:
 
 ```js
 function FriendStatus(props) {
   // ...
   useEffect(() => {
+    // ...
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -401,9 +408,9 @@ function FriendStatus(props) {
   });
 ```
 
-It doesn't suffer from this bug. (But we also didn't make any changes to it.)
+لا تحوي هذه الشيفرة أي أثر للخطأ السابق. (ولكن لم نجرِ أية تغييرات لها في نفس الوقت.)  
 
-There is no special code for handling updates because `useEffect` handles them *by default*. It cleans up the previous effects before applying the next effects. To illustrate this, here is a sequence of subscribe and unsubscribe calls that this component could produce over time:
+ليس هنالك أية شيفرة خاصة لمعالجة التحديثات بسبب أنَّ الخطاف `useEffect` يعالجها افتراضيًّا، إذ ينظف التأثيرات السابقة قبل تطبيق التأثيرات اللاحقة. لتوضيح هذا الأمر، إليك سلسلة من استدعاءات الاشتراك وإلغاء الاشتراك التي يمكن للمكون أن يولدها مع مرور الوقت:
 
 ```js
 // Mount with { friend: { id: 100 } } props
@@ -421,11 +428,11 @@ ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // Run next effect
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
 ```
 
-This behavior ensures consistency by default and prevents bugs that are common in class components due to missing update logic.
+يتأكد هذا السلوك تناسق وتطابق الاستدعاءات في الشيفرة بشكل افتراضي ويمنع حصول أية أخطاء شائعة الظهور في مكونات الصنف نتيجة نسيان عملية التحديث.
 
-### Tip: Optimizing Performance by Skipping Effects {#tip-optimizing-performance-by-skipping-effects}
+### نصيحة: حسين الأداء عبر تخطي التأثيرات {#tip-optimizing-performance-by-skipping-effects}
 
-In some cases, cleaning up or applying the effect after every render might create a performance problem. In class components, we can solve this by writing an extra comparison with `prevProps` or `prevState` inside `componentDidUpdate`:
+في بعض الحالات، تنظيف أو تطبيق التأثير بعد كل عملية تصيير قد يبطِّئ الأداء. في مكونات صنف، يمكننا حل هذه المشكلة عبر كتابة موازنة إضافية باستعمال `prevProps` أو `prevState` داخل `componentDidUpdate`:
 
 ```js
 componentDidUpdate(prevProps, prevState) {
@@ -435,7 +442,8 @@ componentDidUpdate(prevProps, prevState) {
 }
 ```
 
-This requirement is common enough that it is built into the `useEffect` Hook API. You can tell React to *skip* applying an effect if certain values haven't changed between re-renders. To do so, pass an array as an optional second argument to `useEffect`:
+
+الشيء الجيد أنَّ هذا الأمر مأخوذ بالحسبان ومضمن داخل واجهة الخطاف `useEffect` البرمجية. يمكنك أن تخبر React *بتخطي* تطبيق تأثير إن لم تتغير قيم محدَّدة بين عمليتي تصيير أو أكثر. ولفعل ذلك، مرِّر مصفوفة كوسيطٍ ثانٍ اختياري إلى الخطاف `useEffect`:
 
 ```js{3}
 useEffect(() => {
@@ -443,14 +451,18 @@ useEffect(() => {
 }, [count]); // Only re-run the effect if count changes
 ```
 
-In the example above, we pass `[count]` as the second argument. What does this mean? If the `count` is `5`, and then our component re-renders with `count` still equal to `5`, React will compare `[5]` from the previous render and `[5]` from the next render. Because all items in the array are the same (`5 === 5`), React would skip the effect. That's our optimization.
+في المثال أعلاه، مرَّرنا `[count]` كوسيط ثانٍ. ولكن، ما الذي يعني تمرير مثل هذه القيمة؟ إن أصبحت قيمة المتغير `count` هي `5`، وأُعيد تصيير المكون مع المتغير `count` الذي لا تزال قيمته ثابتة (أي `5`)، فستوازن React آنذاك القيمة `[5]` الناتجة من عملية التصيير السابقة مع القيمة `[5]` الناتجة من عملية التصيير التالية. لمَّا كانت القيمتان في المصفوفة متساويتين (أي `5 === 5` محقق)، ستتخطى React التأثير. هذا الأمر مفيد جدًا في تحسين الأداء.  
 
-When we render with `count` updated to `6`, React will compare the items in the `[5]` array from the previous render to items in the `[6]` array from the next render. This time, React will re-apply the effect because `5 !== 6`. If there are multiple items in the array, React will re-run the effect even if just one of them is different.
+عندما تجرى عملية التصيير مع تغير القيمة `count` إلى `6`، ستوازن React بين العناصر في المصفوفة `[5]` من عملية التصيير السابقة مع العناصر في المصفوفة `[6]` من عملية التصيير التالية؛ هذه المرة، ستعيد React تطبيق التأثير لأنَّ `5 !== 6` (أي 5 === 6 غير محقق). إن كان هنالك عدة عناصر (وليس عنصرًا واحدًا كما في حالتنا)، ستعيد React تنفيذ التأثير متى ما اختلفت قيمة أحد العناصر فقط.
 
-This also works for effects that have a cleanup phase:
+هذا السلوك متاحٌ أيضًا من أجل التأثيرات التي تجري عمليات تنظيف:
 
-```js{6}
+```js{10}
 useEffect(() => {
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
   ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
   return () => {
     ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -458,18 +470,22 @@ useEffect(() => {
 }, [props.friend.id]); // Only re-subscribe if props.friend.id changes
 ```
 
-In the future, the second argument might get added automatically by a build-time transformation.
+مستقبلًا، قد يضاف هذا الوسيط الثاني تلقائيًّا عبر تحول مبني على الوقت (build-time transformation).
 
->Note
+>ملاحظة
 >
->If you use this optimization, make sure the array includes **any values from the outer scope that change over time and that are used by the effect**. Otherwise, your code will reference stale values from previous renders. We'll also discuss other optimization options in the [Hooks API reference](/docs/hooks-reference.html).
+>إذا كنت تستخدم تحسين الأداء هذا، فتأكد من أن المصفوفة تشمل ***جميع القيم من نطاق المكون (مثل الخاصيات (props) أو الحالة (state)) التي تتغير بمرور الوقت والتي يتم استخدامها بواسطة التأثير***. وإلا ، فإن الرمز الخاص بك سوف يشير إلى القيم التي لا معنى لها من الإصدارات السابقة. تعرف على المزيد [حول كيفية التعامل مع الوظائف](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)و[ماذا تفعل عندما يتغير المصفوفة كثيرًا](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 >
->If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the inputs array always works. While passing `[]` is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, we suggest not making it a habit because it often leads to bugs, [as discussed above](#explanation-why-effects-run-on-each-update). Don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>إن أردت تنفيذ تأثيرٍ ثمَّ تنظيفه مرةً واحدةً فقط (عند الوصل والفصل)، يمكن تمرير مصفوفة فارغة (أي []) كمعاملٍ ثانٍ، إذ هذا يخبر React أنَّ التأثير لا يعتمد على أية قيم من الخاصيات (props) أو الحالة (state)؛ لذلك، فهو لا يحتاج إلى إعادة التنفيذ على الإطلاق. لا يعامل هذا الأمر على أنَّه حالة خاصة - و إنما يتبع مباشرة كيف تعمل مصفوفة المدخلات دائما. 
+>
+>إذا قمت بتمرير مصفوفة فارغة ([]) ، فستكون دائمًا الخاصيات (props) أو الحالة (state) داخل التأثير لها قيمها الأولية. أثناء اجتياز [] لأن الوسيطة الثانية أقرب إلى النموذج الذهني المألوف `ComponentDidMount` و `componentWillUnmount` ، عادة ما تكون هناك [حلول](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) [أفضل](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) لتجنب إعادة تشغيل التأثيرات كثيرًا. أيضًا ، لا تنسَ أن React defers قيد التشغيل `useEffect` حتى بعد رسم المتصفح ، لذا فإن القيام بعمل إضافي يمثل مشكلة أقل.
+>
+>نوصي باستخدام قاعدة [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) كجزء من حزمة خطاطيف [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). فهو يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-Congratulations! This was a long page, but hopefully by the end most of your questions about effects were answered. You've learned both the State Hook and the Effect Hook, and there is a *lot* you can do with both of them combined. They cover most of the use cases for classes -- and where they don't, you might find the [additional Hooks](/docs/hooks-reference.html) helpful.
+مبارك لك! كانت هذه الصفحة طويلة ولكن تحمل في طيَّاتها أجوبةً على أسئلتك. تعملت إلى الآن خطاف الحالة وخطاف التأثير، والآن يمكنك فعل الكثير من الأشياء باستعمالهما سويةً، إذ يشملان أغلب حالات استعمال الأصناف؛ في الحالات التي لا تجد فيهما ضالتك، يمكن أن تبحث في صفحة [الخطافات الإضافية](/docs/hooks-reference.html) فربما تجدها هنالك.
 
-We're also starting to see how Hooks solve problems outlined in [Motivation](/docs/hooks-intro.html#motivation). We've seen how effect cleanup avoids duplication in `componentDidUpdate` and `componentWillUnmount`, brings related code closer together, and helps us avoid bugs. We've also seen how we can separate effects by their purpose, which is something we couldn't do in classes at all.
+أضف إلى ذلك أنَّنا بدأنا نرى كيف بإمكان الخطافات حل مشكلات ذُكرَت في القسم ["الحافز وراء إضافة الخطافات"](/docs/hooks-intro.html#motivation). وجدنا أيضًا كيف أن عملية تنظيف التأثير تلغي أية تكرارات في `componentDidUpdate` و `componentWillUnmount` وتجمع الشيفرة المترابطة وتجعلها قريبةً من بعضها بعضًا، وتساعد في تجنب حصول أخطاء. رأينا أيضًا كيف يمكننا فصل التأثيرات بحسب وظيفتها، وهذا الأمر لا يمكننا فعله في الأصناف مطلقًا.
 
-At this point you might be questioning how Hooks work. How can React know which `useState` call corresponds to which state variable between re-renders? How does React "match up" previous and next effects on every update? **On the next page we will learn about the [Rules of Hooks](/docs/hooks-rules.html) -- they're essential to making Hooks work.**
+إلى هذا الحد، قد تتساءل عن كيفية عمل الخطافات، وكيف تستطيع React أن تعرف أي استدعاء للخطاف `useState` يقابل أي متغير حالة بين عمليات التصيير، وكيف تطابق React التأثيرات السابقة واللاحقة في كل تحديث؟ ***في الصفحة التالية سنتعلم حول [قواعد الخطافات](/docs/hooks-rules.html)، إذ هي ضرورية لجعل الخطافات تعمل بشكل صحيح***.
