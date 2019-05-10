@@ -476,7 +476,11 @@ useEffect(() => {
 >
 >إذا كنت تستخدم تحسين الأداء هذا، فتأكد من أن المصفوفة تشمل ***جميع القيم من نطاق المكون (مثل الخاصيات (props) أو الحالة (state)) التي تتغير بمرور الوقت والتي يتم استخدامها بواسطة التأثير***. وإلا ، فإن الرمز الخاص بك سوف يشير إلى القيم التي لا معنى لها من الإصدارات السابقة. تعرف على المزيد [حول كيفية التعامل مع الوظائف](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)و[ماذا تفعل عندما يتغير المصفوفة كثيرًا](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 >
+<<<<<<< HEAD
 >إن أردت تنفيذ تأثيرٍ ثمَّ تنظيفه مرةً واحدةً فقط (عند الوصل والفصل)، يمكن تمرير مصفوفة فارغة (أي []) كمعاملٍ ثانٍ، إذ هذا يخبر React أنَّ التأثير لا يعتمد على أية قيم من الخاصيات (props) أو الحالة (state)؛ لذلك، فهو لا يحتاج إلى إعادة التنفيذ على الإطلاق. لا يعامل هذا الأمر على أنَّه حالة خاصة - و إنما يتبع مباشرة كيف تعمل مصفوفة المدخلات دائما. 
+=======
+>If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the dependencies array always works.
+>>>>>>> b91049c05702b53445367e54a1652053b6081c1d
 >
 >إذا قمت بتمرير مصفوفة فارغة ([]) ، فستكون دائمًا الخاصيات (props) أو الحالة (state) داخل التأثير لها قيمها الأولية. أثناء اجتياز [] لأن الوسيطة الثانية أقرب إلى النموذج الذهني المألوف `ComponentDidMount` و `componentWillUnmount` ، عادة ما تكون هناك [حلول](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) [أفضل](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) لتجنب إعادة تشغيل التأثيرات كثيرًا. أيضًا ، لا تنسَ أن React defers قيد التشغيل `useEffect` حتى بعد رسم المتصفح ، لذا فإن القيام بعمل إضافي يمثل مشكلة أقل.
 >
