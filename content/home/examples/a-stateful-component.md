@@ -1,7 +1,6 @@
 ---
-title: A Stateful Component
+title: مكوّن الحالة  (Stateful)
 order: 1
 domid: timer-example
 ---
-
-In addition to taking input data (accessed via `this.props`), a component can maintain internal state data (accessed via `this.state`). When a component's state data changes, the rendered markup will be updated by re-invoking `render()`.
+بالإضافة الى أخذ بيانات الادخال (التي يمكن الوصول اليها من خلال `this.props`)، يستطيع المكوّن ان يحتفظ بحالة بياناته الداخلية (التي يمكن الوصول اليها من خلال `this.state`) . عندما تتغير حالة بيانات المكوّن، العلامات المرسومة أو المُظهرة سيتم تحديثها و إعادة رسمها من خلال إعادة تنفيذ الدّالة  `render()`.
