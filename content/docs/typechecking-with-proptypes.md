@@ -1,18 +1,18 @@
 ---
 id: typechecking-with-proptypes
-title: Typechecking With PropTypes
+title: التحقق من الأنواع باستخدام PropTypes
 permalink: docs/typechecking-with-proptypes.html
 redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
 
-> Note:
+> تنبيه :
 >
-> `React.PropTypes` has moved into a different package since React v15.5. Please use [the `prop-types` library instead](https://www.npmjs.com/package/prop-types).
+> `React.PropTypes` انتقلت إلى حزمة مختلفة منذ React v15.5. من فضلك استخدم [مكتبة `prop-types` عوضا](https://www.npmjs.com/package/prop-types).
 >
->We provide [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) to automate the conversion.
+> نحن نوفر [ سكريبت (script) ](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) لتسهيل الإنتقال.
 
-As your app grows, you can catch a lot of bugs with typechecking. For some applications, you can use JavaScript extensions like [Flow](https://flow.org/) or [TypeScript](https://www.typescriptlang.org/) to typecheck your whole application. But even if you don't use those, React has some built-in typechecking abilities. To run typechecking on the props for a component, you can assign the special `propTypes` property:
+بينما يصير تطبيقك اكثر توسعا ، يمكنك تفادي الكثير من الأخطاء من خلال التحقق من الأنواع. بالنسبة لبعض التطبيقات ، يمكنك استخدام ملحقات JavaScript مثل [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) للتحقق من الأنواع . ولكن حتى لو كنت لا تستخدم هذه الملحقات , React لديه بعض الإضافات المدمجة التي لديها القدرة على التحقق من الأنواع . لتشغيل التحقق من الأنواع على الخاصيات (props) لمكوّن (Component) , يمكنك تعيين خاصية `propTypes` :
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -30,11 +30,11 @@ Greeting.propTypes = {
 };
 ```
 
-`PropTypes` exports a range of validators that can be used to make sure the data you receive is valid. In this example, we're using `PropTypes.string`. When an invalid value is provided for a prop, a warning will be shown in the JavaScript console. For performance reasons, `propTypes` is only checked in development mode.
+`PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props) ,سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق , يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
 
 ### PropTypes {#proptypes}
 
-Here is an example documenting the different validators provided:
+فيما يلي مثال يوضح مختلف أدوات التحقق المتوفرة:
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -119,9 +119,9 @@ MyComponent.propTypes = {
 };
 ```
 
-### Requiring Single Child {#requiring-single-child}
+### استلزام مكون بنوي وحيد  {#requiring-single-child}
 
-With `PropTypes.element` you can specify that only a single child can be passed to a component as children.
+بإستخدام `PropTypes.element` يمكنك تحديد أنه يمكن فقط نقل مكون وحيد إلى أحد المكونات كمكونات بنيوية.
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -143,9 +143,9 @@ MyComponent.propTypes = {
 };
 ```
 
-### Default Prop Values {#default-prop-values}
+### قيم الخاصيات الإفتراضية {#default-prop-values}
 
-You can define default values for your `props` by assigning to the special `defaultProps` property:
+يمكنك تحديد القيم الافتراضية للخاصيات `props` بتعيين خاصية `defaultProps` :
 
 ```javascript
 class Greeting extends React.Component {
@@ -168,7 +168,7 @@ ReactDOM.render(
 );
 ```
 
-If you are using a Babel transform like [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) , you can also declare `defaultProps` as static property within a React component class. This syntax has not yet been finalized though and will require a compilation step to work within a browser. For more information, see the [class fields proposal](https://github.com/tc39/proposal-class-fields).
+إذا كنت تستخدم تحويلات Babel مثل [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) , يمكنك أيضا تعيين `defaultProps` كخاصية ثابتة داخل صنف (class) مكون React . هذه الشفرة البرمجية لم يتم الإنتهاء منها بعد و ستتطلب خطوة التحويل البرمجي (Compilation) للعمل داخل المتصفح . للمزيد من المعلومات ، أنظر الى  [class fields proposal](https://github.com/tc39/proposal-class-fields).
 
 ```javascript
 class Greeting extends React.Component {
@@ -184,4 +184,4 @@ class Greeting extends React.Component {
 }
 ```
 
-The `defaultProps` will be used to ensure that `this.props.name` will have a value if it was not specified by the parent component. The `propTypes` typechecking happens after `defaultProps` are resolved, so typechecking will also apply to the `defaultProps`.
+ تُستخدم `defaultProps` للتحقق من أن `this.props.name` سيكون لها قيمة إذا لم يتم تحديدها بواسطة المكون الأب .  التحقق من الأنواع بإستخدام `propTypes` يحدث بعد تعيين قيمة لـ `defaultProps`, ولهذا التحقق من الأنواع ستنطبق على `defaultProps` ايضا .
