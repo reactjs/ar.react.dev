@@ -1,24 +1,24 @@
 ---
 id: faq-ajax
-title: AJAX and APIs
+title: AJAX و APIs
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
+ 
+### كيف يمكنني إجراء استدعاء في AJAX؟ {#how-can-i-make-an-ajax-call}
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+بإمكانك استخدام أي مكتبة AJAX تريدها مع React. من المكتبات الشائعة هنالك [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), والمكتبة المُضمَّنة مع المتصفح والتي تُدعى [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+### في أي تابع من توابع دورة الحياة يجب عليّ إجراء استدعاء AJAX؟ {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+يجب عليك الحصول على البيانات عن طريق استدعاء AJAX في تابع دور الحياة [`componentDidMount`](/docs/react-component.html#mounting).  وهذا لكي تستطيع استخدام التابع  `setState` لتحديث مكوّنك عند استقبال البيانات.
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+### مثال: استخدام نتائج AJAX لتعيين الحالة المحلية {#example-using-ajax-results-to-set-local-state}
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+يُوضّح المكوّن التالي كيفيّة إجراء استدعاء AJAX ضمن التابع `componentDidMount` لتعيين الحالة المحليّة للمكوّن. 
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
-
-The example API returns a JSON object like this:
+تُعيد واجهة برمجة التطبيق في هذا المثال كائن JSON مشابه لما يلي:
 
 ```
 {
@@ -50,9 +50,9 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+       	// ملاحظة: من الهام التعامل مع الأخطاء هنا
+        // catch() بدلًا من من استخدام الكتلة 
+        // لكي لا نقبل الاستثناءات من أخطاء فعليّة في المكوّنات
         (error) => {
           this.setState({
             isLoaded: true,
