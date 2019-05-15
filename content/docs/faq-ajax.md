@@ -6,7 +6,7 @@ layout: docs
 category: FAQ
 ---
  
-### كيف يمكنني إجراء استدعاء في AJAX؟ {#how-can-i-make-an-ajax-call}
+### كيف يمكنني إجراء استدعاء بواسطة AJAX؟ {#how-can-i-make-an-ajax-call}
 
 بإمكانك استخدام أي مكتبة AJAX تريدها مع React. من المكتبات الشائعة هنالك [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), والمكتبة المُضمَّنة مع المتصفح والتي تُدعى [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
