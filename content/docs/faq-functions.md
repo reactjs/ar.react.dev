@@ -1,6 +1,6 @@
 ---
 id: faq-functions
-title: Passing Functions to Components
+title: تمرير الدوال للمكونات
 permalink: docs/faq-functions.html
 layout: docs
 category: FAQ
