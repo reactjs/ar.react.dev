@@ -5,7 +5,7 @@ permalink: docs/faq-state.html
 layout: docs
 category: FAQ
 ---
-
+ 
 ### What does `setState` do? {#what-does-setstate-do}
 
 `setState()` schedules an update to a component's `state` object. When state changes, the component responds by re-rendering.
