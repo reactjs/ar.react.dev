@@ -5,7 +5,7 @@ permalink: docs/faq-styling.html
 layout: docs
 category: FAQ
 ---
-
+ 
 ### How do I add CSS classes to components? {#how-do-i-add-css-classes-to-components}
 
 Pass a string as the `className` prop:
