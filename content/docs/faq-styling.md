@@ -1,22 +1,22 @@
 ---
 id: faq-styling
-title: Styling and CSS
+title: التنسيق واستخدام CSS
 permalink: docs/faq-styling.html
 layout: docs
 category: FAQ
 ---
  
-### How do I add CSS classes to components? {#how-do-i-add-css-classes-to-components}
+### كيف أُضيف أصناف CSS إلى المكوّنات؟ {#how-do-i-add-css-classes-to-components}
 
-Pass a string as the `className` prop:
+مرِّر سلسلة نصيّة إلى خاصيّة اسم الصنف `className` :
 
 ```jsx
 render() {
-  return <span className="menu navigation-menu">Menu</span>
+  return <span className="menu navigation-menu">القائمة</span>
 }
 ```
 
-It is common for CSS classes to depend on the component props or state:
+من الشائع أن تعتمد أصناف CSS على خاصيّات أو حالة المكوّنات :
 
 ```jsx
 render() {
@@ -24,28 +24,28 @@ render() {
   if (this.props.isActive) {
     className += ' menu-active';
   }
-  return <span className={className}>Menu</span>
+  return <span className={className}>القائمة</span>
 }
 ```
 
->Tip
+>ملاحظة
 >
->If you often find yourself writing code like this, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package can simplify it.
+>إن وجدت نفسك تكتب شيفرة مثل هذه، فتستطيع الحزمة, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) تبسيطها لك.
 
-### Can I use inline styles? {#can-i-use-inline-styles}
+### هل أستطيع استخدام التنسيقات السطرية (inline)؟ {#can-i-use-inline-styles}
 
-Yes, see the docs on styling [here](/docs/dom-elements.html#style).
+نعم، انظر إلى هذا التوثيق حول التنسيق [من هنا](/docs/dom-elements.html#style).
 
-### Are inline styles bad? {#are-inline-styles-bad}
+### هل التنسيقات السطرية سيئة؟ {#are-inline-styles-bad}
 
-CSS classes are generally better for performance than inline styles.
+تكون أصناف CSS أفضل بشكل عام للأداء من التنسيقات السطرية.
 
-### What is CSS-in-JS? {#what-is-css-in-js}
+### ماذا يعني المصطلح CSS-in-JS? {#what-is-css-in-js}
 
-"CSS-in-JS" refers to a pattern where CSS is composed using JavaScript instead of defined in external files. Read a comparison of CSS-in-JS libraries [here](https://github.com/MicheleBertoli/css-in-js).
+يُشير المصطلح CSS-in-JS إلى النمط الذي تُركَّب فيه CSS باستخدام JavaScript بدلًا من تعريفها في الملفّات الخارجيّة. اقرأ [من هنا ](https://github.com/MicheleBertoli/css-in-js)  مقارنة بين مكتبات CSS-in-JS.
 
-_Note that this functionality is not a part of React, but provided by third-party libraries._ React does not have an opinion about how styles are defined; if in doubt, a good starting point is to define your styles in a separate `*.css` file as usual and refer to them using [`className`](/docs/dom-elements.html#classname).
+لاحظ أنّ هذه الوظيفة ليست جزءًا من React ولكن تُزوّدنا بها مكتبات الطرف الثالث. ليس هناك رأي محدّد لمكتبة React حول كيفيّة تعريف التنسيقات. إن كنت مترددًا فأفضل نقطة للبدء هي تعريف تنسيقاتك في ملف ‎*.css منفصل كالعادة والإشارة إليها باستخدام الخاصيّة [`className`](/docs/dom-elements.html#classname).
 
-### Can I do animations in React? {#can-i-do-animations-in-react}
+### هل بإمكاني إجراء تحريك في React؟ {#can-i-do-animations-in-react}
 
-React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/) and [React Motion](https://github.com/chenglou/react-motion), for example.
+يُمكِن استخدام React لدعم التحريك. انظر إلى مكتبة [React Transition Group](https://reactcommunity.org/react-transition-group/) ومكتبة  [React Motion](https://github.com/chenglou/react-motion), على سبيل المثال.
