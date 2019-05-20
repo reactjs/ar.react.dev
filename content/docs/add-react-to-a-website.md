@@ -1,6 +1,6 @@
 ---
 id: add-react-to-a-website
-title: Add React to a Website
+title: إضافة React للموقع
 permalink: docs/add-react-to-a-website.html
 redirect_from:
   - "docs/add-react-to-an-existing-app.html"
@@ -8,127 +8,126 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
-Use as little or as much React as you need.
+استخدم القليل من React أو بقدر ما تحتاج إليه.
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need**. Perhaps you only want to add some "sprinkles of interactivity" to an existing page. React components are a great way to do that.
+React صممت ابتداء بأخذ الاعتماد التدريجي في الحسبان، **لذا تستطيع الاعتماد على React الشيء البسيط أو بقدر ما تحتاج إليه**.ربما أنت بحاجة إلى اضافة القليل من التفاعل أو بقدر الحاجة إلى صفحة موجودة. مكونات React هي أفضل وسيلة للقيام بذلك.
 
-The majority of websites aren't, and don't need to be, single-page apps. With **a few lines of code and no build tooling**, try React in a small part of your website. You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+أغلبية مواقع الويب ليست تطبيقات ذات صفحة وحيدة، ولا تحتاج إلى أن تكون كذلك. **ببضعة أسطر برمجية ودون أدوات بناء**, حاول تجريب React في أجزاء صغيرة من موقعك؛ يمكنك بعدئذٍ إمَّا أن توسِّع استعمال React تدريجيًّا، أو تقتصر باستعمالها على بضعة أدوات ذكية ديناميكية (dynamic widgets).
 
 ---
 
-- [Add React in One Minute](#add-react-in-one-minute)
-- [Optional: Try React with JSX](#optional-try-react-with-jsx) (no bundler necessary!)
+- [اضف React بدقيقة واحدة!](#add-react-in-one-minute)
+- [إختياري: جرب React مع JSX](#optional-try-react-with-jsx) (لا حاجة لاي bundler!)
 
-## Add React in One Minute {#add-react-in-one-minute}
+## اضف React بدقيقة واحدة! {#add-react-in-one-minute}
 
-In this section, we will show how to add a React component to an existing HTML page. You can follow along with your own website, or create an empty HTML file to practice.
+في هذا القسم، سنعلمك كيفية إضافة مكون واحد من مكونات React إلى صفحة HTML موجودة مسبقًا. يمكنك إمَّا استعمال إحدى صفحات موقعك وإمَّا إنشاء صفحة HTML جديدة للتدرُّب عليها.
 
-There will be no complicated tools or install requirements -- **to complete this section, you only need an internet connection, and a minute of your time.**
+لن تحتاج إلى أية أدوات معقدة أو تثبيت أي شيء. **كل ما تحتاج إليه لإكمال هذا القسم هو اتصال بالإنترنت ودقيقة مستقطعة من وقتك**.
 
-Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+تستطيع تنزيل [المثال التالي كاملًا (بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip) ولكن الأمر عائد إليك.
 
-### Step 1: Add a DOM Container to the HTML {#step-1-add-a-dom-container-to-the-html}
+### الخطوة 1: أضف حاوية DOM إلى صفحة HTM {#step-1-add-a-dom-container-to-the-html}
 
-First, open the HTML page you want to edit. Add an empty `<div>` tag to mark the spot where you want to display something with React. For example:
+
+أولًا، افتح صفحة HTML التي تريد تعديلها ثم أضف وسم `<div>` فارغ لتحديد الجزء حيث تريد إظهار شيء فيه باستعمال React:
 
 ```html{3}
-<!-- ... existing HTML ... -->
+<!-- ... HTML محتويات صفحة ... -->
 
 <div id="like_button_container"></div>
 
-<!-- ... existing HTML ... -->
+<!-- ... HTML محتويات صفحة ... -->
 ```
 
-We gave this `<div>` a unique `id` HTML attribute. This will allow us to find it from the JavaScript code later and display a React component inside of it.
+أعطينا الوسم `<div>` معرِّفًا فريدًا عبر الخاصية `id` . سيسمح لنا هذا بالعثور عليه بسهولة عبر شيفرة جافاسكريبت لاحقًا وإضافة مكون React داخله.
 
->Tip
+>نصيحة
 >
->You can place a "container" `<div>` like this **anywhere** inside the `<body>` tag. You may have as many independent DOM containers on one page as you need. They are usually empty -- React will replace any existing content inside DOM containers.
+>تستطيع وضع "الحاوية" `<div>` **في أي مكان** ضمن الوسم `<body>`. إذ يمكنك استعمال عدد غير محدود من حاويات DOM المستقلة في صفحة واحدة. ستكون هذه الحاويات فارغةً عادةً، لأنَّ React ستستبدل أي محتوى موجود داخل حاويات DOM.
 
-### Step 2: Add the Script Tags {#step-2-add-the-script-tags}
+### الخطوة 2: إضافة وسوم Script {#step-2-add-the-script-tags}
 
-Next, add three `<script>` tags to the HTML page right before the closing `</body>` tag:
+ثانيًا, أضف ثلاثة وسوم `<script>` إلى صفحة HTML قبل وسم الإغلاق `</body>` بالشكل التالي:
 
 ```html{5,6,9}
-  <!-- ... other HTML ... -->
+  <!-- ... HTML محتوى ... -->
 
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- React تحميل -->
+  <!-- "development.js" مكان "production.min.js" ملاحظة: عند النشر، بدل -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-  <!-- Load our React component. -->
+  <!-- الخاص بنا React تحميل مكون. -->
   <script src="like_button.js"></script>
 
 </body>
 ```
 
-The first two tags load React. The third one will load your component code.
+يحمِّل أول وسمين React، ويحمِّل الوسم الثالث شيفرة المكون الذي ستنشئه.
 
-### Step 3: Create a React Component {#step-3-create-a-react-component}
+### الخطوة 3: أنشئ مكون React {#step-3-create-a-react-component}
 
-Create a file called `like_button.js` next to your HTML page.
+أنشئ ملفًا باسم `like_button.js` بجانب صفحة HTML التي عدلناها للتو.
 
-Open **[this starter code](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
+إفتح **[هذه الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** ثم انسخها والصقها في الملف الذي أنشأته قبل قليل.
 
->Tip
+>فائدة
 >
->This code defines a React component called `LikeButton`. Don't worry if you don't understand it yet -- we'll cover the building blocks of React later in our [hands-on tutorial](/tutorial/tutorial.html) and [main concepts guide](/docs/hello-world.html). For now, let's just get it showing on the screen!
+>عرِّف هذه الشيفرة مكون React يدعى `LikeButton`. لا تقلق إن لم تفهم شيئًا منها، إذ سنغطي كل شيء مذكور فيها لاحقًا في [الدليل التطبيقي](/tutorial/tutorial.html) و[دليل المفاهيم الاساسية](/docs/hello-world.html). في الوقت الحالي، لندع هذه الشيفرة تُظهِر شيئًا على الشاشة.
 
-After **[the starter code](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
+بعد **[الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, أضف السطرين في نهاية الملف `like_button.js`:
 
 ```js{3,4}
-// ... the starter code you pasted ...
+// ... الشيفرة المساعدة التي لصقتها ...
 
 const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it. 
+مهمة هذين السطرين هي العثور على العنصر `<div>` الذي أضفناه إلى صفحة HTML في الخطوة الأولى ثم إظهار الزر "Like" - الذي يمثِّل أحد مكونات React - داخله.
 
-### That's It! {#thats-it}
+### انتهينا! {#thats-it}
 
-There is no step four. **You have just added the first React component to your website.**
+لا توجد أية خطوات إضافية. **لقد أضفت للتو أول مكون من مكونات React إلى موقعك.**
 
-Check out the next sections for more tips on integrating React.
+انتقل إلى الأقسام التالية للمزيد حول دمج React.
 
-**[View the full example source code](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
+**[اطلع على كامل شيفرة المثال](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)** أو **[نزل المثال كاملًا (ملف مضغوط بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
-**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+### إضافة: إعادة استعمال مكون {#tip-reuse-a-component}
 
-### Tip: Reuse a Component {#tip-reuse-a-component}
+عادةً، قد تحتاج إلى إظهار مكونات React في مواضع عدة في صفحة HTML. إليك مثال يُظهِر الزر "Like" في ثلاثة أماكن ويمرر بعض البيانات إليه:
 
-Commonly, you might want to display React components in multiple places on the HTML page. Here is an example that displays the "Like" button three times and passes some data to it:
+[اطلع على الشيفرة الكاملة للمثال.](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[View the full example source code](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
+[نزل المثال كاملًا (ملف مضغوط بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
-[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
-
->Note
+>نصيحة
 >
->This strategy is mostly useful while React-powered parts of the page are isolated from each other. Inside React code, it's easier to use [component composition](/docs/components-and-props.html#composing-components) instead.
+>هذا الأسلوب مفيد جدًا في أثناء كون الأجزاء التي تعمل باستعمال React هي أجزاء معزولة عن بعضها بعضًا. داخل شيفرة React، من الأسهل استعمال [تركيب المكونات](/docs/components-and-props.html#composing-components) عوض ذلك.
 
-### Tip: Minify JavaScript for Production {#tip-minify-javascript-for-production}
+### إضافة: تصغير شيفرة الجافاسكريبت للنشر {#tip-minify-javascript-for-production}
 
-Before deploying your website to production, be mindful that unminified JavaScript can significantly slow down the page for your users.
+قبل نشر موقعك على خادم إنتاجي، ضع في بالك أن عدم تصغير شيفرة JavaScript يمكن أن يبطِّئ الصفحة عندما يحملها المستخدم النهائي.
 
-If you already minify the application scripts, **your site will be production-ready** if you ensure that the deployed HTML loads the versions of React ending in `production.min.js`:
+إن صغَّرت شيفرات التطبيق مسبقًا، **فسيكون موقعك جاهزًا للنشر** على البيئة الإنتاجية بعد التأكد من أن شيفرة HTML التي يراد نشرها تُحمِّل إصدار React الإنتاجي (أي الذي ينتهي بـ `production.min.js`:
 
 ```js
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-If you don't have a minification step for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
+إن لم تعرف كيفية تنفيذ خطوة التصغير, [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
 
-## Optional: Try React with JSX {#optional-try-react-with-jsx}
+## إختياري: جرب React مع JSX {#optional-try-react-with-jsx}
 
-In the examples above, we only relied on features that are natively supported by the browsers. This is why we used a JavaScript function call to tell React what to display:
+في المثال السابق، اعتمدنا على ميزات مدعومة من طرف المتصفحات فقط. هذا هو سبب استعمال استدعاء إحدى دوال جافسكريبت لاخبار React بالشيء الذي نريد عرضه:
 
 ```js
 const e = React.createElement;
 
-// Display a "Like" <button>
+// "Like" ذي الاسم <button> عرض
 return e(
   'button',
   { onClick: () => this.setState({ liked: true }) },
@@ -136,10 +135,10 @@ return e(
 );
 ```
 
-However, React also offers an option to use [JSX](/docs/introducing-jsx.html) instead:
+على أي حال، توفر React خيارًا بديلًا عبر استعمال [JSX](/docs/introducing-jsx.html):
 
 ```js
-// Display a "Like" <button>
+// "Like" ذي الاسم <button> عرض الزر
 return (
   <button onClick={() => this.setState({ liked: true })}>
     Like
@@ -147,56 +146,56 @@ return (
 );
 ```
 
-These two code snippets are equivalent. While **JSX is [completely optional](/docs/react-without-jsx.html)**, many people find it helpful for writing UI code -- both with React and with other libraries.
+هذه الشيفرة مكافئة للشيفرة التي قبلها تمامًا. لمَّا كان **JSX [اختياري بشكل كامل](/docs/react-without-jsx.html)**, يرى الكثير من الأشخاص أنَّه مفيد لكتابة شيفرة واجهة المستخدم (UI code) في React وفي مكتبات أخرى.
 
-You can play with JSX using [this online converter](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+يمكنك تجريب JSX باستعمال [محول بابل المباشر](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
 
-### Quickly Try JSX {#quickly-try-jsx}
+### جرب JSX بسرعة {#quickly-try-jsx}
 
-The quickest way to try JSX in your project is to add this `<script>` tag to your page:
+أسرع طريقة لتجريب JSX في مشروعك هي إضافة الوسم `<script>` التالي لمشروعك:
 
 ```html
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) that you can download and play with.
+الآن، يمكنك استعمال JSX في أي وسم `<script>` عبر إضافة الخاصية `type="text/babel"` إليه. [ستجد هنا ملف HTML مع JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) يمكنك تنزيله والتجريب به.
 
-This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
+هذا الأسلوب لا بأس به للتعلم وإنشاء نماذج تجريبية، **ولكنه غير مناسب للإنتاج**  إذ سيجعل موقعك بطيئًا. عندما تكون مستعدًا للبدء بجدية، احذف الوسم `<script>` السابق والخاصية `type="text/babel"`, لأنَّك ستتعلم في القسم التالي كيفية ضبط معالج JSX الأولي (JSX preprocessor) لتحويل جميع الوسوم `<script>` تلقائيًّا.
 
-### Add JSX to a Project {#add-jsx-to-a-project}
+### إضافة JSX إلى المشروع {#add-jsx-to-a-project}
 
-Adding JSX to a project doesn't require complicated tools like a bundler or a development server. Essentially, adding JSX **is a lot like adding a CSS preprocessor.** The only requirement is to have [Node.js](https://nodejs.org/) installed on your computer.
+ يتطلب إضافة JSX إلى مشروعٍ ما أية أدوات معقدة مثل مُحزِّم أو خادم تطويري. بشكل أساسي، **إضافة JSX يشبه إلى حد ما إضافة معالج CSS أولي.** لشيء المطلوب هو تثبيت [Node.js](https://nodejs.org/) على حاسوبك.
 
-Go to your project folder in the terminal, and paste these two commands:
+اذهب إلى مجلد مشروعك من الطرفية والصق الأمرين التاليين:
 
-1. **Step 1:** Run `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
-2. **Step 2:** Run `npm install babel-cli@6 babel-preset-react-app@3`
+1. **الخطوة 1:** نفِّذ الأمر `npm init -y` (عند الفشل، اطلع على [هذا الحل](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
+2. **الخطوة 2:** نفذ الأمر `npm install babel-cli@6 babel-preset-react-app@3`
 
->Tip
+>نصيحة
 >
->We're **using npm here only to install the JSX preprocessor;** you won't need it for anything else. Both React and the application code can stay as `<script>` tags with no changes.
+>نحن **نستعمل npm هنا لتثبيت معالج JSX الأولي؛** لن تحتاج إليه للقيام بأي شيء آخر. يمكن بقاء React وشيفرة التطبيق على شكل وسوم `<script>` دون أي تغيير.
 
-Congratulations! You just added a **production-ready JSX setup** to your project.
+تهانينا لك! لقد أضفت للتو **تهيئة JSX اللازمة لتجهيز البيئة الانتاجية.**
 
 
-### Run JSX Preprocessor {#run-jsx-preprocessor}
+### تشغيل معالج JSX الأولي {#run-jsx-preprocessor}
 
-Create a folder called `src` and run this terminal command:
+أنشئ مجلدًا باسم `src` ثم نفذ الأمر التالي في الطرفية:
 
 ```
 npx babel --watch src --out-dir . --presets react-app/prod 
 ```
 
->Note
+>ملاحظة
 >
->`npx` is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>الأمر `npx`  ليس فيه أي خطأ كتابي، إذ هو أداة تشغيل للحزم تأتي مع [الإصدار 5.2 وما بعده من npm](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 >
->If you see an error message saying "You have mistakenly installed the `babel` package", you might have missed [the previous step](#add-jsx-to-a-project). Perform it in the same folder, and then try again.
+>إن حصلت على رسالة خطأ تقول: "You have mistakenly installed the babel package" (أي أنك ثبَّت الحزمة babel بشكل خطأ)، ربما لم تُنفِّذ الخطوة السابقة [إضافة JSX إلى المشروع](#add-jsx-to-a-project). نفذ الأمرين في تلك الخطوة في نفس مجلد المشروع ثم أعد تنفيذ الأمر السابق.
 
-Don't wait for it to finish -- this command starts an automated watcher for JSX.
+لا تنتظر انتهاء هذا الأمر لأنَّه لن ينتهي. يبدأ هذا الأمر تشغيل مراقب آلي من أجل JSX.
 
-If you now create a file called `src/like_button.js` with this **[JSX starter code](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
+إن أنشأت الآن مجلدًا باسم `src/like_button.js` مع **[هذه الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**، فسينشئ المراقب الملف `like_button.js` بعد معالجته مع شيفرة جافاسكريبت صرفة تناسب المتصفح. في كل مرة تعدل فيها الملف المصدري مع JSX، ستُجرَى عملية التحويل تلقائيًّا.
 
-As a bonus, this also lets you use modern JavaScript syntax features like classes without worrying about breaking older browsers. The tool we just used is called Babel, and you can learn more about it from [its documentation](https://babeljs.io/docs/en/babel-cli/).
+إضافة لذلك، هذا يمكِّنك أيضًا من استعمال ميزات صياغة JavaScript الحديثة مثل الأصناف دون القلق حيال دعم المتصفحات القديمة. الأداة التي استعملناها للتو تدعى "بابل" (Babel)، ويمكنك تعلم المزيد عنها من [توثيقها الرسمي](https://babeljs.io/docs/en/babel-cli/).
 
-If you notice that you're getting comfortable with build tools and want them to do more for you, [the next section](/docs/create-a-new-react-app.html) describes some of the most popular and approachable toolchains. If not -- those script tags will do just fine!
+ن شعرت بالراحة مع أدوات البناء وأردت الاستزادة منها لأداء مزيد من الأمور، يشرح [القسم التالي](/docs/create-a-new-react-app.html) أشهر أدوات البناء (toolchains) وأكثرها فاعلية. إن لم تشعر كذلك، الخطوات السابقة مع الوسوم `<script>` كافية إلى حد ما.
