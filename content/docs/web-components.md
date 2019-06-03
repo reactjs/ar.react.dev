@@ -1,46 +1,47 @@
 ---
 id: web-components
-title: Web Components
+title: مكونات الويب 
 permalink: docs/web-components.html
 redirect_from:
   - "docs/webcomponents.html"
 ---
 
-React and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) are built to solve different problems.  Web Components provide strong encapsulation for reusable components, while React provides a declarative library that keeps the DOM in sync with your data. The two goals are complementary. As a developer, you are free to use React in your Web Components, or to use Web Components in React, or both.
+إنّ مكوّنات React و[مكوّنات الويب](https://developer.mozilla.org/en-US/docs/Web/Web_Components) مبنية لحل مشاكل مختلفة. حيث تُزوِّدنا مكوّنات الويب بتغليف قوي لمكوّنات قابلة لإعادة الاستخدام، بينما تُزوِّدنا مكوّنات React بمكتبة تصريحات تُبقي DOM على تزامن مع بياناتنا. يكون هذا الهدفان متكاملين، وكمُطوّر لك حرية استخدام React في مكوّنات الويب لديك، أو استخدام مكوّنات الويب في React أو كليهما معًا.
 
-Most people who use React don't use Web Components, but you may want to, especially if you are using third-party UI components that are written using Web Components.
+معظم من يستخدم React لا يستخدم مكوّنات الويب، ولكن قد ترغب في ذلك خاصة إذا كنت تستخدم مكوّنات لواجهة المستخدم من طرف ثالث والتي تكون مكتوبة باستخدام مكوّنات الويب.
 
-## Using Web Components in React {#using-web-components-in-react}
+
+## استخدام مكوّنات الويب في React {#using-web-components-in-react}
 
 ```javascript
 class HelloMessage extends React.Component {
   render() {
-    return <div>Hello <x-search>{this.props.name}</x-search>!</div>;
+    return <div>أهلًا <x-search>{this.props.name}</x-search>!</div>;
   }
 }
 ```
 
-> Note:
+> ملاحظة:
 >
-> Web Components often expose an imperative API. For instance, a `video` Web Component might expose `play()` and `pause()` functions. To access the imperative APIs of a Web Component, you will need to use a ref to interact with the DOM node directly. If you are using third-party Web Components, the best solution is to write a React component that behaves as a wrapper for your Web Component.
+>تعرض مكوّنات الويب عادة واجهة برمجة تطبيقات (API) إلزاميّة. على سبيل المثال قد يُعرِّض مكوّن الويب `video` الدالتين `play()`‎ و `pause()`، وللوصول إلى واجهة برمجة التطبيقات الإلزامية لمكوّنات الويب ستحتاج إلى استخدام مرجع للتفاعل مع عقدة DOM مباشرةً. إن كنت تستخدم مكوّنات ويب من طرف ثالث فالحل الأمثل هو كتابة مكوّن React يسلك سلوك غلاف لمكوّنات الويب لديك.
 >
-> Events emitted by a Web Component may not properly propagate through a React render tree.
-> You will need to manually attach event handlers to handle these events within your React components.
+> الأحداث الصادرة من قبل مكوّن الويب قد لا تنتشر بشكل صحيح عبر شجرة تصيير React.
+> ستحتاج إلى إرفاق معالج أحداث يدويًّا للتعامل مع هذه الأحداث ضمن مكوّنات React لديك.
 
-One common confusion is that Web Components use "class" instead of "className".
+إحدى الأمور التي من الشائع الخطأ بها هي استخدام مكوّنات الويب للخاصيّة "class" بدلًا من "className":
 
 ```javascript
 function BrickFlipbox() {
   return (
     <brick-flipbox class="demo">
-      <div>front</div>
-      <div>back</div>
+      <div>الواجهة الأمامية</div>
+      <div>الواجهة الخلفية</div>
     </brick-flipbox>
   );
 }
 ```
 
-## Using React in your Web Components {#using-react-in-your-web-components}
+## استخدام React في مكوّنات الويب لديك {#using-react-in-your-web-components}
 
 ```javascript
 class XSearch extends HTMLElement {
@@ -56,7 +57,7 @@ class XSearch extends HTMLElement {
 customElements.define('x-search', XSearch);
 ```
 
->Note:
+>ملاحظة:
 >
->This code **will not** work if you transform classes with Babel. See [this issue](https://github.com/w3c/webcomponents/issues/587) for the discussion.
->Include the [custom-elements-es5-adapter](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs) before you load your web components to fix this issue.
+> **لن** تعمل هذه الشيفرة إن نقلت الأصناف باستخدام Babel. انظر إلى هذه المشكلة [من هنا](https://github.com/w3c/webcomponents/issues/587). 
+> يجب عليك تضمين [custom-elements-es5-adapter](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs) قبل تحميل مكوّنات الويب لإصلاح هذه المشكلة.
