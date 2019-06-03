@@ -1,10 +1,10 @@
 ---
 id: react-without-es6
-title: React Without ES6
+title: React بدون ES6
 permalink: docs/react-without-es6.html
 ---
 
-Normally you would define a React component as a plain JavaScript class:
+نُعرِّف عادةً مُكوّنات React كأصناف JavaScript مُجرَّدة:
 
 ```javascript
 class Greeting extends React.Component {
@@ -14,7 +14,7 @@ class Greeting extends React.Component {
 }
 ```
 
-If you don't use ES6 yet, you may use the `create-react-class` module instead:
+إن لم تكن تستخدم ES6 بعد، فبإمكانك استخدام الوحدة `create-react-class` بدلًا من ذلك:
 
 
 ```javascript
@@ -26,11 +26,11 @@ var Greeting = createReactClass({
 });
 ```
 
-The API of ES6 classes is similar to `createReactClass()` with a few exceptions.
+تُشبِه واجهة برمجة التطبيقات لأصناف ES6 الصنف `createReactClass()` مع بعض الاستثناءات.
 
-## Declaring Default Props {#declaring-default-props}
+## تعريف الخاصيات الافتراضية {#declaring-default-props}
 
-With functions and ES6 classes `defaultProps` is defined as a property on the component itself:
+تُعرَّف الخاصيّات الافتراضيّة `defaultProps` في أصناف ودوال ES6 كخاصيّة ضمن المُكوّن نفسه:
 
 ```javascript
 class Greeting extends React.Component {
@@ -42,7 +42,7 @@ Greeting.defaultProps = {
 };
 ```
 
-With `createReactClass()`, you need to define `getDefaultProps()` as a function on the passed object:
+أمّا باستخدام `createReactClass()`‎ فتحتاج لتعريف الدالة `getDefaultProps()`‎ كدالة ضمن الكائن المُمرَّر:
 
 ```javascript
 var Greeting = createReactClass({
@@ -57,9 +57,9 @@ var Greeting = createReactClass({
 });
 ```
 
-## Setting the Initial State {#setting-the-initial-state}
+## تعيين الحالة المبدئية {#setting-the-initial-state}
 
-In ES6 classes, you can define the initial state by assigning `this.state` in the constructor:
+في أصناف ES6 تستطيع تعريف الحالة المبدئية عن طريق تعيين `this.state`  في الدالة البانية:
 
 ```javascript
 class Counter extends React.Component {
@@ -71,7 +71,7 @@ class Counter extends React.Component {
 }
 ```
 
-With `createReactClass()`, you have to provide a separate `getInitialState` method that returns the initial state:
+يجب عليك مع الدالة `createReactClass()`‎ تزويدها بتابع `getInitialState` منفصل والذي يُعيد الحالة المبدئية:
 
 ```javascript
 var Counter = createReactClass({
@@ -82,9 +82,9 @@ var Counter = createReactClass({
 });
 ```
 
-## Autobinding {#autobinding}
+## الربط التلقائي {#autobinding}
 
-In React components declared as ES6 classes, methods follow the same semantics as regular ES6 classes. This means that they don't automatically bind `this` to the instance. You'll have to explicitly use `.bind(this)` in the constructor:
+تتبع التوابع في مكوّنات React المُعرَّفة كأصناف ES6 نفس القواعد في أصناف ES6 الاعتيادية. يعني هذا أنّها لا تربط `this` بنسخة الكائن، بل يجب عليك أن تستخدم بشكل صريح التابع ‎`.bind(this)`‎ في الدالة البانية:
 
 ```javascript
 class SayHello extends React.Component {
@@ -110,7 +110,7 @@ class SayHello extends React.Component {
 }
 ```
 
-With `createReactClass()`, this is not necessary because it binds all methods:
+لا يكون هذا ضروريًّا مع `createReactClass()`‎ لأنّها تربط كل التوابع بشكلٍ تلقائي:
 
 ```javascript
 var SayHello = createReactClass({
@@ -132,9 +132,9 @@ var SayHello = createReactClass({
 });
 ```
 
-This means writing ES6 classes comes with a little more boilerplate code for event handlers, but the upside is slightly better performance in large applications.
+يعني هذا أن كتابة أصناف ES6 يحتاج لكتابة شيفرة متكررة من أجل معالجات الأحداث ولكنّ الجانب الجيد هنا هو الحصول على أداء أفضل قليلًا في التطبيقات الكبيرة. 
 
-If the boilerplate code is too unattractive to you, you may enable the **experimental** [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) syntax proposal with Babel:
+إن كنت لا تحب كتابة الشيفرة بشكل متكرر فتستطيع تمكين صياغة [خاصيّات الأصناف](https://babeljs.io/docs/plugins/transform-class-properties/) **التجريبية** مع Babel:
 
 
 ```javascript
@@ -159,27 +159,27 @@ class SayHello extends React.Component {
 }
 ```
 
-Please note that the syntax above is **experimental** and the syntax may change, or the proposal might not make it into the language.
+انتبه إلى أنّ هذه الصياغة **تجريبية** وبالتالي قد تتغير أو لا تبقى موجودة أصلًا.
 
-If you'd rather play it safe, you have a few options:
+إن كنت تفضّل البقاء بأمان فلديك بعض الخيارات:
 
-* Bind methods in the constructor.
-* Use arrow functions, e.g. `onClick={(e) => this.handleClick(e)}`.
-* Keep using `createReactClass`.
+* ربط التوابع في الدالة البانية..
+* استخدام الدوال السهمية، مثل `onClick={(e) => this.handleClick(e)}`.
+* الاستمرار في استخدام `createReactClass`.
 
-## Mixins {#mixins}
+## المخاليط {#mixins}
 
->**Note:**
+>**ملاحظة:**
 >
->ES6 launched without any mixin support. Therefore, there is no support for mixins when you use React with ES6 classes.
+>أُطلِقت ES6 بدون أي دعم للمخاليط، ولذلك لا يوجد دعم لها عندما تستخدم React مع أصناف ES6.
 >
->**We also found numerous issues in codebases using mixins, [and don't recommend using them in the new code](/blog/2016/07/13/mixins-considered-harmful.html).**
+>**وجدنا أيضًا العديد من المشاكل عند استخدام المخاليط، [ولا نفضّل استخدامها في الشيفرات الجديدة](/blog/2016/07/13/mixins-considered-harmful.html).**
 >
->This section exists only for the reference.
+>يُوجَد هذا القسم فقط للتوثيق.
 
-Sometimes very different components may share some common functionality. These are sometimes called [cross-cutting concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern). `createReactClass` lets you use a legacy `mixins` system for that.
+قد تتشارك بعض المُكوِّنات المختلفة كثيرًا ببعض الوظائف. يُدعى هذا أحيانًا بالاهتمامات المشتركة [cross-cutting concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern). يُتيح لك `createReactClass` أن تستخدم نظام `المخاليط` القديم لأجل ذلك.
 
-One common use case is a component wanting to update itself on a time interval. It's easy to use `setInterval()`, but it's important to cancel your interval when you don't need it anymore to save memory. React provides [lifecycle methods](/docs/react-component.html#the-component-lifecycle) that let you know when a component is about to be created or destroyed. Let's create a simple mixin that uses these methods to provide an easy `setInterval()` function that will automatically get cleaned up when your component is destroyed.
+إحدى حالات الاستخدام الشائعة هي عندما يريد المُكوّن تحديث نفسه وفق فاصلة زمنية ثابتة. من السهل استخدام الدالة `setInterval()` ولكن من الهام أن تلغيها عند عدم الحاجة إليها لتوفير الذاكرة. تُزوِّدنا React بتوابع [دورة حياة المُكوِّنات](/docs/react-component.html#the-component-lifecycle) والتي تُعلِمنا بوقت إنشاء أو تدمير المُكوّن. فلنُنشِئ مخلوطًا بسيطًا يستخدم هذه التوابع لإعطائنا دالة `setInterval()` والتي تتوقف تلقائيًّا عند تدمير المُكوّن:
 
 ```javascript
 var SetIntervalMixin = {
@@ -222,4 +222,4 @@ ReactDOM.render(
 );
 ```
 
-If a component is using multiple mixins and several mixins define the same lifecycle method (i.e. several mixins want to do some cleanup when the component is destroyed), all of the lifecycle methods are guaranteed to be called. Methods defined on mixins run in the order mixins were listed, followed by a method call on the component.
+إذا كان المُكوّن يستخدم مخاليط متعددة تُعرِّف نفس توابع دورة الحياة (أي مثلًا تريد كل هذه المخاليط إيقاف التابع setInterval()‎ عند تدمير المُكوّن)، فسنضمن استدعاء كافة توابع دورة الحياة. تعمل التوابع المُعرَّفة في المخاليط بنفس الترتيب الذي أوردنا فيه هذه المخاليط متبوعةً باستدعاء التابع على المُكوّن.
