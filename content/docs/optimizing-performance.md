@@ -1,18 +1,18 @@
 ---
 id: optimizing-performance
-title: Optimizing Performance
+title: تحسين الأداء
 permalink: docs/optimizing-performance.html
 redirect_from:
   - "docs/advanced-performance.html"
 ---
 
-Internally, React uses several clever techniques to minimize the number of costly DOM operations required to update the UI. For many applications, using React will lead to a fast user interface without doing much work to specifically optimize for performance. Nevertheless, there are several ways you can speed up your React application.
+تستخدم React العديد من التقنيّات الذكية داخليًا للتقليل من عدد عمليات DOM المكلفة المطلوبة لتحديث واجهة المستخدم. يؤدي استعمال React إلى الحصول على واجهات مستخدم سريعة دون الحاجة إلى القيام بعمل كبير من أجل تحسين الأداء. بالرغم من ذلك يوجد العديد من الطرق لتسريع تطبيق React الخاص بك
 
-## Use the Production Build {#use-the-production-build}
+## استخدام نسخة الإنتاج {#use-the-production-build}
 
-If you're benchmarking or experiencing performance problems in your React apps, make sure you're testing with the minified production build.
+إذا كنت تقيّم أو تواجه مشاكل في الأداء في تطبيقات React الخاصة بك، تأكد من أنك تختبر باستخدام نسخة الإنتاج المصغّرة من React.
 
-By default, React includes many helpful warnings. These warnings are very useful in development. However, they make React larger and slower so you should make sure to use the production version when you deploy the app.
+توفّر React بشكل افتراضي العطيط من رسائل التحذير المفيدة أثناء التطوير. ولكنّها تجعل من React أكبر حجما وأبطأ، عليك أن تتأكد من استخدامك لاصدار الإنتاج عند توزيع التطبيق.
 
 If you aren't sure whether your build process is set up correctly, you can check it by installing [React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi). If you visit a site with React in production mode, the icon will have a dark background:
 
