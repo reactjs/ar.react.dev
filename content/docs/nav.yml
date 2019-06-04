@@ -1,153 +1,154 @@
 - title: التنصيب
   items:
     - id: getting-started
-      title: Getting Started
+      title: البدء مع React
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: إضافة React للموقع
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: إنشاء تطبيق React جديد
     - id: cdn-links
-      title: CDN Links
+      title: روابط شبكة توزيع المحتوى ( CDN )
 - title: المعايير الرئيسية
   isOrdered: true
   items:
     - id: hello-world
-      title: Hello World
+      title: مثال «أهلًا بالعالم»
     - id: introducing-jsx
-      title: Introducing JSX
+      title: مقدمة إلى JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: تصيير العناصر
     - id: components-and-props
-      title: Components and Props
+      title: المكونات والخاصيات
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: حالة ودورة حياة المكونات
     - id: handling-events
-      title: Handling Events
+      title: معالجة الأحداث
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: التصيير الشرطي (Conditional Rendering)
     - id: lists-and-keys
-      title: Lists and Keys
+      title: القوائم و المفاتيح
     - id: forms
-      title: Forms
+      title: النماذج
     - id: lifting-state-up
-      title: Lifting State Up
+      title: رفع الحالات للمستوى الأعلى
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: الفرق بين التركيب والوراثة
     - id: thinking-in-react
-      title: Thinking In React
+      title: التفكير بطريقة React
 - title: الدليل المتقدم
   items:
     - id: accessibility
-      title: Accessibility
+      title: سهولة الوصول
     - id: code-splitting
-      title: Code-Splitting
+      title: تقسيم الشيفرة
     - id: context
-      title: Context
+      title: استخدام السياق (Context)
     - id: error-boundaries
-      title: Error Boundaries
+      title: حدود الأخطاء
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: تمرير الـ refs
     - id: fragments
-      title: Fragments
+      title: استخدام الأجزاء (Fragments)
     - id: higher-order-components
-      title: Higher-Order Components
+      title: المكونات ذات الترتيب الأعلى
     - id: integrating-with-other-libraries
-      title: Integrating with Other Libraries
+      title: تكامل React مع المكتبات الأخرى
     - id: jsx-in-depth
-      title: JSX In Depth
+      title: شرح JSX بالتفصيل
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: تحسين الأداء
     - id: portals
       title: Portals
     - id: react-without-es6
-      title: React Without ES6
+      title: React بدون ES6
     - id: react-without-jsx
       title: React بدون JSX
     - id: reconciliation
-      title: Reconciliation
+      title: المطابقة (Reconciliation)
     - id: refs-and-the-dom
-      title: Refs and the DOM
+      title: refs مع الـ DOM
     - id: render-props
-      title: Render Props
+      title: خاصيات التصيير
     - id: static-type-checking
-      title: Static Type Checking
+      title: التحقّق من الأنواع الثابتة
     - id: strict-mode
-      title: Strict Mode
+      title: الوضع الصارم
     - id: typechecking-with-proptypes
-      title: Typechecking With PropTypes
+      title: التحقق من الأنواع باستخدام PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: المكونات غير المضبوطة
     - id: web-components
-      title: Web Components
+      title: مكونات الويب
 - title: مراجع API 
   items:
     - id: react-api
-      title: React
+      title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى في React.
       subitems:
         - id: react-component
-          title: React.Component
+          title: الصنف React.Component
     - id: react-dom
-      title: ReactDOM
+      title: الكائن ReactDOM
     - id: react-dom-server
-      title: ReactDOMServer
+      title: الكائن ReactDOMServer
     - id: dom-elements
-      title: DOM Elements
+      title: عناصر الـ DOM
     - id: events
-      title: SyntheticEvent
+      title: الأحداث المصطنعة (Synthetic Events)
     - id: test-utils
-      title: Test Utilities
+      title: أدوات الاختبار
     - id: shallow-renderer
-      title: Shallow Renderer
+      title: التصيير السطحي
     - id: test-renderer
-      title: Test Renderer
+      title: مصير الاختبار
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: متطلبات بيئة JavaScript
     - id: glossary
-      title: Glossary
+      title: معجم مصطلحات React 
 - title: Hooks (جديد)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Introducing Hooks
+        title: مدخل إلى الـ Hooks
       - id: hooks-overview
-        title: Hooks at a Glance
+        title: لمحة خاطفة عن الـ Hooks
       - id: hooks-state
-        title: Using the State Hook
+        title: استعمال Hook الحالة
       - id: hooks-effect
-        title: Using the Effect Hook
+        title: استعمال Hook التأثير
       - id: hooks-rules
-        title: Rules of Hooks
+        title: قواعد استعمال الـ Hooks
       - id: hooks-custom
-        title: Building Your Own Hooks
+        title: بناء Hook خاص بك
       - id: hooks-reference
-        title: Hooks API Reference
+        title: مرجع إلى الواجهة البرمجية للـ Hooks
       - id: hooks-faq
-        title: Hooks FAQ
+        title: الأسئلة الشائعة حول الـ Hooks
 - title: المساهمة
   items:
   - id: how-to-contribute
-    title: How to Contribute
+    title: كيف تساهم
   - id: codebase-overview
-    title: Codebase Overview
+    title: نظرة عامة عن اساس الكود
   - id: implementation-notes
-    title: Implementation Notes
+    title: ملاحظات التنفيذ
   - id: design-principles
-    title: Design Principles
+    title: مبادئ التصميم
 - title: الأسئلة الأكثر تكراراً
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: AJAX و APIs
     - id: faq-build
-      title: Babel, JSX, and Build Steps
+      title: Babel و JSX وخطوات بناء التطبيقات
     - id: faq-functions
-      title: Passing Functions to Components
+      title: تمرير الدوال إلى المكونات
     - id: faq-state
-      title: Component State
+      title: حالة المكونات
     - id: faq-styling
-      title: Styling and CSS
+      title: التنسيق و CSS
     - id: faq-structure
-      title: File Structure
+      title: بنية ملفات المشروع
     - id: faq-versioning
-      title: Versioning Policy
+      title: سياسة الإصدارات المتبعة
     - id: faq-internals
-      title: Virtual DOM and Internals
+      title: الـ DOM الافتراضي والكائنات الداخلية
+
