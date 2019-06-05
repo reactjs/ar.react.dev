@@ -67,13 +67,8 @@ And use [Hsoub's translation](https://wiki.hsoub.com/React) as a reference.
 
 #### Push it
 
-<<<<<<< HEAD
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed header logo on Android`) to stage and commit your changes
-1. `git push origin the-name-of-my-branch`
-=======
 1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`
->>>>>>> 957f0b3a4067a9ba46d1ffda898658925ffa0549
 1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
