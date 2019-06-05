@@ -167,7 +167,7 @@ class SayHello extends React.Component {
 * استخدام الدوال السهمية، مثل `onClick={(e) => this.handleClick(e)}`.
 * الاستمرار في استخدام `createReactClass`.
 
-## المخاليط {#mixins}
+## المخاليط (Mixins) {#mixins}
 
 >**ملاحظة:**
 >
