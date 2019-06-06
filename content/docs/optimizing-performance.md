@@ -14,80 +14,80 @@ redirect_from:
 
 توفّر React بشكل افتراضي العطيط من رسائل التحذير المفيدة أثناء التطوير. ولكنّها تجعل من React أكبر حجما وأبطأ، عليك أن تتأكد من استخدامك لاصدار الإنتاج عند توزيع التطبيق.
 
-If you aren't sure whether your build process is set up correctly, you can check it by installing [React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi). If you visit a site with React in production mode, the icon will have a dark background:
+إن لم تكن مُتأكدًا من أن عمليّة بناء التطبيق معُدًّة بشكل صحيح، يُمكنك أن تتحقق بتثبيت أداة [أداة تطوير React لمُتصفّح Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi). إن تَزُر موقعا موقعًا مبنيًّا باستخدام React في وضع الإنتاج، فسيكون للأيقونة خلفية ذاة لون داكن.
 
-<img src="../images/docs/devtools-prod.png" style="max-width:100%" alt="React DevTools on a website with production version of React">
+<img src="../images/docs/devtools-prod.png" style="max-width:100%" alt="أداة تطوير React في موقع يستعمل React في وضع الإنتاج.">
 
-If you visit a site with React in development mode, the icon will have a red background:
+إن تَزُرْ موقعًا يستعمل React في وضع التطوير، سيكون للأيقونة خلفية بلون أحمر:
 
-<img src="../images/docs/devtools-dev.png" style="max-width:100%" alt="React DevTools on a website with development version of React">
+<img src="../images/docs/devtools-dev.png" style="max-width:100%" alt="أداة تطوير React في موقع يستعمل React في وضع التطوير">
 
-It is expected that you use the development mode when working on your app, and the production mode when deploying your app to the users.
+من المُفترض أن تستخدم وضع التطوير أثناء عملك على تطبيقك، ووضع الإنتاج عند توزيع التطبيق للمتسخدمين.
 
-You can find instructions for building your app for production below.
+يمكنك أن تجد فيما يلي التعليمات لبناء تطبيقك لوضع الإنتاج.
 
 ### Create React App {#create-react-app}
 
-If your project is built with [Create React App](https://github.com/facebookincubator/create-react-app), run:
+إذا كان مشروعة مبنية باستخدام [Create React App](https://github.com/facebookincubator/create-react-app), نفّذ:
 
 ```
 npm run build
 ```
 
-This will create a production build of your app in the `build/` folder of your project.
+سينشئ هذا الأمر نسخة الإنتاج من تطبيقك في مجلّد  `build/` من مشروعك.
 
-Remember that this is only necessary before deploying to production. For normal development, use `npm start`.
+تذكّر أن هذا ضروري قبل نشر تطبيقك للإنتاج. أما بالنسبة للتطوير العادي استخدم الأمر `npm start`.
 
-### Single-File Builds {#single-file-builds}
+### النسخ المبنية المكوّنة من ملف واحد (Single-File Builds) {#single-file-builds}
 
-We offer production-ready versions of React and React DOM as single files:
+ نُوفِّر إصدارات جاهزة للإنتاج من React و React DOM كملف واحد فقط:
 
 ```html
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 ```
 
-Remember that only React files ending with `.production.min.js` are suitable for production.
+تذكّر أنّ ملفّات React التي تنتهي باللاحقة `.production.min.js` هي فقط المُلائِمة للإنتاج.
 
 ### Brunch {#brunch}
 
-For the most efficient Brunch production build, install the [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch) plugin:
+للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Brunch، ثبِّت الإضافة [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch):
 
 ```
-# If you use npm
+# إن كنت تستخدم npm
 npm install --save-dev uglify-js-brunch
 
-# If you use Yarn
+#إن كنت تستخدم Yarn
 yarn add --dev uglify-js-brunch
 ```
 
-Then, to create a production build, add the `-p` flag to the `build` command:
+ولإنشاء نسخة للإنتاج بعد ذلك، أضف العَلَم `-p` لأمر البناء `build`:
 
 ```
 brunch build -p
 ```
 
-Remember that you only need to do this for production builds. You shouldn't pass the `-p` flag or apply this plugin in development, because it will hide useful React warnings and make the builds much slower.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تمرير العَلَم ‎`-p` أو تطبيق هذه الإضافة أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ. 
 
 ### Browserify {#browserify}
 
-For the most efficient Browserify production build, install a few plugins:
+ للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Browserify، ثبِّت بعض الإضافات:
 
 ```
-# If you use npm
+# إن كنت تستخدم npm
 npm install --save-dev envify uglify-js uglifyify 
 
-# If you use Yarn
+# إن كنت تستخدم Yarn
 yarn add --dev envify uglify-js uglifyify 
 ```
 
-To create a production build, make sure that you add these transforms **(the order matters)**:
+لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه المٌحَوّلات **(الترتيب مهم)**:
 
-* The [`envify`](https://github.com/hughsk/envify) transform ensures the right build environment is set. Make it global (`-g`).
-* The [`uglifyify`](https://github.com/hughsk/uglifyify) transform removes development imports. Make it global too (`-g`).
-* Finally, the resulting bundle is piped to [`uglify-js`](https://github.com/mishoo/UglifyJS2) for mangling ([read why](https://github.com/hughsk/uglifyify#motivationusage)).
+* يضمن المُحَوّل [`envify`](https://github.com/hughsk/envify) عيين البيئة الصحيحة للبناء. اجعله عامًّا عن طريق العَلَم (‎`-g`).
+* يُزيل المُحَوّل [`uglifyify`](https://github.com/hughsk/uglifyify) استيرادات التطوير، اجعله عامًّا أيضًا (`-g`).
+* وأخيرًا نُمرِّر الحزمة الناتجة إلى الأمر [`uglify-js`](https://github.com/mishoo/UglifyJS2) ([تعرف على السبب من هنا](https://github.com/hughsk/uglifyify#motivationusage)).
 
-For example:
+على سبيل المثال:
 
 ```
 browserify ./index.js \
@@ -96,30 +96,30 @@ browserify ./index.js \
   | uglifyjs --compress --mangle > ./bundle.js
 ```
 
->**Note:**
+>**ملاحظة:**
 >
->The package name is `uglify-js`, but the binary it provides is called `uglifyjs`.<br>
->This is not a typo.
+>اسم الحزمة هو `uglify-js`, ولكن الملف الثنائي الذي تُعطينا إيّاه يُدعى `uglifyjs`.<br>
+> هذا ليس خطأ في الكتابة هنا. 
 
-Remember that you only need to do this for production builds. You shouldn't apply these plugins in development because they will hide useful React warnings, and make the builds much slower.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق هذه الإضافات أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ. 
 
 ### Rollup {#rollup}
 
-For the most efficient Rollup production build, install a few plugins:
+ للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Rollup، ثبِّت بعض الإضافات:
 
 ```
-# If you use npm
+# إن كنت تستخدم npm
 npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
 
-# If you use Yarn
+# إن كنت تستخدم Yarn
 yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
 ```
 
-To create a production build, make sure that you add these plugins **(the order matters)**:
+لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه الإضافات **(الترتيب مُهم)**:
 
-* The [`replace`](https://github.com/rollup/rollup-plugin-replace) plugin ensures the right build environment is set.
-* The [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) plugin provides support for CommonJS in Rollup.
-* The [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) plugin compresses and mangles the final bundle.
+* تضمن الإضافة [`replace`](https://github.com/rollup/rollup-plugin-replace) تعيين البيئة الصحيحة للبناء.
+* تُزوِّد الإضافة [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) دعمًا لأجل CommonJS في Rollup.
+* تضغط الإضافة [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) الحزمة النهائيّة.
 
 ```js
 plugins: [
@@ -133,18 +133,18 @@ plugins: [
 ]
 ```
 
-For a complete setup example [see this gist](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
+للحصول على مثال كامل عن طريقة الإعداد [انظر هنا](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
 
-Remember that you only need to do this for production builds. You shouldn't apply the `uglify` plugin or the `replace` plugin with `'production'` value in development because they will hide useful React warnings, and make the builds much slower.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `uglify` أو الإضافة `replace` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
 ### webpack {#webpack}
 
->**Note:**
+>**ملاحظة:**
 >
->If you're using Create React App, please follow [the instructions above](#create-react-app).<br>
->This section is only relevant if you configure webpack directly.
+>إن كُنتَ تستخدم الأمر Create React App, رجاءً اتبع [التعليمات السّابقة](#create-react-app).<br>
+>هذا القسم يُفيدك فقط إن كنت تريد ضبط إعدادات webpack بشكلٍ مباشر.
 
-For the most efficient webpack production build, make sure to include these plugins in your production configuration:
+ للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل webpack، تأكّد من تضمين هذه الإضافات في إعدادات الإنتاج:
 
 ```js
 new webpack.DefinePlugin({
@@ -153,35 +153,36 @@ new webpack.DefinePlugin({
 new webpack.optimize.UglifyJsPlugin()
 ```
 
-You can learn more about this in [webpack documentation](https://webpack.js.org/guides/production/).
+بإمكانك تعلّم المزيد حول هذا الموضوع في [webpack توثيق](https://webpack.js.org/guides/production/).
 
-Remember that you only need to do this for production builds. You shouldn't apply `UglifyJsPlugin` or `DefinePlugin` with `'production'` value in development because they will hide useful React warnings, and make the builds much slower.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة  `UglifyJsPlugin` أو الإضافة `DefinePlugin` مع القيمة `'production'` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
-## Profiling Components with the Chrome Performance Tab {#profiling-components-with-the-chrome-performance-tab}
+## تفحص المكونات باستخدام نافذة الأداء في متصفح Chrome {#profiling-components-with-the-chrome-performance-tab}
 
-In the **development** mode, you can visualize how components mount, update, and unmount, using the performance tools in supported browsers. For example:
+يُمكنِك في **وضع التطوير** إيجاد مخطّطات توضيحية لعمليّة وصل المُكوِّنات (mount)، وتحديثها، وفصلها (unmount)، وذلك باستخدام أدوات الأداء في المتصفحات التي تدعمها. على سبيل المثال: 
 
 <center><img src="../images/blog/react-perf-chrome-timeline.png" style="max-width:100%" alt="React components in Chrome timeline" /></center>
 
-To do this in Chrome:
+لفعل ذلك في متصفح Chrome: 
 
 1. Temporarily **disable all Chrome extensions, especially React DevTools**. They can significantly skew the results!
+1. عطِّل بشكل مؤقَّت **كافة إضافات Chrome خاصة أدوات تطوير React**، فهي تُفسِد النتائج بالتأكيد.
 
-2. Make sure you're running the application in the development mode.
+2. تأكّد من تشغيل التطبيق في وضع التطوير.
 
-3. Open the Chrome DevTools **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** tab and press **Record**.
+3. افتح نافذة الأداء ([Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)) في أدوات تطوير المتصفّح Chrome واضغط على تسجيل (Record).
 
-4. Perform the actions you want to profile. Don't record more than 20 seconds or Chrome might hang.
+4. نفّذ الإجراءات التي ترغب بتفحصها. لا تُسجِّل أكثر من 20 ثانية فقد يتوقّف Chrome عن الاستجابة.
 
-5. Stop recording.
+5. أوقف التسجيل.
 
-6. React events will be grouped under the **User Timing** label.
+6. ستُجمَّع أحداث React تحت العنوان **User Timing**.
 
-For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/2017-11-28-debugging-react/).
+للحصول على دليل مفصّل، راجع [هذه المقالة من طرف Ben Schwarz](https://calibreapp.com/blog/2017-11-28-debugging-react/).
 
-Note that **the numbers are relative so components will render faster in production**. Still, this should help you realize when unrelated UI gets updated by mistake, and how deep and how often your UI updates occur.
+لاحظ أنّ هذه **الأرقام نسبيّة لذلك ستُصيَّر المُكوِّنات بشكلٍ أسرع في مرحلة الإنتاج**. يُساعدك ذلك على إدراك متى تُحدَّث عناصر واجهة المستخدم عن طريق الخطأ، ومتى تحصل هذه التحديثات. 
 
-Currently Chrome, Edge, and IE are the only browsers supporting this feature, but we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) so we expect more browsers to add support for it.
+المتصفحات التي تدعم هذه الميزة حاليًّا هي Chrome، و Edge، و Internet Explorer، ولكنّنا نستخدم[واجهة توقيت المستخدم (User Timing API)](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) المعياريّة، لذلك نتوقع الدعم من المزيد من المتصفحات.
 
 ## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
 
