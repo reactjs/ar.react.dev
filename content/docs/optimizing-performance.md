@@ -18,7 +18,7 @@ redirect_from:
 
 <img src="../images/docs/devtools-prod.png" style="max-width:100%" alt="أداة تطوير React في موقع يستعمل React في وضع الإنتاج.">
 
-إن تَزُرْ موقعًا يستعمل React في وضع التطوير، سيكون للأيقونة خلفية بلون أحمر:
+أمّا إن زُرتَ موقعًا مبنيًّا باستخدام React في وضع التطوير، فسيكون لأيقونة هذه الأداة خلفية حمراء: 
 
 <img src="../images/docs/devtools-dev.png" style="max-width:100%" alt="أداة تطوير React في موقع يستعمل React في وضع التطوير">
 
@@ -186,11 +186,11 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## تفحص المكونات باستخدام أداة التحليل  من أدوات التطوير{#profiling-components-with-the-devtools-profiler}
 
-يوفر `react-dom` 16.5+ و `react-native` 0.57+ أدوات تحليل مُحسّنة لوضع التطوير مع أداة التحليل في React DevTools.
-يمكن إيجاد لمحة عن أداة التحليل في هذه المقالة ["مقدمة إلى أداة تحليل React (Introducing the React Profiler)"](/blog/2018/09/10/introducing-the-react-profiler.html).
+يوفر `react-dom` <span dir="ltr">16.5+</span> و `react-native` <span dir="ltr">0.57+</span> أدوات تحليل مُحسّنة لوضع التطوير مع أداة التحليل في React DevTools.
+يمكن إيجاد لمحة عن أداة التحليل في هذه المقالة ["مقدمة إلى أداة تحليل React"](/blog/2018/09/10/introducing-the-react-profiler.html).
 فيديو عرض تفصيلي لأداة التحليل [متوفّر كذلك على YouTube](https://www.youtube.com/watch?v=nySib7ipZdk).
 
-إذا لم تقم بتثبيت أدوات تطوير React (React DevTools) بعد، يمكنك إيجادها هنا:
+إذا لم تقم بتثبيت أدوات تطوير React بعد، يمكنك إيجادها هنا:
 
 - [إضافة متصفّح Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 - [Firefox إضافة متصفّح](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
@@ -374,7 +374,7 @@ handleClick() {
 };
 ```
 
-تستطيع أيضًا إعادة كتابة الشيفرة التي تُعدِّل الكائنات لتجنّب ذلك بطريقة مماثلة. فلنفترض مثلًا أنّنا لدينا كائن يُدعى `colormap` ونريد كتابة دالة لتغيير قيمة `colormap.right لتكون` `'blue'`، فنكتب ما يلي:
+تستطيع أيضًا إعادة كتابة الشيفرة التي تُعدِّل الكائنات لتجنّب ذلك بطريقة مماثلة. فلنفترض مثلًا أنّنا لدينا كائن يُدعى `colormap` ونريد كتابة دالة لتغيير قيمة `colormap.right` لتكون `'blue'`، فنكتب ما يلي:
 
 ```js
 function updateColorMap(colormap) {
@@ -382,7 +382,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-لكتابة ذلك بدون تعديل الكائن الأصلي نستخدم التابع [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method:
+لكتابة ذلك بدون تعديل الكائن الأصلي نستخدم التابع [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
 
 ```js
 function updateColorMap(colormap) {
@@ -405,7 +405,7 @@ function updateColorMap(colormap) {
 
 ## استخدام بُنى البيانات غير القابلة للتعديل {#using-immutable-data-structures}
 
-مكتبة [Immutable.js](https://github.com/facebook/immutable-js) ي طريقة أخرى لحل هذه المشكلة، فهي تُزوّدنا بمجموعات دائمة غير قابلة للتعديل والتي تعمل عبر المشاركة البنيوية:
+مكتبة [Immutable.js](https://github.com/facebook/immutable-js)  هي طريقة أخرى لحل هذه المشكلة، فهي تُزوّدنا بمجموعات دائمة غير قابلة للتعديل والتي تعمل عبر المشاركة البنيوية:
 
 * غير قابلة للتعديل (*Immutable*): فحالما تُنشَأ المجموعة لا يُمكن تبديلها في أي نقطة زمنية.
 * دائمة (*Persistent*): يُمكِن إنشاء مجموعات جديدة من مجموعة قديمة بعد تعديلها. وتبقى المجموعة الأصلية صالحة بعد إنشاء المجموعة الجديدة.
