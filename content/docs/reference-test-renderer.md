@@ -38,7 +38,11 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
+<<<<<<< HEAD
 نستطيع استخدام ميزة الاختبار بالتقاط الصورة الموجودة في Jest لحفظ نسخة عن شجرة JSON بشكل تلقائي إلى ملف والتحقق في اختباراتك من أنّها لم تتغيّر. [تعلّم المزيد حول ذلك](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
+=======
+You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://jestjs.io/docs/en/snapshot-testing).
+>>>>>>> 899411236d5b1520ab8b8e7fad7d48c681abc69b
 
 بإمكانك أيضًا التنقل في الناتج لإيجاد عقد محددة:
 
