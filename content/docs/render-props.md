@@ -1,6 +1,6 @@
 ---
 id: render-props
-title: Render Props
+title: خاصيات التصيير
 permalink: docs/render-props.html
 ---
 
