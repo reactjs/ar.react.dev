@@ -54,7 +54,7 @@ class MouseTracker extends React.Component {
 
 السؤال الآن هو كيفيّة إعادة استخدام هذا السلوك في مكوّن آخر؟ أي بمعنى آخر إن احتاج مكوّن آخر إلى معرفة مكان المؤشر، فهل نستطيع تغليف هذا السلوك لمشاركته بسهولة مع ذلك المكوّن؟
 
-لمّا كانت المكوّنات الوحدة الأساسية في React لإعادة استخدام الشيفرة، فلنجرّب إعادة ترتيب الشيفرة قليلًا لتستخدم المكوّن `‎<Mouse>`‎ والذي يُغلِّف السلوك الذي نريد إعادة استخدامه في مكان ما:
+بما أن المكوّنات هي الوحدة الأساسية في React لإعادة استخدام الشيفرة، فلنجرّب إعادة ترتيب الشيفرة قليلًا لتستخدم المكوّن `‎<Mouse>`‎ والذي يُغلِّف السلوك الذي نريد إعادة استخدامه في مكان ما:
 
 ```js
 // يغلف المكون <Mouse> السلوك الذي نحتاجه
@@ -144,7 +144,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>حرك الفأرة!</h1>
         <MouseWithCat />
       </div>
     );
@@ -152,9 +152,10 @@ class MouseTracker extends React.Component {
 }
 ```
 
-This approach will work for our specific use case, but we haven't achieved the objective of truly encapsulating the behavior in a reusable way. Now, every time we want the mouse position for a different use case, we have to create a new component (i.e. essentially another `<MouseWithCat>`) that renders something specifically for that use case.
+ستعمل هذه الطريقة لحالتنا، لكننا لم نحقق حتى الآن هدفنا الحقيقي من تغليف هذا السلوك بطريقة قابلة لإعادة الاستخدام، ففي كل مرة نريد فيها الحصول على موقع الفأرة لحالة استخدام مختلفة يجب علينا إنشاء مكوّن جديد (وهو `‎<MouseWithCat>‎`) والذي يُصيِّر شيء ما مُخصَّص لتلك الحالة.
 
-Here's where the render prop comes in: Instead of hard-coding a `<Cat>` inside a `<Mouse>` component, and effectively changing its rendered output, we can provide `<Mouse>` with a function prop that it uses to dynamically determine what to render–a render prop.
+هنا تأتي فائدة خاصيّات التصيير، فبدلًا من كتابة المكوّن `‎<Cat>‎` بشكل حرفي في المكوّن `‎<Mouse>‎` وتغيير ناتجه، بإمكاننا تزويد المكوّن `‎<Mouse>‎` بخاصيّة على شكل دالة تستخدمها لتحدد بشكل ديناميكي ما هي خاصيّة التصيير.
+
 
 ```js
 class Cat extends React.Component {
@@ -185,8 +186,8 @@ class Mouse extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          Instead of providing a static representation of what <Mouse> renders,
-          use the `render` prop to dynamically determine what to render.
+		  بدلًا من تزويد تمثيل ثابت لما يصيره المكون <Mouse>
+		  استخدم خاصية التصيير لتحدد بشكل دينامكي ما الذي ينبغي تصييره
         */}
         {this.props.render(this.state)}
       </div>
@@ -198,7 +199,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>حرك الفأرة!</h1>
         <Mouse render={mouse => (
           <Cat mouse={mouse} />
         )}/>
@@ -208,17 +209,17 @@ class MouseTracker extends React.Component {
 }
 ```
 
-Now, instead of effectively cloning the `<Mouse>` component and hard-coding something else in its `render` method to solve for a specific use case, we provide a `render` prop that `<Mouse>` can use to dynamically determine what it renders.
+والآن بدلًا من نسخ المكوّن `<Mouse>` وكتابة شيفرة حرفية بداخل التابع `render` الخاص به لحل المشكلة لحالة محددة، فسنُزوِّد خاصيّة `render` والتي يستخدمها` <Mouse>` ليحدد بشكل ديناميكي ما الذي ينبغي تصييره.
 
-More concretely, **a render prop is a function prop that a component uses to know what to render.**
+بشكل أصح، **خاصية التصيير هي دالة يستخدمها المكوّن ليعلم ما يجب تصييره**.
 
-This technique makes the behavior that we need to share extremely portable. To get that behavior, render a `<Mouse>` with a `render` prop that tells it what to render with the current (x, y) of the cursor.
+تجعل هذه التقنية من السلوك الذي نحتاجه للمشاركة قابلًا للنقل بسهولة. للحصول على هذا السلوك صيِّر المكوّن `<Mouse>` مع خاصيّة `render` والتي تخبره ما يجب عليه تصييره مع الإحداثيات الحالية للمؤشر.
 
-One interesting thing to note about render props is that you can implement most [higher-order components](/docs/higher-order-components.html) (HOC) using a regular component with a render prop. For example, if you would prefer to have a `withMouse` HOC instead of a `<Mouse>` component, you could easily create one using a regular `<Mouse>` with a render prop:
+من الأشياء المثيرة للاهتمام التي تميّز خاصيّات التصيير هي أنّه بإمكانك تطبيقه على [المكوّنات ذات الترتيب الأعلى (higher-order components)](/docs/higher-order-components.html) باستخدام مكوّن اعتيادي مع خاصيّة تصيير. على سبيل المثال إن كنت تفضل أن يكون لديك المكوّن ذو الترتيب الأعلى `withMouse` بدلًا من المكوّن ‎`<Mouse>`‎ فبإمكانك بسهولة إنشاء واحد باستخدام المكوّن `‎<Mouse>`‎ مع خاصيّة تصيير:
 
 ```js
-// If you really want a HOC for some reason, you can easily
-// create one using a regular component with a render prop!
+// إن أردت حقا مكون ذو ترتيب أعلى فبإمكانك بسهولة
+// إنشاء واحد باستخدام مكوّن عادي مع خاصية تصيير
 function withMouse(Component) {
   return class extends React.Component {
     render() {
@@ -232,33 +233,33 @@ function withMouse(Component) {
 }
 ```
 
-So using a render prop makes it possible to use either pattern.
+لذا من الممكن باستخدام خاصية التصيير الانتقال إلى نمط آخر.
 
-## Using Props Other Than `render` {#using-props-other-than-render}
+## استخدام خاصيات أخرى غير `render` {#using-props-other-than-render}
 
-It's important to remember that just because the pattern is called "render props" you don't *have to use a prop named `render` to use this pattern*. In fact, [*any* prop that is a function that a component uses to know what to render is technically a "render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+من الهام معرفة أنّه ليس بالضرورة إذا كان اسم هذا النمط خاصيّات التصيير (render props) أن تستخدم الخاصيّة التي اسمها `render`. ففي الحقيقة [أي دالة يستخدمها المكوّن ليعرف ما الذي ينبغي تصييره هي عمليًّا خاصيّة تصيير](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce). 
 
-Although the examples above use `render`, we could just as easily use the `children` prop!
+على الرغم من استخدام المثال السابق للاسم `render` فبإمكاننا استخدام أي اسم مثل الخاصيّة `children`:
 
 ```js
 <Mouse children={mouse => (
-  <p>The mouse position is {mouse.x}, {mouse.y}</p>
+  <p>موقع الفأرة هو {mouse.x}, {mouse.y}</p>
 )}/>
 ```
 
-And remember, the `children` prop doesn't actually need to be named in the list of "attributes" in your JSX element. Instead, you can put it directly *inside* the element!
+ليس من الضروري أن تكون الخاصيّة `children` موجودة في قائمة الخاصيّات في عنصر JSX لديك، فبإمكانك وضعها بشكل مباشر *بداخل* العنصر:
 
 ```js
 <Mouse>
   {mouse => (
-    <p>The mouse position is {mouse.x}, {mouse.y}</p>
+    <p>موقع الفأرة هو {mouse.x}, {mouse.y}</p>
   )}
 </Mouse>
 ```
 
-You'll see this technique used in the [react-motion](https://github.com/chenglou/react-motion) API.
+سترى أن هذه الطريقة مستخدمة في [react-motion](https://github.com/chenglou/react-motion) API. 
 
-Since this technique is a little unusual, you'll probably want to explicitly state that `children` should be a function in your `propTypes` when designing an API like this.
+بما أنّ هذه الطريقة غير معتادة قليلًا فقد ترغب بالإعلان عن أنّ `children` يجب أن تكون دالة من خلال `propTypes`:
 
 ```js
 Mouse.propTypes = {
@@ -266,28 +267,28 @@ Mouse.propTypes = {
 };
 ```
 
-## Caveats {#caveats}
+## محاذير {#caveats}
 
-### Be careful when using Render Props with React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
+### انتبه عند استخدام خاصية التصيير مع `React.PureComponent` {#be-careful-when-using-render-props-with-reactpurecomponent}
 
-Using a render prop can negate the advantage that comes from using [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) if you create the function inside a `render` method. This is because the shallow prop comparison will always return `false` for new props, and each `render` in this case will generate a new value for the render prop.
+قد يُلغي استخدام خاصية التصيير الفائدة المرجوة من استخدام [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) إن أنشأت الدالة بداخل التابع `render`، وذلك لأنّ المقارنة بين الخاصيّات ستعيد دومًا `false` للخاصيّات الجديدة، وسيُولِّد كل تابع `render` في هذه الحالة قيمة جديدة للخاصيّة `render`. 
 
-For example, continuing with our `<Mouse>` component from above, if `Mouse` were to extend `React.PureComponent` instead of `React.Component`, our example would look like this:
+فمثلًا بالمتابعة مع المكوّن السابق ‎`<Mouse>`‎، إن كان هذا المكوّن يمتد إلى `React.PureComponent` بدلًا من `React.Component`، فسيبدو مثالنا كما يلي:
 
 ```js
 class Mouse extends React.PureComponent {
-  // Same implementation as above...
+  // نفس التنفيذ السابق...
 }
 
 class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>حرّك الفأرة!</h1>
 
         {/*
-          This is bad! The value of the `render` prop will
-          be different on each render.
+         `render` هذا سيّء! حيث ستكون قيمة خاصية التصيير
+          مختلفة عند كل تصيير
         */}
         <Mouse render={mouse => (
           <Cat mouse={mouse} />
@@ -298,14 +299,14 @@ class MouseTracker extends React.Component {
 }
 ```
 
-In this example, each time `<MouseTracker>` renders, it generates a new function as the value of the `<Mouse render>` prop, thus negating the effect of `<Mouse>` extending `React.PureComponent` in the first place!
+في هذا المثال عند كل تصيير للمكوّن `‎<MouseTracker>`‎ فسيُولِّد دالة جديدة كقيمة للخاصية ‎`<Mouse render>`‎، وبذلك يلغي تأثير المكوّن ‎`<Mouse>`‎ الذي يمتد إلى `React.PureComponent` في المقام الأول.
 
-To get around this problem, you can sometimes define the prop as an instance method, like so:
+لحل هذه المشكلة تستطيع تعريف الخاصيّة كنسخة من تابع كما يلي:
 
 ```js
 class MouseTracker extends React.Component {
-  // Defined as an instance method, `this.renderTheCat` always
-  // refers to *same* function when we use it in render
+  // معرف كنسخة تابع
+  // يشير this.renderTheCat دومًا إلى *نفس* الدالة عند استخدامها للتصيير
   renderTheCat(mouse) {
     return <Cat mouse={mouse} />;
   }
@@ -313,7 +314,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>حرك الفأرة!</h1>
         <Mouse render={this.renderTheCat} />
       </div>
     );
@@ -321,4 +322,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-In cases where you cannot define the prop statically (e.g. because you need to close over the component's props and/or state) `<Mouse>` should extend `React.Component` instead.
+في الحالات التي لا تستطيع فيها تعريف الخاصيّة بشكل ثابت (مثلًا إذا كنت تحتاج إلى تغيير خاصية أو حالة المكوّن) فيجب أن يمتد المكوّن ‎`<Mouse>‎` إلى `React.Component` بدلًا من ذلك.
