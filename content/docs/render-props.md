@@ -4,25 +4,25 @@ title: خاصيات التصيير
 permalink: docs/render-props.html
 ---
 
-The term ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) refers to a technique for sharing code between React components using a prop whose value is a function.
+يُشير مصطلح [خاصيّة التصيير (render prop)](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) إلى تقنية بسيطة لمشاركة الشيفرة بين مكوّنات React باستخدام خاصية والتي قيمتها هي عبارة عن دالة.
 
-A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic.
+يأخذ المكوّن الذي يمتلك خاصيّة تصيير دالة تُعيد عنصر React ويستدعيها بدلًا من تنفيذ منطق التصيير الخاص به.
 
 ```jsx
 <DataProvider render={data => (
-  <h1>Hello {data.target}</h1>
+  <h1>أهلا {data.target}</h1>
 )}/>
 ```
 
-Libraries that use render props include [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) and [Downshift](https://github.com/paypal/downshift).
+تتضمّن المكتبات التي تستخدم خاصيّات التصيير [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) و [Downshift](https://github.com/paypal/downshift).
 
-In this document, we’ll discuss why render props are useful, and how to write your own.
+سنناقش في هذه الصفحة فائدة خاصيّات التصيير وكيفية كتابة خاصيّات التصيير الخاصّة بك.
 
-## Use Render Props for Cross-Cutting Concerns {#use-render-props-for-cross-cutting-concerns}
+## استخدام خاصيّات التصيير للاهتمامات المشتركة{#use-render-props-for-cross-cutting-concerns}
 
-Components are the primary unit of code reuse in React, but it's not always obvious how to share the state or behavior that one component encapsulates to other components that need that same state.
+تُعد المكوّنات الوحدة الأساسية من الشيفرة القابلة لإعادة الاستخدام في React، ولكن ليس من الواضح كيفيّة مشاركة الحالة أو السلوك من مكوّن إلى مكوّن آخر يحتاج نفس الحالة.
 
-For example, the following component tracks the mouse position in a web app:
+على سبيل المثال يتتبع المكوّن التالي موقع الفأرة في تطبيق الويب:
 
 ```js
 class MouseTracker extends React.Component {
@@ -42,22 +42,22 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
-        <h1>Move the mouse around!</h1>
-        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+        <h1>حرك الفأرة!</h1>
+        <p>موقع الفأرة الحالي هو ({this.state.x}, {this.state.y})</p>
       </div>
     );
   }
 }
 ```
 
-As the cursor moves around the screen, the component displays its (x, y) coordinates in a `<p>`.
+بينما يتحرك المؤشر على الشاشة، يعرض المكوّن إحداثياته (x, y) ضمن العنصر `<p>`.
 
-Now the question is: How can we reuse this behavior in another component? In other words, if another component needs to know about the cursor position, can we encapsulate that behavior so that we can easily share it with that component?
+السؤال الآن هو كيفيّة إعادة استخدام هذا السلوك في مكوّن آخر؟ أي بمعنى آخر إن احتاج مكوّن آخر إلى معرفة مكان المؤشر، فهل نستطيع تغليف هذا السلوك لمشاركته بسهولة مع ذلك المكوّن؟
 
-Since components are the basic unit of code reuse in React, let's try refactoring the code a bit to use a `<Mouse>` component that encapsulates the behavior we need to reuse elsewhere.
+لمّا كانت المكوّنات الوحدة الأساسية في React لإعادة استخدام الشيفرة، فلنجرّب إعادة ترتيب الشيفرة قليلًا لتستخدم المكوّن `‎<Mouse>`‎ والذي يُغلِّف السلوك الذي نريد إعادة استخدامه في مكان ما:
 
 ```js
-// The <Mouse> component encapsulates the behavior we need...
+// يغلف المكون <Mouse> السلوك الذي نحتاجه
 class Mouse extends React.Component {
   constructor(props) {
     super(props);
@@ -76,8 +76,8 @@ class Mouse extends React.Component {
     return (
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
-        {/* ...but how do we render something other than a <p>? */}
-        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+        {/* ؟ <p> ولكن كيف نصيّر شيء آخر غير العنصر... */}
+        <p>موقع الفأرة الحالي هو ({this.state.x}, {this.state.y})</p>
       </div>
     );
   }
@@ -87,7 +87,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>حرك الفأرة!</h1>
         <Mouse />
       </div>
     );
@@ -95,11 +95,11 @@ class MouseTracker extends React.Component {
 }
 ```
 
-Now the `<Mouse>` component encapsulates all behavior associated with listening for `mousemove` events and storing the (x, y) position of the cursor, but it's not yet truly reusable.
+يُغلِّف المكوّن `‎<Mouse>‎` الآن السلوك المرتبط بالاستماع إلى أحداث تحريك الفأرة `mousemove` وتخزين إحداثيات (x, y) لموقع المؤشر، ولكنّه ليس قابلًا لإعادة الاستخدام حتى الآن.
 
-For example, let's say we have a `<Cat>` component that renders the image of a cat chasing the mouse around the screen. We might use a `<Cat mouse={{ x, y }}>` prop to tell the component the coordinates of the mouse so it knows where to position the image on the screen.
+فلنفترض أننا نمتلك المكوّن `‎<Cat>`‎ والذي يُصيِّر صورة لقطة تُطارِد الفأرة ضمن الشاشة. بإمكاننا استخدام الخاصيّة ‎`<Cat mouse = { { x, y } } >`‎ لإخبار المكوّن بإحداثيات الفأرة بحيث تعلم أي تضع الصورة في الشاشة.
 
-As a first pass, you might try rendering the `<Cat>` *inside `<Mouse>`'s `render` method*, like this:
+كمحاولة أولى جرّب تصيير المكوّن ‎`<Cat>`‎ *بداخل تابع التصيير للمكوّن ‎`<Mouse>`‎* كما يلي:
 
 ```js
 class Cat extends React.Component {
@@ -130,10 +130,9 @@ class MouseWithCat extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          We could just swap out the <p> for a <Cat> here ... but then
-          we would need to create a separate <MouseWithSomethingElse>
-          component every time we need to use it, so <MouseWithCat>
-          isn't really reusable yet.
+		  كان بإمكاننا فقط تبديل العنصر p بالمكون <Cat> هنا
+		  ولكن سيتوجب علينا إنشاء مكون <MouseWithSomethingElse> منفصل
+		  في كل مرة نحتاج لاستخدامه. لذا لن يكون <MouseWithCat> قابلًا لإعادة الاستخدام حتى الآن
         */}
         <Cat mouse={this.state} />
       </div>
