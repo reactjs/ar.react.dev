@@ -109,7 +109,7 @@ class CustomTextInput extends React.Component {
 
 #### إضافة مرجع إلى مُكوِّن الصنف {#adding-a-ref-to-a-class-component}
 
-إن اردنا تغليف المكون `CustomTextInput` أعلاه لمحاكاة النقر عليه فورًا بعد التحميل ، يمكننا أن نستخدم مرجع للوصول إلى حقل الإدخال المُخَصَّص و استدعاء تابعه `focusTextInput` يدويًا:
+إن أردنا تغليف المكون `CustomTextInput` أعلاه لمحاكاة النقر عليه فورًا بعد التحميل ، يمكننا أن نستخدم مرجع للوصول إلى حقل الإدخال المُخَصَّص و استدعاء تابعه `focusTextInput` يدويًا:
 
 ```javascript{4,8,13}
 class AutoFocusTextInput extends React.Component {
