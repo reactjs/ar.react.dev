@@ -35,6 +35,7 @@ prev: composition-vs-inheritance.html
 
 اول شئ يجب عليك فعله هو رسم مستطيلات حول كل مكون (component) ومكون فرعي(subcomponent) بالنموذج واعطاء كل منهم أسم. إذا كنت تعمل مع مصمم تحدث معه فعلي الأرجح هو فعل ذلك! فأسماء طبقات الفوتوشوب (Photoshop layers) من الممكن أن تصلح كأسماء لمكوناتك (React component)!
 
+<<<<<<< HEAD
 ولكن كيف تعرف ما يجب أن تحدده كمكون؟ فقط إستخدم نفس الأساليب أثناء أخذ قرار بإنشاء دالة (Function) او (Object) جديدة، كمثال علي أسلوب هو (مبدأ المسئولية الأحادية) [single responsibility principle](https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%A7%D9%84%D9%85%D9%87%D9%85%D8%A9_%D8%A7%D9%84%D9%88%D8%A7%D8%AD%D8%AF%D8%A9) وهي أن المكون (component) بشكل مثالي يجب أن يكون مسئول عن فعل شئ واحد فقط وإذا بدأ في التنامي يجب تقسيمه لمكونات فرعية (subcomponent) أصغر.
 
 حيث أننا غالباَ ما نعرض نموذج البيانات (JSON data model) للمستخدم ستجد أنه إذا كان هذا النموذج مبني بشكل جيد فإنه سيتطابق مع واجهة المستخدم (UI) خاصتك بشكل رائع وبالتالي مع بناء مكوناتك (component structure) وهذا لأن واجهة المستخدم (UI) ونموذج البيانات (data models) يميلان الي التقيد بنفس *(الشكل البنائي للمعلومات information architecture)* وهو مايعني ان العمل علي تقسيم واجهة المستخدم (UI) لمكونات (components) غالباَ مايكون بسيط فقط قم بتقسيمها الي مكونات (component) تمثل تحديداَ جزء واحد من نموذج البيانات (data model) خاصتك.
@@ -42,6 +43,15 @@ prev: composition-vs-inheritance.html
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
 ستري هنا أن لدينا خمس مكونات (components) في تطبيقنا البسيط ولقد قمنا بالكتابة بخط عريض كل مكون ومايمثله من بيانات.
+=======
+But how do you know what should be its own component? Use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+
+Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*, which means the work of separating your UI into components is often trivial. Break it up into components that represent exactly one piece of your data model.
+
+![Component diagram](../images/blog/thinking-in-react-components.png)
+
+You'll see here that we have five components in our app. We've italicized the data each component represents.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   1. **`FilterableProductTable` (باللون البرتقالي):** يحتوي المثال بكامله
   2. **`SearchBar` (باللون الأزرق):** يستقبل ما يدخله المستخدم *(user input)*
@@ -51,7 +61,11 @@ prev: composition-vs-inheritance.html
 
 إذا نظرت الي المكون `ProductTable` ستري أن عنوان الجدول (المحتوي علي الأسم والسعر) ليس مكون (component) منفصل بذاته هي مسألة تفضيل وهناك حجة لكلا الطريقتين. لهذا المثال نحن تركناه كجزء من المكون `ProductTable`لأنه جزء من تصيير (rendering) *مجموعة البيانات (data collection)* والتي هي من مسئولية المكون `ProductTable`، ومع ذلك إذا تنامي عنوان الجدول بشكل معقد (كمثال إضافة إمكانية الفرز (sorting)) سيكون بالتأكيد من المنطقي جعله مكون منفصل `ProductTableHeader`.
 
+<<<<<<< HEAD
 والأن بعد أن حددنا المكونات (components) في نموذج التصميم خاصتنا، لنقم برتيبهم في تسلسل هرمي وهذا سهل، المكونات التي تظهر بداخل مكونات أخري في النموذج يجب أن تكون إبن (child) داخل التسلسل:
+=======
+Now that we've identified the components in our mock, let's arrange them into a hierarchy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -71,9 +85,15 @@ prev: composition-vs-inheritance.html
 
 يمكنك البناء من أعلي لأسفل او من أسفل لأعلي، وذلك أنه يمكنك البدء ببناء المكونات في أعلي التسلسل الهرمي (كمثال أبدأ ب `FilterableProductTable`) او بمكون في اسفله (`ProductRow`)، في الأمثلة البسيطة من الأسهل عادة البدء من أعلي لأسفل، وفي المشاريع الأكبر من الأسهل البدء من أسفل الي أعلي مع كتابة إختبارات (tests) وأنت تبني.
 
+<<<<<<< HEAD
 بنهاية هذه الخطوة، سيكون لديك مكتبة من المكونات القابلة لإعادة الإستخدام (reusable) التي تقوم بتصيير نموذج البيانات، المكونات ستحتوي فقط علي دالات (`render()`) حيث أن هذه نسخة ثابتة من تطبيقك، المكون بأعلي التسلسل الهرمي (`FilterableProductTable`) سيحصل علي نموذج البيانات كخاصية (prop)، إذا قمت بعمل تغيير في نموذج البيانات وقمت بإستدعاء الدالة (`ReactDOM.render()`) مرة أخري فإن واجهة المستخدم سيتم تحديثها، من السهل رؤية كيف يتم تحديث واجهة المستخدم واين تحدث التغييرات حيث أنه لايوجد شئ معقد يحدث، طريقة تدفق البيانات في اتجاه واحد (**one-way data flow**) لل (React) وتدعي أيضاَ (*one-way binding*) تحافظ علي كل شئ وسريع وكوحدة (modular) واحدة.
 
 ببساطة انتقل الي الوثائق [React docs](/docs/) إذا كنت بحاجة للمساعدة لتنفيذ هذه الخطوة
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `ReactDOM.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+Refer to the [React docs](/docs/) if you need help executing this step.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 ### نبذه بسيطة: الخاصية (Props) مقابل الحالة (State){#a-brief-interlude-props-vs-state}
 
@@ -81,9 +101,15 @@ prev: composition-vs-inheritance.html
 
 ##  الخطوة الثالثة: تحديد الحد الأدني (ولكن المكتمل) الممثل لحالة (state) واجهة المستخدم{#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
+<<<<<<< HEAD
 لجعل واجهة المستخدم تفاعلية ستحتاج للقدرة على عمل تغييرات فى نموذج البيانات الخاص بتطبيقك، (React) تجعل هذا سهلاً بإستخدام **الحالة (state)**.
 
 لبناء تطبيقك بشكل صحيح، ستحتاج أولاً للتفكير فى الحد الأدنى من الحالة القابلة للتغيير (mutable state) التي سيحتاجها التطبيق، المفتاح هنا هو [لا تكرر نفسك (DRY: *Don't Repeat Yourself*)](https://ar.wikipedia.org/wiki/%D9%84%D8%A7_%D8%AA%D9%83%D8%B1%D8%B1_%D9%86%D9%81%D8%B3%D9%83)، حدد الحد الأدني قدر الإمكان الممثل للحالة التي يحتاجها تطبيقك ثم قم بحساب كل شئ أخر عند الحاجة، علي سبيل المثال إذا كنت تقوم ببناء تطبيق قائمة (TODO) فقط احتفظ ب (array) للعناصر ولا تحتفظ بمتغير حالة (state variable) منفصل للعدد، بدلاً من ذلك عندما تريد أن تصير (render) عدد العناصر (TODO) ببساطة إحسب طول ال (array) لعناصر (TODO).
+=======
+To make your UI interactive, you need to be able to trigger changes to your underlying data model. React achieves this with **state**.
+
+To build your app correctly, you first need to think of the minimal set of mutable state that your app needs. The key here is [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Figure out the absolute minimal representation of the state your application needs and compute everything else you need on-demand. For example, if you're building a TODO list, keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count, take the length of the TODO items array.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 فكر في كل أجزاء البيانات في مثالنا, لدينا:
 
@@ -92,7 +118,11 @@ prev: composition-vs-inheritance.html
   * حالة ال (checkbox)
   * قائمة المنتجات المنقحة (filtered)
 
+<<<<<<< HEAD
 دعنا نحدد أي منهم تصلح كحالة، ببساطة إسأل ثلاث أسئلة عن كل جزء من البيانات:
+=======
+Let's go through each one and figure out which one is state. Ask three questions about each piece of data:
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   1. هل يتم تمريرها من مكون أب كخاصية (props)؟ إذا كان نعم، فمن المحتمل هي ليست حالة
   2. هل هى ثابتة لاتتغير مع مرور الزمن؟ إذا كان نعم، فمن المحتمل هى ليست حالة.
@@ -115,10 +145,17 @@ prev: composition-vs-inheritance.html
 
 لكل جزء من الحالة فى تطبيقك:
 
+<<<<<<< HEAD
   * حدد كل مكون يقوم بتصيير (render) شئ ما بناء على هذه الحالة.
   * إبحث عن مكون مشترك ليملك هذه الحالة (مكون واحد أعلى فى التسلسل الهرمى من كل المكونات التى تحتاج لهذه الحالة).
   * إما المكون المشترك أو مكون أخر أعلى فى التسلسل الهرمى يجب أن يملك هذه الحالة.
   * إذا لم تجد مكون يصلح لأن يملك هذه الحالة، إنشئ واحداَ جديداَ فقط ليملك هذه الحالة وأضفه فى مكان ما فى التسلسل الهرمى أعلى المكون المشترك.
+=======
+  * Identify every component that renders something based on that state.
+  * Find a common owner component (a single component above all the components that need the state in the hierarchy).
+  * Either the common owner or another component higher up in the hierarchy should own the state.
+  * If you can't find a component where it makes sense to own the state, create a new component solely for holding the state and add it somewhere in the hierarchy above the common owner component.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 لنتبع تلك الإستراتيجية فى تطبيقنا:
 
@@ -136,14 +173,24 @@ prev: composition-vs-inheritance.html
 
 الى الأن، قمنا ببناء التطبيق للتصيير (render) بشكل صحيح بإرسال الخاصيات (props) والحالة (state) لأسفل التسلسل الهرمى، الان حان الوقت لدعم تدفق البيانات فى الإتجاه الأخر: المكونات الخاصة ب (form) فى أدنى التسلسل الهرمى تحتاج لتحديث الحالة للمكون `FilterableProductTable`.
 
+<<<<<<< HEAD
 تجعل (React) تدفق البيانات هذا صريحاَ ليسهل فهم كيف يعمل برنامجك، ولكنك ستحتاج للكتابة أكثر من الطريقة التقليدية لنقل البيانات فى الإتجاهين (two-way data binding).
+=======
+React makes this data flow explicit to help you understand how your program works, but it does require a little more typing than traditional two-way data binding.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 إذا حاولت الكتابة او الضغط على ال (checkbox) بالإصدار الحالى للتطبيق سترى إن React سيتجاهل ذلك، وذلك مقصود حيث أننا قمنا بوضع قيمة الخاصية (value) لل (input) لتكون دائماَ مساوية للحالة التى تم تمريرها من المكون `FilterableProductTable`.
 
 لنفكر بما نريد أن يحدث، نريد التأكد أينما قام المستخدم بتغيير ال (form) يتم تحديث الحالة لإظهار ما أدخله المستخدم وحيث أن المكونات يجب أن تغير الحالة الخاصة بها فقط، المكون `FilterableProductTable` سيمرر الدالة (callback) للمكون `SearchBar` والتى سيتم إستدعائها أينما وجب تحديث الحالة، يمكننا إستخدام الحدث (`onChange` event) على ال (inputs) لنعرف ذلك، الدالة (callback) التى تم تمريرها بواسطة المكون `FilterableProductTable` تقوم بإستدعاء `setState()` ويتم تحديث التطبيق.
 
+<<<<<<< HEAD
 بالرغم من أن ذلك يبدو معقداَ فحقيقة وبإستخدام عدد قليل من أسطر الكود وبشكل صريح نرى كيف تتدفق البيانات خلال التطبيق.
 
 ## وهذا هو كل شئ {#and-thats-it}
 
 أرجو أن تكون قد وصلتك الفكرة عن كيفية التفكير فى بناء المكونات والتطبيقات بإستخدام (React)، بينما قد تكون الكتابة أكثر مما أنت معتاد عليه تذكر أن الكود من المهم أن يكون مقروء أكثر من كتابته ووحدة (modular) الكود هذه سهلة القراءة لأقصى الحدود، عند البدء فى بناء مكتبة كبيرة من المكونات ستقدر هذا الوضوح و النمطية (modularity) وبإعادة إستخدام هذا الكود سيتقلص عدد الأسطر :)
+=======
+## And That's It {#and-thats-it}
+
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
