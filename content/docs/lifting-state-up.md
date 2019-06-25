@@ -1,6 +1,6 @@
 ---
 id: lifting-state-up
-title: Lifting State Up
+title: رفع الحالات للمستوى الأعلى
 permalink: docs/lifting-state-up.html
 prev: forms.html
 next: composition-vs-inheritance.html
@@ -9,11 +9,11 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
-Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+عادةً ما تحتاج المُكوِّنات المُتعدِّدة إلى أن تعكس نفس البيانات المتغيّرة. نُوصي برفع الحالة المشتركة بينها إلى أقرب عنصر أب مشترك بينها، فلنشاهد كيف يُمكِن تطبيق ذلك عمليًّا.
 
-In this section, we will create a temperature calculator that calculates whether the water would boil at a given temperature.
+في هذا القسم سنُنشِئ آلة حاسبة للحرارة والتي تحسب إن كان الماء سيغلي في الدرجة المُعطاة.
 
-We will start with a component called `BoilingVerdict`. It accepts the `celsius` temperature as a prop, and prints whether it is enough to boil the water:
+سنبدأ بمُكوِّن يُدعى `BoilingVerdict`، والذي يقبل درجة الحرارة بالسيلزيوس `celsius` كخاصيّة props له، ويطبع إن كانت هذه الدرجة كافية لغلي الماء:
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,9 +24,9 @@ function BoilingVerdict(props) {
 }
 ```
 
-Next, we will create a component called `Calculator`. It renders an `<input>` that lets you enter the temperature, and keeps its value in `this.state.temperature`.
+سنُنشِئ الآن مُكوِّن الآلة الحاسبة `Calculator`، والذي يُصيِّر حقل إدخال `<input>` يُتيح لنا إدخال درجة الحرارة ويحتفظ بقيمتها في `this.state.temperature`.  
 
-Additionally, it renders the `BoilingVerdict` for the current input value.
+يُصيِّر هذا المُكوِّن أيضًا المُكوِّن `BoilingVerdict` مع تزويده بدرجة الحرارة التي أدخلها المستخدم:
 
 ```js{5,9,13,17-21}
 class Calculator extends React.Component {
@@ -56,13 +56,13 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
+[**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
-## Adding a Second Input {#adding-a-second-input}
+## إضافة حقل إدخال آخر {#adding-a-second-input}
 
-Our new requirement is that, in addition to a Celsius input, we provide a Fahrenheit input, and they are kept in sync.
+المتطلّب الآخر الذي نريده إلى جانب إدخال الحرارة بالسيلزيوس هو تزويد المستخدم بحقل إدخال لدرجة الحرارة بالفهرنهايت وإبقائهما متزامنين معًا.  
 
-We can start by extracting a `TemperatureInput` component from `Calculator`. We will add a new `scale` prop to it that can either be `"c"` or `"f"`:
+بإمكاننا البدء باستخراج المُكوِّن `TemperatureInput` من المُكوِّن `Calculator`. سنضيف خاصيّة جديدة وهي المقياس `scale` والتي يُمكِن أن تكون قيمتها `"c"` أو `"f"`:
 
 ```js{1-4,19,22}
 const scaleNames = {
@@ -95,7 +95,7 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-We can now change the `Calculator` to render two separate temperature inputs:
+نستطيع الآن تغيير المُكوِّن `Calculator` لتصيير حقلين منفصلين لإدخال درجة الحرارة:
 
 ```js{5,6}
 class Calculator extends React.Component {
@@ -110,15 +110,15 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
+[**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
 
-We have two inputs now, but when you enter the temperature in one of them, the other doesn't update. This contradicts our requirement: we want to keep them in sync.
+نمتلك الآن حقلي إدخال، ولكن إن أدخلت درجة الحرارة في أحدهما فلن تتحدّث قيمة الآخر، وهذا يتعارض مع متطلّباتنا بأن نجعل القيمتين متزامنتان.
 
-We also can't display the `BoilingVerdict` from `Calculator`. The `Calculator` doesn't know the current temperature because it is hidden inside the `TemperatureInput`.
+لا يُمكننا أيضًا عرض المُكوِّن `BoilingVerdict` من خلال المُكوِّن `Calculator`، حيث لا يعرف هذا الأخير درجة الحرارة الحاليّة لأنّها مخفيّة بداخل المُكوِّن `TemperatureInput`.
 
-## Writing Conversion Functions {#writing-conversion-functions}
+## كتابة دوال التحويل {#writing-conversion-functions}
 
-First, we will write two functions to convert from Celsius to Fahrenheit and back:
+سنكتب أولًا دالتين للتحويل من سيلزيوس إلى فهرنهايت وبالعكس:
 
 ```js
 function toCelsius(fahrenheit) {
@@ -130,9 +130,9 @@ function toFahrenheit(celsius) {
 }
 ```
 
-These two functions convert numbers. We will write another function that takes a string `temperature` and a converter function as arguments and returns a string. We will use it to calculate the value of one input based on the other input.
+تُحوِّل هاتان الدالتان الأرقام، سنكتب دالة أخرى تقبل سلسلة نصيّة لدرجة الحرارة `temperature` ودالة للتحويل تستقبل وسائط وتُعيد سلسلة نصيّة. سنستخدمها لحساب قيمة أحد حقول الإدخال بناءً على قيمة الآخر.  
 
-It returns an empty string on an invalid `temperature`, and it keeps the output rounded to the third decimal place:
+تُعيد هذه الدالة سلسلة نصيّة فارغة عند إدخال درجة حرارة `temperature` خاطئة، وتُقرِّب الناتج إلى ثلاث قيم بعد الفاصلة:
 
 ```js
 function tryConvert(temperature, convert) {
@@ -146,11 +146,11 @@ function tryConvert(temperature, convert) {
 }
 ```
 
-For example, `tryConvert('abc', toCelsius)` returns an empty string, and `tryConvert('10.22', toFahrenheit)` returns `'50.396'`.
+على سبيل المثال استخدام هذه الدالة بالشكل `‎tryConvert('abc', toCelsius)‎` يُعيد سلسلة نصيّة فارغة، واستخدامها بالشكل `‎tryConvert('10.22', toFahrenheit)`‎ يُعيد القيمة `'50.396'`.
 
-## Lifting State Up {#lifting-state-up}
+## رفع الحالة للأعلى {#lifting-state-up}
 
-Currently, both `TemperatureInput` components independently keep their values in the local state:
+يحتفظ إلى حدّ الآن كل من المُكوِّنين `TemperatureInput` بقيمهما بشكلٍ مُستقلٍ في الحالة المحليّة:
 
 ```js{5,9,13}
 class TemperatureInput extends React.Component {
@@ -169,15 +169,14 @@ class TemperatureInput extends React.Component {
     // ...  
 ```
 
-However, we want these two inputs to be in sync with each other. When we update the Celsius input, the Fahrenheit input should reflect the converted temperature, and vice versa.
+ولكن نريد مزامنة هذين الحقلين مع بعضهما، فعندما نُحدِّث حقل إدخال درجة الحرارة بالسيلزيوس فيجب على حقل درجة الحرارة بالفهرنهايت أن يعكس قيمة درجة الحرارة المُحوَّلة، وبالعكس.
+تُنفَّذ مشاركة الحالة في React عن طريق نقلها إلى أقرب مُكوِّن مشترك للمُكوِّنات التي تحتاجها، ويُدعى هذا برفع الحالة للأعلى (lifting state up). سنُزيل الحالة المحليّة من `TemperatureInput` وننقلها إلى `Calculator` بدلًا من ذلك.
 
-In React, sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called "lifting state up". We will remove the local state from the `TemperatureInput` and move it into the `Calculator` instead.
+إن كان المُكوِّن `Calculator` يمتلك الحالة المشتركة، فسيُصبِح "مصدر الحقيقة" بالنسبة لدرجة الحرارة الحاليّة في حقلي الإدخال، حيث يُمكِنه توجيه الأوامر لهما بأن يمتلكا قيم متوافقة مع بعضهما. بما أنّ الخاصيّات props في المكونين `TemperatureInput` قادمة من نفس الأب وهو المُكوِّن `Calculator`، فسيبقى الحقلان متزامنين دومًا.
 
-If the `Calculator` owns the shared state, it becomes the "source of truth" for the current temperature in both inputs. It can instruct them both to have values that are consistent with each other. Since the props of both `TemperatureInput` components are coming from the same parent `Calculator` component, the two inputs will always be in sync.
+فلنشاهد كيفية عمل ذلك خطوةً بخطوة.
 
-Let's see how this works step by step.
-
-First, we will replace `this.state.temperature` with `this.props.temperature` in the `TemperatureInput` component. For now, let's pretend `this.props.temperature` already exists, although we will need to pass it from the `Calculator` in the future:
+بدايةً سنضع `this.props.temperature` بدلًا من `this.state.temperature` في المُكوِّن `TemperatureInput`. فلنفترض الآن وجود `this.props.temperature` على الرغم من أنّنا سنحتاج إلى تمريره من المُكوِّن `Calculator`:
 
 ```js{3}
   render() {
@@ -186,11 +185,12 @@ First, we will replace `this.state.temperature` with `this.props.temperature` in
     // ...
 ```
 
-We know that [props are read-only](/docs/components-and-props.html#props-are-read-only). When the `temperature` was in the local state, the `TemperatureInput` could just call `this.setState()` to change it. However, now that the `temperature` is coming from the parent as a prop, the `TemperatureInput` has no control over it.
+نعلم أنّ [الخاصيّات قابلة للقراءة-فقط](/docs/components-and-props.html#props-are-read-only)، فعندما كانت درجة الحرارة `temperature` في الحالة المحليّة لم يكن بإمكان المُكوِّن `TemperatureInput` إلّا أن يستدعي التابع `this.setState()`‎ لتغييرها.  
 
-In React, this is usually solved by making a component "controlled". Just like the DOM `<input>` accepts both a `value` and an `onChange` prop, so can the custom `TemperatureInput` accept both `temperature` and `onTemperatureChange` props from its parent `Calculator`.
+أمّا الآن وقد أصبحت درجة الحرارة `temperature` قادمة من الأب كخاصيّة prop فلا يمتلك `TemperatureInput` أي قدرة على التحكّم بها.
+تُحلّ هذه المشكلة عادةً في React عن طريق جعل المُكوِّن مضبوطًا (controlled)، فكما يقبل العنصر `<input>` خاصيّات للقيمة `value` و `onChange`، فبإمكان العنصر المُخصَّص `TemperatureInput` أن يقبل خاصيّة لدرجة الحرارة `temperature` و خاصيّة عند تغيير درجة الحرارة `onTemperatureChange` من المُكوِّن الأب له وهو `Calculator`.
 
-Now, when the `TemperatureInput` wants to update its temperature, it calls `this.props.onTemperatureChange`:
+عندما يُريد الآن `TemperatureInput` تحديث درجة حرارته يستدعي `this.props.onTemperatureChange`:
 
 ```js{3}
   handleChange(e) {
@@ -199,13 +199,13 @@ Now, when the `TemperatureInput` wants to update its temperature, it calls `this
     // ...
 ```
 
->Note:
+>ملاحظة:
 >
->There is no special meaning to either `temperature` or `onTemperatureChange` prop names in custom components. We could have called them anything else, like name them `value` and `onChange` which is a common convention.
+> ليس هنالك معنى خاص لأسماء الخاصيّات `temperature` و `onTemperatureChange` في المُكوِّنات المُخصَّصة، فقد كان بإمكاننا تسميتها بأي اسم آخر، مثل الاسم `value` و `onChange` والتي هي أسماء شائعة.
 
-The `onTemperatureChange` prop will be provided together with the `temperature` prop by the parent `Calculator` component. It will handle the change by modifying its own local state, thus re-rendering both inputs with the new values. We will look at the new `Calculator` implementation very soon.
+سيُزوِّدنا المُكوِّن `Calculator` بالخاصّيتين `onTemperatureChange` و `temperature`، حيث سيتعامل مع التغيير عن طريق تعديل حالته المحليّة وبذلك يُعيد تصيير حقلي الإدخال بالقيم الجديدة، سننظر إلى شيفرة المُكوِّن `Calculator` قريبًا.
 
-Before diving into the changes in the `Calculator`, let's recap our changes to the `TemperatureInput` component. We have removed the local state from it, and instead of reading `this.state.temperature`, we now read `this.props.temperature`. Instead of calling `this.setState()` when we want to make a change, we now call `this.props.onTemperatureChange()`, which will be provided by the `Calculator`:
+قبل الخوض في التغييرات في المُكوِّن `Calculator` فلنتذكّر التغييرات التي أحدثناها حتى الآن في المُكوِّن `TemperatureInput`، لقد أزلنا حالته المحليّة وبدلًا من استخدام `this.state.temperature` فإنّنا نستخدم الآن `this.props.temperature`. وبدلًا من استدعاء `this.setState()`‎ عندما نريد إحداث تغيير نستدعي الآن `this.props.onTemperatureChange()`‎ والتي يُزوِّدنا بها المُكوِّن `Calculator`:
 
 ```js{8,12}
 class TemperatureInput extends React.Component {
@@ -232,11 +232,11 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-Now let's turn to the `Calculator` component.
+والآن فلننتقل إلى المُكوِّن Calculator.  
 
-We will store the current input's `temperature` and `scale` in its local state. This is the state we "lifted up" from the inputs, and it will serve as the "source of truth" for both of them. It is the minimal representation of all the data we need to know in order to render both inputs.
+سنُخزِّن درجة الحرارة المُدخَلَة `temperature` والمقياس `scale` في حالته المحليّة، وهي الحالة التي رفعنا مستواها للأعلى من حقول الإدخال والتي ستخدم كمصدر للحقيقة لتلك الحقول. يُمثِّل ذلك بشكلٍ مصغّر جميع البيانات التي نحتاج معرفتها من أجل تصيير الحقول.  
 
-For example, if we enter 37 into the Celsius input, the state of the `Calculator` component will be:
+على سبيل المثال إن أدخلنا القيمة 37 إلى حقل إدخال السيلزيوس، فستكون حالة المُكوِّن `Calculator` هي:
 
 ```js
 {
@@ -245,7 +245,7 @@ For example, if we enter 37 into the Celsius input, the state of the `Calculator
 }
 ```
 
-If we later edit the Fahrenheit field to be 212, the state of the `Calculator` will be:
+إن عدّلنا لاحقًا حقل درجة الحرارة بالفهرنهايت إلى 212 فستُصبِح حالة `Calculator` كما يلي:
 
 ```js
 {
@@ -254,9 +254,7 @@ If we later edit the Fahrenheit field to be 212, the state of the `Calculator` w
 }
 ```
 
-We could have stored the value of both inputs but it turns out to be unnecessary. It is enough to store the value of the most recently changed input, and the scale that it represents. We can then infer the value of the other input based on the current `temperature` and `scale` alone.
-
-The inputs stay in sync because their values are computed from the same state:
+كان بإمكاننا تخزين قيمة كلا الحقلين ولكن تبيّن أنّ هذا غير ضروري، فيكفي تخزين القيمة التي تغيّرت مُؤخّرًا فقط والمقياس الذي يُمثّلها. باستطاعتنا بعد ذلك تبديل قيمة الحقل الآخر اعتمادًا على قيم `temperature` و `scale` فقط. يبقى حقلا الإدخال متزامنين لأنّ قيمهما محسوبة من نفس الحالة:
 
 ```js{6,10,14,18-21,27-28,31-32,34}
 class Calculator extends React.Component {
@@ -299,32 +297,32 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
+[**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
 
-Now, no matter which input you edit, `this.state.temperature` and `this.state.scale` in the `Calculator` get updated. One of the inputs gets the value as is, so any user input is preserved, and the other input value is always recalculated based on it.
+لا يُهم الآن أي حقل إدخال تُعدِّل، فستُحدَّث `this.state.temperature` و `this.state.scale` الموجودة في المُكوِّن `Calculator`، حيث يأخذ أحد الحقلين القيمة التي تدخلها ويُعاد حساب قيمة الآخر بناءً عليها.
 
-Let's recap what happens when you edit an input:
+فلنعد تلخيص ما يحدث عند تعديلك لحقل الإدخال:
 
-* React calls the function specified as `onChange` on the DOM `<input>`. In our case, this is the `handleChange` method in the `TemperatureInput` component.
-* The `handleChange` method in the `TemperatureInput` component calls `this.props.onTemperatureChange()` with the new desired value. Its props, including `onTemperatureChange`, were provided by its parent component, the `Calculator`.
-* When it previously rendered, the `Calculator` has specified that `onTemperatureChange` of the Celsius `TemperatureInput` is the `Calculator`'s `handleCelsiusChange` method, and `onTemperatureChange` of the Fahrenheit `TemperatureInput` is the `Calculator`'s `handleFahrenheitChange` method. So either of these two `Calculator` methods gets called depending on which input we edited.
-* Inside these methods, the `Calculator` component asks React to re-render itself by calling `this.setState()` with the new input value and the current scale of the input we just edited.
-* React calls the `Calculator` component's `render` method to learn what the UI should look like. The values of both inputs are recomputed based on the current temperature and the active scale. The temperature conversion is performed here.
-* React calls the `render` methods of the individual `TemperatureInput` components with their new props specified by the `Calculator`. It learns what their UI should look like.
-* React calls the `render` method of the `BoilingVerdict` component, passing the temperature in Celsius as its props.
-* React DOM updates the DOM with the boiling verdict and to match the desired input values. The input we just edited receives its current value, and the other input is updated to the temperature after conversion.
+* تستدعي React الدالة المُحدَّدة في الخاصيّة `onChange` كما هو الحال عند استخدام العنصر `<input>` في DOM. في حالتنا التابع المطلوب هو `handleChange` الموجود في المُكوِّن `TemperatureInput`.
+* يستدعي التابع `handleChange` الموجود ضمن المُكوِّن `TemperatureInput` الدالة `this.props.onTemperatureChange()`‎ مع القيمة الجديدة المطلوبة. مع العلم أنّ خاصيّات هذا المُكوِّن props بما في ذلك `onTemperatureChange` قد زوّدنا بها المُكوِّن الأب له وهو `Calculator`.
+* عندما صيّرنا `Calculator` مُسبقًا فقد حدَّد أنّ الدالة `onTemperatureChange` من المُكوِّن `TemperatureInput` ذو المقياس سيلزيوس هي نفسها التابع `handleCelsiusChange` الخاص بالمُكوِّن `Calculator`، والدالة `onTemperatureChange` من المُكوِّن `TemperatureInput` ذو المقياس فهرنهايت هي نفسها التابع `handleFahrenheitChange` الخاص بالمُكوِّن `Calculator`، لذلك يُستدعى أي من هذان التابعان اعتمادًا على حقل الإدخال الذي عدّلنا قيمته.
+* بداخل هذين التابعين يطلب المُكوِّن `Calculator` من React أن تُعيد تصييره عن طريق استدعاء `this.setState()`‎ بقيم حقول الإدخال الجديدة والمقياس الحالي لحقل الإدخال الذي عدّلناه.
+* تستدعي React التابع `render` الخاص بالمُكوِّن `Calculator` لتعرف الشكل الذي ينبغي أن تكون عليه واجهة المستخدم. يُعاد حساب قيم حقول الإدخال بناءً على درجة الحرارة الحاليّة والمقياس قيد الاستخدام، تُحوَّل درجة الحرارة هنا.
+* تستدعي React التابع `render` الخاص بكل مُكوِّن `TemperatureInput` مع خاصيّاتها props الجديدة المُحدَّدة عن طريق المُكوِّن `Calculator`، وبذلك تعرف الشكل الذي ينبغي أن تكون عليه واجهة المستخدم.
+* تستدعي React التابع `render` الخاص بمُكوِّن `BoilingVerdict` ، وتمرير درجة الحرارة في درجة مئوية كوسيط.
+* تُحدِّث React DOM واجهة DOM لتُطابِق القيم المُدخَلَة المطلوبة، حيث يحتوي حقل الإدخال الذي عدّلناه القيمة التي أدخلناها بأنفسنا، أمّا حقل الإدخال الآخر فيُحدَّث بدرجة الحرارة بعد تحويلها للمقياس المُناسِب.
 
-Every update goes through the same steps so the inputs stay in sync.
+يجري كل تحديث بنفس الخطوات بحيث تبقى حقول الإدخال متزامنة.
 
-## Lessons Learned {#lessons-learned}
+## الدروس المستفادة {#lessons-learned}
 
-There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the [top-down data flow](/docs/state-and-lifecycle.html#the-data-flows-down).
+يجب أن يكون هناك "مصدر وحيد للحقيقة" لأيّة بيانات مُتغيِّرة في تطبيق React. تُضاف الحالة عادةً إلى المُكوِّن الذي يحتاجها للتصير أولًا، بعد ذلك إن كانت تحتاجها مُكوِّنات أخرى فبإمكانك رفعها إلى أقرب مُكوِّن مشترك. وبدلًأ من محاولة مزامنة الحالة بين مُكوِّنات مختلفة ينبغي عليك الاعتماد على  [تدفق البيانات للمستويات الأدنى](/docs/state-and-lifecycle.html#the-data-flows-down).
 
-Lifting state involves writing more "boilerplate" code than two-way binding approaches, but as a benefit, it takes less work to find and isolate bugs. Since any state "lives" in some component and that component alone can change it, the surface area for bugs is greatly reduced. Additionally, you can implement any custom logic to reject or transform user input.
+يتضمّن رفع الحالة كتابة شيفرة سلسة أكثر من محاولة إجراء ربط ثنائي الاتجاه، ولكن فائدة ذلك هي عدم بذل جهد كبير في محاولة إيجاد الأخطاء. بما أنّ الحالة تعيش ضمن المُكوِّن وهو وحده من يُمكنِه تغييرها، يُقلِّل ذلك من فرصة ارتكاب أخطاء. بإمكانك أيضًا تنفيذ أي منطق مُخصَّص لرفض أو تحويل مُدخلات المستخدم.
 
-If something can be derived from either props or state, it probably shouldn't be in the state. For example, instead of storing both `celsiusValue` and `fahrenheitValue`, we store just the last edited `temperature` and its `scale`. The value of the other input can always be calculated from them in the `render()` method. This lets us clear or apply rounding to the other field without losing any precision in the user input.
+إن كان هنالك شيء يجب اشتقاقه إمّا من الخاصيّأت أو الحالات فبالتأكيد ليس من الحالات، فمثلًا بدلًا من تخزين قيمة درجة الحرارة بمتغيرين للسيلزيوس والفهرنهايت `celsiusValue` و `fahrenheitValue`، نُخزِّن فقط آخر قيمة مُعدَّلة للحرارة `temperature` ومقياسها `scale`، حيث يُمكِن حساب قيمة الحقل الآخر دومًا منها في التّابع `render()`‎. يُتيح لنا هذا مسح أو تقريب الحقل الآخر إلى أقرب قيمة بدون خسارة أي دقّة في مُدخلات المستخدم.
 
-When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
+عندما تجد خطأً في واجهة المستخدم فبإمكانك استخدام [أدوات تطوير React](https://github.com/facebook/react-devtools) لفحص الخاصيّات والتنقّل في شجرة العناصر للأعلى حتى تجد المُكوِّن المسؤول عن تحديث الحالة. يُتيح لك ذلك تتبّع الخطأ حتى الوصول إلى مصدره:
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
 

@@ -1,44 +1,45 @@
 ---
 id: static-type-checking
-title: Static Type Checking
+title: التحقّق من الأنواع الثابتة
 permalink: docs/static-type-checking.html
 prev: typechecking-with-proptypes.html
 next: refs-and-the-dom.html
 ---
 
-Static type checkers like [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/) identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we recommend using Flow or TypeScript instead of `PropTypes` for larger code bases.
+تتعرّف أدوات التحقّق من الأنواع الثابتة (Static type checkers، والمقصود بها التحقّق من الأنواع في زمن التصريف compile-time حيث لا يُسمَح بتغيير أنواع المتغيّرات في زمن التنفيذ) مثل Flow و TypeScript على بعض أنواع المشاكل قبل تنفيذ الشيفرة، وتُحسِّن سير عمل المُطوِّر عن طريق إضافة ميّزات مثل الإكمال التلقائي. نُوصي لهذا السّبب باستخدام [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) بدلًأ من `PropTypes` للشيفرات الكبيرة.
 
 ## Flow {#flow}
 
-[Flow](https://flow.org/) is a static type checker for your JavaScript code. It is developed at Facebook and is often used with React. It lets you annotate the variables, functions, and React components with a special type syntax, and catch mistakes early. You can read an [introduction to Flow](https://flow.org/en/docs/getting-started/) to learn its basics.
+تُعدُّ [Flow](https://flow.org/) أداة تحقّق من الأنواع الثابتة لشيفرة JavaScript، وهي مُطوِّرة من قبل Facebook وتُستخدَم عادةً مع React. تسمح لك هذه الأداة بتوصيف المتغيّرات والدوال ومُكوِّنات React عن طريق صياغة خاصّة للأنواع، كما تسمح باكتشاف الأخطاء باكرًا. بإمكانك قراءة [هذه المقدّمة إلى Flow](https://flow.org/en/docs/getting-started/) وتعلّم مبادئها.
 
-To use Flow, you need to:
+تحتاج لاستخدام Flow إلى ما يلي:
 
-* Add Flow to your project as a dependency.
-* Ensure that Flow syntax is stripped from the compiled code.
-* Add type annotations and run Flow to check them.
+* إضافة Flow إلى مشروعك كاعتماديّة (dependency).
+* التأكّد من إزالة صياغة Flow من الشيفرة المُصرَّفة.
+* إضافة توصيفات الأنواع (type annotations) لتشغيل Flow والتحقّق من هذه الأنواع.
 
-We will explain these steps below in detail.
+سنشرح هذه الخطوات بالتفصيل الآن.
 
-### Adding Flow to a Project {#adding-flow-to-a-project}
+### إضافة Flow إلى مشروعك {#adding-flow-to-a-project}
 
-First, navigate to your project directory in the terminal. You will need to run the following command:
+انتقل أولًا إلى مجلّد مشروعك باستخدام واجهة سطر الأوامر، ستحتاج إلى تنفيذ الأوامر التالية:
 
-If you use [Yarn](https://yarnpkg.com/), run:
+إن كنتَ تستخدم [Yarn](https://yarnpkg.com/) فاكتب ما يلي:
 
 ```bash
 yarn add --dev flow-bin
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+إن كنتَ تستخدم [npm](https://www.npmjs.com/) فاكتب ما يلي:
 
 ```bash
 npm install --save-dev flow-bin
 ```
 
-This command installs the latest version of Flow into your project.
+يُثبِّت هذا الأمر الإصدار الأخير من Flow في مشروعك.
 
-Now, add `flow` to the `"scripts"` section of your `package.json` to be able to use this from the terminal:
+أضف الآن `flow` إلى القسم `"scripts"` من ملف `package.json` لتتمكّن من استخدام هذا الأمر من خلال واجهة سطر الأوامر:
+
 
 ```js{4}
 {
@@ -50,54 +51,53 @@ Now, add `flow` to the `"scripts"` section of your `package.json` to be able to 
   // ...
 }
 ```
+وأخيرًا نفِّذ أحد الأوامر التالية: 
 
-Finally, run one of the following commands:
-
-If you use [Yarn](https://yarnpkg.com/), run:
+إن كنتَ تستخدم [Yarn](https://yarnpkg.com/) فاكتب ما يلي:
 
 ```bash
 yarn run flow init
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+إن كنتَ تستخدم [npm](https://www.npmjs.com/) فاكتب ما يلي:
 
 ```bash
 npm run flow init
 ```
 
-This command will create a Flow configuration file that you will need to commit.
+سيُنشِئ هذا الأمر ملف إعدادت Flow.
 
-### Stripping Flow Syntax from the Compiled Code {#stripping-flow-syntax-from-the-compiled-code}
+### إزالة صياغة Flow من الشيفرة المصرفة {#stripping-flow-syntax-from-the-compiled-code}
 
-Flow extends the JavaScript language with a special syntax for type annotations. However, browsers aren't aware of this syntax, so we need to make sure it doesn't end up in the compiled JavaScript bundle that is sent to the browser.
+تُمِد Flow لغة JavaScript بصياغة خاصّة لتوصيف الأنواع، ولكن على الرغم من ذلك لا تكون المتصفّحات على دراية بهذه الصياغة، لذلك نحتاج إلى التأكّد من ألّا تنتهي هذه الصياغة ضمن حزمة JavaScript المُصرفة المُرسلَة إلى المتصفّح.
 
-The exact way to do this depends on the tools you use to compile JavaScript.
+تعتمد الطريقة الصحيحة لفعل ذلك على الأدوات التي تستخدمها لتصريف شيفرة JavaScript.
 
-#### Create React App {#create-react-app}
+#### إنشاء تطبيق React {#create-react-app}
 
-If your project was set up using [Create React App](https://github.com/facebookincubator/create-react-app), congratulations! The Flow annotations are already being stripped by default so you don't need to do anything else in this step.
+إن أعددتَ مشروعك باستخدام الأمر [Create React App](https://github.com/facebookincubator/create-react-app) فستُزال توصيفات Flow افتراضيًّا لذا لن تحتاج لفعل أي شيء في هذه الخطوة.
 
 #### Babel {#babel}
 
->Note:
+>ملاحظة:
 >
->These instructions are *not* for Create React App users. Even though Create React App uses Babel under the hood, it is already configured to understand Flow. Only follow this step if you *don't* use Create React App.
+>هذه التعليمات ليست للمستخدمين الذين يبنون مشروعهم باستخدام الأمر create-react-app، حتى ولو كان هذا الأمر يستخدم Babel ضمنيًّا،  فهو مُعَد لفهم Flow مُسبقًا. اتبع هذه الخطوات فقط في حالة لم تكن تستخدم الأمر create-react-app.
 
-If you manually configured Babel for your project, you will need to install a special preset for Flow.
+إن أعددت Babel يدويًّا لمشروعك فستحتاج إلى تثبيت إعداد مُسبَق خاص من أجل Flow.
 
-If you use Yarn, run:
+إن كنتَ تستخدم Yarn فاكتب ما يلي:
 
 ```bash
 yarn add --dev babel-preset-flow
 ```
 
-If you use npm, run:
+إن كنتَ تستخدم npm فاكتب ما يلي:
 
 ```bash
 npm install --save-dev babel-preset-flow
 ```
 
-Then add the `flow` preset to your [Babel configuration](https://babeljs.io/docs/usage/babelrc/). For example, if you configure Babel through `.babelrc` file, it could look like this:
+أضف الآن إعداد `flow` إلى [إعدادات Babel](https://babeljs.io/docs/usage/babelrc/). فإن أعددتَ Babel باستخدام الملف `.babelrc` فسيبدو كما يلي:
 
 ```js{3}
 {
@@ -108,101 +108,99 @@ Then add the `flow` preset to your [Babel configuration](https://babeljs.io/docs
 }
 ```
 
-This will let you use the Flow syntax in your code.
+سيسمح لك ذلك باستخدام صياغة Flow في شيفرتك.
 
->Note:
+>ملاحظة:
 >
->Flow does not require the `react` preset, but they are often used together. Flow itself understands JSX syntax out of the box.
+>لا تتطلّب Flow وجود الإعداد المُسبَق `react`، ولكنّهما عادةً يُستخدمَان معًا. تفهم Flow بحدّ ذاتها صياغة JSX.
 
-#### Other Build Setups {#other-build-setups}
 
-If you don't use either Create React App or Babel, you can use [flow-remove-types](https://github.com/flowtype/flow-remove-types) to strip the type annotations.
+#### إعدادات البناء الأخرى {#other-build-setups}
 
-### Running Flow {#running-flow}
+إن لم تكن تستخدم الأمر Create React App أو Babel فبإمكانك استعمال [flow-remove-types](https://github.com/flowtype/flow-remove-types) لإزالة توصيفات الأنواع.
 
-If you followed the instructions above, you should be able to run Flow for the first time.
+### تشغيل Flow {#running-flow}
+
+إن اتبعتَ التعليمات السّابقة فينبغي أن تكون قادرًا على تشغيل Flow للمرّة الأولى:
 
 ```bash
 yarn flow
 ```
 
-If you use npm, run:
+وإن كنتَ تستخدم npm فاكتب ما يلي:
 
 ```bash
 npm run flow
 ```
 
-You should see a message like:
+يجب أن تظهر لك رسالة كما يلي:
 
 ```
 No errors!
 ✨  Done in 0.17s.
 ```
 
-### Adding Flow Type Annotations {#adding-flow-type-annotations}
+### إضافة توصيفات أنواع Flow {#adding-flow-type-annotations}
 
-By default, Flow only checks the files that include this annotation:
+تتحقّق Flow افتراضيًّا فقط من الملفّات التي تحتوي على علامة التوصيف هذه:
 
 ```js
 // @flow
 ```
 
-Typically it is placed at the top of a file. Try adding it to some files in your project and run `yarn flow` or `npm run flow` to see if Flow already found any issues.
+يجب وضعها في بداية الملف. جرّب إضافة بعض الملفات إلى مشروعك وتنفيذ الأمر `yarn flow` أو `npm run flow` لترى إن وجدت Flow أيّة مشاكل.
 
-There is also [an option](https://flow.org/en/docs/config/options/#toc-all-boolean) to force Flow to check *all* files regardless of the annotation. This can be too noisy for existing projects, but is reasonable for a new project if you want to fully type it with Flow.
+هنالك أيضًا [خيار](https://flow.org/en/docs/config/options/#toc-all-boolean) لإجبار Flow على التحقّق من كل الملفّات بغض النظر عن علامة التوصيف السابقة الموجودة في بداية الملف. قد يكون هذا مُزعجًا للمشاريع الموجودة حاليًّا ولكنّه خيار منطقي للمشاريع الجديدة.
 
-Now you're all set! We recommend to check out the following resources to learn more about Flow:
+الآن بعد أن انتهينا من إعداد كل شيء نُوصي بالاطلاع على هذه المصادر لتعلّم المزيد حول Flow:
 
-* [Flow Documentation: Type Annotations](https://flow.org/en/docs/types/)
-* [Flow Documentation: Editors](https://flow.org/en/docs/editors/)
-* [Flow Documentation: React](https://flow.org/en/docs/react/)
-* [Linting in Flow](https://medium.com/flow-type/linting-in-flow-7709d7a7e969)
+* [توثيق Flow: توصيفات الأنواع](https://flow.org/en/docs/types/)
+* [توثيق Flow: المُحرِّرات](https://flow.org/en/docs/editors/)
+* [توثيق Flow: استخدام Flow مع React](https://flow.org/en/docs/react/)
+* [التحقّق من الأخطاء في Flow](https://medium.com/flow-type/linting-in-flow-7709d7a7e969)
 
 ## TypeScript {#typescript}
 
-[TypeScript](https://www.typescriptlang.org/) is a programming language developed by Microsoft. It is a typed superset of JavaScript, and includes its own compiler. Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live. You can learn more about using TypeScript with React [here](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
+إنّ [TypeScript](https://www.typescriptlang.org/) هي لغة برمجة مُطوَّرة من قبل Microsoft. وهي مجموعة عُليا من JavaScript تتضمّن مُصرِّف خاص بها. ولكونها لغةً ثابتة الأنواع فهي قادرة على اكتشاف الأخطاء في زمن البناء قبل أن يُصبِح تطبيقك مُتاحًا للعامّة بفترة طويلة. بإمكانك معرفة المزيد حول استخدام TypeScript مع React من [هنا](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
 
-To use TypeScript, you need to:
-* Add TypeScript as a dependency to your project
-* Configure the TypeScript compiler options
-* Use the right file extensions
-* Add definitions for libraries you use
+لاستخدام TypeScript تحتاج إلى ما يلي:
+* إضافة TypeScript كاعتماديّة (dependency) في مشروعك.
+* إعداد خيارات مُصرِّف TypeScript.
+* استخدام الامتداد الصحيح للملفّات.
+* إضافة تعريفات للمكتبات التي تستخدمها.
 
-Let's go over these in detail.
+فلنتعرّف بشكل مفصّل إلى هذه المتطلّبات.
 
-### Using TypeScript with Create React App {#using-typescript-with-create-react-app}
+### استخدام TypeScript مع الأمر Create React App {#using-typescript-with-create-react-app}
 
-Create React App supports TypeScript out of the box.
-
-To create a **new project** with TypeScript support, run:
+لكتابة **مشروع جديد**  بإستخدام TypeScript, فاكتب ما يلي:
 
 ```bash
 npx create-react-app my-app --typescript
 ```
 
-You can also add it to an **existing Create React App project**, [as documented here](https://facebook.github.io/create-react-app/docs/adding-typescript).
+يمكنك أيضا إضافة TypeScript لمشروعك الذي تم بنائه سابقا بإستخدام Create React App التوثيق من خلال [هنا](https://facebook.github.io/create-react-app/docs/adding-typescript)
 
->Note:
+
+>ملاحظة:
 >
->If you use Create React App, you can **skip the rest of this page**. It describes the manual setup which doesn't apply to Create React App users.
+> ان كنت تعتمد على أمر create-react-app في بناء تطبقاتك, يمكنك تجاوز ما تبقى من الصفحة لأننا نقوم بشرح الإعدادات اليدوية للبناء.
 
+### إضافة TypeScript إلى مشروعك {#adding-typescript-to-a-project}
+تُضاف TypeScript إلى مشروعك باستخدام أمر واحد.
 
-### Adding TypeScript to a Project {#adding-typescript-to-a-project}
-It all begins with running one command in your terminal.
-
-If you use [Yarn](https://yarnpkg.com/), run:
+إن كنتَ تستخدم [Yarn](https://yarnpkg.com/) فاكتب ما يلي:
 
 ```bash
 yarn add --dev typescript
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+إن كنتَ تستخدم [npm](https://www.npmjs.com/) فاكتب ما يلي:
 
 ```bash
 npm install --save-dev typescript
 ```
-
-Congrats! You've installed the latest version of TypeScript into your project. Installing TypeScript gives us access to the `tsc` command. Before configuration, let's add `tsc` to the "scripts" section in our `package.json`:
+مبروك!بهذا يكون لديك آخر إصدار من TypeScript في مشروعك. يُتيح لك تثبيت TypeScript الوصول إلى الأمر `tsc`. قبل الإعداد فلنُضِف هذا الأمر إلى قسم "scripts" في ملف  `package.json`:
 
 ```js{4}
 {
@@ -215,27 +213,27 @@ Congrats! You've installed the latest version of TypeScript into your project. I
 }
 ```
 
-### Configuring the TypeScript Compiler {#configuring-the-typescript-compiler}
-The compiler is of no help to us until we tell it what to do. In TypeScript, these rules are defined in a special file called `tsconfig.json`. To generate this file:
+### إعداد مصرف TypeScript {#configuring-the-typescript-compiler}
+لن يُفيدنا المُصرِّف (Compiler) ما لم نُخبره ماذا سيفعل. تُعرَّف هذه القواعد في TypeScript عن طريق ملف خاص يُدعى `tsconfig.json`. لتوليد هذا الملف نفّذ الأمر التالي:
 
-If you use [Yarn](https://yarnpkg.com/), run:
+إن كنتَ تستخدم [Yarn](https://yarnpkg.com/) فاكتب ما يلي:
 
 ```bash
 yarn run tsc --init
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+إن كنتَ تستخدم [npm](https://www.npmjs.com/) فاكتب ما يلي:
 
 ```bash
 npx tsc --init
 ```
 
-Looking at the now generated `tsconfig.json`, you can see that there are many options you can use to configure the compiler. For a detailed description of all the options, check [here](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+بإمكانك أن ترى الآن العديد من الخيارات في هذا الملف والتي تستخدم لإعداد المُصرِّف. للحصول على شرح مفصّل عن كل الخيارات انتقل إلى هذه [الصفحة](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 
-Of the many options, we'll look at `rootDir` and `outDir`. In its true fashion, the compiler will take in typescript files and generate javascript files. However we don't want to get confused with our source files and the generated output.
+سنتحدّث من بين هذه الخيارات عن `rootDir` و `outDir`. ففي الواقع يأخذ المُصرِّف ملفّات typescript ويولِّد من خلالها ملفّات JavaScript، ولكن لا نرغب بان تختلط تلك الملفّات الناتجة مع ملفّاتنا المصدرية.
 
-We'll address this in two steps:
-* Firstly, let's arrange our project structure like this. We'll place all our source code in the `src` directory.
+سنحل هذه المشكلة بخطوتين:
+* فلنُرتِّب أولًا بنية مشروعنا كالتالي، حيث سنضع كافّة ملفّات شيفرتنا المصدرية في المجلّد `src`:
 
 ```
 ├── package.json
@@ -244,7 +242,7 @@ We'll address this in two steps:
 └── tsconfig.json
 ```
 
-* Next, we'll tell the compiler where our source code is and where the output should go.
+* بعد ذلك نُخبِر المُصرِّف أين تقع ملفّات شيفرتنا المصدريّة وأين ينبغي أن يضع الملفّات الناتجة:
 
 ```js{6,7}
 // tsconfig.json
@@ -259,41 +257,41 @@ We'll address this in two steps:
 }
 ```
 
-Great! Now when we run our build script the compiler will output the generated javascript to the `build` folder. The [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) provides a `tsconfig.json` with a good set of rules to get you started.
+رائع! عندما نُنفِّذ الآن أوامر البناء سيضع المُصرِّف ملفّات JavaScript الناتجة في المجلّد `build`. بإمكانك تحميل ملف الإعدادات [`tsconfig.json`](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) بشكلٍ جاهز للبدء والتعامل مع React حيث يحتوي على مجموعة جيدة من القواعد للبدء.
 
-Generally, you don't want to keep the generated javascript in your source control, so be sure to add the build folder to your `.gitignore`.
+لا ترغب بشكلٍ عام أن تحتفظ بملفّات JavaScript الناتجة مع الملفّات المصدريّة لذا احرص على إضافة المجلّد build إلى الملف `.gitignore`.
 
-### File extensions {#file-extensions}
-In React, you most likely write your components in a `.js` file. In TypeScript we have 2 file extensions:
+### امتدادات الملفات {#file-extensions}
 
-`.ts` is the default file extension while `.tsx` is a special extension used for files which contain `JSX`.
+تكتب عادةً مُكوِّناتك في React باستخدام ملفّات ذات الامتداد ‎.js، أمّا في TypeScript فلدينا امتدادان للملفّات، الأول هو ‎.ts وهو الامتداد الافتراضي، والثاني ‎.tsx وهو امتداد خاص يُستخدَم للملفّات التي تحتوي على صياغة JSX.
 
-### Running TypeScript {#running-typescript}
+### تشغيل TypeScript {#running-typescript}
 
-If you followed the instructions above, you should be able to run TypeScript for the first time.
+إن اتبعتَ التعليمات السّابقة فستكون قادرًا على تشغيل TypeScript للمرّة الأولى:
 
 ```bash
 yarn build
 ```
 
-If you use npm, run:
+إن كنتَ تستخدم npm فاكتب ما يلي:
 
 ```bash
 npm run build
 ```
 
-If you see no output, it means that it completed successfully.
+إن لم يظهر لديك أي ناتج فهذا يعني أنّك أتممت الخطوات بنجاح.
 
 
-### Type Definitions {#type-definitions}
-To be able to show errors and hints from other packages, the compiler relies on declaration files. A declaration file provides all the type information about a library. This enables us to use javascript libraries like those on npm in our project. 
 
-There are two main ways to get declarations for a library:
+### تعريفات الأنواع {#type-definitions}
+يعتمد المُصرِّف على ملفات التعريف لإظهار الأخطاء والتلميحات من الحزم الأخرى. يُزوِّدنا ملف التعريف بمعلومات الأنواع لمكتبة ما. يُمِكّننا ذلك من استخدام مكتبات JavaScript في مشروعنا كتلك التي نحصل عليها من npm.
 
-__Bundled__ - The library bundles its own declaration file. This is great for us, since all we need to do is install the library, and we can use it right away. To check if a library has bundled types, look for an `index.d.ts` file in the project. Some libraries will have it specified in their `package.json` under the `typings` or `types` field.
+هناك طريقتان أساسيتان للحصول على تعريفات المكتبة:
 
-__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped is a huge repository of declarations for libraries that don't bundle a declaration file. The declarations are crowd-sourced and managed by Microsoft and open source contributors. React for example doesn't bundle its own declaration file. Instead we can get it from DefinitelyTyped. To do so enter this command in your terminal.
+- __Bundled__ **( مُضمَّنة مع المكتبة ) :**  حيث تُضمِّن المكتبة ملف تعريفاتها الخاص. وهو أمرٌ جيّد لنا لأنّ كل ما يجب فعله هو تثبيت المكتبة ومن ثمّ يُمكننا استخدامها فورًا. لتعرف إن كانت المكتبة تُضمِّن تعاريف الأنواع ابحث عن الملف `index.d.ts` في المشروع. تمتلك بعض المكتبات هذا الملف مُحدّدًا ضمن الملف `package.json` في القسم `typings` أو `types`.
 
+- **عن طريق [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped):** وهو مستودع كبير لتعريفات المكتبات التي لا تُضمِّن ملف تعريفات. تُدار هذه التعريفات من قبل Microsoft ومُساهمين يُقدّمون تعريفات مفتوحة المصدر. فمثلًا لا تُضمِّن React ملف تعريفات لها ونحصل عليه بدلًا من ذلك عن طريق DefinitelyTyped. لفعل ذلك نفّذ الأمر التالي:
+- 
 ```bash
 # yarn
 yarn add --dev @types/react
@@ -301,9 +299,7 @@ yarn add --dev @types/react
 # npm
 npm i --save-dev @types/react
 ```
-
-__Local Declarations__
-Sometimes the package that you want to use doesn't bundle declarations nor is it available on DefinitelyTyped. In that case, we can have a local declaration file. To do this, create a `declarations.d.ts` file in the root of your source directory. A simple declaration could look like this:
+- **التعريفات المحلية:** قد لا تُضمِّن بعض الحزم تعريفاتها ولا نجد لها تعريفًا في مستودع DefinitelyTyped. في تلك الحالة بإمكاننا الحصول على ملف تعريفات محلي. لفعل ذلك أنشئ الملف `declarations.d.ts` في المجلد الجذر الخاص بالملفات المصدرية. يبدو التعريف البسيط كما يلي:
 
 ```typescript
 declare module 'querystring' {
@@ -312,24 +308,25 @@ declare module 'querystring' {
 }
 ```
 
-You are now ready to code! We recommend to check out the following resources to learn more about TypeScript:
+أصبحتَ الآن جاهزًا لكتابة الشيفرة. نُوصي بالاطلاع على المصادر التالية لتعلم المزيد حول TypeScript:
 
-* [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
-* [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
-* [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+* [توثيق TypeScript: الأنواع الأساسية](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [توثيق TypeScript: الانتقال من JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [توثيق TypeScript: استخدام React مع Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
 ## Reason {#reason}
 
-[Reason](https://reasonml.github.io/) is not a new language; it's a new syntax and toolchain powered by the battle-tested language, [OCaml](https://ocaml.org/). Reason gives OCaml a familiar syntax geared toward JavaScript programmers, and caters to the existing NPM/Yarn workflow folks already know.
+لا تُعتبر [Reason](https://reasonml.github.io/) لغة جديدة، بل هي صياغة جديدة وسلسلة أدوات مدعومة من قبل لغة [OCaml](https://ocaml.org/). تعطي Reason لغة OCaml صياغة مألوفة موجهة لمبرمجي JavaScript مع دعم npm و Yarn.
 
-Reason is developed at Facebook, and is used in some of its products like Messenger. It is still somewhat experimental but it has [dedicated React bindings](https://reasonml.github.io/reason-react/) maintained by Facebook and a [vibrant community](https://reasonml.github.io/docs/en/community.html).
+تُطوَّر Reason من قبل Facebook وتُستخدَم في بعض منتجاتها مثل Messenger. تُعتَبر هذه الصياغة تجريبية نوعًا ما ولكن لها [ارتباطات قوية مع React](https://reasonml.github.io/reason-react/) ومدعومة من قبل Facebook و[مجتمع كبير على github](https://reasonml.github.io/docs/en/community.html).
 
 ## Kotlin {#kotlin}
 
-[Kotlin](https://kotlinlang.org/) is a statically typed language developed by JetBrains. Its target platforms include the JVM, Android, LLVM, and [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html). 
+[Kotlin](https://kotlinlang.org/) هي لغة برمجة ثابتة الأنواع (statically typed أي لا تسمح بتغيير أنواع المتغيرات في زمن التنفيذ) مُطوَّرة من قبل JetBrains. تتضمّن المنصات الموجهة لها نظام الأندرويد، وبيئة JVM، و LLVM، و [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html).
 
-JetBrains develops and maintains several tools specifically for the React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) as well as [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). The latter helps you start building React apps with Kotlin with no build configuration.
+تُطوِّر JetBrains أدوات عديدة مُخصّصة لمجتمع React، منها [React bindings](https://github.com/JetBrains/kotlin-wrappers) و [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). تُساعِدك هذه الأداة الأخيرة على بناء تطبيقات React باستخدام Kotlin بدون الحاجة لإعدادات.
 
 ## Other Languages {#other-languages}
 
-Note there are other statically typed languages that compile to JavaScript and are thus React compatible. For example, [F#/Fable](https://fable.io/) with [elmish-react](https://elmish.github.io/react). Check out their respective sites for more information, and feel free to add more statically typed languages that work with React to this page!
+هنالك بعض لغات البرمجة الأخرى ثابتة الأنواع التي تُصرَّف شيفرتها إلى JavaScript ولذلك هي متوافقة مع React، نجد منها [F#/Fable](https://fable.io/) مع [elmish-react](https://elmish.github.io/react). اطّلع على مواقع هذه اللغات للمزيد من المعلومات وأخبرنا عن أي لغات أخرى ثابتة الأنواع متوافقة مع React لإضافتها لهذه الصفحة.
+

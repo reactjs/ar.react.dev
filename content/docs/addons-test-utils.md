@@ -19,7 +19,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 > ملاحظة:
 >
-> هنالك أداة بديلة أخرى تُدعى [`react-testing-library`](https://git.io/react-testing-library) نوصي باستعمالها، إذ صُمِّمَت لتمكين وتشجيع كتابة اختبارات لاستخدامها مع مكوّناتك بينما يستخدمها المستخدم النهائي.
+> هنالك أداة تُدعى [React Testing Library](https://testing-library.com/react) نوصي باستعمالها، إذ صُمِّمَت لتمكين وتشجيع كتابة اختبارات لاستخدامها مع مكوّناتك بينما يستخدمها المستخدم النهائي.
 >
 > أطلقت Airbnb أداة اختبار تُدعى [Enzyme](https://airbnb.io/enzyme/), والتي تجعل من السهل التعامل مع ناتج مكوّناتك. إن قرّرت استخدام أداة اختبار أخرى مع Jest فقد تستحق تجربتها
 
