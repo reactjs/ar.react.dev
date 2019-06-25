@@ -1,6 +1,6 @@
 ---
 id: create-a-new-react-app
-title: Create a New React App
+title: إنشاء تطبيق React جديد
 permalink: docs/create-a-new-react-app.html
 redirect_from:
   - "docs/add-react-to-a-new-app.html"
@@ -8,38 +8,38 @@ prev: add-react-to-a-website.html
 next: cdn-links.html
 ---
 
-Use an integrated toolchain for the best user and developer experience.
+استعمل سلسلة الأدوات المدمجة (integrated toolchain) من أجل الحصول على أفضل تجربة استخدام وتطوير.
 
-This page describes a few popular React toolchains which help with tasks like:
+تشرح هذه الصفحة بعض سلاسل الأدوات المشهورة في React التي تساعد في مهام مثل:
 
-* Scaling to many files and components.
-* Using third-party libraries from npm.
-* Detecting common mistakes early.
-* Live-editing CSS and JS in development.
-* Optimizing the output for production.
+* تغيير حجم العديد من الملفات والمكونات.
+* استعمال مكتبات من طرف ثالث من npm.
+* الاكتشاف المبكر عن الأخطاء الشائعة.
+* التعديل المباشر (Live-editing) على شيفرة CSS و JavaScript في البيئة التطويرية.
+* تحسين المخرجات للبيئة الإنتاجية.
 
-The toolchains recommended on this page **don't require configuration to get started**.
+لا تتطلب سلسلة الأدوات التي سيوصى باستعمالها في هذه الصفحة أي **ضبط مسبق لبدء استعمالها**.
 
-## You Might Not Need a Toolchain {#you-might-not-need-a-toolchain}
+## قد لا ترغب باستعمال سلسلة من الأدوات{#you-might-not-need-a-toolchain}
 
-If you don't experience the problems described above or don't feel comfortable using JavaScript tools yet, consider [adding React as a plain `<script>` tag on an HTML page](/docs/add-react-to-a-website.html), optionally [with JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx).
+إن لم تكن لك سابق خبرة بالمشكلات التي ذُكرت آنفًا، أو لم تشعر بالراحة عند استعمال أدوات JavaScript بعد، [أضف React كوسوم `<script>` مجرَّدة في صفحة HTML](/docs/add-react-to-a-website.html), وافترض أنَّ [استعمال JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx) أمر اختياري.
 
-This is also **the easiest way to integrate React into an existing website.** You can always add a larger toolchain if you find it helpful!
+هذه الطريقة أيضًا **هي أبسطة طريقة لدمج React مع صفحة ويب.** يمكن في أي وقت استعمال أي سلسلة من الأدوات مهما كانت ضخمة إن وجدت أنها مفيدة.
 
-## Recommended Toolchains {#recommended-toolchains}
+## سلسلة الأدوات المقترحة {#recommended-toolchains}
 
-The React team primarily recommends these solutions:
+يوصي فريق React بشكل أساسي الحلول التالية:
 
-- If you're **learning React** or **creating a new [single-page](/docs/glossary.html#single-page-application) app,** use [Create React App](#create-react-app).
-- If you're building a **server-rendered website with Node.js,** try [Next.js](#nextjs).
-- If you're building a **static content-oriented website,** try [Gatsby](#gatsby).
-- If you're building a **component library** or **integrating with an existing codebase**, try [More Flexible Toolchains](#more-flexible-toolchains).
+- إن كنت **تتعلم React** أو **تريد إنشاء [تطبيق ذي صفحة واحدة](/docs/glossary.html#single-page-application) app,** إستعمل [البئية Create React App](#create-react-app).
+- إن كنت تبني **موقعًا يصيَّر من طرف الخادم (server-rendered website) مع Node.js,** جرب استعمال [Next.js](#nextjs).
+- إن كنت تبني **موقعًا ثابتًا يركز على المحتوى (static content-oriented website),** جرب استعمال [Gatsby](#gatsby).
+- إن كنت تبني **مكتبة لمكون ما** or **دمج مع شيفرة أساسية (codebase)**, جرب استعمال [ سلاسل أدوات ذات مرونة أكبر](#more-flexible-toolchains).
 
-### Create React App {#create-react-app}
+### البيئة Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app) is a comfortable environment for **learning React**, and is the best way to start building **a new [single-page](/docs/glossary.html#single-page-application) application** in React.
+إنَّ [Create React App](https://github.com/facebookincubator/create-react-app) هي بيئة مناسبة ومريحة **لتعلم React**, هي أفضل طريقة لبدء بناء تطبيق جديدة ذي **[صفحة وحيدة ](/docs/glossary.html#single-page-application)** في React.
 
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 6 and npm >= 5.2 on your machine. To create a project, run:
+يضبط الأمر `create-react-app` البيئة التطويرية الخاصة بك، وبذلك تستطيع استعمال أحدث ميزات JavaScript، والحصول على أفضل تجربة تطوير، بالإضافة إلى تحسين تطبيقك وتهيئته للإنتاج. ستحتاج إلى الإصدار 6 من Node.js أو ما بعده والإصدار 5.2 من npm أو ما بعده على جهازك. لإنشاء مشروع جديد، نفذ ما يلي:
 
 ```bash
 npx create-react-app my-app
@@ -47,48 +47,48 @@ cd my-app
 npm start
 ```
 
->Note
+>ملاحظة
 >
->`npx` on the first line is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>الأمر `npx` ليس فيه أي خطأ كتابي، إذ هو أداة تشغيل للحزم تأتي مع [الإصدار 5.2 وما بعده من npm](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
-Create React App doesn't handle backend logic or databases; it just creates a frontend build pipeline, so you can use it with any backend you want. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
+إنشاء تطبيق React لا يملئ فراغ الواجهة الخلفية أو قواعد البيانات. جلَّ ما يحدث هو إنشاء أنبوب بناء واجهة أمامية (frontend build pipeline)، لذا تستطيع استعماله مع أية واجهة خلفية تريد؛ على أي حال، لا تحتاج الآن إلى معرفة أي شي عن الواجهات الخلفية. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
 
-When you're ready to deploy to production, running `npm run build` will create an optimized build of your app in the `build` folder. You can learn more about Create React App [from its README](https://github.com/facebookincubator/create-react-app#create-react-app-) and the [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+عندما تصبح جاهزًا للنشر على البيئة الإنتاجية، سينشئ تنفيذ الأمر `npm run build` نسخة مبنية محسَّنة من تطبيقك في المجلد `build`. ستطيع تعلم المزيد حول البيئة Create React App من ملف [اقرأني](https://github.com/facebookincubator/create-react-app#create-react-app--) (README) الخاص بها و [دليل المستخدم](https://facebook.github.io/create-react-app/).
 
 ### Next.js {#nextjs}
 
-[Next.js](https://nextjs.org/) is a popular and lightweight framework for **static and server‑rendered applications** built with React. It includes **styling and routing solutions** out of the box, and assumes that you're using [Node.js](https://nodejs.org/) as the server environment.
+يعدُّ [Next.js](https://nextjs.org/) إطار عمل مشهور وخفيف لبناء **التطبيقات الثابتة والمصيرة من طرف الخادم** مع React. يتضمن **حلولًا غير تقليدية للتنسيق والتوجيه,** ويفترض أنَّك تستعمل [Node.js](https://nodejs.org/) بيئةً للخادم.
 
-Learn Next.js from [its official guide](https://nextjs.org/learn/).
+تعلم المزيد حول Next.js من [الدليل الرسمي](https://nextjs.org/learn/) الموجود على موقعه.
 
 ### Gatsby {#gatsby}
 
-[Gatsby](https://www.gatsbyjs.org/) is the best way to create **static websites** with React. It lets you use React components, but outputs pre-rendered HTML and CSS to guarantee the fastest load time.
+الأداة [Gatsby](https://www.gatsbyjs.org/)  هي أفضل وسيلة لإنشاء **مواقع ويب ساكنة** مع React. إذ تمكِّننا من استعمال مكونات React ولكن مع تصيير مخرجات HTML و CSS مسبقًا لضمان الحصول على أسرع زمن تحميل.
 
-Learn Gatsby from [its official guide](https://www.gatsbyjs.org/docs/) and a [gallery of starter kits](https://www.gatsbyjs.org/docs/gatsby-starters/).
+يمكنك تعلم الأداة Gatsby من [الدليل الرسمي](https://www.gatsbyjs.org/docs/) لها و [معرض عدة البدء](https://www.gatsbyjs.org/docs/gatsby-starters/).
 
-### More Flexible Toolchains {#more-flexible-toolchains}
+### سلاسلة أدوات ذات مرونة أكبر {#more-flexible-toolchains}
 
-The following toolchains offer more flexiblity and choice. We recommend them to more experienced users:
+سلاسل الأدوات التالية توفر مرونةً أكبر وخيارات أكثر. ننصح المستخدمين ذوي الخبرة باستعمالها:
 
-- **[Neutrino](https://neutrinojs.org/)** combines the power of [webpack](https://webpack.js.org/) with the simplicity of presets, and includes a preset for [React apps](https://neutrinojs.org/packages/react/) and [React components](https://neutrinojs.org/packages/react-components/).
+- **[Neutrino](https://neutrinojs.org/)**  تدمج قوة [webpack](https://webpack.js.org/) مع بساطة الضبط المسبق الافتراضي (presets)، وتُضمِّن ضبطًا مسبقًا [لتطبيقات React](https://neutrinojs.org/packages/react/) و [مكونات React](https://neutrinojs.org/packages/react-components/).
 
-- **[nwb](https://github.com/insin/nwb)** is particularly great for [publishing React components for npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). It [can be used](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) for creating React apps, too. 
+- **[nwb](https://github.com/insin/nwb)** داة رائعةأ [لنشر مكونات React من أجل npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). [يمكن استعمالها](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) لإنشاء تطبيق React أيضًا. 
 
-- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes.html#react).
+- **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
 
-- **[Razzle](https://github.com/jaredpalmer/razzle)** is a server-rendering framework that doesn't require any configuration, but offers more flexibility than Next.js.
+- **[Razzle](https://github.com/jaredpalmer/razzle)**  هو إطار عمل تصيير من طرف الخادم ولا يتطلب أي ضبط ولكن يتسم بالمرونة أكثر من إطار العمل Next.js.
 
-## Creating a Toolchain from Scratch {#creating-a-toolchain-from-scratch}
+## إنشاء سلسلة أدوات (toolchain) من الصفر {#creating-a-toolchain-from-scratch}
 
-A JavaScript build toolchain typically consists of:
+سلسلة أدوات بناء شيفرة جافاسكريبت تتكون عادةً من:
 
-* A **package manager**, such as [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/). It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.
+* **مدير حزم** مثل [Yarn](https://yarnpkg.com/) أو [npm](https://www.npmjs.com/).يمكِّنك هذا المدير من الاستفادة قابلية اتساع بيئة العمل عبر تثبيت الحزم المتنوعة الموفرة من طرف ثالث وتحديثها بسهولة.
 
-* A **bundler**, such as [webpack](https://webpack.js.org/) or [Parcel](https://parceljs.org/). It lets you write modular code and bundle it together into small packages to optimize load time.
+* **محزِّم** مثل [webpack](https://webpack.js.org/) أو [Parcel](https://parceljs.org/). يمكِّنك المحزِّم من كتابة شيفرة لوحدةٍ ما وتحزيمها في حُزَمٍ صغيرة لتحسين زمن التحميل.
 
-* A **compiler** such as [Babel](https://babeljs.io/). It lets you write modern JavaScript code that still works in older browsers.
+* **مفسر** مثل [Babel](https://babeljs.io/). يمكِّنك المفسر من كتابة شيفرة جافاسكريبت بأحدث إصدار وتعمل في الإصدارات القديمة من المتصفحات.
 
-If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality.
+إن كنت تفضِّل إعداد سلسلة أدوات جافاسكريبت الخاصة بك من الصفر، اطلع على [هذا الدليل](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) لذي يعيد إنشاء بعض وظائف البيئة Create React App.
 
-Don't forget to ensure your custom toolchain [is correctly set up for production](/docs/optimizing-performance.html#use-the-production-build).
+لا تنسَ التأكد من [إعداد سلسلة أدواتك المخصصة من أجل الإنتاج بشكل جيد ومناسب](/docs/optimizing-performance.html#use-the-production-build).

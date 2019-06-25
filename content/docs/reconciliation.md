@@ -1,35 +1,35 @@
 ---
 id: reconciliation
-title: Reconciliation
+title: المطابقة (Reconciliation)
 permalink: docs/reconciliation.html
 ---
 
-React provides a declarative API so that you don't have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React. This article explains the choices we made in React's "diffing" algorithm so that component updates are predictable while being fast enough for high-performance apps.
+تُزوّدنا React بواجهة برمجة تطبيقات (API) صريحة بحيث لا نقلق بشأن التغييرات التي تطرأ في كل تحديث. يجعل هذا من كتابة التطبيقات أمرًا أسهل بكثير، ولكن قد لا يكون من الواضح كثيرًا كيفيّة تطبيق هذا في React. تشرح هذه الصفحة الخيارات التي وضعناها في خوارزمية المقارنة (diffing) بحيث تكون تحديثات المُكوّنات متوقعة وفي نفس الوقت سريعة كفاية لأجل التطبيقات عالية الأداء.
 
-## Motivation {#motivation}
+## تحفيز {#motivation}
 
-When you use React, at a single point in time you can think of the `render()` function as creating a tree of React elements. On the next state or props update, that `render()` function will return a different tree of React elements. React then needs to figure out how to efficiently update the UI to match the most recent tree.
+عندما تستخدم React في نقطة زمنية محددة بإمكانك التفكير في التابع `render()` وكأنّه يُنشِئ شجرة من عناصر React،  وعند التحديث التالي للخاصيات `props` أو الحالة `state`  سيُعيد التابع `render()‎` شجرة مختلفة من عناصر React. تحتاج بعدها React لأن تعرف كيف ستُحدِّث واجهة المستخدم بكفاءة لُتطابِق آخر تحديث للشجرة. 
 
-There are some generic solutions to this algorithmic problem of generating the minimum number of operations to transform one tree into another. However, the [state of the art algorithms](https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf) have a complexity in the order of O(n<sup>3</sup>) where n is the number of elements in the tree.
+هنالك بعض الحلول العامة لهذه المشكلة الحسابية لتوليد أقل عدد من العمليات المطلوبة للتحويل من شجرة إلى أخرى. على أية حال تمتلك [الخوارزميات النموذجيّة](https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf) تعقيدًا من الترتيب O(n<sup>3</sup>) حيث n هو عدد العناصر الموجودة في الشجرة. 
 
-If we used this in React, displaying 1000 elements would require in the order of one billion comparisons. This is far too expensive. Instead, React implements a heuristic O(n) algorithm based on two assumptions:
+إن استخدمنا هذا في React فسيتطلّب عرض 1000 عنصر من الأس (1^) بليون مقارنة، وهذا مُكلِف جدًّا. تُنفِّذ React بدلًا من ذلك خوارزمية إرشاديّة O(n)‎ بناءً على افتراضين هما:
 
-1. Two elements of different types will produce different trees.
-2. The developer can hint at which child elements may be stable across different renders with a `key` prop.
+1. سيُنتِج العنصران من نوعين مختلفين أشجار مختلفة.
+2. يُمكِن للمُطوّر أن يُلمِّح للعناصر الأبناء التي قد تكون مستقرة خلال تصييرات مختلفة عن طريق خاصيّة مفتاح (`key`) للإشارة إليها.
 
-In practice, these assumptions are valid for almost all practical use cases.
+عمليًّا تكون هذه الافتراضات صحيحة تقريبًا لكل حالات الاستخدام العمليّة.
 
-## The Diffing Algorithm {#the-diffing-algorithm}
+## خوارزميّة المقارنة (Diffing Algorithm) {#the-diffing-algorithm}
 
-When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
+عند مقارنة شجرتين تُقارِن React في البداية بين العنصرين الجذريين لهما. يختلف هذا السلوك اعتمادًا على أنواع العناصر الجذريّة.
 
-### Elements Of Different Types {#elements-of-different-types}
+### العناصر من أنواع مختلفة {#elements-of-different-types}
 
-Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. Going from `<a>` to `<img>`, or from `<Article>` to `<Comment>`, or from `<Button>` to `<div>` - any of those will lead to a full rebuild.
+عندما يكون للعناصر الجذرية أنواع مختلفة تُجزِّء React الشجرة القديمة وتبني شجرة جديدة من الصفر، مُنطلِقةً من العنصر `<a>` إلى `<img>`، أو من العنصر `<Article>` إلى `<Comment>`، أو من العنصر` <Button>` إلى `<div>`، تُؤدّي أي من هذه العناصر إلى إعادة البناء بشكلٍ كامل.
 
-When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+عند تجزئة الشجرة تُدمَّر عُقَد DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillUnmount()`‎. وعند بناء شجرة جديدة تُدخَل عُقَد DOM الجديدة ضمن DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillMount()`‎ ثمّ التابع `componentDidMount()`‎، ونفقد أي حالة مرتبطة بالشجرة القديمة.
 
-Any components below the root will also get unmounted and have their state destroyed. For example, when diffing:
+تتعرّض المُكوِّنات الموجودة تحت العنصر الجذري للفصل (unmount) وتدمير حالتها. على سبيل المثال عند إجراء خوارزمية المقارنة على الشيفرة التالية:
 
 ```xml
 <div>
@@ -41,11 +41,11 @@ Any components below the root will also get unmounted and have their state destr
 </span>
 ```
 
-This will destroy the old `Counter` and remount a new one.
+ستُدمِّر المُكوّن `Counter` القديم وتُعيد إنشاء واحد جديد.
 
-### DOM Elements Of The Same Type {#dom-elements-of-the-same-type}
+### عناصر DOM من نفس النوع {#dom-elements-of-the-same-type}
 
-When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. For example:
+عند مقارنة عنصري DOM من نفس النوع، تبحث React في خاصيّاتهما وتبقي على نفس عُقدة DOM التحتية مع تحديث الخاصيّات المتغيّرة فقط، على سبيل المثال:
 
 ```xml
 <div className="before" title="stuff" />
@@ -53,9 +53,9 @@ When comparing two React DOM elements of the same type, React looks at the attri
 <div className="after" title="stuff" />
 ```
 
-By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
+عن طريق مقارنة هذين العنصرين تعرف React أنّها يجب أن تُعدِّل فقط الخاصيّة `className` في عقدة DOM.
 
-When updating `style`, React also knows to update only the properties that changed. For example:
+عند تحديث الخاصيّة `style` تعرف React أنّها يجب أن تُحدِّث فقط الخاصيّات التي تغيّرت، على سبيل المثال:
 
 ```xml
 <div style={{color: 'red', fontWeight: 'bold'}} />
@@ -63,38 +63,38 @@ When updating `style`, React also knows to update only the properties that chang
 <div style={{color: 'green', fontWeight: 'bold'}} />
 ```
 
-When converting between these two elements, React knows to only modify the `color` style, not the `fontWeight`.
+عند التحويل بين هذين العنصرين تعرف React أنّها يجب أن تُعدِّل التنسيق `color` وليس `fontWeight`.
 
-After handling the DOM node, React then recurses on the children.
+بعد التعامل مع عقدة DOM تُكرِّر React نفس العمليّة للعناصر الأبناء.
 
-### Component Elements Of The Same Type {#component-elements-of-the-same-type}
+### عناصر المكونات من نفس النوع {#component-elements-of-the-same-type}
 
-When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `componentWillReceiveProps()` and `componentWillUpdate()` on the underlying instance.
+عند تحديث المُكوّن تبقى نسخة المُكوّن على حالها من أجل الاحتفاظ بالحالة عبر التصييرات التالية. تُحدِّث React الخاصيّات `props` لنسخة المُكوّن لتُطابِق العنصر الجديد وتستدعي التوابع `componentWillReceiveProps()`‎ و `componentWillUpdate()`‎ في النسخة.
 
-Next, the `render()` method is called and the diff algorithm recurses on the previous result and the new result.
+يُستدعى بعد ذلك التابع `render()`‎ وتتكرر خوارزمية المقارنة على النتيجة السابقة والنتيجة الجديدة.
 
-### Recursing On Children {#recursing-on-children}
+### التكرار على العناصر الأبناء {#recursing-on-children}
 
-By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there's a difference.
+عند حدوث التكرار (Recursing) على العناصر الأبناء لعقدة DOM، تمر React افتراضيًّا عبر قائمتين للعناصر الأبناء بنفس الوقت وتُولِّد تغييرًا عندما تجد أي فرق.
 
-For example, when adding an element at the end of the children, converting between these two trees works well:
+على سبيل المثال عند إضافة عنصر في نهاية العناصر الأبناء يعمل التحويل بين هاتين الشجرتين بشكلٍ جيّد:
 
 ```xml
 <ul>
-  <li>first</li>
-  <li>second</li>
+  <li>العنصر الأول</li>
+  <li>العنصر الثاني</li>
 </ul>
 
 <ul>
-  <li>first</li>
-  <li>second</li>
-  <li>third</li>
+  <li>العنصر الأول</li>
+  <li>العنصر الثاني</li>
+  <li>العنصر الثالث</li>
 </ul>
 ```
 
-React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
+ستُطابِق React بين الشجرتين `<li>العنصر الأول</li>`، ثم بين الشجرتين `<li>العنصر الثاني</li>`، وبعدها تُدخِل الشجرة `<li>العنصر الثالث</li>`.
 
-If you implement it naively, inserting an element at the beginning has worse performance. For example, converting between these two trees works poorly:
+إن طبّقت ذلك بشكلٍ ساذج فسيمتلك إدخال عنصر في البداية أداءً أسوأ. على سبيل المثال يعمل التحويل بين هاتين الشجرتين بشكلٍ سيّء:
 
 ```xml
 <ul>
@@ -109,11 +109,11 @@ If you implement it naively, inserting an element at the beginning has worse per
 </ul>
 ```
 
-React will mutate every child instead of realizing it can keep the `<li>Duke</li>` and `<li>Villanova</li>` subtrees intact. This inefficiency can be a problem.
+ستُبدِّل React كل عنصر ابن بدلًا من إدراكها إمكانيّة إبقاء الشجرتين الفرعيتين `<li>Duke</li>` و `<li>Villanova</li>` دون تغيير. قد تكون قلة الكفاءة هذه مشكلة هامة.
 
-### Keys {#keys}
+### المفاتيح {#keys}
 
-In order to solve this issue, React supports a `key` attribute. When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a `key` to our inefficient example above can make the tree conversion efficient:
+لحل هذه المشكلة تدعم React خاصيّة المفتاح `key`. عندما يكون للعناصر الأبناء مفاتيح فستستخدم React المفتاح لمطابقة العناصر الأبناء في الشجرة الأصلية مع العناصر الأبناء في الشجرة التالية. على سبيل المثال تُؤدّي إضافة مفتاح `key` للمثال السابق الذي لا يعمل بكفاءة إلى جعل عملية تحويل الشجرة تعمل بكفاءة:
 
 ```xml
 <ul>
@@ -127,31 +127,30 @@ In order to solve this issue, React supports a `key` attribute. When children ha
   <li key="2016">Villanova</li>
 </ul>
 ```
+تعرف الآن React أنّ العنصر الذي يمتلك المفتاح `2014` هو الجديد، والعناصر التي لديها المفاتيح `2015` و `2016` قد انتقلت فقط.
 
-Now React knows that the element with key `'2014'` is the new one, and the elements with the keys `'2015'` and `'2016'` have just moved.
-
-In practice, finding a key is usually not hard. The element you are going to display may already have a unique ID, so the key can just come from your data:
+لا يكون إيجاد مفتاح أمرًا صعبًا في الممارسة العمليّة. قد يكون للعنصر الذي تريد عرضه مُعرِّف (ID) مُسبقًا، لذا قد يأتي المفتاح من بياناتك فقط:
 
 ```js
 <li key={item.id}>{item.name}</li>
 ```
 
-When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key. The key only has to be unique among its siblings, not globally unique.
+عندما لا يكون هذا هو الحال بإمكانك إضافة خاصيّة للمُعرِّف (ID) جديدة إلى نموذج بياناتك أو إجراء `hash` على بعض المحتوى لديك لتوليد مفتاح. يجب أن يكون المفتاح فريدًا بين العناصر الأشقاء له فقط وليس فريدًا بشكلٍ عام.
 
-As a last resort, you can pass an item's index in the array as a key. This can work well if the items are never reordered, but reorders will be slow.
+وكملجأ أخير بإمكانك تمرير فهرس العنصر في المصفوفة كمفتاح. يعمل هذا بشكلٍ جيّد إن كانت العناصر لا تخضع لإعادة الترتيب إطلاقًا، ولكن ستكون إعادة الترتيب بطيئة.
 
-Reorders can also cause issues with component state when indexes are used as keys. Component instances are updated and reused based on their key. If the key is an index, moving an item changes it. As a result, component state for things like uncontrolled inputs can get mixed up and updated in unexpected ways.
+قد تُسبِّب إعادة الترتيب أيضًا مشاكل مع حالة المُكوِّن عند استخدام الفهارس كمفاتيح. تُحدَّث نُسَخ المُكوِّنات ويُعاد استخدامها بناءً على مفتاحها. إن كان المفتاح عبارة عن فهرس فسيؤدّي نقل العنصر إلى تغييره. وكنتيجة لذلك قد تختلط حالة المُكوّنات بالنسبة لأمور مثل حقول الإدخال غير المضبوطة وتُحدَّث بطرق غير مُتوقّعة.
 
-[Here](codepen://reconciliation/index-used-as-key) is an example of the issues that can be caused by using indexes as keys on CodePen, and [here](codepen://reconciliation/no-index-used-as-key) is an updated version of the same example showing how not using indexes as keys will fix these reordering, sorting, and prepending issues.
+تجد [هنا](codepen://reconciliation/index-used-as-key) مثالًا عن المشاكل التي قد تُسبّبها الفهارس كمفاتيح على موقع CodePen. و[هنا](codepen://reconciliation/no-index-used-as-key) إصدار مُحدَّث من نفس المثال يُظهِر كيف أنّ عدم استخدام الفهارس كمفاتيح سيُصلِح مشاكل إعادة الترتيب، والترتيب، وإرفاق العناصر.
 
-## Tradeoffs {#tradeoffs}
+## مفاضلات {#tradeoffs}
 
-It is important to remember that the reconciliation algorithm is an implementation detail. React could rerender the whole app on every action; the end result would be the same. Just to be clear, rerender in this context means calling `render` for all components, it doesn't mean React will unmount and remount them. It will only apply the differences following the rules stated in the previous sections.
+من المهم تذكر أنّ خوارزمية المُطابَقة هي تفصيل تنفيذي. قد تُعيد React تصيير كامل التطبيق عند كل حدث وستكون النتيجة النهائية نفسها. ولنكون واضحين تعني إعادة التصيير في هذا السياق استدعاء التابع `render` لكل المُكوّنات، وليس فصل ووصل هذه المُكوِّنات من البداية. ستُطبِّق فقط الفروقات مع اتباع القواعد المنصوصة في الأقسام السابقة.
 
-We are regularly refining the heuristics in order to make common use cases faster. In the current implementation, you can express the fact that a subtree has been moved amongst its siblings, but you cannot tell that it has moved somewhere else. The algorithm will rerender that full subtree.
+نُعيد بشكلٍ دوري تحسين الإرشادات لجعل حالات الاستخدام الشائعة أسرع. حاليًّا تستطيع التعبير عن حقيقة انتقال شجرة فرعيّة من بين العناصر الأشقاء لها، ولكن لا تستطيع القول أنّها انتقلت لمكانٍ آخر، حيث ستُعيد الخوارزمية تصيير كامل الشجرة الفرعيّة.
 
-Because React relies on heuristics, if the assumptions behind them are not met, performance will suffer.
+وبسبب اعتماد React على هذه الإرشادات إن لم تُحقِّق الأغراض المرجوّة من ورائها فسيتأثر الأداء بشكل كبير.
 
-1. The algorithm will not try to match subtrees of different component types. If you see yourself alternating between two component types with very similar output, you may want to make it the same type. In practice, we haven't found this to be an issue.
+1. لن تُحاوِل الخوارزمية مطابقة الشجرة الفرعية للمُكوّنات مختلفة الأنواع. فإن وجدتَ نفسك تُبدِّل بين نوعين مُكوِّنين مع الحصول على نتيجة مشابهة فقد ترغب بجعلهما من نفس النوع. لم نجد هذا مشكلة في الممارسة العمليّة.
 
-2. Keys should be stable, predictable, and unique. Unstable keys (like those produced by `Math.random()`) will cause many component instances and DOM nodes to be unnecessarily recreated, which can cause performance degradation and lost state in child components.
+2. يجب أن تكون المفاتيح مستقرّة، ومتوقعة، وفريدة. تُؤدّي المفاتيح غير المستقرة (كتلك الناتجة عن التابع `Math.random()`‎) إلى إعادة إنشاء نُسَخ المُكوّنات وعُقَد DOM بشكلٍ غير ضروري، والذي قد يُسبّب انخفاضًا في الأداء وخسارة الحالة في المُكوّنات الأبناء.

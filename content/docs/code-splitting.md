@@ -1,18 +1,17 @@
 ---
 id: code-splitting
-title: Code-Splitting
+title: تقسيم الشيفرة في React
 permalink: docs/code-splitting.html
 ---
 
-## Bundling {#bundling}
+## التحزيم (Bundling) {#bundling}
 
-Most React apps will have their files "bundled" using tools like
-[Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/).
-Bundling is the process of following imported files and merging them into a
-single file: a "bundle". This bundle can then be included on a webpage to load
-an entire app at once.
+تكون معظم الملفّات في تطبيقات React مُحزَّمة باستخدام أدوات مثل
+[Webpack](https://webpack.js.org/) أو [Browserify](http://browserify.org/).
+التحزيم هو عملية تتبّع الملفّات المستوردة ودمجها في ملف واحد وهو الحزمة (Bundle). يُمكِن بعدها تضمين هذه الحزمة في صفحة ويب لتحميل كامل التطبيق دفعة واحدة.
 
-#### Example {#example}
+
+#### مثال {#example}
 
 **App:**
 
@@ -40,44 +39,32 @@ function add(a, b) {
 console.log(add(16, 26)); // 42
 ```
 
-> Note:
+> ملاحظة:
 >
-> Your bundles will end up looking a lot different than this.
+> سينتهي مظهر الحزم لديك إلى شكلٍ مختلف عن هذا.
 
-If you're using [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
-app.
+إن كنت تستخدم  [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/), أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
 
-If you aren't, you'll need to setup bundling yourself. For example, see the
-[Installation](https://webpack.js.org/guides/installation/) and
-[Getting Started](https://webpack.js.org/guides/getting-started/) guides on the
-Webpack docs.
+أمّا إن لم تكن تستخدم أي من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
+[التثبيت](https://webpack.js.org/guides/installation/) و
+[ دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
 
-## Code Splitting {#code-splitting}
+## تقسيم الشيفرة {#code-splitting}
 
-Bundling is great, but as your app grows, your bundle will grow too. Especially
-if you are including large third-party libraries. You need to keep an eye on
-the code you are including in your bundle so that you don't accidentally make
-it so large that your app takes a long time to load.
+يكون التحزيم رائعًا، ولكن عندما يكبر تطبيقك ستكبر الحزمة لديك أيضًا، خاصّة إن كنت تُضمِّن مكتبات طرف ثالث كبيرة الحجم. يجب الانتباه إلى الشيفرة التي تُضمِّنها في حزمتك لكي لا تجعلها كبيرة من غير قصد لدرجة أن يستغرق تطبيقك زمنًا طويلًا للتحميل.
 
-To avoid winding up with a large bundle, it's good to get ahead of the problem
-and start "splitting" your bundle.
- [Code-Splitting](https://webpack.js.org/guides/code-splitting/) is a feature
-supported by bundlers like Webpack and Browserify (via
-[factor-bundle](https://github.com/browserify/factor-bundle)) which can create
-multiple bundles that can be dynamically loaded at runtime.
+لتجنّب الحصول على حزمة كبيرة من الأفضل استباق حصول المشكلة والبدء في تقسيم حزمتك. 
+ [تقسيم الشيفرة (Code-Splitting)](https://webpack.js.org/guides/code-splitting/) هو ميّزة مدعومة من قبل المُحزِّمات مثل Webpack و Browserify (عبر
+[factor-bundle](https://github.com/browserify/factor-bundle)) والتي تستطيع إنشاء حزم متعددة يُمكِن تحميلها بشكل ديناميكي في زمن التنفيذ.
 
-Code-splitting your app can help you "lazy-load" just the things that are
-currently needed by the user, which can dramatically improve the performance of
-your app. While you haven't reduced the overall amount of code in your app,
-you've avoided loading code that the user may never need, and reduced the amount
-of code needed during the initial load.
+يُساعدك تقسيم شيفرة تطبيقك على إجراء تحميل مُتأخّر (Lazy Load) للأشياء التي يحتاجها المستخدم حاليًّا فقط، ممّا يُحسِّن بشكل كبير أداء تطبيقك. وفي حين أنّك لم تُقلِّل الحجم الكلي لشيفرة تطبيقك، فقد تجنّبت تحميل شيفرة قد لا يحتاجها المستخدم أبدًا وقلّلتَ حجم الشيفرة التي تحتاج إلى تحميلها في البداية.
 
-## `import()` {#import}
+## `()import` {#import}
 
-The best way to introduce code-splitting into your app is through the dynamic
-`import()` syntax.
+أفضل طريقة لتقديم تقسيم الشيفرة إلى تطبيقك هي عبر استخدام صياغة
+`import()` الديناميكية.
 
-**Before:**
+**الشيفرة قبل الاستخدام:**
 
 ```js
 import { add } from './math';
@@ -85,7 +72,7 @@ import { add } from './math';
 console.log(add(16, 26));
 ```
 
-**After:**
+**الشيفرة بعد الاستخدام::**
 
 ```js
 import("./math").then(math => {
@@ -93,33 +80,28 @@ import("./math").then(math => {
 });
 ```
 
-> Note:
+> ملاحظة:
 >
-> The dynamic `import()` syntax is a ECMAScript (JavaScript)
-> [proposal](https://github.com/tc39/proposal-dynamic-import) not currently
-> part of the language standard. It is expected to be accepted in the
-> near future.
+> صياغة `import()` الديناميكية هي عبارة عن
+> [اقتراح](https://github.com/tc39/proposal-dynamic-import) في ECMAScript (أي JavaScript) وليست جزءًا من اللغة المعيارية، ومن المتوقع قبولها في المستقبل القريب.
 
-When Webpack comes across this syntax, it automatically starts code-splitting
-your app. If you're using Create React App, this is already configured for you
-and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
-out of the box in [Next.js](https://github.com/zeit/next.js/#dynamic-import).
+عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App, فهذا الإعداد موجود لديك مُسبقًا
+و [تستطيع استخدامه مباشرةً](https://facebook.github.io/create-react-app/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
-If you're setting up Webpack yourself, you'll probably want to read Webpack's
-[guide on code splitting](https://webpack.js.org/guides/code-splitting/). Your Webpack config should look vaguely [like this](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
+إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة
+[ دليل Webpack حول تقسيم الشيفرة](https://webpack.js.org/guides/code-splitting/). يجب أن تبدو إعدادات Webpack لديك [مثل هذا](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
-When using [Babel](https://babeljs.io/), you'll need to make sure that Babel can
-parse the dynamic import syntax but is not transforming it. For that you will need [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
+عند استخدامك [Babel](https://babeljs.io/), يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية بدون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
-> Note:
+> ملاحظة:
 >
-> `React.lazy` and Suspense is not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we recommend [Loadable Components](https://github.com/smooth-code/loadable-components). It has a nice [guide for bundle splitting with server-side rendering](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md).
+> `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادم](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md).
 
-The `React.lazy` function lets you render a dynamic import as a regular component.
+تمكِّنك الدالة `React.lazy`  من تصيير استيراد ديناميكي على أنَّه مكون عادي.
 
-**Before:**
+**قبل:**
 
 ```js
 import OtherComponent from './OtherComponent';
@@ -133,7 +115,7 @@ function MyComponent() {
 }
 ```
 
-**After:**
+**بعد:**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -147,13 +129,13 @@ function MyComponent() {
 }
 ```
 
-This will automatically load the bundle containing the `OtherComponent` when this component gets rendered.
+ستحمِّل هذه الشيفرة الحزمة تلقائيًّا التي تحوي المكون `OtherComponent` عند تصييره.
 
-`React.lazy` takes a function that must call a dynamic `import()`. This must return a `Promise` which resolves to a module with a `default` export containing a React component.
+تأخذ الدالة `React.lazy` دالةً يجب عليها أن استدعاء استيراد ديناميكي عبر `import()`. هذا يجب أن يعيد وعدًا (أي `Promise`) يُستبيَن إلى وحدةٍ مع تصدير افتراضي `default` يحوي مكون React.
 
 ### Suspense {#suspense}
 
-If the module containing the `OtherComponent` is not yet loaded by the time `MyComponent` renders, we must show some fallback content while we're waiting for it to load - such as a loading indicator. This is done using the `Suspense` component.
+إن لم تُحمَّل الوحدة التي تحوي المكون `OtherComponent` بعد في الوقت الذي يُصيَّر فيه `MyComponent`, يجب أن نظهر بعض المحتوى التراجعي (fallback content) في أثناء انتظارنا تحميلها مثل تحميل مؤشِّر. يمكن تنفيذ هذا عبر استعمال المكون `Suspense` component.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -169,7 +151,7 @@ function MyComponent() {
 }
 ```
 
-The `fallback` prop accepts any React elements that you want to render while waiting for the component to load. You can place the `Suspense` component anywhere above the lazy component. You can even wrap multiple lazy components with a single `Suspense` component.
+تقبل الخاصية `fallback` أي عناصر React تريد تصييرها أثناء انتظار المكون لتحمليه. يمكنك وضع المكون `Suspense` في أي مكان فوق المكون الكسول. يمكنك حتى تغليف مكونات كسولة مع مكون `Suspense` وحيد.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -189,9 +171,9 @@ function MyComponent() {
 }
 ```
 
-### Error boundaries {#error-boundaries}
+### حدود الخطأ {#error-boundaries}
 
-If the other module fails to load (for example, due to network failure), it will trigger an error. You can handle these errors to show a nice user experience and manage recovery with [Error Boundaries](/docs/error-boundaries.html). Once you've created your Error Boundary, you can use it anywhere above your lazy components to display an error state when there's a network error.
+إن فشل تحميل الوحدة الأخرى (نتيجة فشل الشبكة مثلًا)، فسيُطلَق خطأ. يمكنك معالجة هذه الأخطاء لتحسين تجربة المستخدم وإدارة عملية الإصلاح عبر حد الأخطاء. متى ما أنشأت حدًا للخطأ، يمكنك استعماله في أي مكان فوق مكوناتك الكسولة لعرض حالة الخطأ عندما يكون هنالك خطأ في الشبكة.
 
 ```js
 import MyErrorBoundary from './MyErrorBoundary';
@@ -212,19 +194,13 @@ const MyComponent = () => (
 );
 ```
 
-## Route-based code splitting {#route-based-code-splitting}
+## تقسيم الشيفرة المعتمد على الطريق (Route) {#route-based-code-splitting}
 
-Deciding where in your app to introduce code splitting can be a bit tricky. You
-want to make sure you choose places that will split bundles evenly, but won't
-disrupt the user experience.
+قد يكون من الصعب تحديد موضع تقسيم الشيفرة في تطبيقك. يجب عليك أن تتأكد من اختيار أماكن تُقسِّم الشيفرة بشكلٍ متساوٍ ولكن من دون الضرر بتجربة المستخدم.
 
-A good place to start is with routes. Most people on the web are used to
-page transitions taking some amount of time to load. You also tend to be
-re-rendering the entire page at once so your users are unlikely to be
-interacting with other elements on the page at the same time.
+المكان الجيد للبدء بذلك هو الطرق (routes). اعتاد معظم مستخدمي الويب على أنّ أزرار التقليب بين الصفحات تستغرق وقتًا لتحميلها. تميل حينها أيضًا إلى إعادة تصيير كامل الصفحة مرة واحدة لذا من غير المحتمل أن يكون المستخدم يحاول التفاعل مع الصفحة في نفس الوقت.
 
-Here's an example of how to setup route-based code splitting into your app using
-libraries like [React Router](https://reacttraining.com/react-router/) with `React.lazy`.
+هذا مثال حول إعداد تقسيم الشيفرة اعتمادًا على الطريق في تطبيقك باستخدام مكتبات مثل [React Router](https://reacttraining.com/react-router/) و `React.lazy`.
 
 ```js
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -245,9 +221,9 @@ const App = () => (
 );
 ```
 
-## Named Exports {#named-exports}
+## التصديرات المسماة {#named-exports}
 
-`React.lazy` currently only supports default exports. If the module you want to import uses named exports, you can create an intermediate module that reexports it as the default. This ensures that treeshaking keeps working and that you don't pull in unused components.
+تدعم الدالة `React.lazy` حاليًا التصديرات الافتراضية (default exports). إن كانت الوحدة التي تريد استيرادها تستعمل التصديرات المسماة (named exports)، تستطيع إنشاء وحدة وسيطة تعيد تصديرها بالشكل الافتراضي. يضمن ذلك استمرار التحقق من عدم وجود شيفرات «ميتة» وعدم استيراد المكونات غير المستعملة.
 
 ```js
 // ManyComponents.js
