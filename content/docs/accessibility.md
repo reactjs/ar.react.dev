@@ -234,6 +234,7 @@ this.inputElement.current.focus();
 من الأمثلة الرائعة حول إدارة التركيز مثال [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). وهو مثال نادر نسبيًّا عن نافذة سهلة الوصول بشكل كامل، فهي لا تُعيِّن فقط التركيز المبدئي على
 زر الإلغاء  `cancel` (ممّا يمنع مستخدم لوحة المفاتيح من تفعيل الحدث `success` عن طريق الخطأ) وتحصر تركيز لوحة المفاتيح بداخل النافذة، بل تُعيد تعيين التركيز أيضًا إلى العنصر الذي أطلق هذه النافذة.
 
+
 >ملاحظة:
 >
 >على الرغم من أنّ ميزة تركيز لوحة المفاتيح هي ميزة هامة لسهولة الوصول ولكن في نفس الوقت هي تقنية يجب استخدامها بحذر. استخدمها لإصلاح تركيز لوحة المفاتيح عند حدوث خطأ ما، ولكن لا تستخدمها لتتوقع كيف يريد المستخدم أن يتعامل مع التطبيق.
@@ -251,7 +252,7 @@ this.inputElement.current.focus();
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = { isOpen: false };
@@ -285,13 +286,13 @@ constructor(props) {
     return (
       <div ref={this.toggleContainer}>
         <button onClick={this.onClickHandler}>Select an option</button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -352,13 +353,13 @@ class BlurExample extends React.Component {
                 aria-expanded={this.state.isOpen}>
           Select an option
         </button>
-        {this.state.isOpen ? (
+        {this.state.isOpen && (
           <ul>
             <li>Option 1</li>
             <li>Option 2</li>
             <li>Option 3</li>
           </ul>
-        ) : null}
+        )}
       </div>
     );
   }
@@ -430,6 +431,7 @@ class BlurExample extends React.Component {
 1. استخدام زر `Tab` و `Shift+Tab`  للتصفح.
 1. استخدام زر `Enter` لتفعيل العناصر.
 1. استخدام الأسهم للتفاعل مع بعض العناصر، مثل القوائم والقوائم المنسدلة.
+
 
 ### مساعد التطوير {#development-assistance}
 
