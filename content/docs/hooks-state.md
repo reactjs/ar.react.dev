@@ -6,15 +6,15 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
-The [introduction page](/docs/hooks-intro.html) used this example to get familiar with Hooks:
+شرحت الصفحة السابقة في قسم [خطاف الحالة](/docs/hooks-intro.html) هذا الخطاف عبر المثال التالي:
 
 ```js{4-5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" التصريح عن متغير حالة جديد ندعوه
   const [count, setCount] = useState(0);
 
   return (
@@ -28,11 +28,11 @@ function Example() {
 }
 ```
 
-We'll start learning about Hooks by comparing this code to an equivalent class example.
+بادئ ذي بدء، سنتعرف على الخطافات عبر موازنة هذه الشيفرة مع الصنف المكافئ لها.
 
-## Equivalent Class Example {#equivalent-class-example}
+## مثال عن صنف مكافئ لخطاف {#equivalent-class-example}
 
-If you used classes in React before, this code should look familiar:
+إن استعملت الأصناف في React من قبل، فيجب أن تكون الشيفرة التالية مألوفةً لديك:
 
 ```js
 class Example extends React.Component {
@@ -56,39 +56,39 @@ class Example extends React.Component {
 }
 ```
 
-The state starts as `{ count: 0 }`, and we increment `state.count` when the user clicks a button by calling `this.setState()`. We'll use snippets from this class throughout the page.
+الحالة الأولية تكون  `{ count: 0 }`, ونعمل على زيادة `state.count` عندما يضغط المستخدم على زر يستدعي `this.setState()`. سنستعمل أجزاء من هذا الصنف في أقسام لاحقة من هذه الصفحة.
 
->Note
+>ملاحظة
 >
->You might be wondering why we're using a counter here instead of a more realistic example. This is to help us focus on the API while we're still making our first steps with Hooks.
+>قد تتساءل عن سبب استعمالنا مثال عدَّادٍ هنا عوضَ استعمال مثال أكثر واقعية. يكمن السبب في أنَّ هذا المثال البسيط يساعدنا على التركيز على الواجهة البرمجية في بداية رحلتنا مع الخطافات.
 
-## Hooks and Function Components {#hooks-and-function-components}
+## الخطافات ومكونات دالة {#hooks-and-function-components}
 
-As a reminder, function components in React look like this:
+لنتذكر سويةً، تبدو مكونات دالة في React بالشكل:
 
 ```js
 const Example = (props) => {
-  // You can use Hooks here!
+  // تستطيع استعمال الخطافات هنا
   return <div />;
 }
 ```
 
-or this:
+أو الشكل التالي:
 
 ```js
 function Example(props) {
-  // You can use Hooks here!
+  // تستطيع استعمال الخطافات هنا
   return <div />;
 }
 ```
 
-You might have previously known these as "stateless components". We're now introducing the ability to use React state from these, so we prefer the name "function components".
+ربما كنت تعرف مسبقًا أنَّ هذه المكونات هي "مكونات عديمة الحالة" (stateless components). نعرِّف الآن إمكانية استعمال حالة React من هذه المكونات، لذا نفضل استعمال الاسم "مكونات دالة".
 
-Hooks **don't** work inside classes. But you can use them instead of writing classes.
+**لا تعمل**الخطافات داخل الأصناف، ولكن يمكن استعمالها بدلًا من الأصناف نفسها.
 
-## What's a Hook? {#whats-a-hook}
+## ما هو الخطاف؟ {#whats-a-hook}
 
-Our new example starts by importing the `useState` Hook from React:
+يبدأ مثالنا الجديد باستيراد الخطاف `useState` من React:
 
 ```js{1}
 import React, { useState } from 'react';
@@ -98,17 +98,17 @@ function Example() {
 }
 ```
 
-**What is a Hook?** A Hook is a special function that lets you "hook into" React features. For example, `useState` is a Hook that lets you add React state to function components. We'll learn other Hooks later.
+**إذًا، ما هو الخطاف تحديدًا؟** الخطاف هو دالة مميزة تمكنك من "تعليق أو ربط" (hook into) ميزات React مع بعضها. على سبيل المثال، `useState` هو خطاف يمكنك من إضافة حالة React إلى مكونات دالة. سنتطرق إلى الخطافات الأخرى لاحقًا.
 
-**When would I use a Hook?** If you write a function component and realize you need to add some state to it, previously you had to convert it to a class. Now you can use a Hook inside the existing function component. We're going to do that right now!
+**متى يمكنني استعمال الخطاف؟** إن كتبت مكون دالة ووجدت أنَّك بحاجة إلى إضافة بعض الحالة له، فستحتاج - سابقًا قبل عصر الخطافات - إلى تحويله إلى صنف. الآن، يمكنك استعمال خطاف داخل مكون دالة موجودة وهو ما سنفعله الآن.
 
->Note:
+>ملاحظة:
 >
->There are some special rules about where you can and can't use Hooks within a component. We'll learn them in [Rules of Hooks](/docs/hooks-rules.html).
+>هنالك بعض القواعد المخصَّصة تحدِّد المكان المسموح والمحظور فيه استعمال الخطافات ضمن مكون. سنشرح هذه القواعد بالتفصيل الممل في توثيق [قواعد استعمال الخطافات](/docs/hooks-rules.html).
 
-## Declaring a State Variable {#declaring-a-state-variable}
+## التصريح عن متغير حالة {#declaring-a-state-variable}
 
-In a class, we initialize the `count` state to `0` by setting `this.state` to `{ count: 0 }` in the constructor:
+إن كنا سنستعمل صنفًا، نهيِّئ فيه الحالة `count` إلى 0 عبر ضبط `this.state` إلى `{ count: 0 }` في باني هذا الصنف:
 
 ```js{4-6}
 class Example extends React.Component {
@@ -120,58 +120,58 @@ class Example extends React.Component {
   }
 ```
 
-In a function component, we have no `this`, so we can't assign or read `this.state`. Instead, we call the `useState` Hook directly inside our component:
+في مكون دالة، لا يمكننا استعمال `this`, لذا لا نستطيع إسناد أو قراء `this.state`. عوض ذلك، يمكننا استدعاء الخطاف `useState` مباشرةً داخل المكون الخاص بنا:
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" التصريح عن متغير حالة جديد ندعوه
   const [count, setCount] = useState(0);
 ```
 
-**What does calling `useState` do?** It declares a "state variable". Our variable is called `count` but we could call it anything else, like `banana`. This is a way to "preserve" some values between the function calls — `useState` is a new way to use the exact same capabilities that `this.state` provides in a class. Normally, variables "disappear" when the function exits but state variables are preserved by React.
+**ماذا يفعل استدعاء `useState` ؟** إنَّه يصرِّح عن "متغير حالة" (state variable). هذا المتغير يدعى `count` ولكن يمكننا أن ندعوه بأي اسم آخر مثل`banana`. هذه هي طريقة لحفظ بعض القيم بين استدعاءات الدالة، إذ `useState` هي طريقة جديدة لاستعمال الامكانيات نفسها التي توفرها `this.state` في الصنف. عمومًا، المتغيرات "تختفي" عند اكتمال تنفيذ الدالة وخروجها ولكن متغيرات الحالة تحافظ على قيمتها في React.
 
-**What do we pass to `useState` as an argument?** The only argument to the `useState()` Hook is the initial state. Unlike with classes, the state doesn't have to be an object. We can keep a number or a string if that's all we need. In our example, we just want a number for how many times the user clicked, so pass `0` as initial state for our variable. (If we wanted to store two different values in state, we would call `useState()` twice.)
+**لماذا نمرر وسيطًا إلى useState؟** الوسيط الوحيد الذي يمكن تمريره إلى الخطاف `useState()` هو الحالة الأولية. خلافًا للأصناف، ليس من الضروري أن تكون الحالة كائنًا. يمكننا استعمال عدد أو سلسلة نصية إن كان ذلك ما نحتاجه. في مثالنا، نحتاج إلى عدد ليمثل عدد المرات التي ضغط فيها المستخدم على الزر، لذا مرَّرنا العدد 0 ليكون الحالة الأولية لمتغيرنا. (إن أردنا تخزين قيمتين مختلفتين في حالة، فيمكننا فعل ذلك عبر استدعاء `useState()` مرتين.)
 
-**What does `useState` return?** It returns a pair of values: the current state and a function that updates it. This is why we write `const [count, setCount] = useState()`. This is similar to `this.state.count` and `this.setState` in a class, except you get them in a pair. If you're not familiar with the syntax we used, we'll come back to it [at the bottom of this page](/docs/hooks-state.html#tip-what-do-square-brackets-mean).
+**ما الذي يعيده`useState`؟** إنه يعيد زوجًا من القيم: الحالة الحالية، ودالة تحدِّثها. لهذا السبب، نكتب  `const [count, setCount] = useState()`. هذا الأمر يشبه `this.state.count` و `this.setState` في الصنف، باستثناء أنَّنا نحصل عليهم كزوج من القيم. إن لم تكن الصيغة السابقة التي استعملناها مألوفة لك، فسنتطرق إليها في [آخر هذه الصفحة](/docs/hooks-state.html#tip-what-do-square-brackets-mean).
 
-Now that we know what the `useState` Hook does, our example should make more sense:
+الآن وقد عرفنا ما الذي يفعله الخطاف `useState` يجب أن تكون الشيفرة التالية مفهومة تمامًا لك:
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" التصريح عن متغير حالة جديد ندعوه
   const [count, setCount] = useState(0);
 ```
 
-We declare a state variable called `count`, and set it to `0`. React will remember its current value between re-renders, and provide the most recent one to our function. If we want to update the current `count`, we can call `setCount`.
+صرَّحنا عن متغير حالة يدعى  `count`, وأسندنا القيمة 0 العددية له. ستتذكر React قيمته الحالية بين عمليات إعادة التصيير، وتوفر الحالة الأحدث له للدالة. إن أردنا تحديث قيمة المتغير `count` الحالية، يمكننا استدعاء `setCount`.
 
->Note
+>ملاحظة
 >
->You might be wondering: why is `useState` not named `createState` instead?
+>قد تتسائل عن سبب استعمال الاسم `useState` لهذا الخطاف وليس الاسم `createState`?
 >
->"Create" wouldn't be quite accurate because the state is only created the first time our component renders. During the next renders, `useState` gives us the current state. Otherwise it wouldn't be "state" at all! There's also a reason why Hook names *always* start with `use`. We'll learn why later in the [Rules of Hooks](/docs/hooks-rules.html).
+>الجواب هو أنَّ "إنشاء" (create) لن تكون دقيقة والسبب أنَّ الحالة تُنشَأ عندما يصيَّر المكون أول مرة فقط. في عمليات التصيير اللاحقة، يعطينا الخطاف  `useState` القيمة (الحالة) الحالية وإلا لما كنا أطلقنا عليها "حالة" (state) على الإطلاق. هنالك أيضًا سبب متعلق ببدء تسمية الخطافات بالكلمة `use` ، وسنتعرف عليه في توثيق [قواعد استعمال الخطافات](/docs/hooks-rules.html).
 
-## Reading State {#reading-state}
+## قراءة الحالة {#reading-state}
 
-When we want to display the current count in a class, we read `this.state.count`:
+إن أردنا إظهار قيمة المتغير count الحالية في صنف، يمكن أن نقرأ `this.state.count`:
 
 ```js
   <p>You clicked {this.state.count} times</p>
 ```
 
-In a function, we can use `count` directly:
+في دال، يمكننا استعمال المتغير `count` مباشرةً:
 
 
 ```js
   <p>You clicked {count} times</p>
 ```
 
-## Updating State {#updating-state}
+## تحديث الحالة {#updating-state}
 
-In a class, we need to call `this.setState()` to update the `count` state:
+في الصنف، نحتاج إلى استدعاء `this.setState()` لتحديث الحالة `count`:
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
@@ -179,7 +179,7 @@ In a class, we need to call `this.setState()` to update the `count` state:
   </button>
 ```
 
-In a function, we already have `setCount` and `count` as variables so we don't need `this`:
+في الدالة، لدينا `setCount` و `count` مسبقًا كمتغيرات، لذا لا تحتاج إلى `this`:
 
 ```js{1}
   <button onClick={() => setCount(count + 1)}>
@@ -187,9 +187,9 @@ In a function, we already have `setCount` and `count` as variables so we don't n
   </button>
 ```
 
-## Recap {#recap}
+## الخلاصة {#recap}
 
-Let's now **recap what we learned line by line** and check our understanding.
+**لنراجع ما تعلمناه بالمرور على كل سطر من أسطر الشيفرة** والتأكد من فهمنا للخطافات بشكل عام ولخطاف الحالة بشكل خاص:
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -212,69 +212,69 @@ Let's now **recap what we learned line by line** and check our understanding.
 14:  }
 ```
 
-* **Line 1:** We import the `useState` Hook from React. It lets us keep local state in a function component.
-* **Line 4:** Inside the `Example` component, we declare a new state variable by calling the `useState` Hook. It returns a pair of values, to which we give names. We're calling our variable `count` because it holds the number of button clicks. We initialize it to zero by passing `0` as the only `useState` argument. The second returned item is itself a function. It lets us update the `count` so we'll name it `setCount`.
-* **Line 9:** When the user clicks, we call `setCount` with a new value. React will then re-render the `Example` component, passing the new `count` value to it.
+* **السطر 1:** استوردنا الخطاف `useState` من React. هذا يمكننا من إبقاء حالة محلية (local state) في مكون دالة.
+* **السطر 4:** داخل المكون `Example`, صرَّحنا عن متغير حالة جديد عبر استدعاء الخطاف `useState` Hook. يعيد الخطاف زوجًا من القيم أعطينا لكل من هاتين القيمتين اسمًا. سنتحاج إلى استدعاء المتغير  `count` لأنَّه يحمل عدد ضغطات الزر. هيَّأنا هذا المتغير إلى القيمة 0 عبر تمرير هذه القيمة إلى `useState` القيمة الثانية من الزوج الذي يعيده الخطاف هي دالة بحد ذاتها. هذه الدالة تحدِّث المتغير `count` لذا سنطلق عليها `setCount`.
+* **السطر 9:** عندما يضغط المستخدم على الزر، تُستدعَى الدالة `setCount` مع القيمة الجديدة. ستعيد React بعد ذلك تصيير المكون `Example` مع تمرير القيمة `count` الجديدة إليه.
 
-This might seem like a lot to take in at first. Don't rush it! If you're lost in the explanation, look at the code above again and try to read it from top to bottom. We promise that once you try to "forget" how state works in classes, and look at this code with fresh eyes, it will make sense.
+قد يبدو للوهلة الأولى أنَّ هذا كثير ويحتاج إلى فهم وتركيز كبيرين. لا تتسرع بالحكم. إن شعرت أنَّك قد فقدت تركيزك أثناء الشرح، حضِّر كوبًا من القهوة ثمَّ اشربه مع إعادة قراءة الشيفرات بدءًا من بداية الدرس وحاول فهم كل سطر منها. نعدك إن نسيت (مؤقتًا) كيفية عمل الحالة في الأصناف ونظرت إلى الشيفرة مجدَّدًا، فستفهمها بشكل كامل.
 
-### Tip: What Do Square Brackets Mean? {#tip-what-do-square-brackets-mean}
+### إضافة: ما الذي تعنيه الأقواس المعقوفة؟ {#tip-what-do-square-brackets-mean}
 
-You might have noticed the square brackets when we declare a state variable:
+لابد أنَّك لاحظ وجود أقواس معقوفة عند التصريح عن متغير حالة:
 
 ```js
   const [count, setCount] = useState(0);
 ```
 
-The names on the left aren't a part of the React API. You can name your own state variables:
+الأسماء في القسم الأيسر ليست جزءًا من واجهة React البرمجية. يمكنك أن تسمي متغيرات الحالة الخاصة بك بأي اسم تريد:
 
 ```js
   const [fruit, setFruit] = useState('banana');
 ```
 
-This JavaScript syntax is called ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It means that we're making two new variables `fruit` and `setFruit`, where `fruit` is set to the first value returned by `useState`, and `setFruit` is the second. It is equivalent to this code:
+هذه الصيغة هي إحدى صيغ JavaScript التي يطلق عليها ["تفكيك المصفوفات"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). إنَّها تعني أنَّنا نريد إنشاء متغيِّرين جديدين هما: `fruit` و `setFruit`, إذ يعيَّن الأول إلى أول قيمة يعيدها `useState`, والثاني إلى القيمة الثانية المعادة. هذا يكافئ الشيفرة التالية:
 
 ```js
-  var fruitStateVariable = useState('banana'); // Returns a pair
-  var fruit = fruitStateVariable[0]; // First item in a pair
-  var setFruit = fruitStateVariable[1]; // Second item in a pair
+  var fruitStateVariable = useState('banana'); // يعيد زوجًا
+  var fruit = fruitStateVariable[0]; // أول عنصر من الزوج
+  var setFruit = fruitStateVariable[1]; // ثاني عنصر من الزوج
 ```
 
-When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that lets us update it. Using `[0]` and `[1]` to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
+عندما صرَّحنا عن متغير حالة مع `useState`, فإنَّ هذا الخطاف يعيد زوجًا من القيم في مصفوفة بعنصرين. العنصر الأولي هو القيمة الحالية، والعنصر الثاني هو الدالة التي تمكننا من تحديثها. استعمال `[0]` و `[1]` للوصول إلى هاتين القيمتين أمرٌ مربك لأنَّ لهما معنى محدَّد. هذا هو سبب استعمالنا أسلوك الإسناد بالتفكيك عوضًا عن ذلك.
 
->Note
+>ملاحظة
 >
->You might be curious how React knows which component `useState` corresponds to since we're not passing anything like `this` back to React. We'll answer [this question](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) and many others in the FAQ section.
+>ربما انتابك شيءٌ من الفضول حول كيفية معرفة React أي مكون يقابل `useState` لمَّا كنا نعيد تمرير أي شي مثل `this` إلى React. لا تقلق، سنجيب عن هذا السؤال وأسئلة أخرى في صفحة [الأسئلة الشائعة حول الخطافات](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components).
 
-### Tip: Using Multiple State Variables {#tip-using-multiple-state-variables}
+### إضافة: استعمال متغيرات حالة عديدة {#tip-using-multiple-state-variables}
 
-Declaring state variables as a pair of `[something, setSomething]` is also handy because it lets us give *different* names to different state variables if we want to use more than one:
+التصريح عن متغيرات حالة كأزواج من `[something, setSomething]` هو أمر عملي وجيد، إذ يسمح لنا بإعطاء أسماء مختلفة لمتغيرات مختلفة للحالة إن أردنا استعمال أكثر من متغير حالة واحد:
 
 ```js
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
+  // التصريح عن متغيرات حالة عديدة
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
 
-In the above component, we have `age`, `fruit`, and `todos` as local variables, and we can update them individually:
+في هذا المكون في الشيفرة الآنفة، لدينا المتغيرات `age`, `fruit`, و `todos` بوصفها متغيرات حالة، ويمكننا تحديث كل منها على حدة:
 
 ```js
   function handleOrangeClick() {
-    // Similar to this.setState({ fruit: 'orange' })
+    // this.setState({ fruit: 'orange' }) يشبه
     setFruit('orange');
   }
 ```
 
-You **don't have to** use many state variables. State variables can hold objects and arrays just fine, so you can still group related data together. However, unlike `this.setState` in a class, updating a state variable always *replaces* it instead of merging it.
+**لا يتوجب عليه**  استعمال عدة متغيرات حالة. متغيرات الحالة يمكنها أن تحوي كائنات ومصفوفات، لذا لا يزال بإمكانك تجميع البيانات المترابطة مع بعضها بعضًا. على أي حال، تحديث متغير حالة يستبدل دومًا قيمته بدلًا من دمجها، وهذا يخالف سلوك `this.setState` في الأصناف.
 
-We provide more recommendations on splitting independent state variables [in the FAQ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
+أعطينا الكثير من التوصيات حول فصل متغيرات الحالة المستقلة في صفحة [الأسئلة الشائعة حول الخطافات](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-On this page we've learned about one of the Hooks provided by React, called `useState`. We're also sometimes going to refer to it as the "State Hook". It lets us add local state to React function components -- which we did for the first time ever!
+تعلمنا حول أحد الخطافات التي توفرها React وهو الخطاف `useState`. في أغلب الأحيان، سنشير إليه بالاسم "خطاف الحالة" (State Hook). يسمح لنا هذا الخطاف بإضافة حالة محلية إلى مكونات دالة في React بخطوات بسيطة وشيفرة أقل.
 
-We also learned a little bit more about what Hooks are. Hooks are functions that let you "hook into" React features from function components. Their names always start with `use`, and there are more Hooks we haven't seen yet.
+تعلمنا أيضًا القليل حول ماهية الخطافات. كما رأينا، الخطافات هي دوال تمكنك من "تعليق أو ربط" (hook into) ميزات React من مكونات دالة. أسماء الخطافات تبدأ دومًا بالكلمة `use`, وهنالك الكثير من الخطافات التي لم نرها بعد.
 
-**Now let's continue by [learning the next Hook: `useEffect`.](/docs/hooks-effect.html)** It lets you perform side effects in components, and is similar to lifecycle methods in classes.
+**لنكمل الآن وننتقل إلى الخطاف التالي [وهو الخطاف: `useEffect`.](/docs/hooks-effect.html)** يسمح لنا هذا الخطاف بتنفيذ تأثيرات جانبية (side effects) في المكونات، وهو يشبه توابع دورة الحياة في الأصناف.
