@@ -83,7 +83,7 @@ class Foo extends Component {
 
 >**Note:**
 >
->Using an arrow function in render creates a new function each time the component renders, which may have performance implications (see below).
+>Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
 
 ### Is it OK to use arrow functions in render methods? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 
@@ -108,7 +108,7 @@ Binding methods helps ensure that the second snippet works the same way as the f
 
 With React, typically you only need to bind the methods you *pass* to other components. For example, `<button onClick={this.handleClick}>` passes `this.handleClick` so you want to bind it. However, it is unnecessary to bind the `render` method or the lifecycle methods: we don't pass them to other components.
 
-[This post by Yehuda Katz](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) explains what binding is, and how functions work in JavaScript, in detail.
+[This post by Yehuda Katz](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) explains what binding is, and how functions work in JavaScript, in detail.
 
 ### Why is my function being called every time the component renders? {#why-is-my-function-being-called-every-time-the-component-renders}
 

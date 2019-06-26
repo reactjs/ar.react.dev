@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing to the React Docs!
 
+We are currently in the first translation phase and we will be relying completely on [Hsoub's translation](https://wiki.hsoub.com/React) as it is.
+
 ## Code of Conduct
 
 Facebook has adopted a Code of Conduct that we expect project

@@ -1,65 +1,69 @@
 ---
 id: strict-mode
-title: Strict Mode
+title: الوضع الصارم
 permalink: docs/strict-mode.html
+prev: static-type-checking.html
+next: typechecking-with-proptypes.html
 ---
 
-`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+`الوضع الصارم` هو عبارة عن أداة لتوضيح المشاكل المحتملة في التطبيق، وهو يُشبِه الأجزاء [`استخدام الأجزاء`](https://ar.reactjs.org/docs/fragments.html) في عدم تصييره لأي واجهة مستخدم مرئيّة. يُفعِّل الوضع الصارم تحققات وتحذيرات إضافيّة للمكوّنات المنحدرة عنه.
 
-> Note:
+
+> ملاحظة:
 >
-> Strict mode checks are run in development mode only; _they do not impact the production build_.
+> يعمل التحقق في الوضع الصارم في وضع التطوير فقط، ولا يؤثر على وضع الإنتاج.
 
-You can enable strict mode for any part of your application. For example:
+بإمكانك تفعيل الوضع الصارم لأي جزء من تطبيقك، على سبيل المثال:
 `embed:strict-mode/enabling-strict-mode.js`
 
-In the above example, strict mode checks will *not* be run against the `Header` and `Footer` components. However, `ComponentOne` and `ComponentTwo`, as well as all of their descendants, will have the checks.
+في المثال السابق *لن* يعمل تحقق الوضع الصارم على المكوّنين `Header` و `Footer`. سيجري التحقق على المكوّنين `ComponentOne` و `ComponentTwo` بالإضافة إلى جميع المكوّنات المنحدرة عنها.
 
-`StrictMode` currently helps with:
-* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
-* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
-* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
-* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
-* [Detecting legacy context API](#detecting-legacy-context-api)
+يُساعدنا `الوضع الصارم` حاليًّا في:
+* [التعرف على المكوّنات التي لا تمتلك توابع دورة حياة آمنة.](#identifying-unsafe-lifecycles)
+* [التحذير حول استخدام واجهة برمجة التطبيقات (API) القديمة لمراجع السلاسل النصيّة.](#warning-about-legacy-string-ref-api-usage)
+* [التحذير حول استخدام الواجهة findDOMNode المهملة.](#warning-about-deprecated-finddomnode-usage)
+* [كشف التأثيرات الجانبية غير المتوقعة.](#detecting-unexpected-side-effects)
+* [كشف واجهة برمجة التطبيقات (API) القديمة للسياق (context).](#detecting-legacy-context-api)
 
-Additional functionality will be added with future releases of React.
+ستُضاف وظائف أخرى في الإصدارات القادمة من React.
 
-### Identifying unsafe lifecycles {#identifying-unsafe-lifecycles}
+### التعرف على المكوّنات التي لا تمتلك توابع دورة حياة آمنة {#identifying-unsafe-lifecycles}
 
-As explained [in this blog post](/blog/2018/03/27/update-on-async-rendering.html), certain legacy lifecycle methods are unsafe for use in async React applications. However, if your application uses third party libraries, it can be difficult to ensure that these lifecycles aren't being used. Fortunately, strict mode can help with this!
+كما هو مشروح [في هذا المنشور](/blog/2018/03/27/update-on-async-rendering.html)، من غير الآمن استخدام بعض توابع دورة الحياة القديمة المهملة مع تطبيقات React غير المتزامنة، ولكن إن كان تطبيقك يستخدم مكتبات طرف ثالث فسيصبح من الصعب ضمان عدم استخدام هذه التوابع. لحسن الحظ يُساعدنا الوضع الصارم في كشف ذلك.
 
-When strict mode is enabled, React compiles a list of all class components using the unsafe lifecycles, and logs a warning message with information about these components, like so:
+عند تمكين الوضع الصارم تُصرِّف React قائمة بالمكوّنات الصنفية التي تستخدم توابع دورة حياة غير آمنة وتُسجِّل رسالة تحذير بمعلومات حول هذه المكوّنات كما يلي:
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
-Addressing the issues identified by strict mode _now_ will make it easier for you to take advantage of async rendering in future releases of React.
+يؤدّي كشف المشاكل التي يتعرف عليها الوضع الصارم _الآن_ إلى تسهيل استخدامك للتصيير غير المتزامن في إصدارات React القادمة.
 
-### Warning about legacy string ref API usage {#warning-about-legacy-string-ref-api-usage}
+### التحذير حول استخدام واجهة برمجة التطبيقات (API) القديمة لمراجع السلاسل النصيّة {#warning-about-legacy-string-ref-api-usage}
 
-Previously, React provided two ways for managing refs: the legacy string ref API and the callback API. Although the string ref API was the more convenient of the two, it had [several downsides](https://github.com/facebook/react/issues/1373) and so our official recommendation was to [use the callback form instead](/docs/refs-and-the-dom.html#legacy-api-string-refs).
+كانت تزوّدنا React سابقًا بطريقتين لإدارة المراجع، وهما API مراجع السلاسل النصيّة القديمة و API ردود النداء. وعلى الرغم من أنّ الأولى كانت هي الأنسب من بينهما فقد كان لها [بعض المشاكل](https://github.com/facebook/react/issues/1373)، لذا كانت توصياتنا الرسمية هي [استخدام شكل ردود النداء بدلًا منها](/docs/refs-and-the-dom.html#legacy-api-string-refs).
 
-React 16.3 added a third option that offers the convenience of a string ref without any of the downsides:
+أضاف إصدار React 16.3 خيارًا ثالثًا يوفّر لنا سهولة مراجع السلاسل النصيّة بدون أي مشاكل:
 `embed:16-3-release-blog-post/create-ref-example.js`
 
-Since object refs were largely added as a replacement for string refs, strict mode now warns about usage of string refs.
+منذ إضافة مراجع الكائنات كبديل لمراجع السلاسل النصيّة أصبح الوضع الصارم يُحذرنا عن استخدام مراجع السلاسل النصيّة.
 
-> **Note:**
+> **ملاحظة:**
 >
-> Callback refs will continue to be supported in addition to the new `createRef` API.
+>  سيستمر دعم مراجع ردود النداء بالإضافة إلى `createRef` API الجديدة.
 >
-> You don't need to replace callback refs in your components. They are slightly more flexible, so they will remain as an advanced feature.
+> لن تحتاج لاستبدال مراجع ردود النداء في مكوّناتك، فهي مرنة أكثر وستبقى كميزة متقدمة في الإصدارات القادمة.
 
-[Learn more about the new `createRef` API here.](/docs/refs-and-the-dom.html)
 
-### Warning about deprecated findDOMNode usage {#warning-about-deprecated-finddomnode-usage}
+[تعلّم المزيد حول createRef من هنا.](/docs/refs-and-the-dom.html)
 
-React used to support `findDOMNode` to search the tree for a DOM node given a class instance. Normally you don't need this because you can [attach a ref directly to a DOM node](/docs/refs-and-the-dom.html#creating-refs).
+### التحذير حول استخدام الواجهة findDOMNode المهملة {#warning-about-deprecated-finddomnode-usage}
 
-`findDOMNode` can also be used on class components but this was breaking abstraction levels by allowing a parent to demand that certain children was rendered. It creates a refactoring hazard where you can't change the implementation details of a component because a parent might be reaching into its DOM node. `findDOMNode` only returns the first child, but with the use of Fragments, it is possible for a component to render multiple DOM nodes. `findDOMNode` is a one time read API. It only gave you an answer when you asked for it. If a child component renders a different node, there is no way to handle this change. Therefore `findDOMNode` only worked if components always return a single DOM node that never changes.
+كانت React تدعم `findDOMNode` للبحث في الشجرة عن عقدة DOM بإعطاء نسخة صنف. لا تحتاج عادةً إلى ذلك لأنَّك تستطيع [ربط مرجعٍ مباشرةً بعقدة DOM.](/docs/refs-and-the-dom.html#creating-refs).
 
-You can instead make this explicit by pass a ref to your custom component and pass that along to the DOM using [ref forwarding](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+يمكن استعمال `findDOMNode` أيضًا مع مكونات الأصناف ولكن عُدَّ ذلك تجاوزًا لمستويات التجريد (abstraction levels) عبر السماح للمكون الأب بطلب ابن محدَّدٍ جرى تصييره. إنَّها تشكل خطرًا بإعادة التصميم في المكان الذي لا يمكنك فيه تغيير تفاصيل التنفيذ لمكونٍ ما؛ سبب ذلك هو أنَّ المكون الأب له قد يكون في قيد الوصول إلى عقدة DOM الخاصة به. تعيد `findDOMNode` أول مكون ابن فقط ولكن يمكن لأي مكون مع استعمال الأجزاء (Fragments) أن يصيِّر عدة عقد DOM. تعدُّ الواجهة `findDOMNode` واجهةً برمجيةً تقرأ مرةً واحدةً. أي أنَّها ترد عليك متى ما سألتها فقط. إن صَيَّر عنصرٌ عقدةً مختلفةً، فليس هنالك أي وسيلة لمعالجة هذا التغيير. وبالتالي، تعمل `findDOMNode` إن أعادت المكونات دومًا عقدة DOM وحيدة لا تتغير على الإطلاق.
 
-You can also add a wrapper DOM node in your component and attach a ref directly to it.
+يمكنك عوضَ ذلك أن تجعل هذا أكثر وضوحًا عبر تمرير مرجعٍ إلى مكونك المخصص ثم تمريره إلى DOM باستعمال [تمرير المراجع](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+
+تستطيع أيضًا إضافة عقدة DOM مغلِّفة في مكونك وربط مرجعٍ بها مباشرةً.
 
 ```javascript{4,7}
 class MyComponent extends React.Component {
@@ -73,19 +77,19 @@ class MyComponent extends React.Component {
 }
 ```
 
-> Note:
+> ملاحظة:
 >
-> In CSS, the [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) attribute can be used if you don't want the node to be part of the layout.
+> ملاحظة: في CSS، يمكن استعمال الخاصية [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) إن لم ترد أن تكون العقدة جزءًا من التخطيط. 
 
-### Detecting unexpected side effects {#detecting-unexpected-side-effects}
+### كشف التأثيرات الجانبية غير المتوقعة {#detecting-unexpected-side-effects}
 
-Conceptually, React does work in two phases:
-* The **render** phase determines what changes need to be made to e.g. the DOM. During this phase, React calls `render` and then compares the result to the previous render.
-* The **commit** phase is when React applies any changes. (In the case of React DOM, this is when React inserts, updates, and removes DOM nodes.) React also calls lifecycles like `componentDidMount` and `componentDidUpdate` during this phase.
+تعمل React في طورين بشكل نظري:
+* **طور التصيير (render)** والذي يُحدِّد ما التغييرات التي يجب فعلها (في DOM مثلًا). تستدعي React خلال هذا الطور التابع `render` ومن ثمّ تُقارِن النتيجة مع التصيير السابق.
+* **طور التطبيق (commit)** وهو يحدث عند تطبيق React لأي تغييرات (في حالة DOM يحدث عند إدخال وتحديث وإزالة عُقَد DOM). تستدعي React أيضًا توابع دورة الحياة مثل `componentDidMount` و `componentDidUpdate` خلال هذا الطور.
 
-The commit phase is usually very fast, but rendering can be slow. For this reason, the upcoming async mode (which is not enabled by default yet) breaks the rendering work into pieces, pausing and resuming the work to avoid blocking the browser. This means that React may invoke render phase lifecycles more than once before committing, or it may invoke them without committing at all (because of an error or a higher priority interruption).
+يكون طور التطبيق سريعًا جدًّا عادةً، ولكن التصيير قد يكون بطيئًا. لهذا السبب يُجزِّء الوضع غير المتزامن (async mode) القادم (والذي لم يُفعَّل بشكل افتراضي حتى الآن) عمل التصيير إلى قطع مع إيقاف واستكمال العمل لتجنّب إيقاف المتصفح. يعني هذا قدرة React على استدعاء توابع دورة حياة طور التصيير أكثر من مرّة قبل التطبيق، أو ربّما تستدعيها بدون التطبيق نهائيًّا (بسبب خطأ ما أو مقاطعة عالية الأهمية).
 
-Render phase lifecycles include the following class component methods:
+تتضمّن دورة حياة طور التصيير توابع المكوّنات التالية:
 * `constructor`
 * `componentWillMount`
 * `componentWillReceiveProps`
@@ -93,32 +97,32 @@ Render phase lifecycles include the following class component methods:
 * `getDerivedStateFromProps`
 * `shouldComponentUpdate`
 * `render`
-* `setState` updater functions (the first argument)
+* تابع التحديث `setState` (الوسيط الأول).
 
-Because the above methods might be called more than once, it's important that they do not contain side-effects. Ignoring this rule can lead to a variety of problems, including memory leaks and invalid application state. Unfortunately, it can be difficult to detect these problems as they can often be [non-deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm).
+وبسبب إمكانيّة استدعاء التوابع التالية أكثر من مرة، من الهام ألّا تحتوي على آثار جانبية. يقود تجاهل هذه القاعدة إلى مشاكل عديدة، بما في ذلك تسريبات الذاكرة وحالة التطبيق غير الصحيحة. لسوء الحظ قد يكون من الصعب كشف هذه المشاكل لأنّها قد تكون أحيانًا [غير منهجية](https://en.wikipedia.org/wiki/Deterministic_algorithm).
 
-Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following methods:
+لا يستطيع الوضع الصارم كشف الآثار الجانبية تلقائيًّا ولكن يُساعدك على توضيحها عن طريق جعلها أكثر منهجية. يفعل ذلك عن طريق الاستدعاء المزدوج للتوابع التالية عن قصد:
 
-* Class component `constructor` method
-* The `render` method
-* `setState` updater functions (the first argument)
-* The static `getDerivedStateFromProps` lifecycle
+* التابع الباني `constructor` لمكوّنات الأصناف.
+* تابع التصيير `render`.
+* تابع التحديث `setState` (الوسيط الأول).
+* تابع دورة الحياة `getDerivedStateFromProps` الثابت.
 
-> Note:
+> ملاحظة:
 >
-> This only applies to development mode. _Lifecycles will not be double-invoked in production mode._
+> يُطبَّق ذلك في وضع التطوير فقط. _لن يحصل الاستدعاء المزدوج في وضع الإنتاج._
 
-For example, consider the following code:
+على سبيل المثال انظر إلى الشيفرة التالية:
 `embed:strict-mode/side-effects-in-constructor.js`
 
-At first glance, this code might not seem problematic. But if `SharedApplicationState.recordEvent` is not [idempotent](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning), then instantiating this component multiple times could lead to invalid application state. This sort of subtle bug might not manifest during development, or it might do so inconsistently and so be overlooked.
+قد لا يظهر وجود مشكلة للوهلة الأولى، ولكن `SharedApplicationState.recordEvent` ليس [ثابتًا](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)، لذا قد يؤدي استنساخ المكوّن مرات متعددة إلى حالة تطبيق خاطئة. قد لا يظهر هذا النوع من المشاكل خلال التطوير أو ربّما قد لا يظهر دائمًا لذا قد نتجاهله.
 
-By intentionally double-invoking methods like the component constructor, strict mode makes patterns like this easier to spot.
+يتمكن الوضع الصارم عن طريق الاستدعاء المزدوج للتوابع عن قصد مثل الدالة البانية للمكوّن من توضيح مثل هذه المشاكل بشكل أسهل.
 
-### Detecting legacy context API {#detecting-legacy-context-api}
+### كشف واجهة برمجة التطبيقات (API) القديمة للسياق (context) {#detecting-legacy-context-api}
 
-The legacy context API is error-prone, and will be removed in a future major version. It still works for all 16.x releases but will show this warning message in strict mode:
+وهي واجهة مسببة للأخطاء وستُزال بشكل كامل في الإصدار الرئيسي القادم. لا تزال تعمل في الإصدارات 16.x ولكنها ستُظهِر هذه الرسائل التحذيرية في الوضع الصارم:
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-Read the [new context API documentation](/docs/context.html) to help migrate to the new version.
+اقرأ [ توثيق context API الجديدة ](/docs/context.html) ليساعدك على الانتقال إلى الإصدار الجديد.

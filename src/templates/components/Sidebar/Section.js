@@ -46,7 +46,6 @@ class Section extends React.Component {
                 },
               },
             }}>
-            {section.title}
             <ChevronSvg
               cssProps={{
                 marginLeft: 7,
@@ -58,6 +57,7 @@ class Section extends React.Component {
                 },
               }}
             />
+            {section.title}
           </MetaTitle>
         </button>
         <ul
@@ -81,10 +81,7 @@ class Section extends React.Component {
                   ? activeItemId === item.id
                   : isItemActive(location, item),
                 item: section.isOrdered
-                  ? {
-                      ...item,
-                      title: `${index + 1}. ${item.title}`,
-                    }
+                  ? {...item, title: `${index + 1}. ${item.title}`}
                   : item,
                 location,
                 onLinkClick,
@@ -92,7 +89,7 @@ class Section extends React.Component {
               })}
 
               {item.subitems && (
-                <ul css={{marginLeft: 20}}>
+                <ul css={{marginRight: 20}}>
                   {item.subitems.map(subitem => (
                     <li key={subitem.id}>
                       {createLink({

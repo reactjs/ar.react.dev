@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-**Importing**
+**استيراد الأدوات**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
@@ -15,45 +15,45 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 ## Overview {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+تزيد أدوات الاختبار `ReactTestUtils` من سهولة اختبار مكوّنات React في إطار عمل الاختبار الذي تريده. يستخدم Facebook الأداة. [Jest](https://facebook.github.io/jest/) اختبار JavaScript بسهولة. تعلم كيفية البدء مع Jest عبر درس [React درس](https://jestjs.io/docs/tutorial-react) في موقع Jest..
 
-> Note:
+> ملاحظة:
 >
-> We recommend using [`react-testing-library`](https://git.io/react-testing-library) which is designed to enable and encourage writing tests that use your components as the end users do.
+> هنالك أداة تُدعى [React Testing Library](https://testing-library.com/react) نوصي باستعمالها، إذ صُمِّمَت لتمكين وتشجيع كتابة اختبارات لاستخدامها مع مكوّناتك بينما يستخدمها المستخدم النهائي.
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](http://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> أطلقت Airbnb أداة اختبار تُدعى [Enzyme](https://airbnb.io/enzyme/), والتي تجعل من السهل التعامل مع ناتج مكوّناتك. إن قرّرت استخدام أداة اختبار أخرى مع Jest فقد تستحق تجربتها
 
- - [`act()`](#act)
- - [`mockComponent()`](#mockcomponent)
- - [`isElement()`](#iselement)
- - [`isElementOfType()`](#iselementoftype)
- - [`isDOMComponent()`](#isdomcomponent)
- - [`isCompositeComponent()`](#iscompositecomponent)
- - [`isCompositeComponentWithType()`](#iscompositecomponentwithtype)
- - [`findAllInRenderedTree()`](#findallinrenderedtree)
- - [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)
- - [`findRenderedDOMComponentWithClass()`](#findrendereddomcomponentwithclass)
- - [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)
- - [`findRenderedDOMComponentWithTag()`](#findrendereddomcomponentwithtag)
- - [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)
- - [`findRenderedComponentWithType()`](#findrenderedcomponentwithtype)
- - [`renderIntoDocument()`](#renderintodocument)
+ - [`()act`](#act)
+ - [`()mockComponent`](#mockcomponent)
+ - [`()isElement`](#iselement)
+ - [`()isElementOfType`](#iselementoftype)
+ - [`()isDOMComponent`](#isdomcomponent)
+ - [`()isCompositeComponent`](#iscompositecomponent)
+ - [`()isCompositeComponentWithType`](#iscompositecomponentwithtype)
+ - [`()findAllInRenderedTree`](#findallinrenderedtree)
+ - [`()scryRenderedDOMComponentsWithClass`](#scryrendereddomcomponentswithclass)
+ - [`()findRenderedDOMComponentWithClass`](#findrendereddomcomponentwithclass)
+ - [`()scryRenderedDOMComponentsWithTag`](#scryrendereddomcomponentswithtag)
+ - [`()findRenderedDOMComponentWithTag`](#findrendereddomcomponentwithtag)
+ - [`()scryRenderedComponentsWithType`](#scryrenderedcomponentswithtype)
+ - [`()findRenderedComponentWithType`](#findrenderedcomponentwithtype)
+ - [`()renderIntoDocument`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## مرجع {#reference}
 
-### `act()` {#act}
+### `()act` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+إن أردت تحضير مكون لإجراء عمليات اختبار عليه، فغلِّف الشيفرة التي تصيّره ونفِّذ التحديثات داخل الاستدعاء `act()‎`. يؤدي ذلك إلى تنفيذ عمليات الاختبار بشكل مشابه لكيفية عمل React في المتصفح.
 
->Note
+>ملاحظة
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>إن كنت تستعمل `react-test-renderer`، فإنَّها توفر التصدير `act` الذي يسلك نفس السلوك.
 
-For example, let's say we have this `Counter` component:
+على سبيل المثال، ليكن لدينا المكون `Counter` التالي:
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};
@@ -83,7 +83,7 @@ class App extends React.Component {
 }
 ```
 
-Here is how we can test it:
+إليك كيف يمكن اختباره:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -122,11 +122,11 @@ it('can render and update a counter', () => {
 });
 ```
 
-Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a helper like [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) to reduce the boilerplate code.
+لا تنسَ أنَّ إرسال أحداث DOM يعمل عند إضافة حاوية DOM إلى `document` فقط. تستطيع استعمال مساعد مثل [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) لتقليل الشيفرة المتداولة (boilerplate code).
 
 * * *
 
-### `mockComponent()` {#mockcomponent}
+### `()mockComponent` {#mockcomponent}
 
 ```javascript
 mockComponent(
@@ -135,25 +135,25 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+تمرير وحدة المكوّن المحاكي إلى هذا التابع لتزويد المكوّن بتوابع مفيدة، فبدلًا من التصيير الاعتيادي سيصبح المكوّن عنصر `div` بسيط (أو أي عنصر آخر ندخله ضمن الوسيط `mockTagName`) يحتوي على أي مكوّن ابن نعطيه له.
 
-> Note:
+> ملاحظة:
 >
-> `mockComponent()` is a legacy API. We recommend using [shallow rendering](/docs/test-utils.html#shallow-rendering) or [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `()mockComponent` هي واجهة برمجة تطبيق قديمة. نوصي باستخدام التصيير السطحي أو [التصيير السطحي](/docs/shallow-renderer.html) أو [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) بدلًا من ذلك.
 
 * * *
 
-### `isElement()` {#iselement}
+### `()isElement` {#iselement}
 
 ```javascript
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+يُعيد القيمة `true` إن كان الوسيط `element` عبارة عن عنصر React.
 
 * * *
 
-### `isElementOfType()` {#iselementoftype}
+### `()isElementOfType` {#iselementoftype}
 
 ```javascript
 isElementOfType(
@@ -162,31 +162,31 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+يُعيد القيمة `true` إن كان الوسيط `element` عبارة عن عنصر React نوعه هو `componentClass`.
 
 * * *
 
-### `isDOMComponent()` {#isdomcomponent}
+### `()isDOMComponent` {#isdomcomponent}
 
 ```javascript
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+يُعيد القيمة `true` إن كان الوسيط `instance` هو مكوّن DOM (مثل `div` أو `span`).
 
 * * *
 
-### `isCompositeComponent()` {#iscompositecomponent}
+### `()isCompositeComponent` {#iscompositecomponent}
 
 ```javascript
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+يُعيد القيمة `true` إن كان الوسيط `instance` عبارة عن مكوّن مُعرَّف من قبل المستخدم كالأصناف أو الدوال.
 
 * * *
 
-### `isCompositeComponentWithType()` {#iscompositecomponentwithtype}
+### `()isCompositeComponentWithType` {#iscompositecomponentwithtype}
 
 ```javascript
 isCompositeComponentWithType(
@@ -195,11 +195,11 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+يُعيد القيمة `true` إن كان الوسيط `instance` عبارة عن مكوّن من النوع `componentClass`.
 
 * * *
 
-### `findAllInRenderedTree()` {#findallinrenderedtree}
+### `()findAllInRenderedTree` {#findallinrenderedtree}
 
 ```javascript
 findAllInRenderedTree(
@@ -208,11 +208,11 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+التنقل عبر مكوّنات شجرة المكوّنات وجمع كل المكوّنات حيث يكون test(component)‎ قيمته `true`. لا يكون هذا مفيدًا بحد ذاته ولكنّه يُستخدَم كبداية لأدوات اختبار أخرى.
 
 * * *
 
-### `scryRenderedDOMComponentsWithClass()` {#scryrendereddomcomponentswithclass}
+### `()scryRenderedDOMComponentsWithClass` {#scryrendereddomcomponentswithclass}
 
 ```javascript
 scryRenderedDOMComponentsWithClass(
@@ -221,11 +221,11 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+إيجاد جميع مكوّنات عناصر DOM في الشجرة المُصيَّرة والتي هي مكوّنات DOM لها اسم صنف يُطابِق المذكور في الوسيط `className`.
 
 * * *
 
-### `findRenderedDOMComponentWithClass()` {#findrendereddomcomponentwithclass}
+### `()findRenderedDOMComponentWithClass` {#findrendereddomcomponentwithclass}
 
 ```javascript
 findRenderedDOMComponentWithClass(
@@ -234,11 +234,11 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+مثل  [`()scryRenderedDOMComponentsWithClass`](#scryrendereddomcomponentswithclass)  ولكن يتوقّع وجود نتيجة واحدة، ويُعيد تلك النتيجة، أو يرمي استثناء إن كان عدد المكوّنات المطابقة أكثر من واحد.
 
 * * *
 
-### `scryRenderedDOMComponentsWithTag()` {#scryrendereddomcomponentswithtag}
+### `()scryRenderedDOMComponentsWithTag` {#scryrendereddomcomponentswithtag}
 
 ```javascript
 scryRenderedDOMComponentsWithTag(
@@ -247,11 +247,11 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+إيجاد جميع مكوّنات عناصر DOM في الشجرة المُصيَّرة والتي هي مكوّنات DOM لها اسم للوسم يُطابِق المذكور في الوسيط `tagName`.
 
 * * *
 
-### `findRenderedDOMComponentWithTag()` {#findrendereddomcomponentwithtag}
+### `()findRenderedDOMComponentWithTag` {#findrendereddomcomponentwithtag}
 
 ```javascript
 findRenderedDOMComponentWithTag(
@@ -260,11 +260,11 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+مثل [`()scryRenderedDOMComponentsWithTag`](#scryrendereddomcomponentswithtag) , ولكن يتوقّع وجود نتيجة واحدة، ويُعيد تلك النتيجة، أو يرمي استثناء إن كان عدد المكوّنات المطابقة أكثر من واحد.
 
 * * *
 
-### `scryRenderedComponentsWithType()` {#scryrenderedcomponentswithtype}
+### `()scryRenderedComponentsWithType` {#scryrenderedcomponentswithtype}
 
 ```javascript
 scryRenderedComponentsWithType(
@@ -273,11 +273,11 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+إيجاد جميع نسخ المكوّنات التي نوعها يُساوي `componentClass`.
 
 * * *
 
-### `findRenderedComponentWithType()` {#findrenderedcomponentwithtype}
+### `()findRenderedComponentWithType` {#findrenderedcomponentwithtype}
 
 ```javascript
 findRenderedComponentWithType(
@@ -286,30 +286,30 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+مثل [`()scryRenderedComponentsWithType`](#scryrenderedcomponentswithtype) ولكن يتوقّع وجود نتيجة واحدة، ويُعيد تلك النتيجة، أو يرمي استثناء إن كان عدد المكوّنات المطابقة أكثر من واحد.
 
 ***
 
-### `renderIntoDocument()` {#renderintodocument}
+### `()renderIntoDocument` {#renderintodocument}
 
 ```javascript
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+تصيير عنصر React في عقدة DOM منفصلة في المستند. تتطلّب هذه الدالة قابلية الوصول إلى DOM.
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> ملاحظة:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> تحتاج إلى أن تكون `window`، و `window.document`، و `window.document.createElement` متوفرة لديك بشكل عام (global) قبل استيراد React، وإلّا ستعتقد React أنّها لا تستطيع الوصول إلى DOM ولن تعمل توابع مثل `setState`.
 
 * * *
 
-## Other Utilities {#other-utilities}
+## أدوات أخرى {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -320,11 +320,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+محاكاة حدث في عقدة DOM مع خيار إضافي لبيانات الأحداث `eventData`.
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+تمتلك الأداة `Simulate` تابعًا [لكل حدث تفهمه React](/docs/events.html#supported-events).
 
-**Clicking an element**
+**الضغط على عنصر:**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -332,7 +332,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**تغيير القيمة لحقل الإدخال ثمّ الضغط على `ENTER`:**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -342,8 +342,8 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> ملاحظة
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> يجب عليك تزويد أي خاصيّة حدث تستخدمها في مكوّنك (مثل `KeyCode`، و `Which`، إلخ...) لأنّ React لا تُنشِئ أي من هذه الخاصيّات لأجلك.
 
 * * *
