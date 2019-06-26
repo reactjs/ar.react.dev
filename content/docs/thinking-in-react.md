@@ -37,11 +37,7 @@ prev: composition-vs-inheritance.html
 
 ولكن كيف تعرف ما يجب أن تحدده كمكون؟ فقط إستخدم نفس الأساليب أثناء أخذ قرار بإنشاء دالة (Function) او (Object) جديدة، كمثال علي أسلوب هو (مبدأ المسئولية الأحادية) [single responsibility principle](https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%A7%D9%84%D9%85%D9%87%D9%85%D8%A9_%D8%A7%D9%84%D9%88%D8%A7%D8%AD%D8%AF%D8%A9) وهي أن المكون (component) بشكل مثالي يجب أن يكون مسئول عن فعل شئ واحد فقط وإذا بدأ في التنامي يجب تقسيمه لمكونات فرعية (subcomponent) أصغر.
 
-<<<<<<< HEAD
 حيث أننا غالباَ ما نعرض نموذج البيانات (JSON data model) للمستخدم ستجد أنه إذا كان هذا النموذج مبني بشكل جيد فإنه سيتطابق مع واجهة المستخدم (UI) خاصتك بشكل رائع وبالتالي مع بناء مكوناتك (component structure) وهذا لأن واجهة المستخدم (UI) ونموذج البيانات (data models) يميلان الي التقيد بنفس *(الشكل البنائي للمعلومات information architecture)* وهو مايعني ان العمل علي تقسيم واجهة المستخدم (UI) لمكونات (components) غالباَ مايكون بسيط فقط قم بتقسيمها الي مكونات (component) تمثل تحديداَ جزء واحد من نموذج البيانات (data model) خاصتك.
-=======
-Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*. Separate your UI into components, where each component matches one piece of your data model.
->>>>>>> cb5a61cdbfa5e72646cfb954056c6a4fde490a8c
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
