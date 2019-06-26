@@ -1,106 +1,111 @@
 ---
 id: faq-state
-title: Component State
+title: حالة المكونات
 permalink: docs/faq-state.html
 layout: docs
 category: FAQ
 ---
+ 
+### ماذا يفعل التابع `setState`؟ {#what-does-setstate-do}
 
-### What does `setState` do? {#what-does-setstate-do}
+يُجدوِل التابع `setState()`‎ تحديثًا لكائن حالة المكوّن `state`. عندما تتغير الحالة يستجب المكوّن بإعادة التصيير.
 
-`setState()` schedules an update to a component's `state` object. When state changes, the component responds by re-rendering.
+### ما الفرق بين الحالة `state` والخاصيّات `props`؟ {#what-is-the-difference-between-state-and-props}
 
-### What is the difference between `state` and `props`? {#what-is-the-difference-between-state-and-props}
+[`الخاصيّات props`](/docs/components-and-props.html) (اختصارًا للكلمة properties) و [`الحالة state`](/docs/state-and-lifecycle.html) كلاهما عبارة عن كائنات JavaScript مجرّدة. وفي حين أنّ كلاهما يحمل معلومات تؤثر في ناتج التصيير، فهما مختلفان بطريقة واحدة هامة، حيث تُمرَّر الخاصيّات إلى المكوّن (بشكل مماثل لمُعاملات الدالة) بينما تُدار الحالة `state` ضمن المكوّن (بشكل مشابه للمتغيرات المعرفة بداخل الدالة).
 
-[`props`](/docs/components-and-props.html) (short for "properties") and [`state`](/docs/state-and-lifecycle.html) are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: `props` get passed *to* the component (similar to function parameters) whereas `state` is managed *within* the component (similar to variables declared within a function).
-
-Here are some good resources for further reading on when to use `props` vs `state`:
+هنا تجد مصادر جيدة لقراءة المزيد حول استخدام الخاصيّات والحالة:
 * [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
-* [ReactJS: Props vs. State](http://lucybain.com/blog/2016/react-state-vs-pros/)
+* [ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)
 
-### Why is `setState` giving me the wrong value? {#why-is-setstate-giving-me-the-wrong-value}
+### لماذا يُعطيني التابع `setState` القيمة الخاطئة؟ {#why-is-setstate-giving-me-the-wrong-value}
 
-In React, both `this.props` and `this.state` represent the *rendered* values, i.e. what's currently on the screen.
+في React تُمثل `this.props` و `this.state` القيم المُصيَّرة، أي المعروضة على الشاشة حاليًّا.
 
-Calls to `setState` are asynchronous - don't rely on `this.state` to reflect the new value immediately after calling `setState`. Pass an updater function instead of an object if you need to compute values based on the current state (see below for details).
+تكون استدعاءات التابع `setState` غير متزامنة، فلا تعتمد على `this.state` لتعكس القيمة الجديدة للحالة بشكل مباشر بعد استدعاء التابع setState. مرر دالة تحديث بدلًا من تمرير كائن إن احتجت لحساب القيم بناءً على الحالة الحاليّة (انظر في الأسفل للمزيد من التفاصيل).
 
-Example of code that will *not* behave as expected:
+مثال عن شيفرة لن تعمل كما هو متوقع:
 
 ```jsx
 incrementCount() {
-  // Note: this will *not* work as intended.
+  // ملاحظة: لن يعمل هذا كما هو متوقع
   this.setState({count: this.state.count + 1});
 }
 
 handleSomething() {
-  // Let's say `this.state.count` starts at 0.
+  // فلنقل أنّ this.state.count تبدأ بالقيمة 0
   this.incrementCount();
   this.incrementCount();
   this.incrementCount();
-  // When React re-renders the component, `this.state.count` will be 1, but you expected 3.
+   // عندما تعيد React تصيير المكون فستصبح قيمة this.state.count 1
+  // ولكنك كنت تتوقعها أنها 3
 
-  // This is because `incrementCount()` function above reads from `this.state.count`,
-  // but React doesn't update `this.state.count` until the component is re-rendered.
-  // So `incrementCount()` ends up reading `this.state.count` as 0 every time, and sets it to 1.
+   
+  // هذا لأنّ الدالة incrementCount()
+  // تقرأ this.state.count
+  // ولكن لا تحدث React قيمتها حتى إعادة تصيير المكون
+  // لذا ستقرأ React قيمة هذه الدالة على أنها صفر في كل مرة وستعينها للقيمة واحد
 
-  // The fix is described below!
+  // الحل موصوف لاحقًا
 }
 ```
 
-See below for how to fix this problem.
+انظر في الأسفل لمعرفة كيفية إصلاح هذه المشكلة.
 
-### How do I update state with values that depend on the current state? {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
 
-Pass a function instead of an object to `setState` to ensure the call always uses the most updated version of state (see below). 
+### كيف أحدث الحالة بقيم تعتمد على الحالة الحالية؟ {#how-do-i-update-state-with-values-that-depend-on-the-current-state}
 
-### What is the difference between passing an object or a function in `setState`? {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
+مرر دالة بدلًا من كائن إلى التابع `setState` لضمان استخدام الاستدعاء دائمًا لآخر إصدار من الحالة.
 
-Passing an update function allows you to access the current state value inside the updater. Since `setState` calls are batched, this lets you chain updates and ensure they build on top of each other instead of conflicting:
+
+### ما الفرق بين تمرير كائن أو دالة إلى التابع `setState`؟ {#what-is-the-difference-between-passing-an-object-or-a-function-in-setstate}
+
+يسمح لك تمرير دالة التحديث بالوصول إلى قيمة الحالة الحالية بداخل دالة التحديث. وبما أنّ استدعاءات التابع `setState` مجدولة سيسمح لك ذلك بسلسلة التحديثات وضمان أنّها تبني فوق بعضها بدلًا من التعارض فيما بينها:
 
 ```jsx
 incrementCount() {
   this.setState((state) => {
-    // Important: read `state` instead of `this.state` when updating.
+    // هام: اقرأ قيمة prevState بدلًا من this.state عند التحديث
     return {count: state.count + 1}
   });
 }
 
 handleSomething() {
-  // Let's say `this.state.count` starts at 0.
+  // فلنفترض أنّ قيمة this.state.count تبدأ من الصفر
   this.incrementCount();
   this.incrementCount();
   this.incrementCount();
 
-  // If you read `this.state.count` now, it would still be 0.
-  // But when React re-renders the component, it will be 3.
+  // إن قرأت قيمة this.state.count الآن فستكون لا زالت صفر
+  // ولكن عندما يعاد تصيير المكون فستصبح 3
 }
 ```
 
-[Learn more about setState](/docs/react-component.html#setstate)
+[تعلم المزيد حول setState.](/docs/react-component.html#setstate)
 
-### When is `setState` asynchronous? {#when-is-setstate-asynchronous}
+### متى يكون التابع `setState` غير متزامن؟ {#when-is-setstate-asynchronous}
 
-Currently, `setState` is asynchronous inside event handlers.
+حاليًّا التابع  setState غير متزامن بداخل معالج الأحداث.
 
-This ensures, for example, that if both `Parent` and `Child` call `setState` during a click event, `Child` isn't re-rendered twice. Instead, React "flushes" the state updates at the end of the browser event. This results in significant performance improvements in larger apps.
+إن كان المكوّن الأب `Parent` والمكوّن الابن `Child` يستدعيان التابع `setState` خلال حدث النقر يضمن لنا عدم التزامن ألّا يُعاد تصيير المكوّن الابن `Child` مرتين، وبدلًا من ذلك تمسح React تحديثات الحالة في نهاية أحداث المتصفّح. ينتج عن هذا تحسين هام في الأداء في التطبيقات الكبيرة.
 
-This is an implementation detail so avoid relying on it directly. In the future versions, React will batch updates by default in more cases.
+لا يزال هذا تفصيلًا تنفيذيًّا لذا تجنّب الاعتماد عليه بشكل مباشر. في الإصدارات القادمة ستطبّق React التحديثات بشكل افتراضي في حالات أكثر.
 
-### Why doesn't React update `this.state` synchronously? {#why-doesnt-react-update-thisstate-synchronously}
+### لماذا لا تُحدِّث React قيمة `this.state` بشكلٍ متزامن؟ {#why-doesnt-react-update-thisstate-synchronously}
 
-As explained in the previous section, React intentionally "waits" until all components call `setState()` in their event handlers before starting to re-render. This boosts performance by avoiding unnecessary re-renders.
+كما تحدثنا في القسم السابق، تنتظر React عن قصد حتى تستدعي جميع المكوّنات التابع `setState()`‎ في مُعالِجات أحداثها قبل البدء بإعادة التصيير. يُسرِّع هذا الأداء عن طريق تجنّب إعادة التصيير غير الضروريّة.
 
-However, you might still be wondering why React doesn't just update `this.state` immediately without re-rendering.
+على أيّة حال قد لا تزال تتساءل لماذا لا تُحدِّث React قيمة `this.state` بشكل مباشر وبدون إعادة التصيير.
 
-There are two main reasons:
+هنالك سببان رئيسيّان:
 
-* This would break the consistency between `props` and `state`, causing issues that are very hard to debug.
-* This would make some of the new features we're working on impossible to implement.
+* يخرق هذا التوافقيّة بين الخاصيّات `props` والحالة `state`، مسببًا مشاكل من الصعب تنقيحها.
+* سيجعل هذا من بعض الميّزات التي نعمل عليها مستحيلة التطبيق.
 
-This [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) dives deep into the specific examples.
+يشرح  [ هذا التعليق في GitHub](https://github.com/facebook/react/issues/11527#issuecomment-360199710) بالتفصيل أمثلة عن هذا.
 
-### Should I use a state management library like Redux or MobX? {#should-i-use-a-state-management-library-like-redux-or-mobx}
+### هل ينبغي أن أستخدم مكتبات إدارة الحالة مثل Redux أو MobX؟ {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
-[Maybe.](https://redux.js.org/faq/general#when-should-i-use-redux)
+[ربّما.](https://redux.js.org/faq/general#when-should-i-use-redux)
 
-It's a good idea to get to know React first, before adding in additional libraries. You can build quite complex applications using only React.
+من الأفضل في البداية التعرّف على React أولًا قبل إضافة مكتبات أخرى. بإمكانك بناء تطبيقات معقدة وكبيرة باستخدام React فقط.

@@ -47,7 +47,7 @@ class CodeExample extends Component {
 
               '& p': {
                 marginTop: 15,
-                marginRight: 40,
+                marginLeft: 40,
                 lineHeight: 1.7,
 
                 [media.greaterThan('xlarge')]: {
@@ -61,7 +61,7 @@ class CodeExample extends Component {
         {loaded ? (
           <CodeEditor code={code} containerNodeID={containerNodeID} />
         ) : (
-          <h4>Loading code example...</h4>
+          <h4>جاري تحميل مثال الشيفرة البرمجية...</h4>
         )}
       </div>
     );
