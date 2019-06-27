@@ -1,48 +1,52 @@
 ---
 id: faq-versioning
-title: Versioning Policy
+title: سياسة الإصدارات
 permalink: docs/faq-versioning.html
 layout: docs
 category: FAQ
 ---
 
-React follows [semantic versioning (semver)](https://semver.org/) principles.
+تتبع React مبادئ [الإدارة الدلالية لنُسخ البرمجيات (SemVer)](https://semver.org/) في ترقيم إصداراتها.
 
-That means that with a version number **x.y.z**:
+هذا يعني أنَّه مع الإصدار ذي الرقم **x.y.z**:
 
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
-* When releasing **new features**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
+* عند إصدار **تغييرات جذرية** (breaking changes)، نطلق **إصدارًا رئيسيًّا** عبر تغيير الرقم **x** (مثل الانتقال من 15.6.2 إلى 16.0.0).
+* عند إصدار **ميزات جديدة**، نطلق **إصدارًا فرعيًّا** عبر تغيير الرقم **y** (مثل التغيير من 15.6.2 إلى 15.7.0).
+* عند **تصحيح علل وثغرات** في الإصدار السابق، نطلق **إصدارًا مرقَّعًا** (patch release) عبر تغيير الرقم **z** (مثل تغيير 15.6.2 إلى 15.6.3).
 
-Major releases can also contain new features, and any release can include bug fixes.
+قد تحوي الإصدارات الرئيسية على ميزات جديدة أيضًا، ويمكن أي يحوي أي إصدار على تصحيح لعللٍ وثغرات.
 
-### Breaking Changes {#breaking-changes}
 
-Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017; React 17 isn't expected until 2019.
+### التغييرات الجذرية {#breaking-changes}
 
-Instead, we release new features in minor versions. That means that minor releases are often more interesting and compelling than majors, despite their unassuming name.
+نعلم أنَّ التغييرات الجذرية غير محبَّبة لجميع الأشخاص، لذا نحاول قدر الإمكان تقليل عدد الإصدارات الرئيسية. على سبيل المثال، الإصدار 15 من React نُشِر في نيسان عام 2016 والإصدار 16 نُشِر في أيلول من العام 2017. ولا يتوقع نشر الإصدار 17 حتى العام 2019.
 
-### Commitment to Stability {#commitment-to-stability}
+عوض ذلك، ننشر إصدارات فرعية تحوي الميزات الجديدة. هذا يعني أنَّ الإصدارات الفرعية هي التي تجذب الانتباه أكثر من الإصدارات الرئيسية.
 
-As we change React over time, we try to minimize the effort required to take advantage of new features. When possible, we'll keep an older API working, even if that means putting it in a separate package. For example, [mixins have been discouraged for years](/blog/2016/07/13/mixins-considered-harmful.html) but they're supported to this day [via create-react-class](/docs/react-without-es6.html#mixins) and many codebases continue to use them in stable, legacy code.
 
-Over a million developers use React, collectively maintaining millions of components. The Facebook codebase alone has over 50,000 React components. That means we need to make it as easy as possible to upgrade to new versions of React; if we make large changes without a migration path, people will be stuck on old versions. We test these upgrade paths on Facebook itself – if our team of less than 10 people can update 50,000+ components alone, we hope the upgrade will be manageable for anyone using React. In many cases, we write [automated scripts](https://github.com/reactjs/react-codemod) to upgrade component syntax, which we then include in the open-source release for everyone to use.
+### الالتزام بالاستقرار {#commitment-to-stability}
 
-### Gradual Upgrades via Warnings {#gradual-upgrades-via-warnings}
+لمَّا كنا نعدِّل على React باستمرار، نحاول قدر المستطاع تقليل الجهد المطلوب للاستفادة من الميزات الجديدة. سنبقي الواجهات البرمجية القديمة قيد العمل عندما يكون ذلك ممكنًا حتى لو تطلَّب الأمر وضعها في حزمة منفصلة. على سبيل المثال،  [Mixins تعتبر ضارة](/blog/2016/07/13/mixins-considered-harmful.html) إلا أنَّها لا تزال مدعومةً إلى هذه اللحظة عبر  [create-react-class](/docs/react-without-es6.html#mixins) ، ولا تزال العديد من الشيفرات الأساسية (codebases) تستعملها في الشيفرة المستقرة والقديمة.
 
-Development builds of React include many helpful warnings. Whenever possible, we add warnings in preparation for future breaking changes. That way, if your app has no warnings on the latest release, it will be compatible with the next major release. This allows you to upgrade your apps one component at a time.
+يستعمل React اليوم أكثر من مليون مطور؛ يعمل هؤلاء المطورين على صيانة ملايين المكونات. تحتوي الشيفرة الأساسية لفيسبوك مثلًا على أكثر من 50,000 مكون من مكونات React. هذا يعني أنَّه نحتاج إلى جعل عملية الترقية إلى إصدارات React الحديثة عمليةً سهلةً قدر الإمكان. إن أحدثنا تغييرات كبيرة دون توفير مسارٍ ينقلنا بسلاسةٍ إليها، فسيبقى الجميع عالقًا في الإصدارات القديمة.  نختبر مسارات الانتقال إلى الإصدارات الأحدث على فيسبوك بحد ذاته أولًا؛ فإن استطاع عشرة أفراد من فريقنا (وأقل) تحديث ما يزيد عن 50,000 مكون بمفردهم، نتأكد آنذاك من كون عملية الترقية قابلة للتطبيق والإدارة لأي شخص يستعمل React. نكتب في أغلب الحالات [شيفرة مؤتمتة](https://github.com/reactjs/react-codemod) لتحديث صياغة المكونات ثم ننشرها في إصدار مفتوح المصدر ليستعملها الجميع.
 
-Development warnings won't affect the runtime behavior of your app. That way, you can feel confident that your app will behave the same way between the development and production builds -- the only differences are that the production build won't log the warnings and that it is more efficient. (If you ever notice otherwise, please file an issue.)
+### الترقية التدريجية مقابل التحذيرات {#gradual-upgrades-via-warnings}
 
-### What Counts as a Breaking Change? {#what-counts-as-a-breaking-change}
+تتضمن الإصدارات التطويرية من React الكثير من التحذيرات المفيدة. نضيف تحذيرات للتحضير للتغييرات الجذرية المستقبلية متى ما أمكن ذلك. بهذه الطريقة، إن لم يُظهِر تطبيقك أية تحذيرات مع أحدث إصدار، فسيكون متوافقًا مع الإصدار الرئيسي المقبل.
 
-In general, we *don't* bump the major version number for changes to:
+لن تؤثر التحذيرات في الإصدارات التطويرية على سلوك تطبيقك في وقت التشغيل. بناءً على ذلك، يمكنك الوثوق من عمل تطبيقك في البيئة التطويرية والبيئة الإنتاجية دون أي اختلاف. الفرق الوحيد هو أنه لن تُسجَّل التحذيرات في البيئة الإنتاجية مما يزيد من فعالية تطبيقك. (إن لاحظت أي سلوك مخالف لما ذكرناه، أرجو أن تخبرنا به في أسرع وقت.)
 
-* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
-* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
-* **Alpha and canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
-* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+### ما هي التغييرات التي تعدُّ بأنها جذرية؟ {#what-counts-as-a-breaking-change}
 
-This policy is designed to be pragmatic: certainly, we don't want to cause headaches for you. If we bumped the major version for all of these changes, we would end up releasing more major versions and ultimately causing more versioning pain for the community. It would also mean that we can't make progress in improving React as fast as we'd like.
+عمومًا، لا نغيِّر رقم الإصدار الرئيسي (الرقم x) فجأةً من أجل التغييرات التالية:
 
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+* التحذيرات في البيئة التطويرية: لمَّا كانت هذه التحذيرات لا تؤثر على البيئة الإنتاجية، فقد نضيف تحذيرات أو نعدِّل على أخرى موجودة مسبقًا بين الإصدارات الرئيسية. هذا ما يسمح لنا في الحقيقة بالتحذير بشكل موثوق بقدوم تغييرات جذرية مستقبلية.
+* تبدأ الواجهات البرمجية مع الإصدارات غير المستقرة: تضاف الواجهات البرمجية الجديدة في الإصدارات غير المستقرة على أنَّها ميزات تجريبية، إذ لم نكن قد تأكدنا بعد منها. بعد إصدار مثل هذه الواجهات البرمجية في إصدارات تحوي السابقة `unstable_‎`، يمكننا نقلها بسرعة إلى الإصدار المستقر والحصول على الواجهة البرمجية المستقرة.
+* الإصداران Alpha و Canary من React: نوفر الإصدارات Alpha من React من أجل اختبار الميزات الجديدة في وقت مبكر، إذ نريد مرونةً أكبر تسمح لنا بجعل التغييرات تعتمد على ما تعلمناه في هذه الإصدارات. إن كنت تستعمل أحد هذه الإصدارات، فانتبه إلى تغيِّر الواجهات البرمجية قبل نشرها في الإصدار المستقر.
+* الواجهات البرمجية غير الموثَّقة وهيكلية البيانات الداخلية: إن وصلت إلى أسماء خاصيات داخلية مثل ‎`__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` أو `‎__reactInternalInstance$uk43rzhitjg`، فذلك لأنها متاحةٌ لك، إذ لك حرية التصرف والوصول.
+
+
+صُمِّمَت هذه السياسة لتكون واقعية وعملية في الوقت نفسه؛ فلا نريد بالتأكيد أن نُسبِّب لك المزيد من الصداع. إن أطلقنا إصدارًا رئيسيًّا لكل تغيير من التغييرات السابقة فجأةً، فسينتهي بنا المطاف بإطلاق إصدارات رئيسية لا تحصى وإصابة المجتمع بداءٍ سقيمٍ يدعى "رهاب الإصدارات". أضف إلى ذلك أنَّه لن نتمكن آنذاك من تطوير React بالشكل التي نسير عليه الآن.
+
+أخيرًا، إن كان ولابد من إطلاق إصدار ناتج عن تغيير في تلك القائمة وقد يتسبَّب في وقوع المستخدمين في مشاكل كثيرة، فسنبذل قصارى جهدنا لتوفير وسيلة تسمح بالانتقال التدريجي إليه.
+
