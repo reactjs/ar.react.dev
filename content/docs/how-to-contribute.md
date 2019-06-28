@@ -19,42 +19,42 @@ redirect_from:
 
 كل العمل على React يحدث عل موقع[GitHub](https://github.com/facebook/react). كل من الفريق الرئيسي والمساهمون الآخرون يساهمون بإرسال طلبات السحب (Pull requests) والتي تدخل نفس مراحل المراجعة.
 
-### Branch Organization {#branch-organization}
+### تنظيم الفروع (Branch Organization) {#branch-organization}
 
-We will do our best to keep the [`master` branch](https://github.com/facebook/react/tree/master) in good shape, with tests passing at all times. But in order to move fast, we will make API changes that your application might not be compatible with. We recommend that you use [the latest stable version of React](/downloads.html).
+نحرص على أن يكون [الفرع الرئيسي (`master` branch)](https://github.com/facebook/react/tree/master) في أفضل حالة، بالاختبارات التي تمرّ بنجاح في كل مرّة. لكن حتى نتقدّم بسرعة، سنحدث تغييرات على الواجهة البرمجية (API) والتي ربما ستجعل تطبيقك غير متوافق معها. ننصحك باستعمال [آخر اصدار مستقر من  React](/downloads.html).
 
-If you send a pull request, please do it against the `master` branch. We maintain stable branches for major versions separately but we don't accept pull requests to them directly. Instead, we cherry-pick non-breaking changes from master to the latest stable major version.
+من فضلك احرص على أن يكون طلب السحب (pull request) الذي تقوم به نحو الفرع الرئيسي `master`. نُبقي الفروع المستقرّة المختلفة للإصدارات الجذرية لكننا لن نقبل طلبات السحب نحوها مباشرة. بل ننتقي التغييرات التي ﻻ تُحدث تغييرات هدّامة من الفرع الرئيسي إلى آخر اصدار مستقر.
 
-### Semantic Versioning {#semantic-versioning}
+### الإدارة الدلالية لنُسخ البرمجيات {#semantic-versioning}
 
-React follows [semantic versioning](https://semver.org/). We release patch versions for bugfixes, minor versions for new features, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance.
+تتبع React [الإدارة الدلالية لنُسخ البرمجيات](https://semver.org/lang/ar/). نُصدر اصدارات ترقيع (patch versions) عند القيام بإصلاحات للعلل والثغرات، اصدارات صُغرى عند إضافة ميزات ووظائف جديدة، وإصدارات جذرية عند القيام بتغيرات جذرية. عند القيام بتغيير جذري نقوم باستخدام تحذيرات بعدم الصلاحية (deprecation warnings) في الإصدارات الصغرى حتى يعلم مستخدمونا بالتغيرات التي ستطرأ وحتى يرقّوا شفراتهم البرمجية مُسبقا.
 
-We tag every pull request with a label marking whether the change should go in the next [patch](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch), [minor](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor), or a [major](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major) version. We release new patch versions every few weeks, minor versions every few months, and major versions one or two times a year.
+كل طلب سحب يحمل وسمًا يحدد ما إذا كان سيذهب إلى [الترقيع (patch)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch) أو إلى [الإصدار الصغير (minor)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor) أو [الإصدار الجذري (major)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major). نُصدر نسخ الترقيع في كلّ أسبوع ونُصدر الإصدارات الصُغرى كل بضعة أشهر وأما الإصدارات الجذرية تكون مرّة أو مرّتين في السنة.
 
-Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+كل تغيير معتبر موثّق في [جدول التغييرات (changelog)](https://github.com/facebook/react/blob/master/CHANGELOG.md).
 
-### Bugs {#bugs}
+### العلل (Bugs) {#bugs}
 
-#### Where to Find Known Issues {#where-to-find-known-issues}
+#### أين تجد المشاكل المعروفة {#where-to-find-known-issues}
 
-We are using [GitHub Issues](https://github.com/facebook/react/issues) for our public bugs. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn't already exist.
+نستعمل [GitHub Issues](https://github.com/facebook/react/issues) للمشاكل العامّة، نبقى على إطلاع على ذلك ونحاول أن نوضّح الأمر إن كنا بصدد عمل إصلاح داخلي. قبل طرح مهمّة جديدة، حاول أن تتأكد أنه لم يتم طرحها من قبل.
 
-#### Reporting New Issues {#reporting-new-issues}
+#### التبليغ عن مشكل جديد {#reporting-new-issues}
 
-The best way to get your bug fixed is to provide a reduced test case. This [JSFiddle template](https://jsfiddle.net/Luktwrdm/) is a great starting point.
+تقديم حالة اختبارية موجزة هي أفضل طريقة لإصلاح العلّة التي تواجهك. هذا [النموذج على JSFiddle](https://jsfiddle.net/Luktwrdm/) يُعدّ نقطة بداية مهمّة.
 
-#### Security Bugs {#security-bugs}
+#### الثغرات الأمنية {#security-bugs}
 
-Facebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
+لدى Facebook [برنامج مكفآت](https://ar-ar.facebook.com/whitehat/) للتبليغ الآمن عن الثغرات الأمنية. وبالتالي يرجى عدم التطرّق لذلك في العلن في (الـ issues). اذهب لتلك الصفحة واتبع الخطوات الموضحة هناك.
 
-### How to Get in Touch {#how-to-get-in-touch}
+### سُبُل التواصل {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* Discussion forum: [discuss.reactjs.org](https://discuss.reactjs.org/)
+* منتدى المحادثة: [discuss.reactjs.org](https://discuss.reactjs.org/)
 
-There is also [an active community of React users on the Discord chat platform](https://www.reactiflux.com/) in case you need help with React.
+هناك كذلك [مجتمع نشيط من مستخدمي React على منصّة Discord للمحادثة](https://www.reactiflux.com/) إذا ما احتجت للمساعدة فيما يتعلّق بـReact.
 
-### Proposing a Change {#proposing-a-change}
+### اقتراح تغيير {#proposing-a-change}
 
 If you intend to change the public API, or make any non-trivial changes to the implementation, we recommend [filing an issue](https://github.com/facebook/react/issues/new). This lets us reach an agreement on your proposal before you put significant effort into it.
 
