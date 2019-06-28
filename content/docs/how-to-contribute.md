@@ -1,6 +1,6 @@
 ---
 id: how-to-contribute
-title: How to Contribute
+title: دليل المساهمين
 layout: contributing
 permalink: docs/how-to-contribute.html
 next: codebase-overview.html
@@ -9,15 +9,15 @@ redirect_from:
   - "tips/introduction.html"
 ---
 
-React is one of Facebook's first open source projects that is both under very active development and is also being used to ship code to everybody on [facebook.com](https://www.facebook.com). We're still working out the kinks to make contributing to this project as easy and transparent as possible, but we're not quite there yet. Hopefully this document makes the process for contributing clear and answers some questions that you may have.
+تعتبر React من أوائل المشاريع مفتوحة المصدر والتي ﻻزالت تحت التطوير المستمر والتي يتم استعمالها في شفرات برمجية للجميع في [facebook.com](https://www.facebook.com). ﻻزلنا مستمرّين في العمل على إصلاح العلل لجعل المُساهمة في هذا المشروع أسهل وأكثر شفافية قدر الإمكان. لم نبلغ ذلك حقّا، لكن نتمنى أن يوضّح هذا المستند مراحل المساهمة ويجيب عن الأسئلة التي يمكن أن تُراودك.
 
-### [Code of Conduct](https://code.facebook.com/codeofconduct) {#code-of-conduct}
+### [القواعد السلوكيّة](https://code.facebook.com/codeofconduct) {#code-of-conduct}
 
-Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.facebook.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
+لقد سطّرت Facebook قواعد للسلوك والتي تتطلع أن يحترمها المساهمون في مشاريعها. من فضلك اقرأ [النص الكامل](https://code.fb.com/codeofconduct/) حتى تتفهم أن بعض الأفعال غير مسموح بها.
 
-### Open Development {#open-development}
+### التطوير المفتوح {#open-development}
 
-All work on React happens directly on [GitHub](https://github.com/facebook/react). Both core team members and external contributors send pull requests which go through the same review process.
+كل العمل على React يحدث عل موقع[GitHub](https://github.com/facebook/react). كل من الفريق الرئيسي والمساهمون الآخرون يساهمون بإرسال طلبات السحب (Pull requests) والتي تدخل نفس مراحل المراجعة.
 
 ### Branch Organization {#branch-organization}
 
