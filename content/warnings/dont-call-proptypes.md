@@ -55,7 +55,7 @@ Button.propTypes = {
 }
 ```
 
-في هذه الحالة ، `ThirdPartyPropTypes.deprecated` مُغَلِّف "wrapper" يستدعي `PropTypes.bool`. لا بأس بهذا النمط لوحده ولكنه يُطلق إيجابية زائفة "false positive" لأن React تعتقد انك تستدعي PropTypes مُباشرة. المَقطع التالي سيشرح كيفية إصلاح هذه المُشكِلة لِمَكتبة تُطَبِق  شيئًا مِثل `ThirdPartyPropTypes`. إن لَم تَكُن مُؤَلِف المكتبة يُمكِنُكَ تقديم طلب مُشكلة "issue" ضدها.
+في هذه الحالة ، `ThirdPartyPropTypes.deprecated` مُغَلِّف "wrapper" يستدعي `PropTypes.bool`. لا بأس بهذا النمط لوحده ولكنه يُطلق إيجابية زائفة "false positive" لأن React تعتقد انك تستدعي PropTypes مُباشرة. المَقطع التالي سيشرح كيفية إصلاح هذه المُشكِلة لِمَكتبة تُطَبِق  شيئًا مِثل `ThirdPartyPropTypes`. إن لَم تَكُن مُؤَلِّف المكتبة يُمكِنُكَ تقديم طلب مُشكلة "issue" ضدها.
 
 ### إصلاح الأيجابية الزائفة في PropTypes الطرف الثالث {#fixing-the-false-positive-in-third-party-proptypes}
 
