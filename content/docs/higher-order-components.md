@@ -12,7 +12,7 @@ permalink: docs/higher-order-components.html
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-وفيما يُحوّل المكوّن الخاصيّات إلى واجهة مستخدم، يُحوّل المكوّن ذو الترتيب الأعلى مكوّنًا إلى مكوّن آخر.
+بينما يُحوّل المكوّن الخاصيّات إلى واجهة مستخدم، يُحوِّل المُكوّن ذو الترتيب الأعلى مكوّنًا إلى مكوّن آخر.
 
 تكون المكوّنات ذات الترتيب الأعلى شائعة في مكتبات React المُقدَّمة من طرف ثالث، مثل مكتبة [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) الخاصة بـ Redux و مكتبة [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) الخاصّة بـ Relay.
 
