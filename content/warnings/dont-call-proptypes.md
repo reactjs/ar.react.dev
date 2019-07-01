@@ -22,7 +22,7 @@ Button.propTypes = {
 };
 ```
 
-لا تَغيُر هنا.
+لا تغيّرات هنا.
 
 ### لا تستدعي PropTypes مباشرة {#dont-call-proptypes-directly}
 
