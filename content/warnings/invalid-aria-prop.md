@@ -4,7 +4,7 @@ layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
 
-تحذير 'invalid-aria-prop' سَيُطلَق إذا قُمت بمُحاولة تصيير عنصر DOM مع خاصية '*-aria' غير موجودة في [مواصفات](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties) مبادرة إتاحة الويب "Web Accessibility Initiative WAI" و تطبيق انترنت متاح غني "Accessible Rich Internet Application ARIA".
+تحذير 'invalid-aria-prop' سَيُطلَق إذا قُمت بمُحاولة تصيير عنصر DOM مع خاصية '*-aria' غير موجودة في [مواصفات](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties) مبادرة إتاحة الويب "Web Accessibility Initiative WAI" وتطبيق إنترنت متاح غني "Accessible Rich Internet Application ARIA".
 
 1. تأكَد من الإملاء بحذر ان كُنت تَظُنّ انك تستخدم خاصية صالحة. خاصيتا `aria-labelledby` و `aria-activedescendant` عادةً ما يُخطَأُ بِتَهجِئَتِهما.
 
