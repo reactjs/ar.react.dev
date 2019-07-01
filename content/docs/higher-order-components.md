@@ -122,7 +122,7 @@ const BlogPostWithSubscription = withSubscription(
 ```
 المُعامِل الأول هو المكوّن المُغلَّف. يسترجع المُعامِل الثاني البيانات التي تُهمّنا، مع إعطاء مصدر البيانات `DataSource` والخاصيّات الحاليّة.
 
-عند تصيير `CommentListWithSubscription` و `BlogPostWithSubscription`، فسيُمرِّر المكوّنان `CommentList` و `BlogPost` خاصيّة للبيانات `data` والتي تحمل أحدث البيانات المستخرجة من `DataSource`:
+عند تصيير `CommentListWithSubscription` و `BlogPostWithSubscription`، فَسيُمَرَّر للمُكوّنان `CommentList` و `BlogPost` خاصيّة للبيانات `data` والتي تحمل أحدث البيانات المستخرجة من `DataSource`:
 
 ```js
 // This function takes a component...
