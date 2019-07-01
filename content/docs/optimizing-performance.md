@@ -51,6 +51,7 @@ npm run build
 
 ### Brunch {#brunch}
 
+<<<<<<< HEAD
 للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Brunch، ثبِّت الإضافة [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch):
 
 ```
@@ -59,6 +60,16 @@ npm install --save-dev uglify-js-brunch
 
 #إن كنت تستخدم Yarn
 yarn add --dev uglify-js-brunch
+=======
+For the most efficient Brunch production build, install the [`terser-brunch`](https://github.com/brunch/terser-brunch) plugin:
+
+```
+# If you use npm
+npm install --save-dev terser-brunch
+
+# If you use Yarn
+yarn add --dev terser-brunch
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 ```
 
 ولإنشاء نسخة للإنتاج بعد ذلك، أضف العَلَم `-p` لأمر البناء `build`:
@@ -74,18 +85,32 @@ brunch build -p
  للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Browserify، ثبِّت بعض الإضافات:
 
 ```
+<<<<<<< HEAD
 # إن كنت تستخدم npm
 npm install --save-dev envify uglify-js uglifyify 
 
 # إن كنت تستخدم Yarn
 yarn add --dev envify uglify-js uglifyify 
+=======
+# If you use npm
+npm install --save-dev envify terser uglifyify 
+
+# If you use Yarn
+yarn add --dev envify terser uglifyify 
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 ```
 
 لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه المٌحَوّلات **(الترتيب مهم)**:
 
+<<<<<<< HEAD
 * يضمن المُحَوّل [`envify`](https://github.com/hughsk/envify) عيين البيئة الصحيحة للبناء. اجعله عامًّا عن طريق العَلَم (‎`-g`).
 * يُزيل المُحَوّل [`uglifyify`](https://github.com/hughsk/uglifyify) استيرادات التطوير، اجعله عامًّا أيضًا (`-g`).
 * وأخيرًا نُمرِّر الحزمة الناتجة إلى الأمر [`uglify-js`](https://github.com/mishoo/UglifyJS2) ([تعرف على السبب من هنا](https://github.com/hughsk/uglifyify#motivationusage)).
+=======
+* The [`envify`](https://github.com/hughsk/envify) transform ensures the right build environment is set. Make it global (`-g`).
+* The [`uglifyify`](https://github.com/hughsk/uglifyify) transform removes development imports. Make it global too (`-g`).
+* Finally, the resulting bundle is piped to [`terser`](https://github.com/terser-js/terser) for mangling ([read why](https://github.com/hughsk/uglifyify#motivationusage)).
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 على سبيل المثال:
 
@@ -93,33 +118,52 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
 
+<<<<<<< HEAD
 >**ملاحظة:**
 >
 >اسم الحزمة هو `uglify-js`, ولكن الملف الثنائي الذي تُعطينا إيّاه يُدعى `uglifyjs`.<br>
 > هذا ليس خطأ في الكتابة هنا. 
 
 تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق هذه الإضافات أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ. 
+=======
+Remember that you only need to do this for production builds. You shouldn't apply these plugins in development because they will hide useful React warnings, and make the builds much slower.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ### Rollup {#rollup}
 
  للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Rollup، ثبِّت بعض الإضافات:
 
+<<<<<<< HEAD
 ```
 # إن كنت تستخدم npm
 npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
 
 # إن كنت تستخدم Yarn
 yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+=======
+```bash
+# If you use npm
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
+
+# If you use Yarn
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 ```
 
 لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه الإضافات **(الترتيب مُهم)**:
 
+<<<<<<< HEAD
 * تضمن الإضافة [`replace`](https://github.com/rollup/rollup-plugin-replace) تعيين البيئة الصحيحة للبناء.
 * تُزوِّد الإضافة [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) دعمًا لأجل CommonJS في Rollup.
 * تضغط الإضافة [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) الحزمة النهائيّة.
+=======
+* The [`replace`](https://github.com/rollup/rollup-plugin-replace) plugin ensures the right build environment is set.
+* The [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) plugin provides support for CommonJS in Rollup.
+* The [`terser`](https://github.com/TrySound/rollup-plugin-terser) plugin compresses and mangles the final bundle.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ```js
 plugins: [
@@ -128,14 +172,18 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 للحصول على مثال كامل عن طريقة الإعداد [انظر هنا](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
 
+<<<<<<< HEAD
 تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `uglify` أو الإضافة `replace` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
+=======
+Remember that you only need to do this for production builds. You shouldn't apply the `terser` plugin or the `replace` plugin with `'production'` value in development because they will hide useful React warnings, and make the builds much slower.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ### webpack {#webpack}
 
@@ -144,18 +192,30 @@ plugins: [
 >إن كُنتَ تستخدم الأمر Create React App, رجاءً اتبع [التعليمات السّابقة](#create-react-app).<br>
 >هذا القسم يُفيدك فقط إن كنت تريد ضبط إعدادات webpack بشكلٍ مباشر.
 
+<<<<<<< HEAD
  للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل webpack، تأكّد من تضمين هذه الإضافات في إعدادات الإنتاج:
+=======
+Webpack v4+ will minify your code by default in production mode.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production'
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
 بإمكانك تعلّم المزيد حول هذا الموضوع في [webpack توثيق](https://webpack.js.org/guides/production/).
 
+<<<<<<< HEAD
 تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة  `UglifyJsPlugin` أو الإضافة `DefinePlugin` مع القيمة `'production'` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
+=======
+Remember that you only need to do this for production builds. You shouldn't apply `TerserPlugin` in development because it will hide useful React warnings, and make the builds much slower.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ## تفحص المكونات باستخدام نافذة الأداء في متصفح Chrome {#profiling-components-with-the-chrome-performance-tab}
 
