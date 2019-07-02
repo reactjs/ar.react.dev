@@ -1,6 +1,6 @@
 ---
 id: state-and-lifecycle
-title: State and Lifecycle
+title: حالة ودورة حياة المكونات
 permalink: docs/state-and-lifecycle.html
 redirect_from:
   - "docs/interactivity-and-dynamic-uis.html"
@@ -8,16 +8,16 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-This page introduces the concept of state and lifecycle in a React component. You can find a [detailed component API reference here](/docs/react-component.html).
+سنتحدّث في هذا القسم حول مفهوم حالة ودورة حياة المُكوِّنات في React، بإمكانك أن تجد من هنا [مرجعًا مُفصّلًا حول واجهة برمجة التطبيق (API) للمُكوِّنات](/docs/react-component.html).
 
-Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `ReactDOM.render()` to change the rendered output:
+فلنتذكر مثال الساعة من قسم [تصيير العناصر](/docs/rendering-elements.html#updating-the-rendered-element)، تعلّمنا في ذلك القسم فقط طريقة واحدة لتحديث واجهة المستخدم عن طريق استدعاء التابع `ReactDOM.render()` لتغيير الناتج:
 
 ```js{8-11}
 function tick() {
   const element = (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      <h1>أهلًا بالعالم!</h1>
+      <h2>الساعة الآن {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
   ReactDOM.render(
@@ -29,18 +29,18 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
+سنتعلّم في هذا القسم كيف نجعل مُكوِّن الساعة `Clock` قابلًا لإعادة الاستخدام حقًّا مع تغليفه ضمن نفسه، حيث يُعيِّن عدّاد الوقت الخاص به ويُحدِّث نفسه في كل ثانية.
 
-We can start by encapsulating how the clock looks:
+بإمكاننا البدء عن طريق تغليف شكل السّاعة:
 
 ```js{3-6,12}
 function Clock(props) {
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+      <h1>أهلًا بالعالم!</h1>
+      <h2>الساعة الآن {props.date.toLocaleTimeString()}.</h2>
     </div>
   );
 }
@@ -55,11 +55,11 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
-However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.
+ولكن على الرغم من ذلك يفتقد هذا المُكوِّن لمتطلب أساسي، وهو أنّ تعيين السّاعة لعدّاد الوقت وتحديثها لواجهة المستخدم في كل ثانية ينبغي أن يكون تفصيلًا داخليًّا خاصًّا بالمُكوِّن `Clock`.
 
-Ideally we want to write this once and have the `Clock` update itself:
+نريد بشكل مثالي أن نكتب هذه الشيفرة مرة واحدة ونجعل المُكوِّن `Clock` يُحدِّث نفسه:
 
 ```js{2}
 ReactDOM.render(
@@ -68,64 +68,64 @@ ReactDOM.render(
 );
 ```
 
-To implement this, we need to add "state" to the `Clock` component.
+لتنفيذ هذا نحتاج لإضافة حالة (state) إلى المُكوِّن `Clock`.
 
-State is similar to props, but it is private and fully controlled by the component.
+تُشبِه الحالة الخاصيّات props، ولكنّها خاصّة (private) ويتحكَّم فيها المُكوِّن.
 
-## Converting a Function to a Class {#converting-a-function-to-a-class}
+## تحويل الدالة إلى صنف {#converting-a-function-to-a-class}
 
-You can convert a function component like `Clock` to a class in five steps:
+بإمكانك تحويل مُكوِّنات الدوال مثل `Clock` إلى أصناف بخمس خطوات:
 
-1. Create an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), with the same name, that extends `React.Component`.
+1. إنشاء [صنف ( ES6 )](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) بنفس الاسم والذي يمتد (extends) إلى `React.Component`.
 
-2. Add a single empty method to it called `render()`.
+2. إضافة تابع فارغ وحيد لهذا الصنف اسمه `render()`‎.
 
-3. Move the body of the function into the `render()` method.
+3. نقل جسم الدالة إلى التّابع `render()`‎.
 
-4. Replace `props` with `this.props` in the `render()` body.
+4. تبديل `props` إلى `this.props` في جسم التّابع `render()`‎.
 
-5. Delete the remaining empty function declaration.
+5. حذف باقي تصريح الدالة الفارغ.
 
 ```js
 class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم!</h1>
+        <h2>الساعة الآن {this.props.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/zKRGpo?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
-`Clock` is now defined as a class rather than a function.
+أصبح المُكوِّن `Clock` الآن مُعرَّفًا كصنف بدلًا من دالة.
 
-The `render` method will be called each time an update happens, but as long as we render `<Clock />` into the same DOM node, only a single instance of the `Clock` class will be used. This lets us use additional features such as local state and lifecycle methods.
+سيُستدعى التّابع `render()`‎ في كل مرّة يحصل فيها تحديث، ولكن طالما أنّنا نُصيِّر (Render) العنصر `<Clock />` إلى نفس عقدة DOM، فستُستخدَم نسخة واحدة فقط من الصنف `Clock` يسمح لنا هذا باستخدام ميزات إضافية مثل الحالة المحليّة ودورة حياة المُكوِّنات.
 
-## Adding Local State to a Class {#adding-local-state-to-a-class}
+## إضافة الحالة المحلية للصنف {#adding-local-state-to-a-class}
 
-We will move the `date` from props to state in three steps:
+سننقل التاريخ `date` من الخاصيّات `props` إلى الحالة في ثلاث خطوات:
 
-1) Replace `this.props.date` with `this.state.date` in the `render()` method:
+1)  تبديل `this.props.date` بـ `this.state.date` في التّابع `render()`:
 
 ```js{6}
 class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم!</h1>
+        <h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
 }
 ```
 
-2) Add a [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:
-
+2) إضافة [دالة بانية للصنف (constructor)](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) والتي تُعيِّن القيمة المبدئية `this.state`: 
+  
 ```js{4}
 class Clock extends React.Component {
   constructor(props) {
@@ -136,15 +136,15 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم!</h1>
+        <h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
 }
 ```
 
-Note how we pass `props` to the base constructor:
+لاحظ كيف مرّرنا الخاصيّات `props` إلى الدالة البانية:
 
 ```js{2}
   constructor(props) {
@@ -153,9 +153,9 @@ Note how we pass `props` to the base constructor:
   }
 ```
 
-Class components should always call the base constructor with `props`.
+ينبغي لمُكوِّنات الأصناف أن تستدعي دومًا الدالة البانية مع الخاصيّات `props`.
 
-3) Remove the `date` prop from the `<Clock />` element:
+3) إزالة الخاصيّة `date` من العنصر ‎`<Clock />`:
 
 ```js{2}
 ReactDOM.render(
@@ -164,9 +164,10 @@ ReactDOM.render(
 );
 ```
 
-We will later add the timer code back to the component itself.
+سنعيد لاحقًا إضافة شيفرة عداد الوقت إلى المُكوِّن نفسه.
 
-The result looks like this:
+تبدو النتيجة كما يلي:
+
 
 ```js{2-5,11,18}
 class Clock extends React.Component {
@@ -178,8 +179,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم!</h1>
+        <h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -191,19 +192,18 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
-Next, we'll make the `Clock` set up its own timer and update itself every second.
+سنجعل الآن المُكوِّن `Clock` يُعيِّن عدّاد الوقت الخاص به ويُحدِّث نفسه في كل ثانية.
 
-## Adding Lifecycle Methods to a Class {#adding-lifecycle-methods-to-a-class}
+## إضافة توابع دورة الحياة إلى الصنف {#adding-lifecycle-methods-to-a-class}
 
-In applications with many components, it's very important to free up resources taken by the components when they are destroyed.
+من المهم في التطبيقات التي تمتلك العديد من المُكوِّنات أن نُحرِّر الموارد المحجوزة من قبل هذه المُكوِّنات عند تدميرها.
 
-We want to [set up a timer](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) whenever the `Clock` is rendered to the DOM for the first time. This is called "mounting" in React.
+نريد [تعيين عدّاد الوقت](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) حالما يُصيَّر المُكوِّن `Clock` إلى DOM لأوّل مرّة، يُسمَّى هذا في React بالوصل (mounting).
+ونرغب أيضًا [بمسح هذا العدّاد](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval) حالما يُزال DOM الناتج عن المُكوِّن `Clock`، يُسمَّى هذا في React بالفصل (unmounting).
 
-We also want to [clear that timer](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval) whenever the DOM produced by the `Clock` is removed. This is called "unmounting" in React.
-
-We can declare special methods on the component class to run some code when a component mounts and unmounts:
+بإمكاننا التصريح عن توابع خاصّة في مُكوِّنات الأصناف لتنفيذ بعض الشيفرات عند وصل وفصل المُكوِّن:
 
 ```js{7-9,11-13}
 class Clock extends React.Component {
@@ -223,17 +223,17 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم!</h1>
+        <h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
 }
 ```
 
-These methods are called "lifecycle methods".
+تُدعى هذه التوابع بـ"دوال دورة الحياة".
 
-The `componentDidMount()` method runs after the component output has been rendered to the DOM. This is a good place to set up a timer:
+تعمل دالة `componentDidMount()`‎ بعد تصيير ناتج المُكوِّن إلى DOM، لذلك هو مكان مُلائم لتعيين عداد الوقت:
 
 ```js{2-5}
   componentDidMount() {
@@ -244,11 +244,11 @@ The `componentDidMount()` method runs after the component output has been render
   }
 ```
 
-Note how we save the timer ID right on `this`.
+لاحظ كيف حفظنا مُعرِّف عدّاد الوقت (timer ID) من خلال `this`.
 
-While `this.props` is set up by React itself and `this.state` has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow (like a timer ID).
+لمّا كانت `this.props` يجري إعدادها عن طريق React نفسها و `this.state` تمتلك معنًى خاصًّا، فأنت حر بأن تضيف حقول إضافيّة يدويًّا إلى الصّنف إن احتجت تخزين شيء ما لا يُشارِك في تدفّق البيانات (مثل مُعرِّف عداد الوقت).
 
-We will tear down the timer in the `componentWillUnmount()` lifecycle method:
+سننهي عدّاد الوقت في دالة دورة الحياة `componentWillUnmount()`:
 
 ```js{2}
   componentWillUnmount() {
@@ -256,9 +256,9 @@ We will tear down the timer in the `componentWillUnmount()` lifecycle method:
   }
 ```
 
-Finally, we will implement a method called `tick()` that the `Clock` component will run every second.
+وأخيرًا سنضيف تابعًا يُدعى `tick()`‎ يُنفِّذه المُكوِّن `Clock` في كل ثانية.
 
-It will use `this.setState()` to schedule updates to the component local state:
+سيستخدم `this.setState()`‎ لجدولة التحديثات إلى الحالة المحليّة للمُكوِّن:
 
 ```js{18-22}
 class Clock extends React.Component {
@@ -287,8 +287,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>أهلًا بالعالم</h1>
+        <h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -300,84 +300,84 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
 
-Now the clock ticks every second.
+تدق السّاعة الآن في كل ثانية.
 
-Let's quickly recap what's going on and the order in which the methods are called:
+فلنوجز بسرعة ما يجري ونذكر الترتيب الذي تُستدعى فيه التوابع:
 
-1) When `<Clock />` is passed to `ReactDOM.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
+1) عندما يُمرَّر العنصر ‎`<Clock />`‎ إلى `ReactDOM.render()`‎ تستدعي React الدالة البانية للمُكوِّن `Clock`. وبما أنّ `Clock` يحتاج لإظهار الوقت الحالي سيُهيِّئ `this.state` بكائن يتضمّن الوقت الحالي، ولاحقًا يُحدِّث هذه الحالة.
 
-2) React then calls the `Clock` component's `render()` method. This is how React learns what should be displayed on the screen. React then updates the DOM to match the `Clock`'s render output.
+2) تستدعي بعدها React التّابع `render()`‎ للمُكوِّن `Clock` وهكذا تعلم React ما الذي ينبغي عرضه على الشاشة. تُحدِّث React بعد ذلك DOM ليُطابِق ناتج `Clock`.
 
-3) When the `Clock` output is inserted in the DOM, React calls the `componentDidMount()` lifecycle method. Inside it, the `Clock` component asks the browser to set up a timer to call the component's `tick()` method once a second.
+3) عندما يُدخَل ناتج `Clock` إلى DOM، تستدعي React خُطاف دورة الحياة `componentDidMount()`، وبداخله يسأل المُكوِّن `Clock` المتصفّح أن يُعيِّن عدّاد الوقت لاستدعاء التابع `tick()`‎ الخاص بالمُكوِّن مرّة كل ثانية.
 
-4) Every second the browser calls the `tick()` method. Inside it, the `Clock` component schedules a UI update by calling `setState()` with an object containing the current time. Thanks to the `setState()` call, React knows the state has changed, and calls the `render()` method again to learn what should be on the screen. This time, `this.state.date` in the `render()` method will be different, and so the render output will include the updated time. React updates the DOM accordingly.
+4) يستدعي المتصفّح في كل ثانية التّابع `tick()`، وبداخله يُجدوِل المُكوِّن `Clock` تحديثًا لواجهة المستخدم عن طريق استدعاء `setState()` مع كائن يحوي على الوقت الحالي. وبفضل استدعاء `setState()` تعلم React أنّ الحالة تغيّرت وبذلك تستدعي التّابع `render()`‎ مرّة أخرى ليعلم ما الذي ينبغي أن يكون على الشاشة، ستكون `this.state.date` في التابع `render()`‎ مختلفة هذه المرّة، وبهذا يتضمّن الناتج الوقت المُحدَّث. تُحدِّث React وفق ذلك DOM.
+  
+5) إن أُزيل المُكوِّن `Clock` من DOM تستدعي React دالة دورة الحياة `componentWillUnmount()` بحيث يتوقّف عدّاد الوقت.
 
-5) If the `Clock` component is ever removed from the DOM, React calls the `componentWillUnmount()` lifecycle method so the timer is stopped.
+## استخدام الحالة بشكل صحيح {#using-state-correctly}
 
-## Using State Correctly {#using-state-correctly}
+هنالك ثلاثة أشياء ينبغي أن تعلمها حول `setState()`.
 
-There are three things you should know about `setState()`.
+### لا تعدل الحالة بشكل مباشر {#do-not-modify-state-directly}
 
-### Do Not Modify State Directly {#do-not-modify-state-directly}
-
-For example, this will not re-render a component:
+على سبيل المثال لن يُعيد المثال التالي تصيير المُكوِّن:
 
 ```js
-// Wrong
-this.state.comment = 'Hello';
+// طريقة خاطئة
+this.state.comment = 'أهلًا';
 ```
 
-Instead, use `setState()`:
+استخدم `setState()`‎ بدلًا من ذلك:
 
 ```js
-// Correct
-this.setState({comment: 'Hello'});
+// الطريقة الصحيحة
+this.setState({comment: 'أهلًا'});
 ```
 
-The only place where you can assign `this.state` is the constructor.
+المكان الوحيد الذي يُمكنك فيه تعيين `this.state` هو الدالة البانية.
 
-### State Updates May Be Asynchronous {#state-updates-may-be-asynchronous}
+### قد تكون تحديثات الحالة غير متزامنة {#state-updates-may-be-asynchronous}
 
-React may batch multiple `setState()` calls into a single update for performance.
+قد تجمع React نداءات عديدة للتّابع `setState()`‎ في تحديث واحد من أجل تحسين الأداء.
 
-Because `this.props` and `this.state` may be updated asynchronously, you should not rely on their values for calculating the next state.
+بما أنّ `this.props` و `this.state`  قد تُحدَّث بشكل غير متزامن، فيجب ألّا تعتمد على قيمها لحساب الحالة التالية.
 
-For example, this code may fail to update the counter:
+على سبيل المثال قد تفشل الشيفرة التالية بتحديث عدّاد الوقت:
 
 ```js
-// Wrong
+// طريقة خاطئة
 this.setState({
   counter: this.state.counter + this.props.increment,
 });
 ```
 
-To fix it, use a second form of `setState()` that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+لإصلاح ذلك استخدم شكل آخر من `setState()`‎ يقبل دالة بدلًا من كائن، حيث تستقبل هذه الدالة الحالة السّابقة كوسيط أول لها، والخاصيّات `props` في وقت تطبيق التحديث كوسيطٍ ثانٍ لها:
 
 ```js
-// Correct
-this.setState((state, props) => ({
-  counter: state.counter + props.increment
+// الطريقة الصحيحة
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
 }));
 ```
 
-We used an [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) above, but it also works with regular functions:
+استخدمنا [الدوال السهمية](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) في المثال السّابق، ولكنّها تعمل أيضًا مع الدوال الاعتياديّة:
 
 ```js
-// Correct
-this.setState(function(state, props) {
+// الطريقة الصحيحة
+this.setState(function(prevState, props) {
   return {
-    counter: state.counter + props.increment
+    counter: prevState.counter + props.increment
   };
 });
 ```
 
-### State Updates are Merged {#state-updates-are-merged}
+### تدمج React تحديثات الحالة {#state-updates-are-merged}
 
-When you call `setState()`, React merges the object you provide into the current state.
+عندما تستدعي `setState()`، تدمج React الكائن الذي تُزوِّدها به مع الحالة الحاليّة.
 
-For example, your state may contain several independent variables:
+على سبيل المثال قد تحتوي حالتك على متغيّرات مستقلّة عديدة:
 
 ```js{4,5}
   constructor(props) {
@@ -389,7 +389,7 @@ For example, your state may contain several independent variables:
   }
 ```
 
-Then you can update them independently with separate `setState()` calls:
+يُمكنِك بعد ذلك تحديثها بشكل مستقل باستدعاءات منفصلة للتابع `setState()`:
 
 ```js{4,10}
   componentDidMount() {
@@ -407,41 +407,41 @@ Then you can update them independently with separate `setState()` calls:
   }
 ```
 
-The merging is shallow, so `this.setState({comments})` leaves `this.state.posts` intact, but completely replaces `this.state.comments`.
+يكون هذا الدمج ضئيلًا، لذلك لا يُؤثِّر تحديث حالة التعليقات `this.setState({comments})`‎ على حالة المنشورات أي `this.state.posts`، ولكنّه يستبدل حالة التعليقات `this.state.comments` بشكل كامل.
 
-## The Data Flows Down {#the-data-flows-down}
+## تتدفق البيانات للمستويات الأدنى {#the-data-flows-down}
 
-Neither parent nor child components can know if a certain component is stateful or stateless, and they shouldn't care whether it is defined as a function or a class.
+لا تعلم المُكوِّنات الآباء ولا حتى الأبناء إن كان مُكوِّن مُحدَّد لديه حالة أو بدون حالة، ولا يجب أن تُبالي إن كان مُعرَّفًا كدالة أو كصنف.
 
-This is why state is often called local or encapsulated. It is not accessible to any component other than the one that owns and sets it.
+هذا هو السبّب وراء تسمية الحالة بالمحليّة أو المُغلَّفة، فهي غير قابلة للوصول من قبل أي مُكوِّن آخر غير المُكوِّن الذي يملكها ويُعيّنها.
 
-A component may choose to pass its state down as props to its child components:
+قد يختار المُكوِّن تمرير حالته كخاصيّات `props` إلى عناصره الأبناء في المستوى الأدنى:
 
 ```js
-<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+<h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
 ```
 
-This also works for user-defined components:
+يعمل هذا المثال مع المُكوِّنات المُعرَّفة من قبل المستخدم أيضًا:
 
 ```js
 <FormattedDate date={this.state.date} />
 ```
 
-The `FormattedDate` component would receive the `date` in its props and wouldn't know whether it came from the `Clock`'s state, from the `Clock`'s props, or was typed by hand:
+يستقبل المُكوِّن `FormattedDate` التاريخ `date` في خاصيّاته ولن يعلم ما إذا كان هذا التاريخ قد أتى عن طريق حالة المُكوِّن `Clock`، أو من خاصيّات `Clock`، أو كُتِب بشكل يدوي:
 
 ```js
 function FormattedDate(props) {
-  return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
+  return <h2>الساعة الآن {props.date.toLocaleTimeString()}.</h2>;
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
-This is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.
+يُدعى هذا عادةً بتدفق البيانات من المستوى الأعلى للأدنى (top-down) أو أحادي الاتجاه (unidirectional). حيث أي حالة يمتلكها مُكوِّن مُحدَّد، وأي بيانات أو واجهة مستخدم مُشتقَّة من تلك الحالة بإمكانها فقط التأثير على المُكوِّنات التي تحتها في شجرة المُكوِّنات.
 
-If you imagine a component tree as a waterfall of props, each component's state is like an additional water source that joins it at an arbitrary point but also flows down.
+إن تخيّلت شجرة المُكوِّنات كشلّال من الخاصيّات، فكل حالة مُكوِّن تُشبِه مصدر إضافي للماء ينضم إليها في نقطة عشوائيّة ويتدفق معها للأسفل.
 
-To show that all components are truly isolated, we can create an `App` component that renders three `<Clock>`s:
+ولنبرهن أنّ جميع المُكوِّنات معزولة حقًا، فبإمكاننا إنشاء المُكوِّن `App` الذي يُظهِر شجرة من مُكوِّنات ‎`<Clock>`:
 
 ```js{4-6}
 function App() {
@@ -460,8 +460,8 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
+[**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
-Each `Clock` sets up its own timer and updates independently.
+يُعيِّن كل مُكوِّن `Clock` عدّاده الخاص به ويُحدِّثه بشكل منفصل.
 
-In React apps, whether a component is stateful or stateless is considered an implementation detail of the component that may change over time. You can use stateless components inside stateful components, and vice versa.
+في تطبيقات React عند استخدام مُكوِّن بداخل مُكوِّن آخر، فيُعتبَر المُكوِّن تفصيلًا تنفيذيًّا للمُكوِّن الآخر سواءً كان المُكوِّن يحتوي على حالة (stateful) أو بدون حالة (stateless) ويُمكِن أن يتغيّر عبر الوقت، بإمكانك استخدام المُكوِّنات بدون الحالة بداخل المُكوِّنات ذات الحالة وبالعكس أيضًا.
