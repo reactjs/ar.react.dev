@@ -262,7 +262,7 @@ const CommentWithRelay = Relay.createContainer(Comment, config);
 const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```
 
-إن قسّمته إلى أقسام أصغر فمن الأسهل عليك فهم ما يحدث:
+إن قسّمتَه إلى أقسامٍ أصغَر فَسَيسهُل عَليك فِهم ما يحدث:
 
 ```js
 // connect is a function that returns another function
