@@ -97,11 +97,7 @@ import("./math").then(math => {
 
 > ملاحظة:
 >
-<<<<<<< HEAD
 > `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادم](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md).
-=======
-> `React.lazy` and Suspense are not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we recommend [Loadable Components](https://github.com/smooth-code/loadable-components). It has a nice [guide for bundle splitting with server-side rendering](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md).
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 تمكِّنك الدالة `React.lazy`  من تصيير استيراد ديناميكي على أنَّه مكون عادي.
 
