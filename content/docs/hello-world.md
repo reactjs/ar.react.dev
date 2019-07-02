@@ -1,12 +1,13 @@
 ---
 id: hello-world
-title: Hello World
+title: أهلًا بالعالم 
 permalink: docs/hello-world.html
 prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+يبدو أصغر مثال في React كما يلي:
+
 
 ```js
 ReactDOM.render(
@@ -15,20 +16,19 @@ ReactDOM.render(
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
+يعرض هذا المثال ترويسةً تقول "أهلًا بالعالم!" في الصّفحة. 
 
 [](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+اضغط على الرابط في الأعلى لفتح محرِّر عبر CodePen يحوي المثال السابق. خذ راحتك وعدل هذا المثال كما يحلو لك وراقب كيف تؤثر تعديلاتك على المخرجات. أغلب الصفحات في هذا الدليل ستحوي على أمثلة قابلة للتعديل مثل هذا المثال.
 
+## كيف تقرأ هذا الدليل {#how-to-read-this-guide}
 
-## How to Read This Guide {#how-to-read-this-guide}
+ستُمهِّد لك الأقسام القادمة تدريجيًّا كيفيّة استخدام React، وسنتعامل مع الكتل التي يتكوّن منها تطبيق React وهي العناصر (elements) والمُكوِّنات (Components). حالما تتقنها سيصبح بمقدورك إنشاء تطبيقات مُعقَّدة من قطع صغيرة قابلة لإعادة الاستخدام.
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
-
->Tip
+>ملاحظة
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>هذا الدليل صمِّم من أجل الأشخاص الذين يفضلون تعلم المفاهيم النظرية خطوةً بخطوة. إن كنت تفضل التعلم بالممارسة، انتقل إلى [الدليل التطبيقي](/tutorial/tutorial.html). ستجد أنَّ هذا الدليل والدليل التطبيقي يكمِّل أحدهما الأخر.
 
 This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
 
