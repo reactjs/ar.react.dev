@@ -59,7 +59,7 @@ Button.propTypes = {
 
 ### إصلاح الإيجابيّة الزائفة في PropTypes الطرف الثالث {#fixing-the-false-positive-in-third-party-proptypes}
 
-إن كُنت مُؤَلِّف مكتبة PropTypes طرف ثالث و كنت تسمح للمُستَخدمين بِتَغليف PropTypes من React الموجودة ، فأنهم قد يَرون هذا التحذير آتيًا من المكتبة خاصتك. يَحُدث هذا لأن React لا تَرى الوسيط "argument" الأخير "سريّ secret" [التي تُمَرِره](https://github.com/facebook/react/pull/7132) لِرَصد استدعائات PropTypes اليدوية.  
+إن كُنت مُؤَلِّف مكتبة PropTypes طرف ثالث و كنت تسمح للمُستَخدمين بِتَغليف PropTypes من React الموجودة ، فقد يَرون هذا التحذير آتيًا من المكتبة خاصتك. يَحُدث هذا لأن React لا تَرى الوسيط "argument" الأخير "سريّ secret" [التي تُمَرِره](https://github.com/facebook/react/pull/7132) لِرَصد استدعائات PropTypes اليدوية.  
 
 إليك كيفية إصلاحه. سوف نَستَخدِم `deprecated` من [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js) كمثال. التطبيق الحالي يُمَرِر وسائط `props` و `propName` و `componentName` فقط:
 
