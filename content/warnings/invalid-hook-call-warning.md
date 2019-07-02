@@ -15,7 +15,7 @@ permalink: warnings/invalid-hook-call-warning.html
 2. قد تكون **تخرق [قواعد الخطافات](/docs/hooks-rules.html)**.
 3. من المُحتمل أن يكون لديك **أكثر من نسخة React** في نفس التطبيق.
 
-دَعونا ننظُر إلى كُل من الحالات أعلاه.
+دَعنا ننظُر إلى كُل من الحالات أعلاه.
 
 ## نُسخ غير مُتوافقة من React و React DOM {#mismatching-versions-of-react-and-react-dom}
 
