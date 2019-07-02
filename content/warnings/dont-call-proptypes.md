@@ -6,7 +6,7 @@ permalink: warnings/dont-call-proptypes.html
 
 > ملاحظة:
 >
-> تم ترحيل `React.PropTypes` إلى حزمة منفصلة منذ نسخة React v15.5. الرجاء استخدام مكتبة `prop-types` عوضًا عن ذلك.
+> تم ترحيل `React.PropTypes` إلى حزمة منفصلة منذ نسخة React v15.5. الرجاء استخدام  [مكتبة `prop-types`](https://www.npmjs.com/package/prop-types) عوضًا عن ذلك.
 >
 > نحن نوفر [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) لأتمَتَت التحويل.
 
