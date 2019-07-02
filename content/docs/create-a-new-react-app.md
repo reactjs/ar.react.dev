@@ -39,11 +39,7 @@ next: cdn-links.html
 
 إنَّ [Create React App](https://github.com/facebookincubator/create-react-app) هي بيئة مناسبة ومريحة **لتعلم React**, هي أفضل طريقة لبدء بناء تطبيق جديدة ذي **[صفحة وحيدة ](/docs/glossary.html#single-page-application)** في React.
 
-<<<<<<< HEAD
-يضبط الأمر `create-react-app` البيئة التطويرية الخاصة بك، وبذلك تستطيع استعمال أحدث ميزات JavaScript، والحصول على أفضل تجربة تطوير، بالإضافة إلى تحسين تطبيقك وتهيئته للإنتاج. ستحتاج إلى الإصدار 6 من Node.js أو ما بعده والإصدار 5.2 من npm أو ما بعده على جهازك. لإنشاء مشروع جديد، نفذ ما يلي:
-=======
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 8.10 and npm >= 5.6 on your machine. To create a project, run:
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
+يضبط الأمر `create-react-app` البيئة التطويرية الخاصة بك، وبذلك تستطيع استعمال أحدث ميزات JavaScript، والحصول على أفضل تجربة تطوير، بالإضافة إلى تحسين تطبيقك وتهيئته للإنتاج. ستحتاج إلى الإصدار 8.10 من Node.js أو ما بعده والإصدار 5.6 من npm أو ما بعده على جهازك. لإنشاء مشروع جديد، نفذ ما يلي:
 
 ```bash
 npx create-react-app my-app
