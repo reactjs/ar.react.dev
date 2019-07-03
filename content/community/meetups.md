@@ -1,13 +1,12 @@
 ---
 id: meetups
-title: جلسات العمل حول العالم
+title: مُلْتَقَيات حول العالم
 layout: community
 sectionid: community
 permalink: community/meetups.html
 ---
 
-هل لديك جلسة عمل React.js محلية؟ أضفها هنا!
-(يرجى الحفاظ على ترتيب القائمة أبجدية)
+هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجدية)
 
 ## إسبانيا {#spain}
 * [برشلونة](https://www.meetup.com/ReactJS-Barcelona/)
@@ -66,6 +65,7 @@ permalink: community/meetups.html
 * [أتلانتا (جورجيا)](https://www.meetup.com/React-ATL/)
 * [أرفاين (كالفورنيا)](https://www.meetup.com/ReactJS-OC/)
 * [أوستن (تكساس)](https://www.meetup.com/ReactJS-Austin-Meetup/)
+* [بالو ألتو (كاليفورنيا) - React Native](https://www.meetup.com/React-Native-Silicon-Valley/)
 * [بروفو (يوتا)](https://www.meetup.com/ReactJS-Utah/)
 * [بورتلاند (أوريغون)](https://www.meetup.com/Portland-ReactJS/)
 * [بوسطن (خليج ماساشوستس)](https://www.meetup.com/ReactJS-Boston/)
@@ -75,8 +75,10 @@ permalink: community/meetups.html
 * [دالاس (تكساس)](https://www.meetup.com/ReactDallas/)
 * [ساكرامنتو (كاليفورنيا)](https://www.meetup.com/Sacramento-ReactJS-Meetup/)
 * [سانتا مونيكا (كاليفورنيا)](https://www.meetup.com/Los-Angeles-ReactJS-User-Group/)
-* [سان فرانسيسكو (سان فرانسيسكو)](https://www.meetup.com/ReactJS-San-Francisco/)
-* [سياتل (واشنطن)](https://www.meetup.com/seattle-react-js/)
+* [سان فرانسيسكو (سان فرانسيسكو) - React JS](https://www.meetup.com/ReactJS-San-Francisco/)
+* [سان فرانسيسكو (سان فرانسيسكو) - React Native](https://www.meetup.com/React-Native-San-Francisco/)
+* [سياتل (واشنطن) - React JS](https://www.meetup.com/seattle-react-js/)
+* [سياتل (واشنطن) - React Native](https://www.meetup.com/Seattle-React-Native-Meetup/)
 * [شيكاغو (إلينوي)](https://www.meetup.com/React-Chicago/)
 * [فتيات نيويورك (نيويورك)](https://www.meetup.com/React-Ladies/)
 * [فيلادلفيا (فيلادلفيا)](https://www.meetup.com/RQ-React/)
@@ -84,10 +86,12 @@ permalink: community/meetups.html
 * [كانساس سيتي (ميزوري)](https://www.meetup.com/Kansas-City-React-Meetup/)
 * [كولومبوس (أوهايو)](https://www.meetup.com/ReactJS-Columbus-meetup/)
 * [لاس فيغاس (نيفادا)](https://www.meetup.com/ReactVegas/)
-* [لوس أنجلوس (كاليفورنيا)](https://www.meetup.com/socal-react/)
+* [لوس أنجلوس (كاليفورنيا) - React JS](https://www.meetup.com/socal-react/)
+* [لوس أنجلوس (كاليفورنيا) - React Native](https://www.meetup.com/React-Native-Los-Angeles/)
 * [ليسبورغ (فرجينيا)](https://www.meetup.com/React-NOVA/)
 * [ناشفيل (تينيسي)](https://www.meetup.com/NashReact-Meetup/)  
-* [نيويورك (نيويورك)](https://www.meetup.com/NYC-Javascript-React-Group/)
+* [نيويورك (نيويورك) - React JS](https://www.meetup.com/NYC-Javascript-React-Group/)
+* [نيويورك (نيويورك) - React Native](https://www.meetup.com/React-Native-NYC/)
 * [واشنطن (واشنطن دي سي)](https://www.meetup.com/React-DC/)
 
 ## اليونان {#greece}
