@@ -73,6 +73,7 @@ permalink: community/meetups.html
 * [تامبا (فلوريدا)](https://www.meetup.com/ReactJS-Tampa-Bay/)
 * [توسان (أريزونا)](https://www.meetup.com/Tucson-ReactJS-Meetup/)  
 * [دالاس (تكساس)](https://www.meetup.com/ReactDallas/)
+* [سان رامون (كاليفورنيا) - مطوري تري-فالي (TriValley Coders)](https://www.meetup.com/trivalleycoders/)
 * [ساكرامنتو (كاليفورنيا)](https://www.meetup.com/Sacramento-ReactJS-Meetup/)
 * [سانتا مونيكا (كاليفورنيا)](https://www.meetup.com/Los-Angeles-ReactJS-User-Group/)
 * [سان فرانسيسكو (سان فرانسيسكو) - React JS](https://www.meetup.com/ReactJS-San-Francisco/)
