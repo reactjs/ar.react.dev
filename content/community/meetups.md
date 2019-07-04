@@ -138,7 +138,8 @@ permalink: community/meetups.html
 ## كندا {#canada}
 * [أوتاوا](https://www.meetup.com/Ottawa-ReactJS-Meetup/)
 * [فانكوفر](https://www.meetup.com/ReactJS-Vancouver-Meetup/)
-* [مونتريال](https://www.meetup.com/fr-FR/ReactMontreal/)
+* [مونتريال - React JS](https://www.meetup.com/fr-FR/ReactMontreal/)
+* [مونتريال - React Native](https://www.meetup.com/fr-FR/React-Native-MTL)
 
 ## كولومبيا {#colombia}
 * [ميديلين](https://www.meetup.com/React-Medellin/)
