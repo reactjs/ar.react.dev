@@ -6,7 +6,7 @@ sectionid: community
 permalink: community/meetups.html
 ---
 
-هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجدية)
+هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجديًا)
 
 ## إسبانيا {#spain}
 * [برشلونة](https://www.meetup.com/ReactJS-Barcelona/)
