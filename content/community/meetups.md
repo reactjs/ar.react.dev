@@ -79,6 +79,7 @@ permalink: community/meetups.html
 * [سانتا مونيكا (كاليفورنيا)](https://www.meetup.com/Los-Angeles-ReactJS-User-Group/)
 * [سان فرانسيسكو (سان فرانسيسكو) - React JS](https://www.meetup.com/ReactJS-San-Francisco/)
 * [سان فرانسيسكو (سان فرانسيسكو) - React Native](https://www.meetup.com/React-Native-San-Francisco/)
+* [سان فرانسيسكو (سان فرانسيسكو) - Real World React](https://www.meetup.com/Real-World-React)
 * [سياتل (واشنطن) - React JS](https://www.meetup.com/seattle-react-js/)
 * [سياتل (واشنطن) - React Native](https://www.meetup.com/Seattle-React-Native-Meetup/)
 * [شيكاغو (إلينوي)](https://www.meetup.com/React-Chicago/)
