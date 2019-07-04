@@ -1,6 +1,6 @@
 ---
 id: meetups
-title: مُلْتَقَيات حول العالم
+title: المُلْتَقَيات حول العالم
 layout: community
 sectionid: community
 permalink: community/meetups.html
