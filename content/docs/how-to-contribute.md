@@ -50,7 +50,7 @@ redirect_from:
 ### سُبُل التواصل {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* منتدى المحادثة: [discuss.reactjs.org](https://discuss.reactjs.org/)
+* [منتديات المُحادثة](https://reactjs.org/community/support.html#popular-discussion-forums)
 
 هناك كذلك [مجتمع نشيط من مستخدمي React على منصّة Discord للمحادثة](https://www.reactiflux.com/) إذا ما احتجت للمساعدة فيما يتعلّق بـReact.
 

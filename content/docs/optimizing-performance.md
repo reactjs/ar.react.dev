@@ -51,14 +51,14 @@ npm run build
 
 ### Brunch {#brunch}
 
-للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Brunch، ثبِّت الإضافة [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch):
+للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Brunch، ثبِّت الإضافة [`terser-brunch`](https://github.com/brunch/terser-brunch):
 
 ```
 # إن كنت تستخدم npm
-npm install --save-dev uglify-js-brunch
+npm install --save-dev terser-brunch
 
 #إن كنت تستخدم Yarn
-yarn add --dev uglify-js-brunch
+yarn add --dev terser-brunch
 ```
 
 ولإنشاء نسخة للإنتاج بعد ذلك، أضف العَلَم `-p` لأمر البناء `build`:
@@ -75,17 +75,17 @@ brunch build -p
 
 ```
 # إن كنت تستخدم npm
-npm install --save-dev envify uglify-js uglifyify 
+npm install --save-dev envify terser uglifyify 
 
 # إن كنت تستخدم Yarn
-yarn add --dev envify uglify-js uglifyify 
+yarn add --dev envify terser uglifyify 
 ```
 
 لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه المٌحَوّلات **(الترتيب مهم)**:
 
 * يضمن المُحَوّل [`envify`](https://github.com/hughsk/envify) عيين البيئة الصحيحة للبناء. اجعله عامًّا عن طريق العَلَم (‎`-g`).
 * يُزيل المُحَوّل [`uglifyify`](https://github.com/hughsk/uglifyify) استيرادات التطوير، اجعله عامًّا أيضًا (`-g`).
-* وأخيرًا نُمرِّر الحزمة الناتجة إلى الأمر [`uglify-js`](https://github.com/mishoo/UglifyJS2) ([تعرف على السبب من هنا](https://github.com/hughsk/uglifyify#motivationusage)).
+* وأخيرًا نُمرِّر الحزمة الناتجة إلى الأمر [`terser`](https://github.com/terser-js/terser) ([تعرف على السبب من هنا](https://github.com/hughsk/uglifyify#motivationusage)).
 
 على سبيل المثال:
 
@@ -93,7 +93,7 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
 
 >**ملاحظة:**
@@ -109,17 +109,17 @@ browserify ./index.js \
 
 ```
 # إن كنت تستخدم npm
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser 
 
 # إن كنت تستخدم Yarn
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser 
 ```
 
 لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه الإضافات **(الترتيب مُهم)**:
 
 * تضمن الإضافة [`replace`](https://github.com/rollup/rollup-plugin-replace) تعيين البيئة الصحيحة للبناء.
 * تُزوِّد الإضافة [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) دعمًا لأجل CommonJS في Rollup.
-* تضغط الإضافة [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) الحزمة النهائيّة.
+* تضغط الإضافة [`terser`](https://github.com/TrySound/rollup-plugin-terser) الحزمة النهائيّة.
 
 ```js
 plugins: [
@@ -128,14 +128,14 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 للحصول على مثال كامل عن طريقة الإعداد [انظر هنا](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
 
-تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `uglify` أو الإضافة `replace` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `terser` أو الإضافة `replace` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
 ### webpack {#webpack}
 
@@ -144,18 +144,22 @@ plugins: [
 >إن كُنتَ تستخدم الأمر Create React App, رجاءً اتبع [التعليمات السّابقة](#create-react-app).<br>
 >هذا القسم يُفيدك فقط إن كنت تريد ضبط إعدادات webpack بشكلٍ مباشر.
 
- للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل webpack، تأكّد من تضمين هذه الإضافات في إعدادات الإنتاج:
+نسخة Webpack v4+ ستضغط الشفرة البرمجية الخاصة بك تلقائيًا في طور الإنتاج `Production`.
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production'
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
 بإمكانك تعلّم المزيد حول هذا الموضوع في [webpack توثيق](https://webpack.js.org/guides/production/).
 
-تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة  `UglifyJsPlugin` أو الإضافة `DefinePlugin` مع القيمة `'production'` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
+تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `TerserPlugin` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
 ## تفحص المكونات باستخدام نافذة الأداء في متصفح Chrome {#profiling-components-with-the-chrome-performance-tab}
 
@@ -166,17 +170,17 @@ new webpack.optimize.UglifyJsPlugin()
 لفعل ذلك في متصفح Chrome: 
 
 1. Temporarily **disable all Chrome extensions, especially React DevTools**. They can significantly skew the results!
-1. عطِّل بشكل مؤقَّت **كافة إضافات Chrome خاصة أدوات تطوير React**، فهي تُفسِد النتائج بالتأكيد.
+2. عطِّل بشكل مؤقَّت **كافة إضافات Chrome خاصة أدوات تطوير React**، فهي تُفسِد النتائج بالتأكيد.
 
-2. تأكّد من تشغيل التطبيق في وضع التطوير.
+3. تأكّد من تشغيل التطبيق في وضع التطوير.
 
-3. افتح نافذة الأداء ([Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)) في أدوات تطوير المتصفّح Chrome واضغط على تسجيل (Record).
+4. افتح نافذة الأداء ([Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)) في أدوات تطوير المتصفّح Chrome واضغط على تسجيل (Record).
 
-4. نفّذ الإجراءات التي ترغب بتفحصها. لا تُسجِّل أكثر من 20 ثانية فقد يتوقّف Chrome عن الاستجابة.
+5. نفّذ الإجراءات التي ترغب بتفحصها. لا تُسجِّل أكثر من 20 ثانية فقد يتوقّف Chrome عن الاستجابة.
 
-5. أوقف التسجيل.
+6. أوقف التسجيل.
 
-6. ستُجمَّع أحداث React تحت العنوان **User Timing**.
+7. ستُجمَّع أحداث React تحت العنوان **User Timing**.
 
 للحصول على دليل مفصّل، راجع [هذه المقالة من طرف Ben Schwarz](https://calibreapp.com/blog/2017-11-28-debugging-react/).
 
