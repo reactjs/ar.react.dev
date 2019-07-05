@@ -56,61 +56,62 @@ redirect_from:
 
 ### اقتراح تغيير {#proposing-a-change}
 
-If you intend to change the public API, or make any non-trivial changes to the implementation, we recommend [filing an issue](https://github.com/facebook/react/issues/new). This lets us reach an agreement on your proposal before you put significant effort into it.
+إن أردت احداث تغيير بالواجهة البرمجية (API)، أو احداث أي تغييرات مُعتَبرة ننصحك [بأن تقدم طلب مُشكلة (issue)](https://github.com/facebook/react/issues/new). هذا يُمكننا من مناقشة اقتراحك قبل أن تستثمر جهدك فيه.
 
-If you're only fixing a bug, it's fine to submit a pull request right away but we still recommend to file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+إن كنت تُقدم على إصلاح مشكلة فحسب، ﻻ بأس بإرسال طلب سحب (pull request) مباشرة، لكن من المهم أن تقدم طلب مُشكلة (issue) تُحدّد فيها بالتفصيل ما أنت بصدد إصلاحه. هذا مُهم في حالة ما إذا كنّا ﻻ نقبل ذاك الإصلاح بالتحديد لكن يمكننا الاستمرار في العمل على تلك المُشكلة.
 
-### Your First Pull Request {#your-first-pull-request}
+### أول طلب سحب (Pull Request) لك {#your-first-pull-request}
 
-Working on your first Pull Request? You can learn how from this free video series:
+هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
-**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+**[كيف تُساهم في مشروع مفتوح المصدر على Github (How to Contribute to an Open Source Project on GitHub)](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
 
-To help you get your feet wet and get you familiar with our contribution process, we have a list of **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** that contain bugs that have a relatively limited scope. This is a great place to get started.
+حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 
-If you decide to fix an issue, please be sure to check the comment thread in case somebody is already working on a fix. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don't accidentally duplicate your effort.
+إن قررت أن تُصلحَ مُشكلة (issue) قد تم طرحها، من فضلك ألقِ نظرة على النقاش في التعليقات لترى ما إذا كان أحدهم يعمل على إصلاحها. وإن لم يكن أي أحد يعمل عليها في ذلك الحين، الرجاء ترك تعليق بوضّح بأنك تريد العمل عليها حتى ﻻ يكرر الآخرون مَجهوداتك.
 
-If somebody claims an issue but doesn't follow up for more than two weeks, it's fine to take it over but you should still leave a comment.
+إن اقرّ أحدهم بأن هناك مشكلة ولم يعقّب على ذلك لأكثر من أسبوعين، ﻻ بأس أن تتناولها أنت لكن يجب عليك أن تَترُك تعليقًا على كلّ حال.
 
-### Sending a Pull Request {#sending-a-pull-request}
+### إرسال طلب سحب (Pull Request) {#sending-a-pull-request}
 
-The core team is monitoring for pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation. For API changes we may need to fix our internal uses at Facebook.com, which could cause some delay. We'll do our best to provide updates and feedback throughout the process.
+يراقب الفريق الرئيسي طلبات السحب (pull requests). سنقوم بمراجعة طلب السحب الخاص بك وبعدها يمكنن أن ندمجه أو نطلب من أن تُحدث تغييرات به، أو يمكن أن نغلقه مع شرح الأسباب. أما التغيّرات التي تمسّ الواجهة البرمجية (API) قد تتطلب منا إحداث تغييرات وإصلاحات في استخدماتنا الداخلية في Facebook.com، والتي قد تُسبب تأخرًا. سنبذل قصارى جهدنا في تقديم التحديثات والنتائج المحصلّة خلال العمليّة.
 
-**Before submitting a pull request,** please make sure the following is done:
+**قبل تسجيل طلب السحب،** الرجاء التحقق من إتمام ما يلي:
 
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test-prod` to test in the production environment. It supports the same options as `yarn test`.
-6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
+1. قم باستنساخ المستودع [المستودع](https://github.com/facebook/react) (بعمل Fork) وبعدها أنشأ الفرع الخاص بك من الفرع الرئيسي `master`
+2. نفّذ الأمل `yarn` في مجلّد المستودع.
+3. إن أصلحت علّة أو أضفت شيفرة برمجية والتي تحتاج إلى اختبار، أضف الإختبارات.
+4. تأكّد من نجاح سلسلة الإختبارات (`yarn test`). نصيحة: `yarn test --watch TestName` مفيدة أثناء التطوير.
+5. نفّذ الأمر `yarn test-prod` للإختبار في وضع الإنتاج. الأمر يقبل نفس الخيارات (options) المتوفّرة مع الأمر `yarn test`.
+6. إن كنت تحتاج مُنقّحًا، نفّذ `yarn debug-test --watch TestName`، وافتح `chrome://inspect`، ثمّ اضغط على تفحّص(Inspect).
+7. نظّم شيفرتك البرمجية مع [prettier](https://github.com/prettier/prettier) بالأمر (`yarn prettier`).
+8. تأكّد من أن شيفرتك البرمجية متناسقة بالأمر (`yarn lint`). نصيحة: `yarn linc` للتحقق فقط من الملفّات المُتَغيّرة.
+9. نفّذ [Flow](https://flowtype.org/) للتحقق من الأصناف (typechecks) بالأمر (`yarn flow`).
+10. راجع اتفاقية ترخيص المساهم (CLA)، إن لم تقم بذلك بعد.
 
-### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
+### اتفاقية ترخيص المساهم (CLA) {#contributor-license-agreement-cla}
 
-In order to accept your pull request, we need you to submit a CLA. You only need to do this once, so if you've done this for another Facebook open source project, you're good to go. If you are submitting a pull request for the first time, just let us know that you have completed the CLA and we can cross-check with your GitHub username.
+حتى يتمّ قبول طلب السحب الخاص بك، يجب عليك أولا أن تقوم بتسجيل إتفاقية ترخيص المساهم (CLA). عليك أن تفعل ذلك مرّة واحدة فحسب، لذا لو أردت المشاركة في أحد المشاريع مفتوحة المصدر من Facebook، فستكون جاهزا للإنطلاق. إن كنت تقوم بتسجيل طلب سحب للمرّة الأولى، أخبرنا بأنك أكملت مراجعة الإتفاقية (CLA) وعندها يمكننا أن نتحقق من ذلك باسم المستخدم الخاص بك على Github.
 
-**[Complete your CLA here.](https://code.facebook.com/cla)**
+**[أكمل الـCLA الخاصّة بك من هنا](https://code.facebook.com/cla)**
 
-### Contribution Prerequisites {#contribution-prerequisites}
+### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
 * You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
-* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
-* You are familiar with Git.
+* لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
+* لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
+* أنت مُعتاد على Git.
 
-### Development Workflow {#development-workflow}
+### آليّة التطوير {#development-workflow}
 
-After cloning React, run `yarn` to fetch its dependencies.
-Then, you can run several commands:
+بعد استنساخ مشروع React على جهازك، نفّذ الأمر `yarn` لتحميل كل إعتماديّاته.
+بعدها يمكنك تنفيذ بعض الأوامر:
 
-* `yarn lint` checks the code style.
-* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
-* `yarn test` runs the complete test suite.
-* `yarn test --watch` runs an interactive test watcher.
-* `yarn test <pattern>` runs tests with matching filenames.
+* `yarn lint` للتحقق من تنسيق الشيفرة البرمجية.
+* `yarn linc` مثل `yarn lint` لكن أسرع ﻷنه يتحقق من الملفّات التي تغيّرت فحسب.
+* `yarn test` يشغّل كل سلسلة الإختبارات.
+* `yarn test --watch` يشغّل مُراقب الإختبارات التفاعلي (interactive tests watcher).
+* `yarn test <نمط(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
 * `yarn test-prod` runs tests in the production environment. It supports all the same options as `yarn test`.
 * `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
 * `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
