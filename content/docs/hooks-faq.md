@@ -135,7 +135,7 @@ function Example() {
 }
 ```
 
-سنختبره باستعمال `ReactDOM`. للتأكد من تطابق السلوك مع الذي يحصل في المتصفح، سنغلف عملية تصيير وتحديث الشيفرة في استدعاءات `ReactTestUtils.act()‎`:
+سنختبره باستعمال `ReactDOM`. للتأكد من تطابق السلوك مع الذي يحصل في المتصفح، سنغلف عملية تصيير وتحديث الشيفرة في استدعاءات [`ReactTestUtils.act()‎`](https://reactjs.org/docs/test-utils.html#act):
 
 ```js{3,20-22,29-31}
 import React from 'react';
