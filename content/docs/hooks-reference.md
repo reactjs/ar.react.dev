@@ -45,6 +45,11 @@ setState(newState);
 
 أثناء عمليات إعادة التصيير اللاحقة، القيمة الأولى التي يعيدها الخطاف `useState` ستبقى دومًا أحدث حالة بعد تطبيق التحديثات.
 
+> ملاحظة
+>
+> أن يعد بأنه سيحدد الحالة setState التي تتمثل مهمتها في الرد ، وليس الحازم ومن ناحية أخرى يدفع التغيير. ناهيك عن أنه آمن للاستخدام تبعية  useEffect useCallback أو.white 
+>
+
 #### تحديثات عبر تمرير دالة {#functional-updates}
 
 إن حُسبَت الحالة الجديدة باستعمال الحالة السابقة، فيمكنك تمرير دالة إلى `setState`. ستستقبل الدالة القيمة السابقة، وتعيد القيمة المحدَّثة. إليك مثالٌ عن مكون عداد يستعمل كلا الشكلين للخطاف `setState`:
@@ -153,11 +158,18 @@ useEffect(
 
 الآن، سيعاد إنشاء الاشتراك عند تغيِّر `props.source`.
 
-تمرير مصفوفة فارغة `[]` من المدخلات يخبر React أنَّ تأثيراتك لا تعتمد على أية قيم من المكونات؛ لذلك، سيُنفَّذ ذلك التأثير عند الوصل (mount) ويُنظَّف عند الفصل (unmount) ولن تُنفَّذ عند التحديثات.
-
 > ملاحظة
 >
-> مصفوفة المدخلات لا تُمرَّر كوسائط إلى دالة التأثير. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل دالة التأثير يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
+> إذا كنت تستخدم هذا التحسين, تأكد من أن المصفوفة تشمل جميع القيم من نطاق المكون (كـ props و state) التي تتغير مع مرور الوقت والتي يتم استخدامها من قبل التأثير. وإلا ، فإن الشيفرة الخاص بك سوف تشير إلى القيم قديمة من تنصير السابق. تعرف على المزيد حول [كيفية التعامل مع الدوال](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) وماذا تفعل عندما [تتغير قيم المصفوفة كثيرا](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often). 
+>
+> إذا كنت ترغب في تشغيل تأثير وتنظيفه مرة واحدة فقط )في mount و unmount),  يمكنك تمرير لمصفوفة فارغة كعامل ثاني. هذا يخبر React أن تأثيرك لن يعتمد على أي قيمة من قيم props أو state,  لهذا فهو لن يعيدة تشغيله مرة ثانية.  فهذه لن يتم التعامل معها كحالة خاصة — فهو يتبع مباشرة كيفية عمل تبعية المصفوفات دائمًا. 
+>
+> إذا مررة ل مصفوفة خالية (`[]`), props و state كـ التأثير داخلي فستكون دائما قيمها الأولية.  أثناء تمرير [] كعامل ثاني قريب من عائلة `componentDidMount` و `componentWillUnmount` نموذج عقلي,  عادة ما تكون هناك [حلول](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)  [أفضل](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)  لتجنب إعادة تشغيل التأثيرات في كثير من الأحيان.  كذلك, لا تنسى أن React يؤجل تشغيل `useEffect` حتى بعد أن يقوم المتصفح بالرسم,   لذلك القيام بعمل إضافي . 
+>
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
+>
+
+مصفوفة المدخلات لا تُمرَّر كوسائط إلى دالة التأثير. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل دالة التأثير يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 
 ### `useContext` {#usecontext}
 
@@ -167,7 +179,24 @@ const context = useContext(Context);
 
 يقبل هذا الخطاف كائن سياق (context object، أي القيمة المعادة من `React.createContext`) ويعيد قيمة السياق الحالي كما أُعطيَت من قبل أقرب موفِّر سياق (context provider) للسياق المعطى.
 
-عندما يجري تحديث السياق، سيُطلِق (trigger) هذا الخطاف عملية تصيير مع أحدث قيمة للسياق.
+عندما يكون أقرب `<MyContext.Provider>` فوق تحديثات المكون, 
+هذا الخطاف سيؤدي إلى إعادة تقديم مع أحدث سياق `value` التي تمررها إلى المزود `MyContext`.
+
+لا تنسى أن العامل `useContext` يجب أن يكون:
+
+* صحيح: useContext(MyContext)
+* غير صحيح: useContext(MyContext.Consumer)
+* غير صحيح: useContext(MyContext.Provider)
+
+المكون الذي يستدعي `useContext` يقوم دائما بإعادة تصيير عندما تتغير قيم السياق.  إذا كان إعادة تصيير مكلف يمكنك [تحسينه بإستخدام memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
+
+>تلميح
+>
+>إذا كنت معتادًا على سياق API قبل خطفات, `useContext(MyContext)` تكافئ `static contextType = MyContext` في class, أو إلى `<MyContext.Consumer>`.
+>
+>`useContext(MyContext)` يتيح لك فقط قراءة السياق والاشتراك في تغييراته. 
+>ما زلت بحاجة إلى `<MyContext.Provider>` أعلاه في الشجرة لتوفير قيمة لهذا السياق.
+>
 
 ## خطافات إضافية {#additional-hooks}
 
@@ -210,6 +239,11 @@ function Counter({initialState}) {
   );
 }
 ```
+
+> ملاحظة
+>
+>React يضمن بقاء الهوية الدالة  `dispatch` مستقرة ولن تتغير عند إعادة تصيير. هذا هو السبب الذي يجعل من الآمن حذف  `useEffect` أو `useCallback` من قائمة التبعية.
+>
 
 #### تحديد الحالة الأولية {#specifying-the-initial-state}
 
@@ -290,7 +324,9 @@ const memoizedCallback = useCallback(
 > ملاحظة
 >
 > مصفوفة المدخلات لا تُمرَّر كوسائط إلى رد النداء. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل رد النداء يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
-
+>
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
+>
 ### `useMemo` {#usememo}
 
 ```js
@@ -310,6 +346,9 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > ملاحظة
 >
 > مصفوفة المدخلات لا تُمرَّر كوسائط إلى الدالة. نظريًّا، إليك ما الذي تمثله: كل قيمة أُشيِر إليها داخل الدالة يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
+>
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
+>
 
 ### `useRef` {#useref}
 
@@ -337,7 +376,15 @@ function TextInputWithFocusButton() {
 }
 ```
 
-انتبه إلى أنَّ نفع الخطاف `useRef` يتجاوز الخاصية `ref`، إذ هو مفيدٌ جدًا في الإبقاء على أية قيمة قابلة للتعديل في متناول اليد. بشكل مشابه لكيفية استعمال حقول النسخ (instance fields) في الأصناف.
+بصفة أساسية, `useRef` هي مثل العلبة التي تحوي على القيم القابلة لتغير داخل خاصية`.current`.
+
+قد تكون على دراية  بـ refs كطريقة أساسية [لـولوج إلى DOM](https://reactjs.org/docs/refs-and-the-dom.html). إذا قمت بتمرير كائن المرجع إلى React بـ `<div ref={myRef} />`, يحدد React خاصية `.current` إلى عقدةDOM  المعنية كلما تغير ذلك العقد .
+
+ومع ذلك, `useRef()` فهو مفيد لأكثر من صفة `ref`. إنه [مفيد للحفاظ على أي قيمة قابلة للتغيير حولها](https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables) مشابه لكيفية استخدام حقول في الأصناف
+
+هذا يعمل لأن `useRef()` ينشأ كائن JavaScript عادي. الفرق الوحين بين `useRef()` و إنشاء كائن `{current: ...}` بنفسك هو أن `useRef` سيعطيك نفس كائن ref عند كل تصيير.
+
+لا تنسى أن `useRef` لا يعلمك عندما يتغير محتواه. تغير خاصية `.current` لا يعيد تصيير. إذا أردت تشغيل بعض الشفرات عندما يقوم React بالربط أو الفك ref لعقد DOM قد ترغب في استخدام [callback ref](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node).
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -371,6 +418,11 @@ FancyInput = forwardRef(FancyInput);
 > نصيحة
 >
 > إن كنت تستبدل شيفرة كتُبَت عبر مكون صنف أو هجرت مكون صنف وأردت استعمال الخطافات، يُنفَّذ الخطاف `useLayoutEffect` في نفس المرحلة التي ينفَّذ فيها التابعان `componentDidMount` و `componentDidUpdate`، لذا إن لم تكن متأكدًا أيَّ خطاف تأثير تريد استعماله، فهذا الخطاف يرجَّح أن يكون أقل خطورة.
+>
+> إذا كنت تسخدم خادم التصيير, تذكر أنه لن يشتغل `useLayoutEffect` ولا `useEffect` حتى يتم تحميل javaScript. لهذا السبب يقوم React بتحذير خادم التصيير المكون الذي يحتوي `useLayoutEffect`. لتصليحه عليك, إما بنقل ذلك المنطق إلى `useEffect` (إذ لم تكن مهمة في تصيير الأول), أو تأخير ذلك المكون حتى بعد أن يقوم الزبون ب تصيير(إذا كان HTML يبدو مخرب حتى بعد تشغيل `useLayoutEffect`).
+>
+> لإستبعاد المكون الذي يحتاج إلى طبقة تأثيرات من خادم التصيير HTML, لتصيره بشرط يجب إستخدام `showChild && <Child />` وتأجيل إظهاره بإستخدام `useEffect(() => { setShowChild(true); }, [])`. بهذه الطريقة, واجهة المستخدم لا تظهر مكسورة.
+>
 
 ### `useDebugValue` {#usedebugvalue}
 
