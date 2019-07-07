@@ -15,11 +15,11 @@ redirect_from:
 
 لا نوصي بالضرورة بأي من هذه الأعراف البرمجية في تطبيقات React. الكثير منهم موجودون لأسباب تاريخية وقد يتغيرون مع مرور الوقت.
 
-### External Dependencies {#external-dependencies}
+### التبعيات الخارجية {#external-dependencies}
 
-React has almost no external dependencies. Usually, a `require()` points to a file in React's own codebase. However, there are a few relatively rare exceptions.
+ لا يوجد لدي React أي تبعيات خارجية تقريبا. عادةً، تشير `require()` إلى ملف في قاعدة كود برنامج React الخاصة. ومع ذلك ، هناك بعض الاستثناءات النادرة نسبيا.
 
-The [fbjs repository](https://github.com/facebook/fbjs) exists because React shares some small utilities with libraries like [Relay](https://github.com/facebook/relay), and we keep them in sync. We don't depend on equivalent small modules in the Node ecosystem because we want Facebook engineers to be able to make changes to them whenever necessary. None of the utilities inside fbjs are considered to be public API, and they are only intended for use by Facebook projects such as React.
+يوجد [مستودع fbjs](https://github.com/facebook/fbjs) لأن React يشارك بعض الأدوات الصغيرة مع المكتبات (libraries) مثل مكتبة [Relay](https://github.com/facebook/relay) ،و نبقيهم متزامنين. لا نعتمد على وحدات صغيرة مكافئة في نظام Node لأننا نريد أن يتمكن مهندسو Facebook من إجراء تغييرات عليها كلما دعت الضرورة. لا تعد أيًا من الأدوات المساعدة الموجودة داخل fbjs بمثابة واجهة برمجة تطبيقات (API) عامة، وهي مخصصة فقط للاستخدام من قبل مشاريع Facebook مثل React.
 
 ### Top-Level Folders {#top-level-folders}
 
