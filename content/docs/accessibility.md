@@ -473,15 +473,9 @@ class BlurExample extends React.Component {
 
 نستطيع بسهولة في بعض المتصفحات مشاهدة معلومات سهولة الوصول لكل عنصر في شجرة سهولة الوصول:
 
-<<<<<<< HEAD
 - [استخدام مستكشف سهولة الوصول في متصفح Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [تفعيل مستكشف سهولة الوصول في متصفح Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [استخدام مستكشف سهولة الوصول في متصفح Chrome](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [استخدام مستكشف سهولة الوصول في متصفح OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
-=======
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Using the Accessibility Inspector in Chrome](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
->>>>>>> e1abbdecfd1a5a804bd38852e88373f54ddde014
 
 ### قارئات الشاشة {#screen-readers}
 
