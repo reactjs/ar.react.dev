@@ -4,45 +4,49 @@ layout: single
 permalink: warnings/refs-must-have-owner.html
 ---
 
-You are probably here because you got one of the following error messages:
+ أنت على الأرجح هُنا بسبب رسائل الخطأ التالية:
 
-*React 16.0.0+*
-> Warning:
+*React 16.0.0 و أعلى*
+> تحذير:
 >
 > Element ref was specified as a string (myRefName) but no owner was set. You may have multiple copies of React loaded. (details: https://fb.me/react-refs-must-have-owner).
+>
+> حُدِد مرجع العُنصر كسلسة نصّية "string" ولكن لم يتم تحديد المالِك "owner". من المُحتمل أن يكون لديك أكثر من نُسخة React مُحمّلة (تفاصيل: https://fb.me/react-refs-must-have-owner).
 
-*earlier versions of React*
-> Warning:
+*النُسخ الأقدم من React*
+> تحذير:
 >
 > addComponentAsRefTo(...): Only a ReactOwner can have refs. You might be adding a ref to a component that was not created inside a component's `render` method, or you have multiple copies of React loaded.
+>
+> addComponentAsRefTo(...): يحظى ReactOwner بالمراجع فقط. من المُحتمل أنك تُضيف مرجع إلى مُكوّن لم يُنشأ داخل تابع `render` أو أنه لديك أكثر من نُسخة React مُحملّة.
 
-This usually means one of three things:
+ذلك غالبًا يعني واحدًا من ثلاثة أشياء:
 
-- You are trying to add a `ref` to a function component.
-- You are trying to add a `ref` to an element that is being created outside of a component's render() function.
-- You have multiple (conflicting) copies of React loaded (eg. due to a misconfigured npm dependency)
+- تُحاول إضافة مرجع `ref` إلى مُكوّن دالّة.
+- تُحالو إضافة مرجع `ref` إلى عُنصُر يتم إنشائهُ خارج تابع `render()`.
+- لديك نُسخ مُتعددة من React مُحمّلة. (مثلما يكون الحال عند وجود إعتمادية مُعدّة بشكل غير صحيح)
 
-## Refs on Function Components {#refs-on-function-components}
+## مراجع على مُكوّنات دالّة {#refs-on-function-components}
 
-If `<Foo>` is a function component, you can't add a ref to it:
+إن كان `<Foo>` مُكوّن دالّة فلا يُمكِنُك إضافة مرجع عليه:
 
 ```js
 // Doesn't work if Foo is a function!
 <Foo ref={foo} />
 ```
 
-If you need to add a ref to a component, convert it to a class first, or consider not using refs as they are [rarely necessary](/docs/refs-and-the-dom.html#when-to-use-refs).
+إن كُنت بحاجة إلى إضافة مرجع إلى مُكوّن قُم بتحويلِهِ أولًا إلى مُكوّن صنف أو خُذ بعين الاعتبار عدم استخدام المراجع بما أنهم من [النادر ضرورتهم](/docs/refs-and-the-dom.html#when-to-use-refs).
 
-## Strings Refs Outside the Render Method {#strings-refs-outside-the-render-method}
+## مراجع السلاسل النصيّة خارج تابع التصيّير {#strings-refs-outside-the-render-method}
 
-This usually means that you're trying to add a ref to a component that doesn't have an owner (that is, was not created inside of another component's `render` method). For example, this won't work:
+يعني هذا غالبًا أنك تُحاول إضافة مرجع إلى مُكوّن ليس لديه مالِك "owner" (أي أنه لم يُنشأ داخل تابع التصيير `render` لمُكوّن آخر). المثال أدناه لن يَعمل:
 
 ```js
 // Doesn't work!
 ReactDOM.render(<App ref="app" />, el);
 ```
 
-Try rendering this component inside of a new top-level component which will hold the ref. Alternatively, you may use a callback ref:
+قُم بتصيير هذا المُكوّن داخل مُكوّن جديد ذو المُستوى الأعلى "top-level" والذي سَيحمل المرجع. كطريقة بديلة، يُمكنك استخدام مرجع ردود النداء "callback ref":
 
 ```js
 let app;
@@ -54,10 +58,10 @@ ReactDOM.render(
 );
 ```
 
-Consider if you [really need a ref](/docs/refs-and-the-dom.html#when-to-use-refs) before using this approach.
+تأمل [حاجتك لاستخدام مرجع](/docs/refs-and-the-dom.html#when-to-use-refs) جيدًا قبل استخدام هذا الأُسلوب.
 
-## Multiple copies of React {#multiple-copies-of-react}
+## نُسخ مُتعددة من React {#multiple-copies-of-react}
 
-Bower does a good job of deduplicating dependencies, but npm does not. If you aren't doing anything (fancy) with refs, there is a good chance that the problem is not with your refs, but rather an issue with having multiple copies of React loaded into your project. Sometimes, when you pull in a third-party module via npm, you will get a duplicate copy of the dependency library, and this can create problems.
+يقوم Bower بعمل جيد من ناحية حل المُشكلات المُتعلقة بإزدواج الأعتماديات بنيما لا يقوم npm ذلك. إن كُنت لا تقوم بشئ (خيالي "fancy") في المراجع ، فإن المُشكلة على الأرجح ليست بالمراجع خاصتك بل بوجود نُسخ مُتعددة من React مُحمّلة إلى مَشروعك. في بعض الأحيان عند سحب "pull" واجهة "module" من الطرف الثالث من خلال npm فقد تَحصُل على نُسخة مُتكررة من مكتبة الإعتمادية وقد يؤدي ذلك إلى خلق مُشكلات.
 
-If you are using npm... `npm ls` or `npm ls react` might help illuminate.
+إن كُنت تستخدم npm فإن أمرا `npm ls` و `npm ls react` قد يُساعدا في تسليط الضوء على المُشكلة.
