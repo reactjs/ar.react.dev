@@ -45,6 +45,8 @@ prev: hooks-reference.html
   * [	ما الذي يعينه const [thing, setThing] = useState()‎؟](#what-does-const-thing-setthing--usestate-mean)
 * **[	تحسينات الأداء](#performance-optimizations)**
   * [	أيمكنني تخطي تأثير ما في عمليات التحديث؟](#can-i-skip-an-effect-on-updates)
+  * [هل من الآمن حذف الدوال من قائمة التبعيات؟](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)
+  * [ماذا أفعل إذا تغيرت تبعيات التأثير الخاصة بي كثيرًا؟](#what-can-i-do-if-my-effect-dependencies-change-too-often)
   * [	كيف يمكنني تنفيذ shouldComponentUpdate؟](#how-do-i-implement-shouldcomponentupdate)
   * [	كيف يمكن استظهار (memoize) العمليات الحسابية؟](#how-to-memoize-calculations)
   * [كيف يمكن إنشاء كائنات مستنزفة للأداء بشكل كسول؟](#how-to-create-expensive-objects-lazily)
@@ -512,6 +514,213 @@ function useClientRect() {
 ### أيمكنني تخطي تأثير ما في عمليات التحديث؟ {#can-i-skip-an-effect-on-updates}
 
 نعم. اطلع على قسم [تنفيذ تأثير شرطيًّا](/docs/hooks-reference.html#conditionally-firing-an-effect). لاحظ أنَّ نسيان معالجة تحديثات يولد غالبًا أخطاء، إذ هذا هو سبب عدم كون هذا السلوك هو السلوك الافتراضي.
+
+### هل من الآمن حذف الدوال من قائمة التبعيات؟ {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
+
+بشكل عام ، لا.
+
+```js
+function Example({ someProp }) {
+  function doSomething() {
+    console.log(someProp);
+  }
+
+  useEffect(() => {
+    doSomething();
+  }, []); // 🔴 This is not safe (it calls `doSomething` which uses `someProp`)
+}
+```
+
+من الصعب تذكر الدعائم أو الحالة التي تستخدمها الوظائف خارج التأثير. لهذا السبب عادةً ما تريد الإعلان عن الوظائف التي يتطلبها تأثير بداخلها. بعد ذلك ، من السهل معرفة القيم من نطاق المكون الذي يعتمد على هذا التأثير:
+
+```js
+function Example({ someProp }) {
+  useEffect(() => {
+    function doSomething() {
+      console.log(someProp);
+    }
+
+    doSomething();
+  }, [someProp]); // ✅ OK (our effect only uses `someProp`)
+}
+```
+
+إذا لم نستخدم بعد ذلك أي قيم من نطاق المكون ، فمن الآمن تحديد `[]`:
+
+```js
+useEffect(() => {
+  function doSomething() {
+    console.log('hello');
+  }
+
+  doSomething();
+}, []); // ✅ OK in this example because we don't use *any* values from component scope
+```
+
+بناءً على حالة الاستخدام الخاصة بك ، هناك عدد قليل من الخيارات الموضحة أدناه.
+
+>ملاحظة
+>
+> نحن نقدم [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) قاعدة ESLint كجزء من حزمة [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
+
+دعنا نرى لماذا هذا مهم.
+
+إذا قمت بتحديد [قائمة التبعيات](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
+
+يكون من الآمن حذف وظيفة من قائمة التبعية إذا لم يكن أي منها (أو الوظائف التي تسمى بها) يشير إلى الدعائم أو الحالة أو القيم المستمدة منها. يحتوي هذا المثال على خطأ:
+
+```js
+function ProductPage({ productId }) {
+  const [product, setProduct] = useState(null);
+
+  async function fetchProduct() {
+    const response = await fetch('http://myapi/product' + productId); // Uses productId prop
+    const json = await response.json();
+    setProduct(json);
+  }
+
+  useEffect(() => {
+    fetchProduct();
+  }, []); // 🔴 Invalid because `fetchProduct` uses `productId`
+  // ...
+}
+```
+
+**الإصلاح الموصى به هو نقل هذه الوظيفة داخل تأثيرك.** هذا يجعل من السهل معرفة الدعائم أو الحالة التي يستخدمها التأثير الخاص بك ، والتأكد من إعلانها جميعًا:
+
+```js
+function ProductPage({ productId }) {
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    // By moving this function inside the effect, we can clearly see the values it uses.
+    async function fetchProduct() {
+      const response = await fetch('http://myapi/product' + productId);
+      const json = await response.json();
+      setProduct(json);
+    }
+
+    fetchProduct();
+  }, [productId]); // ✅ Valid because our effect only uses productId
+  // ...
+}
+```
+
+يسمح لك هذا أيضًا بمعالجة الاستجابات غير المرتبة مع متغير محلي داخل التأثير:
+
+```js
+ useEffect(() => {
+    let ignore = false;
+    async function fetchProduct() {
+      const response = await fetch('http://myapi/product/' + productId);
+      const json = await response.json();
+      if (!ignore) setProduct(json);
+    }
+    
+    fetchProduct();
+    return () => { ignore = true };
+  }, [productId]);
+```
+
+لقد نقلنا الوظيفة داخل التأثير حتى لا تكون في قائمة التبعية.
+
+> Tip
+>
+> تحقق من هذا [العرض التوضيحي الصغير](https://codesandbox.io/s/jvvkoo8pq3) و [هذه المقالة](https://www.robinwieruch.de/react-hooks-fetch-data/) لمعرفة المزيد حول جلب البيانات مع خطفات.
+
+**إذا لم تتمكن من نقل وظيفة داخل تأثير ما لسبب ما ، فهناك بعض الخيارات الإضافية:*
+
+* **يمكنك محاولة نقل هذه الدالة خارج المكون الخاص بك.** في هذه الحالة ، تكون الدالة مضمونة لعدم الإشارة إلى أي مواد دعائية أو حالة ، كما أنها لا تحتاج إلى أن تكون في قائمة التبعيات.
+* إذا كانت الدوال التي تتصل بها عبارة عن حساب محض وآمنة للاتصال أثناء العرض ، يمكنك **الاتصال بها خارج التأثير بدلاً من ذلك** ، وجعل التأثير يعتمد على القيمة التي تم إرجاعها.
+* كملجأ أخير ، يمكنك **إضافة دالة للتأثير على التبعيات ولكن لف تعريفها** في خطاف[useCallback](https://reactjs.org/docs/hooks-reference.html#usecallback). هذا يضمن أنه لا يتغير في كل عرض ما لم تتغير التبعيات الخاصة به أيضًا:
+
+```js
+function ProductPage({ productId }) {
+  // ✅ Wrap with useCallback to avoid change on every render
+  const fetchProduct = useCallback(() => {
+    // ... Does something with productId ...
+  }, [productId]); // ✅ All useCallback dependencies are specified
+
+  return <ProductDetails fetchProduct={fetchProduct} />;
+}
+
+function ProductDetails({ fetchProduct })
+  useEffect(() => {
+    fetchProduct();
+  }, [fetchProduct]); // ✅ All useEffect dependencies are specified
+  // ...
+}
+```
+
+لاحظ أننا في المثال أعلاه **نحتاج ** إلى الاحتفاظ ب الدوال في قائمة التبعيات. هذا يضمن أن أي تغيير في `productId` prop ل `ProductPage` يؤدي تلقائيًا إلى إعادة تعيين في مكون `ProductDetails`.
+
+### ماذا أفعل إذا تغيرت تبعيات التأثير الخاصة بي كثيرًا؟ {#what-can-i-do-if-my-effect-dependencies-change-too-often}
+
+في بعض الأحيان ، قد يكون تأثيرك يستخدم الحالة التي تتغير كثيرًا. قد تميل إلى إغفال هذه الحالة من قائمة التبعيات ، لكن هذا يؤدي عادة إلى الأخطاء:
+
+```js
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1); // This effect depends on the `count` state
+    }, 1000);
+    return () => clearInterval(id);
+  }, []); // 🔴 Bug: `count` is not specified as a dependency
+
+  return <h1>{count}</h1>;
+}
+```
+
+مجموعة فارغة من التبعيات, `[]`, يعني أن التأثير لن يعمل إلا مرة واحدة عندما يركب المكون, و ليس عند إعادة التصيير. المشكلة هي أنه داخل داخل دالة الإسترجاع `setInterval` callback, فإن قيمة `count` لن تتغير, لأننا أنشأنا إغلاقًا بقيمة `count` التي كانت مضبوطة على 0 كما كان تأثير الإسترجاع يعمل. كل ثانية ، ثم معاودة الإستدعاء `setCount(0 + 1)`, لذلك العد لا يتجاوز 1.
+
+تحديد `[count]` كقائمة التبعيات من شأنه إصلاح الخلل, ولكن من شأنه أن يسبب الفاصل الزمني لإعادة تعيين على كل تغيير. على نحو فعال ، كل `setInterval` سوف تحصل على فرصة واحدة للتنفيذ قبل أن يتم تطهيرها (مماثلة ل `setTimout`.) هذا قد لا يكون مرغوبا فيه. لإصلاح هذا ، يمكننا استخدام[شكل التحديث الدالة لل setState](https://reactjs.org/docs/hooks-reference.html#functional-updates). يتيح لنا تحديد كيفية تغيير الحالة دون الرجوع إلى الحالة الحالية:
+
+```js
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(c => c + 1); // ✅ This doesn't depend on `count` variable outside
+    }, 1000);
+    return () => clearInterval(id);
+  }, []); // ✅ Our effect doesn't use any variables in the component scope
+
+  return <h1>{count}</h1>;
+}
+```
+
+(هوية الدالة `setCount` مضمون أن يكون مستقرًا بحيث يكون من الآمن إهماله.)
+
+الآن ، دالة الإسترجاع `setInterval` ستنفذ مرة واحدة, ولكن في كل مرة يتم إستدعاء الداخلية `setCount` يمكن استخدام قيمة محدثة لـ `count` (تسمى في هذه دالة الإسترجاع  `c`.)
+
+في حالات أكثر تعقيدا (مثل إذا كانت إحدى الحالة تعتمد على دولة أخرى), حاول نقل منطق تحديث الحالة خارج التأثير مع [useReducer Hook](https://reactjs.org/docs/hooks-reference.html#usereducer). [هذه المقالة](https://adamrackis.dev/state-and-use-reducer/) يقدم مثالًا على كيفية القيام بذلك. **هوية وظيفة الإرسال من useReducer مستقرة دائمًا** — حتى لو تم الإعلان عن الدالة المخفض داخل المكون وقراءة الدعائم الخاصة به.
+
+كملاذ أخير ، إذا كنت تريد شيء كـ `this` داخل الصنف, يمكنك [استخدام المرجع](https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables) لعقد متغير قابلة للتغيير. ثم يمكنك الكتابة والقراءة إليها. فمثلا:
+
+```js
+function Example(props) {
+  // Keep latest props in a ref.
+  let latestProps = useRef(props);
+  useEffect(() => {
+    latestProps.current = props;
+  });
+
+  useEffect(() => {
+    function tick() {
+      // Read latest props at any time
+      console.log(latestProps.current);
+    }
+
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []); // This effect never re-runs
+}
+```
+
+قم بذلك فقط إذا تعذر عليك العثور على بديل أفضل ،كما أن الاعتماد على الطفرة يجعل المكونات أقل قابلية للتنبؤ بها.إذا كان هناك نمط معين لا يترجم بشكل جيد ، [يمكنك تبلغ عنه](https://github.com/facebook/react/issues/new) مع مثال ل شيفرة runnable  ويمكننا أن نحاول المساعدة
 
 ### كيف يمكنني تنفيذ `shouldComponentUpdate`؟ {#how-do-i-implement-shouldcomponentupdate}
 
