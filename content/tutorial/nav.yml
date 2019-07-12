@@ -1,16 +1,16 @@
 - title: الدليل التطبيقي
   items:
     - id: before-we-start-the-tutorial
-      title: 	قبل أن نبدأ بالدليل التطبيقي
+      title: قبل أن نبدأ بالدليل التطبيقي
       href: /tutorial/tutorial.html#before-we-start-the-tutorial
       forceInternal: true
       subitems:
         - id: what-are-we-building
-          title: 	ماذا سنبني؟
+          title: ماذا سنبني؟
           href: /tutorial/tutorial.html#what-are-we-building
           forceInternal: true
         - id: prerequisites
-          title: 	المتطلّبات الأساسيّة
+          title: المتطلّبات الأساسيّة
           href: /tutorial/tutorial.html#prerequisites
           forceInternal: true
     - id: setup-for-the-tutorial
@@ -77,11 +77,11 @@
           href: /tutorial/tutorial.html#taking-turns
           forceInternal: true
         - id: declaring-a-winner
-          title: 	التصريح عن الفائز
+          title: التصريح عن الفائز
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
-      title: 	إضافة السفر عبر الزمن
+      title: إضافة السفر عبر الزمن
       href: /tutorial/tutorial.html#adding-time-travel
       forceInternal: true
       subitems:
