@@ -45,10 +45,10 @@ setState(newState);
 
 أثناء عمليات إعادة التصيير اللاحقة، القيمة الأولى التي يعيدها الخطاف `useState` ستبقى دومًا أحدث حالة بعد تطبيق التحديثات.
 
+
 > ملاحظة
 >
-> يضمن React أن هوية دالة setState مستقرة ولن تتغير في عمليات إعادة التصيير. هذا هو السبب في أنه من الآمن حذفها من قائمة التبعية useEffect أو useCallback .
->
+> يضمن React أن هوية دالة setState مستقرة ولن تتغير في عمليات إعادة التصيير. هذا هو السبب في أنه من الآمن حذفها من قائمة التبعية useEffect أو useCallback.
 
 #### تحديثات عبر تمرير دالة {#functional-updates}
 
@@ -99,6 +99,8 @@ const [state, setState] = useState(() => {
 إن حدَّث خطاف حالة وكانت القيمة المحدَّثة نفسَ قيمة الحالة الحالية، فلن تتكبد React عناء تصيير الابن أو تنفيذ التأثيرات. (تستعمل [React الخوارزمية `Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) لإجراء عملية الموازنة.)
 
 لاحظ أن React قد لا يزال بحاجة إلى تصيير هذا المكون المحدد مرة أخرى قبل إنقاذ. لا ينبغي أن يكون ذلك مصدر قلق لأن  React  لن يكون "أعمق" دون داع في الشجرة. إذا كنت تجري حسابات باهظة الثمن أثناء تصيير ، فيمكنك تحسينها باستخدام `useMemo`.
+
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
 
 ### `useEffect` {#useeffect}
 
@@ -176,7 +178,7 @@ useEffect(
 ### `useContext` {#usecontext}
 
 ```js
-const context = useContext(Context);
+const value = useContext(MyContext);
 ```
 
 يقبل هذا الخطاف كائن سياق (context object، أي القيمة المعادة من `React.createContext`) ويعيد قيمة السياق الحالي كما أُعطيَت من قبل أقرب موفِّر سياق (context provider) للسياق المعطى.
@@ -186,19 +188,18 @@ const context = useContext(Context);
 
 لا تنسى أن العامل `useContext` يجب أن يكون:
 
-* صحيح: useContext(MyContext)
-* غير صحيح: useContext(MyContext.Consumer)
-* غير صحيح: useContext(MyContext.Provider)
+* **صحيح:** useContext(MyContext)
+* **غير صحيح:** useContext(MyContext.Consumer)
+* **غير صحيح:** useContext(MyContext.Provider)
 
 المكون الذي يستدعي `useContext` يقوم دائما بإعادة تصيير عندما تتغير قيم السياق.  إذا كان إعادة تصيير مكلف يمكنك [تحسينه بإستخدام memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
->تلميح
+>فائدة
 >
 >إذا كنت معتادًا على سياق API قبل خطفات, `useContext(MyContext)` تكافئ `static contextType = MyContext` في صنف, أو إلى `<MyContext.Consumer>`.
 >
 >`useContext(MyContext)` يتيح لك فقط قراءة السياق والاشتراك في تغييراته. 
 >ما زلت بحاجة إلى `<MyContext.Provider>` أعلاه في الشجرة لتوفير قيمة لهذا السياق.
->
 
 ## خطافات إضافية {#additional-hooks}
 
@@ -230,7 +231,7 @@ function reducer(state, action) {
   }
 }
 
-function Counter({initialState}) {
+function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
@@ -245,7 +246,6 @@ function Counter({initialState}) {
 > ملاحظة
 >
 >React يضمن بقاء الهوية الدالة  `dispatch` مستقرة ولن تتغير عند إعادة تصيير. هذا هو السبب الذي يجعل من الآمن حذف  `useEffect` أو `useCallback` من قائمة التبعية.
->
 
 #### تحديد الحالة الأولية {#specifying-the-initial-state}
 
@@ -306,6 +306,8 @@ function Counter({initialCount}) {
 
 إن أعيدت القيمة نفسها من خطافٍ مخفِّضٍ (Reducer Hook) والتي تمثِّل الحالة الحالية، فلن تتكبد React عناء تصيير الابن أو تنفيذ التأثيرات. (تستعمل [ React الخوارزمية `Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)لإجراء عملية الموازنة.)
 
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+
 ### `useCallback` {#usecallback}
 
 ```js
@@ -328,7 +330,7 @@ const memoizedCallback = useCallback(
 > مصفوفة المدخلات لا تُمرَّر كوسائط إلى رد النداء. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل رد النداء يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 >
 > نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
->
+
 ### `useMemo` {#usememo}
 
 ```js
@@ -350,7 +352,6 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > مصفوفة المدخلات لا تُمرَّر كوسائط إلى الدالة. نظريًّا، إليك ما الذي تمثله: كل قيمة أُشيِر إليها داخل الدالة يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 >
 > نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
->
 
 ### `useRef` {#useref}
 
@@ -391,7 +392,7 @@ function TextInputWithFocusButton() {
 ### `useImperativeHandle` {#useimperativehandle}
 
 ```js
-useImperativeHandle(ref, createHandle, [inputs])
+useImperativeHandle(ref, createHandle, [deps])
 ```
 
 يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع `forwardRef` بالشكل التالي:
@@ -424,7 +425,6 @@ FancyInput = forwardRef(FancyInput);
 > إذا كنت تسخدم خادم التصيير, تذكر أنه لن يشتغل `useLayoutEffect` ولا `useEffect` حتى يتم تحميل javaScript. لهذا السبب يقوم React بتحذير خادم التصيير المكون الذي يحتوي `useLayoutEffect`. لتصليحه عليك, إما بنقل ذلك المنطق إلى `useEffect` (إذ لم تكن مهمة في تصيير الأول), أو تأخير ذلك المكون حتى بعد أن يقوم الزبون ب تصيير(إذا كان HTML يبدو مخرب حتى بعد تشغيل `useLayoutEffect`).
 >
 > لإستبعاد المكون الذي يحتاج إلى طبقة تأثيرات من خادم التصيير HTML, لتصيره بشرط يجب إستخدام `showChild && <Child />` وتأجيل إظهاره بإستخدام `useEffect(() => { setShowChild(true); }, [])`. بهذه الطريقة, واجهة المستخدم لا تظهر مكسورة.
->
 
 ### `useDebugValue` {#usedebugvalue}
 

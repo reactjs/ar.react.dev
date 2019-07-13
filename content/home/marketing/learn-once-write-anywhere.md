@@ -6,6 +6,6 @@ order: 2
 نحن لا نضع أي فرضيات مسبقة عن التكنولوجيا الأخرى التي تستخدمها، فلهذا يمكنك تطوير ميزات و إضافات باستخدام React  دون الحاجة الى إعادة كتابة أي شيفرة مكتوبة سابقاً.
 
 يُمكِن تصيير React من جهة الخادم باستخدام Node.js، ويمكن إنشاء تطبيقات الهواتف الذكية عبر
-[React Native](https://facebook.github.io/react-native/)
+[React Native](https://facebook.github.io/react-native/).
 
 

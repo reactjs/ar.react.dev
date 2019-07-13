@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: Rendering Elements
+title: تصيير العناصر
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -8,68 +8,74 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-Elements are the smallest building blocks of React apps.
+العناصر (Elements) هي أصغر الوحدات البنائية في التطبيقات المبنية باستخدام رياكت (React).
 
-An element describes what you want to see on the screen:
+يصف العنصر الواحد ما تريد رؤيته على الشاشة:
 
 ```js
-const element = <h1>Hello, world</h1>;
+const element = <h1>مرحباً بالعالم!</h1>;
 ```
 
-Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.
 
->**Note:**
+على عكس عناصر الـ DOM للمتصفح, فإن عناصر رياكت (React) ما هي إلا كائنات بسيطة, ولا تتطلب الكثير لإنشاءها. حيث تتحمل الـ DOM لـ رياكت  (React) مسؤولية تحديث الـ DOM لمماثلتها مع عناصر الرياكت (React).
+
+
+>**ملاحظة:**
 >
->One might confuse elements with a more widely known concept of "components". We will introduce components in the [next section](/docs/components-and-props.html). Elements are what components are "made of", and we encourage you to read this section before jumping ahead.
+>من الممكن الخلط بين العناصر وأحد المفاهيم المعروفة "المكونات". سنقوم بتقديم المكونات في [القسم التالي] (/docs/components-and-props.html). تصنع المكونات من العناصر, ونشجعك على الإطلاع على هذا القسم قبل القفز إلى  مواضيع أخرى.
 
-## Rendering an Element into the DOM {#rendering-an-element-into-the-dom}
+## تصيير عنصر واحد إلى الـ DOM {#rendering-an-element-into-the-dom}
 
-Let's say there is a `<div>` somewhere in your HTML file:
-
+دعنا نفترض أن هنالك عنصر `div` في مكان ما في ملف الـ HTML خاصتك:
 ```html
 <div id="root"></div>
 ```
 
-We call this a "root" DOM node because everything inside it will be managed by React DOM.
+نطلق على هذا العنصر اسم عقدة DOM "الجذر" وذلك لأن كل ما تحتويها سيتم التحكم به من قبل رياكت DOM.
 
-Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+تتألف التطبيقات المبنية باستخدام رياكت في العادة, من عقدة DOM جذر وحيدة. أما إن كنت تقوم بعمل التكامل لـرياكت إلى تطبيق موجود مسبقاً, من الممكن أن يتوفر لديك أي عدد ترغب به من عقد DOM الجذر.
 
-To render a React element into a root DOM node, pass both to `ReactDOM.render()`:
 
+لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى `ReactDOM.render()`
 `embed:rendering-elements/render-an-element.js`
 
 [](codepen://rendering-elements/render-an-element)
 
-It displays "Hello, world" on the page.
+يعرض هذا المثال عند تنفيذه "مرحباً بالعالم".
 
-## Updating the Rendered Element {#updating-the-rendered-element}
+## تحديث العنصر المصير {#updating-the-rendered-element}
 
-React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object). Once you create an element, you can't change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.
+عناصر رياكت غير قابلة للتغيير [immutable](https://en.wikipedia.org/wiki/Immutable_object). عند انشائك عنصراَ, فإنه حينها لا يكون بإمكانك تغيير عناصره الأبناء أو صفاته. العنصر يشبه إطار الفيلم الواحد في كونه يمثل واجهة المستخدم خلال فترة معينة من الزمان.
 
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `ReactDOM.render()`.
 
-Consider this ticking clock example:
+وبهذا القدر البسيط من المعرفة التي امتلكناها لحد الآن, فإن الطريقة الوحيدة لتحديث واجهة المستخدم تتم من خلال إنشاء عنصر جديد, ومن ثم تمريره إلى `ReactDOM.render()`.
+
+خذ على سبيل المثال هذه الساعة الداقة: 
 
 `embed:rendering-elements/update-rendered-element.js`
 
 [](codepen://rendering-elements/update-rendered-element)
 
-It calls `ReactDOM.render()` every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
 
->**Note:**
+حيث تقوم بمناداة `ReactDOM.render()` كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
+
+>**ملاحظة:**
 >
->In practice, most React apps only call `ReactDOM.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>عملياً, معظم التطبيقات المبنية مع رياكت تقوم بنداء `ReactDOM.render()` مرة واحدة فقط. في القسم التالي سنعرف أكثر عن كم الشيفرة التي يتم تغليفها إلى [مكوًن صنف](/docs/state-and-lifecycle.html).
 >
->We recommend that you don't skip topics because they build on each other.
+>نقترح عليك بألا تتخطى أية من المواضيع, لأنها تبني على بعضها البعض.
 
-## React Only Updates What's Necessary {#react-only-updates-whats-necessary}
 
-React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
+## يحدث رياكت واجهة المستخدم فقط عندما تدعو الحاجة لذلك {#react-only-updates-whats-necessary}
 
-You can verify by inspecting the [last example](codepen://rendering-elements/update-rendered-element) with the browser tools:
+يقارن ReactDOM العنصر وأبنائه مع سابقه, ويقوم يتطبيق تحديثات DOM الضرورية لتحويل الـ DOM إلى الحالة المرغوب بها.
+
+
+تستطيع تأكيد ذلك من خلال تفحص [المثال الأخير](codepen://rendering-elements/update-rendered-element) باستخدام أدوات المتصفح:
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents has changed gets updated by React DOM.
 
-In our experience, thinking about how the UI should look at any given moment rather than how to change it over time eliminates a whole class of bugs.
+بالرغم من أننا ننشئ عنصراً يصف شجرة واجهة المستخدم بأكملها عند كل دقة ساعة, فإن ما يتم تحديثه بواسطة ReactDOM ما هو إلا عقدة النص التي تغيرت محتوياتها.
+
+بحسب خبرتنا, التفكير بالكيفية التي ستبدو عليها واجهة المستخدم في أي لحظة من الزمان بدل التفكير بآلية تغييرها بمرور الوقت يقضي على العديد من الأخطاء البرمجية bugs.
