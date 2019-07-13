@@ -244,11 +244,7 @@ class Clock extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
-لاحظ كيف حفظنا مُعرِّف عدّاد الوقت (timer ID) من خلال `this`.
-=======
-Note how we save the timer ID right on `this` (`this.timerID`).
->>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
+لاحظ كيف حفظنا مُعرِّف عدّاد الوقت (timer ID) من خلال `this` (`this.timerID`).
 
 لمّا كانت `this.props` يجري إعدادها عن طريق React نفسها و `this.state` تمتلك معنًى خاصًّا، فأنت حر بأن تضيف حقول إضافيّة يدويًّا إلى الصّنف إن احتجت تخزين شيء ما لا يُشارِك في تدفّق البيانات (مثل مُعرِّف عداد الوقت).
 
