@@ -10,9 +10,9 @@ next: hooks-faq.html
 
 تشرح هذه الصفحة الواجهات البرمجية للخطافات المضمَّنة في React.
 
-إن كان موضوع الخطافات جديدًا بالنسبة لك، فيرجى الرجوع إلى صفحة [مدخل إلى الخطافات](/docs/hooks-overview.html) وقراءتها أولًا. قد تجد أيضًا الكثير من المعلومات المفيدة في قسم [الأسئلة الشائعة](/docs/hooks-faq.html) section.
+إن كان موضوع الخطافات جديدًا بالنسبة لك، فيرجى الرجوع إلى صفحة [مدخل إلى الخطافات](/docs/hooks-overview.html) وقراءتها أولًا. قد تجد أيضًا الكثير من المعلومات المفيدة في قسم [الأسئلة الشائعة](/docs/hooks-faq.html).
 
-- [لخطافات الأساسية](#basic-hooks)
+- [الخطافات الأساسية](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
@@ -97,6 +97,8 @@ const [state, setState] = useState(() => {
 #### عدم تغير الحالة عن إجراء تحديث عليها {#bailing-out-of-a-state-update}
 
 إن حدَّث خطاف حالة وكانت القيمة المحدَّثة نفسَ قيمة الحالة الحالية، فلن تتكبد React عناء تصيير الابن أو تنفيذ التأثيرات. (تستعمل [React الخوارزمية `Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) لإجراء عملية الموازنة.)
+
+لاحظ أن React قد لا يزال بحاجة إلى تصيير هذا المكون المحدد مرة أخرى قبل إنقاذ. لا ينبغي أن يكون ذلك مصدر قلق لأن  React  لن يكون "أعمق" دون داع في الشجرة. إذا كنت تجري حسابات باهظة الثمن أثناء تصيير ، فيمكنك تحسينها باستخدام `useMemo`.
 
 ### `useEffect` {#useeffect}
 
@@ -192,7 +194,7 @@ const context = useContext(Context);
 
 >تلميح
 >
->إذا كنت معتادًا على سياق API قبل خطفات, `useContext(MyContext)` تكافئ `static contextType = MyContext` في class, أو إلى `<MyContext.Consumer>`.
+>إذا كنت معتادًا على سياق API قبل خطفات, `useContext(MyContext)` تكافئ `static contextType = MyContext` في صنف, أو إلى `<MyContext.Consumer>`.
 >
 >`useContext(MyContext)` يتيح لك فقط قراءة السياق والاشتراك في تغييراته. 
 >ما زلت بحاجة إلى `<MyContext.Provider>` أعلاه في الشجرة لتوفير قيمة لهذا السياق.
