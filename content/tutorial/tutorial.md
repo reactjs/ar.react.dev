@@ -241,7 +241,7 @@ class Square extends React.Component {
 
 >ملاحظة:
 >
->لتوفير الكتابة وتجنّب [ السلوك المُربِك للكلمة المفتاحية `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)، سنستخدم صياغة [الدوال السهمية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) من أجل مُعالِجات الأحداث هنا وحتى في باقي أجزاء الشيفرة:
+>لتقليل الكتابة وتجنّب [ السلوك المُربِك للكلمة المفتاحية `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)، سنستخدم صياغة [الدوال السهمية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) من أجل مُعالِجات الأحداث هنا وحتى في باقي أجزاء الشيفرة:
 >
 >```javascript{4}
 >class Square extends React.Component {
