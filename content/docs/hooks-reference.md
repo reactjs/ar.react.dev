@@ -6,17 +6,17 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
-This page describes the APIs for the built-in Hooks in React.
+تشرح هذه الصفحة الواجهات البرمجية للخطافات المضمَّنة في React.
 
-If you're new to Hooks, you might want to check out [the overview](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
+إن كان موضوع الخطافات جديدًا بالنسبة لك، فيرجى الرجوع إلى صفحة [مدخل إلى الخطافات](/docs/hooks-overview.html) وقراءتها أولًا. قد تجد أيضًا الكثير من المعلومات المفيدة في قسم [الأسئلة الشائعة](/docs/hooks-faq.html).
 
-- [Basic Hooks](#basic-hooks)
+- [الخطافات الأساسية](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
-- [Additional Hooks](#additional-hooks)
+- [خطافات إضافية](#additional-hooks)
   - [`useReducer`](#usereducer)
   - [`useCallback`](#usecallback)
   - [`useMemo`](#usememo)
@@ -25,7 +25,7 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
   - [`useLayoutEffect`](#uselayouteffect)
   - [`useDebugValue`](#usedebugvalue)
 
-## Basic Hooks {#basic-hooks}
+## الخطافات الأساسية {#basic-hooks}
 
 ### `useState` {#usestate}
 
@@ -33,25 +33,26 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
 const [state, setState] = useState(initialState);
 ```
 
-Returns a stateful value, and a function to update it.
+يعيد هذا الخطاف قيمةً ذات حالة، ودالةً لتحديث هذه القيمة.
 
-During the initial render, the returned state (`state`) is the same as the value passed as the first argument (`initialState`).
+أثناء عملية التصيير الأولية، الحالة المعادة (`state`) هي نفسها القيمة المُمرَّرة كأول وسيط (`initialState`).
 
-The `setState` function is used to update the state. It accepts a new state value and enqueues a re-render of the component.
+تُستعمَل الدالة `setState` لتحديث الحالة، إذ تقبل قيمةً جديدةً للحالة وتدرج في الطابور عملية إعادة تصيير لمكون.
 
 ```js
 setState(newState);
 ```
 
-During subsequent re-renders, the first value returned by `useState` will always be the most recent state after applying updates.
+أثناء عمليات إعادة التصيير اللاحقة، القيمة الأولى التي يعيدها الخطاف `useState` ستبقى دومًا أحدث حالة بعد تطبيق التحديثات.
 
->Note
+
+> ملاحظة
 >
->React guarantees that `setState` function identity is stable and won't change on re-renders. This is why it's safe to omit from the `useEffect` or `useCallback` dependency list.
+> يضمن React أن هوية دالة setState مستقرة ولن تتغير في عمليات إعادة التصيير. هذا هو السبب في أنه من الآمن حذفها من قائمة التبعية useEffect أو useCallback.
 
-#### Functional updates {#functional-updates}
+#### تحديثات عبر تمرير دالة {#functional-updates}
 
-If the new state is computed using the previous state, you can pass a function to `setState`. The function will receive the previous value, and return an updated value. Here's an example of a counter component that uses both forms of `setState`:
+إن حُسبَت الحالة الجديدة باستعمال الحالة السابقة، فيمكنك تمرير دالة إلى `setState`. ستستقبل الدالة القيمة السابقة، وتعيد القيمة المحدَّثة. إليك مثالٌ عن مكون عداد يستعمل كلا الشكلين للخطاف `setState`:
 
 ```js
 function Counter({initialCount}) {
@@ -67,11 +68,11 @@ function Counter({initialCount}) {
 }
 ```
 
-The "+" and "-" buttons use the functional form, because the updated value is based on the previous value. But the "Reset" button uses the normal form, because it always sets the count back to the initial value.
+يستعمل الزر "+" والزر "-" الشكل الدالِّي (functional form) لأنَّ القيمة المحدَّثة تعتمد على القيمة السابقة. ولكن الزر "Reset" يستعمل الشكل الاعتيادي لأنَّه يضبط العداد إلى القيمة 0 دومًا.
 
-> Note
+> ملاحظة
 >
-> Unlike the `setState` method found in class components, `useState` does not automatically merge update objects. You can replicate this behavior by combining the function updater form with object spread syntax:
+> خلافًا للتابع `setState` في مكونات الأصناف، الخطاف `useState` لا يدمج كائنات التحديث (update objects). يمكنك تكرار هذا السلوك عبر دمج شكل الدالة المحدِّثة مع معامل النشر للكائن:
 >
 > ```js
 > setState(prevState => {
@@ -80,11 +81,11 @@ The "+" and "-" buttons use the functional form, because the updated value is ba
 > });
 > ```
 >
-> Another option is `useReducer`, which is more suited for managing state objects that contain multiple sub-values.
+> هنالك خيار آخر وهو استعمال الخطاف `useReducer` الذي يعدُّ مناسبًا لإدارة كائنات حالة تحوي عدة قيم فرعية.
 
-#### Lazy initial state {#lazy-initial-state}
+#### الحالة الأولية الكسولة {#lazy-initial-state}
 
-The `initialState` argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render:
+الوسيط `initialState` هو الحالة المستعملة أثناء عملية التصيير الأولى (initial render). في عمليات التصيير اللاحقة، سيُهمَل هذا الوسيط. إن كانت الحالة الأولية هي ناتج عملية حساب معقدة تؤثر على الأداء، فيمكنك أن تمرِّر دالةً تُنفَّذ مرةً واحدةً في أول عملية تصيير عوضًا عن ذلك:
 
 ```js
 const [state, setState] = useState(() => {
@@ -93,9 +94,11 @@ const [state, setState] = useState(() => {
 });
 ```
 
-#### Bailing out of a state update {#bailing-out-of-a-state-update}
+#### عدم تغير الحالة عن إجراء تحديث عليها {#bailing-out-of-a-state-update}
 
-If you update a State Hook to the same value as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+إن حدَّث خطاف حالة وكانت القيمة المحدَّثة نفسَ قيمة الحالة الحالية، فلن تتكبد React عناء تصيير الابن أو تنفيذ التأثيرات. (تستعمل [React الخوارزمية `Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) لإجراء عملية الموازنة.)
+
+لاحظ أن React قد لا يزال بحاجة إلى تصيير هذا المكون المحدد مرة أخرى قبل إنقاذ. لا ينبغي أن يكون ذلك مصدر قلق لأن  React  لن يكون "أعمق" دون داع في الشجرة. إذا كنت تجري حسابات باهظة الثمن أثناء تصيير ، فيمكنك تحسينها باستخدام `useMemo`.
 
 Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
 
@@ -105,45 +108,45 @@ Note that React may still need to render that specific component again before ba
 useEffect(didUpdate);
 ```
 
-Accepts a function that contains imperative, possibly effectful code.
+يقبل هذا الخطاف دالةً تحوي أمرًا يكون غالبًا شيفرةً ذات تأثير.
 
-Mutations, subscriptions, timers, logging, and other side effects are not allowed inside the main body of a function component (referred to as React's _render phase_). Doing so will lead to confusing bugs and inconsistencies in the UI.
+التعديلات، والاشتراكات، والمؤقتات، والسجلات، والتسجيل (logging)، والتأثيرات الجانبية الأخرى غير مسموحٍ بها داخل الجسم الرئيسي لمكون دالة (يشار إليه على أنَّه مرحلة تصيير React [أي render phase]). سيؤدي فعل ذلك إلى حصول أخطاءٍ مربكة مع تناقضات في واجهة المستخدم.
 
-Instead, use `useEffect`. The function passed to `useEffect` will run after the render is committed to the screen. Think of effects as an escape hatch from React's purely functional world into the imperative world.
+عوضًا عن ذلك، استعمل الخطاف `useEffect`. الدالة المُمرَّر إليه ستُنفَّذ بعد الانتهاء من التصيير على الشاشة. فكر في التأثيرات وكأنَّها مخرج هروب (escape hatch) من عالم React الوظيفي البحت إلى العالم الأمري.
 
-By default, effects run after every completed render, but you can choose to fire it [only when certain values have changed](#conditionally-firing-an-effect).
+افتراضيًّا، تُنفَّذ التأثيرات بعد كل كل عملية تصيير مكتملة، ولكن يمكنك اختيار تنفيذها [فقط عند تغير قيم محدَّدة](#conditionally-firing-an-effect).
 
-#### Cleaning up an effect {#cleaning-up-an-effect}
+#### تنظيف تأثير {#cleaning-up-an-effect}
 
-Often, effects create resources that need to be cleaned up before the component leaves the screen, such as a subscription or timer ID. To do this, the function passed to `useEffect` may return a clean-up function. For example, to create a subscription:
+تنشئ التأثيرات غالبًا موارد تحتاج للتنظيف قبل أن يغادر المكون الشاشة مثل معرِّف اشتراك أو مُؤقِّت. لفعل ذلك، قد تعيد الدالة المُمرَّرة إلى الخطاف `useEffect` دالةً تجري عملية التنظيف. على سبيل المثال، يمكن إنشاء اشتراك بالشكل التالي:
 
 ```js
 useEffect(() => {
   const subscription = props.source.subscribe();
   return () => {
-    // Clean up the subscription
+    // تنظيف الاشتراك
     subscription.unsubscribe();
   };
 });
 ```
 
-The clean-up function runs before the component is removed from the UI to prevent memory leaks. Additionally, if a component renders multiple times (as they typically do), the **previous effect is cleaned up before executing the next effect**. In our example, this means a new subscription is created on every update. To avoid firing an effect on every update, refer to the next section.
+تُنفَّذ دالة التنظيف قبل حذف المكون من واجهة المستخدم لمنع حدوث تسريب في الذاكرة. أضف إلى ذلك أنَّه إن صُيَّر مكوِّنٌ عدَّة مرات (كما تفعل عادةً)، فسيُنظَّف التأثير السابق قبل تنفيذ التأثير اللاحق. في مثالنا، هذا يعني أنَّه يُنشَأ اشتراك جديد في كل تحديث. لتجنب تنفيذ التأثير عند كل عملية تحديث، ارجع إلى القسم التالي.
 
-#### Timing of effects {#timing-of-effects}
+#### توقيت التأثيرات {#timing-of-effects}
 
-Unlike `componentDidMount` and `componentDidUpdate`, the function passed to `useEffect` fires **after** layout and paint, during a deferred event. This makes it suitable for the many common side effects, like setting up subscriptions and event handlers, because most types of work shouldn't block the browser from updating the screen.
+خلافًا للتابعين `componentDidMount` و `componentDidUpdate`، تُنفَّذ الدالة المُمرَّرة إلى الخطاف `useEffect` بعد التخطيط والرسم أثناء حدث مؤجَّل (deferred event). هذا يجعلها مناسبةً للاستعمال مع العديد من التأثيرات الجانبية الشائعة مثل ضبط الاشتراكات ومعالجات الحدث لأنَّ أغلب أنواع العمل لا يجب أن يحجز المتصفح عن تحديث الشاشة.
 
-However, not all effects can be deferred. For example, a DOM mutation that is visible to the user must fire synchronously before the next paint so that the user does not perceive a visual inconsistency. (The distinction is conceptually similar to passive versus active event listeners.) For these types of effects, React provides one additional Hook called [`useLayoutEffect`](#uselayouteffect). It has the same signature as `useEffect`, and only differs in when it is fired.
+على أية حال، لا يمكن تأجيل جميع التأثيرات. على سبيل المثال، يجب أن تُنفَّذ التعديلات التي تجرَى على DOM والظاهرة للمستخدم بشكل متزامن قبل تنفيذ عملية الرسم التالية، لذا لا يلاحظ المستخدم أية تناقضات بصرية. (الفارق من ناحية النظرية مشابهٌ للفارق بين مستمعي حدث نشطين مقابل مستمعي حدث خاملين.) توفر React من أجل هذه الأنواع من التأثيرات خطافًا إضافيًّا يدعى `useLayoutEffect`. يملك هذا الخطاف نفس التوقيع الذي يملكه الخطاف `useEffect`. الاختلاف الوحيد بينهما هو وقت التنفيذ.
 
-Although `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
+رغم أنَّ الخطاف `useEffect` مؤجَّل لبعد انتهاء المتصفح من الرسم، فإنَّ تنفيذه قبل أية عمليات تصيير أخرى أمرٌ مؤكد الحدوث، إذ تنفذ React أية تأثيرات لتصيير سابق قبل بدء تحديث جديد.
 
-#### Conditionally firing an effect {#conditionally-firing-an-effect}
+#### تنفيذ تأثير شرطيًّا {#conditionally-firing-an-effect}
 
-The default behavior for effects is to fire the effect after every completed render. That way an effect is always recreated if one of its dependencies changes.
+السلوك الافتراضي للتأثيرات هو تنفيذ التصيير بعد كل عملية تصيير مكتملة. بهذه الطريقة، يعاد إنشاء تأثيرٍ دومًا إن تغيرت إحدى مدخلاته.
 
-However, this may be overkill in some cases, like the subscription example from the previous section. We don't need to create a new subscription on every update, only if the `source` props has changed.
+على أية حال، هذا السلوك قد يبدو مبالغًا فيه بشدة في بعض الحالات كما في حالة مثال الاشتراك من القسم السابق. لا نحتاج إلى إنشاء اشتراك جديد في كل تحديث إلا إذا تغيرت الخاصية `source`.
 
-To implement this, pass a second argument to `useEffect` that is the array of values that the effect depends on. Our updated example now looks like this:
+لتنفيذ ذلك، مرِّر وسيطًا ثانيًّا إلى الخطاف `useEffect` يمثِّل مصفوفة القيم التي يعتمد عليها التأثير. يبدو الآن مثالنا المعدَّل بالشكل التالي:
 
 ```js
 useEffect(
@@ -157,20 +160,20 @@ useEffect(
 );
 ```
 
-Now the subscription will only be recreated when `props.source` changes.
+الآن، سيعاد إنشاء الاشتراك عند تغيِّر `props.source`.
 
->Note
+> ملاحظة
 >
->If you use this optimization, make sure the array includes **all values from the component scope (such as props and state) that change over time and that are used by the effect**. Otherwise, your code will reference stale values from previous renders. Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and what to do when the [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+> إذا كنت تستخدم هذا التحسين, تأكد من أن المصفوفة تشمل جميع القيم من نطاق المكون (كـ props و state) التي تتغير مع مرور الوقت والتي يتم استخدامها من قبل التأثير. وإلا ، فإن الشيفرة الخاص بك سوف تشير إلى القيم قديمة من تنصير السابق. تعرف على المزيد حول [كيفية التعامل مع الدوال](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) وماذا تفعل عندما [تتغير قيم المصفوفة كثيرا](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often). 
 >
->If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the dependencies array always works.
+> إذا كنت ترغب في تشغيل تأثير وتنظيفه مرة واحدة فقط )في mount و unmount),  يمكنك تمرير لمصفوفة فارغة كعامل ثاني. هذا يخبر React أن تأثيرك لن يعتمد على أي قيمة من قيم props أو state,  لهذا فهو لن يعيدة تشغيله مرة ثانية.  فهذه لن يتم التعامل معها كحالة خاصة — فهو يتبع مباشرة كيفية عمل تبعية المصفوفات دائمًا. 
 >
->If you pass an empty array (`[]`), the props and state as inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+> إذا مررة ل مصفوفة خالية (`[]`), props و state كـ التأثير داخلي فستكون دائما قيمها الأولية.  أثناء تمرير [] كعامل ثاني قريب من عائلة `componentDidMount` و `componentWillUnmount` نموذج عقلي,  عادة ما تكون هناك [حلول](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)  [أفضل](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)  لتجنب إعادة تشغيل التأثيرات في كثير من الأحيان.  كذلك, لا تنسى أن React يؤجل تشغيل `useEffect` حتى بعد أن يقوم المتصفح بالرسم,   لذلك القيام بعمل إضافي . 
 >
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 >
->We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
 
-The array of dependencies is not passed as arguments to the effect function. Conceptually, though, that's what they represent: every value referenced inside the effect function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+مصفوفة المدخلات لا تُمرَّر كوسائط إلى دالة التأثير. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل دالة التأثير يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 
 ### `useContext` {#usecontext}
 
@@ -178,27 +181,29 @@ The array of dependencies is not passed as arguments to the effect function. Con
 const value = useContext(MyContext);
 ```
 
-Accepts a context object (the value returned from `React.createContext`) and returns the current context value for that context. The current context value is determined by the `value` prop of the nearest `<MyContext.Provider>` above the calling component in the tree.
+يقبل هذا الخطاف كائن سياق (context object، أي القيمة المعادة من `React.createContext`) ويعيد قيمة السياق الحالي كما أُعطيَت من قبل أقرب موفِّر سياق (context provider) للسياق المعطى.
 
-When the nearest `<MyContext.Provider>` above the component updates, this Hook will trigger a rerender with the latest context `value` passed to that `MyContext` provider.
+عندما يكون أقرب `<MyContext.Provider>` فوق تحديثات المكون, 
+هذا الخطاف سيؤدي إلى إعادة تقديم مع أحدث سياق `value` التي تمررها إلى المزود `MyContext`.
 
-Don't forget that the argument to `useContext` must be the *context object itself*:
+لا تنسى أن العامل `useContext` يجب أن يكون:
 
- * **Correct:** `useContext(MyContext)`
- * **Incorrect:** `useContext(MyContext.Consumer)`
- * **Incorrect:** `useContext(MyContext.Provider)`
+* **صحيح:** useContext(MyContext)
+* **غير صحيح:** useContext(MyContext.Consumer)
+* **غير صحيح:** useContext(MyContext.Provider)
 
-A component calling `useContext` will always re-render when the context value changes. If re-rendering the component is expensive, you can [optimize it by using memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
+المكون الذي يستدعي `useContext` يقوم دائما بإعادة تصيير عندما تتغير قيم السياق.  إذا كان إعادة تصيير مكلف يمكنك [تحسينه بإستخدام memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
->Tip
+>فائدة
 >
->If you're familiar with the context API before Hooks, `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+>إذا كنت معتادًا على سياق API قبل خطفات, `useContext(MyContext)` تكافئ `static contextType = MyContext` في صنف, أو إلى `<MyContext.Consumer>`.
 >
->`useContext(MyContext)` only lets you *read* the context and subscribe to its changes. You still need a `<MyContext.Provider>` above in the tree to *provide* the value for this context.
+>`useContext(MyContext)` يتيح لك فقط قراءة السياق والاشتراك في تغييراته. 
+>ما زلت بحاجة إلى `<MyContext.Provider>` أعلاه في الشجرة لتوفير قيمة لهذا السياق.
 
-## Additional Hooks {#additional-hooks}
+## خطافات إضافية {#additional-hooks}
 
-The following Hooks are either variants of the basic ones from the previous section, or only needed for specific edge cases. Don't stress about learning them up front.
+الخطافات التالية هي إمَّا شكل آخر للخطافات الأساسية أو يُلجَأ إليها في حالات محدَّدة فقط. لا تجهد نفسك بتعلمهم الآن إن لم تكن بحاجة لهم.
 
 ### `useReducer` {#usereducer}
 
@@ -206,11 +211,11 @@ The following Hooks are either variants of the basic ones from the previous sect
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 ```
 
-An alternative to [`useState`](#usestate). Accepts a reducer of type `(state, action) => newState`, and returns the current state paired with a `dispatch` method. (If you're familiar with Redux, you already know how this works.)
+هذا الخطاف هو بديل للخطاف [`useState`](#usestate). يقبل هذا الخطاف مخفِّضًا (reducer) من النوع `(state, action) => newState`, ويعيد الحالة الحالية مقرونةً مع التابع `dispatch`. (إن كانت المكتبة Redux مألوفةً لك، فأنت تعرف مسبقًا كيف يعمل ذلك.)
 
-`useReducer` is usually preferable to `useState` when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. `useReducer` also lets you optimize performance for components that trigger deep updates because [you can pass `dispatch` down instead of callbacks](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down).
+يفضَّل استعمال الخطاف `useReducer` عن الخطاف `useState` عندما يكون هنالك شيفرة حالة معقدة تتضمن قيم فرعية متعددة أو عندما تعتمد الحالة التالية على سابقتها. الخطاف `useReducer` يمكِّنك أيضًا من تحسين الأداء للمكونات التي تستدعي تحديثات عميقة لأنَّه [يمكِّنك من تمرير التابع `dispatch` للداخل بدلًا من ردود النداء.](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down).
 
-Here's the counter example from the [`useState`](#usestate) section, rewritten to use a reducer:
+إليك مثال العداد الذي أعيد كتابته من القسم [`useState`](#usestate) ليستعمل مخفِّضًا:
 
 ```js
 const initialState = {count: 0};
@@ -238,13 +243,13 @@ function Counter() {
 }
 ```
 
->Note
+> ملاحظة
 >
->React guarantees that `dispatch` function identity is stable and won't change on re-renders. This is why it's safe to omit from the `useEffect` or `useCallback` dependency list.
+>React يضمن بقاء الهوية الدالة  `dispatch` مستقرة ولن تتغير عند إعادة تصيير. هذا هو السبب الذي يجعل من الآمن حذف  `useEffect` أو `useCallback` من قائمة التبعية.
 
-#### Specifying the initial state {#specifying-the-initial-state}
+#### تحديد الحالة الأولية {#specifying-the-initial-state}
 
-There are two different ways to initialize `useReducer` state. You may choose either one depending on the use case. The simplest way is to pass the initial state as a second argument:
+هنالك طريقتان مختلفان لتهيئة حالة الخطاف `useReducer` يمكنك الاختيار بينهما بناءً على الحالة المستعملة آنذاك. الطريقة الأبسط هي تمرير الحالة الأولية كوسيطٍ ثانٍ:
 
 ```js{3}
   const [state, dispatch] = useReducer(
@@ -253,15 +258,15 @@ There are two different ways to initialize `useReducer` state. You may choose ei
   );
 ```
 
->Note
+>ملاحظة
 >
->React doesn’t use the `state = initialState` argument convention popularized by Redux. The initial value sometimes needs to depend on props and so is specified from the Hook call instead. If you feel strongly about this, you can call `useReducer(reducer, undefined, reducer)` to emulate the Redux behavior, but it's not encouraged.
+>لا تستعمل React الوسيط `state = initialState` المتعارف عليه والشائع في المكتبة Redux. القيمة الأولية تعتمد أحيانًا على خاصيات وبذلك تُحدَّد من استدعاء الخطاف. إن كنت تشعر بشدة حيال ذلك، فيمكنك استدعاء `useReducer(reducer, undefined, reducer)` لمحاكاة سلوك Redux ولكن لا نشجع على ذلك.
 
-#### Lazy initialization {#lazy-initialization}
+#### التهيئة الكسولة {#lazy-initialization}
 
-You can also create the initial state lazily. To do this, you can pass an `init` function as the third argument. The initial state will be set to `init(initialArg)`.
+يمكنك أيضًا إنشاء الحالة الأولية بتكاسل (lazily) عبر تمرير الدالة `init` كوسيط ثالث. ستُضبَط الحالة الأولية إلى `init(initialArg)`.
 
-It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:
+يمكِّنك ذلك من استخراج الشيفرة لحساب الحالة الأولية خارج المُخفِّض (reducer). هذا الأمر مفيدٌ وعملي لإعادة ضبط الحالة لاحقًا بالاستجابة لفعلٍ ما.
 
 ```js{1-3,11-12,19,24}
 function init(initialCount) {
@@ -297,9 +302,9 @@ function Counter({initialCount}) {
 }
 ```
 
-#### Bailing out of a dispatch {#bailing-out-of-a-dispatch}
+#### عدم تغير الحالة عن إجراء تحديث عليها {#bailing-out-of-a-dispatch}
 
-If you return the same value from a Reducer Hook as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+إن أعيدت القيمة نفسها من خطافٍ مخفِّضٍ (Reducer Hook) والتي تمثِّل الحالة الحالية، فلن تتكبد React عناء تصيير الابن أو تنفيذ التأثيرات. (تستعمل [ React الخوارزمية `Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)لإجراء عملية الموازنة.)
 
 Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
 
@@ -314,17 +319,17 @@ const memoizedCallback = useCallback(
 );
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) callback.
+يعيد نداء [memoized](https://en.wikipedia.org/wiki/Memoization).
 
-Pass an inline callback and an array of dependencies. `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. `shouldComponentUpdate`).
+يُمرَّر إلى هذا الخطاف رد نداء سطري (inline callback) ومصفوفة من المدخلات. `useCallback` ويعيد نسخة مُستظهَرة (memoized version، أي محفوظة دون إعادة تكرار العملية) من رد النداء المعطى والذي يتغير إن تغيرت قيمة إحدى مدخلاته فقط. هذا السلوك مفيدٌ للغاية عند تمرير ردود نداء لتحسين المكونات الأبناء الي تعتمد على المساواة المرجعية (reference equality) لمنع عمليات التصيير الغير ضرورية (مثل `shouldComponentUpdate`).
 
-`useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+الاستدعاء `useCallback(fn, inputs)`  مكافئ للاستدعاء `useMemo(() => fn, inputs)`.
 
-> Note
+> ملاحظة
 >
-> The array of dependencies is not passed as arguments to the callback. Conceptually, though, that's what they represent: every value referenced inside the callback should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+> مصفوفة المدخلات لا تُمرَّر كوسائط إلى رد النداء. نظريًّا، إليك ما الذي تمثله: كل قيمة أشير إليها داخل رد النداء يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 >
-> We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 
 ### `useMemo` {#usememo}
 
@@ -332,21 +337,21 @@ Pass an inline callback and an array of dependencies. `useCallback` will return 
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
+يعيد هذا الخطاف قيمةً مُستظهَرةً [memoized](https://en.wikipedia.org/wiki/Memoization).
 
-Pass a "create" function and an array of dependencies. `useMemo` will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
+يُمرَّر إلى الخطاف `useMemo` دالة إنشاء (create function) ومصفوفة من المدخلات. سيحسب الخطاف القيمة المُستظهَرة عند تغيِّر إحدى المدخلات فقط. يساعد هذا التحسين في تجنب إعادة إجراء عمليات الحساب المستهلكة للأداء عند كل تصيير.
 
-Remember that the function passed to `useMemo` runs during rendering. Don't do anything there that you wouldn't normally do while rendering. For example, side effects belong in `useEffect`, not `useMemo`.
+تذكر أنَّ الدالة المُمرَّرة إلى الخطاف `useMemo` تُنفَّذ أثناء عملية التصيير. لا تفعل أي شيء إضافي لا تفعله عادةً أثناء عملية التصيير. على سبيل المثال، التأثيرات الجانبية تنتمي إلى الخطاف `useEffect` وليس إلى الخطاف `useMemo`.
 
-If no array is provided, a new value will be computed on every render.
+إن لم تُعطَ أية مصفوفة، ستُحسَب قيمةٌ جديدةٌ متى ما مُرِّرت نسخة دالة جديدة كأول وسيط. (أو في كل عملية تصيير مع دالة سطرية [inline function])
 
-**You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to "forget" some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance.
+**يمكنك الاعتماد على الخطاف `useMemo` لتحسين الأداء، وليس لضمان الدلالات (semantic guarantee).** في المستقبل، قد تختار React بأن "تنسى" بعض القيم المُستظهَرة (المحفوظة) وتعيد حسابها من جديد في عملية التصيير التالية وذلك لتحرير الذاكرة لمكونات غير ظاهرة على الشاشة مثلًا. اكتب أولًا شيفرتك لتعمل بشكل صحيح دون الخطاف `useMemo`، ومن ثمَّ أضفه لتحسين الأداء.
 
-> Note
+> ملاحظة
 >
-> The array of dependencies is not passed as arguments to the function. Conceptually, though, that's what they represent: every value referenced inside the function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+> مصفوفة المدخلات لا تُمرَّر كوسائط إلى الدالة. نظريًّا، إليك ما الذي تمثله: كل قيمة أُشيِر إليها داخل الدالة يجب أن تظهر أيضًا في مصفوفة المدخلات. في المستقبل، قد يصبح المصرِّف متقدمًا بما فيه الكفاية لإنشاء هذه المصفوفة تلقائيًا.
 >
-> We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 
 ### `useRef` {#useref}
 
@@ -354,15 +359,15 @@ If no array is provided, a new value will be computed on every render.
 const refContainer = useRef(initialValue);
 ```
 
-`useRef` returns a mutable ref object whose `.current` property is initialized to the passed argument (`initialValue`). The returned object will persist for the full lifetime of the component.
+يعيد هذا الخطاف كائنًا مرجعيًّا قابلًا للتعديل (mutable ref object) تُهيَّأ الخاصية ‎.`current` فيه إلى قيمة الوسيط المُمرَّر (أي الوسيط `initialValue`).
 
-A common use case is to access a child imperatively:
+قد يبقى الكائن المعاد حتى كامل دورة حياة المكون. حالة الاستعمال الشائعة لهذا الخطاف هي الحاجة إلى الوصول إلى ابنٍ بشكل إلزامي:
 
 ```js
 function TextInputWithFocusButton() {
   const inputEl = useRef(null);
   const onButtonClick = () => {
-    // `current` points to the mounted text input element
+    // (mounted) إلى عنصر الإدخال النصي الموصول `current` يشير
     inputEl.current.focus();
   };
   return (
@@ -374,16 +379,15 @@ function TextInputWithFocusButton() {
 }
 ```
 
-Essentially, `useRef` is like a "box" that can hold a mutable value in its `.current` property.
+بصفة أساسية, `useRef` هي مثل العلبة التي تحوي على القيم القابلة لتغير داخل خاصية`.current`.
 
-You might be familiar with refs primarily as a way to [access the DOM](/docs/refs-and-the-dom.html). If you pass a ref object to React with `<div ref={myRef} />`, React will set its `.current` property to the corresponding DOM node whenever that node changes.
+قد تكون على دراية  بـ refs كطريقة أساسية [لـولوج إلى DOM](https://reactjs.org/docs/refs-and-the-dom.html). إذا قمت بتمرير كائن المرجع إلى React بـ `<div ref={myRef} />`, يحدد React خاصية `.current` إلى عقدةDOM  المعنية كلما تغير ذلك العقد .
 
-However, `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+ومع ذلك, `useRef()` فهو مفيد لأكثر من صفة `ref`. إنه [مفيد للحفاظ على أي قيمة قابلة للتغيير حولها](https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables) مشابه لكيفية استخدام حقول في الأصناف
 
-This works because `useRef()` creates a plain JavaScript object. The only difference between `useRef()` and creating a `{current: ...}` object yourself is that `useRef` will give you the same ref object on every render.
+هذا يعمل لأن `useRef()` ينشأ كائن JavaScript عادي. الفرق الوحين بين `useRef()` و إنشاء كائن `{current: ...}` بنفسك هو أن `useRef` سيعطيك نفس كائن ref عند كل تصيير.
 
-Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutating the `.current` property doesn't cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a [callback ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) instead.
-
+لا تنسى أن `useRef` لا يعلمك عندما يتغير محتواه. تغير خاصية `.current` لا يعيد تصيير. إذا أردت تشغيل بعض الشفرات عندما يقوم React بالربط أو الفك ref لعقد DOM قد ترغب في استخدام [callback ref](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node).
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -391,7 +395,7 @@ Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutati
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`:
+يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع `forwardRef` بالشكل التالي:
 
 ```js
 function FancyInput(props, ref) {
@@ -406,21 +410,21 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-In this example, a parent component that renders `<FancyInput ref={fancyInputRef} />` would be able to call `fancyInputRef.current.focus()`.
+في هذا المثال، سيكون المكون الأب الذي يصير `<FancyInput ref={fancyInputRef} />` قادرًا على استدعاء `fancyInputRef.current.focus()`.
 
 ### `useLayoutEffect` {#uselayouteffect}
 
-The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
+توقيع هذا الخطاف مماثل تمامًا للخطاف `useEffect` ولكن يُنفَّذ بشكل متزامن بعد إجراء كل التعديلات على DOM. استعمل هذا الخطاف لقراءة التخطيط (layout) من شجرة DOM وإعادة التصيير بشكل متزامن. ستُجرَى أية تحديثات مجدولة داخل الخطاف `useLayoutEffect` بشكل متزامن قبل أن يملك المتصفح فرصةً لإجراء عملية الرسم.
 
-Prefer the standard `useEffect` when possible to avoid blocking visual updates.
+يفضل استعمال الخطاف `useEffect` الأساسي متى ما أمكنك ذلك لتجنب حجز التحديثات البصرية.
 
-> Tip
+> نصيحة
 >
-> If you're migrating code from a class component, note `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`. However, **we recommend starting with `useEffect` first** and only trying `useLayoutEffect` if that causes a problem.
+> إن كنت تستبدل شيفرة كتُبَت عبر مكون صنف أو هجرت مكون صنف وأردت استعمال الخطافات، يُنفَّذ الخطاف `useLayoutEffect` في نفس المرحلة التي ينفَّذ فيها التابعان `componentDidMount` و `componentDidUpdate`، لذا إن لم تكن متأكدًا أيَّ خطاف تأثير تريد استعماله، فهذا الخطاف يرجَّح أن يكون أقل خطورة.
 >
->If you use server rendering, keep in mind that *neither* `useLayoutEffect` nor `useEffect` can run until the JavaScript is downloaded. This is why React warns when a server-rendered component contains `useLayoutEffect`. To fix this, either move that logic to `useEffect` (if it isn't necessary for the first render), or delay showing that component until after the client renders (if the HTML looks broken until `useLayoutEffect` runs).
+> إذا كنت تسخدم خادم التصيير, تذكر أنه لن يشتغل `useLayoutEffect` ولا `useEffect` حتى يتم تحميل javaScript. لهذا السبب يقوم React بتحذير خادم التصيير المكون الذي يحتوي `useLayoutEffect`. لتصليحه عليك, إما بنقل ذلك المنطق إلى `useEffect` (إذ لم تكن مهمة في تصيير الأول), أو تأخير ذلك المكون حتى بعد أن يقوم الزبون ب تصيير(إذا كان HTML يبدو مخرب حتى بعد تشغيل `useLayoutEffect`).
 >
->To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with `showChild && <Child />` and defer showing it with `useEffect(() => { setShowChild(true); }, [])`. This way, the UI doesn't appear broken before hydration.
+> لإستبعاد المكون الذي يحتاج إلى طبقة تأثيرات من خادم التصيير HTML, لتصيره بشرط يجب إستخدام `showChild && <Child />` وتأجيل إظهاره بإستخدام `useEffect(() => { setShowChild(true); }, [])`. بهذه الطريقة, واجهة المستخدم لا تظهر مكسورة.
 
 ### `useDebugValue` {#usedebugvalue}
 
@@ -428,9 +432,9 @@ Prefer the standard `useEffect` when possible to avoid blocking visual updates.
 useDebugValue(value)
 ```
 
-`useDebugValue` can be used to display a label for custom hooks in React DevTools.
+يمكن استعمال هذا الخطاف لإظهار تسمية (label) للخطافات المخصصة في أدوات تطوير React (أي React DevTools).
 
-For example, consider the `useFriendStatus` custom Hook described in ["Building Your Own Hooks"](/docs/hooks-custom.html):
+على سبيل المثال، افترض أنَّنا عرفنا الخطاف `useFriendStatus` المخصص الذي شرحناه في صفحة ["بناء خطاف خاص بك"](/docs/hooks-custom.html):
 
 ```js{6-8}
 function useFriendStatus(friendID) {
@@ -438,25 +442,25 @@ function useFriendStatus(friendID) {
 
   // ...
 
-  // Show a label in DevTools next to this Hook
-  // e.g. "FriendStatus: Online"
+  // بجانب هذا الخطاف (DevTools) اظهار تسمية في أدوات التطوير
+  // "FriendStatus: Online" أي
   useDebugValue(isOnline ? 'Online' : 'Offline');
 
   return isOnline;
 }
 ```
 
-> Tip
+> نصيحة
 >
-> We don't recommend adding debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries.
+> لا ننصح بإضافة قيم تنقيح الأخطاء (debug values) لكل خطاف مخصَّص. الشيء الأكثر نفعًا وقيمةً للخطافات المخصصة هو أن تكون جزءًا من المكتبات المشتركة (shared libraries).
 
-#### Defer formatting debug values {#defer-formatting-debug-values}
+#### الصيغة المؤجلة لقيم التنقيح {#defer-formatting-debug-values}
 
-In some cases formatting a value for display might be an expensive operation. It's also unnecessary unless a Hook is actually inspected.
+في بعض الحالات، قد تستهلك عملية تنسيق قيمة لإظهارها الكثير من الأداء. أضف إلى ذلك أنَّها غير ضرورية إلا إذا كان يجري فحص خطاف محدَّد.
 
-For this reason `useDebugValue` accepts a formatting function as an optional second parameter. This function is only called if the Hooks are inspected. It receives the debug value as a parameter and should return a formatted display value.
+لذلك السبب، يقبل الخطاف `useDebugValue` دالة تنسيق يمكن تمريرها كوسيطٍ ثانٍ اختياريًّا. تُستدعَى هذا الدالة فقط إن كان الخطاف قيد الفحص (inspect)، ويمرَّر إليها قيمة التنقيح كوسيط ويجب أن تعيد قيمة منسقة قابلة للعرض.
 
-For example a custom Hook that returned a `Date` value could avoid calling the `toDateString` function unnecessarily by passing the following formatter:
+على سبيل المثال، يستطيع الخطاف المخصَّص الذي يعيد القيمة `Date` أن يتجنب استدعاء الدالة `toDateString` بشكل غير ضروري عبر تمرير المنسِّق التالي:
 
 ```js
 useDebugValue(date, date => date.toDateString());
