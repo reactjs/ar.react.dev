@@ -319,20 +319,20 @@ class ScrollListener extends React.Component {
 
     this.handleScroll = this.handleScroll.bind(this);
 
-    // Create a new function to schedule updates.
+    // إنشاء دالة جديدة لجدولة التحديثات
     this.scheduleUpdate = rafSchedule(
       point => this.props.onScroll(point)
     );
   }
 
   handleScroll(e) {
-    // When we receive a scroll event, schedule an update.
-    // If we receive many updates within a frame, we'll only publish the latest value.
+    // عند استقبال حدث تمرير, جدول تحديثًا
+    // إن استقبلنا الكثير من التحديثات ضمن الإطار فسننشر آخر قيمة فقط
     this.scheduleUpdate({ x: e.clientX, y: e.clientY });
   }
 
   componentWillUnmount() {
-    // Cancel any pending updates since we're unmounting.
+    // إلغاء أي تحديثات منتظرة بما أننا سنفصل المكون
     this.scheduleUpdate.cancel();
   }
 
