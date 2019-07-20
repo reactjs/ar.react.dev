@@ -351,4 +351,4 @@ class ScrollListener extends React.Component {
 
 #### اختبار حدود معدل تحديث الإطار لديك {#testing-your-rate-limiting}
 
-عند اختبار حدود معدل تحديث الإطار من المفيد امتلاك القدرة على تمرير الزمن بسرعة. إن كنت تستخدم [`jest`](https://facebook.github.io/jest/) بإمكانك استخدام [`محاكيات الوقت`](https://facebook.github.io/jest/docs/en/timer-mocks.html) لتمرير الوقت بسرعة. إن كنت تستخدم الخنق عن طريق `requestAnimationFrame` فهنالك الأداة [`raf-stub`](https://github.com/alexreardon/raf-stub) مفيدة للتحكم بضبط تحريك الإطارات.
+عند اختبار حدود معدل تحديث الإطار من المفيد امتلاك القدرة على تمرير الزمن بسرعة. إن كنت تستخدم [`jest`](https://facebook.github.io/jest/) بإمكانك استخدام [`محاكيات المؤقّتات (mock timers)`](https://facebook.github.io/jest/docs/en/timer-mocks.html) لتمرير الوقت بسرعة. إن كنت تستخدم الخنق عن طريق `requestAnimationFrame` فهنالك الأداة [`raf-stub`](https://github.com/alexreardon/raf-stub) مفيدة للتحكم بضبط تحريك الإطارات.
