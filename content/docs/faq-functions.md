@@ -130,7 +130,7 @@ render() {
 }
 ```
 
-### كيف أمرّر مُعامِل إلى مُعالِج الأحداث أو رد النداء؟ {#how-do-i-pass-a-parameter-to-an-event-handler-or-callback}
+### كيف أمرّر مُعامِل إلى مُعالِج الأحداث أو رد النداء(callback)؟ {#how-do-i-pass-a-parameter-to-an-event-handler-or-callback}
 
 تستطيع استخدام الدوال السهميّة من أجل الالتفاف حول مُعالِجات الأحداث وتمرير المُعامِلات:
 
