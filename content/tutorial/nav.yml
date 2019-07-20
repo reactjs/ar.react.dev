@@ -65,7 +65,7 @@
           href: /tutorial/tutorial.html#lifting-state-up
           forceInternal: true
         - id: why-immutability-is-important
-          title: لماذا تكون عدم القابلية للتغير مهمة؟
+          title: السبب وراء أهمية عدم قابلية التغيير
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
