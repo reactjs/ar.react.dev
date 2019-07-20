@@ -144,7 +144,7 @@ render() {
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-#### Example: Passing params using arrow functions {#example-passing-params-using-arrow-functions}
+#### مثال: تمرير المُعامِلات باستخدام خاصيّات البيانات {#example-passing-params-using-data-attributes}
 
 ```jsx
 const A = 65 // ASCII character code
