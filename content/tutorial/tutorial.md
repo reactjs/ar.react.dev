@@ -621,7 +621,7 @@ class Board extends React.Component {
 
 ```javascript{2}
   render() {
-    const status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       // لم تتغير بقية الشيفرة
@@ -658,7 +658,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
@@ -719,9 +719,9 @@ function calculateWinner(squares) {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'الفائز: ' + winner;
+      status = 'Winner: ' + winner;
     } else {
-      status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -864,9 +864,9 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'الفائز: ' + winner;
+      status = 'Winner: ' + winner;
     } else {
-      status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -903,9 +903,9 @@ class Board extends React.Component {
 
     let status;
     if (winner) {
-      status = 'الفائز: ' + winner;
+      status = 'Winner: ' + winner;
     } else {
-      status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -1015,9 +1015,9 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
     let status;
     if (winner) {
-      status = 'الفائز: ' + winner;
+      status = 'Winner: ' + winner;
     } else {
-      status = 'اللاعب التالي: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
