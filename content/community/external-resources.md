@@ -1,19 +1,19 @@
 ---
 id: external-resources
-title: External Resources
+title: المصادر الخارجية
 layout: community
 sectionid: community
 permalink: community/external-resources.html
 ---
 
-There are many wonderful curated resources the React community has put together.
+هناك العديد من المصادر الرائعة التي وضعها مجتمع React.
 
-- [Reactiflux](https://www.reactiflux.com/) - A community of 20,000+ React developers. They keep a well curated [learning section](https://www.reactiflux.com/learning/).
+- [Reactiflux](https://www.reactiflux.com/) - مجتمع يضم اكثر من 20،000 مطور React. يسعون للمحافظة على [قسم التعلم](https://www.reactiflux.com/learning/).
 
-- [React-Redux Links](https://github.com/markerikson/react-redux-links) - Mark Erikson's highly curated list of tutorials and resources for React/Redux/ES6 and more.
+- [روابط React-Redux](https://github.com/markerikson/react-redux-links) - قائمة مارك إريكسون الغنية للدلائل التعليمية و مصادر React / Redux / ES6 وأكثر من ذلك.
 
-- [Awesome React](https://github.com/enaqx/awesome-react) - A collection of awesome things regarding React ecosystem.
+- [روائع React](https://github.com/enaqx/awesome-react) - مجموعة من الأشياء الرائعة بخصوص نظام React.
 
-- [Awesome React Components](https://github.com/brillout/awesome-react-components) - A curated list of React components.
+- [روائع مكونات React](https://github.com/brillout/awesome-react-components) - قائمة مختارة لمكونات React.
 
-- [Awesome React Talks](https://github.com/tiaanduplessis/awesome-react-talks) - A curated list of React talks.
+- [روائع محادثات React](https://github.com/tiaanduplessis/awesome-react-talks) - قائمة مختارة لمحادثات React.
