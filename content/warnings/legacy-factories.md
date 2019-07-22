@@ -16,7 +16,7 @@ function render() {
 
 ## JSX {#jsx}
 
-لم تَعُد مُكوّنات React قابلة للأستدعاء مُباشرةً. عوضًا عن ذلك، [يُمكنك استخدام JSX](/docs/jsx-in-depth.html).
+لم تَعُد مُكوّنات React قابلة للإستدعاء مُباشرةً. عوضًا عن ذلك، [يُمكنك استخدام JSX](/docs/jsx-in-depth.html).
 
 ```javascript
 var React = require('react');
