@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: الدليل التطبيقي: مدخل إلى React
+title: "الدليل التطبيقي: مدخل إلى React"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
