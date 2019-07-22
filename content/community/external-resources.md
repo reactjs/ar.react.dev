@@ -8,7 +8,7 @@ permalink: community/external-resources.html
 
 هناك العديد من المصادر الرائعة التي وضعها مجتمع React.
 
-- [Reactiflux](https://www.reactiflux.com/) - مجتمع يضم اكثر من 20،000 مطور React. يسعون للمحافظة على [قسم التعلم](https://www.reactiflux.com/learning/).
+- [Reactiflux](https://www.reactiflux.com/) - مجتمع يضم اكثر من 20،000 مطور React يسعى للمحافظة على [قسم التعلم](https://www.reactiflux.com/learning/).
 
 - [روابط React-Redux](https://github.com/markerikson/react-redux-links) - قائمة مارك إريكسون الغنية للدلائل التعليمية و مصادر React / Redux / ES6 وأكثر من ذلك.
 
