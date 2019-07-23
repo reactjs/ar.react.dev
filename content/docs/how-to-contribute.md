@@ -112,68 +112,68 @@ redirect_from:
 * `yarn test` يشغّل كل سلسلة الإختبارات.
 * `yarn test --watch` يشغّل مُراقب الإختبارات التفاعلي (interactive tests watcher).
 * `yarn test <نمط(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
-* `yarn test-prod` runs tests in the production environment. It supports all the same options as `yarn test`.
-* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
-* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
-* `yarn build` creates a `build` folder with all the packages.
-* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
+* `yarn test-prod` تشغّل الإختبارات في بيئة الإنتاج، تقبل كل خيارات الأمر `yarn test`.
+* `yarn debug-test` يُشابه الأمر `yarn test` لكن مع مُنَقّح. افتح `chrome://inspect` ثمّ اضغط على تفحّص(Inspect).
+* `yarn flow` يشغّل آلية [Flow](https://flowtype.org/) للتحقق من الأصناف.
+* `yarn build` ينشأ مجلّد بناء (`build`) مع كل الحُزم.
+* `yarn build react/index,react-dom/index --type=UMD` ينشأ بنيات بناء (UMD) مُكوّنة من React و ReactDOM فقط.
 
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However it can be handy to try your build of React in a real project.
+ننصح باستعمال  الأمر `yarn test` (أو ما يُشابهه من الأوامر أعلاه) للتأكد من عدم إتلاف أي شيء بينما تعمل على التغييرات التي تقوم بها. على كلّ، سيكون من الأحسن أن تختبر نسختك المبنيّة من React في مشروع حقيقي.
 
-First, run `yarn build`. This will produce pre-built bundles in `build` folder, as well as prepare npm packages inside `build/packages`.
+أولا، شغّل الأمر `yarn build`. هذا الأمر سينتج حزما مبنيّة مسبقا في مجلد `build` وستقوم تحضير حزم npm داخل `build/packages`.
 
-The easiest way to try your changes is to run `yarn build react/index,react-dom/index --type=UMD` and then open `fixtures/packaging/babel-standalone/dev.html`. This file already uses `react.development.js` from the `build` folder so it will pick up your changes.
+أسهل طريقة لتجربة التغييرات التي قمت بها هي بتشغل الأمر `yarn build react/index,react-dom/index --type=UMD` ثم بفتح `fixtures/packaging/babel-standalone/dev.html`. هذا الملف أصلا يستعمل `react.development.js` من مجلّد `build` حتى يُتابع التغييرات التي تقوم بها.
 
-If you want to try your changes in your existing React project, you may copy `build/dist/react.development.js`, `build/dist/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. If your project uses React from npm, you may delete `react` and `react-dom` in its dependencies and use `yarn link` to point them to your local `build` folder:
+إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/dist/react.development.js` و `build/dist/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة. إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك:
 
 ```sh
-cd ~/path_to_your_react_clone/build/node_modules/react
+cd ~/مسار_نسختك_من_react/build/node_modules/react
 yarn link
-cd ~/path_to_your_react_clone/build/node_modules/react-dom
+cd ~/مسار_نسختك_من_react/build/node_modules/react-dom
 yarn link
-cd /path/to/your/project
+cd /مسار/المشروع/project_مشروع
 yarn link react react-dom
 ```
 
-Every time you run `yarn build` in the React folder, the updated versions will appear in your project's `node_modules`. You can then rebuild your project to try your changes.
+في كل مرّة تشغّل فيها الأمر `yarn build` في مجلّد React ستظهر النسخ المُحدّثة في مجلّد `node_modules` داخل مسار مشروعك. تستطيع عندها إعادة بناء مشروعك لتجربة التغييرات التي قُمت بها.
 
-We still require that your pull request contains unit tests for any new functionality. This way we can ensure that we don't break your code in the future.
+نؤكّد مجددا أن يتوفّر طلب السحب (pull request) الخاص بك على وحدات اختبار ﻷي ميزة جديدة. بذلك نضمن أننا لن نُعطّل (نفسد) شيفرتك البرمجية في المستقبل.
 
-### Style Guide {#style-guide}
+### دليل التنسيق {#style-guide}
 
-We use an automatic code formatter called [Prettier](https://prettier.io/).
-Run `yarn prettier` after making any changes to the code.
+نستعمل مُنسّق شيفرات برمجية آلي يدعى [Prettier](https://prettier.io/).
+شغّل الأمر `yarn prettier` بعد القيام بأية تعديلات تمسّ الشيفرة البرمجية.
 
-Then, our linter will catch most issues that may exist in your code.
-You can check the status of your code styling by simply running `yarn linc`.
+عندها ستقوم أداة التنسيق (linter) الخاصة بنا بالتقاط أغلب المشاكل التي يمكن أن توجد بشيفرتك البرمجية.
+يمكنك عبر الأمر `yarn linc` أن تتحقق من حالة تنسيق شيفرتك البرمجية.
 
-However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [Airbnb's Style Guide](https://github.com/airbnb/javascript) will guide you in the right direction.
+يمكن لأداة التنسيق (linter) أن تفشل في التقاط بعض التنسيقات، إن كنت غير متأكد من شيء ما، راجع [دليل تنسيق Airbnb](https://github.com/airbnb/javascript) سيقوم بإرشادك إلى الاتجاه الصحيح.
 
-### Introductory Video {#introductory-video}
+### فيديو تمهيدي {#introductory-video}
 
-You may be interested in watching [this short video](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 mins) which gives an introduction on how to contribute to React.
+قد تُهمّك مشاهدة [هذا الفيديو القصير](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 دقيقة) والذي يمكن أن يُعطيك مقدمّة عن المساهمة في React.
 
-#### Video highlights: {#video-highlights}
-- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - Building and testing React locally
-- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - Creating and sending pull requests
-- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - Organizing code
-- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - React npm registry
-- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - Adding new React features
+#### أبرز أجزاء الفيديو: {#video-highlights}
+- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - بناء واختبار React محليّا
+- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - إنشاء وإرسال طلبات السحب (pull requests)
+- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - تنظيم الشيفرة البرمجية
+- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - تسجيل React بـnpm (React npm registry)
+- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - إضافة ميزات جديدة لـ React
 
-For a realistic overview of what it _feels_ like to contribute to React for the first time, check out [this entertaining ReactNYC talk](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
+لنيل نظرة واقعية عن "ما هو الشعور" عن القيام بالمساهمة في React للمرة الأولى، شاهد [هذه المحاضرة الممتعة من ReactNYC](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
 
-### Request for Comments (RFC) {#request-for-comments-rfc}
+### طلب التعليقات (RFC أو Request for Comments) {#request-for-comments-rfc}
 
-Many changes, including bug fixes and documentation improvements can be implemented and reviewed via the normal GitHub pull request workflow.
+الكثير من التغييرات بما فيه إصلاحات العلل أو تحسين التوثيق تخضع لنظام طلبات السحب من Github (Github pull request workflow).
 
-Some changes though are "substantial", and we ask that these be put through a bit of a design process and produce a consensus among the React core team.
+على الرغم من أن بعض التغييرات "ضرورية" ، فإننا نطلب أن يتم إدخالها قليلاً إلى عملية التصميم وإيجاد توافق في الآراء بين فريق React الأساسي.
 
-The "RFC" (request for comments) process is intended to provide a consistent and controlled path for new features to enter the project. You can contribute by visiting the [rfcs repository](https://github.com/reactjs/rfcs).
+يوفّر نظام "طلب التعليقات" (RFC أو Request for Comments) مسارا ثابتا ومؤطّرا للميزات الجديدة لتضاف للمشروع. يمكنك المساهمة بزيارة [rfcs مستودع](https://github.com/reactjs/rfcs), 
 
-### License {#license}
+### الرخصة {#license}
 
-By contributing to React, you agree that your contributions will be licensed under its MIT license.
+بمساهمتك في React، أنت توافق على أن مُساهماتك ستكون تحت رخصة MIT.
 
-### What Next? {#what-next}
+### ماذا بعد؟ {#what-next}
 
-Read the [next section](/docs/codebase-overview.html) to learn how the codebase is organized.
+إنتقل إلى [القسم التالي](/docs/codebase-overview.html) للتعرف على تنسيق وتنظيم قاعدة الشيفرة البرمجية.
