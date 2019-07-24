@@ -36,7 +36,7 @@ ReactDOM.render(
 
 ## درجة المعرفة المفترضة {#knowledge-level-assumptions}
 
-بما أنّ React هي مكتبة JavaScript فسنفترض أنّك تملك معرفة أساسيّة بلغة JavaScript. إن لم تكن واثقًا من إمكانياتك فننصحك بأن تذهب إلى [ درس JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)  للتحقّق من مستواك والتمكّن من متابعة هذا الشّرح بدون أن تتشتّت. سيستغرق منك حوالي نصف ساعة إلى ساعة، ولكنّك بعد المرور عليه لن تشعر بأنّك تتعلّم React و JavaScript معًا.
+بما أنّ React هي مكتبة JavaScript فسنفترض أنّك تملك معرفة أساسيّة بلغة JavaScript. **إن لم تكن واثقًا من إمكانياتك فننصحك بأن تذهب إلى [ درس JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) للتحقّق من مستواك** والتمكّن من متابعة هذا الدليل دون تَخبُّط. سيستغرق منك حوالي نصف ساعة إلى ساعة، ولكنّك بعد المرور عليه لن تشعر بأنّك تتعلّم React و JavaScript معًا.
 
 >ملاحظة
 >
