@@ -10,20 +10,20 @@ permalink: community/courses.html
 
 - [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - دورة اطار عمل React التعريفية والمقدمة من Codecademy
 
-- [Egghead.io: Start Learning React](https://egghead.io/courses/start-learning-react) - هذه السلسلة التعليمية ستقوم بتعليمك اساسيات إطار عمل React
+- [Egghead.io: ابدأ في تعلم React](https://egghead.io/courses/start-learning-react) - هذه السلسلة التعليمية ستقوم بتعليمك اساسيات إطار عمل React
 
 
-- [React Crash Course 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع اطار عمل React
+- [React دورة مكثفة 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع اطار عمل React
 
-- [React Armory: Learn React by Itself](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم اطار عمل React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
+- [عتاد React : تعلم React بنفسك](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم اطار عمل React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
 
 - [الطريق لتعلم اطار عمل React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام اطار عمل React بسهولة ويسر وبدون الأدوات المعقدة
 
-- [Egghead.io: The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم React اساسيات اطار عمل
+- [Egghead.io: دليل المبتدئين في ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم React اساسيات اطار عمل
 
-- [Free React Bootcamp](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم اطار عمل React
+- [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم اطار عمل React
 
-- [Scrimba: Learn React for free](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
+- [Scrimba: بالمجان React تعلم ](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
 
 ## دورات مدفوعة {#paid-courses}
 
@@ -49,4 +49,4 @@ React
 
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
 
-- [احترف React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام اطار عمل React
+- [قح React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام اطار عمل React
