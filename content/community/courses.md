@@ -1,49 +1,52 @@
 ---
 id: courses
-title: Courses
+title: الدورات
 layout: community
 sectionid: community
 permalink: community/courses.html
 ---
 
-## Free Courses {#free-courses}
+## دورات مجانية {#free-courses}
 
-- [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - Codecademy's introductory course for React.
+- [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - دورة اطار عمل React التعريفية والمقدمة من Codecademy
 
-- [Egghead.io: Start Learning React](https://egghead.io/courses/start-learning-react) - This series will explore the basic fundamentals of React to get you started.
+- [Egghead.io: Start Learning React](https://egghead.io/courses/start-learning-react) - هذه السلسلة التعليمية ستقوم بتعليمك اساسيات إطار عمل React
 
-- [React Crash Course 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - A beginner-friendly crash course through the most important React topics.
 
-- [React Armory: Learn React by Itself](https://reactarmory.com/guides/learn-react-by-itself) - With React Armory, you can learn React without the buzzwords.
+- [React Crash Course 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع اطار عمل React
 
-- [The Road to Learn React](https://www.robinwieruch.de/the-road-to-learn-react/) - Build a real world application in plain React without complicated tooling.
+- [React Armory: Learn React by Itself](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم اطار عمل React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
 
-- [Egghead.io: The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - Free course for React newbies and those looking to get a better understanding of React fundamentals.
+- [الطريق لتعلم اطار عمل React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام اطار عمل React بسهولة ويسر وبدون الأدوات المعقدة
 
-- [Free React Bootcamp](https://tylermcginnis.com/free-react-bootcamp/) - Recordings from three days of a free online React bootcamp.
+- [Egghead.io: The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم React اساسيات اطار عمل
 
-- [Scrimba: Learn React for free](https://scrimba.com/g/glearnreact) - 48 hands-on video tutorials building react apps.
+- [Free React Bootcamp](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم اطار عمل React
 
-## Paid Courses {#paid-courses}
+- [Scrimba: Learn React for free](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
 
-- [Egghead.io](https://egghead.io/browse/frameworks/react) - Short instructional videos on React and many other topics.
+## دورات مدفوعة {#paid-courses}
 
-- [Frontend Masters](https://frontendmasters.com/courses/) - Video courses on React and other frontend frameworks.
+- [Egghead.io](https://egghead.io/browse/frameworks/react) - مجموعة من الملفات المرئية القصيرة لتعلم اطار عمل React
 
-- [Fullstack React](https://www.fullstackreact.com/) - The up-to-date, in-depth, complete guide to React and friends.
+- [Frontend Masters](https://frontendmasters.com/courses/) - دورات فيديو تدريبية لتعلم إطار عمل  
+React
+ واطارات عمل اخرى
 
-- [Pure React](https://daveceddia.com/pure-react/) - A step-by-step guide to mastering React.
+- [Fullstack React](https://www.fullstackreact.com/) - احدث دليل ارشادي متكامل لتعلم اطار عمل React
 
-- [React for Beginners](https://reactforbeginners.com/) - Learn React in just a couple of afternoons.
+- [Pure React](https://daveceddia.com/pure-react/) -  دليل ارشادي لتعلم اطار عمل React خطوة بخطوة
 
-- [React for Designers](https://designcode.io/react) - A 6-hour React course for designers, by designers.
+- [React للمبتدئين](https://reactforbeginners.com/) - تعلم اطار عمل React في غضون يومين
 
-- [React Essentials for Designers](https://learnreact.design) - React courses tailored for designers: the fundamentals, capabilities, limitations and how they relate to design.
+- [React للمصممين](https://designcode.io/react) - دورة تدريبية لتعلم اطار عمل React  مدتها ستة ساعات للمصممين، مقدمة من قبل مصممين
 
-- [Essential React](https://learnreact.com/lessons/2018-essential-react-1-overview) - A crash course for doers, moving fast from "Hello World" to advanced component composition.
+- [للمصممين React اساسيات](https://learnreact.design) - دورات تعليمية لاطار عمل  React مخصصة للمصممين: تشمل الأساسيات، ما يمكن عمله وما لا يمكن، وكيف يمكنهم الاستفادة من  React في التصميم
 
-- [React Training: Advanced React.js](https://courses.reacttraining.com/p/advanced-react) - Take your React skills to the next level.
+- [اساسيات React](https://learnreact.com/lessons/2018-essential-react-1-overview) - دورة تعليمية لمن يحبون التعلم بكتابة الاكواد البرمجية، ستمكنهم هذه الدورة من التعلم سريعاً وعمل تطبيقات متقدمة
 
-- [Tyler McGinnis](https://tylermcginnis.com/courses) - Tyler McGinnis provides access to his courses for a monthly fee. Courses include "React Fundamentals" and "Universal React".
+- [React Training: Advanced React.js](https://courses.reacttraining.com/p/advanced-react) - طوّر مهاراتك في React
 
-- [Mastering React](https://codewithmosh.com/p/mastering-react/) - Build professional interactive apps with React.
+- [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
+
+- [احترف React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام اطار عمل React
