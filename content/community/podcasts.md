@@ -1,6 +1,6 @@
 ---
 id: podcasts
-title: Podcasts
+title: المدونات الصوتية
 layout: community
 sectionid: community
 permalink: community/podcasts.html
