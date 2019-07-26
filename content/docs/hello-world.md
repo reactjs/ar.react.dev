@@ -11,7 +11,7 @@ next: introducing-jsx.html
 
 ```js
 ReactDOM.render(
-  <h1>مرحبا بالعالم!</h1>,
+  <h1>أهلًا بالعالم!</h1>,
   document.getElementById('root')
 );
 ```
