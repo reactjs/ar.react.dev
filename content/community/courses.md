@@ -49,4 +49,4 @@ React
 
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
 
-- [قح React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام اطار عمل React
+- [خالص React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام اطار عمل React
