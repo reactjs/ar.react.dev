@@ -97,7 +97,6 @@ redirect_from:
 
 ### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
-* You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
 * لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
 * لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
 * أنت مُعتاد على Git.
@@ -137,7 +136,7 @@ yarn link react react-dom
 
 في كل مرّة تشغّل فيها الأمر `yarn build` في مجلّد React ستظهر النسخ المُحدّثة في مجلّد `node_modules` داخل مسار مشروعك. تستطيع عندها إعادة بناء مشروعك لتجربة التغييرات التي قُمت بها.
 
-نؤكّد مجددا أن يتوفّر طلب السحب (pull request) الخاص بك على وحدات اختبار ﻷي ميزة جديدة. بذلك نضمن أننا لن نُعطّل (نفسد) شيفرتك البرمجية في المستقبل.
+نؤكّد مجددا أن يتوفّر طلب السحب (pull request) الخاص بك على وحدات اختبار ﻷي ميزة جديدة. بذلك نضمن أننا لن نُعطّل شيفرتك البرمجية في المستقبل.
 
 ### دليل التنسيق {#style-guide}
 
@@ -168,7 +167,7 @@ yarn link react react-dom
 
 على الرغم من أن بعض التغييرات "ضرورية" ، فإننا نطلب أن يتم إدخالها قليلاً إلى عملية التصميم وإيجاد توافق في الآراء بين فريق React الأساسي.
 
-يوفّر نظام "طلب التعليقات" (RFC أو Request for Comments) مسارا ثابتا ومؤطّرا للميزات الجديدة لتضاف للمشروع. يمكنك المساهمة بزيارة [rfcs مستودع](https://github.com/reactjs/rfcs), 
+يوفّر نظام "طلب التعليقات" (RFC أو Request for Comments) مسارا ثابتا ومؤطّرا للميزات الجديدة لتضاف للمشروع. يمكنك المساهمة بزيارة [rfcs مستودع](https://github.com/reactjs/rfcs).
 
 ### الرخصة {#license}
 
