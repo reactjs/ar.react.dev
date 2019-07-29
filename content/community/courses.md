@@ -12,7 +12,6 @@ permalink: community/courses.html
 
 - [Egghead.io: ابدأ في تعلم React](https://egghead.io/courses/start-learning-react) - هذه السلسلة التعليمية ستقوم بتعليمك اساسيات إطار عمل React
 
-
 - [React دورة مكثفة 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع اطار عمل React
 
 - [عتاد React : تعلم React بنفسك](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم اطار عمل React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
@@ -29,9 +28,7 @@ permalink: community/courses.html
 
 - [Egghead.io](https://egghead.io/browse/frameworks/react) - مجموعة من الملفات المرئية القصيرة لتعلم اطار عمل React
 
-- [Frontend Masters](https://frontendmasters.com/courses/) - دورات فيديو تدريبية لتعلم إطار عمل  
-React
- واطارات عمل اخرى
+- [Frontend Masters](https://frontendmasters.com/courses/) - دورات فيديو تدريبية لتعلم إطار عمل  React واطارات عمل اخرى
 
 - [Fullstack React](https://www.fullstackreact.com/) - احدث دليل ارشادي متكامل لتعلم اطار عمل React
 
