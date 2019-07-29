@@ -64,7 +64,7 @@ redirect_from:
 
 هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
-**[كيف تُساهم في مشروع مفتوح المصدر على Github (How to Contribute to an Open Source Project on GitHub)](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+**[كيف تُساهم في مشروع مفتوح المصدر على Github](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
 
 حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 
