@@ -18,11 +18,11 @@ permalink: community/courses.html
 
 - [الطريق لتعلم مكتبة React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام مكتبة React بسهولة ويسر وبدون الأدوات المعقدة
 
-- [Egghead.io: دليل المبتدئين في ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم React اساسيات مكتبة
+- [Egghead.io: دليل المبتدئين في ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم اساسيات React
 
 - [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم مكتبة  React
 
-- [Scrimba: بالمجان React تعلم ](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
+- [Scrimba: تعلم Recat بالمجان ](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
 
 ## دورات مدفوعة {#paid-courses}
 
@@ -38,7 +38,7 @@ permalink: community/courses.html
 
 - [React للمصممين](https://designcode.io/react) - دورة تدريبية لتعلم مكتبة React  مدتها ستة ساعات للمصممين، مقدمة من قبل مصممين
 
-- [للمصممين React اساسيات](https://learnreact.design) - دورات تعليمية لمكتبة  React مخصصة للمصممين: تشمل الأساسيات، ما يمكن عمله وما لا يمكن، وكيف يمكنهم الاستفادة من  React في التصميم
+- [اساسيات React للمصممين](https://learnreact.design) - دورات تعليمية لمكتبة  React مخصصة للمصممين: تشمل الأساسيات، ما يمكن عمله وما لا يمكن، وكيف يمكنهم الاستفادة من  React في التصميم
 
 - [اساسيات React](https://learnreact.com/lessons/2018-essential-react-1-overview) - دورة تعليمية لمن يحبون التعلم بكتابة الاكواد البرمجية، ستمكنهم هذه الدورة من التعلم سريعاً وعمل تطبيقات متقدمة
 
