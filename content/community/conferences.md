@@ -67,6 +67,11 @@ redirect_from:
 
 [موقع الواب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/reactdayberlin)
 
+### ReactConf AU 2020 {#reactconfau}
+فبراير 27 & 28, 2020 في سيدني، أستراليا
+
+[موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
+
 ## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
