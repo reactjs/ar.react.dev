@@ -845,12 +845,12 @@ function Image(props) {
 
 * يمكِّنك الخطاف [`useCallback`](/docs/hooks-reference.html#usecallback) من الإبقاء على مرجع رد النداء نفسه بين عمليات إعادة التصيير، لذا يستمر `shouldComponentUpdate` بالعمل:
 
-    ```js{2}
-	// `b` أو `a` لن يتغير إلا إذا تغير
-    const memoizedCallback = useCallback(() => {
-      doSomething(a, b);
-    }, [a, b]);
-    ```
+```js{2}
+// `b` أو `a` لن يتغير إلا إذا تغير
+const memoizedCallback = useCallback(() => {
+	doSomething(a, b);
+}, [a, b]);
+```
 
 * يجعل [الخطاف `useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations) عملية التحكم سهلةً عندما يَجرِي تحديث ابنٍ واحدٍ، مما يقلل من الحاجة إلى مكونات نقية (pure components).
 
