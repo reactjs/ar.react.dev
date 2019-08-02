@@ -72,6 +72,10 @@ redirect_from:
 
 [موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
+### Render-Atlanta 2020 {#render-atlanta-2020}
+4-6 مايو ، 2020. أتلانتا ، جورجيا ، الولايات المتحدة.80
+[موقع الويب](https://renderatl.com)
+
 ## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
