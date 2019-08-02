@@ -72,7 +72,16 @@ redirect_from:
 
 [موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
+<<<<<<< HEAD
 ## المؤتمرات السابقة {#past-conferences}
+=======
+### Render-Atlanta 2020 {#render-atlanta-2020}
+May 4-6, 2020. Atlanta, GA, USA.
+
+[Website](https://renderatl.com)
+
+## Past Conferences {#past-conferences}
+>>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
@@ -404,4 +413,9 @@ redirect_from:
 ### Chain React 2019 {#chain-react-2019}
 11-12 يوليو 2019. بورتلاند ، أور ، الولايات المتحدة.
 
+<<<<<<< HEAD
 [موقع الواب](https://infinite.red/ChainReactConf)
+=======
+[Website](https://infinite.red/ChainReactConf)
+
+>>>>>>> e200fd7b93377accb8d387676266f015787e0d33
