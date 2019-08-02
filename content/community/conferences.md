@@ -408,9 +408,4 @@ redirect_from:
 ### Chain React 2019 {#chain-react-2019}
 11-12 يوليو 2019. بورتلاند ، أور ، الولايات المتحدة.
 
-<<<<<<< HEAD
 [موقع الواب](https://infinite.red/ChainReactConf)
-=======
-[Website](https://infinite.red/ChainReactConf)
-
->>>>>>> e200fd7b93377accb8d387676266f015787e0d33
