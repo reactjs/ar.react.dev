@@ -38,9 +38,9 @@ redirect_from:
 
 على سبيل المثال ،اختبار [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) موجود في [`tests__/setInnerHTML-test.js__`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) بجانبه بالضبط.
 
-### Warnings and Invariants {#warnings-and-invariants}
+### التحذيرات و الثوابت {#warnings-and-invariants}
 
-The React codebase uses the `warning` module to display warnings:
+تستخدم قاعدة كود برنامج React وحدة (module) `warning` لعرض التحذيرات:
 
 ```js
 var warning = require('warning');
@@ -51,11 +51,11 @@ warning(
 );
 ```
 
-**The warning is shown when the `warning` condition is `false`.**
+**يظهر التحذير عندما تكون حالة `warning` تساوي `false`.**
 
-One way to think about it is that the condition should reflect the normal situation rather than the exceptional one.
+إحدى طرق التفكير في الأمر هو أن الحالة يجب أن تعكس الوضع الطبيعي بدلاً من الحالة الاستثنائية.
 
-It is a good idea to avoid spamming the console with duplicate warnings:
+من المستحسن تجنب إغراق (spamming) عارضة التحكم (console) بتحذيرات مكررة:
 
 ```js
 var warning = require('warning');
@@ -70,7 +70,7 @@ if (!didWarnAboutMath) {
 }
 ```
 
-Warnings are only enabled in development. In production, they are completely stripped out. If you need to forbid some code path from executing, use `invariant` module instead:
+يتم تمكين التحذيرات فقط في التطوير. في الإنتاج، يتم تجريدهم بالكامل. إذا كنت بحاجة إلى منع تنفيذ بعض مسار الكود، فاستخدم الوحدة `invariant` بدلاً من ذلك:
 
 ```js
 var invariant = require('invariant');
@@ -81,11 +81,11 @@ invariant(
 );
 ```
 
-**The invariant is thrown when the `invariant` condition is `false`.**
+**يتم طرح الثابت عندما تكون حالة `invariant` تساوي `false`.**
 
-"Invariant" is just a way of saying "this condition always holds true". You can think about it as making an assertion.
+"ثابت" (invariant) هي مجرد وسيلة لقول "هذا الشرط دائما صحيح". يمكنك التفكير في الأمر على أنه تأكيد.
 
-It is important to keep development and production behavior similar, so `invariant` throws both in development and in production. The error messages are automatically replaced with error codes in production to avoid negatively affecting the byte size.
+من المهم الحفاظ على تشابة سلوكيات التطوير والإنتاج، لذلك `invariant` يطرح (throws) في كل من التطوير والإنتاج. يتم استبدال رسائل الخطأ تلقائيًا برموز خطأ (error codes) في الإنتاج لتجنب التأثير السلبي على حجم البايت.
 
 ### Development and Production {#development-and-production}
 
