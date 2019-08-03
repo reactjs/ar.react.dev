@@ -119,11 +119,11 @@ ReactRef.detachRefs = function(
 عندما يكون ذلك ممكنًا، يجب أن يستخدم الكود الجديد التعليقات التوضيحية الخاصة بFlow.
 يمكنك تشغيل `yarn dev` محليًا للتحقق من شفرتك باستخدام Flow.
 
-### Dynamic Injection {#dynamic-injection}
+### الحقن ديناميكي {#dynamic-injection}
 
-React uses dynamic injection in some modules. While it is always explicit, it is still unfortunate because it hinders understanding of the code. The main reason it exists is because React originally only supported DOM as a target. React Native started as a React fork. We had to add dynamic injection to let React Native override some behaviors.
+يستخدم React الحقن الديناميكي في بعض الوحدات. في حين أنه دائمًا ما يكون صريحًا، إلا أنه لا يزال مؤسفًا لأنه يعيق فهم الكود. السبب الرئيسي لوجوده هو أن React كان في الأصل يدعم DOM فقط كهدف. بدأ React Native كـ fork لـ React. كان علينا إضافة حقن ديناميكي للسماح لReact Native بتجاوز بعض السلوكيات.
 
-You may see modules declaring their dynamic dependencies like this:
+قد ترى وحدات تعلن عن تبعياتها الديناميكية مثل هذا:
 
 ```js
 // Dynamically injected
@@ -148,9 +148,9 @@ var ReactHostComponent = {
 module.exports = ReactHostComponent;
 ```
 
-The `injection` field is not handled specially in any way. But by convention, it means that this module wants to have some (presumably platform-specific) dependencies injected into it at runtime.
+لا يتم التعامل مع حقل `injection` بشكل خاص بأي طريقة. ولكن عن طريق الاصطلاح، فهذا يعني أن هذه الوحدة تريد الحصول على بعض التبعيات (من المفترض أنها خاصة بالنظام الأساسي) التي تم حقنها فيها في وقت التشغيل.
 
-There are multiple injection points in the codebase. In the future, we intend to get rid of the dynamic injection mechanism and wire up all the pieces statically during the build.
+هناك عدة نقاط حقن في قاعدة الكود. في المستقبل، نعتزم التخلص من آلية الحقن الديناميكي وربط جميع القطع بشكل ثابت أثناء الإنشاء.
 
 ### Multiple Packages {#multiple-packages}
 
