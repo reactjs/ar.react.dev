@@ -103,9 +103,9 @@ if (__DEV__) {
 
 ### Flow {#flow}
 
-We recently started introducing [Flow](https://flow.org/) checks to the codebase. Files marked with the `@flow` annotation in the license header comment are being typechecked.
+بدأنا في الآونة الأخيرة تقديم تحققات [Flow](https://flow.org/) الي قاعدة الكود. يتم عمل فحص "typecheck" للملفات التي تحمل علامة التعليقات التوضيحية `@flow` في تعليق رأس الترخيص (license header comment).
 
-We accept pull requests [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). Flow annotations look like this:
+نحن نقبل طلبات السحب (pull requests). انظر [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). التعليقات التوضيحية لـFlow  تبدو كالتالي:
 
 ```js
 ReactRef.detachRefs = function(
@@ -116,8 +116,8 @@ ReactRef.detachRefs = function(
 }
 ```
 
-When possible, new code should use Flow annotations.
-You can run `yarn flow` locally to check your code with Flow.
+عندما يكون ذلك ممكنًا، يجب أن يستخدم الكود الجديد التعليقات التوضيحية الخاصة بFlow.
+يمكنك تشغيل `yarn dev` محليًا للتحقق من شفرتك باستخدام Flow.
 
 ### Dynamic Injection {#dynamic-injection}
 
