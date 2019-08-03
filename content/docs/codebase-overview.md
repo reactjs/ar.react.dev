@@ -87,13 +87,13 @@ invariant(
 
 من المهم الحفاظ على تشابة سلوكيات التطوير والإنتاج، لذلك `invariant` يطرح (throws) في كل من التطوير والإنتاج. يتم استبدال رسائل الخطأ تلقائيًا برموز خطأ (error codes) في الإنتاج لتجنب التأثير السلبي على حجم البايت.
 
-### Development and Production {#development-and-production}
+### التطوير والإنتاج {#development-and-production}
 
-You can use `__DEV__` pseudo-global variable in the codebase to guard development-only blocks of code.
+يمكنك استخدام المتغير الزائف (pseduo-global variable) `__DEV__` في قاعدة كود برنامج React لحراسة كتل الكود المخصص للتطوير فقط.
 
-It is inlined during the compile step, and turns into `process.env.NODE_ENV !== 'production'` checks in the CommonJS builds.
+يتم تضمينه أثناء خطوة التحويل البرمجي، ويتحول إلى تحقق `process.env.NODE_ENV !== 'production'` في بنايات CommonJS.
 
-For standalone builds, it becomes `true` in the unminified build, and gets completely stripped out with the `if` blocks it guards in the minified build.
+بالنسبة للبنيات القائمة بذاتها (standalone)، تصبح `true` في البنية غير المصغرة (unminified build)، ويتم تجريدها بالكامل من كتل `if` التي تحرسها في البنية المصغرة.
 
 ```js
 if (__DEV__) {
