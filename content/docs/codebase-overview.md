@@ -152,9 +152,9 @@ module.exports = ReactHostComponent;
 
 هناك عدة نقاط حقن في قاعدة الكود. في المستقبل، نعتزم التخلص من آلية الحقن الديناميكي وربط جميع القطع بشكل ثابت أثناء الإنشاء.
 
-### Multiple Packages {#multiple-packages}
+### الحزم المتعددة {#multiple-packages}
 
-React is a [monorepo](https://danluu.com/monorepo/). Its repository contains multiple separate packages so that their changes can be coordinated together, and issues live in one place.
+React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مستودعها على حزم متعددة منفصلة بحيث يمكن تنسيق تغييراتها معًا، وتعيش المشكلات (issues) في مكان واحد.
 
 ### React Core {#react-core}
 
