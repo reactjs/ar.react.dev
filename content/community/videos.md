@@ -8,7 +8,7 @@ redirect_from:
  - "docs/videos.html"
 ---
 
-مقاطع فيديو مخصصة لمناقشة React ونظامه المتكامل.
+مقاطع فيديو مخصصة لمناقشة React ونظامه المتكامل (ecosystem).
 
 ### React.js Conf 2017 {#reactjs-conf-2017}
 
