@@ -39,7 +39,7 @@ redirect_from:
 
 ### Rethinking Web App Development at Facebook {#rethinking-web-app-development-at-facebook}
 
-التحدث في Facebook F8 2014  حول معرفة كيفية تخلينا عن نموذج MVC التقليدي لصالح بنية تطبيقية أكثر فاعلية.
+الحديث في Facebook F8 2014  عن أسباب تخلّينا عن نموذج MVC التقليدي لصالح بنية تطبيقية أكثر فاعلية.
 <!--  - (2014 - 0h44m) -->
 <iframe title="Hacker Way: Rethinking Web App Development at Facebook" width="650" height="366" src="https://www.youtube-nocookie.com/embed/nYkdrAPrdcw" frameborder="0" allowfullscreen></iframe>
 
