@@ -51,7 +51,7 @@ redirect_from:
 
 ### React and Flux: Building Applications with a Unidirectional Data Flow {#react-and-flux-building-applications-with-a-unidirectional-data-flow}
 
-يتحدث مهندسى فيسبوك كل من بيل فيشر وجينغ تشن عن Flux و React في Forward JS 2014 ، وكيفية استخدام بنية تطبيق ذو تدفق بيانات أحادي الاتجاه  ( ينظف الكثير من الشفرة ).
+يتحدث مهندسى فيسبوك كل من بيل فيشر وجينغ تشن عن Flux و React في Forward JS 2014 ، وكيف لاستخدام بنية تطبيق ذو تدفق بيانات أحادي الاتجاه أن ينظف الشيفرة البرمجية كثيرا.
 <iframe title="React and Flux: Building Applications with a Unidirectional Data Flow" width="650" height="366" src="https://www.youtube-nocookie.com/embed/i__969noyAM" frameborder="0" allowfullscreen></iframe>
 
 ### Going Big with React {#going-big-with-react}
