@@ -33,7 +33,7 @@ redirect_from:
 
 ### Flux and Server-side Rendering {#flux-and-server-side-rendering}
 
-بيت هانت يناقش flux والتصيير من جهة الخادم (ssr) في React.
+بيت هانت يناقش flux والتصيير من جهة الخادم (SSR) في React.
 <!-- - (2014 - 0h55m) -->
 <iframe title="YUI Open Roundtable with Pete Hunt" width="650" height="366" src="https://www.youtube-nocookie.com/embed/ZLfe0i2RDtY" frameborder="0" allowfullscreen></iframe>
 
