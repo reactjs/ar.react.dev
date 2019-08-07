@@ -1,6 +1,6 @@
 ---
 id: composition-vs-inheritance
-title: Composition vs Inheritance
+title: الفرق بين التركيب والوراثة في React
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"
@@ -8,15 +8,18 @@ prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
 
-React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+تمتلك React نموذجًا قويًّا للتركيب (composition) ونُوصي باستخدام التركيب بدلًا من الوراثة (inheritance) لإعادة استخدام الشيفرة بين المُكوِّنات.
 
-In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
+سننظر في هذا القسم إلى بعض المشاكل التي بسببها قد يستخدم المُطوِّر الجديد على React الوراثة، وسنرى كيفيّة حلّها باستخدام التركيب.
 
-## Containment {#containment}
 
-Some components don't know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".
+##  مفهوم الاحتواء {#containment}
 
-We recommend that such components use the special `children` prop to pass children elements directly into their output:
+
+لا تعرف بعض المُكوِّنات العناصر الأبناء لها مُسبقًا، وهو أمرٌ شائعٌ بشكلٍ خاص بالنسبة لمُكوِّن القائمة الجانبيّة `Sidebar` أو مربّع الحوار `Dialog`.
+
+نُوصي بأن تستخدم تلك المُكوِّنات الخاصيّة `children` لتمرير العناصر بشكلٍ مباشر إلى ناتجها:
+
 
 ```js{4}
 function FancyBorder(props) {
@@ -27,8 +30,7 @@ function FancyBorder(props) {
   );
 }
 ```
-
-This lets other components pass arbitrary children to them by nesting the JSX:
+يُتيح هذا للمُكوِّنات الأخرى بأن تُمرِّر عناصر أبناء لها عن طريق التداخل في JSX:
 
 ```js{4-9}
 function WelcomeDialog() {
@@ -45,11 +47,12 @@ function WelcomeDialog() {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
+**[جرب المثال على CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
-Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` component as a `children` prop. Since `FancyBorder` renders `{props.children}` inside a `<div>`, the passed elements appear in the final output.
+يُمرَّر أي شيء بداخل العنصر `<FancyBorder>` إلى المُكوِّن `FancyBorder` عبر الخاصيّة `children`. وبما أنّ المُكوِّن `FancyBorder` يُصيِّر `{props.children}` بداخل عنصر `<div>`، فستظهر العناصر المُمرَّرة بداخل الناتج النهائي.
 
-While this is less common, sometimes you might need multiple "holes" in a component. In such cases you may come up with your own convention instead of using `children`:
+أحيانًا قد تحتاج إلى تمرير عناصر مُتعدِّدة. في تلك الحالات يجب أن تفعل ذلك بطريقتك الخاصّة بدلًا من استخدام `children،` كما يلي:
+    
 
 ```js{5,8,18,21}
 function SplitPane(props) {
@@ -78,15 +81,16 @@ function App() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
+[**جرب المثال على CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
+     
+إنّ عناصر React مثل ‎`<Contacts />‎` و ‎`<Chat />‎` هي مُجرّد كائنات، لذلك بإمكانك تمريرها كخاصيّات `props` مثل أي بيانات أخرى. قد يُذكِّرك ذلك بمفهوم المداخل (slots) في مكتبات أخرى، ولكن لا توجد حدود لما يُمكِنك تمريره كخاصيّات `props` في React.
 
-React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.
 
-## Specialization {#specialization}
+## التخصيص {#specialization}
 
-Sometimes we think about components as being "special cases" of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
+أحيانًا نُفكّر بالمُكوِّنات على أنّها حالات خاصّة لمُكوِّنات أخرى، فمثلًا قد نقول أنّ مُكوِّن مربّع الترحيب `WelcomeDialog` هو حالة خاصّة من مربّع الحوار `Dialog`.
 
-In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:
+يُمكِن تحقيق ذلك في React عن طريق استخدام التركيب (composition) حيث يُصيِّر المُكوِّن الأكثر خصوصيّة المُكوِّن الأكثر عموميّة ويُعد له الخاصيّات:
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -111,9 +115,9 @@ function WelcomeDialog() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
+[**جرب المثال على CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-Composition works equally well for components defined as classes:
+يعمل التركيب بشكلٍ مُماثل للمُكوِّنات المُعرَّفة كأصناف:
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -161,12 +165,13 @@ class SignUpDialog extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
+[**جرب المثال على CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-## So What About Inheritance? {#so-what-about-inheritance}
 
-At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.
+## إذًا ماذا عن الوراثة؟ {#so-what-about-inheritance}
 
-Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+نستخدم في فيسبوك آلاف مُكوِّنات React، ولم نجد أي حالة نُفضِّل فيها استخدام الوراثة.
 
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it.
+يمنحك التركيب والخاصيّات `props` المرونة التي تحتاجها لتخصيص مظهر وسلوك المُكوِّنات بطريقة مضبوطة وآمنة. تذكّر أنّ المُكوّنات قد تستقبل خاصيّات من محتوى مُتعدِّد، مثل القيم المبدئية، وعناصر React، والدوال.
+
+إن أردت إعادة استخدام بعض الوظائف بين المُكوِّنات غير المُتعلِّقة بواجهة المستخدم فنقترح استخراجها إلى واحدات JavaScript مُنفصِلة، حيث يُمكِن للمُكوِّن أن يستورد ويستخدم الدوال والكائنات والأصناف بدون الامتداد لها عن طريق الكلمة `extend`.

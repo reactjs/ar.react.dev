@@ -1,42 +1,42 @@
-- title: Community Resources
+- title: مصادر المجتمع
   items:
     - id: support
-      title: Support
+      title: الدعم
     - id: courses
-      title: Courses
+      title: الدروس
     - id: examples
-      title: Examples
+      title: الأمثلة
     - id: meetups
-      title: Meetups
+      title: المُلْتَقَيات 
     - id: conferences
-      title: Conferences
+      title: المؤتمرات
     - id: articles
-      title: Articles
+      title: المقالات
     - id: podcasts
-      title: Podcasts
+      title: الصوتيات (podcasts)
     - id: videos
-      title: Videos
+      title: الفيديوهات
     - id: external-resources
-      title: External Resources
-- title: Tools
+      title: المصادر الخارجية
+- title: الأدوات
   items:
     - id: debugging-tools
-      title: Debugging
+      title: التنقيح البرمجي
     - id: component-workbenches
-      title: Component Workbenches
+      title: منصّات تطوير المكوّنات
     - id: jsx-integrations
-      title: JSX Integrations
+      title: إضافات JSX 
     - id: starter-kits
-      title: Starter Kits
+      title: أدوات البداية
     - id: routing
-      title: Routing
+      title: المسارات
     - id: model-management
-      title: Model Management
+      title: إدارة النموذج
     - id: data-fetching
-      title: Data Fetching
+      title: جلب البيانات
     - id: testing
-      title: Testing
+      title: الإختبار
     - id: ui-components
-      title: UI Components
+      title: مكونات UI
     - id: misc
-      title: Miscellaneous
+      title: تشكيلات

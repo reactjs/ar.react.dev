@@ -6,25 +6,25 @@ next: hooks-state.html
 prev: hooks-intro.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
-Hooks are [backwards-compatible](/docs/hooks-intro.html#no-breaking-changes). This page provides an overview of Hooks for experienced React users. This is a fast-paced overview. If you get confused, look for a yellow box like this:
+الخطافات [متوافقة مع ما سبقها بشكل كامل](/docs/hooks-intro.html#no-breaking-changes). توفر هذه الصفحة نظرة عامة وسريعة حول الخطافات لمستخدمي React ذوي الخبرة. إن ازددت حيرةً في بعض المواضع أثناء قراءة هذه الصفحة، فانتقل إلى الرابط المذكور في الملاحظة "شرح أوسع" مثل:
 
->Detailed Explanation
+>شرح أوسع
 >
->Read the [Motivation](/docs/hooks-intro.html#motivation) to learn why we're introducing Hooks to React.
+>اقرأ القسم [الحافز لإضافة الخطافات](/docs/hooks-intro.html#motivation) لمعرفة سبب إضافة الخطافات إلى React.
 
-**↑↑↑ Each section ends with a yellow box like this.** They link to detailed explanations.
+**↑↑↑ كل قسم يتنهي بصندوق اصفر مثل هذا.** يوجد بداخله رابط يحوي شرحًا موسعًا يمكن الرجوع اليه.
 
-## 📌 State Hook {#state-hook}
+## 📌 خطاف الحالة {#state-hook}
 
-This example renders a counter. When you click the button, it increments the value:
+المثال التالي يصيِّر (render) عدادًا، إذ ستزيد قيمته عند الضغط على زر محدَّد:
 
 ```js{1,4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" التصريح عن متغير حالة جديد ندعوه
   const [count, setCount] = useState(0);
 
   return (
@@ -38,13 +38,13 @@ function Example() {
 }
 ```
 
-Here, `useState` is a *Hook* (we'll talk about what this means in a moment). We call it inside a function component to add some local state to it. React will preserve this state between re-renders. `useState` returns a pair: the *current* state value and a function that lets you update it. You can call this function from an event handler or somewhere else. It's similar to `this.setState` in a class, except it doesn't merge the old and new state together. (We'll show an example comparing `useState` to `this.state` in [Using the State Hook](/docs/hooks-state.html).)
+في هذه الشيفرة, `useState` هو خطاف *Hook* (سنتحدث عن ما الذي يعينه هذا الأمر). نستدعي هذا الخطاف داخل مكون دالة لإضافة بعض الحالات المحلية إليه. ستحافظ React على هذه الحالة بين عمليات إعادة التصيير. يعيد  `useState` زوجًا هو: قيمة الحالة الحالية ودالة تمكنك من تحديثها. يمكنك استدعاء هذه الدالة من معالج حدث أو أي مكان آخر. هي تشبه `this.setState` في أي صنف باستثناء أنَّها لا تدمج الحالة القديمة مع الحالة الجديدة. (سنوضح الفرق بين `useState` و `this.state` عبر مثال عملي في صفحة [استعمال خطاف الحالة](/docs/hooks-state.html).)
 
-The only argument to `useState` is the initial state. In the example above, it is `0` because our counter starts from zero. Note that unlike `this.state`, the state here doesn't have to be an object -- although it can be if you want. The initial state argument is only used during the first render.
+الوسيط الوحيد الذي يمكنك تمريره إلى  `useState` هو الحالة الأولية. في المثال أعلاه، الحالة الأولية هي `0` لأنَّنا افترضنا وجوب بدء عملية العد من الصفر. لاحظ أنَّه بخلاف `this.state`, ليس إجباريًّا أن تكون الحالة هنا كائنًا رغم أنَّ تكون كذلك أن أردت أنت ذلك. وسيط الحالة الأولية يستعمل فقط في عملية التصيير الأولى.
 
-#### Declaring multiple state variables {#declaring-multiple-state-variables}
+#### التصريح عن متغيرات عديدة للحالة {#declaring-multiple-state-variables}
 
-You can use the State Hook more than once in a single component:
+يمكنك استعمال خطاف الحالة (State Hook) أكثر من مرة مكون واحد بالشكل التالي:
 
 ```js
 function ExampleWithManyStates() {
@@ -56,25 +56,25 @@ function ExampleWithManyStates() {
 }
 ```
 
-The [array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring) syntax lets us give different names to the state variables we declared by calling `useState`. These names aren't a part of the `useState` API. Instead, React assumes that if you call `useState` many times, you do it in the same order during every render. We'll come back to why this works and when this is useful later.
+تمكننا صيغة [تفكيك المصفوفة](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring) من إعطاء أسماء مختلفة إلى متغيرات الحالة التي صرَّحنا عنها عبر استدعاء `useState`. هذه الأسماء ليست جزءًا من الواجهة `useState` البرمجية، ولكن React تفترض أنَّك إن استدعيت `useState` عدة مرات، فإنَّك تفعل ذلك بالترتيب نفسه خلال كل عملية تصيير. سنعود لاحقًا لمناقشة كيفية عمل هذا السلوك ومتى يكون استعماله مفيدًا.
 
-#### But what is a Hook? {#but-what-is-a-hook}
+#### ولكن ما هو الخطاف؟ {#but-what-is-a-hook}
 
-Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don't work inside classes -- they let you use React without classes. (We [don't recommend](/docs/hooks-intro.html#gradual-adoption-strategy) rewriting your existing components overnight but you can start using Hooks in the new ones if you'd like.)
+الخطافات هي دوال تمكنك من "تعليق" (hook into) حالة React وميزات دورة الحياة (lifecycle) من مكونات الدالة. لا تعمل الخطافات داخل الأصناف، إذ تمكنك من استعمال React دون الحاجة إلى الأصناف. (لا ننصح [بإعادة كتابة المكونات الحالية الخاصة بك](/docs/hooks-intro.html#gradual-adoption-strategy) بين عشية وضحاها ولكن ننصح ببدء استعمال الخطافات في المكونات الجديدة إن أردت ذلك.)
 
-React provides a few built-in Hooks like `useState`. You can also create your own Hooks to reuse stateful behavior between different components. We'll look at the built-in Hooks first.
+توفر React عددًا محدودًا من الخطافات المُضمَّنة منها `useState`. يمكنك أيضًا إنشاء الخطافات الخاصة بك لإعادة استعمال سلوك ذي حالة بين مكونات مختلفة. سنتطرق أولًا إلى الخطافات المُضمَّنة في React.
 
->Detailed Explanation
+>شرح أوسع
 >
->You can learn more about the State Hook on a dedicated page: [Using the State Hook](/docs/hooks-state.html).
+>يمكنك تعلم المزيد حول خطاف الحالة في توثيق مخصص به هو [استعمال خطاف الحالة](/docs/hooks-state.html).
 
-## ⚡️ Effect Hook {#effect-hook}
+## ⚡️ خطاف التأثير {#effect-hook}
 
-You've likely performed data fetching, subscriptions, or manually changing the DOM from React components before. We call these operations "side effects" (or "effects" for short) because they can affect other components and can't be done during rendering.
+من المرجح أنَّك أجريت بعض عمليات جلب البيانات، أو الاشتراكات، أو تغير DOM يدويًا من مكونات React من قبل. نُطلِق على هذه العمليات بأنَّها عمليات تملك "تأثيرات جانبية" (side effects، أو "تأثيرات" فقط للاختصار) لأنَّها تستطيع أن تؤثر على مكونات أخرى ولا يمكن تنفيذها أثناء عملية التصيير.
 
-The Effect Hook, `useEffect`, adds the ability to perform side effects from a function component. It serves the same purpose as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in React classes, but unified into a single API. (We'll show examples comparing `useEffect` to these methods in [Using the Effect Hook](/docs/hooks-effect.html).)
+خطاف التأثير (Effect Hook) - الذي هو `useEffect` يضيف القدرة على تنفيذ تأثيرات جانبية من مكون دالة. إنه يخدم الغرض ذاته الذي يفعله `componentDidMount`, `componentDidUpdate`, و `componentWillUnmount` في أصناف React، ولكن في واجهة برمجية واحدة. (سنجري عملية موازنة ونوضح الفرق بين useEffect وهذه التوابع مع أمثلة عملية في صفحة [استعمال خطاف التأثير](/docs/hooks-effect.html).)
 
-For example, this component sets the document title after React updates the DOM:
+على سبيل المثال، المكون التالي يضبط عنوان الصفحة بعد تحديث React شجرة DOM:
 
 ```js{1,6-10}
 import React, { useState, useEffect } from 'react';
@@ -99,9 +99,9 @@ function Example() {
 }
 ```
 
-When you call `useEffect`, you're telling React to run your "effect" function after flushing changes to the DOM. Effects are declared inside the component so they have access to its props and state. By default, React runs the effects after every render -- *including* the first render. (We'll talk more about how this compares to class lifecycles in [Using the Effect Hook](/docs/hooks-effect.html).)
+عند استدعاء `useEffect`, نخبر بذلك React بتنفيذ الدالة "`effect`" الخاصة بك بعد تطبيق التغييرات على الشجرة DOM. يُصرَّح عن التأثيرات داخل المكون، لذا يمكنها الوصول إلى خاصياته (props) وحالته (state). افتراضيًّا، تنفذ React التأثيرات بعد كل عملية تصيير بما فيها عملية التصيير الأولى. (سنتحدث بالتفصيل عن هذا السلوك مع موازنته مع سلوك دورات حياة صنف في الصفحة [استعمال خطاف التأثير](/docs/hooks-effect.html).)
 
-Effects may also optionally specify how to "clean up" after them by returning a function. For example, this component uses an effect to subscribe to a friend's online status, and cleans up by unsubscribing from it:
+قد تحدِّد التأثيرات اختياريًّا كيفية إجراء عملية "تنظيف" بعد تنفيذها عبر إعادة دالة. على سبيل المثال، يستعمل المكون التالي تأثيرًا للاشتراك بحالة اتصال صديق (friend’s online status) ثم يجري عملية تنظيف عبر إلغاء الاشتراك منها:
 
 ```js{10-16}
 import React, { useState, useEffect } from 'react';
@@ -128,9 +128,9 @@ function FriendStatus(props) {
 }
 ```
 
-In this example, React would unsubscribe from our `ChatAPI` when the component unmounts, as well as before re-running the effect due to a subsequent render. (If you want, there's a way to [tell React to skip re-subscribing](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) if the `props.friend.id` we passed to `ChatAPI` didn’t change.)
+في هذا المثال، ستلغي React الاشتراك من `ChatAPI` عند فصل (unmount) المكون وقبل إعادة تنفيذ التأثير نتيجة عملية التصيير اللاحقة. (إن أردت، هنالك طريقة لإخبار React بتخطي  [عملية إعادة الاشتراك](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) إن لم يتغير `props.friend.id` الذي مررناه إلى `ChatAPI`.)
 
-Just like with `useState`, you can use more than a single effect in a component:
+بشكل مشابه للخطاف `useState`، تستطيع استعمال أكثر من تأثير في مكون:
 
 ```js{3,8}
 function FriendStatusWithCounter(props) {
@@ -153,32 +153,32 @@ function FriendStatusWithCounter(props) {
   // ...
 ```
 
-Hooks let you organize side effects in a component by what pieces are related (such as adding and removing a subscription), rather than forcing a split based on lifecycle methods.
+تسمح لك الخطافات بتنظيم التأثيرات الجانبية في مكون بناءً على ترابط الأجزاء مع بعضها (مثل إضافة وإزالة اشتراك) عوض التقسيم الإجباري المستند إلى توابع دورة الحياة.
 
->Detailed Explanation
+>شرح أوسع
 >
->You can learn more about `useEffect` on a dedicated page: [Using the Effect Hook](/docs/hooks-effect.html).
+>يمكن تعلم المزيد حول الخطاف `useEffect` في صفحة مخصصة به هي [استعمال خطاف التأثير](/docs/hooks-effect.html).
 
-## ✌️ Rules of Hooks {#rules-of-hooks}
+## ✌️ قواعد تخص الخطافات {#rules-of-hooks}
 
-Hooks are JavaScript functions, but they impose two additional rules:
+الخطافات هي دوال في JavaScript، ولكنها تفرض تطبيق قاعدتين إضافيتين هما:
 
-* Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
-* Only call Hooks **from React function components**. Don’t call Hooks from regular JavaScript functions. (There is just one other valid place to call Hooks -- your own custom Hooks. We'll learn about them in a moment.)
+* تُستدعَى الخطافات فقط في **المستوى الأعلى (top level)**. بناءً على ذلك، لا تستدعي الخطافات داخل حلقات تكرارية، أو شروط، أو دوال متشعبة.
+* تُستدعَى الخطافات فقط **من مكونات دالة React (أي React function components)**. لا تستدعي الخطافات من دوال JavaScript العادية. (هنالك مكان آخر صالح يمكن استدعاء الخطافات منه يحدد عند بناء خطافات مخصصة خاصة بك. سنتحدث عن هذا النوع من الخطافات بعد قليل.)
 
-We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically. We understand these rules might seem limiting or confusing at first, but they are essential to making Hooks work well.
+نوفر [إضافةً لاكتشاف أخطاء الصياغة](https://www.npmjs.com/package/eslint-plugin-react-hooks) يمكنها أن تطبِّق هاتين القاعدتين تلقائيًّا. نتفهَّم أنَّ هاتين القاعدتين قد تبدوان لك شكلًا من أشكال التقيد لسلوك الخطافات أو قد تسببان لك القلق عند بدء استعمال الخطافات، ولكن كن على يقين أنَّهما ضروريتان لعمل الخطافات بشكل صحيح.
 
->Detailed Explanation
+>شرح أوسع
 >
->You can learn more about these rules on a dedicated page: [Rules of Hooks](/docs/hooks-rules.html).
+>يمكن قراءة المزيد حول هاتين القاعدتين في صفحة [قواعد استعمال الخطافات](/docs/hooks-rules.html).
 
-## 💡 Building Your Own Hooks {#building-your-own-hooks}
+## 💡 إنشاء خطافات مخصصة خاصة بك {#building-your-own-hooks}
 
-Sometimes, we want to reuse some stateful logic between components. Traditionally, there were two popular solutions to this problem: [higher-order components](/docs/higher-order-components.html) and [render props](/docs/render-props.html). Custom Hooks let you do this, but without adding more components to your tree.
+بعض الأحيان، نحتاج إلى إعادة استعمال بعض الشيفرات ذات الحالة (stateful logic) بين المكونات. تقليديًّا، يوجد حلان لهذه المشكلة هما: [المكونات ذات الترتيب الأعلى](/docs/higher-order-components.html) و [خاصيات التصيير](/docs/render-props.html). تمكنك الخطافات المخصصة من إنجاز هذه المهمة، ولكن دون إضافة المزيد من المكونات إلى شجرتك.
 
-Earlier on this page, we introduced a `FriendStatus` component that calls the `useState` and `useEffect` Hooks to subscribe to a friend's online status. Let's say we also want to reuse this subscription logic in another component.
+في قسم سابق من هذه الصفحة، عرَّفنا المكون `FriendStatus` الذي يستدعي الخطاف `useState` والخطاف `useEffect` للاشتراك في حالة اتصال صديق. افترض أنَّنا نريد أيضًا إعادة استعمال شيفرة هذا الاشتراك في مكون آخر فماذا نفعل؟
 
-First, we'll extract this logic into a custom Hook called `useFriendStatus`:
+أولًا، سنستخرج هذا الشيفرة إلى خطاف مخصص يدعى `useFriendStatus` بالشكل التالي:
 
 ```js{3}
 import React, { useState, useEffect } from 'react';
@@ -201,10 +201,9 @@ function useFriendStatus(friendID) {
 }
 ```
 
-It takes `friendID` as an argument, and returns whether our friend is online.
+يأخذ الوسيط `friendID`، ويعيد حالة الصديق أي إن كان متصلًا أم لا.
 
-Now we can use it from both components:
-
+الآن، يمكننا استعماله من أي مكون نريد:
 
 ```js{2}
 function FriendStatus(props) {
@@ -229,19 +228,19 @@ function FriendListItem(props) {
 }
 ```
 
-The state of these components is completely independent. Hooks are a way to reuse *stateful logic*, not state itself. In fact, each *call* to a Hook has a completely isolated state -- so you can even use the same custom Hook twice in one component.
+حالة هذه المكونات هي مستقلة كليًّا. الخطافات هي وسيلة لإعادة استعمال الشيفرة ذات الحالة وليس الحالة نفسها. في الحقيقة، كل استدعاء إلى خطاف يملك حالة منعزلة تمامًا، لذا يمكنك حتى استعمال نفس الخطاف المخصص مرتين في مكون واحد.
 
-Custom Hooks are more of a convention than a feature. If a function's name starts with "`use`" and it calls other Hooks, we say it is a custom Hook. The `useSomething` naming convention is how our linter plugin is able to find bugs in the code using Hooks.
+الخطافات المخصصة هي أقرب للعرف من كونها ميزة. إن بدأ اسم دالة بالكلمة "`use`" واستدعت خطافات أخرى، نقول أنَّها "خطاف مخصص". التسمية `useSomething` المتعارف عليها هي التي تمكن إضافة تصحيح أخطاء الصياغة (linter plugin) من تنقيح الشيفرة التي تستعمل الخطافات.
 
-You can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more we haven't considered. We are excited to see what custom Hooks the React community will come up with.
+يمكنك كتابة خطافات مخصصة تغطي مجالًا واسعًا من الحالات مثل معالجة النماذج، والتحريك، والاشتراكات التصريحية (declarative subscriptions)، والمؤقتات، وغيرها الكثير. نتطلع بشوق لرؤية الخطافات المخصصة التي سيبتكرها المجتمع.
 
->Detailed Explanation
+>شرح أوسع
 >
->You can learn more about custom Hooks on a dedicated page: [Building Your Own Hooks](/docs/hooks-custom.html).
+>يمكنك تعلم المزيد حول الخطافات المخصصة بالتفصيل في صفحة [بناء خطافات خاصة بك](/docs/hooks-custom.html).
 
-## 🔌 Other Hooks {#other-hooks}
+## 🔌 خطافات أخرى {#other-hooks}
 
-There are a few less commonly used built-in Hooks that you might find useful. For example, [`useContext`](/docs/hooks-reference.html#usecontext) lets you subscribe to React context without introducing nesting:
+هنالك بعض الخطافات المضمنة غير شائعة الاستخدام يمكن أن تجد فيها فائدةً ما. على سبيل المثال، [`useContext`](/docs/hooks-reference.html#usecontext) يسمح لك بالاشتراك بسياق React دون اللجوء إلى التشعب:
 
 ```js{2,3}
 function Example() {
@@ -251,7 +250,7 @@ function Example() {
 }
 ```
 
-And [`useReducer`](/docs/hooks-reference.html#usereducer) lets you manage local state of complex components with a reducer:
+والخطاف [`useReducer`](/docs/hooks-reference.html#usereducer) يمكنك من إدارة الحالة المحلية للمكونات المعقدة مع مخفِّض (reducer):
 
 ```js{2}
 function Todos() {
@@ -259,14 +258,14 @@ function Todos() {
   // ...
 ```
 
->Detailed Explanation
+>شرح أوسع
 >
->You can learn more about all the built-in Hooks on a dedicated page: [Hooks API Reference](/docs/hooks-reference.html).
+>يمكنك الاطلاع على جميع الخطافات المضمَّنة في التوثيق [مرجع إلى الواجهة البرمجية للخطافات](/docs/hooks-reference.html).
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-Phew, that was fast! If some things didn't quite make sense or you'd like to learn more in detail, you can read the next pages, starting with the [State Hook](/docs/hooks-state.html) documentation.
+كان هذا الشرح مختصرًا ومفيدًا، أليس كذلك؟! إن لم تعتقد ذلك أو كنت تريد تعلم المزيد وبالتفصيل، يمكنك الانتقال إلى الصفحات التالية بدءًا من توثيق  [استعمال خطاف الحالة](/docs/hooks-state.html).
 
-You can also check out the [Hooks API reference](/docs/hooks-reference.html) and the [Hooks FAQ](/docs/hooks-faq.html).
+يمكنك أيضًا في أي وقت الاطلاع على توثيق [مرجع إلى الواجهة البرمجية للخطافات](/docs/hooks-reference.html) وصفحة [الأسئلة الشائعة حول الخطافات](/docs/hooks-faq.html).
 
-Finally, don't miss the [introduction page](/docs/hooks-intro.html) which explains *why* we're adding Hooks and how we'll start using them side by side with classes -- without rewriting our apps.
+أخيرًا، إن لم تكن قد اطلعت على صفحة [مدخل إلى الخطافات](/docs/hooks-intro.html) فلا تدع فرصة قراءتها تفوتك، إذ تشرح تلك الصفحة سبب إضافة الخطافات وكيفية البدء باستعمالها جنبًا إلى جنب مع الأصناف دون إعادة كتابة تطبيقك.

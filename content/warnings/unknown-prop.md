@@ -3,23 +3,23 @@ title: Unknown Prop Warning
 layout: single
 permalink: warnings/unknown-prop.html
 ---
-The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
+سَيُطلق تحذير خاصية-غير-معروفة "unknown-prop" إن قُمت بمحاولة تصيير عنصر DOM مع خاصية لم يُتَعرَّف عليها من قِبَل React كخاصية DOM قانونية. عليك التّأكد من أن عناصر DOM خاصتك ليس لديها خواص طُفيليّة.
 
-There are a couple of likely reasons this warning could be appearing:
+هُناك بضعة أسباب شائعة أُخرى قد تُظهر التحذير:
 
-1. Are you using `{...this.props}` or `cloneElement(element, this.props)`? Your component is transferring its own props directly to a child element (eg. [transferring props](/docs/transferring-props.html)). When transferring props to a child component, you should ensure that you are not accidentally forwarding props that were intended to be interpreted by the parent component.
+1. هل تستخدم `{...this.props}` أو `cloneElement(element, this.props)`؟ يَنقل مُكوّنك خواصُه مُباشرةً إلى المُكوّن الإبن ([نقل الخواص "transferring props"](/docs/transferring-props.html)). عند نقل الخواص إلى مُكوّن إبن ينبغي عليك التأكد أنّه لم يتم نقل خواص من المُفترض أن تُفَسّر من قِبَل المُكوّن الأب إلى مكوّن إبن
 
-2. You are using a non-standard DOM attribute on a native DOM node, perhaps to represent custom data. If you are trying to attach custom data to a standard DOM element, consider using a custom data attribute as described [on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
+2. تستخدم خواص DOM غير قياسية على عُقدة DOM أصلية ربما لعرض بيانات مُخصصة. إن كُنت تُحاول ربط بيانات مُخصصة بِعُنصر DOM تقليدي فعليك باستخدام خاصية بيانات مُخصصة "custom data attribute" كَما شُرِحَت [على MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
 
-3. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. However, React currently strips all unknown attributes, so specifying them in your React app will not cause them to be rendered.
+3. لا تتعرّف React على الخاصية التي حددتها. سيتم غالبًا إصلاح ذلك في نُسخة مُستقبلية من React. على أية حال ، تُزيل React حاليًا جميع الخواص الغير معروفة ، مما يعني أن تحديدهم في تطبيق React خاصيك لن يؤدي إلى تصييرهم.
 
-4. You are using a React component without an upper case. React interprets it as a DOM tag because [React JSX transform uses the upper vs. lower case convention to distinguish between user-defined components and DOM tags](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+4. تستخدم مُكوّن React بدون حروف كبيرة "upper case". تُفسّر React المُكون إلى وَسم "DOM tag" لأنّ [تحويل React JSX يستخدم ميثاق الحروف الكبيرة مُقابل الحروق الكبيرة للتميز بين المُكوّنات التي يُعرّفها المُستخدم وَوُسوم DOM](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
 
 ---
 
-To fix this, composite components should "consume" any prop that is intended for the composite component and not intended for the child component. Example:
+لإصلاح ذلك ، ينبغي على المُكوّنات المُرَكِبة أن تستنفذ أي خاصيّة مقصودة لها وليس للمُكوّ الإبن. كمثال:
 
-**Bad:** Unexpected `layout` prop is forwarded to the `div` tag.
+**سيّئ:** تمرير خاصية `layout` غير المُتوفعة إلى وَسم `div`.
 
 ```js
 function MyDiv(props) {
@@ -33,7 +33,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** The spread operator can be used to pull variables off props, and put the remaining props into a variable.
+**جيّد:** يُمكن استخدام عامل الانتشار "speard operator" لأنتزاع خواص وتعيين االخواص المُتبقية إلى مُتغيّر.
 
 ```js
 function MyDiv(props) {
@@ -46,7 +46,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** You can also assign the props to a new object and delete the keys that you're using from the new object. Be sure not to delete the props from the original `this.props` object, since that object should be considered immutable.
+**جيّد:** يُمكنك أيضًا تعيين الخواص إلى كائن جديد ومَحو المفاتيح التي تستخدِمُها من الكائن الجديد. تأكّد من عدم محو الخواص من الكائن `this.props` الأصلي لأن ذلك الكائن من المفروض ألّا يتغير.
 
 ```js
 function MyDiv(props) {

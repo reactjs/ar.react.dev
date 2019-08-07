@@ -70,6 +70,7 @@ prev: hooks-reference.html
 
 لاحظ أن **لتمكين الخطافات ، يجب أن تكون جميع حزم  16.8.0 React    أو أعلى**. لن تعمل الخطافات إذا نسيت التحديث ، على سبيل المثال ،  React DOM.
 
+
 ستدعم ReactNative الخطافات دعمًا كاملًا في الإصدار المستقر القادم.
 
 ### هل احتاج إلى إعادة كتابة جميع مكونات الأصناف الخاصة بي؟ {#do-i-need-to-rewrite-all-my-class-components}
@@ -208,6 +209,7 @@ it('can render and update a counter', () => {
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: يحل [الخطاف useEffect](/docs/hooks-reference.html#useeffect) مكان هذه التوابع بشتى أشكال دمجها مع بعضها (بما فيها [الحالات](#can-i-skip-an-effect-on-updates) [النادرة](#can-i-run-an-effect-only-on-updates)).
 
 * `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
+
 
 ### كيف يمكنني أن أحصل على معلمات بواسطة الخطافات؟ {#how-can-i-do-data-fetching-with-hooks}
 
@@ -736,7 +738,6 @@ const Button = React.memo((props) => {
 
 لا يوازن `React.memo` الحالة لعدم وجود كائن حالة وحيد لموازنته. مع ذلك، يمكنك جعل الأبناء في حالة نقية (pure) أيضًا أو حتى تحسين ابنٍ واحدٍ مع `useMemo`.
 
-
 ### كيف يمكن استظهار (memoize) العمليات الحسابية؟ {#how-to-memoize-calculations}
 
 يمكِّنك الخطاف [`useMemo`](/docs/hooks-reference.html#usememo) من تخزين الحسابات بين عدة عمليات تصيير عبر "تذكر" القيمة التي جرى حسابها مسبقًا:
@@ -814,13 +815,10 @@ function Image(props) {
 
   // ✅ ٍمرةً واحدةً بِكَسَل IntersectionObserver يُنشَأ
   function getObserver() {
-    let observer = ref.current;
-    if (observer !== null) {
-      return observer;
+    if (ref.current === null) {
+      ref.current = new IntersectionObserver(onIntersect);
     }
-    let newObserver = new IntersectionObserver(onIntersect);
-    ref.current = newObserver;
-    return newObserver;
+    return ref.current;
   }
 
   // عندما تحتاج إليه getObserver() استدعي
@@ -954,7 +952,7 @@ function useEventCallback(fn, dependencies) {
     throw new Error('Cannot call an event handler while rendering.');
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     ref.current = fn;
   }, [fn, ...dependencies]);
 

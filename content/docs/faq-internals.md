@@ -1,23 +1,23 @@
 ---
 id: faq-internals
-title: Virtual DOM and Internals
+title: DOM الافتراضي والكائنات الداخلية
 permalink: docs/faq-internals.html
 layout: docs
 category: FAQ
 ---
 
-### What is the Virtual DOM? {#what-is-the-virtual-dom}
+### ما هو DOM الافتراضي (Virtual DOM)؟ {#what-is-the-virtual-dom}
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or "virtual", representation of a UI is kept in memory and synced with the "real" DOM by a library such as ReactDOM. This process is called [reconciliation](/docs/reconciliation.html).
+DOM الافتراضي (أو اختصارًا VDOM) هو مفهوم برمجي نحتفظ فيه بالتمثيل المثالي أو الافتراضي لواجهة المستخدم ضمن الذاكرة مع مزامنته مع DOM الحقيقي عن طريق مكتبة مثل React DOM. تُدعى هذه العمليّة [بالمطابقة (reconciliation)](/docs/reconciliation.html).
 
-This approach enables the declarative API of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state. This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+تُمكِّن هذه الطريقة واجهة برمجة التطبيق التصريحية في React، حيث تُخبِر React الحالة التي تريد أن تكون بها واجهة المستخدم لديك، فتحرص React على مطابقة DOM مع تلك الحالة. يُجرِّد هذا التعامل مع الخاصيّات، ومعالجة الأحداث، وتحديث DOM اليدوي الذي يجب عليك استخدامه لبناء تطبيقك.
 
-Since "virtual DOM" is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term "virtual DOM" is usually associated with [React elements](/docs/rendering-elements.html) since they are the objects representing the user interface. React, however, also uses internal objects called "fibers" to hold additional information about the component tree. They may also be considered a part of "virtual DOM" implementation in React.
+لمّا كانت كلمة "DOM الافتراضي" عبارة عن نمط أكثر من كونها تقنيّة محدّدة، فأحيانًا يقول بعض الناس هذه الكلمة ليقصدوا بها أشياء مختلفة. يرتبط المصطلح "DOM الافتراضي" في عالم React [بعناصر React](/docs/rendering-elements.html) بما أنّها عبارة عن كائنات تُمثِّل واجهة المستخدم. على أيّة حالة تستخدم React أيضًا كائنات الداخليّة تُدعى بـ"الألياف" (fibers) للاحتفاظ بمعلومات إضافيّة حول شجرة المكونات. قد تُعتبر هذه الألياف جزءًا من تنفيذ "DOM الافتراضي" في React.
 
-### Is the Shadow DOM the same as the Virtual DOM? {#is-the-shadow-dom-the-same-as-the-virtual-dom}
+### هل DOM الخيالي (Shadow DOM) هو نفسه DOM الافتراضي (Virtual DOM)؟ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
 
-No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
+لا، إنّهما مختلفان. حيث إنّ DOM الخيالي هو تقنية في المتصفّح مُصمَّمة بشكل أساسي لتحديد نطاق المتغيّرات وCSS في مكوّنات الويب. أمّا DOM الافتراضي هو مفهوم مُنفَّذ عن طريق مكتبات في JavaScript بناءً على واجهات برمجة تطبيق المتصفّح.
 
-### What is "React Fiber"? {#what-is-react-fiber}
+### ما هو "React Fiber"؟ {#what-is-react-fiber}
 
-Fiber is the new reconciliation engine in React 16. Its main goal is to enable incremental rendering of the virtual DOM. [Read more](https://github.com/acdlite/react-fiber-architecture).
+Fiber هو مُحرِّك المطابقة الجديد في React 16. هدفه الأساسي هو تمكين التصيير التراكمي في DOM الافتراضي. [اقرأ المزيد من هنا](https://github.com/acdlite/react-fiber-architecture).

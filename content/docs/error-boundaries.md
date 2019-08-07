@@ -1,28 +1,29 @@
 ---
 id: error-boundaries
-title: Error Boundaries
+title: حدود الأخطاء
 permalink: docs/error-boundaries.html
 ---
 
-In the past, JavaScript errors inside components used to corrupt React’s internal state and cause it to [emit](https://github.com/facebook/react/issues/4026) [cryptic](https://github.com/facebook/react/issues/6895) [errors](https://github.com/facebook/react/issues/8579) on next renders. These errors were always caused by an earlier error in the application code, but React did not provide a way to handle them gracefully in components, and could not recover from them.
+في الماضي كانت أخطاء JavaScript بداخل المكوّنات تؤدّي إلى تخريب حالة React الداخلية [وإصدار](https://github.com/facebook/react/issues/4026) [أخطاء](https://github.com/facebook/react/issues/8579) [مخفية](https://github.com/facebook/react/issues/6895) في التصييرات التالية. كانت هذه الأخطاء مُسبَّبة دومًا بخطأ باكر في شيفرة التطبيق، ولكن لم تكن تعطينا React طريقة للتعامل معها في المكوّنات، ولم يكن بإمكانها استعادتها أيضًا.
 
 
-## Introducing Error Boundaries {#introducing-error-boundaries}
 
-A JavaScript error in a part of the UI shouldn’t break the whole app. To solve this problem for React users, React 16 introduces a new concept of an “error boundary”.
+## مقدمة إلى حدود الأخطاء {#introducing-error-boundaries}
 
-Error boundaries are React components that **catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI** instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+لا يجب أن يؤدّي خطأ JavaScript الحاصل في جزء من واجهة المستخدم إلى تعطيل كامل التطبيق. ولحل هذه المشكلة لمستخدمي React، قدّمت React في الإصدار 16 مفهومًا جديدًا وهو حد الخطأ (error boundary).
 
-> Note
+حدود الأخطاء هي مكوّنات في React والتي **تلتقط أخطاء JavaScript في أي مكان من شجرة المكوّنات الأبناء لها، وتُسجِّل هذه الأخطاء، وتعرض واجهة مستخدم بديلة** وذلك بدلًا من عرض شجرة المكوّنات التي انهارت. تلتقط حدود الأخطاء هذه الأخطاء خلال التصيير، وفي توابع دورة حياة المكوّن، وفي الدوال البانية لكامل الشجرة الموجودة تحتها.
+
+> ملاحظة
 >
-> Error boundaries do **not** catch errors for:
+>  **لا** تلتقط حدود الأخطاء أخطاءً من أجل:
 >
-> * Event handlers ([learn more](#how-about-event-handlers))
-> * Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks)
-> * Server side rendering
-> * Errors thrown in the error boundary itself (rather than its children)
+> * معالجات الأحداث ([تعلّم المزيد](#how-about-event-handlers))
+> * الشيفرة غير المتزامنة (مثل ردود نداء `setTimeout` أو `requestAnimationFrame`)
+> * التصيير من جانب الخادم.
+> * الأخطاء المرميّة من قبل حد الخطأ نفسه (بدلًا من أخطاء المكوّنات الأبناء له).
 
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) or [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+تُصبِح مكوّنات الأصناف حدودًا للأخطاء إن عرّفت تابعًا جديدًا لدورة الحياة يُدعى  [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) أو [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). إستعمل `static getDerivedStateFromError()` لتعرض واجة مستخدم بها أخطاء. وإستعمل `componentDidCatch()` لتسجيل معلومات عن الخطأ.
 
 ```js{7-10,12-15,18-21}
 class ErrorBoundary extends React.Component {
@@ -32,19 +33,19 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // عرض واجهة مستخدم بديلة
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
+    // تستطيع تسجيل الخطأ إلى خدمة تبليغ عن الأخطاء
     logErrorToMyService(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      // تستطيع تصيير أي واجهة مستخدم بديلة مخصصة
+      return <h1>حدث خطأ ما.</h1>;
     }
 
     return this.props.children; 
@@ -52,7 +53,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-Then you can use it as a regular component:
+بعدها تستطيع استخدامها كمكوّنات اعتياديّة:
 
 ```js
 <ErrorBoundary>
@@ -60,53 +61,53 @@ Then you can use it as a regular component:
 </ErrorBoundary>
 ```
 
-Error boundaries work like a JavaScript `catch {}` block, but for components. Only class components can be error boundaries. In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application.
+تعمل حدود الأخطاء مثل الكتلة `catch {}`، ولكن لأجل المكوّنات.. تستطيع فقط مكوّنات الأصناف أن تُصبِح حدودًا للأخطاء. في الممارسة العمليّة سترغب في أغلب الأوقات في التصريح عن مكوّن لحدود الأخطاء مرّة واحدة ومن ثم استخدامه خلال تطبيقك.
 
-Note that **error boundaries only catch errors in the components below them in the tree**. An error boundary can’t catch an error within itself. If an error boundary fails trying to render the error message, the error will propagate to the closest error boundary above it. This, too, is similar to how catch {} block works in JavaScript.
+لاحظ أنّ **حدود الأخطاء تلتقط فقط الأخطاء في المكوّنات التي تقع تحتها في شجرة المكوّنات**، فلا يستطيع التقاط خطأ موجود ضمنه.إن فشل حد الأخطاء في محاولة تصيير رسالة الخطأ فستنتشر رسالة الخطأ إلى أقرب حد خطأ موجود في المستويات الأعلى منه. وهذا يُشبِه كيفيّة عمل الكتلة `catch {}` في JavaScript.
 
-## Live Demo {#live-demo}
+## تجربة حية {#live-demo}
 
-Check out [this example of declaring and using an error boundary](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) with [React 16](/blog/2017/09/26/react-v16.0.html).
-
-
-## Where to Place Error Boundaries {#where-to-place-error-boundaries}
-
-The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
+تحقق من [هذا المثال عن تصريح واستخدام حدود الأخطاء](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) في [React 16](/blog/2017/09/26/react-v16.0.html).
 
 
-## New Behavior for Uncaught Errors {#new-behavior-for-uncaught-errors}
+## أين نضع حدود الأخطاء {#where-to-place-error-boundaries}
 
-This change has an important implication. **As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.**
-
-We debated this decision, but in our experience it is worse to leave corrupted UI in place than to completely remove it. For example, in a product like Messenger leaving the broken UI visible could lead to somebody sending a message to the wrong person. Similarly, it is worse for a payments app to display a wrong amount than to render nothing.
-
-This change means that as you migrate to React 16, you will likely uncover existing crashes in your application that have been unnoticed before. Adding error boundaries lets you provide better user experience when something goes wrong.
-
-For example, Facebook Messenger wraps content of the sidebar, the info panel, the conversation log, and the message input into separate error boundaries. If some component in one of these UI areas crashes, the rest of them remain interactive.
-
-We also encourage you to use JS error reporting services (or build your own) so that you can learn about unhandled exceptions as they happen in production, and fix them.
+تستطيع وضع حدود الأخطاء أينما شئت. فقد تضعها في المكوّنات ذات المستوى الأعلى لعرض رسالة "حدث خطأ ما" للمستخدمين، مثلما تتعامل أُطُر عمل من طرف الخادم مع الانهيار. بإمكانك أيضًا تغليف الأدوات الذكية (widgets) ضمن حدود أخطاء لكي لا تؤدي لانهيار كامل التطبيق معها.
 
 
-## Component Stack Traces {#component-stack-traces}
+## سلوك جديد للأخطاء غير الملتقطة {#new-behavior-for-uncaught-errors}
 
-React 16 prints all errors that occurred during rendering to the console in development, even if the application accidentally swallows them. In addition to the error message and the JavaScript stack, it also provides component stack traces. Now you can see where exactly in the component tree the failure has happened:
+يملك هذا التغيير تأثيرًا هامًّا. **فبدءًا من إصدار React 16 أصبحت الأخطاء التي لا تلتقطها حدود الأخطاء ينتج عنها فصل كامل شجرة المكوّنات..**
+
+ترددنا في هذا القرار، ولكن من خلال تجربتنا من الأسوأ ترك واجهة مستخدم معطوبة في مكانها بدلًا من إزالتها بشكل كامل. على سبيل المثال في مُنتَج مثل Messenger قد يؤدّي ترك واجهة المستخدم المعطوبة مرئيّة إلى إرسال رسالة للشخص الخطأ. وبشكلٍ مماثل من الأسوأ أيضًا بالنسبة لتطبيق للدفع أن يعرض مبلغًا خاطئًا بدلًا من عدم عرض شيء.
+
+يعني هذا التغيير أنّك عندما تنتقل إلى إصدار React 16 فعلى الأغلب أنك ستقلل من الانهيارات الموجودة في تطبيقك والتي لم تكن تلاحظها من قبل. يُتيح لك إضافة حدود الأخطاء إعطاء تجربة مستخدم أفضل عند حدوث خطأ ما.
+
+على سبيل المثال يُغلِّف تطبيق Facebook Messenger محتوى الشريط الجانبي، ونافذة المعلومات، وسجل المحادثات، وحقل إدخال الرسائل ضمن حدود أخطاء منفصلة. فإن انهار مكوّن ما في إحدى هذه المناطق من واجهة المستخدم، فستبقى الأخرى غير متفاعلة.
+
+نشجعك أيضًا على استخدام خدمة التبليغ عن أخطاء JavaScript (أو بناء خدمة خاصة بك) بحيث تعرف عن الاستثناءات غير المُتعامل معها والتي تحصل أثناء مرحلة الإنتاج وتتمكن من إصلاحها.
+
+
+## تتبع مكدس المكون {#component-stack-traces}
+
+تطبع React 16 جميع الأخطاء الحاصلة خلال التصيير إلى نافذة الكونسول في وضعية التطوير، حتى ولو كان التطبيق يتجاهلها. وبالإضافة إلى رسائل الأخطاء ومكدس JavaScript فهي تُزوّدنا بتتبعات لمكدس المكوّن. بإمكانك الآن أن ترى بالضبط أين حصل الفشل في شجرة المكوّنات:
 
 <img src="../images/docs/error-boundaries-stack-trace.png" style="max-width:100%" alt="Error caught by Error Boundary component">
 
-You can also see the filenames and line numbers in the component stack trace. This works by default in [Create React App](https://github.com/facebookincubator/create-react-app) projects:
+تستطيع أيضًا أن ترى أسماء الملفات وأرقام الأسطر في تتبع مكدس المكوّن، يعمل هذا افتراضيًّا في المشاريع المبنية باستخدام [Create React App](https://github.com/facebookincubator/create-react-app):
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="Error caught by Error Boundary component with line numbers">
 
-If you don’t use Create React App, you can add [this plugin](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source) manually to your Babel configuration. Note that it’s intended only for development and **must be disabled in production**.
+وإن لم تكن تستخدم  Create React App, فبإمكانك إضافة [هذه الإضافة](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source) يدويًّا إلى إعدادات Babel لديك.  لاحظ أنّ الغرض منها هو وضعية التطوير فقط و**يجب تعطيلها في وضعية الإنتاج**..
 
-> Note
+> ملاحظة
 >
-> Component names displayed in the stack traces depend on the [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name) property. If you support older browsers and devices which may not yet provide this natively (e.g. IE 11), consider including a `Function.name` polyfill in your bundled application, such as [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). Alternatively, you may explicitly set the [`displayName`](/docs/react-component.html#displayname) property on all your components.
+> تعتمد أسماء المكوّنات المعروضة في تتبع لامكدس على الخاصيّة [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name). إن كنت تريد دعم متصفحات وأجهزة أقدم والتي قد لا تزوّدنا بها بشكل ذاتي (مثل IE 11), فضمّن الخاصيّة `Function.name` ضمن تطبيقك باستخدام, [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). وبشكل بديل تستطيع تعيين الخاصيّة  [`displayName`](/docs/react-component.html#displayname) في جميع مكوناتك.
 
 
-## How About try/catch? {#how-about-trycatch}
+## ماذا عن Try/Catch؟ {#how-about-trycatch}
 
-`try` / `catch` is great but it only works for imperative code:
+`try` / `catch` هي طريقة رائعة ولكنّها تعمل مع الشيفرة من النمط الإلزامي فقط:
 
 ```js
 try {
@@ -116,21 +117,21 @@ try {
 }
 ```
 
-However, React components are declarative and specify *what* should be rendered:
+بينما مكوّنات React تصريحيّة وتُحدِّد *ما* ينبغي تصييره:
 
 ```js
 <Button />
 ```
 
-Error boundaries preserve the declarative nature of React, and behave as you would expect. For example, even if an error occurs in a `componentDidUpdate` method caused by a `setState` somewhere deep in the tree, it will still correctly propagate to the closest error boundary.
+تحافظ حدود الأخطاء على الطبيعة التصريحية في React وتعمل كما تتوقع. على سبيل المثال إن حدث خطأ في التابع `componentDidUpdate`  ناتج عن التابع `setState` في مكان عميق من شجرة المكوّنات، فسيبقى هذا الخطأ ينتشر إلى أقرب حد للأخطاء.
 
-## How About Event Handlers? {#how-about-event-handlers}
+## ماذا عن معالجات الأحداث Event Handlers؟ {#how-about-event-handlers}
 
-Error boundaries **do not** catch errors inside event handlers.
+**لا** تلتقط حدود الأخطاء الأخطاء الحاصلة بداخل مُعالِج الأحداث.
 
-React doesn't need error boundaries to recover from errors in event handlers. Unlike the render method and lifecycle methods, the event handlers don't happen during rendering. So if they throw, React still knows what to display on the screen.
+لا يحتاج React إلى حد للأخطاء للتعافي من الأخطاء في معالجات الأحداث. فعلى عكس تابع التصيير وتوابع دورة حياة المكوّن، لا تحدث مُعالجات الأحداث خلال التصيير. لذا إن رمت خطأ، فستبقى React تعرف ما الذي ينبغي عرضه على الشاشة.
 
-If you need to catch an error inside event handler, use the regular JavaScript `try` / `catch` statement:
+إن احتجت لالتقاط الأخطاء بداخل مُعالِج للأحداث، فاستخدم الجملة الاعتيادية في JavaScript وهي `try` / `catch`:
 
 ```js{9-13,17-20}
 class MyComponent extends React.Component {
@@ -142,7 +143,7 @@ class MyComponent extends React.Component {
 
   handleClick() {
     try {
-      // Do something that could throw
+       // فعل أي شيء قد يرمي خطأ
     } catch (error) {
       this.setState({ error });
     }
@@ -150,17 +151,17 @@ class MyComponent extends React.Component {
 
   render() {
     if (this.state.error) {
-      return <h1>Caught an error.</h1>
+      return <h1>التقط خطأ.</h1>
     }
-    return <div onClick={this.handleClick}>Click Me</div>
+    return <div onClick={this.handleClick}>انقر هنا</div>
   }
 }
 ```
 
-Note that the above example is demonstrating regular JavaScript behavior and doesn't use error boundaries.
+لاحظ أنّ المثال السابق يوضّح سلوك JavaScript الاعتيادي ولا يستخدم حدود الأخطاء.
 
-## Naming Changes from React 15 {#naming-changes-from-react-15}
+## تغيير الأسماء في إصدار React 15 {#naming-changes-from-react-15}
 
-React 15 included a very limited support for error boundaries under a different method name: `unstable_handleError`. This method no longer works, and you will need to change it to `componentDidCatch` in your code starting from the first 16 beta release.
+تتضمّن React 15 دعمًا محدودًا جدًّا لحدود الأخطاء وذلك تحت اسم تابع مختلف هو: `unstable_handleError`. لا تعمل هذه الطريقة حاليًّا وستحتاج لتغييره إلى `componentDidCatch` في شيفرتك بدءًا من أول إصدار 16 تجريبي.
 
-For this change, we’ve provided a [codemod](https://github.com/reactjs/react-codemod#error-boundaries) to automatically migrate your code.
+أضفنا [وضعًا جاهزًا](https://github.com/reactjs/react-codemod#error-boundaries) لنقل شيفرتك تلقائيًّا من أجل هذا التغيير.

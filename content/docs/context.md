@@ -1,44 +1,44 @@
 ---
 id: context
-title: Context
+title: استخدام السياق (Context) في React
 permalink: docs/context.html
 ---
 
-Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+يُزوِّدنا السياق (Context) بطريقة لتمرير البيانات عبر شجرة المُكوّنات بدون الحاجة لتمرير الخاصيّات `props` يدويًّا من الأعلى للأسفل في كل مستوى.
 
-In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+تُمرَّر البيانات في تطبيقات React الاعتيادية من المستوى الأعلى للأسفل (أي من المكوّنات الآباء إلى المكوّنات الأبناء) عبر الخاصيّات `props`, ولكن قد يكون هذا بطيئًا لبعض أنواع الخاصيّات (مثل تفضيلات اللغة وقوالب واجهة المستخدم) والتي تحتاجها العديد من المكوّنات ضمن التطبيق. يُزوِّدنا السياق بطريقة لمشاركة القيم كتلك الموجودة بين المكوّنات بدون الاضطرار لتمرير الخاصيّات عبر كل مستوى من الشجرة.
 
-- [When to Use Context](#when-to-use-context)
-- [Before You Use Context](#before-you-use-context)
+- [متى نستخدم السياق](#when-to-use-context)
+- [	قبل أن تستخدم السياق](#before-you-use-context)
 - [API](#api)
   - [React.createContext](#reactcreatecontext)
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
-- [Examples](#examples)
-  - [Dynamic Context](#dynamic-context)
-  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
-  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
-- [Caveats](#caveats)
-- [Legacy API](#legacy-api)
+- [	أمثلة](#examples)
+  - [السياق الديناميكي](#dynamic-context)
+  - [تحديث السياق من المكونات المتداخلة](#updating-context-from-a-nested-component)
+  - [استهلاك سياقات متعددة](#consuming-multiple-contexts)
+- [	محاذير](#caveats)
+- [	واجهة برمجة التطبيقات القديمة](#legacy-api)
 
-## When to Use Context {#when-to-use-context}
+## متى نستخدم السياق {#when-to-use-context}
 
-Context is designed to share data that can be considered "global" for a tree of React components, such as the current authenticated user, theme, or preferred language. For example, in the code below we manually thread through a "theme" prop in order to style the Button component:
+يكون السياق مُصمَّمًا لمشاركة البيانات التي تُعتبر عامّة (global) لشجرة مكوّنات React، مثل المستخدم قيد المصادقة حاليًّا، أو القالب، أو تفضيلات اللغة. على سبيل المثال في الشيفرة التالية نُمرِّر خاصيّة القالب "`theme`" يدويًّا من أجل تنسيق مكوّن الزر  `Button`:
 
 `embed:context/motivation-problem.js`
 
-Using context, we can avoid passing props through intermediate elements:
+نتجنب باستخدام السياق تمرير الخاصيات عبر عناصر وسيطة:
 
 `embed:context/motivation-solution.js`
 
-## Before You Use Context {#before-you-use-context}
+## قبل أن تستخدم السياق {#before-you-use-context}
 
-Context is primarily used when some data needs to be accessible by *many* components at different nesting levels. Apply it sparingly because it makes component reuse more difficult.
+يُستخدَم السياق بشكل أساسي عند الحاجة للوصول إلى بعض البيانات من قبل العديد من المكونات في مستويات متداخلة مختلفة، ولكن لا يجب استخدامه بكثرة لأنّ يجعل من إعادة استخدام المكونات أمرًا أكثر صعوبة.
 
-**If you only want to avoid passing some props through many levels, [component composition](/docs/composition-vs-inheritance.html) is often a simpler solution than context.**
+**إن أردت فقط تجنّب تمرير بعض الخاصيّات عبر العديد من المستويات, فسيكون استخدام [التراكيب](/docs/composition-vs-inheritance.html) حلًّا أبسط من استخدام السياق.**
 
-For example, consider a `Page` component that passes a `user` and `avatarSize` prop several levels down so that deeply nested `Link` and `Avatar` components can read it:
+على سبيل المثال افترض وجود مكون للصفحة `Page` والذي يُمرِّر خاصيّات المستخدم `user` وحجم الصورة الرمزية `avatarSize` عبر مستويات عديدة للأسفل بحيث تتمكّن مكونات الرابط `Link` والصورة الرمزية `Avatar` الموجودة في مستويات عميقة ومتداخلة أن تقرأها:
 
 ```js
 <Page user={user} avatarSize={avatarSize} />
@@ -52,9 +52,9 @@ For example, consider a `Page` component that passes a `user` and `avatarSize` p
 </Link>
 ```
 
-It might feel redundant to pass down the `user` and `avatarSize` props through many levels if in the end only the `Avatar` component really needs it. It's also annoying that whenever the `Avatar` component needs more props from the top, you have to add them at all the intermediate levels too.
+قد يبدو من الفائض تمرير الخاصيّات `user` و `avatarSize` عبر مستويات عديدة للأسفل إن كان يحتاجه في النهاية فقط المكوّن `Avatar`. من المزعج أيضًا كلّما احتاج المُكوِّن `Avatar` المزيد من الخاصيّات من المستويات الأعلى فيجب عليك إضافتها في كل المستويات الوسيطة أيضًا.
 
-One way to solve this issue **without context** is to [pass down the `Avatar` component itself](/docs/composition-vs-inheritance.html#containment) so that the intermediate components don't need to know about the `user` or `avatarSize` props:
+من طرق حل هذه المشكلة **بدون السياق** is to [هي تمرير المكون `Avatar` نفسه للأسفل](/docs/composition-vs-inheritance.html#containment) بحيث لا تحتاج المكوّنات الوسيطة أن تعلم حول الخاصيّة `user` أو `avatarSize`:
 
 ```js
 function Page(props) {
@@ -77,11 +77,11 @@ function Page(props) {
 {props.userLink}
 ```
 
-With this change, only the top-most Page component needs to know about the `Link` and `Avatar` components' use of `user` and `avatarSize`.
+مع هذا التغيير يحتاج فقط المكون `Page` ذو المستوى الأعلى إلى أن يعرف عن استخدام المكوّنات `Link` و `Avatar` للمكوّنات `user` و `avatarSize`.
 
-This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. However, this isn't the right choice in every case: moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
+يؤدي *قلب السيطرة* هذا إلى جعل شيفرتك أبسط في العديد من الحالات عن طريق تقليل كمية الخاصيّات التي تحتاج تمريرها عبر تطبيقك ويُعطيك سيطرة أكبر على المكوّنات الجذريّة. على الرغم من ذلك لا يكون ذلك هو الخيار الأنسب في كل حالة، حيث أنّ نقل المزيد من التعقيد إلى مستوى أعلى في الشجرة يجعل من المكونات ذات المستوى الأعلى أكثر تعقيدًا ويجبر المكونات ذات المستويات الأدنى أن تكون مرنة أكثر مما قد ترغب.
 
-You're not limited to a single child for a component. You may pass multiple children, or even have multiple separate "slots" for children, [as documented here](/docs/composition-vs-inheritance.html#containment):
+لن تكون محدودًا بمكوّن ابن واحد، فبإمكانك تمرير مكونات أبناء متعددة أو حتى امتلاك منافذ منفصلة متعددة للأبناء كما هو موثق هنا:
 
 ```js
 function Page(props) {
@@ -103,9 +103,9 @@ function Page(props) {
 }
 ```
 
-This pattern is sufficient for many cases when you need to decouple a child from its immediate parents. You can take it even further with [render props](/docs/render-props.html) if the child needs to communicate with the parent before rendering.
+يكفينا هذا النمط للعديد من الحالات عند الحاجة لفصل مكوّن ابن عن المكونات الآباء له. وبإمكانك أخذ هذا إلى أبعد من ذلك عن طريق خاصيّات التصيير إن كان المكوّن الابن يحتاج إلى التواصل مع المكوّن الأب قبل التصيير.
 
-However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels. Context lets you "broadcast" such data, and changes to it, to all components below. Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache. 
+على أية حال تحتاج بعض البيانات أحيانًا أن تكون قابلة للوصول من قبل العديد من المكوّنات في الشجرة، وبمستويات متداخلة مختلفة. يُتيح لك السياق نشر مثل هذه البيانات وتغييراتها إلى جميع المكوّنات في المستويات الأدنى. تتضمّن الأمثلة الشائعة التي يكون فيها استخدام السياق أبسط من البدائل هي إدارة اللغة الحالية، أو القالب، أو مخبأ البيانات (cache).
 
 ## API {#api}
 
@@ -115,9 +115,11 @@ However, sometimes the same data needs to be accessible by many components in th
 const MyContext = React.createContext(defaultValue);
 ```
 
-Creates a Context object. When React renders a component that subscribes to this Context object it will read the current context value from the closest matching `Provider` above it in the tree.
+يُنشِئ الزوج `{ Provider, Consumer }`.
+عند تصيير React للسياق `Consumer` فستقرأ قيمة السياق الحالية من أقرب مُزوِّد `Provider` فوقها في الشجرة.
+يُستخدَم الوسيط defaultValue عن طريق المستهلك `Consumer` فقط عندما لا يجد مزوّد `Provider` مُطابِق فوقه في الشجرة. يُفيد هذا من أجل اختبار المُكوّنات على انفراد بدون تغليفها.
 
-The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.
+لا يُؤدّي تمرير القيمة `undefined` كقيمة للمُزوِّد إلى استخدام المستهلك `Consumer` للقيمة `defaultValue`.
 
 ### `Context.Provider` {#contextprovider}
 
@@ -125,17 +127,17 @@ The `defaultValue` argument is **only** used when a component does not have a ma
 <MyContext.Provider value={/* some value */}>
 ```
 
-Every Context object comes with a Provider React component that allows consuming components to subscribe to context changes.
+وهو مُكوِّن React الذي يسمح للمستهلك Consumer بأن يُشارك في تغييرات السياق.
 
 Accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
 
-All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes. The propagation from Provider to its descendant consumers is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component bails out of the update.
+كل المستهلكات `Consumers` المنحدرة عن المُزوِّد ستُعيد التصيير عندما تتغير قيمة الخاصيّة `value` للمُزوّد. لا يخضع الانتشار من المُزوّد إلى المستهلكات المنحدرة عنه إلى التابع `shouldComponentUpdate`، لذا يُحدَّث المستهلك حتى ولو كان المكوّن الأب غير خاضع للتحديث.
 
-Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description). 
+تُحدَّد التغييرات عن طريق مقارنة القيم الجديدة والقديمة باستخدام نفس الخوارزمية مثل [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description). 
 
-> Note
+> ملاحظة
 > 
-> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
+> قد تُسبِّب طريقة التغييرات المُحدَّدة بعض المشاكل عند تمرير الكائنات في الوسيط `value`: سنتحدّث عن المزيد في [ قسم المحاذير](#caveats).
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -161,13 +163,13 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext). This lets you consume the nearest current value of that Context type using `this.context`. You can reference this in any of the lifecycle methods including the render function.
+يمكن إسناد الخاصية  `contextType` pفي أي صنف إلى كائن سياق (Context object) أنشئ بوساطة [`React.createContext()`](#reactcreatecontext). يمكِّنك ذلك من استهلاك أقرب قيمة حالية لنوع ذلك السياق باستعمال `this.context`. تستطيع الإشارة عبر مرجع إلى هذا في أي تابع من توابع دورة الحياة بما فيها الدالة `render`.
 
-> Note:
+> ملاحظة:
 >
-> You can only subscribe to a single context using this API. If you need to read more than one see [Consuming Multiple Contexts](#consuming-multiple-contexts).
+> تستطيع الاشتراك في سياق وحيد باستعمال الواجهة البرمجية هذه. إن احتجت إلى قراءة المزيد من أكثر من سياق واحد، اطلع على القسم [استهلاك سياقات متعددة](#consuming-multiple-contexts).
 >
-> If you are using the experimental [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/), you can use a **static** class field to initialize your `contextType`.
+> إن كنت تستخدم صياغة حقول الصنف العامة [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/), التجريبية، تستطيع استعمال حقل صنف ساكن (static class field) لتهيئة نوع السياق `contextType` الخاص بك.
 
 
 ```js
@@ -175,7 +177,7 @@ class MyClass extends React.Component {
   static contextType = MyContext;
   render() {
     let value = this.context;
-    /* render something based on the value */
+    /* value صيّر شيئًا بناءً على القيمة */
   }
 }
 ```
@@ -184,23 +186,23 @@ class MyClass extends React.Component {
 
 ```js
 <MyContext.Consumer>
-  {value => /* render something based on the context value */}
+  {value => /* صيّر شيئًا بناء على قيمة السياق */}
 </MyContext.Consumer>
 ```
 
-A React component that subscribes to context changes. This lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).
+يتغير مكون React الذي يشترك بسياق، وهذا يمكِّنك من الاشتراك بسياق ضمن [مكون دالة](/docs/components-and-props.html#function-and-class-components).
 
-Requires a [function as a child](/docs/render-props.html#using-props-other-than-render). The function receives the current context value and returns a React node. The `value` argument passed to the function will be equal to the `value` prop of the closest Provider for this context above in the tree. If there is no Provider for this context above, the `value` argument will be equal to the `defaultValue` that was passed to `createContext()`.
+تتطلب الخاصية `Consumer` [دالةً على أنَّها ابنٌ](/docs/render-props.html#using-props-other-than-render). إذ تستقبل هذه الدالة قيمة السياق الحالي وتعيد عقدة React. الوسيط `value` المُمرَّر إلى الدالة سيكون مساويًّا إلى قيمة الخاصية `value` لأقرب مزود (Provider) لهذا السياق في الشجرة أعلاه. إن لم يكن هنالك مزود (Provider) لهذا السياق أعلاه، فسيكون الوسيط `value` مساويًا إلى القيمة `defaultValue` التي مُرِّرت إلى `()createContext`.
 
-> Note
+> ملاحظة
 > 
-> For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).
+> للمزيد من المعلومات حول النمط "دالة على أنَّها ابنٌ"، اطلع على توثيق [خاصيات التصيير](/docs/render-props.html).
 
-## Examples {#examples}
+## أمثلة {#examples}
 
-### Dynamic Context {#dynamic-context}
+### السياق الديناميكي {#dynamic-context}
 
-A more complex example with dynamic values for the theme:
+مثال أكثر تعقيدًا مع قيم ديناميكية لالقالب :
 
 **theme-context.js**
 `embed:context/theme-detailed-theme-context.js`
@@ -211,9 +213,9 @@ A more complex example with dynamic values for the theme:
 **app.js**
 `embed:context/theme-detailed-app.js`
 
-### Updating Context from a Nested Component {#updating-context-from-a-nested-component}
+### تحديث السياق من المكونات المتداخلة {#updating-context-from-a-nested-component}
 
-It is often necessary to update the context from a component that is nested somewhere deeply in the component tree. In this case you can pass a function down through the context to allow consumers to update the context:
+من الضروري أحيانًا تحديث السياق من المكون المتداخل بعمق في مكانٍ ما من شجرة المكونات. في هذه الحالة تستطيع تمرير دالة إلى الأسفل عبر السياق للسماح للمستهلكات بتحديث السياق:
 
 **theme-context.js**
 `embed:context/updating-nested-context-context.js`
@@ -224,28 +226,28 @@ It is often necessary to update the context from a component that is nested some
 **app.js**
 `embed:context/updating-nested-context-app.js`
 
-### Consuming Multiple Contexts {#consuming-multiple-contexts}
+### استهلاك سياقات متعددة {#consuming-multiple-contexts}
 
-To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree. 
+لإبقاء قدرة السياق على إعادة التصيير بشكل سريع، تحتاج React إلى جعل كل مستهلك سياق على شكل عقدة منفصل في الشجرة:
 
 `embed:context/multiple-contexts.js`
 
-If two or more context values are often used together, you might want to consider creating your own render prop component that provides both.
+إن كانت قيمة سياقين أو أكثر مستخدمة معًا، فقد ترغب بالنظر إلى إنشاء مكون خاصية التصيير الخاص بك والذي يزودك بكليهما معًا.
 
-## Caveats {#caveats}
+## محاذير {#caveats}
 
-Because context uses reference identity to determine when to re-render, there are some gotchas that could trigger unintentional renders in consumers when a provider's parent re-renders. For example, the code below will re-render all consumers every time the Provider re-renders because a new object is always created for `value`:
+بما أنّ السياق يستخدم هوية المرجع لتحديد وقت إعادة التصيير، فهنالك بعض الأشياء التي قد تُطلِق تصييرات غير مقصودة في المستهلكات `consumers` عندما يُعيد المُزوِّد `provider` الأب التصيير. على سبيل المثال ستُعيد الشيفرة التالية تصيير جميع المستهلكات في كل مرة يُعيد فيها المُزوّد التصيير، وذلك بسبب إنشاء كائن جديد دومًا للخاصيّة `value`:
 
 `embed:context/reference-caveats-problem.js`
 
 
-To get around this, lift the value into the parent's state:
+ولكي تلتف على هذا احتفظ بقيمة `value` في حالة الأب:
 
 `embed:context/reference-caveats-solution.js`
 
-## Legacy API {#legacy-api}
+## واجهة برمجة التطبيقات القديمة {#legacy-api}
 
-> Note
+> ملاحظة
 > 
-> React previously shipped with an experimental context API. The old API will be supported in all 16.x releases, but applications using it should migrate to the new version. The legacy API will be removed in a future major React version. Read the [legacy context docs here](/docs/legacy-context.html).
+> كانت تأتي React سابقًا مع واجهة برمجة تطبيقات (API) تجريبية للسياق. ستبقى هذه الواجهة مدعومة في جميع الإصدارات ‎16.x‎، ولكن يجب على التطبيقات التي تستخدمها أن تنتقل للإصدار الجديد. ستُزال هذه الواجهة القديمة في إصدار React المستقبلي الرئيسي. اقرأ توثيق السياق القديم [من هنا](/docs/legacy-context.html).
  

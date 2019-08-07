@@ -1,6 +1,6 @@
 ---
 id: jsx-in-depth
-title: JSX In Depth
+title: شرح JSX بالتفصيل
 permalink: docs/jsx-in-depth.html
 redirect_from:
   - "docs/jsx-spread.html"
@@ -13,31 +13,32 @@ redirect_from:
   - "docs/jsx-in-depth-ko-KR.html"
 ---
 
-Fundamentally, JSX just provides syntactic sugar for the `React.createElement(component, props, ...children)` function. The JSX code:
+توفِّر JSX علينا عناء إنشاء العناصر بإستخدام الدالة `React.createElement(component, props, ...children)`. انظر إلى الشيفرة التالية في JSX:
+
 
 ```js
 <MyButton color="blue" shadowSize={2}>
-  Click Me
+  انقر هنا
 </MyButton>
 ```
 
-compiles into:
+تُترجَم الشيفرة السّابقة إلى:
 
 ```js
 React.createElement(
   MyButton,
   {color: 'blue', shadowSize: 2},
-  'Click Me'
+  'انقر هنا'
 )
 ```
 
-You can also use the self-closing form of the tag if there are no children. So:
+بإمكانك أيضًا استخدام الشكل ذاتي الإغلاق للعنصر إن كان لا يحتوي على أيّة عناصر أبناء:
 
 ```js
 <div className="sidebar" />
 ```
 
-compiles into:
+تُترجَم الشيفرة السّابقة إلى:
 
 ```js
 React.createElement(
@@ -47,19 +48,19 @@ React.createElement(
 )
 ```
 
-If you want to test out how some specific JSX is converted into JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
+إن أردتَ اختبار كيفيّة تحويل بعض شيفرات JSX إلى JavaScript فبإمكانك تجريب [مُترجِم Babel على الإنترنت](babel://jsx-simple-example).
 
-## Specifying The React Element Type {#specifying-the-react-element-type}
+## تحديد نوع عنصر React {#specifying-the-react-element-type}
 
-The first part of a JSX tag determines the type of the React element.
+يُحدِّد الحرف الأول في وسم JSX نوعَ عنصر React.
 
-Capitalized types indicate that the JSX tag is referring to a React component. These tags get compiled into a direct reference to the named variable, so if you use the JSX `<Foo />` expression, `Foo` must be in scope.
+تُشير الأنواع التي تبدأ بحرف كبيرة (Capitalized types) إلى أنّ العنصر المذكور هو مُكوِّن React. تُترجَم هذه العناصر إلى مرجع مباشر إلى المتغيّر الذي يحمل اسمها، لذا إن استخدمت التعبير ‎`<Foo />`‎ في JSX يجب أن يكون المتغيّر `Foo` في نفس المجال.
 
-### React Must Be in Scope {#react-must-be-in-scope}
+### يجب على React أن تكون في نفس المجال {#react-must-be-in-scope}
 
-Since JSX compiles into calls to `React.createElement`, the `React` library must also always be in scope from your JSX code.
+لمّا كانت JSX تُترجَم إلى نداءات للتابع `React.createElement`، فيجب على مكتبة `React` أن تكون في نفس المجال الذي تكون فيه شيفرة JSX.
 
-For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript:
+على سبيل المثال الاستيراد التالي ضروري في هذه الشّيفرة على الرغم من أنّ `React` و `CustomButton` لا يُشار إليهما بشكل مباشر من JavaScript:
 
 ```js{1,2,5}
 import React from 'react';
@@ -71,18 +72,18 @@ function WarningButton() {
 }
 ```
 
-If you don't use a JavaScript bundler and loaded React from a `<script>` tag, it is already in scope as the `React` global.
+إن لم تستخدم مُحزِّم JavaScript وطلبتَ `React` من داخل عنصر `<script>`، فهي موجودة مُسبقًا في نفس المدى لأنّها عامّة (global).
 
-### Using Dot Notation for JSX Type {#using-dot-notation-for-jsx-type}
+### استخدام النقطة لأنواع JSX {#using-dot-notation-for-jsx-type}
 
-You can also refer to a React component using dot-notation from within JSX. This is convenient if you have a single module that exports many React components. For example, if `MyComponents.DatePicker` is a component, you can use it directly from JSX with:
+بإمكانك الإشارة أيضًا إلى مُكوِّن React باستخدام النقطة من داخل JSX. وهو أمرٌ جيّد إن كانت لديك وحدة (module) وحيدة والتي تُصدِّر عدّة مُكوِّنات React. على سبيل المثال إن كان `MyComponents.DatePicker` مُكوِّنًا، فيُمكِنك استخدامه بشكلٍ مباشر من JSX كما يلي:
 
 ```js{10}
 import React from 'react';
 
 const MyComponents = {
   DatePicker: function DatePicker(props) {
-    return <div>Imagine a {props.color} datepicker here.</div>;
+    return <div>تخيّل وجود {props.color} انتقاء للتاريخ هنا.</div>;
   }
 }
 
@@ -91,49 +92,49 @@ function BlueDatePicker() {
 }
 ```
 
-### User-Defined Components Must Be Capitalized {#user-defined-components-must-be-capitalized}
+### يجب كتابة المكونات المعرفة من قبل المستخدم بأحرف كبيرة {#user-defined-components-must-be-capitalized}
 
-When an element type starts with a lowercase letter, it refers to a built-in component like `<div>` or `<span>` and results in a string `'div'` or `'span'` passed to `React.createElement`. Types that start with a capital letter like `<Foo />` compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
+عندما يبدأ نوع العنصر بحرف صغير، فهو يُشير إلى مُكوِّنات داخليّة مثل `<div>` أو `<span>` وينتج عنه السلسلة النصيّة `'div'` أو `'span'` والتي تُمرَّر إلى التّابع `React.createElement`. أمّا الأنواع التي تبدأ بأحرف كبيرة مثل ‎`<Foo />` فتُترجَم إلى `React.createElement(Foo)` وتُوافِق مُكوِّنات مُعرَّفة أو مُستوردة في ملّف JavaScript لديك.
 
-We recommend naming components with a capital letter. If you do have a component that starts with a lowercase letter, assign it to a capitalized variable before using it in JSX.
+نوصي بتسمية المُكوِّنات بأحرف كبيرة، وإن كان لديك مُكوِّن يبدأ بحرف صغير فعيّنه إلى مُتغيّر يبدأ بحرف كبير قبل استخدامه في JSX.
 
-For example, this code will not run as expected:
+على سبيل المثال لن تعمل الشيفرة التالية كما هو مُتوقَّع:
 
 ```js{3,4,10,11}
 import React from 'react';
 
-// Wrong! This is a component and should have been capitalized:
+// :خطأ! هذا مُكوِّن ويجب أن يبدأ بحرف كبير
 function hello(props) {
-  // Correct! This use of <div> is legitimate because div is a valid HTML tag:
-  return <div>Hello {props.toWhat}</div>;
+  // صحيح! هنا استخدام العنصر div صحيح كونه عنصر في HTML
+  return <div>أهلًا  {props.toWhat}</div>;
 }
 
 function HelloWorld() {
-  // Wrong! React thinks <hello /> is an HTML tag because it's not capitalized:
-  return <hello toWhat="World" />;
+  // خطأ! تعتقد React أنّ العنصر hello هو عنصر في HTML لأنّه لا يبدأ بحرف كبير
+  return <hello toWhat="بالعالم" />;
 }
 ```
 
-To fix this, we will rename `hello` to `Hello` and use `<Hello />` when referring to it:
+لإصلاح ذلك سنُعيد تسمية `hello` إلى `Hello` وسنستخدم `<Hello />`‎ للإشارة إليه:
 
 ```js{3,4,10,11}
 import React from 'react';
 
-// Correct! This is a component and should be capitalized:
+// صحيح! هذا مُكوِّن ويجب أن يبدأ بحرف كبير
 function Hello(props) {
-  // Correct! This use of <div> is legitimate because div is a valid HTML tag:
+  // صحيح! هنا استخدام العنصر div صحيح كونه عنصر في HTML
   return <div>Hello {props.toWhat}</div>;
 }
 
 function HelloWorld() {
-  // Correct! React knows <Hello /> is a component because it's capitalized.
+  // صحيح! تعلم React أنّ Hello هو مُكوِّن لأنّه يبدأ بحرف كبير
   return <Hello toWhat="World" />;
 }
 ```
 
-### Choosing the Type at Runtime {#choosing-the-type-at-runtime}
+### اختيار النوع في زمن التنفيذ {#choosing-the-type-at-runtime}
 
-You cannot use a general expression as the React element type. If you do want to use a general expression to indicate the type of the element, just assign it to a capitalized variable first. This often comes up when you want to render a different component based on a prop:
+لا يُمكنِك استخدام تعبير عام كنوع لعنصر React، فإن لم ترغب باستخدام تعبير عام للإشارة لنوع العنصر، فعيّنه فقط إلى متغيّر يبدأ بحرف كبير أولًا. يحدث هذا عادةً عندما تريد تصيير مُكوِّن آخر بناءً على خاصيّة prop:
 
 ```js{10,11}
 import React from 'react';
@@ -145,12 +146,12 @@ const components = {
 };
 
 function Story(props) {
-  // Wrong! JSX type can't be an expression.
+  // خطأ! لا يمكن أن يكون نوع JSX عبارة عن تعبير
   return <components[props.storyType] story={props.story} />;
 }
 ```
 
-To fix this, we will assign the type to a capitalized variable first:
+لإصلاح ذلك سنُعيِّن النوع إلى متغيّر يبدأ بحرف كبير أولًا:
 
 ```js{10-12}
 import React from 'react';
@@ -162,27 +163,27 @@ const components = {
 };
 
 function Story(props) {
-  // Correct! JSX type can be a capitalized variable.
+  // صحيح! يُمكِن لنوع JSX أن يكون متغيّرًا يبدأ بحرف كبير
   const SpecificStory = components[props.storyType];
   return <SpecificStory story={props.story} />;
 }
 ```
 
-## Props in JSX {#props-in-jsx}
+## الخاصيات props في JSX {#props-in-jsx}
 
-There are several different ways to specify props in JSX.
+هنالك عدّة طرق لتحديد الخاصيّات في JSX.
 
-### JavaScript Expressions as Props {#javascript-expressions-as-props}
+### تعابير JavaScript كخاصيات {#javascript-expressions-as-props}
 
-You can pass any JavaScript expression as a prop, by surrounding it with `{}`. For example, in this JSX:
+بإمكانك تمرير أي تعبير JavaScript كخاصيّة prop عن طريق إحاطته بالقوسين `{}`. على سبيل المثال:
 
 ```js
 <MyComponent foo={1 + 2 + 3 + 4} />
 ```
 
-For `MyComponent`, the value of `props.foo` will be `10` because the expression `1 + 2 + 3 + 4` gets evaluated.
+بالنسبة للمُكوِّن `MyComponent` تكون قيمة `props.foo` هي `10` بسبب تقييم التعبير ‎`1 + 2 + 3 + 4`.
 
-`if` statements and `for` loops are not expressions in JavaScript, so they can't be used in JSX directly. Instead, you can put these in the surrounding code. For example:
+لا تُعدُّ جمل `if` الشرطيّة و حلقات `for` تعابيرًا في JavaScript، لذلك لا يُمكِن استخدامها في JSX بشكلٍ مباشر، وبدلًا من ذلك بإمكاننا وضعها في الشيفرة المُحيطة. على سبيل المثال:
 
 ```js{3-7}
 function NumberDescriber(props) {
@@ -190,17 +191,17 @@ function NumberDescriber(props) {
   if (props.number % 2 == 0) {
     description = <strong>even</strong>;
   } else {
-    description = <i>odd</i>;
+    description = <i>فردي</i>;
   }
-  return <div>{props.number} is an {description} number</div>;
+  return <div>{props.number} هو عدد {description}</div>;
 }
 ```
 
-You can learn more about [conditional rendering](/docs/conditional-rendering.html) and [loops](/docs/lists-and-keys.html) in the corresponding sections.
+يُمكِنك تعلّم المزيد حول [التصيير الشرطي](/docs/conditional-rendering.html) واستخدام [loops](/docs/lists-and-keys.html) في أقسامها الخاصّة.
 
-### String Literals {#string-literals}
+### استخدام السلاسل النصيّة الحرفيّة {#string-literals}
 
-You can pass a string literal as a prop. These two JSX expressions are equivalent:
+بإمكانك تمرير سلسلة نصيّة حرفيّة كخاصيّة، فالتعبيران التاليان في JSX مُتكافئان:
 
 ```js
 <MyComponent message="hello world" />
@@ -208,7 +209,7 @@ You can pass a string literal as a prop. These two JSX expressions are equivalen
 <MyComponent message={'hello world'} />
 ```
 
-When you pass a string literal, its value is HTML-unescaped. So these two JSX expressions are equivalent:
+عندما تُمرِّر سلسلة نصيّة حرفيّة، ستُهرَّب قيمتها (HTML-unescaped) بشكلٍ افتراضي. لذلك التعبيران التاليان مُتكافئان أيضًا:
 
 ```js
 <MyComponent message="&lt;3" />
@@ -216,11 +217,11 @@ When you pass a string literal, its value is HTML-unescaped. So these two JSX ex
 <MyComponent message={'<3'} />
 ```
 
-This behavior is usually not relevant. It's only mentioned here for completeness.
+لا علاقة لهذا السّلوك بموضوعنا، ولكن ذكرناه هنا من أجل الفائدة.
 
-### Props Default to "True" {#props-default-to-true}
+### القيمة الافتراضيّة للخاصيّات props هي true {#props-default-to-true}
 
-If you pass no value for a prop, it defaults to `true`. These two JSX expressions are equivalent:
+إن لم تُمرِّر أي قيمة للخاصيّة فقيمتها الافتراضيّة هي `true`. التعبيران التاليان مُتكافئان:
 
 ```js
 <MyTextBox autocomplete />
@@ -228,11 +229,11 @@ If you pass no value for a prop, it defaults to `true`. These two JSX expression
 <MyTextBox autocomplete={true} />
 ```
 
-In general, we don't recommend using this because it can be confused with the [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`. This behavior is just there so that it matches the behavior of HTML.
+لا نُوصي إجمالًا بفعل ذلك بسبب الارتباك الذي يُسبّبه التشابه مع [ الصيغة المختصرة للكائنات في ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)، حيث تكون `{foo}` اختصارًا إلى `{foo: foo}` بدلًا من ‎`{foo: true}`‎ كما قد تظن. هذا السّلوك موجود هنا فقط للتوافق مع سلوك HTML.
 
-### Spread Attributes {#spread-attributes}
+### خاصيّات النشر {#spread-attributes}
 
-If you already have `props` as an object, and you want to pass it in JSX, you can use `...` as a "spread" operator to pass the whole props object. These two components are equivalent:
+إن كانت لديك خاصيّات `props` على شكل كائنات، وأردتَ تمريرها في JSX، فبإمكانك استخدام مُعامِل النشر `...` لتمرير كائن الخاصيّات بشكلٍ كامل. المُكوِّنان التاليان مُتكافئان:
 
 ```js{7}
 function App1() {
@@ -245,7 +246,7 @@ function App2() {
 }
 ```
 
-You can also pick specific props that your component will consume while passing all other props using the spread operator.
+بإمكانك أيضًا اختيار خاصيّات مُحدّدة يُحدِّد قيمتها مُكوِّنك وتمرير الخاصيّات الأخرى باستخدام مُعامِل النشر:
 
 ```js{2}
 const Button = props => {
@@ -258,59 +259,58 @@ const App = () => {
   return (
     <div>
       <Button kind="primary" onClick={() => console.log("clicked!")}>
-        Hello World!
+        أهلًا بالعالم!
       </Button>
     </div>
   );
 };
 ```
 
-In the example above, the `kind` prop is safely consumed and *is not* passed on to the `<button>` element in the DOM.
-All other props are passed via the `...other` object making this component really flexible. You can see that it passes an `onClick` and `children` props.
+في المثال السّابق، حدّدنا قيمة الخاصيّة `kind` و*لم* نُمرِّرها إلى العنصر `<button>` في DOM. تُمرَّر كافّة الخاصيّات الأخرى عبر الكائن ‎`...other`‎ ممّا يجعل هذا المُكوِّن مرنًا بشدّة. بإمكانك أن ترى أنّه يُمرِّر خاصيّات `onClick` و `children`.
 
-Spread attributes can be useful but they also make it easy to pass unnecessary props to components that don't care about them or to pass invalid HTML attributes to the DOM. We recommend using this syntax sparingly.  
+قد تكون خاصيّات النشر مفيدة ولكنّها تُسهِّل تمرير خاصيّات غير ضروريّة إلى المُكوِّنات التي لا تُبالي لها، أو تمرير خاصيّات HTML خطأ إلى DOM. نُوصي باستخدام هذه الصّياغة بحذر. 
 
-## Children in JSX {#children-in-jsx}
+## العناصر الأبناء في JSX {#children-in-jsx}
 
-In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: `props.children`. There are several different ways to pass children:
+يُمرَّر المحتوى الموجود بين عنصر البدء وعنصر الإغلاق في JSX كخاصيّة مُميّزة وهي `props.children`. هنالك عدّة طرق مختلفة لتمرير العناصر الأبناء:
 
-### String Literals {#string-literals-1}
+### السلاسل النصيّة الحرفيّة {#string-literals-1}
 
-You can put a string between the opening and closing tags and `props.children` will just be that string. This is useful for many of the built-in HTML elements. For example:
+بإمكانك وضع سلسلة نصيّة بين عنصري البدء والإغلاق وستكون قيمة الخاصيّة `props.children` هي تلك السلسلة النصيّة. يُفيد ذلك من أجل العديد من عناصر HTML الداخليّة، على سبيل المثال:
 
 ```js
-<MyComponent>Hello world!</MyComponent>
+<MyComponent>أهلًا بالعالم!</MyComponent>
 ```
 
-This is valid JSX, and `props.children` in `MyComponent` will simply be the string `"Hello world!"`. HTML is unescaped, so you can generally write JSX just like you would write HTML in this way:
+هذه الصيغة صحيحة في JSX، وستكون قيمة `props.children` في المُكوِّن `MyComponent` هي السلسلة النصيّة `"أهلًا بالعالم!"`. تُهرَّب السلسلة النصيّة لذلك بإمكانك كتابة JSX كما تكتب HTML بهذه الطريقة:
 
 ```html
-<div>This is valid HTML &amp; JSX at the same time.</div>
+<div>هذه السلسلة النصيّة صالحة بنفس الوقت في HTML &amp; JSX</div>
 ```
 
-JSX removes whitespace at the beginning and ending of a line. It also removes blank lines. New lines adjacent to tags are removed; new lines that occur in the middle of string literals are condensed into a single space. So these all render to the same thing:
+تُزيل JSX المسافات الفارغة في بداية ونهاية السطر، كما تُزيل الأسطر الفارغة والأسطر الجديدة التي تسبق العناصر. تُجمَّع الأسطر الجديدة التي تكون في وسط السلسلة النصيّة إلى مسافة فارغة واحدة. لذا يكون ناتج هذه الأمثلة مُتماثلًا:
 
 ```js
-<div>Hello World</div>
+<div>أهلًا بالعالم</div>
 
 <div>
-  Hello World
+  أهلًا بالعالم
 </div>
 
 <div>
-  Hello
-  World
+  أهلًا
+  بالعالم
 </div>
 
 <div>
 
-  Hello World
+  أهلًا بالعالم
 </div>
 ```
 
-### JSX Children {#jsx-children}
+### العناصر الأبناء {#jsx-children}
 
-You can provide more JSX elements as the children. This is useful for displaying nested components:
+بإمكانك إضافة المزيد من عناصر JSX كأبناء، وهذا يُفيد في عرض المُكوِّنات المتداخلة:
 
 ```js
 <MyContainer>
@@ -319,35 +319,35 @@ You can provide more JSX elements as the children. This is useful for displaying
 </MyContainer>
 ```
 
-You can mix together different types of children, so you can use string literals together with JSX children. This is another way in which JSX is like HTML, so that this is both valid JSX and valid HTML:
+بإمكانك دمج عدّة أنواع مختلفة من العناصر الأبناء معًا، أي يُمكِنك استخدام السلاسل النصيّة الحرفيّة مع العناصر. وهذا أمرٌ آخر تتشابه فيه JSX مع HTML، لذا يكون المثال التالي صحيحًا في JSX و HTML:
 
 ```html
 <div>
-  Here is a list:
+  هذه هي القائمة:
   <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
+    <li>العنصر 1</li>
+    <li>العنصر 2</li>
   </ul>
 </div>
 ```
 
-A React component can also return an array of elements:
+يستطيع مُكوِّن React أن يُعيد مصفوفة من العناصر:
 
 ```js
 render() {
-  // No need to wrap list items in an extra element!
+  // لا حاجة لوضع عناصر القائمة ضمن عنصر إضافي
   return [
-    // Don't forget the keys :)
-    <li key="A">First item</li>,
-    <li key="B">Second item</li>,
-    <li key="C">Third item</li>,
+	// لاتنس المفاتيح :) 
+    <li key="A">العنصر الأول</li>,
+    <li key="B">العنصر الثاني</li>,
+    <li key="C">العنصر الثالث</li>,
   ];
 }
 ```
 
-### JavaScript Expressions as Children {#javascript-expressions-as-children}
+### استخدام تعابير JavaScript كعناصر أبناء {#javascript-expressions-as-children}
 
-You can pass any JavaScript expression as children, by enclosing it within `{}`. For example, these expressions are equivalent:
+بإمكانك تمرير أي تعبير في JavaScript كعنصر ابن عن طريق تغليفه باستخدام القوسين `{}`. فمثلًا هذا التعبيران مُتكافئان:
 
 ```js
 <MyComponent>foo</MyComponent>
@@ -355,7 +355,7 @@ You can pass any JavaScript expression as children, by enclosing it within `{}`.
 <MyComponent>{'foo'}</MyComponent>
 ```
 
-This is often useful for rendering a list of JSX expressions of arbitrary length. For example, this renders an HTML list:
+يُفيد هذا عادةً في تصيير قائمة من تعابير JSX ذات أطوال مختلفة كما يلي:
 
 ```js{2,9}
 function Item(props) {
@@ -363,7 +363,7 @@ function Item(props) {
 }
 
 function TodoList() {
-  const todos = ['finish doc', 'submit pr', 'nag dan to review'];
+  const todos = ['إنهاء المستند', 'تقديم الطلبات', 'مراجعة الطلب'];
   return (
     <ul>
       {todos.map((message) => <Item key={message} message={message} />)}
@@ -372,20 +372,20 @@ function TodoList() {
 }
 ```
 
-JavaScript expressions can be mixed with other types of children. This is often useful in lieu of string templates:
+يُمكِن دمج تعابير JavaScript مع أنواع مختلفة من العناصر الأبناء:
 
 ```js{2}
 function Hello(props) {
-  return <div>Hello {props.addressee}!</div>;
+  return <div>أهلًا {props.addressee}!</div>;
 }
 ```
 
-### Functions as Children {#functions-as-children}
+### استخدام الدوال كعناصر أبناء {#functions-as-children}
 
-Normally, JavaScript expressions inserted in JSX will evaluate to a string, a React element, or a list of those things. However, `props.children` works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render. For example, if you have a custom component, you could have it take a callback as `props.children`:
+تُقيَّم عادةً تعابير JavaScript المُدخلَة في JSX إلى سلاسل نصيّة، عناصر React، أو قائمة من هذه الأشياء. ولكن يعمل `props.children` مثل أي خاصيّة في أنّه يستطيع تمرير أي نوع من البيانات وليس فقط الأنواع التي تعلم React كيفيّة تصييرها. فمثلًا إن كان لديك مُكوِّن مُخصَّص تستطيع أن تجعله يأخذ رد نداء مثل `props.children`:
 
 ```js{4,13}
-// Calls the children callback numTimes to produce a repeated component
+// استدعاء رد نداء العناصر الأبناء عدد من المرات لإنشاء مُكوِن مُكرّر
 function Repeat(props) {
   let items = [];
   for (let i = 0; i < props.numTimes; i++) {
@@ -397,17 +397,17 @@ function Repeat(props) {
 function ListOfTenThings() {
   return (
     <Repeat numTimes={10}>
-      {(index) => <div key={index}>This is item {index} in the list</div>}
+      {(index) => <div key={index}>هذا هو العنصر {index} في القائمة</div>}
     </Repeat>
   );
 }
 ```
 
-Children passed to a custom component can be anything, as long as that component transforms them into something React can understand before rendering. This usage is not common, but it works if you want to stretch what JSX is capable of.
+يُمكِن للعناصر الأبناء المُمرَّرة للمُكوِّن المُخصَّص أن تكون أي شيء طالما يُحوِّلها هذا المُكوِّن إلى شيء تفهمه React قبل تصييرها. هذا الاستعمال ليس شائعًا ولكنّه موجود إن أردت.
 
-### Booleans, Null, and Undefined Are Ignored {#booleans-null-and-undefined-are-ignored}
+### تتجاهل JSX القيم المنطقيّة (Booleans)، و Null، والقيم غير المُعرَّفة Undefined{#booleans-null-and-undefined-are-ignored}
 
-`false`, `null`, `undefined`, and `true` are valid children. They simply don't render. These JSX expressions will all render to the same thing:
+تُعدُّ القيم `false` و `null`، و `undefined`، و `true` عناصر أبناء صحيحة، ولكنّها ببساطة لا تُصيَّر. حيث ينتج عن التعابير التالية في JSX نفس النتيجة:
 
 ```js
 <div />
@@ -423,7 +423,7 @@ Children passed to a custom component can be anything, as long as that component
 <div>{true}</div>
 ```
 
-This can be useful to conditionally render React elements. This JSX only renders a `<Header />` if `showHeader` is `true`:
+يُفيد هذا في التصيير الشرطي لعناصر React. ففي المثال التالي تُصيِّر JSX فقط المُكوِّن `<Header />`‎ إن كانت قيمة `showHeader` هي `true`:
 
 ```js{2}
 <div>
@@ -432,7 +432,7 @@ This can be useful to conditionally render React elements. This JSX only renders
 </div>
 ```
 
-One caveat is that some ["falsy" values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy), such as the `0` number, are still rendered by React. For example, this code will not behave as you might expect because `0` will be printed when `props.messages` is an empty array:
+تُصيِّر React [القيم الكاذبة](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) مثل العدد صفر. فمثلًا لن تعمل الشيفرة التالية كما تتوقّع لأنّه ستطبع العدد `0` عندما تكون المصفوفة  `props.messages` فارغة:
 
 ```js{2}
 <div>
@@ -442,7 +442,7 @@ One caveat is that some ["falsy" values](https://developer.mozilla.org/en-US/doc
 </div>
 ```
 
-To fix this, make sure that the expression before `&&` is always boolean:
+لإصلاح ذلك احرص أن يكون التعبير قبل المُعامِل `&&` قيمة منطقيّة دومًا:
 
 ```js{2}
 <div>
@@ -452,10 +452,10 @@ To fix this, make sure that the expression before `&&` is always boolean:
 </div>
 ```
 
-Conversely, if you want a value like `false`, `true`, `null`, or `undefined` to appear in the output, you have to [convert it to a string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) first:
+إن أردتَ بشكلٍ مُعاكِس أن تظهر القيم مثل `false`، و `true`، و `null`، و `undefined` في الناتج، فيجب عليك [تحويلها إلى سلسلة نصيّة](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) أولًا:
 
 ```js{2}
 <div>
-  My JavaScript variable is {String(myVariable)}.
+  متغير JavaScript قيمته {String(myVariable)}.
 </div>
 ```
