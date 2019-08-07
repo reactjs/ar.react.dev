@@ -5,13 +5,13 @@ permalink: docs/hooks-intro.html
 next: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+الخطافات هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" التصريح عن متغير حالة جديد سندعوه
   const [count, setCount] = useState(0);
 
   return (
@@ -25,86 +25,89 @@ function Example() {
 }
 ```
 
-This new function `useState` is the first "Hook" we'll learn about, but this example is just a teaser. Don't worry if it doesn't make sense yet!
+الدالة `useState` الجديدة هذه هي أول خطاف (Hook) سنتطرق إليه، ولكن هذا المثال هو مجرد مثال تشويقي! لا تقلق إن لم يكن له أي معنى ولم تفهم منه شيئًا بعد.
 
-**You can start learning Hooks [on the next page](/docs/hooks-overview.html).** On this page, we'll continue by explaining why we're adding Hooks to React and how they can help you write great applications.
+**هذه الصفحة هي مدخل إلى الخطافات؛ وإذا أردت البدء بتعلم الخطافات، انتقل إلى [الصفحة التالية](/docs/hooks-overview.html).** سنكمل في هذه الصفحة شرح سبب إضافة الخطافات إلى React وكيف يمكن للخطافات أن تساعدك في كتابة تطبيقات قوية وضخمة.
 
 >Note
 >
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM. React Native will support Hooks in the next stable release.
+> الإصدار 16.8.0 من React هو أول إصدار يدعم الخطافات. عند الترقية إليه، لا تنسَ تحديث جميع الحزم بما فيها React DOM. ستدعم ReactNative الخطافات في الإصدار المستقر القادم.
 
-## Video Introduction {#video-introduction}
+## فيديو تقديمي {#video-introduction}
 
-At React Conf 2018, Sophie Alpert and Dan Abramov introduced Hooks, followed by Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:
+فيReact Conf 2018  ، قدمت Sophie Alpert و Dan Abramov خطافات ، تليها Ryan Florence لشرح كيفية إعادة تشكيل تطبيق لاستخدامها. شاهد الفيديو هنا:
 
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
 
-## No Breaking Changes {#no-breaking-changes}
+## ليس هنالك تغييرات مفصلية {#no-breaking-changes}
 
-Before we continue, note that Hooks are:
+قبل إكمال القراءة، انتبه إلى أنَّ الخطافات:
 
-* **Completely opt-in.** You can try Hooks in a few components without rewriting any existing code. But you don't have to learn or use Hooks right now if you don't want to.
-* **100% backwards-compatible.** Hooks don't contain any breaking changes.
-* **Available now.** Hooks are now available with the release of v16.8.0.
+* **اختيارية الاستعمال تمامًا.** تستطيع تجريب الخطافات ببضعة مكونات دون إعادة كتابة أية شيفرة مكتوبة مسبقًا. مع ذلك، أنت لست مضطرًا لتعلم الخطافات واستعمالها الآن إن لم تكن تريد ذلك أو لست بحاجة إليها في الوقت الحالي.
+* **متوافقةٌ مع ما سبقها كليًّا.** لا تحوي الخطافات أية تغييرات مفصلية.
+* **متاحةٌ الآن** أصبحت الخطافات متاحةً الآن بدءًا من الإصدار 16.8.0.
 
-**There are no plans to remove classes from React.** You can read more about the gradual adoption strategy for Hooks in the [bottom section](#gradual-adoption-strategy) of this page.
+**الجدير بالذكر أنَّه ليس هنالك أي خطط لإزالة الأصناف من React.** يمكنك قراءة المزيد حول [خطة الاعتماد التدريجي](#gradual-adoption-strategy) للخطافات في الأسفل.
 
-**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
+**لا تؤثر الخطافات على معرفتك بمفاهيم React.** بدلًا من ذلك، توفر الخطافات أكثر من واجهة برمجية مباشرة (direct API) إلى مفاهيم React التي تعرفت عليها مسبقًا مثل الخاصيات (props)، والحالة (state)، والسياق (context)، والمراجع (refs)، ودورة الحياة (lifecycle). كما سنشرح لاحقًا، توفر الخطافات أيضًا طريقة جديدة وقوية لدمج هذه المفاهيم مع بعضها.
 
-**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
+**إن كنت تود البدء بتعلم الخطافات، يمكنك الانتقال مباشرةً إلى  [الصفحة التالية](/docs/hooks-overview.html)** على أي حال، ننصحك بإكمال القراءة إن كنت تريد معرفة سبب إضافة الخطافات وكيفية استخدامها دون إعادة كتابة التطبيقات من جديد.
 
-## Motivation {#motivation}
+## الحافز لإضافة الخطافات {#motivation}
 
-Hooks solve a wide variety of seemingly unconnected problems in React that we've encountered over five years of writing and maintaining tens of thousands of components. Whether you're learning React, use it daily, or even prefer a different library with a similar component model, you might recognize some of these problems.
+تحل الخطافات نطاقًا واسعًا من الأخطاء التي تبدو من الظاهر أنها غير مترابطة في React والتي يمكن أن تواجهها حتى بعد خمس سنوات من كتابة ومراجعة عشرات الآلاف من المكونات. سواءً كنت تتعلم React، أو تستعلمها يوميًا، أو حتى كنت تفضل استعمال مكتبة أخرى مع نموذج مكونات مشابه، لابد من أن تواجه بعضًا من هذه المشكلات.
 
-### It's hard to reuse stateful logic between components {#its-hard-to-reuse-stateful-logic-between-components}
+### من الصعب إعادة استعمال شيفرة ذات حالة بين المكونات {#its-hard-to-reuse-stateful-logic-between-components}
 
-React doesn't offer a way to "attach" reusable behavior to a component (for example, connecting it to a store). If you've worked with React for a while, you may be familiar with patterns like [render props](/docs/render-props.html) and [higher-order components](/docs/higher-order-components.html) that try to solve this. But these patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow. If you look at a typical React application in React DevTools, you will likely find a "wrapper hell" of components surrounded by layers of providers, consumers, higher-order components, render props, and other abstractions. While we could [filter them out in DevTools](https://github.com/facebook/react-devtools/pull/503), this points to a deeper underlying problem: React needs a better primitive for sharing stateful logic.
+لا توفر React طريقةً لربط سلوك قابل لإعادة الاستعمال بمكوِّن (مثل ربطه بمتجر). إن كان لديك تجربةً مسبقةً مع React، فقد تكون الأنماط مألوفةً لديك مثل [خاصيات التصيير](/docs/render-props.html) و [المكونات ذات الترتيب الأعلى](/docs/higher-order-components.html) التي تحاول حل هذا الأمر. على أي حال، هذه الأنماط تتطلب منك إعادة هيكلة مكوناتك وجعل الشيفرة صعبة التتبع. إن ألقيت نظرةً على تطبيق React نموذجي في أدوات تطوير React (أي React DevTools)، فستجد غالبًا مغلفًا هائلًا (يدعى "wrapper hell") مُحاطًا بطبقات من المزودين، والمستهلكين، والمكونات ذات الترتيب الأعلى، وخاصيات التصيير، وغيرها. لمَّا كنا نستطيع [ترشيحها في أدوات التطوير](https://github.com/facebook/react-devtools/pull/503), فهذا يشير إلى مشكلة ضمنية أعمق: تحتاج React إلى أنواع أساسية أفضل لمشاركة شيفرة ذات حالة (stateful logic).
 
-With Hooks, you can extract stateful logic from a component so it can be tested independently and reused. **Hooks allow you to reuse stateful logic without changing your component hierarchy.** This makes it easy to share Hooks among many components or with the community.
+باستعمال الخطافات، يمكنك استخراج شيفرة ذات حالة من مكون، وبذلك يمكن التحقق منه بشكل مستقل وإعادة استعماله. تسمح لك الخطافات بإعادة استعمال الشيفرة ذات الحالة دون تغيير هرمية المكونات (component hierarchy). هذا الأمر يجعل من السهل مشاركة الخطافات مع العديد من المكونات أو مع المجتمع نفسه.
 
-We'll discuss this more in [Building Your Own Hooks](/docs/hooks-custom.html).
+سنناقش هذا الأمر بمزيد من التفصيل في صفحة [بناء خطاف خاص بك](/docs/hooks-custom.html).
 
-### Complex components become hard to understand {#complex-components-become-hard-to-understand}
+### المكونات المعقدة تصبح صعبة الفهم {#complex-components-become-hard-to-understand}
 
-We've often had to maintain components that started out simple but grew into an unmanageable mess of stateful logic and side effects. Each lifecycle method often contains a mix of unrelated logic. For example, components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. However, the same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`. Mutually related code that changes together gets split apart, but completely unrelated code ends up combined in a single method. This makes it too easy to introduce bugs and inconsistencies.
+يتوجب علينا في كثير من الأحيان صيانة مكونات بدأت بشكل بسيط وما لبثت أن تحولت إلى كتلة من شيفرة ذات حالة يصعب السيطرة عليها مما يولد آثارًا جانبية. تحوي دورة حياة كل تابع غالبًا مزيجًا من الشيفرة عديمة الصلة. على سبيل المثال، قد تنفِّذ المكونات عملية جلب بعض البيانات في  `componentDidMount` و `componentDidUpdate`. مع ذلك، التابع `componentDidMount` نفسه قد يحوي أيضًا على بعض الشيفرات عديمة الصلة التي تضبط مستمعات حدث مع عملية تنظيف نُفذِّت في `componentWillUnmount`. الشيفرة المترابطة بشكل وثيق التي تغير كلاهما تنقسم إلى جزأين ولكن الشيفرة الغير مترابطة على الاطلاق ينتهي بها المطاف بالدمج في تابع واحد. هذا يسهِّل تولّد الأخطاء واجتماع التناقضات.
 
-In many cases it's not possible to break these components into smaller ones because the stateful logic is all over the place. It's also difficult to test them. This is one of the reasons many people prefer to combine React with a separate state management library. However, that often introduces too much abstraction, requires you to jump between different files, and makes reusing components more difficult.
+في معظم الحالات، يستحيل فصل هذه المكونات إلى أجزاء أصغر لأنَّ الشيفرة ذات الحالة هي في كل مكان. يصعب أيضًا اختبارها. هذا أحد أسباب تفضيل الكثير من الأشخاص دمج React مع مكتبة إدارة حالة منفصلة. على أي حال، ذلك يعرِّف الكثير من التجريد الذي يتطلب منك القفز بين الملفات، ويجعل إعادت استعمال المكونات أمرًا صعب الحصول.
 
-To solve this, **Hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data)**, rather than forcing a split based on lifecycle methods. You may also opt into managing the component's local state with a reducer to make it more predictable.
+لحل هذا الأمر، تسمح لك الخطافات بفصل مكون واحد إلى دوال أصغر بناءً على ترابط الأجزاء مع بعضها بعضًا (مثل إعداد اشتراك أو جلب بيانات) عوضًا عن إجبار الفصل استنادًا إلى توابع دورة الحياة. قد تختار أيضًا إدارة حالة المكونات المحلية مع مخفِّض (reducer) لجعلها أكثر قابلية للتنبؤ.
 
-We'll discuss this more in [Using the Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns).
+سنناقش هذا الموضوع بتفصيل أوسع في التوثيق [استعمال خطاف التأثير](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns).
 
-### Classes confuse both people and machines {#classes-confuse-both-people-and-machines}
+### خلط الأصناف بين الأشخاص والأجهزة {#classes-confuse-both-people-and-machines}
 
-In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without unstable [syntax proposals](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+إضافةً إلى جعل إعادة استعمال الشيفرة وتنظيمها مهمةً صعبةً، وجدنا أنَّ الأصناف يمكن أن تشكل عائقًا كبيرًا لتعلم React. عليك أن تفهم كيفية عمل `this` في JavaScript، والتي تختلف عن عملها في أغلب اللغات. عليك أيضًا أن تتذكر أن تربط معالجات الحدث. بدون [اقتراحات الصيغة](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), اقتراحات الصيغة، تكون الشيفرة مسهبةً جدًا. يستطيع الآخرون فهم الخاصيات، والحالة، وتدفق البيانات من الأعلى للأسفل بشكل جيد ولكنهم لا يزالون يعانون مع الأصناف. يؤدي الفرق بين مكونات دالة وصنف في React ومتى يستخدم أحدهما إلى خلافات حتى بين مطوري React المحنَّكين.
 
-Additionally, React has been out for about five years, and we want to make sure it stays relevant in the next five years. As [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), and others show, [ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) of components has a lot of future potential. Especially if it's not limited to templates. Recently, we've been experimenting with [component folding](https://github.com/facebook/react/issues/7323) using [Prepack](https://prepack.io/), and we've seen promising early results. However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today's tools, too. For example, classes don't minify very well, and they make hot reloading flaky and unreliable. We want to present an API that makes it more likely for code to stay on the optimizable path.
+إضافةً لما سبق، لقد كانت React متحجِّرةً لخمس سنوات ونريد أن نتأكد الآن من بقائها محدَّثة ومُطوَّرة في السنوات الخمس القادمة. كما أظهرت [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), وغيرها، يملك التصريف المسبق [ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) للعناصر الكثير من الإمكانيات المستقبلية خصوصًا إن لم تكن محدودةً بقالب. مؤخرًا، كنا نجري تجاربًا حول [طي المكونات](https://github.com/facebook/react/issues/7323) باستعمال [Prepack](https://prepack.io/), وظهرت معنا نتائج واعدة مبكرة. على أي حال، وجدنا أنَّ مكونات الأصناف يمكن أن تدعم الأنماط غير المقصودة (unintentional patterns) التي تجعل هذه التحسينات ترجع إلى مسارٍ أبطأ. تقدم الأصناف مشكلات للأدوات في هذه الأيام أيضًا. على سبيل المثال، الأصناف لا تصغر (minify) بشكل جيد، وتجعل إعادة التحميل الساخن هشًّا وغير موثوق. نريد أن نوجد واجهة برمجية تجعل الشيفرات في الطرف القابل للتحسين دومًا.
 
-To solve these problems, **Hooks let you use more of React's features without classes.** Conceptually, React components have always been closer to functions. Hooks embrace functions, but without sacrificing the practical spirit of React. Hooks provide access to imperative escape hatches and don't require you to learn complex functional or reactive programming techniques.
+لحل هذه المشكلات، تسمح لك الخطافات باستعمال أكثر من ميزة من ميزات React دون اللجوء إلى الأصناف. من الناحية النظرية، مكونات React كانت وما تزال أقرب إلى الدوال. الخطافات تتبنى الدوال ولكن بدون التفريط بالجانب العملي في React. توفر الخطافات الوصول إلى مخارج هروب أمرية (imperative escape hatches) بديلة عن عالم React الوظيفي، إذ لا تطلب منك تعلم تقنيات البرمجة الوظيفية أو التفاعلية المعقدة.
 
->Examples
+>أمثلة
 >
->[Hooks at a Glance](/docs/hooks-overview.html) is a good place to start learning Hooks.
+>توثيق [لمحة خاطفة عن الخطافات](/docs/hooks-overview.html) هو المكان الأمثل لبدء تعلم الخطافات، إذ يوفر الكثير من الأمثلة العملية المفيدة.
 
-## Gradual Adoption Strategy {#gradual-adoption-strategy}
+## خطة الاعتماد التدريجي {#gradual-adoption-strategy}
 
->**TLDR: There are no plans to remove classes from React.**
+>**نعود ونذكر أنه لا توجد أية نية لحذف الأصناف من React.**
 
-We know that React developers are focused on shipping products and don't have time to look into every new API that's being released. Hooks are very new, and it might be better to wait for more examples and tutorials before considering learning or adopting them.
+نعلم أن مطوري React يركزون على تضمين المنتجات ولا يملكون الوقت للنظر في كل واجهة برمجية يجري إصدارها. الخطافات جديدةٌ للغاية، ومن الأفضل التريث قليلًا ريثما يتوافر مزيدًا من الأمثلة والدروس التعليمية قبل اتخاذ قرار تعلمها أو اعتمادها.
 
-We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+نتفهَّم أيضًا أنَّ مجال الطلب على إضافة أنواع أساسية جديدة إلى React مرتفعٌ نسبيًا. للقرَّاء الفضوليين، أعددنا [الدليل RFC المفصل](https://github.com/reactjs/rfcs/pull/68) الذي يتعمق حول دافع إضافة الخطافات، ويوفر نظرة موسعة حول قرارات التصميم المحددة والأسلوب المرتبط السابق.
 
-**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** There is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mindshift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
+**الأهم من ذلك، تعمل الخطافات جنبًا بجنب مع الشيفرة القائمة، لذلك يمكنك اعتمادها تدريجيًا.** نشارك الآن الواجهة البرمجية التجريبية للحصول على تغذية راجعة من أولئك المهتمين بتشكيل مستقبل React.
 
-We intend for Hooks to cover all existing use cases for classes, but **we will keep supporting class components for the foreseeable future.** At Facebook, we have tens of thousands of components written as classes, and we have absolutely no plans to rewrite them. Instead, we are starting to use Hooks in the new code side by side with classes.
+أخيرًا، لا يوجد أي شيء يدفع للهجرة إلى الخطافات. ننصح بتجنب اعتماد الخطافات في المكونات الكبيرة خصوصًا مع مكونات الصنف المعقدة. تتطلب عملية تحول الأنظار إلى الخطافات واستعمالها بعض الوقت. بناءً على خبرتنا، من الأفضل التدرب على استعمال الخطافات من الآن في المكونات الجديدة وغير المهمة، والتأكُّد من أنَّ كل شخص في الفريق يشعر براحة تامة معها. بعد تجريب استعمال الخطافات، لا تتردد [بإرسال feedback](https://github.com/facebook/react/issues/new), سواءً أكانت إيجايبة أم سلبية.
 
-## Frequently Asked Questions {#frequently-asked-questions}
+بخصوص الخطافات، ننوي بأن تشمل جميع حالات الاستخدام الحالية للأصناف، ولكن **ولكن سنبقي دعم مكونات الأصناف (class components) في المستقبل.** ي فيسبوك، لدينا عشرات الآلاف من المكونات المكتوبة كأصناف، ولا نملك - بالتأكيد - أية خطة حاليًا لإعادة كتابتها من جديد.
 
-We've prepared a [Hooks FAQ page](/docs/hooks-faq.html) that answers the most common questions about Hooks.
+## الأسئلة الشائعة {#frequently-asked-questions}
 
-## Next Steps {#next-steps}
+وفرنا [قسمًا خاصًّا للأسئلة الشائعة](/docs/hooks-faq.html) تجيب عن أغلب الأسئلة الشائعة المتعلقة بالخطافات.
 
-By the end of this page, you should have a rough idea of what problems Hooks are solving, but many details are probably unclear. Don't worry! **Let's now go to [the next page](/docs/hooks-overview.html) where we start learning about Hooks by example.**
+## الخطوات التالية {#next-steps}
+
+الآن، يجب أن تكون قد امتلكت فكرة تقريبية حول الخطافات وما هي المشكلات التي تحلها. على أي حال، نعلم أن أغلب هنالك الكثير من التفاصيل الغامضة، لذا لا تقلق. الخطوة التالية الآن هي الانتقال إلى الصفحة التالية "لمحة خاطفة عن الخطافات"، إذ ستبدأ فيها تعلم الخطافات عبر الأمثلة العملية.
+

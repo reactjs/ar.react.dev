@@ -14,9 +14,9 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
 
   const styles = `
     .${className} {
-      float: left;
-      padding-right: 4px;
-      margin-left: -20px;
+      float: right;
+      padding-left: 4px;
+      margin-right: -20px;
     }
     h1 .${className} svg,
     h2 .${className} svg,

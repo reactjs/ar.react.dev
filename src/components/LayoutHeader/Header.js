@@ -179,7 +179,7 @@ const Header = ({location}: {location: Location}) => (
               },
             }}
             to="/versions">
-            اصدار {version}
+            إصدار {version}
           </Link>
           <Link
             css={{
