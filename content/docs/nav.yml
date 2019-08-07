@@ -52,7 +52,7 @@
     - id: higher-order-components
       title: المكونات ذات الترتيب الأعلى
     - id: integrating-with-other-libraries
-      title: تكامل React مع المكتبات الأخرى
+      title: التكامل مع المكتبات الأخرى
     - id: jsx-in-depth
       title: شرح JSX بالتفصيل
     - id: optimizing-performance
