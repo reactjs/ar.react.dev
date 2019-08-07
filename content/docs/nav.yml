@@ -148,7 +148,7 @@
     - id: faq-structure
       title: بنية ملفات المشروع
     - id: faq-versioning
-      title: سياسة الإصدارات المتبعة
+      title: سياسة الإصدارات
     - id: faq-internals
       title: الـ DOM الافتراضي والكائنات الداخلية
 
