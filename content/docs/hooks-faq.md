@@ -1,6 +1,6 @@
 ---
 id: hooks-faq
-title: Hooks FAQ
+title: الأسئلة الشائعة حول الـ Hooks
 permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
@@ -18,44 +18,44 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   ).join('\n')
 -->
 
-* **[Adoption Strategy](#adoption-strategy)**
-  * [Which versions of React include Hooks?](#which-versions-of-react-include-hooks)
-  * [Do I need to rewrite all my class components?](#do-i-need-to-rewrite-all-my-class-components)
-  * [What can I do with Hooks that I couldn't with classes?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [How much of my React knowledge stays relevant?](#how-much-of-my-react-knowledge-stays-relevant)
-  * [Should I use Hooks, classes, or a mix of both?](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Do Hooks cover all use cases for classes?](#do-hooks-cover-all-use-cases-for-classes)
-  * [Do Hooks replace render props and higher-order components?](#do-hooks-replace-render-props-and-higher-order-components)
-  * [What do Hooks mean for popular APIs like Redux connect() and React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
-  * [Do Hooks work with static typing?](#do-hooks-work-with-static-typing)
-  * [How to test components that use Hooks?](#how-to-test-components-that-use-hooks)
-  * [What exactly do the lint rules enforce?](#what-exactly-do-the-lint-rules-enforce)
-* **[From Classes to Hooks](#from-classes-to-hooks)**
-  * [How do lifecycle methods correspond to Hooks?](#how-do-lifecycle-methods-correspond-to-hooks)
-  * [How can I do data fetching with Hooks?](#how-can-i-do-data-fetching-with-hooks)
-  * [Is there something like instance variables?](#is-there-something-like-instance-variables)
-  * [Should I use one or many state variables?](#should-i-use-one-or-many-state-variables)
-  * [Can I run an effect only on updates?](#can-i-run-an-effect-only-on-updates)
-  * [How to get the previous props or state?](#how-to-get-the-previous-props-or-state)
-  * [Why am I seeing stale props or state inside my function?](#why-am-i-seeing-stale-props-or-state-inside-my-function)
-  * [How do I implement getDerivedStateFromProps?](#how-do-i-implement-getderivedstatefromprops)
-  * [Is there something like forceUpdate?](#is-there-something-like-forceupdate)
-  * [Can I make a ref to a function component?](#can-i-make-a-ref-to-a-function-component)
-  * [How can I measure a DOM node?](#how-can-i-measure-a-dom-node)
-  * [What does const [thing, setThing] = useState() mean?](#what-does-const-thing-setthing--usestate-mean)
-* **[Performance Optimizations](#performance-optimizations)**
-  * [Can I skip an effect on updates?](#can-i-skip-an-effect-on-updates)
-  * [Is it safe to omit functions from the list of dependencies?](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)
-  * [What can I do if my effect dependencies change too often?](#what-can-i-do-if-my-effect-dependencies-change-too-often)
-  * [How do I implement shouldComponentUpdate?](#how-do-i-implement-shouldcomponentupdate)
-  * [How to memoize calculations?](#how-to-memoize-calculations)
-  * [How to create expensive objects lazily?](#how-to-create-expensive-objects-lazily)
-  * [Are Hooks slow because of creating functions in render?](#are-hooks-slow-because-of-creating-functions-in-render)
-  * [How to avoid passing callbacks down?](#how-to-avoid-passing-callbacks-down)
-  * [How to read an often-changing value from useCallback?](#how-to-read-an-often-changing-value-from-usecallback)
-* **[Under the Hood](#under-the-hood)**
-  * [How does React associate Hook calls with components?](#how-does-react-associate-hook-calls-with-components)
-  * [What is the prior art for Hooks?](#what-is-the-prior-art-for-hooks)
+- [Adoption Strategy {#adoption-strategy}](#adoption-strategy-adoption-strategy)
+  - [Which versions of React include Hooks? {#which-versions-of-react-include-hooks}](#which-versions-of-react-include-hooks-which-versions-of-react-include-hooks)
+  - [Do I need to rewrite all my class components? {#do-i-need-to-rewrite-all-my-class-components}](#do-i-need-to-rewrite-all-my-class-components-do-i-need-to-rewrite-all-my-class-components)
+  - [What can I do with Hooks that I couldn't with classes? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}](#what-can-i-do-with-hooks-that-i-couldnt-with-classes-what-can-i-do-with-hooks-that-i-couldnt-with-classes)
+  - [How much of my React knowledge stays relevant? {#how-much-of-my-react-knowledge-stays-relevant}](#how-much-of-my-react-knowledge-stays-relevant-how-much-of-my-react-knowledge-stays-relevant)
+  - [Should I use Hooks, classes, or a mix of both? {#should-i-use-hooks-classes-or-a-mix-of-both}](#should-i-use-hooks-classes-or-a-mix-of-both-should-i-use-hooks-classes-or-a-mix-of-both)
+  - [Do Hooks cover all use cases for classes? {#do-hooks-cover-all-use-cases-for-classes}](#do-hooks-cover-all-use-cases-for-classes-do-hooks-cover-all-use-cases-for-classes)
+  - [Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}](#do-hooks-replace-render-props-and-higher-order-components-do-hooks-replace-render-props-and-higher-order-components)
+  - [What do Hooks mean for popular APIs like Redux `connect()` and React Router? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router-what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
+  - [Do Hooks work with static typing? {#do-hooks-work-with-static-typing}](#do-hooks-work-with-static-typing-do-hooks-work-with-static-typing)
+  - [How to test components that use Hooks? {#how-to-test-components-that-use-hooks}](#how-to-test-components-that-use-hooks-how-to-test-components-that-use-hooks)
+  - [What exactly do the lint rules enforce? {#what-exactly-do-the-lint-rules-enforce}](#what-exactly-do-the-lint-rules-enforce-what-exactly-do-the-lint-rules-enforce)
+- [From Classes to Hooks {#from-classes-to-hooks}](#from-classes-to-hooks-from-classes-to-hooks)
+  - [How do lifecycle methods correspond to Hooks? {#how-do-lifecycle-methods-correspond-to-hooks}](#how-do-lifecycle-methods-correspond-to-hooks-how-do-lifecycle-methods-correspond-to-hooks)
+  - [How can I do data fetching with Hooks? {#how-can-i-do-data-fetching-with-hooks}](#how-can-i-do-data-fetching-with-hooks-how-can-i-do-data-fetching-with-hooks)
+  - [Is there something like instance variables? {#is-there-something-like-instance-variables}](#is-there-something-like-instance-variables-is-there-something-like-instance-variables)
+  - [Should I use one or many state variables? {#should-i-use-one-or-many-state-variables}](#should-i-use-one-or-many-state-variables-should-i-use-one-or-many-state-variables)
+  - [Can I run an effect only on updates? {#can-i-run-an-effect-only-on-updates}](#can-i-run-an-effect-only-on-updates-can-i-run-an-effect-only-on-updates)
+  - [How to get the previous props or state? {#how-to-get-the-previous-props-or-state}](#how-to-get-the-previous-props-or-state-how-to-get-the-previous-props-or-state)
+  - [Why am I seeing stale props or state inside my function? {#why-am-i-seeing-stale-props-or-state-inside-my-function}](#why-am-i-seeing-stale-props-or-state-inside-my-function-why-am-i-seeing-stale-props-or-state-inside-my-function)
+  - [How do I implement `getDerivedStateFromProps`? {#how-do-i-implement-getderivedstatefromprops}](#how-do-i-implement-getderivedstatefromprops-how-do-i-implement-getderivedstatefromprops)
+  - [Is there something like forceUpdate? {#is-there-something-like-forceupdate}](#is-there-something-like-forceupdate-is-there-something-like-forceupdate)
+  - [Can I make a ref to a function component? {#can-i-make-a-ref-to-a-function-component}](#can-i-make-a-ref-to-a-function-component-can-i-make-a-ref-to-a-function-component)
+  - [How can I measure a DOM node? {#how-can-i-measure-a-dom-node}](#how-can-i-measure-a-dom-node-how-can-i-measure-a-dom-node)
+  - [What does `const [thing, setThing] = useState()` mean? {#what-does-const-thing-setthing--usestate-mean}](#what-does-const-thing-setthing--usestate-mean-what-does-const-thing-setthing--usestate-mean)
+- [Performance Optimizations {#performance-optimizations}](#performance-optimizations-performance-optimizations)
+  - [Can I skip an effect on updates? {#can-i-skip-an-effect-on-updates}](#can-i-skip-an-effect-on-updates-can-i-skip-an-effect-on-updates)
+  - [Is it safe to omit functions from the list of dependencies? {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}](#is-it-safe-to-omit-functions-from-the-list-of-dependencies-is-it-safe-to-omit-functions-from-the-list-of-dependencies)
+  - [What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}](#what-can-i-do-if-my-effect-dependencies-change-too-often-what-can-i-do-if-my-effect-dependencies-change-too-often)
+  - [How do I implement `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}](#how-do-i-implement-shouldcomponentupdate-how-do-i-implement-shouldcomponentupdate)
+  - [How to memoize calculations? {#how-to-memoize-calculations}](#how-to-memoize-calculations-how-to-memoize-calculations)
+  - [How to create expensive objects lazily? {#how-to-create-expensive-objects-lazily}](#how-to-create-expensive-objects-lazily-how-to-create-expensive-objects-lazily)
+  - [Are Hooks slow because of creating functions in render? {#are-hooks-slow-because-of-creating-functions-in-render}](#are-hooks-slow-because-of-creating-functions-in-render-are-hooks-slow-because-of-creating-functions-in-render)
+  - [How to avoid passing callbacks down? {#how-to-avoid-passing-callbacks-down}](#how-to-avoid-passing-callbacks-down-how-to-avoid-passing-callbacks-down)
+  - [How to read an often-changing value from `useCallback`? {#how-to-read-an-often-changing-value-from-usecallback}](#how-to-read-an-often-changing-value-from-usecallback-how-to-read-an-often-changing-value-from-usecallback)
+- [Under the Hood {#under-the-hood}](#under-the-hood-under-the-hood)
+  - [How does React associate Hook calls with components? {#how-does-react-associate-hook-calls-with-components}](#how-does-react-associate-hook-calls-with-components-how-does-react-associate-hook-calls-with-components)
+  - [What is the prior art for Hooks? {#what-is-the-prior-art-for-hooks}](#what-is-the-prior-art-for-hooks-what-is-the-prior-art-for-hooks)
 
 ## Adoption Strategy {#adoption-strategy}
 
