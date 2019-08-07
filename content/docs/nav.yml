@@ -34,7 +34,7 @@
     - id: composition-vs-inheritance
       title: الفرق بين التركيب والوراثة
     - id: thinking-in-react
-      title: أسلوب التفكير في React
+      title: التفكير على طريقة React
 - title: الدليل المتقدم
   items:
     - id: accessibility
