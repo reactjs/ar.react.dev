@@ -82,7 +82,7 @@
 - title: مراجع API 
   items:
     - id: react-api
-      title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى في React.
+      title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى.
       subitems:
         - id: react-component
           title: الصنف React.Component
