@@ -97,7 +97,7 @@
     - id: test-utils
       title: أدوات الاختبار
     - id: shallow-renderer
-      title: التصيير السطحي
+      title: التصيير السطحي (Shallow Rendering)
     - id: test-renderer
       title: مصير الاختبار
     - id: javascript-environment-requirements
