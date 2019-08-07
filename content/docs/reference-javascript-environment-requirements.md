@@ -1,6 +1,6 @@
 ---
 id: javascript-environment-requirements
-title: JavaScript Environment Requirements
+title: متطلبات بيئة JavaScript
 layout: docs
 category: Reference
 permalink: docs/javascript-environment-requirements.html
