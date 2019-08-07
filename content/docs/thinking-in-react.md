@@ -49,11 +49,7 @@ prev: composition-vs-inheritance.html
   4. **`ProductCategoryRow` (باللون الفيروزي):** يعرض عنوان (heading) لكل  *فئة (category)*
   5. **`ProductRow` (باللون الأحمر):** يعرض صف لكل *منتج (product)*
 
-<<<<<<< HEAD
 إذا نظرت الي المكون `ProductTable` ستري أن عنوان الجدول (المحتوي علي الأسم والسعر) ليس مكون (component) منفصل بذاته هي مسألة تفضيل وهناك حجة لكلا الطريقتين. لهذا المثال نحن تركناه كجزء من المكون `ProductTable`لأنه جزء من تصيير (rendering) *مجموعة البيانات (data collection)* والتي هي من مسئولية المكون `ProductTable`، ومع ذلك إذا تنامي عنوان الجدول بشكل معقد (كمثال إضافة إمكانية الفرز (sorting)) سيكون بالتأكيد من المنطقي جعله مكون منفصل `ProductTableHeader`.
-=======
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (e.g., if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
->>>>>>> 986381c56879983269c52863d9c205c7a7ba0174
 
 والأن بعد أن حددنا المكونات (components) في نموذج التصميم خاصتنا، لنقم برتيبهم في تسلسل هرمي وهذا سهل، المكونات التي تظهر بداخل مكونات أخري في النموذج يجب أن تكون إبن (child) داخل التسلسل:
 
