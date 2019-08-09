@@ -1,18 +1,19 @@
 ---
 id: routing
-title: Routing
+title: المسارات
 layout: community
 permalink: community/routing.html
 ---
 
-* **[Aviator](https://github.com/swipely/aviator)** - Aviator is a front-end router built for modular single page applications. ([Example](https://gist.github.com/hojberg/9549330)).
-* **[Backbone](https://backbonejs.org/)** - Backbone supplies structure to JavaScript-heavy applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing application over a RESTful JSON interface.
-* **[component-router](https://github.com/in-flux/component-router):** Flux-based routing solution for components
-* **[Director](https://github.com/flatiron/director)** - A tiny and isomorphic URL router for JavaScript.
-* **[Finch](http://stoodder.github.io/finchjs/)** - A simple, yet powerful, javascript route handling library.
-* **[mvc-router](https://github.com/rajeev-k/mvc-router)** Use the Model-View-Controller (MVC) pattern to build React applications.
-* **[Reach Router](https://reach.tech/router)** An Accessible Router for React
-* **[react-mini-router](https://github.com/larrymyers/react-mini-router)** A minimal URL router mixin.
-* **[react-passage](https://github.com/dollarshaveclub/react-passage):** Passage helps when linking or redirecting to routes that may or may not be in your react app.
-* **[react-router](https://github.com/rackt/react-router)** - A popular declarative router for React
+* **[Aviator](https://github.com/swipely/aviator)** - محول مسارات لواجهات
+الويب تم بناءه من أجل وحدات التطبيقات ذات الصفحة الواحدة. ([مثال](https://gist.github.com/hojberg/9549330)).
+* **[Backbone](https://backbonejs.org/)** - تزود Backbone بنية تطبيقات جافا سكريبت الثقيلة من خلال توفير موديل بربط المفتاح بالقيمة (key-value) و الاحداث الخاصة، ومجموعات مع واجهة برمجة تطبيقات غنية بالدوال القابلة للتعداد ، وواجهات مع معالجة الحدث ، ثم توصيلها جميعًا بالتطبيق الحالي الخاص بك عبر واجهة RESTful JSON.
+* **[component-router](https://github.com/in-flux/component-router):** حل يرتكز على Flux لمسارات المكونات.
+* **[Director](https://github.com/flatiron/director)** - موجه URL صغير و متماثل لجافا سكريبت.
+* **[Finch](http://stoodder.github.io/finchjs/)** - مكتبة بسيطة لمعالجة مسار جافا سكريبت لكنها قوية.
+* **[mvc-router](https://github.com/rajeev-k/mvc-router)** استخدم نموذج MVC لإنشاء تطبيقات React.
+* **[Reach Router](https://reach.tech/router)** موجه سهل الوصول لـ React.
+* **[react-mini-router](https://github.com/larrymyers/react-mini-router)**موجه URL صغير.
+* **[react-passage](https://github.com/dollarshaveclub/react-passage):** يساعد عند الربط أو إعادة التوجيه إلى مسارات قد تكون أو لا تكون في تطبيق React  الخاص بك.
+* **[react-router](https://github.com/rackt/react-router)** - موجه مشهور لـ React.
 * **[react-router-component](https://github.com/andreypopp/react-router-component)** Declarative routing.
