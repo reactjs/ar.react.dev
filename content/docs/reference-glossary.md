@@ -1,6 +1,6 @@
 ---
 id: glossary
-title: المصطلحات في React
+title: معجم مصطلحات React 
 layout: docs
 category: Reference
 permalink: docs/glossary.html

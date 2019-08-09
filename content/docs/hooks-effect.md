@@ -1,6 +1,6 @@
 ---
 id: hooks-state
-title: استعمال خطاف التأثير
+title: استعمال Hook التأثير
 permalink: docs/hooks-effect.html
 next: hooks-rules.html
 prev: hooks-state.html

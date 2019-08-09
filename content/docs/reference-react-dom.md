@@ -1,6 +1,6 @@
 ﻿---
 id: react-dom
-title: ReactDOM
+title: الكائن ReactDOM
 layout: docs
 category: Reference
 permalink: docs/react-dom.html

@@ -4,7 +4,7 @@ layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-You probably came here because your code is calling your component as a plain function call. This is now deprecated:
+أنت على الأرجح هُنا لأن الشيفرة "code" خاصّتك تستدعِ مُكوّنك كدالّة مُجرّدة. تم إزالة ذلك:
 
 ```javascript
 var MyComponent = require('MyComponent');
@@ -16,7 +16,7 @@ function render() {
 
 ## JSX {#jsx}
 
-React components can no longer be called directly like this. Instead [you can use JSX](/docs/jsx-in-depth.html).
+لم تَعُد مُكوّنات React قابلة للإستدعاء مُباشرةً. عوضًا عن ذلك، [يُمكنك استخدام JSX](/docs/jsx-in-depth.html).
 
 ```javascript
 var React = require('react');
@@ -27,9 +27,9 @@ function render() {
 }
 ```
 
-## Without JSX {#without-jsx}
+## بدون JSX {#without-jsx}
 
-If you don't want to, or can't use JSX, then you'll need to wrap your component in a factory before calling it:
+إن كُنت لا تريد ، او لا تستطيع استخدام JSX فعليك بتغليف المُكوّن خاصّتك بِمَنصع "factory" قبل استدعائه:
 
 ```javascript
 var React = require('react');
@@ -40,11 +40,11 @@ function render() {
 }
 ```
 
-This is an easy upgrade path if you have a lot of existing function calls.
+يكون ذلك طريق تحديث سهل إن كان لديك الكثير من استدعائات الدوال.
 
-## Dynamic components without JSX {#dynamic-components-without-jsx}
+## مُكوّنات ديناميكية بدون JSX {#dynamic-components-without-jsx}
 
-If you get a component class from a dynamic source, then it might be unnecessary to create a factory that you immediately invoke. Instead you can just create your element inline:
+اذا حصلت على مُكون صنف من مصدر ديناميكي فَمن المُمكن الّا يكون من الضروري انشاء مصنع  تستدعيه مُباشرة. بدلًا من ذلك ُيُمكنك انشاء العنصر خاصّتك مُباشرة "inline":
 
 ```javascript
 var React = require('react');
@@ -54,6 +54,6 @@ function render(MyComponent) {
 }
 ```
 
-## In Depth {#in-depth}
+## بالتفصيل {#in-depth}
 
-[Read more about WHY we're making this change.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[اقرأ المزيد عن سبب عملنا لهذا التغيير.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)

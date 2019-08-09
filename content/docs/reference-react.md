@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى في React.
+title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى
 layout: docs
 category: Reference
 permalink: docs/react-api.html

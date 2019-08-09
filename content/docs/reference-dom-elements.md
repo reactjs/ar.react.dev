@@ -1,6 +1,6 @@
 ---
 id: dom-elements
-title: عناصر DOM
+title: عناصر الـ DOM 
 layout: docs
 category: Reference
 permalink: docs/dom-elements.html

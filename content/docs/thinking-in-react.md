@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: التفكير بطريقة React
+title: التفكير على طريقة React
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -77,7 +77,7 @@ prev: composition-vs-inheritance.html
 
 ### نبذه بسيطة: الخاصية (Props) مقابل الحالة (State){#a-brief-interlude-props-vs-state}
 
-هناك نوعان من نماذج البيانات في (React): الحالة (state) و الخاصية (props)، من المهم فهم الأختلاف بين الأثنين، تصفح الوثائق [the official React docs](/docs/interactivity-and-dynamic-uis.html) إذا لم تكن متأكد من الأختلاف.
+هناك نوعان من نماذج البيانات في (React): الحالة (state) و الخاصية (props)، من المهم فهم الأختلاف بين الأثنين، تصفح الوثائق [the official React docs](/docs/state-and-lifecycle.html) إذا لم تكن متأكد من الأختلاف. تصفح أيضا [الأسئلة الأكثر تكراراً: ما الفرق بين الحالة state والخاصيّات props؟](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
 ##  الخطوة الثالثة: تحديد الحد الأدني (ولكن المكتمل) الممثل لحالة (state) واجهة المستخدم{#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 

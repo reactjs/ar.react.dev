@@ -1,6 +1,6 @@
 ---
 id: javascript-environment-requirements
-title: متطلبات بيئة JavaScript في React
+title: متطلبات بيئة JavaScript
 layout: docs
 category: Reference
 permalink: docs/javascript-environment-requirements.html

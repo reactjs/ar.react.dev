@@ -1,6 +1,6 @@
 ---
 id: faq-styling
-title: التنسيق واستخدام CSS
+title: التنسيق و CSS
 permalink: docs/faq-styling.html
 layout: docs
 category: FAQ

@@ -42,6 +42,7 @@ permalink: community/meetups.html
 * [دوسلدورف](https://www.meetup.com/de-DE/ReactJS-Meetup-Dusseldorf/)
 * [فتيات برلين](https://www.meetup.com/ReactJS-Girls-Berlin/)
 * [كارلسروه](https://www.meetup.com/react_ka/)
+* [كييل](https://www.meetup.com/Kiel-React-Native-Meetup/)
 * [ميونخ](https://www.meetup.com/ReactJS-Meetup-Munich/)
 * [هامبورج](https://www.meetup.com/Hamburg-React-js-Meetup/)
 

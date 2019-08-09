@@ -1,6 +1,6 @@
 ---
 id: code-splitting
-title: تقسيم الشيفرة في React
+title: تقسيم الشيفرة
 permalink: docs/code-splitting.html
 ---
 

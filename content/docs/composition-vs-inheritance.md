@@ -1,6 +1,6 @@
 ---
 id: composition-vs-inheritance
-title: الفرق بين التركيب والوراثة في React
+title: الفرق بين التركيب والوراثة
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"

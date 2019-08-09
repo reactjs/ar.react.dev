@@ -1,6 +1,6 @@
 ---
 id: context
-title: استخدام السياق (Context) في React
+title: استخدام السياق (Context)
 permalink: docs/context.html
 ---
 
