@@ -1,6 +1,6 @@
 ---
 id: test-renderer
-title: Test Renderer
+title: مصير الاختبار
 permalink: docs/test-renderer.html
 layout: docs
 category: Reference

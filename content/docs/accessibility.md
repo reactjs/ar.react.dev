@@ -1,6 +1,6 @@
 ---
 id: accessibility
-title: سهولة الوصول في React
+title: سهولة الوصول
 permalink: docs/accessibility.html
 ---
 

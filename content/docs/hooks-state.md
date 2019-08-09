@@ -1,6 +1,6 @@
 ---
 id: hooks-state
-title: Using the State Hook
+title: استعمال Hook الحالة
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html

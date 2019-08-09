@@ -1,6 +1,6 @@
 ---
 id: react-component
-title: React.Component
+title: الصنف React.Component
 layout: docs
 category: Reference
 permalink: docs/react-component.html

@@ -1,6 +1,6 @@
 ---
 id: hooks-faq
-title: Hooks FAQ
+title: الأسئلة الشائعة حول الـ Hooks
 permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
