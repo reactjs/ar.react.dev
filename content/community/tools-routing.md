@@ -1,6 +1,6 @@
 ---
 id: routing
-title: المسارات
+title: التوجيه
 layout: community
 permalink: community/routing.html
 ---
