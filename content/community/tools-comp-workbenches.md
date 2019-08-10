@@ -6,7 +6,7 @@ permalink: community/component-workbenches.html
 ---
 
 * **[Storybook for React](https://github.com/storybooks/storybook):** بيئة تطوير مكونات واجهة المستخدم لـ React.
-* **[React Styleguidist](https://github.com/styleguidist/react-styleguidist):** مولد دليل التتنسيق ومنصة تطوير المكونات لـ React.
+* **[React Styleguidist](https://github.com/styleguidist/react-styleguidist):** مولّد دليل التنسيق ومنصة تطوير المكونات لـ React.
 * **[React Showroom](https://github.com/OpusCapita/react-showroom-client):** كتالوج مكونات React الذي يوفر لك مستندات ( markdown ) وأمثلة حية.
 * **[patternplate](https://github.com/sinnerschrader/patternplate)**: منصة لتطوير النمط ( pattern ) ومكتبة المكونات بإستخدام React.
 * **[UiZoo.js](https://github.com/myheritage/UiZoo.js)**: بيئة تطوير المكونات التي يتم إنشاؤها تلقائيًا بواسطة مكونات JSDoc of React.
