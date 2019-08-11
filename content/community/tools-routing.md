@@ -16,4 +16,4 @@ permalink: community/routing.html
 * **[react-mini-router](https://github.com/larrymyers/react-mini-router)**موجه URL صغير.
 * **[react-passage](https://github.com/dollarshaveclub/react-passage):** يساعد عند الربط أو إعادة التوجيه إلى مسارات قد تكون أو لا تكون في تطبيق React  الخاص بك.
 * **[react-router](https://github.com/rackt/react-router)** - موجه مشهور لـ React.
-* **[react-router-component](https://github.com/andreypopp/react-router-component)** Declarative routing.
+* **[react-router-component](https://github.com/andreypopp/react-router-component)** توجيه تصريحي (Declarative routing).
