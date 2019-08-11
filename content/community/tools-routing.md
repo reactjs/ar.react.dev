@@ -10,7 +10,7 @@ permalink: community/routing.html
 * **[Backbone](https://backbonejs.org/)** - تزود Backbone بنية تطبيقات جافا سكريبت الثقيلة من خلال توفير موديل بربط المفتاح بالقيمة (key-value) و الاحداث الخاصة، ومجموعات مع واجهة برمجة تطبيقات غنية بالدوال القابلة للتعداد ، وواجهات مع معالجة الحدث ، ثم توصيلها جميعًا بالتطبيق الحالي الخاص بك عبر واجهة RESTful JSON.
 * **[component-router](https://github.com/in-flux/component-router):** حل يرتكز على Flux لمسارات المكونات.
 * **[Director](https://github.com/flatiron/director)** - موجه URL صغير و متماثل لجافا سكريبت.
-* **[Finch](http://stoodder.github.io/finchjs/)** - مكتبة بسيطة لمعالجة مسار جافا سكريبت لكنها قوية.
+* **[Finch](http://stoodder.github.io/finchjs/)** - مكتبة قويّة رغم صغرها لمعالجة التوجيه في جافا سكريبت
 * **[mvc-router](https://github.com/rajeev-k/mvc-router)** استخدم نموذج MVC لإنشاء تطبيقات React.
 * **[Reach Router](https://reach.tech/router)** موجه سهل الوصول لـ React.
 * **[react-mini-router](https://github.com/larrymyers/react-mini-router)**موجه URL صغير.
