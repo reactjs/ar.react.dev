@@ -12,6 +12,11 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
+### React Conf Iran 2019 {#react-conf-iran-2019}
+August 29, 2019. Tehran, Iran.
+
+[Website](https://reactconf.ir/) - [Twitter](https://twitter.com/reactconf_ir) - [Instagram](https://www.instagram.com/reactconf/)
+
 ### React Rally 2019 {#react-rally-2019}
 22-23 أغسطس ، 2019. سولت ليك سيتي ، الولايات المتحدة.
 

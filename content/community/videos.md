@@ -56,8 +56,12 @@ redirect_from:
 
 ### Going Big with React {#going-big-with-react}
 
+<<<<<<< HEAD
 عريب مالك يبحث في كيفية تحسن أداء React في المواقف شديد الضغط ، وكيف ساعد فريقه على بناء شفرة آمن على نطاق واسع.
 <!-- - (2014 - 0h31m). -->
+=======
+Areeb Malik investigates how React performs in a high stress situation, and how it helped his team build safe code on a massive scale - (2014 - 0h31m).
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 <iframe title="Areeb Malik : Going big with React" width="650" height="366" src="https://www.youtube-nocookie.com/embed/9qcBlN6-qwY" frameborder="0" allowfullscreen></iframe>
 
 ### Rethinking Best Practices {#rethinking-best-practices}
