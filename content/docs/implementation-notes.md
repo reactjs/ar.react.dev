@@ -1,6 +1,6 @@
 ---
 id: implementation-notes
-title: Implementation Notes
+title: ملاحظات التنفيذ
 layout: contributing
 permalink: docs/implementation-notes.html
 prev: codebase-overview.html
