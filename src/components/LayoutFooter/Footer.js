@@ -90,11 +90,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://reactjs.org/community/support.html#popular-discussion-forums"
               target="_blank"
               rel="noopener">
-<<<<<<< HEAD
-              منتدى النقاش
-=======
-              Discussion Forums
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+              منتديات النقاش
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://discord.gg/0ZcbPKXt5bZjGY5n"

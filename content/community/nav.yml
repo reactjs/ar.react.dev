@@ -33,13 +33,7 @@
     - id: model-management
       title: إدارة النموذج
     - id: data-fetching
-<<<<<<< HEAD
       title: جلب البيانات
-    - id: testing
-      title: الإختبار
-=======
-      title: Data Fetching
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
     - id: ui-components
       title: مكونات UI
     - id: misc
