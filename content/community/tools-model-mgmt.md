@@ -17,4 +17,4 @@ permalink: community/model-management.html
 * **[js-data](https://www.js-data.io/):** إطار محايد لتخزن بيانات للواجهة الأمامية ، من شأنه أيضًا جلب بياناتك.
 * **[McFly](https://github.com/kenwheeler/mcfly):** مكتبة Flux خفيفة، تضيف مصانع للتخزين والإجراءات.
 * **[NuclearJS](https://github.com/optimizely/nuclear-js):** بنية Flux تفاعلية غير قابل للتغيير. واجهة مستخدم محايدة.
-* **[Reflux](https://github.com/spoike/refluxjs):** تنفيذ قائم على الأحداث لبنية Flux متكامل مع مكونات React.تنفيذ قائم على الأحداث لبنية Flux متكامل مع مكونات React.
+* **[Reflux](https://github.com/spoike/refluxjs):** تنفيذ قائم على الأحداث لبنية Flux متكاملة مع مكونات React.
