@@ -7,7 +7,7 @@ permalink: community/starter-kits.html
 
 ## الموصى بها من قبل فريق React {#recommended-by-the-react-team}
 
-* **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة رسمياً لبدء مشروع React من دون أي إعدادات مسبقة
+* **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة ومدعومة رسمياً لبدء مشروع React من دون أي إعدادات مسبقة
 * **[Next.js](https://nextjs.org/)** - إطار لتطبيقات React المقدمة عن طريق تصيّر الخادم (server-rendered) أو التصدير الثابت (statically-exported)
 * **[Gatsby](https://www.gatsbyjs.org/)** - مولد للمواقع الثابتة لتطبيقات React المحسنة من أجل السرعة
 * **[nwb](https://github.com/insin/nwb)** - حزمة أدوات لتطبيقات React، تحتوي على مكتبات و وحدات NPM للمواقع
@@ -16,12 +16,12 @@ permalink: community/starter-kits.html
 * **[Parcel](https://parceljs.org)** - محزِّم سريع لا يحتاج لإعدادات مسبقة
 ## أدوات بداية أخرى {#other-starter-kits}
 
-* **[kyt](https://github.com/nytimes/kyt)** - The framework that the New York Times uses to develop and build their web properties. It's somewhat opinionated but configurable, and includes starter kits with options to build full-stack or static/client-side apps with the following tools: Express, React, static assets, latest ES, CSS/Sass Modules, Jest, code-splitting, ESLint/Prettier, StyleLint, PostCSS, and inline SVGs.
-* **[React Redux Boilerplate](https://github.com/iroy2000/react-redux-boilerplate):** React Redux Boilerplate is a workflow boilerplate providing a virtual development environment and production ready build workflow out of the box. (React, Redux, Reselect, Redux Actions, ES6, ESLint, Webpack with integrated environment config support)
+* **[kyt](https://github.com/nytimes/kyt)** - إطار العمل التي تستخدمه صحيفة نيويورك تايمز لتطوير وبناء مواقع الويب الخاصة بها. يعتبر إطار عمل محدد لكن قابل للتعديل، يتضمن أدوات بداية مع خصائص لبناء تطبيقات متكاملة (full-stack) أو ثابتة\جهة العميل بالأدوات التالية: Express, React, static assets, latest ES, CSS/Sass Modules, Jest, code-splitting, ESLint/Prettier, StyleLint, PostCSS, and inline SVGs.
+* **[React Redux Boilerplate](https://github.com/iroy2000/react-redux-boilerplate):** عبارة عن شيفرة بدائية (boilerplate) لسير العمل يقدم بيئة تطوير إفتراضية وبيئة جاهزة للنشر من دون تدخل. يستخدم (React, Redux, Reselect, Redux Actions, ES6, ESLint, Webpack مع دعم للبيئة المدمجة)
 * **[React + Redux + Saga Boilerplate](https://github.com/gilbarbara/react-redux-saga-boilerplate)** -
-Ready to grow boilerplate with react-router, redux, saga, webpack 3, jest w/ coverage and enzyme.
-* **[Create React App + Redux + React Router](https://github.com/notrab/create-react-app-redux)**: Based on Create React App, this boilerplate comes with Redux, Redux Thunk and React Router all configured ready to go.
-* **[react-slingshot](https://github.com/coryhouse/react-slingshot):** React + Redux starter kit with Babel, hot reloading, testing, linting and a working example app.
+شفرة بدائية جاهزة للنمو تستخدم react-router, redux, saga, webpack 3, مع تغطية لـjest و enzyme
+* **[Create React App + Redux + React Router](https://github.com/notrab/create-react-app-redux)**: هذه الأداة مبنية فوق Create React App لكن مع شفرة بدائية لـRedux، Redux Thunk و React Router جميعهم مكونيّن وجاهزين للإستخدام
+* **[react-slingshot](https://github.com/coryhouse/react-slingshot):** حزمة بدائية لـReact و Redux مع بابيل، إعادة تحميل سريع، إختبار، التنظيم، ومثال على تطبيق يعمل بدون أخطاء.
 * **[Este](https://github.com/este/este):** Dev stack and starter kit for functional and universal (browser, server, mobile) React applications. Everything you need to start is included.
 * **[Rekit](https://github.com/supnate/rekit)** - Toolkit and boilerplates for building scalable web applications with React, Redux and React-router.
 * **[webcube](https://github.com/dexteryy/Project-WebCube)** - A JS infrastructure for modern Universal JS web app/sites and static websites. Provides built-in support and simplification for Redux sub-app, reducer bundle, router, immutable, eslint + prettier, docker, monorepo and many other tools.
