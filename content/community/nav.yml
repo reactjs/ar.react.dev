@@ -29,7 +29,7 @@
     - id: starter-kits
       title: أدوات البداية
     - id: routing
-      title: المسارات
+      title: التوجيه
     - id: model-management
       title: إدارة النموذج
     - id: data-fetching
