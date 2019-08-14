@@ -5,7 +5,7 @@ layout: community
 permalink: community/model-management.html
 ---
 
-* **[Alt](https://alt.js.org/):** مكتبة لـ Flux نقية و أصلية صنعت بطريقة متماثلة و بدون شيفرة متكررة.
+* **[Alt](https://alt.js.org/):** مكتبة لـ Flux نقية و أصلية صنعت بطريقة متماثلة و بدون الشيفرة النموذجية (boilerplate).
 * **[astarisx](https://zuudo.github.io/astarisx/):** إطار MVVM القابل للتكوين العالي لـ React مع جهاز توجيه pushState مدمج.
 * **[avers](https://github.com/wereHamster/avers):** مكتبة تجريد حديثة لنموذج جهة العميل.
 * **[backbone-react-component](https://github.com/magalhas/backbone-react-component):** استخدم نموذج ومجموعات Backbone المتعددة مع مكونات React على جهتي العميل والخادم.
