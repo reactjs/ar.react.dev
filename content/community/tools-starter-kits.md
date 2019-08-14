@@ -1,21 +1,20 @@
 ---
 id: starter-kits
-title: Starter Kits
+title: أدوات البداية
 layout: community
 permalink: community/starter-kits.html
 ---
 
-## Recommended by the React Team {#recommended-by-the-react-team}
+## الموصى بها من قبل فريق React {#recommended-by-the-react-team}
 
-* **[Create React App](https://github.com/facebook/create-react-app)** - An officially supported way to start a client-side React project with no configuration
-* **[Next.js](https://nextjs.org/)** - Framework for server-rendered or statically-exported React apps
-* **[Gatsby](https://www.gatsbyjs.org/)** - Static site generator for React optimized for speed
-* **[nwb](https://github.com/insin/nwb)** - A toolkit for React apps, libraries and other npm modules for the web
-* **[razzle](https://github.com/jaredpalmer/razzle)** - Create server-rendered universal JavaScript applications with no configuration
-* **[Neutrino](https://neutrino.js.org/)** - Create and build modern JavaScript applications with zero initial configuration
-* **[Parcel](https://parceljs.org)** - Fast, zero configuration web application bundler
-
-## Other Starter Kits {#other-starter-kits}
+* **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة رسمياً لبدء مشروع React من دون أي إعدادات مسبقة
+* **[Next.js](https://nextjs.org/)** - إطار لتطبيقات React المقدمة عن طريق تصيّر الخادم (server-rendered) أو التصدير الثابت (statically-exported)
+* **[Gatsby](https://www.gatsbyjs.org/)** - مولد للمواقع الثابتة لتطبيقات React المحسنة من أجل السرعة
+* **[nwb](https://github.com/insin/nwb)** - حزمة أدوات لتطبيقات React، تحتوي على مكتبات و وحدات NPM للمواقع
+* **[razzle](https://github.com/jaredpalmer/razzle)** - أنشئ تطبيقات JavaScript مصيّرة من الخادم بدون أي إعدادات مسبقة
+* **[Neutrino](https://neutrino.js.org/)** - قم بإنشاء وبناء تطبيقات JavaScript حديثة بدون أي إعدادات أولية مسبقة
+* **[Parcel](https://parceljs.org)** - محزِّم سريع لا يحتاج لإعدادات مسبقة
+## أدوات بداية أخرى {#other-starter-kits}
 
 * **[kyt](https://github.com/nytimes/kyt)** - The framework that the New York Times uses to develop and build their web properties. It's somewhat opinionated but configurable, and includes starter kits with options to build full-stack or static/client-side apps with the following tools: Express, React, static assets, latest ES, CSS/Sass Modules, Jest, code-splitting, ESLint/Prettier, StyleLint, PostCSS, and inline SVGs.
 * **[React Redux Boilerplate](https://github.com/iroy2000/react-redux-boilerplate):** React Redux Boilerplate is a workflow boilerplate providing a virtual development environment and production ready build workflow out of the box. (React, Redux, Reselect, Redux Actions, ES6, ESLint, Webpack with integrated environment config support)
