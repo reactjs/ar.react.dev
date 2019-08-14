@@ -13,7 +13,7 @@ permalink: community/model-management.html
 * **[cortex](https://github.com/mquan/cortex/):** مكتبة JavaScript لإدارة البيانات مركزيًا باستخدام React.
 * **[DeLorean](https://github.com/deloreanjs/delorean):** إطار جافا سكريبت محايد تمامًا لتطبيق مفاهيم Flux على واجهاتك بسهولة.
 * **[Elsa](https://github.com/JonAbrams/elsa):** إضافة Babel التي تجعل المصفوفات والكائنات الخاصة بك غير قابل للتغيير بشكل افتراضي ... ويمنحهم قوى عظمى!
-* **[Immutable](https://github.com/facebook/immutable-js):** هياكل البيانات غير القابلة للتغيير المصممة لتزيد من الكفاءة والبساط.
+* **[Immutable](https://github.com/facebook/immutable-js):** هياكل البيانات غير القابلة للتغيير المصممة لتزيد من الكفاءة والبساطة.
 * **[js-data](https://www.js-data.io/):** إطار محايد لتخزن بيانات للواجهة الأمامية ، من شأنه أيضًا جلب بياناتك.
 * **[McFly](https://github.com/kenwheeler/mcfly):** مكتبة Flux خفيفة، تضيف مصانع للتخزين والإجراءات.
 * **[NuclearJS](https://github.com/optimizely/nuclear-js):** بنية Flux تفاعلية غير قابلة للتغيير. واجهة مستخدم محايدة.
