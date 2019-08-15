@@ -12,7 +12,7 @@ permalink: community/starter-kits.html
 * **[Gatsby](https://www.gatsbyjs.org/)** - مولد للمواقع الثابتة لتطبيقات React المحسنة من أجل السرعة.
 * **[nwb](https://github.com/insin/nwb)** - مجموعة أدوات لتطبيقات React، تحتوي على مكتبات ووحدات NPM للمواقع.
 * **[razzle](https://github.com/jaredpalmer/razzle)** - أنشئ تطبيقات JavaScript مصيّرة من الخادم دون أي إعدادات مسبقة
-* **[Neutrino](https://neutrino.js.org/)** - قم بإنشاء وبناء تطبيقات JavaScript حديثة دون أي إعدادات أولية مسبقة
+* **[Neutrino](https://neutrino.js.org/)** - قم بإنشاء وبناء تطبيقات JavaScript حديثة دون أي إعدادات أولية مسبقة.
 * **[Parcel](https://parceljs.org)** - محزِّم (bundler) سريع لا يحتاج لإعدادات مسبقة
 ## أدوات بداية أخرى: {#other-starter-kits}
 
