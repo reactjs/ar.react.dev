@@ -13,7 +13,7 @@ permalink: community/starter-kits.html
 * **[nwb](https://github.com/insin/nwb)** - مجموعة أدوات لتطبيقات React، تحتوي على مكتبات ووحدات NPM للمواقع.
 * **[razzle](https://github.com/jaredpalmer/razzle)** - أنشئ تطبيقات JavaScript مصيّرة من الخادم دون أي إعدادات مسبقة
 * **[Neutrino](https://neutrino.js.org/)** - قم بإنشاء وبناء تطبيقات JavaScript حديثة دون أي إعدادات أولية مسبقة.
-* **[Parcel](https://parceljs.org)** - محزِّم (bundler) سريع لا يحتاج لإعدادات مسبقة
+* **[Parcel](https://parceljs.org)** - محزِّم (bundler) سريع لا يحتاج لإعدادات مسبقة.
 ## أدوات بداية أخرى: {#other-starter-kits}
 
 * **[kyt](https://github.com/nytimes/kyt)** - إطار العمل التي تستخدمه صحيفة نيويورك تايمز لتطوير وبناء مواقع الويب الخاصة بها. يعتبر إطار عمل محدد لكن قابل للتعديل، يتضمن أدوات بداية مع خصائص لبناء تطبيقات متكاملة (full-stack) أو ثابتة\جهة العميل بالأدوات التالية: Express, React, static assets, latest ES, CSS/Sass Modules, Jest, code-splitting, ESLint/Prettier, StyleLint, PostCSS, and inline SVGs.
