@@ -7,7 +7,7 @@ permalink: community/starter-kits.html
 
 ## فيما يلي الأدوات التي يوصي بها فريق React: {#recommended-by-the-react-team}
 
-* **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة ومدعومة رسمياً لبدء مشروع React دون أي إعدادات مسبقة
+* **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة ومدعومة رسمياً لبدء مشروع React دون أي إعدادات مسبقة.
 * **[Next.js](https://nextjs.org/)** - إطار عمل لتطبيقات React المقدمة عن طريق تصيّر الخادم (server-rendered) أو التصدير الثابت (statically-exported)
 * **[Gatsby](https://www.gatsbyjs.org/)** - مولد للمواقع الثابتة لتطبيقات React المحسنة من أجل السرعة
 * **[nwb](https://github.com/insin/nwb)** - مجموعة أدوات لتطبيقات React، تحتوي على مكتبات ووحدات NPM للمواقع
