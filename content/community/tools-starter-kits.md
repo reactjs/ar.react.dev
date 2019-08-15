@@ -10,7 +10,7 @@ permalink: community/starter-kits.html
 * **[Create React App](https://github.com/facebook/create-react-app)** - طريقة معتمدة ومدعومة رسمياً لبدء مشروع React دون أي إعدادات مسبقة.
 * **[Next.js](https://nextjs.org/)** - إطار عمل لتطبيقات React المقدمة عن طريق تصيّر الخادم (server-rendered) أو التصدير الثابت (statically-exported)
 * **[Gatsby](https://www.gatsbyjs.org/)** - مولد للمواقع الثابتة لتطبيقات React المحسنة من أجل السرعة.
-* **[nwb](https://github.com/insin/nwb)** - مجموعة أدوات لتطبيقات React، تحتوي على مكتبات ووحدات NPM للمواقع
+* **[nwb](https://github.com/insin/nwb)** - مجموعة أدوات لتطبيقات React، تحتوي على مكتبات ووحدات NPM للمواقع.
 * **[razzle](https://github.com/jaredpalmer/razzle)** - أنشئ تطبيقات JavaScript مصيّرة من الخادم دون أي إعدادات مسبقة
 * **[Neutrino](https://neutrino.js.org/)** - قم بإنشاء وبناء تطبيقات JavaScript حديثة دون أي إعدادات أولية مسبقة
 * **[Parcel](https://parceljs.org)** - محزِّم (bundler) سريع لا يحتاج لإعدادات مسبقة
