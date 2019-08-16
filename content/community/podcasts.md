@@ -6,11 +6,11 @@ sectionid: community
 permalink: community/podcasts.html
 ---
 
-Podcasts dedicated to React and individual podcast episodes with React discussions.
+مدونات صوتية متخصصة حول React وحلقات فردية تتضمن مناقشات حول React.
 
-## Podcasts {#podcasts}
+## مدونات صوتية {#podcasts}
 
-- [The React Podcast](https://reactpodcast.simplecast.fm/) - The podcast about everything React.js, hosted by [React Training](https://reacttraining.com)
+- [بودكاست React](https://reactpodcast.simplecast.fm/) - البودكاست المتعلق بكل شيء حول React.js, برعاية [React تدريب](https://reacttraining.com)
 
 - [JavaScript Air](https://javascriptair.com/) - All about JavaScript (currently not producing new episodes)
 
