@@ -59,6 +59,8 @@
       title: تحسين الأداء
     - id: portals
       title: Portals
+    - id: profiler
+      title: Profiler
     - id: react-without-es6
       title: React بدون ES6
     - id: react-without-jsx
@@ -123,6 +125,14 @@
         title: مرجع إلى الواجهة البرمجية للـ Hooks
       - id: hooks-faq
         title: الأسئلة الشائعة حول الـ Hooks
+- title: Testing
+  items:
+    - id: testing 
+      title: Testing Overview
+    - id: testing-recipes
+      title: Testing Recipes
+    - id: testing-environments
+      title: Testing Environments
 - title: المساهمة
   items:
   - id: how-to-contribute

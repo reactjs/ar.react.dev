@@ -34,8 +34,6 @@
       title: إدارة النموذج
     - id: data-fetching
       title: جلب البيانات
-    - id: testing
-      title: الإختبار
     - id: ui-components
       title: مكونات UI
     - id: misc
