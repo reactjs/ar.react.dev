@@ -69,12 +69,8 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 
 ### TestRenderer {#testrenderer}
 
-<<<<<<< HEAD
-* [`()TestRenderer.create`](#testrenderercreate)
-=======
 * [`TestRenderer.create()`](#testrenderercreate)
 * [`TestRenderer.act()`](#testrendereract)
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 ### TestRenderer instance {#testrenderer-instance}
 
@@ -109,16 +105,13 @@ TestRenderer.create(element, options);
 
 إنشاء نسخة من `TestRenderer` مع عنصر React المُمرَّر. لا يستخدم هذا التابع DOM الحقيقي ولكنّه يُصيِّر بشكل كامل شجرة المكوّنات في الذاكرة. تملك النسخة المُعادة التوابع والخاصيّات التالية.
 
-<<<<<<< HEAD
-### `()testRenderer.toJSON` {#testrenderertojson}
-=======
 ### `TestRenderer.act()` {#testrendereract}
 
 ```javascript
 TestRenderer.act(callback);
 ```
 
-Similar to the [`act()` helper from `react-dom/test-utils`](/docs/test-utils.html#act), `TestRenderer.act` prepares a component for assertions. Use this version of `act()` to wrap calls to `TestRenderer.create` and `testRenderer.update`.
+مشابهه ل [`act()`](/docs/test-utils.html#act), `TestRenderer.act` تعد المكون للتأكيدات. استخدم هذه النسخة من `act()` ل `TestRenderer.create` و `testRenderer.update`.
 
 ```javascript
 import {create, act} from 'react-test-renderer';
@@ -143,7 +136,6 @@ expect(root.toJSON()).toMatchSnapshot();
 ```
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 ```javascript
 testRenderer.toJSON()

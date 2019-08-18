@@ -124,11 +124,7 @@
       - id: hooks-reference
         title: مرجع إلى الواجهة البرمجية للـ Hooks
       - id: hooks-faq
-<<<<<<< HEAD
         title: الأسئلة الشائعة حول الـ Hooks
-- title: المساهمة
-=======
-        title: Hooks FAQ
 - title: Testing
   items:
     - id: testing 
@@ -137,8 +133,7 @@
       title: Testing Recipes
     - id: testing-environments
       title: Testing Environments
-- title: Contributing
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+- title: المساهمة
   items:
   - id: how-to-contribute
     title: كيف تساهم

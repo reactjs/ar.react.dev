@@ -105,13 +105,11 @@ prev: hooks-reference.html
 
 ### ما الذي تعينه الخطافات بالنسبة للواجهات البرمجية الشهيرة مثل `()connect` في مكتبة Redux ومكتبة React Router؟ {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-<<<<<<< HEAD
 يمكنك الاستمرار باستعمال الواجهات البرمجية نفسها التي تستعملها عادةً، إذ ستستمر بالعمل دون أية مشكلات.
-=======
+
 React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
 
 Libraries like React Router might support hooks in the future.
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 في المستقبل، قد تحوي إصدارات جديدة من هاتين المكتبتين خطافات مخصصة مثل `useRedux()`‎ أو `useRouter()`‎ تمكنك من استعمال نفس الميزات دون الحاجة إلى مكونات مُغلِّفة.
 
@@ -123,17 +121,13 @@ Libraries like React Router might support hooks in the future.
 
 ### كيف يمكن اختبار المكونات التي تستعمل الخطافات؟ {#how-to-test-components-that-use-hooks}
 
-<<<<<<< HEAD
 من وجهة نظر React، المكونات التي تستعمل الخطافات هي مكونات عادية تمامًا. إن لم يكن خيار الاختبار الخاص بك يعتمد على DOM الافتراضي وكائنات React الداخلية (أي React internals)، يجب ألا تختلف عملية اختبار المكونات مع الخطافات عن تلك التي اعتدت على استعمالها عادةً لاختبار المكونات.
 
-على سبيل المثال، دعنا نفترض أنه لدينا مكون العداد (counter) التالي:
-=======
->Note
+>ملاحظة
 >
->[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+>[Testing Recipes](/docs/testing-recipes.html) تحتوي على بعض الأمثلة التي يمكنك استخدامها.
 
-For example, let's say we have this counter component:
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+على سبيل المثال، دعنا نفترض أنه لدينا مكون العداد (counter) التالي:
 
 ```js
 function Example() {
@@ -195,15 +189,11 @@ it('can render and update a counter', () => {
 
 إن أردت اختبار خطاف مخصص، يمكنك فعل ذلك عبر إنشاء مكون في اختبارك، واستعمال ذلك الخطاف منه. وتستطيع بعدئذٍ اختبار المكون الذي كتبته.
 
-لتقليل الشيفرة المتداولة (boilerplate)، نوصي باستعمال المكتبة [`react-testing-library`](https://git.io/react-testing-library) التي صُمِّمَت لتشجيع كتابة اختبارات تستعمل مكوناتك كما سيفعل المستخدم النهائي.
+لتقليل الشيفرة المتداولة (boilerplate)، نوصي باستعمال المكتبة [React Testing Library](https://testing-library.com/react) التي صُمِّمَت لتشجيع كتابة اختبارات تستعمل مكوناتك كما سيفعل المستخدم النهائي.
 
-<<<<<<< HEAD
+لمزيد من المعلومات، تصفح [Testing Recipes](/docs/testing-recipes.html).
+
 ### ما الذي يحصل بالضبط عند فرض تطبيق قواعد [إضافة تصحيح الأخطاء ESLint](https://www.npmjs.com/package/eslint-plugin-react-hooks) enforce؟ {#what-exactly-do-the-lint-rules-enforce}
-=======
-To reduce the boilerplate, we recommend using [React Testing Library](https://testing-library.com/react) which is designed to encourage writing tests that use your components as the end users do.
-
-For more information, check out [Testing Recipes](/docs/testing-recipes.html).
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 نوفر الإضافة  [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) التي تفرض تطبيق [القواعد الخاصة بالخطافات](/docs/hooks-rules.html) عليها لتجنب حصول أية أخطاء. إنها تفترض أنَّ أية دالة تبدأ بالسابقة "`use`" ثم يليها حرف كبير هي خطاف. نحن ندرك أنَّ هذه الطريقة للتعرف على الخطافات ليست مثالية وقد يكون هنالك بعض الإيجابيات الزائفة (false positives)، ولكن بدون عُرفٍ منتشر في بيئة العمل (ecosystem-wide convention)، ليس هنالك أية وسيلة لجعل الخطافات تعمل بشكل صحيح. أضف إلى ذلك أنَّ الأسماء الطويلة ستحبِّط الآخرين من إمَّا تبني الخطافات واستعمالها أو اتباع ما هو متعارف عليه.
 
@@ -583,11 +573,7 @@ useEffect(() => {
 
 >ملاحظة
 >
-<<<<<<< HEAD
-> نحن نقدم [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) قاعدة ESLint كجزء من حزمة [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
-=======
->We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It helps you find components that don't handle updates consistently.
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+> نحن نقدم [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) قاعدة ESLint كجزء من حزمة [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). هذه الحزمة تساعد على عثور المكونات التي لا تتعامل مع التحديثات باستمرار.
 
 دعنا نرى لماذا هذا مهم.
 
