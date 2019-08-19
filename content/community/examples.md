@@ -18,7 +18,7 @@ permalink: community/examples.html
 * **[Progressive Web Tetris](https://github.com/skidding/flatris)** عِلاوةً على تطبيق Tetris الجميل والصديق للهواتف المحمولة ، فأنّ هذا المشروع يُعتبر ساحة لَعِب "playground" للدمج والتجربة مع تكنولوجيا الويب.
 * **[Product Comparison Page](https://github.com/Rhymond/product-compare-react)** صفحة مُقارنة مُنتجات بسيطة مبنية باستخدام React.
 * **[Hacker News Clone React/GraphQL](https://github.com/clintonwoo/hackernews-react-graphql)** نُسخة عن Hacker News مُعادة كتابتها مع جافاسكريبت الشاملة "universal js" باستخدام React و GraphQL.
-* **[فهرس اسعار بيتكوين](https://github.com/mrkjlchvz/bitcoin-price-index)** فهرس أسعار بيتكوين "bitcoin" بسيط من واجهة التطبيق البرمجية CoinDesk.
+* **[Bitcoin Price Index](https://github.com/mrkjlchvz/bitcoin-price-index)** فهرس أسعار بيتكوين بسيط من واجهة التطبيق البرمجية CoinDesk.
 * **[باني الكتب](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة استضافة المُستندات أو بيع الكتب. تم بناؤه باستخدام كل من: React و Material-UI و Next و Express و Mongoose و MongoDB.
 * **[GFonts Space](https://github.com/pankajladhar/GFontsSpace)** مساحة تسمح للمُستخدم باللعب مع خطوط غوغل "Google fonts". تم بناؤه باستخدام كل من React و Redux و React-Router
 
