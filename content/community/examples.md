@@ -20,4 +20,5 @@ permalink: community/examples.html
 * **[نُسخة Hacker News باستخدام React/GraphQL](https://github.com/clintonwoo/hackernews-react-graphql)** نُسخة عن Hacker News مُعادة كتابتها مع جافاسكريبت الشاملة "universal JavaScript" باستخدام React و GraphQL.
 * **[فهرس اسعار بيتكوين](https://github.com/mrkjlchvz/bitcoin-price-index)** فهرس أسعار بيتكوين "bitcoin" بسيط من واجهة التطبيق البرمجية CoinDesk.
 * **[باني الكتب](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة استضافة المُستندات أو بيع الكتب. تم بناؤه باستخدام كل من: React و Material-UI و Next و Express و Mongoose و MongoDB.
-* **[فضاء خطوط غوغل](https://github.com/pankajladhar/GFontsSpace)** مساحة تسمح للمُستخدم باللعب مع خطوط غوغل "Google fonts". تم بناؤه باستخدام كل من React و Redux و React-Router
+* **[GFonts Space](https://github.com/pankajladhar/GFontsSpace)** مساحة تسمح للمُستخدم باللعب مع خطوط غوغل "Google fonts". تم بناؤه باستخدام كل من React و Redux و React-Router
+
