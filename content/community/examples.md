@@ -21,4 +21,3 @@ permalink: community/examples.html
 * **[Bitcoin Price Index](https://github.com/mrkjlchvz/bitcoin-price-index)** فهرس أسعار بيتكوين بسيط من واجهة التطبيق البرمجية CoinDesk.
 * **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة استضافة المُستندات أو بيع الكتب. تم بناؤه باستخدام كل من: React و Material-UI و Next و Express و Mongoose و MongoDB.
 * **[GFonts Space](https://github.com/pankajladhar/GFontsSpace)** مساحة تسمح للمُستخدم باللعب مع خطوط غوغل "Google fonts". تم بناؤه باستخدام كل من React و Redux و React-Router
-
