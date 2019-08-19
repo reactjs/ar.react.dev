@@ -10,7 +10,7 @@ permalink: community/examples.html
 
 
 * **[Calculator](https://github.com/ahfarmer/calculator)** تنفيذ مُطابق للآلة الحاسبة على نظام تشغيل iOS باستخدام React.
-* **[بحث عن الرموز التعبيرية](https://github.com/ahfarmer/emoji-search)** تطبيق React بسيط للبحث عن الرموز التعبيرية  "emojis"
+* **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React بسيط للبحث عن الرموز التعبيرية  "emojis".
 * **[Github تطبيق قتال](https://tm.dev/react-course-project/)** حارِب مُستخدما GitHub لرؤية من لديه مشاريع GitHub الأكثر شهره في أي لُغة.
 * **[عميل Hacker News مدعوم من React](https://github.com/insin/react-hn)** تطبيق Hacker News المدعوم من React و react-router باستخدام واجهة Firebase التطبيق البرمجية خاصتهم "Firebase API".
 * **[Pokedex](https://github.com/alik0211/pokedex)** قائمة بوكيمون "Pokémon" مع بحث حيّ مُباشر
