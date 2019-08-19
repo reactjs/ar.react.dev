@@ -14,7 +14,7 @@ permalink: community/examples.html
 * **[Github Battle App](https://tm.dev/react-course-project/)** حارِب مُستخدما GitHub لرؤية من لديه مشاريع GitHub الأكثر شهره في أي لُغة.
 * **[React Powered Hacker News Client](https://github.com/insin/react-hn)** تطبيق Hacker News المدعوم من React و react-router باستخدام واجهة Firebase التطبيق البرمجية خاصتهم "Firebase API".
 * **[Pokedex](https://github.com/alik0211/pokedex)** قائمة بوكيمون "Pokémon" مع بحث حيّ مُباشر
-* **[سلّة تَسوّق](https://github.com/jeffersonRibeiro/react-shopping-cart)** تطبيق سلّة إلكترونية بسيط مبني باستخدام React 
+* **[Shopping Cart](https://github.com/jeffersonRibeiro/react-shopping-cart)** تطبيق سلّة إلكترونية بسيط مبني باستخدام React .
 * **[Tetris ويب المُتدرّج](https://github.com/skidding/flatris)** عِلاوةً على تطبيق Tetris الجميل والصديق للهواتف المحمولة ، فأنّ هذا المشروع يُعتبر ساحة لَعِب "playground" للدمج والتجربة مع تكنولوجيا الويب "web technologies".
 * **[صفحة مُقارنة المُنتجات](https://github.com/Rhymond/product-compare-react)** صفحة مُقارنة مُنتجات بسيطة مبنية باستخدام React
 * **[نُسخة Hacker News باستخدام React/GraphQL](https://github.com/clintonwoo/hackernews-react-graphql)** نُسخة عن Hacker News مُعادة كتابتها مع جافاسكريبت الشاملة "universal JavaScript" باستخدام React و GraphQL.
