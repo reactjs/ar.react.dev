@@ -423,7 +423,11 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
+<<<<<<< HEAD
 يُفيد هذا في التصيير الشرطي لعناصر React. ففي المثال التالي تُصيِّر JSX فقط المُكوِّن `<Header />`‎ إن كانت قيمة `showHeader` هي `true`:
+=======
+This can be useful to conditionally render React elements. This JSX renders the `<Header />` component only if `showHeader` is `true`:
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```js{2}
 <div>

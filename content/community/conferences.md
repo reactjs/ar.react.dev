@@ -81,7 +81,19 @@ August 29, 2019. Tehran, Iran.
 4-6 مايو ، 2020. أتلانتا ، جورجيا ، الولايات المتحدة.80
 [موقع الويب](https://renderatl.com)
 
+<<<<<<< HEAD
 ## المؤتمرات السابقة {#past-conferences}
+=======
+[Website](https://renderatl.com)
+
+### React Next 2020 {#react-next-2020}
+June 15, 2020. Tel Aviv, Israel.
+
+[Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/) 
+
+
+## Past Conferences {#past-conferences}
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
