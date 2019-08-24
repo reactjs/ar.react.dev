@@ -124,11 +124,7 @@ it('can render and update a counter', () => {
 
 - لا تنسَ أنَّ إرسال أحداث DOM يعمل عند إضافة حاوية DOM إلى `document` فقط. تستطيع استعمال مساعد مثل [React Testing Library](https://testing-library.com/react) لتقليل الشيفرة المتداولة (boilerplate code).
 
-<<<<<<< HEAD
 - [`recipes`](/docs/testing-recipes.html) تحتوي على المزيد من المعلومات حول كيفية عمل وطريقة استخدات `act()`.
-=======
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 * * *
 

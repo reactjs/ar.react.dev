@@ -217,29 +217,7 @@ module.exports = {
 
 عندما تتغيّر خاصيّة أو حالة المُكوِّن، تُقرِّر React أي عقدة DOM هي التي يجب تحديثها عن طريق مقارنة العنصر الجديد المُعاد مع العنصر السابق المُصيَّر. وعندما لا يكونان متطابقين ستُحدِّث React واجهة DOM. 
 
-<<<<<<< HEAD
-بإمكانك الآن إظهار مخططات لعملية إعادة تصيير DOM الافتراضي باستخدام أدوات تطوير React: 
-
-- [إضافة متصفّح Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox إضافة متصفّح](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [الإصدار المستقل (حزمة Node)](https://www.npmjs.com/package/react-devtools)
-
-حدِّد من نافذة Console الخيار **Highlight Updates** في النافذة **React**: 
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="How to enable highlight updates" /></center>
-
-تفاعل مع الصفحة وسترى حدود ملوّنة تظهر بشكل آني حول أي مُكوِّن يُعاد تصييره. يُتيح لك ذلك التقاط أي إعادة تصيير غير ضروريّة. يُمكنِك تعلم المزيد حول هذه الميزة من [هذه المقالة](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833) من طرف [Ben Edelstein](https://blog.logrocket.com/@edelstein).
-
-أنظر إلى هذا المثال:
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React DevTools Highlight Updates example" /></center>
-
-لاحظ أنّنا حين أدخلنا واجبًا ثانيًا لفعله استمر الواجب الأول بالإضاءة على الشاشة مع كل نقرة زر، ويعني هذا أنّه يُعاد تصييره مع كل إدخال من قبل React. يُدعى هذا أحيانًا بالتصيير المُضيِّع للوقت، ونعلم أنّه غير ضروري لأنّ الواجب الأول لم يتغيّر، ولكنّ React لا تعلم ذلك.
-
 على الرغم من تحديث React لعُقَد DOM التي تغيّرت، فلا تزال إعادة التصيير تستغرق بعض الوقت. في العديد من الحالات لن تكون هذه مشكلة، ولكن إن كان البطء ملاحظًا فبإمكانك تسريع العملية عن طريق تجاوز تابع دورة حياة المُكوِّن `shouldComponentUpdate` والذي يُطلَق قبل بدء عملية إعادة التصيير. يُعيد هذا التابع بشكل افتراضي القيمة `true` وبذلك يترك لمكتبة React إنجاز التحديث:
-=======
-Even though React only updates the changed DOM nodes, re-rendering still takes some time. In many cases it's not a problem, but if the slowdown is noticeable, you can speed all of this up by overriding the lifecycle function `shouldComponentUpdate`, which is triggered before the re-rendering process starts. The default implementation of this function returns `true`, leaving React to perform the update:
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -411,40 +389,4 @@ function updateColorMap(colormap) {
 
 إن كنتَ تستخدم Create React App فسيكون التابع `Object.assign` وصيغة نشر الكائن متوفرة بشكلٍ افتراضي. 
 
-<<<<<<< HEAD
-## استخدام بُنى البيانات غير القابلة للتعديل {#using-immutable-data-structures}
-
-مكتبة [Immutable.js](https://github.com/facebook/immutable-js)  هي طريقة أخرى لحل هذه المشكلة، فهي تُزوّدنا بمجموعات دائمة غير قابلة للتعديل والتي تعمل عبر المشاركة البنيوية:
-
-* غير قابلة للتعديل (*Immutable*): فحالما تُنشَأ المجموعة لا يُمكن تبديلها في أي نقطة زمنية.
-* دائمة (*Persistent*): يُمكِن إنشاء مجموعات جديدة من مجموعة قديمة بعد تعديلها. وتبقى المجموعة الأصلية صالحة بعد إنشاء المجموعة الجديدة.
-* المشاركة البنيوية (*Structural Sharing*): تُنشأ مجموعات جديدة باستخدام مماثلة لبنية المجموعة الأصلية قدر الإمكان مع تقليل النسخ إلى الحد الأدنى لتحسين الأداء.
-
- تجعل عدم القدرة على التعديل من تتبّع التغييرات أمرًا سهلًا، فالتغيير سيُنتِج دومًا كائنًا جديدًا لذا نحتاج فقط للتحقق إن كان مرجع الكائن قد تغيّر. فمثلًا في شيفرة JavaScript الاعتيادية التالية:
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-على الرغم من أنّنا عدّلنا المتغيّر `y` بما أنّه مرجع لنفس الكائن مثل المتغيّر `x`، فستُعيد المقارنة القيمة `true`. بإمكانك كتابة نفس الشيفرة باستخدام immutable.js:
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-في هذه الحالة بما أنّنا أعدنا مرجعًا عند تعديل المتغيّر `x` فيُمكننا استخدام المقارنة بين المراجع `(x === y)`  للتأكد من أنّ القيمة الجديدة المُخزّنة في `y` مختلفة عن القيمة الأصليّة المُخزّنة في `x`.
-
-من المكتبات الأخرى التي تساعد على استخدام البيانات غير القابلة للتعديل نجد [Immer](https://github.com/mweststrate/immer) و [immutability-helper](https://github.com/kolodny/immutability-helper) أو [seamless-immutable](https://github.com/rtfeldman/seamless-immutable).
-
-تُزوِّدك بنى البيانات غير القابلة للتعديل بطريقة سهلة لتتبّع التغييرات على الكائنات، وهو كل ما نحتاجه لتنفيذ التابع `shouldComponentUpdate`. يُزوِّدك ذلك بدفعة جيدة لتحسين الأداء في تطبيقك. 
-=======
-When you deal with deeply nested objects, updating them in an immutable way can feel convoluted. If you run into this problem, check out [Immer](https://github.com/mweststrate/immer) or [immutability-helper](https://github.com/kolodny/immutability-helper). These libraries let you write highly readable code without losing the benefits of immutability.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+من المكتبات الأخرى التي تساعد على استخدام البيانات غير القابلة للتعديل نجد [Immer](https://github.com/mweststrate/immer) و [immutability-helper](https://github.com/kolodny/immutability-helper) تُزوِّدك بنى البيانات غير القابلة للتعديل بطريقة سهلة لتتبّع التغييرات على الكائنات.

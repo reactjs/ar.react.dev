@@ -103,11 +103,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-<<<<<<< HEAD
-إنشاء نسخة من `TestRenderer` مع عنصر React المُمرَّر. لا يستخدم هذا التابع DOM الحقيقي ولكنّه يُصيِّر بشكل كامل شجرة المكوّنات في الذاكرة. تملك النسخة المُعادة التوابع والخاصيّات التالية.
-=======
-Create a `TestRenderer` instance with the passed React element. It doesn't use the real DOM, but it still fully renders the component tree into memory so you can make assertions about it. Returns a [TestRenderer instance](#testrenderer-instance).
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+إنشاء نسخة من `TestRenderer` مع عنصر React المُمرَّر. لا يستخدم هذا التابع DOM الحقيقي ولكنّه يُصيِّر بشكل كامل شجرة المكوّنات في الذاكرة حتى تتمكن من تقديم التأكيدات حولها. وترجع [TestRenderer نموذج](#testrenderer-instance).
 
 ### `TestRenderer.act()` {#testrendereract}
 

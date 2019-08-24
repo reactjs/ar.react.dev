@@ -71,12 +71,7 @@ prev: hooks-reference.html
 
 لاحظ أن **لتمكين الخطافات ، يجب أن تكون جميع حزم  16.8.0 React    أو أعلى**. لن تعمل الخطافات إذا نسيت التحديث ، على سبيل المثال ،  React DOM.
 
-<<<<<<< HEAD
-=======
-[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
-
-ستدعم ReactNative الخطافات دعمًا كاملًا في الإصدار المستقر القادم.
+الاصدار [React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) وما بعد يدعم الخطافات.
 
 ### هل احتاج إلى إعادة كتابة جميع مكونات الأصناف الخاصة بي؟ {#do-i-need-to-rewrite-all-my-class-components}
 
