@@ -81,6 +81,11 @@ August 29, 2019. Tehran, Iran.
 4-6 مايو ، 2020. أتلانتا ، جورجيا ، الولايات المتحدة.80
 [موقع الويب](https://renderatl.com)
 
+### React Next 2020 {#react-next-2020}
+يونيو 15, 2020. تل أبيب، إسرائيل.
+
+[موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/) 
+
 ## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}

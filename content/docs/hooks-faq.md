@@ -64,14 +64,14 @@ prev: hooks-reference.html
 بدءًا من الإصدار 16.8.0، تضمنت React تنفيذًا مستقرًا للخطافات من أجل:
 
 * React DOM
+* React Native
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
 لاحظ أن **لتمكين الخطافات ، يجب أن تكون جميع حزم  16.8.0 React    أو أعلى**. لن تعمل الخطافات إذا نسيت التحديث ، على سبيل المثال ،  React DOM.
 
-
-ستدعم ReactNative الخطافات دعمًا كاملًا في الإصدار المستقر القادم.
+الاصدار [React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) وما بعد يدعم الخطافات.
 
 ### هل احتاج إلى إعادة كتابة جميع مكونات الأصناف الخاصة بي؟ {#do-i-need-to-rewrite-all-my-class-components}
 

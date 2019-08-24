@@ -31,7 +31,8 @@ function Example() {
 
 >Note
 >
-> الإصدار 16.8.0 من React هو أول إصدار يدعم الخطافات. عند الترقية إليه، لا تنسَ تحديث جميع الحزم بما فيها React DOM. ستدعم ReactNative الخطافات في الإصدار المستقر القادم.
+> الإصدار 16.8.0 من React هو أول إصدار يدعم الخطافات. عند الترقية إليه، لا تنسَ تحديث جميع الحزم بما فيها React DOM.
+> React Native تدعم الخطافات في [اصدار 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
 
 ## فيديو تقديمي {#video-introduction}
 
