@@ -1,26 +1,25 @@
 ---
 id: podcasts
-title: Podcasts
+title: الصوتيات (podcasts)
 layout: community
 sectionid: community
 permalink: community/podcasts.html
 ---
 
-Podcasts dedicated to React and individual podcast episodes with React discussions.
+مدونات صوتية وحلقات فرديّة مخصصة للحديث عن React.
 
-## Podcasts {#podcasts}
+## الصوتيات {#podcasts}
 
-- [The React Podcast](https://reactpodcast.simplecast.fm/) - The podcast about everything React.js, hosted by [React Training](https://reacttraining.com)
+- [React Podcast](https://reactpodcast.simplecast.fm/) - بودكاست React.js الشامل برعاية [React تدريب](https://reacttraining.com).
 
-- [JavaScript Air](https://javascriptair.com/) - All about JavaScript (currently not producing new episodes)
+- [JavaScript Air](https://javascriptair.com/) - كل شيء حول الجافاسكريبت (لا يتم حاليا إنتاج حلقات جديدة).
 
-- [React 30](https://react30.com/) - A 30-minute podcast all about React (moved to [The React Podcast](https://reactpodcast.simplecast.fm/)).
+- [React 30](https://react30.com/) - بودكاست مدته 30 دقيقة عن React (إنتقل إلى [بودكاست React](https://reactpodcast.simplecast.fm/)).
 
-- [React Native Radio](https://devchat.tv/react-native-radio)
+- [React Native Radio](https://devchat.tv/react-native-radio).
 
-## Episodes {#episodes}
+## الحلقات {#episodes}
 
-- [CodeWinds Episode 4](https://codewinds.com/podcast/004.html) - Pete Hunt talks with Jeff Barczewski about React.
+- [CodeWinds Episode 4](https://codewinds.com/podcast/004.html) - بيت هانت يتحدث مع جيف باركوسكي حول React.
 
-
-- [JavaScript Jabber 73](https://devchat.tv/js-jabber/073-jsj-react-with-pete-hunt-and-jordan-walke) - Pete Hunt and Jordan Walke talk about React.
+- [JavaScript Jabber 73](https://devchat.tv/js-jabber/073-jsj-react-with-pete-hunt-and-jordan-walke) - بيت هانت وجوردان ووك يتحدثان حول React.
