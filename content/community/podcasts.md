@@ -10,11 +10,11 @@ permalink: community/podcasts.html
 
 ## الصوتيات {#podcasts}
 
-- [React Podcast](https://reactpodcast.simplecast.fm/) - بودكاست React.js الشامل برعاية [React تدريب](https://reacttraining.com).
+- [React Podcast](https://reactpodcast.simplecast.fm/) - بودكاست React.js الشامل برعاية [React Training](https://reacttraining.com).
 
 - [JavaScript Air](https://javascriptair.com/) - كل شيء حول الجافاسكريبت (لا يتم حاليا إنتاج حلقات جديدة).
 
-- [React 30](https://react30.com/) - بودكاست مدته 30 دقيقة عن React (إنتقل إلى [بودكاست React](https://reactpodcast.simplecast.fm/)).
+- [React 30](https://react30.com/) - بودكاست مدته 30 دقيقة عن React (إنتقل إلى [React Podcast](https://reactpodcast.simplecast.fm/)).
 
 - [React Native Radio](https://devchat.tv/react-native-radio).
 
