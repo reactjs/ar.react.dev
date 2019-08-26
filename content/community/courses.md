@@ -8,7 +8,13 @@ permalink: community/courses.html
 
 ## دورات مجانية {#free-courses}
 
+<<<<<<< HEAD
 - [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - دورة مكتبة React التعريفية والمقدمة من Codecademy
+=======
+- [Glitch: React Starter Kit](https://glitch.com/culture/react-starter-kit/) - A free, 5-part video course with interactive code examples that will help you learn React.
+
+- [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - Codecademy's introductory course for React.
+>>>>>>> 519a3aec91a426b0c8c9ae59e292d064df48c66a
 
 - [Egghead.io: ابدأ في تعلم React](https://egghead.io/courses/start-learning-react) - هذه السلسلة التعليمية ستقوم بتعليمك اساسيات  مكتبة React
 
