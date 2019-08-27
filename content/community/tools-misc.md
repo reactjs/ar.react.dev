@@ -8,7 +8,7 @@ permalink: community/misc.html
 * **[react-localize-redux](https://github.com/ryandrewjohnson/react-localize-redux)** - مكتبة لتوطين React/Redux.
 
 * **[react-inspector](https://github.com/xyc/react-inspector):** إستخدام أداة التطوير كمدقق للكائنات داخل تطبيق React.
-* **[jreact](https://github.com/KnisterPeter/jreact):** تصيير React جهة الخادم في الجزء الداخلي من JVM (Java 7 or Java 8)
+* **[jreact](https://github.com/KnisterPeter/jreact):** تصيير React من جهة الخادم (SSR) بواسطة JVM (Java 7 أو Java 8)
 * **[react-jss](https://github.com/cssinjs/jss/tree/master/packages/react-jss):** إدخال وتنصيب تنيسقات jss في مكونات  React.
 * **[django-react](https://github.com/markfinger/django-react):** تصيير جهة الخادم لمكوّن  React لأجل تطبيقات django.
 * **[react-engine](https://github.com/paypal/react-engine):** محرك تصيير مركب لتَشاكُلِيّة تطبيقات express لأجل تصييرهما بسهولة واجهة react و واجهة react-router
