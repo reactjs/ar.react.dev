@@ -16,4 +16,4 @@ permalink: community/misc.html
 * **[javascript-monads](https://github.com/dschalk/javascript-monads):** هذا المشورع مكتمل، أصبحت React "الأحادية" أكثر من مجرد لعبة فهو يستعمل بطرق غير تقليدية ، لذا إذا كنت تريد استخدام React بالطريقة التي يقومون بها في Facebook ،هذا ليس لك. شرح الشيفرة لثلاث  "npm install reactive-monads".مصنفات لبيانات المجردة ويمكن تنزيله عن طريق
 * **[ReactCSS](http://reactcss.com/):** أساليب التنسيق في JS مع الدعم لـReact.
 * **[ReactQuestionnaire](https://github.com/kouryuu/react-questionnaire):** مكوّنات react بسيطة لبناء إستطلاع أو إستبيان
-* **[renderjs.io](https://renderjs.io/):** محرك البحث الأمثل لـReactjs هي خدمة لصنع تطبيقات reactjs قابلة للتمدد و المشاركة.
+* **[renderjs.io](https://renderjs.io/):** محرك البحث الأمثل ( SEO ) لـ Reactjs هي خدمة لصنع تطبيقات reactjs قابلة للتمدد و المشاركة.
