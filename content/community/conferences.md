@@ -79,7 +79,11 @@ August 29, 2019. Tehran, Iran.
 
 ### Render-Atlanta 2020 {#render-atlanta-2020}
 4-6 مايو ، 2020. أتلانتا ، جورجيا ، الولايات المتحدة.80
-[موقع الويب](https://renderatl.com)
+[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيسبوك](https://www.facebook.com/renderatl/) 
+
+### React Finland 2020 {#react-finland-2020}
+مايو 26-29، 2020. في هلسنكي، فيلندا.
+[موقع الويب](https://react-finland.fi/) - [تويتر](https://twitter.com/ReactFinland)
 
 ### React Next 2020 {#react-next-2020}
 يونيو 15, 2020. تل أبيب، إسرائيل.
