@@ -214,11 +214,11 @@ React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مس�
 
 شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
-### Event System {#event-system}
+### نظام الأحداث {#event-system}
 
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/events).
+يطبق React نظام أحداث اصطناعي غير مذعن للعارضين ويعمل مع كل من React DOM و React Native. شفرة المصدر الخاصة به موجودة في [`packages/events`](https://github.com/facebook/react/tree/master/packages/events).
 
-There is a [video with a deep code dive into it](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
+يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 
 ### What Next? {#what-next}
 
