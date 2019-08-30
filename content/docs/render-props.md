@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-تتضمّن المكتبات التي تستخدم خاصيّات التصيير [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) و [Downshift](https://github.com/paypal/downshift).
+تتضمّن المكتبات التي تستخدم خاصيّات التصيير [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) و [Downshift](https://github.com/paypal/downshift) و [Formik](https://github.com/jaredpalmer/formik).
 
 سنناقش في هذه الصفحة فائدة خاصيّات التصيير وكيفية كتابة خاصيّات التصيير الخاصّة بك.
 

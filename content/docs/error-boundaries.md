@@ -37,9 +37,9 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
-    // تستطيع تسجيل الخطأ إلى خدمة تبليغ عن الأخطاء
-    logErrorToMyService(error, info);
+  componentDidCatch(error, errorInfo) {
+    // تستطيع تسجيل الخطأ إلى خدمة التبليغ عن الأخطاء
+    logErrorToMyService(error, errorInfo);
   }
 
   render() {

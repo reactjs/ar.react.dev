@@ -10,11 +10,13 @@ permalink: community/meetups.html
 
 ## إسبانيا {#spain}
 * [برشلونة](https://www.meetup.com/ReactJS-Barcelona/)
+* [جزر الكناري](https://www.meetup.com/React-Canarias/)
 
 ## أستراليا {#australia}
 * [بريزبان](https://www.meetup.com/reactbris/)
 * [سيدني](https://www.meetup.com/React-Sydney/)
 * [ملبورن](https://www.meetup.com/React-Melbourne/)
+* 
 
 <!-- 404 NOT FOUND ! -->
 
@@ -42,6 +44,7 @@ permalink: community/meetups.html
 * [دوسلدورف](https://www.meetup.com/de-DE/ReactJS-Meetup-Dusseldorf/)
 * [فتيات برلين](https://www.meetup.com/ReactJS-Girls-Berlin/)
 * [كارلسروه](https://www.meetup.com/react_ka/)
+* [كييل](https://www.meetup.com/Kiel-React-Native-Meetup/)
 * [ميونخ](https://www.meetup.com/ReactJS-Meetup-Munich/)
 * [هامبورج](https://www.meetup.com/Hamburg-React-js-Meetup/)
 
@@ -57,6 +60,7 @@ permalink: community/meetups.html
   
 ## الهند {#india}
 * [بنغالور](https://www.meetup.com/ReactJS-Bangalore/)
+* [شانديغار](https://www.meetup.com/Chandigarh-React-Developers/)
 * [تشيناي](https://www.meetup.com/React-Chennai/)
 * [دلهي](https://www.meetup.com/React-Delhi-NCR/)
 * [جايبور](https://www.meetup.com/JaipurJS-Developer-Meetup/)
@@ -96,6 +100,7 @@ permalink: community/meetups.html
 * [نيويورك (نيويورك) - React JS](https://www.meetup.com/NYC-Javascript-React-Group/)
 * [نيويورك (نيويورك) - React Native](https://www.meetup.com/React-Native-NYC/)
 * [واشنطن (واشنطن دي سي)](https://www.meetup.com/React-DC/)
+* [ميامي, فلوريدا - ReactJS](https://www.meetup.com/React-Miami/)
 
 ## اليونان {#greece}
 * [سلانيك](https://www.meetup.com/Thessaloniki-ReactJS-Meetup/)
@@ -119,6 +124,7 @@ permalink: community/meetups.html
 * [ريو دي جانيرو](https://www.meetup.com/pt-BR/React-Rio-de-Janeiro/)
 * [ساو باولو](https://www.meetup.com/pt-BR/ReactJS-SP/)
 * [كوريتيبا](https://www.meetup.com/pt-br/ReactJS-CWB/)
+* [جوينفيل](https://www.meetup.com/pt-BR/React-Joinville/)
 
 ## بلجيكا {#belgium}
 * [بلجيكا](https://www.meetup.com/ReactJS-Belgium/)
@@ -149,3 +155,13 @@ permalink: community/meetups.html
 
 ## هولندا {#netherlands}
 * [أمستردام](https://www.meetup.com/React-Amsterdam/)
+
+## إسرائيل {#israel}
+* [تل أبيب](https://www.meetup.com/ReactJS-Israel/)
+
+## سنغافورة {#singapore}
+* [سنغافورة - React Knowledgeable](https://reactknowledgeable.org/)
+
+## ماليزيا {#malaysia}
+* [بينانغ](https://www.facebook.com/groups/reactpenang/)
+* 

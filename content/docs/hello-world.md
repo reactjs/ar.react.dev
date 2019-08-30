@@ -1,50 +1,50 @@
 ---
 id: hello-world
-title: Hello World
+title: مثال «أهلًا بالعالم»
 permalink: docs/hello-world.html
 prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+يبدو أصغر مثال في React كما يلي:
+
 
 ```js
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <h1>أهلًا بالعالم!</h1>,
   document.getElementById('root')
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
+يعرض هذا المثال ترويسةً تقول "أهلًا بالعالم!" في الصّفحة. 
 
 [](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+اضغط الرابط أعلاه لفتح مُحرِّر فوري "online". لا تتردد وقم بالتعديل هذا المثال كما يحلو لك وراقب كيف تؤثر تعديلاتك على المُخرجات. أغلب الصفحات في هذا الدليل ستحتوي على أمثلة قابلة للتعديل مثل هذا المثال.```
 
+## كيف تقرأ هذا الدليل {#how-to-read-this-guide}
 
-## How to Read This Guide {#how-to-read-this-guide}
+ستُمهِّد لك الأقسام القادمة تدريجيًّا كيفيّة استخدام React، وسنتعامل مع الكتل التي يتكوّن منها تطبيق React وهي العناصر (elements) والمُكوِّنات (Components). حالما تتقنها سيصبح بمقدورك إنشاء تطبيقات مُعقَّدة من قطع صغيرة قابلة لإعادة الاستخدام.
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
-
->Tip
+>ملاحظة
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>هذا الدليل صمِّم من أجل الأشخاص الذين يفضلون **تعلم المفاهيم النظرية خطوةً بخطوة**. إن كنت تفضل التعلم بالممارسة، انتقل إلى [الدليل التطبيقي](/tutorial/tutorial.html). ستجد أنَّ هذا الدليل والدليل التطبيقي يكمِّل أحدهما الأخر.
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+هذا هو الفصل الأول في دليل خطوة بخطوة حول مفاهيم React الرئيسية. يُمكنك العثور على قائمة بجميع فصولها في شريط التَنقل الجانبي. إذا كنت تقرأ هذا من جهاز محمول ، يمكنك الوصول إلى التنقل عن طريق الضغط على الزر في الركن الأيمن السفلي من الشاشة.
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+كل فصل في هذا الدليل، يبني على المعرفة التي تعلمتها في الفصل السابق. **يمكنك معرفة معظم React من خلال قراءة “المفاهيم الرئيسية”  بالترتيب الذي تظهر به في الشريط الجانبي.** على سبيل المثال, الفصل التالي بعد هذا الفصل هو [“مقدمة إلى JSX”](/docs/introducing-jsx.html) 
 
-## Knowledge Level Assumptions {#knowledge-level-assumptions}
+## درجة المعرفة المفترضة {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+بما أنّ React هي مكتبة JavaScript فسنفترض أنّك تملك معرفة أساسيّة بلغة JavaScript. **إن لم تكن واثقًا من إمكانياتك فننصحك بأن تذهب إلى [ درس JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) للتحقّق من مستواك** والتمكّن من متابعة هذا الدليل دون تَخبُّط. سيستغرق منك حوالي نصف ساعة إلى ساعة، ولكنّك بعد المرور عليه لن تشعر بأنّك تتعلّم React و JavaScript معًا.
 
->Note
+>ملاحظة
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>يعتمد هذا الدليل أيضًا على بعض من صياغة JavaScript الجديدة في الأمثلة، فإن لم تكن قد تعاملت مع JavaScript في السنوات القليلة الماضية، [هذه النقاط الثلاث](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) ستمهد لك الطريق.
 
 
-## Let's Get Started! {#lets-get-started}
+## دعنا نبدأ! {#lets-get-started}
 
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
+ستجد في كل فصل رابطًا يشير إلى [ الفصل التالي ](/docs/introducing-jsx.html) من هذا الدليل. ستجد في قسم "انظر أيضًا" روابط جميع فصول هذا الدليل لتسهيل التنقل بينها.
 
 

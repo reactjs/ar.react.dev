@@ -88,13 +88,13 @@ npm run flow init
 إن كنتَ تستخدم Yarn فاكتب ما يلي:
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 إن كنتَ تستخدم npm فاكتب ما يلي:
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 أضف الآن إعداد `flow` إلى [إعدادات Babel](https://babeljs.io/docs/usage/babelrc/). فإن أعددتَ Babel باستخدام الملف `.babelrc` فسيبدو كما يلي:
@@ -102,7 +102,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }

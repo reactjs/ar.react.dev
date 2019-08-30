@@ -1,6 +1,6 @@
 ---
 id: faq-styling
-title: التنسيق واستخدام CSS
+title: التنسيق و CSS
 permalink: docs/faq-styling.html
 layout: docs
 category: FAQ
@@ -48,4 +48,4 @@ render() {
 
 ### هل بإمكاني إجراء تحريك في React؟ {#can-i-do-animations-in-react}
 
-يُمكِن استخدام React لدعم التحريك. انظر إلى مكتبة [React Transition Group](https://reactcommunity.org/react-transition-group/) ومكتبة  [React Motion](https://github.com/chenglou/react-motion), على سبيل المثال.
+يُمكِن استخدام React لدعم التحريك. انظر إلى مكتبة [React Transition Group](https://reactcommunity.org/react-transition-group/) ومكتبة  [React Motion](https://github.com/chenglou/react-motion) أو [React Spring](https://github.com/react-spring/react-spring), على سبيل المثال.

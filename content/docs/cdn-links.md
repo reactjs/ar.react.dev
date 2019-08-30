@@ -1,6 +1,6 @@
 ---
 id: cdn-links
-title: CDN Links
+title: روابط شبكة توزيع المحتوى ( CDN )
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
 next: hello-world.html

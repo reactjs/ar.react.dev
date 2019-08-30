@@ -1,6 +1,6 @@
 ---
 id: test-utils
-title: Test Utilities
+title: أدوات الاختبار
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
@@ -122,7 +122,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-لا تنسَ أنَّ إرسال أحداث DOM يعمل عند إضافة حاوية DOM إلى `document` فقط. تستطيع استعمال مساعد مثل [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) لتقليل الشيفرة المتداولة (boilerplate code).
+- لا تنسَ أنَّ إرسال أحداث DOM يعمل عند إضافة حاوية DOM إلى `document` فقط. تستطيع استعمال مساعد مثل [React Testing Library](https://testing-library.com/react) لتقليل الشيفرة المتداولة (boilerplate code).
+
+- [`recipes`](/docs/testing-recipes.html) تحتوي على المزيد من المعلومات حول كيفية عمل وطريقة استخدات `act()`.
 
 * * *
 
@@ -139,7 +141,7 @@ mockComponent(
 
 > ملاحظة:
 >
-> `()mockComponent` هي واجهة برمجة تطبيق قديمة. نوصي باستخدام التصيير السطحي أو [التصيير السطحي](/docs/shallow-renderer.html) أو [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) بدلًا من ذلك.
+> `()mockComponent` هي واجهة برمجة تطبيق قديمة. نوصي باستخدام [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) بدلًا من ذلك.
 
 * * *
 

@@ -1,15 +1,14 @@
 ---
 id: code-splitting
-title: تقسيم الشيفرة في React
+title: تقسيم الشيفرة
 permalink: docs/code-splitting.html
 ---
 
 ## التحزيم (Bundling) {#bundling}
 
 تكون معظم الملفّات في تطبيقات React مُحزَّمة باستخدام أدوات مثل
-[Webpack](https://webpack.js.org/) أو [Browserify](http://browserify.org/).
+[Webpack](https://webpack.js.org/) أو [Rollup](https://rollupjs.org/) أو [Browserify](http://browserify.org/).
 التحزيم هو عملية تتبّع الملفّات المستوردة ودمجها في ملف واحد وهو الحزمة (Bundle). يُمكِن بعدها تضمين هذه الحزمة في صفحة ويب لتحميل كامل التطبيق دفعة واحدة.
-
 
 #### مثال {#example}
 
