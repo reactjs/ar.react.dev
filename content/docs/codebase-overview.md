@@ -220,6 +220,6 @@ React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مس�
 
 يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 
-### What Next? {#what-next}
+### ماذا بعد؟ {#what-next}
 
-Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
+اقرأ [القسم التالي](/docs/implementation-notes.html) للتعرف على تطبيق المطابق قبل React 16 بمزيد من التفاصيل. لم نقم بتوثيق الأجزاء الداخلية للمطابق الجديد بعد.
