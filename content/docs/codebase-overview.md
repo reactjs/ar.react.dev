@@ -194,9 +194,9 @@ React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مس�
 
 لا يتم حزم المطابقات بشكل منفصل لأنه لا يوجد حاليًا أي واجهة برمجة تطبيقات عامة. بدلاً من ذلك ، يتم استخدامها حصريًا بواسطة عارضين مثل React DOM و React Native.
 
-### Stack Reconciler {#stack-reconciler}
+### مطابق المكدس {#stack-reconciler}
 
-The "stack" reconciler is the implementation powering React 15 and earlier. We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).
+المطابق "المكدس" (stack reconciler) ههو تطبيق يقوم بتشغيل React 15 والإصدارات الأقدم. لقد توقفنا عن استخدامه منذ ذلك الحين، لكن تم توثيقه بالتفصيل في [القسم التالي](/docs/implementation-notes.html).
 
 ### Fiber Reconciler {#fiber-reconciler}
 
