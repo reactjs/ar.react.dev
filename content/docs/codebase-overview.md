@@ -186,13 +186,13 @@ React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مس�
 >
 >من الناحية الفنية ، يعد [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) طبقة رفيعة جدًا تُعلم React بالتفاعل مع تطبيق React Native . يعيش الكود الحقيقي الخاص بالنظام الأساسي الذي يدير المشاهدات الأصلية في [React Native repository](https://github.com/facebook/react-native) مع مكوناته.
 
-### Reconcilers {#reconcilers}
+### المطابقات {#reconcilers}
 
-Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [reconciliation](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
+حتى العارضين المختلفين إلى حد كبير مثل React DOM و React Native يحتاجون إلى مشاركة الكثير من المنطق.  على وجه الخصوص ، يجب أن تكون خوارزمية [المطابقة](/docs/reconciliation.html) متشابهة قدر الإمكان حتى يعمل العرض التوضيحي، والمكونات المخصصة، والحالة (state)، وطرق دورة الحياة (lifecycle methods)، والمرجعيات (refs) باستمرار عبر الأنظمة الأساسية.
 
-To solve this, different renderers share some code between them. We call this part of React a "reconciler". When an update such as `setState()` is scheduled, the reconciler calls `render()` on components in the tree and mounts, updates, or unmounts them.
+لحل هذه المشكلة ، يشارك العارضون المختلفون بعض التعليمات البرمجية بينهم. نحن نسمي هذا الجزء من React "المطابق" (reconciler). عندما يتم جدولة تحديث مثل `setState()` ، يستدعي المطابق `render()` على المكونات الموجودة في الشجرة ويقوم بتثبيتها أو تحديثها أو إلغاء تحميلها.
 
-Reconcilers are not packaged separately because they currently have no public API. Instead, they are exclusively used by renderers such as React DOM and React Native.
+لا يتم حزم المطابقات بشكل منفصل لأنه لا يوجد حاليًا أي واجهة برمجة تطبيقات عامة. بدلاً من ذلك ، يتم استخدامها حصريًا بواسطة عارضين مثل React DOM و React Native.
 
 ### Stack Reconciler {#stack-reconciler}
 
