@@ -198,21 +198,21 @@ React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مس�
 
 المطابق "المكدس" (stack reconciler) ههو تطبيق يقوم بتشغيل React 15 والإصدارات الأقدم. لقد توقفنا عن استخدامه منذ ذلك الحين، لكن تم توثيقه بالتفصيل في [القسم التالي](/docs/implementation-notes.html).
 
-### Fiber Reconciler {#fiber-reconciler}
+### مطابق الفيبر {#fiber-reconciler}
 
-The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues. It has been the default reconciler since React 16.
+يعتبر مطابق الفيبر (fiber reconciler) مجهودًا جديدًا يهدف إلى حل المشكلات الكامنة في المطابق المكدس وإصلاح عدد قليل من المشكلات القديمة. لقد كان المطابق الافتراضي منذ React 16.
 
-Its main goals are:
+أهدافه الرئيسية هي:
 
-* Ability to split interruptible work in chunks.
-* Ability to prioritize, rebase and reuse work in progress.
-* Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
-* Better support for error boundaries.
+* القدرة على تقسيم العمل المنقطع في أجزاء.
+* القدرة على تحديد الأولويات، إعادة صياغة وإعادة استخدام العمل قيد التقدم.
+* القدرة على الخضوع ذهابًا وإيابًا بين الآباء والأطفال لدعم التخطيط في React.
+* القدرة على إرجاع عناصر متعددة من `render()`.
+* دعم أفضل لحدود الخطأ.
 
-You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). While it has shipped with React 16, the async features are not enabled by default yet.
+يمكنك قراءة المزيد عن React Fiber Architecture [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
 
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
 ### Event System {#event-system}
 
