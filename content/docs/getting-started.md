@@ -121,7 +121,11 @@ redirect_from:
 
 ## توثيق الإصدار {#versioned-documentation}
 
+<<<<<<< HEAD
 يعكس هذا التوثيق أحدث إصدار مستقر من React. منذ الإصدار 16، يمكنك العثور على توثيق الإصدارات الأقدم في [صفحة منفصلة](/versions).  انتبه إلى أنَّ ذلك التوثيق للإصدارات القديمة قد بقي على حاله منذ تاريخ نشر الإصدار ولن يجري تحديثه.
+=======
+This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+>>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
 
 ## أتفقد شيئًا آخر؟ {#something-missing}
 
