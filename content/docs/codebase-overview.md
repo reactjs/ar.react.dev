@@ -1,6 +1,6 @@
 ---
 id: codebase-overview
-title: Codebase Overview
+title: نظرة عامة عن قاعدة الشفرة المصدرية
 layout: contributing
 permalink: docs/codebase-overview.html
 prev: how-to-contribute.html
@@ -9,39 +9,38 @@ redirect_from:
   - "contributing/codebase-overview.html"
 ---
 
-This section will give you an overview of the React codebase organization, its conventions, and the implementation.
+يوفر لك هذا القسم نظرة عامة حول تنظيم قاعدة كود برنامج React، أعرافه البرمجية، و طرق التنفيذ.
 
-If you want to [contribute to React](/docs/how-to-contribute.html) we hope that this guide will help you feel more comfortable making changes.
+إذا كنت ترغب في [المساهمة في React](/docs/how-to-contribute.html)، نأمل أن يساعدك هذا الدليل على الشعور بالراحة عند إجراء التغييرات.
 
-We don't necessarily recommend any of these conventions in React apps. Many of them exist for historical reasons and might change with time.
+لا نوصي بالضرورة بأي من هذه الأعراف البرمجية في تطبيقات React. الكثير منهم موجودون لأسباب تاريخية وقد يتغيرون مع مرور الوقت.
 
-### External Dependencies {#external-dependencies}
+### الإعتمادات الخارجية {#external-dependencies}
 
-React has almost no external dependencies. Usually, a `require()` points to a file in React's own codebase. However, there are a few relatively rare exceptions.
+ لا يوجد لدي React أي إعتمادات خارجية تقريبا. عادةً، تشير `require()` إلى ملف في  قاعدة الشفرة المصدرية لـ React الخاصة. ومع ذلك ، هناك بعض الاستثناءات النادرة نسبيا.
 
-The [fbjs repository](https://github.com/facebook/fbjs) exists because React shares some small utilities with libraries like [Relay](https://github.com/facebook/relay), and we keep them in sync. We don't depend on equivalent small modules in the Node ecosystem because we want Facebook engineers to be able to make changes to them whenever necessary. None of the utilities inside fbjs are considered to be public API, and they are only intended for use by Facebook projects such as React.
+يوجد [مستودع fbjs](https://github.com/facebook/fbjs) لأن React يشارك بعض الأدوات الصغيرة مع المكتبات مثل مكتبة [Relay](https://github.com/facebook/relay) ،و نبقيهم متزامنين. لا نعتمد على وحدات صغيرة مكافئة في نظام Node لأننا نريد أن يتمكن مهندسو Facebook من إجراء تغييرات عليها كلما دعت الضرورة. لا تعد أيًا من الأدوات المساعدة الموجودة داخل fbjs بمثابة واجهة برمجة تطبيقات (API) عامة، وهي مخصصة فقط للاستخدام من قبل مشاريع Facebook مثل React.
 
-### Top-Level Folders {#top-level-folders}
+### مجلدات المستوى الأعلى {#top-level-folders}
 
-After cloning the [React repository](https://github.com/facebook/react), you will see a few top-level folders in it:
+بعد استنساخ [مستودع React](https://github.com/facebook/react), سترى بعض مجلدات المستوى الأعلى فيه:
 
-* [`packages`](https://github.com/facebook/react/tree/master/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) contains a few small React test applications for contributors.
-* `build` is the build output of React. It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.
+* تحتوي [`الحزم`](https://github.com/facebook/react/tree/master/packages) (packages) على بيانات التعريف (مثل `package.json`) و شفرة المصدر (الدليل الفرعي `src`) لجميع الحزم في مستودع React. **إذا كان التغيير الخاص بك مرتبطًا بالشفرة (code)، فإن الدليل الفرعي "src" لكل حزمة هو المكان الذي ستقضي فيه معظم وقتك.**
+* تحتوي [التركيبات](https://github.com/facebook/react/tree/master/fixtures) (fixtures) على عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
+* `build` هو ناتج بناء React.  ليس موجودًا في المستودع ، ولكنه سيظهر في استنساخ React الخاص بك بعد [إنشائه](/docs/how-to-contribute.html#development-workflow) للمرة الأولى.
 
-The documentation is hosted [in a separate repository from React](https://github.com/reactjs/reactjs.org).
+تم استضافة الوثائق في [مستودع منفصل عن React](https://github.com/reactjs/reactjs.org).
 
-There are a few other top-level folders but they are mostly used for the tooling and you likely won't ever encounter them when contributing.
+يوجد عدد قليل من مجلدات المستوى الأعلى الأخرى ولكنها تستخدم في الغالب للأدوات، ومن المحتمل ألا تقابلها أبدًا عند المساهمة.
 
-### Colocated Tests {#colocated-tests}
+### الاختبارات الموضوعة سويًا {#colocated-tests}
+ليس لدينا مجلد مستوي اعلي لاختبارات الوحدة (unit tests). بدلاً من ذلك، نضعها في مجلد يسمى `__tests__` نسبة إلى الملفات التي يختبرونها.
 
-We don't have a top-level directory for unit tests. Instead, we put them into a directory called `__tests__` relative to the files that they test.
+على سبيل المثال ،اختبار [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) موجود في [`tests__/setInnerHTML-test.js__`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) بجانبه بالضبط.
 
-For example, a test for [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) is located in [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) right next to it.
+### التحذيرات و الثوابت {#warnings-and-invariants}
 
-### Warnings and Invariants {#warnings-and-invariants}
-
-The React codebase uses the `warning` module to display warnings:
+تستخدم قاعدة الشفرة المصدرية لـ React وحدة `warning` لعرض التحذيرات:
 
 ```js
 var warning = require('warning');
@@ -52,11 +51,11 @@ warning(
 );
 ```
 
-**The warning is shown when the `warning` condition is `false`.**
+**يظهر التحذير عندما تكون حالة `warning` تساوي `false`.**
 
-One way to think about it is that the condition should reflect the normal situation rather than the exceptional one.
+إحدى طرق التفكير في الأمر هو أن الحالة يجب أن تعكس الوضع الطبيعي بدلاً من الحالة الاستثنائية.
 
-It is a good idea to avoid spamming the console with duplicate warnings:
+من المستحسن تجنب إغراق (spamming) عارضة التحكم (console) بتحذيرات مكررة:
 
 ```js
 var warning = require('warning');
@@ -71,7 +70,7 @@ if (!didWarnAboutMath) {
 }
 ```
 
-Warnings are only enabled in development. In production, they are completely stripped out. If you need to forbid some code path from executing, use `invariant` module instead:
+يتم تمكين التحذيرات فقط في التطوير. في الإنتاج (production) ، يتم تجريدهم بالكامل. إذا كنت بحاجة إلى منع تنفيذ بعض مسار الكود، فاستخدم وحدة `invariant` بدلاً من ذلك:
 
 ```js
 var invariant = require('invariant');
@@ -82,19 +81,19 @@ invariant(
 );
 ```
 
-**The invariant is thrown when the `invariant` condition is `false`.**
+**يتم طرح الثابت عندما تكون حالة `invariant` تساوي `false`.**
 
-"Invariant" is just a way of saying "this condition always holds true". You can think about it as making an assertion.
+"invariant" هي مجرد وسيلة لقول "هذا الشرط دائما صحيح". يمكنك التفكير في الأمر على أنه تأكيد.
 
-It is important to keep development and production behavior similar, so `invariant` throws both in development and in production. The error messages are automatically replaced with error codes in production to avoid negatively affecting the byte size.
+من المهم الحفاظ على تشابة سلوكيات التطوير والإنتاج، لذلك `invariant` يطرح (throws) في كل من التطوير والإنتاج. يتم استبدال رسائل الخطأ تلقائيًا برموز (codes) خطأ في الإنتاج لتجنب التأثير السلبي على حجم البايت.
 
-### Development and Production {#development-and-production}
+### التطوير والإنتاج {#development-and-production}
 
-You can use `__DEV__` pseudo-global variable in the codebase to guard development-only blocks of code.
+يمكنك استخدام المتغير الزائف (pseduo-global variable) `__DEV__` في قاعدة الشفرة المصدرية لـ React من حراسة كتل الكود المخصص للتطوير فقط.
 
-It is inlined during the compile step, and turns into `process.env.NODE_ENV !== 'production'` checks in the CommonJS builds.
+يتم تضمينه أثناء خطوة التحويل البرمجي، ويتحول إلى تحقق `process.env.NODE_ENV !== 'production'` في بنايات CommonJS.
 
-For standalone builds, it becomes `true` in the unminified build, and gets completely stripped out with the `if` blocks it guards in the minified build.
+بالنسبة للبنيات القائمة بذاتها (standalone)، تصبح `true` في البنية غير المصغرة (unminified build)، ويتم تجريدها بالكامل من كتل `if` التي تحرسها في البنية المصغرة.
 
 ```js
 if (__DEV__) {
@@ -104,9 +103,9 @@ if (__DEV__) {
 
 ### Flow {#flow}
 
-We recently started introducing [Flow](https://flow.org/) checks to the codebase. Files marked with the `@flow` annotation in the license header comment are being typechecked.
+بدأنا في الآونة الأخيرة تقديم تحققات [Flow](https://flow.org/) الي قاعدة الشفرة المصدرية. يتم عمل فحص للأنواع للملفات التي تحمل علامة التعليقات التوضيحية `@flow` في  ترخيص رأس التعليق  (license header comment).
 
-We accept pull requests [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). Flow annotations look like this:
+نحن نقبل طلبات السحب (pull requests). انظر [ضف تعليقات Flow التوضيحية لشفرتك الحالية](https://github.com/facebook/react/pull/7600/files). التعليقات التوضيحية لـFlow  تبدو كالتالي:
 
 ```js
 ReactRef.detachRefs = function(
@@ -117,14 +116,14 @@ ReactRef.detachRefs = function(
 }
 ```
 
-When possible, new code should use Flow annotations.
-You can run `yarn flow` locally to check your code with Flow.
+عندما يكون ذلك ممكنًا، يجب أن يستخدم الكود الجديد التعليقات التوضيحية الخاصة بFlow.
+يمكنك تشغيل `yarn flow` محليًا للتحقق من شفرتك باستخدام Flow.
 
-### Dynamic Injection {#dynamic-injection}
+### الحقن الديناميكي {#dynamic-injection}
 
-React uses dynamic injection in some modules. While it is always explicit, it is still unfortunate because it hinders understanding of the code. The main reason it exists is because React originally only supported DOM as a target. React Native started as a React fork. We had to add dynamic injection to let React Native override some behaviors.
+يستخدم React الحقن الديناميكي في بعض الوحدات. في حين أنه دائمًا ما يكون صريحًا، إلا أنه لا يزال مؤسفًا لأنه يعيق فهم الكود. السبب الرئيسي لوجوده هو أن React كان في الأصل يدعم DOM فقط كهدف. بدأ React Native كـعملية نسخ لـ React. كان علينا إضافة الحقن الديناميكي للسماح لـ React Native بتجاوز بعض السلوكيات.
 
-You may see modules declaring their dynamic dependencies like this:
+قد ترى وحدات تعلن عن إعتماداتها الديناميكية مثل هذا:
 
 ```js
 // Dynamically injected
@@ -149,78 +148,80 @@ var ReactHostComponent = {
 module.exports = ReactHostComponent;
 ```
 
-The `injection` field is not handled specially in any way. But by convention, it means that this module wants to have some (presumably platform-specific) dependencies injected into it at runtime.
+لا يتم التعامل مع حقل `injection` بشكل خاص بأي طريقة. ولكن عن طريق الاصطلاح، فهذا يعني أن هذه الوحدة تريد الحصول على بعض الإعتمادات (من المفترض أنها خاصة بالنظام الأساسي) التي تم حقنها فيها في وقت التشغيل.
 
-There are multiple injection points in the codebase. In the future, we intend to get rid of the dynamic injection mechanism and wire up all the pieces statically during the build.
+هناك عدة نقاط حقن في قاعدة الشفرة المصدرية. إذ نعتزم التخلص من آلية الحقن الديناميكي وربط جميع القطع بشكل ثابت أثناء الإنشاء في المستقبل.
 
-### Multiple Packages {#multiple-packages}
+### الحزم المتعددة {#multiple-packages}
 
-React is a [monorepo](https://danluu.com/monorepo/). Its repository contains multiple separate packages so that their changes can be coordinated together, and issues live in one place.
+تصنف React ضمن [monorepo](https://danluu.com/monorepo/). إذ يحتوي مستودعها على حزم متعددة منفصلة بحيث يمكن تنسيق تغييراتها معًا، وتعيش المشكلات (issues) في مكان واحد.
 
-### React Core {#react-core}
+### نواة React {#react-core}
 
-The "core" of React includes all the [top-level `React` APIs](/docs/top-level-api.html#react), for example:
+تشمل "نواة" React جميع الـ [واجهات برمجة تطبيقات `React` ذات المستوى العالي](/docs/top-level-api.html#react) مثل:
 
 * `React.createElement()`
 * `React.Component`
 * `React.Children`
 
-**React core only includes the APIs necessary to define components.** It does not include the [reconciliation](/docs/reconciliation.html) algorithm or any platform-specific code. It is used both by React DOM and React Native components.
+**نواة React لا تتضمن سوى واجهات برمجة التطبيقات الضرورية لتحديد المكونات.** لا تتضمن خوارزمية التسوية ([reconciliation](/docs/reconciliation.html)) أو أي كود خاص بالنظام الأساسي. يتم استخدامه من قبل كل من مكونات React DOM و React Native.
 
-The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) in the source tree. It is available on npm as the [`react`](https://www.npmjs.com/package/react) package. The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.
+الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) بشجرة المصدر (source tree). و هي متوفرة على npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر بشكل عمومي تحت مسمى `React`.
 
-### Renderers {#renderers}
+### العارضون {#renderers}
 
-React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://facebook.github.io/react-native/). This introduced the concept of "renderers" to React internals.
+تم إنشاء React في الأصل من أجل DOM ولكن تم تكييفها لاحقًا أيضًا لدعم الأنظمة الأساسية الأصلية مع [React Native](https://facebook.github.io/react-native/). قدم هذا مفهوم "التصيير" لدواخل React.
 
-**Renderers manage how a React tree turns into the underlying platform calls.**
+**يدير العارضون كيف تتحول شجرة React إلى المكالمات الأساسية للنظام الأساسي.**
 
-Renderers are also located in [`packages/`](https://github.com/facebook/react/tree/master/packages/):
+وتقع العارضين أيضا في [`/packages`](https://github.com/facebook/react/tree/master/packages/):
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) renders React components to the DOM. It implements [top-level `ReactDOM` APIs](/docs/react-dom.html) and is available as [`react-dom`](https://www.npmjs.com/package/react-dom) npm package. It can also be used as standalone browser bundle called `react-dom.js` that exports a `ReactDOM` global.
-* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) renders React components to native views. It is used internally by React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) renders React components to JSON trees. It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.
+* تصيير [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)  مكونات React DOM. يقوم بتنفيذ [top-level `ReactDOM` APIs](/docs/react-dom.html) و هي متوفرة كحزمة [`react-dom`](https://www.npmjs.com/package/react-dom) علي npm. يمكن استخدامه أيضًا كحزمة متصفح مستقلة تسمى `react-dom.js` و التي تصدر `ReactDOM` عمومي.
+* تصيير [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) مكونات React إلى وجهات النظر الأصلية. يتم استخدامه داخليًا بواسطة React Native.
+* تصيير [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) مكونات React الي اشجار JSON. يتم استخدامه بواسطة ميزة [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) الخاصة ب[Jest](https://facebook.github.io/jest) و هو متاح كحزمة [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) علي npm. 
 
-The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art). It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.
+العارض الوحيد الآخر المدعوم رسميًا هو [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art). اعتادت أن تكون في [مستودع Github منفصل](https://github.com/reactjs/react-art) لكننا انتقلنا إلى شجرة المصدر الرئيسية في الوقت الحالي.
 
->**Note:**
+>**ملحوظة:**
 >
->Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation. The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.
+>من الناحية الفنية ، يعد [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) طبقة رفيعة جدًا تُعلم React بالتفاعل مع تطبيق React Native . يعيش الكود الحقيقي الخاص بالنظام الأساسي الذي يدير المشاهدات الأصلية في [React Native repository](https://github.com/facebook/react-native) مع مكوناته.
 
-### Reconcilers {#reconcilers}
+### المطابقات {#reconcilers}
 
-Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [reconciliation](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
+حتى العارضين المختلفين إلى حد كبير مثل React DOM و React Native يحتاجون إلى مشاركة الكثير من المنطق.  على وجه الخصوص ، يجب أن تكون خوارزمية [المطابقة](/docs/reconciliation.html) متشابهة قدر الإمكان حتى يعمل التصيير التوضيحي، والمكونات المخصصة، والحالة (state)، وطرق دورة الحياة (lifecycle methods)، والمراجع (refs) باستمرار عبر الأنظمة الأساسية.
 
-To solve this, different renderers share some code between them. We call this part of React a "reconciler". When an update such as `setState()` is scheduled, the reconciler calls `render()` on components in the tree and mounts, updates, or unmounts them.
+لحل هذه المشكلة ، يشارك العارضون المختلفون بعض التعليمات البرمجية بينهم. نحن نسمي هذا الجزء من React "المطابق" (reconciler). عندما يتم جدولة تحديث مثل `setState()` ، يستدعي المطابق `render()` على المكونات الموجودة في الشجرة ويقوم بتثبيتها أو تحديثها أو إلغاء تحميلها.
 
-Reconcilers are not packaged separately because they currently have no public API. Instead, they are exclusively used by renderers such as React DOM and React Native.
+لا يتم حزم المطابقات بشكل منفصل لأنه لا يوجد حاليًا أي واجهة برمجة تطبيقات عامة. بدلاً من ذلك ، يتم استخدامها حصريًا بواسطة عارضين مثل React DOM و React Native.
 
-### Stack Reconciler {#stack-reconciler}
+### مطابق المكدس {#stack-reconciler}
 
-The "stack" reconciler is the implementation powering React 15 and earlier. We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).
+مطابق "المكدس" (stack reconciler) هو تطبيق يقوم بتشغيل React 15 والإصدارات الأقدم. لقد توقفنا عن استخدامه منذ ذلك الحين، لكن تم توثيقه بالتفصيل في [القسم التالي](/docs/implementation-notes.html).
 
-### Fiber Reconciler {#fiber-reconciler}
+### مطابق الفيبر {#fiber-reconciler}
 
-The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues. It has been the default reconciler since React 16.
+يعتبر مطابق الفيبر (fiber reconciler) مجهودًا جديدًا يهدف إلى حل المشكلات الكامنة في المطابق المكدس وإصلاح عدد قليل من المشكلات القديمة. لقد كان المطابق الافتراضي منذ React 16.
 
-Its main goals are:
+أهدافه الرئيسية هي:
 
-* Ability to split interruptible work in chunks.
-* Ability to prioritize, rebase and reuse work in progress.
-* Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
-* Better support for error boundaries.
+* القدرة على تقسيم العمل المنقطع في أجزاء.
+* القدرة على تحديد الأولويات، إعادة صياغة وإعادة استخدام العمل قيد التقدم.
+* القدرة على الخضوع ذهابًا وإيابًا بين الآباء والأطفال لدعم التخطيط في React.
+* القدرة على إرجاع عناصر متعددة من `render()`.
+* دعم أفضل لحدود الخطأ (error boundaries).
 
-You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). While it has shipped with React 16, the async features are not enabled by default yet.
+يمكنك قراءة المزيد عن "React Fiber Architecture" [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
 
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
-### Event System {#event-system}
+### نظام الأحداث {#event-system}
 
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events).
+يطبق React نظام أحداث اصطناعي محايد لتصيير ويعمل مع كل من React DOM و React Native. 
 
-There is a [video with a deep code dive into it](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
+شفرة المصدر الخاصة به موجودة في [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events).
 
-### What Next? {#what-next}
+يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 
-Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
+### ماذا بعد؟ {#what-next}
+
+اقرأ [القسم التالي](/docs/implementation-notes.html) للتعرف على تطبيق المطابق قبل React 16 بمزيد من التفاصيل. لم نقم بتوثيق الأجزاء الداخلية للمطابق الجديد بعد.
