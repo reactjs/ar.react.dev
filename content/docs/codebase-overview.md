@@ -208,7 +208,7 @@ module.exports = ReactHostComponent;
 * القدرة على تحديد الأولويات، إعادة صياغة وإعادة استخدام العمل قيد التقدم.
 * القدرة على الخضوع ذهابًا وإيابًا بين الآباء والأطفال لدعم التخطيط في React.
 * القدرة على إرجاع عناصر متعددة من `render()`.
-* دعم أفضل لحدود الخطأ.
+* دعم أفضل لحدود الخطأ (error boundaries).
 
 يمكنك قراءة المزيد عن React Fiber Architecture [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
 
