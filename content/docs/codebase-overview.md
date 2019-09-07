@@ -154,7 +154,7 @@ module.exports = ReactHostComponent;
 
 ### الحزم المتعددة {#multiple-packages}
 
-React عبارة عن [monorepo](https://danluu.com/monorepo/). يحتوي مستودعها على حزم متعددة منفصلة بحيث يمكن تنسيق تغييراتها معًا، وتعيش المشكلات (issues) في مكان واحد.
+تصنف React ضمن [monorepo](https://danluu.com/monorepo/). إذ يحتوي مستودعها على حزم متعددة منفصلة بحيث يمكن تنسيق تغييراتها معًا، وتعيش المشكلات (issues) في مكان واحد.
 
 ### نواة React {#react-core}
 
