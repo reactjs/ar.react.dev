@@ -26,7 +26,7 @@ redirect_from:
 بعد استنساخ [مستودع React](https://github.com/facebook/react), سترى بعض مجلدات المستوى الأعلى فيه:
 
 * تحتوي [`الحزم`](https://github.com/facebook/react/tree/master/packages) (packages) على بيانات التعريف (مثل `package.json`) و شفرة المصدر (الدليل الفرعي `src`) لجميع الحزم في مستودع React. **إذا كان التغيير الخاص بك مرتبطًا بالشفرة (code)، فإن الدليل الفرعي "src" لكل حزمة هو المكان الذي ستقضي فيه معظم وقتك.**
-* تحتوي [التركيبات](https://github.com/facebook/react/tree/master/fixtures) (fixtures) علي عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
+* تحتوي [التركيبات](https://github.com/facebook/react/tree/master/fixtures) (fixtures) على عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
 * `build` هو ناتج بناء React.  ليس موجودًا في المستودع ، ولكنه سيظهر في استنساخ React الخاص بك بعد [إنشائه](/docs/how-to-contribute.html#development-workflow) للمرة الأولى.
 
 تم استضافة الوثائق في [مستودع منفصل عن React](https://github.com/reactjs/reactjs.org).
