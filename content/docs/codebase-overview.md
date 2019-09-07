@@ -210,7 +210,7 @@ module.exports = ReactHostComponent;
 * القدرة على إرجاع عناصر متعددة من `render()`.
 * دعم أفضل لحدود الخطأ (error boundaries).
 
-يمكنك قراءة المزيد عن React Fiber Architecture [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
+يمكنك قراءة المزيد عن "React Fiber Architecture" [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
 
 شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
