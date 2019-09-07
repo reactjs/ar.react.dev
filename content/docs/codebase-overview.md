@@ -170,7 +170,7 @@ module.exports = ReactHostComponent;
 
 ### العارضون {#renderers}
 
-تم إنشاء React في الأصل من أجل DOM ولكن تم تكييفها لاحقًا أيضًا لدعم الأنظمة الأساسية الأصلية مع [React Native](https://facebook.github.io/react-native/). قدم هذا مفهوم "العارضون" لدواخل React.
+تم إنشاء React في الأصل من أجل DOM ولكن تم تكييفها لاحقًا أيضًا لدعم الأنظمة الأساسية الأصلية مع [React Native](https://facebook.github.io/react-native/). قدم هذا مفهوم "التصيير" لدواخل React.
 
 **يدير العارضون كيف تتحول شجرة React إلى المكالمات الأساسية للنظام الأساسي.**
 
