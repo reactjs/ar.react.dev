@@ -29,7 +29,7 @@ redirect_from:
 * تحتوي [التركيبات](https://github.com/facebook/react/tree/master/fixtures) (fixtures) علي عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
 * `build` هو ناتج بناء React.  ليس موجودًا في المستودع ، ولكنه سيظهر في استنساخ React الخاص بك بعد [إنشائه](/docs/how-to-contribute.html#development-workflow) للمرة الأولى.
 
-يتم استضافة الوثائق في [مستودع منفصل عن React](https://github.com/reactjs/reactjs.org).
+تم استضافة الوثائق في [مستودع منفصل عن React](https://github.com/reactjs/reactjs.org).
 
 يوجد عدد قليل من مجلدات المستوى الأعلى الأخرى ولكنها تستخدم في الغالب للأدوات، ومن المحتمل ألا تقابلها أبدًا عند المساهمة.
 
