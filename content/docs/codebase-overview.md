@@ -89,7 +89,7 @@ invariant(
 
 ### التطوير والإنتاج {#development-and-production}
 
-يمكنك استخدام المتغير الزائف (pseduo-global variable) `__DEV__` في قاعدة كود برنامج React لحراسة كتل الكود المخصص للتطوير فقط.
+يمكنك استخدام المتغير الزائف (pseduo-global variable) `__DEV__` في قاعدة الشفرة المصدرية لـ React من حراسة كتل الكود المخصص للتطوير فقط.
 
 يتم تضمينه أثناء خطوة التحويل البرمجي، ويتحول إلى تحقق `process.env.NODE_ENV !== 'production'` في بنايات CommonJS.
 
