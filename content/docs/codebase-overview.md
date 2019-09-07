@@ -105,7 +105,7 @@ if (__DEV__) {
 
 بدأنا في الآونة الأخيرة تقديم تحققات [Flow](https://flow.org/) الي قاعدة الشفرة المصدرية. يتم عمل فحص للأنواع للملفات التي تحمل علامة التعليقات التوضيحية `@flow` في  ترخيص رأس التعليق  (license header comment).
 
-نحن نقبل طلبات السحب (pull requests). انظر [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). التعليقات التوضيحية لـFlow  تبدو كالتالي:
+نحن نقبل طلبات السحب (pull requests). انظر [ضف تعليقات Flow التوضيحية لشفرتك الحالية](https://github.com/facebook/react/pull/7600/files). التعليقات التوضيحية لـFlow  تبدو كالتالي:
 
 ```js
 ReactRef.detachRefs = function(
