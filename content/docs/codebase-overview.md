@@ -40,7 +40,7 @@ redirect_from:
 
 ### التحذيرات و الثوابت {#warnings-and-invariants}
 
-تستخدم قاعدة كود برنامج React وحدة (module) `warning` لعرض التحذيرات:
+تستخدم قاعدة الشفرة المصدرية لـ React وحدة `warning` لعرض التحذيرات:
 
 ```js
 var warning = require('warning');
