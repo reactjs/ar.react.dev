@@ -158,7 +158,7 @@ module.exports = ReactHostComponent;
 
 ### نواة React {#react-core}
 
-تشمل "نواة" React جميع الـ [top-level `React` APIs](/docs/top-level-api.html#react) مثل:
+تشمل "نواة" React جميع الـ [واجهات برمجة تطبيقات `React` ذات المستوى العالي](/docs/top-level-api.html#react) مثل:
 
 * `React.createElement()`
 * `React.Component`
