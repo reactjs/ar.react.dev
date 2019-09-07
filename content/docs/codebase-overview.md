@@ -1,6 +1,6 @@
 ---
 id: codebase-overview
-title: Codebase Overview
+title: نظرة عامة عن قاعدة الشفرة المصدرية
 layout: contributing
 permalink: docs/codebase-overview.html
 prev: how-to-contribute.html
