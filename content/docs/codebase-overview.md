@@ -196,7 +196,7 @@ module.exports = ReactHostComponent;
 
 ### مطابق المكدس {#stack-reconciler}
 
-المطابق "المكدس" (stack reconciler) ههو تطبيق يقوم بتشغيل React 15 والإصدارات الأقدم. لقد توقفنا عن استخدامه منذ ذلك الحين، لكن تم توثيقه بالتفصيل في [القسم التالي](/docs/implementation-notes.html).
+مطابق "المكدس" (stack reconciler) هو تطبيق يقوم بتشغيل React 15 والإصدارات الأقدم. لقد توقفنا عن استخدامه منذ ذلك الحين، لكن تم توثيقه بالتفصيل في [القسم التالي](/docs/implementation-notes.html).
 
 ### مطابق الفيبر {#fiber-reconciler}
 
