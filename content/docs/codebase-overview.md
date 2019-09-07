@@ -103,7 +103,7 @@ if (__DEV__) {
 
 ### Flow {#flow}
 
-بدأنا في الآونة الأخيرة تقديم تحققات [Flow](https://flow.org/) الي قاعدة الكود. يتم عمل فحص "typecheck" للملفات التي تحمل علامة التعليقات التوضيحية `@flow` في تعليق رأس الترخيص (license header comment).
+بدأنا في الآونة الأخيرة تقديم تحققات [Flow](https://flow.org/) الي قاعدة الشفرة المصدرية. يتم عمل فحص للأنواع للملفات التي تحمل علامة التعليقات التوضيحية `@flow` في  ترخيص رأس التعليق  (license header comment).
 
 نحن نقبل طلبات السحب (pull requests). انظر [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). التعليقات التوضيحية لـFlow  تبدو كالتالي:
 
