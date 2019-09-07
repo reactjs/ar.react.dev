@@ -166,7 +166,7 @@ module.exports = ReactHostComponent;
 
 **نواة React لا تتضمن سوى واجهات برمجة التطبيقات الضرورية لتحديد المكونات.** لا تتضمن خوارزمية التسوية ([reconciliation](/docs/reconciliation.html)) أو أي كود خاص بالنظام الأساسي. يتم استخدامه من قبل كل من مكونات React DOM و React Native.
 
-الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) بشجرة المصدر (source tree). و هي متوفرة علي npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر (exports) عمومي (global) يسمى `React`.
+الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) بشجرة المصدر (source tree). و هي متوفرة على npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر بشكل عمومي تحت مسمى `React`.
 
 ### العارضون {#renderers}
 
