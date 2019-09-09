@@ -218,7 +218,11 @@ module.exports = ReactHostComponent;
 
 يطبق React نظام أحداث اصطناعي محايد لتصيير ويعمل مع كل من React DOM و React Native. 
 
+<<<<<<< HEAD
 شفرة المصدر الخاصة به موجودة في [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events).
+=======
+React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/react-events`](https://github.com/facebook/react/tree/master/packages/react-events).
+>>>>>>> 8b30ae43439818009213da86eca872a3d869c5eb
 
 يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 
