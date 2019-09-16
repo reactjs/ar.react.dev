@@ -330,7 +330,11 @@ class Square extends React.Component {
 
 تُتيح لك أدوات تطوير React التحقّق من خاصيّات وحالة المكوّنات.
 
+<<<<<<< HEAD
 تستطيع بعد تثبيت أدوات تطوير React أن تنقر بالزر الأيمن على أي عنصر في الصفحة، ثمّ تضغط على كلمة "Inspect" لفتح أدوات المطوّر، وستظهر نافذة React كآخر نافذة إلى اليمين.
+=======
+After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
+>>>>>>> 6dcb963479953586f462ce31fddf35158c0598a0
 
 **لاحظ وجود بعض الخطوات الإضافيّة لكي تعمل الأدوات مع CodePen:**
 
