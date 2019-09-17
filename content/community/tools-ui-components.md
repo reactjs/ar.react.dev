@@ -23,7 +23,7 @@ permalink: community/ui-components.html
 * **[Material Components for React](https://github.com/material-components/material-components-web-react)** MDC React هو التنفيذ الرسمي لمكونات التي تعتمد على لـ Google Material Design.
 * **[React Native for Web](https://github.com/necolas/react-native-web)** يجعل من الممكن تشغيل مكونات React Native وواجهات برمجة التطبيقات على الويب باستخدام React DOM.
 * **[react-amiga-guru-meditation](https://github.com/gfazioli/react-amiga-guru-meditation):** React JS Class to display a Amiga Guru Meditation Tribute
-* **[react-autosuggest](https://github.com/moroshko/react-autosuggest)** WAI-ARIA compliant React autosuggest component
+* **[react-autosuggest](https://github.com/moroshko/react-autosuggest)** WAI-ARIA توافق للمكوّن React و الاقتراح الآلي لها
 * **[react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd):** توفر هذه المكتبة ميزة السحب والإسقاط  بطريقة جميلة و سهلة الوصول للقوائم مع React.js.
 * **[react-bootstrap](https://github.com/stevoland/react-bootstrap):** مكونات Bootstrap 3 المبنية على React.
 * **[react-bootstrap-dialog](https://github.com/akiroom/react-bootstrap-dialog):** توفر هذه المكتبة مودال ( modal ) متوافق مع react-bootstrap بدلا من `window.alert` او `window.confirm`.
