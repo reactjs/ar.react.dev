@@ -6,7 +6,7 @@ permalink: community/ui-components.html
 ---
 
 ## المكونات الحرة {#free-components}
-* **[Amaze UI React](https://github.com/amazeui/amazeui-react) (بالصيني):** [Amaze UI](https://github.com/allmobilize/amazeui) مكونات بنيت بواسطة React.
+* **[Amaze UI React](https://github.com/amazeui/amazeui-react) (بالصينية):** [Amaze UI](https://github.com/allmobilize/amazeui) مكونات مبنيت بواسطة React.
 * **[Ant Design of React](https://github.com/ant-design/ant-design)** لغة تصميم واجهة المستخدم من صنف المؤسسات والتنفيذ القائم على React.
 * **[Belle](https://github.com/nikgraf/belle/):** مكونات شكلية لـ React مع تجربة مستخدم جيدة.
 * **[chartify](https://github.com/kirillstepkin/chartify)**: مكون رسم بياني لـ React.js  خفيف الحجم و قابل للتخصيص.
