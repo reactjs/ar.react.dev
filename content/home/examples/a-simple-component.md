@@ -1,5 +1,5 @@
 ---
-title: مكّون بسيط
+title: مكّون سهل
 order: 0
 domid: hello-example
 ---
