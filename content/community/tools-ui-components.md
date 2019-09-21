@@ -64,7 +64,7 @@ permalink: community/ui-components.html
 * **[Semantic-ui](https://react.semantic-ui.com/)**: التكامل الدلالي الرسمي لواجهة مستخدم React.
 * **[storybook-addon-material-ui](https://github.com/sm-react/storybook-addon-material-ui)** ملحق material-ui لـ storybook.
 * **[tcomb-form](https://github.com/gcanti/tcomb-form):** مكتبة استمارات جيدة.
-* **[valuelink](https://github.com/Volicon/valuelink):** ميزة ربط البيانات ثنائية الاتجاه كاملة والتحقق من صحة النماذج مع روابط React الموسعة.
+* **[valuelink](https://github.com/Volicon/valuelink):** ميزة كاملة لربط البيانات ثنائية الإتجاه والمصادقة على الإستمارات مع قابلية الإمتداد لروابط React.
 * **[video-react](https://github.com/video-react/video-react)**: مشغل فيديو ويب مصمم خصيصًا لـ HTML5 باستخدام مكتبة React.
 * **[Winterfell](https://github.com/andrewhathaway/Winterfell):** قم بإنشاء نماذج JSON معقدة وصحيحة وقابلة للتمديد في React.
 
