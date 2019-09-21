@@ -28,7 +28,7 @@ const AllBlogPosts = ({data, location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>جميع المشاركات</Header>
+          <Header>جميع المنشورات</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/blog/all.html`}
             title="React - جميع المشاركات"
