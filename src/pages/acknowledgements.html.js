@@ -44,7 +44,7 @@ const Acknowlegements = ({data, location}) => (
               ))}
             </ul>
 
-            <p>بالإضافة إلى ذلك ، نحن ممتنون لـ</p>
+            <p>:بالإضافة إلى ذلك ، نحن ممتنون لـ</p>
             <ul>
               <li>
                 <a href="https://github.com/jeffbski">Jeff Barczewski</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/react">react</a> كإسم حزمة في مدير الحزم npm.
