@@ -72,7 +72,7 @@ const Languages = ({location}: Props) => (
                 href="https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation"
                 target="_blank"
                 rel="noopener">
-                دعنا نعرف
+                أعلمنا
               </a>
               .
             </p>
