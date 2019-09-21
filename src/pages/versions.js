@@ -25,27 +25,27 @@ const Versions = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>React Versions</Header>
+          <Header>إصدارات React</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/versions/`}
             title="React - Versions"
           />
           <div css={sharedStyles.markdown}>
             <p>
-              A complete release history for React is available{' '}
+              يمكنك ان تجد تاريخ الإصدارات الكامل لـ React {' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
-                on GitHub
+                 عبر منصة Github
               </a>
               .<br />
-              Documentation for recent releases can also be found below.
+              يمكن أيضًا العثور على الوثائق الخاصة بالإصدارات الحديثة أدناه.
             </p>
             <p>
-              See our FAQ for information about{' '}
+              راجع الأسئلة الشائعة الخاصة بنا للحصول على معلومات حول {' '}
               <a href="/docs/faq-versioning.html">
-                our versioning policy and commitment to stability
+                سياسة الإصدار والالتزام بالاستقرار
               </a>
               .
             </p>
@@ -55,13 +55,13 @@ const Versions = ({location}: Props) => (
                 <ul>
                   <li>
                     <a href={version.changelog} target="_blank" rel="noopener">
-                      Changelog
+                      سجل التغييرات
                     </a>
                   </li>
                   {version.path && (
                     <li>
                       <a href={version.path} rel="nofollow">
-                        Documentation
+                        المستندات
                       </a>
                     </li>
                   )}
