@@ -47,7 +47,7 @@ const Acknowlegements = ({data, location}) => (
             <p>:بالإضافة إلى ذلك ، نحن ممتنون لـ</p>
             <ul>
               <li>
-                <a href="https://github.com/jeffbski">Jeff Barczewski</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/react">react</a> كإسم حزمة في مدير الحزم npm.
+                <a href="https://github.com/jeffbski">Jeff Barczewski</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/react">react</a> كإسم في مدير الحزم npm.
               </li>
               <li>
                 <a href="https://christopheraue.net/">Christopher Aue</a> : للسماح لنا باستخدام <a href="https://reactjs.com/">reactjs.com</a> كإسم مجال (domaine) و <a href="https://twitter.com/reactjs">@reactjs</a> كإسم مستخدم على منصة Twitter.
