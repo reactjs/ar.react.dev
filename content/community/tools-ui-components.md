@@ -75,5 +75,5 @@ permalink: community/ui-components.html
 * **[ExtReact components](https://www.sencha.com/products/extreact//)**: اكثر من 115 مكون جاهزة للاستخدام.
 * **[Grapecity Wijmo UI Components for React](https://www.grapecity.com/en/react/)**: وسّع خيارات واجهات React باستخدام مجموعة Wijmo الكاملة لمكونات JavaScript.
 * **[jQWidgets React components](https://www.jqwidgets.com/react/)**:اكثر من 70 مكون جاهزة للمؤسسات.
-* **[KendoReact](https://www.telerik.com/kendo-react-ui/)**: واجهة المستخدم لمطوري React.
+* **[KendoReact](https://www.telerik.com/kendo-react-ui/)**: واجهة المستخدم لمطورين React.
 * **[Mobiscroll React UI Components](https://mobiscroll.com/react)** ضوابط واجهة المستخدم المتنقلة لمطوّر React.
