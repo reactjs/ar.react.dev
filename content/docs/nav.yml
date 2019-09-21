@@ -125,14 +125,14 @@
         title: مرجع إلى الواجهة البرمجية للـ Hooks
       - id: hooks-faq
         title: الأسئلة الشائعة حول الـ Hooks
-- title: Testing
+- title: الاختبارات
   items:
     - id: testing 
-      title: Testing Overview
+      title: نظرة عامة على الاختبارات
     - id: testing-recipes
-      title: Testing Recipes
+      title: طريقة إجراء الاختبارات
     - id: testing-environments
-      title: Testing Environments
+      title: بيئة و محيط الاختبارات
 - title: المساهمة
   items:
   - id: how-to-contribute
