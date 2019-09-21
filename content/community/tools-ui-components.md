@@ -74,6 +74,6 @@ permalink: community/ui-components.html
 * **[DevExtreme Reactive](https://devexpress.github.io/devextreme-reactive/react/)** مكونات شبكة البيانات والجدولة والرسم البياني المستندة إلى المكونات الإضافية عالية الأداء من أجل Bootstrap و Material Design.
 * **[ExtReact components](https://www.sencha.com/products/extreact//)**: اكثر من 115 مكون جاهزة للاستخدام.
 * **[Grapecity Wijmo UI Components for React](https://www.grapecity.com/en/react/)**: وسّع خيارات واجهات React باستخدام مجموعة Wijmo الكاملة لمكونات JavaScript.
-* **[jQWidgets React components](https://www.jqwidgets.com/react/)**:اكثر من ٧٠ مكون جاهزة للمؤسسات.
+* **[jQWidgets React components](https://www.jqwidgets.com/react/)**:اكثر من 70 مكون جاهزة للمؤسسات.
 * **[KendoReact](https://www.telerik.com/kendo-react-ui/)**: واجهة المستخدم لمطوري React.
 * **[Mobiscroll React UI Components](https://mobiscroll.com/react)** ضوابط واجهة المستخدم المتنقلة لمطوّر React.
