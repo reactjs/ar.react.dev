@@ -31,7 +31,7 @@ const AllBlogPosts = ({data, location}: Props) => (
           <Header>جميع المنشورات</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/blog/all.html`}
-            title="React - جميع المشاركات"
+            title="React - جميع المنشورات"
           />
           <ul
             css={{
