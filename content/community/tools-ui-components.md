@@ -29,7 +29,7 @@ permalink: community/ui-components.html
 * **[react-bootstrap-dialog](https://github.com/akiroom/react-bootstrap-dialog):** React Dialog هي مكون علبة حوار متوافق مع react-bootstrap بدلا من `window.alert` أو `window.confirm`.
 * **[react-bootstrap-table2](https://github.com/react-bootstrap-table/react-bootstrap-table2):** واجهة جدول جميلة متوافقة مع Bootstrap.
 * **[react-component](https://github.com/react-component/):** مجموعة من مكونات React التي يقوم موظف Alibaba/Alipay بصيانتها.
-* **[react-data-menu](https://github.com/dkozar/react-data-menu):** القائمة الذكية المعتمدة على البيانات المقدمة في تراكب (overlay).
+* **[react-data-menu](https://github.com/dkozar/react-data-menu):** تصيير القائمة الذكية لتسيير البيانات في تراكب والمحاذات على أساس التلميحات مع تخصيص مصيرين مع المعاملات ولا تقص أبدًا المكونات الأخرى أو حواف الشاشة.
 * **[react-date-picker](https://github.com/Hacker0x01/react-datepicker):** مكون datepicker بسيط قابل لإعادة الاستخدام ل React.
 * **[react-dates](https://github.com/OpusCapita/react-dates):** حقول مدخلات للتاريخ ( Date-inputs + date-picker ).
 * **[react-dnd](https://github.com/gaearon/react-dnd)** خدمة سحب وإفلات مرنة لـ React مع السيطرة الكاملة على DOM.
