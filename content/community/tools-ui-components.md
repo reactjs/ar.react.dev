@@ -26,7 +26,7 @@ permalink: community/ui-components.html
 * **[react-autosuggest](https://github.com/moroshko/react-autosuggest)** WAI-ARIA توافق للمكوّن React و الاقتراح الآلي لها
 * **[react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd):** توفر هذه المكتبة ميزة السحب والإسقاط  بطريقة جميلة و سهلة الوصول للقوائم مع React.js.
 * **[react-bootstrap](https://github.com/stevoland/react-bootstrap):** مكونات Bootstrap 3 المبنية على React.
-* **[react-bootstrap-dialog](https://github.com/akiroom/react-bootstrap-dialog):** توفر هذه المكتبة مودال ( modal ) متوافق مع react-bootstrap بدلا من `window.alert` او `window.confirm`.
+* **[react-bootstrap-dialog](https://github.com/akiroom/react-bootstrap-dialog):** React Dialog هي مكون علبة حوار متوافق مع react-bootstrap بدلا من `window.alert` أو `window.confirm`.
 * **[react-bootstrap-table2](https://github.com/react-bootstrap-table/react-bootstrap-table2):** واجهة جدول جميلة متوافقة مع Bootstrap.
 * **[react-component](https://github.com/react-component/):** مجموعة من مكونات React التي يقوم موظف Alibaba/Alipay بصيانتها.
 * **[react-data-menu](https://github.com/dkozar/react-data-menu):** القائمة الذكية المعتمدة على البيانات المقدمة في تراكب (overlay).
