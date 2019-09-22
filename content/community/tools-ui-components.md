@@ -35,7 +35,7 @@ permalink: community/ui-components.html
 * **[react-dnd](https://github.com/gaearon/react-dnd)** خدمة سحب وإفلات مرنة لـ React مع السيطرة الكاملة على DOM.
 * **[react-document-title](https://github.com/gaearon/react-document-title)** عنوان محايد و متداخل و تعريفي لـ React عبر document.title.
 * **[react-dropzone](https://github.com/felixrieseberg/React-Dropzone):** منطقة إسقاط ( Dropzone ) لتحميل الملفات.
-* **[react-forms](https://prometheusresearch.github.io/react-forms/):** تصيير الإستمارة و التحقق من صحة البيانات المدخلة .. 
+* **[react-forms](https://prometheusresearch.github.io/react-forms/):** تصيير الإستمارة و المصادقة للـReact.
 * **[react-highlight](https://github.com/akiran/react-highlight):** تضليل الكلمات المفتاحية لمكوّن React.
 * **[react-image](https://github.com/mbrevda/react-image):** مثل `<img />` ومكون الصور المحسنة لـ React.
 * **[react-input-autosize](https://github.com/JedWatson/react-input-autosize):** مثل `<input />` ولكن يتم تغيير حجمها تلقائيًا لتناسب جميع محتوياتها.
