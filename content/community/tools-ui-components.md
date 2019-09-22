@@ -63,7 +63,7 @@ permalink: community/ui-components.html
 * **[recharts](https://github.com/recharts/recharts)**: مكتبة رسوم بيانية مبنية على مكونات React.
 * **[Selectivity](https://arendjr.github.io/selectivity/):** مكتبة اختيار خفيفة.
 * **[Semantic-ui](https://react.semantic-ui.com/)**: التكامل الدلالي الرسمي لواجهة مستخدم React.
-* **[storybook-addon-material-ui](https://github.com/sm-react/storybook-addon-material-ui)** ملحق material-ui لـ storybook.
+* **[storybook-addon-material-ui](https://github.com/sm-react/storybook-addon-material-ui)**  إضافة material-ui لـ storybook.
 * **[tcomb-form](https://github.com/gcanti/tcomb-form):**توليد ستمارات الهوامش الآلي وملصقات ومصاقة السطرية من إستمارة النطاق.  
 * **[valuelink](https://github.com/Volicon/valuelink):** ميزة كاملة لربط البيانات ثنائية الإتجاه والمصادقة على الإستمارات مع قابلية الإمتداد لروابط React.
 * **[video-react](https://github.com/video-react/video-react)**: مشغل فيديو ويب مصمم خصيصًا لـ HTML5 باستخدام مكتبة React.
