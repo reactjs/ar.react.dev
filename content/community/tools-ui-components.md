@@ -34,7 +34,7 @@ permalink: community/ui-components.html
 * **[react-dates](https://github.com/OpusCapita/react-dates):** حقول مدخلات للتاريخ ( Date-inputs + date-picker ).
 * **[react-dnd](https://github.com/gaearon/react-dnd)** خدمة سحب وإفلات مرنة لـ React مع السيطرة الكاملة على DOM.
 * **[react-document-title](https://github.com/gaearon/react-document-title)** عنوان محايد و متداخل و تعريفي لـ React عبر document.title.
-* **[react-dropzone](https://github.com/felixrieseberg/React-Dropzone):** مكان سحب ( Dropzone ) لتحميل الملفات.
+* **[react-dropzone](https://github.com/felixrieseberg/React-Dropzone):** منطقة إسقاط ( Dropzone ) لتحميل الملفات.
 * **[react-forms](https://prometheusresearch.github.io/react-forms/):** تصيير الإستمارة و التحقق من صحة البيانات المدخلة .. 
 * **[react-highlight](https://github.com/akiran/react-highlight):** تضليل الكلمات المفتاحية لمكوّن React.
 * **[react-image](https://github.com/mbrevda/react-image):** مثل `<img />` ومكون الصور المحسنة لـ React.
