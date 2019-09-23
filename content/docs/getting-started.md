@@ -121,7 +121,11 @@ redirect_from:
 
 ## مستندات الإصدار {#versioned-documentation}
 
+<<<<<<< HEAD
 تعكس هذه المستندات أحدث إصدار مستقر من React. منذ الإصدار 16، يمكنك العثور على مستندات الإصدارات الأقدم في [صفحة منفصلة](/versions).  انتبه إلى أنَّ تلك المستندات للإصدارات القديمة قد بقت على حالها منذ تاريخ نشر الإصدار ولن يجري تحديثها.
+=======
+This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+>>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
 
 ## أتفقد شيئًا آخر؟ {#something-missing}
 

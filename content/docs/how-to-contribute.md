@@ -11,9 +11,15 @@ redirect_from:
 
 تعتبر React من أوائل المشاريع المفتوحة المصدر من Facebook والتي ﻻزالت تحت التطوير المستمر والتي يتم استعمالها في شفرات برمجية للجميع في [facebook.com](https://www.facebook.com). ﻻزلنا مستمرّين في العمل على إصلاح العلل لجعل المُساهمة في هذا المشروع أسهل وأكثر شفافية قدر الإمكان. لم نبلغ ذلك حقّا، لكن نتمنى أن يوضّح هذا المستند مراحل المساهمة ويجيب عن الأسئلة التي يمكن أن تُراودك.
 
+<<<<<<< HEAD
 ### [القواعد السلوكيّة](https://code.facebook.com/codeofconduct) {#code-of-conduct}
 
 لقد سطّرت Facebook قواعد للسلوك والتي تتطلع أن يحترمها المساهمون في مشاريعها. من فضلك اقرأ [النص الكامل](https://code.fb.com/codeofconduct/) حتى تتفهم أن بعض الأفعال غير مسموح بها.
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
 
 ### التطوير المفتوح {#open-development}
 
@@ -21,7 +27,11 @@ redirect_from:
 
 ### تنظيم الفروع (Branch Organization) {#branch-organization}
 
+<<<<<<< HEAD
 نحرص على أن يكون [الفرع الرئيسي (`master` branch)](https://github.com/facebook/react/tree/master) في أفضل حالة، بالاختبارات التي تمرّ بنجاح في كل مرّة. لكن حتى نتقدّم بسرعة، سنحدث تغييرات على الواجهة البرمجية (API) والتي ربما ستجعل تطبيقك غير متوافق معها. ننصحك باستعمال [آخر اصدار مستقر من  React](/downloads.html).
+=======
+We will do our best to keep the [`master` branch](https://github.com/facebook/react/tree/master) in good shape, with tests passing at all times. But in order to move fast, we will make API changes that your application might not be compatible with. We recommend that you use [the latest stable version of React](/versions.html).
+>>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
 
 من فضلك احرص على أن يكون طلب السحب (pull request) الذي تقوم به نحو الفرع الرئيسي `master`. نُبقي الفروع المستقرّة المختلفة للإصدارات الجذرية لكننا لن نقبل طلبات السحب نحوها مباشرة. بل ننتقي التغييرات التي ﻻ تُحدث تغييرات هدّامة من الفرع الرئيسي إلى آخر اصدار مستقر.
 
