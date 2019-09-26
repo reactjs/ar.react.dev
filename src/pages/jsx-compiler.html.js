@@ -24,7 +24,7 @@ const JsxCompiler = ({location}: Props) => (
           <div css={sharedStyles.markdown}>
             <p>
               <strong>
-              تمت إزالة هذه الأداة حيث تم إهمال JSXTransformer.
+              تمت إزالة الأداة JSXTransformer حيث تم إهمال .
               </strong>
             </p>
             <p>
