@@ -104,37 +104,29 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **بعد:**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
+<<<<<<< HEAD
 ستحمِّل هذه الشيفرة الحزمة تلقائيًّا التي تحوي المكون `OtherComponent` عند تصييره.
+=======
+This will automatically load the bundle containing the `OtherComponent` when this component is first rendered.
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 تأخذ الدالة `React.lazy` دالةً يجب عليها أن استدعاء استيراد ديناميكي عبر `import()`. هذا يجب أن يعيد وعدًا (أي `Promise`) يُستبيَن إلى وحدةٍ مع تصدير افتراضي `default` يحوي مكون React.
 
+<<<<<<< HEAD
 ### Suspense {#suspense}
 
 إن لم تُحمَّل الوحدة التي تحوي المكون `OtherComponent` بعد في الوقت الذي يُصيَّر فيه `MyComponent`, يجب أن نظهر بعض المحتوى التراجعي (fallback content) في أثناء انتظارنا تحميلها مثل تحميل مؤشِّر. يمكن تنفيذ هذا عبر استعمال المكون `Suspense` component.
+=======
+The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content (such as a loading indicator) while we're waiting for the lazy component to load.
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));

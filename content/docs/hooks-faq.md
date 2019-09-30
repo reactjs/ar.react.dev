@@ -109,7 +109,9 @@ prev: hooks-reference.html
 
 React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
 
-Libraries like React Router might support hooks in the future.
+React Router [supports hooks](https://reacttraining.com/react-router/web/api/Hooks) since v5.1.
+
+Other libraries might support hooks in the future too.
 
 في المستقبل، قد تحوي إصدارات جديدة من هاتين المكتبتين خطافات مخصصة مثل `useRedux()`‎ أو `useRouter()`‎ تمكنك من استعمال نفس الميزات دون الحاجة إلى مكونات مُغلِّفة.
 
@@ -656,7 +658,7 @@ function ProductPage({ productId }) {
   return <ProductDetails fetchProduct={fetchProduct} />;
 }
 
-function ProductDetails({ fetchProduct })
+function ProductDetails({ fetchProduct }) {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]); // ✅ All useEffect dependencies are specified

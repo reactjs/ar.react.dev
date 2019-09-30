@@ -15,12 +15,22 @@ permalink: docs/context.html
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+<<<<<<< HEAD
 - [	أمثلة](#examples)
   - [السياق الديناميكي](#dynamic-context)
   - [تحديث السياق من المكونات المتداخلة](#updating-context-from-a-nested-component)
   - [استهلاك سياقات متعددة](#consuming-multiple-contexts)
 - [	محاذير](#caveats)
 - [	واجهة برمجة التطبيقات القديمة](#legacy-api)
+=======
+  - [Context.displayName](#contextdisplayname)
+- [Examples](#examples)
+  - [Dynamic Context](#dynamic-context)
+  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
+  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
+- [Caveats](#caveats)
+- [Legacy API](#legacy-api)
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ## متى نستخدم السياق {#when-to-use-context}
 
@@ -198,7 +208,25 @@ class MyClass extends React.Component {
 > 
 > للمزيد من المعلومات حول النمط "دالة على أنَّها ابنٌ"، اطلع على توثيق [خاصيات التصيير](/docs/render-props.html).
 
+<<<<<<< HEAD
 ## أمثلة {#examples}
+=======
+### `Context.displayName` {#contextdisplayname}
+
+Context object accepts a `displayName` string property. React DevTools uses this string to determine what to display for the context.
+
+For example, the following component will appear as MyDisplayName in the DevTools:
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+```
+
+## Examples {#examples}
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ### السياق الديناميكي {#dynamic-context}
 
