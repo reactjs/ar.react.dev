@@ -20,17 +20,16 @@ const JsxCompiler = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>JSX Compiler Service</Header>
+          <Header>خدمة مترجم JSX</Header>
           <div css={sharedStyles.markdown}>
             <p>
               <strong>
-                This tool has been removed as JSXTransformer has been
-                deprecated.
+              تمت إزالة الأداة JSXTransformer حيث تم إهمال .
               </strong>
             </p>
             <p>
-              We recommend using another tool such as{' '}
-              <a href="https://babeljs.io/repl/">the Babel REPL</a>.
+              نوصي باستخدام أداة أخرى مثل {' '}
+              <a href="https://babeljs.io/repl/">Babel REPL</a>.
             </p>
           </div>
         </div>
