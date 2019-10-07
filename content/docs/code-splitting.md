@@ -52,9 +52,18 @@ console.log(add(16, 26)); // 42
 
 يكون التحزيم رائعًا، ولكن عندما يكبر تطبيقك ستكبر الحزمة لديك أيضًا، خاصّة إن كنت تُضمِّن مكتبات طرف ثالث كبيرة الحجم. يجب الانتباه إلى الشيفرة التي تُضمِّنها في حزمتك لكي لا تجعلها كبيرة من غير قصد لدرجة أن يستغرق تطبيقك زمنًا طويلًا للتحميل.
 
+<<<<<<< HEAD
 لتجنّب الحصول على حزمة كبيرة من الأفضل استباق حصول المشكلة والبدء في تقسيم حزمتك. 
  [تقسيم الشيفرة (Code-Splitting)](https://webpack.js.org/guides/code-splitting/) هو ميّزة مدعومة من قبل المُحزِّمات مثل Webpack و Browserify (عبر
 [factor-bundle](https://github.com/browserify/factor-bundle)) والتي تستطيع إنشاء حزم متعددة يُمكِن تحميلها بشكل ديناميكي في زمن التنفيذ.
+=======
+To avoid winding up with a large bundle, it's good to get ahead of the problem
+and start "splitting" your bundle.
+Code-Splitting is a feature
+supported by bundlers like [Webpack](https://webpack.js.org/guides/code-splitting/), [Rollup](https://rollupjs.org/guide/en/#code-splitting) and Browserify (via
+[factor-bundle](https://github.com/browserify/factor-bundle)) which can create
+multiple bundles that can be dynamically loaded at runtime.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 يُساعدك تقسيم شيفرة تطبيقك على إجراء تحميل مُتأخّر (Lazy Load) للأشياء التي يحتاجها المستخدم حاليًّا فقط، ممّا يُحسِّن بشكل كبير أداء تطبيقك. وفي حين أنّك لم تُقلِّل الحجم الكلي لشيفرة تطبيقك، فقد تجنّبت تحميل شيفرة قد لا يحتاجها المستخدم أبدًا وقلّلتَ حجم الشيفرة التي تحتاج إلى تحميلها في البداية.
 
@@ -104,37 +113,29 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **بعد:**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
+<<<<<<< HEAD
 ستحمِّل هذه الشيفرة الحزمة تلقائيًّا التي تحوي المكون `OtherComponent` عند تصييره.
+=======
+This will automatically load the bundle containing the `OtherComponent` when this component is first rendered.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 تأخذ الدالة `React.lazy` دالةً يجب عليها أن استدعاء استيراد ديناميكي عبر `import()`. هذا يجب أن يعيد وعدًا (أي `Promise`) يُستبيَن إلى وحدةٍ مع تصدير افتراضي `default` يحوي مكون React.
 
+<<<<<<< HEAD
 ### Suspense {#suspense}
 
 إن لم تُحمَّل الوحدة التي تحوي المكون `OtherComponent` بعد في الوقت الذي يُصيَّر فيه `MyComponent`, يجب أن نظهر بعض المحتوى التراجعي (fallback content) في أثناء انتظارنا تحميلها مثل تحميل مؤشِّر. يمكن تنفيذ هذا عبر استعمال المكون `Suspense` component.
+=======
+The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content (such as a loading indicator) while we're waiting for the lazy component to load.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));

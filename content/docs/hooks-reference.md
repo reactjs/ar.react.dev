@@ -61,8 +61,8 @@ function Counter({initialCount}) {
     <>
       Count: {count}
       <button onClick={() => setCount(initialCount)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
       <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
     </>
   );
 }
@@ -114,7 +114,11 @@ useEffect(didUpdate);
 
 عوضًا عن ذلك، استعمل الخطاف `useEffect`. الدالة المُمرَّر إليه ستُنفَّذ بعد الانتهاء من التصيير على الشاشة. فكر في التأثيرات وكأنَّها مخرج هروب (escape hatch) من عالم React الوظيفي البحت إلى العالم الأمري.
 
+<<<<<<< HEAD
 افتراضيًّا، تُنفَّذ التأثيرات بعد كل كل عملية تصيير مكتملة، ولكن يمكنك اختيار تنفيذها [فقط عند تغير قيم محدَّدة](#conditionally-firing-an-effect).
+=======
+By default, effects run after every completed render, but you can choose to fire them [only when certain values have changed](#conditionally-firing-an-effect).
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 #### تنظيف تأثير {#cleaning-up-an-effect}
 
@@ -168,7 +172,11 @@ useEffect(
 >
 > إذا كنت ترغب في تشغيل تأثير وتنظيفه مرة واحدة فقط )في mount و unmount),  يمكنك تمرير لمصفوفة فارغة كعامل ثاني. هذا يخبر React أن تأثيرك لن يعتمد على أي قيمة من قيم props أو state,  لهذا فهو لن يعيدة تشغيله مرة ثانية.  فهذه لن يتم التعامل معها كحالة خاصة — فهو يتبع مباشرة كيفية عمل تبعية المصفوفات دائمًا. 
 >
+<<<<<<< HEAD
 > إذا مررة ل مصفوفة خالية (`[]`), props و state كـ التأثير داخلي فستكون دائما قيمها الأولية.  أثناء تمرير [] كعامل ثاني قريب من عائلة `componentDidMount` و `componentWillUnmount` نموذج عقلي,  عادة ما تكون هناك [حلول](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)  [أفضل](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)  لتجنب إعادة تشغيل التأثيرات في كثير من الأحيان.  كذلك, لا تنسى أن React يؤجل تشغيل `useEffect` حتى بعد أن يقوم المتصفح بالرسم,   لذلك القيام بعمل إضافي . 
+=======
+>If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 >
 > نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 >
@@ -236,8 +244,8 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
@@ -295,8 +303,8 @@ function Counter({initialCount}) {
         onClick={() => dispatch({type: 'reset', payload: initialCount})}>
         Reset
       </button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }

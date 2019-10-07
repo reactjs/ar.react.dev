@@ -116,7 +116,11 @@ import './index.css';
 
 ### ساعدني، أنا عالق! {#help-im-stuck}
 
+<<<<<<< HEAD
 إن وجدت أيّة صعوبات، تحقّق من [مصادر مجتمع React](/community/support.html)، بالأخص [دردشة Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) هي طريقة رائعة للحصول على المساعدة بسرعة. إن لم تتلقى أي إجابة أو بقيت عالقًا عند مشكلة ما، يُرجى تقديم المشكلة وسنساعدك في حلّها.
+=======
+If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ## لمحة عامّة {#overview}
 
@@ -330,7 +334,11 @@ class Square extends React.Component {
 
 تُتيح لك أدوات تطوير React التحقّق من خاصيّات وحالة المكوّنات.
 
+<<<<<<< HEAD
 تستطيع بعد تثبيت أدوات تطوير React أن تنقر بالزر الأيمن على أي عنصر في الصفحة، ثمّ تضغط على كلمة "Inspect" لفتح أدوات المطوّر، وستظهر نافذة React كآخر نافذة إلى اليمين.
+=======
+After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 **لاحظ وجود بعض الخطوات الإضافيّة لكي تعمل الأدوات مع CodePen:**
 

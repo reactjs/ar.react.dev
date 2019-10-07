@@ -11,14 +11,21 @@ redirect_from:
 
 تعتبر React من أوائل المشاريع المفتوحة المصدر من Facebook والتي ﻻزالت تحت التطوير المستمر والتي يتم استعمالها في شفرات برمجية للجميع في [facebook.com](https://www.facebook.com). ﻻزلنا مستمرّين في العمل على إصلاح العلل لجعل المُساهمة في هذا المشروع أسهل وأكثر شفافية قدر الإمكان. لم نبلغ ذلك حقّا، لكن نتمنى أن يوضّح هذا المستند مراحل المساهمة ويجيب عن الأسئلة التي يمكن أن تُراودك.
 
+<<<<<<< HEAD
 ### [القواعد السلوكيّة](https://code.facebook.com/codeofconduct) {#code-of-conduct}
 
 لقد سطّرت Facebook قواعد للسلوك والتي تتطلع أن يحترمها المساهمون في مشاريعها. من فضلك اقرأ [النص الكامل](https://code.fb.com/codeofconduct/) حتى تتفهم أن بعض الأفعال غير مسموح بها.
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ### التطوير المفتوح {#open-development}
 
 كل العمل على React يحدث عل موقع[GitHub](https://github.com/facebook/react). كل من الفريق الرئيسي والمساهمون الآخرون يساهمون بإرسال طلبات السحب (Pull requests) والتي تدخل نفس مراحل المراجعة.
 
+<<<<<<< HEAD
 ### تنظيم الفروع (Branch Organization) {#branch-organization}
 
 نحرص على أن يكون [الفرع الرئيسي (`master` branch)](https://github.com/facebook/react/tree/master) في أفضل حالة، بالاختبارات التي تمرّ بنجاح في كل مرّة. لكن حتى نتقدّم بسرعة، سنحدث تغييرات على الواجهة البرمجية (API) والتي ربما ستجعل تطبيقك غير متوافق معها. ننصحك باستعمال [آخر اصدار مستقر من  React](/downloads.html).
@@ -32,6 +39,27 @@ redirect_from:
 كل طلب سحب يحمل وسمًا يحدد ما إذا كان سيذهب إلى [الرُقعة (patch)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch) أو إلى [الإصدار الفرعي (minor)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor) أو [الإصدار الرئيسي (major)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major). نُصدر نسخ الترقيع في كلّ أسبوع ونُصدر الإصدارات الصُغرى كل بضعة أشهر وأما الإصدارات الجذرية تكون مرّة أو مرّتين في السنة.
 
 كل تغيير معتبر موثّق في [جدول التغييرات (changelog)](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+=======
+### Semantic Versioning {#semantic-versioning}
+
+React follows [semantic versioning](https://semver.org/). We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance. Learn more about our commitment to stability and incremental migration in [our versioning policy](https://reactjs.org/docs/faq-versioning.html).
+
+Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+
+### Branch Organization {#branch-organization}
+
+Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
+
+Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
+
+### Feature Flags {#feature-flags}
+
+To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+
+React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ### العلل (Bugs) {#bugs}
 
