@@ -70,13 +70,21 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 أنشئ ملفًا باسم `like_button.js` بجانب صفحة HTML التي عدلناها للتو.
 
+<<<<<<< HEAD
 إفتح **[هذه الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** ثم انسخها والصقها في الملف الذي أنشأته قبل قليل.
+=======
+Open **[this starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 >فائدة
 >
 >عرِّف هذه الشيفرة مكون React يدعى `LikeButton`. لا تقلق إن لم تفهم شيئًا منها، إذ سنغطي كل شيء مذكور فيها لاحقًا في [الدليل التطبيقي](/tutorial/tutorial.html) و[دليل المفاهيم الاساسية](/docs/hello-world.html). في الوقت الحالي، لندع هذه الشيفرة تُظهِر شيئًا على الشاشة.
 
+<<<<<<< HEAD
 بعد **[الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, أضف السطرين في نهاية الملف `like_button.js`:
+=======
+After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 ```js{3,4}
 // ... الشيفرة المساعدة التي لصقتها ...
@@ -194,7 +202,11 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 لا تنتظر انتهاء هذا الأمر لأنَّه لن ينتهي. يبدأ هذا الأمر تشغيل مراقب آلي من أجل JSX.
 
+<<<<<<< HEAD
 إن أنشأت الآن مجلدًا باسم `src/like_button.js` مع **[هذه الشيفرة المساعدة](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**، فسينشئ المراقب الملف `like_button.js` بعد معالجته مع شيفرة جافاسكريبت صرفة تناسب المتصفح. في كل مرة تعدل فيها الملف المصدري مع JSX، ستُجرَى عملية التحويل تلقائيًّا.
+=======
+If you now create a file called `src/like_button.js` with this **[JSX starter code](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 إضافة لذلك، هذا يمكِّنك أيضًا من استعمال ميزات صياغة JavaScript الحديثة مثل الأصناف دون القلق حيال دعم المتصفحات القديمة. الأداة التي استعملناها للتو تدعى "بابل" (Babel)، ويمكنك تعلم المزيد عنها من [توثيقها الرسمي](https://babeljs.io/docs/en/babel-cli/).
 
