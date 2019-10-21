@@ -49,7 +49,11 @@ redirect_from:
 
 عند بدء مشروع React, قد لا يزال خيار استعمال [صفحة HTML بسيطة الوسوم &lt;script&gt;](/docs/add-react-to-a-website.html). خيارًا مفضَّلًا، إذ يأخذ دقيقةً واحدةً لإعداده!
 
+<<<<<<< HEAD
 في الوقت الذي يكبر فيه برنامجك، قد ترغب بإعداد وضبط والكثير من الأمور المتكاملة. هنالك [سلاسل أدوات الجافاسكريبت](/docs/create-a-new-react-app.html) عديدة نوصي باستعمالها في حالة التطبيقات الكبيرة. يمكن أن تعمل كل أداة من تلك الأدوات مع ضبط بسيطة أو حتى دون أي ضبط وتمكِّنك من الاستفادة من جميع ميزات بيئة عمل React الواسعة.
+=======
+When starting a React project, a [simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+>>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
 
 ## تعلم React {#learn-react}
 
@@ -117,11 +121,19 @@ redirect_from:
 
 يمكن أيضًا متابعتنا على [حساب تويتر ‎@reactjs](https://twitter.com/reactjs) ولكن لن يفوتك أي شيء إن تابعت المدونة فقط.
 
+<<<<<<< HEAD
 لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+>>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
 
 ## مستندات الإصدار {#versioned-documentation}
 
+<<<<<<< HEAD
 تعكس هذه المستندات أحدث إصدار مستقر من React. منذ الإصدار 16، يمكنك العثور على مستندات الإصدارات الأقدم في [صفحة منفصلة](/versions).  انتبه إلى أنَّ تلك المستندات للإصدارات القديمة قد بقت على حالها منذ تاريخ نشر الإصدار ولن يجري تحديثها.
+=======
+This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+>>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
 
 ## أتفقد شيئًا آخر؟ {#something-missing}
 
