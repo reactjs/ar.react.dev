@@ -19,14 +19,14 @@ const Acknowlegements = ({data, location}) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>Acknowledgements</Header>
+          <Header>شكر وتقدير</Header>
           <TitleAndMetaTags
             canonicalUrl={`${urlRoot}/acknowledgements.html`}
-            title="React - Acknowledgements"
+            title="React - شكر وتقدير"
           />
 
           <div css={sharedStyles.markdown}>
-            <p>We'd like to thank all of our contributors:</p>
+            <p>نود أن نشكر جميع المساهمين:</p>
 
             <ul
               css={{
@@ -44,38 +44,27 @@ const Acknowlegements = ({data, location}) => (
               ))}
             </ul>
 
-            <p>In addition, we're grateful to</p>
+            <p>:بالإضافة إلى ذلك ، نحن ممتنون لـ</p>
             <ul>
               <li>
-                <a href="https://github.com/jeffbski">Jeff Barczewski</a> for
-                allowing us to use the{' '}
-                <a href="https://www.npmjs.com/package/react">react</a> package
-                name on npm.
+                <a href="https://github.com/jeffbski">Jeff Barczewski</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/react">react</a> كإسم في مدير الحزم npm.
               </li>
               <li>
-                <a href="https://christopheraue.net/">Christopher Aue</a> for
-                letting us use the{' '}
-                <a href="https://reactjs.com/">reactjs.com</a> domain name and
-                the <a href="https://twitter.com/reactjs">@reactjs</a> username
-                on Twitter.
+                <a href="https://christopheraue.net/">Christopher Aue</a> : للسماح لنا باستخدام <a href="https://reactjs.com/">reactjs.com</a> كإسم مجال (domaine) و <a href="https://twitter.com/reactjs">@reactjs</a> كإسم مستخدم على منصة Twitter.
               </li>
               <li>
-                <a href="https://github.com/ProjectMoon">ProjectMoon</a> for
-                letting us use the{' '}
-                <a href="https://www.npmjs.com/package/flux">flux</a> package
-                name on npm.
+                <a href="https://github.com/ProjectMoon">ProjectMoon</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/flux">flux</a> كإسم حزمة على منصة npm.
               </li>
               <li>
-                Shane Anderson for allowing us to use the{' '}
-                <a href="https://github.com/react">react</a> org on GitHub.
+                Shane Anderson : للسماح لنا باستخدام منظمة <a href="https://github.com/react">react</a> على منصة Github.
               </li>
               <li>
-                <a href="https://github.com/voronianski">Dmitri Voronianski</a>{' '}
-                for letting us use the{' '}
-                <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">
-                  Oceanic Next
-                </a>{' '}
-                color scheme on this website.
+                <a href="https://github.com/voronianski">Dmitri Voronianski</a> : {' '}
+                  للسماح لنا باستخدام نظام الألوان {' '}
+                  <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">
+                    Oceanic Next
+                  </a> {' '}
+                  على هذا الموقع.
               </li>
             </ul>
           </div>
