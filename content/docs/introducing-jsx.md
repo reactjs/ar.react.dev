@@ -22,9 +22,9 @@ const element = <h1>Hello, world!</h1>;
 
 تتقبّل React حقيقة أنّ منطق التصيير مرتبط بشكل متوارث مع المنطق الآخر لواجهة المستخدم، والذي نقصد به كيفية التعامل مع الأحداث، وكيفية تغيّر الحالة مع مرور الزمن، وكيفية تحضير البيانات لعرضها.
 
-بدلًا من الفصل بين *التقنيات* عن طريق وضع اللغة الترميزيّة (markup) والمنطق في ملفّات منفصلة، [تفصل](https://en.wikipedia.org/wiki/Separation_of_concerns) React بين المهام عبر وحدات مرتبطة بإحكام تدعى المكونات "components" والتي تحتوي على كليهما معًا. سنعود للحديث عن المكونات في [ القسم الخاص به](/docs/components-and-props.html), ولكن إن لم تكن مرتاحًا لوضع اللغة الترميزيّة ضمن JS فاطلع على [هذه المناقشة](https://www.youtube.com/watch?v=x7cQ3mrcKaY) التي قد تقنعك بعكس ذلك.
+بدلًا من الفصل بين *التقنيات* عن طريق وضع اللغة الترميزيّة (markup) والمنطق في ملفّات منفصلة، [تفصل](https://en.wikipedia.org/wiki/Separation_of_concerns) React بين المهام عبر وحدات مرتبطة بإحكام تدعى المكونات "components" والتي تحتوي على كليهما معًا. سنعود للحديث عن المكونات في [ القسم الخاص بها](/docs/components-and-props.html), ولكن إن لم تكن مرتاحًا لوضع اللغة الترميزيّة ضمن JS فاطلع على [هذه المناقشة](https://www.youtube.com/watch?v=x7cQ3mrcKaY) التي قد تقنعك بعكس ذلك.
 
-[لا تشترط React استخدام JSX](/docs/react-without-jsx.html), ولكن يجدها الغالبيّة كمساعدة بصريّة عند التعامل مع واجهة المستخدم بداخل شيفرة JavaScript، فهي تسمح لمكتبة React بأن تُظهِر المزيد من الأخطاء المفيدة والرسائل التحذيريّة.
+[لا تشترط React استخدام JSX](/docs/react-without-jsx.html)، ولكن يجدها الغالبيّة كمساعدة بصريّة عند التعامل مع واجهة المستخدم بداخل شيفرة JavaScript، فهي تسمح لمكتبة React بأن تُظهِر المزيد من الأخطاء المفيدة والرسائل التحذيريّة.
 
 ### تضمين التعابير في JSX {#embedding-expressions-in-jsx}
 
@@ -40,9 +40,9 @@ ReactDOM.render(
 );
 ```
 
-بإمكانك وضع أي [تعبير صحيح في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) داخل القوسين في JSX، على سبيل المثال `2 + 2`, `user.firstName`, أو `formatName(user)` جميعها تعابير JavaScript صحيحة.
+بإمكانك وضع أي [تعبير صحيح في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) داخل القوسين في JSX، على سبيل المثال `2 + 2`، `user.firstName`، أو `formatName(user)` جميعها تعابير JavaScript صحيحة.
 
-نُضمِّن في المثال التالي نتيجة استدعاء دالة JavaScript، وهي `formatName(user)`, بداخل عنصر `<h1>`.
+نُضمِّن في المثال التالي نتيجة استدعاء دالة JavaScript، وهي `formatName(user)`، بداخل عنصر `<h1>`.
 
 ```js{12}
 function formatName(user) {
@@ -68,7 +68,7 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-فصلنا JSX عبر عدّة أسطر لتسهيل القراءة،  نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
+فصلنا JSX عبر عدّة أسطر لتسهيل القراءة، نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
 
 ### JSX هي عبارة عن تعبير أيضًا {#jsx-is-an-expression-too}
 
@@ -105,11 +105,11 @@ const element = <img src={user.avatarUrl}></img>;
 >
 >لمّا كانت JSX أقرب إلى JavaScript من HTML، فتستخدم React DOM طريقة تسمية خاصيّات الكائنات `camelCase` بدلًا من أسماء خاصيّات HTML
 >
->على سبيل المثال, الخاصيّة `class` تُصبِح  [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) في JSX, و `tabindex` تُصبِح [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
+>على سبيل المثال، الخاصيّة `class` تُصبِح  [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) في JSX، و `tabindex` تُصبِح [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
 
 ### تحديد العناصر الأبناء باستخدام JSX {#specifying-children-with-jsx}
 
-إن كان العنصر من عناصر HTML الفارغة فبإمكانك إغلاقه مباشرةً باستخدام `/>`, كما في XML:
+إن كان العنصر من عناصر HTML الفارغة فبإمكانك إغلاقه مباشرةً باستخدام `/>`، كما في XML:
 
 ```js
 const element = <img src={user.avatarUrl} />;
@@ -171,7 +171,7 @@ const element = {
 };
 ```
 
-تُدعى هذه الكائنات عناصر React. بإمكانك اعتبارها كتوصيفات لما ترغب برؤيته على الشّاشة. تقرأ React هذه الكائنات وتستخدمها لبناء DOM وإبقائه مُحدَّثًا.
+تُدعى هذه الكائنات عناصر React. بإمكانك اعتبارها توصيفات لما ترغب برؤيته على الشّاشة. تقرأ React هذه الكائنات وتستخدمها لبناء DOM وإبقائه مُحدَّثًا.
 
 سيتم تغطية تصيير عناصر React إلى DOM في القسم التالي.
 
