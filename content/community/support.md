@@ -13,7 +13,7 @@ redirect_from:
 في هذه الصفحة عدّدنا لكم بعضا من المجتمعات المتعلّقة بـ React والتي يمكن لك الإنضمام إليها.
 ستجد كذلك في هذا القسم مصادر التعلّم عن بعد عبر الإنترنت أو التعلم المباشر وجها لوجه مع مدرّب. 
 
-Before participating in React's communities, [please read our Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md). We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
 
 ## Stack Overflow {#stack-overflow}
 
