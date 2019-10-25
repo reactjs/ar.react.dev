@@ -149,11 +149,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-<<<<<<< HEAD
 يُعيد كائن يُمثِّل الشجرة المُصيَّرة. وعلى النقيض من التابع `toJSON()`‎ يكون التمثيل أكثر تفصيلًا ويتضمّن المكوّنات المكتوبة من قبل المستخدم. لن تحتاج هذا التابع غالبًا إلّا إذا كنت تكتب مكتبتك الخاصّة بناءً على مُصيِّر الاختبار.
-=======
-Return an object representing the rendered tree. The representation is more detailed than the one provided by `toJSON()`, and includes the user-written components. You probably don't need this method unless you're writing your own assertion library on top of the test renderer.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
 
 ### `()testRenderer.update` {#testrendererupdate}
 
