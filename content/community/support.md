@@ -13,6 +13,8 @@ redirect_from:
 في هذه الصفحة عدّدنا لكم بعضا من المجتمعات المتعلّقة بـ React والتي يمكن لك الإنضمام إليها.
 ستجد كذلك في هذا القسم مصادر التعلّم عن بعد عبر الإنترنت أو التعلم المباشر وجها لوجه مع مدرّب. 
 
+قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
+
 ## Stack Overflow {#stack-overflow}
 
 يعتبر موقع Stack Overflow منتدى مشهور لطرح الأسئلة المتعلّقة بالشفرات البرمجية، إن علقت مع أحد الأخطاء يمكنك البحث في [الأسئلة المطروحة](https://stackoverflow.com/questions/tagged/reactjs) ذات الوسم **reactjs** أو [قم بطرح سؤالك](https://stackoverflow.com/questions/ask?tags=reactjs).

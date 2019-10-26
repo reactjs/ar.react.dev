@@ -1,0 +1,13 @@
+items:
+  - title: المستندات
+    to: /docs/getting-started.html
+    activeSelector: /docs/
+  - title: الدليل التطبيقي
+    to: /tutorial/tutorial.html
+    activeSelector: /tutorial
+  - title: المدونة
+    to: /blog/
+    activeSelector: /blog
+  - title: المجتمع
+    to: /community/support.html
+    activeSelector: /community

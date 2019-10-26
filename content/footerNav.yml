@@ -1,0 +1,43 @@
+community:
+  title: المجتمع
+
+docs:
+  title: المستندات
+
+more:
+  title: المزيد
+  items:
+    - title: الدليل التطبيقي
+      to: /tutorial/tutorial.html
+    - title: المُدوّنة
+      to: /blog
+    - title: شكر وتقدير
+      to: /acknowledgements.html
+    - title: React Native
+      to: https://facebook.github.io/react-native/
+      external: true
+
+channels:
+  title: القنوات
+  items:
+    - title: Github
+      to: https://github.com/facebook/react
+      external: true
+    - title: Stack Overflow
+      to: https://stackoverflow.com/questions/tagged/reactjs
+      external: true
+    - title: منتديات المٌحادثة
+      to: https://reactjs.org/community/support.html#popular-discussion-forums
+      external: true
+    - title: Reactiflux محادثة
+      to: https://discord.gg/0ZcbPKXt5bZjGY5n
+      external: true
+    - title: مجتمع DEV
+      to: https://dev.to/t/react
+      external: true
+    - title: Facebook
+      to: https://www.facebook.com/react
+      external: true
+    - title: Twitter
+      to: https://twitter.com/reactjs
+      external: true

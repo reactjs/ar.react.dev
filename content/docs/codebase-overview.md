@@ -218,7 +218,7 @@ module.exports = ReactHostComponent;
 
 يطبق React نظام أحداث اصطناعي محايد لتصيير ويعمل مع كل من React DOM و React Native. 
 
-شفرة المصدر الخاصة به موجودة في [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events).
+يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/react-events`](https://github.com/facebook/react/tree/master/packages/react-events).
 
 يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 
