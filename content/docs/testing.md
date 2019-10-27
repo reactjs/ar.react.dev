@@ -1,6 +1,6 @@
 ---
 id: testing
-title: Testing Overview
+title: نظرة عامة على الإختبارات
 permalink: docs/testing.html
 redirect_from:
   - "community/testing.html"
