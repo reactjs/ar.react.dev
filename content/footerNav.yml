@@ -20,7 +20,7 @@ more:
 channels:
   title: القنوات
   items:
-    - title: Github
+    - title: GitHub
       to: https://github.com/facebook/react
       external: true
     - title: Stack Overflow
@@ -29,8 +29,13 @@ channels:
     - title: منتديات المٌحادثة
       to: https://reactjs.org/community/support.html#popular-discussion-forums
       external: true
+<<<<<<< HEAD
     - title: Reactiflux محادثة
       to: https://discord.gg/0ZcbPKXt5bZjGY5n
+=======
+    - title: Reactiflux Chat
+      to: https://discord.gg/reactiflux
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
       external: true
     - title: مجتمع DEV
       to: https://dev.to/t/react
