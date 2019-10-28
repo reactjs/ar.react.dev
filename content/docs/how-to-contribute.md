@@ -13,7 +13,7 @@ redirect_from:
 
 ### [القواعد السلوكيّة](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
-لقد سطّرت Facebook قواعد للسلوك والتي تتطلع أن يحترمها المساهمون في مشاريعها. من فضلك اقرأ [النص الكامل](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) حتى تتفهم أن بعض الأفعال غير مسموح بها.
+ قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
 
 ### التطوير المفتوح {#open-development}
 
