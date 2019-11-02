@@ -47,24 +47,35 @@ const Acknowlegements = ({data, location}) => (
             <p>:بالإضافة إلى ذلك ، نحن ممتنون لـ</p>
             <ul>
               <li>
-                <a href="https://github.com/jeffbski">Jeff Barczewski</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/react">react</a> كإسم في مدير الحزم npm.
+                <a href="https://github.com/jeffbski">Jeff Barczewski</a> :
+                للسماح لنا باستخدام{' '}
+                <a href="https://www.npmjs.com/package/react">react</a> كإسم في
+                مدير الحزم npm.
               </li>
               <li>
-                <a href="https://christopheraue.net/">Christopher Aue</a> : للسماح لنا باستخدام <a href="https://reactjs.com/">reactjs.com</a> كإسم مجال (domaine) و <a href="https://twitter.com/reactjs">@reactjs</a> كإسم مستخدم على منصة Twitter.
+                <a href="https://christopheraue.net/">Christopher Aue</a> :
+                للسماح لنا باستخدام{' '}
+                <a href="https://reactjs.com/">reactjs.com</a> كإسم مجال
+                (domaine) و <a href="https://twitter.com/reactjs">@reactjs</a>{' '}
+                كإسم مستخدم على منصة Twitter.
               </li>
               <li>
-                <a href="https://github.com/ProjectMoon">ProjectMoon</a> : للسماح لنا باستخدام <a href="https://www.npmjs.com/package/flux">flux</a> كإسم حزمة على منصة npm.
+                <a href="https://github.com/ProjectMoon">ProjectMoon</a> :
+                للسماح لنا باستخدام{' '}
+                <a href="https://www.npmjs.com/package/flux">flux</a> كإسم حزمة
+                على منصة npm.
               </li>
               <li>
-                Shane Anderson : للسماح لنا باستخدام منظمة <a href="https://github.com/react">react</a> على منصة Github.
+                Shane Anderson : للسماح لنا باستخدام منظمة{' '}
+                <a href="https://github.com/react">react</a> على منصة Github.
               </li>
               <li>
-                <a href="https://github.com/voronianski">Dmitri Voronianski</a> : {' '}
-                  للسماح لنا باستخدام نظام الألوان {' '}
-                  <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">
-                    Oceanic Next
-                  </a> {' '}
-                  على هذا الموقع.
+                <a href="https://github.com/voronianski">Dmitri Voronianski</a>{' '}
+                : للسماح لنا باستخدام نظام الألوان{' '}
+                <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">
+                  Oceanic Next
+                </a>{' '}
+                على هذا الموقع.
               </li>
             </ul>
           </div>

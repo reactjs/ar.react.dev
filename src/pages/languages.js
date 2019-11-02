@@ -54,9 +54,7 @@ const Languages = ({location}: Props) => (
           />
 
           <div css={sharedStyles.markdown}>
-            <p>
-            مستندات React متاحة باللغات التالية:
-            </p>
+            <p>مستندات React متاحة باللغات التالية:</p>
 
             <LanguagesGrid languages={complete} />
 
