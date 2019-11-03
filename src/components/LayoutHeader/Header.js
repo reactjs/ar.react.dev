@@ -126,7 +126,6 @@ const Header = ({location}: {location: Location}) => (
                 'linear-gradient(to right, transparent, black 20px, black 90%, transparent)',
             },
           }}>
-<<<<<<< HEAD
           <HeaderLink
             isActive={location.pathname.includes('/docs/')}
             title="المستندات"
@@ -147,7 +146,6 @@ const Header = ({location}: {location: Location}) => (
             title="مجتمع المطورين"
             to="/community/support.html"
           />
-=======
           {navHeader.items.map(link => (
             <HeaderLink
               key={link.title}
@@ -156,7 +154,6 @@ const Header = ({location}: {location: Location}) => (
               to={link.to}
             />
           ))}
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
         </nav>
 
         <DocSearch />

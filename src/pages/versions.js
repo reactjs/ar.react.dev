@@ -32,18 +32,18 @@ const Versions = ({location}: Props) => (
           />
           <div css={sharedStyles.markdown}>
             <p>
-              يمكنك ان تجد تاريخ الإصدارات الكامل لـ React {' '}
+              يمكنك ان تجد تاريخ الإصدارات الكامل لـ React{' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
-                 عبر منصة Github
+                عبر منصة Github
               </a>
               .<br />
               يمكن أيضًا العثور على الوثائق الخاصة بالإصدارات الحديثة أدناه.
             </p>
             <p>
-              راجع الأسئلة الشائعة الخاصة بنا للحصول على معلومات حول {' '}
+              راجع الأسئلة الشائعة الخاصة بنا للحصول على معلومات حول{' '}
               <a href="/docs/faq-versioning.html">
                 سياسة الإصدار والالتزام بالاستقرار
               </a>

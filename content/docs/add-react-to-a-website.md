@@ -10,14 +10,14 @@ next: create-a-new-react-app.html
 
 استخدم القليل من React أو بقدر ما تحتاج إليه.
 
-React صممت ابتداء بأخذ الاعتماد التدريجي في الحسبان، **لذا تستطيع الاعتماد على React الشيء البسيط أو بقدر ما تحتاج إليه**.ربما أنت بحاجة إلى اضافة القليل من التفاعل أو بقدر الحاجة إلى صفحة موجودة. مكونات React هي أفضل وسيلة للقيام بذلك.
+React صممت ابتداء بأخذ الاعتماد التدريجي في الحسبان، **لذا تستطيع الاعتماد على القليل من React أو بقدر ما تحتاج إليها**. ربما أنت بحاجة إلى اضافة القليل من التفاعل أو بقدر الحاجة إلى صفحة موجودة. مكونات React هي أفضل وسيلة للقيام بذلك.
 
-أغلبية مواقع الويب ليست تطبيقات ذات صفحة وحيدة، ولا تحتاج إلى أن تكون كذلك. **ببضعة أسطر برمجية ودون أدوات بناء**, حاول تجريب React في أجزاء صغيرة من موقعك؛ يمكنك بعدئذٍ إمَّا أن توسِّع استعمال React تدريجيًّا، أو تقتصر باستعمالها على بضعة أدوات ذكية ديناميكية (dynamic widgets).
+أغلبية مواقع الويب ليست تطبيقات ذات صفحة وحيدة، ولا تحتاج إلى أن تكون كذلك. **ببضعة أسطر برمجية ودون أدوات بناء**، حاول تجريب React في أجزاء صغيرة من موقعك؛ يمكنك بعدئذٍ إمَّا أن توسِّع استعمال React تدريجيًّا، أو تَقْصُـر استعمالها على بضعة أدوات ذكية ديناميكية (dynamic widgets).
 
 ---
 
-- [اضف React بدقيقة واحدة!](#add-react-in-one-minute)
-- [إختياري: جرب React مع JSX](#optional-try-react-with-jsx) (لا حاجة لاي bundler!)
+- [اضف React في دقيقة واحدة!](#add-react-in-one-minute)
+- [اختياري: جرب React مع JSX](#optional-try-react-with-jsx) (لا حاجة لاي bundler!)
 
 ## اضف React بدقيقة واحدة! {#add-react-in-one-minute}
 
@@ -48,7 +48,7 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 ### الخطوة 2: إضافة وسوم Script {#step-2-add-the-script-tags}
 
-ثانيًا, أضف ثلاثة وسوم `<script>` إلى صفحة HTML قبل وسم الإغلاق `</body>` بالشكل التالي:
+ثانيًا، أضف ثلاثة وسوم `<script>` إلى صفحة HTML قبل وسم الإغلاق `</body>` بالشكل التالي:
 
 ```html{5,6,9}
   <!-- ... HTML محتوى ... -->
@@ -126,7 +126,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-إن لم تعرف كيفية تنفيذ خطوة التصغير, [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
+إن لم تعرف كيفية تنفيذ خطوة التصغير، [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
 
 ## إختياري: جرب React مع JSX {#optional-try-react-with-jsx}
 
@@ -154,9 +154,9 @@ return (
 );
 ```
 
-هذه الشيفرة مكافئة للشيفرة التي قبلها تمامًا. لمَّا كان **JSX [اختياري بشكل كامل](/docs/react-without-jsx.html)**, يرى الكثير من الأشخاص أنَّه مفيد لكتابة شيفرة واجهة المستخدم (UI code) في React وفي مكتبات أخرى.
+هذه الشيفرة مكافئة للشيفرة التي قبلها تمامًا. لمَّا كان **JSX [اختياري بشكل كامل](/docs/react-without-jsx.html)**، يرى الكثير من الأشخاص أنَّه مفيد لكتابة شيفرة واجهة المستخدم (UI code) في React وفي مكتبات أخرى.
 
-يمكنك تجريب JSX باستعمال [محول بابل المباشر](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+يمكنك تجريب JSX باستعمال [محول Babel المباشر](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
 
 ### جرب JSX بسرعة {#quickly-try-jsx}
 
@@ -168,11 +168,11 @@ return (
 
 الآن، يمكنك استعمال JSX في أي وسم `<script>` عبر إضافة الخاصية `type="text/babel"` إليه. [ستجد هنا ملف HTML مع JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) يمكنك تنزيله والتجريب به.
 
-هذا الأسلوب لا بأس به للتعلم وإنشاء نماذج تجريبية، **ولكنه غير مناسب للإنتاج**  إذ سيجعل موقعك بطيئًا. عندما تكون مستعدًا للبدء بجدية، احذف الوسم `<script>` السابق والخاصية `type="text/babel"`, لأنَّك ستتعلم في القسم التالي كيفية ضبط معالج JSX الأولي (JSX preprocessor) لتحويل جميع الوسوم `<script>` تلقائيًّا.
+هذا الأسلوب لا بأس به للتعلم وإنشاء نماذج تجريبية، **ولكنه غير مناسب للإنتاج** إذ سيجعل موقعك بطيئًا. عندما تكون مستعدًا للبدء بجدية، احذف الوسم `<script>` السابق والخاصية `type="text/babel"`، لأنَّك ستتعلم في القسم التالي كيفية ضبط معالج JSX الأولي (JSX preprocessor) لتحويل جميع الوسوم `<script>` تلقائيًّا.
 
 ### إضافة JSX إلى المشروع {#add-jsx-to-a-project}
 
- يتطلب إضافة JSX إلى مشروعٍ ما أية أدوات معقدة مثل مُحزِّم أو خادم تطويري. بشكل أساسي، **إضافة JSX يشبه إلى حد ما إضافة معالج CSS أولي.** لشيء المطلوب هو تثبيت [Node.js](https://nodejs.org/) على حاسوبك.
+لا يتطلب إضافة JSX إلى مشروعٍ ما أية أدوات معقدة مثل مُحزِّم أو خادم تطويري. بشكل أساسي، **إضافة JSX يشبه إلى حد ما إضافة معالج CSS أولي.** الشيء المطلوب هو تثبيت [Node.js](https://nodejs.org/) على حاسوبك.
 
 اذهب إلى مجلد مشروعك من الطرفية والصق الأمرين التاليين:
 
@@ -208,6 +208,6 @@ npx babel --watch src --out-dir . --presets react-app/prod
 If you now create a file called `src/like_button.js` with this **[JSX starter code](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
 >>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
-إضافة لذلك، هذا يمكِّنك أيضًا من استعمال ميزات صياغة JavaScript الحديثة مثل الأصناف دون القلق حيال دعم المتصفحات القديمة. الأداة التي استعملناها للتو تدعى "بابل" (Babel)، ويمكنك تعلم المزيد عنها من [توثيقها الرسمي](https://babeljs.io/docs/en/babel-cli/).
+إضافة لذلك، هذا يمكِّنك أيضًا من استعمال ميزات صياغة JavaScript الحديثة مثل الأصناف دون القلق حيال دعم المتصفحات القديمة. الأداة التي استعملناها للتو تدعى Babel، ويمكنك تعلم المزيد عنها من [توثيقها الرسمي](https://babeljs.io/docs/en/babel-cli/).
 
-ن شعرت بالراحة مع أدوات البناء وأردت الاستزادة منها لأداء مزيد من الأمور، يشرح [القسم التالي](/docs/create-a-new-react-app.html) أشهر أدوات البناء (toolchains) وأكثرها فاعلية. إن لم تشعر كذلك، الخطوات السابقة مع الوسوم `<script>` كافية إلى حد ما.
+إن شعرت بالراحة مع أدوات البناء وأردت الاستزادة منها لأداء مزيد من الأمور، يشرح [القسم التالي](/docs/create-a-new-react-app.html) أشهر أدوات البناء (toolchains) وأكثرها فاعلية. إن لم تشعر كذلك، الخطوات السابقة مع الوسوم `<script>` كافية إلى حد ما.

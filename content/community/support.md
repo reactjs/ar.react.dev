@@ -13,7 +13,7 @@ redirect_from:
 في هذه الصفحة عدّدنا لكم بعضا من المجتمعات المتعلّقة بـ React والتي يمكن لك الإنضمام إليها.
 ستجد كذلك في هذا القسم مصادر التعلّم عن بعد عبر الإنترنت أو التعلم المباشر وجها لوجه مع مدرّب. 
 
-Before participating in React's communities, [please read our Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md). We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
 
 ## Stack Overflow {#stack-overflow}
 
@@ -25,19 +25,11 @@ Before participating in React's communities, [please read our Code of Conduct](h
 
 يتكوّن كل مجتمع من عدة آلاف من مستخدمي React.
 
-<<<<<<< HEAD
 * [مجتمع React على DEV](https://dev.to/t/react)
 * [مجتمع React على Hashnode](https://hashnode.com/n/reactjs)
 * [قاعة المحادثة الإفتراضية Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n)
 * [مجتمع React على Reddit](https://www.reddit.com/r/reactjs/)
 * [مجتمع React على Spectrum](https://spectrum.chat/react)
-=======
-* [DEV's React community](https://dev.to/t/react)
-* [Hashnode's React community](https://hashnode.com/n/reactjs)
-* [Reactiflux online chat](https://discord.gg/reactiflux)
-* [Reddit's React community](https://www.reddit.com/r/reactjs/)
-* [Spectrum's React community](https://spectrum.chat/react)
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 ## الأخبار {#news}
 
