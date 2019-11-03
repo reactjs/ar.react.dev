@@ -23,12 +23,10 @@ const JsxCompiler = ({location}: Props) => (
           <Header>خدمة مترجم JSX</Header>
           <div css={sharedStyles.markdown}>
             <p>
-              <strong>
-              تمت إزالة الأداة JSXTransformer حيث تم إهمال .
-              </strong>
+              <strong>تمت إزالة الأداة JSXTransformer حيث تم إهمال .</strong>
             </p>
             <p>
-              نوصي باستخدام أداة أخرى مثل {' '}
+              نوصي باستخدام أداة أخرى مثل{' '}
               <a href="https://babeljs.io/repl/">Babel REPL</a>.
             </p>
           </div>
