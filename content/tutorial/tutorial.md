@@ -116,7 +116,11 @@ import './index.css';
 
 ### ساعدني، أنا عالق! {#help-im-stuck}
 
+<<<<<<< HEAD
 إن وجدت أيّة صعوبات، تحقّق من [مصادر مجتمع React](/community/support.html)، بالأخص [دردشة Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) هي طريقة رائعة للحصول على المساعدة بسرعة. إن لم تتلقى أي إجابة أو بقيت عالقًا عند مشكلة ما، يُرجى تقديم المشكلة وسنساعدك في حلّها.
+=======
+If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+>>>>>>> 3846b501066388c4d0bc84fc8389918d9080d5d2
 
 ## لمحة عامّة {#overview}
 
