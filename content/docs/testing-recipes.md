@@ -1,18 +1,21 @@
 ---
 id: testing-recipes
-title: Testing Recipes
+title: طريقة اعداد الاختبارات
 permalink: docs/testing-recipes.html
 prev: testing.html
 next: testing-environments.html
 ---
 
-Common testing patterns for React components.
+أنماط الاختبار الشائعه لمكونات  مكتبة React
 
-> Note:
+> ملحوظه:
 >
-> This page assumes you're using [Jest](https://jestjs.io/) as a test runner. If you use a different test runner, you may need to adjust the API, but the overall shape of the solution will likely be the same. Read more details on setting up a testing environment on the [Testing Environments](/docs/testing-environments.html) page.
+> تفترض هذه الصفحة أنك تستخدم [Jest](https://jestjs.io/) كمرشح للاختبار. إذا كنت تستخدم عداء اختبار مختلفًا ، فقد تحتاج إلى ضبط واجهة برمجة التطبيقات ، ولكن من  المحتمل أن يكون الشكل العام للحل هو نفسه. اقرأ المزيد من التفاصيل حول إعداد بيئة اختبار على صفحة اختبار البيئات.[Testing Environments](/docs/testing-environments.html)
 
-On this page, we will primarily use function components. However, these testing strategies don't depend on implementation details, and work just as well for class components too.
+
+
+في هذه الصفحة ، سوف نستخدم (functional components) بشكل أساسي. ومع ذلك ، لا تعتمد استراتيجيات الاختبار هذه على تفاصيل التنفيذ ، كما تعمل أيضًا مع (class components).
+
 
 - [Setup/Teardown](#setup--teardown)
 - [`act()`](#act)
