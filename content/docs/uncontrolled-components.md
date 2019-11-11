@@ -4,7 +4,11 @@ title: المكونات غير المضبوطة
 permalink: docs/uncontrolled-components.html
 ---
 
+<<<<<<< HEAD
 نُفضِّل في معظم الحالات استخدام [المُكوّنات المضبوطة](/docs/forms.html) من أجل حقول الإدخال، ففي المُكوّنات المضبوطة يتعامل مُكوّن React مع بيانات الحقول. البديل لها هو المُكوّنات غير المضبوطة والتي يتعامل فيها DOM مع بيانات الحقول.
+=======
+In most cases, we recommend using [controlled components](/docs/forms.html#controlled-components) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+>>>>>>> bbea52211971834d041e76871df8981066c42a3b
 
 لكتابة مُكوّن غير مضبوط بدلًا من كتابة معالج أحداث لكل تحديث للحالة، فبإمكانك [استخدام المراجع](/docs/refs-and-the-dom.html) للحصول على قيم الحقول من DOM.
 
