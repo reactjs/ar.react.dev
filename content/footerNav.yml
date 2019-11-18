@@ -29,8 +29,13 @@ channels:
     - title: منتديات المٌحادثة
       to: https://reactjs.org/community/support.html#popular-discussion-forums
       external: true
+<<<<<<< HEAD
     - title: Reactiflux محادثة
       to: https://discord.gg/0ZcbPKXt5bZjGY5n
+=======
+    - title: Reactiflux Chat
+      to: https://discord.gg/reactiflux
+>>>>>>> 72775e97f9a5f26d93153f58e650eb8c604d207f
       external: true
     - title: مجتمع DEV
       to: https://dev.to/t/react

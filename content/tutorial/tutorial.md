@@ -116,7 +116,11 @@ import './index.css';
 
 ### ساعدني، أنا عالق! {#help-im-stuck}
 
+<<<<<<< HEAD
 إن وجدت أيّة صعوبات، تحقّق من [مصادر مجتمع React](/community/support.html)، بالأخص [دردشة Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) هي طريقة رائعة للحصول على المساعدة بسرعة. إن لم تتلقى أي إجابة أو بقيت عالقًا عند مشكلة ما، يُرجى تقديم المشكلة وسنساعدك في حلّها.
+=======
+If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+>>>>>>> 72775e97f9a5f26d93153f58e650eb8c604d207f
 
 ## لمحة عامّة {#overview}
 
@@ -193,6 +197,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 غيّر التابع `render` في المكوّن Square لإظهار القيم عن طريق وضع ‎`{this.props.value}`‎ بدلًا من `{/* TODO */}`:

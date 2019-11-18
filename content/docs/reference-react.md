@@ -353,8 +353,12 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
+<<<<<<< HEAD
 يمكِّنك `React.Suspense` من تحديد مؤشر التحميل في حال كان هنالك بعض المكونات التي تقع أسفل منها في الشجرة غير جاهزة للتصيير بعد. اليوم، المكونات ذات التحميل الكسول (lazy loading components) هي حالة الاستعمال **الوحيدة** المدعومة عبر `<React.Suspense>`:
 
+=======
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+>>>>>>> 72775e97f9a5f26d93153f58e650eb8c604d207f
 
 ```js
 // This component is loaded dynamically
