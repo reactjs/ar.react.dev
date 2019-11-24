@@ -14,6 +14,6 @@ permalink: community/articles.html
 - [تطوير بسيط بـ React في 2017](https://hackernoon.com/simple-react-development-in-2017-113bd563691f) - دليل جوشوا كومو لعرض مدى سهولة بدء التطوير بـ React.
 - [دليل مرئي للحالة في React](https://daveceddia.com/visual-guide-to-state-in-react/) - دليل ديف سيديا المرئي للحالة في React.
 - [التدريب العملي على لتعلم React Hooks](https://www.telerik.com/kendo-react-ui/react-hooks-guide/) دليل Eric Bishard خطوة بخطوة لتعلم الخطافات
-- [How to Use the React Profiler Component to Measure Render Performance](https://medium.com/@adamhenson/how-to-use-the-react-profiler-component-to-measure-performance-improvements-from-hooks-d43b7092d7a8) - Adam Henson's article exemplifying a use case for `<React.Profiler />`.
-- [Thinking in React Hooks](https://wattenberger.com/blog/react-hooks) - Amelia Wattenberger's provides visualizations and highlighting the mindset change needed switching from classes to functional components + hooks.
-- [React/Redux Links](https://github.com/markerikson/react-redux-links) - Curated tutorial and resource links by Mark Erikson collected on React, Redux, ES6, and more. Very helpful for all kind of developers because of it's categorised content.
+- [كيفية استخدام React Profiler Component لقياس أداء Render](https://medium.com/@adamhenson/how-to-use-the-react-profiler-component-to-measure-performance-improvements-from-hooks-d43b7092d7a8) - مقال Adam Henson الذي يوضح كيفية استخدام `<React.Profiler />`.
+- [طريقة التفكير في React Hooks](https://wattenberger.com/blog/react-hooks) - تقدم Amelia Wattenberger تصورات وتسلط الضوء على التغيير المطلوب في عقلية التحول من `classes` إلى `functional components + hooks`
+- [React/Redux روابط](https://github.com/markerikson/react-redux-links) - روابط ومصادر مفيده من تجميع Mark Erikson حول React، Redux، ES6 وغيرها.
