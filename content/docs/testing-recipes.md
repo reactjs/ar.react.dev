@@ -549,7 +549,11 @@ it("should accept selections", () => {
 
 ### لقطة اختبار {#snapshot-testing}
 
+<<<<<<< HEAD
 تتيح لك أطر مثل Jest أيضًا حفظ "لقطات" للبيانات باستخدام [`toMatchSnapshot` /`toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). باستخدام هذه ، يمكننا "حفظ" إخراج المكون الذي تم تقديمه والتأكد من أن التغيير الذي تم إجراؤه عليه يجب الالتزام به صراحة كتغيير في اللقطة.
+=======
+Frameworks like Jest also let you save "snapshots" of data with [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). With these, we can "save" the rendered component output and ensure that a change to it has to be explicitly committed as a change to the snapshot.
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 في هذا المثال ، نقدم مكونًا ونقوم بتنسيق HTML المقدم مع الحزمة [`pretty`](https://www.npmjs.com/package/pretty) ، قبل حفظها في صورة لقطة مضمّنة:
 

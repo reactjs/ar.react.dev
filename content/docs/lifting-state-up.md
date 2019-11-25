@@ -322,7 +322,11 @@ class Calculator extends React.Component {
 
 إن كان هنالك شيء يجب اشتقاقه إمّا من الخاصيّأت أو الحالات فبالتأكيد ليس من الحالات، فمثلًا بدلًا من تخزين قيمة درجة الحرارة بمتغيرين للسيلزيوس والفهرنهايت `celsiusValue` و `fahrenheitValue`، نُخزِّن فقط آخر قيمة مُعدَّلة للحرارة `temperature` ومقياسها `scale`، حيث يُمكِن حساب قيمة الحقل الآخر دومًا منها في التّابع `render()`‎. يُتيح لنا هذا مسح أو تقريب الحقل الآخر إلى أقرب قيمة بدون خسارة أي دقّة في مُدخلات المستخدم.
 
+<<<<<<< HEAD
 عندما تجد خطأً في واجهة المستخدم فبإمكانك استخدام [أدوات تطوير React](https://github.com/facebook/react-devtools) لفحص الخاصيّات والتنقّل في شجرة العناصر للأعلى حتى تجد المُكوِّن المسؤول عن تحديث الحالة. يُتيح لك ذلك تتبّع الخطأ حتى الوصول إلى مصدره:
+=======
+When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
 

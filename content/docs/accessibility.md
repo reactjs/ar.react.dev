@@ -498,7 +498,11 @@ class BlurExample extends React.Component {
 
 وهو عبارة عن قارئ شاشة مُدمَج في أجهزة Apple.
 
+<<<<<<< HEAD
 ارجع إلى المقالات التالية لمعرفة كيفيّة تفعيل واستخدام VoiceOver:
+=======
+Refer to the following guides on how to activate and use VoiceOver:
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 - [استخدام VoiceOver لتقييم سهولة الوصول للويب – شرح من موقع WebAIM](https://webaim.org/articles/voiceover/)
 - [اختصارات لوحة مفاتيح نظام OS X في VoiceOver – شرح من موقع Deque](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)

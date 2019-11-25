@@ -17,6 +17,7 @@
     - id: videos
       title: الفيديوهات
     - id: external-resources
+<<<<<<< HEAD
       title: المصادر الخارجية
 - title: الأدوات
   items:
@@ -38,3 +39,6 @@
       title: مكونات UI
     - id: misc
       title: تشكيلات
+=======
+      title: External Resources
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729

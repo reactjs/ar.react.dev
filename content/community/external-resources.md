@@ -16,4 +16,10 @@ permalink: community/external-resources.html
 
 - [روائع مكونات React](https://github.com/brillout/awesome-react-components) - قائمة مختارة لمكونات React.
 
+<<<<<<< HEAD
 - [روائع محادثات React](https://github.com/tiaanduplessis/awesome-react-talks) - قائمة مختارة لمحادثات React.
+=======
+- [Awesome React Talks](https://github.com/tiaanduplessis/awesome-react-talks) - A curated list of React talks.
+
+- [Hero35 React Hub](https://hero35.com/stack/react) - A website with _all_ React conferences and talks, categorized & curated.
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
