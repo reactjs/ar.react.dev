@@ -1,17 +1,18 @@
 ---
 id: testing-environments
-title: Testing Environments
+title: بيئات الاختبار
 permalink: docs/testing-environments.html
 prev: testing-recipes.html
 ---
 
 <!-- This document is intended for folks who are comfortable with JavaScript, and have probably written tests with it. It acts as a reference for the differences in testing environments for React components, and how those differences affect the tests that they write. This document also assumes a slant towards web-based react-dom components, but has notes for other renderers. -->
 
-This document goes through the factors that can affect your environment and recommendations for some scenarios.
+يتناول هذا المستند العوامل التي يمكن أن تؤثر على بيئتك والتوصيات المتعلقة ببعض السيناريوهات.
 
-### Test runners {#test-runners}
 
-Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) let you write test suites as regular JavaScript, and run them as part of your development process. Additionally, test suites are run as part of continuous integration.
+### منفذي الاختبار {#test-runners}
+
+يتيح لك منفذى الاختبار مثل  [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) كتابة مجموعات اختبار على هيئه JavaScript و تشغيلها كجزء من عملية التطوير الخاصة بك. بالاضافة الى ذلك يتم تشغبل مجموعات الاختبار كجزء من التكامل المستمر.
 
 - Jest is widely compatible with React projects, supporting features like mocked [modules](#mocking-modules) and [timers](#mocking-timers), and [`jsdom`](#mocking-a-rendering-surface) support. **If you use Create React App, [Jest is already included out of the box](https://facebook.github.io/create-react-app/docs/running-tests) with useful defaults.**
 - Libraries like [mocha](https://mochajs.org/#running-mocha-in-the-browser) work well in real browser environments, and could help for tests that explicitly need it.
