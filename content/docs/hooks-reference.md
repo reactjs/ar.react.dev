@@ -114,11 +114,7 @@ useEffect(didUpdate);
 
 عوضًا عن ذلك، استعمل الخطاف `useEffect`. الدالة المُمرَّر إليه ستُنفَّذ بعد الانتهاء من التصيير على الشاشة. فكر في التأثيرات وكأنَّها مخرج هروب (escape hatch) من عالم React الوظيفي البحت إلى العالم الأمري.
 
-<<<<<<< HEAD
-افتراضيًّا، تُنفَّذ التأثيرات بعد كل كل عملية تصيير مكتملة، ولكن يمكنك اختيار تنفيذها [فقط عند تغير قيم محدَّدة](#conditionally-firing-an-effect).
-=======
-By default, effects run after every completed render, but you can choose to fire them [only when certain values have changed](#conditionally-firing-an-effect).
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
+افتراضيًّا، تُنفَّذ التأثيرات بعد كل عملية تصيير مكتملة، ولكن يمكنك اختيار تنفيذها [فقط عند تغير قيم محدَّدة](#conditionally-firing-an-effect).
 
 #### تنظيف تأثير {#cleaning-up-an-effect}
 
@@ -168,15 +164,11 @@ useEffect(
 
 > ملاحظة
 >
-> إذا كنت تستخدم هذا التحسين, تأكد من أن المصفوفة تشمل جميع القيم من نطاق المكون (كـ props و state) التي تتغير مع مرور الوقت والتي يتم استخدامها من قبل التأثير. وإلا ، فإن الشيفرة الخاص بك سوف تشير إلى القيم قديمة من تنصير السابق. تعرف على المزيد حول [كيفية التعامل مع الدوال](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) وماذا تفعل عندما [تتغير قيم المصفوفة كثيرا](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often). 
+> إذا كنت تستخدم هذا التحسين, تأكد من أن المصفوفة تشمل جميع القيم من نطاق المكون (كـ props و state) التي تتغير مع مرور الوقت والتي يتم استخدامها من قبل التأثير. وإلا ، فإن الشيفرة الخاص بك سوف تشير إلى القيم قديمة من تنصير السابق. تعرف على المزيد حول [كيفية التعامل مع الدوال](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) وماذا تفعل عندما [تتغير قيم المصفوفة كثيرا](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often). 
 >
 > إذا كنت ترغب في تشغيل تأثير وتنظيفه مرة واحدة فقط )في mount و unmount),  يمكنك تمرير لمصفوفة فارغة كعامل ثاني. هذا يخبر React أن تأثيرك لن يعتمد على أي قيمة من قيم props أو state,  لهذا فهو لن يعيدة تشغيله مرة ثانية.  فهذه لن يتم التعامل معها كحالة خاصة — فهو يتبع مباشرة كيفية عمل تبعية المصفوفات دائمًا. 
 >
-<<<<<<< HEAD
-> إذا مررة ل مصفوفة خالية (`[]`), props و state كـ التأثير داخلي فستكون دائما قيمها الأولية.  أثناء تمرير [] كعامل ثاني قريب من عائلة `componentDidMount` و `componentWillUnmount` نموذج عقلي,  عادة ما تكون هناك [حلول](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)  [أفضل](https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)  لتجنب إعادة تشغيل التأثيرات في كثير من الأحيان.  كذلك, لا تنسى أن React يؤجل تشغيل `useEffect` حتى بعد أن يقوم المتصفح بالرسم,   لذلك القيام بعمل إضافي . 
-=======
->If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
+> إذا مررة ل مصفوفة خالية (`[]`), props و state كـ التأثير داخلي فستكون دائما قيمها الأولية.  أثناء تمرير [] كعامل ثاني قريب من عائلة `componentDidMount` و `componentWillUnmount` نموذج عقلي,  عادة ما تكون هناك [حلول](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) [أفضل](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)  لتجنب إعادة تشغيل التأثيرات في كثير من الأحيان.  كذلك, لا تنسى أن React يؤجل تشغيل `useEffect` حتى بعد أن يقوم المتصفح بالرسم,   لذلك القيام بعمل إضافي . 
 >
 > نوصي باستخدام  قاعدة [exhaustive-deps](https://github.com/facebook/react/issues/14920) كجزء من حزمة [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation).  يحذر عندما يتم تحديد التبعيات بشكل غير صحيح ويقترح إصلاح.
 >
@@ -209,10 +201,7 @@ const value = useContext(MyContext);
 >`useContext(MyContext)` يتيح لك فقط قراءة السياق والاشتراك في تغييراته. 
 >ما زلت بحاجة إلى `<MyContext.Provider>` أعلاه في الشجرة لتوفير قيمة لهذا السياق.
 
-<<<<<<< HEAD
-## خطافات إضافية {#additional-hooks}
-=======
-**Putting it together with Context.Provider**
+**وضعه جنبا إلى جنب مع Context.Provider**
 ```js{31-36}
 const themes = {
   light: {
@@ -253,11 +242,10 @@ function ThemedButton() {
   );
 }
 ```
-This example is modified for hooks from a previous example in the [Context Advanced Guide](/docs/context.html), where you can find more information about when and how to use Context.
+هذا المثال معدل ليتناسب مع hooks من مثال سابق في [الدليل المتقدم للسياق](/docs/context.html), حيث يمكنك العثور على مزيد من المعلومات حول متى وكيفية استخدام السياق.
 
 
-## Additional Hooks {#additional-hooks}
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
+## خطافات إضافية {#additional-hooks}
 
 الخطافات التالية هي إمَّا شكل آخر للخطافات الأساسية أو يُلجَأ إليها في حالات محدَّدة فقط. لا تجهد نفسك بتعلمهم الآن إن لم تكن بحاجة لهم.
 
