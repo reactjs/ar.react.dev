@@ -17,4 +17,4 @@ permalink: community/articles.html
 - [كيفية استخدام React Profiler Component لقياس أداء Render](https://medium.com/@adamhenson/how-to-use-the-react-profiler-component-to-measure-performance-improvements-from-hooks-d43b7092d7a8) - مقال Adam Henson الذي يوضح كيفية استخدام `<React.Profiler />`.
 - [طريقة التفكير في React Hooks](https://wattenberger.com/blog/react-hooks) - تقدم Amelia Wattenberger تصورات وتسلط الضوء على التغيير المطلوب في عقلية التحول من `classes` إلى `functional components + hooks`
 - [React/Redux روابط](https://github.com/markerikson/react-redux-links) - روابط ومصادر مفيده من تجميع Mark Erikson حول React، Redux، ES6 وغيرها.
-- [Developer Productivity Tips from the React Experts](https://www.telerik.com/kendo-react-ui/react-best-practices-and-productivity-tips/) - The KendoReact team curated the top productivity tips of 20+ React experts. Includes tips from Emma Wedekind, Kent C. Dodds, vjeux and many more. 
+- [نصائح للمطورين من خبراء React](https://www.telerik.com/kendo-react-ui/react-best-practices-and-productivity-tips/) - فريق KendoReact قام بتجميع أفضل النصائح من أكثر من ٢٠ خبير React. تشمل نصائح من Emma Wedekind، Kent C. Dodds، vjeux وغيرهم.
