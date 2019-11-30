@@ -355,7 +355,6 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 يمكِّنك `React.Suspense` من تحديد مؤشر التحميل في حال كان هنالك بعض المكونات التي تقع أسفل منها في الشجرة غير جاهزة للتصيير بعد. اليوم، المكونات ذات التحميل الكسول (lazy loading components) هي حالة الاستعمال **الوحيدة** المدعومة عبر `<React.Suspense>`:
 
-
 ```js
 // This component is loaded dynamically
 // يحمَّل هذا المكون ديناميكيًّا

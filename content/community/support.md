@@ -27,7 +27,7 @@ redirect_from:
 
 * [مجتمع React على DEV](https://dev.to/t/react)
 * [مجتمع React على Hashnode](https://hashnode.com/n/reactjs)
-* [قاعة المحادثة الإفتراضية Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n)
+* [قاعة المحادثة الإفتراضية Reactiflux](https://discord.gg/reactiflux)
 * [مجتمع React على Reddit](https://www.reddit.com/r/reactjs/)
 * [مجتمع React على Spectrum](https://spectrum.chat/react)
 

@@ -15,6 +15,7 @@ permalink: docs/context.html
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [	أمثلة](#examples)
   - [السياق الديناميكي](#dynamic-context)
   - [تحديث السياق من المكونات المتداخلة](#updating-context-from-a-nested-component)
@@ -197,6 +198,20 @@ class MyClass extends React.Component {
 > ملاحظة
 > 
 > للمزيد من المعلومات حول النمط "دالة على أنَّها ابنٌ"، اطلع على توثيق [خاصيات التصيير](/docs/render-props.html).
+
+### `Context.displayName` {#contextdisplayname}
+
+كائن السياق يقبل خاصية `displayName` string. React DevTools يستخدم هذه السلسلة لتحديد ما يجب عرضه للسياق.
+
+For example, the following component will appear as MyDisplayName in the DevTools:
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+```
 
 ## أمثلة {#examples}
 

@@ -549,7 +549,7 @@ it("should accept selections", () => {
 
 ### لقطة اختبار {#snapshot-testing}
 
-تتيح لك أطر مثل Jest أيضًا حفظ "لقطات" للبيانات باستخدام [`toMatchSnapshot` /`toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). باستخدام هذه ، يمكننا "حفظ" إخراج المكون الذي تم تقديمه والتأكد من أن التغيير الذي تم إجراؤه عليه يجب الالتزام به صراحة كتغيير في اللقطة.
+تتيح لك أطر مثل Jest أيضًا حفظ "لقطات" للبيانات باستخدام [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). باستخدام هذه ، يمكننا "حفظ" إخراج المكون الذي تم تقديمه والتأكد من أن التغيير الذي تم إجراؤه عليه يجب الالتزام به بوضوح كتغيير في اللقطة.
 
 في هذا المثال ، نقدم مكونًا ونقوم بتنسيق HTML المقدم مع الحزمة [`pretty`](https://www.npmjs.com/package/pretty) ، قبل حفظها في صورة لقطة مضمّنة:
 

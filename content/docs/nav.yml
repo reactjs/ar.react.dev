@@ -8,6 +8,8 @@
       title: إنشاء تطبيق React جديد
     - id: cdn-links
       title: روابط شبكة توزيع المحتوى ( CDN )
+    - id: release-channels
+      title: قنوات الاصدار
 - title: المعايير الرئيسية
   isOrdered: true
   items:
@@ -106,25 +108,25 @@
       title: متطلبات بيئة JavaScript
     - id: glossary
       title: معجم مصطلحات React 
-- title: Hooks (جديد)
+- title: Hooks
   isOrdered: true
   items:
-      - id: hooks-intro
-        title: مدخل إلى الـ Hooks
-      - id: hooks-overview
-        title: لمحة خاطفة عن الـ Hooks
-      - id: hooks-state
-        title: استعمال Hook الحالة
-      - id: hooks-effect
-        title: استعمال Hook التأثير
-      - id: hooks-rules
-        title: قواعد استعمال الـ Hooks
-      - id: hooks-custom
-        title: بناء Hook خاص بك
-      - id: hooks-reference
-        title: مرجع إلى الواجهة البرمجية للـ Hooks
-      - id: hooks-faq
-        title: الأسئلة الشائعة حول الـ Hooks
+    - id: hooks-intro
+      title: مدخل إلى الـ Hooks
+    - id: hooks-overview
+      title: لمحة خاطفة عن الـ Hooks
+    - id: hooks-state
+      title: استعمال Hook الحالة
+    - id: hooks-effect
+      title: استعمال Hook التأثير
+    - id: hooks-rules
+      title: قواعد استعمال الـ Hooks
+    - id: hooks-custom
+      title: بناء Hook خاص بك
+    - id: hooks-reference
+      title: مرجع إلى الواجهة البرمجية للـ Hooks
+    - id: hooks-faq
+      title: الأسئلة الشائعة حول الـ Hooks
 - title: الإختبارات
   items:
     - id: testing 
@@ -132,17 +134,30 @@
     - id: testing-recipes
       title: طريقة إجراء الإختبارات
     - id: testing-environments
-      title: بيئة و محيط الإختبارات
+      title: بيئة ومحيط الإختبارات
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
 - title: المساهمة
   items:
-  - id: how-to-contribute
-    title: كيف تساهم
-  - id: codebase-overview
-    title: نظرة عامة عن قاعدة الشفرة المصدرية
-  - id: implementation-notes
-    title: ملاحظات التنفيذ
-  - id: design-principles
-    title: مبادئ التصميم
+    - id: how-to-contribute
+      title: كيف تساهم
+    - id: codebase-overview
+      title: نظرة عامة عن قاعدة الشفرة المصدرية
+    - id: implementation-notes
+      title: ملاحظات التنفيذ
+    - id: design-principles
+      title: مبادئ التصميم
 - title: الأسئلة الأكثر تكراراً
   items:
     - id: faq-ajax
@@ -161,4 +176,3 @@
       title: سياسة الإصدارات
     - id: faq-internals
       title: الـ DOM الافتراضي والكائنات الداخلية
-

@@ -12,60 +12,10 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-### React Conf Iran 2019 {#react-conf-iran-2019}
-August 29, 2019. Tehran, Iran.
+### React Summit 2019 {#reactsummit2019}
+30 نوفمبر 2019 في لاغوس ، نيجيريا
 
-[Website](https://reactconf.ir/) - [Twitter](https://twitter.com/reactconf_ir) - [Instagram](https://www.instagram.com/reactconf/)
-
-### React Rally 2019 {#react-rally-2019}
-22-23 أغسطس ، 2019. سولت ليك سيتي ، الولايات المتحدة.
-
-[موقع الواب](https://www.reactrally.com/) - [تويتر](https://twitter.com/ReactRally) - [انستقرام](https://www.instagram.com/reactrally/)
-
-### ComponentsConf 2019 {#componentsconf-2019}
-6 سبتمبر 2019 في ملبورن ، أستراليا.
-
-[موقع الواب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/componentsconf)
-
-### React Native EU 2019 {#react-native-eu-2019}
-5-6 سبتمبر في فروتسواف ، بولندا.
-
-[موقع الواب](https://react-native.eu) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu)
-
-### React New York 2019 {#react-new-york-2019}
-13 سبتمبر ، 2019. نيويورك ، الولايات المتحدة.
-
-[موقع الواب](https://reactnewyork.com/) - [تويتر](https://twitter.com/reactnewyork)
-
-### React Live 2019 {#react-live-2019}
-13 سبتمبر ، 2019. أمستردام ، هولندا.
-
-[موقع الواب](https://www.reactlive.nl/) - [تويتر](https://twitter.com/reactlivenl)
-
-### React Boston 2019 {#react-boston-2019}
-21-22 سبتمبر ، 2019 في بوسطن ، ماساتشوستس الولايات المتحدة.
-
-[موقع الواب](https://www.reactboston.com/) - [تويتر](https://twitter.com/reactboston)
-
-### React India 2019 {#react-india-2019}
-26-28 سبتمبر 2019 في غوا ، الهند.
-
-[موقع الواب](https://www.reactindia.io/) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia)
-
-### React Alicante 2019 {#react-alicante-2019}
-26-28 سبتمبر 2019 في أليكانتي ، إسبانيا.
-
-[موقع الواب](http://reactalicante.es/) - [تويتر](https://twitter.com/reactalicante) - [فيس بوك](https://www.facebook.com/ReactAlicante)
-
-### React Conf 2019 {#react-conf-2019}
-24-25 أكتوبر 2019 في هندرسون ، نيفادا الولايات المتحدة.
-
-[موقع الواب](https://conf.reactjs.org/) - [تويتر](https://twitter.com/reactjs)
-
-### React Advanced 2019 {#react-advanced-2019}
-25 أكتوبر 2019 في لندن ، المملكة المتحدة.
-
-[موقع الواب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الواب](https://reactsummit2019.splashthat.com) -[تويتر](https://twitter.com/react_summit)
 
 ### React Day Berlin 2019 {#react-day-berlin-2019}
 6 ديسمبر 2019 في برلين ، ألمانيا.
@@ -77,18 +27,51 @@ August 29, 2019. Tehran, Iran.
 
 [موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
-### Render-Atlanta 2020 {#render-atlanta-2020}
-4-6 مايو ، 2020. أتلانتا ، جورجيا ، الولايات المتحدة.80
-[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيسبوك](https://www.facebook.com/renderatl/) 
+### React Summit Amsterdam 2020 {#react-summit-2020}
+15-17 أبريل 2020 في أمستردام ، هولندا
+
+[موقع الواب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+
+### App.js Conf 2020 {#appjsonf2020}
+23-24 أبريل 2020 في كراكوف ، بولندا
+
+[موقع الواب](http://appjs.co/react) - [تويتر](https://twitter.com/appjsconf)
+
+### React Day Bangalore 2020 {#react-day-bangalore-2020}
+25 أبريل 2020 في بنغالور ، الهند
+
+[موقع الواب](https://reactday.in) - [تويتر](https://twitter.com/ReactDayIn)
+
+### render(ATL) 2020 {#render-atlanta-2020}
+4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
+
+[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) 
+
+### ReactEurope 2020 {#reacteurope-2020}
+14-15 مايو 2020 في باريس ، فرنسا
+
+[موقع الواب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [أشرطة الفيديو](https://www.youtube.com/c/ReacteuropeOrgConf)
 
 ### React Finland 2020 {#react-finland-2020}
 مايو 26-29، 2020. في هلسنكي، فيلندا.
+
 [موقع الويب](https://react-finland.fi/) - [تويتر](https://twitter.com/ReactFinland)
 
 ### React Next 2020 {#react-next-2020}
 يونيو 15, 2020. تل أبيب، إسرائيل.
 
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/) 
+
+### React Loop 2020 {#react-loop-2020}
+19 يونيو ، 2020. شيكاغو ، إلينوي ، الولايات المتحدة الأمريكية.
+
+[موقع الواب](https://reactloop.com) - [تويتر](https://twitter.com/ReactLoop)
+
+### React Week NY 2020 {#react-week-ny-2020}
+17 يوليو ، 2020. مدينة نيويورك ، الولايات المتحدة الأمريكية.
+
+[موقع الواب](https://reactweek.nyc/) - [تويتر](https://twitter.com/reactweek) - [فيس بوك](https://www.facebook.com/reactweek) 
+
 
 ## المؤتمرات السابقة {#past-conferences}
 
@@ -112,12 +95,12 @@ August 29, 2019. Tehran, Iran.
 ### React.js Conf 2016 {#reactjs-conf-2016}
 22 و 23 فبراير في سان فرانسيسكو ، كاليفورنيا.
 
-[موقع الواب](http://conf.reactjs.com/) - [البرنامج](http://conf.reactjs.com/schedule.html) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
+[موقع الواب](http://conf2016.reactjs.org/) - [البرنامج](http://conf2016.reactjs.org/schedule.html) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
 
 ### React Amsterdam 2016 {#react-amsterdam-2016}
 16 أبريل في أمستردام ، هولندا.
 
-[موقع الواب](https://react.amsterdam) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الواب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
 
 ### ReactEurope 2016 {#reacteurope-2016}
 2 و 3 يونيو في باريس ، فرنسا.
@@ -167,7 +150,7 @@ August 29, 2019. Tehran, Iran.
 ### React Amsterdam 2017 {#react-amsterdam-2017}
 21 أبريل في أمستردام ، هولندا.
 
-[موقع الواب](https://react.amsterdam) - [تويتر](https://twitter.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الواب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
 
 ### ReactEurope 2017 {#reacteurope-2017}
 18 و 19 مايو في باريس ، فرنسا.
@@ -272,7 +255,7 @@ August 29, 2019. Tehran, Iran.
 ### React Amsterdam 2018 {#react-amsterdam-2018}
 13 أبريل في أمستردام ، هولندا.
 
-[موقع الواب](https://react.amsterdam) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam)
+[موقع الواب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam)
 
 ### React Finland 2018 {#react-finland-2018}
 24-26 أبريل في هلسنكي ، فنلندا.
@@ -377,7 +360,7 @@ August 29, 2019. Tehran, Iran.
 ### React Amsterdam 2019 {#react-amsterdam-2019}
 12 أبريل 2019 في أمستردام ، هولندا.
 
-[موقع الواب](https://react.amsterdam) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الواب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
 
 ### React Finland 2019 {#react-finland-2019}
 24-26 أبريل في هلسنكي ، فنلندا.
@@ -402,7 +385,7 @@ August 29, 2019. Tehran, Iran.
 ### React Conf Armenia 2019 {#react-conf-am-19}
 25 مايو 2019 في يريفان ، أرمينيا.
 
-[موقع الواب](https://reactconf.am/) - [تويتر](https://twitter.com/ReactConfAM) - [فيس بوك](https://www.facebook.com/reactconf.am/) - [YouTube](https://www.youtube.com/c/JavaScriptConferenceArmenia) - [CFP](http://bit.ly/speakReact)
+[موقع الواب](https://reactconf.am/) - [تويتر](https://twitter.com/ReactConfAM) - [فيس بوك](https://www.facebook.com/reactconf.am/) - [أشرطة الفيديو](https://www.youtube.com/c/JavaScriptConferenceArmenia) - [CFP](http://bit.ly/speakReact)
 
 <!-- 
 
@@ -423,3 +406,63 @@ August 29, 2019. Tehran, Iran.
 11-12 يوليو 2019. بورتلاند ، أور ، الولايات المتحدة.
 
 [موقع الواب](https://infinite.red/ChainReactConf)
+
+### React Rally 2019 {#react-rally-2019}
+22-23 أغسطس ، 2019. سولت ليك سيتي ، الولايات المتحدة.
+
+[موقع الواب](https://www.reactrally.com/) - [تويتر](https://twitter.com/ReactRally) - [انستقرام](https://www.instagram.com/reactrally/)
+
+### React Conf Iran 2019 {#react-conf-iran-2019}	
+29 أغسطس 2019. طهران ، إيران.  
+
+[موقع الواب](https://reactconf.ir/) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PL-VNqZFI5Nf-Nsj0rD3CWXGPkH-DI_0VY) - [Highlights](https://github.com/ReactConf/react-conf-highlights)
+
+### React Native EU 2019 {#react-native-eu-2019}
+5-6 سبتمبر في فروتسواف ، بولندا.
+
+[موقع الواب](https://react-native.eu) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu)
+
+### ComponentsConf 2019 {#componentsconf-2019}
+6 سبتمبر 2019 في ملبورن ، أستراليا.
+
+[موقع الواب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/componentsconf)
+
+### React New York 2019 {#react-new-york-2019}
+13 سبتمبر ، 2019. نيويورك ، الولايات المتحدة.
+
+[موقع الواب](https://reactnewyork.com/) - [تويتر](https://twitter.com/reactnewyork)
+
+### React Live 2019 {#react-live-2019}
+13 سبتمبر ، 2019. أمستردام ، هولندا.
+
+[موقع الواب](https://www.reactlive.nl/) - [تويتر](https://twitter.com/reactlivenl)
+
+### React Boston 2019 {#react-boston-2019}
+21-22 سبتمبر ، 2019 في بوسطن ، ماساتشوستس الولايات المتحدة.
+
+[موقع الواب](https://www.reactboston.com/) - [تويتر](https://twitter.com/reactboston)
+
+### React India 2019 {#react-india-2019}
+26-28 سبتمبر 2019 في غوا ، الهند.
+
+[موقع الواب](https://www.reactindia.io/) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia)
+
+### React Alicante 2019 {#react-alicante-2019}
+26-28 سبتمبر 2019 في أليكانتي ، إسبانيا.
+
+[موقع الواب](http://reactalicante.es/) - [تويتر](https://twitter.com/reactalicante) - [فيس بوك](https://www.facebook.com/ReactAlicante)
+
+### React Conf 2019 {#react-conf-2019}
+24-25 أكتوبر 2019 في هندرسون ، نيفادا الولايات المتحدة.
+
+[موقع الواب](https://conf.reactjs.org/) - [تويتر](https://twitter.com/reactjs)
+
+### React Advanced 2019 {#react-advanced-2019}
+25 أكتوبر 2019 في لندن ، المملكة المتحدة.
+
+[موقع الواب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+
+### React Conf Brasil 2019 {#react-conf-2019}
+19 أكتوبر 2019 في ساو باولو ، البرازيل
+
+[موقع الواب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [Slack](https://react.now.sh/)

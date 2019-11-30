@@ -19,19 +19,25 @@ redirect_from:
 
 كل العمل على React يحدث عل موقع[GitHub](https://github.com/facebook/react). كل من الفريق الرئيسي والمساهمون الآخرون يساهمون بإرسال طلبات السحب (Pull requests) والتي تدخل نفس مراحل المراجعة.
 
-### تنظيم الفروع (Branch Organization) {#branch-organization}
+### Semantic Versioning {#semantic-versioning}
 
-نحرص على أن يكون [الفرع الرئيسي (`master` branch)](https://github.com/facebook/react/tree/master) في أفضل حالة، بالاختبارات التي تمرّ بنجاح في كل مرّة. لكن حتى نتقدّم بسرعة، سنحدث تغييرات على الواجهة البرمجية (API) والتي ربما ستجعل تطبيقك غير متوافق معها. ننصحك باستعمال [آخر اصدار مستقر من  React](/versions.html).
-
-من فضلك احرص على أن يكون طلب السحب (pull request) الذي تقوم به نحو الفرع الرئيسي `master`. نُبقي الفروع المستقرّة المختلفة للإصدارات الجذرية لكننا لن نقبل طلبات السحب نحوها مباشرة. بل ننتقي التغييرات التي ﻻ تُحدث تغييرات هدّامة من الفرع الرئيسي إلى آخر اصدار مستقر.
-
-### الإدارة الدلالية لنُسخ البرمجيات {#semantic-versioning}
-
-تتبع React [الإدارة الدلالية لنُسخ البرمجيات](https://semver.org/lang/ar/). نُصدر اصدارات ترقيع (patch versions) عند القيام بإصلاحات للعلل والثغرات، اصدارات صُغرى عند إضافة ميزات ووظائف جديدة، وإصدارات جذرية عند القيام بتغيرات جذرية. عند القيام بتغيير جذري نقوم باستخدام تحذيرات بعدم الصلاحية (deprecation warnings) في الإصدارات الصغرى حتى يعلم مستخدمونا بالتغيرات التي ستطرأ وحتى يرقّوا شفراتهم البرمجية مُسبقا.
-
-كل طلب سحب يحمل وسمًا يحدد ما إذا كان سيذهب إلى [الرُقعة (patch)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch) أو إلى [الإصدار الفرعي (minor)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor) أو [الإصدار الرئيسي (major)](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major). نُصدر نسخ الترقيع في كلّ أسبوع ونُصدر الإصدارات الصُغرى كل بضعة أشهر وأما الإصدارات الجذرية تكون مرّة أو مرّتين في السنة.
+تتبع React [الإدارة الدلالية لنُسخ البرمجيات](https://semver.org/lang/ar/). نُصدر اصدارات ترقيع (patch versions) عند القيام بإصلاحات للعلل والثغرات، اصدارات صُغرى عند إضافة ميزات ووظائف جديدة، وإصدارات جذرية عند القيام بتغيرات جذرية. عند القيام بتغيير جذري نقوم باستخدام تحذيرات بعدم الصلاحية (deprecation warnings) في الإصدارات الصغرى حتى يعلم مستخدمونا بالتغيرات التي ستطرأ وحتى يرقّوا شفراتهم البرمجية مُسبقا. تعرف على المزيد حول التزاماتنا في [سياسة الإصدارات](/docs/faq-versioning.html).
 
 كل تغيير معتبر موثّق في [جدول التغييرات (changelog)](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+
+### تنظيم الفروع (Branch Organization) {#branch-organization}
+
+Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
+
+Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
+
+### Feature Flags {#feature-flags}
+
+To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+
+React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
 
 ### العلل (Bugs) {#bugs}
 

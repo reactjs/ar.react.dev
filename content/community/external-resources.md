@@ -17,3 +17,5 @@ permalink: community/external-resources.html
 - [روائع مكونات React](https://github.com/brillout/awesome-react-components) - قائمة مختارة لمكونات React.
 
 - [روائع محادثات React](https://github.com/tiaanduplessis/awesome-react-talks) - قائمة مختارة لمحادثات React.
+
+- [Hero35 React Hub](https://hero35.com/stack/react) - قائمة مختارة لجميع مؤتمرات ومحادثات React.
