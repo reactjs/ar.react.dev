@@ -10,26 +10,15 @@ category: FAQ
 
 هذا يعني أنَّه مع الإصدار ذي الرقم **x.y.z**:
 
-<<<<<<< HEAD
-* عند إصدار **تغييرات جذرية** (breaking changes)، نطلق **إصدارًا رئيسيًّا** عبر تغيير الرقم **x** (مثل الانتقال من 15.6.2 إلى 16.0.0).
-* عند إصدار **ميزات جديدة**، نطلق **إصدارًا فرعيًّا** عبر تغيير الرقم **y** (مثل التغيير من 15.6.2 إلى 15.7.0).
 * عند **تصحيح علل وثغرات** في الإصدار السابق، نطلق **إصدارًا مرقَّعًا** (patch release) عبر تغيير الرقم **z** (مثل تغيير 15.6.2 إلى 15.6.3).
-=======
-* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
-* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
+* عند إصدار **ميزات جديدة** او **اصلاحات غير حرجة** (non-critical fixes)، نطلق **إصدارًا فرعيًّا** عبر تغيير الرقم **y** (مثل التغيير من 15.6.2 إلى 15.7.0).
+* عند إصدار **تغييرات جذرية** (breaking changes)، نطلق **إصدارًا رئيسيًّا** عبر تغيير الرقم **x** (مثل الانتقال من 15.6.2 إلى 16.0.0).
 
 قد تحوي الإصدارات الرئيسية على ميزات جديدة أيضًا، ويمكن أي يحوي أي إصدار على تصحيح لعللٍ وثغرات.
 
-<<<<<<< HEAD
-=======
-Minor releases are the most common type of release.
+الاصدارات الفرعية هي الاصدارات الأكثر شيوعا.
 
-> This versioning policy does not apply to prerelease builds in the Next or Experimental channels. [Learn more about prereleases.](/docs/release-channels.html)
-
-### Breaking Changes {#breaking-changes}
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
+> هذه السياسة لا تنطبق على prerelease builds في قنوات Next او Experimental. [اعرف اكثر عن prereleases.](/docs/release-channels.html)
 
 ### التغييرات الجذرية {#breaking-changes}
 
@@ -64,10 +53,6 @@ Minor releases are the most common type of release.
 
 أخيرًا، إن كان ولابد من إطلاق إصدار ناتج عن تغيير في تلك القائمة وقد يتسبَّب في وقوع المستخدمين في مشاكل كثيرة، فسنبذل قصارى جهدنا لتوفير وسيلة تسمح بالانتقال التدريجي إليه.
 
-<<<<<<< HEAD
-=======
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
-
 ### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
 
 It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
@@ -81,4 +66,3 @@ We have a pretty good track record for keeping React releases free of bugs, but 
 For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
 
 If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
