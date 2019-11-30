@@ -17,28 +17,4 @@
     - id: videos
       title: الفيديوهات
     - id: external-resources
-<<<<<<< HEAD
       title: المصادر الخارجية
-- title: الأدوات
-  items:
-    - id: debugging-tools
-      title: التنقيح البرمجي
-    - id: component-workbenches
-      title: منصّات تطوير المكوّنات
-    - id: jsx-integrations
-      title: إضافات JSX 
-    - id: starter-kits
-      title: أدوات البداية
-    - id: routing
-      title: التوجيه
-    - id: model-management
-      title: إدارة النموذج
-    - id: data-fetching
-      title: جلب البيانات
-    - id: ui-components
-      title: مكونات UI
-    - id: misc
-      title: تشكيلات
-=======
-      title: External Resources
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
