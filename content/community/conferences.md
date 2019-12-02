@@ -23,9 +23,9 @@ redirect_from:
 [موقع الواب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/reactdayberlin)
 
 ### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
-February 1-2, 2020 in Cologne, Germany
+1-2 فبراير ، 2020 في كولونيا ، ألمانيا
 
-[Website](https://react-barcamp.de/) - [Twitter](https://twitter.com/ReactBarcamp) - [Facebook](https://www.facebook.com/reactbarcamp)
+[موقع الواب](https://react-barcamp.de/) - [تويتر](https://twitter.com/ReactBarcamp) - [فيس بوك](https://www.facebook.com/reactbarcamp)
 
 ### ReactConf AU 2020 {#reactconfau}
 فبراير 27 & 28, 2020 في سيدني، أستراليا
