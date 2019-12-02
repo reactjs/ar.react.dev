@@ -454,7 +454,11 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
+<<<<<<< HEAD
 في هذا المثال، سيكون المكون الأب الذي يصير `<FancyInput ref={fancyInputRef} />` قادرًا على استدعاء `fancyInputRef.current.focus()`.
+=======
+In this example, a parent component that renders `<FancyInput ref={inputRef} />` would be able to call `inputRef.current.focus()`.
+>>>>>>> e0a0ec3dad47804d0b41d4a7bb81841638dc79dd
 
 ### `useLayoutEffect` {#uselayouteffect}
 
