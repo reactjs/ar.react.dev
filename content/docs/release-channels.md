@@ -1,6 +1,6 @@
 ---
 id: release-channels
-title: Release Channels
+title: قنوات الاصدار
 permalink: docs/release-channels.html
 layout: docs
 category: installation
