@@ -6,50 +6,51 @@ layout: docs
 category: installation
 ---
 
-React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs). To encourage feedback we sometimes share special builds of React that include unreleased features.
+تعتمد React على مجتمع مفتوح المصدر مزدهر لتقديم تقارير الأخطاء ، وطلبات السحب المفتوحة ، و [إرسال طلبات تقديم العروض](https://github.com/reactjs/rfcs). لتشجيع التعليقات ، نشارك أحيانًا بنيات خاصة من React تتضمن ميزات غير مُصدرة.
 
-> This document will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
+> هذا المستند سيكون أكثر ملاءمة للمطورين الذين يعملون على اطارات العمل أو مكتبات أو أدوات مطور برامج. لا ينبغي للمطورين الذين يستخدمون React في المقام الأول لإنشاء تطبيقات الواجهة الاماميه للمستخدم القلق بشأن قنوات الاصدار الخاصة بنا.
 
-Each of React's release channels is designed for a distinct use case:
+تم تصميم كل من قنوات إصدار React لحالة استخدام متميزة:
 
-- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **Use this for all user-facing React applications.**
-- [**Next**](#next-channel) tracks the master branch of the React source code repository. Think of these as release candidates for the next minor semver release. Use this for integration testing between React and third party projects.
-- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the master branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+- [**الأحدث**](#latest- channel) للإصدارات المستقرة ، Remver اصدارات React. هذا ما تحصل عليه عند تثبيت React من npm. هذه هي القناة التي تستخدمها بالفعل اليوم.
+ **استخدم هذا لجميع تطبيقات React لواجهة المستخدم الاماميه.**
+- [**التالى**](#next-channel) يتتبع الفرع الرئيسي لكود React. فكر في هؤلاء كمرشحين للإفراج عن الإصدار الثانوي التالي. استخدم هذا لاختبار التكامل بين مشاريع React ومشاريع الجهات الخارجية.
+- [**التجريبية**](#release-channel) تتضمن واجهات برمجة التطبيقات التجريبية والميزات التي لا تتوفر في الإصدارات المستقرة. هذه أيضًا تتبع الفرع الرئيسي ، ولكن مع إشارات ميزة إضافية قيد التشغيل. استخدم هذا لتجربة الميزات القادمة قبل إصدارها.
 
-All releases are published to npm, but only Latest uses [semantic versioning](/docs/faq-versioning.html). Prereleases (those in the Next and Experimental channels) have versions generated from a hash of their contents, e.g. `0.0.0-1022ee0ec` for Next and `0.0.0-experimental-1022ee0ec` for Experimental.
+يتم نشر جميع الإصدارات إلى npm ، ولكن يستخدم فقط الأحدث [الإصدار الدلالية](/docs/faq-versioning.html). تشتمل الإصدارات التجريبية (تلك الموجودة في القنوات التالية والقنوات التجريبية) على إصدارات تم إنشاؤها من مجموعة كبيرة من محتوياتها ، على سبيل المثال `0.0.0  - 1022ee0ec` و للتالى ` 0.0.0-experimental-1022ee0ec` للتجريبية.
 
-**The only officially supported release channel for user-facing applications is Latest**. Next and Experimental releases are provided for testing purposes only, and we provide no guarantees that behavior won't change between releases. They do not follow the semver protocol that we use for releases from Latest.
+**قناة الإصدار الوحيدة المدعومة رسميًا للتطبيقات واجهة المستخدم هي الأحدث**. يتم توفير الإصدارات التالية والتجريبية لأغراض الاختبار فقط ، ونحن لا نقدم أي ضمانات بأن السلوك لن يتغير بين الإصدارات. لا يتبعون بروتوكول semver الذي نستخدمه للإصدارات من الأحدث.
 
-By publishing prereleases to the same registry that we use for stable releases, we are able to take advantage of the many tools that support the npm workflow, like [unpkg](https://unpkg.com) and [CodeSandbox](https://codesandbox.io).
+من خلال نشر الإصدارات التجريبية على نفس السجل الذي نستخدمه للإصدارات المستقرة ، يمكننا الاستفادة من العديد من الأدوات التي تدعم سير عمل npm ، مثل [unpkg](https://unpkg.com) و [CodeSandbox](https://codesandbox.io).
 
-### Latest Channel {#latest-channel}
+### أحدث قناة {#latest-channel}
 
-Latest is the channel used for stable React releases. It corresponds to the `latest` tag on npm. It is the recommended channel for all React apps that are shipped to real users.
+الأحدث هو القناة المستخدمة لإصدارات React مستقرة. يتوافق مع علامة `الأحدث`  على npm. إنها القناة الموصى بها لجميع تطبيقات React التي يتم شحنها إلى مستخدمين حقيقيين.
 
-**If you're not sure which channel you should use, it's Latest.** If you're a React developer, this is what you're already using.
+**إذا لم تكن متأكدًا من القناة التي يجب أن تستخدمها ، فهي الأحدث.** إذا كنت من مطوري React ، فهذا ما تستخدمه بالفعل.
 
-You can expect updates to Latest to be extremely stable. Versions follow the semantic versioning scheme. Learn more about our commitment to stability and incremental migration in our [versioning policy](/docs/faq-versioning.html).
+يمكنك توقع أن تكون تحديثات "الأحدث" مستقرة للغاية. تتبع الإصدارات مخطط الإصدار الدلالي. تعرف على المزيد حول التزامنا بالاستقرار والهجرة المتزايدة في [سياسة الإصدار](/docs/faq-versioning.html).
 
-### Next Channel {#next-channel}
+### القناة التالية {#next-channel}
 
-The Next channel is a prerelease channel that tracks the master branch of the React repository. We use prereleases in the Next channel as release candidates for the Latest channel. You can think of Next as a superset of Latest that is updated more frequently.
+القناة التالية هي قناة تجريبية تتعقب الفرع الرئيسي لمستودع React. نستخدم الإصدارات التجريبية في القناة التالية كمرشحين لإصدار القناة الأخيرة. يمكنك التفكير في التالي باعتباره مجموعة فرعية من الأحدث التي يتم تحديثها بشكل متكرر أكثر.
 
-The degree of change between the most recent Next release and the most recent Latest release is approximately the same as you would find between two minor semver releases. However, **the Next channel does not conform to semantic versioning.** You should expect occasional breaking changes between successive releases in the Next channel.
+درجة التغيير بين الإصدار التالي الأحدث والأحدث الأحدث تقريبًا هي نفسها التي ستجدها بين إصدارين بسيطين من الفصل. ومع ذلك ، **القناة التالية لا تتوافق مع الإصدار الدلالي.** يجب أن تتوقع تغييرات فاصلة عرضية بين الإصدارات المتتالية في القناة التالية.
 
-**Do not use prereleases in user-facing applications.**
+**لا تستخدم التجريبية في التطبيقات واجهة المستخدم الاماميه.**
 
-Releases in Next are published with the `next` tag on npm. Versions are generated from a hash of the build's contents, e.g. `0.0.0-1022ee0ec`.
+يتم نشر الإصدارات في التالى مع علامة `التالى` على npm. يتم إنشاء الإصدارات من علامة تجزئة لمحتويات البنية ، على سبيل المثال `0.0.0-1022ee0ec`.
 
-#### Using the Next Channel for Integration Testing {#using-the-next-channel-for-integration-testing}
+### استخدام القناة التالية فى اختبار التكامل {#using-the-next-channel-for-integration-testing}
 
-The Next channel is designed to support integration testing between React and other projects.
+تم تصميم القناة التالية لدعم اختبار التكامل بين React والمشاريع الأخرى.
 
-All changes to React go through extensive internal testing before they are released to the public. However, there are a myriad of environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.
+تمر جميع التغييرات التي يتم إجراؤها على React باختبار داخلي شامل قبل إصدارها للجمهور. ومع ذلك ، هناك عدد لا يحصى من البيئات والتكوينات المستخدمة في نظام React البيئي ، وليس من الممكن أن نختبر كل واحد.
 
-If you're the author of a third party React framework, library, developer tool, or similar infrastructure-type project, you can help us keep React stable for your users and the entire React community by periodically running your test suite against the most recent changes. If you're interested, follow these steps:
+إذا كنت مؤلفًا لإطار React أو مكتبة أو أداة مطور أو أي مشروع مشابه من نوع البنية التحتية ، يمكنك مساعدتنا في الحفاظ على React مستقرًا لمستخدميك ومجتمع React بأكمله من خلال تشغيل مجموعة الاختبارات بشكل دوري ضد أحدث إصدار يتغير. إذا كنت مهتمًا ، فاتبع الخطوات التالية:
 
-- Set up a cron job using your preferred continuous integration platform. Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
-- In the cron job, update your React packages to the most recent React release in the Next channel, using `next` tag on npm. Using the npm cli:
+- قم بإعداد وظيفة cron باستخدام نظام التكامل المستمر المفضل لديك. يتم دعم وظائف Cron بواسطة كل من [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) و [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
+- في مهمة cron ، حدّث حزم React الخاصة بك إلى أحدث إصدار React في القناة التالية ، باستخدام علامة "next" في npm. باستخدام npm cli:
 
   ```
   npm update react@next react-dom@next
@@ -60,36 +61,36 @@ If you're the author of a third party React framework, library, developer tool, 
   ```
   yarn upgrade react@next react-dom@next
   ```
-- Run your test suite against the updated packages.
-- If everything passes, great! You can expect that your project will work with the next minor React release.
-- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/facebook/react/issues).
+- قم بتشغيل مجموعة الاختبار الخاصة بك مقابل الحزم المحدثة.
+- إذا مر كل شيء ، عظيم! يمكنك أن تتوقع أن مشروعك سيعمل مع الإصدار التفاعلي البسيط التالي.
+- إذا حدث شيء ما بشكل غير متوقع ، فالرجاء إخبارنا عن طريق [تقديم مشكلة](https://github.com/facebook/react/issues).
 
-A project that uses this workflow is Next.js. (No pun intended! Seriously!) You can refer to their [CircleCI configuration](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) as an example.
+المشروع الذي يستخدم سير العمل هذا هو Next.js. (لا يقصد التورية! على محمل الجد!) يمكنك الرجوع إلى [اعدادت CircleCI](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb93e5fafb0dcd80a9e/.circleci/config.yml) كمثال.
 
-### Experimental Channel {#experimental-channel}
+### قناة تجريبية {#experimental-channel}
 
-Like Next, the Experimental channel is a prerelease channel that tracks the master branch of the React repository. Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.
+مثل التالي ، القناة التجريبية هي قناة تجريبية تتعقب الفرع الرئيسي لمستودع React. بخلاف التالي ، تشتمل الإصدارات التجريبية على ميزات إضافية وواجهات برمجة تطبيقات غير جاهزة للإصدار الأوسع.
 
-Usually, an update to Next is accompanied by a corresponding update to Experimental. They are based on the same source revision, but are built using a different set of feature flags.
+عادةً ما يكون التحديث إلى التالي مصحوبًا بتحديث مطابق لـ "تجريبي". تعتمد على مراجعة المصدر نفسها ، ولكنها مبنية باستخدام مجموعة مختلفة من إشارات المعالم.
 
-Experimental releases may be significantly different than releases to Next and Latest. **Do not use Experimental releases in user-facing applications.** You should expect frequent breaking changes between releases in the Experimental channel.
+قد تكون الإصدارات التجريبية مختلفة بشكل كبير عن الإصدارات التالية والأخيرة. **لا تستخدم الإصدارات التجريبية في تطبيقات واجهة المستخدم.** يجب أن تتوقع حدوث تغييرات متكررة بين الإصدارات في القناة التجريبية.
 
-Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents, e.g. `0.0.0-experimental-1022ee0ec`.
+يتم نشر الإصدارات في التجريبية مع العلامة `التجريبية` على npm. يتم إنشاء الإصدارات من علامة تجزئة لمحتويات البنية ، على سبيل المثال `0.0.0-experimental-1022ee0ec`.
 
-#### What Goes Into an Experimental Release? {#what-goes-into-an-experimental-release}
+#### ما الذي يحدث في الإصدار التجريبي؟ {#what-goes-into-an-experimental-release}
 
-Experimental features are ones that are not ready to be released to the wider public, and may change drastically before they are finalized. Some experiments may never be finalized -- the reason we have experiments is to test the viability of proposed changes.
+الميزات التجريبية هي الميزات التي ليست جاهزة للإصدارعنها للجمهور الأوسع ، وقد تتغير بشكل كبير قبل الانتهاء منها. قد لا يتم وضع اللمسات الأخيرة على بعض التجارب - والسبب في أن لدينا تجارب هو اختبار صلاحية التغييرات المقترحة.
 
-For example, if the Experimental channel had existed when we announced Hooks, we would have released Hooks to the Experimental channel weeks before they were available in Latest.
+على سبيل المثال ، إذا كانت القناة التجريبية موجودة عندما أعلنا عن Hooks، فسنقوم بإصدار Hooks إلى القناة التجريبية قبل أسابيع من توفرها في الأحدث.
 
-You may find it valuable to run integration tests against Experimental. This is up to you. However, be advised that Experimental is even less stable than Next. **We do not guarantee any stability between Experimental releases.**
+قد تجد أنه من المفيد إجراء اختبارات التكامل مقابل التجربة التجريبية. هذا متروك لكم. ومع ذلك ، يرجى العلم أن التجريبية أقل استقرارًا من التالي. **نحن لا نضمن أي استقرار بين الإصدارات التجريبية.**
 
-#### How Can I Learn More About Experimental Features? {#how-can-i-learn-more-about-experimental-features}
+#### كيف يمكنني معرفة المزيد عن الميزات التجريبية؟ {#how-can-i-learn-more-about-experimental-features}
 
-Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Next or Stable.
+الميزات التجريبية قد تكون أو لا تكون موثقة. عادة ، لا يتم توثيق التجارب حتى تكون قريبة من الشحن في التالي أو مستقر.
 
-If a feature is not documented, they may be accompanied by an [RFC](https://github.com/reactjs/rfcs).
+إذا لم يتم توثيق إحدى الميزات ، فقد تكون مصحوبة بـ [RFC](https://github.com/reactjs/rfcs).
 
-We will post to the [React blog](/blog) when we're ready to announce new experiments, but that doesn't mean we will publicize every experiment.
+سننشر على [React blog](/blog) عندما نكون مستعدين للإعلان عن تجارب جديدة ، لكن هذا لا يعني أننا سننشر كل تجربة.
 
-You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/master) for a comprehensive list of changes.
+يمكنك دائمًا الرجوع إلى مستودع GitHub العام الخاص بنا [التاريخ](https://github.com/facebook/react/commits/master) للحصول على قائمة شاملة بالتغييرات.
