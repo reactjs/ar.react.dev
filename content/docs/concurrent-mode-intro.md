@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-intro
-title: Introducing Concurrent Mode (Experimental)
+title: "تجريبي: مدخل إلى الوضع المتزامن (Concurent mode)"
 permalink: docs/concurrent-mode-intro.html
 next: concurrent-mode-suspense.html
 ---
@@ -14,11 +14,11 @@ next: concurrent-mode-suspense.html
 
 <div class="scary">
 
->Caution:
+>احذر:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>تتناول هذه الصفحة **ميزات تجريبية [والتي ليست متوفّرة بعد](/docs/concurrent-mode-adoption.html) في في أيّ من الاصدارات المستقرّة**. ﻻ تعتمد على بُنيات تجريبية من React في تطبيقاتك الموجهة للإنتاج (Production apps). قد تواجه هذه المميزات تغييرات جذرية دون أي تحذير قبل أن تصبح جزءًا من React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+>هذا المستند موجّه للفضوليين ولمن يريد تجربة الممزات الجديدة. **إن كنت مبتدأ في React ﻻ تقلق بشأن هذه الميزات** -- ﻻ تحتاج إلى تعلّمها في الوقت الحالي.
 
 </div>
 
