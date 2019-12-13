@@ -15,11 +15,11 @@ next: concurrent-mode-patterns.html
 
 <div class="scary">
 
->Caution:
+>تحذير:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>تصف هذه الصفحة **الميزات التجريبية التي [غير متوفرة بعد](/docs/concurrent-mode-approach.html) في إصدار ثابت**. لا تعتمد على تصميمات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now. For example, if you're looking for a data fetching tutorial that works today, read [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) instead.
+>هذه الوثائق تهدف إلى تبني أوائل الناس والأشخاص الفضوليين. **إذا كنت جديدًا في React ، فلا تقلق بشأن هذه الميزات** - لست بحاجة إلى تعلمها الآن. على سبيل المثال ، إذا كنت تبحث عن برنامج تعليمي لجلب البيانات يعمل اليوم ، فاقرأ [هذه المقالة](https://www.robinwieruch.de/react-hooks-fetch-data/) بدلاً من ذلك.
 
 </div>
 
