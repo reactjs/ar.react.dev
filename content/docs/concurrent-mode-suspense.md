@@ -23,7 +23,7 @@ next: concurrent-mode-patterns.html
 
 </div>
 
-React 16.6 added a `<Suspense>` component that lets you "wait" for some code to load and declaratively specify a loading state (like a spinner) while we're waiting:
+أضاف React 16.6 مكونًا ` <Suspense>`  يتيح لك "الانتظار" لتحميل بعض الكود البرمجي وتحديد حالة التحميل (مثل الدوار) أثناء انتظارنا:
 
 ```jsx
 const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
@@ -34,7 +34,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 </Suspense>
 ```
 
-Suspense for Data Fetching is a new feature that lets you also use `<Suspense>` to **declaratively "wait" for anything else, including data.** This page focuses on the data fetching use case, but it can also wait for images, scripts, or other asynchronous work.
+ميزة التشويق لجلب البيانات هي ميزة جديدة تتيح لك أيضًا استخدام `<Suspense>`  **بشكل تعريفي "الانتظار" عن أي شيء آخر ، بما في ذلك البيانات.** تركز هذه الصفحة على حالة جلب البيانات ، لكن يمكنها أيضًا انتظار الصور أو النصوص أو أي أعمال أخرى غير متزامنة.
 
 - [What Is Suspense, Exactly?](#what-is-suspense-exactly)
   - [What Suspense Is Not](#what-suspense-is-not)
