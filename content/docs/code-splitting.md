@@ -91,7 +91,7 @@ import("./math").then(math => {
 
 > ملاحظة:
 >
-> `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادم](https://www.smooth-code.com/open-source/loadable-components/docs/server-side-rendering/).
+> `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادم](https://loadable-components.com/docs/server-side-rendering/).
 
 تمكِّنك الدالة `React.lazy`  من تصيير استيراد ديناميكي على أنَّه مكون عادي.
 

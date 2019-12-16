@@ -73,8 +73,6 @@ npm start
 
 - **[Neutrino](https://neutrinojs.org/)**  تدمج قوة [webpack](https://webpack.js.org/) مع بساطة الضبط المسبق الافتراضي (presets)، وتُضمِّن ضبطًا مسبقًا [لتطبيقات React](https://neutrinojs.org/packages/react/) و [مكونات React](https://neutrinojs.org/packages/react-components/).
 
-- **[nwb](https://github.com/insin/nwb)** داة رائعةأ [لنشر مكونات React من أجل npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). [يمكن استعمالها](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) لإنشاء تطبيق React أيضًا. 
-
 - **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)**  هو إطار عمل تصيير من طرف الخادم ولا يتطلب أي ضبط ولكن يتسم بالمرونة أكثر من إطار العمل Next.js.
