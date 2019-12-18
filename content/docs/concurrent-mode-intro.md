@@ -22,30 +22,30 @@ next: concurrent-mode-suspense.html
 
 </div>
 
-This page provides a theoretical overview of Concurrent Mode. **For a more practical introduction, you might want to check out the next sections:**
+توفّر هذه الصفحة لمحة نظرية عن الوضع المتزامن (Concurent Mode) **إن كنت تريد مقّدمة عمليّة، يجدر بك الإطلاع على:**
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [استعمال Suspense لجلب البيانات](/docs/concurrent-mode-suspense.html) تشرح آلية جديدة لجلب البيانات في مكوّنات React.
+* [أنماط واجهات المستخدم المتزامنة (Concurrent UI Patterns)](/docs/concurrent-mode-patterns.html) تعرض بعض أنماط واجهات المستخدم أين يستعمل فيها الوضع المتزامن و Suspense.
+* [تبنّي الوضع المتزامن](/docs/concurrent-mode-adoption.html) تشرح كيفية استعمال الوضع المتزامن في مشروعك.
+* [واجهة الوضع المتزامن البرمجية (API reference)](/docs/concurrent-mode-reference.html) توثّق الواجهات البرمجية المستعملة في البنى التجربية.
 
-## What Is Concurrent Mode? {#what-is-concurrent-mode}
+## ماهو الوضع المتزامن? {#what-is-concurrent-mode}
 
-Concurrent Mode is a set of new features that help React apps stay responsive and gracefully adjust to the user's device capabilities and network speed.
+الوضع المتزامن هو مجموعة من الميزات التي تجعل من تطبيقات React متجاوبة ومتأقلمة مع إمكانيات جهاز المستخدم ونوعيّة (سرعة) اتصاله بالشبكة.
 
-These features are still experimental and are subject to change. They are not yet a part of a stable React release, but you can try them in an experimental build.
+هذه الميزات ﻻ زالت تجريبية وقابلة للتغيير. ولذلك ليست جزءًا من إصدارات React المستقرّة.
 
-## Blocking vs Interruptible Rendering {#blocking-vs-interruptible-rendering}
+## التصصير الإعتراضي (Blocking) والتصيير القابل للمقاطعة (Interruptible) {#blocking-vs-interruptible-rendering}
 
-**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into master so that other people can pull it.
+**سنستعمل إدارة الإصدارات كمثال لشرح الوضع المتزامن.** عند العمل في فريق، على الأغلب ستستعملون برنامج إدارة النسخ مثل Git وستعملون على فروع (branches). يمكنك دمج الفرع عندما يصبح جاهزا مع الفرع الرئيسي master حتى يسحبه الآخرون.
 
-Before version control existed, the development workflow was very different. There was no concept of branches. If you wanted to edit some files, you had to tell everyone not to touch those files until you've finished your work. You couldn't even start working on them concurrently with that person — you were literally *blocked* by them.
+كان مسار التطوير مختلفا جدا قبل نشأءة نظم إدارة النسخ، لم يكن هناك أي مفهوم للفروع. إن كنت تريد تعديل بعض الملفات، عليك أن تخبر الجميع بألا يلمسوها حتى تنهي عملك. ﻻ يمكنك حتى أن تبدأ في العمل عليها بالتزامن مع الشخص الذي *يعترضك* حرفيّا.
 
-This illustrates how UI libraries, including React, typically work today. Once they start rendering an update, including creating new DOM nodes and running the code inside components, they can't interrupt this work. We'll call this approach "blocking rendering".
+هذا ما يوضّح طريقة عمل مكتبات واجهات المستخدم بما فيها React. لمّا تشرع في تصصير تحديث ينجم عنه إنشاء عقد DOM وتشغيل الشيفرة داخل المكوّن، ﻻ يمكن مقاطعتها أثناء ذلك. سنسمّي هذا المفهوم "التصيير الإعتراضي".
 
-In Concurrent Mode, rendering is not blocking. It is interruptible. This improves the user experience. It also unlocks new features that weren't possible before. Before we look at concrete examples in the [next](/docs/concurrent-mode-suspense.html) [chapters](/docs/concurrent-mode-patterns.html), we'll do a high-level overview of new features.
+في الوضع المتزامن، التصيير ليس إعتراضيا بل هو قابل للمقاطعة. هذا سيحسّن تجربة المستخدم. وسيفتح الباب لمزيد من الميزات التي لم تكن ممكنة من قبل. قبل أن ننظر إلى أمثلة حقيقيّة في [الفقرات](/docs/concurrent-mode-suspense.html) [القادمة](/docs/concurrent-mode-patterns.html)، سنلقي نظرة سطحيّة على الميزات الجديدة.
 
-### Interruptible Rendering {#interruptible-rendering}
+### التصيير القابل للمقاطعة {#interruptible-rendering}
 
 Consider a filterable product list. Have you ever typed into a list filter and felt that it stutters on every key press? Some of the work to update the product list might be unavoidable, such as creating new DOM nodes or the browser performing layout. However, *when* and *how* we perform that work plays a big role.
 
