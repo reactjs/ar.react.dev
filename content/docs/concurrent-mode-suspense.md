@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-suspense
-title: التشويق لجلب البيانات (تجريبي)
+title: Suspense لجلب البيانات (تجريبي)
 permalink: docs/concurrent-mode-suspense.html
 prev: concurrent-mode-intro.html
 next: concurrent-mode-patterns.html
@@ -34,25 +34,25 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 </Suspense>
 ```
 
-ميزة التشويق لجلب البيانات هي ميزة جديدة تتيح لك أيضًا استخدام `<Suspense>`  **بشكل تعريفي "الانتظار" عن أي شيء آخر ، بما في ذلك البيانات.** تركز هذه الصفحة على حالة جلب البيانات ، لكن يمكنها أيضًا انتظار الصور أو النصوص أو أي أعمال أخرى غير متزامنة.
+ميزة Suspense لجلب البيانات هي ميزة جديدة تتيح لك أيضًا استخدام `<Suspense>`  **بشكل تعريفي "الانتظار" عن أي شيء آخر ، بما في ذلك البيانات.** تركز هذه الصفحة على حالة جلب البيانات ، لكن يمكنها أيضًا انتظار الصور أو النصوص أو أي أعمال أخرى غير متزامنة.
 
-- [ما هو التشويق ، بالضبط؟](#what-is-suspense-exactly)
-  - [ما التشويق ليس كذلك](#what-suspense-is-not)
-  - [ماذا يتيح لك التشويق القيام به](#what-suspense-lets-you-do)
-- [استخدام التشويق في الممارسة](#using-suspense-in-practice)
+- [ما هو Suspense ، بالضبط؟](#what-is-suspense-exactly)
+  - [ما Suspense ليس كذلك](#what-suspense-is-not)
+  - [ماذا يتيح لك Suspense القيام به](#what-suspense-lets-you-do)
+- [استخدام Suspense في الممارسة](#using-suspense-in-practice)
   - [ماذا لو لم أستخدم الترحيل؟](#what-if-i-dont-use-relay)
   - [لمؤلفي المكتبة](#for-library-authors)
-- [النهج التقليدية مقابل التشويق](#traditional-approaches-vs-suspense)
-  - [النهج 1: الجلب على التصيير (لا يستخدم التشويق)](#approach-1-fetch-on-render-not-using-suspense)
-  - [النهج 2: الجلب ثم التصيير (عدم استخدام التشويق)](#approach-2-fetch-then-render-not-using-suspense)
-  - [النهج 3: التصيير كما انت تجلب (باستخدام التشويق](#approach-3-render-as-you-fetch-using-suspense)
+- [النهج التقليدية مقابل Suspense](#traditional-approaches-vs-suspense)
+  - [النهج 1: الجلب على التصيير (لا يستخدم Suspense)](#approach-1-fetch-on-render-not-using-suspense)
+  - [النهج 2: الجلب ثم التصيير (عدم استخدام Suspense)](#approach-2-fetch-then-render-not-using-suspense)
+  - [النهج 3: التصيير كما انت تجلب (باستخدام Suspense)](#approach-3-render-as-you-fetch-using-suspense)
 - [البدء في الجلب المبكر](#start-fetching-early)
   - [ما زلنا نتفحص هذا الأمر](#were-still-figuring-this-out)
-- [التشويق و حالات التسابق](#suspense-and-race-conditions)
+- [Suspense و حالات التسابق](#suspense-and-race-conditions)
   - [حالات التسابق مع useEffect](#race-conditions-with-useeffect)
   - [حالات التسابق مع componentDidUpdate](#race-conditions-with-componentdidupdate)
   - [المشكلة](#the-problem)
-  - [حل حالات التسابق مع التشويق](#solving-race-conditions-with-suspense)
+  - [حل حالات التسابق مع Suspense](#solving-race-conditions-with-suspense)
 - [معالجة الأخطاء](#handling-errors)
 - [الخطوات التالية](#next-steps)
 
