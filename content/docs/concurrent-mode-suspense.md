@@ -56,9 +56,9 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 - [معالجة الأخطاء](#handling-errors)
 - [الخطوات التالية](#next-steps)
 
-## What Is Suspense, Exactly? {#what-is-suspense-exactly}
+## ما هو Suspense ، بالضبط؟ {#what-is-suspense-exactly}
 
-Suspense lets your components "wait" for something before they can render. In [this example](https://codesandbox.io/s/frosty-hermann-bztrp), two components wait for an asynchronous API call to fetch some data:
+يتيح Suspense لمكوناتك "الانتظار" لشيء ما قبل أن يتمكنوا من العرض. في [هذا المثال](https://codesandbox.io/s/frosty-hermann-bztrp) ، هناك مكونان ينتظران استدعاء API غير متزامن لجلب بعض البيانات:
 
 ```js
 const resource = fetchProfileData();
@@ -93,13 +93,13 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-This demo is a teaser. Don't worry if it doesn't quite make sense yet. We'll talk more about how it works below. Keep in mind that Suspense is more of a *mechanism*, and particular APIs like `fetchProfileData()` or `resource.posts.read()` in the above example are not very important. If you're curious, you can find their definitions right in the [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
+هذا العرض مجرد اعلان تشويقى. لا تقلق إذا لم يكن الأمر منطقيًا بعد. سنتحدث أكثر عن كيفية عمله أدناه. ضع في اعتبارك أن Suspense أكثر من *آلية* ، وأن واجهات برمجة التطبيقات المعينة مثل `fetchProfileData ()` أو `resource.posts.read ()` في المثال أعلاه ليست مهمة للغاية. إذا كنت مهتمًا بالفضول ، فيمكنك العثور على تعريفاتها في [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
 
-Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/en/experimental/step-by-step). We expect that other libraries like Apollo can provide similar integrations.
+Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب البيانات من المكتبات** للتواصل مع React بأن *البيانات التي يقرأها المكون ليست جاهزة بعد*. يمكن أن تنتظر React حتى تكون جاهزة وتحديث واجهة المستخدم. في Facebook ، نستخدم Relay و [new Suspense integration](https://relay.dev/docs/ar/experimental/step-by-step). نتوقع أن توفر مكتبات أخرى مثل Apollo تكاملات مماثلة.
 
-In the long term, we intend Suspense to become the primary way to read asynchronous data from components -- no matter where that data is coming from.
+على المدى الطويل ، نعتزم أن تصبح Suspense هي الطريقة الأساسية لقراءة البيانات غير المتزامنة من المكونات - بغض النظر عن مصدر هذه البيانات.
 
 ### What Suspense Is Not {#what-suspense-is-not}
 
