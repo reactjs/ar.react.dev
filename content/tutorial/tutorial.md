@@ -45,7 +45,7 @@ redirect_from:
 
 ### المتطلّبات الأساسيّة {#prerequisites}
 
-سنفترض أنّك متآلف مع HTML وJavaScript، ولكن يجب أن تكون قادرًا على المتابعة حتى ولو كنت قادمًا من لغة برمجة أخرى. سنفترض أنّك متآلف مع المفاهيم البرمجيّة مثل الدوال، والكائنات، والمصفوفات، وبدرجة أقل الأصناف.
+سنفترض أنّك متآلف مع HTML و JavaScript، ولكن يجب أن تكون قادرًا على المتابعة حتى ولو كنت قادمًا من لغة برمجة أخرى. سنفترض أنّك متآلف مع المفاهيم البرمجيّة مثل الدوال، والكائنات، والمصفوفات، وبدرجة أقل الأصناف.
 
 إن احتجت لمراجعة JavaScript نوصيك بالرجوع إلى [مستندات JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) في موسوعة MDN. لاحظ أنّنا نستخدم بعض الميزات من ES6، وهي إصدار جديد من JavaScript. سنستخدم في هذا الدليل [الدوال السهمية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)، [الأصناف](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)، والتصريحين [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) و [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const). بإمكانك استخدام [Babel REPL](babel://es5-syntax-example) لتتحقّق إلى ماذا تُصرَّف شيفرة ES6.
 
