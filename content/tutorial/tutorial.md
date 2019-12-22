@@ -16,7 +16,7 @@ redirect_from:
 
 ## قبل أن نبدأ بالدليل التطبيقي {#before-we-start-the-tutorial}
 
-سنبني لعبة صغيرة خلال هذا الدليل التطبيقي. **ربّما قد ترغب بتخطي هذا الدليل لأنّك لا تريد بناء الألعاب، ولكن أعطيها فرصة.** إنّ التقنيات التي ستتعلمها في هذا الدليل أساسيّة لبناء أي تطبيق React، وسيعطيك إتقانها فهمًا أعمق لمكتبة React.
+سنبني لعبة صغيرة خلال هذا الدليل التطبيقي. **ربّما قد ترغب بتخطي هذا الدليل لأنّك لا تريد بناء الألعاب، ولكن أعطه فرصة.** إنّ التقنيات التي ستتعلمها في هذا الدليل أساسيّة لبناء أي تطبيق React، وسيعطيك إتقانها فهمًا أعمق لمكتبة React.
 
 >نصيحة
 >
@@ -26,12 +26,12 @@ redirect_from:
 
 * يُعطيك قسم [الإعداد من أجل الدليل التطبيقي](#setup-for-the-tutorial) **نقطة بداية** لمتابعة الدليل.
 * يُعلّمك قسم [لمحة عامّة](#overview) **أساسيات** React: المكوّنات، والخاصيّات، والحالة.
-* يُعلِّمك قسم [إكمال اللعبة](#completing-the-game) **أكثر التقنيات إستعمالا** في تطوير React.
+* يُعلِّمك قسم [إكمال اللعبة](#completing-the-game) **أكثر التقنيات استعمالا** في تطوير React.
 * يُعطيك قسم [إضافة السفر عبر الزمن](#adding-time-travel) **نظرة أعمق** إلى نقاط القوة الفريدة لمكتبة React.
 
 لا يجب عليك إكمال جميع الأقسام دفعة واحدة للحصول على الفائدة المرجوة من هذا الدليل. حاول الذهاب أبعد ما يمكن حتى ولو كان قسمًا أو قسمين.
 
-لا بأس من نسخ ولصق الشيفرة عند متابعتك مع هذا الدليل، ولكن نوصي أن تكتبها بيدك. سيُساعدك ذلك بتطوير ذاكرتك وبإعطائك فهمًا أعمق لمكتبة React.
+لا بأس من نسخ ولصق الشيفرة عند متابعتك هذا الدليل، ولكن نوصي أن تكتبها بيدك. سيُساعدك ذلك بتطوير ذاكرتك وبإعطائك فهمًا أعمق لمكتبة React.
 
 ###ماذا سنبني؟ {#what-are-we-building}
 
@@ -47,7 +47,7 @@ redirect_from:
 
 سنفترض أنّك متآلف مع HTML و JavaScript، ولكن يجب أن تكون قادرًا على المتابعة حتى ولو كنت قادمًا من لغة برمجة أخرى. سنفترض أنّك متآلف مع المفاهيم البرمجيّة مثل الدوال، والكائنات، والمصفوفات، وبدرجة أقل الأصناف.
 
-إن احتجت لمراجعة JavaScript نوصيك بالرجوع إلى [مستندات JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) في موسوعة حسوب. لاحظ أنّنا نستخدم بعض الميزات من ES6، وهي إصدار جديد من JavaScript. سنستخدم في هذا الدليل [الدوال السهمية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)، [الأصناف](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)، والتصريحين [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) و [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const). بإمكانك استخدام [Babel REPL](babel://es5-syntax-example) لتتحقّق إلى ماذا تُصرَّف شيفرة ES6.
+إن احتجت لمراجعة JavaScript نوصيك بالرجوع إلى [مستندات JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) في موسوعة MDN. لاحظ أنّنا نستخدم بعض الميزات من ES6، وهي إصدار جديد من JavaScript. سنستخدم في هذا الدليل [الدوال السهمية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)، [الأصناف](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)، والتصريحين [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) و [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const). بإمكانك استخدام [Babel REPL](babel://es5-syntax-example) لتتحقّق إلى ماذا تُصرَّف شيفرة ES6.
 
 ## الإعداد من أجل الدليل {#setup-for-the-tutorial}
 
@@ -98,7 +98,7 @@ cd ..
 
 1. أضف ملفًّا يُدعى `index.css` في المجلّد `src/`‎ مع [وضع شيفرة CSS هذه ضمنه](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
 
-2. أضف ملفًّا يُدعى `index.js` في المجلّد `src/`‎ مع [ضع شيفرة JavaScript هذه ضمنه](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
+2. أضف ملفًّا يُدعى `index.js` في المجلّد `src/`‎ مع [وضع شيفرة JavaScript هذه ضمنه](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
 
 3. أضف هذه الأسطر الثلاثة إلى بداية الملف `index.js` في المجلّد `src/`‎:
 
@@ -116,11 +116,11 @@ import './index.css';
 
 ### ساعدني، أنا عالق! {#help-im-stuck}
 
-إن وجدت أيّة صعوبات، تحقّق من [مصادر مجتمع React](/community/support.html)، بالأخص [دردشة Reactiflux](https://discord.gg/reactiflux) هي طريقة رائعة للحصول على المساعدة بسرعة. إن لم تتلقى أي إجابة أو بقيت عالقًا عند مشكلة ما، يُرجى تقديم المشكلة وسنساعدك في حلّها.
+إن وجدت أيّة صعوبات، تحقّق من [مصادر مجتمع React](/community/support.html)، بالأخص [دردشة Reactiflux](https://discord.gg/reactiflux) فهي طريقة رائعة للحصول على المساعدة بسرعة. إن لم تتلقى أي إجابة أو بقيت عالقًا عند مشكلة ما، يُرجى تقديم المشكلة وسنساعدك في حلّها.
 
 ## لمحة عامّة {#overview}
 
-الآن بعد أن قمت بالإعداد ، دعنا نلقي نظرة عامة على React!
+الآن بعد أن قمت بالإعداد، دعنا نلقي نظرة عامة على React!
 
 ### ما هي React؟ {#what-is-react}
 
@@ -149,7 +149,7 @@ class ShoppingList extends React.Component {
 
 سنتحدّث قريبًا عن هذه العناصر التي تشبه عناصر XML. نستخدم المكوّنات لنخبر React ما الذي نرغب برؤيته على الشاشة. عندما تتغيّر بياناتنا ستُحدِّث React بكفاءة وتُعيد تصيير مكوّناتنا.
 
-في المثال السابق ShoppingList هي **مكوّن React على شكل صنف**، وهي **من نوع المكوّنات في React**. يأخذ المكوّن مُعامِلات تُدعى الخاصيّات `props` (اختصارًا للكلمة "properties")، وتُعيد تسلسل هيكلي من المشاهد التي يجب عرضها عبر التابع `render`.
+في المثال السابق ShoppingList هو **مكوّن React على شكل صنف**، وهو **من نوع المكوّنات في React**. يأخذ المكوّن مُعامِلات تُدعى الخاصيّات `props` (اختصارًا للكلمة "properties")، وتُعيد تسلسل هيكلي من المشاهد التي يجب عرضها عبر التابع `render`.
 
 يُعيد تابع التصيير `render` وصفًا لما ترغب برؤيته على الشاشة. تأخذ React الوصف وتعرض النتيجة. يُعيد التابع `render` بشكلٍ خاص **عنصر React**، والذي هو وصف بسيط لما ترغب بتصييره. يستخدم معظم مطوري React صياغة خاصّة تُدعى "JSX" والتي تُسهِّل عمليّة كتابة مثل هذه البُنى. فمثلًا تُحوَّل الصياغة `<div />` في زمن البناء إلى `React.createElement('div')`. يُكافِئ المثال السابق ما يلي:
 
@@ -222,7 +222,7 @@ class Square extends React.Component {
 
 تهانينا! لقد "مرّرت الآن خاصيّة `prop`" من المكوّن `Board` الأب إلى المكوّن `Square` الابن. تمرير الخاصيّات هو طريقة عبور المعلومات في تطبيقات React، من المكوّنات الآباء إلى المكوّنات الأبناء.
 
-### صنع مكوّن تفاعلي{#making-an-interactive-component}
+### صنع مكوّن تفاعلي {#making-an-interactive-component}
 
 فلنملأ المكوّن `Square` بإشارة "X" عند النقر عليه. فلنغيّر أولًا العنصر `button` الذي يُعاد من تابع التصيير الخاص بالمكوّن `Square` إلى ما يلي:
 
@@ -258,7 +258,7 @@ class Square extends React.Component {
 >
 >لاحظ كيف في الشيفرة ‎`onClick={() => alert('نقرة')}`‎ نقوم بتمرير *دالة* إلى الخاصيّة `onClick`. وهي تُطلَق فقط عند النقر. من الشائع نسيان `() =>` وكتابة ‎`onClick={alert('نقرة')}`‎، والذي يُؤدّي إلى إطلاق التحذير في كل مرّة يُعاد فيها تصيير المكوّن.
 
-في الخطوة التالية سنريد من المكوّن `Square` أن يتذكر أنّه نُقِر عليه وأن يملأ نفسه بالعلامة `X`. لتذكر الأشياء تستخدم المكوّنات الحالة **state**.
+في الخطوة التالية نريد من المكوّن `Square` أن يتذكر أنّه نُقِر عليه وأن يملأ نفسه بالعلامة `X`. لتذكر الأشياء تستخدم المكوّنات الحالة **state**.
 
 تستطيع مكوّنات React أن تمتلك حالة عن طريق تعيين `this.state` في الدالة البانية لها. يجب اعتبار `this.state` خاصّة (private) بالنسبة لمكوّن React المُعرَّفة ضمنه. فلنُخزِّن القيمة الحاليّة للمربّع في `this.state` ونُغيّرها عند النقر عليه.
 
