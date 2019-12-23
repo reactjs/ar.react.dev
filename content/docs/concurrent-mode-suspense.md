@@ -101,15 +101,15 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 على المدى الطويل ، نعتزم أن تصبح Suspense هي الطريقة الأساسية لقراءة البيانات غير المتزامنة من المكونات - بغض النظر عن مصدر هذه البيانات.
 
-### What Suspense Is Not {#what-suspense-is-not}
+### ما Suspense ليس كذلك {#what-suspense-is-not}
 
-Suspense is significantly different from existing approaches to these problems, so reading about it for the first time often leads to misconceptions. Let's clarify the most common ones:
+يختلف Suspense بشكل كبير عن النهج الحالية لهذه المشكلات ، لذلك غالباً ما تؤدي القراءة عنها لأول مرة إلى مفاهيم خاطئة. دعنا نوضح الأكثر شيوعًا:
 
- * **It is not a data fetching implementation.** It does not assume that you use GraphQL, REST, or any other particular data format, library, transport, or protocol.
+* **ليس تطبيقًا لجلب البيانات.** لا يفترض أنك تستخدم GraphQL أو REST أو أي تنسيق بيانات أو مكتبة أو نقل أو بروتوكول معين آخر.
 
- * **It is not a ready-to-use client.** You can't "replace" `fetch` or Relay with Suspense. But you can use a library that's integrated with Suspense (for example, [new Relay APIs](https://relay.dev/docs/en/experimental/api-reference)).
+* **ليس عميلًا جاهزًا للاستخدام.** لا يمكنك "استبدال" `fetch` أو Relay مع Suspense. ولكن يمكنك استخدام مكتبة مدمجة مع Suspense (على سبيل المثال ، [واجهات برمجة تطبيقات Relay جديدة](https://relay.dev/docs/en/experimental/api-reference)).
 
- * **It does not couple data fetching to the view layer.** It helps orchestrate displaying the loading states in your UI, but it doesn't tie your network logic to React components.
+ * **لا يقترن البيانات التي تجلب إلى طبقة العرض.** إنها تساعد في تنظيم عرض حالات التحميل في واجهة المستخدم الخاصة بك ، لكنها لا تربط منطق الشبكة الخاص بك بمكونات React.
 
 ### What Suspense Lets You Do {#what-suspense-lets-you-do}
 
