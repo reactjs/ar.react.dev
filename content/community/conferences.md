@@ -32,6 +32,11 @@ redirect_from:
 
 [موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
+### Reactathon 2020 {#reactathon-2020}
+March 30 - 31, 2020 in San Francisco, CA
+
+[Website](https://www.reactathon.com) - [Twitter](https://twitter.com/reactathon) - [Facebook](https://www.facebook.com/events/575942819854160/)
+
 ### React Summit Amsterdam 2020 {#react-summit-2020}
 15-17 أبريل 2020 في أمستردام ، هولندا
 
@@ -50,7 +55,11 @@ redirect_from:
 ### render(ATL) 2020 {#render-atlanta-2020}
 4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
 
+<<<<<<< HEAD
 [موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) 
+=======
+[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/)
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
 
 ### ReactEurope 2020 {#reacteurope-2020}
 14-15 مايو 2020 في باريس ، فرنسا
@@ -65,7 +74,11 @@ redirect_from:
 ### React Next 2020 {#react-next-2020}
 يونيو 15, 2020. تل أبيب، إسرائيل.
 
+<<<<<<< HEAD
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/) 
+=======
+[Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/)
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
 
 ### React Loop 2020 {#react-loop-2020}
 19 يونيو ، 2020. شيكاغو ، إلينوي ، الولايات المتحدة الأمريكية.
@@ -75,7 +88,11 @@ redirect_from:
 ### React Week NY 2020 {#react-week-ny-2020}
 17 يوليو ، 2020. مدينة نيويورك ، الولايات المتحدة الأمريكية.
 
+<<<<<<< HEAD
 [موقع الواب](https://reactweek.nyc/) - [تويتر](https://twitter.com/reactweek) - [فيس بوك](https://www.facebook.com/reactweek) 
+=======
+[Website](https://reactweek.nyc/) - [Twitter](https://twitter.com/reactweek) - [Facebook](https://www.facebook.com/reactweek)
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
 
 
 ## المؤتمرات السابقة {#past-conferences}
@@ -417,8 +434,13 @@ redirect_from:
 
 [موقع الواب](https://www.reactrally.com/) - [تويتر](https://twitter.com/ReactRally) - [انستقرام](https://www.instagram.com/reactrally/)
 
+<<<<<<< HEAD
 ### React Conf Iran 2019 {#react-conf-iran-2019}	
 29 أغسطس 2019. طهران ، إيران.  
+=======
+### React Conf Iran 2019 {#react-conf-iran-2019}
+August 29, 2019. Tehran, Iran.
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
 
 [موقع الواب](https://reactconf.ir/) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PL-VNqZFI5Nf-Nsj0rD3CWXGPkH-DI_0VY) - [Highlights](https://github.com/ReactConf/react-conf-highlights)
 
@@ -468,6 +490,12 @@ redirect_from:
 [موقع الواب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
 
 ### React Conf Brasil 2019 {#react-conf-2019}
+<<<<<<< HEAD
 19 أكتوبر 2019 في ساو باولو ، البرازيل
 
 [موقع الواب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [Slack](https://react.now.sh/)
+=======
+October 19, 2019 in São Paulo, BR
+
+[Website](https://reactconf.com.br/) - [Twitter](https://twitter.com/reactconfbr) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Slack](https://react.now.sh/)
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
