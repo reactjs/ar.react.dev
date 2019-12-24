@@ -111,15 +111,15 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
  * **لا يقترن البيانات التي تجلب إلى طبقة العرض.** إنها تساعد في تنظيم عرض حالات التحميل في واجهة المستخدم الخاصة بك ، لكنها لا تربط منطق الشبكة الخاص بك بمكونات React.
 
-### What Suspense Lets You Do {#what-suspense-lets-you-do}
+### ماذا يتيح لك Suspense القيام به {#what-suspense-lets-you-do}
 
-So what's the point of Suspense? There's a few ways we can answer this:
+إذن ما هي الفائدة من Suspense؟ هناك بعض الطرق التي يمكننا من خلالها الإجابة عن هذا:
 
-* **It lets data fetching libraries deeply integrate with React.** If a data fetching library implements Suspense support, using it from React components feels very natural.
+* **يتيح دمج مكتبات جلب البيانات بعمق مع React.** إذا نفذت مكتبة جلب البيانات دعم Suspense ، فسيكون استخدامه من مكونات React طبيعيًا للغاية.
 
-* **It lets you orchestrate intentionally designed loading states.** It doesn't say _how_ the data is fetched, but it lets you closely control the visual loading sequence of your app.
+* **يتيح لك تنظيم حالات التحميل المصممة عن عمد.** إنه لا يقول _how_ يتم جلب البيانات ، لكنه يتيح لك التحكم عن قرب في تسلسل التحميل المرئي لتطبيقك.
 
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it was already loaded.
+* **يساعدك على تجنب حالات التسابق.** حتى مع وجود `await`، غالبًا ما يكون الكود الغير متزامن عرضة للخطأ. يبدو Suspense أكثر مثل قراءة البيانات *بشكل متزامن* - كما لو تم تحميلها بالفعل.
 
 ## Using Suspense in Practice {#using-suspense-in-practice}
 
