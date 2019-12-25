@@ -36,7 +36,7 @@ permalink: docs/react-dom.html
 ReactDOM.render(element, container[, callback])
 ```
 
-يُصيّر عنصر React إلى DOM ضمن الحاوية المذكورة بالوسيط `container` ويُعيد [مرجعًا](/docs/more-about-refs.html) إلى المكوّن (أو يُعيد `null` [للمكوّنات التي بدون حالة](/docs/components-and-props.html#functional-and-class-components)).
+يُصيّر عنصر React إلى DOM ضمن الحاوية المذكورة بالوسيط `container` ويُعيد [مرجعًا](/docs/more-about-refs.html) إلى المكوّن (أو يُعيد `null` [للمكوّنات التي بدون حالة](/docs/components-and-props.html#function-and-class-components)).
 
 إن كان عنصر React مُصيَّر سابقًا إلى الحاوية`container`, فسيُجري تحديثًا عليه ويُعدِّل DOM فقط كما هو ضروري ليعكس آخر تحديثات عنصر React.
 

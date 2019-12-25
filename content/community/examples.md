@@ -9,6 +9,7 @@ permalink: community/examples.html
 هُناك الكثير من الأمثلة على مشاريع صُنِعت من قِبَل مُجتمع React. لا تتردد في إضافة مشروعك. إن قُمت بإضافة مشروع الرجّاء الإلتزام بتحديثه لأحدث الاصدارات من React.
 
 
+* **[Zeldog](https://yannsainty.github.io/Zeldog/)** لعبة شبيهة للعبة Zelda
 * **[Calculator](https://github.com/ahfarmer/calculator)** تنفيذ مُطابق للآلة الحاسبة على نظام تشغيل iOS باستخدام React
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React بسيط للبحث عن الرموز التعبيرية  "emojis"
 * **[Github Battle App](https://tm.dev/react-course-project/)** حارِب مُستخدما GitHub لرؤية من لديه مشاريع GitHub الأكثر شهره في أي لُغة.

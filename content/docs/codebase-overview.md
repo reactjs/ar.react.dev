@@ -216,7 +216,7 @@ module.exports = ReactHostComponent;
 
 ### نظام الأحداث {#event-system}
 
-يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/react-events`](https://github.com/facebook/react/tree/master/packages/react-events).
+يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events).
 
 يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
 

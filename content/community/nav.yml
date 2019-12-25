@@ -2,6 +2,8 @@
   items:
     - id: support
       title: الدعم
+    - id: team
+      title: الفريق
     - id: courses
       title: الدروس
     - id: examples
