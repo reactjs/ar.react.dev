@@ -79,7 +79,7 @@ import("./math").then(math => {
 });
 ```
 
-عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App, فهذا الإعداد موجود لديك مُسبقًا
+عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App، فهذا الإعداد موجود لديك مُسبقًا
 و [تستطيع استخدامه مباشرةً](https://facebook.github.io/create-react-app/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
 إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة
