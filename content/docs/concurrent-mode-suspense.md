@@ -721,16 +721,16 @@ function ProfilePage() {
 
 سيؤدي ذلك إلى التقاط أخطاء التصيير *و* الأخطاء من جلب بيانات Suspense. يمكن أن يكون لدينا أكبر عدد ممكن من حدود الخطأ ، لكن من الأفضل أن [تكون مقصودًا](https://aweary.dev/fault-tolerance-react/)  حول موضعها.
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-We've now covered the basics of Suspense for Data Fetching! Importantly, we now better understand *why* Suspense works this way, and how it fits into the data fetching space.
+لقد قمنا الآن بتغطية أساسيات "Suspense لجلب البيانات"! الأهم من ذلك ، أننا نفهم الآن بشكل أفضل * لماذا* يعمل Suspense بهذه الطريقة ، وكيف يلائم مساحة جلب البيانات.
 
-Suspense answers some questions, but it also poses new questions of its own:
+يجيب التشويق على بعض الأسئلة ، لكنه يطرح أيضًا أسئلة جديدة خاصة به:
 
-* If some component "suspends", does the app freeze? How to avoid this?
-* What if we want to show a spinner in a different place than "above" the component in a tree?
-* If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
-* Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
-* Why does our [last Suspense example](https://codesandbox.io/s/infallible-feather-xjtbu) log a warning when clicking the "Next" button?
+* إذا تم *تعليق* بعض المكونات ، هل يتجمد التطبيق؟ كيفية تجنب هذا؟
+* ماذا لو أردنا إظهار مغزل في مكان مختلف عن "أعلى" المكون في شجرة؟
+* إذا *أردنا* عن قصد إظهار واجهة مستخدم غير متسقة لفترة زمنية قصيرة ، هل يمكننا القيام بذلك؟
+* بدلاً من إظهار spinner ، هل يمكننا إضافة مؤثر بصري مثل "شطب" الشاشة الحالية؟
+* لماذا يقوم [مثال Suspense الأخير](https://codesandbox.io/s/infallible-feather-xjtbu) بتسجيل تحذير عند النقر فوق الزر "التالي"؟
 
-To answer these questions, we will refer to the next section on [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+للإجابة على هذه الأسئلة ، سوف نشير إلى القسم التالي في [أنماط واجهة المستخدم المتزامنة](/ docs / concurrent-mode-patterns.html).
