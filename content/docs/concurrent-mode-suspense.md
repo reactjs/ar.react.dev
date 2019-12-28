@@ -121,27 +121,27 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 * **يساعدك على تجنب حالات التسابق.** حتى مع وجود `await`، غالبًا ما يكون الكود الغير متزامن عرضة للخطأ. يبدو Suspense أكثر مثل قراءة البيانات *بشكل متزامن* - كما لو تم تحميلها بالفعل.
 
-## Using Suspense in Practice {#using-suspense-in-practice}
+## استخدام Suspense في الممارسة {#using-suspense-in-practice}
 
-At Facebook, so far we have only used the Relay integration with Suspense in production. **If you're looking for a practical guide to get started today, [check out the Relay Guide](https://relay.dev/docs/en/experimental/step-by-step)!** It demonstrates patterns that have already worked well for us in production.
+في فيسبوك، استخدمنا حتى الآن تكامل Relay مع Suspense في الإنتاج. **إذا كنت تبحث عن دليل عملي للبدء اليوم ، [راجع دليل Relay ](https://relay.dev/docs/en/experimental/step-by-step)!** إنه يوضح الأنماط التي عملت بالفعل بشكل جيد بالنسبة لنا في الإنتاج.
 
-**The code demos on this page use a "fake" API implementation rather than Relay.** This makes them easier to understand if you're not familiar with GraphQL, but they won't tell you the "right way" to build an app with Suspense. This page is more conceptual and is intended to help you see *why* Suspense works in a certain way, and which problems it solves.
+**يستخدم الكود التجريبي في هذه الصفحة API "وهمية" بدلاً من Relay.** هذا يجعلها أسهل للفهم إذا لم تكن معتادًا على GraphQL ، لكنها لن تخبرك "بالطريقة الصحيحة" لبناء التطبيق مع التشويق. هذه الصفحة أكثر تصوريًا وتهدف إلى مساعدتك في معرفة *لماذا* يعمل Suspense بطريقة معينة، والمشكلات التي يحلها
 
-### What If I Don't Use Relay? {#what-if-i-dont-use-relay}
+### ماذا لو لم أستخدم Relay؟ {#what-if-i-dont-use-relay}
 
-If you don't use Relay today, you might have to wait before you can really try Suspense in your app. So far, it's the only implementation that we tested in production and are confident in.
+إذا كنت لا تستخدم Relay اليوم ، فقد تضطر إلى الانتظار حتى تتمكن من تجربة Suspense في تطبيقك. حتى الآن، إنه التطبيق الوحيد الذي اختبرناه في الإنتاج ونثق فيه.
 
-Over the next several months, many libraries will appear with different takes on Suspense APIs. **If you prefer to learn when things are more stable, you might prefer to ignore this work for now, and come back when the Suspense ecosystem is more mature.**
+خلال الأشهر القليلة المقبلة ، ستظهر العديد من المكتبات بأشكال مختلفة على Suspense APIs. **إذا كنت تفضل أن تتعلم عندما تكون الأمور أكثر استقرارًا ، فقد تفضل تجاهل هذا العمل في الوقت الحالي ، والعودة عندما يكون نظام Suspense البيئي أكثر نضجًا.**
 
-You can also write your own integration for a data fetching library, if you'd like.
+يمكنك أيضًا كتابة تكاملك الخاص لمكتبة جلب البيانات ، إذا كنت تريد ذلك.
 
-### For Library Authors {#for-library-authors}
+### لمؤلفي المكتبة {#for-library-authors}
 
-We expect to see a lot of experimentation in the community with other libraries. There is one important thing to note for data fetching library authors.
+نتوقع أن نرى الكثير من التجارب في المجتمع مع المكتبات الأخرى. هناك شيء واحد مهم يجب مراعاته لمؤلفي جلب البيانات.
 
-Although it's technically doable, Suspense is **not** currently intended as a way to start fetching data when a component renders. Rather, it lets components express that they're "waiting" for data that is *already being fetched*. **[Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) describes why this matters and how to implement this pattern in practice.**
+على الرغم من أنه قابل للتنفيذ من الناحية الفنية ، إلا أن Suspense  **غير** المقصود حاليًا كوسيلة لبدء جلب البيانات عند عرض مكون. بدلاً من ذلك ، يتيح للمكونات التعبير عن "انتظارها" للبيانات التي *يتم جلبها بالفعل*.**[Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) يشرح سبب أهمية هذا الأمر وكيفية تنفيذ هذا النمط في الممارسة العملية.**
 
-Unless you have a solution that helps prevent waterfalls, we suggest to prefer APIs that favor or enforce fetching before render. For a concrete example, you can look at how [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) enforces preloading. Our messaging about this hasn't been very consistent in the past. Suspense for Data Fetching is still experimental, so you can expect our recommendations to change over time as we learn more from production usage and understand the problem space better.
+ما لم يكن لديك حل يساعد على منع الشلالات ، فإننا نقترح تفضيل واجهات برمجة التطبيقات (APIs) التي تفضل أو تجلب الجلب قبل التصيير. للحصول على مثال ملموس ، يمكنك إلقاء نظرة على كيفية قيام [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) بفرض عملية التحميل المسبق. لم تكن رسائلنا حول هذا الأمر متسقة للغاية في الماضي. لا يزال التشويق في جلب البيانات تجريبيًا ، لذا يمكنك توقع تغيير توصياتنا بمرور الوقت لأننا نتعلم المزيد من استخدام الإنتاج ونفهم مساحة المشكلة بشكل أفضل.
 
 ## Traditional Approaches vs Suspense {#traditional-approaches-vs-suspense}
 
