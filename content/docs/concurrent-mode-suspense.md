@@ -437,11 +437,11 @@ Suspense نفسه كآلية مرنة وليس لديها العديد من ال
 
 Relay له إجاباته الخاصة على بعض هذه الأسئلة. من المؤكد أن هناك أكثر من طريقة واحدة للقيام بذلك ، ونحن متحمسون لرؤية الأفكار الجديدة التي يطرحها مجتمع React.
 
-## Suspense and Race Conditions {#suspense-and-race-conditions}
+## Suspense و حالات التسابق {#suspense-and-race-conditions}
 
-Race conditions are bugs that happen due to incorrect assumptions about the order in which our code may run. Fetching data in the `useEffect` Hook or in class lifecycle methods like `componentDidUpdate` often leads to them. Suspense can help here, too — let's see how.
+ظروف السباق هي أخطاء تحدث بسبب افتراضات غير صحيحة حول الترتيب الذي قد يتم به تشغيل الكود. جلب البيانات في useEffect` Hook` أو في أساليب دورة حياة الكلاس مثل` componentDidUpdate` غالبًا ما يؤدي إليهم. يمكن أن يساعد التشويق هنا أيضًا - دعنا نرى كيف.
 
-To demonstrate the issue, we will add a top-level `<App>` component that renders our `<ProfilePage>` with a button that lets us **switch between different profiles**:
+لإثبات المشكلة ، سنضيف مكونًا من نوع `<App> `من المستوى الأعلى يصيير `<ProfofilePage>` الخاص بنا - باستخدام زر يتيح لنا **التبديل بين ملفات تعريف مختلفة**:
 
 ```js{9-11}
 function getNextId(id) {
@@ -461,11 +461,11 @@ function App() {
 }
 ```
 
-Let's compare how different data fetching strategies deal with this requirement.
+دعونا نقارن كيف تتعامل استراتيجيات جلب البيانات المختلفة مع هذا المطلب.
 
-### Race Conditions with `useEffect` {#race-conditions-with-useeffect}
+### حالات التسابق مع `useEffect` {#race-conditions-with-useeffect}
 
-First, we'll try a version of our original "fetch in effect" example. We'll modify it to pass an `id` parameter from the `<ProfilePage>` props to `fetchUser(id)` and `fetchPosts(id)`:
+أولاً ، سنحاول إصدار مثال "fetch in effect" الأصلي. سنقوم بتعديلها لتمرير معلمة `id` من الدعائم `<ProfilePage>` إلى `fetchUser (id)` و `fetchPosts (id)`:
 
 ```js{1,5,6,14,19,23,24}
 function ProfilePage({ id }) {
@@ -506,19 +506,19 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
 
-Note how we also changed the effect dependencies from `[]` to `[id]` — because we want the effect to re-run when the `id` changes. Otherwise, we wouldn't refetch new data.
+لاحظ كيف غيّرنا أيضًا تبعيات التأثير من `[]` إلى `[id]` - لأننا نريد إعادة تشغيل التأثير عندما يتغير `id`. خلاف ذلك ، لن نقوم بإعادة تعيين بيانات جديدة.
 
-If we try this code, it might seem like it works at first. However, if we randomize the delay time in our "fake API" implementation and press the "Next" button fast enough, we'll see from the console logs that something is going very wrong. **Requests from the previous profiles may sometimes "come back" after we've already switched the profile to another ID -- and in that case they can overwrite the new state with a stale response for a different ID.**
+إذا جربنا هذا الكود، فقد يبدو أنه يعمل في البداية. ومع ذلك ، إذا قمنا بشكل عشوائي بوقت التأخير في تطبيق "API المزيف" الخاص بنا واضغطنا على الزر "التالي" بسرعة كافية ، فسوف نرى من سجلات وحدة التحكم أن هناك خطأ ما. **طلبات الملفات الشخصية السابقة قد "تعود" أحيانًا بعد أن قمنا بالفعل بتحويل الملف الشخصي إلى معرف آخر - وفي هذه الحالة يمكنهم الكتابة فوق الحالة الجديدة باستجابة قديمة لid مختلف.**
 
-This problem is possible to fix (you could use the effect cleanup function to either ignore or cancel stale requests), but it's unintuitive and difficult to debug.
+من الممكن إصلاح هذه المشكلة (يمكنك استخدام وظيفة تنظيف التأثير إما لتجاهل أو إلغاء الطلبات التي لا معنى لها) ، ولكنها غير سهلة ويصعب تصحيحها.
 
-### Race Conditions with `componentDidUpdate` {#race-conditions-with-componentdidupdate}
+### حالات التسابق مع `componentDidUpdate` {#race-conditions-with-componentdidupdate}
 
-One might think that this is a problem specific to `useEffect` or Hooks. Maybe if we port this code to classes or use convenient syntax like `async` / `await`, it will solve the problem?
+قد يعتقد المرء أن هذه مشكلة خاصة بـ `useEffect` أو Hooks. ربما إذا قمنا بتوصيل هذا الكود إلى classes أو استخدم بناء جملة مناسب مثل `async` / `await` ، فهل سيحل المشكلة؟
 
-Let's try that:
+لنجرب ذلك:
 
 ```js
 class ProfilePage extends React.Component {
@@ -584,19 +584,19 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
 
-This code is deceptively easy to read.
+هذا الكود سهل القراءة بشكل خادع.
 
-Unfortunately, neither using a class nor the `async` / `await` syntax helped us solve this problem. This version suffers from exactly the same race conditions, for the same reasons.
+لسوء الحظ ، لم يساعدنا استخدام هذا الكلاس أو بناء جملة `async` / `await`. هذا الإصدار يعاني من نفس حالات التسابق بالضبط ، لنفس الأسباب.
 
-### The Problem {#the-problem}
+### المشكلة {#the-problem}
 
-React components have their own "lifecycle". They may receive props or update state at any point in time. However, each asynchronous request *also* has its own "lifecycle". It starts when we kick it off, and finishes when we get a response. The difficulty we're experiencing is "synchronizing" several processes in time that affect each other. This is hard to think about.
+مكونات React لها "دورة حياة" خاصة بها. قد يتلقون props أو حالة التحديث في أي وقت من الأوقات. ومع ذلك ، يحتوي كل طلب غير متزامن *أيضًا* على "دورة حياة" خاصة به. يبدأ عندما نبدأ تشغيله ، وينتهي عندما نتلقى ردًا. الصعوبة التي نواجهها هي "مزامنة" العديد من العمليات في الوقت المناسب التي تؤثر على بعضها البعض. هذا صعب التفكير فيه.
 
-### Solving Race Conditions with Suspense {#solving-race-conditions-with-suspense}
+### حل حالات التسابق مع Suspense {#solving-race-conditions-with-suspense}
 
-Let's rewrite this example again, but using Suspense only:
+دعنا نعيد كتابة هذا المثال مرة أخرى ، ولكن باستخدام Suspense فقط:
 
 ```js
 const initialResource = fetchProfileData(0);
@@ -644,9 +644,9 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-In the previous Suspense example, we only had one `resource`, so we held it in a top-level variable. Now that we have multiple resources, we moved it to the `<App>`'s component state:
+في مثال Suspense السابق ، لم يكن لدينا سوى مورد واحد ، لذلك احتفظنا به في متغير المستوى الأعلى. الآن بعد أن أصبح لدينا موارد متعددة ، قمنا بنقلها إلى حالة مكون `<App>`:
 
 ```js{4}
 const initialResource = fetchProfileData(0);
@@ -655,7 +655,7 @@ function App() {
   const [resource, setResource] = useState(initialResource);
 ```
 
-When we click "Next", the `<App>` component kicks off a request for the next profile, and passes *that* object down to the `<ProfilePage>` component:
+عندما نقر على "التالي" ، يبدأ المكون `<App>` في طلب الحصول على ملف التعريف التالي ، ويمرر * هذا* الكائن  وصولاً إلى المكون `<ProfilePage>`:
 
 ```js{4,8}
   <>
@@ -669,9 +669,9 @@ When we click "Next", the `<App>` component kicks off a request for the next pro
   </>
 ```
 
-Again, notice that **we're not waiting for the response to set the state. It's the other way around: we set the state (and start rendering) immediately after kicking off a request**. As soon as we have more data, React "fills in" the content inside `<Suspense>` components.
+مرة أخرى ، لاحظ أن ** حن لا ننتظر الرد لضبط الحالة. إنها الطريقة الأخرى: قمنا بتعيين الحالة (وبدء التصيير) فور إتمام الطلب**. بمجرد أن يتوفر لدينا المزيد من البيانات ، React "يملأ" المحتوى الموجود داخل مكونات `<Suspense>`.
 
-This code is very readable, but unlike the examples earlier, the Suspense version doesn't suffer from race conditions. You might be wondering why. The answer is that in the Suspense version, we don't have to think about *time* as much in our code. Our original code with race conditions needed to set the state *at the right moment later*, or otherwise it would be wrong. But with Suspense, we set the state *immediately* -- so it's harder to mess it up.
+هذا الكود قابل للقراءة للغاية ، ولكن على عكس الأمثلة السابقة ، لا تعاني نسخة Suspense من حالات التسابق. قد تتساءل لماذا. الجواب هو أنه في نسخة Suspense، ليس من الضروري أن نفكر في *الوقت* كما هو الحال في الكود. لدينا الكود الأصلي مع حالات التسابق اللازمة لضبط الحالة *في اللحظة المناسبة في وقت لاحق* ، أو خلاف ذلك سيكون من الخطأ. ولكن مع Suspense ، وضعنا الحالة *على الفور* -- لذلك من الصعب الفوضى.
 
 ## Handling Errors {#handling-errors}
 
