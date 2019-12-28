@@ -375,9 +375,9 @@ function ProfileTimeline() {
 
 لاحظ كيف استبعدنا  ` if (...)`  "يتم تحميلها" من مكوناتنا. هذا لا يؤدي فقط إلى إزالة كود boilerplate ، ولكنه أيضًا يبسط إجراء تغييرات سريعة في التصميم. على سبيل المثال ، إذا كنا نرغب دائمًا في "نشر" تفاصيل الملف الشخصي والمشاركات معًا ، فيمكننا حذف الحدود `<Suspense >` بينهما. أو يمكننا أن نجعلهم مستقلين عن بعضهم البعض من خلال إعطاء كل *حده الخاص به* . يتيح لنا نظام Suspense تغيير تفاصيل حالات التحميل الخاصة بنا وتنسيق تسلسلها دون تغييرات على الكود الخاصة بنا.
 
-## Start Fetching Early {#start-fetching-early}
+## البدء في الجلب المبكر {#start-fetching-early}
 
-If you're working on a data fetching library, there's a crucial aspect of Render-as-You-Fetch you don't want to miss. **We kick off fetching _before_ rendering.** Look at this code example closer:
+إذا كنت تعمل على مكتبة تجلب البيانات ، فهناك جانب حاسم في التصيير كما انت تجلب الذي لا تريد تفويته. **نبدأ في جلب _قبل_ التصيير.** انظر إلى مثال الكود هذا أقرب:
 
 ```js
 // Start fetching early!
@@ -392,11 +392,11 @@ function ProfileDetails() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-Note that the `read()` call in this example doesn't *start* fetching. It only tries to read the data that is **already being fetched**. This difference is crucial to creating fast applications with Suspense. We don't want to delay loading data until a component starts rendering. As a data fetching library author, you can enforce this by making it impossible to get a `resource` object without also starting a fetch. Every demo on this page using our "fake API" enforces this.
+لاحظ أن استدعاء `read ()` في هذا المثال لا *تبدأ* الجلب. يحاول فقط قراءة البيانات **التي يتم جلبها بالفعل**. هذا الاختلاف ضروري لإنشاء تطبيقات سريعة باستخدام Suspense. لا نريد تأخير تحميل البيانات حتى يبدأ التصيير في أحد المكونات. بصفتك مؤلف مكتبة تجلب البيانات ، يمكنك فرض ذلك بجعل الحصول على كائن "مورد" مستحيلًا دون البدء في عملية جلب. كل عرض تجريبي في هذه الصفحة باستخدام "API المزيف" لدينا يفرض هذا.
 
-You might object that fetching "at the top level" like in this example is impractical. What are we going to do if we navigate to another profile's page? We might want to fetch based on props. The answer to this is **we want to start fetching in the event handlers instead**. Here is a simplified example of navigating between user's pages:
+قد تعترض على أن جلب "أعلى مستوى" كما هو موضح في هذا المثال غير عملي. ماذا سنفعل إذا انتقلنا إلى صفحة ملف تعريف آخر؟ قد نرغب في جلب على أساس الدعائم. الإجابة على هذا **هي أننا نريد أن نبدأ في جلب معالجات الأحداث بدلاً من ذلك**. فيما يلي مثال مبسط للتنقل بين صفحات المستخدم:
 
 ```js{1,2,10,11}
 // First fetch: as soon as possible
@@ -419,23 +419,23 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-With this approach, we can **fetch code and data in parallel**. When we navigate between pages, we don't need to wait for a page's code to load to start loading its data. We can start fetching both code and data at the same time (during the link click), delivering a much better user experience.
+مع هذا النهج ، يمكننا **جلب الكود والبيانات بالتوازي**. عندما ننتقل بين الصفحات ، لا نحتاج إلى انتظار تحميل كود الصفحة لبدء تنزيل بياناتها. يمكننا البدء في جلب كل من الشفرة والبيانات في نفس الوقت (أثناء النقر على الرابط) ، مما يوفر تجربة مستخدم أفضل بكثير.
 
-This poses a question of how do we know *what* to fetch before rendering the next screen. There are several ways to solve this (for example, by integrating data fetching closer with your routing solution). If you work on a data fetching library, [Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) presents a deep dive on how to accomplish this and why it's important.
+يثير هذا سؤالًا حول كيفية معرفة *ما* الذي يجب إحضاره قبل تقديم الشاشة التالية. هناك عدة طرق لحل هذا (على سبيل المثال ، من خلال دمج البيانات التي تقرب من حل التوجيه الخاص بك). إذا كنت تعمل على مكتبة تجلب البيانات ، فإن [إنشاء تجربة مستخدم رائعة مع الوضع المتزامن و Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) يوفر تجربة عميقة حول كيفية تحقيق هذا ولماذا هو مهم.
 
-### We're Still Figuring This Out {#were-still-figuring-this-out}
+### ما زلنا نتفحص هذا {#were-still-figuring-this-out}
 
-Suspense itself as a mechanism is flexible and doesn't have many constraints. Product code needs to be more constrained to ensure no waterfalls, but there are different ways to provide these guarantees. Some questions that we're currently exploring include:
+Suspense نفسه كآلية مرنة وليس لديها العديد من القيود. يجب أن يكون كود المنتج أكثر تقييدًا لضمان عدم وجود شلالات ، ولكن هناك طرقًا مختلفة لتوفير هذه الضمانات. بعض الأسئلة التي نستكشفها حاليًا تشمل:
 
-* Fetching early can be cumbersome to express. How do we make it easier to avoid waterfalls?
-* When we fetch data for a page, can the API encourage including data for instant transitions *from* it?
-* What is the lifetime of a response? Should caching be global or local? Who manages the cache?
-* Can Proxies help express lazy-loaded APIs without inserting `read()` calls everywhere?
-* What would the equivalent of composing GraphQL queries look like for arbitrary Suspense data?
+* الجلب المبكر يمكن أن يكون مرهقًا للتعبير عنه. كيف نجعل من السهل تجنب الشلالات؟
+* عند جلب البيانات لصفحة ما ، هل يمكن لواجهة برمجة التطبيقات تشجيع تضمين البيانات الخاصة بالانتقالات الفورية *من* ذلك؟
+* ما هو عمر الاستجابة؟ هل يجب أن يكون التخزين المؤقت عالميًا أم محليًا؟ من يدير ذاكرة التخزين المؤقت؟
+* هل يمكن أن يساعد الوكلاء في التعبير عن واجهات برمجة التطبيقات المكسورة دون إدخال استدعاء `read ()` في كل مكان؟
+* كيف سيكون شكل مكافئ استعلامات GraphQL للبيانات التعسفية Suspense؟
 
-Relay has its own answers to some of these questions. There is certainly more than a single way to do it, and we're excited to see what new ideas the React community comes up with.
+Relay له إجاباته الخاصة على بعض هذه الأسئلة. من المؤكد أن هناك أكثر من طريقة واحدة للقيام بذلك ، ونحن متحمسون لرؤية الأفكار الجديدة التي يطرحها مجتمع React.
 
 ## Suspense and Race Conditions {#suspense-and-race-conditions}
 
