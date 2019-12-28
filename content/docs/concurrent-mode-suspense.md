@@ -673,13 +673,13 @@ function App() {
 
 هذا الكود قابل للقراءة للغاية ، ولكن على عكس الأمثلة السابقة ، لا تعاني نسخة Suspense من حالات التسابق. قد تتساءل لماذا. الجواب هو أنه في نسخة Suspense، ليس من الضروري أن نفكر في *الوقت* كما هو الحال في الكود. لدينا الكود الأصلي مع حالات التسابق اللازمة لضبط الحالة *في اللحظة المناسبة في وقت لاحق* ، أو خلاف ذلك سيكون من الخطأ. ولكن مع Suspense ، وضعنا الحالة *على الفور* -- لذلك من الصعب الفوضى.
 
-## Handling Errors {#handling-errors}
+## معالجة الأخطاء {#handling-errors}
 
-When we write code with Promises, we might use `catch()` to handle errors. How does this work with Suspense, given that we don't *wait* for Promises to start rendering?
+عندما نكتب كود مع Promises ، فقد نستخدم `catch ()` لمعالجة الأخطاء. كيف يعمل هذا مع Suspense ، بالنظر إلى أننا لا *ننتظر* حتى تبدأ promises في التصيير؟
 
-With Suspense, handling fetching errors works the same way as handling rendering errors -- you can render an [error boundary](/docs/error-boundaries.html) anywhere to "catch" errors in components below.
+باستخدام Suspense ، تعمل معالجة أخطاء الجلب بنفس طريقة التعامل مع أخطاء التصيير - يمكنك تصيير [حدود الخطأ](/docs/error-borderaries.html) في أي مكان لـ "التقاط" الأخطاء في المكونات أدناه.
 
-First, we'll define an error boundary component to use across our project:
+أولاً ، سنقوم بتعريف مكون حد الخطأ لاستخدامه في مشروعنا:
 
 ```js
 // Error boundaries currently have to be classes.
@@ -700,7 +700,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-And then we can put it anywhere in the tree to catch errors:
+وبعد ذلك يمكننا وضعه في أي مكان في الشجرة للوقوع في الأخطاء:
 
 ```js{5,9}
 function ProfilePage() {
@@ -717,9 +717,9 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
 
-It would catch both rendering errors *and* errors from Suspense data fetching. We can have as many error boundaries as we like but it's best to [be intentional](https://aweary.dev/fault-tolerance-react/) about their placement.
+سيؤدي ذلك إلى التقاط أخطاء التصيير *و* الأخطاء من جلب بيانات Suspense. يمكن أن يكون لدينا أكبر عدد ممكن من حدود الخطأ ، لكن من الأفضل أن [تكون مقصودًا](https://aweary.dev/fault-tolerance-react/)  حول موضعها.
 
 ## Next Steps {#next-steps}
 
