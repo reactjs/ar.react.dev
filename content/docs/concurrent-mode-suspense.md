@@ -95,7 +95,7 @@ function ProfileTimeline() {
 
 **[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-هذا العرض مجرد اعلان تشويقى. لا تقلق إذا لم يكن الأمر منطقيًا بعد. سنتحدث أكثر عن كيفية عمله أدناه. ضع في اعتبارك أن Suspense أكثر من *آلية* ، وأن واجهات برمجة التطبيقات المعينة مثل `fetchProfileData ()` أو `resource.posts.read ()` في المثال أعلاه ليست مهمة للغاية. إذا كنت مهتمًا بالفضول ، فيمكنك العثور على تعريفاتها في [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
+هذا العرض مجرد اعلان تشويقى. لا تقلق إذا لم يكن الأمر منطقيًا بعد. سنتحدث أكثر عن كيفية عمله أدناه. ضع في اعتبارك أن Suspense أكثر من *آلية* ، وأن واجهات برمجة التطبيقات المعينة مثل `fetchProfileData()` أو `resource.posts.read()` في المثال أعلاه ليست مهمة للغاية. إذا كنت مهتمًا بالفضول ، فيمكنك العثور على تعريفاتها في [عرض توضيحي sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
 
 Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب البيانات من المكتبات** للتواصل مع React بأن *البيانات التي يقرأها المكون ليست جاهزة بعد*. يمكن أن تنتظر React حتى تكون جاهزة وتحديث واجهة المستخدم. في Facebook ، نستخدم Relay و [new Suspense integration](https://relay.dev/docs/ar/experimental/step-by-step). نتوقع أن توفر مكتبات أخرى مثل Apollo تكاملات مماثلة.
 
