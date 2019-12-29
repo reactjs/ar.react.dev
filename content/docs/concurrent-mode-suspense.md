@@ -733,4 +733,4 @@ function ProfilePage() {
 * بدلاً من إظهار spinner ، هل يمكننا إضافة مؤثر بصري مثل "شطب" الشاشة الحالية؟
 * لماذا يقوم [مثال Suspense الأخير](https://codesandbox.io/s/infallible-feather-xjtbu) بتسجيل تحذير عند النقر فوق الزر "التالي"؟
 
-للإجابة على هذه الأسئلة ، سوف نشير إلى القسم التالي في [أنماط واجهة المستخدم المتزامنة](/ docs / concurrent-mode-patterns.html).
+للإجابة على هذه الأسئلة ، سوف نشير إلى القسم التالي في [أنماط واجهة المستخدم المتزامنة](/docs/concurrent-mode-patterns.html).
