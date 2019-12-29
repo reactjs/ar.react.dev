@@ -465,7 +465,7 @@ function App() {
 
 ### حالات التسابق مع `useEffect` {#race-conditions-with-useeffect}
 
-أولاً ، سنحاول إصدار مثال "fetch in effect" الأصلي. سنقوم بتعديلها لتمرير معلمة `id` من الدعائم `<ProfilePage>` إلى `fetchUser (id)` و `fetchPosts (id)`:
+أولاً ، سنحاول إصدار مثال "fetch in effect" الأصلي. سنقوم بتعديلها لتمرير معلمة `id` من الدعائم `<ProfilePage>` إلى `fetchUser(id)` و `fetchPosts(id)`:
 
 ```js{1,5,6,14,19,23,24}
 function ProfilePage({ id }) {
