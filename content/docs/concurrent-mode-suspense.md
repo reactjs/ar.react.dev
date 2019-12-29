@@ -719,7 +719,7 @@ function ProfilePage() {
 
 **[جربه على CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
 
-سيؤدي ذلك إلى التقاط أخطاء التصيير *و* الأخطاء من جلب بيانات Suspense. يمكن أن يكون لدينا أكبر عدد ممكن من حدود الخطأ ، لكن من الأفضل أن [تكون مقصودًا](https://aweary.dev/fault-tolerance-react/)  حول موضعها.
+سيؤدي ذلك إلى التقاط أخطاء التصيير *و* الأخطاء من جلب بيانات Suspense. يمكن أن يكون لدينا أكبر عدد ممكن من حدود الخطأ ، لكن من الأفضل أن [تكون مقصودًا](https://aweary.dev/fault-tolerance-react/) حول موضعها.
 
 ## الخطوات التالية {#next-steps}
 
