@@ -177,4 +177,4 @@ const element = {
 
 >**ملاحظة:**
 >
->نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) المتوافق معها أيضًا.
+>نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة. بإمكانك استخدام مُخطَّط الألوان [Oceanic Next](https://github.com/voronianski/oceanic-next-color-scheme) المتوافق معها أيضًا.

@@ -58,8 +58,6 @@ function ActionLink() {
 
 عند استخدام React بشكل عام لاينبغي استدعاء `addEventListener` لإضافة مُستمِع للأحداث إلى عنصر DOM بعد إنشائه، وبدلًا من ذلك نُضيف مُستمِعًا للأحداث عند تصيير العنصر (Rendering Element).
 
-عند تعريف المُكوِّنات باستخدام [أصناف ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) هنالك نمط شائع لمعالج الأحداث ليكون تابعًا ضمن الصنف، ففي المثال التالي يعرض المُكوِّن `Toggle` زرًّا يُتيح للمستخدم بأن يقلب بين الحالتين "ON" و "OFF":
-
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
