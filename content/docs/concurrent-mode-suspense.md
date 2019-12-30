@@ -43,7 +43,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
   - [ماذا لو لم أستخدم الترحيل؟](#what-if-i-dont-use-relay)
   - [لمؤلفي المكتبة](#for-library-authors)
 - [المناهج التقليدية مقابل Suspense](#traditional-approaches-vs-suspense)
-  - [النهج 1: الجلب على التصيير (لا يستخدم Suspense)](#approach-1-fetch-on-render-not-using-suspense)
+  - [المنهج 1: الجلب على التصيير (لا يستخدم Suspense)](#approach-1-fetch-on-render-not-using-suspense)
   - [النهج 2: الجلب ثم التصيير (عدم استخدام Suspense)](#approach-2-fetch-then-render-not-using-suspense)
   - [النهج 3: التصيير كما انت تجلب (باستخدام Suspense)](#approach-3-render-as-you-fetch-using-suspense)
 - [البدء في الجلب المبكر](#start-fetching-early)
