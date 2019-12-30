@@ -56,9 +56,13 @@ function ActionLink() {
 
 يُمثِّل المتغيّر `e` هنا حدثًا مُصطنعًا، حيث تُعرِّف React هذه الأحداث المُصطنعة وفق معايير [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/)، بحيث لا نهتم بمشاكل التوافقيّة بين المتصفحات. للمزيد حول [`الأحداث المصطنعة`](/docs/events.html) انتقل إلى مرجع الأحداث في React.
 
+<<<<<<< HEAD
 عند استخدام React بشكل عام لاينبغي استدعاء `addEventListener` لإضافة مُستمِع للأحداث إلى عنصر DOM بعد إنشائه، وبدلًا من ذلك نُضيف مُستمِعًا للأحداث عند تصيير العنصر (Rendering Element).
 
 عند تعريف المُكوِّنات باستخدام [أصناف ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) هنالك نمط شائع لمعالج الأحداث ليكون تابعًا ضمن الصنف، ففي المثال التالي يعرض المُكوِّن `Toggle` زرًّا يُتيح للمستخدم بأن يقلب بين الحالتين "ON" و "OFF":
+=======
+When using React, you generally don't need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 
 ```js{6,7,10-14,18}
@@ -143,7 +147,11 @@ class LoggingButton extends React.Component {
 
 ## تمرير وسائط إلى معالجات الأحداث {#passing-arguments-to-event-handlers}
 
+<<<<<<< HEAD
 من الشائع أن نحتاج بداخل الحلقات (loops) إلى تمرير مُعامِل إضافي إلى مُعالِج الأحداث، فمثلًا إن كان المتغيّر `id` يُمثِّل مُعرِّف الصف (row ID)، فسيعمل كلا السطرين التاليين بنفس الكفاءة:
+=======
+Inside a loop, it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
