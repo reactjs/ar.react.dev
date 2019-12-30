@@ -45,7 +45,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 - [المناهج التقليدية مقابل Suspense](#traditional-approaches-vs-suspense)
   - [المنهج 1: الجلب على التصيير (لا يستخدم Suspense)](#approach-1-fetch-on-render-not-using-suspense)
   - [المنهج 2: الجلب ثم التصيير (عدم استخدام Suspense)](#approach-2-fetch-then-render-not-using-suspense)
-  - [النهج 3: التصيير كما انت تجلب (باستخدام Suspense)](#approach-3-render-as-you-fetch-using-suspense)
+  - [المنهج 3: التصيير كما انت تجلب (باستخدام Suspense)](#approach-3-render-as-you-fetch-using-suspense)
 - [البدء في الجلب المبكر](#start-fetching-early)
   - [ما زلنا نتفحص هذا الأمر](#were-still-figuring-this-out)
 - [Suspense و حالات التسابق](#suspense-and-race-conditions)
