@@ -39,7 +39,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 - [ما هو Suspense ،بالضبط؟](#what-is-suspense-exactly)
   - [ما Suspense ليس كذلك](#what-suspense-is-not)
   - [ماذا يتيح لك Suspense القيام به](#what-suspense-lets-you-do)
-- [استخدام Suspense في الممارسة](#using-suspense-in-practice)
+- [استخدام Suspense بالممارسة](#using-suspense-in-practice)
   - [ماذا لو لم أستخدم الترحيل؟](#what-if-i-dont-use-relay)
   - [لمؤلفي المكتبة](#for-library-authors)
 - [النهج التقليدية مقابل Suspense](#traditional-approaches-vs-suspense)
