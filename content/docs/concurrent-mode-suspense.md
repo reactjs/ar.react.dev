@@ -56,7 +56,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 - [معالجة الأخطاء](#handling-errors)
 - [الخطوات التالية](#next-steps)
 
-## ما هو Suspense ، بالضبط؟ {#what-is-suspense-exactly}
+## ما هو Suspense ،بالضبط؟ {#what-is-suspense-exactly}
 
 يتيح Suspense لمكوناتك "الانتظار" لشيء ما قبل أن يتمكنوا من العرض. في [هذا المثال](https://codesandbox.io/s/frosty-hermann-bztrp) ، هناك مكونان ينتظران استدعاء API غير متزامن لجلب بعض البيانات:
 
