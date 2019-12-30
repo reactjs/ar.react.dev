@@ -36,7 +36,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 
 ميزة Suspense لجلب البيانات هي ميزة جديدة تتيح لك أيضًا استخدام `<Suspense>`  **بشكل تعريفي "الانتظار" عن أي شيء آخر، بما في ذلك البيانات.** تركز هذه الصفحة على حالة جلب البيانات، لكن يمكنها أيضًا انتظار الصور أو النصوص أو أي أعمال أخرى غير متزامنة.
 
-- [ما هو Suspense ، بالضبط؟](#what-is-suspense-exactly)
+- [ما هو Suspense ،بالضبط؟](#what-is-suspense-exactly)
   - [ما Suspense ليس كذلك](#what-suspense-is-not)
   - [ماذا يتيح لك Suspense القيام به](#what-suspense-lets-you-do)
 - [استخدام Suspense في الممارسة](#using-suspense-in-practice)
