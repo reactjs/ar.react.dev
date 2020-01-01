@@ -46,7 +46,7 @@ console.log(add(16, 26)); // 42
 
 أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
 [التثبيت](https://webpack.js.org/guides/installation/) و
-[ دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
+[دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
 
 ## تقسيم الشيفرة {#code-splitting}
 
