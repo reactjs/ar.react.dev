@@ -70,7 +70,7 @@ import { add } from './math';
 console.log(add(16, 26));
 ```
 
-**الشيفرة بعد الاستخدام::**
+**الشيفرة بعد الاستخدام:**
 
 ```js
 import("./math").then(math => {
