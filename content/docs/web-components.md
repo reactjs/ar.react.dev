@@ -59,4 +59,4 @@ customElements.define('x-search', XSearch);
 >ملاحظة:
 >
 > **لن** تعمل هذه الشيفرة إن نقلت الأصناف باستخدام Babel. انظر إلى هذه المشكلة [من هنا](https://github.com/w3c/webcomponents/issues/587). 
-> يجب عليك تضمين [custom-elements-es5-adapter](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs) قبل تحميل مكوّنات الويب لإصلاح هذه المشكلة.
+> يجب عليك تضمين [custom-elements-es5-adapter](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs#custom-elements-es5-adapterjs) قبل تحميل مكوّنات الويب لإصلاح هذه المشكلة.
