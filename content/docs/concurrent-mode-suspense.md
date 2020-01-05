@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-suspense
-title: Suspense for Data Fetching (Experimental)
+title: Suspense لجلب البيانات (تجريبي)
 permalink: docs/concurrent-mode-suspense.html
 prev: concurrent-mode-intro.html
 next: concurrent-mode-patterns.html
@@ -15,15 +15,15 @@ next: concurrent-mode-patterns.html
 
 <div class="scary">
 
->Caution:
+>تحذير:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>تصف هذه الصفحة **الميزات التجريبية [الـغير متوفرة بعد](/docs/concurrent-mode-adoption.html) في إصدار ثابت**. لا تعتمد على بناءات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now. For example, if you're looking for a data fetching tutorial that works today, read [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) instead.
+>هذه الوثائق تهدف إلى المستخدمون الأوائل والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** - لست بحاجة إلى تعلمها الآن. على سبيل المثال، إذا كنت تبحث عن دليل تطبيقي لجلب البيانات يعمل اليوم، فاقرأ [هذه المقالة](https://www.robinwieruch.de/react-hooks-fetch-data/) بدلاً من ذلك.
 
 </div>
 
-React 16.6 added a `<Suspense>` component that lets you "wait" for some code to load and declaratively specify a loading state (like a spinner) while we're waiting:
+أضاف React 16.6 مكونًا `<Suspense>` يتيح لك "الانتظار" بعض الشيفرة البرمجية لتحميله وتحديد قيم مصرح بها وتحميل الحالة (مثل الدوار) أثناء انتظارنا:
 
 ```jsx
 const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
@@ -34,31 +34,31 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
 </Suspense>
 ```
 
-Suspense for Data Fetching is a new feature that lets you also use `<Suspense>` to **declaratively "wait" for anything else, including data.** This page focuses on the data fetching use case, but it can also wait for images, scripts, or other asynchronous work.
+ميزة Suspense لجلب البيانات هي ميزة جديدة تتيح لك أيضًا استخدام `<Suspense>`  **بشكل تعريفي "الانتظار" عن أي شيء آخر، بما في ذلك البيانات.** تركز هذه الصفحة على حالة جلب البيانات، لكن يمكنها أيضًا انتظار الصور أو النصوص أو أي أعمال أخرى غير متزامنة.
 
-- [What Is Suspense, Exactly?](#what-is-suspense-exactly)
-  - [What Suspense Is Not](#what-suspense-is-not)
-  - [What Suspense Lets You Do](#what-suspense-lets-you-do)
-- [Using Suspense in Practice](#using-suspense-in-practice)
-  - [What If I Don’t Use Relay?](#what-if-i-dont-use-relay)
-  - [For Library Authors](#for-library-authors)
-- [Traditional Approaches vs Suspense](#traditional-approaches-vs-suspense)
-  - [Approach 1: Fetch-on-Render (not using Suspense)](#approach-1-fetch-on-render-not-using-suspense)
-  - [Approach 2: Fetch-Then-Render (not using Suspense)](#approach-2-fetch-then-render-not-using-suspense)
-  - [Approach 3: Render-as-You-Fetch (using Suspense)](#approach-3-render-as-you-fetch-using-suspense)
-- [Start Fetching Early](#start-fetching-early)
-  - [We’re Still Figuring This Out](#were-still-figuring-this-out)
-- [Suspense and Race Conditions](#suspense-and-race-conditions)
-  - [Race Conditions with useEffect](#race-conditions-with-useeffect)
-  - [Race Conditions with componentDidUpdate](#race-conditions-with-componentdidupdate)
-  - [The Problem](#the-problem)
-  - [Solving Race Conditions with Suspense](#solving-race-conditions-with-suspense)
-- [Handling Errors](#handling-errors)
-- [Next Steps](#next-steps)
+- [ما هو Suspense ،بالضبط؟](#what-is-suspense-exactly)
+  - [ما Suspense ليس كذلك](#what-suspense-is-not)
+  - [ماذا يتيح لك Suspense القيام به](#what-suspense-lets-you-do)
+- [استخدام Suspense بالممارسة](#using-suspense-in-practice)
+  - [ماذا لو لم أستخدم الترحيل؟](#what-if-i-dont-use-relay)
+  - [لمؤلفي المكتبة](#for-library-authors)
+- [المناهج التقليدية مقابل Suspense](#traditional-approaches-vs-suspense)
+  - [المنهج 1: الجلب على التصيير (لا يستخدم Suspense)](#approach-1-fetch-on-render-not-using-suspense)
+  - [المنهج 2: الجلب ثم التصيير (عدم استخدام Suspense)](#approach-2-fetch-then-render-not-using-suspense)
+  - [المنهج 3: التصيير كما انت تجلب (باستخدام Suspense)](#approach-3-render-as-you-fetch-using-suspense)
+- [البدء في الجلب المبكر](#start-fetching-early)
+  - [ما زلنا نتفحص هذا الأمر](#were-still-figuring-this-out)
+- [Suspense و حالات التسابق](#suspense-and-race-conditions)
+  - [حالات التسابق مع useEffect](#race-conditions-with-useeffect)
+  - [حالات التسابق مع componentDidUpdate](#race-conditions-with-componentdidupdate)
+  - [المشكلة](#the-problem)
+  - [حل حالات التسابق مع Suspense](#solving-race-conditions-with-suspense)
+- [معالجة الأخطاء](#handling-errors)
+- [الخطوات التالية](#next-steps)
 
-## What Is Suspense, Exactly? {#what-is-suspense-exactly}
+## ما هو Suspense ،بالضبط؟ {#what-is-suspense-exactly}
 
-Suspense lets your components "wait" for something before they can render. In [this example](https://codesandbox.io/s/frosty-hermann-bztrp), two components wait for an asynchronous API call to fetch some data:
+يتيح Suspense لمكوناتك "الانتظار" لشيء ما قبل أن يتمكنوا من العرض. في [هذا المثال](https://codesandbox.io/s/frosty-hermann-bztrp) ،هناك مكونان ينتظران استدعاء واجهة برمجة تطبيقات ( API ) غير متزامنة لجلب بعض البيانات:
 
 ```js
 const resource = fetchProfileData();
@@ -93,75 +93,75 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-This demo is a teaser. Don't worry if it doesn't quite make sense yet. We'll talk more about how it works below. Keep in mind that Suspense is more of a *mechanism*, and particular APIs like `fetchProfileData()` or `resource.posts.read()` in the above example are not very important. If you're curious, you can find their definitions right in the [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
+هذا العرض مجرد اعلان تشويقى. لا تقلق إذا لم يكن الأمر منطقيًا بعد. سنتحدث أكثر عن كيفية عمله أدناه. ضع في اعتبارك أن Suspense أكثر من *آلية*، وأن واجهات برمجة التطبيقات المعينة مثل `fetchProfileData()` أو `resource.posts.read()` في المثال أعلاه ليست مهمة للغاية. إذا كنت مهتمًا بالفضول، فيمكنك العثور على تعريفاتها في [هذا العرض التوضيحي](https://codesandbox.io/s/frosty-hermann-bztrp).
 
-Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/en/experimental/step-by-step). We expect that other libraries like Apollo can provide similar integrations.
+Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب البيانات من المكتبات** للتواصل مع React بأن *البيانات التي يقرأها المكون ليست جاهزة بعد*. يمكن أن تنتظر React حتى تكون جاهزة وتحديث واجهة المستخدم. في Facebook ،نستخدم Relay و [تكامل بواسطة Suspense الجديدة](https://relay.dev/docs/en/experimental/step-by-step). نتوقع أن توفر مكتبات أخرى مثل Apollo تكاملات مماثلة.
 
-In the long term, we intend Suspense to become the primary way to read asynchronous data from components -- no matter where that data is coming from.
+على المدى الطويل ، نعتزم أن تصبح Suspense هي الطريقة الأساسية لقراءة البيانات غير المتزامنة من المكونات - بغض النظر عن مصدر هذه البيانات.
 
-### What Suspense Is Not {#what-suspense-is-not}
+### ما Suspense ليس كذلك {#what-suspense-is-not}
 
-Suspense is significantly different from existing approaches to these problems, so reading about it for the first time often leads to misconceptions. Let's clarify the most common ones:
+يختلف Suspense بشكل كبير عن المنهج الحالي لهذه المشكلات، لذلك غالباً ما تؤدي القراءة عنها لأول مرة إلى مفاهيم خاطئة. دعنا نوضح الأكثر شيوعًا:
 
- * **It is not a data fetching implementation.** It does not assume that you use GraphQL, REST, or any other particular data format, library, transport, or protocol.
+* **ليس تطبيقًا لجلب البيانات.** لا يفترض أنك تستخدم GraphQL أو REST أو أي تنسيق بيانات أو مكتبة أو نقل أو بروتوكول معين آخر.
 
- * **It is not a ready-to-use client.** You can't "replace" `fetch` or Relay with Suspense. But you can use a library that's integrated with Suspense (for example, [new Relay APIs](https://relay.dev/docs/en/experimental/api-reference)).
+* **ليس عميلًا جاهزًا للاستخدام.** لا يمكنك "استبدال" `fetch` أو Relay مع Suspense. ولكن يمكنك استخدام مكتبة مدمجة مع Suspense (على سبيل المثال ، [واجهات برمجة تطبيقات Relay جديدة](https://relay.dev/docs/en/experimental/api-reference)).
 
- * **It does not couple data fetching to the view layer.** It helps orchestrate displaying the loading states in your UI, but it doesn't tie your network logic to React components.
+ * **لا يقترن البيانات التي تجلب إلى طبقة العرض.** إنها تساعد في تنظيم عرض حالات التحميل في واجهة المستخدم الخاصة بك ، لكنها لا تربط منطق الشبكة الخاص بك بمكونات React.
 
-### What Suspense Lets You Do {#what-suspense-lets-you-do}
+### ماذا يتيح لك Suspense القيام به {#what-suspense-lets-you-do}
 
-So what's the point of Suspense? There's a few ways we can answer this:
+إذن ما هي الفائدة من Suspense؟ هناك بعض الطرق التي يمكننا من خلالها الإجابة عن هذا:
 
-* **It lets data fetching libraries deeply integrate with React.** If a data fetching library implements Suspense support, using it from React components feels very natural.
+* **يتيح دمج مكتبات جلب البيانات بعمق مع React.** إذا نفذت مكتبة جلب البيانات دعم Suspense ، فسيكون استخدامه من مكونات React طبيعيًا للغاية.
 
-* **It lets you orchestrate intentionally designed loading states.** It doesn't say _how_ the data is fetched, but it lets you closely control the visual loading sequence of your app.
+* **يتيح لك تنظيم حالات التحميل المصممة عن عمد.** إنه لا يقول _how_ يتم جلب البيانات ، لكنه يتيح لك التحكم عن قرب في تسلسل التحميل المرئي لتطبيقك.
 
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it was already loaded.
+* **يساعدك على تجنب حالات التسابق** حتى مع وجود `await`، غالبًا ما تكون الشفرة الغير متزامنة عرضة للخطأ. يبدو Suspense أكثر مثل قراءة البيانات *بشكل متزامن* - كما لو تم تحميلها بالفعل.
 
-## Using Suspense in Practice {#using-suspense-in-practice}
+## استخدام Suspense في الممارسة {#using-suspense-in-practice}
 
-At Facebook, so far we have only used the Relay integration with Suspense in production. **If you're looking for a practical guide to get started today, [check out the Relay Guide](https://relay.dev/docs/en/experimental/step-by-step)!** It demonstrates patterns that have already worked well for us in production.
+في فيسبوك، استخدمنا حتى الآن تكامل Relay مع Suspense في الإنتاج. **إذا كنت تبحث عن دليل عملي للبدء اليوم ، [راجع دليل Relay ](https://relay.dev/docs/en/experimental/step-by-step)!** إنه يوضح الأنماط التي عملت بالفعل بشكل جيد بالنسبة لنا في الإنتاج.
 
-**The code demos on this page use a "fake" API implementation rather than Relay.** This makes them easier to understand if you're not familiar with GraphQL, but they won't tell you the "right way" to build an app with Suspense. This page is more conceptual and is intended to help you see *why* Suspense works in a certain way, and which problems it solves.
+**تستخدم الشفرة التجريبية في هذه الصفحة API "وهمية" بدلاً من Relay.** هذا يجعلها أسهل للفهم إذا لم تكن معتادًا على GraphQL ، لكنها لن تخبرك "بالطريقة الصحيحة" لبناء التطبيق مع Suspense . هذه الصفحة أكثر تصوريًا وتهدف إلى مساعدتك في معرفة *لماذا* يعمل Suspense بطريقة معينة، والمشكلات التي يحلها
 
-### What If I Don't Use Relay? {#what-if-i-dont-use-relay}
+### ماذا لو لم أستخدم Relay؟ {#what-if-i-dont-use-relay}
 
-If you don't use Relay today, you might have to wait before you can really try Suspense in your app. So far, it's the only implementation that we tested in production and are confident in.
+إذا كنت لا تستخدم Relay اليوم ، فقد تضطر إلى الانتظار حتى تتمكن من تجربة Suspense في تطبيقك. حتى الآن، إنه التطبيق الوحيد الذي اختبرناه في الإنتاج ونثق فيه.
 
-Over the next several months, many libraries will appear with different takes on Suspense APIs. **If you prefer to learn when things are more stable, you might prefer to ignore this work for now, and come back when the Suspense ecosystem is more mature.**
+خلال الأشهر القليلة المقبلة ، ستظهر العديد من المكتبات بأشكال مختلفة على Suspense APIs. **إذا كنت تفضل أن تتعلم عندما تكون الأمور أكثر استقرارًا ، فقد تفضل تجاهل هذا العمل في الوقت الحالي ، والعودة عندما يكون نظام Suspense البيئي أكثر نضجًا.**
 
-You can also write your own integration for a data fetching library, if you'd like.
+يمكنك أيضًا كتابة تكاملك الخاص لمكتبة جلب البيانات ، إذا كنت تريد ذلك.
 
-### For Library Authors {#for-library-authors}
+### لمؤلفي المكتبة {#for-library-authors}
 
-We expect to see a lot of experimentation in the community with other libraries. There is one important thing to note for data fetching library authors.
+نتوقع أن نرى الكثير من التجارب في المجتمع مع المكتبات الأخرى. هناك شيء واحد مهم يجب مراعاته لمؤلفي جلب البيانات.
 
-Although it's technically doable, Suspense is **not** currently intended as a way to start fetching data when a component renders. Rather, it lets components express that they're "waiting" for data that is *already being fetched*. **[Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) describes why this matters and how to implement this pattern in practice.**
+على الرغم من أنه قابل للتنفيذ من الناحية الفنية ، إلا أن Suspense **غير** المقصود حاليًا كوسيلة لبدء جلب البيانات عند عرض مكون. بدلاً من ذلك ، يتيح للمكونات التعبير عن "انتظارها" للبيانات التي *يتم جلبها بالفعل*.**[بناء تجربة مستخدم رائعة مع الوضع التزامن و Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) يشرح سبب أهمية هذا الأمر وكيفية تنفيذ هذا النمط في الممارسة العملية.**
 
-Unless you have a solution that helps prevent waterfalls, we suggest to prefer APIs that favor or enforce fetching before render. For a concrete example, you can look at how [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) enforces preloading. Our messaging about this hasn't been very consistent in the past. Suspense for Data Fetching is still experimental, so you can expect our recommendations to change over time as we learn more from production usage and understand the problem space better.
+ما لم يكن لديك حل يساعد على منع الشلالات ، فإننا نقترح تفضيل واجهات برمجة التطبيقات (APIs) التي تفضل أو تجلب الجلب قبل التصيير. للحصول على مثال ملموس ، يمكنك إلقاء نظرة على كيفية قيام [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) بفرض عملية التحميل المسبق. لم تكن رسائلنا حول هذا الأمر متسقة للغاية في الماضي. لا يزال التشويق في جلب البيانات تجريبيًا ، لذا يمكنك توقع تغيير توصياتنا بمرور الوقت لأننا نتعلم المزيد من استخدام الإنتاج ونفهم مساحة المشكلة بشكل أفضل.
 
-## Traditional Approaches vs Suspense {#traditional-approaches-vs-suspense}
+## المناهج التقليدية مقابل Suspense  {#traditional-approaches-vs-suspense}
 
-We could introduce Suspense without mentioning the popular data fetching approaches. However, this makes it more difficult to see which problems Suspense solves, why these problems are worth solving, and how Suspense is different from the existing solutions.
+يمكننا تقديم التشويق دون ذكر طرق جلب البيانات الشائعة. ومع ذلك ، فإن هذا يجعل الأمر أكثر صعوبة لمعرفة المشكلات التي يحلها Suspense، ولماذا تستحق هذه المشكلات حلها ، وكيف يختلف نظام Suspense عن الحلول الحالية.
 
-Instead, we'll look at Suspense as a logical next step in a sequence of approaches:
+بدلاً من ذلك ، سننظر إلى Suspense كخطوة تالية منطقية في سلسلة من الأساليب:
 
-* **Fetch-on-render (for example, `fetch` in `useEffect`):** Start rendering components. Each of these components may trigger data fetching in their effects and lifecycle methods. This approach often leads to "waterfalls".
-* **Fetch-then-render (for example, Relay without Suspense):** Start fetching all the data for the next screen as early as possible. When the data is ready, render the new screen. We can't do anything until the data arrives.
-* **Render-as-you-fetch (for example, Relay with Suspense):** Start fetching all the required data for the next screen as early as possible, and start rendering the new screen *immediately — before we get a network response*. As data streams in, React retries rendering components that still need data until they're all ready.
+* **الجلب على التصيير (على سبيل المثال ،`fetch` في `useEffect`):** ابدأ في عرض المكونات. كل من هذه المكونات قد يؤدي إلى جلب البيانات في آثارها وطرق دورة حياتها. هذا المنهج غالبا ما يؤدي إلى "الشلالات".
+* **الجلب ثم التصيير (على سبيل المثال ،Relay بدون Suspense):** ابدأ في جلب جميع البيانات للشاشة التالية في أقرب وقت ممكن. عندما تكون البيانات جاهزة ، قم بتصيير الشاشة الجديدة. لا يمكننا فعل أي شيء حتى تصل البيانات.
+* **التصيير كما انت تجلب (على سبيل المثال ، Relay مع Suspense):** ابدأ في جلب جميع البيانات المطلوبة للشاشة التالية في أقرب وقت ممكن ، وابدأ في عرض الشاشة الجديدة *فورًا - قبل أن نحصل على شبكة استجابة*. أثناء تدفق البيانات ، يقوم React بإعادة محاولة تقديم المكونات التي لا تزال بحاجة إلى البيانات حتى تكون جاهزة بالكامل.
 
->Note
+>ملاحظة
 >
->This is a bit simplified, and in practice solutions tend to use a mix of different approaches. Still, we will look at them in isolation to better contrast their tradeoffs.
+>هذا بسيط بعض الشيء ، وفي الممارسة العملية تميل الحلول إلى استخدام مزيج من الأساليب المختلفة. ومع ذلك ، سوف ننظر إليهم بمعزل عن أفضل لمقارنة مفاضلاتهم.
 
-To compare these approaches, we'll implement a profile page with each of them.
+لمقارنة هذه الطرق ، سنقوم بتنفيذ صفحة ملف شخصي مع كل منها.
 
-### Approach 1: Fetch-on-Render (not using Suspense) {#approach-1-fetch-on-render-not-using-suspense}
+### المنهج 1: الجلب على التصيير (لا يستخدم Suspense) {#approach-1-fetch-on-render-not-using-suspense}
 
-A common way to fetch data in React apps today is to use an effect:
+طريقة شائعة لجلب البيانات في تطبيقات React اليوم هي استخدام التأثير:
 
 ```js
 // In a function component:
@@ -175,9 +175,9 @@ componentDidMount() {
 }
 ```
 
-We call this approach "fetch-on-render" because it doesn't start fetching until *after* the component has rendered on the screen. This leads to a problem known as a "waterfall".
+نسمي هذا المنهج "الجلب على التصيير" لأنه لا يبدأ في الجلب حتى *بعد* تم عرض المكون على الشاشة. هذا يؤدي إلى مشكلة تعرف باسم "الشلال".
 
-Consider these `<ProfilePage>` and `<ProfileTimeline>` components:
+خذ بعين الاعتبار مكونات `<ProfilePage>` و `<ProfileTimeline>`:
 
 ```js{4-6,22-24}
 function ProfilePage() {
@@ -218,26 +218,26 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/fragrant-glade-8huj6)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/fragrant-glade-8huj6)**
 
-If you run this code and watch the console logs, you'll notice the sequence is:
+إذا قمت بتشغيل هذا الكود ومشاهدة سجلات وحدة التحكم ، ستلاحظ أن التسلسل هو:
 
-1. We start fetching user details
-2. We wait...
-3. We finish fetching user details
-4. We start fetching posts
-5. We wait...
-6. We finish fetching posts
+1. نبدأ في جلب تفاصيل المستخدم
+2. ننتظر ...
+3. ننتهي من جلب تفاصيل المستخدم
+4. نبدأ في جلب المشاركات
+5. ننتظر ...
+6. ننتهي من جلب المشاركات
 
-If fetching user details takes three seconds, we'll only *start* fetching the posts after three seconds! That's a "waterfall": an unintentional *sequence* that should have been parallelized.
+إذا كان جلب تفاصيل المستخدم يستغرق ثلاث ثوانٍ ، *فسنبدأ* فقط في جلب المشاركات بعد ثلاث ثوانٍ! هذا "شلال": *تسلسل* غير مقصود كان ينبغي موازنته.
 
-Waterfalls are common in code that fetches data on render. They're possible to solve, but as the product  grows, many people prefer to use a solution that guards against this problem.
+الشلالات شائعة في الكود الذى يجلب البيانات عند عرضها. يمكن حلها ، لكن مع نمو المنتج ، يفضل العديد من الأشخاص استخدام حل يحمي هذه المشكلة.
 
-### Approach 2: Fetch-Then-Render (not using Suspense) {#approach-2-fetch-then-render-not-using-suspense}
+### المنهج 2: الجلب ثم التصيير (لا يستخدم Suspense) {#approach-2-fetch-then-render-not-using-suspense}
 
-Libraries can prevent waterfalls by offering a more centralized way to do data fetching. For example, Relay solves this problem by moving the information about the data a component needs to statically analyzable *fragments*, which later get composed into a single query.
+يمكن للمكتبات منع الشلالات من خلال تقديم طريقة أكثر مركزية للقيام بجلب البيانات. على سبيل المثال ، يحل Relay هذه المشكلة عن طريق نقل المعلومات حول البيانات التي يحتاجها المكون إلى الأجزاء *القابلة للتحليل بشكل ثابت* ، والتي يتم تجميعها لاحقًا في استعلام واحد.
 
-On this page, we don't assume knowledge of Relay, so we won't be using it for this example. Instead, we'll write something similar manually by combining our data fetching methods:
+في هذه الصفحة ، لا نفترض معرفة Relay ، لذلك لن نستخدمها في هذا المثال. بدلاً من ذلك ، سنكتب شيئًا مشابهًا يدويًا من خلال دمج طرق جلب البيانات الخاصة بنا:
 
 ```js
 function fetchProfileData() {
@@ -250,7 +250,7 @@ function fetchProfileData() {
 }
 ```
 
-In this example,  `<ProfilePage>` waits for both requests but starts them in parallel:
+في هذا المثال ، `<ProfilePage>` ينتظر كلا الطلبين ولكن يبدأ تشغيلهما بشكل متوازٍ:
 
 ```js{1,2,8-13}
 // Kick off fetching as early as possible
@@ -293,35 +293,35 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/wandering-morning-ev6r0)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/wandering-morning-ev6r0)**
 
-The event sequence now becomes like this:
+أصبح تسلسل الأحداث الآن كالتالي:
 
-1. We start fetching user details
-2. We start fetching posts
-3. We wait...
-4. We finish fetching user details
-5. We finish fetching posts
+1. نبدأ في جلب تفاصيل المستخدم
+2. نبدأ في جلب المشاركات
+3. ننتظر ...
+4. ننتهي من جلب تفاصيل المستخدم
+5. ننتهي من جلب المشاركات
 
-We've solved the previous network "waterfall", but accidentally introduced a different one. We wait for *all* data to come back with `Promise.all()` inside `fetchProfileData`, so now we can't render profile details until the posts have been fetched too. We have to wait for both.
+لقد حللنا ` الشلال`  السابق في الشبكة ، لكننا قدمنا بطريق الخطأ شبكة مختلفة. ننتظر عودة *جميع* البيانات مع `Promise.all()`  داخل `fetchProfileData`، حتى الآن لا يمكننا تقديم تفاصيل الملف الشخصي حتى يتم جلب المنشورات أيضًا. علينا أن ننتظر الاثنين.
 
-Of course, this is possible to fix in this particular example. We could remove the `Promise.all()` call, and wait for both Promises separately. However, this approach gets progressively more difficult as the complexity of our data and component tree grows. It's hard to write reliable components when arbitrary parts of the data tree may be missing or stale. So fetching all data for the new screen and *then* rendering is often a more practical option.
+بالطبع، هذا ممكن الإصلاح في هذا المثال بالذات. يمكننا إزالة نداء `Promise.all()`، وانتظر كلا promises بشكل منفصل. ومع ذلك، يصبح هذا المنهج أكثر صعوبة تدريجياً مع تنامي تعقيد بياناتنا وشجرة المكونات. من الصعب كتابة مكونات موثوقة عندما تكون الأجزاء التعسفية من شجرة البيانات مفقودة أو لا معنى لها. لذلك فإن جلب جميع البيانات للشاشة الجديدة و *ثم* التصيير غالبًا ما يكون خيارًا أكثر عملية.
 
-### Approach 3: Render-as-You-Fetch (using Suspense) {#approach-3-render-as-you-fetch-using-suspense}
+### المنهج 3: التصيير أثناء الجلب (باستخدام Suspense) {#approach-3-render-as-you-fetch-using-suspense}
 
-In the previous approach, we fetched data before we called `setState`:
+في المنهج السابق، جلبنا البيانات قبل أن نطلق عليها `setState`:
 
-1. Start fetching
-2. Finish fetching
-3. Start rendering
+1. البدء في جلب
+2. الانتهاء من جلب
+3. البدء في التصيير
 
-With Suspense, we still start fetching first, but we flip the last two steps around:
+مع Suspense ، لا نزال نبدأ في الجلب أولاً ، لكننا نقلب الخطوتين الأخيرتين:
 
-1. Start fetching
-2. **Start rendering**
-3. **Finish fetching**
+1. البدء في جلب
+2. **ابدأ التصيير**
+3. **إنهاء جلب**
 
-**With Suspense, we don't wait for the response to come back before we start rendering.** In fact, we start rendering *pretty much immediately* after kicking off the network request:
+**مع Suspense، لا ننتظر رد الاستجابة قبل أن نبدأ في التصيير.** في الواقع، نبدأ في التصيير *على الفور إلى حد كبير* بعد بدء طلب الشبكة:
 
 ```js{2,17,23}
 // This is not a Promise. It's a special object from our Suspense integration.
@@ -357,27 +357,27 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-Here's what happens when we render `<ProfilePage>` on the screen:
+إليك ما يحدث عندما نصيير "<ProfilePage>" على الشاشة:
 
-1. We've already kicked off the requests in `fetchProfileData()`. It gave us a special "resource" instead of a Promise. In a realistic example, it would be provided by our data library's Suspense integration, like Relay.
-2. React tries to render `<ProfilePage>`. It returns `<ProfileDetails>` and `<ProfileTimeline>` as children.
-3. React tries to render `<ProfileDetails>`. It calls `resource.user.read()`. None of the data is fetched yet, so this component "suspends". React skips over it, and tries rendering other components in the tree.
-4. React tries to render `<ProfileTimeline>`. It calls `resource.posts.read()`. Again, there's no data yet, so this component also "suspends". React skips over it too, and tries rendering other components in the tree.
-5. There's nothing left to try rendering. Because `<ProfileDetails>` suspended, React shows the closest `<Suspense>` fallback above it in the tree: `<h1>Loading profile...</h1>`. We're done for now.
+1. لقد بدأنا بالفعل الطلبات في `fetchProfileData ()`. لقد أعطانا "موردًا" خاصًا بدلاً من promise. في مثال واقعي ، سيتم توفيره من خلال تكامل Suspense لمكتبة البيانات لدينا ، مثل Relay.
+2. React تحاول تصيير `<ProfilePage>`. تقوم بإرجاع ` <ProfileDetails>` و ` <ProfileTimeline>`  كأطفال.
+3. React يحاول تقديم `<ProfileDetails>`. وهو يستدعي `resource.user.read()`. لا يتم جلب أي من البيانات بعد ، لذلك "يعلق" هذا المكون. تتتفاعل React فوقه ويحاول تصيير مكونات أخرى في الشجرة.
+4. React يحاول تصيير `<ProfileTimeline>` .وهو يستدعي `resource.posts.read()`. مرة أخرى ، لا توجد بيانات حتى الآن ، لذلك هذا المكون أيضًا "معلق". React يتخطى ذلك أيضًا ، ويحاول تصيير مكونات أخرى في الشجرة.
+5. لم يتبق شيء لمحاولة التصيير. نظرًا لأن `<ProfileDetails>` مع وقف التنفيذ ، يعرض React أقرب تراجع ` <Suspense>`  فوقها في الشجرة: `<h1> جارٍ تحميل الملف الشخصي ... </h1>`. لقد انتهينا الآن.
 
-This `resource` object represents the data that isn't there yet, but might eventually get loaded. When we call `read()`, we either get the data, or the component "suspends".
+يمثل كائن "المورد" البيانات غير الموجودة بعد ، ولكن قد يتم تحميله في النهاية. عندما نستدعى `read ()`، إما أن نحصل على البيانات ، أو أن المكون "معلق".
 
-**As more data streams in, React will retry rendering, and each time it might be able to progress "deeper".** When `resource.user` is fetched, the `<ProfileDetails>` component will render successfully and we'll no longer need the `<h1>Loading profile...</h1>` fallback. Eventually, we'll get all the data, and there will be no fallbacks on the screen.
+**مع تدفق المزيد من البيانات، ستعيد React إعادة التصيير، وفي كل مرة قد تكون قادرة على التقدم "أعمق".** عندما يتم جلب `resource.user` ، سيتم تصيير المكون ` <<ProfileDetails>>`  بنجاح ونحن لم نعد بحاجة إلى `<h1> تحميل الملف الشخصي ... </ h1>` العودة. في النهاية ، سوف نحصل على جميع البيانات ، ولن يكون هناك أي نسخ احتياطية على الشاشة.
 
-This has an interesting implication. Even if we use a GraphQL client that collects all data requirements in a single request, *streaming the response lets us show more content sooner*. Because we render-*as-we-fetch* (as opposed to *after* fetching), if `user` appears in the response earlier than `posts`, we'll be able to "unlock" the outer `<Suspense>` boundary before the response even finishes. We might have missed this earlier, but even the fetch-then-render solution contained a waterfall: between fetching and rendering. Suspense doesn't inherently suffer from this waterfall, and libraries like Relay take advantage of this.
+هذا له تأثير مثير للاهتمام. حتى إذا استخدمنا عميل GraphQL الذي يجمع جميع متطلبات البيانات في طلب واحد، *تيح لنا تدفق الاستجابة إظهار المزيد من المحتوى عاجلاً*. نظرًا لأننا نجعل * as-we-fetch * (على عكس *بعد* الجلب)، إذا ظهر `user` في الرد قبل `posts` ،فسنكون قادرين على "إلغاء قفل" الخارجي `<Suspense>` الحدود قبل الرد حتى ينتهي. ربما افتقدنا هذا في وقت سابق، ولكن حتى حل الجلب آنذاك يحتوي على شلال: بين الجلب والتصيير. لا يعاني التشويق بطبيعته من هذا الشلال، وتستفيد المكتبات مثل Relay من هذا.
 
-Note how we eliminated the `if (...)` "is loading" checks from our components. This doesn't only remove boilerplate code, but it also simplifies making quick design changes. For example, if we wanted profile details and posts to always "pop in" together, we could delete the `<Suspense>` boundary between them. Or we could make them independent from each other by giving each *its own* `<Suspense>` boundary. Suspense lets us change the granularity of our loading states and orchestrate their sequencing without invasive changes to our code.
+لاحظ كيف استبعدنا `if (...)` "يتم تحميلها" من مكوناتنا. هذا لا يؤدي فقط إلى إزالة كود boilerplate ،ولكنه أيضًا يبسط إجراء تغييرات سريعة في التصميم. على سبيل المثال، إذا كنا نرغب دائمًا في "نشر" تفاصيل الملف الشخصي والمشاركات معًا، فيمكننا حذف الحدود `<Suspense>` بينهما. أو يمكننا أن نجعلهم مستقلين عن بعضهم البعض من خلال إعطاء كل *حده الخاص به*. يتيح لنا نظام `<Suspense>` تغيير تفاصيل حالات التحميل الخاصة بنا وتنسيق تسلسلها دون تغييرات على الكود الخاصة بنا.
 
-## Start Fetching Early {#start-fetching-early}
+## البدء في الجلب المبكر {#start-fetching-early}
 
-If you're working on a data fetching library, there's a crucial aspect of Render-as-You-Fetch you don't want to miss. **We kick off fetching _before_ rendering.** Look at this code example closer:
+إذا كنت تعمل على مكتبة تجلب البيانات، فهناك جانب حاسم في التصيير كما انت تجلب الذي لا تريد تفويته. **نبدأ في جلب _قبل_ التصيير.** انظر إلى مثال الكود هذا أقرب:
 
 ```js
 // Start fetching early!
@@ -392,11 +392,11 @@ function ProfileDetails() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-Note that the `read()` call in this example doesn't *start* fetching. It only tries to read the data that is **already being fetched**. This difference is crucial to creating fast applications with Suspense. We don't want to delay loading data until a component starts rendering. As a data fetching library author, you can enforce this by making it impossible to get a `resource` object without also starting a fetch. Every demo on this page using our "fake API" enforces this.
+لاحظ أن استدعاء `read()` في هذا المثال لا *تبدأ* الجلب. يحاول فقط قراءة البيانات **التي يتم جلبها بالفعل**. هذا الاختلاف ضروري لإنشاء تطبيقات سريعة باستخدام Suspense. لا نريد تأخير تحميل البيانات حتى يبدأ التصيير في أحد المكونات. بصفتك مؤلف مكتبة تجلب البيانات، يمكنك فرض ذلك بجعل الحصول على كائن "مورد" مستحيلًا دون البدء في عملية جلب. كل عرض تجريبي في هذه الصفحة باستخدام "API المزيف" لدينا يفرض هذا.
 
-You might object that fetching "at the top level" like in this example is impractical. What are we going to do if we navigate to another profile's page? We might want to fetch based on props. The answer to this is **we want to start fetching in the event handlers instead**. Here is a simplified example of navigating between user's pages:
+قد تعترض على أن جلب "أعلى مستوى" كما هو موضح في هذا المثال غير عملي. ماذا سنفعل إذا انتقلنا إلى صفحة ملف تعريف آخر؟ قد نرغب في جلب على أساس الدعائم. الإجابة على هذا **هي أننا نريد أن نبدأ في جلب معالجات الأحداث بدلاً من ذلك**. فيما يلي مثال مبسط للتنقل بين صفحات المستخدم:
 
 ```js{1,2,10,11}
 // First fetch: as soon as possible
@@ -419,29 +419,29 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-With this approach, we can **fetch code and data in parallel**. When we navigate between pages, we don't need to wait for a page's code to load to start loading its data. We can start fetching both code and data at the same time (during the link click), delivering a much better user experience.
+مع هذا المنهج، يمكننا **جلب الكود والبيانات بالتوازي**. عندما ننتقل بين الصفحات، لا نحتاج إلى انتظار تحميل كود الصفحة لبدء تنزيل بياناتها. يمكننا البدء في جلب كل من الشفرة والبيانات في نفس الوقت (أثناء النقر على الرابط)، مما يوفر تجربة مستخدم أفضل بكثير.
 
-This poses a question of how do we know *what* to fetch before rendering the next screen. There are several ways to solve this (for example, by integrating data fetching closer with your routing solution). If you work on a data fetching library, [Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) presents a deep dive on how to accomplish this and why it's important.
+يثير هذا سؤالًا حول كيفية معرفة *ما* الذي يجب إحضاره قبل تقديم الشاشة التالية. هناك عدة طرق لحل هذا (على سبيل المثال ، من خلال دمج البيانات التي تقرب من حل التوجيه الخاص بك). إذا كنت تعمل على مكتبة تجلب البيانات ، فإن [إنشاء تجربة مستخدم رائعة مع الوضع المتزامن و Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) يوفر تجربة عميقة حول كيفية تحقيق هذا ولماذا هو مهم.
 
-### We're Still Figuring This Out {#were-still-figuring-this-out}
+### ما زلنا نتفحص هذا {#were-still-figuring-this-out}
 
-Suspense itself as a mechanism is flexible and doesn't have many constraints. Product code needs to be more constrained to ensure no waterfalls, but there are different ways to provide these guarantees. Some questions that we're currently exploring include:
+Suspense نفسه كآلية مرنة وليس لديها العديد من القيود. يجب أن يكون كود المنتج أكثر تقييدًا لضمان عدم وجود شلالات ، ولكن هناك طرقًا مختلفة لتوفير هذه الضمانات. بعض الأسئلة التي نستكشفها حاليًا تشمل:
 
-* Fetching early can be cumbersome to express. How do we make it easier to avoid waterfalls?
-* When we fetch data for a page, can the API encourage including data for instant transitions *from* it?
-* What is the lifetime of a response? Should caching be global or local? Who manages the cache?
-* Can Proxies help express lazy-loaded APIs without inserting `read()` calls everywhere?
-* What would the equivalent of composing GraphQL queries look like for arbitrary Suspense data?
+* الجلب المبكر يمكن أن يكون مرهقًا للتعبير عنه. كيف نجعل من السهل تجنب الشلالات؟
+* عند جلب البيانات لصفحة ما ، هل يمكن لواجهة برمجة التطبيقات تشجيع تضمين البيانات الخاصة بالانتقالات الفورية *من* ذلك؟
+* ما هو عمر الاستجابة؟ هل يجب أن يكون التخزين المؤقت عالميًا أم محليًا؟ من يدير ذاكرة التخزين المؤقت؟
+* هل يمكن أن يساعد الوكلاء في التعبير عن واجهات برمجة التطبيقات المكسورة دون إدخال استدعاء `read()` في كل مكان؟
+* كيف سيكون شكل مكافئ استعلامات GraphQL للبيانات التعسفية Suspense؟
 
-Relay has its own answers to some of these questions. There is certainly more than a single way to do it, and we're excited to see what new ideas the React community comes up with.
+Relay له إجاباته الخاصة على بعض هذه الأسئلة. من المؤكد أن هناك أكثر من طريقة واحدة للقيام بذلك ، ونحن متحمسون لرؤية الأفكار الجديدة التي يطرحها مجتمع React.
 
-## Suspense and Race Conditions {#suspense-and-race-conditions}
+## Suspense و حالات التسابق {#suspense-and-race-conditions}
 
-Race conditions are bugs that happen due to incorrect assumptions about the order in which our code may run. Fetching data in the `useEffect` Hook or in class lifecycle methods like `componentDidUpdate` often leads to them. Suspense can help here, too — let's see how.
+ظروف السباق هي أخطاء تحدث بسبب افتراضات غير صحيحة حول الترتيب الذي قد يتم به تشغيل الكود. جلب البيانات في `useEffect` Hook أو في أساليب دورة حياة الكلاس مثل `componentDidUpdate` غالبًا ما يؤدي إليهم. يمكن أن يساعد التشويق هنا أيضًا - دعنا نرى كيف.
 
-To demonstrate the issue, we will add a top-level `<App>` component that renders our `<ProfilePage>` with a button that lets us **switch between different profiles**:
+لإثبات المشكلة ، سنضيف مكونًا من نوع `<App>` من المستوى الأعلى يصيير `<ProfofilePage>` الخاص بنا - باستخدام زر يتيح لنا **التبديل بين ملفات تعريف مختلفة**:
 
 ```js{9-11}
 function getNextId(id) {
@@ -461,11 +461,11 @@ function App() {
 }
 ```
 
-Let's compare how different data fetching strategies deal with this requirement.
+دعونا نقارن كيف تتعامل استراتيجيات جلب البيانات المختلفة مع هذا المطلب.
 
-### Race Conditions with `useEffect` {#race-conditions-with-useeffect}
+### حالات التسابق مع `useEffect` {#race-conditions-with-useeffect}
 
-First, we'll try a version of our original "fetch in effect" example. We'll modify it to pass an `id` parameter from the `<ProfilePage>` props to `fetchUser(id)` and `fetchPosts(id)`:
+أولاً ، سنحاول إصدار مثال "fetch in effect" الأصلي. سنقوم بتعديلها لتمرير معلمة `id` من الدعائم `<ProfilePage>` إلى `fetchUser(id)` و `fetchPosts(id)`:
 
 ```js{1,5,6,14,19,23,24}
 function ProfilePage({ id }) {
@@ -506,19 +506,19 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
 
-Note how we also changed the effect dependencies from `[]` to `[id]` — because we want the effect to re-run when the `id` changes. Otherwise, we wouldn't refetch new data.
+لاحظ كيف غيّرنا أيضًا تبعيات التأثير من `[]` إلى `[id]` - لأننا نريد إعادة تشغيل التأثير عندما يتغير `id`. خلاف ذلك ، لن نقوم بإعادة تعيين بيانات جديدة.
 
-If we try this code, it might seem like it works at first. However, if we randomize the delay time in our "fake API" implementation and press the "Next" button fast enough, we'll see from the console logs that something is going very wrong. **Requests from the previous profiles may sometimes "come back" after we've already switched the profile to another ID -- and in that case they can overwrite the new state with a stale response for a different ID.**
+إذا جربنا هذا الكود، فقد يبدو أنه يعمل في البداية. ومع ذلك ، إذا قمنا بشكل عشوائي بوقت التأخير في تطبيق "API المزيف" الخاص بنا واضغطنا على الزر "التالي" بسرعة كافية ، فسوف نرى من سجلات وحدة التحكم أن هناك خطأ ما. **طلبات الملفات الشخصية السابقة قد "تعود" أحيانًا بعد أن قمنا بالفعل بتحويل الملف الشخصي إلى معرف آخر - وفي هذه الحالة يمكنهم الكتابة فوق الحالة الجديدة باستجابة قديمة لid مختلف.**
 
-This problem is possible to fix (you could use the effect cleanup function to either ignore or cancel stale requests), but it's unintuitive and difficult to debug.
+من الممكن إصلاح هذه المشكلة (يمكنك استخدام وظيفة تنظيف التأثير إما لتجاهل أو إلغاء الطلبات التي لا معنى لها) ، ولكنها غير سهلة ويصعب تصحيحها.
 
-### Race Conditions with `componentDidUpdate` {#race-conditions-with-componentdidupdate}
+### حالات التسابق مع `componentDidUpdate` {#race-conditions-with-componentdidupdate}
 
-One might think that this is a problem specific to `useEffect` or Hooks. Maybe if we port this code to classes or use convenient syntax like `async` / `await`, it will solve the problem?
+قد يعتقد المرء أن هذه مشكلة خاصة بـ `useEffect` أو Hooks. ربما إذا قمنا بتوصيل هذا الكود إلى classes أو استخدم بناء جملة مناسب مثل `async` / `await` ، فهل سيحل المشكلة؟
 
-Let's try that:
+لنجرب ذلك:
 
 ```js
 class ProfilePage extends React.Component {
@@ -584,19 +584,19 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
 
-This code is deceptively easy to read.
+هذا الكود سهل القراءة بشكل خادع.
 
-Unfortunately, neither using a class nor the `async` / `await` syntax helped us solve this problem. This version suffers from exactly the same race conditions, for the same reasons.
+لسوء الحظ ، لم يساعدنا استخدام هذا الكلاس أو بناء جملة `async` / `await`. هذا الإصدار يعاني من نفس حالات التسابق بالضبط ، لنفس الأسباب.
 
-### The Problem {#the-problem}
+### المشكلة {#the-problem}
 
-React components have their own "lifecycle". They may receive props or update state at any point in time. However, each asynchronous request *also* has its own "lifecycle". It starts when we kick it off, and finishes when we get a response. The difficulty we're experiencing is "synchronizing" several processes in time that affect each other. This is hard to think about.
+مكونات React لها "دورة حياة" خاصة بها. قد يتلقون props أو حالة التحديث في أي وقت من الأوقات. ومع ذلك ، يحتوي كل طلب غير متزامن *أيضًا* على "دورة حياة" خاصة به. يبدأ عندما نبدأ تشغيله ، وينتهي عندما نتلقى ردًا. الصعوبة التي نواجهها هي "مزامنة" العديد من العمليات في الوقت المناسب التي تؤثر على بعضها البعض. هذا صعب التفكير فيه.
 
-### Solving Race Conditions with Suspense {#solving-race-conditions-with-suspense}
+### حل حالات التسابق مع Suspense {#solving-race-conditions-with-suspense}
 
-Let's rewrite this example again, but using Suspense only:
+دعنا نعيد كتابة هذا المثال مرة أخرى ، ولكن باستخدام Suspense فقط:
 
 ```js
 const initialResource = fetchProfileData(0);
@@ -644,9 +644,9 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-In the previous Suspense example, we only had one `resource`, so we held it in a top-level variable. Now that we have multiple resources, we moved it to the `<App>`'s component state:
+في مثال Suspense السابق ، لم يكن لدينا سوى مورد واحد ، لذلك احتفظنا به في متغير المستوى الأعلى. الآن بعد أن أصبح لدينا موارد متعددة ، قمنا بنقلها إلى حالة مكون `<App>`:
 
 ```js{4}
 const initialResource = fetchProfileData(0);
@@ -655,7 +655,7 @@ function App() {
   const [resource, setResource] = useState(initialResource);
 ```
 
-When we click "Next", the `<App>` component kicks off a request for the next profile, and passes *that* object down to the `<ProfilePage>` component:
+عندما نقر على "التالي" ، يبدأ المكون `<App>` في طلب الحصول على ملف التعريف التالي ، ويمرر * هذا* الكائن وصولاً إلى المكون `<ProfilePage>`:
 
 ```js{4,8}
   <>
@@ -669,17 +669,17 @@ When we click "Next", the `<App>` component kicks off a request for the next pro
   </>
 ```
 
-Again, notice that **we're not waiting for the response to set the state. It's the other way around: we set the state (and start rendering) immediately after kicking off a request**. As soon as we have more data, React "fills in" the content inside `<Suspense>` components.
+مرة أخرى ، لاحظ أن ** حن لا ننتظر الرد لضبط الحالة. إنها الطريقة الأخرى: قمنا بتعيين الحالة (وبدء التصيير) فور إتمام الطلب**. بمجرد أن يتوفر لدينا المزيد من البيانات ، React "يملأ" المحتوى الموجود داخل مكونات `<Suspense>`.
 
-This code is very readable, but unlike the examples earlier, the Suspense version doesn't suffer from race conditions. You might be wondering why. The answer is that in the Suspense version, we don't have to think about *time* as much in our code. Our original code with race conditions needed to set the state *at the right moment later*, or otherwise it would be wrong. But with Suspense, we set the state *immediately* -- so it's harder to mess it up.
+هذا الكود قابل للقراءة للغاية ، ولكن على عكس الأمثلة السابقة ، لا تعاني نسخة Suspense من حالات التسابق. قد تتساءل لماذا. الجواب هو أنه في نسخة Suspense، ليس من الضروري أن نفكر في *الوقت* كما هو الحال في الكود. لدينا الكود الأصلي مع حالات التسابق اللازمة لضبط الحالة *في اللحظة المناسبة في وقت لاحق* ، أو خلاف ذلك سيكون من الخطأ. ولكن مع Suspense ، وضعنا الحالة *على الفور* -- لذلك من الصعب الفوضى.
 
-## Handling Errors {#handling-errors}
+## معالجة الأخطاء {#handling-errors}
 
-When we write code with Promises, we might use `catch()` to handle errors. How does this work with Suspense, given that we don't *wait* for Promises to start rendering?
+عندما نكتب كود مع Promises ، فقد نستخدم `catch()` لمعالجة الأخطاء. كيف يعمل هذا مع Suspense ، بالنظر إلى أننا لا *ننتظر* حتى تبدأ promises في التصيير؟
 
-With Suspense, handling fetching errors works the same way as handling rendering errors -- you can render an [error boundary](/docs/error-boundaries.html) anywhere to "catch" errors in components below.
+باستخدام Suspense ، تعمل معالجة أخطاء الجلب بنفس طريقة التعامل مع أخطاء التصيير - يمكنك تصيير [حدود الخطأ](/docs/error-boundaries.html) في أي مكان لـ "التقاط" الأخطاء في المكونات أدناه.
 
-First, we'll define an error boundary component to use across our project:
+أولاً ، سنقوم بتعريف مكون حد الخطأ لاستخدامه في مشروعنا:
 
 ```js
 // Error boundaries currently have to be classes.
@@ -700,7 +700,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-And then we can put it anywhere in the tree to catch errors:
+وبعد ذلك يمكننا وضعه في أي مكان في الشجرة للوقوع في الأخطاء:
 
 ```js{5,9}
 function ProfilePage() {
@@ -717,20 +717,20 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
+**[جربه على CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
 
-It would catch both rendering errors *and* errors from Suspense data fetching. We can have as many error boundaries as we like but it's best to [be intentional](https://aweary.dev/fault-tolerance-react/) about their placement.
+سيؤدي ذلك إلى التقاط أخطاء التصيير *و* الأخطاء من جلب بيانات Suspense. يمكن أن يكون لدينا أكبر عدد ممكن من حدود الخطأ، لكن من الأفضل أن [تكون مقصودًا](https://aweary.dev/fault-tolerance-react/) حول موضعها.
 
-## Next Steps {#next-steps}
+## الخطوات التالية {#next-steps}
 
-We've now covered the basics of Suspense for Data Fetching! Importantly, we now better understand *why* Suspense works this way, and how it fits into the data fetching space.
+لقد قمنا الآن بتغطية أساسيات "Suspense لجلب البيانات"! الأهم من ذلك، أننا نفهم الآن بشكل أفضل *لماذا* يعمل Suspense بهذه الطريقة، وكيف يلائم مساحة جلب البيانات.
 
-Suspense answers some questions, but it also poses new questions of its own:
+يجيب التشويق على بعض الأسئلة، لكنه يطرح أيضًا أسئلة جديدة خاصة به:
 
-* If some component "suspends", does the app freeze? How to avoid this?
-* What if we want to show a spinner in a different place than "above" the component in a tree?
-* If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
-* Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
-* Why does our [last Suspense example](https://codesandbox.io/s/infallible-feather-xjtbu) log a warning when clicking the "Next" button?
+* إذا تم *تعليق* بعض المكونات، هل يتجمد التطبيق؟ كيفية تجنب هذا؟
+* ماذا لو أردنا إظهار مغزل في مكان مختلف عن "أعلى" المكون في شجرة؟
+* إذا *أردنا* عن قصد إظهار واجهة مستخدم غير متسقة لفترة زمنية قصيرة، هل يمكننا القيام بذلك؟
+* بدلاً من إظهار spinner، هل يمكننا إضافة مؤثر بصري مثل "شطب" الشاشة الحالية؟
+* لماذا يقوم [مثال Suspense الأخير](https://codesandbox.io/s/infallible-feather-xjtbu) بتسجيل تحذير عند النقر فوق الزر "التالي"؟
 
-To answer these questions, we will refer to the next section on [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+للإجابة على هذه الأسئلة، سوف نشير إلى القسم التالي في [أنماط واجهة المستخدم المتزامنة](/docs/concurrent-mode-patterns.html).
