@@ -42,26 +42,25 @@ console.log(add(16, 26)); // 42
 >
 > سينتهي مظهر الحزم لديك إلى شكلٍ مختلف عن هذا.
 
-إن كنت تستخدم  [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/), أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
+إن كنت تستخدم [Create React App](https://github.com/facebookincubator/create-react-app) ،[Next.js](https://github.com/zeit/next.js/) ،[Gatsby](https://www.gatsbyjs.org/)، أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
 
-أمّا إن لم تكن تستخدم أي من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
+أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
 [التثبيت](https://webpack.js.org/guides/installation/) و
-[ دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
+[دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
 
 ## تقسيم الشيفرة {#code-splitting}
 
 يكون التحزيم رائعًا، ولكن عندما يكبر تطبيقك ستكبر الحزمة لديك أيضًا، خاصّة إن كنت تُضمِّن مكتبات طرف ثالث كبيرة الحجم. يجب الانتباه إلى الشيفرة التي تُضمِّنها في حزمتك لكي لا تجعلها كبيرة من غير قصد لدرجة أن يستغرق تطبيقك زمنًا طويلًا للتحميل.
 
 لتجنّب الحصول على حزمة كبيرة من الأفضل استباق حصول المشكلة والبدء في تقسيم حزمتك.
-تقسيم الشيفرة هو ميّزة مدعومة من قبل المُحزِّمات مثل [Webpack](https://webpack.js.org/guides/code-splitting/)، [Rollup](https://rollupjs.org/guide/en/#code-splitting) و Browserify (عبر
+تقسيم الشيفرة هو ميّزة مدعومة من قبل المُحزِّمات مثل [Webpack](https://webpack.js.org/guides/code-splitting/) ،[Rollup](https://rollupjs.org/guide/en/#code-splitting) و Browserify (عبر
 [factor-bundle](https://github.com/browserify/factor-bundle)) والتي تستطيع إنشاء حزم متعددة يُمكِن تحميلها بشكل ديناميكي في زمن التنفيذ.
 
 يُساعدك تقسيم شيفرة تطبيقك على إجراء تحميل مُتأخّر (Lazy Load) للأشياء التي يحتاجها المستخدم حاليًّا فقط، ممّا يُحسِّن بشكل كبير أداء تطبيقك. وفي حين أنّك لم تُقلِّل الحجم الكلي لشيفرة تطبيقك، فقد تجنّبت تحميل شيفرة قد لا يحتاجها المستخدم أبدًا وقلّلتَ حجم الشيفرة التي تحتاج إلى تحميلها في البداية.
 
 ## `()import` {#import}
 
-أفضل طريقة لتقديم تقسيم الشيفرة إلى تطبيقك هي عبر استخدام صياغة
-`import()` الديناميكية.
+أفضل طريقة لتقديم تقسيم الشيفرة إلى تطبيقك هي عبر استخدام صياغة `import()` الديناميكية.
 
 **الشيفرة قبل الاستخدام:**
 
@@ -71,7 +70,7 @@ import { add } from './math';
 console.log(add(16, 26));
 ```
 
-**الشيفرة بعد الاستخدام::**
+**الشيفرة بعد الاستخدام:**
 
 ```js
 import("./math").then(math => {
@@ -79,21 +78,19 @@ import("./math").then(math => {
 });
 ```
 
-عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App, فهذا الإعداد موجود لديك مُسبقًا
-و [تستطيع استخدامه مباشرةً](https://facebook.github.io/create-react-app/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://github.com/zeit/next.js/#dynamic-import).
+عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App، فهذا الإعداد موجود لديك مُسبقًا و [تستطيع استخدامه مباشرةً](https://facebook.github.io/create-react-app/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
-إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة
-[ دليل Webpack حول تقسيم الشيفرة](https://webpack.js.org/guides/code-splitting/). يجب أن تبدو إعدادات Webpack لديك [مثل هذا](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
+إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة [ دليل Webpack حول تقسيم الشيفرة](https://webpack.js.org/guides/code-splitting/). يجب أن تبدو إعدادات Webpack لديك [مثل هذا](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
-عند استخدامك [Babel](https://babeljs.io/), يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية بدون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
+عند استخدامك [Babel](https://babeljs.io/)، يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية دون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
 > ملاحظة:
 >
-> `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادم](https://loadable-components.com/docs/server-side-rendering/).
+> `React.lazy` و `Suspense` غير متاحين للتصيير من طرف الخادوم. إن أردت تنفيذ تقسيم للشيفرة في تطبيق مصيَّر من طرف الخادوم، ننصح باستعمال المكتبة [Loadable Components](https://github.com/smooth-code/loadable-components). إذ تملك [دليلًا جيدًا لتحزيم عملية التقسيم مع التصيير من طرف الخادوم](https://loadable-components.com/docs/server-side-rendering/).
 
-تمكِّنك الدالة `React.lazy`  من تصيير استيراد ديناميكي على أنَّه مكون عادي.
+تمكِّنك الدالة `React.lazy` من تصيير استيراد ديناميكي على أنَّه مكون عادي.
 
 **قبل:**
 
@@ -109,9 +106,9 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 ستحمِّل هذه الشيفرة الحزمة تلقائيًّا التي تحوي المكون `OtherComponent` عند تصييره.
 
-تأخذ الدالة `React.lazy` دالةً يجب عليها أن استدعاء استيراد ديناميكي عبر `import()`. هذا يجب أن يعيد وعدًا (أي `Promise`) يُستبيَن إلى وحدةٍ مع تصدير افتراضي `default` يحوي مكون React.
+تأخذ الدالة `React.lazy` دالةً يجب عليها استدعاء استيراد ديناميكي عبر `import()`. هذا يجب أن يعيد وعدًا (أي `Promise`) يُستبيَن إلى وحدةٍ مع تصدير افتراضي `default` يحوي مكون React.
 
-بعد ذلك ، يجب تصيير المكون الكسول (lazy component) داخل مكون `Suspense` ، والذي يسمح لنا بإظهار بعض المحتوى الاحتياطي (مثل مؤشر التحميل) بينما ننتظر تحميل المكون الكسول.
+بعد ذلك، يجب تصيير المكون الكسول (lazy component) داخل مكون `Suspense`، والذي يسمح لنا بإظهار بعض المحتوى الاحتياطي (مثل مؤشر التحميل) بينما ننتظر تحميل المكون الكسول.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -174,7 +171,7 @@ const MyComponent = () => (
 
 قد يكون من الصعب تحديد موضع تقسيم الشيفرة في تطبيقك. يجب عليك أن تتأكد من اختيار أماكن تُقسِّم الشيفرة بشكلٍ متساوٍ ولكن من دون الضرر بتجربة المستخدم.
 
-المكان الجيد للبدء بذلك هو الطرق (routes). اعتاد معظم مستخدمي الويب على أنّ أزرار التقليب بين الصفحات تستغرق وقتًا لتحميلها. تميل حينها أيضًا إلى إعادة تصيير كامل الصفحة مرة واحدة لذا من غير المحتمل أن يكون المستخدم يحاول التفاعل مع الصفحة في نفس الوقت.
+المكان الجيد للبدء بذلك هو الطرق (routes). اعتاد معظم مستخدمي الويب على أنّ أزرار التقليب بين الصفحات تستغرق وقتًا لتحميلها. تميل حينها أيضًا إلى إعادة تصيير كامل الصفحة مرة واحدة لذا من غير المحتمل أن المستخدم يحاول التفاعل مع الصفحة في نفس الوقت.
 
 هذا مثال حول إعداد تقسيم الشيفرة اعتمادًا على الطريق في تطبيقك باستخدام مكتبات مثل [React Router](https://reacttraining.com/react-router/) و `React.lazy`.
 
