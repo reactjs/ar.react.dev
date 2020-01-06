@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-adoption
-title: Adopting Concurrent Mode (Experimental)
+title: اعتماد الوضع المتزامن (تجريبي)
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
