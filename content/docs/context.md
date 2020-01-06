@@ -106,7 +106,11 @@ function Page(props) {
 
 يكفينا هذا النمط للعديد من الحالات عند الحاجة لفصل مكوّن ابن عن المكونات الآباء له. وبإمكانك أخذ هذا إلى أبعد من ذلك عن طريق خاصيّات التصيير إن كان المكوّن الابن يحتاج إلى التواصل مع المكوّن الأب قبل التصيير.
 
+<<<<<<< HEAD
 على أية حال تحتاج بعض البيانات أحيانًا أن تكون قابلة للوصول من قبل العديد من المكوّنات في الشجرة، وبمستويات متداخلة مختلفة. يُتيح لك السياق نشر مثل هذه البيانات وتغييراتها إلى جميع المكوّنات في المستويات الأدنى. تتضمّن الأمثلة الشائعة التي يكون فيها استخدام السياق أبسط من البدائل هي إدارة اللغة الحالية، أو القالب، أو مخبأ البيانات (cache).
+=======
+However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels. Context lets you "broadcast" such data, and changes to it, to all components below. Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ## API {#api}
 
@@ -132,6 +136,7 @@ const MyContext = React.createContext(defaultValue);
 
 Accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
 
+<<<<<<< HEAD
 كل المستهلكات `Consumers` المنحدرة عن المُزوِّد ستُعيد التصيير عندما تتغير قيمة الخاصيّة `value` للمُزوّد. لا يخضع الانتشار من المُزوّد إلى المستهلكات المنحدرة عنه إلى التابع `shouldComponentUpdate`، لذا يُحدَّث المستهلك حتى ولو كان المكوّن الأب غير خاضع للتحديث.
 
 تُحدَّد التغييرات عن طريق مقارنة القيم الجديدة والقديمة باستخدام نفس الخوارزمية مثل [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description). 
@@ -139,6 +144,15 @@ Accepts a `value` prop to be passed to consuming components that are descendants
 > ملاحظة
 > 
 > قد تُسبِّب طريقة التغييرات المُحدَّدة بعض المشاكل عند تمرير الكائنات في الوسيط `value`: سنتحدّث عن المزيد في [ قسم المحاذير](#caveats).
+=======
+All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes. The propagation from Provider to its descendant consumers (including [`.contextType`](#classcontexttype) and [`useContext`](/docs/hooks-reference.html#usecontext)) is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component skips an update.
+
+Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).
+
+> Note
+>
+> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -195,9 +209,15 @@ class MyClass extends React.Component {
 
 تتطلب الخاصية `Consumer` [دالةً على أنَّها ابنٌ](/docs/render-props.html#using-props-other-than-render). إذ تستقبل هذه الدالة قيمة السياق الحالي وتعيد عقدة React. الوسيط `value` المُمرَّر إلى الدالة سيكون مساويًّا إلى قيمة الخاصية `value` لأقرب مزود (Provider) لهذا السياق في الشجرة أعلاه. إن لم يكن هنالك مزود (Provider) لهذا السياق أعلاه، فسيكون الوسيط `value` مساويًا إلى القيمة `defaultValue` التي مُرِّرت إلى `()createContext`.
 
+<<<<<<< HEAD
 > ملاحظة
 > 
 > للمزيد من المعلومات حول النمط "دالة على أنَّها ابنٌ"، اطلع على توثيق [خاصيات التصيير](/docs/render-props.html).
+=======
+> Note
+>
+> For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Context.displayName` {#contextdisplayname}
 
@@ -243,7 +263,11 @@ MyContext.displayName = 'MyDisplayName';
 
 ### استهلاك سياقات متعددة {#consuming-multiple-contexts}
 
+<<<<<<< HEAD
 لإبقاء قدرة السياق على إعادة التصيير بشكل سريع، تحتاج React إلى جعل كل مستهلك سياق على شكل عقدة منفصل في الشجرة:
+=======
+To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 `embed:context/multiple-contexts.js`
 
@@ -262,7 +286,14 @@ MyContext.displayName = 'MyDisplayName';
 
 ## واجهة برمجة التطبيقات القديمة {#legacy-api}
 
+<<<<<<< HEAD
 > ملاحظة
 > 
 > كانت تأتي React سابقًا مع واجهة برمجة تطبيقات (API) تجريبية للسياق. ستبقى هذه الواجهة مدعومة في جميع الإصدارات ‎16.x‎، ولكن يجب على التطبيقات التي تستخدمها أن تنتقل للإصدار الجديد. ستُزال هذه الواجهة القديمة في إصدار React المستقبلي الرئيسي. اقرأ توثيق السياق القديم [من هنا](/docs/legacy-context.html).
  
+=======
+> Note
+>
+> React previously shipped with an experimental context API. The old API will be supported in all 16.x releases, but applications using it should migrate to the new version. The legacy API will be removed in a future major React version. Read the [legacy context docs here](/docs/legacy-context.html).
+
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
