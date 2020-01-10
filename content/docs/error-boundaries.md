@@ -4,7 +4,7 @@ title: حدود الأخطاء
 permalink: docs/error-boundaries.html
 ---
 
-في الماضي كانت أخطاء JavaScript بداخل المكوّنات تؤدّي إلى تخريب حالة React الداخلية [وإصدار](https://github.com/facebook/react/issues/4026) [أخطاء](https://github.com/facebook/react/issues/8579) [مخفية](https://github.com/facebook/react/issues/6895) في التصييرات التالية. كانت هذه الأخطاء مُسبَّبة دومًا بخطأ باكر في شيفرة التطبيق، ولكن لم تكن تعطينا React طريقة للتعامل معها في المكوّنات، ولم يكن بإمكانها استعادتها أيضًا.
+في الماضي كانت أخطاء JavaScript بداخل المكوّنات تؤدّي إلى تخريب حالة React الداخلية [وإصدار](https://github.com/facebook/react/issues/4026) [أخطاء](https://github.com/facebook/react/issues/8579) [مخفية](https://github.com/facebook/react/issues/6895) في التصييرات التالية. كانت هذه الأخطاء مُسبَّبة دومًا بخطأ مبكر في شيفرة التطبيق، ولكن لم تكن تعطينا React طريقة للتعامل معها في المكوّنات، ولم يكن بإمكانها استعادتها أيضًا.
 
 
 
@@ -23,7 +23,7 @@ permalink: docs/error-boundaries.html
 > * التصيير من جانب الخادم.
 > * الأخطاء المرميّة من قبل حد الخطأ نفسه (بدلًا من أخطاء المكوّنات الأبناء له).
 
-تُصبِح مكوّنات الأصناف حدودًا للأخطاء إن عرّفت تابعًا جديدًا لدورة الحياة يُدعى  [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) أو [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). إستعمل `static getDerivedStateFromError()` لتعرض واجة مستخدم بها أخطاء. وإستعمل `componentDidCatch()` لتسجيل معلومات عن الخطأ.
+تُصبِح مكوّنات الأصناف حدودًا للأخطاء إن عرّفت تابعًا جديدًا لدورة الحياة يُدعى  [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) أو [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). استعمل `static getDerivedStateFromError()` لعرض واجهة مستخدم بها أخطاء. واستعمل `componentDidCatch()` لتسجيل معلومات عن الخطأ.
 
 ```js{7-10,12-15,18-21}
 class ErrorBoundary extends React.Component {
@@ -53,7 +53,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-بعدها تستطيع استخدامها كمكوّنات اعتياديّة:
+بعدها تستطيع استخدامها بصفتها مكوّنات اعتياديّة:
 
 ```js
 <ErrorBoundary>
@@ -61,9 +61,9 @@ class ErrorBoundary extends React.Component {
 </ErrorBoundary>
 ```
 
-تعمل حدود الأخطاء مثل الكتلة `catch {}`، ولكن لأجل المكوّنات.. تستطيع فقط مكوّنات الأصناف أن تُصبِح حدودًا للأخطاء. في الممارسة العمليّة سترغب في أغلب الأوقات في التصريح عن مكوّن لحدود الأخطاء مرّة واحدة ومن ثم استخدامه خلال تطبيقك.
+تعمل حدود الأخطاء مثل الكتلة `catch {}`، ولكن لأجل المكوّنات. تستطيع مكوّنات الأصناف فقط أن تُصبِح حدودًا للأخطاء. في الممارسة العمليّة سترغب في أغلب الأوقات في التصريح عن مكوّن لحدود الأخطاء مرّة واحدة ومن ثم استخدامه خلال تطبيقك.
 
-لاحظ أنّ **حدود الأخطاء تلتقط فقط الأخطاء في المكوّنات التي تقع تحتها في شجرة المكوّنات**، فلا يستطيع التقاط خطأ موجود ضمنه.إن فشل حد الأخطاء في محاولة تصيير رسالة الخطأ فستنتشر رسالة الخطأ إلى أقرب حد خطأ موجود في المستويات الأعلى منه. وهذا يُشبِه كيفيّة عمل الكتلة `catch {}` في JavaScript.
+لاحظ أنّ **حدود الأخطاء تَلتقط فقط الأخطاء في المكوّنات التي تقع تحتها في شجرة المكوّنات**، فلا تستطيع التقاط خطأ موجود ضمنه.إن فشل حد الأخطاء في محاولة تصيير رسالة الخطأ فستنتشر رسالة الخطأ إلى أقرب حد خطأ موجود في المستويات الأعلى منه. وهذا يُشبِه كيفيّة عمل الكتلة `catch {}` في JavaScript.
 
 ## تجربة حية {#live-demo}
 
@@ -77,11 +77,11 @@ class ErrorBoundary extends React.Component {
 
 ## سلوك جديد للأخطاء غير الملتقطة {#new-behavior-for-uncaught-errors}
 
-يملك هذا التغيير تأثيرًا هامًّا. **فبدءًا من إصدار React 16 أصبحت الأخطاء التي لا تلتقطها حدود الأخطاء ينتج عنها فصل كامل شجرة المكوّنات..**
+يملك هذا التغيير تأثيرًا هامًّا. **فبدءًا من إصدار React 16 أصبحت الأخطاء التي لا تلتقطها حدود الأخطاء ينتج عنها فصل كامل شجرة المكوّنات.**
 
 ترددنا في هذا القرار، ولكن من خلال تجربتنا من الأسوأ ترك واجهة مستخدم معطوبة في مكانها بدلًا من إزالتها بشكل كامل. على سبيل المثال في مُنتَج مثل Messenger قد يؤدّي ترك واجهة المستخدم المعطوبة مرئيّة إلى إرسال رسالة للشخص الخطأ. وبشكلٍ مماثل من الأسوأ أيضًا بالنسبة لتطبيق للدفع أن يعرض مبلغًا خاطئًا بدلًا من عدم عرض شيء.
 
-يعني هذا التغيير أنّك عندما تنتقل إلى إصدار React 16 فعلى الأغلب أنك ستقلل من الانهيارات الموجودة في تطبيقك والتي لم تكن تلاحظها من قبل. يُتيح لك إضافة حدود الأخطاء إعطاء تجربة مستخدم أفضل عند حدوث خطأ ما.
+يعني هذا التغيير أنّك عندما تنتقل إلى إصدار React 16 فعلى الأغلب أنك ستقلل من الانهيارات الموجودة في تطبيقك والتي لم تكن تلاحظها من قبل. تُتيح لك إضافة حدود الأخطاء إعطاء تجربة مستخدم أفضل عند حدوث خطأ ما.
 
 على سبيل المثال يُغلِّف تطبيق Facebook Messenger محتوى الشريط الجانبي، ونافذة المعلومات، وسجل المحادثات، وحقل إدخال الرسائل ضمن حدود أخطاء منفصلة. فإن انهار مكوّن ما في إحدى هذه المناطق من واجهة المستخدم، فستبقى الأخرى غير متفاعلة.
 
@@ -90,7 +90,7 @@ class ErrorBoundary extends React.Component {
 
 ## تتبع مكدس المكون {#component-stack-traces}
 
-تطبع React 16 جميع الأخطاء الحاصلة خلال التصيير إلى نافذة الكونسول في وضعية التطوير، حتى ولو كان التطبيق يتجاهلها. وبالإضافة إلى رسائل الأخطاء ومكدس JavaScript فهي تُزوّدنا بتتبعات لمكدس المكوّن. بإمكانك الآن أن ترى بالضبط أين حصل الفشل في شجرة المكوّنات:
+تطبع React 16 جميع الأخطاء الحاصلة خلال التصيير إلى نافذة الـconsole في وضعية التطوير، حتى ولو كان التطبيق يتجاهلها. وبالإضافة إلى رسائل الأخطاء ومكدس JavaScript فهي تُزوّدنا بتتبعات لمكدس المكوّن. بإمكانك الآن أن ترى بالضبط أين حصل الفشل في شجرة المكوّنات:
 
 <img src="../images/docs/error-boundaries-stack-trace.png" style="max-width:100%" alt="Error caught by Error Boundary component">
 
@@ -98,11 +98,11 @@ class ErrorBoundary extends React.Component {
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="Error caught by Error Boundary component with line numbers">
 
-وإن لم تكن تستخدم  Create React App, فبإمكانك إضافة [هذه الإضافة](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source) يدويًّا إلى إعدادات Babel لديك.  لاحظ أنّ الغرض منها هو وضعية التطوير فقط و**يجب تعطيلها في وضعية الإنتاج**..
+وإن لم تكن تستخدم  Create React App، فبإمكانك إضافة [هذه الإضافة](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source) يدويًّا إلى إعدادات Babel لديك. لاحظ أنّ الغرض منها هو وضعية التطوير فقط و**يجب تعطيلها في وضعية الإنتاج**.
 
 > ملاحظة
 >
-> تعتمد أسماء المكوّنات المعروضة في تتبع لامكدس على الخاصيّة [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name). إن كنت تريد دعم متصفحات وأجهزة أقدم والتي قد لا تزوّدنا بها بشكل ذاتي (مثل IE 11), فضمّن الخاصيّة `Function.name` ضمن تطبيقك باستخدام, [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). وبشكل بديل تستطيع تعيين الخاصيّة  [`displayName`](/docs/react-component.html#displayname) في جميع مكوناتك.
+> تعتمد أسماء المكوّنات المعروضة في تتبع المكدس على الخاصيّة [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name). إن كنت تريد دعم متصفحات وأجهزة أقدم والتي قد لا تزوّدنا بها بشكل ذاتي (مثل IE 11)، فضمّن الخاصيّة `Function.name` ضمن تطبيقك باستخدام، [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). وبشكل بديل تستطيع تعيين الخاصيّة  [`displayName`](/docs/react-component.html#displayname) في جميع مكوناتك.
 
 
 ## ماذا عن Try/Catch؟ {#how-about-trycatch}
