@@ -49,11 +49,9 @@ redirect_from:
 
 عند بدء مشروع React، قد لا يزال خيار استعمال [صفحة HTML بسيطة الوسوم &lt;script&gt;](/docs/add-react-to-a-website.html). خيارًا مفضَّلًا، إذ يأخذ دقيقةً واحدةً لإعداده!
 
-<<<<<<< HEAD
+مع نمو التطبيق الخاص بك ، قد ترغب في النظر في إعداد أكثر تكاملاً. هناك العديد من أدوات جافا سكريبت التي نوصي بها للتطبيقات الأكبر حجمًا. يمكن لكل منهم العمل دون أي تغيير يذكر ، ويتيح لك الاستفادة الكاملة من نظام React البيئي الغني. [تعلم كيف.](/docs/create-a-new-react-app.html)
+
 ## تعلم React {#learn-react}
-=======
-As your application grows, you might want to consider a more integrated setup. There are several JavaScript toolchains we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem. [Learn how.](/docs/create-a-new-react-app.html)
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 الأشخاص الذين يأتون إلى React هم ذوي خلفيات شتَّى وأساليب تعلُّم مختلفة. سواءً أكنت تفضل الأسلوب النظري، أم الأسلوب العملي، نأمل أن تجد في هذا القسم العون على رحلتك في تعلم React.
 
