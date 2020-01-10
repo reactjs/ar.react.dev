@@ -105,11 +105,7 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-<<<<<<< HEAD
 يُشبه `React.PureComponent` الصنف [`React.Component`](#reactcomponent). الفرق بينهما هو عدم اعتماد الصنف [`React.Component`](#reactcomponent) للتابع  [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)‎ بينما يعتمده `React.PureComponent` مع مقارنة ضئيلة بين الخاصيّات والحالة.
-=======
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام  `React.PureComponent` لتحسين الأداء في بعض الحالات.
 
@@ -135,14 +131,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 إن صير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفها في استدعاء إلى `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
 
-افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في الكائنات props. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة كوسيطٍ ثانٍ.
+`React.memo` تأثر فقط على تغيرات الخصائص. اذا كان مكون الدالةالخاص بك مغلف ب `React.memo` ويحتوي على [`useState`](/docs/hooks-state.html) او [`useContext`](/docs/hooks-reference.html#usecontext) Hook في تنفيذه، سيتم اعادة تصيره عند تغير الحالة أو السياق.
 
-<<<<<<< HEAD
-=======
-`React.memo` only affects props changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
-
-By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في خصائص الكائنات. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة كوسيطٍ ثانٍ.
 
 ```javascript
 function MyComponent(props) {
