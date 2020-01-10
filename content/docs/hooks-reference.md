@@ -70,6 +70,8 @@ function Counter({initialCount}) {
 
 يستعمل الزر "+" والزر "-" الشكل الدالِّي (functional form) لأنَّ القيمة المحدَّثة تعتمد على القيمة السابقة. ولكن الزر "Reset" يستعمل الشكل الاعتيادي لأنَّه يضبط العداد إلى القيمة 0 دومًا.
 
+If your update function returns the exact same value, the subsequent rerender will be skipped completely.
+
 > ملاحظة
 >
 > خلافًا للتابع `setState` في مكونات الأصناف، الخطاف `useState` لا يدمج كائنات التحديث (update objects). يمكنك تكرار هذا السلوك عبر دمج شكل الدالة المحدِّثة مع معامل النشر للكائن:
@@ -183,8 +185,7 @@ const value = useContext(MyContext);
 
 يقبل هذا الخطاف كائن سياق (context object، أي القيمة المعادة من `React.createContext`) ويعيد قيمة السياق الحالي كما أُعطيَت من قبل أقرب موفِّر سياق (context provider) للسياق المعطى.
 
-عندما يكون أقرب `<MyContext.Provider>` فوق تحديثات المكون, 
-هذا الخطاف سيؤدي إلى إعادة تقديم مع أحدث سياق `value` التي تمررها إلى المزود `MyContext`.
+عندما يكون أقرب `<MyContext.Provider>` فوق تحديثات المكون, هذا الخطاف سيؤدي إلى إعادة تقديم مع أحدث سياق `value` التي تمررها إلى المزود `MyContext`. حتى لو كان يستخدم [`React.memo`](/docs/react-api.html#reactmemo) أو [`shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate), ستبقى اعادة التصيير تحدث بدءاً من المكون نفسه باستخدام `useContext`.
 
 لا تنسى أن العامل `useContext` يجب أن يكون:
 

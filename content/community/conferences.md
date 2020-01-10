@@ -82,6 +82,12 @@ March 30 - 31, 2020 in San Francisco, CA
 
 [موقع الواب](https://reactweek.nyc/) - [تويتر](https://twitter.com/reactweek) - [فيس بوك](https://www.facebook.com/reactweek) 
 
+### ComponentsConf 2020 {#components20}
+1 سبتمبر 2020 في ملبورن ، أستراليا
+
+[موقع الواب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/ComponentsConf) - [فيس بوك](https://www.facebook.com/ComponentsConf/) - [لينكدين](https://www.linkedin.com/company/componentsconf/) - [أشرطة الفيديو](https://www.youtube.com/ComponentsConf)
+
+
 ## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}

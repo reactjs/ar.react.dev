@@ -130,9 +130,9 @@ const MyContext = React.createContext(defaultValue);
 
 وهو مُكوِّن React الذي يسمح للمستهلك Consumer بأن يُشارك في تغييرات السياق.
 
-Accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
+تقبل الخاصية `value` بأن تعطى للمكونات المتستهلكة `consuming components` التي تنحدر من مزود. من الممكن لمزود واحد فقط ان يربط مع عدة مستهلكات. يمكن تداخل المزودات لتجاوز القيم بشكل أعمق داخل الشجرة.
 
-كل المستهلكات `Consumers` المنحدرة عن المُزوِّد ستُعيد التصيير عندما تتغير قيمة الخاصيّة `value` للمُزوّد. لا يخضع الانتشار من المُزوّد إلى المستهلكات المنحدرة عنه إلى التابع `shouldComponentUpdate`، لذا يُحدَّث المستهلك حتى ولو كان المكوّن الأب غير خاضع للتحديث.
+كل المستهلكات `Consumers` المنحدرة عن المُزوِّد ستُعيد التصيير عندما تتغير قيمة الخاصيّة `value` للمُزوّد. لا يخضع الانتشار من المُزوّد إلى المستهلكات المنحدرة عنه (بما فيها [`.contextType`](#classcontexttype) و[`useContext`](/docs/hooks-reference.html#usecontext)) إلى التابع `shouldComponentUpdate`، لذا يُحدَّث المستهلك حتى ولو كان المكوّن الأب غير خاضع للتحديث.
 
 تُحدَّد التغييرات عن طريق مقارنة القيم الجديدة والقديمة باستخدام نفس الخوارزمية مثل [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description). 
 
@@ -265,4 +265,3 @@ MyContext.displayName = 'MyDisplayName';
 > ملاحظة
 > 
 > كانت تأتي React سابقًا مع واجهة برمجة تطبيقات (API) تجريبية للسياق. ستبقى هذه الواجهة مدعومة في جميع الإصدارات ‎16.x‎، ولكن يجب على التطبيقات التي تستخدمها أن تنتقل للإصدار الجديد. ستُزال هذه الواجهة القديمة في إصدار React المستقبلي الرئيسي. اقرأ توثيق السياق القديم [من هنا](/docs/legacy-context.html).
- 

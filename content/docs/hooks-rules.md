@@ -46,7 +46,7 @@ npm install eslint-plugin-react-hooks --save-dev
 }
 ```
 
-في المستقبل، ننوي تضمين هذه الإضافة افتراضيًّا عند بناء تطبيقات جديدة باستعمال الأمر Create React App أو أية مجموعة أدوات أخرى (toolkits).
+يتم تضمين هذه المكونات بشكل افتراضي في [Create React App](/docs/create-a-new-react-app.html#create-react-app).
 
 **يمكنك تخطي بقية هذه الصفحة إلى الصفحة التالية: [بناء خطافات خاصة بك](/docs/hooks-custom.html) الآن.** إذ سنكمل شرح سبب وجود هاتين القاعدتين.
 
