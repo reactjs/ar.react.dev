@@ -15,11 +15,11 @@ next: concurrent-mode-reference.html
 
 <div class="scary">
 
->Caution:
+> تحذير:
 >
->This page describes **experimental features that are not yet available in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+> تصف هذه الصفحة **الميزات التجريبية التي لم تتوفر بعد في إصدار ثابت**. لا تعتمد على تصميمات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+> هذه الوثائق تهدف إلى تبني أوائل الناس والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** -- لست بحاجة إلى تعلمها الآن.
 
 </div>
 
@@ -31,20 +31,21 @@ next: concurrent-mode-reference.html
   - [Why So Many Modes?](#why-so-many-modes)
   - [Feature Comparison](#feature-comparison)
 
-## Installation {#installation}
+## تنصيب {#installation}
 
-Concurrent Mode is only available in the [experimental builds](/blog/2019/10/22/react-release-channels.html#experimental-channel) of React. To install them, run:
+يتوفر وضع التزامن فقط في [الإنشاءات التجريبية](/blog/2019/10/22/react-release-channels.html#experimental-channel) في React. لتثبيتها، قم بتشغيل:
 
 ```
 npm install react@experimental react-dom@experimental
 ```
 
-**There are no semantic versioning guarantees for the experimental builds.**  
-APIs may be added, changed, or removed with any `@experimental` release.
+**لا توجد ضمانات الإصدار الدلالي للبنيات التجريبية.**
+يمكن إضافة واجهات برمجة التطبيقات (APIs) أو تغييرها أو إزالتها مع أي إصدار `@experimental`.
 
-**Experimental releases will have frequent breaking changes.**
 
-You can try these builds on personal projects or in a branch, but we don't recommend running them in production. At Facebook, we *do* run them in production, but that's because we're also there to fix bugs when something breaks. You've been warned!
+**الإصدارات التجريبية ستتضمن تغييرات متكررة.**
+
+يمكنك تجربة هذه الإنشاءات على المشاريع الشخصية أو في أحد الفروع، لكننا لا نوصي بتشغيلها في الإنتاج. في فيسبوك، نقوم *بتشغيلها* في الإنتاج، لكن ذلك لأننا أيضًا هناك لإصلاح الأخطاء عندما ينكسر شيء ما. لقد تم تحذيرك!
 
 ### Who Is This Experimental Release For? {#who-is-this-experimental-release-for}
 
