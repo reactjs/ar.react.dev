@@ -140,7 +140,11 @@ class CustomTextInput extends React.Component {
 
 #### المراجع و مُكوِنات الدّالة {#refs-and-function-components}
 
+<<<<<<< HEAD
 **لا يُمكِنُكَ استخدام خاصية المرجع `ref` على مُكونات الدّالة** لأنها لا تَملك نُسَخ:
+=======
+By default, **you may not use the `ref` attribute on function components** because they don't have instances:
+>>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -161,7 +165,11 @@ class Parent extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 يُنصَح بتحويل المُكون الى صنف إن أرَدت مرجعاُ له ، تماماً مثلما يتم تحويله إن احتجت توابع دورة الحياة أو الحالة.
+=======
+If you want to allow people to take a `ref` to your function component, you can use [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html) (possibly in conjunction with [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)), or you can convert the component to a class.
+>>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
 
 على أيّةِ حال ، **يمكنك استخدام خاصية المرجع `ref` داخل مُكون دالّة** طالما كنت تُشير إلى عنصر DOM أو مُكون صنف:
 
