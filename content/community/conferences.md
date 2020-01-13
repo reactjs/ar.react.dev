@@ -12,19 +12,6 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-<<<<<<< HEAD
-### React Summit 2019 {#reactsummit2019}
-30 نوفمبر 2019 في لاغوس ، نيجيريا
-
-[موقع الواب](https://reactsummit2019.splashthat.com) -[تويتر](https://twitter.com/react_summit)
-
-### React Day Berlin 2019 {#react-day-berlin-2019}
-6 ديسمبر 2019 في برلين ، ألمانيا.
-
-[موقع الواب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/reactdayberlin)
-
-=======
->>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
 ### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
 1-2 فبراير ، 2020 في كولونيا ، ألمانيا
 
@@ -487,19 +474,14 @@ November 6, 2020 in Mumbai, India
 ### React Conf Brasil 2019 {#react-conf-2019}
 19 أكتوبر 2019 في ساو باولو ، البرازيل
 
-<<<<<<< HEAD
 [موقع الواب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [Slack](https://react.now.sh/)
-=======
-[Website](https://reactconf.com.br/) - [Twitter](https://twitter.com/reactconfbr) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Slack](https://react.now.sh/)
 
 ### React Summit 2019 {#reactsummit2019}
-November 30, 2019 in Lagos, Nigeria
+30 نوفمبر 2019 في لاغوس ، نيجيريا
 
-[Website](https://reactsummit2019.splashthat.com) -[Twitter](https://twitter.com/react_summit)
+[موقع الواب](https://reactsummit2019.splashthat.com) -[تويتر](https://twitter.com/react_summit)
 
 ### React Day Berlin 2019 {#react-day-berlin-2019}
-December 6, 2019 in Berlin, Germany
+6 ديسمبر 2019 في برلين ، ألمانيا.
 
-[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://www.youtube.com/reactdayberlin)
-
->>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
+[موقع الواب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/reactdayberlin)
