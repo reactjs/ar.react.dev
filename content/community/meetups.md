@@ -16,8 +16,6 @@ permalink: community/meetups.html
 * [سيدني](https://www.meetup.com/React-Sydney/)
 * [ملبورن](https://www.meetup.com/React-Melbourne/)
 
-<!-- 404 NOT FOUND ! -->
-
 ## أندونيسيا {#indonesia}
 * [أندونيسيا](https://www.meetup.com/reactindonesia/)
 
