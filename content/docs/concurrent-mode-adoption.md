@@ -47,21 +47,21 @@ npm install react@experimental react-dom@experimental
 
 يمكنك تجربة هذه الإنشاءات على المشاريع الشخصية أو في أحد الفروع، لكننا لا نوصي بتشغيلها في الإنتاج. في فيسبوك، نقوم *بتشغيلها* في الإنتاج، لكن ذلك لأننا أيضًا هناك لإصلاح الأخطاء عندما ينكسر شيء ما. لقد تم تحذيرك!
 
-### Who Is This Experimental Release For? {#who-is-this-experimental-release-for}
+### لمن يكون هذا الإصدار التجريبي؟ {#who-is-this-experimental-release-for}
 
-This release is primarily aimed at early adopters, library authors, and curious people.
+يهدف هذا الإصدار في المقام الأول إلى المتبنين في وقت مبكر، ومؤلفي المكتبات ، والأشخاص الفضوليين.
 
-We're using this code in production (and it works for us) but there are still some bugs, missing features, and gaps in the documentation. We'd like to hear more about what breaks in Concurrent Mode so we can better prepare it for an official stable release in the future.
+نحن نستخدم هذه الشفرة في الإنتاج (وهو مناسب لنا) ولكن لا تزال هناك بعض الأخطاء والميزات المفقودة والفجوات في الوثائق. نود أن نسمع المزيد حول ما ينقطع في الوضع المتزامن حتى نتمكن من إعداده بشكل أفضل لإصدار رسمي مستقر في المستقبل.
 
-### Enabling Concurrent Mode {#enabling-concurrent-mode}
+### تمكين الوضع المتزامن {#enabling-concurrent-mode}
 
-Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use in new code without making any changes to the existing code.
+عادة، عندما نضيف ميزات إلى React، يمكنك البدء في استخدامها على الفور. الشظايا والسياق وحتى الخطافات هي أمثلة على هذه الميزات. يمكنك استخدام الكود الجديد دون إجراء أي تغييرات على الكود الموجود.
 
-Concurrent Mode is different. It introduces semantic changes to how React works. Otherwise, the [new features](/docs/concurrent-mode-patterns.html) enabled by it *wouldn't be possible*. This is why they're grouped into a new "mode" rather than released one by one in isolation.
+الوضع المتزامن مختلف. أنه يقدم تغييرات الدلالية على كيفية عمل React. خلاف ذلك، فإن [الميزات الجديدة](/docs/concurrent-mode-patterns.html) الممكَّنة به *لن تكون ممكنة*. لهذا السبب تم تجميعهم في "وضع" جديد بدلاً من إصدار واحد تلو الآخر في عزلة.
 
-You can't opt into Concurrent Mode on a per-subtree basis. Instead, to opt in, you have to do it in the place where today you call `ReactDOM.render()`.
+لا يمكنك الاشتراك في الوضع المتزامن على أساس الشجرة الفرعية. بدلاً من ذلك، للاشتراك، يتعين عليك القيام بذلك في المكان الذي تقوم بنداء فيه اليوم بـ `ReactDOM.render () `.
 
-**This will enable Concurrent Mode for the whole `<App />` tree:**
+**سيمكن هذا الوضع المتزامن للشجرة بأكملها `<App/>`:**
 
 ```js
 import ReactDOM from 'react-dom';
@@ -77,11 +77,11 @@ ReactDOM.createRoot(
 ).render(<App />);
 ```
 
->Note:
+> ملاحظة:
 >
->Concurrent Mode APIs such as `createRoot` only exist in the experimental builds of React.
+> واجهات برمجة التطبيقات للوضع المتزامن مثل `createRoot` موجودة فقط في البنى التجريبية لـ React.
 
-In Concurrent Mode, the lifecycle methods [previously marked](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](https://reactjs.org/docs/strict-mode.html)-compatible.
+في الوضع المتزامن، تعد أساليب دورة الحياة [التي تم تمييزها مسبقًا](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) باعتبارها "غير آمنة" في الواقع *تكون* غير آمنة، وتؤدي إلى الخلل أكثر مما كانت عليه في رد فعل اليوم. لا نوصي بتجربة وضع المتزامنة حتى يكون تطبيق [Strict Mode](https://reactjs.org/docs/strict-mode.html) متوافقًا.
 
 ## What to Expect {#what-to-expect}
 
