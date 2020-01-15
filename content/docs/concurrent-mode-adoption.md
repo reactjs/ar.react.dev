@@ -108,7 +108,7 @@ ReactDOM.createRoot(
 
 يمكنك التفكير في وضع الحظر كإصدار "متدهور بأمان" من الوضع المتزامن. **نتيجة لذلك، في المدى الطويل، يجب أن نكون قادرين على التقارب والتوقف عن التفكير في أوضاع مختلفة تمامًا.** لكن في الوقت الحالي، تعد الوسائط استراتيجية ترحيل مهمة. يسمحون للجميع بتحديد متى يستحق الترحيل ، وترقيتهم وفقًا لسرعتهم الخاصة.
 
-### Feature Comparison {#feature-comparison}
+### مقارنة الميزة {#feature-comparison}
 
 <style>
   #feature-table table { border-collapse: collapse; }
@@ -118,7 +118,7 @@ ReactDOM.createRoot(
 
 <div id="feature-table">
 
-|   |Legacy Mode  |Blocking Mode  |Concurrent Mode  |
+|   |الوضع القديم  |وضع الحظر |الوضع المتزامن |
 |---  |---  |---  |---  |
 |[String Refs](/docs/refs-and-the-dom.html#legacy-api-string-refs)  |✅  |🚫**  |🚫**  |
 |[Legacy Context](/docs/legacy-context.html) |✅  |🚫**  |🚫**  |
@@ -138,6 +138,6 @@ ReactDOM.createRoot(
 
 </div>
 
-\*: Legacy mode has automatic batching in React-managed events but it's limited to one browser task. Non-React events must opt-in using `unstable_batchedUpdates`. In Blocking Mode and Concurrent Mode, all `setState`s are batched by default.
+\*: يحتوي الوضع القديم على مجموعة تلقائية في الأحداث التي تتم إدارتها بواسطة React، ولكنه يقتصر على مهمة مستعرض واحدة. يجب أن تشترك الأحداث التي لا تتضمن رد الفعل في استخدام `unstable_batchedUpdates`. في وضع الحظر و الوضع المتزامن، يتم تجميع جميع`setState`s  افتراضيًا.
 
-\*\*: Warns in development.
+\*\*: تحذير فى عملية تطوير.
