@@ -83,21 +83,22 @@ ReactDOM.createRoot(
 
 في الوضع المتزامن، تعد أساليب دورة الحياة [التي تم تمييزها مسبقًا](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) باعتبارها "غير آمنة" في الواقع *تكون* غير آمنة، وتؤدي إلى الخلل أكثر مما كانت عليه في رد فعل اليوم. لا نوصي بتجربة وضع المتزامنة حتى يكون تطبيق [Strict Mode](https://reactjs.org/docs/strict-mode.html) متوافقًا.
 
-## What to Expect {#what-to-expect}
+## ماذا تتوقع {#what-to-expect}
 
-If you have a large existing app, or if your app depends on a lot of third-party packages, please don't expect that you can use the Concurrent Mode immediately. **For example, at Facebook we are using Concurrent Mode for the new website, but we're not planning to enable it on the old website.** This is because our old website still uses unsafe lifecycle methods in the product code, incompatible third-party libraries, and patterns that don't work well with the Concurrent Mode.
+إذا كان لديك تطبيق كبير موجود، أو إذا كان تطبيقك يعتمد على الكثير من حزم الطرف الثالث ، فالرجاء عدم توقع أنه يمكنك استخدام الوضع المتزامن على الفور. **على سبيل المثال، في Facebook، نستخدم "الوضع المتزامن" لموقع الويب الجديد ، لكننا لا نخطط لتمكينه على الموقع القديم.** وذلك لأن موقعنا القديم لا يزال يستخدم أساليب دورة حياة غير آمنة في رمز المنتج، غير متوافق مكتبات الطرف الثالث، والأنماط التي لا تعمل بشكل جيد مع وضع المتزامنة.
 
-In our experience, code that uses idiomatic React patterns and doesn't rely on external state management solutions is the easiest to get running in the Concurrent Mode. We will describe common problems we've seen and the solutions to them separately in the coming weeks.
+من خلال تجربتنا، فإن الشفرة التى تستخدم أنماط رد الفعل الاصطلاحية ولا يعتمد على حلول إدارة الحالة الخارجية هو الأسهل لتشغيله في الوضع المتزامن. سنصف المشكلات الشائعة التي رأيناها والحلول الخاصة بها بشكل منفصل في الأسابيع المقبلة.
 
-### Migration Step: Blocking Mode {#migration-step-blocking-mode}
+### خطوة الترحيل: وضع الحظر {#migration-step-blocking-mode}
 
-For older codebases, Concurrent Mode might be a step too far. This is why we also provide a new "Blocking Mode" in the experimental React builds. You can try it by substituting `createRoot` with `createBlockingRoot`. It only offers a *small subset* of the Concurrent Mode features, but it is closer to how React works today and can serve as a migration step.
+بالنسبة لقواعد الشفرات القديمة، قد يكون الوضع المتزامن خطوة بعيدة جدًا. هذا هو السبب في أننا نقدم أيضًا "وضع الحظر" الجديد في تصميمات React التجريبية. يمكنك تجربتها عن طريق استبدال `createRoot` بـ` createBlockingRoot`. إنه يقدم مجموعة *صغيرة* فقط من ميزات الوضع المتزامن، ولكنه أقرب إلى كيفية عمل React اليوم ويمكن أن يكون بمثابة خطوة ترحيل.
 
-To recap:
 
-* **Legacy Mode:** `ReactDOM.render(<App />, rootNode)`. This is what React apps use today. There are no plans to remove the legacy mode in the observable future — but it won't be able to support these new features.
-* **Blocking Mode:** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`. It is currently experimental. It is intended as a first migration step for apps that want to get a subset of Concurrent Mode features.
-* **Concurrent Mode:** `ReactDOM.createRoot(rootNode).render(<App />)`. It is currently experimental. In the future, after it stabilizes, we intend to make it the default React mode. This mode enables *all* the new features.
+لكى نلخص:
+
+* **الوضع القديم:** `ReactDOM.render (<App/> ، rootNode)`. هذا هو ما تستخدمه تطبيقات React اليوم. لا توجد خطط لإزالة الوضع القديم في المستقبل الذي يمكن ملاحظته - لكنه لن يكون قادرًا على دعم هذه الميزات الجديدة.
+* **وضع الحظر:** `ReactDOM.createBlockingRoot(rootNode).render(<App/>)`. انها حاليا التجريبية. الغرض منه هو خطوة الترحيل الأولى للتطبيقات التي ترغب في الحصول على مجموعة فرعية من ميزات الوضع المتزامن.
+* **الوضع المتزامن:** `ReactDOM.createRoot(rootNode).render(<App/>)`. انها حاليا التجريبية. في المستقبل، بعد استقراره، نعتزم جعله وضع React الافتراضي. يتيح هذا الوضع *جميع* الميزات الجديدة.
 
 ### Why So Many Modes? {#why-so-many-modes}
 
