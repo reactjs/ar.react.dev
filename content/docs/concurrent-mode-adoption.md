@@ -100,13 +100,13 @@ ReactDOM.createRoot(
 * **وضع الحظر:** `ReactDOM.createBlockingRoot(rootNode).render(<App/>)`. انها حاليا التجريبية. الغرض منه هو خطوة الترحيل الأولى للتطبيقات التي ترغب في الحصول على مجموعة فرعية من ميزات الوضع المتزامن.
 * **الوضع المتزامن:** `ReactDOM.createRoot(rootNode).render(<App/>)`. انها حاليا التجريبية. في المستقبل، بعد استقراره، نعتزم جعله وضع React الافتراضي. يتيح هذا الوضع *جميع* الميزات الجديدة.
 
-### Why So Many Modes? {#why-so-many-modes}
+### لماذا العديد من الأوضاع؟ {#why-so-many-modes}
 
-We think it is better to offer a [gradual migration strategy](/docs/faq-versioning.html#commitment-to-stability) than to make huge breaking changes — or to let React stagnate into irrelevance.
+نعتقد أنه من الأفضل تقديم [إستراتيجية ترحيل تدريجي](/docs/faq-versioning.html#commitment-to-stability) بدلاً من إجراء تغييرات فادحة هائلة - أو السماح لـ React بالركود إلى غير ذي صلة.
 
-In practice, we expect that most apps using Legacy Mode today should be able to migrate at least to the Blocking Mode (if not Concurrent Mode). This fragmentation can be annoying for libraries that aim to support all Modes in the short term. However, gradually moving the ecosystem away from the Legacy Mode will also *solve* problems that affect major libraries in the React ecosystem, such as [confusing Suspense behavior when reading layout](https://github.com/facebook/react/issues/14536) and [lack of consistent batching guarantees](https://github.com/facebook/react/issues/15080). There's a number of bugs that can't be fixed in Legacy Mode without changing semantics, but don't exist in Blocking and Concurrent Modes.
+من الناحية العملية، نتوقع أن تتمكن معظم التطبيقات التي تستخدم الوضع القديم من الانتقال إلى وضع الحظر على الأقل (إن لم يكن الوضع المتزامن). يمكن أن يكون هذا التجزئة مزعجًا بالنسبة للمكتبات التي تهدف إلى دعم جميع الأوضاع على المدى القصير. ومع ذلك، فإن نقل النظام الإيكولوجي تدريجياً بعيدًا عن Legacy Mode سيؤدي أيضًا إلى *حل* المشكلات التي تؤثر على المكتبات الرئيسية في نظام React، مثل [مربكة سلوك Suspense عند قراءة التخطيط](https://github.com/facebook/react/issues / 14536) و [عدم وجود ضمانات مجمعة متسقة](https://github.com/facebook/react/issues/15080). هناك عدد من الأخطاء التي لا يمكن إصلاحها في الوضع القديم دون تغيير الدلالات، ولكن لا توجد في أوضاع الحظر والتزامن.
 
-You can think of the Blocking Mode as a "gracefully degraded" version of the Concurrent Mode. **As a result, in longer term we should be able to converge and stop thinking about different Modes altogether.** But for now, Modes are an important migration strategy. They let everyone decide when a migration is worth it, and upgrade at their own pace.
+يمكنك التفكير في وضع الحظر كإصدار "متدهور بأمان" من الوضع المتزامن. **نتيجة لذلك، في المدى الطويل، يجب أن نكون قادرين على التقارب والتوقف عن التفكير في أوضاع مختلفة تمامًا.** لكن في الوقت الحالي، تعد الوسائط استراتيجية ترحيل مهمة. يسمحون للجميع بتحديد متى يستحق الترحيل ، وترقيتهم وفقًا لسرعتهم الخاصة.
 
 ### Feature Comparison {#feature-comparison}
 
