@@ -182,7 +182,7 @@ module.exports = {
 
 7. ستُجمَّع أحداث React تحت العنوان **User Timing**.
 
-للحصول على دليل مفصّل، راجع [هذه المقالة من طرف Ben Schwarz](https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad).
+للحصول على دليل مفصّل، راجع [هذه المقالة من طرف Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
 
 لاحظ أنّ هذه **الأرقام نسبيّة لذلك ستُصيَّر المُكوِّنات بشكلٍ أسرع في مرحلة الإنتاج**. يُساعدك ذلك على إدراك متى تُحدَّث عناصر واجهة المستخدم عن طريق الخطأ، ومتى تحصل هذه التحديثات. 
 

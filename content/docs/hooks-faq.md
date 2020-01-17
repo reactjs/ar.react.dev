@@ -431,8 +431,8 @@ function Example() {
 
 ```js
 function ScrollView({row}) {
-  let [isScrollingDown, setIsScrollingDown] = useState(false);
-  let [prevRow, setPrevRow] = useState(null);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [prevRow, setPrevRow] = useState(null);
 
   if (row !== prevRow) {
     // isScrollingDown تغيرت منذ أخرى عملية تصيير. حدِّث  row الخاصية
@@ -492,6 +492,8 @@ function MeasureExample() {
 لم نختار `useRef` في هذا المثال لأن مرجع كائن لا يخطرنا بشأن * التغييرات * في قيمة المرجع الحالية. باستخدام المرجع رد النداء يضمن ذلك [حتى لو عرض أحد العناصر التابعة العقدة المقاسة لاحقًا](https://codesandbox.io/s/818zzk8m78) (e.g. in response to a click), ما زلنا نتلقى إشعارًا بذلك في المكون الرئيسي ويمكننا تحديث القياسات.
 
 لاحظ أننا نقوم بتمرير `[]` كمصفوفة تبعية إلى ` useCallback ` . هذا يضمن أن رد النداء المرجعي الخاص بنا لا يتغير بين عمليات إعادة التصيير ، وبالتالي فإن React لن يناديها بشكل غير ضروري.
+
+في هذا المثال، سيتم تطبيق دالة النداء المرجعي فقط في حالة وصل او فصل المكون، منذ تصيير الكون `<h1>` سيبقى موجود خلال أي تصيير آخر. اذا كنت ترغب بمراقبة تغيرات حجم المكون، يمكنك استخدام [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 
 يمكنك اذا اردت [استخراج هذا المنطق](https://codesandbox.io/s/m5o42082xy) في خطاف قابلة لإعادة الاستخدام:
 
@@ -717,7 +719,7 @@ function Counter() {
 ```js
 function Example(props) {
   // Keep latest props in a ref.
-  let latestProps = useRef(props);
+  const latestProps = useRef(props);
   useEffect(() => {
     latestProps.current = props;
   });
