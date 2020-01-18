@@ -39,7 +39,7 @@ next: concurrent-mode-reference.html
 npm install react@experimental react-dom@experimental
 ```
 
-**لا توجد ضمانات الإصدار الدلالي للبنيات التجريبية.**
+**لا توجد ضمانات الإدارة الدلالية لنُسخ البرمجيات في بناءات التجريبية.**
 يمكن إضافة واجهات برمجة التطبيقات (APIs) أو تغييرها أو إزالتها مع أي إصدار `@experimental`.
 
 
