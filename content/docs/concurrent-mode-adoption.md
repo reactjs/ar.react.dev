@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-adoption
-title: Adopting Concurrent Mode (Experimental)
+title: اعتماد الوضع المتزامن (تجريبي)
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
@@ -15,11 +15,11 @@ next: concurrent-mode-reference.html
 
 <div class="scary">
 
->Caution:
+> تحذير:
 >
->This page describes **experimental features that are not yet available in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+> تصف هذه الصفحة **الميزات التجريبية التي لم تتوفر بعد في إصدار ثابت**. لا تعتمد على تصميمات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+> هذه الوثائق تهدف إلى تبني أوائل الناس والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** -- لست بحاجة إلى تعلمها الآن.
 
 </div>
 
@@ -31,36 +31,37 @@ next: concurrent-mode-reference.html
   - [Why So Many Modes?](#why-so-many-modes)
   - [Feature Comparison](#feature-comparison)
 
-## Installation {#installation}
+## تنصيب {#installation}
 
-Concurrent Mode is only available in the [experimental builds](/blog/2019/10/22/react-release-channels.html#experimental-channel) of React. To install them, run:
+يتوفر وضع التزامن فقط في [الإنشاءات التجريبية](/blog/2019/10/22/react-release-channels.html#experimental-channel) في React. لتثبيتها، قم بتشغيل:
 
 ```
 npm install react@experimental react-dom@experimental
 ```
 
-**There are no semantic versioning guarantees for the experimental builds.**  
-APIs may be added, changed, or removed with any `@experimental` release.
+**لا توجد ضمانات الإدارة الدلالية لنُسخ البرمجيات في بناءات التجريبية.**
+يمكن إضافة واجهات برمجة التطبيقات (APIs) أو تغييرها أو إزالتها مع أي إصدار `@experimental`.
 
-**Experimental releases will have frequent breaking changes.**
 
-You can try these builds on personal projects or in a branch, but we don't recommend running them in production. At Facebook, we *do* run them in production, but that's because we're also there to fix bugs when something breaks. You've been warned!
+**الإصدارات التجريبية ستتضمن تغييرات متكررة.**
 
-### Who Is This Experimental Release For? {#who-is-this-experimental-release-for}
+يمكنك تجربة هذه الإنشاءات على المشاريع الشخصية أو في أحد الفروع، لكننا لا نوصي بتشغيلها في الإنتاج. في فيسبوك، نقوم *بتشغيلها* في الإنتاج، لكن ذلك لأننا أيضًا نقوم بإصلاح الأخطاء عندما ينتج عطب ما. لقد تم تحذيرك!
 
-This release is primarily aimed at early adopters, library authors, and curious people.
+### لمن يكون هذا الإصدار التجريبي؟ {#who-is-this-experimental-release-for}
 
-We're using this code in production (and it works for us) but there are still some bugs, missing features, and gaps in the documentation. We'd like to hear more about what breaks in Concurrent Mode so we can better prepare it for an official stable release in the future.
+يهدف هذا الإصدار في المقام الأول إلى المتبنين في وقت مبكر، ومؤلفي المكتبات ، والأشخاص الفضوليين.
 
-### Enabling Concurrent Mode {#enabling-concurrent-mode}
+نحن نستخدم هذه الشفرة في الإنتاج (وهي مناسبة لنا) ولكن لا تزال هناك بعض الأخطاء والميزات المفقودة والفجوات في الوثائق. نود أن نسمع المزيد حول ما ينتج من مشاكل في الوضع المتزامن حتى نتمكن من إصلاحه لإصدار رسمي مستقر في المستقبل.
 
-Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use in new code without making any changes to the existing code.
+### تمكين الوضع المتزامن {#enabling-concurrent-mode}
 
-Concurrent Mode is different. It introduces semantic changes to how React works. Otherwise, the [new features](/docs/concurrent-mode-patterns.html) enabled by it *wouldn't be possible*. This is why they're grouped into a new "mode" rather than released one by one in isolation.
+عادة، عندما نضيف ميزات إلى React ،يمكنك البدء في استخدامها على الفور. الأجزاء (Fragments) والسياق (Context) وحتى الخطافات (Hooks) هم أمثلة على هذه الميزات. يمكنك استخدام الشيفرة الجديد دون إجراء أي تغييرات على الشيفرة الموجود.
 
-You can't opt into Concurrent Mode on a per-subtree basis. Instead, to opt in, you have to do it in the place where today you call `ReactDOM.render()`.
+الوضع المتزامن مختلف. أنه يقدم تغييرات دلالية على كيفية عمل React. خلاف ذلك، فإن [الميزات الجديدة](/docs/concurrent-mode-patterns.html) الممكَّنة به *لن تكون ممكنة*. لهذا السبب تم تجميعهم في "وضع" جديد بدلاً من إصدار واحد تلو الآخر في عزلة.
 
-**This will enable Concurrent Mode for the whole `<App />` tree:**
+لا يمكنك الاشتراك في الوضع المتزامن على أساس الشجرة الفرعية. بدلاً من ذلك، للاشتراك، يتعين عليك القيام بذلك في المكان الذي تقوم بنداء فيه اليوم بـ `ReactDOM.render()`.
+
+**سيمكن هذا الوضع المتزامن للشجرة بأكملها `<App/>`:**
 
 ```js
 import ReactDOM from 'react-dom';
@@ -76,37 +77,38 @@ ReactDOM.createRoot(
 ).render(<App />);
 ```
 
->Note:
+> ملاحظة:
 >
->Concurrent Mode APIs such as `createRoot` only exist in the experimental builds of React.
+> واجهات برمجة التطبيقات للوضع المتزامن مثل `createRoot` الموجودة فقط في البناءات التجريبية لـ React.
 
-In Concurrent Mode, the lifecycle methods [previously marked](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](https://reactjs.org/docs/strict-mode.html)-compatible.
+في الوضع المتزامن، تعد أساليب دورة الحياة [التي تم تمييزها مسبقًا](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) كـ"غير آمنة" فعلا *تكون* غير آمنة، وتؤدي إلى الأخطاء أكثر مما كانت عليه React اليوم. لا نوصي بتجربة الوضع المتزامنة حتى يكون التطبيق متوافقًا مع [Strict Mode](https://reactjs.org/docs/strict-mode.html).
 
-## What to Expect {#what-to-expect}
+## ماذا تتوقع {#what-to-expect}
 
-If you have a large existing app, or if your app depends on a lot of third-party packages, please don't expect that you can use the Concurrent Mode immediately. **For example, at Facebook we are using Concurrent Mode for the new website, but we're not planning to enable it on the old website.** This is because our old website still uses unsafe lifecycle methods in the product code, incompatible third-party libraries, and patterns that don't work well with the Concurrent Mode.
+إذا كان لديك تطبيق كبير موجود، أو إذا كان تطبيقك يعتمد على الكثير من حزم الطرف الثالث ، فالرجاء عدم توقع أنه يمكنك استخدام الوضع المتزامن على الفور. **على سبيل المثال، في Facebook، نستخدم "الوضع المتزامن" لموقع الويب الجديد ، لكننا لا نخطط لتمكينه على الموقع القديم.** وذلك لأن موقعنا القديم لا يزال يستخدم أساليب دورة حياة غير آمنة في شيفرة الإنتاج، مكتبات طرف ثالث غير متوافق، والأنماط التي لا تعمل بشكل جيد مع الوضع المتزامنة.
 
-In our experience, code that uses idiomatic React patterns and doesn't rely on external state management solutions is the easiest to get running in the Concurrent Mode. We will describe common problems we've seen and the solutions to them separately in the coming weeks.
+من خلال تجربتنا، فإن الشفرة التى تستخدم أنماط React الاصطلاحية ولا تعتمد على حلول إدارة الحالة الخارجية هو الأسهل لتشغيله في الوضع المتزامن. سنصف المشكلات الشائعة التي رأيناها والحلول الخاصة بها بشكل منفصل في الأسابيع المقبلة.
 
-### Migration Step: Blocking Mode {#migration-step-blocking-mode}
+### خطوة الترحيل: وضع الحظر {#migration-step-blocking-mode}
 
-For older codebases, Concurrent Mode might be a step too far. This is why we also provide a new "Blocking Mode" in the experimental React builds. You can try it by substituting `createRoot` with `createBlockingRoot`. It only offers a *small subset* of the Concurrent Mode features, but it is closer to how React works today and can serve as a migration step.
+بالنسبة لقواعد الشفرات القديمة، قد يكون الوضع المتزامن خطوة بعيدة جدًا. هذا هو السبب في أننا نقدم أيضًا "وضع الحظر" الجديد في بناءات React التجريبية. يمكنك تجربتها عن طريق استبدال `createRoot` بـ` createBlockingRoot`. إنه يقدم مجموعة *صغيرة* فقط من ميزات الوضع المتزامن، ولكنه أقرب إلى كيفية عمل React اليوم ويمكن أن يكون بمثابة خطوة ترحيل.
 
-To recap:
 
-* **Legacy Mode:** `ReactDOM.render(<App />, rootNode)`. This is what React apps use today. There are no plans to remove the legacy mode in the observable future — but it won't be able to support these new features.
-* **Blocking Mode:** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`. It is currently experimental. It is intended as a first migration step for apps that want to get a subset of Concurrent Mode features.
-* **Concurrent Mode:** `ReactDOM.createRoot(rootNode).render(<App />)`. It is currently experimental. In the future, after it stabilizes, we intend to make it the default React mode. This mode enables *all* the new features.
+لكي نلخص:
 
-### Why So Many Modes? {#why-so-many-modes}
+* **الوضع القديم:** `ReactDOM.render (<App /> ، rootNode)`. هذا هو ما تستخدمه تطبيقات React اليوم. لا توجد خطط لإزالة الوضع القديم في المستقبل الذي يمكن ملاحظته - لكنه لن يكون قادرًا على دعم هذه الميزات الجديدة.
+* **وضع الحظر:** `ReactDOM.createBlockingRoot(rootNode).render(<App/>)`. حاليا تحت التجربة. الغرض منه هو خطوة الترحيل الأولى للتطبيقات التي ترغب في الحصول على مجموعة فرعية من ميزات الوضع المتزامن.
+* **الوضع المتزامن:** `ReactDOM.createRoot(rootNode).render(<App/>)`. حاليا تحت التجربة. في المستقبل، بعد استقراره، نعتزم جعله وضع React الافتراضي. يتيح هذا الوضع *جميع* الميزات الجديدة.
 
-We think it is better to offer a [gradual migration strategy](/docs/faq-versioning.html#commitment-to-stability) than to make huge breaking changes — or to let React stagnate into irrelevance.
+### لماذا العديد من الأوضاع؟ {#why-so-many-modes}
 
-In practice, we expect that most apps using Legacy Mode today should be able to migrate at least to the Blocking Mode (if not Concurrent Mode). This fragmentation can be annoying for libraries that aim to support all Modes in the short term. However, gradually moving the ecosystem away from the Legacy Mode will also *solve* problems that affect major libraries in the React ecosystem, such as [confusing Suspense behavior when reading layout](https://github.com/facebook/react/issues/14536) and [lack of consistent batching guarantees](https://github.com/facebook/react/issues/15080). There's a number of bugs that can't be fixed in Legacy Mode without changing semantics, but don't exist in Blocking and Concurrent Modes.
+نعتقد أنه من الأفضل تقديم [إستراتيجية ترحيل تدريجي](/docs/faq-versioning.html#commitment-to-stability) بدلاً من إجراء تغييرات فادحة هائلة - أو السماح لـ React بالركود إلى غير ذي صلة.
 
-You can think of the Blocking Mode as a "gracefully degraded" version of the Concurrent Mode. **As a result, in longer term we should be able to converge and stop thinking about different Modes altogether.** But for now, Modes are an important migration strategy. They let everyone decide when a migration is worth it, and upgrade at their own pace.
+من الناحية العملية، نتوقع أن تتمكن معظم التطبيقات التي تستخدم الوضع القديم من الانتقال إلى وضع الحظر على الأقل (إن لم يكن الوضع المتزامن). يمكن أن يكون هذا التجزئة مزعجًا بالنسبة للمكتبات التي تهدف إلى دعم جميع الأوضاع على المدى القصير. ومع ذلك، فإن نقل النظام الإيكولوجي تدريجياً بعيدًا عن Legacy Mode سيؤدي أيضًا إلى *حل* المشكلات التي تؤثر على المكتبات الرئيسية في نظام React، مثل [مربكة سلوك Suspense عند قراءة التخطيط](https://github.com/facebook/react/issues / 14536) و [عدم وجود ضمانات مجمعة متسقة](https://github.com/facebook/react/issues/15080). هناك عدد من الأخطاء التي لا يمكن إصلاحها في الوضع القديم دون تغيير الدلالات، ولكن لا توجد في أوضاع الحظر والتزامن.
 
-### Feature Comparison {#feature-comparison}
+يمكنك التفكير في وضع الحظر كإصدار "متدهور بأمان" من الوضع المتزامن. **نتيجة لذلك، في المدى الطويل، يجب أن نكون قادرين على التقارب والتوقف عن التفكير في أوضاع مختلفة تمامًا.** لكن في الوقت الحالي، تعد الوسائط استراتيجية ترحيل مهمة. يسمحون للجميع بتحديد متى يستحق الترحيل ، وترقيتهم وفقًا لسرعتهم الخاصة.
+
+### مقارنة الميزة {#feature-comparison}
 
 <style>
   #feature-table table { border-collapse: collapse; }
@@ -116,7 +118,7 @@ You can think of the Blocking Mode as a "gracefully degraded" version of the Con
 
 <div id="feature-table">
 
-|   |Legacy Mode  |Blocking Mode  |Concurrent Mode  |
+|   |الوضع القديم |وضع الحظر  |الوضع المتزامن |
 |---  |---  |---  |---  |
 |[String Refs](/docs/refs-and-the-dom.html#legacy-api-string-refs)  |✅  |🚫**  |🚫**  |
 |[Legacy Context](/docs/legacy-context.html) |✅  |🚫**  |🚫**  |
@@ -136,6 +138,6 @@ You can think of the Blocking Mode as a "gracefully degraded" version of the Con
 
 </div>
 
-\*: Legacy mode has automatic batching in React-managed events but it's limited to one browser task. Non-React events must opt-in using `unstable_batchedUpdates`. In Blocking Mode and Concurrent Mode, all `setState`s are batched by default.
+\*: يحتوي الوضع القديم على مجموعة تلقائية في الأحداث التي تتم إدارتها بواسطة React، ولكنه يقتصر على مهمة المتصفح الواحيد. يجب أن تشترك الأحداث التي لا تتضمن React في استخدام `unstable_batchedUpdates`. في وضع الحظر و الوضع المتزامن، يتم تجميع جميع `setState` افتراضيًا.
 
-\*\*: Warns in development.
+\*\*: تحذيرات فى عملية تطوير.
