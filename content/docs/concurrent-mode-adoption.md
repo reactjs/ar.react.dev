@@ -118,7 +118,7 @@ ReactDOM.createRoot(
 
 <div id="feature-table">
 
-|   |الوضع القديم  |وضع الحظر |الوضع المتزامن |
+|   |الوضع القديم |وضع الحظر  |الوضع المتزامن |
 |---  |---  |---  |---  |
 |[String Refs](/docs/refs-and-the-dom.html#legacy-api-string-refs)  |✅  |🚫**  |🚫**  |
 |[Legacy Context](/docs/legacy-context.html) |✅  |🚫**  |🚫**  |
