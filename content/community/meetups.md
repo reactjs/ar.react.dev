@@ -1,9 +1,10 @@
-
+---
 id: meetups
 title: المُلْتَقَيات حول العالم
 layout: community
 sectionid: community
 permalink: community/meetups.html
+---
 
 هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجديًا)
 
