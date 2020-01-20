@@ -22,6 +22,11 @@ redirect_from:
 
 [موقع الواب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
+### ReactConf Japan 2020 {#reactconfjp-2020}
+March 21, 2020 in Tokyo, Japan
+
+[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjapanconf)
+
 ### Reactathon 2020 {#reactathon-2020}
 March 30 - 31, 2020 in San Francisco, CA
 
@@ -40,7 +45,11 @@ March 30 - 31, 2020 in San Francisco, CA
 ### React Day Bangalore 2020 {#react-day-bangalore-2020}
 25 أبريل 2020 في بنغالور ، الهند
 
+<<<<<<< HEAD
 [موقع الواب](https://reactday.in) - [تويتر](https://twitter.com/ReactDayIn)
+=======
+[Website](https://reactday.in) - [Twitter](https://twitter.com/ReactDayIn) - [LinkedIn](https://www.linkedin.com/company/react-day/)
+>>>>>>> c8aef5dc0dc340e800fbb7963a94adb97da9803b
 
 ### render(ATL) 2020 {#render-atlanta-2020}
 4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
@@ -71,6 +80,11 @@ March 30 - 31, 2020 in San Francisco, CA
 17 يوليو ، 2020. مدينة نيويورك ، الولايات المتحدة الأمريكية.
 
 [موقع الواب](https://reactweek.nyc/) - [تويتر](https://twitter.com/reactweek) - [فيس بوك](https://www.facebook.com/reactweek) 
+
+### React La Conferencia 2020 {#react-la-conferencia-2020}
+July 18, 2020. Medellín, Colombia.
+
+[Website](https://reactlaconf.co/) - [Twitter](https://twitter.com/reactlaconf)
 
 ### ComponentsConf 2020 {#components20}
 1 سبتمبر 2020 في ملبورن ، أستراليا

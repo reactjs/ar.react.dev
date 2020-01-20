@@ -146,7 +146,11 @@ useEffect(() => {
 
 السلوك الافتراضي للتأثيرات هو تنفيذ التصيير بعد كل عملية تصيير مكتملة. بهذه الطريقة، يعاد إنشاء تأثيرٍ دومًا إن تغيرت إحدى مدخلاته.
 
+<<<<<<< HEAD
 على أية حال، هذا السلوك قد يبدو مبالغًا فيه بشدة في بعض الحالات كما في حالة مثال الاشتراك من القسم السابق. لا نحتاج إلى إنشاء اشتراك جديد في كل تحديث إلا إذا تغيرت الخاصية `source`.
+=======
+However, this may be overkill in some cases, like the subscription example from the previous section. We don't need to create a new subscription on every update, only if the `source` prop has changed.
+>>>>>>> c8aef5dc0dc340e800fbb7963a94adb97da9803b
 
 لتنفيذ ذلك، مرِّر وسيطًا ثانيًّا إلى الخطاف `useEffect` يمثِّل مصفوفة القيم التي يعتمد عليها التأثير. يبدو الآن مثالنا المعدَّل بالشكل التالي:
 
