@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-reference
-title: Concurrent Mode API Reference (Experimental)
+title: مرجع واجهة برمجة التطبيقات للوضع المتزامن (تجريبي)
 permalink: docs/concurrent-mode-reference.html
 prev: concurrent-mode-adoption.html
 ---
@@ -55,7 +55,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 Replaces `ReactDOM.render(<App />, rootNode)` and enables [Blocking Mode](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
 
-Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode. 
+Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode.
 
 Blocking Mode only contains a small subset of Concurrent Mode features and is intended as an intermediary migration step for apps that are unable to migrate directly.
 
@@ -102,7 +102,7 @@ When multiple components need to fetch data, this data may arrive in an unpredic
 `SuspenseList` takes two props:
 * **revealOrder (forwards, backwards, together)** defines the order in which the `SuspenseList` children should be revealed.
   * `together` reveals *all* of them when they're ready instead of one by one.
-* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown. 
+* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown.
     * By default, `SuspenseList` will show all fallbacks in the list.
     * `collapsed` shows only the next fallback in the list.
     * `hidden` doesn't show any unloaded items.
@@ -185,7 +185,7 @@ A good example of this is a text input.
 ```js
 function App() {
   const [text, setText] = useState("hello");
-  const deferredText = useDeferredValue(text, { timeoutMs: 2000 }); 
+  const deferredText = useDeferredValue(text, { timeoutMs: 2000 });
 
   return (
     <div className="App">
