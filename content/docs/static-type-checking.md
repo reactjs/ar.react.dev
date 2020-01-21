@@ -174,7 +174,7 @@ No errors!
 لكتابة **مشروع جديد**  بإستخدام TypeScript, فاكتب ما يلي:
 
 ```bash
-npx create-react-app my-app --typescript
+npx create-react-app my-app --template typescript
 ```
 
 يمكنك أيضا إضافة TypeScript لمشروعك الذي تم بنائه سابقا بإستخدام Create React App التوثيق من خلال [هنا](https://facebook.github.io/create-react-app/docs/adding-typescript)
