@@ -24,7 +24,7 @@ next: hello-world.html
 
 ### لماذا خاصية  `crossorigin` ؟ {#why-the-crossorigin-attribute}
 
-إن كنت تزود خدمة React من خلال شبكة توزيع المحتوى ، فأننا ننصح باستخدام خاصية [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes)
+إن كنت تزود خدمة React من خلال شبكة توزيع المحتوى، فأننا ننصح باستخدام خاصية [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes)
 
 ```html
 <script crossorigin src="..."></script>
