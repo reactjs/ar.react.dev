@@ -22,7 +22,7 @@ next: hello-world.html
 
 لتحميل إصدار مُعيَّن من react وreact-dom بَدّل الرقم 16 إلى رقم الإصدار المطلوب.
 
-### لماذا خاصية  `crossorigin` ؟ {#why-the-crossorigin-attribute}
+### لماذا خاصية `crossorigin` ؟ {#why-the-crossorigin-attribute}
 
 إن كنت تزود خدمة React من خلال شبكة توزيع المحتوى، فأننا ننصح باستخدام خاصية [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes)
 
