@@ -6,7 +6,7 @@ prev: create-a-new-react-app.html
 next: hello-world.html
 ---
 
-كل من React وReactDOM متوفران عبر شبكة توزيع المحتوى (CDN)
+كل من React و ReactDOM متوفران عبر شبكة توزيع المحتوى (CDN)
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
