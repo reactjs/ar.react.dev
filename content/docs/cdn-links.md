@@ -20,7 +20,7 @@ next: hello-world.html
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 ```
 
-لتحميل إصدار مُعيَّن من react وreact-dom بَدّل الرقم 16 إلى رقم الإصدار المطلوب.
+لتحميل إصدار مُعيَّن من react و react-dom بَدّل الرقم 16 إلى رقم الإصدار المطلوب.
 
 ### لماذا خاصية `crossorigin` ؟ {#why-the-crossorigin-attribute}
 
