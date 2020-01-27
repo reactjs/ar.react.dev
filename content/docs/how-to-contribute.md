@@ -104,6 +104,7 @@ React's build system will strip out disabled feature branches before publishing.
 ### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
 * لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
+* لديك [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) مثبّت.
 * لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
 * أنت مُعتاد على Git.
 
@@ -154,6 +155,7 @@ yarn link react react-dom
 
 يمكن لأداة التنسيق (linter) أن تفشل في التقاط بعض التنسيقات، إن كنت غير متأكد من شيء ما، راجع [دليل تنسيق Airbnb](https://github.com/airbnb/javascript) سيقوم بإرشادك إلى الاتجاه الصحيح.
 
+<<<<<<< HEAD
 ### فيديو تمهيدي {#introductory-video}
 
 قد تُهمّك مشاهدة [هذا الفيديو القصير](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 دقيقة) والذي يمكن أن يُعطيك مقدمّة عن المساهمة في React.
@@ -168,6 +170,9 @@ yarn link react react-dom
 لنيل نظرة واقعية عن "ما هو الشعور" عن القيام بالمساهمة في React للمرة الأولى، شاهد [هذه المحاضرة الممتعة من ReactNYC](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
 
 ### طلب التعليقات (RFC أو Request for Comments) {#request-for-comments-rfc}
+=======
+### Request for Comments (RFC) {#request-for-comments-rfc}
+>>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 الكثير من التغييرات بما فيه إصلاحات العلل أو تحسين التوثيق تخضع لنظام طلبات السحب من Github (Github pull request workflow).
 

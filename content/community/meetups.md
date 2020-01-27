@@ -95,6 +95,7 @@ permalink: community/meetups.html
 * [فينيكس (أريزونا)](https://www.meetup.com/ReactJS-Phoenix/) 
 * [كانساس سيتي (ميزوري)](https://www.meetup.com/Kansas-City-React-Meetup/)
 * [كولومبوس (أوهايو)](https://www.meetup.com/ReactJS-Columbus-meetup/)
+* [كليفلاند، أوهايو - ReactJS](https://www.meetup.com/Cleveland-React/)
 * [لاس فيغاس (نيفادا)](https://www.meetup.com/ReactVegas/)
 * [لوس أنجلوس (كاليفورنيا) - React JS](https://www.meetup.com/socal-react/)
 * [لوس أنجلوس (كاليفورنيا) - React Native](https://www.meetup.com/React-Native-Los-Angeles/)
