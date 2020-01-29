@@ -232,7 +232,7 @@ function Example() {
   const [fruit, setFruit] = useState('banana');
 ```
 
-هذه الصيغة هي إحدى صيغ JavaScript التي يطلق عليها ["تفكيك المصفوفات"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). إنَّها تعني أنَّنا نريد إنشاء متغيِّرين جديدين هما: `fruit` و `setFruit`, إذ يعيَّن الأول إلى أول قيمة يعيدها `useState`، والثاني إلى القيمة الثانية المعادة. هذا يكافئ الشيفرة التالية:
+هذه الصيغة هي إحدى صيغ JavaScript التي يطلق عليها ["تفكيك المصفوفات"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). إنَّها تعني أنَّنا نريد إنشاء متغيِّرين جديدين هما: `fruit` و `setFruit`، إذ يعيَّن الأول إلى أول قيمة يعيدها `useState`، والثاني إلى القيمة الثانية المعادة. هذا يكافئ الشيفرة التالية:
 
 ```js
   var fruitStateVariable = useState('banana'); // يعيد زوجًا
