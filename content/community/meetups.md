@@ -152,6 +152,9 @@ permalink: community/meetups.html
 ## بوليفيا {#bolivia}
 * [بوليفيا](https://www.meetup.com/ReactBolivia/)
 
+## بناما {#panama}
+* [بناما](https://www.meetup.com/React-Panama/)
+
 ## بيرو {#peru}
 * [ليما](https://www.meetup.com/ReactJS-Peru/)
 

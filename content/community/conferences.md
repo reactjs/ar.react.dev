@@ -87,8 +87,13 @@ July 18, 2020. Medellín, Colombia.
 
 [موقع الواب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/ComponentsConf) - [فيس بوك](https://www.facebook.com/ComponentsConf/) - [لينكدين](https://www.linkedin.com/company/componentsconf/) - [أشرطة الفيديو](https://www.youtube.com/ComponentsConf)
 
+### React Native EU 2020 {#react-native-eu-2020}
+5-6 سبتمبر 2020 في فروتسواف ، بولندا
+
+[موقع الواب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
+
 ### React India 2020 {#react-india-2020}
-November 6, 2020 in Mumbai, India
+6 نوفمبر 2020 في مومباي ، الهند
 
 [موقع الواب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [أشرطة الفيديو](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
