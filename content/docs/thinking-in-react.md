@@ -46,7 +46,7 @@ prev: composition-vs-inheritance.html
   1. **`FilterableProductTable` (باللون البرتقالي):** يحتوي المثال بكامله
   2. **`SearchBar` (باللون الأزرق):** يستقبل ما يدخله المستخدم *(user input)*
   3. **`ProductTable` (باللون الأخضر):** يعرض وينقح (filter) مجموعة البيانات *(data collection)* طبقاَ لما أدخله المستخدم *(user input)*
-  4. **`ProductCategoryRow` (باللون الفيروزي):** يعرض عنوانا (heading) لكل  *فئة (category)*
+  4. **`ProductCategoryRow` (باللون الفيروزي):** يعرض عنوانا (heading) لكل *فئة (category)*
   5. **`ProductRow` (باللون الأحمر):** يعرض صف لكل *منتج (product)*
 
 إذا نظرت إلى المكون `ProductTable` سترى أن عنوان الجدول (المحتوي على الاسم والسعر) ليس مكونا (component) منفصلا بذاته، فهي مسألة تفضيل وهناك حجة لكلا الطريقتين. لهذا المثال نحن تركناه جزءا من المكون `ProductTable` لأنه جزء من تصيير (rendering) *مجموعة البيانات (data collection)* والتي هي من مسئولية المكون `ProductTable`، ومع ذلك إذا تنامي عنوان الجدول بشكل معقد (مثال إضافة إمكانية الفرز (sorting)) سيكون بالتأكيد من المنطقي جعله مكونا منفصلا `ProductTableHeader`.
