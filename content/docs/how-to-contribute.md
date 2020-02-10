@@ -21,7 +21,11 @@ redirect_from:
 
 ### Semantic Versioning {#semantic-versioning}
 
+<<<<<<< HEAD
 تتبع React [الإدارة الدلالية لنُسخ البرمجيات](https://semver.org/lang/ar/). نُصدر اصدارات ترقيع (patch versions) عند القيام بإصلاحات للعلل والثغرات، اصدارات صُغرى عند إضافة ميزات ووظائف جديدة، وإصدارات جذرية عند القيام بتغيرات جذرية. عند القيام بتغيير جذري نقوم باستخدام تحذيرات بعدم الصلاحية (deprecation warnings) في الإصدارات الصغرى حتى يعلم مستخدمونا بالتغيرات التي ستطرأ وحتى يرقّوا شفراتهم البرمجية مُسبقا. تعرف على المزيد حول التزاماتنا في [سياسة الإصدارات](/docs/faq-versioning.html).
+=======
+React follows [semantic versioning](https://semver.org/). We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance. Learn more about our commitment to stability and incremental migration in [our versioning policy](/docs/faq-versioning.html).
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 كل تغيير معتبر موثّق في [جدول التغييرات (changelog)](https://github.com/facebook/react/blob/master/CHANGELOG.md).
 
@@ -56,7 +60,11 @@ React's build system will strip out disabled feature branches before publishing.
 ### سُبُل التواصل {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
+<<<<<<< HEAD
 * [منتديات المُحادثة](https://reactjs.org/community/support.html#popular-discussion-forums)
+=======
+* [Discussion forums](/community/support.html#popular-discussion-forums)
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 هناك كذلك [مجتمع نشيط من مستخدمي React على منصّة Discord للمحادثة](https://www.reactiflux.com/) إذا ما احتجت للمساعدة فيما يتعلّق بـReact.
 

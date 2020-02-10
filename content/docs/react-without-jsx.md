@@ -40,7 +40,11 @@ ReactDOM.render(
 
 إذا كنت مهتماً لرؤية المزيد من الامثلة عن كيفية تصريف شيفرة JSX الى javascript, فبإمكانك تجربة [مصرف Babel على الإنترنت](babel://jsx-simple-example).
 
+<<<<<<< HEAD
 يمكن تزويد المكون كسلسلة نصية, أو كصنف فرعي من `React.Component`، أو كدالة مجردة من أجل المُكونات بدون الحالة.
+=======
+The component can either be provided as a string, as a subclass of `React.Component`, or a plain function.
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 إن تعبت من كثرة كتابة `React.createElement`، فمن الأساليب الشائعة هي الطريقة المختصرة التالية:
 

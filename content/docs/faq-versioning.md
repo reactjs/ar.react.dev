@@ -22,7 +22,11 @@ category: FAQ
 
 ### التغييرات الجذرية {#breaking-changes}
 
+<<<<<<< HEAD
 نعلم أنَّ التغييرات الجذرية غير محبَّبة لجميع الأشخاص، لذا نحاول قدر الإمكان تقليل عدد الإصدارات الرئيسية. على سبيل المثال، الإصدار 15 من React نُشِر في نيسان عام 2016 والإصدار 16 نُشِر في أيلول من العام 2017. ولا يتوقع نشر الإصدار 17 حتى العام 2019.
+=======
+Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017; React 17 isn't expected until sometime in 2020.
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 عوض ذلك، ننشر إصدارات فرعية تحوي الميزات الجديدة. هذا يعني أنَّ الإصدارات الفرعية هي التي تجذب الانتباه أكثر من الإصدارات الرئيسية.
 

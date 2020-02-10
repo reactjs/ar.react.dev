@@ -161,7 +161,11 @@ class Parent extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 اذا كنت ترغب بالسماح باستخدام خاصية المرجع `ref` لمُكونات الدّالة الخاصة بك، يمكنك استخدام [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html) (ربما بالتزامن مع [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)) أو يمكنك تحويل المكون الى صنف.
+=======
+If you want to allow people to take a `ref` to your function component, you can use [`forwardRef`](/docs/forwarding-refs.html) (possibly in conjunction with [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)), or you can convert the component to a class.
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 على أيّةِ حال ، **يمكنك استخدام خاصية المرجع `ref` داخل مُكون دالّة** طالما كنت تُشير إلى عنصر DOM أو مُكون صنف:
 
