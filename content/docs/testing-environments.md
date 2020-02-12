@@ -28,13 +28,9 @@ prev: testing-recipes.html
 
 إذا كنت تكتب مكتبة تختبر في الغالب السلوك الخاص بالمتصفح، وتتطلب سلوك المتصفح الأصلي مثل الـ layout أو حقول الإدخال الحقيقية، يمكنك استخدام إطار عمل مثل [mocha.](https://mochajs.org/)
 
-في بيئة لا يمكنك فيها محاكاة DOM (على سبيل المثال، اختبار مكونات React Native على Node.js) ، يمكنك استخدام [مساعدي محاكاة الأحداث](https://reactjs.org/docs/test-utils.html#simulate) لمحاكاة التفاعلات مع العناصر. بالتناوب، يمكنك استخدام `fireEvent` المساعد من <span dir='ltr'>[`@ testing-library/react-native`](https://testing-library.com/docs/native-testing-library)<span>.
+في بيئة لا يمكنك فيها محاكاة DOM (على سبيل المثال، اختبار مكونات React Native على Node.js) ، يمكنك استخدام [مساعدي محاكاة الأحداث](/docs/test-utils.html#simulate) لمحاكاة التفاعلات مع العناصر. بالتناوب، يمكنك استخدام `fireEvent` المساعد من <span dir='ltr'>[`@ testing-library/react-native`](https://testing-library.com/docs/native-testing-library)<span>.
 
-<<<<<<< HEAD
 إطارات عمل مثل [Cypress](https://www.cypress.io/) و [puppeteer](https://github.com/GoogleChrome/puppeteer) و [webdriver](https://www.seleniumhq.org/projects/webdriver /) مفيدة لتشغيل [اختبارات end-to-end](#end-to-end-tests-aka-e2e-tests).
-=======
-In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library).
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 ### محاكاة الدوال {#mocking-functions}
 
