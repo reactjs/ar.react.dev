@@ -81,13 +81,9 @@ ReactDOM.createRoot(
 >
 > واجهات برمجة التطبيقات للوضع المتزامن مثل `createRoot` الموجودة فقط في البناءات التجريبية لـ React.
 
-في الوضع المتزامن، تعد أساليب دورة الحياة [التي تم تمييزها مسبقًا](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) كـ"غير آمنة" فعلا *تكون* غير آمنة، وتؤدي إلى الأخطاء أكثر مما كانت عليه React اليوم. لا نوصي بتجربة الوضع المتزامنة حتى يكون التطبيق متوافقًا مع [Strict Mode](https://reactjs.org/docs/strict-mode.html).
+في الوضع المتزامن، تعد أساليب دورة الحياة [التي تم تمييزها مسبقًا](/blog/2018/03/27/update-on-async-rendering.html) كـ"غير آمنة" فعلا *تكون* غير آمنة، وتؤدي إلى الأخطاء أكثر مما كانت عليه React اليوم. لا نوصي بتجربة الوضع المتزامنة حتى يكون التطبيق متوافقًا مع [Strict Mode](/docs/strict-mode.html).
 
-<<<<<<< HEAD
 ## ماذا تتوقع {#what-to-expect}
-=======
-In Concurrent Mode, the lifecycle methods [previously marked](/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](/docs/strict-mode.html)-compatible.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 إذا كان لديك تطبيق كبير موجود، أو إذا كان تطبيقك يعتمد على الكثير من حزم الطرف الثالث ، فالرجاء عدم توقع أنه يمكنك استخدام الوضع المتزامن على الفور. **على سبيل المثال، في Facebook، نستخدم "الوضع المتزامن" لموقع الويب الجديد ، لكننا لا نخطط لتمكينه على الموقع القديم.** وذلك لأن موقعنا القديم لا يزال يستخدم أساليب دورة حياة غير آمنة في شيفرة الإنتاج، مكتبات طرف ثالث غير متوافق، والأنماط التي لا تعمل بشكل جيد مع الوضع المتزامنة.
 
