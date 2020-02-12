@@ -37,11 +37,7 @@ redirect_from:
 
 سنرى في هذا الدليل كيفيّة بناء لعبة إكس-أو (اسمها بالإنجليزيّة tic-tac-toe) باستخدام React.
 
-<<<<<<< HEAD
 بإمكانك أن ترى **[النتيجة النهائيّة لما سنبنيه من هنا](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. إن كانت الشيفرة غير مفهومة بالنسبة لك أو كنتَ غير متآلف مع صياغة الشيفرة، فلا تقلق! فالهدف من هذا الدليل هو مساعدتك على فهم React وصياغتها.
-=======
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 نوصي بأن تلقي نظرة على لعبة إكس-أو قبل المتابعة. إحدى الميزات التي ستلاحظها وجود قائمة مُرقّمة على يمين لوحة اللعبة. تُعطيك هذه القائمة سجلًّا عن كل التحركات التي حصلت في اللعبة، وتُحدَّث بينما تستمر اللعبة.
 
