@@ -161,7 +161,7 @@ class Parent extends React.Component {
 }
 ```
 
-اذا كنت ترغب بالسماح باستخدام خاصية المرجع `ref` لمُكونات الدّالة الخاصة بك، يمكنك استخدام [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html) (ربما بالتزامن مع [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)) أو يمكنك تحويل المكون الى صنف.
+اذا كنت ترغب بالسماح باستخدام خاصية المرجع `ref` لمُكونات الدّالة الخاصة بك، يمكنك استخدام [`forwardRef`](/docs/forwarding-refs.html) (ربما بالتزامن مع [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)) أو يمكنك تحويل المكون الى صنف.
 
 على أيّةِ حال ، **يمكنك استخدام خاصية المرجع `ref` داخل مُكون دالّة** طالما كنت تُشير إلى عنصر DOM أو مُكون صنف:
 

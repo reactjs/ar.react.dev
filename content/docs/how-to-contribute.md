@@ -56,7 +56,7 @@ React's build system will strip out disabled feature branches before publishing.
 ### سُبُل التواصل {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* [منتديات المُحادثة](https://reactjs.org/community/support.html#popular-discussion-forums)
+* [منتديات المُحادثة](/community/support.html#popular-discussion-forums)
 
 هناك كذلك [مجتمع نشيط من مستخدمي React على منصّة Discord للمحادثة](https://www.reactiflux.com/) إذا ما احتجت للمساعدة فيما يتعلّق بـReact.
 
@@ -155,7 +155,6 @@ yarn link react react-dom
 
 يمكن لأداة التنسيق (linter) أن تفشل في التقاط بعض التنسيقات، إن كنت غير متأكد من شيء ما، راجع [دليل تنسيق Airbnb](https://github.com/airbnb/javascript) سيقوم بإرشادك إلى الاتجاه الصحيح.
 
-<<<<<<< HEAD
 ### فيديو تمهيدي {#introductory-video}
 
 قد تُهمّك مشاهدة [هذا الفيديو القصير](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 دقيقة) والذي يمكن أن يُعطيك مقدمّة عن المساهمة في React.
@@ -170,9 +169,6 @@ yarn link react react-dom
 لنيل نظرة واقعية عن "ما هو الشعور" عن القيام بالمساهمة في React للمرة الأولى، شاهد [هذه المحاضرة الممتعة من ReactNYC](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
 
 ### طلب التعليقات (RFC أو Request for Comments) {#request-for-comments-rfc}
-=======
-### Request for Comments (RFC) {#request-for-comments-rfc}
->>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 الكثير من التغييرات بما فيه إصلاحات العلل أو تحسين التوثيق تخضع لنظام طلبات السحب من Github (Github pull request workflow).
 
