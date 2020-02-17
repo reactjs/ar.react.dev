@@ -35,7 +35,7 @@ March 30 - 31, 2020 in San Francisco, CA
 ### React Summit Amsterdam 2020 {#react-summit-2020}
 15-17 أبريل 2020 في أمستردام ، هولندا
 
-[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
 ### App.js Conf 2020 {#appjsonf2020}
 23-24 أبريل 2020 في كراكوف ، بولندا
@@ -47,6 +47,11 @@ March 30 - 31, 2020 in San Francisco, CA
 
 [موقع الويب](https://reactday.in) - [تويتر](https://twitter.com/ReactDayIn) - [لينكدين](https://www.linkedin.com/company/react-day/)
 
+### Byteconf React 2020 {#byteconf-react-2020}
+1 مايو، 2020. بث عبر الإنترنت على موقع يوتيوب.
+
+[موقع الويب](https://www.bytesized.xyz) - [تويتر](https://twitter.com/bytesizedcode) - [يوتيوب](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
+
 ### render(ATL) 2020 {#render-atlanta-2020}
 4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
 
@@ -55,7 +60,7 @@ March 30 - 31, 2020 in San Francisco, CA
 ### ReactEurope 2020 {#reacteurope-2020}
 14-15 مايو 2020 في باريس ، فرنسا
 
-[موقع الويب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [أشرطة الفيديو](https://www.youtube.com/c/ReacteuropeOrgConf)
+[موقع الويب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [يوتيوب](https://www.youtube.com/c/ReacteuropeOrgConf)
 
 ### React Finland 2020 {#react-finland-2020}
 مايو 26-29، 2020. في هلسنكي، فيلندا.
@@ -90,31 +95,31 @@ July 18, 2020. Medellín, Colombia.
 ### ComponentsConf 2020 {#components20}
 1 سبتمبر 2020 في ملبورن ، أستراليا
 
-[موقع الويب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/ComponentsConf) - [فيس بوك](https://www.facebook.com/ComponentsConf/) - [لينكدين](https://www.linkedin.com/company/componentsconf/) - [أشرطة الفيديو](https://www.youtube.com/ComponentsConf)
+[موقع الويب](https://www.componentsconf.com.au/) - [تويتر](https://twitter.com/ComponentsConf) - [فيس بوك](https://www.facebook.com/ComponentsConf/) - [لينكدين](https://www.linkedin.com/company/componentsconf/) - [يوتيوب](https://www.youtube.com/ComponentsConf)
 
 ### React Native EU 2020 {#react-native-eu-2020}
 5-6 سبتمبر 2020 في فروتسواف ، بولندا
 
-[موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
+[موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
 
 ### React India 2020 {#react-india-2020}
 6 نوفمبر 2020 في مومباي ، الهند
 
-[موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [أشرطة الفيديو](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+[موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [يوتيوب](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
 ## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
 
-[موقع الويب](http://conf2015.reactjs.org/) - [البرنامج](http://conf2015.reactjs.org/schedule.html) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
+[موقع الويب](http://conf2015.reactjs.org/) - [البرنامج](http://conf2015.reactjs.org/schedule.html) - [يوتيوب](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
 
 <iframe title="React.js Conf 2015 Keynote" width="650" height="315" src="//www.youtube-nocookie.com/embed/KVZ-P-ZI6W4?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr" frameborder="0" allowfullscreen></iframe>
 
 ### ReactEurope 2015 {#reacteurope-2015}
 2 و 3 يوليو في باريس ، فرنسا.
 
-[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [أشرطة الفيديو](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
+[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [يوتيوب](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
 
 ### Reactive 2015 {#reactive-2015}
 2-4 نوفمبر في براتيسلافا ، سلوفاكيا.
@@ -124,22 +129,22 @@ July 18, 2020. Medellín, Colombia.
 ### React.js Conf 2016 {#reactjs-conf-2016}
 22 و 23 فبراير في سان فرانسيسكو ، كاليفورنيا.
 
-[موقع الويب](http://conf2016.reactjs.org/) - [البرنامج](http://conf2016.reactjs.org/schedule.html) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
+[موقع الويب](http://conf2016.reactjs.org/) - [البرنامج](http://conf2016.reactjs.org/schedule.html) - [يوتيوب](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
 
 ### React Amsterdam 2016 {#react-amsterdam-2016}
 16 أبريل في أمستردام ، هولندا.
 
-[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
 ### ReactEurope 2016 {#reacteurope-2016}
 2 و 3 يونيو في باريس ، فرنسا.
 
-[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [أشرطة الفيديو](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
+[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [يوتيوب](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
 
 ### ReactRally 2016 {#reactrally-2016}
 25-26 أغسطس في سولت لايك سيتي ، يوتا.
 
-[موقع الويب](http://www.reactrally.com/) - [البرنامج](http://www.reactrally.com/#/schedule) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PLUD4kD-wL_zYSfU3tIYsb4WqfFQzO_EjQ)
+[موقع الويب](http://www.reactrally.com/) - [البرنامج](http://www.reactrally.com/#/schedule) - [يوتيوب](https://www.youtube.com/playlist?list=PLUD4kD-wL_zYSfU3tIYsb4WqfFQzO_EjQ)
 
 
 ### ReactNL 2016 {#reactnl-2016}
@@ -165,57 +170,57 @@ July 18, 2020. Medellín, Colombia.
 ### React Conf 2017 {#react-conf-2017}
 13-14 مارس في سانتا كلارا ، كاليفورنيا.
 
-[موقع الويب](http://conf.reactjs.org/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=7HSd1sk07uU&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
+[موقع الويب](http://conf.reactjs.org/) - [يوتيوب](https://www.youtube.com/watch?v=7HSd1sk07uU&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
 
 ### React London 2017 {#react-london-2017}
 28 مارس في [QEII Center ، لندن](http://qeiicentre.london/)
 
-[موقع الويب](http://react.london/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=2j9rSur_mnk&list=PLW6ORi0XZU0CFjdoYeC0f5QReBG-NeNKJ)
+[موقع الويب](http://react.london/) - [يوتيوب](https://www.youtube.com/watch?v=2j9rSur_mnk&list=PLW6ORi0XZU0CFjdoYeC0f5QReBG-NeNKJ)
 
 ### React Amsterdam 2017 {#react-amsterdam-2017}
 21 أبريل في أمستردام ، هولندا.
 
-[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
 ### ReactEurope 2017 {#reacteurope-2017}
 18 و 19 مايو في باريس ، فرنسا.
 
-[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [أشرطة الفيديو](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
+[موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [يوتيوب](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
 
 ### Chain React 2017 {#chain-react-2017}
 10-11 يوليو في بورتلاند ، ولاية أوريغون الولايات المتحدة.
 
-[موقع الويب](https://infinite.red/ChainReactConf) - [تويتر](https://twitter.com/chainreactconf) - [أشرطة الفيديو](https://www.youtube.com/watch?v=cz5BzwgATpc&list=PLFHvL21g9bk3RxJ1Ut5nR_uTZFVOxu522)
+[موقع الويب](https://infinite.red/ChainReactConf) - [تويتر](https://twitter.com/chainreactconf) - [يوتيوب](https://www.youtube.com/watch?v=cz5BzwgATpc&list=PLFHvL21g9bk3RxJ1Ut5nR_uTZFVOxu522)
 
 ### React Rally 2017 {#react-rally-2017}
 24-25 أغسطس في سولت لايك سيتي ، يوتا الولايات المتحدة.
 
-[موقع الويب](http://www.reactrally.com) - [تويتر](https://twitter.com/reactrally) - [أشرطة الفيديو](https://www.youtube.com/watch?v=f4KnHNCZcH4&list=PLUD4kD-wL_zZUhvAIHJjueJDPr6qHvkni)
+[موقع الويب](http://www.reactrally.com) - [تويتر](https://twitter.com/reactrally) - [يوتيوب](https://www.youtube.com/watch?v=f4KnHNCZcH4&list=PLUD4kD-wL_zZUhvAIHJjueJDPr6qHvkni)
 
 ### React Native EU 2017 {#react-native-eu-2017}
 6-7 سبتمبر في فروكلاف ، بولندا.
 
-[موقع الويب](http://react-native.eu/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=453oKJAqfy0&list=PLzUKC1ci01h_hkn7_KoFA-Au0DXLAQZR7)
+[موقع الويب](http://react-native.eu/) - [يوتيوب](https://www.youtube.com/watch?v=453oKJAqfy0&list=PLzUKC1ci01h_hkn7_KoFA-Au0DXLAQZR7)
 
 ### ReactFoo 2017 {#reactfoo-2017}
 14 سبتمبر في بنغالور ، الهند.
 
-[موقع الويب](https://reactfoo.in/2017/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=3G6tMg29Wnw&list=PL279M8GbNsespKKm1L0NAzYLO6gU5LvfH)
+[موقع الويب](https://reactfoo.in/2017/) - [يوتيوب](https://www.youtube.com/watch?v=3G6tMg29Wnw&list=PL279M8GbNsespKKm1L0NAzYLO6gU5LvfH)
 
 ### React Boston 2017 {#react-boston-2017}
 23-24 سبتمبر في بوسطن ، ماساتشوستس الولايات المتحدة.
 
-[موقع الويب](http://www.reactboston.com/) - [تويتر](https://twitter.com/ReactBoston) - [أشرطة الفيديو](https://www.youtube.com/watch?v=2iPE5l3cl_s&list=PL-fCkV3wv4ub8zJMIhmrrLcQqSR5XPlIT)
+[موقع الويب](http://www.reactboston.com/) - [تويتر](https://twitter.com/ReactBoston) - [يوتيوب](https://www.youtube.com/watch?v=2iPE5l3cl_s&list=PL-fCkV3wv4ub8zJMIhmrrLcQqSR5XPlIT)
 
 ### React Alicante 2017 {#react-alicante-2017}
 28-30 سبتمبر في اليكانتي ، اسبانيا.
 
-[موقع الويب](http://reactalicante.es) - [تويتر](https://twitter.com/ReactAlicante) - [أشرطة الفيديو](https://www.youtube.com/watch?v=UMZvRCWo6Dw&list=PLd7nkr8mN0sWvBH_s0foCE6eZTX8BmLUM)
+[موقع الويب](http://reactalicante.es) - [تويتر](https://twitter.com/ReactAlicante) - [يوتيوب](https://www.youtube.com/watch?v=UMZvRCWo6Dw&list=PLd7nkr8mN0sWvBH_s0foCE6eZTX8BmLUM)
 
 ### ReactJS Day 2017 {#reactjs-day-2017}
 6 أكتوبر في فيرونا ، إيطاليا.
 
-[موقع الويب](http://2017.reactjsday.it) - [تويتر](https://twitter.com/reactjsday) - [أشرطة الفيديو](https://www.youtube.com/watch?v=bUqqJPIgjNU&list=PLWK9j6ps_unl293VhhN4RYMCISxye3xH9)
+[موقع الويب](http://2017.reactjsday.it) - [تويتر](https://twitter.com/reactjsday) - [يوتيوب](https://www.youtube.com/watch?v=bUqqJPIgjNU&list=PLWK9j6ps_unl293VhhN4RYMCISxye3xH9)
 
 ### React Conf Brasil 2017 {#react-conf-brasil-2017}
 7 أكتوبر في ساو باولو ، البرازيل.
@@ -235,7 +240,7 @@ July 18, 2020. Medellín, Colombia.
 ### ReactiveConf 2017 {#reactiveconf-2017}
 25-27 أكتوبر ، براتيسلافا ، سلوفاكيا.
 
-[موقع الويب](https://reactiveconf.com) - [أشرطة الفيديو](https://www.youtube.com/watch?v=BOKxSFB2hOE&list=PLa2ZZ09WYepMB-I7AiDjDYR8TjO8uoNjs)
+[موقع الويب](https://reactiveconf.com) - [يوتيوب](https://www.youtube.com/watch?v=BOKxSFB2hOE&list=PLa2ZZ09WYepMB-I7AiDjDYR8TjO8uoNjs)
 
 ### React Seoul 2017 {#react-seoul-2017}
 4 نوفمبر في سيول ، كوريا الجنوبية.
@@ -245,7 +250,7 @@ July 18, 2020. Medellín, Colombia.
 ### React Day Berlin 2017 {#react-day-berlin-2017}
 2 ديسمبر ، برلين ، ألمانيا.
 
-[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/watch?v=UnNLJvHKfSY&list=PL-3BrJ5CiIx5GoXci54-VsrO6GwLhSHEK)
+[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/watch?v=UnNLJvHKfSY&list=PL-3BrJ5CiIx5GoXci54-VsrO6GwLhSHEK)
 
 ### ReactFoo Pune {#reactfoo-pune}
 19-20 يناير ، بون ، الهند.
@@ -260,12 +265,12 @@ July 18, 2020. Medellín, Colombia.
 ### ReactFest 2018 {#reactfest-2018}
 8-9 مارس في لندن ، المملكة المتحدة.
 
-[موقع الويب](https://reactfest.uk/) - [تويتر](https://twitter.com/ReactFest) - [أشرطة الفيديو](https://www.youtube.com/watch?v=YOCrJ5vRCnw&list=PLRgweB8YtNRt-Sf-A0y446wTJNUaAAmle)
+[موقع الويب](https://reactfest.uk/) - [تويتر](https://twitter.com/ReactFest) - [يوتيوب](https://www.youtube.com/watch?v=YOCrJ5vRCnw&list=PLRgweB8YtNRt-Sf-A0y446wTJNUaAAmle)
 
 ### Reactathon 2018 {#reactathon-2018}
 20-22 مارس في سان فرانسيسكو ، الولايات المتحدة.
 
-[موقع الويب](https://www.reactathon.com/) - [تويتر](https://twitter.com/reactathon) - [أشرطة الفيديو (fundamentals)](https://www.youtube.com/watch?v=knn364bssQU&list=PLRvKvw42Rc7OWK5s-YGGFSmByDzzgC0HP), [أشرطة الفيديو (advanced day1)](https://www.youtube.com/watch?v=57hmk4GvJpk&list=PLRvKvw42Rc7N0QpX2Rc5CdrqGuxzwD_0H), [أشرطة الفيديو (advanced day2)](https://www.youtube.com/watch?v=1hvQ8p8q0a0&list=PLRvKvw42Rc7Ne46QAjWNWFo1Jf0mQdnIW)
+[موقع الويب](https://www.reactathon.com/) - [تويتر](https://twitter.com/reactathon) - [يوتيوب (fundamentals)](https://www.youtube.com/watch?v=knn364bssQU&list=PLRvKvw42Rc7OWK5s-YGGFSmByDzzgC0HP), [يوتيوب (advanced day1)](https://www.youtube.com/watch?v=57hmk4GvJpk&list=PLRvKvw42Rc7N0QpX2Rc5CdrqGuxzwD_0H), [يوتيوب (advanced day2)](https://www.youtube.com/watch?v=1hvQ8p8q0a0&list=PLRvKvw42Rc7Ne46QAjWNWFo1Jf0mQdnIW)
 
 ### React Native Camp UA 2018 {#react-native-camp-ua-2018}
 31 مارس في كييف ، أوكرانيا.
@@ -356,7 +361,7 @@ July 18, 2020. Medellín, Colombia.
 ### React Day Berlin 2018 {#react-day-berlin-2018}
 30 نوفمبر ، برلين ، ألمانيا.
 
-[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/channel/UC1EYHmQYBUJjkmL6OtK4rlw)
+[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/channel/UC1EYHmQYBUJjkmL6OtK4rlw)
 
 ### React Iran 2019 {#react-iran-2019}
 31 يناير 2019 في طهران ، إيران.
@@ -376,7 +381,7 @@ July 18, 2020. Medellín, Colombia.
 ### React Amsterdam 2019 {#react-amsterdam-2019}
 12 أبريل 2019 في أمستردام ، هولندا.
 
-[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
 ### React Finland 2019 {#react-finland-2019}
 24-26 أبريل في هلسنكي ، فنلندا.
@@ -396,12 +401,12 @@ July 18, 2020. Medellín, Colombia.
 ### ReactEurope 2019 {#reacteurope-2019}
 23-24 مايو 2019 في باريس ، فرنسا.
 
-[موقع الويب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [أشرطة الفيديو](https://www.youtube.com/c/ReacteuropeOrgConf)
+[موقع الويب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [يوتيوب](https://www.youtube.com/c/ReacteuropeOrgConf)
 
 ### React Conf Armenia 2019 {#react-conf-am-19}
 25 مايو 2019 في يريفان ، أرمينيا.
 
-[موقع الويب](https://reactconf.am/) - [تويتر](https://twitter.com/ReactConfAM) - [فيس بوك](https://www.facebook.com/reactconf.am/) - [أشرطة الفيديو](https://www.youtube.com/c/JavaScriptConferenceArmenia) - [CFP](http://bit.ly/speakReact)
+[موقع الويب](https://reactconf.am/) - [تويتر](https://twitter.com/ReactConfAM) - [فيس بوك](https://www.facebook.com/reactconf.am/) - [يوتيوب](https://www.youtube.com/c/JavaScriptConferenceArmenia) - [CFP](http://bit.ly/speakReact)
 
 
 ### React Norway 2019 {#react-norway-2019}
@@ -427,7 +432,7 @@ July 18, 2020. Medellín, Colombia.
 ### React Conf Iran 2019 {#react-conf-iran-2019}	
 29 أغسطس 2019. طهران ، إيران.  
 
-[موقع الويب](https://reactconf.ir/) - [أشرطة الفيديو](https://www.youtube.com/playlist?list=PL-VNqZFI5Nf-Nsj0rD3CWXGPkH-DI_0VY) - [أبرز النقاط](https://github.com/ReactConf/react-conf-highlights)
+[موقع الويب](https://reactconf.ir/) - [يوتيوب](https://www.youtube.com/playlist?list=PL-VNqZFI5Nf-Nsj0rD3CWXGPkH-DI_0VY) - [أبرز النقاط](https://github.com/ReactConf/react-conf-highlights)
 
 ### React Native EU 2019 {#react-native-eu-2019}
 5-6 سبتمبر في فروتسواف ، بولندا.
@@ -472,7 +477,7 @@ July 18, 2020. Medellín, Colombia.
 ### React Advanced 2019 {#react-advanced-2019}
 25 أكتوبر 2019 في لندن ، المملكة المتحدة.
 
-[موقع الويب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [أشرطة الفيديو](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
 ### React Conf Brasil 2019 {#react-conf-2019}
 19 أكتوبر 2019 في ساو باولو ، البرازيل
@@ -487,4 +492,4 @@ July 18, 2020. Medellín, Colombia.
 ### React Day Berlin 2019 {#react-day-berlin-2019}
 6 ديسمبر 2019 في برلين ، ألمانيا.
 
-[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [أشرطة الفيديو](https://www.youtube.com/reactdayberlin)
+[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/reactdayberlin)

@@ -12,7 +12,6 @@ permalink: community/examples.html
 * **[Zeldog](https://yannsainty.github.io/Zeldog/)** لعبة شبيهة للعبة Zelda
 * **[Calculator](https://github.com/ahfarmer/calculator)** تنفيذ مُطابق للآلة الحاسبة على نظام تشغيل iOS باستخدام React
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React بسيط للبحث عن الرموز التعبيرية  "emojis"
-* **[Github Battle App](https://tm.dev/react-course-project/)** حارِب مُستخدما GitHub لرؤية من لديه مشاريع GitHub الأكثر شهره في أي لُغة.
 * **[React Powered Hacker News Client](https://github.com/insin/react-hn)** تطبيق Hacker News المدعوم من React و react-router باستخدام واجهة Firebase التطبيق البرمجية خاصتهم "Firebase API".
 * **[Pokedex](https://github.com/alik0211/pokedex)** قائمة بوكيمون "Pokémon" مع بحث حيّ مُباشر
 * **[Shopping Cart](https://github.com/jeffersonRibeiro/react-shopping-cart)** تطبيق سلّة إلكترونية بسيط مبني باستخدام React.
