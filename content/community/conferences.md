@@ -47,6 +47,11 @@ March 30 - 31, 2020 in San Francisco, CA
 
 [موقع الويب](https://reactday.in) - [تويتر](https://twitter.com/ReactDayIn) - [لينكدين](https://www.linkedin.com/company/react-day/)
 
+### Byteconf React 2020 {#byteconf-react-2020}
+May 1, 2020. Streamed online on YouTube.
+
+[Website](https://www.bytesized.xyz) - [Twitter](https://twitter.com/bytesizedcode) - [YouTube](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
+
 ### render(ATL) 2020 {#render-atlanta-2020}
 4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
 
