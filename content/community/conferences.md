@@ -25,7 +25,11 @@ redirect_from:
 ### ReactConf Japan 2020 {#reactconfjp-2020}
 March 21, 2020 in Tokyo, Japan
 
+<<<<<<< HEAD
 [موقع الويب](https://reactconf.jp/) - [تويتر](https://twitter.com/reactjapanconf)
+=======
+[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjp)
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 ### Reactathon 2020 {#reactathon-2020}
 March 30 - 31, 2020 in San Francisco, CA

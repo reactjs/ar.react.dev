@@ -35,7 +35,11 @@ next: typechecking-with-proptypes.html
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
+<<<<<<< HEAD
 يؤدّي كشف المشاكل التي يتعرف عليها الوضع الصارم _الآن_ إلى تسهيل استخدامك للتصيير غير المتزامن في إصدارات React القادمة.
+=======
+Addressing the issues identified by strict mode _now_ will make it easier for you to take advantage of concurrent rendering in future releases of React.
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 ### التحذير حول استخدام واجهة برمجة التطبيقات (API) القديمة لمراجع السلاسل النصيّة {#warning-about-legacy-string-ref-api-usage}
 
@@ -87,7 +91,11 @@ class MyComponent extends React.Component {
 * **طور التصيير (render)** والذي يُحدِّد ما التغييرات التي يجب فعلها (في DOM مثلًا). تستدعي React خلال هذا الطور التابع `render` ومن ثمّ تُقارِن النتيجة مع التصيير السابق.
 * **طور التطبيق (commit)** وهو يحدث عند تطبيق React لأي تغييرات (في حالة DOM يحدث عند إدخال وتحديث وإزالة عُقَد DOM). تستدعي React أيضًا توابع دورة الحياة مثل `componentDidMount` و `componentDidUpdate` خلال هذا الطور.
 
+<<<<<<< HEAD
 يكون طور التطبيق سريعًا جدًّا عادةً، ولكن التصيير قد يكون بطيئًا. لهذا السبب يُجزِّء الوضع غير المتزامن (async mode) القادم (والذي لم يُفعَّل بشكل افتراضي حتى الآن) عمل التصيير إلى قطع مع إيقاف واستكمال العمل لتجنّب إيقاف المتصفح. يعني هذا قدرة React على استدعاء توابع دورة حياة طور التصيير أكثر من مرّة قبل التطبيق، أو ربّما تستدعيها بدون التطبيق نهائيًّا (بسبب خطأ ما أو مقاطعة عالية الأهمية).
+=======
+The commit phase is usually very fast, but rendering can be slow. For this reason, the upcoming concurrent mode (which is not enabled by default yet) breaks the rendering work into pieces, pausing and resuming the work to avoid blocking the browser. This means that React may invoke render phase lifecycles more than once before committing, or it may invoke them without committing at all (because of an error or a higher priority interruption).
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 تتضمّن دورة حياة طور التصيير توابع المكوّنات التالية:
 * `constructor`

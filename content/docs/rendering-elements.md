@@ -75,6 +75,10 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
+<<<<<<< HEAD
+=======
+Even though we create an element describing the whole UI tree on every tick, only the text node whose contents have changed gets updated by React DOM.
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 بالرغم من أننا ننشئ عنصراً يصف شجرة واجهة المستخدم بأكملها عند كل دقة ساعة, فإن ما يتم تحديثه بواسطة ReactDOM ما هو إلا عقدة النص التي تغيرت محتوياتها.
 
