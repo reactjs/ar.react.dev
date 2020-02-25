@@ -70,6 +70,7 @@ permalink: community/meetups.html
 * [شانديغار](https://www.meetup.com/Chandigarh-React-Developers/)
   
 ## الولايات المتحدة {#us}
+* [آن أربور، ميتشيغن - ReactJS](https://www.meetup.com/AnnArbor-jsx/)
 * [أتلانتا (جورجيا)](https://www.meetup.com/React-ATL/)
 * [أرفاين (كالفورنيا)](https://www.meetup.com/ReactJS-OC/)
 * [أوستن (تكساس)](https://www.meetup.com/ReactJS-Austin-Meetup/)
@@ -95,6 +96,7 @@ permalink: community/meetups.html
 * [فينيكس (أريزونا)](https://www.meetup.com/ReactJS-Phoenix/) 
 * [كانساس سيتي (ميزوري)](https://www.meetup.com/Kansas-City-React-Meetup/)
 * [كولومبوس (أوهايو)](https://www.meetup.com/ReactJS-Columbus-meetup/)
+* [كليفلاند، أوهايو - ReactJS](https://www.meetup.com/Cleveland-React/)
 * [لاس فيغاس (نيفادا)](https://www.meetup.com/ReactVegas/)
 * [لوس أنجلوس (كاليفورنيا) - React JS](https://www.meetup.com/socal-react/)
 * [لوس أنجلوس (كاليفورنيا) - React Native](https://www.meetup.com/React-Native-Los-Angeles/)
@@ -150,6 +152,9 @@ permalink: community/meetups.html
 
 ## بوليفيا {#bolivia}
 * [بوليفيا](https://www.meetup.com/ReactBolivia/)
+
+## بناما {#panama}
+* [بناما](https://www.meetup.com/React-Panama/)
 
 ## بيرو {#peru}
 * [ليما](https://www.meetup.com/ReactJS-Peru/)

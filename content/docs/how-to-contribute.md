@@ -56,7 +56,7 @@ React's build system will strip out disabled feature branches before publishing.
 ### سُبُل التواصل {#how-to-get-in-touch}
 
 * IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* [منتديات المُحادثة](https://reactjs.org/community/support.html#popular-discussion-forums)
+* [منتديات المُحادثة](/community/support.html#popular-discussion-forums)
 
 هناك كذلك [مجتمع نشيط من مستخدمي React على منصّة Discord للمحادثة](https://www.reactiflux.com/) إذا ما احتجت للمساعدة فيما يتعلّق بـReact.
 
@@ -104,6 +104,7 @@ React's build system will strip out disabled feature branches before publishing.
 ### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
 * لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
+* لديك [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) مثبّت.
 * لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
 * أنت مُعتاد على Git.
 
