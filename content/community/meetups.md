@@ -159,7 +159,7 @@ permalink: community/meetups.html
 ## بيرو {#peru}
 * [ليما](https://www.meetup.com/ReactJS-Peru/)
 
-## تركيا (#turkey}
+## تركيا {#turkey}
 * [اسطنبول](https://www.meetup.com/ReactJS-Istanbul/)
 
 ## سنغافورة {#singapore}
