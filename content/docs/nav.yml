@@ -99,13 +99,7 @@
     - id: events
       title: الأحداث المصطنعة (Synthetic Events)
     - id: test-utils
-<<<<<<< HEAD
       title: أدوات الاختبار
-    - id: shallow-renderer
-      title: التصيير السطحي (Shallow Rendering)
-=======
-      title: Test Utilities
->>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
     - id: test-renderer
       title: مصير الاختبار
     - id: javascript-environment-requirements
@@ -179,8 +173,4 @@
     - id: faq-versioning
       title: سياسة الإصدارات
     - id: faq-internals
-<<<<<<< HEAD
       title: الـ DOM الافتراضي والكائنات الداخلية
-=======
-      title: Virtual DOM and Internals
->>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
