@@ -159,6 +159,9 @@ permalink: community/meetups.html
 ## بيرو {#peru}
 * [ليما](https://www.meetup.com/ReactJS-Peru/)
 
+## تركيا {#turkey}
+* [اسطنبول](https://www.meetup.com/ReactJS-Istanbul/)
+
 ## سنغافورة {#singapore}
 * [سنغافورة - React دراية](https://reactknowledgeable.org/)
 
