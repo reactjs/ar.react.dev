@@ -182,12 +182,9 @@ onChange onInput onInvalid onReset onSubmit
 
 * * *
 
-<<<<<<< HEAD
-### أحداث الفأرة {#mouse-events}
-=======
-### Generic Events {#generic-events}
+### أحداث عامة {#generic-events}
 
-Event names:
+أسماء الحدث:
 
 ```
 onError onLoad
@@ -195,8 +192,7 @@ onError onLoad
 
 * * *
 
-### Mouse Events {#mouse-events}
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
+### أحداث الفأرة {#mouse-events}
 
 أسماء الحدث:
 
