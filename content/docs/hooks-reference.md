@@ -70,7 +70,7 @@ function Counter({initialCount}) {
 
 يستعمل الزر "+" والزر "-" الشكل الدالِّي (functional form) لأنَّ القيمة المحدَّثة تعتمد على القيمة السابقة. ولكن الزر "Reset" يستعمل الشكل الاعتيادي لأنَّه يضبط العداد إلى القيمة 0 دومًا.
 
-If your update function returns the exact same value, the subsequent rerender will be skipped completely.
+If your update function returns the exact same value as the current state, the subsequent rerender will be skipped completely.
 
 > ملاحظة
 >
@@ -440,7 +440,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع `forwardRef` بالشكل التالي:
+يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع [`forwardRef`](/docs/react-api.html#reactforwardref) بالشكل التالي:
 
 ```js
 function FancyInput(props, ref) {

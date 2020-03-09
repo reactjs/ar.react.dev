@@ -35,8 +35,8 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 تتألف التطبيقات المبنية باستخدام رياكت في العادة, من عقدة DOM جذر وحيدة. أما إن كنت تقوم بعمل التكامل لـرياكت إلى تطبيق موجود مسبقاً, من الممكن أن يتوفر لديك أي عدد ترغب به من عقد DOM الجذر.
 
+لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى [`ReactDOM.render()`](/docs/react-dom.html#render):
 
-لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى `ReactDOM.render()`
 `embed:rendering-elements/render-an-element.js`
 
 [](codepen://rendering-elements/render-an-element)
@@ -48,7 +48,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 عناصر رياكت غير قابلة للتغيير [immutable](https://en.wikipedia.org/wiki/Immutable_object). عند انشائك عنصراَ, فإنه حينها لا يكون بإمكانك تغيير عناصره الأبناء أو صفاته. العنصر يشبه إطار الفيلم الواحد في كونه يمثل واجهة المستخدم خلال فترة معينة من الزمان.
 
 
-وبهذا القدر البسيط من المعرفة التي امتلكناها لحد الآن, فإن الطريقة الوحيدة لتحديث واجهة المستخدم تتم من خلال إنشاء عنصر جديد, ومن ثم تمريره إلى `ReactDOM.render()`.
+وبهذا القدر البسيط من المعرفة التي امتلكناها لحد الآن, فإن الطريقة الوحيدة لتحديث واجهة المستخدم تتم من خلال إنشاء عنصر جديد, ومن ثم تمريره إلى [`ReactDOM.render()`](/docs/react-dom.html#render).
 
 خذ على سبيل المثال هذه الساعة الداقة: 
 
@@ -56,12 +56,11 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 [](codepen://rendering-elements/update-rendered-element)
 
-
-حيث تقوم بمناداة `ReactDOM.render()` كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
+حيث تقوم بمناداة [`ReactDOM.render()`](/docs/react-dom.html#render) كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
 
 >**ملاحظة:**
 >
->عملياً, معظم التطبيقات المبنية مع رياكت تقوم بنداء `ReactDOM.render()` مرة واحدة فقط. في القسم التالي سنعرف أكثر عن كم الشيفرة التي يتم تغليفها إلى [مكوًن صنف](/docs/state-and-lifecycle.html).
+>عملياً, معظم التطبيقات المبنية مع رياكت تقوم بنداء [`ReactDOM.render()`](/docs/react-dom.html#render) مرة واحدة فقط. في القسم التالي سنعرف أكثر عن كم الشيفرة التي يتم تغليفها إلى [مكوًن صنف](/docs/state-and-lifecycle.html).
 >
 >نقترح عليك بألا تتخطى أية من المواضيع, لأنها تبني على بعضها البعض.
 

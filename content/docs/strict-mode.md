@@ -107,6 +107,7 @@ class MyComponent extends React.Component {
 * تابع التصيير `render`.
 * تابع التحديث `setState` (الوسيط الأول).
 * تابع دورة الحياة `getDerivedStateFromProps` الثابت.
+* تابع `shouldComponentUpdate`
 
 > ملاحظة:
 >
