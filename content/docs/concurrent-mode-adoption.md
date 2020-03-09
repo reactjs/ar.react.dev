@@ -53,11 +53,7 @@ npm install react@experimental react-dom@experimental
 
 نحن نستخدم هذه الشفرة في الإنتاج (وهي مناسبة لنا) ولكن لا تزال هناك بعض الأخطاء والميزات المفقودة والفجوات في الوثائق. نود أن نسمع المزيد حول ما ينتج من مشاكل في الوضع المتزامن حتى نتمكن من إصلاحه لإصدار رسمي مستقر في المستقبل.
 
-<<<<<<< HEAD
 ### تمكين الوضع المتزامن {#enabling-concurrent-mode}
-=======
-Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use them in new code without making any changes to the existing code.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 عادة، عندما نضيف ميزات إلى React ،يمكنك البدء في استخدامها على الفور. الأجزاء (Fragments) والسياق (Context) وحتى الخطافات (Hooks) هم أمثلة على هذه الميزات. يمكنك استخدام الشيفرة الجديد دون إجراء أي تغييرات على الشيفرة الموجود.
 
