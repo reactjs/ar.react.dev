@@ -173,7 +173,11 @@ const element = {
 
 تُدعى هذه الكائنات عناصر React. بإمكانك اعتبارها توصيفات لما ترغب برؤيته على الشّاشة. تقرأ React هذه الكائنات وتستخدمها لبناء DOM وإبقائه مُحدَّثًا.
 
+<<<<<<< HEAD
 سيتم تغطية تصيير عناصر React إلى DOM في القسم التالي.
+=======
+We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 >**ملاحظة:**
 >

@@ -74,7 +74,7 @@ function FriendListItem(props) {
 **الخطاف المخصص هو دالة JavaScript يبدأ اسمها بالكلمة "`use`" وقد تستدعي خطافات أخرى ضمنه.** على سبيل المثال، الدالة `useFriendStatus` في الشيفرة التالية هي أول خطاف مخصص ننشئه:
 
 ```js{3}
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function useFriendStatus(friendID) {
   const [isOnline, setIsOnline] = useState(null);

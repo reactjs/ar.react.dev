@@ -35,6 +35,10 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 تتألف التطبيقات المبنية باستخدام رياكت في العادة, من عقدة DOM جذر وحيدة. أما إن كنت تقوم بعمل التكامل لـرياكت إلى تطبيق موجود مسبقاً, من الممكن أن يتوفر لديك أي عدد ترغب به من عقد DOM الجذر.
 
+<<<<<<< HEAD
+=======
+To render a React element into a root DOM node, pass both to [`ReactDOM.render()`](/docs/react-dom.html#render):
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى `ReactDOM.render()`
 `embed:rendering-elements/render-an-element.js`
@@ -48,7 +52,11 @@ const element = <h1>مرحباً بالعالم!</h1>;
 عناصر رياكت غير قابلة للتغيير [immutable](https://en.wikipedia.org/wiki/Immutable_object). عند انشائك عنصراَ, فإنه حينها لا يكون بإمكانك تغيير عناصره الأبناء أو صفاته. العنصر يشبه إطار الفيلم الواحد في كونه يمثل واجهة المستخدم خلال فترة معينة من الزمان.
 
 
+<<<<<<< HEAD
 وبهذا القدر البسيط من المعرفة التي امتلكناها لحد الآن, فإن الطريقة الوحيدة لتحديث واجهة المستخدم تتم من خلال إنشاء عنصر جديد, ومن ثم تمريره إلى `ReactDOM.render()`.
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to [`ReactDOM.render()`](/docs/react-dom.html#render).
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 خذ على سبيل المثال هذه الساعة الداقة: 
 
@@ -56,12 +64,20 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 [](codepen://rendering-elements/update-rendered-element)
 
+<<<<<<< HEAD
+=======
+It calls [`ReactDOM.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 حيث تقوم بمناداة `ReactDOM.render()` كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
 
 >**ملاحظة:**
 >
+<<<<<<< HEAD
 >عملياً, معظم التطبيقات المبنية مع رياكت تقوم بنداء `ReactDOM.render()` مرة واحدة فقط. في القسم التالي سنعرف أكثر عن كم الشيفرة التي يتم تغليفها إلى [مكوًن صنف](/docs/state-and-lifecycle.html).
+=======
+>In practice, most React apps only call [`ReactDOM.render()`](/docs/react-dom.html#render) once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 >
 >نقترح عليك بألا تتخطى أية من المواضيع, لأنها تبني على بعضها البعض.
 
@@ -77,4 +93,8 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 بالرغم من أننا ننشئ عنصراً يصف شجرة واجهة المستخدم بأكملها عند كل دقة ساعة, فإن ما يتم تحديثه بواسطة ReactDOM ما هو إلا عقدة النص التي تغيرت محتوياتها.
 
+<<<<<<< HEAD
 بحسب خبرتنا, التفكير بالكيفية التي ستبدو عليها واجهة المستخدم في أي لحظة من الزمان بدل التفكير بآلية تغييرها بمرور الوقت يقضي على العديد من الأخطاء البرمجية bugs.
+=======
+In our experience, thinking about how the UI should look at any given moment, rather than how to change it over time, eliminates a whole class of bugs.
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9

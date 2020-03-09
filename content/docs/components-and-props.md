@@ -44,7 +44,11 @@ class Welcome extends React.Component {
 
 إنّ المُكوِّنين السابقين مُتكافِئان من وجهة نظر React.
 
+<<<<<<< HEAD
 تمتلك الأصناف بعض الميّزات الإضافيّة التي سنتحدّث عنها في قسم [القسم التالي](/docs/state-and-lifecycle.html). وحتى ذلك الوقت سنستخدم المُكوِّنات الداليّة لبساطتها.
+=======
+Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ## تصيير المكوّنات (Rendering) {#rendering-a-component}
 
@@ -60,7 +64,11 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
+<<<<<<< HEAD
 عندما تجد React عنصرًا يُمثِّل مُكوِّنًا مُعرَّفًا من قبل المستخدم، فستُمرِّر خاصيّات JSX إليه على شكل كائن وحيد، ندعو هذا الكائن "props".
+=======
+When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 لى سبيل المثال تعرض هذه الشيفرة عبارة "Hello, Sara" في الصّفحة:
 

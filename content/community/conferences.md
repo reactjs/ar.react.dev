@@ -12,6 +12,7 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
+<<<<<<< HEAD
 ### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
 1-2 فبراير ، 2020 في كولونيا ، ألمانيا
 
@@ -22,6 +23,8 @@ redirect_from:
 
 [موقع الويب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
 
+=======
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 ### ReactConf Japan 2020 {#reactconfjp-2020}
 March 21, 2020 in Tokyo, Japan
 
@@ -492,4 +495,16 @@ July 18, 2020. Medellín, Colombia.
 ### React Day Berlin 2019 {#react-day-berlin-2019}
 6 ديسمبر 2019 في برلين ، ألمانيا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/reactdayberlin)
+=======
+### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
+February 1-2, 2020 in Cologne, Germany
+
+[Website](https://react-barcamp.de/) - [Twitter](https://twitter.com/ReactBarcamp) - [Facebook](https://www.facebook.com/reactbarcamp)
+
+### ReactConf AU 2020 {#reactconfau}
+February 27 & 28, 2020 in Sydney, Australia
+
+[Website](https://reactconfau.com/) - [Twitter](https://twitter.com/reactconfau) - [Facebook](https://www.facebook.com/reactconfau) - [Instagram](https://www.instagram.com/reactconfau/)
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9

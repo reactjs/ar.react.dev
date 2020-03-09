@@ -175,9 +175,9 @@ function withSubscription(WrappedComponent, selectData) {
 
 ```js
 function logProps(InputComponent) {
-  InputComponent.prototype.componentWillReceiveProps = function(nextProps) {
+  InputComponent.prototype.componentDidUpdate = function(prevProps) {
     console.log('Current props: ', this.props);
-    console.log('Next props: ', nextProps);
+    console.log('Previous props: ', prevProps);
   };
   // The fact that we're returning the original input is a hint that it has
   // been mutated.
@@ -188,7 +188,11 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
+<<<<<<< HEAD
 هنالك بعض المشاكل عند فعل ذلك. أحدها هي عدم القدرة على استخدام مكوّن حقل الإدخال بشكل منفصل عن المكوّن `EnhancedComponent`. وإن طبقت مكوّن ذو ترتيب أعلى آخر إلى المكوّن `EnhancedComponent` والذي يُعدِّل *أيضًا* `componentWillReceiveProps`، فسيتجاوز وظيفة المكوّن ذو الترتيب الأعلى الأول! لا يعمل المكوّن ذو الترتيب الأعلى هذا أيضًا مع المكوّنات الدالّية لأنّها لا تمتلك توابع دورة الحياة.
+=======
+There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to `EnhancedComponent` that *also* mutates `componentDidUpdate`, the first HOC's functionality will be overridden! This HOC also won't work with function components, which do not have lifecycle methods.
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 إنّ تعديل المكوّنات ذات الترتيب الأعلى ليس أمرًا بسيطًا فيجب معرفة كيفية تنفيذها لتَجنُب التعارض مع المكوّنات ذات الترتيب الأعلى الأخرى.
 
@@ -197,9 +201,9 @@ const EnhancedComponent = logProps(InputComponent);
 ```js
 function logProps(WrappedComponent) {
   return class extends React.Component {
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps) {
       console.log('Current props: ', this.props);
-      console.log('Next props: ', nextProps);
+      console.log('Previous props: ', prevProps);
     }
     render() {
       // Wraps the input component in a container, without mutating it. Good!

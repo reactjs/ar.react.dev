@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -73,6 +74,7 @@ function onClick(event) {
 - [Keyboard Events](#keyboard-events)
 - [Focus Events](#focus-events)
 - [Form Events](#form-events)
+- [Generic Events](#generic-events)
 - [Mouse Events](#mouse-events)
 - [Pointer Events](#pointer-events)
 - [Selection Events](#selection-events)
@@ -173,14 +175,28 @@ DOMEventTarget relatedTarget
 أسماء الحدث:
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit 
 ```
 
 للمزيد من المعلومات حول الحدث `onChange` انظر إلى توثيق[حقول الإدخال](/docs/forms.html).
 
 * * *
 
+<<<<<<< HEAD
 ### أحداث الفأرة {#mouse-events}
+=======
+### Generic Events {#generic-events}
+
+Event names:
+
+```
+onError onLoad
+```
+
+* * *
+
+### Mouse Events {#mouse-events}
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 أسماء الحدث:
 

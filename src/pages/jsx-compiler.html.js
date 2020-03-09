@@ -26,8 +26,13 @@ const JsxCompiler = ({location}: Props) => (
               <strong>تمت إزالة الأداة JSXTransformer حيث تم إهمال .</strong>
             </p>
             <p>
+<<<<<<< HEAD
               نوصي باستخدام أداة أخرى مثل{' '}
               <a href="https://babeljs.io/repl/">Babel REPL</a>.
+=======
+              We recommend using another tool such as{' '}
+              <a href="https://babeljs.io/repl">the Babel REPL</a>.
+>>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
             </p>
           </div>
         </div>
