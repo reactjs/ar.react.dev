@@ -440,11 +440,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-<<<<<<< HEAD
-يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع `forwardRef` بالشكل التالي:
-=======
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with [`forwardRef`](/docs/react-api.html#reactforwardref):
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
+يخصِّص هذا الخطاف نسخة المتغير التي تُعرَض لمكون أب عند استعمال `ref`. كما هو الحال دومًا، الشيفرة الأمرية التي تستعمل المراجع (refs) يجب أن تُتجنَّب في أغلب الحالات. الخطاف `useImperativeHandle` يجب أن يُستعمَل مع [`forwardRef`](/docs/react-api.html#reactforwardref) بالشكل التالي:
 
 ```js
 function FancyInput(props, ref) {
