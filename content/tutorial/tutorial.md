@@ -285,11 +285,7 @@ class Square extends React.Component {
 
 >ملاحظة:
 >
-<<<<<<< HEAD
 >يجب عليك دومًا في [أصناف JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) أن تستدعي الكلمة `super` عند تعريف الدالة البانية للصنف الفرعي. يجب أن تبدأ جميع مكوّنات الأصناف في React التي تمتلك دالة بانية `constructor` باستدعاء `super(props)`.
-=======
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start with a `super(props)` call.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 سنُغيّر الآن تابع التصيير `render` للمكوّن Square ليعرض قيمة الحالة الحاليّة عند النقر عليه:
 
