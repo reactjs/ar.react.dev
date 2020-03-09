@@ -91,19 +91,11 @@ prev: hooks-reference.html
 
 نشجع على البدء بتجريب الخطافات واستعمالها في مكوناتك الجديدة عندما تشعر أنك جاهز لذلك. احرص على موافقة كل فرد من أفراد فريقك أيضًا على استعمالها بعد أن يكونوا قد اطلعوا على كامل توثيق الخطافات. لا ننصح بإعادة كتابة الأصناف الموجودة وتحويلها إلى خطافات إلا إذا كنت قد خططت مسبقًا لفعل ذلك (أي لإصلاح مشكلة مثلًا أو لغرض آخر).
 
-<<<<<<< HEAD
 لا تستطيع استعمال الخطافات داخل مكون صنف، ولكن يمكنك بالتأكيد المزج بين الأصناف ومكونات دالة مع الخطافات في شجرة واحدة. سواءً كان مكونٌ ما صنفًا أو دالةً، فإنَّ تلك الخطافات المستعملة هي تفاصيل التنفيذ لذلك المكون. نتوقع على المدى البعيد أن تصبح الخطافات الوسيلة الرئيسية التي يستعملها الجميع في كتلة مكونات React.
-=======
-You can't use Hooks *inside* a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ### هل تغطي الخطافات جميع حالات الاستخدام التي توفرها الأصناف؟ {#do-hooks-cover-all-use-cases-for-classes}
 
-<<<<<<< HEAD
-هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
-=======
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate`, `getDerivedStateFromError` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
+هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate`، `getDerivedStateFromError` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
 
 ما زالت الخطافات حديثة العهد، وقد لا تتوافق بعض المكتبات الموفرة من طرف ثالث معها في الوقت الحالي.
 
@@ -228,12 +220,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: يحل [الخطاف useEffect](/docs/hooks-reference.html#useeffect) مكان هذه التوابع بشتى أشكال دمجها مع بعضها (بما فيها [الحالات](#can-i-skip-an-effect-on-updates) [النادرة](#can-i-run-an-effect-only-on-updates)).
 
-* `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
-
-<<<<<<< HEAD
-=======
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
+* `getSnapshotBeforeUpdate`, `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
 
 ### كيف يمكنني أن أحصل على معلمات بواسطة الخطافات؟ {#how-can-i-do-data-fetching-with-hooks}
 
@@ -302,13 +289,9 @@ function Box() {
   // ...
 ```
 
-هذا بسببب أنَّه استبدلنا قيمة متغير حالة عندما حدثناها. هذا الأمر مخلف عن this.setState في الأصناف التي تدمج الحقول المحدَّثة
+هذا بسببب أنَّه استبدلنا قيمة متغير حالة عندما حدثناها. هذا الأمر مخلف عن `this.setState` في الأصناف التي تدمج الحقول المحدَّثة
 
-<<<<<<< HEAD
 على أي حال، نوصي بدلًا من ذلك بتقسيم الحالة إلى متغيرات حالة متعددة اعتمادًا على القيم التي تتغير سويةً
-=======
-If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 على سبيل المثال، يمكنا تقسيم حالة المكون الخاص بنا إلى الكائنين `position` و `size`، واستبدال `position` دون الحاجة للدمج:
 
@@ -597,11 +580,7 @@ useEffect(() => {
 
 دعنا نرى لماذا هذا مهم.
 
-<<<<<<< HEAD
-إذا قمت بتحديد [قائمة التبعيات](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
-=======
-If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
+إذا قمت بتحديد [قائمة التبعيات](/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
 
 يكون من الآمن حذف وظيفة من قائمة التبعية إذا لم يكن أي منها (أو الوظائف التي تسمى بها) يشير إلى الدعائم أو الحالة أو القيم المستمدة منها. يحتوي هذا المثال على خطأ:
 
