@@ -37,13 +37,9 @@ redirect_from:
 
 ### التجربة على الإنترنت {#online-playgrounds}
 
-إن كنت مهتمًا بتجربة React والتعامل معها، يمكنك استخدام بيئة جاهزة لتجربة الشيفرة على الإنترنت. جرّب مثال "أهلًا بالعالم" (Hello World) على موقع [CodePen](codepen://hello-world) أو موقع [CodeSandbox](https://codesandbox.io/s/new) أو موقع [Glitch](https://glitch.com/edit/#!/remix/starter-react-template).
+إن كنت مهتمًا بتجربة React والتعامل معها، يمكنك استخدام بيئة جاهزة لتجربة الشيفرة على الإنترنت. جرّب مثال "أهلًا بالعالم" (Hello World) على موقع [CodePen](codepen://hello-world) أو موقع [CodeSandbox](https://codesandbox.io/s/new) أو موقع [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) أو موقع [Stackblitz](https://stackblitz.com/fork/react).
 
-<<<<<<< HEAD
 إن كنت تُفضِّل استخدام مُحرِّر النصوص الخاص بك، يمكنك تحميل [ملف HTML هذا](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) وتعديله ومن ثمّ فتحه عن طريق نظام الملفّات المحلّي في متصفّحك. يُؤدِّي هذا إلى بطء في تحويل الشّيفرة أثناء زمن التنفيذ لذلك لا تستخدم هذه الطريقة أثناء إنتاجك لمشاريع حقيقيّة.
-=======
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template), or [Stackblitz](https://stackblitz.com/fork/react).
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ### إضافة React إلى موقع ويب {#add-react-to-a-website}
 
@@ -89,11 +85,7 @@ If you're interested in playing around with React, you can use an online code pl
 
 ### التعلم عبر التطبيق العملي {#practical-tutorial}
 
-<<<<<<< HEAD
 إن كنت تفضل أن **تتعلم بالممارسة**, ابدأ [بالدليل التطبيقي](/tutorial/tutorial.html) أولًا. ستتعلم في هذا الدليل كيفيّة بناء لعبة إكس-أو (اسمها بالإنجليزيّة tic-tac-toe) باستخدام React. ربّما قد ترغب بتخطي هذا الدليل لأنّك لا تريد بناء الألعاب، ولكن أعطه فرصة. إنّ التقنيات التي ستتعلمها في هذا الدليل أساسيّة لبناء أي تطبيق React، وسيعطيك إتقانها فهمًا أعمق لمكتبة React.
-=======
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not into building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ### تعلم المفاهيم خطوة بخطوة {#step-by-step-guide}
 
