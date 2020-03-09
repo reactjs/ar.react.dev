@@ -113,21 +113,13 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 ### ماذا يتيح لك Suspense القيام به {#what-suspense-lets-you-do}
 
-<<<<<<< HEAD
 إذن ما هي الفائدة من Suspense؟ هناك بعض الطرق التي يمكننا من خلالها الإجابة عن هذا:
-=======
-So what's the point of Suspense? There are a few ways we can answer this:
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 * **يتيح دمج مكتبات جلب البيانات بعمق مع React.** إذا نفذت مكتبة جلب البيانات دعم Suspense ، فسيكون استخدامه من مكونات React طبيعيًا للغاية.
 
 * **يتيح لك تنظيم حالات التحميل المصممة عن عمد.** إنه لا يقول _how_ يتم جلب البيانات ، لكنه يتيح لك التحكم عن قرب في تسلسل التحميل المرئي لتطبيقك.
 
-<<<<<<< HEAD
 * **يساعدك على تجنب حالات التسابق** حتى مع وجود `await`، غالبًا ما تكون الشفرة الغير متزامنة عرضة للخطأ. يبدو Suspense أكثر مثل قراءة البيانات *بشكل متزامن* - كما لو تم تحميلها بالفعل.
-=======
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it were already loaded.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ## استخدام Suspense في الممارسة {#using-suspense-in-practice}
 
@@ -239,11 +231,7 @@ function ProfileTimeline() {
 
 إذا كان جلب تفاصيل المستخدم يستغرق ثلاث ثوانٍ ، *فسنبدأ* فقط في جلب المشاركات بعد ثلاث ثوانٍ! هذا "شلال": *تسلسل* غير مقصود كان ينبغي موازنته.
 
-<<<<<<< HEAD
 الشلالات شائعة في الكود الذى يجلب البيانات عند عرضها. يمكن حلها ، لكن مع نمو المنتج ، يفضل العديد من الأشخاص استخدام حل يحمي هذه المشكلة.
-=======
-Waterfalls are common in code that fetches data on render. They're possible to solve, but as the product grows, many people prefer to use a solution that guards against this problem.
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ### المنهج 2: الجلب ثم التصيير (لا يستخدم Suspense) {#approach-2-fetch-then-render-not-using-suspense}
 
@@ -262,11 +250,7 @@ function fetchProfileData() {
 }
 ```
 
-<<<<<<< HEAD
 في هذا المثال ، `<ProfilePage>` ينتظر كلا الطلبين ولكن يبدأ تشغيلهما بشكل متوازٍ:
-=======
-In this example, `<ProfilePage>` waits for both requests but starts them in parallel:
->>>>>>> 9fa6418ada9b24bdacf4cb1facbe69160d0740a9
 
 ```js{1,2,8-13}
 // Kick off fetching as early as possible
