@@ -470,6 +470,8 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
+import Card from "./card";
+
 jest.useFakeTimers();
 
 let container = null;

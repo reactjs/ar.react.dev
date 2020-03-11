@@ -383,7 +383,7 @@ class BlurExample extends React.Component {
 يمتلك كل نوع من الأدوات المصغرة نمط تصميم خاص ومن المتوقع أن يعمل بطريقة معينة من قبل المستخدمين والعملاء مثل:
 
 - [أساليب WAI-ARIA – أنماط التصميم والأدوات المصغرة](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [أمثلة Heydon Pickering – ARIA](https://heydonworks.com/practical_aria_examples/)
+- [أمثلة Heydon Pickering – ARIA](https://heydonworks.com/article/practical-aria-examples/)
 - [المكوّنات الداخلية](https://inclusive-components.design/)
 
 ## نقاط أخرى يجب أخذها بعين الاعتبار {#other-points-for-consideration}

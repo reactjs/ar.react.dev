@@ -64,6 +64,7 @@ permalink: community/meetups.html
   
 ## الهند {#india}
 * [بنغالور](https://www.meetup.com/ReactJS-Bangalore/)
+* [بيون](https://www.meetup.com/ReactJS-and-Friends/)
 * [تشيناي](https://www.meetup.com/React-Chennai/)
 * [دلهي](https://www.meetup.com/React-Delhi-NCR/)
 * [جايبور](https://www.meetup.com/JaipurJS-Developer-Meetup/)
@@ -158,6 +159,9 @@ permalink: community/meetups.html
 
 ## بيرو {#peru}
 * [ليما](https://www.meetup.com/ReactJS-Peru/)
+
+## تركيا {#turkey}
+* [اسطنبول](https://www.meetup.com/ReactJS-Istanbul/)
 
 ## سنغافورة {#singapore}
 * [سنغافورة - React دراية](https://reactknowledgeable.org/)

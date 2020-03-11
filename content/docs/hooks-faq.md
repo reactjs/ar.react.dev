@@ -95,7 +95,7 @@ prev: hooks-reference.html
 
 ### هل تغطي الخطافات جميع حالات الاستخدام التي توفرها الأصناف؟ {#do-hooks-cover-all-use-cases-for-classes}
 
-هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
+هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate`، `getDerivedStateFromError` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
 
 ما زالت الخطافات حديثة العهد، وقد لا تتوافق بعض المكتبات الموفرة من طرف ثالث معها في الوقت الحالي.
 
@@ -220,8 +220,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: يحل [الخطاف useEffect](/docs/hooks-reference.html#useeffect) مكان هذه التوابع بشتى أشكال دمجها مع بعضها (بما فيها [الحالات](#can-i-skip-an-effect-on-updates) [النادرة](#can-i-run-an-effect-only-on-updates)).
 
-* `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
-
+* `getSnapshotBeforeUpdate`, `componentDidCatch` و `getDerivedStateFromError`: ليس هنالك أي خطاف مكافئ لهذين التابعين بعد، ولكن سيُضَاف في القريب العاجل.
 
 ### كيف يمكنني أن أحصل على معلمات بواسطة الخطافات؟ {#how-can-i-do-data-fetching-with-hooks}
 
@@ -290,7 +289,7 @@ function Box() {
   // ...
 ```
 
-هذا بسببب أنَّه استبدلنا قيمة متغير حالة عندما حدثناها. هذا الأمر مخلف عن this.setState في الأصناف التي تدمج الحقول المحدَّثة
+هذا بسببب أنَّه استبدلنا قيمة متغير حالة عندما حدثناها. هذا الأمر مخلف عن `this.setState` في الأصناف التي تدمج الحقول المحدَّثة
 
 على أي حال، نوصي بدلًا من ذلك بتقسيم الحالة إلى متغيرات حالة متعددة اعتمادًا على القيم التي تتغير سويةً
 
@@ -581,7 +580,7 @@ useEffect(() => {
 
 دعنا نرى لماذا هذا مهم.
 
-إذا قمت بتحديد [قائمة التبعيات](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
+إذا قمت بتحديد [قائمة التبعيات](/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
 
 يكون من الآمن حذف وظيفة من قائمة التبعية إذا لم يكن أي منها (أو الوظائف التي تسمى بها) يشير إلى الدعائم أو الحالة أو القيم المستمدة منها. يحتوي هذا المثال على خطأ:
 

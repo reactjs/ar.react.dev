@@ -12,23 +12,13 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
-1-2 فبراير ، 2020 في كولونيا ، ألمانيا
-
-[موقع الويب](https://react-barcamp.de/) - [تويتر](https://twitter.com/ReactBarcamp) - [فيس بوك](https://www.facebook.com/reactbarcamp)
-
-### ReactConf AU 2020 {#reactconfau}
-فبراير 27 & 28, 2020 في سيدني، أستراليا
-
-[موقع الويب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
-
 ### ReactConf Japan 2020 {#reactconfjp-2020}
-March 21, 2020 in Tokyo, Japan
+21 مارس 2020 في طوكيو ، اليابان
 
 [موقع الويب](https://reactconf.jp/) - [تويتر](https://twitter.com/reactjp)
 
 ### Reactathon 2020 {#reactathon-2020}
-March 30 - 31, 2020 in San Francisco, CA
+30 مارس - 31 ، 2020 في سان فرانسيسكو ، كاليفورنيا
 
 [موقع الويب](https://www.reactathon.com) - [تويتر](https://twitter.com/reactathon) - [فيس بوك](https://www.facebook.com/events/575942819854160/)
 
@@ -493,3 +483,13 @@ July 18, 2020. Medellín, Colombia.
 6 ديسمبر 2019 في برلين ، ألمانيا.
 
 [موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/reactdayberlin)
+
+### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
+1-2 فبراير ، 2020 في كولونيا ، ألمانيا
+
+[موقع الويب](https://react-barcamp.de/) - [تويتر](https://twitter.com/ReactBarcamp) - [فيس بوك](https://www.facebook.com/reactbarcamp)
+
+### ReactConf AU 2020 {#reactconfau}
+فبراير 27 & 28, 2020 في سيدني، أستراليا
+
+[موقع الويب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
