@@ -69,13 +69,13 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 </Suspense>
 ```
 
-`Suspense` lets your components "wait" for something before they can render, showing a fallback while waiting.
+`Suspense` يتيح لمكوناتك "الانتظار" لشيء ما قبل أن تتمكن من التصيير، مع إظهار احتياطي أثناء الانتظار.
 
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` has loaded, we will continue to show the fallback.
+في هذا المثال، ينتظر `ProfileDetails`  اتصال API غير متزامن لجلب بعض البيانات. أثناء انتظار ` ProfileDetails` و `ProfilePhoto`، سنعرض الخيار `جاري التحميل ...`  بدلاً من ذلك. من المهم ملاحظة أنه حتى يتم تحميل جميع الأطفال داخل `<Suspense>`، سنستمر في إظهار الاحتياط.
 
-`Suspense` takes two props:
-* **fallback** takes a loading indicator. The fallback is shown until all of the children of the `Suspense` component have finished rendering.
-* **unstable_avoidThisFallback** takes a boolean. It tells React whether to "skip" revealing this boundary during the initial load. This API will likely be removed in a future release.
+`Suspense` يأخذ two props:
+* **fallback** يأخذ مؤشر تحميل. يظهر العرض الاحتياطي حتى الانتهاء من تصيير كافة مكون `Suspense`.
+* **unstable_avoidThisFallback** يأخذ قيم منطقية. يخبر React ما إذا كان "تخطي" الكشف عن هذه الحدود أثناء التحميل الأولي. من المحتمل أن تتم إزالة واجهة برمجة التطبيقات هذه في إصدار مستقبلي.
 
 ### `<SuspenseList>` {#suspenselist}
 
