@@ -21,11 +21,11 @@ prev: concurrent-mode-adoption.html
 
 </div>
 
-This page is an API reference for the React [Concurrent Mode](/docs/concurrent-mode-intro.html). If you're looking for a guided introduction instead, check out [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+هذه الصفحة هي مرجع واجهة برمجة التطبيقات لـ React [الوضع المتزامن](/docs/concurrent-mode-intro.html). إذا كنت تبحث عن مقدمة موجهة بدلاً من ذلك، فتحقق من [أنماط واجهة المستخدم المتزامنة](/docs/concurrent-mode-patterns.html).
 
-**Note: This is a Community Preview and not the final stable version. There will likely be future changes to these APIs. Use at your own risk!**
+**ملاحظة: هذه هي معاينة المجتمع وليست الإصدار النهائي المستقر. من المحتمل أن تكون هناك تغييرات مستقبلية على واجهات برمجة التطبيقات تلك. استخدام على مسؤوليتك الخاصة!**
 
-- [Enabling Concurrent Mode](#concurrent-mode)
+- [تمكين الوضع المتزامن](#concurrent-mode)
     - [`createRoot`](#createroot)
     - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
@@ -34,7 +34,7 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
     - [`useTransition`](#usetransition)
     - [`useDeferredValue`](#usedeferredvalue)
 
-## Enabling Concurrent Mode {#concurrent-mode}
+## تمكين الوضع المتزامن {#concurrent-mode}
 
 ### `createRoot` {#createroot}
 
@@ -42,9 +42,9 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables Concurrent Mode.
+استبدال `ReactDOM.render (<App />, rootNode)` وتمكين الوضع المتزامن.
 
-For more information on Concurrent Mode, check out the [Concurrent Mode documentation.](/docs/concurrent-mode-intro.html)
+لمزيد من المعلومات حول الوضع المتزامن، راجع [وثائق الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
 ### `createBlockingRoot` {#createblockingroot}
 
@@ -52,11 +52,11 @@ For more information on Concurrent Mode, check out the [Concurrent Mode document
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables [Blocking Mode](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
+يستبدل `ReactDOM.render(<App />, rootNode)` و تمكين [وضع الحظر](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
 
-Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode.
+يؤدي الاشتراك في الوضع المتزامن إلى إدخال تغييرات دلالية في كيفية عمل React. هذا يعني أنه لا يمكنك استخدام الوضع المتزامن في عدد قليل من المكونات. وبسبب هذا، قد لا تتمكن بعض التطبيقات من الترحيل مباشرة إلى الوضع المتزامن.
 
-Blocking Mode only contains a small subset of Concurrent Mode features and is intended as an intermediary migration step for apps that are unable to migrate directly.
+يحتوي وضع الحظر فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
 
 ## Suspense API {#suspense}
 
