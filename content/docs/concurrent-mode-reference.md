@@ -94,19 +94,19 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 </SuspenseList>
 ```
 
-`SuspenseList` helps coordinate many components that can suspend by orchestrating the order in which these components are revealed to the user.
+`SuspenseList` يساعد في تنسيق العديد من المكونات التي يمكن تعليقها من خلال تنسيق الترتيب الذي يتم من خلاله الكشف عن هذه المكونات للمستخدم.
 
-When multiple components need to fetch data, this data may arrive in an unpredictable order. However, if you wrap these items in a `SuspenseList`, React will not show an item in the list until previous items have been displayed (this behavior is adjustable).
+عندما تحتاج مكونات متعددة إلى جلب البيانات، قد تصل هذه البيانات بترتيب غير متوقع. ومع ذلك، إذا قمت بلف هذه العناصر في `SuspenseList`، فلن تظهر React عنصرًا في القائمة حتى يتم عرض العناصر السابقة (هذا السلوك قابل للتعديل).
 
-`SuspenseList` takes two props:
-* **revealOrder (forwards, backwards, together)** defines the order in which the `SuspenseList` children should be revealed.
-  * `together` reveals *all* of them when they're ready instead of one by one.
-* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown.
-    * By default, `SuspenseList` will show all fallbacks in the list.
-    * `collapsed` shows only the next fallback in the list.
-    * `hidden` doesn't show any unloaded items.
+`SuspenseList` يأخذ two props:
+* **revealOrder (forwards, backwards, together)** يحدد الترتيب الذي فيه `SuspenseList` يجب الكشف عن الأطفال.
+  * `together` تكشف *الكل* عندما يكونوا على استعداد بدلاً من واحدة تلو الأخرى.
+* **tail (collapsed, hidden)** يملي كيف يتم عرض العناصر التي تم تحميلها فى `SuspenseList`.
+    * بشكل افتراضي, `SuspenseList` سيظهر جميع الاحتياطيات في القائمة.
+    * `collapsed` يظهر فقط الاحتياطية التالية في القائمة.
+    * `hidden` لا تظهر أي عناصر غير محمل.
 
-Note that `SuspenseList` only operates on the closest `Suspense` and `SuspenseList` components below it. It does not search for boundaries deeper than one level. However, it is possible to nest multiple `SuspenseList` components in each other to build grids.
+لاحظ أن `SuspenseList`  تعمل فقط على أقرب مكونات `Suspense` و مكونات `SuspenseList`  تحتها. لا يبحث عن حدود أعمق من مستوى واحد. ومع ذلك، فمن الممكن تداخل مكونات `SuspenseList` متعددة في بعضها البعض لبناء شبكات.
 
 ### `useTransition` {#usetransition}
 
