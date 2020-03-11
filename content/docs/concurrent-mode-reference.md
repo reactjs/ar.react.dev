@@ -14,11 +14,10 @@ prev: concurrent-mode-adoption.html
 
 <div class="scary">
 
->Caution:
+>الحذر:
+>تصف هذه الصفحة **الميزات التجريبية التي [غير متوفرة بعد](/docs/concurrent-mode-approach.html) في إصدار ثابت**. لا تعتمد على تصميمات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
->
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+>تستهدف هذه الوثائق إلى التبني المبكر والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** --  لست بحاجة إلى تعلمها الآن.
 
 </div>
 
