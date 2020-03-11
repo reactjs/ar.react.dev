@@ -174,11 +174,11 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 const deferredValue = useDeferredValue(value, { timeoutMs: 2000 });
 ```
 
-Returns a deferred version of the value that may "lag behind" it for at most `timeoutMs`.
+لعرض نسخة مؤجلة من القيمة التي قد "تتخلف" عنها على الأكثر لـ `timeoutMs`.
 
-This is commonly used to keep the interface responsive when you have something that renders immediately based on user input and something that needs to wait for a data fetch.
+يُستخدم هذا بشكل شائع للحفاظ على استجابة الواجهة عندما يكون لديك شيء يتم تصييره فورًا بناءً على إدخال المستخدم وشيء يحتاج إلى انتظار جلب البيانات.
 
-A good example of this is a text input.
+مثال جيد على ذلك هو إدخال النص.
 
 ```js
 function App() {
@@ -197,9 +197,9 @@ function App() {
  }
 ```
 
-This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lags behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
+يتيح لنا ذلك البدء في عرض النص الجديد لـ `الإدخال` على الفور، مما يسمح لصفحة الويب بالشعور بالاستجابة. في هذه الأثناء، `MySlowList` "متخلفة" لمدة تصل إلى ثانيتين وفقًا لـ `timeoutMs`  قبل التحديث، مما يتيح تصييرها مع النص الحالي في الخلفية.
 
-**For an in-depth look at deferring values, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**
+**لإلقاء نظرة متعمقة على تأجيل القيم، يمكنك قراءة [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**
 
 #### useDeferredValue Config {#usedeferredvalue-config}
 
@@ -207,6 +207,6 @@ This allows us to start showing the new text for the `input` immediately, which 
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useDeferredValue` accepts an **optional Suspense Config** with a `timeoutMs`. This timeout (in milliseconds) tells React how long the deferred value is allowed to lag behind.
+يقبل `useDeferredValue` **Suspense Config  اختياري** مع  `timeoutMs`. هذه المهلة (بالمللي ثانية) تخبرنا React عن المدة التي يُسمح فيها بالقيمة المؤجلة بالتخلف.
 
-React will always try to use a shorter lag when network and device allows it.
+سيحاول React دائمًا استخدام تأخرًا أقصر عندما تسمح به الشبكة والجهاز.
