@@ -9,3 +9,7 @@ order: 2
 [React Native](https://facebook.github.io/react-native/).
 
 
+<<<<<<< HEAD
+=======
+React can also render on the server using Node and power mobile apps using [React Native](https://reactnative.dev/).
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1

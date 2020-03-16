@@ -15,6 +15,7 @@ redirect_from:
 
 لا نوصي بالضرورة بأي من هذه الأعراف البرمجية في تطبيقات React. الكثير منهم موجودون لأسباب تاريخية وقد يتغيرون مع مرور الوقت.
 
+<<<<<<< HEAD
 ### الإعتمادات الخارجية {#external-dependencies}
 
  لا يوجد لدي React أي إعتمادات خارجية تقريبا. عادةً، تشير `require()` إلى ملف في  قاعدة الشفرة المصدرية لـ React الخاصة. ومع ذلك ، هناك بعض الاستثناءات النادرة نسبيا.
@@ -22,6 +23,9 @@ redirect_from:
 يوجد [مستودع fbjs](https://github.com/facebook/fbjs) لأن React يشارك بعض الأدوات الصغيرة مع المكتبات مثل مكتبة [Relay](https://github.com/facebook/relay) ،و نبقيهم متزامنين. لا نعتمد على وحدات صغيرة مكافئة في نظام Node لأننا نريد أن يتمكن مهندسو Facebook من إجراء تغييرات عليها كلما دعت الضرورة. لا تعد أيًا من الأدوات المساعدة الموجودة داخل fbjs بمثابة واجهة برمجة تطبيقات (API) عامة، وهي مخصصة فقط للاستخدام من قبل مشاريع Facebook مثل React.
 
 ### مجلدات المستوى الأعلى {#top-level-folders}
+=======
+### Top-Level Folders {#top-level-folders}
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 بعد استنساخ [مستودع React](https://github.com/facebook/react), سترى بعض مجلدات المستوى الأعلى فيه:
 
@@ -170,7 +174,11 @@ module.exports = ReactHostComponent;
 
 ### العارضون {#renderers}
 
+<<<<<<< HEAD
 تم إنشاء React في الأصل من أجل DOM ولكن تم تكييفها لاحقًا أيضًا لدعم الأنظمة الأساسية الأصلية مع [React Native](https://facebook.github.io/react-native/). قدم هذا مفهوم "التصيير" لدواخل React.
+=======
+React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://reactnative.dev/). This introduced the concept of "renderers" to React internals.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 **يدير العارضون كيف تتحول شجرة React إلى المكالمات الأساسية للنظام الأساسي.**
 

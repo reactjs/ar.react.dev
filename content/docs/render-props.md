@@ -41,9 +41,15 @@ class MouseTracker extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
         <h1>حرك الفأرة!</h1>
         <p>موقع الفأرة الحالي هو ({this.state.x}, {this.state.y})</p>
+=======
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+        <h1>Move the mouse around!</h1>
+        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
       </div>
     );
   }
@@ -74,7 +80,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/* ؟ <p> ولكن كيف نصيّر شيء آخر غير العنصر... */}
         <p>موقع الفأرة الحالي هو ({this.state.x}, {this.state.y})</p>
@@ -86,10 +92,15 @@ class Mouse extends React.Component {
 class MouseTracker extends React.Component {
   render() {
     return (
+<<<<<<< HEAD
       <div>
         <h1>حرك الفأرة!</h1>
+=======
+      <>
+        <h1>Move the mouse around!</h1>
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
         <Mouse />
-      </div>
+      </>
     );
   }
 }
@@ -127,7 +138,7 @@ class MouseWithCat extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
 		  كان بإمكاننا فقط تبديل العنصر p بالمكون <Cat> هنا
@@ -183,7 +194,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
 		  بدلًا من تزويد تمثيل ثابت لما يصيره المكون <Mouse>

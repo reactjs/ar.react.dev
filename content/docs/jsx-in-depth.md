@@ -228,7 +228,11 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
+<<<<<<< HEAD
 لا نُوصي إجمالًا بفعل ذلك بسبب الارتباك الذي يُسبّبه التشابه مع [ الصيغة المختصرة للكائنات في ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)، حيث تكون `{foo}` اختصارًا إلى `{foo: foo}` بدلًا من ‎`{foo: true}`‎ كما قد تظن. هذا السّلوك موجود هنا فقط للتوافق مع سلوك HTML.
+=======
+In general, we don't recommend *not* passing a value for a prop, because it can be confused with the [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`. This behavior is just there so that it matches the behavior of HTML.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 ### خاصيّات النشر {#spread-attributes}
 
