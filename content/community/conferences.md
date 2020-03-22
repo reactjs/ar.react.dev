@@ -12,11 +12,6 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-### ReactConf Japan 2020 {#reactconfjp-2020}
-21 مارس 2020 في طوكيو ، اليابان
-
-[موقع الويب](https://reactconf.jp/) - [تويتر](https://twitter.com/reactjp)
-
 ### Reactathon 2020 {#reactathon-2020}
 30 مارس - 31 ، 2020 في سان فرانسيسكو ، كاليفورنيا
 
@@ -41,11 +36,6 @@ redirect_from:
 1 مايو، 2020. بث عبر الإنترنت على موقع يوتيوب.
 
 [موقع الويب](https://www.bytesized.xyz) - [تويتر](https://twitter.com/bytesizedcode) - [يوتيوب](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
-
-### render(ATL) 2020 {#render-atlanta-2020}
-4-6 مايو، 2020 أتلانتا، جورجيا، الولايات المتحدة.
-
-[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) 
 
 ### ReactEurope 2020 {#reacteurope-2020}
 14-15 مايو 2020 في باريس ، فرنسا
@@ -81,6 +71,11 @@ July 18, 2020. Medellín, Colombia.
 29-30 يوليو ، 2020. بورتلاند ، أوريغون ، الولايات المتحدة الأمريكية.
 
 [موقع الويب](https://infinite.red/ChainReactConf) - [تويتر](https://twitter.com/ChainReactConf)
+
+### render(ATL) 2020 {#render-atlanta-2020} 
+24-26 أغسطس 2020. أتلانتا ، جورجيا ، الولايات المتحدة الأمريكية.
+
+[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
 
 ### ComponentsConf 2020 {#components20}
 1 سبتمبر 2020 في ملبورن ، أستراليا

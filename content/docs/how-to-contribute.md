@@ -130,18 +130,26 @@ React's build system will strip out disabled feature branches before publishing.
 
 أسهل طريقة لتجربة التغييرات التي قمت بها هي بتشغل الأمر `yarn build react/index,react-dom/index --type=UMD` ثم بفتح `fixtures/packaging/babel-standalone/dev.html`. هذا الملف أصلا يستعمل `react.development.js` من مجلّد `build` حتى يُتابع التغييرات التي تقوم بها.
 
-إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/dist/react.development.js` و `build/dist/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة. إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك:
+إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/dist/react.development.js` و `build/dist/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة.
+
+ إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك. لاحظ أن **بدلا من `--type=UMD` سوف تحتاج إلى تمرير `--type=NODE` عند بناء المشروع**. ستحتاج أيضا إلى بناء رزمة `scheduler`:
 
 ```sh
-cd ~/مسار_نسختك_من_react/build/node_modules/react
+cd ~/path_to_your_react_clone/
+yarn build react/index,react-dom/index,scheduler --type=NODE
+
+cd build/node_modules/react
 yarn link
-cd ~/مسار_نسختك_من_react/build/node_modules/react-dom
+cd build/node_modules/react-dom
 yarn link
-cd /مسار/المشروع/project_مشروع
+
+cd ~/path/to/your/project
 yarn link react react-dom
 ```
 
 في كل مرّة تشغّل فيها الأمر `yarn build` في مجلّد React ستظهر النسخ المُحدّثة في مجلّد `node_modules` داخل مسار مشروعك. تستطيع عندها إعادة بناء مشروعك لتجربة التغييرات التي قُمت بها.
+
+اذا كانت أحد الرزم مفقوده (علي سبيل المثال: ربما تستخدم `react-dom/server` في مشروعك), يمكنك دائما بناء مشروعك كامل بتشغيل الأمر `yarn build`. لاحظ أن الأمر `yarn build` بدون خيارات يستغرق وقت طويل.
 
 نؤكّد مجددا أن يتوفّر طلب السحب (pull request) الخاص بك على وحدات اختبار ﻷي ميزة جديدة. بذلك نضمن أننا لن نُعطّل شيفرتك البرمجية في المستقبل.
 

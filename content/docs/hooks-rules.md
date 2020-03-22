@@ -27,6 +27,8 @@ prev: hooks-effect.html
 
 أطلقنا إضافةً لتصحيح الأخطاء تدعى [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) تجبر على تطبيق هاتين القاعدتين. يمكنك إضافة هذه الإضافة إلى مشروعك إن أحببت تجريبها:
 
+يتم تضمين هذه المكونات بشكل افتراضي في [Create React App](/docs/create-a-new-react-app.html#create-react-app).
+
 ```bash
 npm install eslint-plugin-react-hooks --save-dev
 ```
@@ -45,8 +47,6 @@ npm install eslint-plugin-react-hooks --save-dev
   }
 }
 ```
-
-يتم تضمين هذه المكونات بشكل افتراضي في [Create React App](/docs/create-a-new-react-app.html#create-react-app).
 
 **يمكنك تخطي بقية هذه الصفحة إلى الصفحة التالية: [بناء خطافات خاصة بك](/docs/hooks-custom.html) الآن.** إذ سنكمل شرح سبب وجود هاتين القاعدتين.
 
