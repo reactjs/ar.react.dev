@@ -101,23 +101,13 @@ class MyComponent extends React.Component {
 
 وبسبب إمكانيّة استدعاء التوابع التالية أكثر من مرة، من الهام ألّا تحتوي على آثار جانبية. يقود تجاهل هذه القاعدة إلى مشاكل عديدة، بما في ذلك تسريبات الذاكرة وحالة التطبيق غير الصحيحة. لسوء الحظ قد يكون من الصعب كشف هذه المشاكل لأنّها قد تكون أحيانًا [غير منهجية](https://en.wikipedia.org/wiki/Deterministic_algorithm).
 
-<<<<<<< HEAD
 لا يستطيع الوضع الصارم كشف الآثار الجانبية تلقائيًّا ولكن يُساعدك على توضيحها عن طريق جعلها أكثر منهجية. يفعل ذلك عن طريق الاستدعاء المزدوج للتوابع التالية عن قصد:
 
-* التابع الباني `constructor` لمكوّنات الأصناف.
-* تابع التصيير `render`.
+* التابع الباني `constructor`، `render`، أو `shouldComponent` لمكوّنات الأصناف.
+* التابع الباني `getDerivedStateFromProps` لمكوّنات الأصناف الثابت
+* محتوى مكون التابع
 * تابع التحديث `setState` (الوسيط الأول).
-* تابع دورة الحياة `getDerivedStateFromProps` الثابت.
-* تابع `shouldComponentUpdate`
-=======
-Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following functions:
-
-* Class component `constructor`, `render`, and `shouldComponent` methods
-* Class component static `getDerivedStateFromProps` method
-* Function component bodies
-* State updater functions (the first argument to `setState`)
-* Functions passed to `useState`, `useMemo`, or `useReducer`
->>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
+* التوابع الممررة `useState`، `useMemo`، أو `useReducer`
 
 > ملاحظة:
 >
