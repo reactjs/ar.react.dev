@@ -103,11 +103,11 @@ class MyComponent extends React.Component {
 
 لا يستطيع الوضع الصارم كشف الآثار الجانبية تلقائيًّا ولكن يُساعدك على توضيحها عن طريق جعلها أكثر منهجية. يفعل ذلك عن طريق الاستدعاء المزدوج للتوابع التالية عن قصد:
 
-* التابع الباني `constructor` لمكوّنات الأصناف.
-* تابع التصيير `render`.
+* التابع الباني `constructor`، `render`، أو `shouldComponent` لمكوّنات الأصناف.
+* التابع الباني `getDerivedStateFromProps` لمكوّنات الأصناف الثابت
+* محتوى مكون التابع
 * تابع التحديث `setState` (الوسيط الأول).
-* تابع دورة الحياة `getDerivedStateFromProps` الثابت.
-* تابع `shouldComponentUpdate`
+* التوابع الممررة `useState`، `useMemo`، أو `useReducer`
 
 > ملاحظة:
 >

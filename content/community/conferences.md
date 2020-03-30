@@ -18,14 +18,9 @@ redirect_from:
 [موقع الويب](https://www.reactathon.com) - [تويتر](https://twitter.com/reactathon) - [فيس بوك](https://www.facebook.com/events/575942819854160/)
 
 ### React Summit Amsterdam 2020 {#react-summit-2020}
-15-17 أبريل 2020 في أمستردام ، هولندا
+11 سبتمبر 2020 في أمستردام ، هولندا
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
-
-### App.js Conf 2020 {#appjsonf2020}
-23-24 أبريل 2020 في كراكوف ، بولندا
-
-[موقع الويب](http://appjs.co/react) - [تويتر](https://twitter.com/appjsconf)
 
 ### React Day Bangalore 2020 {#react-day-bangalore-2020}
 25 أبريل 2020 في بنغالور ، الهند
@@ -63,7 +58,7 @@ redirect_from:
 [موقع الويب](https://reactweek.nyc/) - [تويتر](https://twitter.com/reactweek) - [فيس بوك](https://www.facebook.com/reactweek) 
 
 ### React La Conferencia 2020 {#react-la-conferencia-2020}
-July 18, 2020. Medellín, Colombia.
+18 يوليو 2020. ميديلين ، كولومبيا.
 
 [موقع الويب](https://reactlaconf.co/) - [تويتر](https://twitter.com/reactlaconf)
 
