@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html): 
+هذا المثال المطابق باستعمال الـ [Hooks](https://reactjs.org/docs/hooks-intro.html): 
 
 ```js
 function MyComponent() {
@@ -91,9 +91,9 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  // ملاحظة: تعني المصفوفة الفارغة []
+  // سيتم تشغيل useEffect مرة واحدة
+  // بطريقة مشابه لـ ComponDidMount
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
@@ -102,9 +102,9 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result.items);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+       	// ملاحظة: من الهام التعامل مع الأخطاء هنا
+        // catch() بدلًا من من استخدام الكتلة 
+        // لكي لا نقبل الاستثناءات من أخطاء فعليّة في المكوّنات
         (error) => {
           setIsLoaded(true);
           setError(error);
