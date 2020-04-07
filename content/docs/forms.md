@@ -68,17 +68,7 @@ class NameForm extends React.Component {
 
 لمّا كانت خاصيّة القيمة `value` مُعيَّنة عن طريق عنصر النموذج فستكون قيمتها المعروضة دومًا هي `this.state.value`، وبذلك نجعل حالة React المصدر الوحيد للحقيقة. وبما أنّ التابع `handleChange` يُنفَّذ عند كل ضغطة زر من المستخدم ليُحدِّث حالة React، فستتحدّث القيمة المعروضة بينما يكتب المستخدم.
 
-<<<<<<< HEAD
-في المكونات المضبوطة يكون لكل تغيير للحالة دالة للتعامل مع ذلك مُوافِقة له. يجعل ذلك من تعديل دخل المستخدم والتحقّق منه أمرًا سهلًا، فمثلًا لو أردنا إجبار المستخدم على كتابة الأحرف بحالة كبيرة سنكتب الدالة `handleChange` كما يلي:
-
-```javascript{2}
-handleChange(event) {
-  this.setState({value: event.target.value.toUpperCase()});
-}
-```
-=======
-With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
->>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
+باستخدام المكون المضبوط، تكون قيمة المدخلات مدفوعة دائمًا بحالة React. بينما يعني هذا أنه يجب عليك كتابة شيفرة أكثر قليلاً، كما يمكنك الآن تمرير القيمة إلى عناصر واجهة المستخدم الأخرى أيضًا ، أو إعادة تعيينها من معالجات الأحداث الأخرى.
 
 ## العنصر textarea {#the-textarea-tag}
 
