@@ -6,9 +6,17 @@ sectionid: community
 permalink: community/examples.html
 ---
 
+<<<<<<< HEAD
 هُناك الكثير من الأمثلة على مشاريع صُنِعت من قِبَل مُجتمع React. لا تتردد في إضافة مشروعك. إن قُمت بإضافة مشروع الرجّاء الإلتزام بتحديثه لأحدث الاصدارات من React.
+=======
+There are many example projects created by the React community. We're keeping this page focused on the ones that use React without third-party state management libraries.
+>>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
 
+If you add a project, please commit to keeping it up to date with the latest versions of React.
 
+## Small Examples
+
+<<<<<<< HEAD
 * **[Zeldog](https://yannsainty.github.io/Zeldog/)** لعبة شبيهة للعبة Zelda
 * **[Calculator](https://github.com/ahfarmer/calculator)** تنفيذ مُطابق للآلة الحاسبة على نظام تشغيل iOS باستخدام React
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React بسيط للبحث عن الرموز التعبيرية  "emojis"
@@ -27,3 +35,17 @@ permalink: community/examples.html
 * **[BMI Calculator](https://github.com/GermaVinsmoke/bmi-calculator)** تطبيق React Hooks لحساب BMI
 * **[ReactJS Hangman Game](https://github.com/vetrivelcsamy/reactjs-hangman)** لعبة ReactJS Hangman ابحث عن لغة البرمجة.
 * **[Radix Converter](https://github.com/kumom/radix-converter)** أداة صغيرة تحول الأرقام من خلال radix 2 حتى 36 مع الدقة.
+=======
+* **[Calculator](https://github.com/ahfarmer/calculator)** Implementation of the iOS calculator built in React
+* **[Emoji Search](https://github.com/ahfarmer/emoji-search)** React app for searching emoji
+* **[Snap Shot](https://github.com/Yog9/SnapShot)** A photo gallery with search
+* **[BMI Calculator](https://github.com/GermaVinsmoke/bmi-calculator)** A React Hooks app for calculating BMI
+* **[Image Compressor](https://github.com/RaulB-masai/react-image-compressor)** An offline image compressor built with React and browser-image-compression
+* **[Counter App](https://github.com/arnab-datta/counter-app)** A small shopping cart example
+* **[Tutorial Solutions](https://github.com/harman052/react-tutorial-solutions)** Solutions to challenges mentioned at the end of React tutorial
+
+## Complete Apps
+
+* **[Hacker News Clone React/GraphQL](https://github.com/clintonwoo/hackernews-react-graphql)** Hacker News clone rewritten with universal JavaScript, using React and GraphQL
+* **[Builder Book](https://github.com/builderbook/builderbook)** Open-source web app to write and host documentation or sell books. Built with React, Material-UI, Next, Express, Mongoose, MongoDB
+>>>>>>> b3c7f041586b71b31f556403426fcd7cab342535

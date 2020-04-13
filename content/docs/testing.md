@@ -14,7 +14,11 @@ next: testing-recipes.html
 * **تصيير أشجار المكوّنات** في بيئة اختبار مبسطة والتأكيد على مخرجاتها.
 * **تشغيل تطبيق كامل** في بيئة متصفح واقعية (تُعرف أيضًا باسم اختبارات  end-to-end).
 
+<<<<<<< HEAD
 يُركز قسم المستندات هذا على إستراتيجيات الاختبار للحالة الأولى. على الرغم من أن الاختبارات الكاملة من النوع (end-to-end) يمكن أن تكون مفيدة جدًا لمنع الإنحدارات إلى مهام سير العمل الهامة ،مثل هذه الاختبارات لا تتعلق بمكوّنات React على وجه الخصوص ، وهي خارج نطاق هذا القسم.
+=======
+This documentation section focuses on testing strategies for the first case. While full end-to-end tests can be very useful to prevent regressions to important workflows, such tests are not concerned with React components in particular, and are out of the scope of this section.
+>>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
 
 ### المقايضات {#tradeoffs}
 
