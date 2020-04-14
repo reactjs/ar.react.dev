@@ -8,11 +8,7 @@ permalink: community/courses.html
 
 ## دورات مجانية {#free-courses}
 
-<<<<<<< HEAD
-- [Glitch: React Starter Kit](https://glitch.com/culture/react-starter-kit/) - دورة مجانية، تفاعلية، مكونة من ٥ أجزاء لتساعدك في تعلم React.
-=======
-- [Glitch: React Starter Kit](https://glitch.com/glimmer/post/react-starter-kit/) - A free, 5-part video course with interactive code examples that will help you learn React.
->>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
+- [Glitch: React Starter Kit](https://glitch.com/glimmer/post/react-starter-kit/) - دورة مجانية، تفاعلية، مكونة من ٥ أجزاء لتساعدك في تعلم React.
 
 - [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - دورة مكتبة React التعريفية والمقدمة من Codecademy
 
