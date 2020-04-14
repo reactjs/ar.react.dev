@@ -17,17 +17,10 @@ redirect_from:
 
 [موقع الويب](https://www.reactathon.com) - [تويتر](https://twitter.com/reactathon) - [فيس بوك](https://www.facebook.com/events/575942819854160/)
 
-<<<<<<< HEAD
-### React Summit Amsterdam 2020 {#react-summit-2020}
-11 سبتمبر 2020 في أمستردام ، هولندا
+### React Summit - Remote Amsterdam 2020 {#react-summit-remote-2020}
+3 مساءا بتوقيت وسط أوروبا الصيفي17 أبريل 2020 ،عبر اﻷنترنت  
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
-=======
-### React Summit - Remote Edition 2020 {#react-summit-remote-2020}
-3pm CEST time, April 17, 2020 - remote event
-
-[Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactamsterdam) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
->>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
 
 ### React Day Bangalore 2020 {#react-day-bangalore-2020}
 25 أبريل 2020 في بنغالور ، الهند
@@ -104,16 +97,12 @@ October 21-23, 2020 in London, UK
 
 [موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [يوتيوب](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
-<<<<<<< HEAD
-## المؤتمرات السابقة {#past-conferences}
-=======
 ### React Day Berlin 2020 {#react-day-berlin-2020}
-November 25-27, 2020 in Berlin, Germany
+27-25 نوفمبر 2020 في برلين ، ألمانيا
 
-[Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://www.youtube.com/reactdayberlin)
+[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [فيديوهات](https://www.youtube.com/reactdayberlin)  
 
-## Past Conferences {#past-conferences}
->>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
+## المؤتمرات السابقة {#past-conferences}
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
