@@ -17,8 +17,8 @@ redirect_from:
 
 [موقع الويب](https://www.reactathon.com) - [تويتر](https://twitter.com/reactathon) - [فيس بوك](https://www.facebook.com/events/575942819854160/)
 
-### React Summit Amsterdam 2020 {#react-summit-2020}
-11 سبتمبر 2020 في أمستردام ، هولندا
+### React Summit - Remote Amsterdam 2020 {#react-summit-remote-2020}
+3 مساءا بتوقيت وسط أوروبا الصيفي17 أبريل 2020 ،عبر اﻷنترنت  
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
 
@@ -82,10 +82,25 @@ redirect_from:
 
 [موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
 
+### React Summit Amsterdam 2020 {#react-summit-2020}
+8-11 سبتمبر 2020 في أمستردام ، هولندا
+
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
+
+### React Advanced 2020 {#react-advanced-2020}
+21-23 أكتوبر 2020 في لندن ، المملكة المتحدة  
+
+[موقع الويب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [فيديوهات](https://youtube.com/c/ReactConferences)
+
 ### React India 2020 {#react-india-2020}
 6 نوفمبر 2020 في مومباي ، الهند
 
 [موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [يوتيوب](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+
+### React Day Berlin 2020 {#react-day-berlin-2020}
+27-25 نوفمبر 2020 في برلين ، ألمانيا
+
+[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [فيديوهات](https://www.youtube.com/reactdayberlin)  
 
 ## المؤتمرات السابقة {#past-conferences}
 

@@ -18,4 +18,6 @@ permalink: community/external-resources.html
 
 - [روائع محادثات React](https://github.com/tiaanduplessis/awesome-react-talks) - قائمة مختارة لمحادثات React.
 
-- [Hero35 React Hub](https://hero35.com/topic/react) - قائمة مختارة لجميع مؤتمرات ومحادثات React.
+- [Awesome React Videos](https://www.awesomereact.com) - موقع على الإنترنت يسلط الضوء على أفضل فيديوهات React.
+
+- [Hero35 React Hub](https://hero35.com/topic/react) -  قائمة مختارة لجميع مؤتمرات ومحادثات React، مصنفة و منسقة.
