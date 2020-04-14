@@ -83,14 +83,14 @@ redirect_from:
 [موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
 
 ### React Summit Amsterdam 2020 {#react-summit-2020}
-September 8-11, 2020 in Amsterdam, The Netherlands
+8-11 سبتمبر 2020 في أمستردام ، هولندا
 
-[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactamsterdam) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
 
 ### React Advanced 2020 {#react-advanced-2020}
-October 21-23, 2020 in London, UK
+21-23 أكتوبر 2020 في لندن ، المملكة المتحدة  
 
-[Website](https://reactadvanced.com) - [Twitter](http://twitter.com/reactadvanced) - [Facebook](https://www.facebook.com/ReactAdvanced) - [Videos](https://youtube.com/c/ReactConferences)
+[موقع الويب](https://reactadvanced.com) - [تويتر](http://twitter.com/reactadvanced) - [فيس بوك](https://www.facebook.com/ReactAdvanced) - [فيديوهات](https://youtube.com/c/ReactConferences)
 
 ### React India 2020 {#react-india-2020}
 6 نوفمبر 2020 في مومباي ، الهند
