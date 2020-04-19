@@ -52,7 +52,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-يستبدل `ReactDOM.render(<App />, rootNode)` و تمكين [وضع الحظر](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
+يستبدل `ReactDOM.render(<App />, rootNode)` و يُمَكّن [الوضع الإعتراضي](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
 
 إختيار الوضع المتزامن إلى إدخال تغييرات دلالية في طريقة عمل React. هذا يعني أنه لا يمكنك استخدام الوضع المتزامن في جُزء من المكونات. وبسبب هذا، قد لا تتمكن بعض التطبيقات من الإنتقال مباشرة إلى استعمال الوضع المتزامن.
 
