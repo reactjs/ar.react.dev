@@ -42,7 +42,7 @@ prev: concurrent-mode-adoption.html
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-استبدال `ReactDOM.render (<App />, rootNode)` وتمكين الوضع المتزامن.
+تستبدل `ReactDOM.render(<App />, rootNode)` وتُمَكّن الوضع المتزامن.
 
 لمزيد من المعلومات حول الوضع المتزامن، راجع [وثائق الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
