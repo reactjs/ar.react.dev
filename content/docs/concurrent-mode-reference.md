@@ -98,7 +98,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 عندما تحتاج مكونات متعددة إلى جلب البيانات، قد تصل هذه البيانات بترتيب غير متوقع. ومع ذلك، إذا قمت بلف هذه العناصر في `SuspenseList`، فلن تظهر React عنصرًا في القائمة حتى يتم عرض العناصر السابقة (هذا السلوك قابل للتعديل).
 
-`SuspenseList` يأخذ two props:
+`SuspenseList` يأخذ خاصيَتَيْن:
 * **revealOrder (forwards, backwards, together)** يحدد الترتيب الذي فيه `SuspenseList` يجب الكشف عن الأطفال.
   * `together` تكشف *الكل* عندما يكونوا على استعداد بدلاً من واحدة تلو الأخرى.
 * **tail (collapsed, hidden)** يملي كيف يتم عرض العناصر التي تم تحميلها فى `SuspenseList`.
