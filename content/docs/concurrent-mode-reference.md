@@ -120,7 +120,7 @@ const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 
 يعرض الخطاف `useTransition` قيمتين في صفيف.
 * `startTransition` هي دالّة التي تأخذ callback. يمكننا استخدامه لإخبار React بالحالة التي نريد تأجيلها.
-* `isPending` is a boolean. إنها طريقة React لإعلامنا ما إذا كنا ننتظر انتهاء الانتقال.
+* `isPending` هي boolean. إنها طريقة React لإعلامنا ما إذا كنا ننتظر انتهاء الانتقال.
 
 **إذا تسبب تحديث الحالة في تعليق أحد المكونات، فيجب أن يتم تغليف تحديث الحالة هذا في مرحلة انتقالية.**
 
