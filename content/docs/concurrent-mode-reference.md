@@ -44,7 +44,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 تستبدل `ReactDOM.render(<App />, rootNode)` وتُمَكّن الوضع المتزامن.
 
-لمزيد من المعلومات حول الوضع المتزامن، راجع [وثائق الوضع المتزامن.](/docs/concurrent-mode-intro.html)
+لمزيد من المعلومات حول الوضع المتزامن، راجع [مستندات الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
 ### `createBlockingRoot` {#createblockingroot}
 
