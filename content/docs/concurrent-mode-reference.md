@@ -100,7 +100,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 `SuspenseList` يأخذ خاصيَتَيْن:
 * **revealOrder (forwards, backwards, together)** يحدد الترتيب الذي فيه `SuspenseList` يجب الكشف عن الأطفال.
-  * `together` تكشف *الكل* عندما يكونوا على استعداد بدلاً من واحدة تلو الأخرى.
+  * `together` تكشف *الكل* عندما يكونون على استعداد بدلاً من واحدة تِلوَ الأخرى.
 * **tail (collapsed, hidden)** يملي كيف يتم عرض العناصر التي تم تحميلها فى `SuspenseList`.
     * بشكل افتراضي, `SuspenseList` سيظهر جميع الاحتياطيات في القائمة.
     * `collapsed` يظهر فقط الاحتياطية التالية في القائمة.
