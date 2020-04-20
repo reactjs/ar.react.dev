@@ -156,7 +156,7 @@ function App() {
 
 تتيح القيمة المنطقية `isPending` لـ React معرفة أن المكون الخاص بنا يتحول، لذلك يمكننا إخبار المستخدم بذلك من خلال عرض نص التحميل على صفحة الملف الشخصي السابقة.
 
-**لإلقاء نظرة متعمقة على التحولات، يمكنك قراءة [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#transitions).**
+**لإلقاء نظرة متعمقة على التحولات، يمكنك قراءة [أنماط و أساليب واجهة المستخدم](/docs/concurrent-mode-patterns.html#transitions).**
 
 #### useTransition Config {#usetransition-config}
 
