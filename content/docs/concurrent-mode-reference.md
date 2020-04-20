@@ -207,6 +207,6 @@ function App() {
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-يقبل `useDeferredValue` **Suspense Config  اختياري** مع  `timeoutMs`. هذه المهلة (بالمللي ثانية) تخبرنا React عن المدة التي يُسمح فيها بالقيمة المؤجلة بالتخلف.
+يقبل `useDeferredValue` **Suspense Config اختياري** مع `timeoutMs`. هذه المهلة (بالمللي ثانية) تخبرنا React عن المدة التي يُسمح فيها بالقيمة المؤجلة بالتخلف.
 
 سيحاول React دائمًا استخدام تأخرٍ أقصر عندما تسمح به الشبكة والجهاز.
