@@ -107,7 +107,7 @@ class Greeting extends React.Component {
 
 يُشبه `React.PureComponent` الصنف [`React.Component`](#reactcomponent). الفرق بينهما هو عدم اعتماد الصنف [`React.Component`](#reactcomponent) للتابع [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) بينما يعتمده `React.PureComponent` مع مقارنة ضئيلة بين الخاصيّات والحالة.
 
-إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام  `React.PureComponent` لتحسين الأداء في بعض الحالات.
+إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام `React.PureComponent` لتحسين الأداء في بعض الحالات.
 
 >ملاحظة
 >
