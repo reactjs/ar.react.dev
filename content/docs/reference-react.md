@@ -237,7 +237,7 @@ React.Children.map(children, function[(thisArg)])
 
 >ملاحظة
 >
->إذا كان `children` هو `Fragment` سيتم التعامل معخه بصفته ابنًا وحيدًا وليس متعديًا
+>إذا كان `children` هو `Fragment` سيتم التعامل معه بصفته ابنًا وحيدًا وليس متعديًا
 
 
 #### `React.Children.forEach` {#reactchildrenforeach}
