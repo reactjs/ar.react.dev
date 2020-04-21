@@ -99,7 +99,7 @@ class Greeting extends React.Component {
 }
 ```
 
-ألق نظرة على [مرجع React.Component API](/docs/react-component.html)  للحصول على قائمة بالتوابع والخاصيّات المرتبطة بالصنف `React.Component` الأساسي.
+ألق نظرة على [مرجع React.Component API](/docs/react-component.html) للحصول على قائمة بالتوابع والخاصيّات المرتبطة بالصنف `React.Component` الأساسي.
 
 * * *
 
