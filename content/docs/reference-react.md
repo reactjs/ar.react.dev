@@ -233,7 +233,7 @@ React.isValidElement(object)
 React.Children.map(children, function[(thisArg)])
 ```
 
-يستدعي دالة لكل عنصر ابن مباشر موجود ضمن `children` مع تعيين `this` إلى قيمة `thisArg`. إن كان `children`  مصفوفة فسوف تُمرَّر الدالة للأبناء في كل المصفوفة. إن كانت قيمة children هي `null` أو `undefined` فسيُعيد `null` أو `undefined` بدلًا من المصفوفة.
+يستدعي دالة لكل عنصر ابن مباشر موجود ضمن `children` مع تعيين `this` إلى قيمة `thisArg`. إن كان `children` مصفوفة فسوف تُمرَّر الدالة للأبناء في كل المصفوفة. إن كانت قيمة children هي `null` أو `undefined` فسيُعيد `null` أو `undefined` بدلًا من المصفوفة.
 
 >ملاحظة
 >
