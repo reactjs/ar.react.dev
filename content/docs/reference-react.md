@@ -167,7 +167,7 @@ React.createElement(
 )
 ```
 
-يُنشِئ ويُعيد [عنصر React]() جديد من النوع المُعطى. يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل `‎'div'‎` أو `‎'span'`‎)، أو نوعًا [لمكوّن React](/docs/components-and-props.html) مثل (صنف أو دالة)، أو نوعًا [لجزء React](#reactfragment)  (أي fragment).
+يُنشِئ ويُعيد [عنصر React]() جديد من النوع المُعطى. يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل `‎'div'‎` أو `‎'span'`‎)، أو نوعًا [لمكوّن React](/docs/components-and-props.html) مثل (صنف أو دالة)، أو نوعًا [لجزء React](#reactfragment) (أي fragment).
 
 تُحوَّل الشيفرة المكتوبة باستخدام [JSX](/docs/introducing-jsx.html) إلى استدعاءات للتابع `React.createElement()`‎. لن تستدعي هذا التابع بشكل مباشر عادةً إن كنت تستخدم JSX. ألق نظرة على استخدام [React دون JSX](/docs/react-without-jsx.html) لتعلم المزيد.
 
