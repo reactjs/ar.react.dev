@@ -133,19 +133,19 @@
       title: طريقة إجراء الإختبارات
     - id: testing-environments
       title: بيئة ومحيط الإختبارات
-- title: Concurrent Mode (Experimental)
+- title: الوضع المتزامن (تجريبي)
   isOrdered: true
   items:
     - id: concurrent-mode-intro
-      title: Introducing Concurrent Mode
+      title: مقددمة إلى الوضع المتزامن
     - id: concurrent-mode-suspense
-      title: Suspense for Data Fetching
+      title: Suspense لجلب البيانات
     - id: concurrent-mode-patterns
-      title: Concurrent UI Patterns
+      title: أنماط واجهة المستخدم المتزامنة
     - id: concurrent-mode-adoption
-      title: Adopting Concurrent Mode
+      title: اعتماد الوضع المتزامن
     - id: concurrent-mode-reference
-      title: Concurrent Mode API Reference
+      title: مرجع واجهة برمجة التطبيقات للوضع المتزامن
 - title: المساهمة
   items:
     - id: how-to-contribute
