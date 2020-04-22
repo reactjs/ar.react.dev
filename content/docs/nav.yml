@@ -137,7 +137,7 @@
   isOrdered: true
   items:
     - id: concurrent-mode-intro
-      title: مقددمة إلى الوضع المتزامن
+      title: مدخل إلى الوضع المتزامن
     - id: concurrent-mode-suspense
       title: Suspense لجلب البيانات
     - id: concurrent-mode-patterns
