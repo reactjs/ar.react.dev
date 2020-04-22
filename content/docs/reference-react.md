@@ -20,13 +20,13 @@ redirect_from:
 ## نظرة عامة {#overview}
 
 ### المكوّنات {#components}
-تُتيح لك مكوّنات React تقسيم واجهة المستخدم إلى قطع مستقلة قابلة لإعادة الاستخدام والتفكير بكل قطعة لوحدها. يُمكِن تعريف مكوّنات React عن طريق أخذ صنف فرعي من `React.Component` أو `React.PureComponent`.
+تُتيح لك مكوّنات React تقسيم واجهة المستخدم إلى قطع مستقلة قابلة لإعادة الاستخدام والتفكير بكل قطعة على حدة. يُمكِن تعريف مكوّنات React عن طريق أخذ صنف فرعي من `React.Component` أو `React.PureComponent`.
 
  - [`React.Component`](#reactcomponent)
  - [`React.PureComponent`](#reactpurecomponent)
 
 إن لم تكن تستخدم أصناف ES6 فبإمكانك استخدام الوحدة `create-react-class`.
-انظر الي [استخدام React بدون ES6](/docs/react-without-es6.html) للمزيد من المعلومات.
+ألق نطرة على [استخدام React دون ES6](/docs/react-without-es6.html) للمزيد من المعلومات.
 
 يمكن أن تُعرَّف مكونات React أيضًا على أنَّها دوالٌ يمكن تغليفها:
 - [`React.memo`](#reactmemo)
@@ -38,7 +38,7 @@ redirect_from:
 - [`createElement()`](#createelement)
 - [`createFactory()`](#createfactory)
 
-إنظر في [إستخدام React بدون JSX](/docs/react-without-jsx.html) للمزيد من المعلومات.
+ألق نظرة على [إستخدام React دون JSX](/docs/react-without-jsx.html) للمزيد من المعلومات.
 
 ### تحويل العناصر {#transforming-elements}
 
@@ -61,14 +61,14 @@ redirect_from:
 
 ### التعليق (Suspense) {#suspense}
 
-يسمح التعليق للعنصر بـ الانتظار لشي ما قبل التصيير. اليوم التعليق يدعم حالة استخدام وحيدة :[تحميل المكونات ديناميكيًّا مع `React.lazy` ](/docs/code-splitting.html#reactlazy). في المستقبل , ستدعم حالات اخري مثل جلب البيانات.
+يسمح التعليق للعنصر بانتظار لشيء ما قبل التصيير. اليوم التعليق يدعم حالة استخدام وحيدة :[تحميل المكونات ديناميكيًّا مع `React.lazy` ](/docs/code-splitting.html#reactlazy). في المستقبل، ستدعم حالات أخرى مثل جلب البيانات.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
 ### الخطافات (Hooks) {#hooks}
 
-الخطافات هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف. [تملك الخطافات قسمًا مخصَّصًّا بها](/docs/hooks-intro.html) وواجهة برمجية منفصلة:
+الخطافات هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف. [تملك الخطافات قسمًا خاصا بها](/docs/hooks-intro.html) وواجهة برمجية منفصلة:
 
 - [الخطافات الأساسية](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
@@ -99,22 +99,22 @@ class Greeting extends React.Component {
 }
 ```
 
-انظر إلى [مرجع React.Component API](/docs/react-component.html)  للحصول على قائمة بالتوابع والخاصيّات المرتبطة بالصنف `React.Component` الأساسي.
+ألق نظرة على [مرجع React.Component API](/docs/react-component.html) للحصول على قائمة بالتوابع والخاصيّات المرتبطة بالصنف `React.Component` الأساسي.
 
 * * *
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-يُشبه `React.PureComponent` الصنف [`React.Component`](#reactcomponent). الفرق بينهما هو عدم اعتماد الصنف [`React.Component`](#reactcomponent) للتابع  [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)‎ بينما يعتمده `React.PureComponent` مع مقارنة ضئيلة بين الخاصيّات والحالة.
+يُشبه `React.PureComponent` الصنف [`React.Component`](#reactcomponent). الفرق بينهما هو عدم اعتماد الصنف [`React.Component`](#reactcomponent) للتابع [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) بينما يعتمده `React.PureComponent` مع مقارنة ضئيلة بين الخاصيّات والحالة.
 
-إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام  `React.PureComponent` لتحسين الأداء في بعض الحالات.
+إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام `React.PureComponent` لتحسين الأداء في بعض الحالات.
 
 >ملاحظة
 >
->يُقارِن التابع  `shouldComponentUpdate()`‎ الخاص بالصنف `React.PureComponent` مقارنة ضئيلة فقط بين الكائنات، فإن كانت تحتوي على بنى معطيات معقدة فقد يُنتِج سلبيات كاذبة للمقارنات الأعمق. يجب الامتداد إلى الصنف `PureComponent` فقط عندما تتوقع امتلاك حالة وخاصيّات بسيطة، أو استخدم التابع  ‎ 
-[`forceUpdate()`](/docs/react-component.html#forceupdate)عندما تعلم بتغيّر بنى المعطيات العميقة، أو انظر في استخدام  [الكائنات غير القابلة](https://facebook.github.io/immutable-js/) للتعديل لتسهيل المقارنات السريعة بين البيانات المتداخلة.
+>يُقارِن التابع `shouldComponentUpdate()`‎ الخاص بالصنف `React.PureComponent` مقارنة ضئيلة فقط بين الكائنات، فإن كانت تحتوي على بنى معطيات معقدة فقد يُنتِج سلبيات كاذبة للمقارنات الأعمق. يجب الامتداد إلى الصنف `PureComponent` فقط عندما تتوقع امتلاك حالة وخاصيّات بسيطة، أو استخدم التابع
+[`forceUpdate()`](/docs/react-component.html#forceupdate)عندما تعلم بتغيّر بنى المعطيات العميقة، أو انظر في استخدام [الكائنات غير القابلة](https://facebook.github.io/immutable-js/) للتعديل لتسهيل المقارنات السريعة بين البيانات المتداخلة.
 >
->يتخطى التابع `React.PureComponent`’s `shouldComponentUpdate()`‎ أيضًا تحديث الخاصيّات لكامل الشجرة الفرعية للمكوّن، احرص على أن تكون المكوّنات الأبناء له أيضًا نقيّة.
+>يتخطى التابع `React.PureComponent` `shouldComponentUpdate()`‎ أيضًا تحديث الخاصيّات لكامل الشجرة الفرعية للمكوّن، احرص على أن تكون المكوّنات الأبناء له أيضًا نقيّة.
 
 
 * * *
@@ -127,13 +127,14 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-إنَّ `React.memo` هو[مكون ذو ترتيب أعلى](/docs/higher-order-components.html) . إنه مشابه إلى [`React.PureComponent`](#reactpurecomponent) ولكن من أجل مكونات دوال وليس أصناف.
+إنَّ `React.memo` هو [مكون ذو ترتيب أعلى](/docs/higher-order-components.html). إنه مشابه لـ[`React.PureComponent`](#reactpurecomponent) ولكن من أجل مكونات دوال وليس أصناف.
 
-إن صير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفها في استدعاء إلى `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
+إن صَير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفه في استدعاء لـ `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
 
-`React.memo` تأثر فقط على تغيرات الخصائص. اذا كان مكون الدالةالخاص بك مغلف ب `React.memo` ويحتوي على [`useState`](/docs/hooks-state.html) او [`useContext`](/docs/hooks-reference.html#usecontext) Hook في تنفيذه، سيتم اعادة تصيره عند تغير الحالة أو السياق.
+`React.memo` تأثر فقط على تغيرات الخصائص. إذا كان مكون الدالة الخاص بك مغلفا بـ `React.memo` ويحتوي على [`useState`](/docs/hooks-state.html) أو [`useContext`](/docs/hooks-reference.html#usecontext) Hook في تنفيذه، سيتم اعادة تصيره عند تغير الحالة أو السياق.
 
-افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في خصائص الكائنات. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة كوسيطٍ ثانٍ.
+
+افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في خصائص الكائنات. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة بصفتها وسيطًا ثانيًا.
 
 ```javascript
 function MyComponent(props) {
@@ -168,9 +169,9 @@ React.createElement(
 )
 ```
 
-يُنشِئ ويُعيد [عنصر React]() جديد من النوع المُعطى. يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل `‎'div'‎` أو `‎'span'`‎)، أو نوع [لمكوّن React](/docs/components-and-props.html) مثل (صنف أو دالة)، أو نوع   [لجزء React](#reactfragment)  (أي fragment).
+يُنشِئ ويُعيد [عنصر React]() جديد من النوع المُعطى. يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل `‎'div'‎` أو `‎'span'`‎)، أو نوعًا [لمكوّن React](/docs/components-and-props.html) مثل (صنف أو دالة)، أو نوعًا [لجزء React](#reactfragment) (أي fragment).
 
-تُحوَّل الشيفرة المكتوبة باستخدام [JSX](/docs/introducing-jsx.html) إلى استدعاءات للتابع `React.createElement()`‎. لن تستدعي هذا التابع بشكل مباشر عادةً إن كنت تستخدم JSX. انظر إلى استخدام [React بدون JSX](/docs/react-without-jsx.html) لتعلم المزيد.
+تُحوَّل الشيفرة المكتوبة باستخدام [JSX](/docs/introducing-jsx.html) إلى استدعاءات للتابع `React.createElement()`‎. لن تستدعي هذا التابع بشكل مباشر عادةً إن كنت تستخدم JSX. ألق نظرة على استخدام [React دون JSX](/docs/react-without-jsx.html) لتعلم المزيد.
 
 * * *
 
@@ -184,7 +185,7 @@ React.cloneElement(
 )
 ```
 
-ينسخ ويُعيد عنصر React جديد باستخدام الوسيط `element` كنقطة بداية. يمتلك العنصر الناتج نفس خاصيّات العنصر الأصلي مع دمج الخاصيّات الجديد. سيحل العناصر الأبناء المُقدمين عبر الوسيط children محل العناصر الأبناء الحاليين. سيُحتفَظ بالمفتاح `key` والمرجع `ref` من العنصر الأصلي. يُكافِئ التابع `React.cloneElement()`‎ كتابة ما يلي:
+ينسخ ويُعيد عنصر React جديد باستخدام الوسيط `element` كنقطة بداية. يمتلك العنصر الناتج نفس خاصيّات العنصر الأصلي مع دمج الخاصيّات الجديد. سيحل العناصر الأبناء المُقدمون عبر الوسيط children محل العناصر الأبناء الحاليين. سيُحتفَظ بالمفتاح `key` والمرجع `ref` من العنصر الأصلي. يُكافِئ التابع `React.cloneElement()`‎ كتابة ما يلي:
 
 
 ```js
@@ -192,7 +193,7 @@ React.cloneElement(
 ```
 ولكن يُحافِظ استخدام التابع على المرجع `ref` أيضًا. يعني هذا أنّه لو كان لديك عنصر ابن مع مرجع `ref` ضمنه، فلن تأخذه عن طريق الخطأ من العنصر السليف له، بل ستحصل على نفس المرجع مُرفقًا بعنصرك الجديد.
 
-قُدِّمت هذه الواجهة (ِAPI) كبديل للتابع `React.addons.cloneWithProps()`‎ المُهمَل.
+قُدِّمت هذه الواجهة (ِAPI) بديلا للتابع `React.addons.cloneWithProps()`‎ المُهمَل.
 
 
 * * *
@@ -203,11 +204,11 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-يُعيد دالة تُنتِج عناصر React من النوع المُعطى. وكما هو الحال مع التابع [`React.createElement()`](#createelement)‎ يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل ‎`'div'‎` أو `‎'span'`‎)، أو نوع  [لمكوّن React](/docs/components-and-props.html) (مثل صنف أو دالة)، أو نوع  [لجزء React](#reactfragment) (أي fragment).
+يُعيد دالة تُنتِج عناصر React من النوع المُعطى. وكما هو الحال مع التابع [`React.createElement()`](#createelement)‎ يُمكِن للوسيط type أن يكون إمّا سلسلة نصيّة لاسم العنصر (مثل ‎`'div'‎` أو `‎'span'`‎)، أو نوعًا [لمكوّن React](/docs/components-and-props.html) (مثل صنف أو دالة)، أو نوعًا [لجزء React](#reactfragment) (أي fragment).
 
 يُعتبَر هذا التابع قديمًا في React ونوصي باستخدام JSX أو التابع `React.createElement()`‎ بشكل مباشر بدلًا من ذلك.
 
-لن تستدعي `React.createFactory()` بشكل مباشر إن كنت تستخدم JSX. انظر إلى استخدام [React بدون JSX](/docs/react-without-jsx.html) لتعلّم المزيد.
+لن تستدعي `React.createFactory()` بشكل مباشر إن كنت تستخدم JSX. ألق نظرة على استخدام [React بدون JSX](/docs/react-without-jsx.html) لتعلّم المزيد.
 
 
 * * *
@@ -234,11 +235,11 @@ React.isValidElement(object)
 React.Children.map(children, function[(thisArg)])
 ```
 
-يستدعي دالة لكل عنصر ابن مباشر موجود ضمن `children` مع تعيين `this` إلى قيمة `thisArg`. إن كان `children`  مصفوفة فسوف تُمرَّر الدالة لـ الابناء في كل المصفوفة. إن كانت قيمة children هي `null` أو `undefined` فسيُعيد `null` أو `undefined` بدلًا من المصفوفة.
+يستدعي دالة لكل عنصر ابن مباشر موجود ضمن `children` مع تعيين `this` إلى قيمة `thisArg`. إن كان `children` مصفوفة فسوف تُمرَّر الدالة للأبناء في كل المصفوفة. إن كانت قيمة children هي `null` أو `undefined` فسيُعيد `null` أو `undefined` بدلًا من المصفوفة.
 
 >ملاحظة
 >
->اذا كان `children` هو `Fragment` سيتم التعامل مع انه ابن وحيد وليس متعدي
+>إذا كان `children` هو `Fragment` سيتم التعامل معه بصفته ابنًا وحيدًا وليس متعديًا
 
 
 #### `React.Children.forEach` {#reactchildrenforeach}
@@ -278,7 +279,7 @@ React.Children.only(children)
 React.Children.toArray(children)
 ```
 
-يُعيد بنية البيانات `children` كمصفوفة مع تعيين مفتاح لكل عنصر ابن. يكون مفيدًا إن أردت التعامل مع مجموعة من العناصر الأبناء في توابع التصيير لديك، خاصّة إن أردت إعادة ترتيب أو تجزئة `this.props.children` قبل تمريره.
+يُعيد بنية البيانات `children` في مصفوفة مع تعيين مفتاح لكل عنصر ابن. يكون مفيدًا إن أردت التعامل مع مجموعة من العناصر الأبناء في توابع التصيير لديك، خاصّة إن أردت إعادة ترتيب أو تجزئة `this.props.children` قبل تمريره.
 
 >ملاحظة:
 >
@@ -289,7 +290,7 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
-يُتيح لك مكوّن الأجزاء `React.Fragment` أن تُعيد عناصر متعددة في التابع `render()‎` بدون إنشاء عناصر DOM إضافيّة:
+يُتيح لك مكوّن الأجزاء `React.Fragment` أن تُعيد عناصر متعددة في التابع `render()‎` دون إنشاء عناصر DOM إضافيّة:
 
 
 ```javascript
@@ -303,12 +304,12 @@ render() {
 }
 ```
 
-تستطيع أيضًا استخدامه عن طريق الصياغة المختصرة `‎<></>`‎. للمزيد من المعلومات انظر إلى  [React v16.2.0: تحسين الدعم للأجزاء في إصدار](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
+تستطيع أيضًا استخدامه عن طريق الصياغة المختصرة `‎<></>`‎. للمزيد من المعلومات ألق نظرة على [React v16.2.0: تحسين الدعم للأجزاء في إصدار](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
 
 
 ### `React.createRef` {#reactcreateref}
 
-يُنشِئ `React.createRef` مرجعًا [ref](/docs/refs-and-the-dom.html) والذي يُمكِن إرفاقه إلى عناصر React عبر الخاصيّة ref:
+يُنشِئ `React.createRef` مرجعًا [ref](/docs/refs-and-the-dom.html) والذي يُمكِن إرفاقه لعناصر React عبر الخاصيّة ref:
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 
@@ -321,20 +322,20 @@ render() {
 * [تمرير المراجع في المكوّنات ذات الترتيب الأعلى.](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
 
-تقبل `React.forwardRef` دالة تصيير كوسيط لها. ستستدعي React هذه الدالة مع الخاصيّات `props` والمرجع `ref` كوسيطين لها. يجب أن تُعيد هذه الدالة عقدة React:
+تقبل `React.forwardRef` دالة تصيير وسيطًا لها. ستستدعي React هذه الدالة مع الخاصيّات `props` والمرجع `ref` وسيطين لها. يجب أن تُعيد هذه الدالة عقدة React:
 
 `embed:reference-react-forward-ref.js`
 
-في المثال السابق تُمرِّر React مرجعًا `ref` إلى العنصر `‎<FancyButton ref={ref}>`‎ كوسيطٍ ثانٍ لدالة التصيير بداخل الاستدعاء `React.forwardRef`. تُمرِّر دالة التصيير هذه المرجع `ref` إلى العنصر ‎`<button ref={ref}>‎`.
+في المثال السابق تُمرِّر React مرجعًا `ref` إلى العنصر `‎<FancyButton ref={ref}>`‎ وسيطًا ثانيًا لدالة التصيير بداخل الاستدعاء `React.forwardRef`. تُمرِّر دالة التصيير هذه المرجع `ref` إلى العنصر ‎`<button ref={ref}>‎`.
 
-كنتيجة لذلك بعد إرفاق React للمرجع، سيُشير `ref.current` بشكلٍ مباشر إلى نسخة العنصر `‎<button>‎`.
+نتيجة لذلك بعد إرفاق React للمرجع، سيُشير `ref.current` بشكلٍ مباشر إلى نسخة العنصر `‎<button>‎`.
 
-للمزيد من المعلومات انظر إلى [`تمرير المراجع`](/docs/forwarding-refs.html) في توثيق React.
+للمزيد من المعلومات ألق نظرة على [`تمرير المراجع`](/docs/forwarding-refs.html) في توثيق React.
 
 
 ### `React.lazy` {#reactlazy}
 
-تمكنك الدالة `()React.lazy` من تعريف مكون يحمَّل ديناميكيًّا. هذا يساعد في تقليل حجم الحزمة (bundle size) لتأخير تحميل المكونات التي لا تُستعمَل أثناء أول عملية تصيير.
+تمكنك الدالة `()React.lazy` من تعريف مكون يُحَـمََّل ديناميكيًّا. هذا يساعد في تقليل حجم الحزمة (bundle size) لتأخير تحميل المكونات التي لا تُستعمَل أثناء أول عملية تصيير.
 
 يمكنك تعلم كيفية استعمالها من [توثيق تقسيم الشيفرة](/docs/code-splitting.html#reactlazy). يمكنك أيضًا الاطلاع على [هذه المقالة](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) التي توضح كيفية استعمالها بتفصيل أوسع.
 
@@ -344,7 +345,7 @@ render() {
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-انتبه إلى تحميل المكونات `lazy` (الكسولة) يتطلب وجود مكون من النوع `<React.Suspense>` في مستوى أعلى من شجرة التصيير. هذه هي كيفية تحديد مؤشر تحميل.
+يجب الانتباه إلى أن تحميل المكونات `lazy` (الكسولة) يتطلب وجود مكون من النوع `<React.Suspense>` في مستوى أعلى من شجرة التصيير. هذه هي كيفية تحديد مؤشر تحميل.
 
 
 > **ملاحظة:**
@@ -354,7 +355,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
-يمكِّنك `React.Suspense` من تحديد مؤشر التحميل في حال كان هنالك بعض المكونات التي تقع أسفل منها في الشجرة غير جاهزة للتصيير بعد. اليوم، المكونات ذات التحميل الكسول (lazy loading components) هي حالة الاستعمال **الوحيدة** المدعومة عبر `<React.Suspense>`:
+يمكِّنك `React.Suspense` من تحديد مؤشر التحميل في حال كان هنالك بعض المكونات التي تقع أسفل منه في الشجرة غير جاهزة للتصيير بعد. اليوم، المكونات ذات التحميل الكسول (lazy loading components) هي حالة الاستعمال **الوحيدة** المدعومة عبر `<React.Suspense>`:
 
 ```js
 // This component is loaded dynamically
@@ -373,7 +374,7 @@ function MyComponent() {
 }
 ```
 
-جرى توثيق  في [صفحة تقسيم الشيفرة](/docs/code-splitting.html#reactlazy). انتبه إلى أنَّ المكونات `lazy` (الكسولة) يمكن أن تتوضع بداخل الشجرة `Suspense` بعمق، إذ لا تحتاج إلى تغليف كل واحدة منها. أفضل سلوك هو وضع `<Suspense>` حيث أردت رؤية مؤشر تحميل، ولكن استعمال `()lazy` حيثما أردت القيام بتقسيم الشيفرة.
+جرى توثيقه في [صفحة تقسيم الشيفرة](/docs/code-splitting.html#reactlazy). انتبه إلى أنَّ المكونات `lazy` (الكسولة) يمكن أن توضع بداخل الشجرة `Suspense` بعمق، إذ لا تحتاج إلى تغليف كل واحدة منها. أفضل سلوك هو وضع `<Suspense>` حيث أردت رؤية مؤشر تحميل، ولكن استعمال `()lazy` حيثما أردت القيام بتقسيم الشيفرة.
 
 طالما أن ذلك غير مدعوم حتى الآن، نخطط في المستقبل أن نجعل `Suspense` يعالج حالات أوسع مثل جلب بيانات. يمكنك قراءة المزيد في هذه [التدوينة](/blog/2018/11/27/react-16-roadmap.html).
 
