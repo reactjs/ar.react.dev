@@ -1040,11 +1040,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[انظر إلى كامل الشيفرة عند هذه النقطة](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-<<<<<<< HEAD
 نُنشِئ لكل تحرك في تاريخ اللعبة عنصرًا بالقائمة `<li>` يحتوي على زر `<button>`. يمتلك الزر مُعالِج للأحداث `onClick` والذي يستدعي تابًعا يُدعى `this.jumpTo()`‎. لم ننفذ هذا التابع حتى الآن. ينبغي أن نرى الآن قائمة بالتحركات التي حصلت في اللعبة وتحذير في النافذة console ضمن أدوات التطوير يقول:
-=======
-For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
->>>>>>> bc91fe4101420f98454a59ac34c1cf1d4d4f4476
 
 >  تحذير:
 >  يجب أن يمتلك كل عنصر ابن في المصفوفة خاصية مفتاح `key`. تحقق من التابع `render` للمكوّن `Game`.
