@@ -3,7 +3,7 @@ id: cdn-links
 title: روابط شبكة توزيع المحتوى ( CDN )
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
-next: hello-world.html
+next: release-channels.html
 ---
 
 كل من React و ReactDOM متوفران عبر شبكة توزيع المحتوى (CDN)
