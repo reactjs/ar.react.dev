@@ -73,13 +73,9 @@ npm start
 
 - **[Neutrino](https://neutrinojs.org/)**  تدمج قوة [webpack](https://webpack.js.org/) مع بساطة الضبط المسبق الافتراضي (presets)، وتُضمِّن ضبطًا مسبقًا [لتطبيقات React](https://neutrinojs.org/packages/react/) و [مكونات React](https://neutrinojs.org/packages/react-components/).
 
-<<<<<<< HEAD
-- **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
-=======
-- **[Nx](https://nx.dev/react)** is a toolkit for full-stack monorepo development, with built-in support for React, Next.js, [Express](https://expressjs.com/), and more.
+- **[Nx](https://nx.dev/react)** هي مجموعة أدوات لتطوير monorepo كامل الحزمة ، مع دعم مضمن لـ React و Next.js و [Express] (https://expressjs.com/) والمزيد.
 
-- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes.html#react).
->>>>>>> f81b909ce97dc253998a192f367551cb2b40d66f
+- **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)**  هو إطار عمل تصيير من طرف الخادم ولا يتطلب أي ضبط ولكن يتسم بالمرونة أكثر من إطار العمل Next.js.
 
