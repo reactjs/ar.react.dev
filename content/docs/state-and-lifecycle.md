@@ -418,12 +418,6 @@ this.setState(function(prevState, props) {
 قد يختار المُكوِّن تمرير حالته كخاصيّات `props` إلى عناصره الأبناء في المستوى الأدنى:
 
 ```js
-<h2>الساعة الآن {this.state.date.toLocaleTimeString()}.</h2>
-```
-
-يعمل هذا المثال مع المُكوِّنات المُعرَّفة من قبل المستخدم أيضًا:
-
-```js
 <FormattedDate date={this.state.date} />
 ```
 
