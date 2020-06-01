@@ -18,9 +18,13 @@ permalink: community/courses.html
 
 - [عتاد React : تعلم React بنفسك](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم مكتبة React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
 
+<<<<<<< HEAD
 - [الطريق لتعلم مكتبة React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام مكتبة React بسهولة ويسر وبدون الأدوات المعقدة
 
 - [Egghead.io: دليل المبتدئين في ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم اساسيات React
+=======
+- [Egghead.io: The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - Free course for React newbies and those looking to get a better understanding of React fundamentals.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 
 - [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم مكتبة  React
 
@@ -48,4 +52,10 @@ permalink: community/courses.html
 
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
 
+<<<<<<< HEAD
 - [خالص React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام مكتبة React
+=======
+- [Mastering React](https://codewithmosh.com/p/mastering-react/) - Build professional interactive apps with React.
+
+- [Road to React](https://www.roadtoreact.com/) - Your journey to master React in JavaScript.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49

@@ -1190,7 +1190,11 @@ class Game extends React.Component {
 * تُخزِّن تاريخ اللعبة أثناء تقدمّ اللعبة.
 * تسمح للاعبين بمراجعة تاريخ اللعبة ورؤية الإصدارات القديمة للوحة اللعبة.
 
+<<<<<<< HEAD
 عمل رائع! نتمنى أن تشعر الآن بأنك تمتلك لمحة حول آليّة عمل React.
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 
 تحقّق من النتيجة النهائيّة هنا: **[النتيجة النهائيّة](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
