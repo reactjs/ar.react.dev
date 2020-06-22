@@ -379,13 +379,15 @@ function updateColorMap(colormap) {
 يُعيد التابع  `updateColorMap`  الآن كائنًا جديدًا بدلًا من تعديل القديم. `Object.assign` موجودة في ES6 وتحتاج إلى polyfill.
 
 
-هنالك اقتراح من JavaScript بإضافة [خاصيّة نشر الكائن](https://github.com/sebmarkbage/ecmascript-rest-spread) لسهولة تحديث الكائنات بدون تعديلها أيضًا:
+[خاصيّة نشر الكائن](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) تسهل تحديث الكائنات بدون تعديلها أيضًا:
 
 ```js
 function updateColorMap(colormap) {
   return {...colormap, right: 'blue'};
 }
 ```
+
+تم اصدار هذه الخاصية في JavaScript ES2018.
 
 إن كنتَ تستخدم Create React App فسيكون التابع `Object.assign` وصيغة نشر الكائن متوفرة بشكلٍ افتراضي. 
 
