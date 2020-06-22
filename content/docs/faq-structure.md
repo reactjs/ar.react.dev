@@ -11,13 +11,9 @@ category: FAQ
 ليس هنالك رأي لمكتبة React حول كيفيّة وضع الملفّات ضمن المجلدات. ولكن يُقال أنّه هناك بعض المقاربات الشائعة المستخدمة التي قد تأخذها بعين الاعتبار.
 
 
-<<<<<<< HEAD
 #### التجميع عن طريق الميزات أو الطرق (routes) {#grouping-by-features-or-routes}
 
 إحدى الطرق الشائعة لترتيب بنية المشاريع هي وضع ملفّات CSS، و JavaScript، والاختبارات معًا بداخل مجلّدات مُجمَّعة حس الميزة أو الطريق (route):
-=======
-One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
 
 ```
 common/

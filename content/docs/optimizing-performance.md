@@ -379,11 +379,7 @@ function updateColorMap(colormap) {
 يُعيد التابع  `updateColorMap`  الآن كائنًا جديدًا بدلًا من تعديل القديم. `Object.assign` موجودة في ES6 وتحتاج إلى polyfill.
 
 
-<<<<<<< HEAD
-هنالك اقتراح من JavaScript بإضافة [خاصيّة نشر الكائن](https://github.com/sebmarkbage/ecmascript-rest-spread) لسهولة تحديث الكائنات بدون تعديلها أيضًا:
-=======
-[Object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) makes it easier to update objects without mutation as well:
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+[خاصيّة نشر الكائن](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) تسهل تحديث الكائنات بدون تعديلها أيضًا:
 
 ```js
 function updateColorMap(colormap) {
@@ -391,12 +387,8 @@ function updateColorMap(colormap) {
 }
 ```
 
-<<<<<<< HEAD
-إن كنتَ تستخدم Create React App فسيكون التابع `Object.assign` وصيغة نشر الكائن متوفرة بشكلٍ افتراضي. 
-=======
-This feature was added to JavaScript in ES2018. 
+تم اصدار هذه الخاصية في JavaScript ES2018.
 
-If you're using Create React App, both `Object.assign` and the object spread syntax are available by default.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+إن كنتَ تستخدم Create React App فسيكون التابع `Object.assign` وصيغة نشر الكائن متوفرة بشكلٍ افتراضي. 
 
 من المكتبات الأخرى التي تساعد على استخدام البيانات غير القابلة للتعديل نجد [Immer](https://github.com/mweststrate/immer) و [immutability-helper](https://github.com/kolodny/immutability-helper) تُزوِّدك بنى البيانات غير القابلة للتعديل بطريقة سهلة لتتبّع التغييرات على الكائنات.
