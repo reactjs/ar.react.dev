@@ -4,6 +4,8 @@ title: قنوات الاصدار
 permalink: docs/release-channels.html
 layout: docs
 category: installation
+prev: cdn-links.html
+next: hello-world.html
 ---
 
 React يعتمد على مجتمع مفتوح المصدر مزدهر لتقديم تقارير الأخطاء وفتح طلبات التغيير، و [عروض "طلب للحصول على تعليقات"](https://github.com/reactjs/rfcs). لتشجيع التعليقات ، نشارك أحيانًا بنيات خاصة من React تتضمن ميزات غير مُصدرة.
