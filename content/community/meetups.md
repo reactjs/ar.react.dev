@@ -69,7 +69,8 @@ permalink: community/meetups.html
 * [دلهي](https://www.meetup.com/React-Delhi-NCR/)
 * [جايبور](https://www.meetup.com/JaipurJS-Developer-Meetup/)
 * [شانديغار](https://www.meetup.com/Chandigarh-React-Developers/)
-  
+* [بيون](https://www.meetup.com/ReactJS-and-Friends/)
+
 ## الولايات المتحدة {#us}
 * [آن أربور، ميتشيغن - ReactJS](https://www.meetup.com/AnnArbor-jsx/)
 * [أتلانتا (جورجيا)](https://www.meetup.com/React-ATL/)
@@ -192,5 +193,5 @@ permalink: community/meetups.html
 ## هولندا {#netherlands}
 * [أمستردام](https://www.meetup.com/React-Amsterdam/)
 
-## إسرائيل {#israel}
-* [تل أبيب](https://www.meetup.com/ReactJS-Israel/)
+## هولندا {#netherlands}
+* [أمستردام](https://www.meetup.com/React-Amsterdam/)
