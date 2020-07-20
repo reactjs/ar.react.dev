@@ -72,7 +72,7 @@ const Acknowlegements = ({data, location}) => (
               <li>
                 <a href="https://github.com/voronianski">Dmitri Voronianski</a>{' '}
                 : للسماح لنا باستخدام نظام الألوان{' '}
-                <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">
+                <a href="https://labs.voronianski.dev/oceanic-next-color-scheme/">
                   Oceanic Next
                 </a>{' '}
                 على هذا الموقع.
