@@ -34,6 +34,7 @@ redirect_from:
 
 ### التحذيرات و الثوابت {#warnings-and-invariants}
 
+<<<<<<< HEAD
 تستخدم قاعدة الشفرة المصدرية لـ React وحدة `warning` لعرض التحذيرات:
 
 ```js
@@ -61,6 +62,15 @@ if (!didWarnAboutMath) {
     'Math is not working today.'
   );
   didWarnAboutMath = true;
+=======
+### Warnings and Invariants {#warnings-and-invariants}
+
+The React codebase uses `console.error` to display warnings:
+
+```js
+if (__DEV__) {
+  console.error('Something is wrong.');
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 }
 ```
 
@@ -113,6 +123,7 @@ ReactRef.detachRefs = function(
 عندما يكون ذلك ممكنًا، يجب أن يستخدم الكود الجديد التعليقات التوضيحية الخاصة بFlow.
 يمكنك تشغيل `yarn flow` محليًا للتحقق من شفرتك باستخدام Flow.
 
+<<<<<<< HEAD
 ### الحقن الديناميكي {#dynamic-injection}
 
 يستخدم React الحقن الديناميكي في بعض الوحدات. في حين أنه دائمًا ما يكون صريحًا، إلا أنه لا يزال مؤسفًا لأنه يعيق فهم الكود. السبب الرئيسي لوجوده هو أن React كان في الأصل يدعم DOM فقط كهدف. بدأ React Native كـعملية نسخ لـ React. كان علينا إضافة الحقن الديناميكي للسماح لـ React Native بتجاوز بعض السلوكيات.
@@ -147,6 +158,9 @@ module.exports = ReactHostComponent;
 هناك عدة نقاط حقن في قاعدة الشفرة المصدرية. إذ نعتزم التخلص من آلية الحقن الديناميكي وربط جميع القطع بشكل ثابت أثناء الإنشاء في المستقبل.
 
 ### الحزم المتعددة {#multiple-packages}
+=======
+### Multiple Packages {#multiple-packages}
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 تصنف React ضمن [monorepo](https://danluu.com/monorepo/). إذ يحتوي مستودعها على حزم متعددة منفصلة بحيث يمكن تنسيق تغييراتها معًا، وتعيش المشكلات (issues) في مكان واحد.
 
@@ -210,9 +224,13 @@ module.exports = ReactHostComponent;
 
 ### نظام الأحداث {#event-system}
 
+<<<<<<< HEAD
 يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events).
 
 يوجد [فيديو يستعرض الكود الخاص بها بعمق](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 دقيقة).
+=======
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 ### ماذا بعد؟ {#what-next}
 

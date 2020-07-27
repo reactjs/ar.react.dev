@@ -228,7 +228,11 @@ function FriendListItem(props) {
 }
 ```
 
+<<<<<<< HEAD
 حالة هذه المكونات هي مستقلة كليًّا. الخطافات هي وسيلة لإعادة استعمال الشيفرة ذات الحالة وليس الحالة نفسها. في الحقيقة، كل استدعاء إلى خطاف يملك حالة منعزلة تمامًا، لذا يمكنك حتى استعمال نفس الخطاف المخصص مرتين في مكون واحد.
+=======
+The state of each component is completely independent. Hooks are a way to reuse *stateful logic*, not state itself. In fact, each *call* to a Hook has a completely isolated state -- so you can even use the same custom Hook twice in one component.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 الخطافات المخصصة هي أقرب للعرف من كونها ميزة. إن بدأ اسم دالة بالكلمة "`use`" واستدعت خطافات أخرى، نقول أنَّها "خطاف مخصص". التسمية `useSomething` المتعارف عليها هي التي تمكن إضافة تصحيح أخطاء الصياغة (linter plugin) من تنقيح الشيفرة التي تستعمل الخطافات.
 

@@ -42,7 +42,12 @@ console.log(add(16, 26)); // 42
 >
 > سينتهي مظهر الحزم لديك إلى شكلٍ مختلف عن هذا.
 
+<<<<<<< HEAD
 إن كنت تستخدم [Create React App](https://github.com/facebookincubator/create-react-app) ،[Next.js](https://github.com/zeit/next.js/) ،[Gatsby](https://www.gatsbyjs.org/)، أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
+=======
+If you're using [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
+app.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
 [التثبيت](https://webpack.js.org/guides/installation/) و

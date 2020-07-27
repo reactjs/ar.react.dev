@@ -556,7 +556,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### تحديد متى يتم إعادة التصيير في React {#determining-when-to-re-render-in-react}
 
+<<<<<<< HEAD
 الفائدة الأساسيّة من عدم القابلية للتعديل هي أنّها تساعدك على بناء __مكوّنات نقيّة__ في React. تستطيع البيانات غير القابلة للتعديل أن تُحدِّد بسهولة إذا ما قد أُجريت أي تغييرات، والذي يُساعد بتحديد متى يحتاج المكوّن لإعادة التصيير.
+=======
+The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 بإمكانك تعلّم المزيد حول التابع `shouldComponentUpdate()` وكيفيّة بناء *مكوّنات نقية* من خلال قراءة مستند [تحسين الأداء](/docs/optimizing-performance.html#examples).
 
