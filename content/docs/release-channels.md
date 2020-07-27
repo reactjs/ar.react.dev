@@ -88,11 +88,7 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 
 #### كيف يمكنني معرفة المزيد عن الميزات التجريبية؟ {#how-can-i-learn-more-about-experimental-features}
 
-<<<<<<< HEAD
 الميزات التجريبية قد تكون أو لا تكون موثقة. عادة ، لا يتم توثيق التجارب حتى تكون قريبة من الشحن في التالي أو مستقر.
-=======
-Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Next or Latest.
->>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 إذا لم يتم توثيق إحدى الميزات ، فقد تكون مصحوبة بـ [RFC](https://github.com/reactjs/rfcs).
 
