@@ -22,10 +22,4 @@ permalink: community/examples.html
 * **[Tutorial Solutions](https://github.com/harman052/react-tutorial-solutions)** حلول للتحديات   المذكورة في نهاية البرنامج التعليمي لـ React
 
 ## تطبيقات كاملة
-
-<<<<<<< HEAD
-* **[Hacker News Clone React/GraphQL](https://github.com/clintonwoo/hackernews-react-graphql)** تم استنساخ نسخة Hacker News باستخدام JavaScript عام باستخدام React و GraphQL
-* **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة واستضافة الوثائق أو بيع الكتب. بنيت مع React ، Material-UI ، Next ، Express ، Mongoose ، MongoDB
-=======
-* **[Builder Book](https://github.com/builderbook/builderbook)** Open-source web app to write and host documentation or sell books. Built with React, Material-UI, Next, Express, Mongoose, MongoDB
->>>>>>> c89c38241278804b48bf34b1d8d9ee0b9f1b6e8c
+* **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة واستضافة الوثائق أو بيع الكتب. بنيت مع React ، Material-UI ، Next ، Express ، Mongoose ، MongoDB  
