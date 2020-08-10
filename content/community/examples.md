@@ -10,8 +10,7 @@ permalink: community/examples.html
 
 إن قُمت بإضافة مشروع الرجّاء الإلتزام بتحديثه لأحدث الاصدارات من React.
 
-
-## أمثلة صغيرة
+## أمثلة صغيرة {#small-examples}
  
 * **[Calculator](https://github.com/ahfarmer/calculator)** تطبيق الآلة الحاسبة لنظام iOS مدمجة في React
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React للبحث عن الإيموجي
@@ -21,5 +20,6 @@ permalink: community/examples.html
 * **[Counter App](https://github.com/arnab-datta/counter-app)** مثال صغير عن عربة التسوق
 * **[Tutorial Solutions](https://github.com/harman052/react-tutorial-solutions)** حلول للتحديات   المذكورة في نهاية البرنامج التعليمي لـ React
 
-## تطبيقات كاملة
+## تطبيقات كاملة {#complete-apps}
+
 * **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة واستضافة الوثائق أو بيع الكتب. بنيت مع React ، Material-UI ، Next ، Express ، Mongoose ، MongoDB  
