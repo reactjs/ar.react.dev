@@ -10,12 +10,7 @@ permalink: community/examples.html
 
 إن قُمت بإضافة مشروع الرجّاء الإلتزام بتحديثه لأحدث الاصدارات من React.
 
-<<<<<<< HEAD
-=======
-## Small Examples {#small-examples}
->>>>>>> 80c16779a751ef997373adf95c47dbc9b1592eb6
-
-## أمثلة صغيرة
+## أمثلة صغيرة {#small-examples}
  
 * **[Calculator](https://github.com/ahfarmer/calculator)** تطبيق الآلة الحاسبة لنظام iOS مدمجة في React
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** تطبيق React للبحث عن الإيموجي
@@ -25,11 +20,6 @@ permalink: community/examples.html
 * **[Counter App](https://github.com/arnab-datta/counter-app)** مثال صغير عن عربة التسوق
 * **[Tutorial Solutions](https://github.com/harman052/react-tutorial-solutions)** حلول للتحديات   المذكورة في نهاية البرنامج التعليمي لـ React
 
-<<<<<<< HEAD
-## تطبيقات كاملة
-* **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة واستضافة الوثائق أو بيع الكتب. بنيت مع React ، Material-UI ، Next ، Express ، Mongoose ، MongoDB  
-=======
-## Complete Apps {#complete-apps}
+## تطبيقات كاملة {#complete-apps}
 
-* **[Builder Book](https://github.com/builderbook/builderbook)** Open-source web app to write and host documentation or sell books. Built with React, Material-UI, Next, Express, Mongoose, MongoDB
->>>>>>> 80c16779a751ef997373adf95c47dbc9b1592eb6
+* **[Builder Book](https://github.com/builderbook/builderbook)** تطبيق ويب مفتوح المصدر لكتابة واستضافة الوثائق أو بيع الكتب. بنيت مع React ، Material-UI ، Next ، Express ، Mongoose ، MongoDB  
