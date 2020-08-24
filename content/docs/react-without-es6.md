@@ -2,6 +2,8 @@
 id: react-without-es6
 title: React بدون ES6
 permalink: docs/react-without-es6.html
+prev: optimizing-performance.html
+next: react-without-jsx.html
 ---
 
 نُعرِّف عادةً مُكوّنات React كأصناف JavaScript مُجرَّدة:

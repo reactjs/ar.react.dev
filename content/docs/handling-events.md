@@ -54,7 +54,11 @@ function ActionLink() {
 }
 ```
 
+<<<<<<< HEAD
 يُمثِّل المتغيّر `e` هنا حدثًا مُصطنعًا، حيث تُعرِّف React هذه الأحداث المُصطنعة وفق معايير [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/)، بحيث لا نهتم بمشاكل التوافقيّة بين المتصفحات. للمزيد حول [`الأحداث المصطنعة`](/docs/events.html) انتقل إلى مرجع الأحداث في React.
+=======
+Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. React events do not work exactly the same as native events. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 عند استخدام React بشكل عام لاينبغي استدعاء `addEventListener` لإضافة مُستمِع للأحداث إلى عنصر DOM بعد إنشائه، وبدلًا من ذلك نُضيف مُستمِعًا للأحداث عند تصيير العنصر (Rendering Element).
 

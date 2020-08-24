@@ -2,6 +2,8 @@
 id: error-boundaries
 title: حدود الأخطاء
 permalink: docs/error-boundaries.html
+prev: portals.html
+next: web-components.html
 ---
 
 في الماضي كانت أخطاء JavaScript بداخل المكوّنات تؤدّي إلى تخريب حالة React الداخلية [وإصدار](https://github.com/facebook/react/issues/4026) [أخطاء](https://github.com/facebook/react/issues/8579) [مخفية](https://github.com/facebook/react/issues/6895) في التصييرات التالية. كانت هذه الأخطاء مُسبَّبة دومًا بخطأ مبكر في شيفرة التطبيق، ولكن لم تكن تعطينا React طريقة للتعامل معها في المكوّنات، ولم يكن بإمكانها استعادتها أيضًا.
@@ -98,7 +100,11 @@ class ErrorBoundary extends React.Component {
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="Error caught by Error Boundary component with line numbers">
 
+<<<<<<< HEAD
 وإن لم تكن تستخدم  Create React App، فبإمكانك إضافة [هذه الإضافة](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source) يدويًّا إلى إعدادات Babel لديك. لاحظ أنّ الغرض منها هو وضعية التطوير فقط و**يجب تعطيلها في وضعية الإنتاج**.
+=======
+If you don’t use Create React App, you can add [this plugin](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source) manually to your Babel configuration. Note that it’s intended only for development and **must be disabled in production**.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 > ملاحظة
 >

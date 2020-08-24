@@ -2,6 +2,8 @@
 id: context
 title: استخدام السياق (Context)
 permalink: docs/context.html
+prev: reconciliation.html
+next: fragments.html
 ---
 
 يُزوِّدنا السياق (Context) بطريقة لتمرير البيانات عبر شجرة المُكوّنات دون الحاجة لتمرير الخاصيّات `props` يدويًّا من الأعلى إلى الأسفل في كل مستوى.

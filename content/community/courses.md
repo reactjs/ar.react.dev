@@ -8,7 +8,11 @@ permalink: community/courses.html
 
 ## دورات مجانية {#free-courses}
 
+<<<<<<< HEAD
 - [Glitch: React Starter Kit](https://glitch.com/glimmer/post/react-starter-kit/) - دورة مجانية، تفاعلية، مكونة من ٥ أجزاء لتساعدك في تعلم React.
+=======
+- [Glitch: React Starter Kit](https://glitch.com/glimmer/post/react-starter-kit) - A free, 5-part video course with interactive code examples that will help you learn React.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 - [Codecademy: React 101](https://www.codecademy.com/learn/react-101) - دورة مكتبة React التعريفية والمقدمة من Codecademy
 
@@ -48,6 +52,12 @@ permalink: community/courses.html
 
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
 
+<<<<<<< HEAD
 - [خالص React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام مكتبة React
 
 - [الطريق إلى React](https://www.roadtoreact.com/) - رحلتك لإتقان React بإستخدام JavaScript.
+=======
+- [React Tutorial](https://react-tutorial.app) - Learn React step by step in an interactive environment with flashcards.
+
+- [Road to React](https://www.roadtoreact.com/) - Your journey to master React in JavaScript.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
