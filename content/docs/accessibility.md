@@ -2,6 +2,8 @@
 id: accessibility
 title: سهولة الوصول
 permalink: docs/accessibility.html
+prev: integrating-with-other-libraries.html
+next: code-splitting.html
 ---
 
 ## الفائدة من سهولة الوصول؟ {#why-accessibility}

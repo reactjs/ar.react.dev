@@ -2,6 +2,8 @@
 id: optimizing-performance
 title: تحسين الأداء
 permalink: docs/optimizing-performance.html
+prev: uncontrolled-components.html
+next: react-without-es6.html
 redirect_from:
   - "docs/advanced-performance.html"
 ---

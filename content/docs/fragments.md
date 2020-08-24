@@ -2,6 +2,8 @@
 id: fragments
 title: استخدام الأجزاء (Fragments)
 permalink: docs/fragments.html
+prev: context.html
+next: portals.html
 ---
 
 من الأنماط الشائعة في React هي إعادة المكوّن لعناصر متعددة. تتيح لك الأجزاء (Fragments) تجميع قائمة من العناصر الأبناء بدون إضافة عُقَد إضافيّة إلى DOM.

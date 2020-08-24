@@ -2,6 +2,8 @@
 id: typechecking-with-proptypes
 title: التحقق من الأنواع باستخدام PropTypes
 permalink: docs/typechecking-with-proptypes.html
+prev: jsx-in-depth.html
+next: static-type-checking.html
 redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
@@ -29,6 +31,8 @@ Greeting.propTypes = {
   name: PropTypes.string
 };
 ```
+
+في هذا المثال ، نستخدم مكون فئة، ولكن يمكن أيضًا تطبيق نفس الوظيفة على مكونات الوظيفة، أو المكونات التي تم إنشاؤها بواسطة [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) او [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
 
 `PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props) ,سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق , يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
 
