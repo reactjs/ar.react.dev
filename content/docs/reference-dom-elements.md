@@ -125,11 +125,7 @@ function ComponentWithTransition() {
 
 ### value {#value}
 
-<<<<<<< HEAD
-تكون الخاصيّة value مدعومة من المكوّنين `<input>` و `<textarea>`  بإمكانك استخدامها لتعيين قيمة المكوّن. يُفيد هذا في بناء مكوّنات مضبوطة. الخاصيّة `defaultValue` هي المكافئ في المكوّنات غير المضبوطة، والتي تُعيِّن قيمة المكوّن عند الوصل.
-=======
-The `value` attribute is supported by `<input>`, `<select>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
->>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
+تكون الخاصيّة value مدعومة من المكوّنين `<input>`، `<select>` و `<textarea>`  بإمكانك استخدامها لتعيين قيمة المكوّن. يُفيد هذا في بناء مكوّنات مضبوطة. الخاصيّة `defaultValue` هي المكافئ في المكوّنات غير المضبوطة، والتي تُعيِّن قيمة المكوّن عند الوصل.
 
 ## كافة خاصيّات HTML المدعومة {#all-supported-html-attributes}
 
