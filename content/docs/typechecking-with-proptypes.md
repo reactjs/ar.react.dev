@@ -32,13 +32,9 @@ Greeting.propTypes = {
 };
 ```
 
-<<<<<<< HEAD
-`PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props) ,سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق , يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
-=======
-In this example, we are using a class component, but the same functionality could also be applied to function components, or components created by [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) or [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
+في هذا المثال ، نستخدم مكون فئة، ولكن يمكن أيضًا تطبيق نفس الوظيفة على مكونات الوظيفة، أو المكونات التي تم إنشاؤها بواسطة [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) او [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
 
-`PropTypes` exports a range of validators that can be used to make sure the data you receive is valid. In this example, we're using `PropTypes.string`. When an invalid value is provided for a prop, a warning will be shown in the JavaScript console. For performance reasons, `propTypes` is only checked in development mode.
->>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
+`PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props) ,سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق , يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
 
 ### PropTypes {#proptypes}
 
