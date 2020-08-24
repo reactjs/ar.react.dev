@@ -56,12 +56,8 @@ function MyComponent() {
 
 ### selected {#selected}
 
-<<<<<<< HEAD
-الخاصيّة `selected` مدعومة من قبل المكوّن ‎`<option>‎`. تستطيع استخدامها لتحديد ما إذا كان المكوّن مُحدَّدًا. يُفيد هذا لبناء مكوّنات مضبوطة.
-=======
-If you want to mark an `<option>` as selected, reference the value of that option in the `value` of its `<select>` instead.
-Check out ["The select Tag"](/docs/forms.html#the-select-tag) for detailed instructions.
->>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
+إذا كنت ترغب بتحديد `<option>`, قم بالإشارة إلى قيمة هذا الخيار في `value` في `<select>` التابعة لها.
+قم بمشاهدة ["The select Tag"](/docs/forms.html#the-select-tag) للمزيد من المعلومات.
 
 ### style {#style}
 
