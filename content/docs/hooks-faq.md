@@ -580,7 +580,7 @@ useEffect(() => {
 
 دعنا نرى لماذا هذا مهم.
 
-إذا قمت بتحديد [قائمة التبعيات](/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
+إذا قمت بتحديد [قائمة التبعيات](/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`، `useLayoutEffect`، `useMemo`، `useCallback`. أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
 
 يكون من الآمن حذف وظيفة من قائمة التبعية إذا لم يكن أي منها (أو الوظائف التي تسمى بها) يشير إلى الدعائم أو الحالة أو القيم المستمدة منها. يحتوي هذا المثال على خطأ:
 

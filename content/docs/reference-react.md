@@ -127,7 +127,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-إنَّ `React.memo` هو [مكون ذو ترتيب أعلى](/docs/higher-order-components.html). إنه مشابه لـ[`React.PureComponent`](#reactpurecomponent) ولكن من أجل مكونات دوال وليس أصناف.
+إنَّ `React.memo` هو [مكون ذو ترتيب أعلى](/docs/higher-order-components.html).
 
 إن صَير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفه في استدعاء لـ `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
 
