@@ -12,6 +12,7 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
+<<<<<<< HEAD
 ### Reactathon 2020 {#reactathon-2020}
 30 مارس - 31 ، 2020 في سان فرانسيسكو ، كاليفورنيا
 
@@ -79,9 +80,14 @@ redirect_from:
 
 ### React Native EU 2020 {#react-native-eu-2020}
 5-6 سبتمبر 2020 في فروتسواف ، بولندا
+=======
+### React Native EU 2020 {#react-native-eu-2020}
+September 3-4, 2020 - remote event
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 [موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
 
+<<<<<<< HEAD
 ### React Summit Amsterdam 2020 {#react-summit-2020}
 8-11 سبتمبر 2020 في أمستردام ، هولندا
 
@@ -96,13 +102,33 @@ redirect_from:
 6 نوفمبر 2020 في مومباي ، الهند
 
 [موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [لينكدين](https://www.linkedin.com/showcase/14545585) - [يوتيوب](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+=======
+### render(ATL) 2020 {#render-atlanta-2020} 
+September 13-15, 2020. Atlanta, GA, USA.
+
+[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
+
+### React Summit 2020 {#react-summit-2020}
+7am PST / 1pm EST / 4pm CEST October 15-16, 2020 - remote event
+
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### React Day Berlin 2020 {#react-day-berlin-2020}
 27-25 نوفمبر 2020 في برلين ، ألمانيا
 
 [موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [فيديوهات](https://www.youtube.com/reactdayberlin)  
 
+<<<<<<< HEAD
 ## المؤتمرات السابقة {#past-conferences}
+=======
+### React Next 2020 {#react-next-2020}
+December 1, 2020. Tel Aviv, Israel.
+
+[Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/)
+
+## Past Conferences {#past-conferences}
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
@@ -129,7 +155,11 @@ redirect_from:
 ### React Amsterdam 2016 {#react-amsterdam-2016}
 16 أبريل في أمستردام ، هولندا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
+=======
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### ReactEurope 2016 {#reacteurope-2016}
 2 و 3 يونيو في باريس ، فرنسا.
@@ -175,7 +205,11 @@ redirect_from:
 ### React Amsterdam 2017 {#react-amsterdam-2017}
 21 أبريل في أمستردام ، هولندا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
+=======
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Videos](https://youtube.com/c/ReactConferences)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### ReactEurope 2017 {#reacteurope-2017}
 18 و 19 مايو في باريس ، فرنسا.
@@ -275,7 +309,11 @@ redirect_from:
 ### React Amsterdam 2018 {#react-amsterdam-2018}
 13 أبريل في أمستردام ، هولندا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam)
+=======
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### React Finland 2018 {#react-finland-2018}
 24-26 أبريل في هلسنكي ، فنلندا.
@@ -376,7 +414,11 @@ redirect_from:
 ### React Amsterdam 2019 {#react-amsterdam-2019}
 12 أبريل 2019 في أمستردام ، هولندا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactamsterdam) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [يوتيوب](https://youtube.com/c/ReactConferences)
+=======
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ### React Finland 2019 {#react-finland-2019}
 24-26 أبريل في هلسنكي ، فنلندا.
@@ -497,4 +539,28 @@ redirect_from:
 ### ReactConf AU 2020 {#reactconfau}
 فبراير 27 & 28, 2020 في سيدني، أستراليا
 
+<<<<<<< HEAD
 [موقع الويب](https://reactconfau.com/) - [تويتر](https://twitter.com/reactconfau) - [فيس بوك](https://www.facebook.com/reactconfau) - [انستقرام](https://www.instagram.com/reactconfau/)
+=======
+[Website](https://reactconfau.com/) - [Twitter](https://twitter.com/reactconfau) - [Facebook](https://www.facebook.com/reactconfau) - [Instagram](https://www.instagram.com/reactconfau/)
+
+### Reactathon 2020 {#reactathon-2020}
+March 30 - 31, 2020 in San Francisco, CA
+
+[Website](https://www.reactathon.com) - [Twitter](https://twitter.com/reactathon) - [Facebook](https://www.facebook.com/events/575942819854160/)
+
+### React Summit - Remote Edition 2020 {#react-summit-remote-2020}
+3pm CEST time, April 17, 2020 - remote event
+
+[Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
+### Byteconf React 2020 {#byteconf-react-2020}
+May 1, 2020. Streamed online on YouTube.
+
+[Website](https://www.bytesized.xyz) - [Twitter](https://twitter.com/bytesizedcode) - [YouTube](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
+
+### ReactEurope 2020 {#reacteurope-2020}
+May 14-15, 2020 in Paris, France
+
+[Website](https://www.react-europe.org) - [Twitter](https://twitter.com/ReactEurope) - [Facebook](https://www.facebook.com/ReactEurope) - [Videos](https://www.youtube.com/c/ReacteuropeOrgConf)
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4

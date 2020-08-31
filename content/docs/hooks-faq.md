@@ -580,7 +580,11 @@ useEffect(() => {
 
 دعنا نرى لماذا هذا مهم.
 
+<<<<<<< HEAD
 إذا قمت بتحديد [قائمة التبعيات](/docs/hooks-reference.html#conditionally-firing-an-effect) كعامل أخير ل `useEffect`, `useMemo`, `useCallback`, أو `useImperativeHandle`, يجب أن تتضمن جميع القيم المستخدمة داخل المشاركة في تدفق بيانات React. يتضمن الدعائم والدولة وأي شيء مستمد منها.
+=======
+If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useLayoutEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 يكون من الآمن حذف وظيفة من قائمة التبعية إذا لم يكن أي منها (أو الوظائف التي تسمى بها) يشير إلى الدعائم أو الحالة أو القيم المستمدة منها. يحتوي هذا المثال على خطأ:
 
