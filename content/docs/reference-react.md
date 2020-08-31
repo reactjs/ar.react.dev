@@ -127,15 +127,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-<<<<<<< HEAD
-إنَّ `React.memo` هو [مكون ذو ترتيب أعلى](/docs/higher-order-components.html). إنه مشابه لـ[`React.PureComponent`](#reactpurecomponent) ولكن من أجل مكونات دوال وليس أصناف.
+إنَّ `React.memo` هو [مكون ذو ترتيب أعلى](/docs/higher-order-components.html).
 
 إن صَير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفه في استدعاء لـ `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
-=======
-`React.memo` is a [higher order component](/docs/higher-order-components.html).
-
-If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
->>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 `React.memo` تأثر فقط على تغيرات الخصائص. إذا كان مكون الدالة الخاص بك مغلفا بـ `React.memo` ويحتوي على [`useState`](/docs/hooks-state.html) أو [`useContext`](/docs/hooks-reference.html#usecontext) Hook في تنفيذه، سيتم اعادة تصيره عند تغير الحالة أو السياق.
 
