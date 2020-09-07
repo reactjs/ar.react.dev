@@ -60,7 +60,11 @@ afterEach(() => {
 
 ### `act()` {#act}
 
+<<<<<<< HEAD
 عند كتابة اختبارات واجهة المستخدم ، يمكن اعتبار المهام مثل التصيير أو أحداث المستخدم أو جلب البيانات "وحدات" للتفاعل مع واجهة المستخدم. توفر React مساعدًا يسمى `act ()` يتأكد من أن جميع التحديثات المتعلقة بهذه "الوحدات" قد تمت معالجتها وتطبيقها على DOM قبل تقديم أي تأكيدات:
+=======
+When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. `react-dom/test-utils` provides a helper called [`act()`](/docs/test-utils.html#act) that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 ```js
 act(() => {
