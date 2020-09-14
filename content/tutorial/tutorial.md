@@ -168,7 +168,11 @@ return React.createElement('div', {className: 'shopping-list'},
 
 يُصيِّر المكوّن `ShoppingList` المذكور في الأعلى مكوّنات مُضمَّنة في DOM مثل ‎`<div />` و `<li />`، ولكن تستطيع تركيب وتصيير مكوّنات React مُخصَّصة أيضًا. على سبيل المثال تستطيع الآن الإشارة إلى كامل قائمة التسوّق عن طريقة كتابة `<ShoppingList />`‎. يكون كل مكوّن React مُغلّفًا وبإمكانه العمل بشكل مستقل. يسمح لك ذلك ببناء واجهات مستخدم مُعقّدة من مكوّنات بسيطة.
 
+<<<<<<< HEAD
 ## تفحّص شيفرة البدء {#inspecting-the-starter-code}
+=======
+### Inspecting the Starter Code {#inspecting-the-starter-code}
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 إن كنت ستجرّب شيفرة الدليل التطبيقي **على متصفحك،** افتح **[شيفرة البدء](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** في نافذة جديدة. أمّا إن كنت ستجرّبها بشكل **محلّي،** فافتح الملف ‎`src/index.js`‎ الموجود في مجلّد مشروعك (لقد تعرّفت مسبقًا على هذا الملف خلال [خطوة الإعداد](#setup-option-2-local-development-environment)).
 
