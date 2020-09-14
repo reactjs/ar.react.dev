@@ -580,7 +580,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-يُمكِن تعريف `defaultProps` كخاصيّة لمكوّن الصنف نفسه لتعيين الخاصيّات الافتراضيّة للصنف. تُستخدَم هذه الخاصيّة لأجل الخاصيّات غير المُعرَّفة، ولكن ليس لأجل الخاصيّات null، على سبيل المثال:
+يُمكِن تعريف `defaultProps` كخاصيّة لمكوّن الصنف نفسه لتعيين الخاصيّات الافتراضيّة للصنف. تُستخدَم هذه الخاصيّة لأجل الخاصيّات غير المُعرَّفة `undefined`, ولكن ليس لأجل الخاصيّات `null`. على سبيل المثال:
 
 ```js
 class CustomButton extends React.Component {
@@ -600,7 +600,7 @@ CustomButton.defaultProps = {
   }
 ```
 
-إن كانت `props.color` مُعيَّنة إلى, فستبقى  null:
+إن كانت `props.color` مُعيَّنة إلى قيمة `null`, فستبقى `null`:
 
 ```js
   render() {
