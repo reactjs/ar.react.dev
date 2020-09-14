@@ -274,11 +274,7 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
-<<<<<<< HEAD
 يُستدعى التابع `getDerivedStateFromProps` مباشرةً قبل استدعاء تابع التصيير خلال الوصل المبدئي والتحديثات اللاحقة. يجب أن يُعيد كائنًا لتحديث الحالة، أو `null` لعدم تحديث شيء.
-=======
-`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or `null` to update nothing.
->>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 يوجد هذا التابع من أجل  [استخدامات نادرة](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) ندما تعتمد الحالة على التغييرات في الخاصيّات مع مرور الوقت. على سبيل المثال قد يكون من المفيد تنفيذ المكوّن `<Transition>` والذي يقارن بين الأبناء السابقين واللاحقين ليقرر ما ينبغي تحريكه منها للداخل وللخارج.
 
@@ -584,11 +580,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-<<<<<<< HEAD
-يُمكِن تعريف `defaultProps` كخاصيّة لمكوّن الصنف نفسه لتعيين الخاصيّات الافتراضيّة للصنف. تُستخدَم هذه الخاصيّة لأجل الخاصيّات غير المُعرَّفة، ولكن ليس لأجل الخاصيّات null، على سبيل المثال:
-=======
-`defaultProps` can be defined as a property on the component class itself, to set the default props for the class. This is used for `undefined` props, but not for `null` props. For example:
->>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
+يُمكِن تعريف `defaultProps` كخاصيّة لمكوّن الصنف نفسه لتعيين الخاصيّات الافتراضيّة للصنف. تُستخدَم هذه الخاصيّة لأجل الخاصيّات غير المُعرَّفة `undefined`, ولكن ليس لأجل الخاصيّات `null`. على سبيل المثال:
 
 ```js
 class CustomButton extends React.Component {
@@ -608,11 +600,7 @@ CustomButton.defaultProps = {
   }
 ```
 
-<<<<<<< HEAD
-إن كانت `props.color` مُعيَّنة إلى, فستبقى  null:
-=======
-If `props.color` is set to `null`, it will remain `null`:
->>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
+إن كانت `props.color` مُعيَّنة إلى قيمة `null`, فستبقى `null`:
 
 ```js
   render() {
