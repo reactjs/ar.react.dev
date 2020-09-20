@@ -14,7 +14,7 @@ redirect_from:
 >
 > نحن نوفر [ سكريبت (script) ](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) لتسهيل الإنتقال.
 
-بينما يصير تطبيقك اكثر توسعا ، يمكنك تفادي الكثير من الأخطاء من خلال التحقق من الأنواع. بالنسبة لبعض التطبيقات ، يمكنك استخدام ملحقات JavaScript مثل [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) للتحقق من الأنواع . ولكن حتى لو كنت لا تستخدم هذه الملحقات , React لديه بعض الإضافات المدمجة التي لديها القدرة على التحقق من الأنواع . لتشغيل التحقق من الأنواع على الخاصيات (props) لمكوّن (Component) , يمكنك تعيين خاصية `propTypes` :
+بينما يصبح تطبيقك أكثر توسعا، يمكنك تفادي الكثير من الأخطاء من خلال التحقق من الأنواع. بالنسبة لبعض التطبيقات، يمكنك استخدام ملحقات JavaScript مثل [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) للتحقق من الأنواع. ولكن حتى لو كنت لا تستخدم هذه الملحقات، React لديه بعض الإضافات المدمجة التي لديها القدرة على التحقق من الأنواع. لتشغيل التحقق من الأنواع على الخاصيات (props) لمكوّن، يمكنك تعيين خاصية `propTypes` :
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -32,9 +32,9 @@ Greeting.propTypes = {
 };
 ```
 
-في هذا المثال ، نستخدم مكون فئة، ولكن يمكن أيضًا تطبيق نفس الوظيفة على مكونات الوظيفة، أو المكونات التي تم إنشاؤها بواسطة [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) او [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
+في هذا المثال، نستخدم مكون فئة، ولكن يمكن أيضًا تطبيق نفس الوظيفة على مكونات الوظيفة، أو المكونات التي تم إنشاؤها بواسطة [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) أو [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
 
-`PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props) ,سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق , يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
+`PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props)، سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق، يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
 
 ### PropTypes {#proptypes}
 
@@ -134,7 +134,7 @@ MyComponent.propTypes = {
 
 ### استلزام مكون بنوي وحيد  {#requiring-single-child}
 
-بإستخدام `PropTypes.element` يمكنك تحديد أنه يمكن فقط نقل مكون وحيد إلى أحد المكونات كمكونات بنيوية.
+باستخدام `PropTypes.element` يمكنك تحديد أنه يمكن فقط نقل مكون وحيد إلى أحد المكونات بصفتها مكونات بنيوية.
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -181,7 +181,7 @@ ReactDOM.render(
 );
 ```
 
-إذا كنت تستخدم تحويلات Babel مثل [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) , يمكنك أيضا تعيين `defaultProps` كخاصية ثابتة داخل صنف (class) مكون React . هذه الشفرة البرمجية لم يتم الإنتهاء منها بعد و ستتطلب خطوة التحويل البرمجي (Compilation) للعمل داخل المتصفح . للمزيد من المعلومات ، أنظر الى  [class fields proposal](https://github.com/tc39/proposal-class-fields).
+إذا كنت تستخدم تحويلات Babel مثل [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/)، يمكنك أيضا تعيين `defaultProps` كخاصية ثابتة داخل صنف (class) مكون React. هذه الشفرة البرمجية لم يتم الإنتهاء منها بعد وستتطلب خطوة التحويل البرمجي (Compilation) للعمل داخل المتصفح. للمزيد من المعلومات، ألق نظرة على  [class fields proposal](https://github.com/tc39/proposal-class-fields).
 
 ```javascript
 class Greeting extends React.Component {
@@ -197,4 +197,4 @@ class Greeting extends React.Component {
 }
 ```
 
- تُستخدم `defaultProps` للتحقق من أن `this.props.name` سيكون لها قيمة إذا لم يتم تحديدها بواسطة المكون الأب .  التحقق من الأنواع بإستخدام `propTypes` يحدث بعد تعيين قيمة لـ `defaultProps`, ولهذا التحقق من الأنواع ستنطبق على `defaultProps` ايضا .
+ تُستخدم `defaultProps` للتحقق من أن `this.props.name` سيكون لها قيمة إذا لم يتم تحديدها بواسطة المكون الأب. التحقق من الأنواع باستخدام `propTypes` يحدث بعد تعيين قيمة لـ `defaultProps`، ولهذا التحقق من الأنواع ستنطبق على `defaultProps` أيضا .
