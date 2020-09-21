@@ -2,7 +2,6 @@
 id: code-splitting
 title: تقسيم الشيفرة
 permalink: docs/code-splitting.html
-prev: accessibility.html
 ---
 
 ## التحزيم (Bundling) {#bundling}

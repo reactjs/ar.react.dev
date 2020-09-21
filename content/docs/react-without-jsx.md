@@ -2,8 +2,6 @@
 id: react-without-jsx
 title: React بدون JSX
 permalink: docs/react-without-jsx.html
-prev: react-without-es6.html
-next: reconciliation.html
 ---
 
 JSX ليست متطلب لإستخدام React .حيث يمكنك إستخدام React بدون JSX بشكل خاص عندما لاترغب في إعداد مرحلة التصريف في بيئة البناء لديك.

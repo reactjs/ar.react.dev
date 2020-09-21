@@ -2,8 +2,6 @@
 id: higher-order-components
 title: المكونات ذات الترتيب الأعلى
 permalink: docs/higher-order-components.html
-prev: web-components.html
-next: render-props.html
 ---
 
 إنّ المُكوّنات ذات الترتيب الأعلى (Higher-Order Components واختصارًا HOC) هي تِقنية مُتَقَدِمة في React لإعادة استخدام مَنطِق المُكونات. وهي ليست جزءًا من واجهة برمجة تطبيقات React API، بَل هي نَمَط يَنبَثِق عن طَبيعة React التَركيبية.

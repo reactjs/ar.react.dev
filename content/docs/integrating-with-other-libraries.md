@@ -2,8 +2,6 @@
 id: integrating-with-other-libraries
 title: التكامل مع المكتبات الأخرى
 permalink: docs/integrating-with-other-libraries.html
-prev: render-props.html
-next: accessibility.html
 ---
 
 يمكن استخدام React في أي تطبيق ويب وتضمينها في تطبيقات أخرى، ويمكن أيضًا بجهد قليل تضمين المكتبات الأخرى مع React. سنتحدث في هذه الصفحة ع ن بعض أشيع الحالات مع التركيز على التكامل مع [jQuery](https://jquery.com/) و [Backbone](https://backbonejs.org/)، ولكن يمكن تطبيق نفس الأفكار لتكامل المكوّنات مع أي شيفرة موجودة حاليًّا.

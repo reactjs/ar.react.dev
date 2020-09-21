@@ -2,8 +2,6 @@
 id: portals
 title: Portals
 permalink: docs/portals.html
-prev: fragments.html
-next: error-boundaries.html
 ---
  
 تُزوّدنا Portals بطريقة ممتازة لتصيير المكونات الأبناء إلى عقدة DOM موجودة خارج تسلسل DOM للمكونات الآباء.
