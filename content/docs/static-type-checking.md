@@ -4,11 +4,11 @@ title: التحقّق من الأنواع الثابتة
 permalink: docs/static-type-checking.html
 ---
 
-تتعرّف أدوات التحقّق من الأنواع الثابتة (Static type checkers، والمقصود بها التحقّق من الأنواع في زمن التصريف compile-time حيث لا يُسمَح بتغيير أنواع المتغيّرات في زمن التنفيذ) مثل Flow و TypeScript على بعض أنواع المشاكل قبل تنفيذ الشيفرة، وتُحسِّن سير عمل المُطوِّر عن طريق إضافة ميّزات مثل الإكمال التلقائي. نُوصي لهذا السّبب باستخدام [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) بدلًأ من `PropTypes` للشيفرات الكبيرة.
+تتعرّف أدوات التحقّق من الأنواع الثابتة (Static type checkers، والمقصود بها التحقّق من الأنواع في زمن التصريف compile-time حيث لا يُسمَح بتغيير أنواع المتغيّرات في زمن التنفيذ) مثل Flow وTypeScript على بعض أنواع المشاكل قبل تنفيذ الشيفرة، وتُحسِّن سير عمل المُطوِّر عن طريق إضافة ميّزات مثل الإكمال التلقائي. نُوصي لهذا السّبب باستخدام [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) بدلًأ من `PropTypes` للشيفرات الكبيرة.
 
 ## Flow {#flow}
 
-تُعدُّ [Flow](https://flow.org/) أداة تحقّق من الأنواع الثابتة لشيفرة JavaScript، وهي مُطوِّرة من قبل Facebook وتُستخدَم عادةً مع React. تسمح لك هذه الأداة بتوصيف المتغيّرات والدوال ومُكوِّنات React عن طريق صياغة خاصّة للأنواع، كما تسمح باكتشاف الأخطاء باكرًا. بإمكانك قراءة [هذه المقدّمة إلى Flow](https://flow.org/en/docs/getting-started/) وتعلّم مبادئها.
+تُعدُّ [Flow](https://flow.org/) أداة تحقّق من الأنواع الثابتة لشيفرة JavaScript، وهي مُطوَّرة من قبل Facebook وتُستخدَم عادةً مع React. تسمح لك هذه الأداة بتوصيف المتغيّرات والدوال ومُكوِّنات React عن طريق صياغة خاصّة للأنواع، كما تسمح باكتشاف الأخطاء باكرًا. بإمكانك قراءة [هذه المقدّمة إلى Flow](https://flow.org/en/docs/getting-started/) وتعلّم مبادئها.
 
 تحتاج لاستخدام Flow إلى ما يلي:
 
@@ -63,7 +63,7 @@ yarn run flow init
 npm run flow init
 ```
 
-سيُنشِئ هذا الأمر ملف إعدادت Flow.
+سيُنشِئ هذا الأمر ملف إعدادات Flow.
 
 ### إزالة صياغة Flow من الشيفرة المصرفة {#stripping-flow-syntax-from-the-compiled-code}
 
@@ -79,7 +79,7 @@ npm run flow init
 
 >ملاحظة:
 >
->هذه التعليمات ليست للمستخدمين الذين يبنون مشروعهم باستخدام الأمر create-react-app، حتى ولو كان هذا الأمر يستخدم Babel ضمنيًّا،  فهو مُعَد لفهم Flow مُسبقًا. اتبع هذه الخطوات فقط في حالة لم تكن تستخدم الأمر create-react-app.
+>هذه التعليمات ليست للمستخدمين الذين يبنون مشروعهم باستخدام الأمر create-react-app، حتى ولو كان هذا الأمر يستخدم Babel ضمنيًّا، فهو مُعَد لفهم Flow مُسبقًا. اتبع هذه الخطوات فقط في حالة لم تكن تستخدم الأمر create-react-app.
 
 إن أعددت Babel يدويًّا لمشروعك فستحتاج إلى تثبيت إعداد مُسبَق خاص من أجل Flow.
 
@@ -171,18 +171,18 @@ No errors!
 
 ### استخدام TypeScript مع الأمر Create React App {#using-typescript-with-create-react-app}
 
-لكتابة **مشروع جديد**  بإستخدام TypeScript, فاكتب ما يلي:
+لكتابة **مشروع جديد**  باستخدام TypeScript، اكتب ما يلي:
 
 ```bash
 npx create-react-app my-app --template typescript
 ```
 
-يمكنك أيضا إضافة TypeScript لمشروعك الذي تم بنائه سابقا بإستخدام Create React App التوثيق من خلال [هنا](https://facebook.github.io/create-react-app/docs/adding-typescript)
+يمكنك أيضا إضافة TypeScript لمشروعك الذي تم بنائه سابقا باستخدام Create React App، ألق نظرة على [هذا الرابط](https://facebook.github.io/create-react-app/docs/adding-typescript)
 
 
 >ملاحظة:
 >
-> ان كنت تعتمد على أمر create-react-app في بناء تطبقاتك, يمكنك تجاوز ما تبقى من الصفحة لأننا نقوم بشرح الإعدادات اليدوية للبناء.
+> إن كنت تعتمد على أمر create-react-app في بناء تطبقاتك، يمكنك تجاوز ما تبقى من الصفحة لأننا نقوم بشرح الإعدادات اليدوية للبناء.
 
 ### إضافة TypeScript إلى مشروعك {#adding-typescript-to-a-project}
 تُضاف TypeScript إلى مشروعك باستخدام أمر واحد.
@@ -198,7 +198,7 @@ yarn add --dev typescript
 ```bash
 npm install --save-dev typescript
 ```
-مبروك!بهذا يكون لديك آخر إصدار من TypeScript في مشروعك. يُتيح لك تثبيت TypeScript الوصول إلى الأمر `tsc`. قبل الإعداد فلنُضِف هذا الأمر إلى قسم "scripts" في ملف  `package.json`:
+مبارك! بهذا يكون لديك آخر إصدار من TypeScript في مشروعك. يُتيح لك تثبيت TypeScript الوصول إلى الأمر `tsc`. قبل الإعداد فلنُضِف هذا الأمر إلى قسم "scripts" في ملف  `package.json`:
 
 ```js{4}
 {
@@ -228,7 +228,7 @@ npx tsc --init
 
 بإمكانك أن ترى الآن العديد من الخيارات في هذا الملف والتي تستخدم لإعداد المُصرِّف. للحصول على شرح مفصّل عن كل الخيارات انتقل إلى هذه [الصفحة](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 
-سنتحدّث من بين هذه الخيارات عن `rootDir` و `outDir`. ففي الواقع يأخذ المُصرِّف ملفّات typescript ويولِّد من خلالها ملفّات JavaScript، ولكن لا نرغب بان تختلط تلك الملفّات الناتجة مع ملفّاتنا المصدرية.
+سنتحدّث من بين هذه الخيارات عن `rootDir` و `outDir`. ففي الواقع يأخذ المُصرِّف ملفّات typescript ويولِّد من خلالها ملفّات JavaScript، ولكن لا نرغب بأن تختلط تلك الملفّات الناتجة مع ملفّاتنا المصدرية.
 
 سنحل هذه المشكلة بخطوتين:
 * فلنُرتِّب أولًا بنية مشروعنا كالتالي، حيث سنضع كافّة ملفّات شيفرتنا المصدرية في المجلّد `src`:
@@ -297,7 +297,7 @@ yarn add --dev @types/react
 # npm
 npm i --save-dev @types/react
 ```
-- **التعريفات المحلية:** قد لا تُضمِّن بعض الحزم تعريفاتها ولا نجد لها تعريفًا في مستودع DefinitelyTyped. في تلك الحالة بإمكاننا الحصول على ملف تعريفات محلي. لفعل ذلك أنشئ الملف `declarations.d.ts` في المجلد الجذر الخاص بالملفات المصدرية. يبدو التعريف البسيط كما يلي:
+- **التعريفات المحلية:** قد لا تُضمِّن بعض الحزم تعريفاتها ولا نجد لها تعريفًا في مستودع DefinitelyTyped. في تلك الحالة بإمكاننا الحصول على ملف تعريفات محلي. لفعل ذلك أنشئ الملف `declarations.d.ts` في المجلد الجذر الخاص بالملفات المصدرية. يبدو التعريف الأولي كما يلي:
 
 ```typescript
 declare module 'querystring' {
@@ -314,15 +314,15 @@ declare module 'querystring' {
 
 ## Reason {#reason}
 
-لا تُعتبر [Reason](https://reasonml.github.io/) لغة جديدة، بل هي صياغة جديدة وسلسلة أدوات مدعومة من قبل لغة [OCaml](https://ocaml.org/). تعطي Reason لغة OCaml صياغة مألوفة موجهة لمبرمجي JavaScript مع دعم npm و Yarn.
+لا تُعتبر [Reason](https://reasonml.github.io/) لغة جديدة، بل هي صياغة جديدة وسلسلة أدوات مدعومة من قبل لغة [OCaml](https://ocaml.org/). تعطي Reason لغة OCaml صياغة مألوفة موجهة لمبرمجي JavaScript مع دعم npm وYarn.
 
 تُطوَّر Reason من قبل Facebook وتُستخدَم في بعض منتجاتها مثل Messenger. تُعتَبر هذه الصياغة تجريبية نوعًا ما ولكن لها [ارتباطات قوية مع React](https://reasonml.github.io/reason-react/) ومدعومة من قبل Facebook و[مجتمع كبير على github](https://reasonml.github.io/docs/en/community.html).
 
 ## Kotlin {#kotlin}
 
-[Kotlin](https://kotlinlang.org/) هي لغة برمجة ثابتة الأنواع (statically typed أي لا تسمح بتغيير أنواع المتغيرات في زمن التنفيذ) مُطوَّرة من قبل JetBrains. تتضمّن المنصات الموجهة لها نظام الأندرويد، وبيئة JVM، و LLVM، و [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html).
+[Kotlin](https://kotlinlang.org/) هي لغة برمجة ثابتة الأنواع (statically typed أي لا تسمح بتغيير أنواع المتغيرات في زمن التنفيذ) مُطوَّرة من قبل JetBrains. تتضمّن المنصات الموجهة لها نظام الأندرويد، وبيئة JVM، وLLVM، و[JavaScript](https://kotlinlang.org/docs/reference/js-overview.html).
 
-تُطوِّر JetBrains أدوات عديدة مُخصّصة لمجتمع React، منها [React bindings](https://github.com/JetBrains/kotlin-wrappers) و [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). تُساعِدك هذه الأداة الأخيرة على بناء تطبيقات React باستخدام Kotlin بدون الحاجة لإعدادات.
+تُطوِّر JetBrains أدوات عديدة مُخصّصة لمجتمع React، منها [React bindings](https://github.com/JetBrains/kotlin-wrappers) و[Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). تُساعِدك هذه الأداة الأخيرة على بناء تطبيقات React باستخدام Kotlin بدون الحاجة لإعدادات.
 
 ## Other Languages {#other-languages}
 
