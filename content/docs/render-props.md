@@ -2,8 +2,6 @@
 id: render-props
 title: خاصيات التصيير
 permalink: docs/render-props.html
-prev: higher-order-components.html
-next: integrating-with-other-libraries.html
 ---
 
 يُشير مصطلح [خاصيّة التصيير (render prop)](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) إلى تقنية بسيطة لمشاركة الشيفرة بين مكوّنات React باستخدام خاصية والتي قيمتها هي عبارة عن دالة.
