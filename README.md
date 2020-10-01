@@ -1,4 +1,4 @@
-# ar.reactjs.org
+# ar.reactjs.org - An Amazing Project
 
 This repo contains the source code and documentation powering [ar.reactjs.org](https://ar.reactjs.org). (Work in Progress)
 
