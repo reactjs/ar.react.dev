@@ -39,7 +39,11 @@ class Welcome extends React.Component {
 
 ### دورة حياة المكوّن {#the-component-lifecycle}
 
+<<<<<<< HEAD
 يمتلك كل مكوّن توابع دورة حياة متعدّدة والتي تستطيع تجاوزها لتنفيذ الشيفرة في أوقات مُحدَّدة.  **تستطيع استخدام  [مُخطّط دورة حياة المكوّنات هذا](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)** في القائمة التالية سنكتب أسماء توابع دورة الحياة الشائعة بالخط العريض. أما البقية فهي موجودة لحالات الاستخدام النادرة نسبيًّا.
+=======
+Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 #### الوصل (mounting) {#mounting}
 
@@ -109,7 +113,11 @@ class Welcome extends React.Component {
 
 ### توابع دورة الحياة شائعة الاستخدام {#commonly-used-lifecycle-methods}
 
+<<<<<<< HEAD
 تُغطّي التوابع في هذا القسم معظم حالات الاستخدام التي ستصادفها أثناء إنشاء مكوّنات React. **للحصول على مرجع لمخطط بصري انظر إلى [مخطط دورة حياة المكوّنات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+=======
+The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 ### `()render` {#render}
 
@@ -245,7 +253,11 @@ componentWillUnmount()
 
 ### توابع دورة الحياة نادرة الاستخدام {#rarely-used-lifecycle-methods}
 
+<<<<<<< HEAD
 تستخدم التوابع المذكورة في هذا القسم في حالات نادرة، وهي مفيدة من حين لآخر، ولكن لن تحتاجها معظم مكوّناتك.**تستطيع أن ترى معظم هذه التوابع في [مخطط توابع دورة حياة المكوّنات](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) إن ضغطت على مربع التأشير "Show less common lifecycles" الموجود في الأعلى.**
+=======
+The methods in this section correspond to uncommon use cases. They're handy once in a while, but most of your components probably don't need any of them. **You can see most of the methods below on [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) if you click the "Show less common lifecycles" checkbox at the top of it.**
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 
 ### `()shouldComponentUpdate` {#shouldcomponentupdate}
@@ -278,8 +290,13 @@ static getDerivedStateFromProps(props, state)
 
 يوجد هذا التابع من أجل  [استخدامات نادرة](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) ندما تعتمد الحالة على التغييرات في الخاصيّات مع مرور الوقت. على سبيل المثال قد يكون من المفيد تنفيذ المكوّن `<Transition>` والذي يقارن بين الأبناء السابقين واللاحقين ليقرر ما ينبغي تحريكه منها للداخل وللخارج.
 
+<<<<<<< HEAD
 يؤدي اشتقاق الحالة إلى تعقيد الشيفرة وصعوبة التفكير بمكوّناتك.  
 [احرص على أن تكون على اطلاع على البدائل البسيطة له:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+=======
+Deriving state leads to verbose code and makes your components difficult to think about.
+[Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 * إن أردت إنجاز **تأثير جانبي (side effect)** (مثل الحصول على البيانات أو التحريك) (مثل الحصول على البيانات أو التحريك) استجابةً للتغيّر في الخاصيّات، فاستخدم تابع دورة الحياة [`componentDidUpdate`](#componentdidupdate).
 
@@ -322,9 +339,15 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 للمزيد من المعلومات، انظر إلى [*التعامل مع الأخطاء في React 16*](/blog/2017/07/26/error-handling-in-react-16.html).
 
+<<<<<<< HEAD
 > ملاحظة
 > 
 > تُمسِك حدود الأخطاء فقط الأخطاء في المستويات الأدنى منها في شجرة المكوّنات، فلا يستطيع حد الخطأ أن يُمسِك بالأخطاء الحاصلة ضمنه.
+=======
+> Note
+>
+> Error boundaries only catch errors in the components **below** them in the tree. An error boundary can’t catch an error within itself.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 ### `()static getDerivedStateFromError` {#static-getderivedstatefromerror}
 ```javascript
@@ -351,7 +374,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -407,15 +430,22 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
 
+<<<<<<< HEAD
 > ملاحظة
 > 
 > عند حدوث أي خطأ، يمكنك أن تصيير واجهة مستخدم احتياطية (fallback UI) مع التابع `componentDidCatch()` عبر استدعاء `setState`, ولكن هذا السلوك سيجري إهماله في إصدار مستقبلي.
 > استعمل `static getDerivedStateFromError()` لمعالجة التصيير الاحتياطي عوضًا عن ذلك.
+=======
+> Note
+>
+> In the event of an error, you can render a fallback UI with `componentDidCatch()` by calling `setState`, but this will be deprecated in a future release.
+> Use `static getDerivedStateFromError()` to handle fallback rendering instead.
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 * * *
 

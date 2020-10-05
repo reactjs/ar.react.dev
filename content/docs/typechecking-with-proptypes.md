@@ -30,7 +30,11 @@ Greeting.propTypes = {
 };
 ```
 
+<<<<<<< HEAD
 في هذا المثال، نستخدم مكون فئة، ولكن يمكن أيضًا تطبيق نفس الوظيفة على مكونات الوظيفة، أو المكونات التي تم إنشاؤها بواسطة [`React.memo`](https://reactjs.org/docs/react-api.html#reactmemo) أو [`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref).
+=======
+In this example, we are using a class component, but the same functionality could also be applied to function components, or components created by [`React.memo`](/docs/react-api.html#reactmemo) or [`React.forwardRef`](/docs/react-api.html#reactforwardref).
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 `PropTypes` يصدر مجموعة من أدوات التحقق التي يمكن استخدامها للتأكد من صحة البيانات التي تتلقاها. في هذا المثال نحن نستعمل `PropTypes.string`. عندما يتم توفير قيمة غير مقبولة لخاصية (props)، سيظهر تحذير في وحدة التحكم (JavaScript Console). لأسباب تتعلق بأداء التطبيق، يتم التحقق من `propTypes` في وضع التطوير فقط (Development mode).
 

@@ -152,7 +152,24 @@ ReactDOM.render(
 
 ولذلك، إذا كان الشرط يعطي الناتج `true`، فإن العنصر المحدد بعد `&&` سوف يظهر في المخرجات. وإذا كان الناتج `false`، فإن React سوف تهمل العنصر وتتخطّاه.
 
+<<<<<<< HEAD
 ### التعبير الشرطي المباشر (If-Else) باستخدام المعامل الشرطي {#inline-if-else-with-conditional-operator}
+=======
+Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
+
+```javascript{2,5}
+render() {
+  const count = 0;
+  return (
+    <div>
+      { count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
+
+### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 
 طريقه أخرى للتصيير الشرطي المباشر في JSX هي استخدام المعامل الشرطي [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 
