@@ -85,6 +85,7 @@ permalink: community/meetups.html
 * [تامبا (فلوريدا)](https://www.meetup.com/ReactJS-Tampa-Bay/)
 * [توسان (أريزونا)](https://www.meetup.com/Tucson-ReactJS-Meetup/)
 * [دالاس (تكساس)](https://www.meetup.com/ReactDallas/)
+* [دالاس، تكساس - [Remote] React JS](https://www.meetup.com/React-JS-Group/)
 * [سان رامون (كاليفورنيا) - مطوري تري-فالي (TriValley Coders)](https://www.meetup.com/trivalleycoders/)
 * [ساكرامنتو (كاليفورنيا)](https://www.meetup.com/Sacramento-ReactJS-Meetup/)
 * [سانتا مونيكا (كاليفورنيا)](https://www.meetup.com/Los-Angeles-ReactJS-User-Group/)
@@ -162,7 +163,7 @@ permalink: community/meetups.html
 * [ليما](https://www.meetup.com/ReactJS-Peru/)
 
 ## تركيا {#turkey}
-* [اسطنبول](https://www.meetup.com/ReactJS-Istanbul/)
+* [اسطنبول](https://kommunity.com/reactjs-istanbul)
 
 ## سنغافورة {#singapore}
 * [سنغافورة - React دراية](https://reactknowledgeable.org/)
@@ -181,7 +182,9 @@ permalink: community/meetups.html
 * [مونتريال - React Native](https://www.meetup.com/fr-FR/React-Native-MTL)
 
 ## كولومبيا {#colombia}
+* [بوغوتا](https://www.meetup.com/meetup-group-iHIeHykY/)
 * [ميديلين](https://www.meetup.com/React-Medellin/)
+* [كالي](https://www.meetup.com/reactcali/)
 
 ## ماليزيا {#malaysia}
 * [بينانغ](https://www.facebook.com/groups/reactpenang/)

@@ -12,30 +12,30 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-### React Native EU 2020 {#react-native-eu-2020}
-3-4 سبتمبر 2020 مؤتمر عبر الإنترنت
-
-[موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
-
-### render(ATL) 2020 {#render-atlanta-2020} 
-من 13 إلى 15 سبتمبر 2020. أتلانتا ، جورجيا ، الولايات المتحدة الأمريكية.
-
-[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
-
 ### React Summit 2020 {#react-summit-2020}
-7 صباحًا بتوقيت المحيط الهادي / 1 مساءً بتوقيت شرق الولايات المتحدة / 4 مساءً بتوقيت وسط أوروبا الصيفي 15-16 أكتوبر 2020 - مؤتمر عبر الإنترنت
+15-16 أكتوبر 2020 ، 7 صباحًا بتوقيت المحيط الهادي / 10 صباحًا بتوقيت شرق الولايات المتحدة / 4 مساءً بتوقيت وسط أوروبا - عبر الإنترنت
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
 
-### React Day Berlin 2020 {#react-day-berlin-2020}
-27-25 نوفمبر 2020 في برلين ، ألمانيا
+### React Conf Brasil 2020 {#react-conf-brasil-2020}
+21 نوفمبر 2020  - عبر الإنترنت
 
-[موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [فيديوهات](https://www.youtube.com/reactdayberlin)  
+[موقع الويب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh/)
 
 ### React Next 2020 {#react-next-2020}
-1 ديسمبر، 2020 تل أبيب، إسرائيل
+1 ديسمبر، 2020 - عبر الإنترنت
 
-[Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/)
+[موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/)
+
+### render(ATL) 2021 {#render-atlanta-2021} 
+من 13 إلى 15 سبتمبر 2021. أتلانتا ، جورجيا ، الولايات المتحدة الأمريكية.
+
+[موقع الويب](https://renderatl.com) - [تويتر](https://twitter.com/renderATL) - [انستقرام](https://www.instagram.com/renderatl/) - [فيس بوك](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
+
+### React India 2021 {#react-india-2021}
+November 12-13, 2021 in Mumbai, India
+
+[موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [فيديوهات](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
 ## المؤتمرات السابقة {#past-conferences}
 
@@ -453,3 +453,8 @@ redirect_from:
 14-15 مايو 2020 في باريس ، فرنسا
 
 [موقع الويب](https://www.react-europe.org) - [تويتر](https://twitter.com/ReactEurope) - [فيس بوك](https://www.facebook.com/ReactEurope) - [يوتيوب](https://www.youtube.com/c/ReacteuropeOrgConf)
+
+### React Native EU 2020 {#react-native-eu-2020}
+3-4 سبتمبر 2020 مؤتمر عبر الإنترنت
+
+[موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)

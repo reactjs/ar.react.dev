@@ -18,6 +18,8 @@ permalink: community/podcasts.html
 
 - [React Native Radio](https://devchat.tv/react-native-radio).
 
+- [React Wednesdays](https://www.telerik.com/react-wednesdays) - البث المباشر الأسبوعي مع الأفضل والأذكى في عالم React
+
 ## الحلقات {#episodes}
 
 - [CodeWinds Episode 4](https://codewinds.com/podcast/004.html) - بيت هانت يتحدث مع جيف باركوسكي حول React.
