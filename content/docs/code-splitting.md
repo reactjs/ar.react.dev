@@ -78,23 +78,11 @@ import("./math").then(math => {
 });
 ```
 
-<<<<<<< HEAD
-عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App، فهذا الإعداد موجود لديك مُسبقًا و [تستطيع استخدامه مباشرةً](https://facebook.github.io/create-react-app/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
-=======
-When Webpack comes across this syntax, it automatically starts code-splitting
-your app. If you're using Create React App, this is already configured for you
-and you can [start using it](https://create-react-app.dev/docs/code-splitting/) immediately. It's also supported
-out of the box in [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
->>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
+عندما يأتي Webpack على هذه الصياغة سيبدأ بتقسيم شيفرة تطبيقك تلقائيًّا. إن كنت تستخدم Create React App، فهذا الإعداد موجود لديك مُسبقًا و [تستطيع استخدامه مباشرةً](https://create-react-app.dev/docs/code-splitting) وهو أيضًا موجود بشكل جاهز عندما تستخدم [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
 
 إن كنت تُعِد Webpack بنفسك فستحتاج لقراءة [ دليل Webpack حول تقسيم الشيفرة](https://webpack.js.org/guides/code-splitting/). يجب أن تبدو إعدادات Webpack لديك [مثل هذا](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
-<<<<<<< HEAD
-عند استخدامك [Babel](https://babeljs.io/)، يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية دون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
-=======
-When using [Babel](https://babeljs.io/), you'll need to make sure that Babel can
-parse the dynamic import syntax but is not transforming it. For that you will need [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import).
->>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
+عند استخدامك [Babel](https://babeljs.io/)، يجب أن تتأكد من قدرته على تصريف صياغة الاستيراد `import()‎` الديناميكية دون تحويلها. ستحتاج من أجل ذلك إلى هذه الإضافة [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
