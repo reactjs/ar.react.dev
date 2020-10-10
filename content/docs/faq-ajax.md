@@ -93,7 +93,7 @@ function MyComponent() {
 
   // ملاحظة: تعني المصفوفة الفارغة []
   // سيتم تشغيل useEffect مرة واحدة
-  // بطريقة مشابه لـ ComponDidMount
+  // بطريقة مشابه لـ componentDidMount
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
