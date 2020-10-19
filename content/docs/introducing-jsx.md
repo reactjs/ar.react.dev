@@ -177,8 +177,4 @@ const element = {
 
 >**ملاحظة:**
 >
-<<<<<<< HEAD
->نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة.
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 4e6cee1f82737aa915afd87de0cd4a8393de3fc8
+>نوصي باستخدام [تعريف لغة Babel](https://babeljs.io/docs/en/next/editors) إلى المُحرِّر الذي تستخدمه بحيث يتعرَّف على صياغة شيفرة JSX و ES6 ويُظهرها بالألوان المناسبة.
