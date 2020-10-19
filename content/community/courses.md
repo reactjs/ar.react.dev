@@ -50,12 +50,8 @@ permalink: community/courses.html
 
 - [خالص React](https://codewithmosh.com/p/mastering-react/) - قم ببناء تطبيقات تفاعلية باستخدام مكتبة React
 
-<<<<<<< HEAD
 - [React Tutorial](https://react-tutorial.app) - تعلم React خطوة بخطوة في بيئة تفاعلية باستخدام البطاقات التعليمية.
 
 - [الطريق إلى React](https://www.roadtoreact.com/) - رحلتك لإتقان React بإستخدام JavaScript.
-=======
-- [Road to React](https://www.roadtoreact.com/) - Your journey to master React in JavaScript.
 
-- [Epic React](https://epicreact.dev/) - Confidently Ship Well-Architected Production Ready React Apps Like a Pro
->>>>>>> 4e6cee1f82737aa915afd87de0cd4a8393de3fc8
+- [Epic React](https://epicreact.dev/) - اشحن بثقة تطبيقات React جاهزة للإنتاج تمت هندستها جيدًا مثل المحترفين
