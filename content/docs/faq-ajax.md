@@ -100,7 +100,7 @@ function MyComponent() {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result.items);
+          setItems(result);
         },
        	// ملاحظة: من المهم التعامل مع الأخطاء هنا
         // catch() بدلًا من من استخدام الكتلة 
