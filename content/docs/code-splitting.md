@@ -6,9 +6,7 @@ permalink: docs/code-splitting.html
 
 ## التحزيم (Bundling) {#bundling}
 
-تكون معظم الملفّات في تطبيقات React مُحزَّمة باستخدام أدوات مثل
-[Webpack](https://webpack.js.org/) أو [Rollup](https://rollupjs.org/) أو [Browserify](http://browserify.org/).
-التحزيم هو عملية تتبّع الملفّات المستوردة ودمجها في ملف واحد وهو الحزمة (Bundle). يُمكِن بعدها تضمين هذه الحزمة في صفحة ويب لتحميل كامل التطبيق دفعة واحدة.
+تكون معظم الملفّات في تطبيقات React مُحزَّمة باستخدام أدوات مثل [Webpack](https://webpack.js.org/) أو [Rollup](https://rollupjs.org/) أو [Browserify](http://browserify.org/). التحزيم هو عملية تتبّع الملفّات المستوردة ودمجها في ملف واحد وهو الحزمة (Bundle). يُمكِن بعدها تضمين هذه الحزمة في صفحة ويب لتحميل كامل التطبيق دفعة واحدة.
 
 #### مثال {#example}
 
@@ -44,17 +42,13 @@ console.log(add(16, 26)); // 42
 
 إن كنت تستخدم [Create React App](https://create-react-app.dev/) ،[Next.js](https://nextjs.org/) ،[Gatsby](https://www.gatsbyjs.org/)، أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
 
-أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل
-[التثبيت](https://webpack.js.org/guides/installation/) و
-[دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
+أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل [التثبيت](https://webpack.js.org/guides/installation/) و [دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
 
 ## تقسيم الشيفرة {#code-splitting}
 
 يكون التحزيم رائعًا، ولكن عندما يكبر تطبيقك ستكبر الحزمة لديك أيضًا، خاصّة إن كنت تُضمِّن مكتبات طرف ثالث كبيرة الحجم. يجب الانتباه إلى الشيفرة التي تُضمِّنها في حزمتك لكي لا تجعلها كبيرة من غير قصد لدرجة أن يستغرق تطبيقك زمنًا طويلًا للتحميل.
 
-لتجنّب الحصول على حزمة كبيرة من الأفضل استباق حصول المشكلة والبدء في تقسيم حزمتك.
-تقسيم الشيفرة هو ميّزة مدعومة من قبل المُحزِّمات مثل [Webpack](https://webpack.js.org/guides/code-splitting/) ،[Rollup](https://rollupjs.org/guide/en/#code-splitting) و Browserify (عبر
-[factor-bundle](https://github.com/browserify/factor-bundle)) والتي تستطيع إنشاء حزم متعددة يُمكِن تحميلها بشكل ديناميكي في زمن التنفيذ.
+لتجنّب الحصول على حزمة كبيرة من الأفضل استباق حصول المشكلة والبدء في تقسيم حزمتك. تقسيم الشيفرة هو ميّزة مدعومة من قبل المُحزِّمات مثل [Webpack](https://webpack.js.org/guides/code-splitting/) ،[Rollup](https://rollupjs.org/guide/en/#code-splitting) و Browserify (عبر [factor-bundle](https://github.com/browserify/factor-bundle)) والتي تستطيع إنشاء حزم متعددة يُمكِن تحميلها بشكل ديناميكي في زمن التنفيذ.
 
 يُساعدك تقسيم شيفرة تطبيقك على إجراء تحميل مُتأخّر (Lazy Load) للأشياء التي يحتاجها المستخدم حاليًّا فقط، ممّا يُحسِّن بشكل كبير أداء تطبيقك. وفي حين أنّك لم تُقلِّل الحجم الكلي لشيفرة تطبيقك، فقد تجنّبت تحميل شيفرة قد لا يحتاجها المستخدم أبدًا وقلّلتَ حجم الشيفرة التي تحتاج إلى تحميلها في البداية.
 

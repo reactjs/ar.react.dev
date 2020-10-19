@@ -53,3 +53,5 @@ permalink: community/courses.html
 - [React Tutorial](https://react-tutorial.app) - تعلم React خطوة بخطوة في بيئة تفاعلية باستخدام البطاقات التعليمية.
 
 - [الطريق إلى React](https://www.roadtoreact.com/) - رحلتك لإتقان React بإستخدام JavaScript.
+
+- [Epic React](https://epicreact.dev/) - اشحن بثقة تطبيقات React جاهزة للإنتاج تمت هندستها جيدًا مثل المحترفين
