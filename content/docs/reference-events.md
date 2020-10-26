@@ -34,42 +34,11 @@ string type
 
 > ملاحظة:
 >
-<<<<<<< HEAD
->  بدءًا من الإصدار v0.14 لن تؤدي إعادة `false` من مُعالِج الحدث إلى إيقاف انتشار الحدث، بل يجب إطلاق ذلك يدويًّا عن طريق التابع `e.stopPropagation()`‎ أو `e.preventDefault()`‎ بحسب ما هو ملائم.
-
-### مسح الأحداث وإعادة تدويرها {#event-pooling}
-
-يُعاد استخدام الكائن `SyntheticEvent` وتُعيَّن كافّة خاصيّاته إلى القيمة `null` بعد استدعاء الحدث. يتم ذلك لأسباب تتعلّق بالأداء. وكنتيجة لهذا لا يمكنك الوصول إلى الحدث بطريقة غير متزامنة:
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // Won't work. this.state.clickEvent will only contain null values.
-  this.setState({clickEvent: event});
-
-  // You can still export event properties.
-  this.setState({eventType: event.type});
-}
-```
-=======
-> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> اعتبارًا من الإصدار 17, `e.persist()` لا تفعل أي شيء لأن `SyntheticEvent` لم تعد [مجمعة](/docs/legacy-event-pooling.html).
 
 > ملاحظة:
 >
-<<<<<<< HEAD
-> إن أردت الوصول إلى خاصيّات الحدث بطريقة غير متزامنة فيجب عليك استدعاء التابع `event.persist()`‎ على الحدث والذي سيزيل الحدث المصطنع ويسمح للمراجع التي تشير للحدث بأن تحتفظ بها شيفرة المستخدم.
-=======
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> بدءًا من الإصدار v0.14 لن تؤدي إعادة `false` من مُعالِج الحدث إلى إيقاف انتشار الحدث، بل يجب إطلاق ذلك يدويًّا عن طريق التابع `e.stopPropagation()`‎ أو `e.preventDefault()`‎ بحسب ما هو ملائم.
 
 ## الأحداث المدعومة {#supported-events}
 
@@ -384,15 +353,12 @@ DOMTouchList touches
 onScroll
 ```
 
-<<<<<<< HEAD
-الخاصيّات:
-=======
 >Note
 >
->Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+> اعتبارًا من الإصدار 17, حدث `onScroll` **does not bubble** في React. حيث يطابق هذا سلوك المتصفح ويمنع الارتباك عند قيام عنصر متداخل قابل للتمرير بإطلاق أحداث على أحد العناصر الأخرى.
 
-Properties:
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+
+الخاصيّات:
 
 ```javascript
 number detail
