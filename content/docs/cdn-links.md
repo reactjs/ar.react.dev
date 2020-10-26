@@ -20,11 +20,7 @@ next: release-channels.html
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
-<<<<<<< HEAD
-لتحميل إصدار مُعيَّن من react و react-dom بَدّل الرقم 16 إلى رقم الإصدار المطلوب.
-=======
-To load a specific version of `react` and `react-dom`, replace `17` with the version number.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+لتحميل إصدار مُعيَّن من react و react-dom بَدّل الرقم `17` إلى رقم الإصدار المطلوب.
 
 ### لماذا خاصية `crossorigin` ؟ {#why-the-crossorigin-attribute}
 
