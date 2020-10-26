@@ -383,7 +383,6 @@ let container = null;
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement("div");
-  // container *must* be attached to document so events work correctly.
   document.body.appendChild(container);
 });
 
@@ -422,7 +421,7 @@ it("changes value when clicked", () => {
 });
 ```
 
-يتم وصف أحداث DOM المختلفة وخصائصها في [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). لاحظ أنك بحاجة إلى تمرير `{bubbles: true}` في كل حدث تقوم بإنشائه للوصول إلى مستمع React لأن React يفوض الأحداث تلقائيًا إلى المستند.
+يتم وصف أحداث DOM المختلفة وخصائصها في [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). لاحظ أنك بحاجة إلى تمرير `{bubbles: true}` في كل حدث تقوم بإنشائه للوصول إلى مستمع React لأن React يفوض الأحداث تلقائيًا إلى المصدر.
 
 > ملاحظة:
 >
