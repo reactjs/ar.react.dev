@@ -53,10 +53,17 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 ```html{5,6,9}
   <!-- ... HTML محتوى ... -->
 
+<<<<<<< HEAD
   <!-- React تحميل -->
   <!-- "development.js" مكان "production.min.js" ملاحظة: عند النشر، بدل -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
   <!-- الخاص بنا React تحميل مكون. -->
   <script src="like_button.js"></script>
@@ -85,7 +92,13 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
+<<<<<<< HEAD
 مهمة هذين السطرين هي العثور على العنصر `<div>` الذي أضفناه إلى صفحة HTML في الخطوة الأولى ثم إظهار الزر "Like" - الذي يمثِّل أحد مكونات React - داخله.
+=======
+These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it.
+
+### That's It! {#thats-it}
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ### انتهينا! {#thats-it}
 
@@ -114,8 +127,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 إن صغَّرت شيفرات التطبيق مسبقًا، **فسيكون موقعك جاهزًا للنشر** على البيئة الإنتاجية بعد التأكد من أن شيفرة HTML التي يراد نشرها تُحمِّل إصدار React الإنتاجي (أي الذي ينتهي بـ `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 إن لم تعرف كيفية تنفيذ خطوة التصغير، [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -183,7 +196,7 @@ return (
 أنشئ مجلدًا باسم `src` ثم نفذ الأمر التالي في الطرفية:
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 >ملاحظة

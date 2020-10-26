@@ -43,8 +43,8 @@ npm run build
  نُوفِّر إصدارات جاهزة للإنتاج من React و React DOM كملف واحد فقط:
 
 ```html
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
 تذكّر أنّ ملفّات React التي تنتهي باللاحقة `.production.min.js` هي فقط المُلائِمة للإنتاج.
@@ -74,11 +74,19 @@ brunch build -p
  للحصول على النسخة الأكثر كفاءةً للإنتاج من أجل Browserify، ثبِّت بعض الإضافات:
 
 ```
+<<<<<<< HEAD
 # إن كنت تستخدم npm
 npm install --save-dev envify terser uglifyify 
 
 # إن كنت تستخدم Yarn
 yarn add --dev envify terser uglifyify 
+=======
+# If you use npm
+npm install --save-dev envify terser uglifyify
+
+# If you use Yarn
+yarn add --dev envify terser uglifyify
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 ```
 
 لإنشاء نُسخة للإنتاج، تأكَّد من أن تُضيف هذه المٌحَوّلات **(الترتيب مهم)**:
@@ -387,7 +395,11 @@ function updateColorMap(colormap) {
 }
 ```
 
+<<<<<<< HEAD
 تم اصدار هذه الخاصية في JavaScript ES2018.
+=======
+This feature was added to JavaScript in ES2018.
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 إن كنتَ تستخدم Create React App فسيكون التابع `Object.assign` وصيغة نشر الكائن متوفرة بشكلٍ افتراضي. 
 
