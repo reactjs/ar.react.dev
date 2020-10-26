@@ -421,11 +421,7 @@ it("changes value when clicked", () => {
 });
 ```
 
-<<<<<<< HEAD
-يتم وصف أحداث DOM المختلفة وخصائصها في [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). لاحظ أنك بحاجة إلى تمرير `{bubbles: true}` في كل حدث تقوم بإنشائه للوصول إلى مستمع React لأن React يفوض الأحداث تلقائيًا إلى المستند.
-=======
-Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+يتم وصف أحداث DOM المختلفة وخصائصها في [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). لاحظ أنك بحاجة إلى تمرير `{bubbles: true}` في كل حدث تقوم بإنشائه للوصول إلى مستمع React لأن React يفوض الأحداث تلقائيًا إلى المصدر.
 
 > ملاحظة:
 >
