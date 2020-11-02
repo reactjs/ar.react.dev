@@ -130,11 +130,7 @@ const MyContext = React.createContext(defaultValue);
 
 وهو مُكوِّن React الذي يسمح للمستهلك Consumer بأن يُشارك في تغييرات السياق.
 
-<<<<<<< HEAD
 تقبل الخاصية `value` بأن تعطى للمكونات المتستهلكة `consuming components` التي تنحدر من مزود. من الممكن لمزود واحد فقط أن يربط مع عدة مستهلكات. يمكن تداخل المزودات لتجاوز القيم بشكل أعمق داخل الشجرة.
-=======
-The Provider component accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 كل المستهلكات `Consumers` المنحدرة عن المُزوِّد ستُعيد التصيير عندما تتغير قيمة الخاصيّة `value` للمُزوّد. لا يخضع الانتشار من المُزوّد إلى المستهلكات المنحدرة عنه (بما فيها [`.contextType`](#classcontexttype) و[`useContext`](/docs/hooks-reference.html#usecontext)) إلى التابع `shouldComponentUpdate`، لذا يُحدَّث المستهلك حتى ولو كان المكوّن الأب غير خاضع للتحديث.
 
