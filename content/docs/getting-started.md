@@ -37,7 +37,7 @@ redirect_from:
 
 ### التجربة على الإنترنت {#online-playgrounds}
 
-إن كنت مهتمًا بتجربة React والتعامل معها، يمكنك استخدام بيئة جاهزة لتجربة الشيفرة على الإنترنت. جرّب مثال "أهلًا بالعالم" (Hello World) على موقع [CodePen](codepen://hello-world) أو موقع [CodeSandbox](https://codesandbox.io/s/new) أو موقع [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) أو موقع [Stackblitz](https://stackblitz.com/fork/react).
+إن كنت مهتمًا بتجربة React والتعامل معها، يمكنك استخدام بيئة جاهزة لتجربة الشيفرة على الإنترنت. جرّب مثال "أهلًا بالعالم" (Hello World) على موقع [CodePen](codepen://hello-world) أو موقع [CodeSandbox](https://codesandbox.io/s/new) أو موقع [Stackblitz](https://stackblitz.com/fork/react).
 
 إن كنت تُفضِّل استخدام مُحرِّر النصوص الخاص بك، يمكنك تحميل [ملف HTML هذا](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) وتعديله ومن ثمّ فتحه عن طريق نظام الملفّات المحلّي في متصفّحك. يُؤدِّي هذا إلى بطء في تحويل الشّيفرة أثناء زمن التنفيذ لذلك لا تستخدم هذه الطريقة أثناء إنتاجك لمشاريع حقيقيّة.
 

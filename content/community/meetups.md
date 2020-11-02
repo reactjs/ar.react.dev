@@ -117,6 +117,7 @@ permalink: community/meetups.html
 * [سان دييغو ، كاليفورنيا - سان دييغو JS](https://www.meetup.com/sandiegojs/)
 
 ## اليونان {#greece}
+* [أثينا](https://www.meetup.com/React-To-React-Athens-MeetUp/)
 * [سلانيك](https://www.meetup.com/Thessaloniki-ReactJS-Meetup/)
  
 ## إنجلترا (المملكة المتحدة) {#england-uk}
