@@ -16,7 +16,7 @@ permalink: community/podcasts.html
 
 - [React 30](https://react30.com/) - بودكاست مدته 30 دقيقة عن React (إنتقل إلى [React Podcast](https://reactpodcast.simplecast.fm/)).
 
-- [React Native Radio](https://devchat.tv/react-native-radio).
+- [React Native Radio](https://reactnativeradio.com) - استكشاف React Native، باستضافة [Infinite Red](https://infinite.red)
 
 - [React Wednesdays](https://www.telerik.com/react-wednesdays) - البث المباشر الأسبوعي مع الأفضل والأذكى في عالم React
 
