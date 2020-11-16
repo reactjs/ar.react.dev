@@ -318,7 +318,11 @@ function getDisplayName(WrappedComponent) {
 
 ### لا تستخدم المكوّنات ذات الترتيب الأعلى بداخل تابع التصيير {#dont-use-hocs-inside-the-render-method}
 
+<<<<<<< HEAD
 تستخدم خوارزمية المقارنة في React (وتُدعى reconciliation أي المطابقة) هوية المكوّن لتحديد إذا ما كان يجب عليها تحديث الشجرة الفرعية الحالية أو رميها ووصل واحدة جديدة. إن كان المكوّن العائد من التابع `render` مُطابِقًا تمامًا (`===`) للمكوّن من التصيير السابق، فستُحدِّث React الشجرة الفرعية عن طريق مقارنتها مع الجديدة، إن لم تكونا متطابقتين فستفصل الشجرة الفرعية السابقة بشكل كامل.
+=======
+React's diffing algorithm (called [Reconciliation](/docs/reconciliation.html)) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
+>>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 
 لا تحتاج عادةً إلى التفكير في هذا، ولكنّه يهم في المكوّنات ذات الترتيب الأعلى لأنه يعني أنّك لا تستطيع تطبيقها على مكوّن بداخل تابع التصيير لمكوّن ما:
 
