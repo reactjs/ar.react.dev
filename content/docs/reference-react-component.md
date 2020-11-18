@@ -412,6 +412,12 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+تختلف نسخ الإنتاج والتطوير React قليلاً في الطريقة `componentDidCatch()` معالجة الأخطاء.
+
+في نسخة التطوير، ستظهر الأخطاء في `window`، هذا يعني أن أي `window.onerror` او `window.addEventListener('error', callback)` سيعترض الأخطاء التي تم اكتشافها من خلال `componentDidCatch()`.
+
+اما في نسخة الإنتاج،لن تظهر الأخطاء، مما يعني أن أي معالج أخطاء أعلى سيتلقى فقط أخطاء لم يتم اكتشافها من خلال `componentDidCatch()`.
+
 > ملاحظة
 >
 > عند حدوث أي خطأ، يمكنك أن تصيير واجهة مستخدم احتياطية (fallback UI) مع التابع `componentDidCatch()` عبر استدعاء `setState`, ولكن هذا السلوك سيجري إهماله في إصدار مستقبلي.
