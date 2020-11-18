@@ -12,14 +12,6 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-<<<<<<< HEAD
-### React Summit 2020 {#react-summit-2020}
-15-16 أكتوبر 2020 ، 7 صباحًا بتوقيت المحيط الهادي / 10 صباحًا بتوقيت شرق الولايات المتحدة / 4 مساءً بتوقيت وسط أوروبا - عبر الإنترنت
-
-[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
-
-=======
->>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 ### React Conf Brasil 2020 {#react-conf-brasil-2020}
 21 نوفمبر 2020  - عبر الإنترنت
 
@@ -460,13 +452,9 @@ November 12-13, 2021 in Mumbai, India
 ### React Native EU 2020 {#react-native-eu-2020}
 3-4 سبتمبر 2020 مؤتمر عبر الإنترنت
 
-<<<<<<< HEAD
 [موقع الويب](https://www.react-native.eu/) - [تويتر](https://twitter.com/react_native_eu) - [فيس بوك](https://www.facebook.com/reactnativeeu/) - [يوتيوب](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [انستقرام](https://www.instagram.com/reactnative_eu/)
-=======
-[Website](https://www.react-native.eu/) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu/) - [YouTube](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [Instagram](https://www.instagram.com/reactnative_eu/)
 
 ### React Summit 2020 {#react-summit-2020}
-October 15-16, 2020, 7am PST / 10am EST / 4pm CEST - remote event
+15-16 أكتوبر 2020 ، 7 صباحًا بتوقيت المحيط الهادي / 10 صباحًا بتوقيت شرق الولايات المتحدة / 4 مساءً بتوقيت وسط أوروبا - عبر الإنترنت
 
-[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
->>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
+[موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
