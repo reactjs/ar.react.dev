@@ -416,11 +416,7 @@ class ErrorBoundary extends React.Component {
 
 في نسخة التطوير، ستظهر الأخطاء في `window`، هذا يعني أن أي `window.onerror` او `window.addEventListener('error', callback)` سيعترض الأخطاء التي تم اكتشافها من خلال `componentDidCatch()`.
 
-<<<<<<< HEAD
 اما في نسخة الإنتاج،لن تظهر الأخطاء، مما يعني أن أي معالج أخطاء أعلى سيتلقى فقط أخطاء لم يتم اكتشافها من خلال `componentDidCatch()`.
-=======
-On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explicitly caught by `componentDidCatch()`.
->>>>>>> 8f9ef00db1b36ee3e5a0e6072eb601257a6f8ccb
 
 > ملاحظة
 >
