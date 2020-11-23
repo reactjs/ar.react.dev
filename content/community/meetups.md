@@ -8,6 +8,9 @@ permalink: community/meetups.html
 
 هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجديًا)
 
+## ألبانيا {#albania}
+* [تيرانا](https://www.meetup.com/React-User-Group-Albania/)
+
 ## إسبانيا {#spain}
 * [برشلونة](https://www.meetup.com/ReactJS-Barcelona/)
 * [جزر الكناري](https://www.meetup.com/React-Canarias/)
