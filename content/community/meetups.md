@@ -133,6 +133,9 @@ permalink: community/meetups.html
 ## إيرلندا {#ireland}
 * [دبلن](https://www.meetup.com/ReactJS-Dublin/)
 
+## إيطاليا {#italy}
+* [ميلان](https://www.meetup.com/React-JS-Milano/)
+
 ## باكستان {#pakistan}
 * [كراتشي](https://www.facebook.com/groups/902678696597634/)
 * [لاهور](https://www.facebook.com/groups/ReactjsLahore/)
@@ -184,6 +187,7 @@ permalink: community/meetups.html
 * [أوتاوا](https://www.meetup.com/Ottawa-ReactJS-Meetup/)
 * [فانكوفر](https://www.meetup.com/ReactJS-Vancouver-Meetup/)
 * [مونتريال - React Native](https://www.meetup.com/fr-FR/React-Native-MTL)
+* [تورنتو، أونتاريو](https://www.meetup.com/Toronto-React-Native/events/) 
 
 ## كولومبيا {#colombia}
 * [بوغوتا](https://www.meetup.com/meetup-group-iHIeHykY/)

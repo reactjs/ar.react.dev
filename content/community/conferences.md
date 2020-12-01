@@ -12,11 +12,6 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
-### React Conf Brasil 2020 {#react-conf-brasil-2020}
-21 نوفمبر 2020  - عبر الإنترنت
-
-[موقع الويب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh/)
-
 ### React Next 2020 {#react-next-2020}
 1 ديسمبر، 2020 - عبر الإنترنت
 
@@ -39,7 +34,8 @@ November 12-13, 2021 in Mumbai, India
 
 [موقع الويب](http://conf2015.reactjs.org/) - [البرنامج](http://conf2015.reactjs.org/schedule.html) - [يوتيوب](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
 
-<iframe title="React.js Conf 2015 Keynote" width="650" height="315" src="//www.youtube-nocookie.com/embed/KVZ-P-ZI6W4?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr" frameborder="0" allowfullscreen></iframe>
+### React Summit 2020 {#react-summit-2020}
+October 15-16, 2020, 7am PST / 10am EST / 4pm CEST - remote event
 
 ### ReactEurope 2015 {#reacteurope-2015}
 2 و 3 يوليو في باريس ، فرنسا.
@@ -458,3 +454,8 @@ November 12-13, 2021 in Mumbai, India
 15-16 أكتوبر 2020 ، 7 صباحًا بتوقيت المحيط الهادي / 10 صباحًا بتوقيت شرق الولايات المتحدة / 4 مساءً بتوقيت وسط أوروبا - عبر الإنترنت
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
+
+### React Conf Brasil 2020 {#react-conf-brasil-2020}
+21 نوفمبر 2020  - عبر الإنترنت
+
+[موقع الويب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh/)
