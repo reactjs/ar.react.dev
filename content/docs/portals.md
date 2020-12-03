@@ -4,22 +4,22 @@ title: Portals
 permalink: docs/portals.html
 ---
  
-تُزوّدنا Portals بطريقة ممتازة لتصيير المكونات الأبناء إلى عقدة DOM موجودة خارج تسلسل DOM للمكونات الآباء.
+تُزوّدنا Portals بطريقة ممتازة لتصدير العناصر إلى عقدة DOM موجودة خارج تسلسل DOM للمكونات الآباء.
 
 
 ```js
 ReactDOM.createPortal(child, container)
 ```
 
-الوسيط الأول (`child`) هو عبارة عن أي [مكوّن ابن قابل للتصيير في React](/docs/react-component.html#render)، مثل العناصر، والسلاسل النصية، والأجزاء (fragments). الوسيط الثاني (`container`) هو عنصر DOM.
+الوسيط الأول (`child`) هو عبارة عن أي [مكوّن ابن قابل للتصدير في React](/docs/react-component.html#render)، مثل العناصر، والسلاسل النصية، والأجزاء (fragments). الوسيط الثاني (`container`) هو عنصر DOM.
 
 ## الاستخدام {#usage}
 
-عندما تُعيد عنصر من تابع تصيير المكوّن فبشكل اعتيادي يُوصَل إلى DOM كمكوّن ابن لأقرب عقدة أب:
+عندما تُعيد عنصر من تابع تصدير المكوّن فبشكل اعتيادي يُوصَل إلى DOM كمكوّن ابن لأقرب عقدة أب:
 
 ```js{4,6}
 render() {
-  // تصل React عنصر div جديد وتصير الأبناء إليه
+  // تصل React عنصر div جديد و تصدير العناصر إليه
   return (
     <div>
       {this.props.children}
@@ -32,7 +32,7 @@ render() {
 
 ```js{6}
 render() {
-  // لا تنشئ React عنصر div جديد، فهي تصير الأبناء إلى `domNode`
+  // لا تنشئ React عنصر div جديد، فهي تصدر الأبناء إلى `domNode`
   // `domNode` هي اي عقدة DOM صحيحة بغض النظر عن موقعها في DOM
   return ReactDOM.createPortal(
     this.props.children,
