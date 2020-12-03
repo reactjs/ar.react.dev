@@ -18,7 +18,7 @@
     - id: introducing-jsx
       title: مقدمة إلى JSX
     - id: rendering-elements
-      title: تصيير العناصر
+      title: تصدير العناصر
     - id: components-and-props
       title: المكونات والخاصيات
     - id: state-and-lifecycle
