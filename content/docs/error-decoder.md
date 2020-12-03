@@ -4,6 +4,6 @@ title: Error Decoder
 permalink: docs/error-decoder.html
 ---
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+في إصدار الإنتاج المصغر لـ React ، نتجنب إرسال رسائل خطأ كاملة لتقليل عدد البايتات المرسلة عبر الشبكة.
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, this page will reassemble the original text of the error.
+نوصي بشدة باستخدام إصدار التطوير محليًا عند تصحيح أخطاء تطبيقك نظرًا لأنه يتتبع معلومات تصحيح الأخطاء الإضافية ويوفر تحذيرات مفيدة حول المشكلات المحتملة في تطبيقاتك ، ولكن إذا واجهت استثناءً أثناء استخدام بنية الإنتاج ، فستعيد هذه الصفحة تجميع النص الأصلي للـ خطأ.
