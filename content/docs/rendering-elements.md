@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: تصيير العناصر
+title: تصدير العناصر
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -24,7 +24,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 >
 >من الممكن الخلط بين العناصر وأحد المفاهيم المعروفة "المكونات". سنقوم بتقديم المكونات في [القسم التالي] (/docs/components-and-props.html). تصنع المكونات من العناصر, ونشجعك على الإطلاع على هذا القسم قبل القفز إلى  مواضيع أخرى.
 
-## تصيير عنصر واحد إلى الـ DOM {#rendering-an-element-into-the-dom}
+## تصدير عنصر واحد إلى الـ DOM {#rendering-an-element-into-the-dom}
 
 دعنا نفترض أن هنالك عنصر `div` في مكان ما في ملف الـ HTML خاصتك:
 ```html
@@ -35,7 +35,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 تتألف التطبيقات المبنية باستخدام رياكت في العادة, من عقدة DOM جذر وحيدة. أما إن كنت تقوم بعمل التكامل لـرياكت إلى تطبيق موجود مسبقاً, من الممكن أن يتوفر لديك أي عدد ترغب به من عقد DOM الجذر.
 
-لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى [`ReactDOM.render()`](/docs/react-dom.html#render):
+لتصدير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى [`ReactDOM.render()`](/docs/react-dom.html#render):
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -43,7 +43,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 يعرض هذا المثال عند تنفيذه "مرحباً بالعالم".
 
-## تحديث العنصر المصير {#updating-the-rendered-element}
+## تحديث العنصر المصدر من قبل {#updating-the-rendered-element}
 
 عناصر رياكت غير قابلة للتغيير [immutable](https://en.wikipedia.org/wiki/Immutable_object). عند انشائك عنصراَ, فإنه حينها لا يكون بإمكانك تغيير عناصره الأبناء أو صفاته. العنصر يشبه إطار الفيلم الواحد في كونه يمثل واجهة المستخدم خلال فترة معينة من الزمان.
 
