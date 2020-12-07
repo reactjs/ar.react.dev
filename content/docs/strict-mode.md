@@ -120,7 +120,15 @@ class MyComponent extends React.Component {
 
 يتمكن الوضع الصارم عن طريق الاستدعاء المزدوج للتوابع عن قصد مثل الدالة البانية للمكوّن من توضيح مثل هذه المشاكل بشكل أسهل.
 
+<<<<<<< HEAD
 ### كشف واجهة برمجة التطبيقات (API) القديمة للسياق (context) {#detecting-legacy-context-api}
+=======
+> Note:
+>
+> Starting with React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
+
+### Detecting legacy context API {#detecting-legacy-context-api}
+>>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
 
 وهي واجهة مسببة للأخطاء وستُزال بشكل كامل في الإصدار الرئيسي القادم. لا تزال تعمل في الإصدارات 16.x ولكنها ستُظهِر هذه الرسائل التحذيرية في الوضع الصارم:
 
