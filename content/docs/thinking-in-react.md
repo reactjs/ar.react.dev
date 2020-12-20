@@ -123,7 +123,8 @@ prev: composition-vs-inheritance.html
   * المكون المشترك المالك للحالة هو `FilterableProductTable`.
   * نظرياَ من المنطقي أن تتواجد كلمة البحث وقيمة الـ (checkbox) في المكون `FilterableProductTable`.
 
-رائع، لقد قررنا أن الحالة ستكون في المكون `FilterableProductTable`، أولاَ أضف (instance property) `this.state = {filterText: '', inStockOnly: false}` لل `constructor` للمكون `FilterableProductTable`  لتكون الحالة الإبتدائية للتطبيق ثم مرر الحالتين `filterText` و `inStockOnly` للمكونين `ProductTable` و `SearchBar` بصفتها خاصيات (props) وفي النهاية، استخدم هذه الخاصيات (props) لتنقيح صفوف المنتجات في المكون `ProductTable` وضع القيم للـ (form fields) في المكون `SearchBar`.
+رائع، لقد قررنا أن الحالة ستكون في المكون `FilterableProductTable`، أولاَ أضف (instance property) `this.state = {filterText: '', inStockOnly: false}` لل `constructor` للمكون `FilterableProductTable` 
+ لتكون الحالة الإبتدائية للتطبيق ثم مرر الحالتين `filterText` و `inStockOnly` للمكونين `ProductTable` و `SearchBar` بصفتها خاصيات (props) وفي النهاية، استخدم هذه الخاصيات (props) لتنقيح صفوف المنتجات في المكون `ProductTable` وضع القيم للـ (form fields) في المكون `SearchBar`.
 
 يمكنك الآن رؤية كيف سيتفاعل تطبيقك: ضع قيمة الحالة `filterText` إلى كرة `"ball"` وقم بعمل تحديث (refresh) للتطبيق، سترى أن جدول المنتجات تم تحديثه بشكل صحيح.
 
