@@ -124,11 +124,7 @@ React's build system will strip out disabled feature branches before publishing.
 * `yarn build` ينشأ مجلّد بناء (`build`) مع كل الحُزم.
 * `yarn build react/index,react-dom/index --type=UMD` ينشأ بنيات بناء (UMD) مُكوّنة من React و ReactDOM فقط.
 
-<<<<<<< HEAD
 ننصح باستعمال  الأمر `yarn test` (أو ما يُشابهه من الأوامر أعلاه) للتأكد من عدم إتلاف أي شيء بينما تعمل على التغييرات التي تقوم بها. على كلّ، سيكون من الأحسن أن تختبر نسختك المبنيّة من React في مشروع حقيقي.
-=======
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However, it can be handy to try your build of React in a real project.
->>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
 
 أولا، شغّل الأمر `yarn build`. هذا الأمر سينتج حزما مبنيّة مسبقا في مجلد `build` وستقوم تحضير حزم npm داخل `build/packages`.
 

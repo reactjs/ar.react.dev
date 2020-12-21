@@ -197,11 +197,7 @@ class Greeting extends React.Component {
 
  تُستخدم `defaultProps` للتحقق من أن `this.props.name` سيكون لها قيمة إذا لم يتم تحديدها بواسطة المكون الأب. التحقق من الأنواع باستخدام `propTypes` يحدث بعد تعيين قيمة لـ `defaultProps`، ولهذا التحقق من الأنواع ستنطبق على `defaultProps` أيضا .
 
-<<<<<<< HEAD
- ### مكونات وظيفية
-=======
-### Function Components {#function-components}
->>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
+ ### مكونات وظيفية {#function-components}
 
 إذا كنت تستخدم مكونات وظيفية في مشروعك، فقد ترغب في إجراء بعض التغييرات الصغيرة للسماح بتطبيق PropTypes بشكل صحيح.
 
