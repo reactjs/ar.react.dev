@@ -17,6 +17,11 @@ redirect_from:
 
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/)
 
+### React Summit - Remote Edition 2021 {#react-summit-remote-2021}
+April 14-16, 2021, 7am PST / 10am EST / 4pm CEST - remote event
+
+[Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
 ### render(ATL) 2021 {#render-atlanta-2021} 
 من 13 إلى 15 سبتمبر 2021. أتلانتا ، جورجيا ، الولايات المتحدة الأمريكية.
 
