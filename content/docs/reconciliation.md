@@ -27,7 +27,11 @@ permalink: docs/reconciliation.html
 
 عندما يكون للعناصر الجذرية أنواع مختلفة تُجزِّء React الشجرة القديمة وتبني شجرة جديدة من الصفر، مُنطلِقةً من العنصر `<a>` إلى `<img>`، أو من العنصر `<Article>` إلى `<Comment>`، أو من العنصر` <Button>` إلى `<div>`، تُؤدّي أي من هذه العناصر إلى إعادة البناء بشكلٍ كامل.
 
+<<<<<<< HEAD
 عند تجزئة الشجرة تُدمَّر عُقَد DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillUnmount()`‎. وعند بناء شجرة جديدة تُدخَل عُقَد DOM الجديدة ضمن DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillMount()`‎ ثمّ التابع `componentDidMount()`‎، ونفقد أي حالة مرتبطة بالشجرة القديمة.
+=======
+When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+>>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
 
 تتعرّض المُكوِّنات الموجودة تحت العنصر الجذري للفصل (unmount) وتدمير حالتها. على سبيل المثال عند إجراء خوارزمية المقارنة على الشيفرة التالية:
 
@@ -43,7 +47,17 @@ permalink: docs/reconciliation.html
 
 ستُدمِّر المُكوّن `Counter` القديم وتُعيد إنشاء واحد جديد.
 
+<<<<<<< HEAD
 ### عناصر DOM من نفس النوع {#dom-elements-of-the-same-type}
+=======
+>Note:
+>
+>These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>
+>- `UNSAFE_componentWillMount()`
+
+### DOM Elements Of The Same Type {#dom-elements-of-the-same-type}
+>>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
 
 عند مقارنة عنصري DOM من نفس النوع، تبحث React في خاصيّاتهما وتبقي على نفس عُقدة DOM التحتية مع تحديث الخاصيّات المتغيّرة فقط، على سبيل المثال:
 
@@ -69,11 +83,26 @@ permalink: docs/reconciliation.html
 
 ### عناصر المكونات من نفس النوع {#component-elements-of-the-same-type}
 
+<<<<<<< HEAD
 عند تحديث المُكوّن تبقى نسخة المُكوّن على حالها من أجل الاحتفاظ بالحالة عبر التصييرات التالية. تُحدِّث React الخاصيّات `props` لنسخة المُكوّن لتُطابِق العنصر الجديد وتستدعي التوابع `componentWillReceiveProps()`‎ و `componentWillUpdate()`‎ في النسخة.
+=======
+When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
+>>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
 
 يُستدعى بعد ذلك التابع `render()`‎ وتتكرر خوارزمية المقارنة على النتيجة السابقة والنتيجة الجديدة.
 
+<<<<<<< HEAD
 ### التكرار على العناصر الأبناء {#recursing-on-children}
+=======
+>Note:
+>
+>These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>
+>- `UNSAFE_componentWillUpdate()`
+>- `UNSAFE_componentWillReceiveProps()`
+
+### Recursing On Children {#recursing-on-children}
+>>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
 
 عند حدوث التكرار (Recursing) على العناصر الأبناء لعقدة DOM، تمر React افتراضيًّا عبر قائمتين للعناصر الأبناء بنفس الوقت وتُولِّد تغييرًا عندما تجد أي فرق.
 
