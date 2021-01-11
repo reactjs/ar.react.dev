@@ -27,7 +27,7 @@ permalink: docs/reconciliation.html
 
 عندما يكون للعناصر الجذرية أنواع مختلفة تُجزِّء React الشجرة القديمة وتبني شجرة جديدة من الصفر، مُنطلِقةً من العنصر `<a>` إلى `<img>`، أو من العنصر `<Article>` إلى `<Comment>`، أو من العنصر` <Button>` إلى `<div>`، تُؤدّي أي من هذه العناصر إلى إعادة البناء بشكلٍ كامل.
 
-عند تجزئة الشجرة تُدمَّر عُقَد DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillUnmount()`‎. وعند بناء شجرة جديدة تُدخَل عُقَد DOM الجديدة ضمن DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillMount()`‎ ثمّ التابع `componentDidMount()`‎، ونفقد أي حالة مرتبطة بالشجرة القديمة.
+عند تجزئة الشجرة تُدمَّر عُقَد DOM وتستقبل نُسَخ المُكوّنات التابع `UNSAFE_componentWillMount()`‎. وعند بناء شجرة جديدة تُدخَل عُقَد DOM الجديدة ضمن DOM وتستقبل نُسَخ المُكوّنات التابع `componentWillMount()`‎ ثمّ التابع `componentDidMount()`‎، ونفقد أي حالة مرتبطة بالشجرة القديمة.
 
 تتعرّض المُكوِّنات الموجودة تحت العنصر الجذري للفصل (unmount) وتدمير حالتها. على سبيل المثال عند إجراء خوارزمية المقارنة على الشيفرة التالية:
 
@@ -42,6 +42,12 @@ permalink: docs/reconciliation.html
 ```
 
 ستُدمِّر المُكوّن `Counter` القديم وتُعيد إنشاء واحد جديد.
+
+>ملاحظة:
+>
+>تعتبر هذه الطرق قديمة [ويجب تجنبها](/blog/2018/03/27/update-on-async-rendering.html):
+>
+>- `UNSAFE_componentWillMount()`
 
 ### عناصر DOM من نفس النوع {#dom-elements-of-the-same-type}
 
@@ -69,9 +75,16 @@ permalink: docs/reconciliation.html
 
 ### عناصر المكونات من نفس النوع {#component-elements-of-the-same-type}
 
-عند تحديث المُكوّن تبقى نسخة المُكوّن على حالها من أجل الاحتفاظ بالحالة عبر التصييرات التالية. تُحدِّث React الخاصيّات `props` لنسخة المُكوّن لتُطابِق العنصر الجديد وتستدعي التوابع `componentWillReceiveProps()`‎ و `componentWillUpdate()`‎ في النسخة.
+عند تحديث المُكوّن تبقى نسخة المُكوّن على حالها من أجل الاحتفاظ بالحالة عبر التصييرات التالية. تُحدِّث React الخاصيّات `props` لنسخة المُكوّن لتُطابِق العنصر الجديد وتستدعي التوابع `UNSAFE_componentWillReceiveProps()`‎، `UNSAFE_componentWillUpdate()` و‎ `componentDidUpdate()` في النسخة.
 
 يُستدعى بعد ذلك التابع `render()`‎ وتتكرر خوارزمية المقارنة على النتيجة السابقة والنتيجة الجديدة.
+
+>ملاحظة:
+>
+>تعتبر هذه الطرق قديمة [ويجب تجنبها](/blog/2018/03/27/update-on-async-rendering.html):
+>
+>- `UNSAFE_componentWillUpdate()`
+>- `UNSAFE_componentWillReceiveProps()`
 
 ### التكرار على العناصر الأبناء {#recursing-on-children}
 
