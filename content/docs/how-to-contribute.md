@@ -88,7 +88,7 @@ React's build system will strip out disabled feature branches before publishing.
 2. نفّذ الأمل `yarn` في مجلّد المستودع.
 3. إن أصلحت علّة أو أضفت شيفرة برمجية والتي تحتاج إلى اختبار، أضف الإختبارات.
 4. تأكّد من نجاح سلسلة الإختبارات (`yarn test`). نصيحة: `yarn test --watch TestName` مفيدة أثناء التطوير.
-5. نفّذ الأمر `yarn test-prod` للإختبار في وضع الإنتاج. الأمر يقبل نفس الخيارات (options) المتوفّرة مع الأمر `yarn test`.
+5. نفّذ الأمر `yarn test --prod` للإختبار في وضع الإنتاج.
 6. إن كنت تحتاج مُنقّحًا، نفّذ `yarn debug-test --watch TestName`، وافتح `chrome://inspect`، ثمّ اضغط على تفحّص(Inspect).
 7. نظّم شيفرتك البرمجية مع [prettier](https://github.com/prettier/prettier) بالأمر (`yarn prettier`).
 8. تأكّد من أن شيفرتك البرمجية متناسقة بالأمر (`yarn lint`). نصيحة: `yarn linc` للتحقق فقط من الملفّات المُتَغيّرة.
@@ -117,8 +117,8 @@ React's build system will strip out disabled feature branches before publishing.
 * `yarn linc` مثل `yarn lint` لكن أسرع ﻷنه يتحقق من الملفّات التي تغيّرت فحسب.
 * `yarn test` يشغّل كل سلسلة الإختبارات.
 * `yarn test --watch` يشغّل مُراقب الإختبارات التفاعلي (interactive tests watcher).
-* `yarn test <نمط(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
-* `yarn test-prod` تشغّل الإختبارات في بيئة الإنتاج، تقبل كل خيارات الأمر `yarn test`.
+* `yarn test --prod` تشغّل الإختبارات في بيئة الإنتاج.
+* `yarn test <(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
 * `yarn debug-test` يُشابه الأمر `yarn test` لكن مع مُنَقّح. افتح `chrome://inspect` ثمّ اضغط على تفحّص(Inspect).
 * `yarn flow` يشغّل آلية [Flow](https://flowtype.org/) للتحقق من الأصناف.
 * `yarn build` ينشأ مجلّد بناء (`build`) مع كل الحُزم.

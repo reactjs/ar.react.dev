@@ -31,7 +31,7 @@ redirect_from:
 
 على سبيل المثال إن أردنا في المثال السّابق أن نعرض الاسم بعد تقديمه فبإمكاننا كتابة النموذج كمُكوِّن مضبوط:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
