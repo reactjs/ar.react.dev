@@ -84,29 +84,16 @@ React's build system will strip out disabled feature branches before publishing.
 
 **قبل تسجيل طلب السحب،** الرجاء التحقق من إتمام ما يلي:
 
-<<<<<<< HEAD
 1. قم باستنساخ المستودع [المستودع](https://github.com/facebook/react) (بعمل Fork) وبعدها أنشأ الفرع الخاص بك من الفرع الرئيسي `master`
 2. نفّذ الأمل `yarn` في مجلّد المستودع.
 3. إن أصلحت علّة أو أضفت شيفرة برمجية والتي تحتاج إلى اختبار، أضف الإختبارات.
 4. تأكّد من نجاح سلسلة الإختبارات (`yarn test`). نصيحة: `yarn test --watch TestName` مفيدة أثناء التطوير.
-5. نفّذ الأمر `yarn test-prod` للإختبار في وضع الإنتاج. الأمر يقبل نفس الخيارات (options) المتوفّرة مع الأمر `yarn test`.
+5. نفّذ الأمر `yarn test --prod` للإختبار في وضع الإنتاج.
 6. إن كنت تحتاج مُنقّحًا، نفّذ `yarn debug-test --watch TestName`، وافتح `chrome://inspect`، ثمّ اضغط على تفحّص(Inspect).
 7. نظّم شيفرتك البرمجية مع [prettier](https://github.com/prettier/prettier) بالأمر (`yarn prettier`).
 8. تأكّد من أن شيفرتك البرمجية متناسقة بالأمر (`yarn lint`). نصيحة: `yarn linc` للتحقق فقط من الملفّات المُتَغيّرة.
 9. نفّذ [Flow](https://flowtype.org/) للتحقق من الأصناف (typechecks) بالأمر (`yarn flow`).
 10. راجع اتفاقية ترخيص المساهم (CLA)، إن لم تقم بذلك بعد.
-=======
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test --prod` to test in the production environment.
-6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
->>>>>>> 3844da103db4c2dea4783f5b3a2a0b53708d04ab
 
 ### اتفاقية ترخيص المساهم (CLA) {#contributor-license-agreement-cla}
 
@@ -126,29 +113,16 @@ React's build system will strip out disabled feature branches before publishing.
 بعد استنساخ مشروع React على جهازك، نفّذ الأمر `yarn` لتحميل كل إعتماديّاته.
 بعدها يمكنك تنفيذ بعض الأوامر:
 
-<<<<<<< HEAD
 * `yarn lint` للتحقق من تنسيق الشيفرة البرمجية.
 * `yarn linc` مثل `yarn lint` لكن أسرع ﻷنه يتحقق من الملفّات التي تغيّرت فحسب.
 * `yarn test` يشغّل كل سلسلة الإختبارات.
 * `yarn test --watch` يشغّل مُراقب الإختبارات التفاعلي (interactive tests watcher).
-* `yarn test <نمط(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
-* `yarn test-prod` تشغّل الإختبارات في بيئة الإنتاج، تقبل كل خيارات الأمر `yarn test`.
+* `yarn test --prod` تشغّل الإختبارات في بيئة الإنتاج.
+* `yarn test <(pattern)>` يشغلّ الإختبارات التي الموافقة لاسم الملف.
 * `yarn debug-test` يُشابه الأمر `yarn test` لكن مع مُنَقّح. افتح `chrome://inspect` ثمّ اضغط على تفحّص(Inspect).
 * `yarn flow` يشغّل آلية [Flow](https://flowtype.org/) للتحقق من الأصناف.
 * `yarn build` ينشأ مجلّد بناء (`build`) مع كل الحُزم.
 * `yarn build react/index,react-dom/index --type=UMD` ينشأ بنيات بناء (UMD) مُكوّنة من React و ReactDOM فقط.
-=======
-* `yarn lint` checks the code style.
-* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
-* `yarn test` runs the complete test suite.
-* `yarn test --watch` runs an interactive test watcher.
-* `yarn test --prod` runs tests in the production environment.
-* `yarn test <pattern>` runs tests with matching filenames.
-* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
-* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
-* `yarn build` creates a `build` folder with all the packages.
-* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
->>>>>>> 3844da103db4c2dea4783f5b3a2a0b53708d04ab
 
 ننصح باستعمال  الأمر `yarn test` (أو ما يُشابهه من الأوامر أعلاه) للتأكد من عدم إتلاف أي شيء بينما تعمل على التغييرات التي تقوم بها. على كلّ، سيكون من الأحسن أن تختبر نسختك المبنيّة من React في مشروع حقيقي.
 
