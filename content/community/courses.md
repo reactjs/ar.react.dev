@@ -16,7 +16,11 @@ permalink: community/courses.html
 
 - [React دورة مكثفة 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع  مكتبة React
 
+<<<<<<< HEAD
 - [عتاد React : تعلم React بنفسك](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم مكتبة React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
+=======
+- [Frontend Armory: React Fundamentals](https://frontarm.com/courses/react-fundamentals/) - Learn React without the buzzwords.
+>>>>>>> 5e2a231e02bd76061fd2f89814ee1e3f9fad82d3
 
 - [الطريق لتعلم مكتبة React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام مكتبة React بسهولة ويسر وبدون الأدوات المعقدة
 
