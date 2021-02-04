@@ -19,6 +19,8 @@ permalink: community/examples.html
 * **[Image Compressor](https://github.com/RaulB-masai/react-image-compressor)** ضاغط صور غير متصل باﻷنترنت تم إنشاؤه باستخدام React و browser-image-compression
 * **[Counter App](https://github.com/arnab-datta/counter-app)** مثال صغير عن عربة التسوق
 * **[Tutorial Solutions](https://github.com/harman052/react-tutorial-solutions)** حلول للتحديات   المذكورة في نهاية البرنامج التعليمي لـ React
+* **[Live Clock](https://github.com/harman052/react-tutorial-solutions)** تطبيق React  مثال بسيط على ساعة بالتوقيت المحلي
+
 
 ## تطبيقات كاملة {#complete-apps}
 
