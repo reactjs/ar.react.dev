@@ -1,18 +1,18 @@
 ---
 id: team
-title: Team
+title: الفريق
 layout: community
 sectionid: community
 permalink: community/team.html
 ---
 
-React development is led by a small dedicated team working full time at Facebook. It also receives contributions from people all over the world.
+تطوير React يقوده فريق صغير متخصص يعمل بدوام كامل في Facebook. كما أنه يحصل على مساهمات التطوير من جميع أنحاء العالم
 
-## Meet the React Team {#meet-the-react-team}
+## قابل فريق React {#meet-the-react-team}
 
-The React team members work full time on the core component APIs, the engine that powers React DOM and React Native, React DevTools, and the React documentation website.
+أعضاء فريق React يعملون طوال الوقت على برمجة واجهات التطبيقات للمكونات الأساسية, المحرك الذي يقوم بتشغيل React DOM و React Native, React DevTools, و موقع مستندات React.
 
-Current members of the React team are listed in alphabetical order below.
+أعضاء فريق React الحاليين مدرجون في القائمة أدناه ترتيباً أبجدياً.
 
 ### Andrew Clark {#andrew-clark}
 
@@ -78,9 +78,9 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth started programming as a kid growing up in Tucson, AZ. After school, he was bitten by the music bug and was a touring musician for about 10 years before returning to *work*, starting with Intuit. In his spare time, he loves [taking pictures](https://www.sethwebster.com) and flying for animal rescues in the northeastern United States.
 
-## Acknowledgements {#acknowledgements}
+## شكر و تقدير {#acknowledgements}
 
-React was originally created by [Jordan Walke](https://github.com/jordwalke). Today, React has over a thousand open source contributors. We'd like to recognize a few people who have made significant contributions to React and its documentation in the past and have helped maintain them over the years:
+React في الأصل تم إنشاؤه بواسطة [Jordan Walke](https://github.com/jordwalke). اليوم React لديها أكثر من ألف مساهمة مفتوحة المصدر. نود تقدير بعض الأشخاص الذين قدموا مساهمات كبيرة في React و مستنداتها في الماضي وساعدوا في الحفاظ عليها على مر السنين: 
 
 * [Almero Steyn](https://github.com/AlmeroSteyn)
 * [Andreas Svensson](https://github.com/syranide)
@@ -117,6 +117,7 @@ React was originally created by [Jordan Walke](https://github.com/jordwalke). To
 * [Tim Yung](https://github.com/yungsters)
 * [Yuzhi Zheng](https://github.com/yuzhi)
 
-This list is not exhaustive.
+هذه القائمة ليست شاملة.
 
-We'd like to give special thanks to [Tom Occhino](https://github.com/tomocchino) and [Adam Wolff](https://github.com/wolffiex) for their guidance and support over the years. We'd also like to thank all the volunteers who [translated React into other languages](https://isreacttranslatedyet.com/).
+نود أن نقدم شكر خاص ل [توم أوتشينو](https://github.com/tomocchino) و [آدم وولف](https://github.com/wolffiex) على مساعدتهم و توجيههم على مر السنين.
+نود أيضاً أن نشكر كل المتطوعين الذين [قاموا بترجمة React للغات أخرى](https://isreacttranslatedyet.com/).
