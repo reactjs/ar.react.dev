@@ -21,6 +21,7 @@ permalink: community/team.html
 [@acdlite on GitHub](https://github.com/acdlite) &middot; [@acdlite on Twitter](https://twitter.com/acdlite)
 
 Andrew got started with web development by making sites with WordPress, and eventually tricked himself into doing JavaScript. His favorite pastime is karaoke. Andrew is either a Disney villain or a Disney princess, depending on the day.
+قد بدأ Andrew بتطوير المواسطة بواسطة WordPress, و أعتاد على التطوير بواسطة JavaScript. أندرو إما يكون شرير من ديزني أو أمير ديزني ، حسب اليوم. 
 
 ### Brian Vaughn {#brian-vaughn}
 
