@@ -28,7 +28,8 @@ permalink: community/team.html
 
 [@bvaughn on GitHub](https://github.com/bvaughn) &middot; [@brian\_d\_vaughn on Twitter](https://twitter.com/brian_d_vaughn)
 
-Brian studied art in college and did programming on the side to pay for his education. Eventually, he realized that he enjoys working on open source. Brian has one [one-person band](https://soundcloud.com/brianvaughn/) and two [two-person](https://soundcloud.com/pilotlessdrone) [bands](https://soundcloud.com/pinwurm). He also takes care of the cutest cat in the world.
+Brian قد درس الفن في الكلية و قام بالبرمجة بجانب دراسته ليدفع تكاليف تعليمه. في النهاية, أدرك أنه يستمتع بالعمل في مشاريع مفتوحة المصدر.
+هو أيضاً يعتني بألطف قطة في العالم
 
 ### Dan Abramov {#dan-abramov}
 
