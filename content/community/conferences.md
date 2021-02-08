@@ -30,7 +30,11 @@ April 14-16, 2021, 7am PST / 10am EST / 4pm CEST - remote event
 ### React India 2021 {#react-india-2021}
 November 12-13, 2021 in Mumbai, India
 
+<<<<<<< HEAD
 [موقع الويب](https://www.reactindia.io) - [تويتر](https://twitter.com/react_india) - [فيس بوك](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [فيديوهات](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+=======
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [YouTube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 ## المؤتمرات السابقة {#past-conferences}
 
@@ -42,8 +46,27 @@ November 12-13, 2021 in Mumbai, India
 ### React Summit 2020 {#react-summit-2020}
 October 15-16, 2020, 7am PST / 10am EST / 4pm CEST - remote event
 
+<<<<<<< HEAD
 ### ReactEurope 2015 {#reacteurope-2015}
 2 و 3 يوليو في باريس ، فرنسا.
+=======
+[Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
+### React Native EU 2020 {#react-native-eu-2020}
+September 3-4, 2020 - remote event
+
+[Website](https://www.react-native.eu/) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu/) - [YouTube](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [Instagram](https://www.instagram.com/reactnative_eu/)
+
+### ReactEurope 2020 {#reacteurope-2020}
+May 14-15, 2020 in Paris, France
+
+[Website](https://www.react-europe.org) - [Twitter](https://twitter.com/ReactEurope) - [Facebook](https://www.facebook.com/ReactEurope) - [Videos](https://www.youtube.com/c/ReacteuropeOrgConf)
+
+### Byteconf React 2020 {#byteconf-react-2020}
+May 1, 2020. Streamed online on YouTube.
+
+[Website](https://www.bytesized.xyz) - [Twitter](https://twitter.com/bytesizedcode) - [YouTube](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 [موقع الويب](http://www.react-europe.org/) - [البرنامج](http://www.react-europe.org/#schedule) - [يوتيوب](https://www.youtube.com/channel/UCorlLn2oZfgOJ-FUcF2eZ1A/playlists)
 
@@ -418,10 +441,17 @@ October 15-16, 2020, 7am PST / 10am EST / 4pm CEST - remote event
 ### React Day Berlin 2019 {#react-day-berlin-2019}
 6 ديسمبر 2019 في برلين ، ألمانيا.
 
+<<<<<<< HEAD
 [موقع الويب](https://reactday.berlin) - [تويتر](https://twitter.com/reactdayberlin) - [فيس بوك](https://www.facebook.com/reactdayberlin/) - [يوتيوب](https://www.youtube.com/reactdayberlin)
 
 ### React Barcamp Cologne 2020 {#react-barcamp-cologne-2020}
 1-2 فبراير ، 2020 في كولونيا ، ألمانيا
+=======
+### ReactNL 2016 {#reactnl-2016}
+October 13 in Amsterdam, The Netherlands
+
+[Website](http://reactnl.org/) - [Schedule](http://reactnl.org/#program)
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 [موقع الويب](https://react-barcamp.de/) - [تويتر](https://twitter.com/ReactBarcamp) - [فيس بوك](https://www.facebook.com/reactbarcamp)
 
@@ -460,7 +490,11 @@ October 15-16, 2020, 7am PST / 10am EST / 4pm CEST - remote event
 
 [موقع الويب](https://reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
 
+<<<<<<< HEAD
 ### React Conf Brasil 2020 {#react-conf-brasil-2020}
 21 نوفمبر 2020  - عبر الإنترنت
 
 [موقع الويب](https://reactconf.com.br/) - [تويتر](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh/)
+=======
+[Website](http://conf2015.reactjs.org/) - [Schedule](http://conf2015.reactjs.org/schedule.html) - [Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
