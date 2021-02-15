@@ -16,7 +16,7 @@ permalink: community/courses.html
 
 - [React دورة مكثفة 2018](https://www.youtube.com/watch?v=Ke90Tje7VS0) - دورة تدريبية متخصصة للمبتدئين تشرح اهم مواضيع  مكتبة React
 
-- [عتاد React : تعلم React بنفسك](https://reactarmory.com/guides/learn-react-by-itself) - يمكنك تعلم مكتبة React عن طريق React Armory دون التطرق للمصطلحات الغير مفهومة
+- [Frontend Armory: React أساسيات](https://frontarm.com/courses/react-fundamentals/) - تعلم React بدون عبارات رنانة.
 
 - [الطريق لتعلم مكتبة React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام مكتبة React بسهولة ويسر وبدون الأدوات المعقدة
 
@@ -24,7 +24,7 @@ permalink: community/courses.html
 
 - [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم مكتبة  React
 
-- [Scrimba: تعلم Recat بالمجان ](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
+- [Scrimba: تعلم Recat بالمجان](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
 
 ## دورات مدفوعة {#paid-courses}
 
