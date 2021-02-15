@@ -70,11 +70,7 @@ React's build system will strip out disabled feature branches before publishing.
 
 هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
-<<<<<<< HEAD
-**[كيف تُساهم في مشروع مفتوح المصدر على Github](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
-=======
-**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
->>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
+**[كيف تُساهم في مشروع مفتوح المصدر على Github](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
 
 حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 
@@ -172,6 +168,7 @@ yarn link react react-dom
 قد تُهمّك مشاهدة [هذا الفيديو القصير](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 دقيقة) والذي يمكن أن يُعطيك مقدمّة عن المساهمة في React.
 
 #### أبرز أجزاء الفيديو: {#video-highlights}
+
 - [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - بناء واختبار React محليّا
 - [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - إنشاء وإرسال طلبات السحب (pull requests)
 - [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - تنظيم الشيفرة البرمجية
