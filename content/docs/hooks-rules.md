@@ -12,7 +12,11 @@ prev: hooks-effect.html
 
 ### استدعي الخطافات في المستوى الأعلى فقط {#only-call-hooks-at-the-top-level}
 
+<<<<<<< HEAD
 **لا تستدعي الخطافات داخل حلقات التكرار، أو التعابير الشرطية، أو الدوال المتشعبة.** بدلًا من ذلك، استعمل الخطافات دومًا في المستوى الأعلى (top level) من دالة React. بتطبيق هذه القاعدة، تتأكد من أن الخطافات تُستدَعى بالترتيب نفسه في كل مرة يصيَّر فيها مكونٌ. هذا يسمح لـ React بحفظ حالة الخطافات بين الاستدعاءات `useState` و `useEffect` المتعددة بشكل صحيح. (إن شدَّك فضولك للتعلم أكثر، سنشرح هذا الأمر بالتفصيل في [الأسفل](#explanation).)
+=======
+**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function, before any early returns. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 ### استدعي الخطافات من دوال React فقط {#only-call-hooks-from-react-functions}
 
