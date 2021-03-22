@@ -12,15 +12,27 @@ redirect_from:
 
 ## المؤتمرات القادمة {#upcoming-conferences}
 
+<<<<<<< HEAD
 ### React Next 2020 {#react-next-2020}
 1 ديسمبر، 2020 - عبر الإنترنت
 
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/)
+=======
+### React fwdays’21 {#react-fwdays-2021}
+March 27, 2021 - remote event
+
+[Website](https://fwdays.com/en/event/react-fwdays-2021) - [Twitter](https://twitter.com/fwdays) - [Facebook](https://www.facebook.com/events/1133828147054286) - [LinkedIn](https://www.linkedin.com/events/reactfwdays-21onlineconference6758046347334582273) - [Meetup](https://www.meetup.com/ru-RU/Fwdays/events/275764431/)
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 ### React Summit - Remote Edition 2021 {#react-summit-remote-2021}
 April 14-16, 2021, 7am PST / 10am EST / 4pm CEST - remote event
 
 [Website](https://remote.reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
+### React Case Study Festival 2021 {#react-case-study-festival-2021}
+April 27-28, 2021 - remote event
+
+[Website](https://link.geekle.us/react/offsite) - [LinkedIn](https://www.linkedin.com/events/reactcasestudyfestival6721300943411015680/) - [Facebook](https://www.facebook.com/events/255715435820203) 
 
 ### render(ATL) 2021 {#render-atlanta-2021} 
 من 13 إلى 15 سبتمبر 2021. أتلانتا ، جورجيا ، الولايات المتحدة الأمريكية.
@@ -34,8 +46,18 @@ November 12-13, 2021 in Mumbai, India
 
 ## المؤتمرات السابقة {#past-conferences}
 
+<<<<<<< HEAD
 ### React.js Conf 2015 {#reactjs-conf-2015}
 28 و 29 يناير في Facebook HQ ، كاليفورنيا.
+=======
+### React Next 2020 {#react-next-2020}
+December 1-2, 2020 - remote event
+
+[Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/)
+
+### React Conf Brasil 2020 {#react-conf-brasil-2020}
+November 21, 2020 - remote event
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 [موقع الويب](http://conf2015.reactjs.org/) - [البرنامج](http://conf2015.reactjs.org/schedule.html) - [يوتيوب](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
 
