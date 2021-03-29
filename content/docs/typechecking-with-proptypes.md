@@ -199,7 +199,11 @@ class Greeting extends React.Component {
 
  ### مكونات وظيفية {#function-components}
 
+<<<<<<< HEAD
 إذا كنت تستخدم مكونات وظيفية في مشروعك، فقد ترغب في إجراء بعض التغييرات الصغيرة للسماح بتطبيق PropTypes بشكل صحيح.
+=======
+If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be properly applied.
+>>>>>>> c970f75a0ac3513f50e7a4989757c50cde0b7396
 
 لنفترض أن لديك مكونًا مثل هذا:
 
