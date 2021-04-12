@@ -18,7 +18,11 @@ permalink: community/courses.html
 
 - [Frontend Armory: React أساسيات](https://frontarm.com/courses/react-fundamentals/) - تعلم React بدون عبارات رنانة.
 
+<<<<<<< HEAD
 - [الطريق لتعلم مكتبة React](https://www.robinwieruch.de/the-road-to-learn-react/) - قم ببناء تطبيق شامل باستخدام مكتبة React بسهولة ويسر وبدون الأدوات المعقدة
+=======
+- [Egghead.io: The Beginner's Guide to ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-react) - Free course for React newbies and those looking to get a better understanding of React fundamentals.
+>>>>>>> 968f09159512b59afd5246a928789ae52592c923
 
 - [Egghead.io: دليل المبتدئين في ReactJS](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) - دورة تدريبية مجانية للمبتدئين ولكل من يرغب في تعلم اساسيات React
 

@@ -72,7 +72,11 @@ class ErrorBoundary extends React.Component {
 
 ## أين نضع حدود الأخطاء {#where-to-place-error-boundaries}
 
+<<<<<<< HEAD
 تستطيع وضع حدود الأخطاء أينما شئت. فقد تضعها في المكوّنات ذات المستوى الأعلى لعرض رسالة "حدث خطأ ما" للمستخدمين، مثلما تتعامل أُطُر عمل من طرف الخادم مع الانهيار. بإمكانك أيضًا تغليف الأدوات الذكية (widgets) ضمن حدود أخطاء لكي لا تؤدي لانهيار كامل التطبيق معها.
+=======
+The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like how server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
+>>>>>>> 968f09159512b59afd5246a928789ae52592c923
 
 
 ## سلوك جديد للأخطاء غير الملتقطة {#new-behavior-for-uncaught-errors}
@@ -131,7 +135,11 @@ try {
 
 لا يحتاج React إلى حد للأخطاء للتعافي من الأخطاء في معالجات الأحداث. فعلى عكس تابع التصيير وتوابع دورة حياة المكوّن، لا تحدث مُعالجات الأحداث خلال التصيير. لذا إن رمت خطأ، فستبقى React تعرف ما الذي ينبغي عرضه على الشاشة.
 
+<<<<<<< HEAD
 إن احتجت لالتقاط الأخطاء بداخل مُعالِج للأحداث، فاستخدم الجملة الاعتيادية في JavaScript وهي `try` / `catch`:
+=======
+If you need to catch an error inside an event handler, use the regular JavaScript `try` / `catch` statement:
+>>>>>>> 968f09159512b59afd5246a928789ae52592c923
 
 ```js{9-13,17-20}
 class MyComponent extends React.Component {
