@@ -131,7 +131,11 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 إن صَير مكون الدالة الخاص بك نفس النتيجة بعد إعطاء نفس الخاصيات، يمكنك حينئذٍ تغليفه في استدعاء لـ `React.memo` من أجل تسريع الأداء في بعض الحالات عبر تذكر النتيجة. هذا يعني أنَّ React ستتخطى عملية تصيير المكون وتعيد استعمال آخر نتيجة جرى تصييرها.
 
+<<<<<<< HEAD
 `React.memo` تأثر فقط على تغيرات الخصائص. إذا كان مكون الدالة الخاص بك مغلفا بـ `React.memo` ويحتوي على [`useState`](/docs/hooks-state.html) أو [`useContext`](/docs/hooks-reference.html#usecontext) Hook في تنفيذه، سيتم اعادة تصيره عند تغير الحالة أو السياق.
+=======
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+>>>>>>> 446345cfba91b62546f46f88fad893937a826cdc
 
 
 افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في خصائص الكائنات. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة بصفتها وسيطًا ثانيًا.
