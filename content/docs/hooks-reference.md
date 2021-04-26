@@ -77,6 +77,7 @@ If your update function returns the exact same value as the current state, the s
 > خلافًا للتابع `setState` في مكونات الأصناف، الخطاف `useState` لا يدمج كائنات التحديث (update objects). يمكنك تكرار هذا السلوك عبر دمج شكل الدالة المحدِّثة مع معامل النشر للكائن:
 >
 > ```js
+> const [state, setState] = useState({});
 > setState(prevState => {
 >   // Object.assign would also work
 >   return {...prevState, ...updatedValues};
