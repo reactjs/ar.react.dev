@@ -28,7 +28,6 @@ prev: concurrent-mode-adoption.html
 
 - [تفعيل الوضع المتزامن](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -47,6 +46,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 لمزيد من المعلومات حول الوضع المتزامن، راجع [مستندات الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
+<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -59,6 +59,8 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 يحتوي الوضع الإعتراضي  (blocking mode) فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
 
+=======
+>>>>>>> abcf0358d43caa0772e599949458df9e6578489a
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
