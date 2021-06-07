@@ -519,7 +519,11 @@ class Board extends React.Component {
 
 ### لماذا تكون عدم القابلية للتغير مهمة؟ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 اقترحنا في مثال الشيفرة السابق استخدام المُعامِل `.slice()`‎ لإنشاء نسخة عن المصفوفة `squares` لتعديلها بدلًا من تعديل المصفوفة الموجودة. سنناقش الآن عدم القابلية للتعديل (immutability) وأهمية تعلّمها.
+=======
+In the previous code example, we suggested that you use the `.slice()` method to create a copy of the `squares` array to copy instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 هنالك طريقتان لتغيير البيانات. الطريقة الأولى هي **تعديل** البيانات مباشرة بتغيير قيمها. والطريقة الثانية هي الحصول على نسخة جديدة من البيانات تمتلك التغييرات المطلوبة ووضعها بدل البيانات الأصليّة.
 

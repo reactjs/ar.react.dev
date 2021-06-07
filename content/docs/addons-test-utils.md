@@ -19,6 +19,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 > ملاحظة:
 >
+<<<<<<< HEAD
 > هنالك أداة تُدعى [React Testing Library](https://testing-library.com/react) نوصي باستعمالها، إذ صُمِّمَت لتمكين وتشجيع كتابة اختبارات لاستخدامها مع مكوّناتك بينما يستخدمها المستخدم النهائي.
 >
 > أطلقت Airbnb أداة اختبار تُدعى [Enzyme](https://airbnb.io/enzyme/), والتي تجعل من السهل التعامل مع ناتج مكوّناتك. إن قرّرت استخدام أداة اختبار أخرى مع Jest فقد تستحق تجربتها
@@ -38,6 +39,29 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`()scryRenderedComponentsWithType`](#scryrenderedcomponentswithtype)
  - [`()findRenderedComponentWithType`](#findrenderedcomponentwithtype)
  - [`()renderIntoDocument`](#renderintodocument)
+=======
+> We recommend using [React Testing Library](https://testing-library.com/react) which is designed to enable and encourage writing tests that use your components as the end users do.
+> 
+> For React versions <= 16, the [Enzyme](https://airbnb.io/enzyme/) library makes it easy to assert, manipulate, and traverse your React Components' output.
+
+
+
+ - [`act()`](#act)
+ - [`mockComponent()`](#mockcomponent)
+ - [`isElement()`](#iselement)
+ - [`isElementOfType()`](#iselementoftype)
+ - [`isDOMComponent()`](#isdomcomponent)
+ - [`isCompositeComponent()`](#iscompositecomponent)
+ - [`isCompositeComponentWithType()`](#iscompositecomponentwithtype)
+ - [`findAllInRenderedTree()`](#findallinrenderedtree)
+ - [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)
+ - [`findRenderedDOMComponentWithClass()`](#findrendereddomcomponentwithclass)
+ - [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)
+ - [`findRenderedDOMComponentWithTag()`](#findrendereddomcomponentwithtag)
+ - [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)
+ - [`findRenderedComponentWithType()`](#findrenderedcomponentwithtype)
+ - [`renderIntoDocument()`](#renderintodocument)
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
  - [`Simulate`](#simulate)
 
 ## مرجع {#reference}
