@@ -9,7 +9,11 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 تعمل عناصر النماذج بشكلٍ مختلفٍ قليلًا عن بقيّة عناصر DOM الأخرى في React بسبب احتفاظ عناصر النماذج بشكل طبيعي بحالة داخلية خاصّة بها. فمثلًا يقبل هذا النموذج في HTML اسمًا واحدًا:
+=======
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```html
 <form>

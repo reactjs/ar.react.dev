@@ -17,9 +17,18 @@ next: concurrent-mode-patterns.html
 
 >تحذير:
 >
+<<<<<<< HEAD
 >تصف هذه الصفحة **الميزات التجريبية [الـغير متوفرة بعد](/docs/concurrent-mode-adoption.html) في إصدار ثابت**. لا تعتمد على بناءات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
 >هذه الوثائق تهدف إلى المستخدمون الأوائل والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** - لست بحاجة إلى تعلمها الآن. على سبيل المثال، إذا كنت تبحث عن دليل تطبيقي لجلب البيانات يعمل اليوم، فاقرأ [هذه المقالة](https://www.robinwieruch.de/react-hooks-fetch-data/) بدلاً من ذلك.
+=======
+>This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 </div>
 
