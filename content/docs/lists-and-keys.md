@@ -207,7 +207,11 @@ ReactDOM.render(
 
 ### ينبغي أن تكون المفاتيح فريدة فقط ضمن العناصر الأشقاء {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 يجب أن تكون العناصر المستخدمة ضمن المصفوفات فريدة من بين العناصر الأشقاء لها، ولكن ليس بالضرورة أن تكون فريدة بشكل عام، فيمكننا استخدام نفس المفاتيح عند إنتاج مصفوفتين مختلفتين:
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {

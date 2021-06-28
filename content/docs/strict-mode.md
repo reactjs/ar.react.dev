@@ -59,7 +59,11 @@ next: typechecking-with-proptypes.html
 
 كانت React تدعم `findDOMNode` للبحث في الشجرة عن عقدة DOM بإعطاء نسخة صنف. لا تحتاج عادةً إلى ذلك لأنَّك تستطيع [ربط مرجعٍ مباشرةً بعقدة DOM.](/docs/refs-and-the-dom.html#creating-refs).
 
+<<<<<<< HEAD
 يمكن استعمال `findDOMNode` أيضًا مع مكونات الأصناف ولكن عُدَّ ذلك تجاوزًا لمستويات التجريد (abstraction levels) عبر السماح للمكون الأب بطلب ابن محدَّدٍ جرى تصييره. إنَّها تشكل خطرًا بإعادة التصميم في المكان الذي لا يمكنك فيه تغيير تفاصيل التنفيذ لمكونٍ ما؛ سبب ذلك هو أنَّ المكون الأب له قد يكون في قيد الوصول إلى عقدة DOM الخاصة به. تعيد `findDOMNode` أول مكون ابن فقط ولكن يمكن لأي مكون مع استعمال الأجزاء (Fragments) أن يصيِّر عدة عقد DOM. تعدُّ الواجهة `findDOMNode` واجهةً برمجيةً تقرأ مرةً واحدةً. أي أنَّها ترد عليك متى ما سألتها فقط. إن صَيَّر عنصرٌ عقدةً مختلفةً، فليس هنالك أي وسيلة لمعالجة هذا التغيير. وبالتالي، تعمل `findDOMNode` إن أعادت المكونات دومًا عقدة DOM وحيدة لا تتغير على الإطلاق.
+=======
+`findDOMNode` can also be used on class components but this was breaking abstraction levels by allowing a parent to demand that certain children were rendered. It creates a refactoring hazard where you can't change the implementation details of a component because a parent might be reaching into its DOM node. `findDOMNode` only returns the first child, but with the use of Fragments, it is possible for a component to render multiple DOM nodes. `findDOMNode` is a one time read API. It only gave you an answer when you asked for it. If a child component renders a different node, there is no way to handle this change. Therefore `findDOMNode` only worked if components always return a single DOM node that never changes.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 يمكنك عوضَ ذلك أن تجعل هذا أكثر وضوحًا عبر تمرير مرجعٍ إلى مكونك المخصص ثم تمريره إلى DOM باستعمال [تمرير المراجع](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
 

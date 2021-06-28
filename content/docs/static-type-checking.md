@@ -308,9 +308,15 @@ declare module 'querystring' {
 
 أصبحتَ الآن جاهزًا لكتابة الشيفرة. نُوصي بالاطلاع على المصادر التالية لتعلم المزيد حول TypeScript:
 
+<<<<<<< HEAD
 * [توثيق TypeScript: الأنواع الأساسية](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 * [توثيق TypeScript: الانتقال من JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [توثيق TypeScript: استخدام React مع Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+=======
+* [TypeScript Documentation: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+* [TypeScript Documentation: Migrating from JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ## Reason {#reason}
 

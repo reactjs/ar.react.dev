@@ -161,6 +161,7 @@ module.exports = {
 
 تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `TerserPlugin` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
+<<<<<<< HEAD
 ## تفحص المكونات باستخدام نافذة الأداء في متصفح Chrome {#profiling-components-with-the-chrome-performance-tab}
 
 يُمكنِك في **وضع التطوير** إيجاد مخطّطات توضيحية لعمليّة وصل المُكوِّنات (mount)، وتحديثها، وفصلها (unmount)، وذلك باستخدام أدوات الأداء في المتصفحات التي تدعمها. على سبيل المثال: 
@@ -189,6 +190,9 @@ module.exports = {
 المتصفحات التي تدعم هذه الميزة حاليًّا هي Chrome، و Edge، و Internet Explorer، ولكنّنا نستخدم[واجهة توقيت المستخدم (User Timing API)](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) المعياريّة، لذلك نتوقع الدعم من المزيد من المتصفحات.
 
 ## تفحص المكونات باستخدام أداة التحليل  من أدوات التطوير{#profiling-components-with-the-devtools-profiler}
+=======
+## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 يوفر `react-dom` <span dir="ltr">16.5+</span> و `react-native` <span dir="ltr">0.57+</span> أدوات تحليل مُحسّنة لوضع التطوير مع أداة التحليل في React DevTools.
 يمكن إيجاد لمحة عن أداة التحليل في هذه المقالة ["مقدمة إلى أداة تحليل React"](/blog/2018/09/10/introducing-the-react-profiler.html).
@@ -205,9 +209,20 @@ module.exports = {
 > حزمة تحليل `react-dom` في وضع الإنتاج متوفّر كذلك باسم `react-dom/profiling`.
 > إقرأ المزيد حول طريقة استعمال هذه الحزمة في [fb.me/react-profiling](https://fb.me/react-profiling)
 
+<<<<<<< HEAD
 ## عرض القوائم الطويلة {#virtualize-long-lists}
 
 إن كان تطبيقك يُصيِّر قوائم طويلة من البيانات (مئات أو آلاف الصفوف)، فنوصي باستخدام تقنيّة تدعى النوافذ (windowing)، وهي تقنية تُصيِّر مجموعة صغيرة من الصفوف في أي وقت مُحدَّد، وتستطيع تقليل الزمن الذي تستغرقه إعادة تصيير المُكوِّنات وعدد عُقَد DOM المُنشأة. 
+=======
+> Note
+>
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+
+## Virtualize Long Lists {#virtualize-long-lists}
+
+If your application renders long lists of data (hundreds or thousands of rows), we recommend using a technique known as "windowing". This technique only renders a small subset of your rows at any given time, and can dramatically reduce the time it takes to re-render the components as well as the number of DOM nodes created.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 تعتبر [react-window](https://react-window.now.sh/) و [react-virtualized](https://bvaughn.github.io/react-virtualized/) مكتبات نوافذ شائعة تُزوِّدنا بالعديد من المُكوِّنات القابلة لإعادة الاستخدام لعرض القوائم، الشبكات، وبيانات الجداول. بإمكانك أيضًا إنشاء مُكوِّن النوافذ الخاص بك، مثلما [فعلت Twitter](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3)، إن أردتَ شيئًا مُخصّصًا لأجل تطبيقك. 
 

@@ -132,6 +132,7 @@
     - id: testing-recipes
       title: طريقة إجراء الإختبارات
     - id: testing-environments
+<<<<<<< HEAD
       title: بيئة ومحيط الإختبارات
 - title: الوضع المتزامن (تجريبي)
   isOrdered: true
@@ -147,6 +148,10 @@
     - id: concurrent-mode-reference
       title: مرجع واجهة برمجة التطبيقات للوضع المتزامن
 - title: المساهمة
+=======
+      title: Testing Environments
+- title: Contributing
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
   items:
     - id: how-to-contribute
       title: كيف تساهم

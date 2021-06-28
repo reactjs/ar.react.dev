@@ -40,7 +40,11 @@ ReactDOM.render(
 
 >ملاحظة
 >
+<<<<<<< HEAD
 >يعتمد هذا الدليل أيضًا على بعض من صياغة JavaScript الجديدة في الأمثلة، فإن لم تكن قد تعاملت مع JavaScript في السنوات القليلة الماضية، [هذه النقاط الثلاث](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) ستمهد لك الطريق.
+=======
+>This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 
 ## دعنا نبدأ! {#lets-get-started}
