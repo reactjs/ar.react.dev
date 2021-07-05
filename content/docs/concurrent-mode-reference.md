@@ -16,9 +16,18 @@ prev: concurrent-mode-adoption.html
 
 >تحذير:
 >
+<<<<<<< HEAD
 >تصف هذه الصفحة **الميزات التجريبية التي [ليست متوفرة بعد](/docs/concurrent-mode-approach.html) في الإصدار المستقر**. لا تعتمد على البناءات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
 >تستهدف هذه المستندات إلى المُتَبنّين المبكرين والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** --  لست بحاجة إلى تعلمها الآن.
+=======
+>This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 </div>
 
@@ -28,7 +37,6 @@ prev: concurrent-mode-adoption.html
 
 - [تفعيل الوضع المتزامن](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -47,6 +55,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 لمزيد من المعلومات حول الوضع المتزامن، راجع [مستندات الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
+<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -59,6 +68,8 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 يحتوي الوضع الإعتراضي  (blocking mode) فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
 
+=======
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
@@ -72,7 +83,11 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 `Suspense` يتيح لمكوناتك "الانتظار" لشيء ما قبل أن تتمكن من التصيير، مع إظهار احتياطي (fallback) أثناء الانتظار.
 
+<<<<<<< HEAD
 في هذا المثال، ينتظر `ProfileDetails`  اتصال API غير متزامن لجلب بعض البيانات. أثناء انتظار ` ProfileDetails` و `ProfilePhoto`، سنعرض الخيار `Loading...`  بدلاً من ذلك. من المهم ملاحظة أنه حتى يتم تحميل جميع الأطفال داخل `<Suspense>`، سنستمر في إظهار الاحتياط.
+=======
+In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 `Suspense` يأخذ اثنين props:
 * **fallback** يأخذ مؤشر تحميل. يظهر العرض الاحتياطي حتى الانتهاء من تصيير كافة مكون `Suspense`.

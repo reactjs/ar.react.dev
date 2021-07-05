@@ -991,6 +991,7 @@ function useEventCallback(fn, dependencies) {
 
 الخطافات هي فكرة متراكبة ومستقاة من مصادر مختلفة منها:
 
+<<<<<<< HEAD
 * تجربتنا المسبقة مع الواجهات الوظيفية البرمجية (functional APIs) في المستودع [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) repository.
 * تجارب مجتمع React مع واجهات خاصيات التصيير البرمجية بما فيها المكون Reactions الذي يخص [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
 * اقتراح [`adopt` الكلمة المفتاحية](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) التي اقترحها [Dominic Gannaway](https://github.com/trueadm)'s كصياغة تجميلية لخاصيات التصيير.
@@ -998,5 +999,14 @@ function useEventCallback(fn, dependencies) {
 * المكونات Reducer في [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) في ReasonReact.
 * [الاشتراكات](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) في  Rx.
 * [التأثيرات الجبرية](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) في لغة OCaml متعددة النوى.
+=======
+* Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) repository.
+* React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
+* [Dominic Gannaway](https://github.com/trueadm)'s [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) proposal as a sugar syntax for render props.
+* State variables and state cells in [DisplayScript](http://displayscript.org/introduction.html).
+* [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) in ReasonReact.
+* [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) in Rx.
+* [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) in Multicore OCaml.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ابتكر  [Sebastian Markbåge](https://github.com/sebmarkbage) التصميم الأساسي للخطافات ثم أعيد تنقيح وصقله لاحقًا من قبل [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm), aوغيرهم من أعضاء فريق React.

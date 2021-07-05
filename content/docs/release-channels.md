@@ -14,11 +14,19 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 
 لكل إصدار من React مسارات مصممة لحالة استخدام مختلفة:
 
+<<<<<<< HEAD
 - [**الأحدث**](#latest-channel) للإصدارات المستقرة، SemVer(الإدارة الدلالية لنُسخ) اصدارات React. هذا ما تحصل عليه عند تثبيت React من npm. هذه هي القناة التي تستخدمها بالفعل اليوم. **استخدم هذا لجميع تطبيقات React لواجهة المستخدم الاماميه.**
 - [**التالى**](#next-channel) تتبع الفرع الرئيسي لمستودع الكود المصدري React. فكر في كل الإصدرات المرشحة للإفراج عنها في الإصدار البسيط التالي. استخدم هذا لاختبار المتكامل بين مشاريع React ومشاريع الجهات الخارجية.
 - [**التجريبية**](#release-channel) تتضمن واجهات برمجة التطبيقات التجريبية والميزات التي لا تتوفر في الإصدارات المستقرة. هذه أيضًا تتبع الفرع الرئيسي ، ولكن مع إشارات ميزة إضافية قيد التشغيل. استخدم هذا لتجربة الميزات القادمة قبل إصدارها.
 
 يتم نشر جميع الإصدارات إلى npm ، ولكن يستخدم فقط الأحدث [الإصدار الدلالية](/docs/faq-versioning.html). تشتمل الإصدارات التجريبية (تلك الموجودة في القنوات التالية والقنوات التجريبية) على إصدارات تم توليدها من مزج محتوياتها ، على سبيل المثال `0.0.0-1022ee0ec` و للتالى `0.0.0-experimental-1022ee0ec` للتجريبية.
+=======
+- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **Use this for all user-facing React applications.**
+- [**Next**](#next-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next minor semver release. Use this for integration testing between React and third party projects.
+- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+
+All releases are published to npm, but only Latest uses [semantic versioning](/docs/faq-versioning.html). Prereleases (those in the Next and Experimental channels) have versions generated from a hash of their contents and the commit date, e.g. `0.0.0-68053d940-20210623` for Next and `0.0.0-experimental-68053d940-20210623` for Experimental.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 **قناة الإصدار الوحيدة المدعومة رسميًا للتطبيقات واجهة المستخدم هي الأحدث**. يتم توفير الإصدارات التالية والتجريبية لأغراض الاختبار فقط ، ونحن لا نقدم أي ضمانات بأن السلوك لن يتغير بين الإصدارات. لا يتبعون بروتوكول semver الذي نستخدمه للإصدارات من الأحدث.
 
@@ -34,13 +42,21 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 
 ### القناة التالية {#next-channel}
 
+<<<<<<< HEAD
 القناة التالية هي قناة تجريبية تتعقب الفرع الرئيسي لمستودع React. نستخدم الإصدارات التجريبية في القناة التالية كمرشحين لإصدار القناة الأخيرة. يمكنك التفكير في التالي باعتباره مجموعة فرعية من الأحدث التي يتم تحديثها بشكل متكرر أكثر.
+=======
+The Next channel is a prerelease channel that tracks the main branch of the React repository. We use prereleases in the Next channel as release candidates for the Latest channel. You can think of Next as a superset of Latest that is updated more frequently.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 درجة التغيير بين الإصدار التالي الأحدث والأحدث الأحدث تقريبًا هي نفسها التي ستجدها بين إصدارين بسيطين من الفصل. ومع ذلك ، **القناة التالية لا تتوافق مع الإصدار الدلالي.** يجب أن تتوقع تغييرات فاصلة عرضية بين الإصدارات المتتالية في القناة التالية.
 
 **لا تستخدم التجريبية في التطبيقات واجهة المستخدم الاماميه.**
 
+<<<<<<< HEAD
 يتم نشر الإصدارات في التالى مع علامة `التالى` على npm. يتم إنشاء الإصدارات من علامة تجزئة لمحتويات البنية ، على سبيل المثال `0.0.0-1022ee0ec`.
+=======
+Releases in Next are published with the `next` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-68053d940-20210623`.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 #### استخدام القناة التالية فى اختبار التكامل {#using-the-next-channel-for-integration-testing}
 
@@ -70,13 +86,21 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 
 ### قناة تجريبية {#experimental-channel}
 
+<<<<<<< HEAD
 مثل التالي ، القناة التجريبية هي قناة تجريبية تتعقب الفرع الرئيسي لمستودع React. بخلاف التالي ، تشتمل الإصدارات التجريبية على ميزات إضافية وواجهات برمجة تطبيقات غير جاهزة للإصدار الأوسع.
+=======
+Like Next, the Experimental channel is a prerelease channel that tracks the main branch of the React repository. Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 عادةً ما يكون التحديث إلى التالي مصحوبًا بتحديث مطابق لـ "تجريبي". تعتمد على مراجعة المصدر نفسها ، ولكنها مبنية باستخدام مجموعة مختلفة من إشارات المعالم.
 
 قد تكون الإصدارات التجريبية مختلفة بشكل كبير عن الإصدارات التالية والأخيرة. **لا تستخدم الإصدارات التجريبية في تطبيقات واجهة المستخدم.** يجب أن تتوقع حدوث تغييرات متكررة بين الإصدارات في القناة التجريبية.
 
+<<<<<<< HEAD
 يتم نشر الإصدارات في التجريبية مع العلامة `التجريبية` على npm. يتم إنشاء الإصدارات من علامة تجزئة لمحتويات البنية ، على سبيل المثال `0.0.0-experimental-1022ee0ec`.
+=======
+Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-experimental-68053d940-20210623`.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 #### ما الذي يحدث في الإصدار التجريبي؟ {#what-goes-into-an-experimental-release}
 
@@ -94,4 +118,8 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 
 سننشر على [React blog](/blog) عندما نكون مستعدين للإعلان عن تجارب جديدة ، لكن هذا لا يعني أننا سننشر كل تجربة.
 
+<<<<<<< HEAD
 يمكنك دائمًا الرجوع إلى مستودع GitHub العام الخاص بنا [التاريخ](https://github.com/facebook/react/commits/master) للحصول على قائمة شاملة بالتغييرات.
+=======
+You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28

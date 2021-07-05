@@ -26,10 +26,15 @@ This repo contains the source code and documentation powering [ar.reactjs.org](h
 
 ### Guidelines
 
+<<<<<<< HEAD
 The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/ar.reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
+=======
+The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### Steps
 
+<<<<<<< HEAD
 1. Check that no one else has claimed your page in the checklist and comments of [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) and the pull requests.
 2. Comment at [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) with the name of the page you would like to translate. **Please take only one page at a time.**
 3. [Fork and Setup Repo](https://github.com/reactjs/ar.reactjs.org#fork-and-setup-repo), translate your page, and submit a pull request!
@@ -50,6 +55,10 @@ And use [Hsoub's translation](https://wiki.hsoub.com/React) as a reference.
 
 1. `git checkout master` from any folder in your local `ar.reactjs.org` repository
 1. `git pull upstream master` to ensure you have the latest main code
+=======
+1. `git checkout main` from any folder in your local `reactjs.org` repository
+1. `git pull origin main` to ensure you have the latest main code
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
 
 #### Make the change
@@ -71,7 +80,7 @@ And use [Hsoub's translation](https://wiki.hsoub.com/React) as a reference.
 1. `git push my-fork-name the-name-of-my-branch`
 1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
-1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
+1. If possible, include screenshots of visual changes. A [Netlify](https://www.netlify.com/) build will also be automatically created once you make your PR so other people can see your change.
 
 ## Translation
 
@@ -85,4 +94,4 @@ If your language does not have a translation and you would like to create one, p
 - `yarn reset` to clear the local cache
 
 ## License
-Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md) file.
+Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/main/LICENSE-DOCS.md) file.

@@ -255,7 +255,11 @@ npx tsc --init
 }
 ```
 
+<<<<<<< HEAD
 رائع! عندما نُنفِّذ الآن أوامر البناء سيضع المُصرِّف ملفّات JavaScript الناتجة في المجلّد `build`. بإمكانك تحميل ملف الإعدادات [`tsconfig.json`](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) بشكلٍ جاهز للبدء والتعامل مع React حيث يحتوي على مجموعة جيدة من القواعد للبدء.
+=======
+Great! Now when we run our build script the compiler will output the generated javascript to the `build` folder. The [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/main/tsconfig.json) provides a `tsconfig.json` with a good set of rules to get you started.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 لا ترغب بشكلٍ عام أن تحتفظ بملفّات JavaScript الناتجة مع الملفّات المصدريّة لذا احرص على إضافة المجلّد build إلى الملف `.gitignore`.
 
@@ -308,15 +312,27 @@ declare module 'querystring' {
 
 أصبحتَ الآن جاهزًا لكتابة الشيفرة. نُوصي بالاطلاع على المصادر التالية لتعلم المزيد حول TypeScript:
 
+<<<<<<< HEAD
 * [توثيق TypeScript: الأنواع الأساسية](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 * [توثيق TypeScript: الانتقال من JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [توثيق TypeScript: استخدام React مع Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+=======
+* [TypeScript Documentation: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+* [TypeScript Documentation: Migrating from JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
-## Reason {#reason}
+## ReScript {#rescript}
 
+<<<<<<< HEAD
 لا تُعتبر [Reason](https://reasonml.github.io/) لغة جديدة، بل هي صياغة جديدة وسلسلة أدوات مدعومة من قبل لغة [OCaml](https://ocaml.org/). تعطي Reason لغة OCaml صياغة مألوفة موجهة لمبرمجي JavaScript مع دعم npm وYarn.
 
 تُطوَّر Reason من قبل Facebook وتُستخدَم في بعض منتجاتها مثل Messenger. تُعتَبر هذه الصياغة تجريبية نوعًا ما ولكن لها [ارتباطات قوية مع React](https://reasonml.github.io/reason-react/) ومدعومة من قبل Facebook و[مجتمع كبير على github](https://reasonml.github.io/docs/en/community.html).
+=======
+[ReScript](https://rescript-lang.org/) is a typed language that compiles to JavaScript. Some of its core features are  guaranteed 100% type coverage, first-class JSX support and [dedicated React bindings](https://rescript-lang.org/docs/react/latest/introduction) to allow integration in existing JS / TS React codebases.
+
+You can find more infos on integrating ReScript in your existing JS / React codebase [here](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project).
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ## Kotlin {#kotlin}
 

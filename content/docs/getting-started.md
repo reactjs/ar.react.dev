@@ -41,7 +41,11 @@ redirect_from:
 
 إن كنت تُفضِّل استخدام مُحرِّر النصوص الخاص بك، يمكنك تحميل [ملف HTML هذا](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) وتعديله ومن ثمّ فتحه عن طريق نظام الملفّات المحلّي في متصفّحك. يُؤدِّي هذا إلى بطء في تحويل الشّيفرة أثناء زمن التنفيذ لذلك لا تستخدم هذه الطريقة أثناء إنتاجك لمشاريع حقيقيّة.
 
+<<<<<<< HEAD
 ### إضافة React إلى موقع ويب {#add-react-to-a-website}
+=======
+If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 يمكنك [إضافة React إلى صفحة HTML في دقيقة](/docs/add-react-to-a-website.html). يمكنك بعدئذٍ إمَّا أن توسِّع استعمال React تدريجيًّا، أو تقتصر في استعمالها على بضعة أدوات ذكية ديناميكية (dynamic widgets).
 
@@ -117,7 +121,11 @@ redirect_from:
 
 يمكن أيضًا متابعتنا على [حساب تويتر ‎@reactjs](https://twitter.com/reactjs) ولكن لن يفوتك أي شيء إن تابعت المدونة فقط.
 
+<<<<<<< HEAD
 لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ## مستندات الإصدار {#versioned-documentation}
 
