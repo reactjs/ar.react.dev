@@ -161,7 +161,6 @@ module.exports = {
 
 تذكَّر أنَك تحتاج فقط لفعل ذلك من أجل نُسَخ الإنتاج، فلا يجب تطبيق الإضافة `TerserPlugin` أثناء التطوير، لأنّها ستُخفي تحذيرات React المُفيدة وتجعل من بناء التطبيق أبطأ.
 
-
 ## تفحص المكونات باستخدام نافذة الأداء في متصفح Chrome {#profiling-components-with-the-chrome-performance-tab}
 
 يُمكنِك في **وضع التطوير** إيجاد مخطّطات توضيحية لعمليّة وصل المُكوِّنات (mount)، وتحديثها، وفصلها (unmount)، وذلك باستخدام أدوات الأداء في المتصفحات التي تدعمها. على سبيل المثال: 
@@ -211,7 +210,6 @@ module.exports = {
 >
 > Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
 > For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
-
 
 ## عرض القوائم الطويلة {#virtualize-long-lists}
 
