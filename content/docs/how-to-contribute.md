@@ -130,9 +130,9 @@ React's build system will strip out disabled feature branches before publishing.
 
 أسهل طريقة لتجربة التغييرات التي قمت بها هي بتشغل الأمر `yarn build react/index,react-dom/index --type=UMD` ثم بفتح `fixtures/packaging/babel-standalone/dev.html`. هذا الملف أصلا يستعمل `react.development.js` من مجلّد `build` حتى يُتابع التغييرات التي تقوم بها.
 
-إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/dist/react.development.js` و `build/dist/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة.
+إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/node_modules/react/umd/react.development.js` و `build/node_modules/react-dom/umd/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة.
 
- إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك. لاحظ أن **بدلا من `--type=UMD` سوف تحتاج إلى تمرير `--type=NODE` عند بناء المشروع**. ستحتاج أيضا إلى بناء رزمة `scheduler`:
+إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك. لاحظ أن **بدلا من `--type=UMD` سوف تحتاج إلى تمرير `--type=NODE` عند بناء المشروع**. ستحتاج أيضا إلى بناء رزمة `scheduler`:
 
 ```sh
 cd ~/path_to_your_react_clone/
