@@ -137,7 +137,6 @@ const MyComponent = React.memo(function MyComponent(props) {
 `React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
 >>>>>>> ec2d0adcb44d6394f4e6282d8bf52f0e25dbfec3
 
-
 افتراضيًّا، ستُجرَى عملية موازنة سطحية فقط بين الكائنات المعقدة في خصائص الكائنات. إن أردت التحكم بعملية الموازنة، يمكنك آنذاك توفير دالة موازنة مخصصة بصفتها وسيطًا ثانيًا.
 
 ```javascript
