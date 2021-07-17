@@ -299,14 +299,10 @@ static getDerivedStateFromProps(props, state)
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-<<<<<<< HEAD
 يُستدعى التابع `getSnapshotBeforeUpdate()`‎ مباشرة قبل تطبيق الناتج الأخير المُصَّير إلى DOM. يُمكّننا من التقاط بعض المعلومات من DOM (مثل موضع النزول في الصفحة scroll) قبل أن تتغيّر. تُمرَّر أي قيمة مُعادة من هذا التابع كمعامل إلى `componentDidUpdate()`‎.
-حالة الاستخدام هذه ليست شائعة، ولكن قد تحدث في واجهات مستخدم مثل محادثة في تطبيق للدردشة يحتاج للتعامل مع موضع النزول في الصفحة بطريقة معينة.
-=======
-`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle method will be passed as a parameter to `componentDidUpdate()`.
 
-This use case is not common, but it may occur in UIs like a chat thread that need to handle scroll position in a special way.
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
+حالة الاستخدام هذه ليست شائعة، ولكن قد تحدث في واجهات مستخدم مثل محادثة في تطبيق للدردشة يحتاج للتعامل مع موضع النزول في الصفحة بطريقة معينة.
+
 
 يجب إعادة قيمة snapshot (أو `null`).
 
