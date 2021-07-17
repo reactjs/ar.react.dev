@@ -46,7 +46,6 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 لمزيد من المعلومات حول الوضع المتزامن، راجع [مستندات الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
-<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -59,8 +58,6 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 يحتوي الوضع الإعتراضي  (blocking mode) فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
 
-=======
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
