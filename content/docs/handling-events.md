@@ -29,11 +29,7 @@ redirect_from:
 </button>
 ```
 
-<<<<<<< HEAD
 من الفروق الأخرى أنّه لا يمكنك إعادة القيمة `false` لمنع السلوك الافتراضي في React، بل يجب عليك أن تستدعي `preventDefault` بشكل صريح، فمثلًا في HTML لمنع السلوك الافتراضي للروابط في فتح صفحة جديدة بإمكانك كتابة ما يلي:
-=======
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
