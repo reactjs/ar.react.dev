@@ -51,7 +51,6 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 لمزيد من المعلومات حول الوضع المتزامن، راجع [مستندات الوضع المتزامن.](/docs/concurrent-mode-intro.html)
 
-<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -64,8 +63,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 يحتوي الوضع الإعتراضي  (blocking mode) فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
 
-=======
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
@@ -79,11 +77,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 `Suspense` يتيح لمكوناتك "الانتظار" لشيء ما قبل أن تتمكن من التصيير، مع إظهار احتياطي (fallback) أثناء الانتظار.
 
-<<<<<<< HEAD
 في هذا المثال، ينتظر `ProfileDetails`  اتصال API غير متزامن لجلب بعض البيانات. أثناء انتظار ` ProfileDetails` و `ProfilePhoto`، سنعرض الخيار `Loading...`  بدلاً من ذلك. من المهم ملاحظة أنه حتى يتم تحميل جميع الأطفال داخل `<Suspense>`، سنستمر في إظهار الاحتياط.
-=======
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 `Suspense` يأخذ اثنين props:
 * **fallback** يأخذ مؤشر تحميل. يظهر العرض الاحتياطي حتى الانتهاء من تصيير كافة مكون `Suspense`.
