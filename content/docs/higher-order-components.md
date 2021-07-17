@@ -14,11 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 بينما يُحوّل المكوّن الخاصيّات إلى واجهة مستخدم، يُحوِّل المُكوّن ذو الترتيب الأعلى مكوّنًا إلى مكوّن آخر.
 
-<<<<<<< HEAD
 تكون المكوّنات ذات الترتيب الأعلى شائعة في مكتبات React المُقدَّمة من طرف ثالث، مثل مكتبة [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) الخاصة بـ Redux و مكتبة [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) الخاصّة بـ Relay.
-=======
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
->>>>>>> c3c93e2a7ff1b1f7b8735a3a87d4b10937eaaf91
 
 سنناقش في هذه الصفحة الفائدة من المكوّنات ذات الترتيب الأعلى وكيفية كتابتها.
 
