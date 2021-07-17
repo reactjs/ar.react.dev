@@ -105,11 +105,7 @@ ReactRef.detachRefs = function(
 
 **نواة React لا تتضمن سوى واجهات برمجة التطبيقات الضرورية لتحديد المكونات.** لا تتضمن خوارزمية التسوية ([reconciliation](/docs/reconciliation.html)) أو أي كود خاص بالنظام الأساسي. يتم استخدامه من قبل كل من مكونات React DOM و React Native.
 
-<<<<<<< HEAD
 الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) بشجرة المصدر (source tree). و هي متوفرة على npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر بشكل عمومي تحت مسمى `React`.
-=======
-The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) in the source tree. It is available on npm as the [`react`](https://www.npmjs.com/package/react) package. The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### العارضون {#renderers}
 
