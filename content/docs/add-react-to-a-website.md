@@ -158,11 +158,7 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-<<<<<<< HEAD
 الآن، يمكنك استعمال JSX في أي وسم `<script>` عبر إضافة الخاصية `type="text/babel"` إليه. [ستجد هنا ملف HTML مع JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) يمكنك تنزيله والتجريب به.
-=======
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) that you can download and play with.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 هذا الأسلوب لا بأس به للتعلم وإنشاء نماذج تجريبية، **ولكنه غير مناسب للإنتاج** إذ سيجعل موقعك بطيئًا. عندما تكون مستعدًا للبدء بجدية، احذف الوسم `<script>` السابق والخاصية `type="text/babel"`، لأنَّك ستتعلم في القسم التالي كيفية ضبط معالج JSX الأولي (JSX preprocessor) لتحويل جميع الوسوم `<script>` تلقائيًّا.
 
