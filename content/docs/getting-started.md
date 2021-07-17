@@ -39,13 +39,9 @@ redirect_from:
 
 إن كنت مهتمًا بتجربة React والتعامل معها، يمكنك استخدام بيئة جاهزة لتجربة الشيفرة على الإنترنت. جرّب مثال "أهلًا بالعالم" (Hello World) على موقع [CodePen](codepen://hello-world) أو موقع [CodeSandbox](https://codesandbox.io/s/new) أو موقع [Stackblitz](https://stackblitz.com/fork/react).
 
-إن كنت تُفضِّل استخدام مُحرِّر النصوص الخاص بك، يمكنك تحميل [ملف HTML هذا](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) وتعديله ومن ثمّ فتحه عن طريق نظام الملفّات المحلّي في متصفّحك. يُؤدِّي هذا إلى بطء في تحويل الشّيفرة أثناء زمن التنفيذ لذلك لا تستخدم هذه الطريقة أثناء إنتاجك لمشاريع حقيقيّة.
+إن كنت تُفضِّل استخدام مُحرِّر النصوص الخاص بك، يمكنك تحميل [ملف HTML هذا](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) وتعديله ومن ثمّ فتحه عن طريق نظام الملفّات المحلّي في متصفّحك. يُؤدِّي هذا إلى بطء في تحويل الشّيفرة أثناء زمن التنفيذ لذلك لا تستخدم هذه الطريقة أثناء إنتاجك لمشاريع حقيقيّة.
 
-<<<<<<< HEAD
 ### إضافة React إلى موقع ويب {#add-react-to-a-website}
-=======
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 يمكنك [إضافة React إلى صفحة HTML في دقيقة](/docs/add-react-to-a-website.html). يمكنك بعدئذٍ إمَّا أن توسِّع استعمال React تدريجيًّا، أو تقتصر في استعمالها على بضعة أدوات ذكية ديناميكية (dynamic widgets).
 
