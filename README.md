@@ -26,11 +26,7 @@ This repo contains the source code and documentation powering [ar.reactjs.org](h
 
 ### Guidelines
 
-<<<<<<< HEAD
 The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/ar.reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
-=======
-The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### Steps
 
@@ -55,10 +51,6 @@ And use [Hsoub's translation](https://wiki.hsoub.com/React) as a reference.
 
 1. `git checkout master` from any folder in your local `ar.reactjs.org` repository
 1. `git pull upstream master` to ensure you have the latest main code
-=======
-1. `git checkout main` from any folder in your local `reactjs.org` repository
-1. `git pull origin main` to ensure you have the latest main code
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
 
 #### Make the change
