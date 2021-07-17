@@ -11,15 +11,9 @@ redirect_from:
 
 تعتبر React من أوائل المشاريع المفتوحة المصدر من Facebook والتي ﻻزالت تحت التطوير المستمر والتي يتم استعمالها في شفرات برمجية للجميع في [facebook.com](https://www.facebook.com). ﻻزلنا مستمرّين في العمل على إصلاح العلل لجعل المُساهمة في هذا المشروع أسهل وأكثر شفافية قدر الإمكان. لم نبلغ ذلك حقّا، لكن نتمنى أن يوضّح هذا المستند مراحل المساهمة ويجيب عن الأسئلة التي يمكن أن تُراودك.
 
-<<<<<<< HEAD
 ### [القواعد السلوكيّة](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
  قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
-=======
-### [Code of Conduct](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) {#code-of-conduct}
-
-Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### التطوير المفتوح {#open-development}
 
@@ -29,23 +23,19 @@ Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant
 
 تتبع React [الإدارة الدلالية لنُسخ البرمجيات](https://semver.org/lang/ar/). نُصدر اصدارات ترقيع (patch versions) عند القيام بإصلاحات للعلل والثغرات، اصدارات صُغرى عند إضافة ميزات ووظائف جديدة، وإصدارات جذرية عند القيام بتغيرات جذرية. عند القيام بتغيير جذري نقوم باستخدام تحذيرات بعدم الصلاحية (deprecation warnings) في الإصدارات الصغرى حتى يعلم مستخدمونا بالتغيرات التي ستطرأ وحتى يرقّوا شفراتهم البرمجية مُسبقا. تعرف على المزيد حول التزاماتنا في [سياسة الإصدارات](/docs/faq-versioning.html).
 
-<<<<<<< HEAD
 كل تغيير معتبر موثّق في [جدول التغييرات (changelog)](https://github.com/facebook/react/blob/master/CHANGELOG.md).
-=======
-Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/main/CHANGELOG.md).
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### تنظيم الفروع (Branch Organization) {#branch-organization}
 
-Submit all changes directly to the [`main branch`](https://github.com/facebook/react/tree/main). We don't use separate branches for development or for upcoming releases. We do our best to keep `main` in good shape, with all tests passing.
+Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
 
-Code that lands in `main` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `main` at any time.
+Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
 
 ### Feature Flags {#feature-flags}
 
-To keep the `main` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
 
-Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/main/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/main/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
 
 React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
 
@@ -94,7 +84,6 @@ React's build system will strip out disabled feature branches before publishing.
 
 **قبل تسجيل طلب السحب،** الرجاء التحقق من إتمام ما يلي:
 
-<<<<<<< HEAD
 1. قم باستنساخ المستودع [المستودع](https://github.com/facebook/react) (بعمل Fork) وبعدها أنشأ الفرع الخاص بك من الفرع الرئيسي `master`
 2. نفّذ الأمل `yarn` في مجلّد المستودع.
 3. إن أصلحت علّة أو أضفت شيفرة برمجية والتي تحتاج إلى اختبار، أضف الإختبارات.
@@ -105,18 +94,6 @@ React's build system will strip out disabled feature branches before publishing.
 8. تأكّد من أن شيفرتك البرمجية متناسقة بالأمر (`yarn lint`). نصيحة: `yarn linc` للتحقق فقط من الملفّات المُتَغيّرة.
 9. نفّذ [Flow](https://flowtype.org/) للتحقق من الأصناف (typechecks) بالأمر (`yarn flow`).
 10. راجع اتفاقية ترخيص المساهم (CLA)، إن لم تقم بذلك بعد.
-=======
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test --prod` to test in the production environment.
-6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### اتفاقية ترخيص المساهم (CLA) {#contributor-license-agreement-cla}
 
@@ -153,13 +130,9 @@ React's build system will strip out disabled feature branches before publishing.
 
 أسهل طريقة لتجربة التغييرات التي قمت بها هي بتشغل الأمر `yarn build react/index,react-dom/index --type=UMD` ثم بفتح `fixtures/packaging/babel-standalone/dev.html`. هذا الملف أصلا يستعمل `react.development.js` من مجلّد `build` حتى يُتابع التغييرات التي تقوم بها.
 
-<<<<<<< HEAD
-إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/dist/react.development.js` و `build/dist/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة.
-=======
-If you want to try your changes in your existing React project, you may copy `build/node_modules/react/umd/react.development.js`, `build/node_modules/react-dom/umd/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. 
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+إن قررت أن تجرّب تغييراتك على مشروع React مُنشأ مسبقا، يمكنك نسخ `build/node_modules/react/umd/react.development.js` و `build/node_modules/react-dom/umd/react-dom.development.js` و أيّ من نواتج البناء (build products) ووضعها في تطبيقك ومن ثمّ استعمالها عِوضَ النسخة المستقرّة.
 
- إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك. لاحظ أن **بدلا من `--type=UMD` سوف تحتاج إلى تمرير `--type=NODE` عند بناء المشروع**. ستحتاج أيضا إلى بناء رزمة `scheduler`:
+إن كان مشروعك يستعمل React من npm، يمكنك حذف `react` و `react-dom` من مُعتمديّاته ثم استعمل `yarn link` لربطها مع مسار مجلّد `build` المحلّي لديك. لاحظ أن **بدلا من `--type=UMD` سوف تحتاج إلى تمرير `--type=NODE` عند بناء المشروع**. ستحتاج أيضا إلى بناء رزمة `scheduler`:
 
 ```sh
 cd ~/path_to_your_react_clone/

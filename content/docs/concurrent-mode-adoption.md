@@ -30,6 +30,10 @@ next: concurrent-mode-reference.html
 >Before React 18 is released, we will replace this page with stable documentation.
 >>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
+>Caution:
+>
+>All references below to "blocking mode" and `createBlockingRoot` are outdated and should be ignored.
+
 </div>
 
 - [Installation](#installation)
