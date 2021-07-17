@@ -19,6 +19,11 @@ prev: concurrent-mode-adoption.html
 >تصف هذه الصفحة **الميزات التجريبية التي [ليست متوفرة بعد](/docs/concurrent-mode-approach.html) في الإصدار المستقر**. لا تعتمد على البناءات React التجريبية في تطبيقات الإنتاج. قد تتغير هذه الميزات بشكل كبير ودون سابق إنذار قبل أن تصبح جزءًا من React.
 >
 >تستهدف هذه المستندات إلى المُتَبنّين المبكرين والأشخاص الفضوليين. **إذا كنت جديدًا في React، فلا تقلق بشأن هذه الميزات** --  لست بحاجة إلى تعلمها الآن.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
 
 </div>
 
@@ -57,6 +62,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 يؤدي إختيار الوضع المتزامن إلى إدخال تغييرات دلالية في كيفية عمل React. هذا يعني أنه لا يمكنك استخدام الوضع المتزامن في عدد قليل من المكونات. وبسبب هذا ، قد لا تتمكن بعض التطبيقات من الإنتقال مباشرة إلى الوضع المتزامن.
 
 يحتوي الوضع الإعتراضي  (blocking mode) فقط على مجموعة فرعية صغيرة من ميزات الوضع المتزامن ويقصد به كخطوة ترحيل وسيطة للتطبيقات التي لا تستطيع الترحيل مباشرة.
+
 
 ## Suspense API {#suspense}
 

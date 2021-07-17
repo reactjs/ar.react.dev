@@ -312,7 +312,8 @@ declare module 'querystring' {
 * [توثيق TypeScript: الانتقال من JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [توثيق TypeScript: استخدام React مع Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
-## Reason {#reason}
+
+## ReScript {#rescript}
 
 لا تُعتبر [Reason](https://reasonml.github.io/) لغة جديدة، بل هي صياغة جديدة وسلسلة أدوات مدعومة من قبل لغة [OCaml](https://ocaml.org/). تعطي Reason لغة OCaml صياغة مألوفة موجهة لمبرمجي JavaScript مع دعم npm وYarn.
 

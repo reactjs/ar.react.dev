@@ -20,7 +20,10 @@ permalink: community/podcasts.html
 
 - [React Wednesdays](https://www.telerik.com/react-wednesdays) - البث المباشر الأسبوعي مع الأفضل والأذكى في عالم React
 
+
 ## الحلقات {#episodes}
+
+- [The React Native Show](https://callstack.com/podcast-react-native-show) - Discuss everything React Native, hosted by [Callstack](https://callstack.com/?utm_campaign=Podcast&utm_source=reactjs_org&utm_medium=community_podcasts)
 
 - [CodeWinds Episode 4](https://codewinds.com/podcast/004.html) - بيت هانت يتحدث مع جيف باركوسكي حول React.
 

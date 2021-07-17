@@ -19,8 +19,8 @@ redirect_from:
 
 بعد استنساخ [مستودع React](https://github.com/facebook/react), سترى بعض مجلدات المستوى الأعلى فيه:
 
-* تحتوي [`الحزم`](https://github.com/facebook/react/tree/master/packages) (packages) على بيانات التعريف (مثل `package.json`) و شفرة المصدر (الدليل الفرعي `src`) لجميع الحزم في مستودع React. **إذا كان التغيير الخاص بك مرتبطًا بالشفرة (code)، فإن الدليل الفرعي "src" لكل حزمة هو المكان الذي ستقضي فيه معظم وقتك.**
-* تحتوي [التركيبات](https://github.com/facebook/react/tree/master/fixtures) (fixtures) على عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
+* تحتوي [`الحزم`](https://github.com/facebook/react/tree/main/packages) (packages) على بيانات التعريف (مثل `package.json`) و شفرة المصدر (الدليل الفرعي `src`) لجميع الحزم في مستودع React. **إذا كان التغيير الخاص بك مرتبطًا بالشفرة (code)، فإن الدليل الفرعي "src" لكل حزمة هو المكان الذي ستقضي فيه معظم وقتك.**
+* تحتوي [التركيبات](https://github.com/facebook/react/tree/main/fixtures) (fixtures) على عدد قليل من تطبيقات اختبار React الصغيرة للمساهمين.
 * `build` هو ناتج بناء React.  ليس موجودًا في المستودع ، ولكنه سيظهر في استنساخ React الخاص بك بعد [إنشائه](/docs/how-to-contribute.html#development-workflow) للمرة الأولى.
 
 تم استضافة الوثائق في [مستودع منفصل عن React](https://github.com/reactjs/reactjs.org).
@@ -105,7 +105,7 @@ ReactRef.detachRefs = function(
 
 **نواة React لا تتضمن سوى واجهات برمجة التطبيقات الضرورية لتحديد المكونات.** لا تتضمن خوارزمية التسوية ([reconciliation](/docs/reconciliation.html)) أو أي كود خاص بالنظام الأساسي. يتم استخدامه من قبل كل من مكونات React DOM و React Native.
 
-الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) بشجرة المصدر (source tree). و هي متوفرة على npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر بشكل عمومي تحت مسمى `React`.
+الكود الخاص بنواة React يقع في [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) بشجرة المصدر (source tree). و هي متوفرة على npm كحزمة [`react`](https://www.npmjs.com/package/react). يسمى بناء المتصفح المستقل باسم `react.js`، ويصدر بشكل عمومي تحت مسمى `React`.
 
 ### العارضون {#renderers}
 
@@ -113,17 +113,17 @@ ReactRef.detachRefs = function(
 
 **يدير العارضون كيف تتحول شجرة React إلى المكالمات الأساسية للنظام الأساسي.**
 
-وتقع العارضين أيضا في [`/packages`](https://github.com/facebook/react/tree/master/packages/):
+وتقع العارضين أيضا في [`/packages`](https://github.com/facebook/react/tree/main/packages/):
 
-* تصيير [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)  مكونات React DOM. يقوم بتنفيذ [top-level `ReactDOM` APIs](/docs/react-dom.html) و هي متوفرة كحزمة [`react-dom`](https://www.npmjs.com/package/react-dom) علي npm. يمكن استخدامه أيضًا كحزمة متصفح مستقلة تسمى `react-dom.js` و التي تصدر `ReactDOM` عمومي.
-* تصيير [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) مكونات React إلى وجهات النظر الأصلية. يتم استخدامه داخليًا بواسطة React Native.
-* تصيير [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) مكونات React الي اشجار JSON. يتم استخدامه بواسطة ميزة [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) الخاصة ب[Jest](https://facebook.github.io/jest) و هو متاح كحزمة [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) علي npm. 
+* تصيير [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom)  مكونات React DOM. يقوم بتنفيذ [top-level `ReactDOM` APIs](/docs/react-dom.html) و هي متوفرة كحزمة [`react-dom`](https://www.npmjs.com/package/react-dom) علي npm. يمكن استخدامه أيضًا كحزمة متصفح مستقلة تسمى `react-dom.js` و التي تصدر `ReactDOM` عمومي.
+* تصيير [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) مكونات React إلى وجهات النظر الأصلية. يتم استخدامه داخليًا بواسطة React Native.
+* تصيير [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) مكونات React الي اشجار JSON. يتم استخدامه بواسطة ميزة [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) الخاصة ب[Jest](https://facebook.github.io/jest) و هو متاح كحزمة [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) علي npm. 
 
-العارض الوحيد الآخر المدعوم رسميًا هو [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art). اعتادت أن تكون في [مستودع Github منفصل](https://github.com/reactjs/react-art) لكننا انتقلنا إلى شجرة المصدر الرئيسية في الوقت الحالي.
+العارض الوحيد الآخر المدعوم رسميًا هو [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art). اعتادت أن تكون في [مستودع Github منفصل](https://github.com/reactjs/react-art) لكننا انتقلنا إلى شجرة المصدر الرئيسية في الوقت الحالي.
 
 >**ملحوظة:**
 >
->من الناحية الفنية ، يعد [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) طبقة رفيعة جدًا تُعلم React بالتفاعل مع تطبيق React Native . يعيش الكود الحقيقي الخاص بالنظام الأساسي الذي يدير المشاهدات الأصلية في [React Native repository](https://github.com/facebook/react-native) مع مكوناته.
+>من الناحية الفنية ، يعد [`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) طبقة رفيعة جدًا تُعلم React بالتفاعل مع تطبيق React Native . يعيش الكود الحقيقي الخاص بالنظام الأساسي الذي يدير المشاهدات الأصلية في [React Native repository](https://github.com/facebook/react-native) مع مكوناته.
 
 ### المطابقات {#reconcilers}
 
@@ -151,11 +151,11 @@ ReactRef.detachRefs = function(
 
 يمكنك قراءة المزيد عن "React Fiber Architecture" [هنا](https://github.com/acdlite/react-fiber-architecture) و [هنا](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). بينما يتم شحنها مع React 16، لا يتم تمكين ميزات المزامنة (async) بشكل افتراضي بعد.
 
-شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+شفرة المصدر الخاصة به موجودة في [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler).
 
 ### نظام الأحداث {#event-system}
 
-يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+يطبّق React نظام أحداث وهمي منفصل عن المصيّرين (rendrers) ويعمل مع كل من React DOM و React Native. شيفرته المصدرية موجودة في [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events).
 
 ### ماذا بعد؟ {#what-next}
 
