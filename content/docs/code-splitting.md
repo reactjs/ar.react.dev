@@ -42,11 +42,7 @@ console.log(add(16, 26)); // 42
 
 إن كنت تستخدم [Create React App](https://create-react-app.dev/) ،[Next.js](https://nextjs.org/) ،[Gatsby](https://www.gatsbyjs.org/)، أو أي أداة مشابهة، فسيكون لديك إعداد Webpack جاهز لتحزيم تطبيقك.
 
-<<<<<<< HEAD
 أمّا إن لم تكن تستخدم أيا من هذه الأدوات فستحتاج إلى إعداد التحزيم بنفسك. انظر إلى دليل [التثبيت](https://webpack.js.org/guides/installation/) و [دليل البدء](https://webpack.js.org/guides/getting-started/) في توثيق Webpack.
-=======
-If you aren't, you'll need to set up bundling yourself. For example, see the [Installation](https://webpack.js.org/guides/installation/) and [Getting Started](https://webpack.js.org/guides/getting-started/) guides on the Webpack docs.
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 ## تقسيم الشيفرة {#code-splitting}
 
