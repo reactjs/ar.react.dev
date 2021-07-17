@@ -30,7 +30,6 @@ The documentation is divided into several sections with a different tone and pur
 
 ### Steps
 
-<<<<<<< HEAD
 1. Check that no one else has claimed your page in the checklist and comments of [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) and the pull requests.
 2. Comment at [Arabic Translation Progress](https://github.com/reactjs/ar.reactjs.org/issues/1) with the name of the page you would like to translate. **Please take only one page at a time.**
 3. [Fork and Setup Repo](https://github.com/reactjs/ar.reactjs.org#fork-and-setup-repo), translate your page, and submit a pull request!
