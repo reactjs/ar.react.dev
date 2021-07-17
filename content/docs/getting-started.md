@@ -117,11 +117,7 @@ redirect_from:
 
 يمكن أيضًا متابعتنا على [حساب تويتر ‎@reactjs](https://twitter.com/reactjs) ولكن لن يفوتك أي شيء إن تابعت المدونة فقط.
 
-<<<<<<< HEAD
-لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/master/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
-=======
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
+لا يمكن الاكتفاء بمنشورات المدونة لمعرفة كل تفاصيل الإصدار الجديد من React؛ يمكنك العثور على معلومات مفصلة عن سجل التغييرات لكل إصدار في [الملف CHANGELOG.md في مستودع React](https://github.com/facebook/react/blob/main/CHANGELOG.md) وكذلك في [صفحة الإصدارات](https://github.com/facebook/react/releases) أيضًا.
 
 ## مستندات الإصدار {#versioned-documentation}
 
