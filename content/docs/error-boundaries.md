@@ -78,7 +78,6 @@ class ErrorBoundary extends React.Component {
 The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like how server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
 >>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
-
 ## سلوك جديد للأخطاء غير الملتقطة {#new-behavior-for-uncaught-errors}
 
 يملك هذا التغيير تأثيرًا هامًّا. **فبدءًا من إصدار React 16 أصبحت الأخطاء التي لا تلتقطها حدود الأخطاء ينتج عنها فصل كامل شجرة المكوّنات.**
