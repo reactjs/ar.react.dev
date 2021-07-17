@@ -6,11 +6,7 @@ permalink: docs/context.html
 
 يُزوِّدنا السياق (Context) بطريقة لتمرير البيانات عبر شجرة المُكوّنات دون الحاجة لتمرير الخاصيّات `props` يدويًّا من الأعلى إلى الأسفل في كل مستوى.
 
-<<<<<<< HEAD
 تُمرَّر البيانات في تطبيقات React الإعتيادية من المستوى الأعلى إلى الأسفل (أي من المكوّنات الآباء إلى المكوّنات الأبناء) عبر الخاصيّات `props`، ولكن قد يكون هذا بطيئًا لبعض أنواع الخاصيّات (مثل تفضيلات اللغة وقوالب واجهة المستخدم) والتي تحتاجها العديد من المكوّنات ضمن التطبيق. يُزوِّدنا السياق بطريقة لمشاركة القيم مثل تلك الموجودة بين المكوّنات دون الاضطرار لتمرير الخاصيّات عبر كل مستوى من الشجرة.
-=======
-In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 - [متى نستخدم السياق](#when-to-use-context)
 - [	قبل أن تستخدم السياق](#before-you-use-context)
@@ -84,11 +80,7 @@ function Page(props) {
 
 مع هذا التغيير يحتاج فقط المكون `Page` ذو المستوى الأعلى إلى أن يعرف عن استخدام المكوّنات `Link` و `Avatar` للمكوّنات `user` و `avatarSize`.
 
-<<<<<<< HEAD
 يؤدي *قلب السيطرة* هذا إلى جعل شيفرتك أسهل في العديد من الحالات عن طريق تقليل كمية الخاصيّات التي تحتاج تمريرها عبر تطبيقك ويُعطيك سيطرة أكبر على المكوّنات الجذريّة. على الرغم من ذلك، لا يكون ذلك هو الخيار الأنسب في كل حالة، حيث أنّ نَقل المزيد من التعقيد إلى مستوى أعلى في الشجرة يجعل من المكونات ذات المستوى الأعلى أكثر تعقيدًا ويجبر المكونات ذات المستويات الأدنى أن تكون مرنة أكثر مما قد ترغب.
-=======
-This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. Such inversion, however, isn't the right choice in every case; moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 لن تكون محدودًا بمكوّن ابن واحد، فبإمكانك تمرير مكونات أبناء متعددة أو حتى امتلاك منافذ منفصلة متعددة للأبناء كما هو موثق هنا:
 
@@ -128,11 +120,7 @@ const MyContext = React.createContext(defaultValue);
 عند تصيير React للسياق `Consumer` فستقرأ قيمة السياق الحالية من أقرب مُزوِّد `Provider` فوقها في الشجرة.
 يُستخدَم الوسيط defaultValue عن طريق المستهلك `Consumer` فقط عندما لا يجد مزوّد `Provider` مُطابِق فوقه في الشجرة. يُفيد هذا من أجل اختبار المُكوّنات على انفراد بدون تغليفها.
 
-<<<<<<< HEAD
 لا يُؤدّي تمرير القيمة `undefined` كقيمة للمُزوِّد إلى استخدام المستهلك `Consumer` للقيمة `defaultValue`.
-=======
-The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree. This default value can be helpful for testing components in isolation without wrapping them. Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 ### `Context.Provider` {#contextprovider}
 
@@ -176,11 +164,7 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-<<<<<<< HEAD
 يمكن إسناد الخاصية  `contextType` p في أي صنف إلى كائن سياق (Context object) أنشئ بوساطة [`React.createContext()`](#reactcreatecontext). يمكِّنك ذلك من استهلاك أقرب قيمة حالية لنوع ذلك السياق باستعمال `this.context`. تستطيع الإشارة عبر مرجع إلى هذا في أي تابع من توابع دورة الحياة بما فيها الدالة `render`.
-=======
-The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext). Using this property lets you consume the nearest current value of that Context type using `this.context`. You can reference this in any of the lifecycle methods including the render function.
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 > ملاحظة:
 >
@@ -207,11 +191,7 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
-<<<<<<< HEAD
 يتغير مكون React الذي يشترك بسياق، وهذا يمكِّنك من الاشتراك بسياق ضمن [مكون دالة](/docs/components-and-props.html#function-and-class-components).
-=======
-A React component that subscribes to context changes. Using this component lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).
->>>>>>> e60bca04f3da690256ce019bd8907c2b368589ee
 
 تتطلب الخاصية `Consumer` [دالةً على أنَّها ابنٌ](/docs/render-props.html#using-props-other-than-render). إذ تستقبل هذه الدالة قيمة السياق الحالي وتعيد عقدة React. الوسيط `value` المُمرَّر إلى الدالة سيكون مساويًّا إلى قيمة الخاصية `value` لأقرب مزود (Provider) لهذا السياق في الشجرة أعلاه. إن لم يكن هنالك مزود (Provider) لهذا السياق أعلاه، فسيكون الوسيط `value` مساويًا إلى القيمة `defaultValue` التي مُرِّرت إلى `()createContext`.
 
