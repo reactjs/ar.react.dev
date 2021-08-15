@@ -179,12 +179,16 @@ React.createElement(
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
+<<<<<<< HEAD
 ينسخ ويُعيد عنصر React جديد باستخدام الوسيط `element` كنقطة بداية. يمتلك العنصر الناتج نفس خاصيّات العنصر الأصلي مع دمج الخاصيّات الجديد. سيحل العناصر الأبناء المُقدمون عبر الوسيط children محل العناصر الأبناء الحاليين. سيُحتفَظ بالمفتاح `key` والمرجع `ref` من العنصر الأصلي. يُكافِئ التابع `React.cloneElement()`‎ كتابة ما يلي:
+=======
+Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 
 ```js
@@ -192,7 +196,11 @@ React.cloneElement(
 ```
 ولكن يُحافِظ استخدام التابع على المرجع `ref` أيضًا. يعني هذا أنّه لو كان لديك عنصر ابن مع مرجع `ref` ضمنه، فلن تأخذه عن طريق الخطأ من العنصر السليف له، بل ستحصل على نفس المرجع مُرفقًا بعنصرك الجديد.
 
+<<<<<<< HEAD
 قُدِّمت هذه الواجهة (ِAPI) بديلا للتابع `React.addons.cloneWithProps()`‎ المُهمَل.
+=======
+However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 
 * * *

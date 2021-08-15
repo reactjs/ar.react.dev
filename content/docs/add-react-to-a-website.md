@@ -122,7 +122,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## إختياري: جرب React مع JSX {#optional-try-react-with-jsx}
 
+<<<<<<< HEAD
 في المثال السابق، اعتمدنا على ميزات مدعومة من طرف المتصفحات فقط. هذا هو سبب استعمال استدعاء إحدى دوال جافسكريبت لاخبار React بالشيء الذي نريد عرضه:
+=======
+In the examples above, we only relied on features that are natively supported by browsers. This is why we used a JavaScript function call to tell React what to display:
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 ```js
 const e = React.createElement;
