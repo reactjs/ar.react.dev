@@ -230,7 +230,11 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
+<<<<<<< HEAD
       <button className="square" onClick={function() { alert('نقرة'); }}>
+=======
+      <button className="square" onClick={function() { console.log('click'); }}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
         {this.props.value}
       </button>
     );
@@ -238,7 +242,11 @@ class Square extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 إن قمت بالنقر على المربّع فينبغي ظهور تحذير في المتصفح. 
+=======
+If you click on a Square now, you should see 'click' in your browser's devtools console.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 >ملاحظة:
 >
@@ -248,7 +256,11 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
+<<<<<<< HEAD
 >      <button className="square" onClick={() => alert('نقرة')}>
+=======
+>      <button className="square" onClick={() => console.log('click')}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 >        {this.props.value}
 >      </button>
 >    );
@@ -256,7 +268,11 @@ class Square extends React.Component {
 >}
 >```
 >
+<<<<<<< HEAD
 >لاحظ كيف في الشيفرة ‎`onClick={() => alert('نقرة')}`‎ نقوم بتمرير *دالة* إلى الخاصيّة `onClick`. وهي تُطلَق فقط عند النقر. من الشائع نسيان `() =>` وكتابة ‎`onClick={alert('نقرة')}`‎، والذي يُؤدّي إلى إطلاق التحذير في كل مرّة يُعاد فيها تصيير المكوّن.
+=======
+>Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 في الخطوة التالية نريد من المكوّن `Square` أن يتذكر أنّه نُقِر عليه وأن يملأ نفسه بالعلامة `X`. لتذكر الأشياء تستخدم المكوّنات الحالة **state**.
 
@@ -275,7 +291,11 @@ class Square extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <button className="square" onClick={() => alert('نقرة')}>
+=======
+      <button className="square" onClick={() => console.log('click')}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
         {this.props.value}
       </button>
     );
