@@ -39,9 +39,13 @@ prev: composition-vs-inheritance.html
 
 حيث أننا غالباَ ما نعرض نموذج البيانات (JSON data model) للمستخدم، ستجد أنه إذا كان هذا النموذج مبنيا بشكل جيد فإنه سيتطابق مع واجهة المستخدم (UI) خاصتك بشكل رائع، وبالتالي مع بناء مكوناتك (component structure)، وهذا لأن واجهة المستخدم (UI) ونموذج البيانات (data models) يميلان إلى التَّقييد بنفس *(الشكل البنائي للمعلومات information architecture)*، وهو مايعني أن العمل على تقسيم واجهة المستخدم (UI) إلى مكونات (components) غالباَ مايكون سهلا، فقط قم بتقسيمها إلى مكونات (component) تمثل تحديداَ جزءا واحدا من نموذج البيانات (data model) خاصتك.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
+<<<<<<< HEAD
 سترى هنا أن لدينا خمس مكونات (components) في تطبيقنا الصغير، ولقد قمنا بالكتابة بخط عريض في كل مكون وما يمثله من بيانات.
+=======
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
   1. **`FilterableProductTable` (باللون البرتقالي):** يحتوي المثال بكامله
   2. **`SearchBar` (باللون الأزرق):** يستقبل ما يدخله المستخدم *(user input)*
