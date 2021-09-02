@@ -17,6 +17,17 @@ redirect_from:
 
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/)
 
+<<<<<<< HEAD
+=======
+
+### React Brussels 2021 {#react-brussels-2021} 
+October 15, 2021 - remote event
+
+[Website](https://www.react.brussels/) - [Twitter](https://twitter.com/BrusselsReact) - [LinkedIn](https://www.linkedin.com/events/6805708233819336704/)
+
+### React Advanced 2021 {#react-advanced-2021}
+October 22-23, 2021. In-person in London, UK + remote (hybrid event)
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ### React fwdays’21 {#react-fwdays-2021}
 March 27, 2021 - remote event
