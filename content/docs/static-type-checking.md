@@ -255,11 +255,7 @@ npx tsc --init
 }
 ```
 
-<<<<<<< HEAD
 رائع! عندما نُنفِّذ الآن أوامر البناء سيضع المُصرِّف ملفّات JavaScript الناتجة في المجلّد `build`. بإمكانك تحميل ملف الإعدادات [`tsconfig.json`](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) بشكلٍ جاهز للبدء والتعامل مع React حيث يحتوي على مجموعة جيدة من القواعد للبدء.
-=======
-Great! Now when we run our build script the compiler will output the generated javascript to the `build` folder. The [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) provides a `tsconfig.json` with a good set of rules to get you started.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 لا ترغب بشكلٍ عام أن تحتفظ بملفّات JavaScript الناتجة مع الملفّات المصدريّة لذا احرص على إضافة المجلّد build إلى الملف `.gitignore`.
 
