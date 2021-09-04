@@ -14,11 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 بينما يُحوّل المكوّن الخاصيّات إلى واجهة مستخدم، يُحوِّل المُكوّن ذو الترتيب الأعلى مكوّنًا إلى مكوّن آخر.
 
-<<<<<<< HEAD
 تكون المكوّنات ذات الترتيب الأعلى شائعة في مكتبات React المُقدَّمة من طرف ثالث، مثل مكتبة [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) الخاصة بـ Redux و مكتبة [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) الخاصّة بـ Relay.
-=======
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 سنناقش في هذه الصفحة الفائدة من المكوّنات ذات الترتيب الأعلى وكيفية كتابتها.
 
@@ -299,11 +295,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 ## تغليف الاسم المعروض لسهولة تنقيح الأخطاء {#convention-wrap-the-display-name-for-easy-debugging}
 
-<<<<<<< HEAD
 تظهر مكوّنات الحاوية التي تُنشئها المكوّنات ذات الترتيب الأعلى في أدوات تطوير [React Developer Tools](https://github.com/facebook/react-devtools) كأي مكوّنات أخرى. ولسهولة تنقيح الأخطاء اختر الاسم المعروض بحيث يتواصل وكأنه نتيجة للمكوّن ذو الترتيب الأعلى.
-=======
-The container components created by HOCs show up in the [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) like any other component. To ease debugging, choose a display name that communicates that it's the result of a HOC.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 أشيع طريقة هي تغليف الاسم المعروض للمكوّن المُغلَّف. لذا إن كان اسم المكوّن ذو الترتيب الأعلى هو `withSubscription` والاسم المعروض للمكوّن المُغلَّف هو `CommentList` فاستخدم الاسم المعروض `WithSubscription(CommentList)`‎:
 
