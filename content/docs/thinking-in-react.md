@@ -41,11 +41,7 @@ prev: composition-vs-inheritance.html
 
 ![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
-<<<<<<< HEAD
 سترى هنا أن لدينا خمس مكونات (components) في تطبيقنا الصغير، ولقد قمنا بالكتابة بخط عريض في كل مكون وما يمثله من بيانات.
-=======
-You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
   1. **`FilterableProductTable` (باللون البرتقالي):** يحتوي المثال بكامله
   2. **`SearchBar` (باللون الأزرق):** يستقبل ما يدخله المستخدم *(user input)*
