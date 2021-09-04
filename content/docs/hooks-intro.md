@@ -98,11 +98,7 @@ function Example() {
 
 نتفهَّم أيضًا أنَّ مجال الطلب على إضافة أنواع أساسية جديدة إلى React مرتفعٌ نسبيًا. للقرَّاء الفضوليين، أعددنا [الدليل RFC المفصل](https://github.com/reactjs/rfcs/pull/68) الذي يتعمق حول دافع إضافة الخطافات، ويوفر نظرة موسعة حول قرارات التصميم المحددة والأسلوب المرتبط السابق.
 
-<<<<<<< HEAD
 **الأهم من ذلك، تعمل الخطافات جنبًا بجنب مع الشيفرة القائمة، لذلك يمكنك اعتمادها تدريجيًا.** نشارك الآن الواجهة البرمجية التجريبية للحصول على تغذية راجعة من أولئك المهتمين بتشكيل مستقبل React.
-=======
-**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** There is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mind shift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 أخيرًا، لا يوجد أي شيء يدفع للهجرة إلى الخطافات. ننصح بتجنب اعتماد الخطافات في المكونات الكبيرة خصوصًا مع مكونات الصنف المعقدة. تتطلب عملية تحول الأنظار إلى الخطافات واستعمالها بعض الوقت. بناءً على خبرتنا، من الأفضل التدرب على استعمال الخطافات من الآن في المكونات الجديدة وغير المهمة، والتأكُّد من أنَّ كل شخص في الفريق يشعر براحة تامة معها. بعد تجريب استعمال الخطافات، لا تتردد [بإرسال feedback](https://github.com/facebook/react/issues/new), سواءً أكانت إيجايبة أم سلبية.
 
@@ -115,4 +111,3 @@ function Example() {
 ## الخطوات التالية {#next-steps}
 
 الآن، يجب أن تكون قد امتلكت فكرة تقريبية حول الخطافات وما هي المشكلات التي تحلها. على أي حال، نعلم أن أغلب هنالك الكثير من التفاصيل الغامضة، لذا لا تقلق. الخطوة التالية الآن هي الانتقال إلى الصفحة التالية "لمحة خاطفة عن الخطافات"، إذ ستبدأ فيها تعلم الخطافات عبر الأمثلة العملية.
-
