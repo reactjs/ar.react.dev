@@ -229,7 +229,11 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
+<<<<<<< HEAD
 عند استخدام المكوّنات ذات الترتيب الأعلى لتمديد المكوّنات، فمن المفضّل[تمرير المرجع](/docs/forwarding-refs.html)  إلى المكوّن المغلّف باستخدام الدالة `forwardRef` في React. إن كان لا يعتمد المكوّن ذو الترتيب الأعلى المُقدَّم من طرف ثالث تمرير المراجع، فيُمكِن استخدام الطريقة السابقة كطريقة احتياطية.
+=======
+When using a [HOC](/docs/higher-order-components.html) to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
+>>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
 
 من الأمثلة الرائعة حول إدارة التركيز مثال [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). وهو مثال نادر نسبيًّا عن نافذة سهلة الوصول بشكل كامل، فهي لا تُعيِّن فقط التركيز المبدئي على
 زر الإلغاء  `cancel` (ممّا يمنع مستخدم لوحة المفاتيح من تفعيل الحدث `success` عن طريق الخطأ) وتحصر تركيز لوحة المفاتيح بداخل النافذة، بل تُعيد تعيين التركيز أيضًا إلى العنصر الذي أطلق هذه النافذة.
