@@ -24,7 +24,14 @@ permalink: community/courses.html
 
 - [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم مكتبة  React
 
+<<<<<<< HEAD
 - [Scrimba: تعلم Recat بالمجان](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
+=======
+- [University of Helsinki: Full Stack Open MOOC](https://fullstackopen.com/en/) - Learn to build web applications with React. Available in English, Spanish, Chinese and Finnish.
+
+
+## Paid Courses {#paid-courses}
+>>>>>>> 4fab3d31469ab7a53dbf8b50cab5d57880a0c035
 
 ## دورات مدفوعة {#paid-courses}
 
