@@ -446,11 +446,19 @@ class Square extends React.Component {
 
 عند النقر على المربّع تُستدعى الدالة `onClick` المُزوَّدة من قبل المكوّن `Board`. وهذا ملخّص لكيفية تحقيق ذلك:
 
+<<<<<<< HEAD
 1. تُخبِر الخاصيّة `onClick` الموجودة في المكوّن `<button>` مكتبة React بأن تُعِد مُستمِع لحدث النقر.
 2. عند النقر على الزر، ستستدعي React مُعالِج الحدث `onClick` المُعرَّف في التابع `render()` للمكوّن Square.
 3. يستدعي مُعالِج الأحداث هذا `this.props.onClick()`‎. الخاصيّة `onClick` الموجودة في المكوّن Square مُحدَّدة من قبل المكوّن `Board`.
 4. بما أنّ المكوّن `Board` مرَّر `onClick={() => this.handleClick(i)}` إلى `Square`، فسيستدعي هذا الأخير ‎`this.handleClick(i)` عند النقر عليه.
 5. لم نُعرِّف التابع `handleClick()` حتى الآن، لذا تنهار الشيفرة لدينا.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 >ملاحظة:
 >
@@ -519,7 +527,11 @@ class Board extends React.Component {
 
 ### لماذا تكون عدم القابلية للتغير مهمة؟ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 اقترحنا في مثال الشيفرة السابق استخدام المُعامِل `.slice()`‎ لإنشاء نسخة عن المصفوفة `squares` لتعديلها بدلًا من تعديل المصفوفة الموجودة. سنناقش الآن عدم القابلية للتعديل (immutability) وأهمية تعلّمها.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 هنالك طريقتان لتغيير البيانات. الطريقة الأولى هي **تعديل** البيانات مباشرة بتغيير قيمها. والطريقة الثانية هي الحصول على نسخة جديدة من البيانات تمتلك التغييرات المطلوبة ووضعها بدل البيانات الأصليّة.
 
