@@ -61,7 +61,13 @@ class ErrorBoundary extends React.Component {
 </ErrorBoundary>
 ```
 
+<<<<<<< HEAD
 تعمل حدود الأخطاء مثل الكتلة `catch {}`، ولكن لأجل المكوّنات. تستطيع مكوّنات الأصناف فقط أن تُصبِح حدودًا للأخطاء. في الممارسة العمليّة سترغب في أغلب الأوقات في التصريح عن مكوّن لحدود الأخطاء مرّة واحدة ومن ثم استخدامه خلال تطبيقك.
+=======
+Error boundaries work like a JavaScript `catch {}` block, but for components. Only class components can be error boundaries. In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application.
+
+Note that **error boundaries only catch errors in the components below them in the tree**. An error boundary can’t catch an error within itself. If an error boundary fails trying to render the error message, the error will propagate to the closest error boundary above it. This, too, is similar to how the `catch {}` block works in JavaScript.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 لاحظ أنّ **حدود الأخطاء تَلتقط فقط الأخطاء في المكوّنات التي تقع تحتها في شجرة المكوّنات**، فلا تستطيع التقاط خطأ موجود ضمنه.إن فشل حد الأخطاء في محاولة تصيير رسالة الخطأ فستنتشر رسالة الخطأ إلى أقرب حد خطأ موجود في المستويات الأعلى منه. وهذا يُشبِه كيفيّة عمل الكتلة `catch {}` في JavaScript.
 

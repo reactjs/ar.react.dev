@@ -138,7 +138,11 @@ prev: composition-vs-inheritance.html
 
 إذا حاولت الكتابة أو الضغط على الـ (checkbox) بالإصدار الحالي للتطبيق سترى أن React سيتجاهل ذلك، وذلك مقصود حيث أننا قمنا بوضع قيمة الخاصية (value) لل (input) لتكون دائماَ مساوية للحالة التى تم تمريرها من المكون `FilterableProductTable`.
 
+<<<<<<< HEAD
 لنفكر بما نريد أن يحدث، نريد التأكد كلما قام المستخدم بتغيير الـ (form) يتم تحديث الحالة لإظهار ما أدخله المستخدم وبما أن المكونات يجب أن تغير الحالة الخاصة بها فقط، المكون `FilterableProductTable` سيمرر الدالة (callback) للمكون `SearchBar` والتى سيتم استدعائها أينما وجب تحديث الحالة، يمكننا استخدام الحدث (`onChange` event) على الـ (inputs) لنعرف ذلك، الدالة (callback) التي تم تمريرها بواسطة المكون `FilterableProductTable` تقوم باستدعاء `setState()` ويتم تحديث التطبيق.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 بالرغم من أن ذلك يبدو ذلك معقداَ، فحقيقة وباستخدام عدد قليل من الأسطر وبشكل صريح نرى كيف تتدفق البيانات خلال التطبيق.
 

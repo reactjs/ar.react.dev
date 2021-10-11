@@ -446,11 +446,19 @@ class Square extends React.Component {
 
 عند النقر على المربّع تُستدعى الدالة `onClick` المُزوَّدة من قبل المكوّن `Board`. وهذا ملخّص لكيفية تحقيق ذلك:
 
+<<<<<<< HEAD
 1. تُخبِر الخاصيّة `onClick` الموجودة في المكوّن `<button>` مكتبة React بأن تُعِد مُستمِع لحدث النقر.
 2. عند النقر على الزر، ستستدعي React مُعالِج الحدث `onClick` المُعرَّف في التابع `render()` للمكوّن Square.
 3. يستدعي مُعالِج الأحداث هذا `this.props.onClick()`‎. الخاصيّة `onClick` الموجودة في المكوّن Square مُحدَّدة من قبل المكوّن `Board`.
 4. بما أنّ المكوّن `Board` مرَّر `onClick={() => this.handleClick(i)}` إلى `Square`، فسيستدعي هذا الأخير ‎`this.handleClick(i)` عند النقر عليه.
 5. لم نُعرِّف التابع `handleClick()` حتى الآن، لذا تنهار الشيفرة لدينا.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 >ملاحظة:
 >
@@ -519,7 +527,11 @@ class Board extends React.Component {
 
 ### لماذا تكون عدم القابلية للتغير مهمة؟ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 اقترحنا في مثال الشيفرة السابق استخدام المُعامِل `.slice()`‎ لإنشاء نسخة عن المصفوفة `squares` لتعديلها بدلًا من تعديل المصفوفة الموجودة. سنناقش الآن عدم القابلية للتعديل (immutability) وأهمية تعلّمها.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 هنالك طريقتان لتغيير البيانات. الطريقة الأولى هي **تعديل** البيانات مباشرة بتغيير قيمها. والطريقة الثانية هي الحصول على نسخة جديدة من البيانات تمتلك التغييرات المطلوبة ووضعها بدل البيانات الأصليّة.
 
@@ -1040,7 +1052,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[انظر إلى كامل الشيفرة عند هذه النقطة](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 نُنشِئ لكل تحرك في تاريخ اللعبة عنصرًا بالقائمة `<li>` يحتوي على زر `<button>`. يمتلك الزر مُعالِج للأحداث `onClick` والذي يستدعي تابًعا يُدعى `this.jumpTo()`‎. لم ننفذ هذا التابع حتى الآن. ينبغي أن نرى الآن قائمة بالتحركات التي حصلت في اللعبة وتحذير في النافذة console ضمن أدوات التطوير يقول:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 >  تحذير:
 >  يجب أن يمتلك كل عنصر ابن في المصفوفة خاصية مفتاح `key`. تحقق من التابع `render` للمكوّن `Game`.

@@ -10,30 +10,75 @@ redirect_from:
 
 هل تعرف مؤتمر React.js المحلي؟ أضفه هنا! (يرجى الحفاظ على قائمة التسلسل الزمني)
 
+<<<<<<< HEAD
 ## المؤتمرات القادمة {#upcoming-conferences}
 
 ### React Advanced 2021 {#react-advanced-2021}
 اكتوبر 22-23, 2021. حضوريا في لندن ، المملكة المتحدة + عن بُعد (حدث مختلط)
+=======
+## Upcoming Conferences {#upcoming-conferences}
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 ### React Brussels 2021 {#react-brussels-2021} 
 اكتوبر 15, 2021 - عبر الإنترنت
 
 [موقع الويب](https://www.react.brussels/) - [تويتر](https://twitter.com/BrusselsReact) - [لينكدين](https://www.linkedin.com/events/6805708233819336704/)
 
+<<<<<<< HEAD
 ### React Next 2020 {#react-next-2020}
 1 ديسمبر، 2020 - عبر الإنترنت
+=======
+
+### React Conf Brasil 2021 {#react-conf-brasil-2021}
+October 16, 2021 - remote event
+
+[Website](http://reactconf.com.br) - [Twitter](https://twitter.com/reactconfbr) - [Slack](https://react.now.sh) - [Facebook](https://facebook.com/reactconf) - [Instagram](https://instagram.com/reactconfbr) - [YouTube](https://www.youtube.com/channel/UCJL5eorStQfC0x1iiWhvqPA/videos)
+
+### React Advanced 2021 {#react-advanced-2021}
+October 22-23, 2021. In-person in London, UK + remote (hybrid event)
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 [موقع الويب](https://react-next.com/) - [تويتر](https://twitter.com/reactnext) - [فيس بوك](https://www.facebook.com/ReactNext2016/)
 
+<<<<<<< HEAD
 ### React fwdays’21 {#react-fwdays-2021}
 مارس 27, 2021 - عبر الإنترنت
 
 [موقع الويب](https://fwdays.com/en/event/react-fwdays-2021) - [تويتر](https://twitter.com/fwdays) - [فيس بوك](https://www.facebook.com/events/1133828147054286) - [لينكدين](https://www.linkedin.com/events/reactfwdays-21onlineconference6758046347334582273) - [Meetup](https://www.meetup.com/ru-RU/Fwdays/events/275764431/)
+=======
+### < React Global > by Geekle {#react-global-2021}
+November 3-4, 2021 - remote event
+
+[Website](https://geekle.us/react) - [LinkedIn](https://www.linkedin.com/events/javascriptglobalsummit6721691514176720896/) 
+
+### React Advanced London 2021 {#react-advanced-2021} 
+October 20-22, 2021. London, UK & remote
+
+[Website](https://reactadvanced.com) - [Twitter](https://twitter.com/reactadvanced)
+
+### React India 2021 {#react-india-2021}
+November 12-14, 2021 - remote event
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 ### React Summit - Remote Edition 2021 {#react-summit-remote-2021}
 افريل 14-16, 2021, 7am PST / 10am EST / 4pm CEST - عبر الإنترنت
 
 [موقع الويب](https://remote.reactsummit.com) - [تويتر](https://twitter.com/reactsummit) - [فيس بوك](https://www.facebook.com/reactamsterdam) - [فيديوهات](https://youtube.com/c/ReactConferences)
+
+### render(ATL) 2021 {#render-atlanta-2021} 
+September 13-15, 2021. Atlanta, GA, USA
+
+[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
+
+### React Native EU 2021 {#react-native-eu-2021}
+September 1-2, 2021 - remote event
+
+[Website](https://www.react-native.eu/) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu/) - [Instagram](https://www.instagram.com/reactnative_eu/)
+
+### React Finland 2021 {#react-finland-2021} 
+August 30 - September 3, 2021 - remote event
+
+[Website](https://react-finland.fi/) - [Twitter](https://twitter.com/ReactFinland) - [LinkedIn](https://www.linkedin.com/company/react-finland/)
 
 ### React Case Study Festival 2021 {#react-case-study-festival-2021}
 افريل 27-28, 2021 - عبر الإنترنت
