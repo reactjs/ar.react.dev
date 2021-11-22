@@ -913,9 +913,13 @@ function DeepChild(props) {
 
 >ملاحظة
 >
+<<<<<<< HEAD
 >نوصي [بتمرير `dispatch` للأسفل في السياق](#how-to-avoid-passing-callbacks-down) بدلًا من ردود النداء الفردية في الخاصيات. الطريقة المتبعة في الأسفل مذكورة هنا فقط كتتمة وكمخرج هروب (escape hatch).
 >
 >لاحظ أيضًا أن هذا النمط قد يسبب حدوث مشاكل في الوضع المتزامن [concurrent mode](/blog/2018/03/27/update-on-async-rendering.html). نخطط لتوفير بدائل أفضل في المستقبل، ولكن الحل الأكثر أمانًا الأن هو إبطال رد النداء دومًا إن تغيرت بعض القيم التي يعتمد عليها.
+=======
+>We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
+>>>>>>> 17ad2cbc71f4c1fcc3f3f9ae528bfd292a9fced7
 
 في حالات نادرة، قد تحتاج إلى استظهار (memoize) رد نداء مع الخطاف [`useCallback`](/docs/hooks-reference.html#usecallback) ولكن عملية الاستظهار لا تعمل بشكل صحيح لأنَّ الدالة الداخلية يجب أن يعاد إنشاؤها في كثير من الأحيان. إن كانت الدالة التي تريد استظهارها هي معالج حدث ولا تستخدم أثناء التصيير، يمكنك استعمال مرجع كمتغير نسخة، وتخزين آخر قيمة محفوظة ضمنه يدويًا:
 
