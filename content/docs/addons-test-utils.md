@@ -141,7 +141,11 @@ mockComponent(
 
 > ملاحظة:
 >
+<<<<<<< HEAD
 > `()mockComponent` هي واجهة برمجة تطبيق قديمة. نوصي باستخدام [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) بدلًا من ذلك.
+=======
+> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://jestjs.io/docs/tutorial-react-native#mock-native-modules-using-jestmock) instead.
+>>>>>>> 569949e266f5724a04821d6c4f211286238616dc
 
 * * *
 
