@@ -39,7 +39,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 يعرض هذا المثال عند تنفيذه "مرحباً بالعالم".
 
@@ -54,7 +54,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 حيث تقوم بمناداة [`ReactDOM.render()`](/docs/react-dom.html#render) كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
 
@@ -67,10 +67,14 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 ## يحدث رياكت واجهة المستخدم فقط عندما تدعو الحاجة لذلك {#react-only-updates-whats-necessary}
 
+<<<<<<< HEAD
 يقارن ReactDOM العنصر وأبنائه مع سابقه, ويقوم يتطبيق تحديثات DOM الضرورية لتحويل الـ DOM إلى الحالة المرغوب بها.
 
 
 تستطيع تأكيد ذلك من خلال تفحص [المثال الأخير](codepen://rendering-elements/update-rendered-element) باستخدام أدوات المتصفح:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
