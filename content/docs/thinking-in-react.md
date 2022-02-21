@@ -72,7 +72,11 @@ prev: composition-vs-inheritance.html
 
 مع نهاية هذه الخطوة، سيكون لديك مكتبة من المكونات القابلة لإعادة الاستخدام (reusable) التي تقوم بتصيير نموذج البيانات، المكونات ستحتوي فقط على دالات (`render()`) حيث أن هذه نسخة ثابتة من تطبيقك، المكون بأعلى التسلسل الهرمي (`FilterableProductTable`) سيحصل علي نموذج البيانات بصفته خاصية (prop)، إذا قمت بعمل تغيير في نموذج البيانات وقمت باستدعاء الدالة (`ReactDOM.render()`) مرة أخرى فإن واجهة المستخدم سيتم تحديثها، من السهل رؤية كيف يتم تحديث واجهة المستخدم وأين تحدث التغييرات فلا يوجد شيء معقد، طريقة تدفق البيانات في اتجاه واحد (**one-way data flow**) الخاصة بـ (React) وتدعي أيضاَ بـ (*one-way binding*) تحافظ على كل شيء سريع ووحدة (modular) واحدة.
 
+<<<<<<< HEAD
 انتقل إلى الوثائق [React docs](/docs/) إذا كنت بحاجة للمساعدة لتنفيذ هذه الخطوة
+=======
+Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
 ### نبذة مختصرة: الخاصية (Props) مقابل الحالة (State){#a-brief-interlude-props-vs-state}
 
@@ -138,7 +142,11 @@ prev: composition-vs-inheritance.html
 
 إذا حاولت الكتابة أو الضغط على الـ (checkbox) بالإصدار الحالي للتطبيق سترى أن React سيتجاهل ذلك، وذلك مقصود حيث أننا قمنا بوضع قيمة الخاصية (value) لل (input) لتكون دائماَ مساوية للحالة التى تم تمريرها من المكون `FilterableProductTable`.
 
+<<<<<<< HEAD
 لنفكر بما نريد أن يحدث، نريد التأكد كلما قام المستخدم بتغيير الـ (form) يتم تحديث الحالة لإظهار ما أدخله المستخدم وبما أن المكونات يجب أن تغير الحالة الخاصة بها فقط، المكون `FilterableProductTable` سيمرر الدالة (callback) للمكون `SearchBar` والتى سيتم استدعائها أينما وجب تحديث الحالة، يمكننا استخدام الحدث (`onChange` event) على الـ (inputs) لنعرف ذلك، الدالة (callback) التي تم تمريرها بواسطة المكون `FilterableProductTable` تقوم باستدعاء `setState()` ويتم تحديث التطبيق.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
 بالرغم من أن ذلك يبدو ذلك معقداَ، فحقيقة وباستخدام عدد قليل من الأسطر وبشكل صريح نرى كيف تتدفق البيانات خلال التطبيق.
 

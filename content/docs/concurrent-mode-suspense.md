@@ -102,7 +102,11 @@ function ProfileTimeline() {
 
 هذا العرض مجرد اعلان تشويقى. لا تقلق إذا لم يكن الأمر منطقيًا بعد. سنتحدث أكثر عن كيفية عمله أدناه. ضع في اعتبارك أن Suspense أكثر من *آلية*، وأن واجهات برمجة التطبيقات المعينة مثل `fetchProfileData()` أو `resource.posts.read()` في المثال أعلاه ليست مهمة للغاية. إذا كنت مهتمًا بالفضول، فيمكنك العثور على تعريفاتها في [هذا العرض التوضيحي](https://codesandbox.io/s/frosty-hermann-bztrp).
 
+<<<<<<< HEAD
 Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب البيانات من المكتبات** للتواصل مع React بأن *البيانات التي يقرأها المكون ليست جاهزة بعد*. يمكن أن تنتظر React حتى تكون جاهزة وتحديث واجهة المستخدم. في Facebook ،نستخدم Relay و [تكامل بواسطة Suspense الجديدة](https://relay.dev/docs/en/experimental/step-by-step). نتوقع أن توفر مكتبات أخرى مثل Apollo تكاملات مماثلة.
+=======
+Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/getting-started/step-by-step-guide/). We expect that other libraries like Apollo can provide similar integrations.
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
 على المدى الطويل ، نعتزم أن تصبح Suspense هي الطريقة الأساسية لقراءة البيانات غير المتزامنة من المكونات - بغض النظر عن مصدر هذه البيانات.
 
@@ -112,7 +116,11 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 * **ليس تطبيقًا لجلب البيانات.** لا يفترض أنك تستخدم GraphQL أو REST أو أي تنسيق بيانات أو مكتبة أو نقل أو بروتوكول معين آخر.
 
+<<<<<<< HEAD
 * **ليس عميلًا جاهزًا للاستخدام.** لا يمكنك "استبدال" `fetch` أو Relay مع Suspense. ولكن يمكنك استخدام مكتبة مدمجة مع Suspense (على سبيل المثال ، [واجهات برمجة تطبيقات Relay جديدة](https://relay.dev/docs/en/experimental/api-reference)).
+=======
+ * **It is not a ready-to-use client.** You can't "replace" `fetch` or Relay with Suspense. But you can use a library that's integrated with Suspense (for example, [new Relay APIs](https://relay.dev/docs/api-reference/relay-environment-provider/)).
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
  * **لا يقترن البيانات التي تجلب إلى طبقة العرض.** إنها تساعد في تنظيم عرض حالات التحميل في واجهة المستخدم الخاصة بك ، لكنها لا تربط منطق الشبكة الخاص بك بمكونات React.
 
@@ -128,7 +136,11 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 ## استخدام Suspense في الممارسة {#using-suspense-in-practice}
 
+<<<<<<< HEAD
 في فيسبوك، استخدمنا حتى الآن تكامل Relay مع Suspense في الإنتاج. **إذا كنت تبحث عن دليل عملي للبدء اليوم ، [راجع دليل Relay ](https://relay.dev/docs/en/experimental/step-by-step)!** إنه يوضح الأنماط التي عملت بالفعل بشكل جيد بالنسبة لنا في الإنتاج.
+=======
+At Facebook, so far we have only used the Relay integration with Suspense in production. **If you're looking for a practical guide to get started today, [check out the Relay Guide](https://relay.dev/docs/getting-started/step-by-step-guide/)!** It demonstrates patterns that have already worked well for us in production.
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
 **تستخدم الشفرة التجريبية في هذه الصفحة API "وهمية" بدلاً من Relay.** هذا يجعلها أسهل للفهم إذا لم تكن معتادًا على GraphQL ، لكنها لن تخبرك "بالطريقة الصحيحة" لبناء التطبيق مع Suspense . هذه الصفحة أكثر تصوريًا وتهدف إلى مساعدتك في معرفة *لماذا* يعمل Suspense بطريقة معينة، والمشكلات التي يحلها
 
@@ -146,7 +158,11 @@ Suspense ليس مكتبة جلب البيانات. إنها **آلية لجلب
 
 على الرغم من أنه قابل للتنفيذ من الناحية الفنية ، إلا أن Suspense **غير** المقصود حاليًا كوسيلة لبدء جلب البيانات عند عرض مكون. بدلاً من ذلك ، يتيح للمكونات التعبير عن "انتظارها" للبيانات التي *يتم جلبها بالفعل*.**[بناء تجربة مستخدم رائعة مع الوضع التزامن و Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) يشرح سبب أهمية هذا الأمر وكيفية تنفيذ هذا النمط في الممارسة العملية.**
 
+<<<<<<< HEAD
 ما لم يكن لديك حل يساعد على منع الشلالات ، فإننا نقترح تفضيل واجهات برمجة التطبيقات (APIs) التي تفضل أو تجلب الجلب قبل التصيير. للحصول على مثال ملموس ، يمكنك إلقاء نظرة على كيفية قيام [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) بفرض عملية التحميل المسبق. لم تكن رسائلنا حول هذا الأمر متسقة للغاية في الماضي. لا يزال التشويق في جلب البيانات تجريبيًا ، لذا يمكنك توقع تغيير توصياتنا بمرور الوقت لأننا نتعلم المزيد من استخدام الإنتاج ونفهم مساحة المشكلة بشكل أفضل.
+=======
+Unless you have a solution that helps prevent waterfalls, we suggest to prefer APIs that favor or enforce fetching before render. For a concrete example, you can look at how [Relay Suspense API](https://relay.dev/docs/api-reference/use-preloaded-query/) enforces preloading. Our messaging about this hasn't been very consistent in the past. Suspense for Data Fetching is still experimental, so you can expect our recommendations to change over time as we learn more from production usage and understand the problem space better.
+>>>>>>> 2310e15532aba273d713996a4c6ef04247dff764
 
 ## المناهج التقليدية مقابل Suspense  {#traditional-approaches-vs-suspense}
 
