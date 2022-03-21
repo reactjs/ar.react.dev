@@ -97,9 +97,13 @@ prev: hooks-reference.html
 
 هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate`، `getDerivedStateFromError` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
 
+<<<<<<< HEAD
 ما زالت الخطافات حديثة العهد، وقد لا تتوافق بعض المكتبات الموفرة من طرف ثالث معها في الوقت الحالي.
 
 ### هل تستبدل الخطافات خاصيات التصيير والمكونات ذات الترتيب الأعلى؟ {#do-hooks-replace-render-props-and-higher-order-components}
+=======
+### Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 غالبًا، خاصيات التصيير والمكونات ذات الترتيب الأعلى تُصيَّر ابنًا واحدًا فقط. نعتقد أنَّ الخطافات هي وسيلةٌ بسيطةٌ لتخدم حالة الاستخدام هذه. لا يزال هنالك متسعٌ لكلا النمطين (قد يملك مكون `scroller` افتراضي مثلًا الخاصية `renderItem` أو قد يملك مكون `container` حاوي على هيكل DOM خاصة به)؛ ولكن في معظم الحالات، ستكون الخطافات كافية ويمكنها أن تساعد في تقليل التشعب في شجرتك.
 
@@ -913,9 +917,13 @@ function DeepChild(props) {
 
 >ملاحظة
 >
+<<<<<<< HEAD
 >نوصي [بتمرير `dispatch` للأسفل في السياق](#how-to-avoid-passing-callbacks-down) بدلًا من ردود النداء الفردية في الخاصيات. الطريقة المتبعة في الأسفل مذكورة هنا فقط كتتمة وكمخرج هروب (escape hatch).
 >
 >لاحظ أيضًا أن هذا النمط قد يسبب حدوث مشاكل في الوضع المتزامن [concurrent mode](/blog/2018/03/27/update-on-async-rendering.html). نخطط لتوفير بدائل أفضل في المستقبل، ولكن الحل الأكثر أمانًا الأن هو إبطال رد النداء دومًا إن تغيرت بعض القيم التي يعتمد عليها.
+=======
+>We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 في حالات نادرة، قد تحتاج إلى استظهار (memoize) رد نداء مع الخطاف [`useCallback`](/docs/hooks-reference.html#usecallback) ولكن عملية الاستظهار لا تعمل بشكل صحيح لأنَّ الدالة الداخلية يجب أن يعاد إنشاؤها في كثير من الأحيان. إن كانت الدالة التي تريد استظهارها هي معالج حدث ولا تستخدم أثناء التصيير، يمكنك استعمال مرجع كمتغير نسخة، وتخزين آخر قيمة محفوظة ضمنه يدويًا:
 

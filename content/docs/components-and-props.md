@@ -76,7 +76,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 تلخيص ما حدث في هذا المثال:
 
@@ -118,7 +118,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/composing-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 تحتوي تطبيقات React الجديدة عادةً على المُكوِّن `App` في المستوى الأعلى وتنحدر عنه باقي المُكوِّنات، ولكن إن كنت تدمج React مع تطبيق موجود مُسبقًا فقد تبدأ من المستوى السفلي بمُكوِّن صغير مثل الزر `Button` وتصعد تدريجيًّا حتى المستوى الأعلى في هيكليّة التطبيق.
 
@@ -152,7 +152,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 يقبل هذا المُكوِّن الكائن `author`، والسلسلة النصيّة `text`، والتاريخ `date` كخاصيات props له، ويُمثِّل تعليقًا على مواقع التواصل الاجتماعي.
 
@@ -231,7 +231,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 يبدو استخراج المُكوِّنات في البداية عملًا مجهدًا، ولكن سنرى الفائدة الكبيرة لامتلاك عدّة مُكوِّنات قابلة لإعادة الاستخدام عند بناء تطبيقات كبيرة. القاعدة هنا هي: إن استخدمنا أجزاء واجهة المستخدم عدّة مرّات (مثل الزر `Button`، و اللوحة `Panel`، والصورة الرمزيّة `Avatar`)، أو كانت هذه الأجزاء مُعقّدة بحد ذاتها (مثل مُكوِّن التطبيق `App`، و `FeedStory`، والتعليق `Comment`)، فهي مُرشَّحة بشكل كبير ومن الجيد استخراجها إلى مُكوِّن مٌنفصل.
 
