@@ -48,8 +48,14 @@ ReactDOM.render(element, container[, callback])
 >
 > لا يُعدِّل التابع `ReactDOM.render()`   العقدة الحاوية (بل يُعدِّل فقط العناصر الأبناء لها). من الممكن إدخال مكوّن إلى عقدة DOM موجودة مسبقًا بدون الكتابة فوق العناصر الأبناء الموجودين داخلها.
 >
+<<<<<<< HEAD
 > يُعيد التابع `ReactDOM.render()` حاليًّا مرجعًا إلى نسخة الصنف `ReactComponent` الجذري. على أيّة حال هذه القيمة المُعادة تعتبر قديمة حاليًّا ويجب تجنبها لأنّ إصدارات React القادمة قد تُصيِّر المكوّنات بشكلٍ غير متزامن في بعض الحالات. إن أردت مرجعًا إلى نسخة الصنف`ReactComponent`  الجذري فالحل الأمثل هو إرفاق مرجع رد نداء إلى العنصر الجذري.
 > [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+=======
+> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
+> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
+> [callback ref](/docs/refs-and-the-dom.html#callback-refs) to the root element.
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 >
 > أصبح استخدام التابع `ReactDOM.render()` لإجراء hydrate على الحاوية المُصيَّرة من قبل الخادم أمرًا مهمًلا وسيُزال في إصدار React 17. استخدم التابع [`hydrate()`](#hydrate) بدلًا من ذلك.
 

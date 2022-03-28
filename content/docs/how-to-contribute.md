@@ -70,7 +70,11 @@ React's build system will strip out disabled feature branches before publishing.
 
 هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
+<<<<<<< HEAD
 **[كيف تُساهم في مشروع مفتوح المصدر على Github](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 

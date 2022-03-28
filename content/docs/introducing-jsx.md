@@ -66,7 +66,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://introducing-jsx)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 فصلنا JSX عبر عدّة أسطر لتسهيل القراءة، نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
 
@@ -90,7 +90,7 @@ function getGreeting(user) {
 بإمكانك استخدام علامتي الاقتباس لتحديد قيم ثابتة نصيّة لخاصيّات HTML:
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 بإمكانك أيضًا استخدام الأقواس لتضمين تعبير JavaScript بداخل خاصيّة HTML:
