@@ -9,16 +9,23 @@ next: introducing-jsx.html
 يبدو أصغر مثال في React كما يلي:
 
 
+<<<<<<< HEAD
 ```js
 ReactDOM.render(
   <h1>أهلًا بالعالم!</h1>,
   document.getElementById('root')
 );
+=======
+```jsx
+ReactDOM
+  .createRoot(document.getElementById('root'))
+  .render(<h1>Hello, world!</h1>);
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 ```
 
 يعرض هذا المثال ترويسةً تقول "أهلًا بالعالم!" في الصّفحة. 
 
-[](codepen://hello-world)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
 
 اضغط الرابط أعلاه لفتح مُحرِّر فوري "online". لا تتردد وقم بالتعديل هذا المثال كما يحلو لك وراقب كيف تؤثر تعديلاتك على المُخرجات. أغلب الصفحات في هذا الدليل ستحتوي على أمثلة قابلة للتعديل مثل هذا المثال.```
 
