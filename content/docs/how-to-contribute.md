@@ -27,17 +27,18 @@ redirect_from:
 
 ### تنظيم الفروع (Branch Organization) {#branch-organization}
 
-Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
+ارفع كل التعديلات مباشرتاً للفرع الرئيسي [`master branch'](https://github.com/facebook/react/tree/master). نحن لا نستخدم أيتا فروعٍ اخرا في عملية التطوير أو عمل اصدارات جديدة. نحن نقوم بعمل اقصى جهد للمحافظة على الفرع `(master)الرئيسي `في احسن صورة بأجتياز كل الأختبارات المتاحة. 
 
-Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
+
+الكود المضاف للفرع [`الفرع الرئيسي (master)`](https://github.com/facebook/react/tree/master) لابد ان يتلأم مع اخر اصدار مستقر. من الممكن أن يحتوي على بعض الخواص الأضافية ولاكن ليس تغيرات كبيرة. لابد أن نكون قادرين على اصدار اصدارات ذات تغيرات طفيفة من الفرع `(master)الرئيسي` في أي وقت.
 
 ### Feature Flags {#feature-flags}
 
-To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+للمحافظة على الفرع `(master)الرئيسي` في حالة تسمح بالاصدار، التغييرات الجذرية والخواص التجريبية لابد أن تُمرر من خلال راية الخواص.
 
-Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+رايات الخواص معرفة في [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). بعض الاصدارات من React من الممكن أن تفعل بعض المجموعات من رايات الخواص على سبيل المثال، اصدار React Native ممكن أن يكون مُعد بشكل مختلف عن React DOM. هذه الرايات موجودة في [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). رايات الخواص معرفة بشكل ثابت في (Flow)، لهذا يمكننا ان نشغل `yarn flow` لنؤكد اننا قد حدثنا كل الملفات اللازمة. 
 
-React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
+بناء نظام React سيزيل كل فروع الخواص المعطلة قبل النشر. عملية الدمج المستمر تُفعل عند كل تسليم (commit) للتأكد ما أذا كان هناك أي تغيير في حجم الحزمة. يمكنك أن تستخدم التغير في الحجم على أنه أشارة بأن الخاصية قد مٌررة بشكل صحيح. 
 
 ### العلل (Bugs) {#bugs}
 
