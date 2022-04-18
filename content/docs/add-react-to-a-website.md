@@ -53,10 +53,17 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 ```html{5,6,9}
   <!-- ... HTML محتوى ... -->
 
+<<<<<<< HEAD
   <!-- React تحميل -->
   <!-- "development.js" مكان "production.min.js" ملاحظة: عند النشر، بدل -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
   <!-- الخاص بنا React تحميل مكون. -->
   <script src="like_button.js"></script>
@@ -78,14 +85,24 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 بعد **[الشيفرة المساعدة](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, أضف السطرين في نهاية الملف `like_button.js`:
 
+<<<<<<< HEAD
 ```js{3,4}
 // ... الشيفرة المساعدة التي لصقتها ...
+=======
+```js{3,4,5}
+// ... the starter code you pasted ...
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
+<<<<<<< HEAD
 مهمة هذين السطرين هي العثور على العنصر `<div>` الذي أضفناه إلى صفحة HTML في الخطوة الأولى ثم إظهار الزر "Like" - الذي يمثِّل أحد مكونات React - داخله.
+=======
+These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 ### انتهينا! {#thats-it}
 
@@ -114,8 +131,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 إن صغَّرت شيفرات التطبيق مسبقًا، **فسيكون موقعك جاهزًا للنشر** على البيئة الإنتاجية بعد التأكد من أن شيفرة HTML التي يراد نشرها تُحمِّل إصدار React الإنتاجي (أي الذي ينتهي بـ `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 إن لم تعرف كيفية تنفيذ خطوة التصغير، [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -148,7 +165,11 @@ return (
 
 هذه الشيفرة مكافئة للشيفرة التي قبلها تمامًا. لمَّا كان **JSX [اختياري بشكل كامل](/docs/react-without-jsx.html)**، يرى الكثير من الأشخاص أنَّه مفيد لكتابة شيفرة واجهة المستخدم (UI code) في React وفي مكتبات أخرى.
 
+<<<<<<< HEAD
 يمكنك تجريب JSX باستعمال [محول Babel المباشر](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+=======
+You can play with JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.15.7).
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 ### جرب JSX بسرعة {#quickly-try-jsx}
 
