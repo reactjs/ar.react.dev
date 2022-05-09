@@ -97,7 +97,11 @@ ReactRef.detachRefs = function(
 
 ### نواة React {#react-core}
 
+<<<<<<< HEAD
 تشمل "نواة" React جميع الـ [واجهات برمجة تطبيقات `React` ذات المستوى العالي](/docs/top-level-api.html#react) مثل:
+=======
+The "core" of React includes all the [top-level `React` APIs](/docs/react-api.html#react), for example:
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 
 * `React.createElement()`
 * `React.Component`

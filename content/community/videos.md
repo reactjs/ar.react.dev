@@ -10,6 +10,11 @@ redirect_from:
 
 مقاطع فيديو مخصصة لمناقشة React ونظامه المتكامل (ecosystem).
 
+### React Conf 2021 {#react-conf-2021}
+
+A playlist of videos from React Conf 2021.
+<iframe title="React Conf 2021" width="650" height="366" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa" frameborder="0" allowfullscreen></iframe>
+
 ### React Conf 2019 {#react-conf-2019}
 
 A playlist of videos from React Conf 2019.
