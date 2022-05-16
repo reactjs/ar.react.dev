@@ -33,7 +33,11 @@ function MyDiv(props) {
 }
 ```
 
+<<<<<<< HEAD
 **جيّد:** يُمكن استخدام عامل الانتشار "speard operator" لأنتزاع خواص وتعيين االخواص المُتبقية إلى مُتغيّر.
+=======
+**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ```js
 function MyDiv(props) {

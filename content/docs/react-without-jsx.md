@@ -17,10 +17,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Hello toWhat="World" />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
 ```
 
 وتصرف الى شيفرة على النحو التالي بدون JSX:
@@ -32,10 +30,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
 ```
 
 إذا كنت مهتماً لرؤية المزيد من الامثلة عن كيفية تصريف شيفرة JSX الى javascript, فبإمكانك تجربة [مصرف Babel على الإنترنت](babel://jsx-simple-example).
@@ -47,10 +43,8 @@ ReactDOM.render(
 ```js
 const e = React.createElement;
 
-ReactDOM.render(
-  e('div', null, 'Hello World'),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
 ```
 
 إذا إستخدمت هذه الصيغة المختصرة (الثابت e) لأجل `React.createElement`، فسيكون من المناسب تمامًا استخدام React بدون JSX.
