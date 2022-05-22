@@ -40,11 +40,7 @@ const Versions = ({location}: Props) => (
                 عبر منصة Github
               </a>
               .<br />
-<<<<<<< HEAD
               يمكن أيضًا العثور على الوثائق الخاصة بالإصدارات الحديثة أدناه.
-=======
-              Changelogs for recent releases can also be found below.
->>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
             </p>
             <blockquote>
               <p>Note</p>
