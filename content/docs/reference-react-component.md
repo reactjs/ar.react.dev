@@ -509,7 +509,11 @@ setState(updater, [callback])
 يُطبِّق التابع `setState()‎` التغييرات على حالة المكوّن ويُخبِر React بضرورة إعادة تصيير هذا المكوّن ومكوّناته الأبناء مع الحالة الجديدة. هذا هو التابع الرئيسي الذي تستخدمه لتحديث واجهة المستخدم استجابةً لمُعالِج أحداث واستجابات الخادم.
 فكّر بالتابع `setState()‎`‎ كطلب بدلًا من أمر عاجل لتحديث المكوّن. للحصول على أداء أفضل قد تُؤخِّر React تنفيذ هذا التابع وبعد ذلك تُحدِّث عدّة مكوّنات في نفس الاستدعاء. لا تضمن React تطبيق تغيّرات الحالة بشكلٍ فوري.
 
+<<<<<<< HEAD
 لا يُحدِّث التابع `setState()‎`‎ المكوّن فورًا، فقد يُؤجل التحديث حتى وقتٍ لاحق. يجعل هذا من قراءة `this.state` مباشرةً بعد استدعاء `setState()`‎ أمرًا خاطئًا. استخدم بدلًا من ذلك التابع `componentDidUpdate` أو رد النداء `setState` (على الشكل `setState(updater, callback)`‎)، والتي من المضمون إطلاقها بعد تطبيق التحديث. إن احتجت إلى تعيين الحالة بناءً على الحالة السابقة، فاقرأ حول الوسيط `updater` الذي سنذكره بعد قليل.
+=======
+Think of `setState()` as a *request* rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync), but this may hurt performance.
+>>>>>>> 3aac8c59848046fb427aab4373a7aadd7069a24c
 
 يقود `setState()‎`‎ إلى إعادة التصيير دومًا ما لم يُرجِع التابع `shouldComponentUpdate()`‎ القيمة `false`. إن كنت تستخدم الكائنات القابلة للتعديل ولم يكن بالإمكان تطبيق منطق التصيير الشرطي ضمن التابع `shouldComponentUpdate()`‎، فستتجنّب إعادة التصيير غير الضرورية باستدعاء `setState()`‎ فقط عند اختلاف الحالة الجديدة.
 
