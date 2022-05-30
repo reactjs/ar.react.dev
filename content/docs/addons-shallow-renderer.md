@@ -59,7 +59,11 @@ expect(result.props.children).toEqual([
 
 بإمكانك التفكير بالتصيير السطحي كمكان لتصيير المكوّن الذي تختبره، والذي منه تستطيع استخراج ناتج المكوّن.
 
+<<<<<<< HEAD
 إنّ التابع `shallowRenderer.render()` مشابه للتابع [`()ReactDOM.render`](/docs/react-dom.html#render) ولكنّه لا يتطلّب DOM ويُصيِّر فقط مستوى أدنى وحيد. يعني هذا أنّك تستطيع اختبار المكوّنات بشكل معزول عن مكوّناتها الأبناء.
+=======
+`shallowRenderer.render()` is similar to [`root.render()`](/docs/react-dom-client.html#createroot) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 ### `()shallowRenderer.getRenderOutput` {#shallowrenderergetrenderoutput}
 
