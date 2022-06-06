@@ -91,7 +91,13 @@
         - id: react-component
           title: الصنف React.Component
     - id: react-dom
+<<<<<<< HEAD
       title: الكائن ReactDOM
+=======
+      title: ReactDOM
+    - id: react-dom-client
+      title: ReactDOMClient
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
     - id: react-dom-server
       title: الكائن ReactDOMServer
     - id: dom-elements
