@@ -216,10 +216,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 إذا كان المُكوّن يستخدم مخاليط متعددة تُعرِّف نفس توابع دورة الحياة (أي مثلًا تريد كل هذه المخاليط إيقاف التابع setInterval()‎ عند تدمير المُكوّن)، فسنضمن استدعاء كافة توابع دورة الحياة. تعمل التوابع المُعرَّفة في المخاليط بنفس الترتيب الذي أوردنا فيه هذه المخاليط متبوعةً باستدعاء التابع على المُكوّن.
