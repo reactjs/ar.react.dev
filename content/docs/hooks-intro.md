@@ -31,8 +31,13 @@ function Example() {
 
 >Note
 >
+<<<<<<< HEAD
 > الإصدار 16.8.0 من React هو أول إصدار يدعم الخطافات. عند الترقية إليه، لا تنسَ تحديث جميع الحزم بما فيها React DOM.
 > React Native تدعم الخطافات في [اصدار 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 ## فيديو تقديمي {#video-introduction}
 
@@ -96,7 +101,11 @@ function Example() {
 
 نعلم أن مطوري React يركزون على تضمين المنتجات ولا يملكون الوقت للنظر في كل واجهة برمجية يجري إصدارها. الخطافات جديدةٌ للغاية، ومن الأفضل التريث قليلًا ريثما يتوافر مزيدًا من الأمثلة والدروس التعليمية قبل اتخاذ قرار تعلمها أو اعتمادها.
 
+<<<<<<< HEAD
 نتفهَّم أيضًا أنَّ مجال الطلب على إضافة أنواع أساسية جديدة إلى React مرتفعٌ نسبيًا. للقرَّاء الفضوليين، أعددنا [الدليل RFC المفصل](https://github.com/reactjs/rfcs/pull/68) الذي يتعمق حول دافع إضافة الخطافات، ويوفر نظرة موسعة حول قرارات التصميم المحددة والأسلوب المرتبط السابق.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 **الأهم من ذلك، تعمل الخطافات جنبًا بجنب مع الشيفرة القائمة، لذلك يمكنك اعتمادها تدريجيًا.** نشارك الآن الواجهة البرمجية التجريبية للحصول على تغذية راجعة من أولئك المهتمين بتشكيل مستقبل React.
 
