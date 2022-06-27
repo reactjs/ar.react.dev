@@ -39,13 +39,9 @@ JSX هي عبارة عن صياغة ممتدة إلى JavaScript، وهي مشا
 
 تستخدم React DOM اتفاقية تسمية الخاصيّات بطريقة camelCase بدلًا من أسماء خاصيّات HTML. على سبيل المثال تُصبِح الخاصيّة `tabindex` على الشكل `tabIndex` في JSX. تُكتَب أيضًا الخاصيّة `class` على الشكل `className` لأنّ الكلمة `class` هي كلمة محجوزة في JavaScript:
 
-```js
-const name = 'Clementine';
-ReactDOM.render(
-  <h1 className="hello">My name is {name}!</h1>,
-  document.getElementById('root')
-);
-```  
+```jsx
+<h1 className="hello">My name is Clementine!</h1>
+```
 
 ## [العناصر](/docs/rendering-elements.html) {#elements}
 
