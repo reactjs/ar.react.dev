@@ -24,7 +24,14 @@ permalink: community/courses.html
 
 - [مخيم تدريب React المجاني](https://tylermcginnis.com/free-react-bootcamp/) - تسجيلات من دورة تدريبية مباشرة مدتها ثلاثة أيام لتعلم مكتبة  React
 
+<<<<<<< HEAD
 - [Scrimba: تعلم Recat بالمجان](https://scrimba.com/g/glearnreact) -  ٤٨ فيديو لتعلم بناء تطبيقات React
+=======
+- [University of Helsinki: Full Stack Open MOOC](https://fullstackopen.com/en/) - Learn to build web applications with React. Available in English, Spanish, Chinese and Finnish.
+
+
+## Paid Courses {#paid-courses}
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 ## دورات مدفوعة {#paid-courses}
 
@@ -44,7 +51,11 @@ permalink: community/courses.html
 
 - [اساسيات React](https://learnreact.com/lessons/2018-essential-react-1-overview) - دورة تعليمية لمن يحبون التعلم بكتابة الاكواد البرمجية، ستمكنهم هذه الدورة من التعلم سريعاً وعمل تطبيقات متقدمة
 
+<<<<<<< HEAD
 - [React Training: Advanced React.js](https://courses.reacttraining.com/p/advanced-react) - طوّر مهاراتك في React
+=======
+- [Tyler McGinnis](https://ui.dev/) - Tyler McGinnis provides access to his courses for a monthly fee. Courses include "React Fundamentals" and "Universal React".
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - تعلم مع تايلور ماكجينس والذي يقدم دوراته التدريبية برسوم شهرية. تشمل تلك الدورات تعلم اساسيات React
 

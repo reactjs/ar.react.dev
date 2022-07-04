@@ -134,7 +134,11 @@ var SayHello = createReactClass({
 
 يعني هذا أن كتابة أصناف ES6 يحتاج لكتابة شيفرة متكررة من أجل معالجات الأحداث ولكنّ الجانب الجيد هنا هو الحصول على أداء أفضل قليلًا في التطبيقات الكبيرة. 
 
+<<<<<<< HEAD
 إن كنت لا تحب كتابة الشيفرة بشكل متكرر فتستطيع تمكين صياغة [خاصيّات الأصناف](https://babeljs.io/docs/plugins/transform-class-properties/) **التجريبية** مع Babel:
+=======
+If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 
 ```javascript
@@ -143,11 +147,11 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-  // WARNING: this syntax is experimental!
+  
   // Using an arrow here binds the method:
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -159,9 +163,13 @@ class SayHello extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 انتبه إلى أنّ هذه الصياغة **تجريبية** وبالتالي قد تتغير أو لا تبقى موجودة أصلًا.
 
 إن كنت تفضّل البقاء بأمان فلديك بعض الخيارات:
+=======
+You also have a few other options:
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 * ربط التوابع في الدالة البانية..
 * استخدام الدوال السهمية، مثل `onClick={(e) => this.handleClick(e)}`.
@@ -216,10 +224,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 إذا كان المُكوّن يستخدم مخاليط متعددة تُعرِّف نفس توابع دورة الحياة (أي مثلًا تريد كل هذه المخاليط إيقاف التابع setInterval()‎ عند تدمير المُكوّن)، فسنضمن استدعاء كافة توابع دورة الحياة. تعمل التوابع المُعرَّفة في المخاليط بنفس الترتيب الذي أوردنا فيه هذه المخاليط متبوعةً باستدعاء التابع على المُكوّن.

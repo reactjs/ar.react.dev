@@ -8,4 +8,8 @@ permalink: warnings/invalid-aria-prop.html
 
 1. تأكَد من الإملاء بحذر ان كُنت تَظُنّ انك تستخدم خاصية صالحة. خاصيتا `aria-labelledby` و `aria-activedescendant` عادةً ما يُخطَأُ بِتَهجِئَتِهما.
 
+<<<<<<< HEAD
 2. لا تَتعرَّف React على الخاصية التي حَدَدتَها. سيتم إصلاح ذلك في إصدار مستقبلي من React على الأرجح. تُزيل React حاليًا جميع الخواص غير المُعَرَّفة ، لذلك تحديدهم في تطبيق React خاصَتِك لن يؤدي إلى تَصييرِهم.
+=======
+2. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React.
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
