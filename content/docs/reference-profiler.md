@@ -1,27 +1,24 @@
 ---
 id: profiler
-title: Profiler API
+title: واجهة برمجة التطبيقات المحلل(Profiler API)
 layout: docs
 category: Reference
 permalink: docs/profiler.html
 ---
 
-The `Profiler` measures how often a React application renders and what the "cost" of rendering is.
-Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
+`(Profiler)المحلل` يقوم بحساب كم مرة يقوم فيها تطبيق React بالتنفيذ وايضاً "تكلفة" كل تنفيذ. الهدف من هذا هو المساعدة في تحديد اجزاء التطبيق البطيئة والتي قد تسفيد من [تحسينات مثل التخزين](/docs/hooks-faq.html#how-to-memoize-calculations).
 
-> Note:
+> ملحوظة:
 >
-> Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.
+>المحلل(Profiler) يضيف بعض الاحمال الاضافية، لذلك **يتم تعطيلة في [البنية الانتاجية](/docs/optimizing-performance.html#use-the-production-build)**.
 >
-> To opt into production profiling, React provides a special production build with profiling enabled.
-> Read more about how to use this build at [fb.me/react-profiling](https://fb.me/react-profiling)
+>للأشتراك في تحليل الانتاج ، توفر React بنية إنتاج خاصة مع تمكين المحلل(Profiler).
+> أقراء اكثر عن كيفية استخدام هذه البنية في [fb.me/react-profiling](https://fb.me/react-profiling)
 
-## Usage {#usage}
-
-A `Profiler` can be added anywhere in a React tree to measure the cost of rendering that part of the tree.
-It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.
-
-For example, to profile a `Navigation` component and its descendants:
+## طريقة الأستخدام {#usage}
+`(Profiler)المحلل` يمكن أن يضاف في أي جزء من شجرة React لحساب لحساب تكلفة التسليم لهذا الجزء.
+انها تحتاج إلى خاصيتين: `id`من نوع (string) و `onRender` التي تعتبر دالة تُنادا من قبل React عندما يسجل اي تحديث من العناصر الموجودة في الشجرة.
+مثلاً، لتحليل العنصر `Navigation` وكل احفادة من العناصر (التي تندرج تحتة في شجرة العناصر):
 
 ```js{3}
 render(
@@ -33,8 +30,7 @@ render(
   </App>
 );
 ```
-
-Multiple `Profiler` components can be used to measure different parts of an application:
+من الممكن استعمال العديد من عناصر `(Profiler)المحلل` لحساب اجزاء مختلفة من التطبيق
 ```js{3,6}
 render(
   <App>
@@ -47,8 +43,7 @@ render(
   </App>
 );
 ```
-
-`Profiler` components can also be nested to measure different components within the same subtree:
+من الممكن أيضاً استعمال `(Profiler)المحلل` متداخلاً لحساب عناصر مختلفة تحت نفس الجزء من الشجرة.
 ```js{3,5,8}
 render(
   <App>
@@ -66,15 +61,14 @@ render(
 );
 ```
 
-> Note
+> ملحوظة
 >
-> Although `Profiler` is a light-weight component, it should be used only when necessary; each use adds some CPU and memory overhead to an application.
+>بالرغم من أن `(Profiler)المحلل` هو عنصر خفيف الحمل، لا يجب استعمالة ألا في الضرورة لأن كل مرة يستعمل فيها يضيف حمل على المعالج وذاكرة التخزين بالنسبة للتطبيق.
 
-## `onRender` Callback {#onrender-callback}
+ ## `onRender` رد النداء  {#onrender-callback}
 
-The `Profiler` requires an `onRender` function as a prop.
-React calls this function any time a component within the profiled tree "commits" an update.
-It receives parameters describing what was rendered and how long it took.
+`المحلل (Profiler)` يحتاج دالة `onRender` كخاصية تناديها React في أي وقت يتم فيه "تنفيذ" تحديث من العناصر المندرجة تحت شجرة المحلل(Profiller).
+يتم تسليم معاملات تصف ما تم تسليمة وكم من الوقت قد أخذ.
 
 ```js
 function onRenderCallback(
@@ -90,30 +84,27 @@ function onRenderCallback(
 }
 ```
 
-Let's take a closer look at each of the props:
-
-* **`id: string`** - 
-The `id` prop of the `Profiler` tree that has just committed.
-This can be used to identify which part of the tree was committed if you are using multiple profilers.
+لنلقي نظرة مقربة على كلٍ من الخواص:
+* **`id: string`** -
+الخاصية `id` لشجرة `(Profiler)المحلل`  التي تم تسليمها أخيرا. يمكن أستعمالها في تحديد أي من أجزاء الشجرة قد تم تنفيذة في حالة أستعمل أكثر من محلل(Profiler).
 * **`phase: "mount" | "update"`** -
-Identifies whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or hooks.
+يحدد ما إذا كانت الشجرة قد تم تفعيلها لأول مرة أو قد تم أعادة تنفيذها بسبب تغير في الخواص أو الحالة أو الخطافات.
 * **`actualDuration: number`** -
-Time spent rendering the `Profiler` and its descendants for the current update.
-This indicates how well the subtree makes use of memoization (e.g. [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).
-Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.
+الوقت الذي استغرقة `(Profiler)المحلل` وكل اتباعة لأعادة التنفيذ بعد أخر تحديث.
+هذا يوضح كفائة استهلاك الشجرة الفرعية للتخذين (مثلاً [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).
+ف الحالات المثلا هذة القيمة يجب أن تقل بشكل ملحوظ بعد أول عملية تنفيذ لأن كل التابعين لن يحتاجو إلى أعادة تنفيذ إلا إذا كان هناك تغيير ف الخواص.
 * **`baseDuration: number`** -
-Duration of the most recent `render` time for each individual component within the `Profiler` tree.
-This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization).
+مدة `التنفيذ` لكل عنصر من شجرة `(profiler)المحلل` على حدا.
+هذه القيمة لتقدير التكلفة في أسواء حالة تنفيذ ( مثلا التنفيذ الابتدائي أو شجرة بدون تخزين).
 * **`startTime: number`** -
-Timestamp when React began rendering the current update.
+الوقت الذي بدأت في React عملية التنفيذ للتحديث الحالي.
 * **`commitTime: number`** -
-Timestamp when React committed the current update.
-This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
+الوقت الذي سلمت فيه React التحديث الحالي.
+هذه القيمة متاحة لكل المحللين(Profilers) في نفس عملية التسليم، يمكن تجميعهم إذا كنت ترغب.
 * **`interactions: Set`** -
-Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced when the update was scheduled (e.g. when `render` or `setState` were called).
-
-> Note
+مجموعة من ["interactions"](https://fb.me/react-interaction-tracing) التي تم تعقبها عند جدولة التحديث ( مثلا عند `التنفيذ` أو تم استدعاء `setState`).
+> ملحوظة
 >
-> Interactions can be used to identify the cause of an update, although the API for tracing them is still experimental.
+>يمكن استخدام التفاعلات في تحديد سبب تحديث، ولكن واجهة برمجة التطبيق الخاصة بالتعقب مازالت تحت التجربة.
 >
-> Learn more about it at [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)
+>يمكنك معرفة المزيد في [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)
