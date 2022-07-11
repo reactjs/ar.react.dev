@@ -64,26 +64,31 @@ const element = <Welcome name="Sara" />;
 
 لى سبيل المثال تعرض هذه الشيفرة عبارة "Hello, Sara" في الصّفحة:
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+root.render(element);
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 تلخيص ما حدث في هذا المثال:
 
+<<<<<<< HEAD
 1. نستدعي التّابع `ReactDOM.render()` مع العنصر `<Welcome name="Sara" />`.
 2. تستدعي React المُكوِّن `Welcome` مع تمرير `{name: 'Sara'}` كخاصيّة props.
 3. يُعيد العنصر `Welcome` العنصر `<h1>Hello, Sara</h1>` كنتيجة له.
 4. تُحدِّث React DOM بكفاءة DOM ليُطابِق `<h1>Hello, Sara</h1>`.
+=======
+1. We call `root.render()` with the `<Welcome name="Sara" />` element.
+2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
+3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
+4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 
 >**ملاحظة:** يجب أن تبدأ أسماء المُكوِّنات دومًا بأحرف كبيرة.
 >
@@ -111,14 +116,9 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
-[](codepen://components-and-props/composing-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 تحتوي تطبيقات React الجديدة عادةً على المُكوِّن `App` في المستوى الأعلى وتنحدر عنه باقي المُكوِّنات، ولكن إن كنت تدمج React مع تطبيق موجود مُسبقًا فقد تبدأ من المستوى السفلي بمُكوِّن صغير مثل الزر `Button` وتصعد تدريجيًّا حتى المستوى الأعلى في هيكليّة التطبيق.
 
@@ -152,7 +152,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 يقبل هذا المُكوِّن الكائن `author`، والسلسلة النصيّة `text`، والتاريخ `date` كخاصيات props له، ويُمثِّل تعليقًا على مواقع التواصل الاجتماعي.
 
@@ -231,7 +231,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 يبدو استخراج المُكوِّنات في البداية عملًا مجهدًا، ولكن سنرى الفائدة الكبيرة لامتلاك عدّة مُكوِّنات قابلة لإعادة الاستخدام عند بناء تطبيقات كبيرة. القاعدة هنا هي: إن استخدمنا أجزاء واجهة المستخدم عدّة مرّات (مثل الزر `Button`، و اللوحة `Panel`، والصورة الرمزيّة `Avatar`)، أو كانت هذه الأجزاء مُعقّدة بحد ذاتها (مثل مُكوِّن التطبيق `App`، و `FeedStory`، والتعليق `Comment`)، فهي مُرشَّحة بشكل كبير ومن الجيد استخراجها إلى مُكوِّن مٌنفصل.
 
