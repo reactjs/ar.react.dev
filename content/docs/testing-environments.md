@@ -54,4 +54,10 @@ prev: testing-recipes.html
 
 تعد اختبارات end-to-end مفيدة لاختبار سير عمل أطول، خاصةً عندما تكون مهمة لنشاطك التجاري (مثل المدفوعات أو الاشتراكات). بالنسبة لهذه الاختبارات، قد ترغب في اختبار كلٍّ من كيفية عرض المتصفح الحقيقي للتطبيق بأكمله، وجلب البيانات من نقاط الوصول الحقيقية لواجهة برمجة التطبيقات، واستخدام الجلسات (session) وملفات تعريف الارتباط (cookies)، والتنقل بين الروابط المختلفة. قد ترغب أيضًا في تقديم تأكيدات ليس فقط في حالة DOM، ولكن أيضًا على بيانات النسخ الاحتياطي (على سبيل المثال للتحقق من استمرار التحديثات في قاعدة البيانات).
 
+<<<<<<< HEAD
 في هذا السيناريو، يمكنك استخدام إطار عمل مثل [Cypress](https://www.cypress.io/) أو مكتبة مثل [puppeteer](https://github.com/GoogleChrome/puppeteer) حتى تتمكن من التنقل و تصفح بين نقاط الوصول والطرق (routes) المتعددة والتأكيد على الآثار الجانبية ليس فقط في المتصفح، ولكن يحتمل أن يكون على الواجهة الخلفية (back-end) أيضًا.
+=======
+End-to-end tests are useful for testing longer workflows, especially when they're critical to your business (such as payments or signups). For these tests, you'd probably want to test how a real browser renders the whole app, fetches data from the real API endpoints, uses sessions and cookies, navigates between different links. You might also likely want to make assertions not just on the DOM state, but on the backing data as well (e.g. to verify whether the updates have been persisted to the database).
+
+In this scenario, you would use a framework like [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev) or a library like [Puppeteer](https://pptr.dev/) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+>>>>>>> 8223159395aae806f8602de35e6527d35260acfb
