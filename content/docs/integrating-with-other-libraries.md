@@ -191,9 +191,15 @@ class Chosen extends React.Component {
 
 ## التكامل مع مكتبات الإظهار الأخرى {#integrating-with-other-view-libraries}
 
+<<<<<<< HEAD
 يُمكِن تضمين React في تطبيقات أخرى بفضل مرونة التابع [`ReactDOM.render()`](/docs/react-dom.html#render).
 
 على الرغم من أنّه من الشائع استخدام React في البداية لتحميل مكوّن React جذري وحيد إلى DOM، يُمكِن استدعاء التابع `ReactDOM.render()` عدّة مرات للأجزاء المستقلة من واجهة المستخدم والتي قد تكون صغيرة بحجم عنصر الزر button أو كبيرة بحجم تطبيق كامل.
+=======
+React can be embedded into other applications thanks to the flexibility of [`createRoot()`](/docs/react-dom-client.html#createRoot).
+
+Although React is commonly used at startup to load a single root React component into the DOM, `createRoot()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
 في الواقع هذه هي طريقة استخدام React في Facebook. يُتيح لنا ذلك كتابة تطبيقات في React قطعة بقطعة، ومن ثمّ جمعها مع قوالبنا المُولَّدة من قبل الخادم ومع الشيفرات التي من جهة العميل (client-side) الأخرى.
 
@@ -217,6 +223,7 @@ function Button() {
   return <button id="btn">قل مرحبًا</button>;
 }
 
+<<<<<<< HEAD
 ReactDOM.render(
   <Button />,
   document.getElementById('container'),
@@ -226,6 +233,11 @@ ReactDOM.render(
     });
   }
 );
+=======
+$('#btn').click(function() {
+  alert('Hello!');
+});
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 ```
 
 من هنا بإمكانك إضافة المزيد من منطق React إلى هذا المكوّن والبدء بتبني المزيد من ممارسات React الشائعة. فمثلًا من الأفضل في المكوّنات عدم الاعتماد على المُعرّفات (IDs) بسبب إمكانية تصيير نفس المكوّن مرات عديدة. سنستخدم بدلًا من ذلك [نظام أحداث React](/docs/handling-events.html) ونسجل مُعالج حدث الضغط (click) بشكل مباشر على عنصر الزر `<button>`‎ في React:
@@ -241,36 +253,42 @@ function HelloButton() {
   }
   return <Button onClick={handleClick} />;
 }
-
-ReactDOM.render(
-  <HelloButton />,
-  document.getElementById('container')
-);
 ```
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
+<<<<<<< HEAD
 بإمكانك امتلاك مكوّنات معزولة كما تشاء واستخدام التابع `ReactDOM.render()` لتصييرها إلى حاويات DOM مختلفة. وبينما تحوّل المزيد من شيفرة تطبيقك إلى React بشكل تدريجي، فستكون قادرًا على جمعها في مكوّنات أكبر ونقل استدعاءات التابع `ReactDOM.render()` إلى الأعلى في التسلسل الهرمي للمكوّنات.
+=======
+You can have as many such isolated components as you like, and use `ReactDOM.createRoot()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.createRoot()` calls up the hierarchy.
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
 ### تضمين React في واجهة عرض Backbone {#embedding-react-in-a-backbone-view}
 
 تستخدم واجهات عرض [Backbone](https://backbonejs.org/)  بشكل نموذجي سلاسل نصيّة أو دوال منتجة للسلاسل النصيّة لإنشاء المحتوى لعناصر DOM. يُمكِن استبدال هذه العملية بتصيير مكوّن React.
 
+<<<<<<< HEAD
 سنُنشِئ الآن واجهة عرض Backbone تُدعى `ParagraphView` والتي ستتجاوز دالة التصيير `render()`‎ في Backbone لتصيير المكوّن ‎`<Paragraph>` في React إلى عنصر DOM المُعطى من خلال Backbone (وهو`this.el`). نستخدم هنا أيضًا التابع [`ReactDOM.render()`](/docs/react-dom.html#render)‎:
+=======
+Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot):
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
-```js{1,5,8,12}
+```js{7,11,15}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
 
 const ParagraphView = Backbone.View.extend({
+  initialize(options) {
+    this.reactRoot = ReactDOM.createRoot(this.el);
+  },
   render() {
     const text = this.model.get('text');
-    ReactDOM.render(<Paragraph text={text} />, this.el);
+    this.reactRoot.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    ReactDOM.unmountComponentAtNode(this.el);
+    this.reactRoot.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });
@@ -278,7 +296,11 @@ const ParagraphView = Backbone.View.extend({
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
+<<<<<<< HEAD
 من الهام أن نستدعي أيضًا التابع `ReactDOM.unmountComponentAtNode()` في تابع الإزالة `remove` بحيث تلغي React تسجيل معالجات الأحداث والموارد الأخرى المرتبطة بشجرة المكوّن عند فصلها.
+=======
+It is important that we also call `root.unmount()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
+>>>>>>> 37cf98d075de3133b5ae69fe80fbecb6a742530a
 
 عند إزالة المكوّن *من* شجرة React، يُنفَّذ تابع المسح بشكل تلقائي، ولكن بما أننا نزيل كامل الشجرة يدويًّا فيجب أن نستدعي هذا التابع.
 
@@ -429,10 +451,8 @@ function Example(props) {
 }
 
 const model = new Backbone.Model({ firstName: 'Frodo' });
-ReactDOM.render(
-  <Example model={model} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Example model={model} />);
 ```
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/PmWwwa?editors=0010)
