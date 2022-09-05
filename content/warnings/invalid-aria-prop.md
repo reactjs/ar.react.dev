@@ -8,4 +8,10 @@ permalink: warnings/invalid-aria-prop.html
 
 1. تأكَد من الإملاء بحذر ان كُنت تَظُنّ انك تستخدم خاصية صالحة. خاصيتا `aria-labelledby` و `aria-activedescendant` عادةً ما يُخطَأُ بِتَهجِئَتِهما.
 
+<<<<<<< HEAD
 2. لا تَتعرَّف React على الخاصية التي حَدَدتَها. سيتم إصلاح ذلك في إصدار مستقبلي من React على الأرجح. تُزيل React حاليًا جميع الخواص غير المُعَرَّفة ، لذلك تحديدهم في تطبيق React خاصَتِك لن يؤدي إلى تَصييرِهم.
+=======
+2. If you wrote `aria-role`, you may have meant `role`.
+
+3. Otherwise, if you're on the latest version of React DOM and verified that you're using a valid property name listed in the ARIA specification, please [report a bug](https://github.com/facebook/react/issues/new/choose).
+>>>>>>> 42561f013aa0f6008cd1c5b811d8bacfc66a0779
