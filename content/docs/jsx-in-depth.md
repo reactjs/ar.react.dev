@@ -232,7 +232,11 @@ function NumberDescriber(props) {
 
 ### خاصيّات النشر {#spread-attributes}
 
+<<<<<<< HEAD
 إن كانت لديك خاصيّات `props` على شكل كائنات، وأردتَ تمريرها في JSX، فبإمكانك استخدام مُعامِل النشر `...` لتمرير كائن الخاصيّات بشكلٍ كامل. المُكوِّنان التاليان مُتكافئان:
+=======
+If you already have `props` as an object, and you want to pass it in JSX, you can use `...` as a "spread" syntax to pass the whole props object. These two components are equivalent:
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 ```js{7}
 function App1() {
@@ -245,7 +249,11 @@ function App2() {
 }
 ```
 
+<<<<<<< HEAD
 بإمكانك أيضًا اختيار خاصيّات مُحدّدة يُحدِّد قيمتها مُكوِّنك وتمرير الخاصيّات الأخرى باستخدام مُعامِل النشر:
+=======
+You can also pick specific props that your component will consume while passing all other props using the spread syntax.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 ```js{2}
 const Button = props => {

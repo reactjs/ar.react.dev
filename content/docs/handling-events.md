@@ -83,11 +83,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**جرِّب هذا المثال على موقع CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -96,15 +91,18 @@ ReactDOM.render(
 
 لا يُعدُّ هذا سلوكًا مرتبطًا بـ React، بل هو جزء من [سياق الدوال في JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). بشكل عام إن أشرت إلى التابع بدون استخدام الأقواس `()` بعده، مثل ‎`onClick={this.handleClick}‎`، فيجب أن تربط ذلك التابع.
 
+<<<<<<< HEAD
 إن كان استدعاء التابع `bind()`‎ يزعجك، فهناك طريقتان للالتفاف حول استعماله، إن كنت تستخدم صياغة [حقول الصنف العامة](https://babeljs.io/docs/plugins/transform-class-properties/) التجريبيّة فبإمكانك استخدام حقول الصنف لربط ردود النداء بشكل صحيح:
+=======
+If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 ```js{2-6}
 class LoggingButton extends React.Component {
   // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (
