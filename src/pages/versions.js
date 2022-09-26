@@ -40,8 +40,19 @@ const Versions = ({location}: Props) => (
                 عبر منصة Github
               </a>
               .<br />
+<<<<<<< HEAD
               يمكن أيضًا العثور على الوثائق الخاصة بالإصدارات الحديثة أدناه.
+=======
+              Changelogs for recent releases can also be found below.
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
             </p>
+            <blockquote>
+              <p>Note</p>
+              <p>
+                The current docs are for React 18. For React 17, see{' '}
+                <a href="https://17.reactjs.org">https://17.reactjs.org.</a>
+              </p>
+            </blockquote>
             <p>
               راجع الأسئلة الشائعة الخاصة بنا للحصول على معلومات حول{' '}
               <a href="/docs/faq-versioning.html">
