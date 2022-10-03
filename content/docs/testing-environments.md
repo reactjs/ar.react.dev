@@ -48,10 +48,20 @@ prev: testing-recipes.html
 
 قد تستخدم المكونات وظائف تستند إلى الوقت مثل `setTimeout` أو` setInterval` أو `Date.now`. في بيئات الاختبار، قد يكون من المفيد الاستغناء عن هذه الوظائف مع البدائل التي تتيح لك "التقدم" يدويًا. هذا شيء عظيم للتأكد من أن اختباراتك تعمل بسرعة! الاختبارات التي تعتمد على العداد ستظل قائمة بالترتيب، ولكن أسرع [<small>(مثال)</small>](/docs/testing-recipes.html#timers). معظم أطر العمل، بما في ذلك [Jest](https://jestjs.io/docs/en/timer-mocks) ، [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) و [lolex](https://github.com/sinonjs/lolex) ، تتيح لك محاكاة العداد في اختباراتك.
 
+<<<<<<< HEAD
 في بعض الأحيان، قد لا ترغب في محاكاة العداد. على سبيل المثال، ربما تقوم باختبار رسم متحرك، أو تتفاعل مع نقطة نهاية حساسة للتوقيت (مثل واجهة برمجة التطبيقات من نوع API rate limiter). تتيح لك المكتبات التي بها محاكاه العداد تمكينها وتعطيلها على أساس كل اختبار/مجموعة، بحيث يمكنك اختيار كيفية تشغيل هذه الاختبارات بشكل صريح.
+=======
+Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/latest/fake-timers) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 ### اختبارات end-to-end {#end-to-end-tests-aka-e2e-tests}
 
 تعد اختبارات end-to-end مفيدة لاختبار سير عمل أطول، خاصةً عندما تكون مهمة لنشاطك التجاري (مثل المدفوعات أو الاشتراكات). بالنسبة لهذه الاختبارات، قد ترغب في اختبار كلٍّ من كيفية عرض المتصفح الحقيقي للتطبيق بأكمله، وجلب البيانات من نقاط الوصول الحقيقية لواجهة برمجة التطبيقات، واستخدام الجلسات (session) وملفات تعريف الارتباط (cookies)، والتنقل بين الروابط المختلفة. قد ترغب أيضًا في تقديم تأكيدات ليس فقط في حالة DOM، ولكن أيضًا على بيانات النسخ الاحتياطي (على سبيل المثال للتحقق من استمرار التحديثات في قاعدة البيانات).
 
+<<<<<<< HEAD
 في هذا السيناريو، يمكنك استخدام إطار عمل مثل [Cypress](https://www.cypress.io/) أو مكتبة مثل [puppeteer](https://github.com/GoogleChrome/puppeteer) حتى تتمكن من التنقل و تصفح بين نقاط الوصول والطرق (routes) المتعددة والتأكيد على الآثار الجانبية ليس فقط في المتصفح، ولكن يحتمل أن يكون على الواجهة الخلفية (back-end) أيضًا.
+=======
+End-to-end tests are useful for testing longer workflows, especially when they're critical to your business (such as payments or signups). For these tests, you'd probably want to test how a real browser renders the whole app, fetches data from the real API endpoints, uses sessions and cookies, navigates between different links. You might also likely want to make assertions not just on the DOM state, but on the backing data as well (e.g. to verify whether the updates have been persisted to the database).
+
+In this scenario, you would use a framework like [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev) or a library like [Puppeteer](https://pptr.dev/) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34

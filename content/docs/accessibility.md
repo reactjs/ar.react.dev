@@ -229,7 +229,11 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
+<<<<<<< HEAD
 عند استخدام المكوّنات ذات الترتيب الأعلى لتمديد المكوّنات، فمن المفضّل[تمرير المرجع](/docs/forwarding-refs.html)  إلى المكوّن المغلّف باستخدام الدالة `forwardRef` في React. إن كان لا يعتمد المكوّن ذو الترتيب الأعلى المُقدَّم من طرف ثالث تمرير المراجع، فيُمكِن استخدام الطريقة السابقة كطريقة احتياطية.
+=======
+When using a [HOC](/docs/higher-order-components.html) to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 من الأمثلة الرائعة حول إدارة التركيز مثال [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). وهو مثال نادر نسبيًّا عن نافذة سهلة الوصول بشكل كامل، فهي لا تُعيِّن فقط التركيز المبدئي على
 زر الإلغاء  `cancel` (ممّا يمنع مستخدم لوحة المفاتيح من تفعيل الحدث `success` عن طريق الخطأ) وتحصر تركيز لوحة المفاتيح بداخل النافذة، بل تُعيد تعيين التركيز أيضًا إلى العنصر الذي أطلق هذه النافذة.
@@ -410,7 +414,11 @@ class BlurExample extends React.Component {
 - [كل شيء حول تباين اللون ولماذا يجب أن تعيد النظر فيه](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [ما هو التباين اللوني – مشروع A11y](https://a11yproject.com/posts/what-is-color-contrast/)
 
+<<<<<<< HEAD
 قد يكون من الممل حساب مجموعات الألوان المناسبة يدويًّا لجميع الحالات في موقعك، لذا تستطيع [حساب جميع الألوان باستخدام Colorable](https://jxnblk.com/colorable/).
+=======
+It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://colorable.jxnblk.com/).
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 تتضمّن أدوات aXe و WAVE التي سنشير إليها اختبارات لتباين الألوان وستُبلِّغ عن أخطاء التباين.
 
@@ -459,9 +467,13 @@ class BlurExample extends React.Component {
 
 توفّر لنا شركة Deque تقنية تُدعى [aXe-core](https://github.com/dequelabs/axe-core) من أجل اختبارات سهولة الوصول التلقائيّة لتطبيقاتنا. تتضمّن هذه الوحدة تكاملًا من أجل Selenium.
 
+<<<<<<< HEAD
 إنّ [ مُحرِّك سهولة الوصول](https://www.deque.com/products/axe/) أو aXe هو عبارة عن إضافة للمتصفح لكشف سهولة الوصول مبنية على تقنية `aXe-core`.
 
 بإمكانك أيضًا استخدام الوحدة [react-axe](https://github.com/dylanb/react-axe) للتبليغ عن موجودات سهولة الوصول بشكل مباشر إلى الكونسول أثناء التطوير وتنقيح الأخطاء.
+=======
+You can also use the [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) module to report these accessibility findings directly to the console while developing and debugging.
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 #### WebAIM WAVE {#webaim-wave}
 
