@@ -97,9 +97,13 @@ prev: hooks-reference.html
 
 هدفنا من الخطافات هو أن تغطي جميع حالات استخدام الأصناف في أقرب وقت ممكن. ليس هنالك أي خطاف مكافئ لدورتي الحياة `getSnapshotBeforeUpdate`، `getDerivedStateFromError` و `componentDidCatch` الغير شائعتين بعد؛ لا تقلق، إذ ستغطي الخطافات هذه الناحية قريبًا.
 
+<<<<<<< HEAD
 ما زالت الخطافات حديثة العهد، وقد لا تتوافق بعض المكتبات الموفرة من طرف ثالث معها في الوقت الحالي.
 
 ### هل تستبدل الخطافات خاصيات التصيير والمكونات ذات الترتيب الأعلى؟ {#do-hooks-replace-render-props-and-higher-order-components}
+=======
+### Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 غالبًا، خاصيات التصيير والمكونات ذات الترتيب الأعلى تُصيَّر ابنًا واحدًا فقط. نعتقد أنَّ الخطافات هي وسيلةٌ بسيطةٌ لتخدم حالة الاستخدام هذه. لا يزال هنالك متسعٌ لكلا النمطين (قد يملك مكون `scroller` افتراضي مثلًا الخاصية `renderItem` أو قد يملك مكون `container` حاوي على هيكل DOM خاصة به)؛ ولكن في معظم الحالات، ستكون الخطافات كافية ويمكنها أن تساعد في تقليل التشعب في شجرتك.
 
@@ -152,7 +156,7 @@ function Example() {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -171,7 +175,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // اختبر أول تصيير وتأثير
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -335,31 +339,30 @@ function useWindowPosition() {
 
 ### كيف يمكن جلب الخاصية أو الحالة السابقة؟ {#how-to-get-the-previous-props-or-state}
 
+<<<<<<< HEAD
 في الوقت الحالي، يمكنك فعل ذلك يدويًّا باستعمال [مرجع](#is-there-something-like-instance-variables):
+=======
+There are two cases in which you might want to get previous props or state.
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+Sometimes, you need previous props to **clean up an effect.** For example, you might have an effect that subscribes to a socket based on the `userId` prop. If the `userId` prop changes, you want to unsubscribe from the _previous_ `userId` and subscribe to the _next_ one. You don't need to do anything special for this to work:
 
-  const prevCountRef = useRef();
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
 ```
 
+<<<<<<< HEAD
 قد تبدو هذه العملية معقدةً بعض الشيء ولكن يمكنك استخراجها إلى خطاف مخصص:
+=======
+In the above example, if `userId` changes from `3` to `4`, `ChatAPI.unsubscribeFromSocket(3)` will run first, and then `ChatAPI.subscribeToSocket(4)` will run. There is no need to get "previous" `userId` because the cleanup function will capture it in a closure.
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
-```js{3,7}
-function Counter() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+Other times, you might need to **adjust state based on a change in props or other state**. This is rarely needed and is usually a sign you have some duplicate or redundant state. However, in the rare case that you need this pattern, you can [store previous state or props in state and update them during rendering](#how-do-i-implement-getderivedstatefromprops).
 
+<<<<<<< HEAD
 function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {
@@ -383,6 +386,9 @@ function Counter() {
 واردٌ في المستقبل أن توفر React خطافًا يدعى `usePrevious` مثلًا لفعل ذلك، إذ هذا السلوك شائع نسبيًا.
 
 انظر أيضًا [إلى السؤال التالي للاطلاع على النمط الموصى به من أجل الحالة المشتقة.](#how-do-i-implement-getderivedstatefromprops).
+=======
+We have previously suggested a custom Hook called `usePrevious` to hold the previous value. However, we've found that most use cases fall into the two patterns described above. If your use case is different, you can [hold a value in a ref](#is-there-something-like-instance-variables) and manually update it when needed. Avoid reading and updating refs during rendering because this makes your component's behavior difficult to predict and understand.
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 ### لماذا أرى الخصائص قديمة أو الحالة داخل الدالة؟ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
@@ -913,9 +919,13 @@ function DeepChild(props) {
 
 >ملاحظة
 >
+<<<<<<< HEAD
 >نوصي [بتمرير `dispatch` للأسفل في السياق](#how-to-avoid-passing-callbacks-down) بدلًا من ردود النداء الفردية في الخاصيات. الطريقة المتبعة في الأسفل مذكورة هنا فقط كتتمة وكمخرج هروب (escape hatch).
 >
 >لاحظ أيضًا أن هذا النمط قد يسبب حدوث مشاكل في الوضع المتزامن [concurrent mode](/blog/2018/03/27/update-on-async-rendering.html). نخطط لتوفير بدائل أفضل في المستقبل، ولكن الحل الأكثر أمانًا الأن هو إبطال رد النداء دومًا إن تغيرت بعض القيم التي يعتمد عليها.
+=======
+>We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 في حالات نادرة، قد تحتاج إلى استظهار (memoize) رد نداء مع الخطاف [`useCallback`](/docs/hooks-reference.html#usecallback) ولكن عملية الاستظهار لا تعمل بشكل صحيح لأنَّ الدالة الداخلية يجب أن يعاد إنشاؤها في كثير من الأحيان. إن كانت الدالة التي تريد استظهارها هي معالج حدث ولا تستخدم أثناء التصيير، يمكنك استعمال مرجع كمتغير نسخة، وتخزين آخر قيمة محفوظة ضمنه يدويًا:
 
