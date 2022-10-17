@@ -25,7 +25,11 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 لن تحتاج إلى أية أدوات معقدة أو تثبيت أي شيء. **كل ما تحتاج إليه لإكمال هذا القسم هو اتصال بالإنترنت ودقيقة مستقطعة من وقتك**.
 
+<<<<<<< HEAD
 تستطيع تنزيل [المثال التالي كاملًا (بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip) ولكن الأمر عائد إليك.
+=======
+Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 ### الخطوة 1: أضف حاوية DOM إلى صفحة HTM {#step-1-add-a-dom-container-to-the-html}
 
@@ -53,10 +57,17 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 ```html{5,6,9}
   <!-- ... HTML محتوى ... -->
 
+<<<<<<< HEAD
   <!-- React تحميل -->
   <!-- "development.js" مكان "production.min.js" ملاحظة: عند النشر، بدل -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
   <!-- الخاص بنا React تحميل مكون. -->
   <script src="like_button.js"></script>
@@ -76,16 +87,28 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 >
 >عرِّف هذه الشيفرة مكون React يدعى `LikeButton`. لا تقلق إن لم تفهم شيئًا منها، إذ سنغطي كل شيء مذكور فيها لاحقًا في [الدليل التطبيقي](/tutorial/tutorial.html) و[دليل المفاهيم الاساسية](/docs/hello-world.html). في الوقت الحالي، لندع هذه الشيفرة تُظهِر شيئًا على الشاشة.
 
+<<<<<<< HEAD
 بعد **[الشيفرة المساعدة](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, أضف السطرين في نهاية الملف `like_button.js`:
 
 ```js{3,4}
 // ... الشيفرة المساعدة التي لصقتها ...
+=======
+After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add three lines to the bottom of `like_button.js`:
+
+```js{3,4,5}
+// ... the starter code you pasted ...
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
+<<<<<<< HEAD
 مهمة هذين السطرين هي العثور على العنصر `<div>` الذي أضفناه إلى صفحة HTML في الخطوة الأولى ثم إظهار الزر "Like" - الذي يمثِّل أحد مكونات React - داخله.
+=======
+These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 ### انتهينا! {#thats-it}
 
@@ -95,7 +118,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[اطلع على كامل شيفرة المثال](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)** أو **[نزل المثال كاملًا (ملف مضغوط بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
+<<<<<<< HEAD
 ### إضافة: إعادة استعمال مكون {#tip-reuse-a-component}
+=======
+**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 عادةً، قد تحتاج إلى إظهار مكونات React في مواضع عدة في صفحة HTML. إليك مثال يُظهِر الزر "Like" في ثلاثة أماكن ويمرر بعض البيانات إليه:
 
@@ -103,7 +130,13 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [نزل المثال كاملًا (ملف مضغوط بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
+<<<<<<< HEAD
 >نصيحة
+=======
+[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
+
+>Note
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 >
 >هذا الأسلوب مفيد جدًا في أثناء كون الأجزاء التي تعمل باستعمال React هي أجزاء معزولة عن بعضها بعضًا. داخل شيفرة React، من الأسهل استعمال [تركيب المكونات](/docs/components-and-props.html#composing-components) عوض ذلك.
 
@@ -114,8 +147,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 إن صغَّرت شيفرات التطبيق مسبقًا، **فسيكون موقعك جاهزًا للنشر** على البيئة الإنتاجية بعد التأكد من أن شيفرة HTML التي يراد نشرها تُحمِّل إصدار React الإنتاجي (أي الذي ينتهي بـ `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 إن لم تعرف كيفية تنفيذ خطوة التصغير، [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -148,7 +181,11 @@ return (
 
 هذه الشيفرة مكافئة للشيفرة التي قبلها تمامًا. لمَّا كان **JSX [اختياري بشكل كامل](/docs/react-without-jsx.html)**، يرى الكثير من الأشخاص أنَّه مفيد لكتابة شيفرة واجهة المستخدم (UI code) في React وفي مكتبات أخرى.
 
+<<<<<<< HEAD
 يمكنك تجريب JSX باستعمال [محول Babel المباشر](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+=======
+You can play with JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.15.7).
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
 
 ### جرب JSX بسرعة {#quickly-try-jsx}
 
@@ -182,7 +219,7 @@ return (
 
 أنشئ مجلدًا باسم `src` ثم نفذ الأمر التالي في الطرفية:
 
-```
+```console
 npx babel --watch src --out-dir . --presets react-app/prod
 ```
 

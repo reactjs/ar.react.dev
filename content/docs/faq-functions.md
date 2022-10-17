@@ -37,6 +37,7 @@ class Foo extends Component {
 }
 ```
 
+<<<<<<< HEAD
 #### خاصيّات الصنف (اقتراح المرحلة 3) {#class-properties-stage-3-proposal}
 
 ```jsx
@@ -45,6 +46,15 @@ class Foo extends Component {
   handleClick = () => {
     console.log('حدثت نقرة');
   }
+=======
+#### Class Properties (ES2022) {#class-properties-es2022}
+
+```jsx
+class Foo extends Component {
+  handleClick = () => {
+    console.log('Click happened');
+  };
+>>>>>>> 8fe817e61e5fe50020ed9379ce9e1c5a2cf476a9
   render() {
     return <button onClick={this.handleClick}>انقر هنا</button>;
   }
