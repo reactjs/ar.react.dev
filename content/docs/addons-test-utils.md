@@ -87,7 +87,7 @@ class Counter extends React.Component {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -106,7 +106,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // Test first render and componentDidMount
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -141,7 +141,11 @@ mockComponent(
 
 > ملاحظة:
 >
+<<<<<<< HEAD
 > `()mockComponent` هي واجهة برمجة تطبيق قديمة. نوصي باستخدام [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) بدلًا من ذلك.
+=======
+> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://jestjs.io/docs/tutorial-react-native#mock-native-modules-using-jestmock) instead.
+>>>>>>> d483aebbac6d3c8f059b52abf21240bc91d0b96e
 
 * * *
 
@@ -302,7 +306,7 @@ renderIntoDocument(element)
 
 ```js
 const domContainer = document.createElement('div');
-ReactDOM.render(element, domContainer);
+ReactDOM.createRoot(domContainer).render(element);
 ```
 
 > ملاحظة:

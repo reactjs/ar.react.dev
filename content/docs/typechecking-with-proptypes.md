@@ -173,14 +173,16 @@ Greeting.defaultProps = {
 };
 
 // Renders "Hello, Stranger":
-ReactDOM.render(
-  <Greeting />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example')); 
+root.render(<Greeting />);
 ```
 
+<<<<<<< HEAD
 إذا كنت تستخدم تحويلات Babel مثل [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (سابقا _plugin-transform-class-properties_)، يمكنك أيضا تعيين `defaultProps` كخاصية ثابتة داخل صنف (class) مكون React. هذه الشفرة البرمجية لم يتم الإنتهاء منها بعد وستتطلب خطوة التحويل البرمجي (Compilation) للعمل داخل المتصفح. للمزيد من المعلومات، ألق نظرة على  [class fields proposal](https://github.com/tc39/proposal-class-fields).
 
+=======
+Since ES2022 you can also declare `defaultProps` as static property within a React component class. For more information, see the [class public static fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_static_fields). This modern syntax will require a compilation step to work within older browsers. 
+>>>>>>> d483aebbac6d3c8f059b52abf21240bc91d0b96e
 
 ```javascript
 class Greeting extends React.Component {
