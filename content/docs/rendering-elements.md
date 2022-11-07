@@ -35,11 +35,15 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 تتألف التطبيقات المبنية باستخدام رياكت في العادة, من عقدة DOM جذر وحيدة. أما إن كنت تقوم بعمل التكامل لـرياكت إلى تطبيق موجود مسبقاً, من الممكن أن يتوفر لديك أي عدد ترغب به من عقد DOM الجذر.
 
+<<<<<<< HEAD
 لتصيير عنصر رياكت إلى عقدة DOM جذر وحيدة, مررهما معاَ إلى [`ReactDOM.render()`](/docs/react-dom.html#render):
+=======
+To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 يعرض هذا المثال عند تنفيذه "مرحباً بالعالم".
 
@@ -47,6 +51,10 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 عناصر رياكت غير قابلة للتغيير [immutable](https://en.wikipedia.org/wiki/Immutable_object). عند انشائك عنصراَ, فإنه حينها لا يكون بإمكانك تغيير عناصره الأبناء أو صفاته. العنصر يشبه إطار الفيلم الواحد في كونه يمثل واجهة المستخدم خلال فترة معينة من الزمان.
 
+<<<<<<< HEAD
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `root.render()`.
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
 وبهذا القدر البسيط من المعرفة التي امتلكناها لحد الآن, فإن الطريقة الوحيدة لتحديث واجهة المستخدم تتم من خلال إنشاء عنصر جديد, ومن ثم تمريره إلى [`ReactDOM.render()`](/docs/react-dom.html#render).
 
@@ -54,23 +62,35 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
+<<<<<<< HEAD
 حيث تقوم بمناداة [`ReactDOM.render()`](/docs/react-dom.html#render) كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
+=======
+It calls [`root.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
 >**ملاحظة:**
 >
+<<<<<<< HEAD
 >عملياً, معظم التطبيقات المبنية مع رياكت تقوم بنداء [`ReactDOM.render()`](/docs/react-dom.html#render) مرة واحدة فقط. في القسم التالي سنعرف أكثر عن كم الشيفرة التي يتم تغليفها إلى [مكوًن صنف](/docs/state-and-lifecycle.html).
+=======
+>In practice, most React apps only call `root.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 >
 >نقترح عليك بألا تتخطى أية من المواضيع, لأنها تبني على بعضها البعض.
 
 
 ## يحدث رياكت واجهة المستخدم فقط عندما تدعو الحاجة لذلك {#react-only-updates-whats-necessary}
 
+<<<<<<< HEAD
 يقارن ReactDOM العنصر وأبنائه مع سابقه, ويقوم يتطبيق تحديثات DOM الضرورية لتحويل الـ DOM إلى الحالة المرغوب بها.
 
 
 تستطيع تأكيد ذلك من خلال تفحص [المثال الأخير](codepen://rendering-elements/update-rendered-element) باستخدام أدوات المتصفح:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 

@@ -53,13 +53,13 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 - قم بإعداد وظيفة [cron](https://ar.wikipedia.org/wiki/%D9%83%D8%B1%D9%88%D9%86_(%D9%8A%D9%88%D9%86%D9%83%D8%B3)) باستخدام نظام التكامل المستمر المفضل لديك. يتم دعم وظائف Cron بواسطة كل من [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) و [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
 - في مهمة cron ، حدّث حزم React الخاصة بك إلى أحدث إصدار React في القناة التالية ، باستخدام علامة `next` في npm. باستخدام npm cli:
 
-  ```
+  ```console
   npm update react@next react-dom@next
   ```
 
   أو yarn:
 
-  ```
+  ```console
   yarn upgrade react@next react-dom@next
   ```
 - قم بتشغيل مجموعة الاختبار الخاصة بك مقابل الحزم المحدثة.

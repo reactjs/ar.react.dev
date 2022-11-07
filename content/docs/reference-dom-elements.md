@@ -117,7 +117,11 @@ function ComponentWithTransition() {
 
 إن كنت تستخدم تصيير React من جانب الخادم فهناك بشكل طبيعي تحذير عند تصيير الخادم والعميل لمحتوى مختلف. ولكن في بعض الحالات النادرة من الصعب أو المستحيل ضمان التطابق التام. مثلًا من المتوقع أن يختلف التوقيت بين الخادم والعميل.
 
+<<<<<<< HEAD
 إن عيّنتَ قيمة  `suppressHydrationWarning` إلى `true`, فلن تحذرك React حول عدم التطابق في الخاصيّات والمحتوى لذلك العنصر. تعمل هذه الخاصيّة فقط في مستوى واحد من المكوّنات. لا تفرط في استخدامها. بإمكانك قراءة المزيد حول hydration في توثيق [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+=======
+If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrateRoot()` documentation](/docs/react-dom-client.html#hydrateroot).
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
 
 ### value {#value}
 
