@@ -25,11 +25,18 @@ redirect_from:
 
 يتكوّن كل مجتمع من عدة آلاف من مستخدمي React.
 
+<<<<<<< HEAD
 * [مجتمع React على DEV](https://dev.to/t/react)
 * [مجتمع React على Hashnode](https://hashnode.com/n/reactjs)
 * [قاعة المحادثة الإفتراضية Reactiflux](https://discord.gg/reactiflux)
 * [مجتمع React على Reddit](https://www.reddit.com/r/reactjs/)
 * [مجتمع React على Spectrum](https://spectrum.chat/react)
+=======
+* [DEV's React community](https://dev.to/t/react)
+* [Hashnode's React community](https://hashnode.com/n/reactjs)
+* [Reactiflux online chat](https://discord.gg/reactiflux)
+* [Reddit's React community](https://www.reddit.com/r/reactjs/)
+>>>>>>> 3bba430b5959c2263c73f0d05d46e2c99c972b1c
 
 ## الأخبار {#news}
 

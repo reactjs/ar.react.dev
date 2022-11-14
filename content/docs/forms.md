@@ -272,15 +272,19 @@ this.setState(partialState);
 
 ## الإدخالات المضبوطة ذات القيمة Null {#controlled-input-null-value}
 
+<<<<<<< HEAD
 يمنع تحديد الخاصيّة `value` في [المُكوِّنات المضبوطة](/docs/forms.html#controlled-components) المستخدم من تغيير المُدخلات ما لم ترغب بذلك. إن حدَّدت القيمة `value` وبقي العنصر `input` قابلًا للتعديل فربّما قد عيّنت `value` إلى القيمة `undefined` أو `null` من غير قصد.
+=======
+Specifying the `value` prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
+>>>>>>> 3bba430b5959c2263c73f0d05d46e2c99c972b1c
 
 تُوضِّح الشيفرة التالية هذا (يكون العنصر input مقفولًا في البداية ثم يُصبِح قابلًا للتعديل بعد فترة زمنيّة قصيرة):
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```
