@@ -48,4 +48,8 @@ render() {
 
 ### هل بإمكاني إجراء تحريك في React؟ {#can-i-do-animations-in-react}
 
+<<<<<<< HEAD
 يُمكِن استخدام React لدعم التحريك. انظر إلى مكتبة [React Transition Group](https://reactcommunity.org/react-transition-group/) ومكتبة  [React Motion](https://github.com/chenglou/react-motion) أو [React Spring](https://github.com/react-spring/react-spring), على سبيل المثال.
+=======
+React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion), [React Spring](https://github.com/react-spring/react-spring), or [Framer Motion](https://framer.com/motion), for example.
+>>>>>>> 1a641bb88e647186f260dd2a8e56f0b083f2e46b

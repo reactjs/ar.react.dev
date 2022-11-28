@@ -71,7 +71,11 @@ redirect_from:
 
 هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
+<<<<<<< HEAD
 **[كيف تُساهم في مشروع مفتوح المصدر على Github](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> 1a641bb88e647186f260dd2a8e56f0b083f2e46b
 
 حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 
@@ -104,10 +108,17 @@ redirect_from:
 
 ### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
 * لديك [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) مثبّت.
 * لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
 * أنت مُعتاد على Git.
+=======
+* You have [Node](https://nodejs.org) installed at LTS and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> 1a641bb88e647186f260dd2a8e56f0b083f2e46b
 
 ### آليّة التطوير {#development-workflow}
 
