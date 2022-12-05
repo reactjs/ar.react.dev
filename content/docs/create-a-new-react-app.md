@@ -39,7 +39,11 @@ next: cdn-links.html
 
 إنَّ [Create React App](https://github.com/facebookincubator/create-react-app) هي بيئة مناسبة ومريحة **لتعلم React**, هي أفضل طريقة لبدء بناء تطبيق جديدة ذي **[صفحة وحيدة ](/docs/glossary.html#single-page-application)** في React.
 
+<<<<<<< HEAD
 يضبط الأمر `create-react-app` البيئة التطويرية الخاصة بك، وبذلك تستطيع استعمال أحدث ميزات JavaScript، والحصول على أفضل تجربة تطوير، بالإضافة إلى تحسين تطبيقك وتهيئته للإنتاج. ستحتاج إلى الإصدار 10.16 من [Node](https://nodejs.org/en/) أو ما بعده والإصدار 5.6 من npm أو ما بعده على جهازك. لإنشاء مشروع جديد، نفذ ما يلي:
+=======
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have [Node >= 14.0.0 and npm >= 5.6](https://nodejs.org/en/) on your machine. To create a project, run:
+>>>>>>> cb9854a54984ef1288a8a2b8754897b15e75f433
 
 ```bash
 npx create-react-app my-app
@@ -75,7 +79,11 @@ npm start
 
 - **[Nx](https://nx.dev/react)** هي مجموعة أدوات لتطوير monorepo كامل الحزمة ، مع دعم مضمن لـ React و Next.js و [Express] (https://expressjs.com/) والمزيد.
 
+<<<<<<< HEAD
 - **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
+=======
+- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes/react/).
+>>>>>>> cb9854a54984ef1288a8a2b8754897b15e75f433
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)**  هو إطار عمل تصيير من طرف الخادم ولا يتطلب أي ضبط ولكن يتسم بالمرونة أكثر من إطار العمل Next.js.
 
