@@ -47,7 +47,11 @@ render() {
 >
 > تذكر عند التعامل مع Portals أنّ [إدارة تركيز لوحة المفاتيح](/docs/accessibility.html#programmatically-managing-focus) تصبح أمرًا هامًّا.
 >
+<<<<<<< HEAD
 >من أجل مربعات الحوار تأكد من قدرة جميع المستخدمين على التعامل معها عن طريق اتباع [هذه الإرشادات](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+=======
+> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
+>>>>>>> 868d525a74b717a10e0f61bb576213e133aa8d07
 
 [**جرب المثال على CodePen.**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -148,7 +152,8 @@ function Child() {
   );
 }
 
-ReactDOM.render(<Parent />, appRoot);
+const root = ReactDOM.createRoot(appRoot);
+root.render(<Parent />);
 ```
 
 [**جرب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/jGBWpE)
