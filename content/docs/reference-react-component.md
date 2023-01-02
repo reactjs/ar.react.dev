@@ -68,7 +68,11 @@ class Welcome extends React.Component {
 
 >Note:
 >
+<<<<<<< HEAD
 >ملاحظة: يُعتبر هذا التابع قديمًا ويجب أن [تتجنّب](/blog/2018/03/27/update-on-async-rendering.html) استخدامه في الشيفرة الجديدة:
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 >
 >- [`()UNSAFE_componentWillUpdate`](#unsafe_componentwillupdate)
 >- [`()UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops)
@@ -121,11 +125,19 @@ render()
 
 عند استدعائه, يجب أن يفحص `this.props` و `this.state` ويُعيد إحدى الأنواع التالية:
 
+<<<<<<< HEAD
 - **React عناصر .**  تُنشَأ عادةً عن طريق [JSX](/docs/introducing-jsx.html). على سبيل المثال, `<div />` و `<MyComponent />` هي عناصر React والتي تأمر React بتصيير عقدة DOM ومكوّن مُعرَّف من قبل المستخدم على التوالي وبالترتيب.
 - **الأجزاء والمصفوفات:** تسمح لك بإعادة عناصر متعددة من التابع انظر إلى توثيق [الأجزاء](/docs/fragments.html) للمزيد من التفاصيل.
 - **المداخل (Portals):**. تسمح لك بتصيير العناصر الأبناء إلى تفرعات مختلفة من DOM. انظر إلى توثيق [portals](/docs/portals.html) للمزيد من التفاصيل.
 - **الأعداد والسلاسل النصيّة:** تُصيَّر كعقد نصيّة في DOM.
 - **القيم المنطقية (Booleans) أو `null`:**. لا تُصيِّر شيئًا.  (موجودة في معظم الأحيان لدعم النمط `return test && <Child />` pattern, حيث يكون `test` هو قيمة منطقيّة.)
+=======
+- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
+- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
+- **String and numbers.** These are rendered as text nodes in the DOM.
+- **Booleans or `null` or `undefined`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean).
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 يجب أن يكون التابع `render()` نقيًّا, أي لا يُعدِّل حالة المكوّن، ويعيد نفس النتيجة في كل مرة يُستدعى فيها، ولا يتفاعل بشكل مباشر مع المتصفح.
 
@@ -503,13 +515,17 @@ UNSAFE_componentWillUpdate(nextProps, nextState)
 ### `()setState` {#setstate}
 
 ```javascript
-setState(updater, [callback])
+setState(updater[, callback])
 ```
 
 يُطبِّق التابع `setState()‎` التغييرات على حالة المكوّن ويُخبِر React بضرورة إعادة تصيير هذا المكوّن ومكوّناته الأبناء مع الحالة الجديدة. هذا هو التابع الرئيسي الذي تستخدمه لتحديث واجهة المستخدم استجابةً لمُعالِج أحداث واستجابات الخادم.
 فكّر بالتابع `setState()‎`‎ كطلب بدلًا من أمر عاجل لتحديث المكوّن. للحصول على أداء أفضل قد تُؤخِّر React تنفيذ هذا التابع وبعد ذلك تُحدِّث عدّة مكوّنات في نفس الاستدعاء. لا تضمن React تطبيق تغيّرات الحالة بشكلٍ فوري.
 
+<<<<<<< HEAD
 لا يُحدِّث التابع `setState()‎`‎ المكوّن فورًا، فقد يُؤجل التحديث حتى وقتٍ لاحق. يجعل هذا من قراءة `this.state` مباشرةً بعد استدعاء `setState()`‎ أمرًا خاطئًا. استخدم بدلًا من ذلك التابع `componentDidUpdate` أو رد النداء `setState` (على الشكل `setState(updater, callback)`‎)، والتي من المضمون إطلاقها بعد تطبيق التحديث. إن احتجت إلى تعيين الحالة بناءً على الحالة السابقة، فاقرأ حول الوسيط `updater` الذي سنذكره بعد قليل.
+=======
+Think of `setState()` as a *request* rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync), but this may hurt performance.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 يقود `setState()‎`‎ إلى إعادة التصيير دومًا ما لم يُرجِع التابع `shouldComponentUpdate()`‎ القيمة `false`. إن كنت تستخدم الكائنات القابلة للتعديل ولم يكن بالإمكان تطبيق منطق التصيير الشرطي ضمن التابع `shouldComponentUpdate()`‎، فستتجنّب إعادة التصيير غير الضرورية باستدعاء `setState()`‎ فقط عند اختلاف الحالة الجديدة.
 

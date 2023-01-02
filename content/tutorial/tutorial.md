@@ -104,7 +104,7 @@ cd ..
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 ```
 
@@ -446,11 +446,19 @@ class Square extends React.Component {
 
 عند النقر على المربّع تُستدعى الدالة `onClick` المُزوَّدة من قبل المكوّن `Board`. وهذا ملخّص لكيفية تحقيق ذلك:
 
+<<<<<<< HEAD
 1. تُخبِر الخاصيّة `onClick` الموجودة في المكوّن `<button>` مكتبة React بأن تُعِد مُستمِع لحدث النقر.
 2. عند النقر على الزر، ستستدعي React مُعالِج الحدث `onClick` المُعرَّف في التابع `render()` للمكوّن Square.
 3. يستدعي مُعالِج الأحداث هذا `this.props.onClick()`‎. الخاصيّة `onClick` الموجودة في المكوّن Square مُحدَّدة من قبل المكوّن `Board`.
 4. بما أنّ المكوّن `Board` مرَّر `onClick={() => this.handleClick(i)}` إلى `Square`، فسيستدعي هذا الأخير ‎`this.handleClick(i)` عند النقر عليه.
 5. لم نُعرِّف التابع `handleClick()` حتى الآن، لذا تنهار الشيفرة لدينا.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 >ملاحظة:
 >
@@ -519,7 +527,11 @@ class Board extends React.Component {
 
 ### لماذا تكون عدم القابلية للتغير مهمة؟ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 اقترحنا في مثال الشيفرة السابق استخدام المُعامِل `.slice()`‎ لإنشاء نسخة عن المصفوفة `squares` لتعديلها بدلًا من تعديل المصفوفة الموجودة. سنناقش الآن عدم القابلية للتعديل (immutability) وأهمية تعلّمها.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 هنالك طريقتان لتغيير البيانات. الطريقة الأولى هي **تعديل** البيانات مباشرة بتغيير قيمها. والطريقة الثانية هي الحصول على نسخة جديدة من البيانات تمتلك التغييرات المطلوبة ووضعها بدل البيانات الأصليّة.
 
@@ -538,7 +550,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 // الآن يبقى player بدون تغيير
 // ولكن تكون قيمة newPlayer هي {score: 2, name: 'Jeff'}
 
+<<<<<<< HEAD
 /// أو إن كنت تستخدم اقتراح صياغة نشر الكائنات تستطيع كتابة
+=======
+// Or if you are using object spread syntax, you can write:
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 // var newPlayer = {...player, score: 2};
 ```
 
@@ -1040,7 +1056,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[انظر إلى كامل الشيفرة عند هذه النقطة](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 نُنشِئ لكل تحرك في تاريخ اللعبة عنصرًا بالقائمة `<li>` يحتوي على زر `<button>`. يمتلك الزر مُعالِج للأحداث `onClick` والذي يستدعي تابًعا يُدعى `this.jumpTo()`‎. لم ننفذ هذا التابع حتى الآن. ينبغي أن نرى الآن قائمة بالتحركات التي حصلت في اللعبة وتحذير في النافذة console ضمن أدوات التطوير يقول:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We are only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 >  تحذير:
 >  يجب أن يمتلك كل عنصر ابن في المصفوفة خاصية مفتاح `key`. تحقق من التابع `render` للمكوّن `Game`.
@@ -1141,11 +1163,21 @@ class Game extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
 سنجري الآن بعض التغييرات على التابع `handleClick` للمكوّن `Game` والذي يُطلَق عند النقر على المربّع.
+=======
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+
+We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 تعكس الحالة `stepNumber` التي أضفناها التحرّك المعروض للمستخدم حاليًّا. بعد إجراء تحرّك جديد سنحتاج إلى تحديث `stepNumber` عن طريق إضافة `stepNumber: history.length` كجزء من الوسيط `this.setState`. يضمن هذا ألّا نعلق بإظهار نفس التحرك بعد القيام بتحرك جديد.
 
+<<<<<<< HEAD
 سنضع أيضًا `this.state.history.slice(0, this.state.stepNumber + 1)`‎ بدلًا من `this.state.history` . يضمن هذا أنّنا عندما نعود في الزمن ونجري تحرّك جديد من تلك النقطة، أن نمسح كل التاريخ المستقبلي الذي سيصبح الآن غير صحيح:
+=======
+We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 ```javascript{2,13}
   handleClick(i) {

@@ -10,9 +10,15 @@ next: handling-events.html
 
 سنتحدّث في هذا القسم حول مفهوم حالة ودورة حياة المُكوِّنات في React، بإمكانك أن تجد من هنا [مرجعًا مُفصّلًا حول واجهة برمجة التطبيق (API) للمُكوِّنات](/docs/react-component.html).
 
+<<<<<<< HEAD
 فلنتذكر مثال الساعة من قسم [تصيير العناصر](/docs/rendering-elements.html#updating-the-rendered-element)، تعلّمنا في ذلك القسم فقط طريقة واحدة لتحديث واجهة المستخدم عن طريق استدعاء التابع `ReactDOM.render()` لتغيير الناتج:
+=======
+Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `root.render()` to change the rendered output:
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
-```js{8-11}
+```js{10}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+  
 function tick() {
   const element = (
     <div>
@@ -20,10 +26,7 @@ function tick() {
       <h2>الساعة الآن {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
-  );
+  root.render(element);
 }
 
 setInterval(tick, 1000);
@@ -35,7 +38,9 @@ setInterval(tick, 1000);
 
 بإمكاننا البدء عن طريق تغليف شكل السّاعة:
 
-```js{3-6,12}
+```js{5-8,13}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 function Clock(props) {
   return (
     <div>
@@ -46,10 +51,7 @@ function Clock(props) {
 }
 
 function tick() {
-  ReactDOM.render(
-    <Clock date={new Date()} />,
-    document.getElementById('root')
-  );
+  root.render(<Clock date={new Date()} />);
 }
 
 setInterval(tick, 1000);
@@ -62,10 +64,7 @@ setInterval(tick, 1000);
 نريد بشكل مثالي أن نكتب هذه الشيفرة مرة واحدة ونجعل المُكوِّن `Clock` يُحدِّث نفسه:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 لتنفيذ هذا نحتاج لإضافة حالة (state) إلى المُكوِّن `Clock`.
@@ -158,10 +157,7 @@ class Clock extends React.Component {
 3) إزالة الخاصيّة `date` من العنصر ‎`<Clock />`:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 سنعيد لاحقًا إضافة شيفرة عداد الوقت إلى المُكوِّن نفسه.
@@ -186,10 +182,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
@@ -294,10 +288,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
@@ -306,7 +298,11 @@ ReactDOM.render(
 
 فلنوجز بسرعة ما يجري ونذكر الترتيب الذي تُستدعى فيه التوابع:
 
+<<<<<<< HEAD
 1) عندما يُمرَّر العنصر ‎`<Clock />`‎ إلى `ReactDOM.render()`‎ تستدعي React الدالة البانية للمُكوِّن `Clock`. وبما أنّ `Clock` يحتاج لإظهار الوقت الحالي سيُهيِّئ `this.state` بكائن يتضمّن الوقت الحالي، ولاحقًا يُحدِّث هذه الحالة.
+=======
+1) When `<Clock />` is passed to `root.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 2) تستدعي بعدها React التّابع `render()`‎ للمُكوِّن `Clock` وهكذا تعلم React ما الذي ينبغي عرضه على الشاشة. تُحدِّث React بعد ذلك DOM ليُطابِق ناتج `Clock`.
 
@@ -447,11 +443,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 [**جرِّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)

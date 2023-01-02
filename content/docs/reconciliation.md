@@ -45,7 +45,11 @@ permalink: docs/reconciliation.html
 
 >ملاحظة:
 >
+<<<<<<< HEAD
 >تعتبر هذه الطرق قديمة [ويجب تجنبها](/blog/2018/03/27/update-on-async-rendering.html):
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 >
 >- `UNSAFE_componentWillMount()`
 

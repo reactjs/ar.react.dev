@@ -70,9 +70,15 @@ prev: composition-vs-inheritance.html
 
 يمكنك البناء من الأعلى إلى الأسفل أو من اﻷسفل إلى اﻷعلى، وذلك أنه يمكنك البدء ببناء المكونات في أعلى التسلسل الهرمي (مثلا ابدأ بـ `FilterableProductTable`) أو بمكون في أسفله (`ProductRow`)، في الأمثلة الغير معقدة من الأسهل عادة البدء من اﻷعلى إلى الأسفل، وفي المشاريع الأكبر من الأسهل البدء من الأسفل إلى الأعلى مع كتابة اختبارات (tests) خلال البناء.
 
+<<<<<<< HEAD
 مع نهاية هذه الخطوة، سيكون لديك مكتبة من المكونات القابلة لإعادة الاستخدام (reusable) التي تقوم بتصيير نموذج البيانات، المكونات ستحتوي فقط على دالات (`render()`) حيث أن هذه نسخة ثابتة من تطبيقك، المكون بأعلى التسلسل الهرمي (`FilterableProductTable`) سيحصل علي نموذج البيانات بصفته خاصية (prop)، إذا قمت بعمل تغيير في نموذج البيانات وقمت باستدعاء الدالة (`ReactDOM.render()`) مرة أخرى فإن واجهة المستخدم سيتم تحديثها، من السهل رؤية كيف يتم تحديث واجهة المستخدم وأين تحدث التغييرات فلا يوجد شيء معقد، طريقة تدفق البيانات في اتجاه واحد (**one-way data flow**) الخاصة بـ (React) وتدعي أيضاَ بـ (*one-way binding*) تحافظ على كل شيء سريع ووحدة (modular) واحدة.
 
 انتقل إلى الوثائق [React docs](/docs/) إذا كنت بحاجة للمساعدة لتنفيذ هذه الخطوة
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `root.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 ### نبذة مختصرة: الخاصية (Props) مقابل الحالة (State){#a-brief-interlude-props-vs-state}
 
@@ -138,10 +144,18 @@ prev: composition-vs-inheritance.html
 
 إذا حاولت الكتابة أو الضغط على الـ (checkbox) بالإصدار الحالي للتطبيق سترى أن React سيتجاهل ذلك، وذلك مقصود حيث أننا قمنا بوضع قيمة الخاصية (value) لل (input) لتكون دائماَ مساوية للحالة التى تم تمريرها من المكون `FilterableProductTable`.
 
+<<<<<<< HEAD
 لنفكر بما نريد أن يحدث، نريد التأكد كلما قام المستخدم بتغيير الـ (form) يتم تحديث الحالة لإظهار ما أدخله المستخدم وبما أن المكونات يجب أن تغير الحالة الخاصة بها فقط، المكون `FilterableProductTable` سيمرر الدالة (callback) للمكون `SearchBar` والتى سيتم استدعائها أينما وجب تحديث الحالة، يمكننا استخدام الحدث (`onChange` event) على الـ (inputs) لنعرف ذلك، الدالة (callback) التي تم تمريرها بواسطة المكون `FilterableProductTable` تقوم باستدعاء `setState()` ويتم تحديث التطبيق.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
 
 بالرغم من أن ذلك يبدو ذلك معقداَ، فحقيقة وباستخدام عدد قليل من الأسطر وبشكل صريح نرى كيف تتدفق البيانات خلال التطبيق.
 
 ## وهذا هو كل شيء {#and-thats-it}
 
+<<<<<<< HEAD
 أرجو أن تكون قد وصلتك الفكرة عن كيفية التفكير فى بناء المكونات والتطبيقات باستخدام (React)، بينما قد تكون الكتابة أكثر مما أنت معتاد عليه تذكر أن الكود من المهم أن يكون مقروء أكثر من كتابته ووحدة (modular) الكود هذه سهلة القراءة لأقصى الحدود، عند البدء فى بناء مكتبة كبيرة من المكونات ستقدر هذا الوضوح و النمطية (modularity) وبإعادة إستخدام هذا الكود سيتقلص عدد الأسطر :)
+=======
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more often than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> e77ba1e90338ff18f965c9b94c733b034b3ac18f
