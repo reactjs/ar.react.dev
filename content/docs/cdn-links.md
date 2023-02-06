@@ -9,18 +9,22 @@ next: release-channels.html
 كل من React و ReactDOM متوفران عبر شبكة توزيع المحتوى (CDN)
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 ```
 
 الغرض من الإصدارات السّابقة هو التطوير فقط، فهي ليست ملائمة للإنتاج. تتوفر إصدارات React مصغرة ومُحَسَّنة معدة للانتاج: 
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
+<<<<<<< HEAD
 لتحميل إصدار مُعيَّن من react و react-dom بَدّل الرقم `17` إلى رقم الإصدار المطلوب.
+=======
+To load a specific version of `react` and `react-dom`, replace `18` with the version number.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ### لماذا خاصية `crossorigin` ؟ {#why-the-crossorigin-attribute}
 

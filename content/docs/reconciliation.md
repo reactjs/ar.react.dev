@@ -4,7 +4,19 @@ title: المطابقة (Reconciliation)
 permalink: docs/reconciliation.html
 ---
 
+<<<<<<< HEAD
 تُزوّدنا React بواجهة برمجة تطبيقات (API) صريحة بحيث لا نقلق بشأن التغييرات التي تطرأ في كل تحديث. يجعل هذا من كتابة التطبيقات أمرًا أسهل بكثير، ولكن قد لا يكون من الواضح كثيرًا كيفيّة تطبيق هذا في React. تشرح هذه الصفحة الخيارات التي وضعناها في خوارزمية المقارنة (diffing) بحيث تكون تحديثات المُكوّنات متوقعة وفي نفس الوقت سريعة كفاية لأجل التطبيقات عالية الأداء.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Preserving and Resetting State](https://beta.reactjs.org/learn/preserving-and-resetting-state)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React provides a declarative API so that you don't have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React. This article explains the choices we made in React's "diffing" algorithm so that component updates are predictable while being fast enough for high-performance apps.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ## تحفيز {#motivation}
 
@@ -45,7 +57,11 @@ permalink: docs/reconciliation.html
 
 >ملاحظة:
 >
+<<<<<<< HEAD
 >تعتبر هذه الطرق قديمة [ويجب تجنبها](/blog/2018/03/27/update-on-async-rendering.html):
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 >
 >- `UNSAFE_componentWillMount()`
 
