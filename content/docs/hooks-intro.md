@@ -31,8 +31,13 @@ function Example() {
 
 >Note
 >
+<<<<<<< HEAD
 > الإصدار 16.8.0 من React هو أول إصدار يدعم الخطافات. عند الترقية إليه، لا تنسَ تحديث جميع الحزم بما فيها React DOM.
 > React Native تدعم الخطافات في [اصدار 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ## فيديو تقديمي {#video-introduction}
 
@@ -80,7 +85,11 @@ function Example() {
 
 ### خلط الأصناف بين الأشخاص والأجهزة {#classes-confuse-both-people-and-machines}
 
+<<<<<<< HEAD
 إضافةً إلى جعل إعادة استعمال الشيفرة وتنظيمها مهمةً صعبةً، وجدنا أنَّ الأصناف يمكن أن تشكل عائقًا كبيرًا لتعلم React. عليك أن تفهم كيفية عمل `this` في JavaScript، والتي تختلف عن عملها في أغلب اللغات. عليك أيضًا أن تتذكر أن تربط معالجات الحدث. بدون [اقتراحات الصيغة](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), اقتراحات الصيغة، تكون الشيفرة مسهبةً جدًا. يستطيع الآخرون فهم الخاصيات، والحالة، وتدفق البيانات من الأعلى للأسفل بشكل جيد ولكنهم لا يزالون يعانون مع الأصناف. يؤدي الفرق بين مكونات دالة وصنف في React ومتى يستخدم أحدهما إلى خلافات حتى بين مطوري React المحنَّكين.
+=======
+In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 إضافةً لما سبق، لقد كانت React متحجِّرةً لخمس سنوات ونريد أن نتأكد الآن من بقائها محدَّثة ومُطوَّرة في السنوات الخمس القادمة. كما أظهرت [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), وغيرها، يملك التصريف المسبق [ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) للعناصر الكثير من الإمكانيات المستقبلية خصوصًا إن لم تكن محدودةً بقالب. مؤخرًا، كنا نجري تجاربًا حول [طي المكونات](https://github.com/facebook/react/issues/7323) باستعمال [Prepack](https://prepack.io/), وظهرت معنا نتائج واعدة مبكرة. على أي حال، وجدنا أنَّ مكونات الأصناف يمكن أن تدعم الأنماط غير المقصودة (unintentional patterns) التي تجعل هذه التحسينات ترجع إلى مسارٍ أبطأ. تقدم الأصناف مشكلات للأدوات في هذه الأيام أيضًا. على سبيل المثال، الأصناف لا تصغر (minify) بشكل جيد، وتجعل إعادة التحميل الساخن هشًّا وغير موثوق. نريد أن نوجد واجهة برمجية تجعل الشيفرات في الطرف القابل للتحسين دومًا.
 
@@ -96,7 +105,11 @@ function Example() {
 
 نعلم أن مطوري React يركزون على تضمين المنتجات ولا يملكون الوقت للنظر في كل واجهة برمجية يجري إصدارها. الخطافات جديدةٌ للغاية، ومن الأفضل التريث قليلًا ريثما يتوافر مزيدًا من الأمثلة والدروس التعليمية قبل اتخاذ قرار تعلمها أو اعتمادها.
 
+<<<<<<< HEAD
 نتفهَّم أيضًا أنَّ مجال الطلب على إضافة أنواع أساسية جديدة إلى React مرتفعٌ نسبيًا. للقرَّاء الفضوليين، أعددنا [الدليل RFC المفصل](https://github.com/reactjs/rfcs/pull/68) الذي يتعمق حول دافع إضافة الخطافات، ويوفر نظرة موسعة حول قرارات التصميم المحددة والأسلوب المرتبط السابق.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 **الأهم من ذلك، تعمل الخطافات جنبًا بجنب مع الشيفرة القائمة، لذلك يمكنك اعتمادها تدريجيًا.** نشارك الآن الواجهة البرمجية التجريبية للحصول على تغذية راجعة من أولئك المهتمين بتشكيل مستقبل React.
 

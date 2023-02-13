@@ -6,7 +6,19 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
+<<<<<<< HEAD
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Reusing Logic with Custom Hooks](https://beta.reactjs.org/learn/reusing-logic-with-custom-hooks)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 بناء خطافات خاصة بك تمكِّنك من استخراج شيفرة من مكون ما إلى دوال قابلة لإعادة الاستعمال.
 
