@@ -172,6 +172,10 @@ class SignUpDialog extends React.Component {
 
 نستخدم في فيسبوك آلاف مُكوِّنات React، ولم نجد أي حالة نُفضِّل فيها استخدام الوراثة.
 
+<<<<<<< HEAD
 يمنحك التركيب والخاصيّات `props` المرونة التي تحتاجها لتخصيص مظهر وسلوك المُكوِّنات بطريقة مضبوطة وآمنة. تذكّر أنّ المُكوّنات قد تستقبل خاصيّات من محتوى مُتعدِّد، مثل القيم المبدئية، وعناصر React، والدوال.
 
 إن أردت إعادة استخدام بعض الوظائف بين المُكوِّنات غير المُتعلِّقة بواجهة المستخدم فنقترح استخراجها إلى واحدات JavaScript مُنفصِلة، حيث يُمكِن للمُكوِّن أن يستورد ويستخدم الدوال والكائنات والأصناف بدون الامتداد لها عن طريق الكلمة `extend`.
+=======
+If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or class, without extending it.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c

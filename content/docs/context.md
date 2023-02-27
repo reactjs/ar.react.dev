@@ -4,7 +4,20 @@ title: استخدام السياق (Context)
 permalink: docs/context.html
 ---
 
+<<<<<<< HEAD
 يُزوِّدنا السياق (Context) بطريقة لتمرير البيانات عبر شجرة المُكوّنات دون الحاجة لتمرير الخاصيّات `props` يدويًّا من الأعلى إلى الأسفل في كل مستوى.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 تُمرَّر البيانات في تطبيقات React الإعتيادية من المستوى الأعلى إلى الأسفل (أي من المكوّنات الآباء إلى المكوّنات الأبناء) عبر الخاصيّات `props`، ولكن قد يكون هذا بطيئًا لبعض أنواع الخاصيّات (مثل تفضيلات اللغة وقوالب واجهة المستخدم) والتي تحتاجها العديد من المكوّنات ضمن التطبيق. يُزوِّدنا السياق بطريقة لمشاركة القيم مثل تلك الموجودة بين المكوّنات دون الاضطرار لتمرير الخاصيّات عبر كل مستوى من الشجرة.
 

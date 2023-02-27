@@ -71,7 +71,11 @@ redirect_from:
 
 هل تعمل على أول طلب سحب (Pull Request) لك؟ يمكنك أن تتعلّم  كيفية عمل ذلك من سلسلة الفيديوهات المجانيّة التالية:
 
+<<<<<<< HEAD
 **[كيف تُساهم في مشروع مفتوح المصدر على Github](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 حتى نساعدك في تَبليل قَدَمَيْك (الإنطلاق لأوّل مرّة) وحتى تَعتاد على نظام المُساهمة الخاص بنا، لدينا قائمة **[ببعض المشاكل السهلة على المبتدئين (good first issues)](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** والتي تحوي عِلَلا ذات نطاق محدود نسبيّا فتعتبَرُ مكانًا جيدا للإنطلاق منه.
 
@@ -85,6 +89,7 @@ redirect_from:
 
 **قبل تسجيل طلب السحب،** الرجاء التحقق من إتمام ما يلي:
 
+<<<<<<< HEAD
 1. قم باستنساخ المستودع [المستودع](https://github.com/facebook/react) (بعمل Fork) وبعدها أنشأ الفرع الخاص بك من الفرع الرئيسي `master`
 2. نفّذ الأمل `yarn` في مجلّد المستودع.
 3. إن أصلحت علّة أو أضفت شيفرة برمجية والتي تحتاج إلى اختبار، أضف الإختبارات.
@@ -95,6 +100,18 @@ redirect_from:
 8. تأكّد من أن شيفرتك البرمجية متناسقة بالأمر (`yarn lint`). نصيحة: `yarn linc` للتحقق فقط من الملفّات المُتَغيّرة.
 9. نفّذ [Flow](https://flowtype.org/) للتحقق من الأصناف (typechecks) بالأمر (`yarn flow`).
 10. راجع اتفاقية ترخيص المساهم (CLA)، إن لم تقم بذلك بعد.
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn test --debug --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 ### اتفاقية ترخيص المساهم (CLA) {#contributor-license-agreement-cla}
 
@@ -104,10 +121,17 @@ redirect_from:
 
 ### مُتطلّبات للمساهمة {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * لديك [Node](https://nodejs.org) مثبّت بنسخته الـv8.0.0+ و [Yarn](https://yarnpkg.com/en/) بالنسخة v1.2.0+.
 * لديك [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) مثبّت.
 * لديك `gcc` مُثبّت أو أنت مُعتاد على تثبيت المُتَرجمات (compilers) إذا ما احتجتها. بعض الإعتماديات (dependencies) تحتاج إلى مرحلة تَرجَمة (compilation step). في نظام OS X, طرفية Xcode (Xcode Command Line Tools) ستتكفّل بذلك، على Ubuntu، أمر `apt-get install build-essential` سيثبّت الحزم المطلوبة، أوامر مشابة يمكن أن تشتغل على توزعات لينُكس الأخرى. نظام ويندوز (Windows) سيتطلّب مراحل إضافية، راجع [إرشادات تثبيت `node-gyp`](https://github.com/nodejs/node-gyp#installation) لمزيد من التفاصيل.
 * أنت مُعتاد على Git.
+=======
+* You have [Node](https://nodejs.org) installed at LTS and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 ### آليّة التطوير {#development-workflow}
 

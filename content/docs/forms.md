@@ -9,7 +9,21 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 تعمل عناصر النماذج بشكلٍ مختلفٍ قليلًا عن بقيّة عناصر DOM الأخرى في React بسبب احتفاظ عناصر النماذج بشكل طبيعي بحالة داخلية خاصّة بها. فمثلًا يقبل هذا النموذج في HTML اسمًا واحدًا:
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 ```html
 <form>
@@ -272,15 +286,19 @@ this.setState(partialState);
 
 ## الإدخالات المضبوطة ذات القيمة Null {#controlled-input-null-value}
 
+<<<<<<< HEAD
 يمنع تحديد الخاصيّة `value` في [المُكوِّنات المضبوطة](/docs/forms.html#controlled-components) المستخدم من تغيير المُدخلات ما لم ترغب بذلك. إن حدَّدت القيمة `value` وبقي العنصر `input` قابلًا للتعديل فربّما قد عيّنت `value` إلى القيمة `undefined` أو `null` من غير قصد.
+=======
+Specifying the `value` prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 تُوضِّح الشيفرة التالية هذا (يكون العنصر input مقفولًا في البداية ثم يُصبِح قابلًا للتعديل بعد فترة زمنيّة قصيرة):
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```

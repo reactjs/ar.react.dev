@@ -14,7 +14,24 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<<<<<<< HEAD
 تعتمد React نظام DOM معتمد على المتصفّح من أجل الأداء والتوافقية بين المتصفحات. أخذنا عند بناء React الفرصة لتجاوز بعض الصعوبات في طريقة اعتماد DOM في المتصفّح.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<option>`](https://beta.reactjs.org/reference/react-dom/components/option)
+> - [`<progress>`](https://beta.reactjs.org/reference/react-dom/components/progress)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 يجب في React كتابة جميع خاصيّات HTML وخاصيّات الكائنات في DOM (بما في ذلك معالجات الأحداث) بطريقة سنام الجمل (camelCase). على سبيل المثال تتوافق خاصيّة HTML التي تُدعى `tabindex` مع الخاصيّة `tabIndex` في React. الاستثناء الوحيد هو خاصيّات `aria-*‎` `و data-*`‎، والتي يجب كتابتها بأحرف صغيرة. على سبيل المثال بإمكانك الاحتفاظ بالخاصيّة `aria-label` باسمها `aria-label`.
 
@@ -117,7 +134,11 @@ function ComponentWithTransition() {
 
 إن كنت تستخدم تصيير React من جانب الخادم فهناك بشكل طبيعي تحذير عند تصيير الخادم والعميل لمحتوى مختلف. ولكن في بعض الحالات النادرة من الصعب أو المستحيل ضمان التطابق التام. مثلًا من المتوقع أن يختلف التوقيت بين الخادم والعميل.
 
+<<<<<<< HEAD
 إن عيّنتَ قيمة  `suppressHydrationWarning` إلى `true`, فلن تحذرك React حول عدم التطابق في الخاصيّات والمحتوى لذلك العنصر. تعمل هذه الخاصيّة فقط في مستوى واحد من المكوّنات. لا تفرط في استخدامها. بإمكانك قراءة المزيد حول hydration في توثيق [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+=======
+If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrateRoot()` documentation](/docs/react-dom-client.html#hydrateroot).
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 ### value {#value}
 
