@@ -6,7 +6,20 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
+<<<<<<< HEAD
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://beta.reactjs.org/learn/state-a-components-memory)
+> - [`useState`](https://beta.reactjs.org/reference/react/useState)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 
 شرحت الصفحة السابقة في قسم [خطاف الحالة](/docs/hooks-intro.html) هذا الخطاف عبر المثال التالي:
 
