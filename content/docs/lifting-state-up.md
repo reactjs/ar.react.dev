@@ -9,7 +9,19 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<<<<<<< HEAD
 عادةً ما تحتاج المُكوِّنات المُتعدِّدة إلى أن تعكس نفس البيانات المتغيّرة. نُوصي برفع الحالة المشتركة بينها إلى أقرب عنصر أب مشترك بينها، فلنشاهد كيف يُمكِن تطبيق ذلك عمليًّا.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://beta.reactjs.org/learn/sharing-state-between-components)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 في هذا القسم سنُنشِئ آلة حاسبة للحرارة والتي تحسب إن كان الماء سيغلي في الدرجة المُعطاة.
 

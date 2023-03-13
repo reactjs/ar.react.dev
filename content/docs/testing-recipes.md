@@ -611,7 +611,11 @@ it("should render a greeting", () => {
 
 ### التصيير المتعدد {#multiple-renderers}
 
+<<<<<<< HEAD
 في حالات نادرة، قد تقوم بإجراء اختبار على مكون يستخدم التصيير المتعدد. على سبيل المثال، قد تقوم بإجراء اختبارات لقطة على مكون باستخدام `react-test-renderer`، والذي يستخدم داخليًا `ReactDOM.render` داخل مكون تابع لتقديم بعض المحتوى. في هذا السيناريو، يمكنك تغليف التحديثات بـ `act ()` المطابقين لتصيير.
+=======
+In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `render` from `react-dom` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";

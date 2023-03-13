@@ -6,7 +6,19 @@ layout: docs
 category: Reference
 ---
 
+<<<<<<< HEAD
 يوثّق هذا الدليل مُغلِّف الأحداث المصطنعة `SyntheticEvent` والذي يُشكِّل جزءًا من نظام أحداث React. انظر توثيق [معالجة الأحداث](/docs/handling-events.html) لتعلّم المزيد.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This reference guide documents the `SyntheticEvent` wrapper that forms part of React's Event System. See the [Handling Events](/docs/handling-events.html) guide to learn more.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ## لمحة عامة {#overview}
 
