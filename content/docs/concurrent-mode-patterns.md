@@ -15,7 +15,9 @@ next: concurrent-mode-adoption.html
 
 <div class="scary">
 
->Caution:
+>تحذير:
+
+كانت هذه الصفحة حول تجريب ميزات لم تتوفر في إصدار ثابت. كانت تستهدف المتبنين الأوائل والأشخاص الفضوليين.
 >
 >This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
 >
