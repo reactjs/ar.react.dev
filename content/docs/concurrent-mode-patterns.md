@@ -18,21 +18,18 @@ next: concurrent-mode-adoption.html
 >تحذير:
 
 كانت هذه الصفحة حول تجريب ميزات لم تتوفر في إصدار ثابت. كانت تستهدف المتبنين الأوائل والأشخاص الفضوليين.
->
->This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
->
->Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
-) for the up-to-date information.**
->
->Before React 18 is released, we will replace this page with stable documentation.
+
+الكثير من المعلومات الواردة في هذه الصفحة قديمة الآن ولا توجد إلا لأغراض الأرشفة. يرجى الرجوع إلى منشور إعلان  React 18 Alpha announcement post **للحصول على أحدث المعلومات**.
+
+قبل إصدار React 18 ، سنستبدل هذه الصفحة بوثائق ثابتة.
 
 </div>
 
-Usually, when we update the state, we expect to see changes on the screen immediately. This makes sense because we want to keep our app responsive to user input. However, there are cases where we might prefer to **defer an update from appearing on the screen**.
+عادة ، عندما نقوم بتحديث الحالة ، نتوقع رؤية التغييرات على الشاشة على الفور. هذا منطقي لأننا نريد إبقاء تطبيقنا مستجيبًا لإدخالات المستخدم. ومع ذلك ، هناك حالات قد نفضل فيها ** تأجيل التحديث من الظهور على الشاشة **
 
-For example, if we switch from one page to another, and none of the code or data for the next screen has loaded yet, it might be frustrating to immediately see a blank page with a loading indicator. We might prefer to stay longer on the previous screen. Implementing this pattern has historically been difficult in React. Concurrent Mode offers a new set of tools to do that.
+على سبيل المثال ، إذا قمنا بالتبديل من صفحة إلى أخرى ، ولم يتم تحميل أي من التعليمات البرمجية أو البيانات للشاشة التالية بعد ، فقد يكون من المحبط رؤية صفحة فارغة تحتوي على مؤشر تحميل على الفور. قد نفضل البقاء لفترة أطول على الشاشة السابقة. كان تنفيذ هذا النمط صعبًا تاريخيًا في React. يوفر الوضع المتزامن مجموعة جديدة من الأدوات للقيام بذلك.
 
-- [Transitions](#transitions)
+- [Transitions](#transitions) انتقالات
   - [Wrapping setState in a Transition](#wrapping-setstate-in-a-transition)
   - [Adding a Pending Indicator](#adding-a-pending-indicator)
   - [Reviewing the Changes](#reviewing-the-changes)
