@@ -8,6 +8,17 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Conditional Rendering](https://react.dev/learn/conditional-rendering)
+
+</div>
+
+
 من خلال React، يمكنك أن تنشئ مكونات (Components) متميزة، والتي تغلف السلوك الذي تريده. ثم يمكنك أن تعرض فقط بعض هذه المكونات، بناءً على الحالة (State) في التطبيق الخاص بك.
 
 العرض الشرطي في React يعمل بنفس طريقة عمل العرض الشرطي في لغة JavaScript. قم باستخدام المعاملات الخاصة بلغة JavaScript، مثل [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) أو [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) لإنشاء العناصر التي تمثل الحالة (State)، وسوف يقوم React بتحديث الواجهه الأماميه (UI) لمطابقتها.
@@ -35,11 +46,9 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+// Try changing to isLoggedIn={true}:
+root.render(<Greeting isLoggedIn={false} />);
 ```
 
 [**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
@@ -110,10 +119,8 @@ class LoginControl extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <LoginControl />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<LoginControl />);
 ```
 
 [**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
@@ -140,10 +147,9 @@ function Mailbox(props) {
 }
 
 const messages = ['React', 'Re: React', 'Re:Re: React'];
-ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
 ```
 
 [**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
@@ -159,7 +165,7 @@ render() {
   const count = 0;
   return (
     <div>
-      { count && <h1>Messages: {count}</h1>}
+      {count && <h1>Messages: {count}</h1>}
     </div>
   );
 }
@@ -244,10 +250,8 @@ class Page extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Page />);
 ```
 
 [**جرّب المثال على موقع CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)

@@ -6,6 +6,17 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Profiler>`](https://react.dev/reference/react/Profiler)
+
+</div>
+
+Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
 `(Profiler)المحلل` يقوم بحساب كم مرة يقوم فيها تطبيق React بالتنفيذ وايضاً "تكلفة" كل تنفيذ. الهدف من هذا هو المساعدة في تحديد اجزاء التطبيق البطيئة والتي قد تسفيد من [تحسينات مثل التخزين](/docs/hooks-faq.html#how-to-memoize-calculations).
 
 > ملحوظة:

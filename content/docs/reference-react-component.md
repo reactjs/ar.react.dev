@@ -15,6 +15,16 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`React.Component`](https://react.dev/reference/react/Component)
+
+</div>
+
 تحتوي هذه الصفحة على مرجع مُفصَّل لواجهة برمجة التطبيقات (API) لتعريف صنف مكوّن React. سنفترض أنك على معرفة بمفاهيم React الأساسية، مثل [الخاصيّات props والمكوّنات](/docs/components-and-props.html)، بالإضافة إلى  [الحالة ودورة حياة المكوّنات](/docs/state-and-lifecycle.html). إن لم تكن كذلك فاطلع عليها أولًا.
 
 ## لمحة عامة {#overview}
@@ -503,7 +513,7 @@ UNSAFE_componentWillUpdate(nextProps, nextState)
 ### `()setState` {#setstate}
 
 ```javascript
-setState(updater, [callback])
+setState(updater[, callback])
 ```
 
 يُطبِّق التابع `setState()‎` التغييرات على حالة المكوّن ويُخبِر React بضرورة إعادة تصيير هذا المكوّن ومكوّناته الأبناء مع الحالة الجديدة. هذا هو التابع الرئيسي الذي تستخدمه لتحديث واجهة المستخدم استجابةً لمُعالِج أحداث واستجابات الخادم.

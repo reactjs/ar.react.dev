@@ -410,7 +410,7 @@ class BlurExample extends React.Component {
 - [كل شيء حول تباين اللون ولماذا يجب أن تعيد النظر فيه](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [ما هو التباين اللوني – مشروع A11y](https://a11yproject.com/posts/what-is-color-contrast/)
 
-قد يكون من الممل حساب مجموعات الألوان المناسبة يدويًّا لجميع الحالات في موقعك، لذا تستطيع [حساب جميع الألوان باستخدام Colorable](https://jxnblk.com/colorable/).
+قد يكون من الممل حساب مجموعات الألوان المناسبة يدويًّا لجميع الحالات في موقعك، لذا تستطيع [حساب جميع الألوان باستخدام Colorable](https://colorable.jxnblk.com/).
 
 تتضمّن أدوات aXe و WAVE التي سنشير إليها اختبارات لتباين الألوان وستُبلِّغ عن أخطاء التباين.
 
@@ -461,7 +461,7 @@ class BlurExample extends React.Component {
 
 إنّ [ مُحرِّك سهولة الوصول](https://www.deque.com/products/axe/) أو aXe هو عبارة عن إضافة للمتصفح لكشف سهولة الوصول مبنية على تقنية `aXe-core`.
 
-بإمكانك أيضًا استخدام الوحدة [react-axe](https://github.com/dylanb/react-axe) للتبليغ عن موجودات سهولة الوصول بشكل مباشر إلى الكونسول أثناء التطوير وتنقيح الأخطاء.
+بإمكانك أيضًا استخدام الوحدة [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) للتبليغ عن موجودات سهولة الوصول بشكل مباشر إلى الكونسول أثناء التطوير وتنقيح الأخطاء.
 
 #### WebAIM WAVE {#webaim-wave}
 

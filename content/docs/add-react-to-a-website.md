@@ -8,6 +8,15 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+
+</div>
+
 استخدم القليل من React أو بقدر ما تحتاج إليه.
 
 React صممت ابتداء بأخذ الاعتماد التدريجي في الحسبان، **لذا تستطيع الاعتماد على القليل من React أو بقدر ما تحتاج إليها**. ربما أنت بحاجة إلى اضافة القليل من التفاعل أو بقدر الحاجة إلى صفحة موجودة. مكونات React هي أفضل وسيلة للقيام بذلك.
@@ -25,7 +34,7 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 لن تحتاج إلى أية أدوات معقدة أو تثبيت أي شيء. **كل ما تحتاج إليه لإكمال هذا القسم هو اتصال بالإنترنت ودقيقة مستقطعة من وقتك**.
 
-تستطيع تنزيل [المثال التالي كاملًا (بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip) ولكن الأمر عائد إليك.
+تستطيع تنزيل [المثال التالي كاملًا (بحجم 2 كيلوبايت)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip) ولكن الأمر عائد إليك.
 
 ### الخطوة 1: أضف حاوية DOM إلى صفحة HTM {#step-1-add-a-dom-container-to-the-html}
 
@@ -55,8 +64,8 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
   <!-- React تحميل -->
   <!-- "development.js" مكان "production.min.js" ملاحظة: عند النشر، بدل -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
   <!-- الخاص بنا React تحميل مكون. -->
   <script src="like_button.js"></script>
@@ -78,11 +87,12 @@ React صممت ابتداء بأخذ الاعتماد التدريجي في ال
 
 بعد **[الشيفرة المساعدة](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, أضف السطرين في نهاية الملف `like_button.js`:
 
-```js{3,4}
+```js{3,4,5}
 // ... الشيفرة المساعدة التي لصقتها ...
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
 مهمة هذين السطرين هي العثور على العنصر `<div>` الذي أضفناه إلى صفحة HTML في الخطوة الأولى ثم إظهار الزر "Like" - الذي يمثِّل أحد مكونات React - داخله.
@@ -114,8 +124,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 إن صغَّرت شيفرات التطبيق مسبقًا، **فسيكون موقعك جاهزًا للنشر** على البيئة الإنتاجية بعد التأكد من أن شيفرة HTML التي يراد نشرها تُحمِّل إصدار React الإنتاجي (أي الذي ينتهي بـ `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 إن لم تعرف كيفية تنفيذ خطوة التصغير، [يمكنك اتباع هذه الطريقة](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -182,7 +192,7 @@ return (
 
 أنشئ مجلدًا باسم `src` ثم نفذ الأمر التالي في الطرفية:
 
-```
+```console
 npx babel --watch src --out-dir . --presets react-app/prod
 ```
 

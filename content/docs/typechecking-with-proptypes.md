@@ -6,6 +6,14 @@ redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> PropTypes aren't commonly used in modern React. Use TypeScript for static type checking.
+
+</div>
+
 > تنبيه :
 >
 > `React.PropTypes` انتقلت إلى حزمة مختلفة منذ React v15.5. من فضلك استخدم [مكتبة `prop-types` عوضا](https://www.npmjs.com/package/prop-types).
@@ -173,10 +181,8 @@ Greeting.defaultProps = {
 };
 
 // Renders "Hello, Stranger":
-ReactDOM.render(
-  <Greeting />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example')); 
+root.render(<Greeting />);
 ```
 
 إذا كنت تستخدم تحويلات Babel مثل [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (سابقا _plugin-transform-class-properties_)، يمكنك أيضا تعيين `defaultProps` كخاصية ثابتة داخل صنف (class) مكون React. هذه الشفرة البرمجية لم يتم الإنتهاء منها بعد وستتطلب خطوة التحويل البرمجي (Compilation) للعمل داخل المتصفح. للمزيد من المعلومات، ألق نظرة على  [class fields proposal](https://github.com/tc39/proposal-class-fields).

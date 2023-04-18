@@ -4,6 +4,15 @@ title: خاصيات التصيير
 permalink: docs/render-props.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> Render props are used in modern React, but aren't very common.  
+> For many cases, they have been replaced by [custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
+
+</div>
+
 يُشير مصطلح [خاصيّة التصيير (render prop)](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) إلى تقنية بسيطة لمشاركة الشيفرة بين مكوّنات React باستخدام خاصية والتي قيمتها هي عبارة عن دالة.
 
 يأخذ المكوّن الذي يمتلك خاصيّة تصيير دالة تُعيد عنصر React ويستدعيها بدلًا من تنفيذ منطق التصيير الخاص به.

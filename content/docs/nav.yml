@@ -83,7 +83,7 @@
       title: المكونات غير المضبوطة
     - id: web-components
       title: مكونات الويب
-- title: مراجع API 
+- title: مراجع API
   items:
     - id: react-api
       title: واجهة برمجة التطبيقات (API) ذات المستوى الأعلى.
@@ -92,6 +92,8 @@
           title: الصنف React.Component
     - id: react-dom
       title: الكائن ReactDOM
+    - id: react-dom-client
+      title: ReactDOMClient
     - id: react-dom-server
       title: الكائن ReactDOMServer
     - id: dom-elements
@@ -105,7 +107,7 @@
     - id: javascript-environment-requirements
       title: متطلبات بيئة JavaScript
     - id: glossary
-      title: معجم مصطلحات React 
+      title: معجم مصطلحات React
 - title: Hooks
   isOrdered: true
   items:
@@ -127,7 +129,7 @@
       title: الأسئلة الشائعة حول الـ Hooks
 - title: الإختبارات
   items:
-    - id: testing 
+    - id: testing
       title: نظرة عامة على الإختبارات
     - id: testing-recipes
       title: طريقة إجراء الإختبارات

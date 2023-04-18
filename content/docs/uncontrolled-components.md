@@ -4,6 +4,18 @@ title: المكونات غير المضبوطة
 permalink: docs/uncontrolled-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 نُفضِّل في معظم الحالات استخدام [المُكوّنات المضبوطة](/docs/forms.html#controlled-components) من أجل حقول الإدخال، ففي المُكوّنات المضبوطة يتعامل مُكوّن React مع بيانات الحقول. البديل لها هو المُكوّنات غير المضبوطة والتي يتعامل فيها DOM مع بيانات الحقول.
 
 لكتابة مُكوّن غير مضبوط بدلًا من كتابة معالج أحداث لكل تحديث للحالة، فبإمكانك [استخدام المراجع](/docs/refs-and-the-dom.html) للحصول على قيم الحقول من DOM.

@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/examples.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 هناك العديد من الأمثلة على المشاريع التي تم إنشاؤها بواسطة مجتمع التفاعل. نحن نبقي هذه الصفحة مركزة على تلك التي تستخدم React بدون مكتبات إدارة الدولة التابعة لجهة خارجية.
 
 إن قُمت بإضافة مشروع الرجّاء الإلتزام بتحديثه لأحدث الاصدارات من React.

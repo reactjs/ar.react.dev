@@ -8,6 +8,16 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Responding to Events](https://react.dev/learn/responding-to-events)
+
+</div>
+
 تُشبه معالجة الأحداث لعناصر React معالجة الأحداث لعناصر DOM، ولكن هنالك فروق تتعلّق بالصياغة:
 
 * تُسمَّى أحداث React باستخدام حالة الأحرف camelCase (أي عند وجود اسم مؤلف من عدة كلمات نجعل الحرف الأول من الكلمة الأولى بالشكل الصغير أمّا باقي الكلمات نجعل حرفها الأول بالشكل الكبير) بدلًا من استخدام الشكل الصغير للأحرف.
@@ -83,11 +93,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**جرِّب هذا المثال على موقع CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -101,10 +106,9 @@ ReactDOM.render(
 ```js{2-6}
 class LoggingButton extends React.Component {
   // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (

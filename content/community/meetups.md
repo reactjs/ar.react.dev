@@ -6,6 +6,14 @@ sectionid: community
 permalink: community/meetups.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See the [Meetups](https://react.dev/community/meetups) page on the new site.
+>
+</div>
+
 هل لديك مُلْتَقى React.js محلي؟ أضفه هنا!(يرجى الحفاظ على ترتيب القائمة أبجديًا)
 
 ## ألبانيا {#albania}
@@ -67,6 +75,7 @@ permalink: community/meetups.html
 ## إنجلترا (المملكة المتحدة) {# england-uk}
 ** [مانشستر](https://www.meetup.com/Manchester-React-User-Group/)
 * [React.JS Girls London](https://www.meetup.com/ReactJS-Girls-London/)
+* [React London : Bring Your Own Project](https://www.meetup.com/React-London-Bring-Your-Own-Project/)
 
 ## فرنسا {#france}
 * [نانت](https://www.meetup.com/React-Nantes/)
@@ -137,6 +146,7 @@ permalink: community/meetups.html
 
 ## بولندا {#poland}
 ** [وارسو](https://www.meetup.com/React-js-Warsaw/)
+* [Wrocław](https://www.meetup.com/ReactJS-Wroclaw/)
 
 ## البرتغال {#portugal}
 ** [لشبونة](https://www.meetup.com/JavaScript-Lisbon/)
@@ -153,6 +163,7 @@ permalink: community/meetups.html
 
 ## السويد {#sweden}
 ** [جوتنبرج](https://www.meetup.com/ReactJS-Goteborg/)
+* [Stockholm](https://www.meetup.com/Stockholm-ReactJS-Meetup/)
 
 ## سويسرا {# سويسرا}
 ** [زيورخ](https://www.meetup.com/Zurich-ReactJS-Meetup/)

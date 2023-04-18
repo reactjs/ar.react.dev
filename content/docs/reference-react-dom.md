@@ -6,6 +6,19 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react-dom`: Components](https://react.dev/reference/react-dom/components)
+> - [`react-dom`: APIs](https://react.dev/reference/react-dom)
+> - [`react-dom`: Client APIs](https://react.dev/reference/react-dom/client)
+> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+
+</div>
+
 إن حمّلت React عن طريق العنصر ‎`<script>‎ `فستكون هذه الواجهة ذات المستوى الأعلى متوفرة عبر الكائن العام React. وإن استخدمت ES6 مع npm فتستطيع كتابة ‎`import React from 'react'`‎. إن استخدمت ES5 مع npm فتستطيع كتابة ‎`var React = require('react')`‎.
 
 ## لمحة عامة {#overview}
@@ -32,9 +45,21 @@ permalink: docs/react-dom.html
 
 ### `()render` {#render}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`render`](https://react.dev/reference/react-dom/render).
+
+</div>
+
 ```javascript
-ReactDOM.render(element, container[, callback])
+render(element, container[, callback])
 ```
+
+> Note:
+>
+> `render` has been replaced with `createRoot` in React 18. See [createRoot](/docs/react-dom-client.html#createroot) for more info.
 
 يُصيّر عنصر React إلى DOM ضمن الحاوية المذكورة بالوسيط `container` ويُعيد [مرجعًا](/docs/more-about-refs.html) إلى المكوّن (أو يُعيد `null` [للمكوّنات التي بدون حالة](/docs/components-and-props.html#function-and-class-components)).
 
@@ -44,12 +69,12 @@ ReactDOM.render(element, container[, callback])
 
 > ملاحظة:
 >
-> يتحكّم التابع `ReactDOM.render()` بمحتويات العقدة الحاوية (container node)  التي تُمرِّرها. تُستبدَل أي عناصر موجودة بداخلها عند أول استدعاء. تستخدم الاستدعاءات اللاحقة خوارزمية المقارنة من أجل التحديث بكفاءة.
+> يتحكّم التابع `render()` بمحتويات العقدة الحاوية (container node)  التي تُمرِّرها. تُستبدَل أي عناصر موجودة بداخلها عند أول استدعاء. تستخدم الاستدعاءات اللاحقة خوارزمية المقارنة من أجل التحديث بكفاءة.
 >
-> لا يُعدِّل التابع `ReactDOM.render()`   العقدة الحاوية (بل يُعدِّل فقط العناصر الأبناء لها). من الممكن إدخال مكوّن إلى عقدة DOM موجودة مسبقًا بدون الكتابة فوق العناصر الأبناء الموجودين داخلها.
+> لا يُعدِّل التابع `render()`   العقدة الحاوية (بل يُعدِّل فقط العناصر الأبناء لها). من الممكن إدخال مكوّن إلى عقدة DOM موجودة مسبقًا بدون الكتابة فوق العناصر الأبناء الموجودين داخلها.
 >
-> يُعيد التابع `ReactDOM.render()` حاليًّا مرجعًا إلى نسخة الصنف `ReactComponent` الجذري. على أيّة حال هذه القيمة المُعادة تعتبر قديمة حاليًّا ويجب تجنبها لأنّ إصدارات React القادمة قد تُصيِّر المكوّنات بشكلٍ غير متزامن في بعض الحالات. إن أردت مرجعًا إلى نسخة الصنف`ReactComponent`  الجذري فالحل الأمثل هو إرفاق مرجع رد نداء إلى العنصر الجذري.
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> يُعيد التابع `render()` حاليًّا مرجعًا إلى نسخة الصنف `ReactComponent` الجذري. على أيّة حال هذه القيمة المُعادة تعتبر قديمة حاليًّا ويجب تجنبها لأنّ إصدارات React القادمة قد تُصيِّر المكوّنات بشكلٍ غير متزامن في بعض الحالات. إن أردت مرجعًا إلى نسخة الصنف`ReactComponent`  الجذري فالحل الأمثل هو إرفاق مرجع رد نداء إلى العنصر الجذري.
+> [callback ref](/docs/refs-and-the-dom.html#callback-refs) to the root element.
 >
 > أصبح استخدام التابع `ReactDOM.render()` لإجراء hydrate على الحاوية المُصيَّرة من قبل الخادم أمرًا مهمًلا وسيُزال في إصدار React 17. استخدم التابع [`hydrate()`](#hydrate) بدلًا من ذلك.
 
@@ -57,9 +82,21 @@ ReactDOM.render(element, container[, callback])
 
 ### `()hydrate` {#hydrate}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`hydrate`](https://react.dev/reference/react-dom/hydrate).
+
+</div>
+
 ```javascript
-ReactDOM.hydrate(element, container[, callback])
+hydrate(element, container[, callback])
 ```
+
+> Note:
+>
+> `hydrate` has been replaced with `hydrateRoot` in React 18. See [hydrateRoot](/docs/react-dom-client.html#hydrateroot) for more info.
 
 يُشير المصطلح hydrate إلى عمليّة ملء الكائن بالبيانات. هذا التابع مماثل للتابع [`render()`](#render), ولكنّه يُستخدَم لإجراء hydrate على حاوية محتواها مُصيَّر من قبل[`ReactDOMServer`](/docs/react-dom-server.html). تحاول React إرفاق مستمع للأحداث إلى الشيفرة الحالية.
 
@@ -75,9 +112,21 @@ ReactDOM.hydrate(element, container[, callback])
 
 ### `()unmountComponentAtNode` {#unmountcomponentatnode}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`unmountComponentAtNode`](https://react.dev/reference/react-dom/unmountComponentAtNode).
+
+</div>
+
 ```javascript
-ReactDOM.unmountComponentAtNode(container)
+unmountComponentAtNode(container)
 ```
+
+> Note:
+>
+> `unmountComponentAtNode` has been replaced with `root.unmount()` in React 18. See [createRoot](/docs/react-dom-client.html#createroot) for more info.
 
 يُزيل مكوّن React الموصول من DOM ويمسح معالجات أحداثه وحالته. إن لم يكن هنالك أي مكوّن موصول في الحاوية فلن يؤدي استدعاء هذا التابع إلى فعل أي شيء. يُعيد هذا التابع القيمة `true` إن فصلنا المكوّن بنجاح و `false` إن لم يكون هنالك مكوّن لفصله.
 
@@ -85,12 +134,20 @@ ReactDOM.unmountComponentAtNode(container)
 
 ### `()findDOMNode` {#finddomnode}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`findDOMNode`](https://react.dev/reference/react-dom/findDOMNode).
+
+</div>
+
 > ملاحظة:
 >
 > التابع `findDOMNode` و وسيلة هروب مستخدمة للوصول إلى عقدة DOM التحتية. من غير المفضل في معظم الأحيان استخدام وسيلة الهروب هذه لأنّها تخرق تجريد المكوّنات. لقد  [أهمل في الوضع الصارم `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
-ReactDOM.findDOMNode(component)
+findDOMNode(component)
 ```
 
 إن كان هذا المكوّن موصولًا إلى DOM، فسيُعيد هذا التابع عنصر DOM الأصلي الموافق في المتصفح. يُفيد هذا التابع لقراءة القيم من DOM، مثل قيم حقول الإدخال وإنجاز قياسات DOM. في معظم الحالات تستطيع إرفاق مرجع إلى عقدة DOM وتجنب استخدام `findDOMNode` نهائيًّا.

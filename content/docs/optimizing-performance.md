@@ -6,6 +6,17 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`memo`: Skipping re-rendering when props are unchanged
+](https://react.dev/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
+
+</div>
+
 تستخدم React العديد من التقنيّات الذكية داخليًا للتقليل من عدد عمليات DOM المكلفة المطلوبة لتحديث واجهة المستخدم. يؤدي استعمال React إلى الحصول على واجهات مستخدم سريعة دون الحاجة إلى القيام بعمل كبير من أجل تحسين الأداء. بالرغم من ذلك يوجد العديد من الطرق لتسريع تطبيق React الخاص بك
 
 ## استخدام نسخة الإنتاج {#use-the-production-build}
@@ -43,8 +54,8 @@ npm run build
  نُوفِّر إصدارات جاهزة للإنتاج من React و React DOM كملف واحد فقط:
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 تذكّر أنّ ملفّات React التي تنتهي باللاحقة `.production.min.js` هي فقط المُلائِمة للإنتاج.
@@ -208,7 +219,7 @@ module.exports = {
 
 > Note
 >
-> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab.
 > For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
 
 ## عرض القوائم الطويلة {#virtualize-long-lists}

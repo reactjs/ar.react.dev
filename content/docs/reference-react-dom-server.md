@@ -6,11 +6,21 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+
+</div>
+
 يُمكّننا الكائن `ReactDOMServer` من تصيير المكونات إلى تمثيل ثابت، وهو يُستخدَم بشكل نموذجي مع خادم Node.
 
 ```js
 // ES modules
-import ReactDOMServer from 'react-dom/server';
+import * as ReactDOMServer from 'react-dom/server';
 // CommonJS
 var ReactDOMServer = require('react-dom/server');
 ```
@@ -34,7 +44,47 @@ var ReactDOMServer = require('react-dom/server');
 ### `()renderToString` {#rendertostring}
 
 ```javascript
-ReactDOMServer.renderToString(element)
+ReactDOMServer.renderToPipeableStream(element, options)
+```
+
+Render a React element to its initial HTML. Returns a stream with a `pipe(res)` method to pipe the output and `abort()` to abort the request. Fully supports Suspense and streaming of HTML with "delayed" content blocks "popping in" via inline `<script>` tags later. [Read more](https://github.com/reactwg/react-18/discussions/37)
+
+If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+
+```javascript
+let didError = false;
+const stream = renderToPipeableStream(
+  <App />,
+  {
+    onShellReady() {
+      // The content above all Suspense boundaries is ready.
+      // If something errored before we started streaming, we set the error code appropriately.
+      res.statusCode = didError ? 500 : 200;
+      res.setHeader('Content-type', 'text/html');
+      stream.pipe(res);
+    },
+    onShellError(error) {
+      // Something errored before we could complete the shell so we emit an alternative shell.
+      res.statusCode = 500;
+      res.send(
+        '<!doctype html><p>Loading...</p><script src="clientrender.js"></script>'
+      );
+    },
+    onAllReady() {
+      // If you don't want streaming, use this instead of onShellReady.
+      // This will fire after the entire page content is ready.
+      // You can use this for crawlers or static generation.
+
+      // res.statusCode = didError ? 500 : 200;
+      // res.setHeader('Content-type', 'text/html');
+      // stream.pipe(res);
+    },
+    onError(err) {
+      didError = true;
+      console.error(err);
+    },
+  }
+);
 ```
 
 يُصيِّر عنصر React إلى تمثيل HTML البدئي له. ستعيد React سلسلة HTML نصية. بإمكانك استخدام هذا التابع لتوليد  HTML على الخادم وإرساله عند أول طلب وذلك لتحميل أسرع للصفحات وللسماح لمحركات البحث بإضافة صفحاتك بهدف تحسين تهيئة موقعك لمحركات البحث SEO (اختصارا للعبارة Search Engine Optimization).
@@ -46,7 +96,49 @@ ReactDOMServer.renderToString(element)
 ### `()renderToStaticMarkup` {#rendertostaticmarkup}
 
 ```javascript
-ReactDOMServer.renderToStaticMarkup(element)
+ReactDOMServer.renderToReadableStream(element, options);
+```
+
+Streams a React element to its initial HTML. Returns a Promise that resolves to a [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream). Fully supports Suspense and streaming of HTML. [Read more](https://github.com/reactwg/react-18/discussions/127)
+
+If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+
+```javascript
+let controller = new AbortController();
+let didError = false;
+try {
+  let stream = await renderToReadableStream(
+    <html>
+      <body>Success</body>
+    </html>,
+    {
+      signal: controller.signal,
+      onError(error) {
+        didError = true;
+        console.error(error);
+      }
+    }
+  );
+  
+  // This is to wait for all Suspense boundaries to be ready. You can uncomment
+  // this line if you want to buffer the entire HTML instead of streaming it.
+  // You can use this for crawlers or static generation:
+
+  // await stream.allReady;
+
+  return new Response(stream, {
+    status: didError ? 500 : 200,
+    headers: {'Content-Type': 'text/html'},
+  });
+} catch (error) {
+  return new Response(
+    '<!doctype html><p>Loading...</p><script src="clientrender.js"></script>',
+    {
+      status: 500,
+      headers: {'Content-Type': 'text/html'},
+    }
+  );
+}
 ```
 
 مشابه للتابع  [`renderToString`](#rendertostring), عدا أنّه لا يُنشِئ خاصيات DOM إضافية لتستخدمها React داخليًّا، مثل `data-reactroot`. يفيدنا ذلك إن أردنا استخدام React كمولد لصفحات ثابتة بسيطة، حيث أنّ إزالة الخاصيات الإضافية توفر علينا بعض البايتات.
@@ -55,7 +147,15 @@ ReactDOMServer.renderToStaticMarkup(element)
 
 * * *
 
-### `()renderToNodeStream` {#rendertonodestream}
+### `()renderToNodeStream`  (Deprecated) {#rendertonodestream}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToNodeStream`](https://react.dev/reference/react-dom/server/renderToNodeStream).
+
+</div>
 
 ```javascript
 ReactDOMServer.renderToNodeStream(element)
@@ -75,6 +175,14 @@ ReactDOMServer.renderToNodeStream(element)
 
 ### `()renderToStaticNodeStream` {#rendertostaticnodestream}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToStaticNodeStream`](https://react.dev/reference/react-dom/server/renderToStaticNodeStream).
+
+</div>
+
 ```javascript
 ReactDOMServer.renderToStaticNodeStream(element)
 ```
@@ -90,3 +198,49 @@ ReactDOMServer.renderToStaticNodeStream(element)
 > تتوفر واجهة برمجة التطبيق هذه فقط على الخادم ولا تتوفر على المتصفح.
 >
 > يُعيد تدفق البيانات الناتج عن هذا التابع تدفّق بيانات مُرمَّز بصيغة `utf-8`. إن أردت الحصول على ترميز آخر فألقِ نظرة على مشروع مثل [iconv-lite](https://www.npmjs.com/package/iconv-lite)، والذي يُزوّدنا بطريقة لتحويل تدفّق البيانات إلى ترميز آخر.
+
+* * *
+
+### `renderToString()` {#rendertostring}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToString`](https://react.dev/reference/react-dom/server/renderToString).
+
+</div>
+
+```javascript
+ReactDOMServer.renderToString(element)
+```
+
+Render a React element to its initial HTML. React will return an HTML string. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+
+If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+
+> Note
+>
+> This API has limited Suspense support and does not support streaming.
+>
+> On the server, it is recommended to use either [`renderToPipeableStream`](#rendertopipeablestream) (for Node.js) or [`renderToReadableStream`](#rendertoreadablestream) (for Web Streams) instead.
+
+* * *
+
+### `renderToStaticMarkup()` {#rendertostaticmarkup}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`renderToStaticMarkup`](https://react.dev/reference/react-dom/server/renderToStaticMarkup).
+
+</div>
+
+```javascript
+ReactDOMServer.renderToStaticMarkup(element)
+```
+
+Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+
+If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.

@@ -16,6 +16,18 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Your First Component](https://react.dev/learn/your-first-component)
+> - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+
+</div>
+
 تتيح لنا المُكوِّنات (Components) تقسيم واجهة المستخدم إلى قطع مُستقِلَّة قابلة لإعادة الاستخدام، والتفكير بكل قطعة على انفراد. سنتحدّث في هذه الصفحة عن مُقدّمة إلى مفهوم المُكوِّنات،  بإمكانك أن تجد مرجعًا مُفصَّلًا حول [واجهة برمجة التطبيق (API) الخاصّة بالمُكوِّنات من هنا](/docs/react-component.html).
 
 تُشبِه المُكوِّنات من الناحية النظريّة دوال JavaScript، فهي تقبل مُدخَلات المستخدم (والتي تُدعى props اختصارًا للكلمة properties وتعني الخاصيّات) وتُعيد عناصر React وصف ما الذي ينبغي عرضه على الشّاشة.
@@ -64,23 +76,21 @@ const element = <Welcome name="Sara" />;
 
 لى سبيل المثال تعرض هذه الشيفرة عبارة "Hello, Sara" في الصّفحة:
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+root.render(element);
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 تلخيص ما حدث في هذا المثال:
 
-1. نستدعي التّابع `ReactDOM.render()` مع العنصر `<Welcome name="Sara" />`.
+1. نستدعي التّابع `root.render()` مع العنصر `<Welcome name="Sara" />`.
 2. تستدعي React المُكوِّن `Welcome` مع تمرير `{name: 'Sara'}` كخاصيّة props.
 3. يُعيد العنصر `Welcome` العنصر `<h1>Hello, Sara</h1>` كنتيجة له.
 4. تُحدِّث React DOM بكفاءة DOM ليُطابِق `<h1>Hello, Sara</h1>`.
@@ -111,14 +121,9 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
-[](codepen://components-and-props/composing-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 تحتوي تطبيقات React الجديدة عادةً على المُكوِّن `App` في المستوى الأعلى وتنحدر عنه باقي المُكوِّنات، ولكن إن كنت تدمج React مع تطبيق موجود مُسبقًا فقد تبدأ من المستوى السفلي بمُكوِّن صغير مثل الزر `Button` وتصعد تدريجيًّا حتى المستوى الأعلى في هيكليّة التطبيق.
 
@@ -152,7 +157,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 يقبل هذا المُكوِّن الكائن `author`، والسلسلة النصيّة `text`، والتاريخ `date` كخاصيات props له، ويُمثِّل تعليقًا على مواقع التواصل الاجتماعي.
 
@@ -231,7 +236,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 يبدو استخراج المُكوِّنات في البداية عملًا مجهدًا، ولكن سنرى الفائدة الكبيرة لامتلاك عدّة مُكوِّنات قابلة لإعادة الاستخدام عند بناء تطبيقات كبيرة. القاعدة هنا هي: إن استخدمنا أجزاء واجهة المستخدم عدّة مرّات (مثل الزر `Button`، و اللوحة `Panel`، والصورة الرمزيّة `Avatar`)، أو كانت هذه الأجزاء مُعقّدة بحد ذاتها (مثل مُكوِّن التطبيق `App`، و `FeedStory`، والتعليق `Comment`)، فهي مُرشَّحة بشكل كبير ومن الجيد استخراجها إلى مُكوِّن مٌنفصل.
 

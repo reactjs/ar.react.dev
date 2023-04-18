@@ -4,6 +4,16 @@ title: المطابقة (Reconciliation)
 permalink: docs/reconciliation.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Preserving and Resetting State](https://react.dev/learn/preserving-and-resetting-state)
+
+</div>
+
 تُزوّدنا React بواجهة برمجة تطبيقات (API) صريحة بحيث لا نقلق بشأن التغييرات التي تطرأ في كل تحديث. يجعل هذا من كتابة التطبيقات أمرًا أسهل بكثير، ولكن قد لا يكون من الواضح كثيرًا كيفيّة تطبيق هذا في React. تشرح هذه الصفحة الخيارات التي وضعناها في خوارزمية المقارنة (diffing) بحيث تكون تحديثات المُكوّنات متوقعة وفي نفس الوقت سريعة كفاية لأجل التطبيقات عالية الأداء.
 
 ## تحفيز {#motivation}

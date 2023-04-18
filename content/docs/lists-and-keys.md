@@ -6,6 +6,17 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://react.dev/learn/rendering-lists)
+
+</div>
+
+
 فلنتذكّر أولًا كيفيّة تحويل القوائم في JavaScript. 
 
 في المثال التالي سنستخدم الدالة  [`()map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) لمضاعفة قيم مصفوفة من الأرقام اسمها `numbers`، وسنُعيِّن المصفوفة الجديدة التي تُعيدها الدالة `map ()`‎ إلى المتغير `doubled` ثم نعرض محتواه عبر التابع `console.log()‎`:
@@ -38,10 +49,7 @@ const listItems = numbers.map((number) =>
 نضع الآن كامل المصفوفة `listItems` بداخل عنصر `<ul>`، ونُصيِّره إلى [DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +72,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 عندما تُنفَّذ هذه الشيفرة ستتلقى تحذيرًا أنّه يجب تزويد مفتاح (key) لعناصر القائمة. والمفتاح هو عبارة عن خاصيّة على شكل سلسلة نصيّة يجب إضافتها عند إنشاء قوائم من العناصر. سنتحدث لاحقا عن أهميته في موضوع القادم.
@@ -86,12 +92,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -130,7 +130,7 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-لا نُفضِّل استخدام فهارس العناصر إن كان ترتيبها عُرضةً للتغيير، فقد يُؤثِّر هذا بشكل سلبي على الأداء وقد يسبب مشاكل مع حالة المُكوِّن. اطّلع على  [هذا المقال للحصول على شرح مُفصّل للتأثيرات السلبية لاستخدام الفهرس كمفتاح](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)  . إن اخترت عدم تعيين مفتاح لعناصر القائمة فستستخدم React الفهارس كمفاتيح بشكل افتراضي.
+لا نُفضِّل استخدام فهارس العناصر إن كان ترتيبها عُرضةً للتغيير، فقد يُؤثِّر هذا بشكل سلبي على الأداء وقد يسبب مشاكل مع حالة المُكوِّن. اطّلع على  [هذا المقال للحصول على شرح مُفصّل للتأثيرات السلبية لاستخدام الفهرس كمفتاح](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)  . إن اخترت عدم تعيين مفتاح لعناصر القائمة فستستخدم React الفهارس كمفاتيح بشكل افتراضي.
 
 إن كنت ترغب بمعرفة المزيد ستجد هنا  [ شرحا مفصلا حول أهمية المفاتيح](/docs/reconciliation.html#recursing-on-children).
 
@@ -165,12 +165,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **مثال: الاستخدام الصحيح للمفتاح**
@@ -193,12 +187,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -239,10 +227,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**جرب الأن على CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)

@@ -6,6 +6,18 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+> - [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
+
+</div>
+
 فلننظر إلى تعريف هذا المتغير:
 
 ```js
@@ -33,11 +45,6 @@ const element = <h1>Hello, world!</h1>;
 ```js{1,2}
 const name = 'Josh Perez';
 const element = <h1>Hello, {name}</h1>;
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
 ```
 
 بإمكانك وضع أي [تعبير صحيح في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) داخل القوسين في JSX، على سبيل المثال `2 + 2`، `user.firstName`، أو `formatName(user)` جميعها تعابير JavaScript صحيحة.
@@ -59,14 +66,9 @@ const element = (
     Hello, {formatName(user)}!
   </h1>
 );
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
 ```
 
-[](codepen://introducing-jsx)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 فصلنا JSX عبر عدّة أسطر لتسهيل القراءة، نُوصي أيضًا عند فعل هذا بتغليفها بين قوسين لتجنّب هفوات [الإدخال التلقائي للفاصلة المنقوطة](https://stackoverflow.com/q/2846283).
 
@@ -90,7 +92,7 @@ function getGreeting(user) {
 بإمكانك استخدام علامتي الاقتباس لتحديد قيم ثابتة نصيّة لخاصيّات HTML:
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 بإمكانك أيضًا استخدام الأقواس لتضمين تعبير JavaScript بداخل خاصيّة HTML:

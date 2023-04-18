@@ -8,6 +8,15 @@ prev: add-react-to-a-website.html
 next: cdn-links.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Start a New React Project](https://react.dev/learn/start-a-new-react-project) for the recommended ways to create an app.
+
+</div>
+
 استعمل سلسلة الأدوات المدمجة (integrated toolchain) من أجل الحصول على أفضل تجربة استخدام وتطوير.
 
 تشرح هذه الصفحة بعض سلاسل الأدوات المشهورة في React التي تساعد في مهام مثل:
@@ -75,7 +84,7 @@ npm start
 
 - **[Nx](https://nx.dev/react)** هي مجموعة أدوات لتطوير monorepo كامل الحزمة ، مع دعم مضمن لـ React و Next.js و [Express] (https://expressjs.com/) والمزيد.
 
-- **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes.html#react) دون أي ضبط.
+- **[Parcel](https://parceljs.org/)** أداة سريعة لتحزيم تطبيقات الويب التي [تعمل مع React](https://parceljs.org/recipes/react/) دون أي ضبط.
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)**  هو إطار عمل تصيير من طرف الخادم ولا يتطلب أي ضبط ولكن يتسم بالمرونة أكثر من إطار العمل Next.js.
 

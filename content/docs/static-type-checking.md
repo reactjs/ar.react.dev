@@ -4,6 +4,14 @@ title: التحقّق من الأنواع الثابتة
 permalink: docs/static-type-checking.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> Check out [React TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/) for how to use React with TypeScript.
+
+</div>
+
 تتعرّف أدوات التحقّق من الأنواع الثابتة (Static type checkers، والمقصود بها التحقّق من الأنواع في زمن التصريف compile-time حيث لا يُسمَح بتغيير أنواع المتغيّرات في زمن التنفيذ) مثل Flow وTypeScript على بعض أنواع المشاكل قبل تنفيذ الشيفرة، وتُحسِّن سير عمل المُطوِّر عن طريق إضافة ميّزات مثل الإكمال التلقائي. نُوصي لهذا السّبب باستخدام [Flow](https://flow.org/) أو [TypeScript](https://www.typescriptlang.org/) بدلًأ من `PropTypes` للشيفرات الكبيرة.
 
 ## Flow {#flow}

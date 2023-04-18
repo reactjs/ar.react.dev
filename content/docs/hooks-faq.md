@@ -5,6 +5,14 @@ permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> The new documentation pages teaches React with Hooks.
+
+</div>
+
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
 تجيب هذه الصفحة عن بعض الأسئلة التي يتكرر طرحها حول [الخطافات](/docs/hooks-overview.html).
@@ -152,7 +160,7 @@ function Example() {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -171,7 +179,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // اختبر أول تصيير وتأثير
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -337,52 +345,20 @@ function useWindowPosition() {
 
 في الوقت الحالي، يمكنك فعل ذلك يدويًّا باستعمال [مرجع](#is-there-something-like-instance-variables):
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+Sometimes, you need previous props to **clean up an effect.** For example, you might have an effect that subscribes to a socket based on the `userId` prop. If the `userId` prop changes, you want to unsubscribe from the _previous_ `userId` and subscribe to the _next_ one. You don't need to do anything special for this to work:
 
-  const prevCountRef = useRef();
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
 ```
 
-قد تبدو هذه العملية معقدةً بعض الشيء ولكن يمكنك استخراجها إلى خطاف مخصص:
+In the above example, if `userId` changes from `3` to `4`, `ChatAPI.unsubscribeFromSocket(3)` will run first, and then `ChatAPI.subscribeToSocket(4)` will run. There is no need to get "previous" `userId` because the cleanup function will capture it in a closure.
 
-```js{3,7}
-function Counter() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+Other times, you might need to **adjust state based on a change in props or other state**. This is rarely needed and is usually a sign you have some duplicate or redundant state. However, in the rare case that you need this pattern, you can [store previous state or props in state and update them during rendering](#how-do-i-implement-getderivedstatefromprops).
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-```
-
-لاحظ كيف سيعمل هذا من أجل الخاصيات، أو الحالات، أو أية قيمة أخرى محسوبة:
-
-```js{5}
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  const calculation = count + 100;
-  const prevCalculation = usePrevious(calculation);
-  // ...
-```
-
-واردٌ في المستقبل أن توفر React خطافًا يدعى `usePrevious` مثلًا لفعل ذلك، إذ هذا السلوك شائع نسبيًا.
-
-انظر أيضًا [إلى السؤال التالي للاطلاع على النمط الموصى به من أجل الحالة المشتقة.](#how-do-i-implement-getderivedstatefromprops).
+We have previously suggested a custom Hook called `usePrevious` to hold the previous value. However, we've found that most use cases fall into the two patterns described above. If your use case is different, you can [hold a value in a ref](#is-there-something-like-instance-variables) and manually update it when needed. Avoid reading and updating refs during rendering because this makes your component's behavior difficult to predict and understand.
 
 ### لماذا أرى الخصائص قديمة أو الحالة داخل الدالة؟ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 

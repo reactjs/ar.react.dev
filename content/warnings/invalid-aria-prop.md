@@ -9,3 +9,5 @@ permalink: warnings/invalid-aria-prop.html
 1. تأكَد من الإملاء بحذر ان كُنت تَظُنّ انك تستخدم خاصية صالحة. خاصيتا `aria-labelledby` و `aria-activedescendant` عادةً ما يُخطَأُ بِتَهجِئَتِهما.
 
 2. لا تَتعرَّف React على الخاصية التي حَدَدتَها. سيتم إصلاح ذلك في إصدار مستقبلي من React على الأرجح. تُزيل React حاليًا جميع الخواص غير المُعَرَّفة ، لذلك تحديدهم في تطبيق React خاصَتِك لن يؤدي إلى تَصييرِهم.
+
+3. Otherwise, if you're on the latest version of React DOM and verified that you're using a valid property name listed in the ARIA specification, please [report a bug](https://github.com/facebook/react/issues/new/choose).

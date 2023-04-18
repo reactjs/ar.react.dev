@@ -4,6 +4,16 @@ title: استخدام الأجزاء (Fragments)
 permalink: docs/fragments.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Fragment>`](https://react.dev/reference/react/Fragment)
+
+</div>
+
 من الأنماط الشائعة في React هي إعادة المكوّن لعناصر متعددة. تتيح لك الأجزاء (Fragments) تجميع قائمة من العناصر الأبناء بدون إضافة عُقَد إضافيّة إلى DOM.
 
 ```js

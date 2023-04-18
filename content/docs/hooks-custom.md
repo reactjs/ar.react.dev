@@ -6,6 +6,16 @@ next: hooks-reference.html
 prev: hooks-rules.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
+
+</div>
+
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
 بناء خطافات خاصة بك تمكِّنك من استخراج شيفرة من مكون ما إلى دوال قابلة لإعادة الاستعمال.

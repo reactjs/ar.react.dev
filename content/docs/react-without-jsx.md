@@ -4,6 +4,12 @@ title: React بدون JSX
 permalink: docs/react-without-jsx.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 JSX ليست متطلب لإستخدام React .حيث يمكنك إستخدام React بدون JSX بشكل خاص عندما لاترغب في إعداد مرحلة التصريف في بيئة البناء لديك.
 
 كل عنصر من  JSX هو فقط تجميل صياغي لمناداة الداله `React.createElement(component, props, ...children)`. اذاً، أي شيء يمكن تطبيقه باستخدام JSX  من الممكن ايضاً تطبيقه بإستخدام javascript.
@@ -17,10 +23,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Hello toWhat="World" />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
 ```
 
 وتصرف الى شيفرة على النحو التالي بدون JSX:
@@ -32,10 +36,8 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
 ```
 
 إذا كنت مهتماً لرؤية المزيد من الامثلة عن كيفية تصريف شيفرة JSX الى javascript, فبإمكانك تجربة [مصرف Babel على الإنترنت](babel://jsx-simple-example).
@@ -47,10 +49,8 @@ ReactDOM.render(
 ```js
 const e = React.createElement;
 
-ReactDOM.render(
-  e('div', null, 'Hello World'),
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
 ```
 
 إذا إستخدمت هذه الصيغة المختصرة (الثابت e) لأجل `React.createElement`، فسيكون من المناسب تمامًا استخدام React بدون JSX.

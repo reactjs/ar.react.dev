@@ -6,6 +6,17 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [`useState`](https://react.dev/reference/react/useState)
+
+</div>
+
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
 شرحت الصفحة السابقة في قسم [خطاف الحالة](/docs/hooks-intro.html) هذا الخطاف عبر المثال التالي:

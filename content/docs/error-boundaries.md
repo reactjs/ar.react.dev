@@ -4,6 +4,16 @@ title: حدود الأخطاء
 permalink: docs/error-boundaries.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`React.Component`: Catching rendering errors with an error boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)
+
+</div>
+
 في الماضي كانت أخطاء JavaScript بداخل المكوّنات تؤدّي إلى تخريب حالة React الداخلية [وإصدار](https://github.com/facebook/react/issues/4026) [أخطاء](https://github.com/facebook/react/issues/8579) [مخفية](https://github.com/facebook/react/issues/6895) في التصييرات التالية. كانت هذه الأخطاء مُسبَّبة دومًا بخطأ مبكر في شيفرة التطبيق، ولكن لم تكن تعطينا React طريقة للتعامل معها في المكوّنات، ولم يكن بإمكانها استعادتها أيضًا.
 
 

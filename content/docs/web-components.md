@@ -6,6 +6,14 @@ redirect_from:
   - "docs/webcomponents.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See [Custom HTML elements](https://react.dev/reference/react-dom/components#custom-html-elements) in the new docs.
+>
+</div>
+
 إنّ مكوّنات React و[مكوّنات الويب](https://developer.mozilla.org/en-US/docs/Web/Web_Components) مبنية لحل مشاكل مختلفة. حيث تُزوِّدنا مكوّنات الويب بتغليف قوي لمكوّنات قابلة لإعادة الاستخدام، بينما تُزوِّدنا مكوّنات React بمكتبة تصريحات تُبقي DOM على تزامن مع بياناتنا. يكون هذان الهدفان متكاملين، وبصفتك مُطوّرا فلك حرية استخدام React في مكوّنات الويب لديك، أو استخدام مكوّنات الويب في React أو كليهما معًا.
 
 معظم من يستخدم React لا يستخدم مكوّنات الويب، ولكن قد ترغب في ذلك خاصة إذا كنت تستخدم مكوّنات لواجهة المستخدم من طرف ثالث والتي تكون مكتوبة باستخدام مكوّنات الويب.
@@ -50,7 +58,8 @@ class XSearch extends HTMLElement {
 
     const name = this.getAttribute('name');
     const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
-    ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
+    const root = ReactDOM.createRoot(mountPoint);
+    root.render(<a href={url}>{name}</a>);
   }
 }
 customElements.define('x-search', XSearch);

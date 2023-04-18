@@ -8,6 +8,12 @@ prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 تمتلك React نموذجًا قويًّا للتركيب (composition) ونُوصي باستخدام التركيب بدلًا من الوراثة (inheritance) لإعادة استخدام الشيفرة بين المُكوِّنات.
 
 سننظر في هذا القسم إلى بعض المشاكل التي بسببها قد يستخدم المُطوِّر الجديد على React الوراثة، وسنرى كيفيّة حلّها باستخدام التركيب.
