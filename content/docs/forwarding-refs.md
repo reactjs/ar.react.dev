@@ -4,6 +4,17 @@ title: تمرير المراجع
 permalink: docs/forwarding-refs.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
+
 تمرير المراجع هو تقنية لتمرير مرجع [ref](/docs/refs-and-the-dom.html) تلقائيًّا من مكوّن إلى عناصره الأبناء. لا يكون هذا ضروريًّا بشكل نموذجي لمعظم مكوّنات التطبيق، ولكن قد يكون مفيدًا لبعض أنواع المكوّنات، خاصّة مكتبات المكوّنات القابلة لإعادة الاستخدام. سنتحدث في هذه الصفحة عن أشيع الحالات التي نحتاج فيها تمرير المراجع.
 
 ## تمرير المراجع إلى مكونات DOM {#forwarding-refs-to-dom-components}

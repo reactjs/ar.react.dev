@@ -8,6 +8,15 @@ prev: cdn-links.html
 next: hello-world.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Versioning Policy](https://react.dev/community/versioning-policy) to learn about the React release channels.
+
+</div>
+
 React يعتمد على مجتمع مفتوح المصدر مزدهر لتقديم تقارير الأخطاء وفتح طلبات التغيير، و [عروض "طلب للحصول على تعليقات"](https://github.com/reactjs/rfcs). لتشجيع التعليقات ، نشارك أحيانًا بنيات خاصة من React تتضمن ميزات غير مُصدرة.
 
 > هذا المستند سيكون أكثر ملاءمة للمطورين الذين يعملون على أدوات العمل أو مكتبات أو أدوات التطوير. للمطورين الذين يستخدمون React بشكل أساسي في إنشاء تطبيقات الواجهة الاماميه للمستخدم لا ينبغي عليهم القلق حول النسخ التجريبية الخاصة بنا.
@@ -53,13 +62,13 @@ React يعتمد على مجتمع مفتوح المصدر مزدهر لتقدي
 - قم بإعداد وظيفة [cron](https://ar.wikipedia.org/wiki/%D9%83%D8%B1%D9%88%D9%86_(%D9%8A%D9%88%D9%86%D9%83%D8%B3)) باستخدام نظام التكامل المستمر المفضل لديك. يتم دعم وظائف Cron بواسطة كل من [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) و [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
 - في مهمة cron ، حدّث حزم React الخاصة بك إلى أحدث إصدار React في القناة التالية ، باستخدام علامة `next` في npm. باستخدام npm cli:
 
-  ```
+  ```console
   npm update react@next react-dom@next
   ```
 
   أو yarn:
 
-  ```
+  ```console
   yarn upgrade react@next react-dom@next
   ```
 - قم بتشغيل مجموعة الاختبار الخاصة بك مقابل الحزم المحدثة.

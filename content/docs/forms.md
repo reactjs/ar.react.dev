@@ -9,6 +9,18 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 تعمل عناصر النماذج بشكلٍ مختلفٍ قليلًا عن بقيّة عناصر DOM الأخرى في React بسبب احتفاظ عناصر النماذج بشكل طبيعي بحالة داخلية خاصّة بها. فمثلًا يقبل هذا النموذج في HTML اسمًا واحدًا:
 
 ```html
@@ -277,10 +289,10 @@ this.setState(partialState);
 تُوضِّح الشيفرة التالية هذا (يكون العنصر input مقفولًا في البداية ثم يُصبِح قابلًا للتعديل بعد فترة زمنيّة قصيرة):
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```

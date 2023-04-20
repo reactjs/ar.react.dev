@@ -8,6 +8,15 @@ redirect_from:
   - "support.html"
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See the [Community](https://react.dev/community) resources on the new site.
+
+</div>
+
 يتكون  مجتمع React من ملايين المطوّرين
 
 في هذه الصفحة عدّدنا لكم بعضا من المجتمعات المتعلّقة بـ React والتي يمكن لك الإنضمام إليها.

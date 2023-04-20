@@ -4,6 +4,12 @@ title: React بدون ES6
 permalink: docs/react-without-es6.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 نُعرِّف عادةً مُكوّنات React كأصناف JavaScript مُجرَّدة:
 
 ```javascript
@@ -143,11 +149,11 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-  // WARNING: this syntax is experimental!
+  
   // Using an arrow here binds the method:
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -216,10 +222,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 إذا كان المُكوّن يستخدم مخاليط متعددة تُعرِّف نفس توابع دورة الحياة (أي مثلًا تريد كل هذه المخاليط إيقاف التابع setInterval()‎ عند تدمير المُكوّن)، فسنضمن استدعاء كافة توابع دورة الحياة. تعمل التوابع المُعرَّفة في المخاليط بنفس الترتيب الذي أوردنا فيه هذه المخاليط متبوعةً باستدعاء التابع على المُكوّن.

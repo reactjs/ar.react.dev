@@ -13,6 +13,19 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Components](https://react.dev/reference/react/components)
+> - [`react`: Hooks](https://react.dev/reference/react/)
+> - [`react`: APIs](https://react.dev/reference/react/apis)
+> - [`react`: Legacy APIs](https://react.dev/reference/react/legacy)
+
+</div>
+
 `React` هو نقطة الدخول إلى مكتبة React. إن قمت بتنزيل React عن طريق العنصر ‎`<script>`‎ فستكون هذه الواجهة ذات المستوى الأعلى متوفرة عبر الكائن العام `React`. وإن استخدمت ES6 مع npm فتستطيع كتابة `‎import React from 'react'`‎. إن استخدمت ES5 مع npm فتستطيع كتابة ‎`var React = require('react')`‎.
 
 
@@ -66,6 +79,13 @@ redirect_from:
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
+### Transitions {#transitions}
+
+*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+
+- [`React.startTransition`](#starttransition)
+- [`React.useTransition`](/docs/hooks-reference.html#usetransition)
+
 ### الخطافات (Hooks) {#hooks}
 
 الخطافات هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف. [تملك الخطافات قسمًا خاصا بها](/docs/hooks-intro.html) وواجهة برمجية منفصلة:
@@ -82,12 +102,26 @@ redirect_from:
   - [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)
   - [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)
   - [`useDebugValue`](/docs/hooks-reference.html#usedebugvalue)
+  - [`useDeferredValue`](/docs/hooks-reference.html#usedeferredvalue)
+  - [`useTransition`](/docs/hooks-reference.html#usetransition)
+  - [`useId`](/docs/hooks-reference.html#useid)
+- [Library Hooks](/docs/hooks-reference.html#library-hooks)
+  - [`useSyncExternalStore`](/docs/hooks-reference.html#usesyncexternalstore)
+  - [`useInsertionEffect`](/docs/hooks-reference.html#useinsertioneffect)
 
 * * *
 
 ## مرجع {#reference}
 
 ### `React.Component` {#reactcomponent}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Component`](https://react.dev/reference/react/Component).
+
+</div>
 
 إنّ `React.Component` هو عبارة عن الصنف الأساسي لمكوّنات React عند تعريفها باستخدام أصناف [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
 
@@ -105,6 +139,14 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`PureComponent`](https://react.dev/reference/react/PureComponent).
+
+</div>
+
 يُشبه `React.PureComponent` الصنف [`React.Component`](#reactcomponent). الفرق بينهما هو عدم اعتماد الصنف [`React.Component`](#reactcomponent) للتابع [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) بينما يعتمده `React.PureComponent` مع مقارنة ضئيلة بين الخاصيّات والحالة.
 
 إن كان تابع التصيير `render()‎` للمكوّن يُصيّر نفس النتيجة عند إعطاء نفس الخاصيّات والحالة فتستطيع استخدام `React.PureComponent` لتحسين الأداء في بعض الحالات.
@@ -112,7 +154,7 @@ class Greeting extends React.Component {
 >ملاحظة
 >
 >يُقارِن التابع `shouldComponentUpdate()`‎ الخاص بالصنف `React.PureComponent` مقارنة ضئيلة فقط بين الكائنات، فإن كانت تحتوي على بنى معطيات معقدة فقد يُنتِج سلبيات كاذبة للمقارنات الأعمق. يجب الامتداد إلى الصنف `PureComponent` فقط عندما تتوقع امتلاك حالة وخاصيّات بسيطة، أو استخدم التابع
-[`forceUpdate()`](/docs/react-component.html#forceupdate)عندما تعلم بتغيّر بنى المعطيات العميقة، أو انظر في استخدام [الكائنات غير القابلة](https://facebook.github.io/immutable-js/) للتعديل لتسهيل المقارنات السريعة بين البيانات المتداخلة.
+[`forceUpdate()`](/docs/react-component.html#forceupdate)عندما تعلم بتغيّر بنى المعطيات العميقة، أو انظر في استخدام [الكائنات غير القابلة](https://immutable-js.com/) للتعديل لتسهيل المقارنات السريعة بين البيانات المتداخلة.
 >
 >يتخطى التابع `React.PureComponent` `shouldComponentUpdate()`‎ أيضًا تحديث الخاصيّات لكامل الشجرة الفرعية للمكوّن، احرص على أن تكون المكوّنات الأبناء له أيضًا نقيّة.
 
@@ -120,6 +162,14 @@ class Greeting extends React.Component {
 * * *
 
 ### `React.memo` {#reactmemo}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`memo`](https://react.dev/reference/react/memo).
+
+</div>
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -160,6 +210,14 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createElement`](https://react.dev/reference/react/createElement).
+
+</div>
+
 ```javascript
 React.createElement(
   type,
@@ -175,6 +233,14 @@ React.createElement(
 * * *
 
 ### `cloneElement()` {#cloneelement}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`cloneElement`](https://react.dev/reference/react/cloneElement).
+
+</div>
 
 ```
 React.cloneElement(
@@ -197,6 +263,14 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createFactory`](https://react.dev/reference/react/createFactory).
+
+</div>
+
 ```javascript
 React.createFactory(type)
 ```
@@ -212,6 +286,14 @@ React.createFactory(type)
 
 ### `isValidElement()` {#isvalidelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`isValidElement`](https://react.dev/reference/react/isValidElement).
+
+</div>
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -222,6 +304,14 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Children`](https://react.dev/reference/react/Children).
+
+</div>
 
 يُزوّدنا `React.Children` بأدوات مساعدة للتعامل مع بنية المعلومات `this.props.children`.
 
@@ -287,6 +377,14 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Fragment`](https://react.dev/reference/react/Fragment).
+
+</div>
+
 يُتيح لك مكوّن الأجزاء `React.Fragment` أن تُعيد عناصر متعددة في التابع `render()‎` دون إنشاء عناصر DOM إضافيّة:
 
 
@@ -306,11 +404,27 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createRef`](https://react.dev/reference/react/createRef).
+
+</div>
+
 يُنشِئ `React.createRef` مرجعًا [ref](/docs/refs-and-the-dom.html) والذي يُمكِن إرفاقه لعناصر React عبر الخاصيّة ref:
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 
 ### `React.forwardRef` {#reactforwardref}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`forwardRef`](https://react.dev/reference/react/forwardRef).
+
+</div>
 
 يُنشِئ `React.forwardRef` مكوّن React يُمرِّر خاصيّة المرجع [ref](/docs/refs-and-the-dom.html) التي يستقبلها إلى مكوّن آخر أدنى منه في الشجرة. هذه التقنية ليست شائعة كثيرًا ولكنّها مفيدة بشكل خاص في حالتين:
 
@@ -332,6 +446,14 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`lazy`](https://react.dev/reference/react/lazy).
+
+</div>
+
 تمكنك الدالة `()React.lazy` من تعريف مكون يُحَـمََّل ديناميكيًّا. هذا يساعد في تقليل حجم الحزمة (bundle size) لتأخير تحميل المكونات التي لا تُستعمَل أثناء أول عملية تصيير.
 
 يمكنك تعلم كيفية استعمالها من [توثيق تقسيم الشيفرة](/docs/code-splitting.html#reactlazy). يمكنك أيضًا الاطلاع على [هذه المقالة](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) التي توضح كيفية استعمالها بتفصيل أوسع.
@@ -345,12 +467,17 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 يجب الانتباه إلى أن تحميل المكونات `lazy` (الكسولة) يتطلب وجود مكون من النوع `<React.Suspense>` في مستوى أعلى من شجرة التصيير. هذه هي كيفية تحديد مؤشر تحميل.
 
 
-> **ملاحظة:**
->
-> يتطلب استعمال `React.lazy` مع استيراد ديناميكي توافر وعود في البيئة JS. ذلك يتطلب دعمًا للإصدار IE11 وما قبله.
-
-
 ### `React.Suspense` {#reactsuspense}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Suspense`](https://react.dev/reference/react/Suspense).
+
+</div>
+
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
 
 يمكِّنك `React.Suspense` من تحديد مؤشر التحميل في حال كان هنالك بعض المكونات التي تقع أسفل منه في الشجرة غير جاهزة للتصيير بعد. اليوم، المكونات ذات التحميل الكسول (lazy loading components) هي حالة الاستعمال **الوحيدة** المدعومة عبر `<React.Suspense>`:
 
@@ -373,8 +500,36 @@ function MyComponent() {
 
 جرى توثيقه في [صفحة تقسيم الشيفرة](/docs/code-splitting.html#reactlazy). انتبه إلى أنَّ المكونات `lazy` (الكسولة) يمكن أن توضع بداخل الشجرة `Suspense` بعمق، إذ لا تحتاج إلى تغليف كل واحدة منها. أفضل سلوك هو وضع `<Suspense>` حيث أردت رؤية مؤشر تحميل، ولكن استعمال `()lazy` حيثما أردت القيام بتقسيم الشيفرة.
 
-طالما أن ذلك غير مدعوم حتى الآن، نخطط في المستقبل أن نجعل `Suspense` يعالج حالات أوسع مثل جلب بيانات. يمكنك قراءة المزيد في هذه [التدوينة](/blog/2018/11/27/react-16-roadmap.html).
-
->ملاحظة:
+> Note
 >
-> إن `()React.lazy` و `<React.Suspense>` غير مدعومين بعد عبر `ReactDOMServer`. سيتم حل هذا القيد في المستقبل.
+> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+
+#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
+During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
+When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+
+### `React.startTransition` {#starttransition}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`startTransition`](https://react.dev/reference/react/startTransition).
+
+</div>
+
+```js
+React.startTransition(callback)
+```
+`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+
+> Note:
+>
+> Updates in a transition yield to more urgent updates such as clicks.
+>
+> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+>
+> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).

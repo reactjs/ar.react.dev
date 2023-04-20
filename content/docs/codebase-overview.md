@@ -97,7 +97,7 @@ ReactRef.detachRefs = function(
 
 ### نواة React {#react-core}
 
-تشمل "نواة" React جميع الـ [واجهات برمجة تطبيقات `React` ذات المستوى العالي](/docs/top-level-api.html#react) مثل:
+تشمل "نواة" React جميع الـ [واجهات برمجة تطبيقات `React` ذات المستوى العالي](/docs/react-api.html#react) مثل:
 
 * `React.createElement()`
 * `React.Component`

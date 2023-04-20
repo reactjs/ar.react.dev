@@ -8,6 +8,18 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach how to write JSX and show it on an HTML page:
+>
+> - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+> - [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
+
+</div>
+
 العناصر (Elements) هي أصغر الوحدات البنائية في التطبيقات المبنية باستخدام رياكت (React).
 
 يصف العنصر الواحد ما تريد رؤيته على الشاشة:
@@ -39,7 +51,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 يعرض هذا المثال عند تنفيذه "مرحباً بالعالم".
 
@@ -54,9 +66,9 @@ const element = <h1>مرحباً بالعالم!</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
-حيث تقوم بمناداة [`ReactDOM.render()`](/docs/react-dom.html#render) كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
+حيث تقوم بمناداة [`root.render()`](/docs/react-dom.html#render) كل ثانية من خلال رد النداء [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
 
 >**ملاحظة:**
 >
@@ -70,7 +82,7 @@ const element = <h1>مرحباً بالعالم!</h1>;
 يقارن ReactDOM العنصر وأبنائه مع سابقه, ويقوم يتطبيق تحديثات DOM الضرورية لتحويل الـ DOM إلى الحالة المرغوب بها.
 
 
-تستطيع تأكيد ذلك من خلال تفحص [المثال الأخير](codepen://rendering-elements/update-rendered-element) باستخدام أدوات المتصفح:
+تستطيع تأكيد ذلك من خلال تفحص [المثال الأخير](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) باستخدام أدوات المتصفح:
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 

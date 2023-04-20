@@ -14,6 +14,21 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<option>`](https://react.dev/reference/react-dom/components/option)
+> - [`<progress>`](https://react.dev/reference/react-dom/components/progress)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 تعتمد React نظام DOM معتمد على المتصفّح من أجل الأداء والتوافقية بين المتصفحات. أخذنا عند بناء React الفرصة لتجاوز بعض الصعوبات في طريقة اعتماد DOM في المتصفّح.
 
 يجب في React كتابة جميع خاصيّات HTML وخاصيّات الكائنات في DOM (بما في ذلك معالجات الأحداث) بطريقة سنام الجمل (camelCase). على سبيل المثال تتوافق خاصيّة HTML التي تُدعى `tabindex` مع الخاصيّة `tabIndex` في React. الاستثناء الوحيد هو خاصيّات `aria-*‎` `و data-*`‎، والتي يجب كتابتها بأحرف صغيرة. على سبيل المثال بإمكانك الاحتفاظ بالخاصيّة `aria-label` باسمها `aria-label`.
@@ -117,7 +132,7 @@ function ComponentWithTransition() {
 
 إن كنت تستخدم تصيير React من جانب الخادم فهناك بشكل طبيعي تحذير عند تصيير الخادم والعميل لمحتوى مختلف. ولكن في بعض الحالات النادرة من الصعب أو المستحيل ضمان التطابق التام. مثلًا من المتوقع أن يختلف التوقيت بين الخادم والعميل.
 
-إن عيّنتَ قيمة  `suppressHydrationWarning` إلى `true`, فلن تحذرك React حول عدم التطابق في الخاصيّات والمحتوى لذلك العنصر. تعمل هذه الخاصيّة فقط في مستوى واحد من المكوّنات. لا تفرط في استخدامها. بإمكانك قراءة المزيد حول hydration في توثيق [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+إن عيّنتَ قيمة  `suppressHydrationWarning` إلى `true`, فلن تحذرك React حول عدم التطابق في الخاصيّات والمحتوى لذلك العنصر. تعمل هذه الخاصيّة فقط في مستوى واحد من المكوّنات. لا تفرط في استخدامها. بإمكانك قراءة المزيد حول hydration في توثيق [`ReactDOM.hydrateRoot()` documentation](/docs/react-dom-client.html#hydrateroot).
 
 ### value {#value}
 

@@ -44,7 +44,7 @@ class Foo extends Component {
   // ملاحظة: هذه الصياغة تجريبية وليست معيارية بعد
   handleClick = () => {
     console.log('حدثت نقرة');
-  }
+  };
   render() {
     return <button onClick={this.handleClick}>انقر هنا</button>;
   }

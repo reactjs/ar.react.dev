@@ -42,6 +42,13 @@ const Versions = ({location}: Props) => (
               .<br />
               يمكن أيضًا العثور على الوثائق الخاصة بالإصدارات الحديثة أدناه.
             </p>
+            <blockquote>
+              <p>Note</p>
+              <p>
+                The current docs are for React 18. For React 17, see{' '}
+                <a href="https://17.reactjs.org">https://17.reactjs.org.</a>
+              </p>
+            </blockquote>
             <p>
               راجع الأسئلة الشائعة الخاصة بنا للحصول على معلومات حول{' '}
               <a href="/docs/faq-versioning.html">

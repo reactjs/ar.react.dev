@@ -11,6 +11,19 @@ redirect_from:
   - "tips/children-undefined.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Referencing Values with Refs](https://react.dev/learn/referencing-values-with-refs)
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`useRef`](https://react.dev/reference/react/useRef)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
+
 تُزوّدنا المراجع بطريقة للوصول إلى عقد DOM أو عناصر React المُنشأة باستخدام التابع render.
 
 تكون [الخاصيات](/docs/components-and-props.html) في تدفق بيانات React النموذجي هي الطريقة الوحيدة التي يتواصل بها المكون الأب مع أبنائه. وللتعديل على الإبن يتم اعادة تصيير المكون بخاصيات جديدة. على الرغم من ذلك ، في بعض الحالات التي قد تحتاج الى اجراء تعديل على مكون إبن بشكل إجباري خارج نطاق التدفق المعتاد. من الممكن ان يكون المكون الإبن المُراد تعديله نسخة instance من مُكوّن React ، أو ان يكون عنصر DOM. في كلتا الحالتين توفر لنا React مفر للإلتفاف حول هذه الحالات.

@@ -4,6 +4,19 @@ title: التكامل مع المكتبات الأخرى
 permalink: docs/integrating-with-other-libraries.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`useSyncExternalStore`: Subscribing to an external store 
+](https://react.dev/reference/react/useSyncExternalStore#subscribing-to-an-external-store)
+> - [`createPortal`: Rendering React components into non-React DOM nodes 
+](https://react.dev/reference/react-dom/createPortal#rendering-react-components-into-non-react-dom-nodes)
+
+</div>
+
 يمكن استخدام React في أي تطبيق ويب وتضمينها في تطبيقات أخرى، ويمكن أيضًا بجهد قليل تضمين المكتبات الأخرى مع React. سنتحدث في هذه الصفحة ع ن بعض أشيع الحالات مع التركيز على التكامل مع [jQuery](https://jquery.com/) و [Backbone](https://backbonejs.org/)، ولكن يمكن تطبيق نفس الأفكار لتكامل المكوّنات مع أي شيفرة موجودة حاليًّا.
 
 
@@ -191,9 +204,9 @@ class Chosen extends React.Component {
 
 ## التكامل مع مكتبات الإظهار الأخرى {#integrating-with-other-view-libraries}
 
-يُمكِن تضمين React في تطبيقات أخرى بفضل مرونة التابع [`ReactDOM.render()`](/docs/react-dom.html#render).
+يُمكِن تضمين React في تطبيقات أخرى بفضل مرونة التابع [`createRoot()`](/docs/react-dom-client.html#createRoot).
 
-على الرغم من أنّه من الشائع استخدام React في البداية لتحميل مكوّن React جذري وحيد إلى DOM، يُمكِن استدعاء التابع `ReactDOM.render()` عدّة مرات للأجزاء المستقلة من واجهة المستخدم والتي قد تكون صغيرة بحجم عنصر الزر button أو كبيرة بحجم تطبيق كامل.
+على الرغم من أنّه من الشائع استخدام React في البداية لتحميل مكوّن React جذري وحيد إلى DOM، يُمكِن استدعاء التابع `createRoot()` عدّة مرات للأجزاء المستقلة من واجهة المستخدم والتي قد تكون صغيرة بحجم عنصر الزر button أو كبيرة بحجم تطبيق كامل.
 
 في الواقع هذه هي طريقة استخدام React في Facebook. يُتيح لنا ذلك كتابة تطبيقات في React قطعة بقطعة، ومن ثمّ جمعها مع قوالبنا المُولَّدة من قبل الخادم ومع الشيفرات التي من جهة العميل (client-side) الأخرى.
 
@@ -217,15 +230,9 @@ function Button() {
   return <button id="btn">قل مرحبًا</button>;
 }
 
-ReactDOM.render(
-  <Button />,
-  document.getElementById('container'),
-  function() {
-    $('#btn').click(function() {
-      alert('مرحبًا!');
-    });
-  }
-);
+$('#btn').click(function() {
+  alert('مرحبًا!');
+});
 ```
 
 من هنا بإمكانك إضافة المزيد من منطق React إلى هذا المكوّن والبدء بتبني المزيد من ممارسات React الشائعة. فمثلًا من الأفضل في المكوّنات عدم الاعتماد على المُعرّفات (IDs) بسبب إمكانية تصيير نفس المكوّن مرات عديدة. سنستخدم بدلًا من ذلك [نظام أحداث React](/docs/handling-events.html) ونسجل مُعالج حدث الضغط (click) بشكل مباشر على عنصر الزر `<button>`‎ في React:
@@ -241,36 +248,34 @@ function HelloButton() {
   }
   return <Button onClick={handleClick} />;
 }
-
-ReactDOM.render(
-  <HelloButton />,
-  document.getElementById('container')
-);
 ```
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
-بإمكانك امتلاك مكوّنات معزولة كما تشاء واستخدام التابع `ReactDOM.render()` لتصييرها إلى حاويات DOM مختلفة. وبينما تحوّل المزيد من شيفرة تطبيقك إلى React بشكل تدريجي، فستكون قادرًا على جمعها في مكوّنات أكبر ونقل استدعاءات التابع `ReactDOM.render()` إلى الأعلى في التسلسل الهرمي للمكوّنات.
+بإمكانك امتلاك مكوّنات معزولة كما تشاء واستخدام التابع `ReactDOM.createRoot()` لتصييرها إلى حاويات DOM مختلفة. وبينما تحوّل المزيد من شيفرة تطبيقك إلى React بشكل تدريجي، فستكون قادرًا على جمعها في مكوّنات أكبر ونقل استدعاءات التابع `ReactDOM.createRoot()` إلى الأعلى في التسلسل الهرمي للمكوّنات.
 
 ### تضمين React في واجهة عرض Backbone {#embedding-react-in-a-backbone-view}
 
 تستخدم واجهات عرض [Backbone](https://backbonejs.org/)  بشكل نموذجي سلاسل نصيّة أو دوال منتجة للسلاسل النصيّة لإنشاء المحتوى لعناصر DOM. يُمكِن استبدال هذه العملية بتصيير مكوّن React.
 
-سنُنشِئ الآن واجهة عرض Backbone تُدعى `ParagraphView` والتي ستتجاوز دالة التصيير `render()`‎ في Backbone لتصيير المكوّن ‎`<Paragraph>` في React إلى عنصر DOM المُعطى من خلال Backbone (وهو`this.el`). نستخدم هنا أيضًا التابع [`ReactDOM.render()`](/docs/react-dom.html#render)‎:
+سنُنشِئ الآن واجهة عرض Backbone تُدعى `ParagraphView` والتي ستتجاوز دالة التصيير `render()`‎ في Backbone لتصيير المكوّن ‎`<Paragraph>` في React إلى عنصر DOM المُعطى من خلال Backbone (وهو`this.el`). نستخدم هنا أيضًا التابع [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot)‎:
 
-```js{1,5,8,12}
+```js{7,11,15}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
 
 const ParagraphView = Backbone.View.extend({
+  initialize(options) {
+    this.reactRoot = ReactDOM.createRoot(this.el);
+  },
   render() {
     const text = this.model.get('text');
-    ReactDOM.render(<Paragraph text={text} />, this.el);
+    this.reactRoot.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    ReactDOM.unmountComponentAtNode(this.el);
+    this.reactRoot.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });
@@ -278,7 +283,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-من الهام أن نستدعي أيضًا التابع `ReactDOM.unmountComponentAtNode()` في تابع الإزالة `remove` بحيث تلغي React تسجيل معالجات الأحداث والموارد الأخرى المرتبطة بشجرة المكوّن عند فصلها.
+من الهام أن نستدعي أيضًا التابع `root.unmount()` في تابع الإزالة `remove` بحيث تلغي React تسجيل معالجات الأحداث والموارد الأخرى المرتبطة بشجرة المكوّن عند فصلها.
 
 عند إزالة المكوّن *من* شجرة React، يُنفَّذ تابع المسح بشكل تلقائي، ولكن بما أننا نزيل كامل الشجرة يدويًّا فيجب أن نستدعي هذا التابع.
 
@@ -429,10 +434,8 @@ function Example(props) {
 }
 
 const model = new Backbone.Model({ firstName: 'Frodo' });
-ReactDOM.render(
-  <Example model={model} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Example model={model} />);
 ```
 
 [**جرّب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/PmWwwa?editors=0010)

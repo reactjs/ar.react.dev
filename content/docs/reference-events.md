@@ -6,6 +6,16 @@ layout: docs
 category: Reference
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+
+</div>
+
 يوثّق هذا الدليل مُغلِّف الأحداث المصطنعة `SyntheticEvent` والذي يُشكِّل جزءًا من نظام أحداث React. انظر توثيق [معالجة الأحداث](/docs/handling-events.html) لتعلّم المزيد.
 
 ## لمحة عامة {#overview}

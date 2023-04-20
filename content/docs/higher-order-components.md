@@ -4,6 +4,14 @@ title: المكونات ذات الترتيب الأعلى
 permalink: docs/higher-order-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> Higher-order components are not commonly used in modern React code.
+
+</div>
+
 إنّ المُكوّنات ذات الترتيب الأعلى (Higher-Order Components واختصارًا HOC) هي تِقنية مُتَقَدِمة في React لإعادة استخدام مَنطِق المُكونات. وهي ليست جزءًا من واجهة برمجة تطبيقات React API، بَل هي نَمَط يَنبَثِق عن طَبيعة React التَركيبية.
 
 باختصار، **المكوّن ذو الترتيب الأعلى هو عبارة عن دالّة تَأخُذ مُكوّنًا وتُعيد مُكوّنًا جديدًا.**
@@ -14,7 +22,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 بينما يُحوّل المكوّن الخاصيّات إلى واجهة مستخدم، يُحوِّل المُكوّن ذو الترتيب الأعلى مكوّنًا إلى مكوّن آخر.
 
-تكون المكوّنات ذات الترتيب الأعلى شائعة في مكتبات React المُقدَّمة من طرف ثالث، مثل مكتبة [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) الخاصة بـ Redux و مكتبة [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) الخاصّة بـ Relay.
+تكون المكوّنات ذات الترتيب الأعلى شائعة في مكتبات React المُقدَّمة من طرف ثالث، مثل مكتبة [`connect`](https://react-redux.js.org/api/connect) الخاصة بـ Redux و مكتبة [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) الخاصّة بـ Relay.
 
 سنناقش في هذه الصفحة الفائدة من المكوّنات ذات الترتيب الأعلى وكيفية كتابتها.
 

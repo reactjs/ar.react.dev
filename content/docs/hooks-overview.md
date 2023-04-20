@@ -6,6 +6,18 @@ next: hooks-state.html
 prev: hooks-intro.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach React with Hooks:
+>
+> - [Quick Start](https://react.dev/learn)
+> - [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
+> - [`react`: Hooks](https://react.dev/reference/react)
+
+</div>
+
 *الخطافات* هي إضافة جديدة إلى الإصدار 16.8 في React، إذ تسمح لك باستعمال ميزة الحالة وميزات React الأخرى دون كتابة أي صنف.
 
 الخطافات [متوافقة مع ما سبقها بشكل كامل](/docs/hooks-intro.html#no-breaking-changes). توفر هذه الصفحة نظرة عامة وسريعة حول الخطافات لمستخدمي React ذوي الخبرة. إن ازددت حيرةً في بعض المواضع أثناء قراءة هذه الصفحة، فانتقل إلى الرابط المذكور في الملاحظة "شرح أوسع" مثل:

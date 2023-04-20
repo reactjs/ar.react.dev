@@ -3,6 +3,12 @@ title: "Preparing for the Future with React Prereleases"
 author: [acdlite]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 To share upcoming changes with our partners in the React ecosystem, we're establishing official prerelease channels. We hope this process will help us make changes to React with confidence, and give developers the opportunity to try out experimental features.
 
 > This post will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
@@ -58,13 +64,13 @@ If you're the author of a third party React framework, library, developer tool, 
 - Set up a cron job using your preferred continuous integration platform. Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
 - In the cron job, update your React packages to the most recent React release in the Next channel, using `next` tag on npm. Using the npm cli:
 
-  ```
+  ```console
   npm update react@next react-dom@next
   ```
 
   Or yarn:
 
-  ```
+  ```console
   yarn upgrade react@next react-dom@next
   ```
 - Run your test suite against the updated packages.

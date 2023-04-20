@@ -9,6 +9,16 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
+
+</div>
+
 عادةً ما تحتاج المُكوِّنات المُتعدِّدة إلى أن تعكس نفس البيانات المتغيّرة. نُوصي برفع الحالة المشتركة بينها إلى أقرب عنصر أب مشترك بينها، فلنشاهد كيف يُمكِن تطبيق ذلك عمليًّا.
 
 في هذا القسم سنُنشِئ آلة حاسبة للحرارة والتي تحسب إن كان الماء سيغلي في الدرجة المُعطاة.

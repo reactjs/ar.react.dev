@@ -3,9 +3,18 @@ id: portals
 title: Portals
 permalink: docs/portals.html
 ---
- 
-تُزوّدنا Portals بطريقة ممتازة لتصيير المكونات الأبناء إلى عقدة DOM موجودة خارج تسلسل DOM للمكونات الآباء.
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://react.dev/reference/react-dom/createPortal)
+
+</div>
+
+تُزوّدنا Portals بطريقة ممتازة لتصيير المكونات الأبناء إلى عقدة DOM موجودة خارج تسلسل DOM للمكونات الآباء.
 
 ```js
 ReactDOM.createPortal(child, container)
@@ -47,7 +56,7 @@ render() {
 >
 > تذكر عند التعامل مع Portals أنّ [إدارة تركيز لوحة المفاتيح](/docs/accessibility.html#programmatically-managing-focus) تصبح أمرًا هامًّا.
 >
->من أجل مربعات الحوار تأكد من قدرة جميع المستخدمين على التعامل معها عن طريق اتباع [هذه الإرشادات](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+>من أجل مربعات الحوار تأكد من قدرة جميع المستخدمين على التعامل معها عن طريق اتباع [هذه الإرشادات](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
 
 [**جرب المثال على CodePen.**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -148,7 +157,8 @@ function Child() {
   );
 }
 
-ReactDOM.render(<Parent />, appRoot);
+const root = ReactDOM.createRoot(appRoot);
+root.render(<Parent />);
 ```
 
 [**جرب المثال على موقع CodePen.**](https://codepen.io/gaearon/pen/jGBWpE)
