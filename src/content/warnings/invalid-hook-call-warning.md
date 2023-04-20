@@ -23,7 +23,7 @@ Hooks can only be called inside the body of a function component. \
 
 قد تكون تستخدم نسخة `react-dom` أقل من v16.8.0 أو نُسخة `react-native` أقل من 0.59 واللَّتَانِ لا يدعمان الخطافات بعد. يُمكنك تنفيذ "run" أمر `npm ls react-dom` أو `npm ls react-native` في مُجلّد التطبيق خاصتك لمعرفة النُسخة التي تستخدمها. إن وجدت أكثر من نُسخة فقد يخلق ذلك مشاكل (المزيد على ذلك أدناه).
 
-## خرق قواعد الخطافات {#breaking-the-rules-of-hooks}
+## خرق قواعد الخطافات {/*breaking-the-rules-of-hooks*/}
 
 يُكمنك استدعاء الخظافات **رَيْثَمَا تٌصيير React مكوّن دالّة** فقط:
 
@@ -114,7 +114,7 @@ class Bad extends React.Component {
 
 </Note>
 
-## نُسخَتين مِن React {#duplicate-react}
+## نُسخَتين مِن React {/*duplicate-react*/}
 
 حتى تعمل الخطافات ، يجب ان يكون امر الاستيراد "import" في شيفرة التطبيق خاصّتِك يُحَلَّل "resolve" إلى نفس الواجهة "module" التي في أمر الاستيراد داخل حُزمة `react-dom`.
 
