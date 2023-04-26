@@ -4,7 +4,7 @@ title: بداية سريعة
 
 <Intro dir="rtl">
 
-أهلا بك في توثيق react، هذه الصفحة ستعطيك مقدمة ل ٨٠٪ من مفاهيم React التي يتم استخدامها بشكل روتيني في مشاريع React.
+أهلا بك في مستندات react، هذه الصفحة ستعطيك مقدمة ل ٨٠٪ من مفاهيم React التي يتم استخدامها بشكل روتيني في مشاريع React.
 
 
 Welcome to the React documentation! This page will give you an introduction to the 80% of React concepts that you will use on a daily basis.
@@ -32,6 +32,9 @@ Welcome to the React documentation! This page will give you an introduction to t
 </YouWillLearn>
 
 ## إنشاء و دمج المكوّنات {/*إنشاء-و-دمج-المكوّنات*/}
+يتم صناعة تطبيقات React اعتمادا على ما يعرف بـ (المكوّنات - Components).
+المكون هو جزء من مستقل من واجهة المستخدم و التي لها المنطق البرمجي و الشكل الخاص بها. يمكنك تشكيل المكوّن بالحجم و الشكل المناسب فيتراوح من كونه صغيرا ليمثل (زر) أو كبيرا ليمثل صفحة كاملة.
+المكوّنات ليست إلا دوال جافاسكريبت و التي توفر (ترميزا مرئيا) كقيمة مرجعة من الدالة.
 
 ## Creating and nesting components {/*components*/}
 
@@ -46,6 +49,7 @@ function MyButton() {
   );
 }
 ```
+الآن قمت ببناء مكوّن باسم `MyButton`، يمكنك الآن إدخاله في مكون آخر:
 
 Now that you've declared `MyButton`, you can nest it into another component:
 
@@ -60,8 +64,12 @@ export default function MyApp() {
 }
 ```
 
+لاحظ كيف أن المكوّن `<MyButton />` يبدأ بحرف (كبير) في الإنجليزية (B)، و هي طريقة مستخدمة في React للتمييز و معرفة أن هذه الدالة تمثل مكوّن. أسماء المكوّنات في React يجب أن تبدأ دائما بحرف كبير، بينما يجب أن تكون علامات ال html المستخدمة بحرف صغير.
+
+
 Notice that `<MyButton />` starts with a capital letter. That's how you know it's a React component. React component names must always start with a capital letter, while HTML tags must be lowercase.
 
+خذ نظرة سريعة على النتيجة:
 Have a look at the result:
 
 <Sandpack>
@@ -86,6 +94,12 @@ export default function MyApp() {
 ```
 
 </Sandpack>
+
+
+عبارة `export default` تحدد المكوّن الأساسي في الملف. إذا لم يكن لديك معرفة كافية عن طريقة بناء و كتابة الكود في جافاسكريبت، فيمكنك الرجوع للمصادر التالية:
+[MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)
+[javascript.info](https://javascript.info/import-export) 
+
 
 The `export default` keywords specify the main component in the file. If you're not familiar with some piece of JavaScript syntax, [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) and [javascript.info](https://javascript.info/import-export) have great references.
 
