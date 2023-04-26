@@ -1,14 +1,26 @@
 ---
-title: Quick Start
+title: بداية سريعة
 ---
 
-<Intro>
+<Intro dir="rtl">
+
+أهلا بك في توثيق react، هذه الصفحة ستعطيك مقدمة ل ٨٠٪ من مفاهيم React التي يتم استخدامها بشكل روتيني في مشاريع React.
+
 
 Welcome to the React documentation! This page will give you an introduction to the 80% of React concepts that you will use on a daily basis.
 
 </Intro>
 
 <YouWillLearn>
+
+- كيف تقوم بإنشاء و دمج المكوّنات.
+- كيف تضيف تأثيرات على العناصر.
+- كيف تقوم بعرض البيانات.
+- كيف تستخدم الجمل الشرطية و تعرض عناصر القوائم.
+- كيف تتجاوب مع الأحداث المختلفة و تحدث شاشة المستخدم بناءً عليها.
+- كيف تشارك البيانات بين أكثر من مكوّن.
+
+---
 
 - How to create and nest components
 - How to add markup and styles
@@ -18,6 +30,8 @@ Welcome to the React documentation! This page will give you an introduction to t
 - How to share data between components
 
 </YouWillLearn>
+
+## إنشاء و دمج المكوّنات {/*إنشاء-و-دمج-المكوّنات*/}
 
 ## Creating and nesting components {/*components*/}
 
