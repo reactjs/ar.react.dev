@@ -1,18 +1,18 @@
 ---
-title: Thinking in React
+title: على طريقة React
 ---
 
 <Intro>
 
-React can change how you think about the designs you look at and the apps you build. When you build a user interface with React, you will first break it apart into pieces called *components*. Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them. In this tutorial, we’ll guide you through the thought process of building a searchable product data table with React.
+قد يغير React من الطريقة التي ترى بها التصاميم أو تبني بها التطبيقات. عندما تقوم ببناء واجهة للمستخدم بـ React سيتوجب عليك أولا أن تفصلها لأجزاء تدعى *مكونات*. بعد ذلك، تقوم بوصف الحالات الظاهرية المختلفة لكل مكون على حدته. وأخيرا، تقوم بربط مكوناتك معا كي تسري البيانات خلالها بانسيابية. في هذا الدرس، سنخوض معك في عملية التفكير في بناء جدول بيانات لمنتجات، مع إمكانية البحث فيه.
 
 </Intro>
 
-## Start with the mockup {/*start-with-the-mockup*/}
+## ابدأ بالنموذج التقريبي {/*start-with-the-mockup*/}
 
-Imagine that you already have a JSON API and a mockup from a designer.
+لنفرض أن لديك واجهة برمجة لـ JSON ونموذج تقريبي من أحد المصممين.
 
-The JSON API returns some data that looks like this:
+واجهة JSON البرمجية تعطيك بيانات كالتالي:
 
 ```json
 [
@@ -25,13 +25,13 @@ The JSON API returns some data that looks like this:
 ]
 ```
 
-The mockup looks like this:
+والنموذج التقريبي يبدو هكذا:
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
-To implement a UI in React, you will usually follow the same five steps.
+لتنفيذ واجهة مستخدم في React, ستسير عادة على نفس الخطوات الخمسة الآتية.
 
-## Step 1: Break the UI into a component hierarchy {/*step-1-break-the-ui-into-a-component-hierarchy*/}
+## الخطوة 1: قسم الواجهة إلى شجرة من المكونات {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
 Start by drawing boxes around every component and subcomponent in the mockup and naming them. If you work with a designer, they may have already named these components in their design tool. Ask them!
 
