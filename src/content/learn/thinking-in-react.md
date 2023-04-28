@@ -12,7 +12,7 @@ title: على طريقة React
 
 لنفرض أن لديك واجهة برمجة لـ JSON ونموذج تقريبي من أحد المصممين.
 
-واجهة JSON البرمجية تعطيك بيانات كالتالي:
+واجهة JSON البرمجية أعطتك البيانات التالية:
 
 ```json
 [
@@ -29,19 +29,19 @@ title: على طريقة React
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
-لتنفيذ واجهة مستخدم في React, ستسير عادة على نفس الخطوات الخمسة الآتية.
+لتنفيذ واجهة مستخدم في React، ستسير عادة على نفس الخطوات الخمس التالية:
 
 ## الخطوة 1: قسم الواجهة إلى شجرة من المكونات {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
 ابدأ برسم مربعات حول كل من المكونات ومكوناتها الفرعية في النموذج التقريبي، وقم بتسمية كل منها. إذا كنت تعمل مع مصمم، فلربما تجده قد قام بتسميتها بالفعل في البرامج التي يستخدمها، اسأله أولا!
 
-قد تختلف طريفة التفكير في تقسيم التصميم لمكونات بناء على خلفيتك المهنية إلى عدة طرق من حيث:
+قد تختلف طريقة التفكير في تقسيم التصميم لمكونات بناء على خلفيتك المهنية إلى عدة طرق؛ من حيث:
 
 * **البرمجة**--استخدم نفس الطرائق لتقرر إذا ما كان عليك إنشاء دالة (function) أو كائن. إحدى الطرائق المقصودة هي [مبدأ المهمة الواحدة](https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%A7%D9%84%D9%85%D9%87%D9%85%D8%A9_%D8%A7%D9%84%D9%88%D8%A7%D8%AD%D8%AF%D8%A9)، والتي تشير إلى أنه في أحسن الأحوال، يكون للمكون الواحد وظيفة واحدة فقط. وكلما زادت مهمات المكون، يجب تقسيمها لمكونات فرعية أصغر.
 * **التنسيق (CSS)**--فكر فيما ستقوم بتخصيص أسماء تصنيفات (classes) له. (مع أن المكونات أصلا يفترض أنها صغيرة الحجم).
 * **التصميم**--فكر كيف ستقوم بترتيب تراص طبقات التصميم.
 
-إذا كان الـJSON الذي تستخدمه مهيأ بشكل جيد، فكثيرا ما ستجده يطابق وصفك وتقسيمك لمكونات واجهنك بكل سلاسة. ذلك أن واجهة المستخدم ونماذج البيانات عادة ما يكون لهما نفس بنية المعلومات. بمعنى آخر، لهما نفس الشكل. فقسم واجهتك إلى مكونات، حيث يتماشى كل مكون مع إحدى 
+إذا كان الـJSON الذي تستخدمه مهيأ بشكل جيد، فكثيرا ما ستجده يطابق وصفك وتقسيمك لمكونات واجهتك بكل سلاسة. ذلك أن واجهة المستخدم ونماذج البيانات عادة ما يكون لهما نفس بنية المعلومات. بمعنى آخر، لهما نفس الشكل. فقسم واجهتك إلى مكونات، حيث يتماشى كل مكون مع إحدى 
 أجزاء نموذج البيانات.
 
 يوجد في هذه الصورة خمس مكونات:
@@ -53,7 +53,7 @@ title: على طريقة React
 
 1. `FilterableProductTable` (باللون الرمادي - جدول منتجات قابل للبحث) يحوي البرنامج بالكامل.
 2. `SearchBar` (بالأزرق - مربع بحث) حيث يكتب فيه المستخدم.
-3. `ProductTable` (بالبنفسجي - جدول منتجات)  يعرض المنتجات ونتائج البحث فيها بحسب مدخلات المستخدم.
+3. `ProductTable` (بالبنفسجي - جدول المنتجات)  يعرض المنتجات ونتائج البحث فيها بحسب مدخلات المستخدم.
 4. `ProductCategoryRow` (بالأخضر - سطر خاص بنوع المنتج) يعرض عنوان لكل نوع من المنتجات.
 5. `ProductRow`	(بالأصفر - سطر المنتج) يعرض سطرا لكل منتج.
 
@@ -61,9 +61,9 @@ title: على طريقة React
 
 </FullWidth>
 
-If you look at `ProductTable` (lavender), you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and you could go either way. For this example, it is a part of `ProductTable` because it appears inside the `ProductTable`'s list. However, if this header grows to be complex (e.g., if you add sorting), you can move it into its own `ProductTableHeader` component.
+إذا ألقيت نظرة على جدول المنتجات (`ProductTable` - بالبنفسجي) ستجد أن رأس الجدول (الذي يحوي خانات "الاسم - Name" و"السعر - Price") ليس كائنا مستقلا بذاته. هذه مسألة تفضيل شخصي، حيث بإمكانك اتخاذ أي مسلك بين الاثنين. في هذا المثال هي جزء من مكون `جدول المنتجات`، لإنه يظهر داخل قائمة `جدول المنتجات`. على كل حال،إذا زادت مهام رأس الجدول تعقيدا (كأن تضيف لها خيار الترتيب) يمكنك حينها أن تنشء له مكونا خاصا به، وليكن `ProductTableHeader` (`رأس جدول المنتجات`).
 
-Now that you've identified the components in the mockup, arrange them into a hierarchy. Components that appear within another component in the mockup should appear as a child in the hierarchy:
+والآن بعد أن حددت مكونات النموذج التقريبي، قم بترتيبهم في شجرة تسلسلية؛ المكونات التي تظهر داخل مكونات أخرى في النموذج التقريبي يجب أن تبدو كفروع في الشجرة:
 
 * `FilterableProductTable`
     * `SearchBar`
@@ -71,13 +71,13 @@ Now that you've identified the components in the mockup, arrange them into a hie
         * `ProductCategoryRow`
         * `ProductRow`
 
-## Step 2: Build a static version in React {/*step-2-build-a-static-version-in-react*/}
+## الخطوة 2: قم ببناء نموذج مصمت بـ React {/*step-2-build-a-static-version-in-react*/}
 
-Now that you have your component hierarchy, it's time to implement your app. The most straightforward approach is to build a version that renders the UI from your data model without adding any interactivity... yet! It's often easier to build the static version first and add interactivity later. Building a static version requires a lot of typing and no thinking, but adding interactivity requires a lot of thinking and not a lot of typing.
+والآن بما أن لديك تقسيما متسلسلا للمكونات، حان الوقت لنبدأ التنفيذ. أكثر الطرق مباشرة؛ أن تبني نموذجا يعرض واجهة المستخدم من نموذج بياناتك، دون إضافة أي تفاعل... هذا بغض النظر أنه من الأيسر غالبا أن تبني النموذج المصمت أولا ثم تقوم لاحقا بإضافة إمكانية التفاعل عليه! بناء نموذج مصمت يتطلب الكثير من الكتابة دونما أي تفكير. بخلاف إضافة التفاعليات، التي تتطلب الكثير من التفكير وقدرًا أقل من الكتابة.
 
-To build a static version of your app that renders your data model, you'll want to build [components](/learn/your-first-component) that reuse other components and pass data using [props.](/learn/passing-props-to-a-component) Props are a way of passing data from parent to child. (If you're familiar with the concept of [state](/learn/state-a-components-memory), don't use state at all to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.)
+لبناء نموذج مصمت من تطبيقك يقوم بعرض البيانات المطلوبة، سيكون عليك بناء [مكونات](/learn/your-first-component) توظف مكونات أخرى، وتمرر البيانات إليها باستخدام [الخصائص](/learn/passing-props-to-a-component). الخصائص هي إحدى طرق تمرير البيانات من مكون لمكون فرعي داخله (إذا كان مبدأ [الحالات](/learn/state-a-components-memory) مألوفا لديك، فلا تستخدم الحالات مطلقا لبناء النسخة المصمتة. الحالات مخصصة أصلا للتفاعلات، ونعني بذلك البيانات التي تتغير بمرور الوقت. وبما أن هذا نموذج مصمت من التطبيق، فلا يفترض أننا نحتاجه).
 
-You can either build "top down" by starting with building the components higher up in the hierarchy (like `FilterableProductTable`) or "bottom up" by working from components lower down (like `ProductRow`). In simpler examples, it’s usually easier to go top-down, and on larger projects, it’s easier to go bottom-up.
+يمكنك إما بناء التطبيق "من أعلاه لأسفله"؛ بالبدء ببناء المكونات الأعلى في الشجرة التسلسلية (كأن تبدأ بـ`FilterableProductTable`)، أو "من أسفله لأعلاه"؛ بأن تبدأ بالمكونات الدنيا (مثل `ProductRow`). إذا كان لدينا مثال أبسط من ذلك، سيكون من الأيسرأن تبدأ من الأعلى لأسفل، أما في المشاريع الكبرى، عادة ما يكون من الأيسر أن نبدأ من الأدنى للأعلى.
 
 <Sandpack>
 
@@ -195,13 +195,13 @@ td {
 
 </Sandpack>
 
-(If this code looks intimidating, go through the [Quick Start](/learn/) first!)
+(إذا شعرت بالقلق بسبب الكود السابق, قم بمراجعة قسم [البداية السريعة](/learn/) أولا!)
 
-After building your components, you'll have a library of reusable components that render your data model. Because this is a static app, the components will only return JSX. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. This is called _one-way data flow_ because the data flows down from the top-level component to the ones at the bottom of the tree.
+بعد بنائك لمكوناتك، أصبح لديك مكتبة من المكونات القابلة لإعادة الاستخدام التي تقوم بعرض أنموذج بياناتك. وبما أن هذا تطبيق مصمت، فمخرجات المكونات ستكون مجرد JSX. المكون الأعلى في التسلسل الشجري (`FilterableProductTable`) سيتلقى أنموذج البيانات كإحدى خصائصه. يدعى هذا بـ _سيل البيانات في اتجاه واحد_ لأن البيانات تسري لأسفل قادمة من مكون أعلى في التسلسل الشجري إلى مكونات دنيا في التسلسل.
 
 <Pitfall>
 
-At this point, you should not be using any state values. That’s for the next step!
+إلى هذه المرحلة يجب ألا تكون قد استخدمت الحالات على الإطلاق. لأن هذا ما سنفعله في الخطوة التالية!
 
 </Pitfall>
 
