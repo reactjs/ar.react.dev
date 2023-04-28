@@ -33,29 +33,29 @@ title: على طريقة React
 
 ## الخطوة 1: قسم الواجهة إلى شجرة من المكونات {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
-Start by drawing boxes around every component and subcomponent in the mockup and naming them. If you work with a designer, they may have already named these components in their design tool. Ask them!
+ابدأ برسم مربعات حول كل من المكونات ومكوناتها الفرعية في النموذج التقريبي، وقم بتسمية كل منها. إذا كنت تعمل مع مصمم، فلربما تجده قد قام بتسميتها بالفعل في البرامج التي يستخدمها، اسأله أولا!
 
-Depending on your background, you can think about splitting up a design into components in different ways:
+قد تختلف طريفة التفكير في تقسيم التصميم لمكونات بناء على خلفيتك المهنية إلى عدة طرق من حيث:
 
-* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
-* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
-* **Design**--consider how you would organize the design's layers.
+* **البرمجة**--استخدم نفس الطرائق لتقرر إذا ما كان عليك إنشاء دالة (function) أو كائن. إحدى الطرائق المقصودة هي [مبدأ المهمة الواحدة](https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%A7%D9%84%D9%85%D9%87%D9%85%D8%A9_%D8%A7%D9%84%D9%88%D8%A7%D8%AD%D8%AF%D8%A9)، والتي تشير إلى أنه في أحسن الأحوال، يكون للمكون الواحد وظيفة واحدة فقط. وكلما زادت مهمات المكون، يجب تقسيمها لمكونات فرعية أصغر.
+* **التنسيق (CSS)**--فكر فيما ستقوم بتخصيص أسماء تصنيفات (classes) له. (مع أن المكونات أصلا يفترض أنها صغيرة الحجم).
+* **التصميم**--فكر كيف ستقوم بترتيب تراص طبقات التصميم.
 
-If your JSON is well-structured, you'll often find that it naturally maps to the component structure of your UI. That's because UI and data models often have the same information architecture--that is, the same shape. Separate your UI into components, where each component matches one piece of your data model.
+إذا كان الـJSON الذي تستخدمه مهيأ بشكل جيد، فكثيرا ما ستجده يطابق وصفك وتقسيمك لمكونات واجهنك بكل سلاسة. ذلك أن واجهة المستخدم ونماذج البيانات عادة ما يكون لهما نفس بنية المعلومات. بمعنى آخر، لهما نفس الشكل. فقسم واجهتك إلى مكونات، حيث يتماشى كل مكون مع إحدى 
+أجزاء نموذج البيانات.
 
-There are five components on this screen:
-
+يوجد في هذه الصورة خمس مكونات:
 <FullWidth>
 
 <CodeDiagram flip>
 
 <img src="/images/docs/s_thinking-in-react_ui_outline.png" width="500" style={{margin: '0 auto'}} />
 
-1. `FilterableProductTable` (grey) contains the entire app.
-2. `SearchBar` (blue) receives the user input.
-3. `ProductTable` (lavender) displays and filters the list according to the user input.
-4. `ProductCategoryRow` (green) displays a heading for each category.
-5. `ProductRow`	(yellow) displays a row for each product.
+1. `FilterableProductTable` (باللون الرمادي - جدول منتجات قابل للبحث) يحوي البرنامج بالكامل.
+2. `SearchBar` (بالأزرق - مربع بحث) حيث يكتب فيه المستخدم.
+3. `ProductTable` (بالبنفسجي - جدول منتجات)  يعرض المنتجات ونتائج البحث فيها بحسب مدخلات المستخدم.
+4. `ProductCategoryRow` (بالأخضر - سطر خاص بنوع المنتج) يعرض عنوان لكل نوع من المنتجات.
+5. `ProductRow`	(بالأصفر - سطر المنتج) يعرض سطرا لكل منتج.
 
 </CodeDiagram>
 
