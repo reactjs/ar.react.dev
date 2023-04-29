@@ -783,7 +783,7 @@ export default function Board() {
 }
 ```
 
-Now you'll change `Square` to display an "X" when clicked. Replace the `console.log("clicked!");` event handler with `setValue('X');`. Now your `Square` component looks like this:
+الآن ستغير `Square` لعرض "X" عند النقر عليه. استبدل معالج الحدث `console.log("ضُغطت!");` بـ `setValue('X');`. الآن يبدو مكون `Square` الخاص بك على النحو التالي:
 
 ```js {5}
 function Square() {
@@ -804,13 +804,13 @@ function Square() {
 }
 ```
 
-By calling this `set` function from an `onClick` handler, you're telling React to re-render that `Square` whenever its `<button>` is clicked. After the update, the `Square`'s `value` will be `'X'`, so you'll see the "X" on the game board. Click on any Square, and "X" should show up:
+بمناداة هذه الدالة (Function) `set` من معالج الحدث `onClick`، أنت تخبر React بإعادة تقديم `Square` كلما تم النقر على `<button>` الخاص به. بعد التحديث، سيكون `value` لـ `Square` هو `'X'`، لذا سترى "X" على لوحة اللعب. انقر على أي مربع، وسيظهر "X":
 
-![adding xes to board](../images/tutorial/tictac-adding-x-s.gif)
+![إضافة الـXـات إلى اللوحة](../images/tutorial/tictac-adding-x-s.gif)
 
-Each Square has its own state: the `value` stored in each Square is completely independent of the others. When you call a `set` function in a component, React automatically updates the child components inside too.
+كل مربع له حالته الخاصة (state): الـ `value` المخزنة في كل مربع مستقلة تمامًا عن الآخرين. عندما تستدعي دالة `set` في مكون، يقوم React تلقائيًا بتحديث المكونات الفرعية داخله أيضًا.
 
-After you've made the above changes, your code will look like this:
+بعد أن قمت بإجراء التغييرات أعلاه، سيبدو الكود الخاص بك على النحو التالي:
 
 <Sandpack>
 
@@ -866,6 +866,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -904,37 +905,37 @@ body {
 
 </Sandpack>
 
-### React Developer Tools {/*react-developer-tools*/}
+### أدوات مطوري React (React DevTools) {/*react-developer-tools*/}
 
-React DevTools let you check the props and the state of your React components. You can find the React DevTools tab at the bottom of the _browser_ section in CodeSandbox:
+أدوات مطوري React تتيح لك التحقق من الخصائص والحالة لمكونات React الخاصة بك. يمكنك العثور على علامة تبويب أدوات مطوري React في أسفل قسم المتصفح في CodeSandbox:
 
-![React DevTools in CodeSandbox](../images/tutorial/codesandbox-devtools.png)
+![أدوات مطوري React في CodeSandbox](../images/tutorial/codesandbox-devtools.png)
 
-To inspect a particular component on the screen, use the button in the top left corner of React DevTools:
+لفحص مكون معين على الشاشة، استخدم الزر في الزاوية اليسرى العليا من أدوات مطوري React:
 
-![Selecting components on the page with React DevTools](../images/tutorial/devtools-select.gif)
+![تحديد مكونات في الصفحة من أدوات مطوري React](../images/tutorial/devtools-select.gif)
 
 <Note>
 
-For local development, React DevTools is available as a [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), and [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) browser extension. Install it, and the *Components* tab will appear in your browser Developer Tools for sites using React.
+لبيئة التطوير المحلية، أدوات مطوري React متوفرة كإضافة لمتصفحات [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ar)، [Firefox](https://addons.mozilla.org/ar/firefox/addon/react-devtools/)، و [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil). قم بتثبيتها، وستظهر علامة التبويب *Components* في أدوات المطور لمتصفحك للمواقع التي تستخدم React.
 
 </Note>
 
-## Completing the game {/*completing-the-game*/}
+## إكمال اللعبة {/*completing-the-game*/}
 
-By this point, you have all the basic building blocks for your tic-tac-toe game. To have a complete game, you now need to alternate placing "X"s and "O"s on the board, and you need a way to determine a winner.
+هنا، لديك كل الأساسيات لبناء لعبة الـ tic-tac-toe. لإكمال اللعبة، تحتاج الآن إلى تبادل وضع "X" و "O" على اللوحة، وتحتاج إلى طريقة لتحديد الفائز.
 
-### Lifting state up {/*lifting-state-up*/}
+### الرفع من الحالة (Lifting State Up) {/*lifting-state-up*/}
 
-Currently, each `Square` component maintains a part of the game's state. To check for a winner in a tic-tac-toe game, the `Board` would need to somehow know the state of each of the 9 `Square` components.
+حاليًا، كل مكون `Square` يحتفظ بجزء من حالة اللعبة. للتحقق من وجود فائز في لعبة tic-tac-toe، سيحتاج `Board` إلى معرفة حالة كل من مكونات `Square` التسعة.
 
-How would you approach that? At first, you might guess that the `Board` needs to "ask" each `Square` for that `Square`'s state. Although this approach is technically possible in React, we discourage it because the code becomes difficult to understand, susceptible to bugs, and hard to refactor. Instead, the best approach is to store the game's state in the parent `Board` component instead of in each `Square`. The `Board` component can tell each `Square` what to display by passing a prop, like you did when you passed a number to each Square.
+كيف ستحقق ذلك؟ في البداية، قد تخمن أن `Board` يحتاج إلى "سؤال" كل `Square` عن حالته. على الرغم من أن هذا النهج ممكن تقنيًا في React، إلا أننا ننصح بعدم استخدامه لأن الكود يصبح من الصعب فهمه، وعرضة للأخطاء (bugs)، وصعب التعديل. بدلاً من ذلك، أفضل نهج هو تخزين حالة اللعبة في مكون `Board` الأصل بدلاً من كل `Square`. يمكن لمكون `Board` أن يخبر كل `Square` ما يجب عليه عرضه عن طريق تمرير خاصية (prop)، مثلما فعلت عندما قمت بتمرير رقم إلى كل `Square`.
 
-**To collect data from multiple children, or to have two child components communicate with each other, declare the shared state in their parent component instead. The parent component can pass that state back down to the children via props. This keeps the child components in sync with each other and with their parent.**
+**لجمع بيانات من أطفال (children)، أو لجعل مكونين طفلين يتواصلان مع بعضهما البعض، قم بتعريف الحالة المشتركة في مكونهما الأصل بدلاً من ذلك. يمكن لمكون الأصل أن يمرر هذه الحالة إلى الأطفال عن طريق خصائص (props). هذا يحافظ على تزامن مكونات الأطفال مع بعضها البعض ومع مكونها الأصل.**
 
-Lifting state into a parent component is common when React components are refactored.
+رفع الحالة إلى مكون أصل (lifting state up) هو أمر شائع عند إعادة تنظيم مكونات React.
 
-Let's take this opportunity to try it out. Edit the `Board` component so that it declares a state variable named `squares` that defaults to an array of 9 nulls corresponding to the 9 squares:
+لنستغل هذه الفرصة لتجربتها. عدّل مكون `Board` حتى يعلن عن متغير حالة يسمى `squares` يبدأ بمصفوفة (array) من 9 قيم `null` تتوافق مع 9 مربعات:
 
 ```js {3}
 // ...
@@ -946,13 +947,17 @@ export default function Board() {
 }
 ```
 
-`Array(9).fill(null)` creates an array with nine elements and sets each of them to `null`. The `useState()` call around it declares a `squares` state variable that's initially set to that array. Each entry in the array corresponds to the value of a square. When you fill the board in later, the `squares` array will look like this:
+`Array(9).fill(null)` تنشئ مصفوفة (array) من تسعة عناصر وتضبط كل منها على `null`. استدعاء `useState()` حولها يعلن عن متغير حالة `squares` يتم تعيينه في البداية على هذه المصفوفة. كل إدخال في المصفوفة يتوافق مع قيمة مربع. عندما تملأ اللوحة لاحقًا، ستبدو المصفوفة `squares` هكذا:
 
 ```jsx
-['O', null, 'X', 'X', 'X', 'O', 'O', null, null]
+[
+  'O', null, 'X', 
+  'X', 'X', 'O', 
+  'O', null, null
+]
 ```
 
-Now your `Board` component needs to pass the `value` prop down to each `Square` that it renders:
+الآن يحتاج مكون `Board` إلى تمرير خاصية (prop) `value` إلى كل `Square` يقوم بعرضه:
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -979,7 +984,7 @@ export default function Board() {
 }
 ```
 
-Next, you'll edit the `Square` component to receive the `value` prop from the Board component. This will require removing the Square component's own stateful tracking of `value` and the button's `onClick` prop:
+لاحقًا، ستعدل مكون `Square` ليستقبل خاصية (prop) `value` من مكون `Board`. هذا يتطلب إزالة تتبع مكون `Square` لحالة `value` وخاصية (prop) `onClick` من الزر:
 
 ```js {1,2}
 function Square({value}) {
