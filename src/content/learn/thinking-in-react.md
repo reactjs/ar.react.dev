@@ -205,46 +205,48 @@ td {
 
 </Pitfall>
 
-## Step 3: Find the minimal but complete representation of UI state {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
+## الخطوة 3: حدد أبسط وأكمل تمثيل لحالات واجهة المستخدم {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
-To make the UI interactive, you need to let users change your underlying data model. You will use *state* for this.
+لجعل الواجهة تفاعلية؛ يجب أن تسمح للمستخدم بتعديل أنموذج بياناتك. لإنجاز ذلك، سيتعين عليك توظيف *الحالات*.
 
-Think of state as the minimal set of changing data that your app needs to remember. The most important principle for structuring state is to keep it [DRY (Don't Repeat Yourself).](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) Figure out the absolute minimal representation of the state your application needs and compute everything else on-demand. For example, if you're building a shopping list, you can store the items as an array in state. If you want to also display the number of items in the list, don't store the number of items as another state value--instead, read the length of your array.
+اعتبر الحالات كما لو أنها عدّتك من البيانات المتغيرة التي يجب أن يتذكرها تطبيقك. أهم مبدأ يجب أخذه في الاعتبار عند تحديد حالاتك هي أن تكون [فريدة](https://ar.wikipedia.org/wiki/%D9%84%D8%A7_%D8%AA%D9%83%D8%B1%D8%B1_%D9%86%D9%81%D8%B3%D9%83). حاول استنباط القدر الأدنى لتمثيل حالات تطبيقك المختلفة التي سيحتاجها، وقم باحتساب أي حالة أخرى تزيد على ذلك عند الحاجة. مثلا، إذا كنت تقوم ببناء قائمة مشتريات، يمكنك حفظ الأصناف كمصفوفة في حالة التطبيق. أما إذا احتجت لعرض عدد الأصناف في القائمة، فلا تقم بحفظ عدد الأصناف كحالة أخرى. عوضا عن ذلك؛ يمكنك دائما قراءة طول المصفوفة.
 
-Now think of all of the pieces of data in this example application:
+الآن فكر في كل ما قد تحتاجه من بيانات في تطبيقنا المفترض:
 
-1. The original list of products
-2. The search text the user has entered
-3. The value of the checkbox
-4. The filtered list of products
+1. القائمة الأصلية للمنتجات.
+2. كلمات البحث التي قام المستخدم بكتابتها.
+3. حالة مربع الاختيار (الخاص بإظهار المنتجات التي لها رصيد فقط).
+4. قائمة المنتجات بعد التصفية بكلمات البحث.
 
-Which of these are state? Identify the ones that are not:
+أيا مما سبق يعتبر حالة؟ يمكنك تمييزها بأنها لا تنطبق عليها المواصفات التالية:
 
-* Does it **remain unchanged** over time? If so, it isn't state.
-* Is it **passed in from a parent** via props? If so, it isn't state.
-* **Can you compute it** based on existing state or props in your component? If so, it *definitely* isn't state!
+* هل تبقى دائما **ثابتة** لا تتغير؟ إذا ليست حالة..
+* هل **تم تمريرها من المكون الأب** عن طريق الخصائص؟ إذا ليست حالة.
+* **هل يمكن اشتقاقها** من حالة أخرى أو إحدى خصاص المكون؟ إذا ليست حالة!
 
-What's left is probably state.
+كل ما تبقى فهو غالبا يمكن وصفه بأنه حالة.
 
-Let's go through them one by one again:
+لنقم بمراجعتهم واحد تلو الآخر مرة أخرى:
 
-1. The original list of products is **passed in as props, so it's not state.** 
-2. The search text seems to be state since it changes over time and can't be computed from anything.
-3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
-4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+1. القائمة الأصلية للمنتجات **يتم تمريرها ضمن الخصائص،فهي ليست حالة.** 
+2. كلمات البحث تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
+3. حالة مربع الاختيار تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
+4. قائمة المنتجات بعد التصفية **ليست حالة إذ يمكن اشتقاقها** عبر تصفية قائمة المنتجات الأصلية وفقا لكلمات البحث وحالة مربع الاختيار.
 
 This means only the search text and the value of the checkbox are state! Nicely done!
+هذا يعني أن كلمات البحث وحالة مربع الاختيار فقط هما ما يعتبران حالات محتملة للتطبيق! أحسنت عملا!
 
 <DeepDive>
 
-#### Props vs State {/*props-vs-state*/}
+#### الخصائص والحالات {/*props-vs-state*/}
 
 There are two types of "model" data in React: props and state. The two are very different:
+يعتبر كل منهما من أحد أنواع البيانات "النموذجية" في React: الخصائص والحالة. يختلف كلاهما عن الآخر بفارق كبير:
 
-* [**Props** are like arguments you pass](/learn/passing-props-to-a-component) to a function. They let a parent component pass data to a child component and customize its appearance. For example, a `Form` can pass a `color` prop to a `Button`.
-* [**State** is like a component’s memory.](/learn/state-a-components-memory) It lets a component keep track of some information and change it in response to interactions. For example, a `Button` might keep track of `isHovered` state.
+* [**الخصائص (Props)** تشبه المعطيات](/learn/passing-props-to-a-component) التي تقوم بتمريرها لإحدى الدوال. تتيح لمكون أعلى أن تمرر بيانات لمكون تابع له وتنسيق مظهره أيضا. فمثلا، مكون  `Form` يمكن أن يمرر خاصية `color` إلى `Button` لتغيير لونه.
+* [**الحالة (State)** تشبه ذاكرة المكون.](/learn/state-a-components-memory) تتيح للمكون إمكانية أن يحاقظ على اطلاعه على بعض البيانات وأن يغيرها تجاوبا مع تفاعل المستخدم. فمثلا, يمكن للزر `Button` أن يبقى على اطلاع لحالة `isHovered`.
 
-Props and state are different, but they work together. A parent component will often keep some information in state (so that it can change it), and *pass it down* to child components as their props. It's okay if the difference still feels fuzzy on the first read. It takes a bit of practice for it to really stick!
+الخصائص والحالات أمران مختلفان، لكن يكملان بعضهما. قد يحتوي مكون ما على بعض البيانات في حالات (كي يتمكن من تغييرها) و *يمررها* لمكون تابع كخصائص لها. لا بأس إن كنت تشعر أن الفارق بينهما لا يزال غامضا. قد يستلزم الأمر بعض الممارسة لتتمكن من الإلمام به!
 
 </DeepDive>
 
