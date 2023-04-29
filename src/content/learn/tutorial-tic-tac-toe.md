@@ -1186,7 +1186,7 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 <ConsoleBlock level="error">
 
-عمليات إعادة الرسم كثيرة جدًا. يحدّ React عدد عمليات إعادة الرسم لمنع حدوث حلقة لا نهائية.
+عمليات إعادة العرض كثيرة جدًا. يحدّ React عدد عمليات إعادة العرض لمنع حدوث حلقة لا نهائية.
 
 </ConsoleBlock>
 
@@ -1301,6 +1301,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -1339,53 +1340,53 @@ body {
 
 </Sandpack>
 
-Now that your state handling is in the `Board` component, the parent `Board` component passes props to the child `Square` components so that they can be displayed correctly. When clicking on a `Square`, the child `Square` component now asks the parent `Board` component to update the state of the board. When the `Board`'s state changes, both the `Board` component and every child `Square` re-renders automatically. Keeping the state of all squares in the `Board` component will allow it to determine the winner in the future.
+الآن إدارة حالتك في مكون `Board` ، يمرر مكون `Board` الأصلي الخاص بك الخاصيات إلى مكونات `Square` الفرعية حتى يتم عرضها بشكل صحيح. عند النقر فوق `Square` ، يطلب مكون `Square` الفرعي الآن من مكون `Board` الأصلي تحديث حالة اللوحة. عندما تتغير حالة `Board` ، يتم إعادة تقديم كل من مكون `Board` و `Square` الفرعي تلقائيًا. إبقاء حالة جميع المربعات في مكون `Board` سيسمح له بتحديد الفائز في المستقبل.
 
-Let's recap what happens when a user clicks the top left square on your board to add an `X` to it:
+لنلخص ما يحدث عندما ينقر المستخدم على المربع الأيسر العلوي في اللوحة الخاصة بك لإضافة `X` إليه:
 
-1. Clicking on the upper left square runs the function that the `button` received as its `onClick` prop from the `Square`. The `Square` component received that function as its `onSquareClick` prop from the `Board`. The `Board` component defined that function directly in the JSX. It calls `handleClick` with an argument of `0`.
-1. `handleClick` uses the argument (`0`) to update the first element of the `squares` array from `null` to `X`.
-1. The `squares` state of the `Board` component was updated, so the `Board` and all of its children re-render. This causes the `value` prop of the `Square` component with index `0` to change from `null` to `X`.
+1. الضفط على المربع الأيسر العلوي يشغل الدالة التي تلقاها العنصر `<button>` كخاصية `onClick` من العنصر `<Square>`، والذي تلقاها العنصر `<Square>` كخاصية `onSquareClick` من العنصر `<Board>`، والذي قام بتعريف تلك الدالة مباشرة في JSX. تقوم الدالة بإجراء استدعاء لـ `handleClick` مع وسيطة `0`.
+1. تستخدم `handleClick` الوسيطة (`0`) لتحديث العنصر الأول في مصفوفة `squares` من `null` إلى `X`.
+1. تم تحديث حالة `squares` في عنصر `<Board>`، لذا يتم إعادة تقديم العنصر `<Board>` وجميع عناصره الفرعية. وهذا يؤدي إلى تغيير خاصية `value` لعنصر `<Square>` ذي الترتيب `0` من `null` إلى `X`.
 
-In the end the user sees that the upper left square has changed from empty to having a `X` after clicking it.
+في النهاية يرى المستخدم أن المربع الأيسر العلوي قد تغير من فارغ إلى `X` بعد النقر عليه.
 
 <Note>
 
-The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. You could give any name to the `Square`'s `onSquareClick` prop or `Board`'s `handleClick` function, and the code would work the same. In React, it's conventional to use `onSomething` names for props which represent events and `handleSomething` for the function definitions which handle those events.
+خاصية `onClick` لعنصر DOM `<button>` لها معنى خاص لـ React لأنها مكون مدمج. بالنسبة للمكونات المخصصة مثل `Square` ، فإن التسمية متروكة لك. يمكنك إعطاء أي اسم لخاصية `onSquareClick` لـ `Square` أو لـ `handleClick` لـ `Board` ، وسيعمل الكود بنفس الطريقة. في React ، من المعتاد استخدام أسماء `onSomething` للخصائص التي تمثل الأحداث و `handleSomething` لتعريفات الوظائف التي تتعامل مع تلك الأحداث.
 
 </Note>
 
-### Why immutability is important {/*why-immutability-is-important*/}
+### لماذا اللا تغييرية (Immutability) مهمة {/*why-immutability-is-important*/}
 
-Note how in `handleClick`, you call `.slice()` to create a copy of the `squares` array instead of modifying the existing array. To explain why, we need to discuss immutability and why immutability is important to learn.
+تذكر كيف تقوم في `handleClick` بالاتصال بـ `.slice()` لإنشاء نسخة من مصفوفة `squares` بدلاً من تعديل المصفوفة الحالية. لشرح السبب ، نحتاج إلى مناقشة اللا تغييرية (Immutability) ولماذا هي مهمة للتعلم.
 
-There are generally two approaches to changing data. The first approach is to _mutate_ the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes. Here is what it would look like if you mutated the `squares` array:
+عمومًا، هناك نهجان لتغيير البيانات. النهج الأول هو تغيير البيانات مباشرةً عن طريق تغيير قيم البيانات. النهج الثاني هو استبدال البيانات بنسخة جديدة تحتوي على التغييرات المطلوبة. هنا ما سيبدو عليه الأمر إذا قمت بتغيير مصفوفة `squares`:
 
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 squares[0] = 'X';
-// Now `squares` is ["X", null, null, null, null, null, null, null, null];
+// الآن `squares` هي ["X", null, null, null, null, null, null, null, null];
 ```
 
-And here is what it would look like if you changed data without mutating the `squares` array:
+وهنا ما سيبدو عليه الأمر إذا قمت بتغيير البيانات دون تغيير مصفوفة `squares`:
 
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 const nextSquares = ['X', null, null, null, null, null, null, null, null];
-// Now `squares` is unchanged, but `nextSquares` first element is 'X' rather than `null`
+// الآن `squares` لم تتغير، لكن العنصر الأول في `nextSquares` هو 'X' بدلاً من `null`
 ```
 
-The result is the same but by not mutating (changing the underlying data) directly, you gain several benefits.
+النتيجة واحدة ولكن عن طريق عدم تغيير البيانات مباشرةً (تغيير البيانات الأساسية) ، تحصل على عدة فوائد.
 
-Immutability makes complex features much easier to implement. Later in this tutorial, you will implement a "time travel" feature that lets you review the game's history and "jump back" to past moves. This functionality isn't specific to games--an ability to undo and redo certain actions is a common requirement for apps. Avoiding direct data mutation lets you keep previous versions of the data intact, and reuse them later.
+عدم التغيير يجعل المميزات المعقدة أكثر سهولة في التنفيذ. لاحقًا في هذا الدليل التطبيقي، ستنفذ ميزة "السفر عبر الزمن" التي تتيح لك مراجعة تاريخ اللعبة و "الانتقال إلى الوراء" إلى الحركات السابقة. هذه الميزة ليست محدودة بالألعاب - القدرة على التراجع وإعادة الإجراءات ميزة شائعة للتطبيقات. عدم تغيير البيانات المباشر يتيح لك الاحتفاظ بالإصدارات السابقة من البيانات سليمة، وإعادة استخدامها لاحقًا.
 
-There is also another benefit of immutability. By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren't affected by the change. Although re-rendering is not by itself noticeable to the user (you shouldn't actively try to avoid it!), you might want to skip re-rendering a part of the tree that clearly wasn't affected by it for performance reasons. Immutability makes it very cheap for components to compare whether their data has changed or not. You can learn more about how React chooses when to re-render a component in [the `memo` API reference](/reference/react/memo).
+هناك أيضًا فائدة أخرى لعدم التغيير. افترضيًا، كل العناصر الفرعية (الأبناء) تقوم بإعادة الإنشاء (re-render) تلقائيًا عندما يتغير حالة عنصر أب (الأب). هذا يشمل حتى العناصر الفرعية التي لم تتأثر بالتغيير. على الرغم من أن إعادة الإنشاء ليست بحد ذاتها ملحوظة للمستخدم (لا يجب عليك التحمس لمحاولة تجنبها!) ، قد ترغب في تخطي إعادة إنشاء جزء من الشجرة التي لم تتأثر بوضوح به لأسباب أدائية (Performance). عدم التغيير يجعل من السهل جدًا على العناصر مقارنة ما إذا كانت بياناتها قد تغيرت أم لا. يمكنك معرفة المزيد حول كيفية اختيار React عند إعادة إنشاء عنصر في [مرجع API `memo`](/reference/react/memo).
 
-### Taking turns {/*taking-turns*/}
+### أخذ الأدوار {/*taking-turns*/}
 
-It's now time to fix a major defect in this tic-tac-toe game: the "O"s cannot be marked on the board.
+الآن وقت إصلاح عيب رئيسي في لعبة tic-tac-toe: لا يمكن وضع علامات "O" على اللوحة.
 
-You'll set the first move to be "X" by default. Let's keep track of this by adding another piece of state to the Board component:
+ستقوم بتعيين الخطوة الأولى لتكون "X" افتراضيًا. دعونا نتتبع هذا عن طريق إضافة قطعة أخرى من الحالة إلى مكون `Board`:
 
 ```js {2}
 function Board() {
@@ -1397,6 +1398,8 @@ function Board() {
 ```
 
 Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. You'll update the `Board`'s `handleClick` function to flip the value of `xIsNext`:
+
+في كل مرة يتحرك لاعب، سيتم تبديل `xIsNext` (قيمة منطقية) لتحديد أي لاعب يأتي بعد ذلك وسيتم حفظ حالة اللعبة. ستقوم بتحديث دالة `handleClick` في `Board` لتبديل قيمة `xIsNext`:
 
 ```js {7,8,9,10,11,13}
 export default function Board() {
