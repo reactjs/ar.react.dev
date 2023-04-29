@@ -6,6 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+  Arabic is a right-to-left language, so we need to set the direction of the page to rtl.
+*/
+[lang='ar']
+  :is(h1, h2, h3, h4, h5, h6, p, blockquote, figure, table, input, select, textarea),
+[lang='ar'] :not(code, pre, .sp-layout) :is(ul, ol, li),
+#__next > div {
+  direction: rtl;
+}
+
 @layer base {
   @font-face {
     font-family: 'Source Code Pro';
