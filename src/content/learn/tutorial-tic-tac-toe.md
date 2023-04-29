@@ -529,7 +529,7 @@ export default function Board() {
 }
 ```
 
-لاحقًا، ستعدل مكون `Board` لتقديم مكون `Square` باستخدام بناء الجملة JSX:
+الآن، ستعدل مكون `Board` لتقديم مكون `Square` باستخدام بناء جملة JSX:
 
 ```js {5-19}
 // ...
@@ -984,7 +984,7 @@ export default function Board() {
 }
 ```
 
-لاحقًا، ستعدل مكون `Square` ليستقبل خاصية (prop) `value` من مكون `Board`. هذا يتطلب إزالة تتبع مكون `Square` لحالة `value` وخاصية (prop) `onClick` من الزر:
+الآن، ستعدل مكون `Square` ليستقبل خاصية (prop) `value` من مكون `Board`. هذا يتطلب إزالة تتبع مكون `Square` لحالة `value` وخاصية (prop) `onClick` من الزر:
 
 ```js {1,2}
 function Square({value}) {
@@ -1096,7 +1096,7 @@ function Square({ value }) {
 }
 ```
 
-لاحقًا، ستضيف دالة `onSquareClick` إلى خاصية (prop) `Square`:
+الآن، ستضيف دالة `onSquareClick` إلى خاصية (prop) `Square`:
 
 ```js {1}
 function Square({ value, onSquareClick }) {
@@ -1108,7 +1108,8 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component: 
+الآن ستوصل `onSquareClick` إلى دالة في مكون `Board` سنسميها `handleClick`. لتوصل `onSquareClick` إلى `handleClick` سنمرر دالة إلى خاصية `onSquareClick` لأول مكون `Square`:
+
 
 ```js {7}
 export default function Board() {
@@ -1123,7 +1124,7 @@ export default function Board() {
 }
 ```
 
-Lastly, you will define the `handleClick` function inside the Board component to update the `squares` array holding your board's state:
+في النهاية، ستعرّف دلالة `handleClick` داخل مكون `Board` لتحديث المصفوفة `squares` التي تحتفظ بحالة اللوحة:
 
 ```js {4-8}
 export default function Board() {
@@ -1141,17 +1142,17 @@ export default function Board() {
 }
 ```
 
-The `handleClick` function creates a copy of the `squares` array (`nextSquares`) with the JavaScript `slice()` Array method. Then, `handleClick` updates the `nextSquares` array to add `X` to the first (`[0]` index) square.
+دالة `handleClick` تنشئ نسخة من المصفوفة `squares` (`nextSquares`) باستخدام طريقة `slice()` في Javascript. ثم، تقوم `handleClick` بتحديث المصفوفة `nextSquares` لإضافة `X` إلى المربع الأول (`[0]`).
 
-Calling the `setSquares` function lets React know the state of the component has changed. This will trigger a re-render of the components that use the `squares` state (`Board`) as well as its child components (the `Square` components that make up the board).
+مناداة دالة `setSquares` تخبر React بأن حالة المكون قد تغيرت. هذا سيؤدي إلى إعادة رسم المكونات التي تستخدم حالة `squares` (`Board`) وكذلك مكوناتها الفرعية (مكونات `Square` التي تشكل اللوحة).
 
 <Note>
 
-JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in a outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
+تدعم Javascript [الإغلاقات (closures)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) والتي تعني أن الدالة الداخلية (مثل `handleClick`) لديها وصول إلى المتغيرات والدوال المعرفة في الدالة الخارجية (مثل `Board`). يمكن لدالة `handleClick` قراءة حالة `squares` واستدعاء طريقة `setSquares` لأن كلاهما معرف داخل دالة `Board`.
 
 </Note>
 
-Now you can add X's to the board...  but only to the upper left square. Your `handleClick` function is hardcoded to update the index for the upper left square (`0`). Let's update `handleClick` to be able to update any square. Add an argument `i` to the `handleClick` function that takes the index of the square to update:
+الآن، يمكنك إضافة الـXـات إلى اللوحة... لكن فقط للمربع العلوي الأيسر. دالة `handleClick` مبرمجة بشكل صلب لتحديث المربع العلوي الأيسر (`0`). دعنا نحدث `handleClick` لتتمكن من تحديث أي مربع. أضف وسيطًا `i` إلى دالة `handleClick` التي تأخذ رقم المربع لتحديثه:
 
 ```js {4,6}
 export default function Board() {
@@ -1169,13 +1170,13 @@ export default function Board() {
 }
 ```
 
-Next, you will need to pass that `i` to `handleClick`. You could try to set the `onSquareClick` prop of square to be `handleClick(0)` directly in the JSX like this, but it won't work:
+الآن، ستحتاج إلى تمرير ذلك الـ `i` إلى `handleClick`. يمكنك أن تحاول تعيين خاصية `onSquareClick` لمربع لتكون `handleClick(0)` مباشرة في JSX مثل هذا، لكنه لن يعمل:
 
 ```jsx
 <Square value={squares[0]} onSquareClick={handleClick(0)} />
 ```
 
-Here is why this doesn't work. The `handleClick(0)` call will be a part of rendering the board component. Because `handleClick(0)` alters the state of the board component by calling `setSquares`, your entire board component will be re-rendered again. But this runs `handleClick(0)` again, leading to an infinite loop:
+هنا سبب عدم عمل ذلك. مناداة `handleClick(0)` ستكون جزءًا من عملية إعادة رسم مكون اللوحة. لأن `handleClick(0)` تقوم بتغيير حالة مكون اللوحة عن طريق استدعاء `setSquares`، سيتم إعادة رسم مكون اللوحة مرة أخرى. لكن هذا سيقوم بتشغيل `handleClick(0)` مرة أخرى، مما يؤدي إلى حدوث حلقة لا نهائية (infinite loop):
 
 <ConsoleBlock level="error">
 
@@ -1183,13 +1184,20 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 </ConsoleBlock>
 
-Why didn't this problem happen earlier?
+<ConsoleBlock level="error">
 
-When you were passing `onSquareClick={handleClick}`, you were passing the `handleClick` function down as a prop. You were not calling it! But now you are *calling* that function right away--notice the parentheses in `handleClick(0)`--and that's why it runs too early. You don't *want* to call `handleClick` until the user clicks!
+عمليات إعادة الرسم كثيرة جدًا. يحدّ React عدد عمليات إعادة الرسم لمنع حدوث حلقة لا نهائية.
 
-You could fix by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
+</ConsoleBlock>
 
-However, defining nine different functions and giving each of them a name is too verbose. Instead, let's do this:
+لماذا لم تحدث هذه المشكلة من قبل؟
+
+عندما كنا نمرر `onSquareClick={handleClick}`، كنا نمرر دالة `handleClick` كخاصية. لم نكن نستدعيها! لكن الآن نحن **نستدعي** تلك الدالة على الفور --لاحظ الأقواس في `handleClick(0)`-- وهذا هو السبب في أنها تعمل مبكرًا جدًا. لا نريد أن نستدعي `handleClick` حتى ينقر المستخدم!
+
+يمكنك حلها عن طريق إنشاء دالة مثل `handleFirstSquareClick` التي تستدعي `handleClick(0)`، ودالة مثل `handleSecondSquareClick` التي تستدعي `handleClick(1)`، وهكذا. ستمرر (بدلاً من استدعاء) هذه الدوال كخصائص مثل `onSquareClick={handleFirstSquareClick}`. هذا سيحل مشكلة الحلقة اللانهائية.
+
+ومع ذلك، تعريف تسع دوال مختلفة وإعطاء كل منها اسمًا هو أمر طويل جدًا.
+بدلاً من ذلك، دعنا نفعل هذا:
 
 ```js {6}
 export default function Board() {
@@ -1203,9 +1211,9 @@ export default function Board() {
 }
 ```
 
-Notice the new `() =>` syntax. Here, `() => handleClick(0)` is an *arrow function,* which is a shorter way to define functions. When the square is clicked, the code after the `=>` "arrow" will run, calling `handleClick(0)`.
+لاحظ الصيغة الجديدة `() =>`. هنا، `() => handleClick(0)` هي *دالة سهم* (Arrow Function)، وهي طريقة أقصر لتعريف الدوال. عندما ينقر المربع، سيتم تشغيل الكود بعد السهم `=>`، والذي سيستدعي `handleClick(0)`.
 
-Now you need to update the other eight squares to call `handleClick` from the arrow functions you pass. Make sure that the argument for each call of the `handleClick` corresponds to the index of the correct square:
+الآن تحتاج إلى تعديل المربعات الثمانية الأخرى لاستدعاء `handleClick` من الدوال السهم التي تمررها. تأكد من أن الوسيط لكل استدعاء لـ `handleClick` يتوافق مع فهرس المربع الصحيح:
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -1232,13 +1240,13 @@ export default function Board() {
 };
 ```
 
-Now you can again add X's to any square on the board by clicking on them:
+الآن يمكنك مرة أخرى إضافة X إلى أي مربع في اللوحة عن طريق النقر عليها:
 
-![filling the board with X](../images/tutorial/tictac-adding-x-s.gif)
+![ملء اللوحة بـX](../images/tutorial/tictac-adding-x-s.gif)
 
-But this time all the state management is handled by the `Board` component!
+لكن هذه المرة يتم التعامل مع إدارة الحالة بواسطة مكون `Board`!
 
-This is what your code should look like:
+هذا ما يجب أن يبدو عليه الكود الخاص بك:
 
 <Sandpack>
 
