@@ -1,31 +1,31 @@
 ---
-title: 'Tutorial: Tic-Tac-Toe'
+title: 'برنامج تعليمي: لعبة tic-tac-toe (X-O)'
 ---
 
 <Intro>
 
-You will build a small tic-tac-toe game during this tutorial. This tutorial does not assume any existing React knowledge. The techniques you'll learn in the tutorial are fundamental to building any React app, and fully understanding it will give you a deep understanding of React.
+سنبني في هذا الدليل التطبيقي لعبة tic-tac-toe (X-O) صغيرة. لا يفترض هذا الدليل التطبيقي أي معرفة سابقة بـ React. التقنيات التي ستتعلمها في هذا البرنامج أساسية لبناء أي تطبيق React ، وفهمها بشكل كامل سيمنحك فهمًا عميقًا لـ React.
 
 </Intro>
 
 <Note>
 
-This tutorial is designed for people who prefer to **learn by doing** and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI.](/learn/describing-the-ui)
+هذا الدليل التطبيقي مصمم للأشخاص الذين يفضلون **التعلم العملي**، ويريدون تجربة صنع شيء ملموس بسرعة. إذا كنت تفضل تعلم كل مفهوم خطوة بخطوة ، فابدأ بـ [وصف واجهة المستخدم.](/learn/describing-the-ui)
 
 </Note>
 
-The tutorial is divided into several sections:
+هذا الدليل التطبيقي مقسم إلى عدة أقسام:
 
-- [Setup for the tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-- [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-- [Completing the game](#completing-the-game) will teach you **the most common techniques** in React development.
-- [Adding time travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+- [التجهيز للبرنامج التعليمي](#setup-for-the-tutorial): سيعطيك **نقطة انطلاق** لمتابعة الدليل التطبيقي.
+- [نظرة عامة](#overview): سيعلمك **أساسيات React**؛ المكونات، الخصائص، والحالة.
+- [إكمال اللعبة](#completing-the-game): سيعلمك **أكثر التقنيات شيوعًا** في تطوير React.
+- [إضافة السفر عبر الزمن](#adding-time-travel): سيعطيك **فهمًا أعمق** لقوة React الفريدة.
 
-### What are you building? {/*what-are-you-building*/}
+### ماذا ستبني؟ {/*what-are-you-building*/}
 
-In this tutorial, you'll build an interactive tic-tac-toe game with React.
+في هذا الدليل التطبيقي، ستبني لعبة tic-tac-toe (X-O) تفاعلية باستخدام React.
 
-You can see what it will look like when you're finished here:
+يمكنك أن ترى كيف ستبدو عند الانتهاء من هنا:
 
 <Sandpack>
 
@@ -57,9 +57,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -103,9 +103,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'الذهاب إلى الخطوة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'اذهب إلى بداية اللعبة';
     }
     return (
       <li key={move}>
@@ -156,6 +156,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -194,15 +195,15 @@ body {
 
 </Sandpack>
 
-If the code doesn't make sense to you yet, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+إذا لم يكن الكود منطقيًا بالنسبة لك بعد ، أو إذا كنت غير معتاد على بناء الكود ، فلا تقلق! الهدف من هذا الدليل التطبيقي هو مساعدتك على فهم React وبناء الكود فيها.
 
-We recommend that you check out the tic-tac-toe game above before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
+نوصيك بتجربة لعبة tic-tac-toe أعلاه قبل الاستمرار في الدليل التطبيقي. أحد الميزات التي ستلاحظها هي أن هناك قائمة مرقمة على يمين لوحة اللعبة. تعطيك هذه القائمة تاريخ جميع الحركات التي حدثت في اللعبة ، ويتم تحديثها مع تقدم اللعبة.
 
-Once you've played around with the finished tic-tac-toe game, keep scrolling. You'll start with a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+بمجرد أن تنهى لعبة tic-tac-toe، استمر في التمرير. ستبدأ بقالب أبسط في هذا الدليل التطبيقي. خطوتنا التالية هي إعدادك حتى تتمكن من بدء بناء اللعبة.
 
-## Setup for the tutorial {/*setup-for-the-tutorial*/}
+## التجهيز للبرنامج التعليمي {/*setup-for-the-tutorial*/}
 
-In the live code editor below, click **Fork** in the top-right corner to open the editor in a new tab using the website CodeSandbox. CodeSandbox lets you write code in your browser and preview how your users will see the app you've created. The new tab should display an empty square and the starter code for this tutorial.
+في محرر الكود المباشر أدناه ، انقر فوق **Fork** في الزاوية اليمنى العليا لفتح المحرر في علامة تبويب جديدة باستخدام موقع CodeSandbox. يتيح لك CodeSandbox كتابة الكود في المتصفح ومعاينة كيف سيرى مستخدموك التطبيق الذي قمت بإنشائه. يجب أن تعرض علامة التبويب الجديدة مربعًا فارغًا ورمز البداية لهذا الدليل التطبيقي.
 
 <Sandpack>
 
@@ -261,33 +262,33 @@ body {
 
 <Note>
 
-You can also follow this tutorial using your local development environment. To do this, you need to:
+يمكنك أيضًا متابعة هذا الدليل التطبيقي باستخدام بيئة التطوير المحلية. للقيام بذلك ، تحتاج إلى:
 
-1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **File > Export to ZIP** in that menu to download an archive of the files locally
-1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
-1. Install the dependencies with `npm install`
-1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+1. تثبيت [Node.js](https://nodejs.org/ar/).
+1. في نافذة CodeSandbox التي فتحتها مؤخرًا، اضغط على زر الزاوية اليسرى العليا لفتح القائمة، ثم اختر **File** > **Export to ZIP** في تلك القائمة لتنزيل أرشيف الملفات محليًا.
+1. فك ضغط الأرشيف، ثم افتح موجه الأوامر واكتب `cd` للانتقال إلى الدليل الذي فككت ضغطه.
+1. قم بتثبيت الاعتمادات باستخدام `npm install`.
+1. قم بتشغيل `npm start` لبدء خادم محلي واتبع التعليمات لعرض الكود عاملًا في المتصفح.
 
-If you get stuck, don't let this stop you! Follow along online instead and try a local setup again later.
+إذا واجهتك مشكلة، لا تدع هذا يوقفك! تابع الدليل التطبيقي عبر الإنترنت بدلاً من ذلك وحاول إعداد محلي مرة أخرى لاحقًا.
 
 </Note>
 
-## Overview {/*overview*/}
+## نظرة عامة {/*overview*/}
 
-Now that you're set up, let's get an overview of React!
+الآن أنت مستعد للبدء، دعنا نلقي نظرة عامة على React!
 
-### Inspecting the starter code {/*inspecting-the-starter-code*/}
+### فحص الكود المبدئي {/*examining-the-starter-code*/}
 
-In CodeSandbox you'll see three main sections:
+في CodeSandbox سترى ثلاثة أقسام رئيسية:
 
-![CodeSandbox with starter code](../images/tutorial/react-starter-code-codesandbox.png)
+![CodeSandbox مع الكود المبدئي](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` and a folder called `public`
-1. The _code editor_ where you'll see the source code of your selected file
-1. The _browser_ section where you'll see how the code you've written will be displayed
+1. القسم _Files_ فيه قائمة بالملفات مثل `App.js` و `index.js` و `styles.css` ومجلد يسمى `public`.
+1. _code editor_ حيث سترى الكود للملف المحدد.
+1. القسم _browser_ حيث سترى كيف سيتم عرض الكود الذي كتبته.
 
-The `App.js` file should be selected in the _Files_ section. The contents of that file in the _code editor_ should be:
+ملف _App.js_ يجب أن يكون محددًا في القسم _Files_. محتويات ذلك الملف في _code editor_ يجب أن تكون:
 
 ```jsx
 export default function Square() {
@@ -295,15 +296,15 @@ export default function Square() {
 }
 ```
 
-The _browser_ section should be displaying a square with a X in it like this:
+قسم _browser_ يجب أن يعرض مربعًا مع X فيه مثل هذا:
 
-![x-filled square](../images/tutorial/x-filled-square.png)
+![مربع يحتوي على X](../images/tutorial/x-filled-square.png)
 
-Now let's have a look at the files in the starter code.
+والآن دعنا نلقي نظرة على الملفات في الكود المبدئي.
 
 #### `App.js` {/*appjs*/}
 
-The code in `App.js` creates a _component_. In React, a component is a piece of reusable code that represents a part of a user interface. Components are used to render, manage, and update the UI elements in your application. Let's look at the component line by line to see what's going on:
+الكود في `App.js` ينشئ _مكونًا_ (Component). في React, المكون هو جزء من الكود قابل لإعادة الاستخدام يقدم جزءًا من واجهة المستخم. المكونان تستخدم لعرض وإدارة وتحديث عناصر واجهة المستخدم في تطبيقك. دعنا نلقي نظرة على المكون سطرًا بسطر لنرى ما يحدث:
 
 ```js {1}
 export default function Square() {
@@ -311,7 +312,7 @@ export default function Square() {
 }
 ```
 
-The first line defines a function called `Square`. The `export` JavaScript keyword makes this function accessible outside of this file. The `default` keyword tells other files using your code that it's the main function in your file.
+السطر الأول يعرّف وظيفة مسماه `Square`. الكلمة الأساسية `export` في JavaScript تجعل هذه الوظيفة متاحة خارج هذا الملف. الكلمة الأساسية `default` تخبر الملفات الأخرى التي تستخدم كودك أنها الوظيفة الرئيسية في ملفك.
 
 ```js {2}
 export default function Square() {
@@ -319,15 +320,15 @@ export default function Square() {
 }
 ```
 
-The second line returns a button. The `return` JavaScript keyword means whatever comes after is returned as a value to the caller of the function. `<button>` is a *JSX element*. A JSX element is a combination of JavaScript code and HTML tags that describes what you'd like to display. `className="square"` is a button property or *prop* that tells CSS how to style the button. `X` is the text displayed inside of the button and `</button>` closes the JSX element to indicate that any following content shouldn't be placed inside the button.
+السطر الثاني يرجع زرًّا. الكلمة الأساسية `return` في JavaScript تعني أن أي شيء يأتي بعدها يعاد كقيمة لمن يستدعي الوظيفة. `<button>` هو *عنصر JSX*. عنصر JSX هو مزيج من كود JavaScript وعلامات HTML تصف ما تريد عرضه. `className="square"` هو خاصية أو *prop* للزرّ تخبر CSS كيفية تنسيق الزرّ. `X` هو النص المعروض داخل الزرّ و `</button>` يغلق عنصر JSX ليشير إلى أن أي محتوى يليه لا ينبغي وضعه داخل الزرّ.
 
 #### `styles.css` {/*stylescss*/}
 
-Click on the file labeled `styles.css` in the _Files_ section of CodeSandbox. This file defines the styles for your React app. The first two _CSS selectors_ (`*` and `body`) define the style of large parts of your app while the `.square` selector defines the style of any component where the `className` property is set to `square`. In your code, that would match the button from your Square component in the `App.js` file.
+اضغط على الملف المسمى `styles.css` في قسم _Files_ في CodeSandbox. يحدد هذا الملف الأنماط لتطبيق React الخاص بك. _محددان CSS_ الأولان (`*` و `body`) يحددان نمط أجزاء كبيرة من تطبيقك بينما المحدد `.square` يحدد نمط أي مكون يتم تعيين خاصية `className` إلى `square`. في كودك، سيتطابق ذلك مع الزرّ من مكون Square في ملف `App.js`.
 
 #### `index.js` {/*indexjs*/}
 
-Click on the file labeled `index.js` in the _Files_ section of CodeSandbox. You won't be editing this file during the tutorial but it is the bridge between the component you created in the `App.js` file and the web browser.
+اضغط على الملف المسمى `index.js` في قسم _Files_ في CodeSandbox. لن تقوم بتحرير هذا الملف خلال الدليل التطبيقي ولكنه هو الجسر بين المكون الذي أنشأته في ملف `App.js` ومتصفح الويب.
 
 ```jsx
 import { StrictMode } from 'react';
@@ -337,20 +338,21 @@ import './styles.css';
 import App from './App';
 ```
 
-Lines 1-5 brings all the necessary pieces together: 
+الأسطر من 1 إلى 5 تجمع كل القطع اللازمة معًا:
 
 * React
-* React's library to talk to web browsers (React DOM)
-* the styles for your components
-* the component you created in `App.js`.
+* مكتبة React للتحدث مع متصفحات الويب (React DOM)
+* الأنماط لمكوناتك
+* المكون الذي أنشأته في `App.js`.
 
-The remainder of the file brings all the pieces together and injects the final product into `index.html` in the `public` folder.
+باقي الملف يجمع كل القطع معًا ويضيف المنتج النهائي إلى `index.html` في مجلد `public`.
 
-### Building the board {/*building-the-board*/}
 
-Let's get back to `App.js`. This is where you'll spend the rest of the tutorial.
+### بناء اللوحة {/*building-the-board*/}
 
-Currently the board is only a single square, but you need nine! If you just try and copy paste your square to make two squares like this:
+لنعد إلى `App.js`. هذا هو المكان الذي ستقضي فيه بقية الدليل التطبيقي.
+
+حاليًا اللوحة تحتوي على مربع واحد فقط، ولكنك تحتاج إلى تسعة! إذا حاولت نسخ ولصق المربع لتصنع مربعين مثل هذا:
 
 ```js {2}
 export default function Square() {
@@ -358,7 +360,7 @@ export default function Square() {
 }
 ```
 
-You'll get this error:
+ستحصل على هذا الخطأ:
 
 <ConsoleBlock level="error">
 
@@ -366,7 +368,7 @@ You'll get this error:
 
 </ConsoleBlock>
 
-React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
+تحتاج مكونات React إلى إرجاع عنصر JSX واحد وليس عناصر JSX المجاورة مثل زرين. لإصلاح هذا يمكنك استخدام *الأجزاء* (Fragments) (`<>` و `</>`) لتجميع عناصر JSX المجاورة مثل هذا:
 
 ```js {3-6}
 export default function Square() {
@@ -379,17 +381,17 @@ export default function Square() {
 }
 ```
 
-Now you should see:
+الآن يجب أن ترى:
 
-![two x-filled squares](../images/tutorial/two-x-filled-squares.png)
+![زرين مملوئين بـX](../images/tutorial/two-x-filled-squares.png)
 
-Great! Now you just need to copy-paste a few times to add nine squares and...
+رائع! الآن تحتاج فقط إلى نسخ ولصق عدة مرات لإضافة تسعة مربعات و...
 
-![nine x-filled squares in a line](../images/tutorial/nine-x-filled-squares.png)
+![تسع مربعات مملوءة بـX في سطر](../images/tutorial/nine-x-filled-squares.png)
 
-Oh no! The squares are all in a single line, not in a grid like you need for our board. To fix this you'll need to group your squares into rows with `div`s and add some CSS classes. While you're at it, you'll give each square a number to make sure you know where each square is displayed.
+أوه لا! المربعات كلها في سطر واحد، وليس في شبكة كما تحتاج للوحة. لإصلاح هذا، ستحتاج إلى تجميع المربعات في صفوف مع `div`s وإضافة بعض فئات CSS. بينما أنت في ذلك، ستعطي كل مربع رقمًا للتأكد من أنك تعرف أين يتم عرض كل مربع.
 
-In the `App.js` file, update the `Square` component to look like this:
+في ملف `App.js`، عدّل مكون `Square` ليبدو مثل هذا:
 
 ```js {3-19}
 export default function Square() {
@@ -415,11 +417,11 @@ export default function Square() {
 }
 ```
 
-The CSS defined in `styles.css` styles the divs with the `className` of `board-row`. Now that you've grouped your components into rows with the styled `div`s you have your tic-tac-toe board:
+تنسيقات _CSS_ المحددة في `styles.css` تنسق الـ `div`s التي تحمل `className` بقيمة `board-row`. الآن بعد تجميع المكونات في صفوف مع الـ `div`s المنسقة، لديك لوحة الـ tic-tac-toe:
 
-![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
+![لوحة tic-tac-toe مملوءة بالأرقام من 1 إلى 9](../images/tutorial/number-filled-board.png)
 
-But you now have a problem. Your component named `Square`, really isn't a square anymore. Let's fix that by changing the name to `Board`:
+لكن الآن لديك مشكلة. المكون الذي يحمل اسم `Square`، ليس مربعًا بعد الآن. دعنا نصلح ذلك عن طريق تغيير الاسم إلى `Board`:
 
 ```js {1}
 export default function Board() {
@@ -427,7 +429,7 @@ export default function Board() {
 }
 ```
 
-At this point your code should look something like this:
+في هذه النقطة يجب أن يبدو الكود الخاص بك مثل هذا:
 
 <Sandpack>
 
@@ -464,6 +466,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -504,15 +507,17 @@ body {
 
 <Note>
 
-Psssst... That's a lot to type! It's okay to copy and paste code from this page. However, if you're up for a little challenge, we recommend only copying code that you've manually typed at least once yourself.
+جيد، يمكنك نسخ ولصق الكود من هذه الصفحة. ولكن حاول كتابته بنفسك أولاً!
+
+هذا كثير للكتابة! لا بأس بنسخ ولصق الكود من هذه الصفحة. ومع ذلك، إذا كنت تريد تحديًا صغيرًا، فنحن نوصي بنسخ الكود الذي كتبته يدويًا مرة واحدة على الأقل بنفسك.
 
 </Note>
 
-### Passing data through props {/*passing-data-through-props*/}
+### تمرير بيانات من خلال الخصائص (props) {/*passing-data-through-props*/}
 
-Next, you'll want to change the value of a square from empty to "X" when the user clicks on the square. With how you've built the board so far you would need to copy-paste the code that updates the square nine times (once for each square you have)! Instead of copy-pasting, React's component architecture allows you to create a reusable component to avoid messy, duplicated code.
+لاحقًا، ستريد تغيير قيمة المربع من فارغة إلى "X" عندما ينقر المستخدم على المربع. مع كيفية بناء اللوحة حتى الآن، ستحتاج إلى نسخ ولصق الكود الذي يعدل المربع تسع مرات (مرة واحدة لكل مربع لديك)! بدلاً من النسخ واللصق، تسمح لك هندسة المكونات في React بإنشاء مكون قابل لإعادة الاستخدام لتجنب الكود المكرر الفوضوي.
 
-First, you are going to copy the line defining your first square (`<button className="square">1</button>`) from your `Board` component into a new `Square` component:
+أولاً، ستقوم بنسخ السطر الذي يحدد المربع الأول (`<button className="square">1</button>`) من مكون `Board` إلى مكون `Square` جديد:
 
 ```js {1-3}
 function Square() {
@@ -524,7 +529,7 @@ export default function Board() {
 }
 ```
 
-Then you'll update the Board component to render that `Square` component using JSX syntax:
+لاحقًا، ستعدل مكون `Board` لتقديم مكون `Square` باستخدام بناء الجملة JSX:
 
 ```js {5-19}
 // ...
@@ -551,15 +556,15 @@ export default function Board() {
 }
 ```
 
-Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter. 
+لاحظ كيف _على عكس عناصر `div` في المتصفح_، يجب أن تبدأ المكونات الخاصة بك `Board` و `Square` بحرف كبير.
 
-Let's take a look:
+دعنا نلقي نظرة:
 
-![one-filled board](../images/tutorial/board-filled-with-ones.png)
+![لوحة مملوءة بـ1](../images/tutorial/board-filled-with-ones.png)
 
-Oh no! You lost the numbered squares you had before. Now each square says "1". To fix this, you will use *props* to pass the value each square should have from the parent component (`Board`) to its child (`Square`).
+أوه لا! لقد فقدت المربعات المرقمة التي كانت لديك من قبل. الآن يقول كل مربع "1". لإصلاح هذا، ستستخدم *الخصائص (props)* لتمرير القيمة التي يجب أن يكون لكل مربع من المكون الأصلي (`Board`) إلى مكونه الابن (`Square`).
 
-Update the `Square` component to read the `value` prop that you'll pass from the `Board`:
+عدّل مكون `Square` لقراءة خاصية `value` التي ستمررها من `Board`:
 
 ```js {1}
 function Square({ value }) {
@@ -567,9 +572,9 @@ function Square({ value }) {
 }
 ```
 
-`function Square({ value })` indicates the Square component can be passed a prop called `value`.
+تشير `function Square({ value })` إلى أن مكون Square يمكن أن يُمرر إليه خاصية تسمى `value`.
 
-Now you want to display that `value` instead of `1` inside every square. Try doing it like this:
+الآن تريد عرض هذه القيمة بدلاً من `1` داخل كل مربع. حاول القيام بذلك بهذه الطريقة:
 
 ```js {2}
 function Square({ value }) {
@@ -577,11 +582,11 @@ function Square({ value }) {
 }
 ```
 
-Oops, this is not what you wanted:
+أوبس! هذا ليس ما تريده:
 
-![value-filled board](../images/tutorial/board-filled-with-value.png)
+![لوحة مملوءة بـvalue](../images/tutorial/board-filled-with-value.png)
 
-You wanted to render the JavaScript variable called `value` from your component, not the word "value". To "escape into JavaScript" from JSX, you need curly braces. Add curly braces around `value` in JSX like so:
+لقد أردت عرض متغير JavaScript يسمى `value` من مكونك، وليس كلمة "value". لـ"التخطي إلى JavaScript" من JSX، تحتاج إلى الأقواس المنحنية (curly braces). أضف الأقواس المنحنية حول `value` في JSX على النحو التالي:
 
 ```js {2}
 function Square({ value }) {
@@ -589,11 +594,11 @@ function Square({ value }) {
 }
 ```
 
-For now, you should see an empty board:
+الآن، يجب أن ترى لوحة فارغة:
 
-![empty board](../images/tutorial/empty-board.png)
+![لوحة فارغة](../images/tutorial/empty-board.png)
 
-This is because the `Board` component hasn't passed the `value` prop to each `Square` component it renders yet. To fix it you'll add the `value` prop to each `Square` component rendered by the `Board` component:
+هذا لأن مكون `Board` لم يمرر خاصية `value` إلى كل مكون `Square` يقوم بتقديمه بعد. لإصلاحه، ستضيف خاصية `value` إلى كل مكون `Square` يقوم بتقديمه مكون `Board`:
 
 ```js {5-7,10-12,15-17}
 export default function Board() {
@@ -619,11 +624,11 @@ export default function Board() {
 }
 ```
 
-Now you should see a grid of numbers again:
+الآن يجب أن ترى شبكة من الأرقام مرة أخرى:
 
-![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
+![لوحة tic-tac-toe معبأة بالأرقام من 1 إلى 9](../images/tutorial/number-filled-board.png)
 
-Your updated code should look like this:
+كودك المعدل يجب أن يبدو كالتالي:
 
 <Sandpack>
 
@@ -664,6 +669,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -702,14 +708,15 @@ body {
 
 </Sandpack>
 
-### Making an interactive component {/*making-an-interactive-component*/}
+### إعداد مكون تفاعلي {/*making-an-interactive-component*/}
 
-Let's fill the `Square` component with an `X` when you click it. Declare a function called `handleClick` inside of the `Square`. Then, add `onClick` to the props of the button JSX element returned from the `Square`:
+لنملأ مكون `Square` بـ `X` عند النقر عليه. أعلن عن دالة (Function) تسمى `handleClick` داخل `Square`. ثم، أضف `onClick` إلى خصائص عنصر JSX الزر المُرجع من `Square`:
+
 
 ```js {2-4,9}
 function Square({ value }) {
   function handleClick() {
-    console.log('clicked!');
+    console.log('ضُغطت!');
   }
 
   return (
@@ -723,11 +730,11 @@ function Square({ value }) {
 }
 ```
 
-If you click on a square now, you should see a log saying `"clicked!"` in the _Console_ tab at the bottom of the _Browser_ section in CodeSandbox. Clicking the square more than once will log `"clicked!"` again. Repeated console logs with the same message will not create more lines in the console. Instead, you will see an incrementing counter next to your first `"clicked!"` log.
+إذا ضغطت على مربع الآن، يجب أن ترى log في علامة التبويب _Console_ في أسفل قسم _Browser_ في CodeSandbox يقول `"ضُغطت!"`. الضغط على المربع أكثر من مرة سيؤدي إلى طباعة `"ضُغطت!"` مرة أخرى. تكرار `console.log("ضُغطت!")` بنفس الرسالة لن ينشئ سطرًا جديدًا في الـ console. بدلاً من ذلك، سترى عدادًا متزايدًا بجانب أول طباعة `"ضُغطت!"` لديك.
 
 <Note>
 
-If you are following this tutorial using your local development environment, you need to open your browser's Console. For example, if you use the Chrome browser, you can view the Console with the keyboard shortcut **Shift + Ctrl + J** (on Windows/Linux) or **Option + ⌘ + J** (on macOS).
+إن كنت تتابع هذا الدليل التطبيقي باستخدام بيئة التطوير المحلية الخاصة بك، فستحتاج إلى فتح Console المتصفح الخاص بك. على سبيل المثال، إذا كنت تستخدم متصفح Chrome، يمكنك عرض Console باستخدام اختصار لوحة المفاتيح **Shift + Ctrl + J** (على نظامي التشغيل Windows/Linux) أو **Option + ⌘ + J** (على نظام التشغيل macOS).
 
 </Note>
 
