@@ -248,32 +248,33 @@ td {
 
 </DeepDive>
 
-## Step 4: Identify where your state should live {/*step-4-identify-where-your-state-should-live*/}
+## الخطوة 4: حدد أين تضع الحالات {/*step-4-identify-where-your-state-should-live*/}
 
-After identifying your app’s minimal state data, you need to identify which component is responsible for changing this state, or *owns* the state. Remember: React uses one-way data flow, passing data down the component hierarchy from parent to child component. It may not be immediately clear which component should own what state. This can be challenging if you’re new to this concept, but you can figure it out by following these steps!
+بعد أن حدد القدر الأدنى من بيانات الحالات اللازمة، عليك الأن أن تحدد أي المكونات مسءول عن تغيير كلٌّ من هذه الحالات، أو *يملك* تلك الحالة. تذكر أن React يستخدم سيل البيانات في اتجاه واحد، وهو تمرير البيانات من المكون الأب لمكون تابع له في التسلسل الشجري. قد لا يبدو واضحا من الوهلة الأولى أي مكون يجب أن يملك تلك "الحالة" ويكون مسؤولا عنها. ربما يكون هذا تحديا لك إن كان هذا المفهوم جديدا عليك،لكن ستتمكن من إيجاد الإجابة باتباع الخطوات التالية!
 
-For each piece of state in your application:
+لكل حالة على حدة في تطبيقك:
 
-1. Identify *every* component that renders something based on that state.
-2. Find their closest common parent component--a component above them all in the hierarchy.
-3. Decide where the state should live:
-    1. Often, you can put the state directly into their common parent.
-    2. You can also put the state into some component above their common parent.
-    3. If you can't find a component where it makes sense to own the state, create a new component solely for holding the state and add it somewhere in the hierarchy above the common parent component.
+1. حدد *جميع* المكونات التي تعرض أي شيء له علاقة بهذه الحالة.
+2. حدد السلف الأقرب المشترك بينهم؛ مكون يكون أعلى منهم جميعا في التسلسل الشجري.
+3. حدد أين يجب أن تتمركز الحالة:
+    1. عادة، يمكنك وضع الحالة مباشرة في سلفهم المشترك.
+    2. يمكنك أيضا أن تضع الحالة في مكون أعلى من السلف المشترك.
+    3. إن لم يكن بإمكانك تحديد مكون حيث يبدو من المنطقي وضع الحالة فيه، قم بعمل مكون جديد خصيصا لحفظ تلك الحالة، وقم بوضعه في مكان ما في التسلسل الشجري يسبق سلفهم المشترك.
 
-In the previous step, you found two pieces of state in this application: the search input text, and the value of the checkbox. In this example, they always appear together, so it makes sense to put them into the same place.
+في الخطوة السابقة، وجدت حالتين في هذا التطبيق: نص البحث المكتوب، وحالة مربع الاختيار. في هذا المثال، يظهران دائما معا، فمن المنطقي وضعهم معا في نفس المكان.
 
 Now let's run through our strategy for them:
+حسنا، لنقوم باختبار طريقتنا عليهم:
 
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
-1. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-2. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+1. **حدد المكونات التي تستخدم الحالة:**
+    * مكون (جدول المنتجات) `ProductTable` يحتاج الحالة ليقوم بتصفية قائمة المنتجات (نص البحث وحالة مربع الاختيار). 
+    * مكون (خانة البحث) `SearchBar` يقوم بعرض الحالة نفسها (نص البحث).
+1. **حدد لهم سلفا مشتركا:** السلف المشترك للمكونين هو `FilterableProductTable`.
+2. **حدد أين تضع الحالة**: سنضع نص البحث وحالة مربع الاختيار في المكون `FilterableProductTable`.
 
-So the state values will live in `FilterableProductTable`. 
+إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`. 
 
-Add state to the component with the [`useState()` Hook.](/reference/react/useState) Hooks are special functions that let you "hook into" React. Add two state variables at the top of `FilterableProductTable` and specify their initial state:
+أضف الحالات للمكون باستخدام [خطاف `useState()`.](/reference/react/useState) الخطافات (Hooks) عبارة عن دوال خاصة تسمح لك أن "تربط" مكوناتك بنظام React. أضف متغيرا لكل حالة في بداية الكود الخاص بالمكون `FilterableProductTable` وحدد حالتهم الأولية:
 
 ```js
 function FilterableProductTable({ products }) {
@@ -281,7 +282,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);  
 ```
 
-Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as props:
+ثم مرر المتغير `filterText` و `inStockOnly` للمكونين `ProductTable` و `SearchBar` كخاصية ضمن خصائص كلا منهما:
 
 ```js
 <div>
@@ -296,6 +297,7 @@ Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as p
 ```
 
 You can start seeing how your application will behave. Edit the `filterText` initial value from `useState('')` to `useState('fruit')` in the sandbox code below. You'll see both the search input text and the table update:
+قد يبدو واضحا لك من الآن كيف سيبدو سلوك تطبيقك. قم بتعديل قيمة `filterText` الأولية من `useState('')` إلى `useState('fruit')` في الكود التالي داخل الـsandbox المدرج. سترى نتيجة التعديل على كلا من محتوى خانة البحث وجدول المنتجات:
 
 <Sandpack>
 
@@ -437,7 +439,7 @@ td {
 
 </Sandpack>
 
-Notice that editing the form doesn't work yet. There is a console error in the sandbox above explaining why:
+لاحظ أنك لو عدلت مباشرة على نموذج البحث فلن يحدث شيء. هناك رسالة خطأ في الـsandbox أعلاه تخبرك لماذا:
 
 <ConsoleBlock level="error">
 
@@ -445,7 +447,7 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 
 </ConsoleBlock>
 
-In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `inStockOnly` props to render the table, the input, and the checkbox. For example, here is how `SearchBar` populates the input value:
+في الـsandbox أعلاه؛ المكونان `ProductTable` و `SearchBar` يقرآن الخصائص `filterText` و `inStockOnly` لعرض الجدول، مربع البحث، ومربع الاختيار. إليك مثلا كيف يقوم المكون `SearchBar` بكتابة محتوى مربع البحث:
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -457,7 +459,7 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
-However, you haven't added any code to respond to the user actions like typing yet. This will be your final step.
+برغم ذلك، فأنت لم تقم بعد بكتابة أي كود للتجاوب مع تفاعلات المستخدم (كالكتابة). هذه ستكون خطوتك الأخيرة.
 
 
 ## Step 5: Add inverse data flow {/*step-5-add-inverse-data-flow*/}
