@@ -992,11 +992,11 @@ function Square({value}) {
 }
 ```
 
-At this point you should see an empty tic-tac-toe board:
+في هذه النقطة يجب أن ترى لوحة لعبة الـ tic-tac-toe فارغة:
 
-![empty board](../images/tutorial/empty-board.png)
+![لوحة فارغة](../images/tutorial/empty-board.png)
 
-And your code should look like this:
+وكودك يجب أن يبدو هكذا:
 
 <Sandpack>
 
@@ -1040,6 +1040,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -1078,11 +1079,12 @@ body {
 
 </Sandpack>
 
-Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or `null` for empty squares.
+كل مربع سيتلقة خاصية `value` التي ستكون إما `'X'` أو `'O'` أو `null` للمربعات الفارغة.
 
-Next, you need to change what happens when a `Square` is clicked. The `Board` component now maintains which squares are filled. You'll need to create a way for the `Square` to update the `Board`'s state. Since state is private to a component that defines it, you cannot update the `Board`'s state directly from `Square`.
+لاحقًا ستغير ما يحدث عند النقر على `Square`. مكون `Board` الآن يحتفظ بالمربعات المملوءة. ستحتاج إلى إيجاد طريقة لتحديث حالة `Board`. لأن الحالة هي خاصة بالمكون الذي يحددها، لا يمكنك تحديث حالة `Board` مباشرة من `Square`.
 
-Instead, you'll pass down a function from the `Board` component to the `Square` component, and you'll have `Square` call that function when a square is clicked. You'll start with the function that the `Square` component will call when it is clicked. You'll call that function `onSquareClick`:
+بدلًا من ذلك، سنمرر دالة لأسفل من مكون `Board` إلى مكون `Square`، وسيقوم `Square` باستدعاء تلك الدالة عند النقر على المربع. ستبدأ بالدالة التي سيقوم `Square` بإستدعائها عند النقر عليه:
+
 
 ```js {3}
 function Square({ value }) {
@@ -1094,7 +1096,7 @@ function Square({ value }) {
 }
 ```
 
-Next, you'll add the `onSquareClick` function to the `Square` component's props:
+لاحقًا، ستضيف دالة `onSquareClick` إلى خاصية (prop) `Square`:
 
 ```js {1}
 function Square({ value, onSquareClick }) {
