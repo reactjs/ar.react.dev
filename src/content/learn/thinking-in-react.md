@@ -443,7 +443,7 @@ td {
 
 <ConsoleBlock level="error">
 
-You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
+لقد قمت بتمرير \`قيمة\` إحدى الخصائص لإحدى خانات نموذج دون تحديد معالج لحدث تغير القيمة \`onChange\`. سينتج عن هذا خانة قابلة للقراءة فقط.
 
 </ConsoleBlock>
 
@@ -462,13 +462,13 @@ function SearchBar({ filterText, inStockOnly }) {
 برغم ذلك، فأنت لم تقم بعد بكتابة أي كود للتجاوب مع تفاعلات المستخدم (كالكتابة). هذه ستكون خطوتك الأخيرة.
 
 
-## Step 5: Add inverse data flow {/*step-5-add-inverse-data-flow*/}
+## الخطوة 5: إضافة تدفق البيانات العكسي {/*step-5-add-inverse-data-flow*/}
 
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`. 
+يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغير الحالة تبعا لمدخلات المستخدم، سيكون لزاما عليك أن تحسب حسابا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`. 
 
-React makes this data flow explicit, but it requires a little more typing than two-way data binding. If you try to type or check the box in the example above, you'll see that React ignores your input. This is intentional. By writing `<input value={filterText} />`, you've set the `value` prop of the `input` to always be equal to the `filterText` state passed in from `FilterableProductTable`. Since `filterText` state is never set, the input never changes.
+يجعل React هذا النوع من تدفق البيانات بسيطا واضحا، لكنه يسلتزم قدرا أكبر من الكتابة مقارنة بالربط المزدوج للبيانات (two-way data binding). إذا ما حاولت الكتابة في خانة البحث أو التحديد على مربع الاختيار، ستجد أن React يتجاهل محاولاتك. وهذا أمر مقصود. بكتابتك `<input value={filterText} />`، فقد حددت خاصية القيمة (`value`) لخانة البحث `input` لأن تكون دوما مطابقة لقيمة الخاصية `filterText` الممررة من حالة المكون `FilterableProductTable`. وحيث أن الحالة `filterText` لم يسبق أن تم تعيينها، فالخانة لن تتغير أبدأ.
 
-You want to make it so whenever the user changes the form inputs, the state updates to reflect those changes. The state is owned by `FilterableProductTable`, so only it can call `setFilterText` and `setInStockOnly`. To let `SearchBar` update the `FilterableProductTable`'s state, you need to pass these functions down to `SearchBar`:
+عليك أن تجعل الأمر ليكون كلما قام المستخدم بتغيير مدخلات النموذج، يتم حينها تحديث الحالة لتعكس هذه التغييرات. المكون `FilterableProductTable` هو من يملك الحالة، فهو فقط من يمكنه استدعاء الدالتين `setFilterText` و `setInStockOnly`. للسماح للمكون `SearchBar` بأن يقوم بتحديث حالة المكون `FilterableProductTable`، سيكون عليك أيضا أن تمرر هذه الدوال للمكون `SearchBar`:
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -484,7 +484,7 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-Inside the `SearchBar`, you will add the `onChange` event handlers and set the parent state from them:
+داخل المكون `SearchBar`، ستضيف معالجات حدث التغير `onChange` وتعدل من حالة المكون الأب عبرهما:
 
 ```js {5}
 <input 
@@ -494,7 +494,7 @@ Inside the `SearchBar`, you will add the `onChange` event handlers and set the p
   onChange={(e) => onFilterTextChange(e.target.value)} />
 ```
 
-Now the application fully works!
+الآن يمكننا القول أن تطبيقنا يعمل بشكل كامل!
 
 <Sandpack>
 
@@ -644,8 +644,8 @@ td {
 
 </Sandpack>
 
-You can learn all about handling events and updating state in the [Adding Interactivity](/learn/adding-interactivity) section.
+يمكنك القراءة عن معالجة الأحداث وتعديل الحالات في قسم [إضافة التفاعلات](/learn/adding-interactivity).
 
-## Where to go from here {/*where-to-go-from-here*/}
+## ماذا بعد؟ {/*where-to-go-from-here*/}
 
-This was a very brief introduction to how to think about building components and applications with React. You can [start a React project](/learn/installation) right now or [dive deeper on all the syntax](/learn/describing-the-ui) used in this tutorial.
+كانت هذه مقدمة مختصرة جدا لكيف يمكنك أن تفكر في بناء المكونات والتطبيقات باستخدام React. يمكنك [البدء في كتابة مشروع بـ React](/learn/installation) فورا أو [أن تتعمق أكثر في الصيغ](/learn/describing-the-ui) المستخدمة في هذا الشرح.
