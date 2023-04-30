@@ -1709,6 +1709,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -1747,37 +1748,37 @@ body {
 
 </Sandpack>
 
-## Adding time travel {/*adding-time-travel*/}
+## إضافة السفر عبر الزمن {/*adding-time-travel*/}
 
-As a final exercise, let's make it possible to "go back in time" to the previous moves in the game.
+كتدريب أخير، دعنا نجعل من الممكن "العودة إلى الوراء" إلى الخطوات السابقة في اللعبة.
 
-### Storing a history of moves {/*storing-a-history-of-moves*/}
+### ترتيب تاريخ الانتقالات {/*storing-a-history-of-moves*/}
 
-If you mutated the `squares` array, implementing time travel would be very difficult.
+إذا قمت بتغيير `squares` array، فإن تنفيذ السفر عبر الزمن سيكون صعبًا جدًا.
 
-However, you used `slice()` to create a new copy of the `squares` array after every move, and treated it as immutable. This will allow you to store every past version of the `squares` array, and navigate between the turns that have already happened.
+ومع ذلك لقد استخدمن `slice()` لإنشاء نسخة جديدة من `squares` array بعد كل خطوة، وعاملناها على أنها لا تتغير. هذا سيسمح لك بتخزين كل نسخة سابقة من `squares` array، والتنقل بين الدورات التي حدثت بالفعل.
 
-You'll store the past `squares` arrays in another array called `history`, which you'll store as a new state variable. The `history` array represents all board states, from the first to the last move, and has a shape like this:
+ستخزن الدورات السابقة لـ `squares` في مصفوفة أخرى تسمى `history`، والتي ستخزنها كمتغير حالة جديد. تمثل مصفوفة `history` جميع حالات اللوحة، من الخطوة الأولى إلى الخطوة الأخيرة، ولها شكل مثل هذا:
 
 ```jsx
 [
-  // Before first move
+  // قبل الانتقال الأول
   [null, null, null, null, null, null, null, null, null],
-  // After first move
+  // بعد الانتقال الأول
   [null, null, null, null, 'X', null, null, null, null],
-  // After second move
+  // بعد الانتقال الثاني
   [null, null, null, null, 'X', null, null, null, 'O'],
   // ...
 ]
 ```
 
-### Lifting state up, again {/*lifting-state-up-again*/}
+### رفع الحالة لأعلى (Listing state up)، مرة أخرى {/*lifting-state-up-again*/}
 
-You will now write a new top-level component called `Game` to display a list of past moves. That's where you will place the `history` state that contains the entire game history.
+ستنشئ الآن مكونًا جديدًا على المستوى الأعلى يسمى `Game` لعرض قائمة بالخطوات السابقة. هنا ستضع حالة `history` التي تحتوي على تاريخ اللعبة بأكمله.
 
-Placing the `history` state into the `Game` component will let you remove the `squares` state from its child `Board` component. Just like you "lifted state up" from the `Square` component into the `Board` component, you will now lift it up from the `Board` into the top-level `Game` component. This gives the `Game` component full control over the `Board`'s data and lets it instruct the `Board` to render previous turns from the `history`.
+نقل `history` إلى مكون `Game` سيسمح لك بإزالة حالة `squares` من مكون `Board` الفرعي. تمامًا مثلما "رفعت الحالة لأعلى" من مكون `Square` إلى مكون `Board`، سترفعها الآن من `Board` إلى مكون `Game` على المستوى الأعلى. هذا يمنح مكون `Game` السيطرة الكاملة على بيانات `Board` ويتيح له تعليم `Board` بتقديم الدورات السابقة من `history`.
 
-First, add a `Game` component with `export default`. Have it render the `Board` component and some markup:
+أولًا، أضف `export default` إلى مكون `Game`. ثم اجعله يقوم بتقديم مكون `Board` وبعض البناء (markup) الإضافي:
 
 ```js {1,5-16}
 function Board() {
@@ -1791,22 +1792,23 @@ export default function Game() {
         <Board />
       </div>
       <div className="game-info">
-        <ol>{/*TODO*/}</ol>
+        <ol>{/*مَهمَّة*/}</ol>
       </div>
     </div>
   );
 }
 ```
 
-Note that you are removing the `export default` keywords before the `function Board() {` declaration and adding them before the `function Game() {` declaration. This tells your `index.js` file to use the `Game` component as the top-level component instead of your `Board` component. The additional `div`s returned by the `Game` component are making room for the game information you'll add to the board later.
+تذكر أن تزيل `export default` قبل الإعلان عن `function Board() {...}` وتضيفها قبل الإعلان عن `function Game() {...}`. هذا يخبر ملف `index.js` بأن يستخدم مكون `Game` كمكون رئيسي بدلاً من مكون `Board` الخاص بك. الـ `div` الإضافية التي تعود بها مكون `Game` تقوم بإنشاء مساحة لمعلومات اللعبة التي ستضيفها إلى اللوحة لاحقًا.
 
-Add some state to the `Game` component to track which player is next and the history of moves:
+أضف بعض الحالة إلى مكون `Game` لتتبع اللاعب التالي وتاريخ الخطوات:
 
 ```js {2-3}
 export default function Game() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   // ...
+}
 ```
 
 Notice how `[Array(9).fill(null)]` is an array with a single item, which itself is an array of 9 `null`s.
