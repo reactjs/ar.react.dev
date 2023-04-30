@@ -421,7 +421,7 @@ export default function Square() {
 
 ![لوحة tic-tac-toe مملوءة بالأرقام من 1 إلى 9](../images/tutorial/number-filled-board.png)
 
-لكن الآن لديك مشكلة. المكون الذي يحمل اسم `Square`، ليس مربعًا بعد الآن. دعنا نصلح ذلك عن طريق تغيير الاسم إلى `Board`:
+لكن الآن لديك مشكلة. المكون الذي يحمل اسم `Square`، ليس مربعًا بعد الآن. دعنا نصلح ذلك من خلال تغيير الاسم إلى `Board`:
 
 ```js {1}
 export default function Board() {
@@ -1811,9 +1811,15 @@ export default function Game() {
 }
 ```
 
-Notice how `[Array(9).fill(null)]` is an array with a single item, which itself is an array of 9 `null`s.
+لاحظ كيف أن `[Array(9).fill(null)]` هي مصفوفة بها عنصر واحد، وهو بدوره مصفوفة من 9 من القيم `null`. 
 
-To render the squares for the current move, you'll want to read the last squares array from the `history`. You don't need `useState` for this--you already have enough information to calculate it during rendering:
+```js
+  [
+    [null, null, null, null, null, null, null, null, null]
+  ]
+```
+
+لعرض مربعات الانتقالة الحالية، ستريد قراءة مصفوفة `squares` الأخيرة من `history`. لا تحتاج إلى `useState` لهذا - لديك بالفعل ما يكفي من المعلومات لحسابها أثناء التقديم:
 
 ```js {4}
 export default function Game() {
@@ -1823,7 +1829,7 @@ export default function Game() {
   // ...
 ```
 
-Next, create a `handlePlay` function inside the `Game` component that will be called by the `Board` component to update the game. Pass `xIsNext`, `currentSquares` and `handlePlay` as props to the `Board` component:
+ثم، أنشئ دالة `handlePlay` داخل مكون `Game` سيتم استدعاؤها من قِبَل مكون `Board` لتحديث اللعبة. قم بتمرير `xIsNext` و `currentSquares` و `handlePlay` كخصائص إلى مكون `Board`:
 
 ```js {6-8,13}
 export default function Game() {
@@ -1832,7 +1838,7 @@ export default function Game() {
   const currentSquares = history[history.length - 1];
 
   function handlePlay(nextSquares) {
-    // TODO
+    // مَهمَّة
   }
 
   return (
@@ -1844,7 +1850,7 @@ export default function Game() {
 }
 ```
 
-Let's make the `Board` component fully controlled by the props it receives. Change the `Board` component to take three props: `xIsNext`, `squares`, and a new `onPlay` function that `Board` can call with the updated squares array when a player makes a move. Next, remove the first two lines of the `Board` function that call `useState`:
+لنجعل مكون `Board` متحكمًّا به بالكامل من خلال الخصائص التي يستقبلها، غيِّر مكون `Board` ليأخذ ثلاث خصائص: `xIsNext` و `squares` ودالة `onPlay` جديدة يمكن لـ `Board` استدعاؤها مع مصفوفة المربعات المُحدَّثة عندما يقوم اللاعب باللعب. ثم، احذف السطرين الأولين من دالة `Board` التي تستدعيان `useState`:
 
 ```js {1}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1855,7 +1861,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-Now replace the `setSquares` and `setXIsNext` calls in `handleClick` in the `Board` component with a single call to your new `onPlay` function so the `Game` component can update the `Board` when the user clicks a square:
+الآن استبدل استدعاءات `setSquares` و `setXIsNext` في `handleClick` في مكون `Board` باستدعاء واحد لدالتك الجديدة `onPlay` حتى يتمكن مكون `Game` من تحديث `Board` عندما ينقر المستخدم على مربع:
 
 ```js {12}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1875,11 +1881,11 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-The `Board` component is fully controlled by the props passed to it by the `Game` component. You need to implement the `handlePlay` function in the `Game` component to get the game working again.
+مكون `Board` مُتَحكَّمٌ به بالكامل من خلال الخصائص التي يتم تمريرها إليه من مكون `Game`. ستحتاج إلى تنفيذ دالة `handlePlay` في مكون `Game` لجعل اللعبة تعمل مرة أخرى.
 
-What should `handlePlay` do when called? Remember that Board used to call `setSquares` with an updated array; now it passes the updated `squares` array to `onPlay`.
+ماذا يجب أن تفعل `handlePlay` عند استدعائها؟ تذكر أن مكون `Board` كان يستدعي `setSquares` مع مصفوفة مُحدَّثة؛ الآن يمرر مصفوفة `squares` المُحدَّثة إلى `onPlay`.
 
-The `handlePlay` function needs to update `Game`'s state to trigger a re-render, but you don't have a `setSquares` function that you can call any more--you're now using the `history` state variable to store this information. You'll want to update `history` by appending the updated `squares` array as a new history entry. You also want to toggle `xIsNext`, just as Board used to do:
+دالة `handlePlay` تحتاج لتعديل حالة `Game` لتشغيل إعادة التقديم (Re-rendering)، لكن ليس لديك دالة `setSquares` يمكنك استدعاؤها بعد الآن - أنت تستخدم الآن متغير الحالة `history` لتخزين هذه المعلومات. ستريد تحديث `history` عن طريق إضافة مصفوفة `squares` المُحدَّثة كإدخال جديد في `history`. كما تريد تبديل `xIsNext`، تمامًا كما كان يفعل `Board`:
 
 ```js {4-5}
 export default function Game() {
@@ -1892,11 +1898,11 @@ export default function Game() {
 }
 ```
 
-Here, `[...history, nextSquares]` creates a new array that contains all the items in `history`, followed by `nextSquares`. (You can read the `...history` [*spread syntax*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) as "enumerate all the items in `history`".)
+هنا، `[...history, nextSquares]` تنشئ مصفوفة جديدة تحتوي على جميع العناصر في `history`، تليها `nextSquares`. (يمكنك قراءة `...history` [*بناء الجملة*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) كـ "جميع العناصر في `history`".)
 
-For example, if `history` is `[[null,null,null], ["X",null,null]]` and `nextSquares` is `["X",null,"O"]`, then the new `[...history, nextSquares]` array will be `[[null,null,null], ["X",null,null], ["X",null,"O"]]`.
+علي سبيل المثال، إذا كانت `history` هي `[[null,null,null], ["X",null,null]]` وكان `nextSquares` هو `["X",null,"O"]`، فإن المصفوفة الجديدة `[...history, nextSquares]` ستكون `[[null,null,null], ["X",null,null], ["X",null,"O"]]`.
 
-At this point, you've moved the state to live in the `Game` component, and the UI should be fully working, just as it was before the refactor. Here is what the code should look like at this point:
+في هذه النقطة، لقد نقلت الحالة لتكون في مكون `Game`، ويجب أن يكون واجهة المستخدم تعمل بالكامل، تمامًا كما كانت قبل إعادة التنظيم. هنا ما يجب أن يبدو عليه الكود في هذه النقطة:
 
 <Sandpack>
 
@@ -1928,9 +1934,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -1971,7 +1977,7 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{/*TODO*/}</ol>
+        <ol>{/*مَهمَّة*/}</ol>
       </div>
     </div>
   );
@@ -2007,6 +2013,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -2046,6 +2053,8 @@ body {
 </Sandpack>
 
 ### Showing the past moves {/*showing-the-past-moves*/}
+
+<!-- TODO -->
 
 Since you are recording the tic-tac-toe game's history, you can now display a list of past moves to the player.
 
