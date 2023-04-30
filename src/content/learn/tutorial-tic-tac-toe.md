@@ -925,7 +925,7 @@ body {
 
 هنا، لديك كل الأساسيات لبناء لعبة الـ tic-tac-toe. لإكمال اللعبة، تحتاج الآن إلى تبادل وضع "X" و "O" على اللوحة، وتحتاج إلى طريقة لتحديد الفائز.
 
-### الرفع من الحالة (Lifting State Up) {/*lifting-state-up*/}
+### رفع الحالة لأعلى (Lifting State Up) {/*lifting-state-up*/}
 
 حاليًا، كل مكون `Square` يحتفظ بجزء من حالة اللعبة. للتحقق من وجود فائز في لعبة tic-tac-toe، سيحتاج `Board` إلى معرفة حالة كل من مكونات `Square` التسعة.
 
@@ -2415,7 +2415,7 @@ export default function Game() {
   }
 
   function jumpTo(nextMove) {
-    // TODO
+    // مَهمّةٌ!
   }
 
   const moves = history.map((squares, move) => {
@@ -2515,9 +2515,7 @@ body {
 
 </Sandpack>
 
-// TODO
-
-Before you can implement `jumpTo`, you need the `Game` component to keep track of which step the user is currently viewing. To do this, define a new state variable called `currentMove`, defaulting to `0`:
+قبل أن تستطيع تنفيذ `jumpTo`، تحتاج إلى أن يحتفظ المكوّن `Game` بتتبّع الخطوة التي يشاهدها المستخدم حاليًا. للقيام بذلك، قم بتعريف متغير حالة جديد يُسمّى `currentMove`، ويُعين افتراضيًا إلى `0`:
 
 ```js {4}
 export default function Game() {
@@ -2529,7 +2527,7 @@ export default function Game() {
 }
 ```
 
-Next, update the `jumpTo` function inside `Game` to update that `currentMove`. You'll also set `xIsNext` to `true` if the number that you're changing `currentMove` to is even.
+الآن، عدّل الدالة `jumpTo` داخل المكوّن `Game` لتحديث هذا `currentMove`. ستعين أيضًا `xIsNext` إلى `true` إذا كان الرقم الذي تقوم بتغيير `currentMove` إليه فرديًا.
 
 ```js {4-5}
 export default function Game() {
@@ -2542,10 +2540,11 @@ export default function Game() {
 }
 ```
 
-You will now make two changes to the `Game`'s `handlePlay` function which is called when you click on a square.
+الآن، ستقوم بإجراء تغييرين على الدالة `handlePlay` في المكوّن `Game` التي تُستدعى عند النقر على مربّع.
 
-- If you "go back in time" and then make a new move from that point, you only want to keep the history up to that point. Instead of adding `nextSquares` after all items (`...` spread syntax) in `history`, you'll add it after all items in `history.slice(0, currentMove + 1)` so that you're only keeping that portion of the old history.
-- Each time a move is made, you need to update `currentMove` to point to the latest history entry.
+- إذا "عدت إلى الوراء في الوقت" ثم قمت بإجراء حركة جديدة من هذه النقطة، فإنك تريد فقط الاحتفاظ بالتاريخ حتى هذه النقطة. بدلاً من إضافة `nextSquares` بعد جميع العناصر (`...` spread syntax) في `history`، ستضيفها بعد جميع العناصر في `history.slice(0, currentMove + 1)` بحيث تحتفظ فقط بهذا الجزء من التاريخ.
+- في كل مرة يتم فيها إجراء حركة، تحتاج إلى تحديث `currentMove` للإشارة إلى أحدث إدخال في التاريخ.
+
 
 ```js {2-4}
 function handlePlay(nextSquares) {
@@ -2556,7 +2555,7 @@ function handlePlay(nextSquares) {
 }
 ```
 
-Finally, you will modify the `Game` component to render the currently selected move, instead of always rendering the final move:
+في النهاية، ستعدّل المكوّن `Game` لتقوم بعرض الخطوة المحدّدة حاليًا، بدلاً من عرض الخطوة الأخيرة دائمًا:
 
 ```js {5}
 export default function Game() {
@@ -2569,7 +2568,7 @@ export default function Game() {
 }
 ```
 
-If you click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+إذا قمت بالنقر على أي خطوة في تاريخ اللعبة، يجب أن يتم تحديث لوحة الـ tic-tac-toe على الفور لعرض ما كانت عليه اللوحة بعد حدوث تلك الخطوة.
 
 <Sandpack>
 
@@ -2601,9 +2600,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -2649,9 +2648,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'انتقل إلى خطوة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li key={move}>
@@ -2702,6 +2701,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -2740,11 +2740,11 @@ body {
 
 </Sandpack>
 
-### Final cleanup {/*final-cleanup*/}
+### اللمسات النهائية {/*final-cleanup*/}
 
-If you look at the code very closely, you may notice that `xIsNext === true` when `currentMove` is even and `xIsNext === false` when `currentMove` is odd. In other words, if you know the value of `currentMove`, then you can always figure out what `xIsNext` should be.
+إذا نظرت عن قرب إلى الكود، فقد تلاحظ أن `xIsNext === true` عندما يكون `currentMove` زوجيًا و `xIsNext === false` عندما يكون `currentMove` فرديًا. بعبارة أخرى، إذا كنت تعرف قيمة `currentMove`، فيمكنك دائمًا معرفة ما يجب أن يكون عليه `xIsNext`.
 
-There's no reason for you to store both of these in state. In fact, always try to avoid redundant state. Simplifying what you store in state reduces bugs and makes your code easier to understand. Change `Game` so that it doesn't store `xIsNext` as a separate state variable and instead figures it out based on the `currentMove`:
+ليس هناك سبب لتخزين كليهما في الحالة. في الواقع، حاول دائمًا تجنب تكرار الحالة. يقلل تبسيط ما تخزنه في الحالة من الأخطاء ويجعل من السهل فهم الكود الخاص بك. عدّل `Game` بحيث لا يخزن `xIsNext` كمتغير حالة منفصل وبدلاً من ذلك يحدد ذلك استنادًا إلى `currentMove`:
 
 ```js {4,11,15}
 export default function Game() {
@@ -2766,16 +2766,16 @@ export default function Game() {
 }
 ```
 
-You no longer need the `xIsNext` state declaration or the calls to `setXIsNext`. Now, there's no chance for `xIsNext` to get out of sync with `currentMove`, even if you make a mistake while coding the components.
+لم تعد بحاجة إلى تعريف حالة `xIsNext` أو استدعاء `setXIsNext`. الآن، لا يوجد مجال لتخلف `xIsNext` عن `currentMove`، حتى لو ارتكبت خطأ أثناء كتابة المكونات.
 
-### Wrapping up {/*wrapping-up*/}
+### الاستنتاج {/*wrapping-up*/}
 
-Congratulations! You've created a tic-tac-toe game that:
+مبارك! لقد أنشأت لعبة tic-tac-toe تقوم بما يلي:
 
-- Lets you play tic-tac-toe,
-- Indicates when a player has won the game,
-- Stores a game's history as a game progresses,
-- Allows players to review a game's history and see previous versions of a game's board.
+- تتيح لك لعب لعبة tic-tac-toe،
+- تشير إلى أن لاعبًا فاز باللعبة،
+- تخزن تاريخ اللعبة مع تقدم اللعبة،
+- تسمح للاعبين بمراجعة تاريخ اللعبة ورؤية الإصدارات السابقة من لوحة اللعبة.
 
 Nice work! We hope you now feel like you have a decent grasp of how React works.
 
