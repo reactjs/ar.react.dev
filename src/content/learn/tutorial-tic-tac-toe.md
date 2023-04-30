@@ -2515,7 +2515,7 @@ body {
 
 </Sandpack>
 
-<!-- TODO -->
+// TODO
 
 Before you can implement `jumpTo`, you need the `Game` component to keep track of which step the user is currently viewing. To do this, define a new state variable called `currentMove`, defaulting to `0`:
 
