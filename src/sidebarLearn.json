@@ -1,17 +1,17 @@
 {
-  "title": "Learn React",
+  "title": "تعلم React",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "ابدأ"
     },
     {
-      "title": "Quick Start",
+      "title": "البدء السريع",
       "path": "/learn",
       "routes": [
         {
-          "title": "Tutorial: Tic-Tac-Toe",
+          "title": "شرح تطبيقي: لعبة تيك تاك تو",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
