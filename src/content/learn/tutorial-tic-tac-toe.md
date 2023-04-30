@@ -1,5 +1,5 @@
 ---
-title: 'برنامج تعليمي: لعبة tic-tac-toe (X-O)'
+title: 'دليل تطبيقي: لعبة tic-tac-toe (X-O)'
 ---
 
 <Intro>
@@ -2052,21 +2052,19 @@ body {
 
 </Sandpack>
 
-### Showing the past moves {/*showing-the-past-moves*/}
+### عرض الخطوات السابقة {/*showing-the-past-moves*/}
 
-<!-- TODO -->
+منذ أن تتبعت تاريخ اللعبة ، يمكنك الآن عرض قائمة بالخطوات السابقة للاعب.
 
-Since you are recording the tic-tac-toe game's history, you can now display a list of past moves to the player.
+عناصر React مثل `<button>` هي كائنات JavaScript العادية ؛ يمكنك تمريرها في تطبيقك. لتقديم عناصر متعددة في React ، يمكنك استخدام مصفوفة من عناصر React.
 
-React elements like `<button>` are regular JavaScript objects; you can pass them around in your application. To render multiple items in React, you can use an array of React elements.
-
-You already have an array of `history` moves in state, so now you need to transform it to an array of React elements. In JavaScript, to transform one array into another, you can use the [array `map` method:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+لديك بالفعل مصفوفة من خطوات `history` في الحالة ، لذلك عليك الآن تحويلها إلى مصفوفة من عناصر React. في JavaScript ، لتحويل مصفوفة واحدة إلى أخرى ، يمكنك استخدام [طريقة `map` للمصفوفة:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
 ```
 
-You'll use `map` to transform your `history` of moves into React elements representing buttons on the screen, and display a list of buttons to "jump" to past moves. Let's `map` over the `history` in the Game component:
+ستستخدم `map` لتحويل `history` من الخطوات إلى عناصر React تمثل الأزرار على الشاشة ، وعرض قائمة من الأزرار لـ "القفز" إلى الخطوات السابقة. دعنا نمرر `map` على `history` في مكون Game:
 
 ```js {11-13,15-27,35}
 export default function Game() {
@@ -2080,15 +2078,15 @@ export default function Game() {
   }
 
   function jumpTo(nextMove) {
-    // TODO
+    // مَهمَّة
   }
 
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'انتقل إلى الخطة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li>
@@ -2110,7 +2108,13 @@ export default function Game() {
 }
 ```
 
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says: ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.`` You'll fix this error in the next section.
+يمكنك رؤية ما يجب أن يبدو عليه الكود أدناه. لاحظ أنه يجب أن ترى خطأ في أدوات المطورين يقول: 
+
+``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.``
+
+``تحذير: يجب أن يكون لكل طفل في مصفوفة أو محدد خاصية "مفتاح" فريدة. تحقق من طريقة العرض لـ `Game`.``
+
+ ستقوم بإصلاح هذا الخطأ في القسم التالي.
 
 <Sandpack>
 
@@ -2142,9 +2146,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -2180,15 +2184,15 @@ export default function Game() {
   }
 
   function jumpTo(nextMove) {
-    // TODO
+    // مَهمَّة
   }
 
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'انتقل إلى الخطوة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li>
@@ -2239,6 +2243,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -2277,6 +2282,8 @@ body {
 ```
 
 </Sandpack>
+
+<!-- TODO -->
 
 As you iterate through `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
 
