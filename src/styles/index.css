@@ -15,9 +15,6 @@
 .sp-layout, .sp-wrapper, .sp-stack, [translate="no"], code, pre {
   direction: ltr; /* reset direction for code blocks */
 }
-p code {
-  display: inline-block;
-}
 
 @layer base {
   @font-face {
