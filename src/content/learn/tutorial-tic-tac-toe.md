@@ -917,7 +917,7 @@ body {
 
 <Note>
 
-لبيئة التطوير المحلية، أدوات مطوري React متوفرة كإضافة لمتصفحات [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ar)، [Firefox](https://addons.mozilla.org/ar/firefox/addon/react-devtools/)، و [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil). قم بتثبيتها، وستظهر علامة التبويب *Components* في أدوات المطور لمتصفحك للمواقع التي تستخدم React.
+إن كنت تستخدم بيئة التطوير المحلية، أدوات مطوري React متوفرة كإضافة لمتصفحات [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ar)، [Firefox](https://addons.mozilla.org/ar/firefox/addon/react-devtools/)، و [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil). قم بتثبيتها، وستظهر علامة التبويب *Components* في أدوات المطور لمتصفحك للمواقع التي تستخدم React.
 
 </Note>
 
@@ -957,7 +957,7 @@ export default function Board() {
 ]
 ```
 
-الآن يحتاج مكون `Board` إلى تمرير خاصية (prop) `value` إلى كل `Square` يقوم بعرضه:
+الآن يحتاج مكون `Board` إلى تمرير خاصية `value` إلى كل `Square` يقوم بعرضه:
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -984,7 +984,7 @@ export default function Board() {
 }
 ```
 
-الآن، ستعدل مكون `Square` ليستقبل خاصية (prop) `value` من مكون `Board`. هذا يتطلب إزالة تتبع مكون `Square` لحالة `value` وخاصية (prop) `onClick` من الزر:
+الآن، ستعدل مكون `Square` ليستقبل خاصية `value` من مكون `Board`. هذا يتطلب إزالة تتبع مكون `Square` لحالة `value` وخاصية  `onClick` من الزر:
 
 ```js {1,2}
 function Square({value}) {
@@ -1096,7 +1096,7 @@ function Square({ value }) {
 }
 ```
 
-الآن، ستضيف دالة `onSquareClick` إلى خاصية (prop) `Square`:
+الآن، ستضيف دالة `onSquareClick` إلى خاصية  `Square`:
 
 ```js {1}
 function Square({ value, onSquareClick }) {
@@ -1152,7 +1152,7 @@ export default function Board() {
 
 </Note>
 
-الآن، يمكنك إضافة الـXـات إلى اللوحة... لكن فقط للمربع العلوي الأيسر. دالة `handleClick` مبرمجة بشكل صلب لتحديث المربع العلوي الأيسر (`0`). دعنا نحدث `handleClick` لتتمكن من تحديث أي مربع. أضف وسيطًا `i` إلى دالة `handleClick` التي تأخذ رقم المربع لتحديثه:
+الآن، يمكنك إضافة الـXـات إلى اللوحة... لكن فقط للمربع العلوي الأيسر. دالة `handleClick` مبرمجة بشكل يدوي لتحديث المربع العلوي الأيسر (`0`). دعنا نحدث `handleClick` لتتمكن من تحديث أي مربع. أضف وسيطًا `i` إلى دالة `handleClick` التي تأخذ رقم المربع لتحديثه:
 
 ```js {4,6}
 export default function Board() {
@@ -1186,7 +1186,7 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 <Note>
 
-عمليات إعادة التصيير كثيرة جدًا. يحدّ React عدد عمليات إعادة التصيير لمنع حدوث حلقة لا نهائية.
+الترجمة: عمليات إعادة التصيير كثيرة جدًا. يحدّ React عدد عمليات إعادة التصيير لمنع حدوث حلقة لا نهائية.
 
 </Note>
 
