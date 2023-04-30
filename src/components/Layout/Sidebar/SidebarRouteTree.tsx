@@ -152,7 +152,7 @@ export function SidebarRouteTree({
                 )}
                 <h3
                   className={cn(
-                    'mb-1 text-sm font-bold ml-5 text-tertiary dark:text-tertiary-dark',
+                    'mb-1 text-sm font-bold mr-5 text-tertiary dark:text-tertiary-dark',
                     index !== 0 && 'mt-2'
                   )}>
                   {sectionHeader}
