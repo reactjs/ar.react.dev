@@ -103,9 +103,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'الذهاب إلى الخطوة #' + move;
+      description = 'انتقل إلى الخطوة #' + move;
     } else {
-      description = 'اذهب إلى بداية اللعبة';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li key={move}>
@@ -189,7 +189,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -254,7 +254,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -499,7 +499,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -702,7 +702,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -899,7 +899,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -1073,7 +1073,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -1334,7 +1334,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -1540,7 +1540,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -1742,7 +1742,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -2046,7 +2046,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -2277,7 +2277,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -2509,7 +2509,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -2734,7 +2734,7 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
@@ -2777,9 +2777,9 @@ export default function Game() {
 - تخزن تاريخ اللعبة مع تقدم اللعبة،
 - تسمح للاعبين بمراجعة تاريخ اللعبة ورؤية الإصدارات السابقة من لوحة اللعبة.
 
-Nice work! We hope you now feel like you have a decent grasp of how React works.
+عمل رائع! نأمل أن يكون لديك الآن فهمًا جيدًا لكيفية عمل React.
 
-Check out the final result here:
+شاهد النتيجة النهائية هنا:
 
 <Sandpack>
 
@@ -2811,9 +2811,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -2857,9 +2857,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'انتقل إلى الخطوة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li key={move}>
@@ -2910,6 +2910,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -2942,18 +2943,18 @@ body {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 ```
 
 </Sandpack>
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game, listed in order of increasing difficulty:
+إذا كان عندك وقت إضافي، أو تريد ممارسة مهاراتك الجديدة في React، فإليك بعض الأفكار لتحسين لعبة tic-tac-toe، مرتبة حسب صعوبتها:
 
-1. For the current move only, show "You are at move #..." instead of a button.
-1. Rewrite `Board` to use two loops to make the squares instead of hardcoding them.
-1. Add a toggle button that lets you sort the moves in either ascending or descending order.
-1. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
-1. Display the location for each move in the format (row, col) in the move history list.
+1. في الخطوة الحالية فقط، اعرض "أنت في الخطوة #..." بدلاً من زر.
+1. أعد كتابة `Board` لاستخدام حلقتين (loop) لإنشاء المربعات بدلاً من كتابتها يدويًا.
+1. أضف زر تبديل يتيح لك فرز الخطوات بترتيب تصاعدي أو تنازلي.
+1. عندما يفوز أحد، قم بتمييز المربعات الثلاثة التي تسببت في الفوز (وعندما لا يفوز أحد، عرض رسالة حول نتيجة اللعبة).
+1. عرض الموقع لكل خطوة في التنسيق (الصف، العمود) في قائمة تاريخ الخطوات.
 
-Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when build an app's UI.
+طوال هذا الدليل التطبيقي لمست مفاهيم React بما في ذلك العناصر (elements)، والمكونات (components)، والخصائص (props)، والحالة (state). الآن بعد أن رأيت كيف تعمل هذه المفاهيم عند بناء لعبة، تفقد [التفكير في React](/learn/thinking-in-react) لمعرفة كيف تعمل نفس المفاهيم في React عند بناء واجهة مستخدم تطبيق.
