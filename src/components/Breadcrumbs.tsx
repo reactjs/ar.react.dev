@@ -20,7 +20,7 @@ function Breadcrumbs({breadcrumbs}: {breadcrumbs: RouteItem[]}) {
                     {crumb.title}
                   </a>
                 </Link>
-                <span className="inline-block mr-1 text-link dark:text-link-dark text-lg">
+                <span className="inline-block ml-1 rotate-180 text-link dark:text-link-dark text-lg">
                   <svg
                     width="20"
                     height="20"

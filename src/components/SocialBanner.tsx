@@ -37,7 +37,7 @@ export default function SocialBanner() {
       )}>
       <div className="hidden sm:block">{bannerText}</div>
       <ExternalLink
-        className="ml-0 sm:ml-1 text-link dark:text-link-dark hover:underline"
+        className="mr-0 sm:mr-1 text-link dark:text-link-dark hover:underline"
         href={bannerLink}>
         <div className="inline sm:hidden">🇺🇦 </div>
         {bannerLinkText}

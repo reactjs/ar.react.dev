@@ -76,7 +76,7 @@ function FooterLink({
         )}>
         <IconNavArrow
           className="text-tertiary dark:text-tertiary-dark inline group-focus:text-link dark:group-focus:text-link-dark"
-          displayDirection={type === 'Previous' ? 'left' : 'right'}
+          displayDirection={type === 'Previous' ? 'right' : 'left'}
         />
         <span>
           <span className="block no-underline text-sm tracking-wide text-secondary dark:text-secondary-dark uppercase font-bold group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">

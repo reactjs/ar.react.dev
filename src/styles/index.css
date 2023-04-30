@@ -9,11 +9,11 @@
 /* 
   Arabic is a right-to-left language, so we need to set the direction of the page to rtl.
 */
-[lang='ar']
-  :is(h1, h2, h3, h4, h5, h6, p, blockquote, figure, table, input, select, textarea),
-[lang='ar'] :not(code, pre, .sp-layout) :is(ul, ol, li),
-#__next > div {
+[lang='ar'] {
   direction: rtl;
+}
+.sp-layout, .sp-wrapper, .sp-stack, [translate="no"] {
+  direction: ltr; /* reset direction for code blocks */
 }
 
 @layer base {
@@ -570,7 +570,7 @@ html.dark .code-step * {
 .mdx-heading {
   scroll-margin-top: calc(4rem + 20px);
   /* Space for the anchor */
-  padding-right: 1em;
+  padding-inline-end: 1em;
 }
 
 .mdx-heading:before {
@@ -639,7 +639,7 @@ ol.mdx-illustration-block {
   display: block;
   position: absolute;
   top: 50%;
-  right: 100%;
+  left: 100%;
   transform: translateY(-50%);
   width: 60px;
   height: 49px;
@@ -663,8 +663,8 @@ ol.mdx-illustration-block {
   }
   .mdx-illustration-block li:after {
     top: 0;
-    left: 50%;
-    right: auto;
+    right: 50%;
+    left: auto;
     transform: translateX(-50%) translateY(-100%) rotate(90deg);
   }
 }
