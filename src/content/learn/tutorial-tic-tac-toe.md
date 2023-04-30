@@ -2283,58 +2283,58 @@ body {
 
 </Sandpack>
 
-<!-- TODO -->
+بمجرد أن تمر على مصفوفة `history` بالدالة التي قمت بتمريرها إلى `map`، فإن معامل `squares` argument يمر على كل عنصر من عناصر `history`، ومعامل `move` يمر على كل مسلسل في المصفوفة: `0`، `1`، `2`، …. (في معظم الحالات، ستحتاج إلى عناصر المصفوفة الفعلية، ولكن لتقديم قائمة من الخطوات، ستحتاج فقط إلى الفهارس.)
 
-As you iterate through `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+لكل حركة في تاريخ لعبة tic-tac-toe، تنشئ عنصر قائمة `<li>` يحتوي على زر `<button>`. يحتوي الزر على معالج `onClick` الذي يستدعي دالة تسمى `jumpTo` (التي لم تقم بتنفيذها بعد).
 
-For each move in the tic-tac-toe game's history, you create a list item `<li>` which contains a button `<button>`. The button has an `onClick` handler which calls a function called `jumpTo` (that you haven't implemented yet).
+إلى الآن، يجب أن ترى قائمة بالخطوات التي حدثت في اللعبة وخطأ في وحدة تحكم المطورين. دعنا نناقش ما يعنيه خطأ "المفتاح".
 
-For now, you should see a list of the moves that occurred in the game and an error in the developer tools console. Let's discuss what the "key" error means.
+### اختيار مفتاح {/*اختيار-مفتاح*/}
 
-### Picking a key {/*picking-a-key*/}
+عندما تعرض قائمة، تخزن React بعض المعلومات عن كل عنصر في القائمة التي تم عرضها. عندما تقوم بتحديث قائمة، يحتاج React إلى تحديد ما تغير. يمكنك أن تكون قد أضفت، أزلت، رتبت أو عدلت عناصر القائمة.
 
-When you render a list, React stores some information about each rendered list item. When you update a list, React needs to determine what has changed. You could have added, removed, re-arranged, or updated the list's items.
-
-Imagine transitioning from
+تخيل الانتقال من
 
 ```html
-<li>Alexa: 7 tasks left</li>
-<li>Ben: 5 tasks left</li>
+<li>عصام: 7 مهمات متبقية</li>
+<li>هند: 5 مهمات متبقية</li>
 ```
 
-to
+إلى
 
 ```html
-<li>Ben: 9 tasks left</li>
-<li>Claudia: 8 tasks left</li>
-<li>Alexa: 5 tasks left</li>
+<li>هند: 9 مهمات متبقية</li>
+<li>سعيد: 8 مهمات متبقية</li>
+<li>عصام: 5 مهمات متبقية</li>
 ```
 
-In addition to the updated counts, a human reading this would probably say that you swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and can't know what you intended, so you need to specify a _key_ property for each list item to differentiate each list item from its siblings. If your data was from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
+بالإضافة إلى العدادات المحدثة، فإن الإنسان الذي يقرأ هذا سيقول على الأرجح أنك قمت بتبديل ترتيب عصام وهند، وأضفت سعيد بينهما، ومع ذلك React هو برنامج حاسوبي ولا يمكنه معرفة ما كنت تقصده، لذا تحتاج إلى تحديد خاصية مفتاحية _key_ لكل عنصر في القائمة للتمييز بين كل عنصر في القائمة وإخوته. إذا كانت بياناتك من قاعدة بيانات، فيمكن استخدام معرفات قاعدة بيانات (ID). الـid الخاص بهند وعصام وسعيد.
+
+When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort:
 
 ```js {1}
 <li key={user.id}>
-  {user.name}: {user.taskCount} tasks left
+  {user.name}: {user.taskCount} مهمات متبقية
 </li>
 ```
 
-When a list is re-rendered, React takes each list item's key and searches the previous list's items for a matching key. If the current list has a key that didn't exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved.
+عندما يتم إعادة عرض القائمة، تأخد React كل مفتاح عنصر وتبحث في القائمة السابقة عن عنصر متطابق. إذا كانت القائمة الحالية تحتوي على مفتاح لم يكن موجودًا من قبل، فإن React ينشئ عنصرًا. إذا كانت القائمة الحالية تفتقد مفتاحًا كان موجودًا في القائمةالسابقة فإن React تزيل المكون السابق. إذا تطابق مفتاحان، فإن المكون المقابل يتم نقله.
 
-Keys tell React about the identity of each component, which allows React to maintain state between re-renders. If a component's key changes, the component will be destroyed and re-created with a new state.
+تخبر المفاتيح React عن هوية كل مكون، مما يسمح لـ React بالحفاظ على الحالة بين إعادة العرض. إذا تغير مفتاح المكون، فإن المكون سيتم تدميره وإعادة إنشائه مع حالة جديدة.
 
-`key` is a special and reserved property in React. When an element is created, React extracts the `key` property and stores the key directly on the returned element. Even though `key` may look like it is passed as props, React automatically uses `key` to decide which components to update. There's no way for a component to ask what `key` its parent specified.
+`key` هو خاصية محجوزة في React. عند إنشاء عنصر، تقوم React بإستخراج خاصية `key` وتخزينها مباشرة على العنصر المعاد. على الرغم من أن `key` قد يبدو كما لو أنه يمر كخاصية، إلا أن React تستخدم `key` تلقائيًا لتحديد أي مكونات يجب تحديثها. لا يوجد طريقة للمكون لمعرفة ما هو `key` الذي حدده المكون الأب.
 
-**It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key, you may want to consider restructuring your data so that you do.
+**نوصي بشدة تعيين مفاتيح مناسبة كلما قمت ببناء قوائم ديناميكية.** إذا لم يكن لديك مفتاح مناسب، قد ترغب في إعادة هيكلة بياناتك بحيث تفعل ذلك.
 
-If no key is specified, React will report an error and use the array index as a key by default. Using the array index as a key is problematic when trying to re-order a list's items or inserting/removing list items. Explicitly passing `key={i}` silences the error but has the same problems as array indices and is not recommended in most cases.
+إذا لم يتم تحديد مفتاح، فإن React ستقوم بإرجاع خطأ واستخدام مؤشر المصفوفة كمفتاح افتراضي. استخدام مؤشر المصفوفة كمفتاح يسبب مشاكل عند محاولة إعادة ترتيب عناصر القائمة أو إضافة/إزالة عناصر للقائمة. تمرير `key={i}` لا تظهر خطأً ولكن لها نفس المشاكل مثل مسلسلات المصفوفة ولا يوصى بها في معظم الحالات.
 
-Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+لا تحتاج المفاتيح إلى تكون فريدة مطلقًا على مستوى البرنامج (Global)، فهي تحتاج فقط إلى أن تكون فريدة بين المكونات وإخوتها.
 
-### Implementing time travel {/*implementing-time-travel*/}
+### تنفيذ السفر عبر الزمن {/*implementing-time-travel*/}
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. Moves will never be re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+في تاريخ لعبة tic-tac-toeK كل نقلة سابقة لها معرف فريد مرتبط بها: إنها الرقم التسلسلي للنقلة. لن يتم إعادة ترتيب النقلات، أو حذفها، أو إدراجها في الوسط، لذلك فمن الآمن استخدام مؤشر النقلة كمفتاح.
 
-In the `Game` function, you can add the key as `<li key={move}>`, and if you reload the rendered game, React's "key" error should disappear:
+في دالة `Game`، يمكنك إضافة المفتاح كـ `<li key={move}>`، وإذا قمت بإعادة تحميل اللعبة المعروضة، فإن خطأ "key" في React يجب أن يختفي:
 
 ```js {4}
 const moves = history.map((squares, move) => {
@@ -2377,9 +2377,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -2421,9 +2421,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'انتقل إلى الحركة #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'انتقل إلى بداية اللعبة';
     }
     return (
       <li key={move}>
@@ -2475,6 +2475,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -2513,6 +2514,8 @@ body {
 ```
 
 </Sandpack>
+
+<!-- TODO -->
 
 Before you can implement `jumpTo`, you need the `Game` component to keep track of which step the user is currently viewing. To do this, define a new state variable called `currentMove`, defaulting to `0`:
 
