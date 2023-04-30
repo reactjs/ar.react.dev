@@ -1423,15 +1423,15 @@ export default function Board() {
 }
 ```
 
-Now, as you click on different squares, they will alternate between `X` and `O`, as they should!
+الآن، بمجرد أن تضغط على مربعات مختلفة، سيتبدلون بين `X` و `O`، كما يجب أن يكونوا!
 
-But wait, there's a problem. Try clicking on the same square multiple times:
+لكن لحظة، هناك مشكلة. جرب النقر على نفس المربع عدة مرات:
 
-![O overwriting an X](../images/tutorial/o-replaces-x.gif)
+![O تطغى على X](../images/tutorial/o-replaces-x.gif)
 
-The `X` is overwritten by an `O`! While this would add a very interesting twist to the game, we're going to stick to the original rules for now.
+الـ `X` تمت الكتابة فوقها بـ `O`! بينما سيضيف هذا لمسة مثيرة للاهتمام للعبة، سنلتزم بالقواعد الأصلية الآن.
 
-When you mark a square with a `X` or an `O` you aren't first checking to see if the square already has a `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has a `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+عندما تحدد مربع بـ `X` أو `O` فأنت لا تتحقق أولاً مما إذا كان المربع يحتوي بالفعل على قيمة `X` أو `O`. يمكنك إصلاح هذا عن طريق *الخروج مبكرًا*. ستتحقق مما إذا كان المربع يحتوي بالفعل على `X` أو `O`. إذا كان المربع ممتلئًا بالفعل، فستقوم بـ `return` في دالة `handleClick` مبكرًا - قبل محاولة تحديث حالة اللوحة.
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1443,7 +1443,7 @@ function handleClick(i) {
 }
 ```
 
-Now you can only add `X`'s or `O`'s to empty squares! Here is what your code should look like at this point:
+يمكنك الآن إضافة `X` أو `O` إلى المربعات الفارغة فقط! هنا ما يجب أن يبدو عليه الكود الخاص بك في هذه المرحلة:
 
 <Sandpack>
 
@@ -1507,6 +1507,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  direction: rtl;
 }
 
 .square {
@@ -1545,9 +1546,9 @@ body {
 
 </Sandpack>
 
-### Declaring a winner {/*declaring-a-winner*/}
+### الإعلان عن الفائز {/*declaring-a-winner*/}
 
-Now that the players can take turns, you'll want to show when the game is won and there are no more turns to make. To do this you'll add a helper function called `calculateWinner` that takes an array of 9 squares, checks for a winner and returns `'X'`, `'O'`, or `null` as appropriate. Don't worry too much about the `calculateWinner` function; it's not specific to React:
+الآن بما أن اللاعبين يمكنهم التناوب، ستريد أن تظهر عندما يفوز اللاعب ولا يوجد المزيد من الدورات للعب. للقيام بذلك، ستضيف دالة مساعدة تسمى `calculateWinner` تأخذ مصفوفة من 9 مربعات، وتتحقق من الفائز وتعيد `'X'`، `'O'`، أو `null` حسب الاقتضاء. لا تقلق كثيرًا بشأن دالة `calculateWinner` ليست شيئًا خاصًا بـ React. إنها مجرد JavaScript.
 
 ```js App.js
 export default function Board() {
@@ -1577,11 +1578,11 @@ function calculateWinner(squares) {
 
 <Note>
 
-It does not matter whether you define `calculateWinner` before or after the `Board`. Let's put it at the end so that you don't have to scroll past it every time you edit your components.
+لا يهم ما إذا أعلنت عن `calculateWinner` قبل أو بعد `Board`. دعنا نضعها في النهاية حتى لا تضطر إلى التمرير فوقها في كل مرة تقوم فيها بتحرير مكوناتك.
 
 </Note>
 
-You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has a `X` or and `O`. We'd like to return early in both cases:
+ستنادي دالة `calculateWinner(squares)` في دالة `handleClick` الخاصة بمكون `Board` للتحقق مما إذا كان اللاعب قد فاز. يمكنك تنفيذ هذا التحقق في نفس الوقت الذي تتحقق فيه مما إذا كان المستخدم قد نقر على مربع يحتوي بالفعل على `X` أو `O`. نود أن نوقف تنفيذ الدالة في كلا الحالتين:
 
 ```js {2}
 function handleClick(i) {
@@ -1593,7 +1594,7 @@ function handleClick(i) {
 }
 ```
 
-To let the players know when the game is over, you can display text such as "Winner: X" or "Winner: O". To do that you'll add a `status` section to the `Board` component. The status will display the winner if the game is over and if the game is ongoing you'll display which player's turn is next:
+لإعلام اللاعبين عندما تنتهي اللعبة، يمكنك عرض نص مثل "الفائز: X" أو "الفائز: O". للقيام بذلك، ستضيف قسم `status` إلى مكون `Board`. سيعرض `status` الفائز إذا انتهت اللعبة وإذا كانت اللعبة قائمة ستعرض أي لاعب هو الأول:
 
 ```js {3-9,13}
 export default function Board() {
@@ -1601,9 +1602,9 @@ export default function Board() {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = "الفائز هو: " + winner;
   } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
+    status = "اللاعب التالي: " + (xIsNext ? "X" : "O");
   }
 
   return (
@@ -1615,7 +1616,7 @@ export default function Board() {
 }
 ```
 
-Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So _you_ are the real winner here. Here is what the code should look like:
+مبارك! لديك الآن لعبة tic-tac-toe تعمل. ولقد تعلمت للتو أساسيات React أيضًا. لذا أنت الفائز الحقيقي هنا. هنا ما يجب أن يبدو الكود:
 
 <Sandpack>
 
@@ -1651,9 +1652,9 @@ export default function Board() {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'الفائز هو: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'اللاعب التالي: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
