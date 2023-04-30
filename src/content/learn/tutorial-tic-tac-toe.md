@@ -1397,8 +1397,6 @@ function Board() {
 }
 ```
 
-Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. You'll update the `Board`'s `handleClick` function to flip the value of `xIsNext`:
-
 في كل مرة يتحرك لاعب، سيتم تبديل `xIsNext` (قيمة منطقية) لتحديد أي لاعب يأتي بعد ذلك وسيتم حفظ حالة اللعبة. ستقوم بتحديث دالة `handleClick` في `Board` لتبديل قيمة `xIsNext`:
 
 ```js {7,8,9,10,11,13}
