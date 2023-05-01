@@ -1,8 +1,10 @@
 ---
-title: بدء مشروع React جديد 
+title: ابدأ مشروع React جديد 
 ---
 
 <Intro>
+
+إذا كنت تريد بناء تطبيق أو موقع جديد كلياً باستخدام React، ننصح بإختيار أحد إطارات العمل الخاصة بـReact الشعبية في مجتمع React. حيث أن إطارات العمل توفر ميزات سوف يحتاجها أغلب التطبيقات والمواقع، تتضمن: التوجيه (routing) و جلب البيانات (data fetching) وتوليد HTML.
 
 If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community. Frameworks provide features that most apps and sites eventually need, including routing, data fetching, and generating HTML.
 
@@ -10,13 +12,19 @@ If you want to build a new app or a new website fully with React, we recommend p
 
 <Note>
 
+**تحتاج لتنصيب [Node.js](https://nodejs.org/en/) للتطوير المحلي.** يمكنك *أيضا* أن تختار استخدام Node.js في الإنتاج لكن لست بحاجة لذلك، حيث أن العديد من أطر عمل React تدعم تصدير مجلد ثابت (static) يحوي على HTML/CSS/JS.
+
 **You need to install [Node.js](https://nodejs.org/en/) for local development.** You can *also* choose to use Node.js in production, but you don't have to. Many React frameworks support export to a static HTML/CSS/JS folder.
 
 </Note>
 
-## Production-grade React frameworks {/*production-grade-react-frameworks*/}
+## أطر عمل React على درجة الإنتاج {/*production-grade-react-frameworks*/}
+
+## Production-grade React frameworks {/**/} {/*production-grade-react-frameworks-*/}
 
 ### Next.js {/*nextjs*/}
+
+**[Next.js](https://nextjs.org/) هو إطار عمل React كامل (full-stack).** متعدد الإستخدامات حيث يمكّنك من إنشاء تطبيق React بأي حجم-- من مدونة اغلبها ثابت إلى تطبيق دايناميكي معقد. لإنشاء مشروع Next.js جديد، نفذ في الـterminal:
 
 **[Next.js](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
 
@@ -24,17 +32,29 @@ If you want to build a new app or a new website fully with React, we recommend p
 npx create-next-app
 </TerminalBlock>
 
+لتعلم Next.js، إطلع على [الدرس تعليمي لـ Next.js](https://nextjs.org/learn/foundations/about-nextjs)
+
+
+يتم الإشراف على Next.js من قبل [Vercel](https://vercel.com/). تستطيع [نشر تطبيق Next.js](https://nextjs.org/docs/deployment) على أي استضافة Node.js أو serverless، أو مخدمك الخاص. [تطبيقات Next.js الثابتة بالكامل](https://nextjs.org/docs/advanced-features/static-html-export) يمكن نشرها على أي استضافة ثابتة.
+
 If you're new to Next.js, check out the [Next.js tutorial.](https://nextjs.org/learn/foundations/about-nextjs)
 
 Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/deployment) to any Node.js or serverless hosting, or to your own server. [Fully static Next.js apps](https://nextjs.org/docs/advanced-features/static-html-export) can be deployed to any static hosting.
 
 ### Remix {/*remix*/}
 
+**[Remix](https://remix.run/) هو إطار عمل React كامل (full-stack) مع توجيه متداخل (nested routing).** يمكنك من تقسيم تطبيقك إلى أجزاء متداخلة تستطيع تحميل البيانات على التوازي والتحديث استجابةً لأفعال المستخدم. لإنشاء مشروع Remix جديد، نفذ:
+
 **[Remix](https://remix.run/) is a full-stack React framework with nested routing.** It lets you break your app into nested parts that can load data in parallel and refresh in response to the user actions. To create a new Remix project, run:
 
 <TerminalBlock>
 npx create-remix
 </TerminalBlock>
+
+لتعلم Remix، إطلع على [درس المدونة](https://remix.run/docs/en/main/tutorials/blog) (قصير) [ودرس التطبيق](https://remix.run/docs/en/main/tutorials/jokes) (طويل).
+
+
+يتم الإشراف على Remix من قبل [Shopify](https://www.shopify.com/). عند إنشاء مشروع Remix ستحتاج [لاختيار هدف النشر](https://remix.run/docs/en/main/guides/deployment). يمكنك نشر تطبيق Remix على أي استضافة Node.js أو serverless باستخدام أو كتابة [محول (adapter)](https://remix.run/docs/en/main/other-api/adapter).
 
 If you're new to Remix, check out the Remix [blog tutorial](https://remix.run/docs/en/main/tutorials/blog) (short) and [app tutorial](https://remix.run/docs/en/main/tutorials/jokes) (long).
 
