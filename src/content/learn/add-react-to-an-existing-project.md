@@ -1,53 +1,53 @@
 ---
-title: Add React to an Existing Project
+title: إضافة React إلى مشروع موجود بالفعل
 ---
 
 <Intro>
 
-If you want to add some interactivity to your existing project, you don't have to rewrite it in React. Add React to your existing stack, and render interactive React components anywhere.
+إذا كنت تريد إضافة بعض التفاعلية إلى مشروعك الموجود بالفعل ، فليس عليك إعادة كتابته في React. أضف React إلى مجموعة الأدوات الموجودة لديك ، وقم بتقديم مكونات React التفاعلية في أي مكان.
 
 </Intro>
 
 <Note>
 
-**You need to install [Node.js](https://nodejs.org/en/) for local development.** Although you can [try React](/learn/installation#try-react) online or with a simple HTML page, realistically most JavaScript tooling you'll want to use for development requires Node.js.
+**تحتاج إلى تثبيت [Node.js](https://nodejs.org/ar) إلى بيئة التطوير المحلية الخاصة بك.** على الرغم من أنه يمكنك [تجربة React](/learn/installation#try-react) عبر الإنترنت أو باستخدام صفحة HTML بسيطة ، إلا أن معظم أدوات JavaScript التي تريد استخدامها للتطوير تتطلب Node.js.
 
 </Note>
 
-## Using React for an entire subroute of your existing website {/*using-react-for-an-entire-subroute-of-your-existing-website*/}
+## استخدام React لمسار فرعي كامل من موقع الويب الحالي الخاص بك {/*using-react-for-an-entire-subroute-of-your-existing-website*/}
 
-Let's say you have an existing web app at `example.com` built with another server technology (like Rails), and you want to implement all routes starting with `example.com/some-app/` fully with React.
+لنفترض أن لديك تطبيق ويب موجود على `example.com` مبني بتقنية خادم أخرى (مثل Rails) ، وتريد تنفيذ جميع المسارات التي تبدأ بـ `example.com/some-app/` بالكامل مع React.
 
-Here's how we recommend to set it up:
+هنا ما نوصي به لإعداده:
 
-1. **Build the React part of your app** using one of the [React-based frameworks](/learn/start-a-new-react-project).
-2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
-3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+1. **بناء الجزء الخاص بـ React في تطبيقك** باستخدام إحدى [الإطارات القائمة على React](/learn/start-a-new-react-project).
+2. **حدد `/some-app` كـ *مسار أساسي*** في إعدادات إطار العمل الخاص بك (هنا كيف مع: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **قم بتكوين خادمك أو بروكسي** بحيث يتم التعامل مع جميع الطلبات تحت `/some-app/` من قبل تطبيق React الخاص بك.
 
-This ensures the React part of your app can [benefit from the best practices](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) baked into those frameworks.
+يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) المدمجة في تلك الإطارات.
 
-Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
+العديد من الإطارات القائمة على React هي إطارات full-stack وتتيح لتطبيق React الخاص بك الاستفادة من الخادم. ومع ذلك ، يمكنك استخدام نفس النهج حتى إذا لم تتمكن أو لا تريد تشغيل JavaScript على الخادم. في هذه الحالة ، قم بتصدير HTML/CSS/JS ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) لـ Next.js ، هذا هو الافتراضي لـ Gatsby) في `/some-app/` بدلاً من ذلك.
 
-## Using React for a part of your existing page {/*using-react-for-a-part-of-your-existing-page*/}
+## استخدام React لجزء من صفحتك الحالية {/*using-react-for-a-part-of-your-existing-page*/}
 
-Let's say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That's a common way to integrate React--in fact, it's how most React usage looked at Meta for many years!
+لنفترض أن لديك صفحة موجودة على `example.com` مبنية بتقنية أخرى (إما خادم مثل Rails أو عميل مثل Backbone) ، وتريد تقديم مكونات React التفاعلية في أي مكان على تلك الصفحة. هذه هي الطريقة الشائعة لدمج React - في الواقع ، هذا هو شكل معظم استخدام React في [Meta](https://about.meta.com/) لسنوات عديدة!
 
-You can do this in two steps:
+يمكنك القيام بذلك في خطوتين:
 
-1. **Set up a JavaScript environment** that lets you use the [JSX syntax](/learn/writing-markup-with-jsx), split your code into modules with the [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) syntax, and use packages (for example, React) from the [npm](https://www.npmjs.com/) package registry.
-2. **Render your React components** where you want to see them on the page.
+1. **إعداد بيئة JavaScript** والتي تمكنك من استخدام [بنية JSX](/learn/writing-markup-with-jsx)، وتقسيم الكود إلى وحدات مع الكلمات المفتاحية [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) / [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) ، واستخدام الحزم (على سبيل المثال ، React) من [مدير الحزم npm](https://www.npmjs.com/).
+2. **قم بتصيير مكونات React** حيث تريد رؤيتها على الصفحة.
 
-The exact approach depends on your existing page setup, so let's walk through some details.
+نفس النهج يعتمد على إعداد صفحتك الحالية ، لذلك دعنا نتناول بعض التفاصيل.
 
-### Step 1: Set up a modular JavaScript environment {/*step-1-set-up-a-modular-javascript-environment*/}
+### الخطوة 1: إعداد بيئة JavaScript معمارية (modular) {/*step-1-set-up-a-modular-javascript-environment*/}
 
-A modular JavaScript environment lets you write your React components in individual files, as opposed to writing all of your code in a single file. It also lets you use all the wonderful packages published by other developers on the [npm](https://www.npmjs.com/) registry--including React itself! How you do this depends on your existing setup:
+بيئة JavaScript المعمارية تسمح لك بكتابة مكونات React في ملفات منفصلة، بدلاً من كتابة كل الكود في ملف واحد. كما تتيح لك استخدام جميع الحزم الرائعة التي نشرها مطورون آخرون على [مدير الحزم npm](https://www.npmjs.com/) - بما في ذلك React نفسه! كيفية القيام بذلك تعتمد على إعدادك الحالي:
 
-* **If your app is already split into files that use `import` statements,** try to use the setup you already have. Check whether writing `<div />` in your JS code causes a syntax error. If it causes a syntax error, you might need to [transform your JavaScript code with Babel](https://babeljs.io/setup), and enable the [Babel React preset](https://babeljs.io/docs/babel-preset-react) to use JSX.
+* **إذا كان تطبيقك مقسم بالفعل إلى ملفات تستخدم عبارات `import`**، فحاول استخدام الإعداد الذي لديك بالفعل. تحقق مما إذا كان كتابة `<div />` في كود JS الخاص بك يسبب خطأ في البناء. إذا تسبب في خطأ في البناء، فقد تحتاج إلى [تحويل كود JavaScript الخاص بك باستخدام Babel](https://babeljs.io/setup)، وتمكين [Babel React preset](https://babeljs.io/docs/babel-preset-react) لاستخدام JSX.
 
-* **If your app doesn't have an existing setup for compiling JavaScript modules,** set it up with [Vite](https://vitejs.dev/). The Vite community maintains [many integrations with backend frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), including Rails, Django, and Laravel. If your backend framework is not listed, [follow this guide](https://vitejs.dev/guide/backend-integration.html) to manually integrate Vite builds with your backend.
+* **إذا لم يكن لتطبيقك إعداد حالي لتجميع وحدات JavaScript**، فقم بإعداده مع [Vite](https://vitejs.dev/). تحتفظ مجتمع Vite بـ [العديد من التكاملات مع إطارات العمل الخلفية](https://github.com/vitejs/) ، بما في ذلك Rails و Django و Laravel. إذا لم يتم سرد إطار عمل الخلفية الخاص بك، [اتبع هذه الإرشادات](https://vitejs.dev/guide/backend-integration.html) لدمج بناء Vite يدويًا مع إطار عملك.
 
-To check whether your setup works, run this command in your project folder:
+للتحقق مما إذا كان إعدادك يعمل، قم بتشغيل هذا الأمر في مجلد مشروعك:
 
 <TerminalBlock>
 npm install react react-dom
