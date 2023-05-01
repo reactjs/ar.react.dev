@@ -560,7 +560,7 @@ html.dark .code-step * {
 .mdx-heading {
   scroll-margin-top: calc(4rem + 20px);
   /* Space for the anchor */
-  padding-right: 1em;
+  padding-left: 1em;
 }
 
 .mdx-heading:before {
@@ -712,4 +712,8 @@ ol.mdx-illustration-block {
   to {
     width: 100%;
   }
+}
+[lang='ar'] :is(h1, h2, h3, h4, h5, h6, p),
+[lang='ar'] :not(code, pre, .sp-layout) :is(ul, ol, li) {
+  direction: rtl;
 }

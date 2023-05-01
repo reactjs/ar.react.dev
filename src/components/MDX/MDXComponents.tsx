@@ -62,13 +62,13 @@ const Strong = (strong: JSX.IntrinsicElements['strong']) => (
 );
 
 const OL = (p: JSX.IntrinsicElements['ol']) => (
-  <ol className="ml-6 my-3 list-decimal" {...p} />
+  <ol className="mr-6 my-3 list-decimal" {...p} />
 );
 const LI = (p: JSX.IntrinsicElements['li']) => (
   <li className="leading-relaxed mb-1" {...p} />
 );
 const UL = (p: JSX.IntrinsicElements['ul']) => (
-  <ul className="ml-6 my-3 list-disc" {...p} />
+  <ul className="mr-6 my-3 list-disc" {...p} />
 );
 
 const Divider = () => (
@@ -173,7 +173,7 @@ function YouWillLearn({
   children: any;
   isChapter?: boolean;
 }) {
-  let title = isChapter ? 'In this chapter' : 'You will learn';
+  let title = isChapter ? 'في هذا الفصل' : 'You will learn';
   return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
@@ -402,7 +402,7 @@ export const MDXComponents = {
     return children;
   },
   MaxWidth({children}: {children: any}) {
-    return <div className="max-w-4xl ml-0 2xl:mx-auto">{children}</div>;
+    return <div className="max-w-4xl mr-0 2xl:mx-auto">{children}</div>;
   },
   Pitfall,
   Deprecated,
