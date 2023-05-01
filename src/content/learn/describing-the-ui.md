@@ -1,10 +1,10 @@
 ---
-title: Describing the UI
+title: وصف واجهات المستخدم (UI)
 ---
 
 <Intro>
 
-React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable *components.* From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you'll learn to create, customize, and conditionally display React components.
+رياكت (React) هو مكتبة جافا سكريبت لعرض واجهات المستخدم (UI). يتم بناء واجهات المستخدم (UI) من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك رياكت بأن تجمع هذه العناصر فى مكونات (components) يمكن اعادة استخدامها او تضمينها داخل بعضها البعض. من مواقع الويب الى تطبيقات الهاتف الجوال يمكن تقسم كل شئ الى مكونات (components). فى هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات (components) رياكت بشكل شرطى.
 
 </Intro>
 
