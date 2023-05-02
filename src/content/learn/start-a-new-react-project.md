@@ -12,7 +12,7 @@ If you want to build a new app or a new website fully with React, we recommend p
 
 <Note>
 
-**تحتاج لتنصيب [Node.js](https://nodejs.org/en/) للتطوير المحلي.** يمكنك *أيضا* أن تختار استخدام Node.js في الإنتاج لكن لست بحاجة لذلك، حيث أن العديد من أطر عمل React تدعم تصدير مجلد ثابت (static) يحوي على HTML/CSS/JS.
+**ستحتاج لتنصيب [Node.js](https://nodejs.org/en/) للتطوير المحلي.** يمكنك *أيضا* أن تختار استخدام Node.js في الإنتاج لكن لست بحاجة لذلك، حيث أن العديد من أطر عمل React تدعم تصدير مجلد ثابت (static) يحوي على HTML/CSS/JS.
 
 **You need to install [Node.js](https://nodejs.org/en/) for local development.** You can *also* choose to use Node.js in production, but you don't have to. Many React frameworks support export to a static HTML/CSS/JS folder.
 
@@ -24,7 +24,7 @@ If you want to build a new app or a new website fully with React, we recommend p
 
 ### Next.js {/*nextjs*/}
 
-**[Next.js](https://nextjs.org/) هو إطار عمل React كامل (full-stack).** متعدد الإستخدامات حيث يمكّنك من إنشاء تطبيق React بأي حجم-- من مدونة اغلبها ثابت إلى تطبيق دايناميكي معقد. لإنشاء مشروع Next.js جديد، نفذ في الـterminal:
+**[Next.js](https://nextjs.org/) هو إطار عمل React كامل (full-stack).** متعدد الاستخدامات حيث يمكّنك من إنشاء تطبيق React بأي حجم-- من مدونة اغلبها ثابت إلى تطبيق دايناميكي معقد. لإنشاء مشروع Next.js جديد، نفذ في الـterminal:
 
 **[Next.js](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
 
@@ -62,23 +62,39 @@ Remix is maintained by [Shopify](https://www.shopify.com/). When you create a Re
 
 ### Gatsby {/*gatsby*/}
 
+**[Gatsby](https://www.gatsbyjs.com/) هو إطار عمل React لمواقع إدارة المحتوى (CMS-backed) السريعة.** حيث يمتلك نظام إضافات (plugin) غني وطبقة بيانات GraphQL لتبسيط إدماج (integrating) المحتوى، والواجهات البرمجية (APIs)، والخدمات في موقع واحد. لإنشاء مشروع Gatsby جديد، نفذ: 
+
+
 **[Gatsby](https://www.gatsbyjs.com/) is a React framework for fast CMS-backed websites.** Its rich plugin ecosystem and its GraphQL data layer simplify integrating content, APIs, and services into one website. To create a new Gatsby project, run:
 
 <TerminalBlock>
 npx create-gatsby
 </TerminalBlock>
 
+لتعلم Gatsby، إطلع على [الدرس التعليمي لـGatsby](https://www.gatsbyjs.com/docs/tutorial/)
+
+تتم إدارة Gatsby من قبل [Netlify](https://www.netlify.com/). تستطيع [نشر موقع Gatsby ثابت بالكامل](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) على أي إستضافة ثابتة. إذا اخترت استخدام ميزات حصرية للمخدّم (server-only)، تأكد من دعم موّفر إستضافتك لهذه الخدمات لـGatsby.
+
 If you're new to Gatsby, check out the [Gatsby tutorial.](https://www.gatsbyjs.com/docs/tutorial/)
 
 Gatsby is maintained by [Netlify](https://www.netlify.com/). You can [deploy a fully static Gatsby site](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) to any static hosting. If you opt into using server-only features, make sure your hosting provider supports them for Gatsby.
 
-### Expo (for native apps) {/*expo*/}
+### Expo (لتطبيقات native) {/*expo*/}
+
+### Expo (for native apps) {/*expoo*/}
+
+**[Expo](https://expo.dev/) هو إطار عمل React يمكّنك من إنشاء تطبيقات Android، وIOS، وويب شاملة مع واجهات مستخدم (UIs) حقاً أصلية (native).** توفر مجموعة تطوير برمجيات (SDK) لـ[React Native](https://reactnative.dev/) التي تجعل الأجزاء الأصلية أسهل الاستخدام. لإنشاء مشروع Expo جديد، نفذ:
 
 **[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
 
 <TerminalBlock>
 npx create-expo-app
 </TerminalBlock>
+
+لتعلم Expo، إطلع على [الدرس التعليمي لـExpo](https://docs.expo.dev/tutorial/introduction/).
+
+يتم إدارة Expo من قبل [Expo (الشركة)](https://expo.dev/about). بناء التطبيقات باستخدام Expo مجاني، ويمكنك رفعهم إلى متاجر Google وApple بدون قيود. Expo أيضاًَ توفر اشتراك مدفوع للخدمات السحابية.
+
 
 If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
 
