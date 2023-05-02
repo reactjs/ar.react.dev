@@ -713,7 +713,3 @@ ol.mdx-illustration-block {
     width: 100%;
   }
 }
-[lang='ar'] :is(h1, h2, h3, h4, h5, h6, p),
-[lang='ar'] :not(code, pre, .sp-layout) :is(ul, ol, li) {
-  direction: rtl;
-}
