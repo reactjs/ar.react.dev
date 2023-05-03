@@ -1,62 +1,62 @@
 ---
-title: Editor Setup
+title: تجهيز محرر الأكواد
 ---
 
 <Intro>
 
-A properly configured editor can make code clearer to read and faster to write. It can even help you catch bugs as you write them! If this is your first time setting up an editor or you're looking to tune up your current editor, we have a few recommendations.
+يمكن للمحرر المجهز بشكل صحيح أن يجعل الكود أكثر وضوحًا للقراءة وأسرع في الكتابة، ويمكن أن يساعد حتى في اكتشاف الأخطاء البرمجية أثناء الكتابة! إذا كانت هذه هي المرة الأولى التي تقوم فيها بإعداد محرر أو إذا كنت تبحث عن تحسين محررك الحالي، فلدينا بعض التوصيات.
 
 </Intro>
 
 <YouWillLearn>
 
-* What the most popular editors are
-* How to format your code automatically
+* ما هي المحررات الأكثر شيوعًا
+* كيفية تنسيق الكود تلقائيًا
 
 </YouWillLearn>
 
-## Your editor {/*your-editor*/}
+## محررك {/*your-editor*/}
 
-[VS Code](https://code.visualstudio.com/) is one of the most popular editors in use today. It has a large marketplace of extensions and integrates well with popular services like GitHub. Most of the features listed below can be added to VS Code as extensions as well, making it highly configurable!
+[VS Code](https://code.visualstudio.com/) هو أحد المحررات الأكثر استخدامًا اليوم. لديه معرض كبير من الإضافات، ويتكامل بشكل جيد مع الخدمات الشائعة مثل GitHub. يمكن إضافة معظم الميزات المدرجة فيه إلى VS Code كإضافات أيضًا، مما يجعله قابلًا للتكوين بشكل كبير!
 
-Other popular text editors used in the React community include:
+محررات النصوص الشائعة الأخرى المستخدمة في مجتمع React تشمل:
 
-* [WebStorm](https://www.jetbrains.com/webstorm/) is an integrated development environment designed specifically for JavaScript.
-* [Sublime Text](https://www.sublimetext.com/) has support for JSX and TypeScript, [syntax highlighting](https://stackoverflow.com/a/70960574/458193) and autocomplete built in.
-* [Vim](https://www.vim.org/) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+* [WebStorm](https://www.jetbrains.com/webstorm/) هو بيئة تطوير متكاملة مصممة خصيصًا لـ JavaScript.
+* [Sublime Text](https://www.sublimetext.com/) لديه دعم لـ JSX و TypeScript، [تمييز الصيغة](https://stackoverflow.com/a/70960574/458193) وإكمال تلقائي مدمج.
+* [Vim](https://www.vim.org/) هو محرر نصوص قابل للتكوين بشكل كبير مصمم لجعل إنشاء وتغيير أي نوع من النصوص فعالًا للغاية. وهو مدرج كـ "vi" مع معظم أنظمة UNIX ومع Apple OS X.
 
-## Recommended text editor features {/*recommended-text-editor-features*/}
+## ميزات محرر النصوص الموصى بها {/*recommended-text-editor-features*/}
 
-Some editors come with these features built in, but others might require adding an extension. Check to see what support your editor of choice provides to be sure!
+قد تأتي بعض المحررات مع هذه الميزات مدمجة، ولكن قد تتطلب المحررات الأخرى تثبيت إضافةٍ. تحقق من الدعم الذي يوفره محررك المفضل لديك للتأكد!
 
-### Linting {/*linting*/}
+### الفحص {/*linting*/}
 
-Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript. 
+فحص الكود لاكتشاف الأخطاء في الكود أثناء الكتابة، مما يساعدك على إصلاحها في وقت مبكر. [ESLint](https://eslint.org/) هو فاحص شائع ومفتوح المصدر لـ JavaScript.
 
-* [Install ESLint with the recommended configuration for React](https://www.npmjs.com/package/eslint-config-react-app) (be sure you have [Node installed!](https://nodejs.org/en/download/current/))
-* [Integrate ESLint in VSCode with the official extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* [قم بتثبيت ESLint مع التكوين الموصى به لـ React](https://www.npmjs.com/package/eslint-config-react-app) (تأكد من تثبيت [Node!](https://nodejs.org/en/download/current/))
+* [دمج ESLint في VSCode مع الإضافة الرسمية](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-**Make sure that you've enabled all the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) rules for your project.** They are essential and catch the most severe bugs early. The recommended [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) preset already includes them.
+**تأكد من تمكين جميع قواعد [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) لمشروعك.** إنها ضرورية وتكشف أكثر الأخطاء خطورة في وقت مبكر. يتضمن التكوين الموصى به [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) بالفعل هذه القواعد.
 
-### Formatting {/*formatting*/}
+### التنسيق {/*formatting*/}
 
-The last thing you want to do when sharing your code with another contributor is get into an discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+آخر شيء تريد القيام به عند مشاركة الكود مع مساهم آخر هو الدخول في مناقشة حول [التباعد بالأماكن أم التباعد بالأحرف](https://www.google.com/search?q=tabs+vs+spaces)! لحسن الحظ، سيقوم [Prettier](https://prettier.io/) بتنظيف الكود الخاص بك عن طريق إعادة تنسيقه ليتوافق مع قواعد مسبقة وقابلة للتكوين. قم بتشغيل Prettier، وسيتم تحويل جميع علامات التبويب إلى مسافات - وسيتم تغيير المسافة البادئة والاقتباسات وما إلى ذلك أيضًا ليتوافق مع التكوين. في الإعداد المثالي، سيتم تشغيل Prettier عند حفظ الملف، مما يجعل هذه التعديلات بسرعة بالنسبة لك.
 
-You can install the [Prettier extension in VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by following these steps:
+يمكنك تثبيت [إضافة Prettier في VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) عن طريق اتباع هذه الخطوات:
 
-1. Launch VS Code
-2. Use Quick Open (press Ctrl/Cmd+P)
-3. Paste in `ext install esbenp.prettier-vscode`
-4. Press Enter
+1. قم بتشغيل VS Code
+2. استخدم البحث السريع (اضغط على Ctrl/Cmd+P)
+3. الصق `ext install esbenp.prettier-vscode`
+4. اضغط على Enter
 
-#### Formatting on save {/*formatting-on-save*/}
+#### التنسيق عند الحفظ {/*formatting-on-save*/}
 
-Ideally, you should format your code on every save. VS Code has settings for this!
+في الواقع، يجب عليك تنسيق الكود في كل مرة تقوم فيها بحفظه. يحتوي VS Code على إعدادات لهذا الغرض!
 
-1. In VS Code, press `CTRL/CMD + SHIFT + P`.
-2. Type "settings"
-3. Hit Enter
-4. In the search bar, type "format on save"
-5. Be sure the "format on save" option is ticked!
+1. في VS Code، اضغط على `CTRL/CMD + SHIFT + P`.
+2. اكتب "settings"
+3. اضغط على Enter
+4. في شريط البحث، اكتب "format on save"
+5. تأكد من تحديد خيار "format on save"!
 
-> If your ESLint preset has formatting rules, they may conflict with Prettier. We recommend disabling all formatting rules in your ESLint preset using [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) so that ESLint is *only* used for catching logical mistakes. If you want to enforce that files are formatted before a pull request is merged, use [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) for your continuous integration.
+> إذا كانت لديك قواعد تنسيق في إعدادات ESLint، فقد تتعارض مع Prettier. نوصي بتعطيل جميع قواعد التنسيق في إعدادات ESLint الخاصة بك باستخدام [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) بحيث يتم استخدام ESLint *فقط* للكشف عن الأخطاء المنطقية. إذا كنت ترغب في فرض تنسيق الملفات قبل دمج طلب سحب (Pull Request)، استخدم [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) للتكامل المستمر.
