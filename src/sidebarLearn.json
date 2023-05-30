@@ -1,5 +1,5 @@
 {
-  "title": "Learn React",
+  "title": "تعلم React",
   "path": "/learn",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "GET STARTED"
     },
     {
-      "title": "Quick Start",
+      "title": "بداية سريعة",
       "path": "/learn",
       "routes": [
         {
