@@ -29,7 +29,7 @@ title: بداية سريعة
 ```js
 function MyButton() {
   return (
-    <button>I'm a button</button>
+    <button>أنا زر</button>
   );
 }
 ```
@@ -40,7 +40,7 @@ function MyButton() {
 export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
+      <h1>مرحبًا بكم في تطبيقي</h1>
       <MyButton />
     </div>
   );
@@ -58,7 +58,7 @@ export default function MyApp() {
 function MyButton() {
   return (
     <button>
-      I'm a button
+      أنا زر
     </button>
   );
 }
@@ -66,7 +66,7 @@ function MyButton() {
 export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
+      <h1>مرحبًا بكم في تطبيقي</h1>
       <MyButton />
     </div>
   );
@@ -76,7 +76,7 @@ export default function MyApp() {
 </Sandpack>
 
 
-عبارة `export default` تحدد المكوّن الأساسي في الملف. إذا لم يكن لديك معرفة كافية عن طريقة بناء و كتابة الكود في جافاسكريبت، فيمكنك الرجوع للمصادر التالية:
+عبارة `export default` تحدد المكوّن الأساسي في الملف. إذا لم يكن لديك معرفة كافية عن طريقة بناء و كتابة الكود في JavaScript، فيمكنك الرجوع للمصادر التالية:
 [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)
 [javascript.info](https://javascript.info/import-export) 
 
@@ -85,7 +85,7 @@ export default function MyApp() {
 
 
 
-طريقة بناء جمل ترميز الواجهات الذي شاهدته في الأعلى هو ما يسمى بـ *jsx*. استخدام الـ JSX يعتبر اختياريا، لكن معظم مشاريع React تستخدم الـ JSX لسهولة التعامل معها. كل [الأدوات التي ننصح بها لبيئة التطوير](/learn/installation) تدعم الـ JSX.
+طريقة بناء جمل ترميز الواجهات الذي شاهدته في الأعلى هو ما يسمى بـ *JSX*. استخدام الـ JSX يعتبر اختياريا، لكن معظم مشاريع React تستخدم الـ JSX لسهولة التعامل معها. كل [الأدوات التي ننصح بها لبيئة التطوير](/learn/installation) تدعم الـ JSX.
 
 
 تعتبر JSX أكثر صرامة من ال HTML. حيث يجب عليك إغلاق العلامات مثل `<br />`. و كذلك فإن المكوّن الذي تقوم بإنشائه لا يمكن أن يرجع لك مجموعة من علامات ال JSX، بل يجب عليك إحاطتهم بأبٍ مشترك مثل: `<div>...</div>` أو حتى غطاء `<>...</>` الفارغ.
@@ -95,8 +95,8 @@ export default function MyApp() {
 function AboutPage() {
   return (
     <>
-      <h1>About</h1>
-      <p>Hello there.<br />How do you do?</p>
+      <h1>عنوان</h1>
+      <p>مرحبًا جميعًا.<br />كيف حالكم?</p>
     </>
   );
 }
@@ -129,7 +129,7 @@ React لا تحدد لك كيف يجب عليك إضافة ملفات الـ CSS
 
 ## عرض البيانات {/*displaying-data*/}
 
-تمكنك الـ JSX من إدخال ترميز الواجهة بداخل الجافاسكريبت، و يمكنك من خلال الأقواس المعقوفة "الخروج" من ترميز الواجهة و العودة مرة أخرى إلى سياق الجافاسكريبت حتى تتمكن من تضمين متغير من أكوادك و عرضه للمستخدم، فمثلا الكود التالي سيُظهر `user.name` للمستخدم على الشاشة:
+تمكنك الـ JSX من إدخال ترميز الواجهة بداخل الجافاسكريبت، و يمكنك من خلال الأقواس المعقوفة "الخروج من ترميز الواجهة" والعودة مرة أخرى إلى سياق JavaScript حتى تتمكن من تضمين متغير من أكوادك و عرضه للمستخدم، فمثلا الكود التالي سيُظهر `user.name` للمستخدم على الشاشة:
 
 ```js {3}
 return (
@@ -157,7 +157,7 @@ return (
 
 ```js
 const user = {
-  name: 'Hedy Lamarr',
+  name: 'هايدي لامار',
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
   imageSize: 90,
 };
