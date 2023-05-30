@@ -236,12 +236,12 @@ return (
 </div>
 ```
 
-كل الطرق المذكورة في الأعلى يمكن كذلك استخدامها لتحديد قيم الخواص بشكل شرطي. إذا كان هذا النوع من جمل الجافاسكريبت غير مألوفا لديك فيمكنك دائما استخدام عبارة `if...else` الاعتيادية.
+كل الطرق المذكورة في الأعلى يمكن كذلك استخدامها لتحديد قيم الخواص بشكل شرطي. إذا كان هذا النوع من جمل JavaScript غير مألوفا لديك فيمكنك دائما استخدام عبارة `if...else` الاعتيادية.
 
 
 ## تصيير القوائم {/*rendering-lists*/}
 
-ستحتاج إلى الاعتماد على ميزات الجافاسكريبت مثل [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) و كذلك [دالة `map()` الخاصة بالمصفوفات](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لإظهار القوائم على المكوّنات.
+ستحتاج إلى الاعتماد على ميزات Javascript مثل [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) و كذلك [دالة `map()` الخاصة بالمصفوفات](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لإظهار القوائم على المكوّنات.
 
 على سبيل المثال، لنفترض أن لديك مصفوفة لمجموعة من المنتجات كالتالي:
 
@@ -374,7 +374,7 @@ import { useState } from 'react';
 export default function MyApp() {
   return (
     <div>
-      <h1>العدادات التي تتغير منفصلة</h1>
+      <h1>العدادات التي تتغير مستقلة</h1>
       <MyButton />
       <MyButton />
     </div>
@@ -411,7 +411,7 @@ button {
 ## استخدام الخطافات {/*using-hooks*/}
 
 
-الدوال التي تبدأ بـ `use` تسمى *الخطافات* أو *Hooks*. تعتبر `useState` أحد الخطافات المجهّزة و التي توفرها React. و بإمكانك العثور على قائمة الخطافات المختلفة التي توفرها React في [API reference.](/reference/react) ، يمكنك كذلك كتابة الخطافات الخاصة بك عن طريق الجمع بين الخطافات الجاهزة و الموفّرة من React.
+الدوال التي تبدأ بـ `use` تسمى *الخطافات* أو *Hooks*. تعتبر `useState` أحد الخطافات المجهّزة والتي توفرها React. و بإمكانك العثور على قائمة الخطافات المختلفة التي توفرها React في [API مرجع.](/reference/react) ، يمكنك كذلك كتابة الخطافات الخاصة بك عن طريق الجمع بين الخطافات الجاهزة و الموفّرة من React.
 
 الخطافات أكثر صرامة من الدوال الأخرى. يمكنك استدعاء الخطاف في مقدمة المكوّن (أو في مقدمة أي خطاف آخر). إذا أردت استخدام `useState` في عبارة شرطية أو في حملة تكرار فقم ببناء مكوّن مستقل و من ثم استخدامها هناك.
 
@@ -423,14 +423,14 @@ button {
 
 <DiagramGroup>
 
-<Diagram name="sharing_data_child" height={367} width={407} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. Both MyButton components contain a count with value zero.">
+<Diagram name="sharing_data_child" height={367} width={407} alt="رسم تخطيطي يوضح شجرة من ثلاثة مكونات ، أحد الوالدين يسمى MyApp وطفلان يسمى MyButton.  يحتوي كلا المكونين MyButton على عدد بقيمة صفر.">
 
 مبدئيا، حالة `count` الخاصة بكل زر تساوي `0`
 
 
 </Diagram>
 
-<Diagram name="sharing_data_child_clicked" height={367} width={407} alt="The same diagram as the previous, with the count of the first child MyButton component highlighted indicating a click with the count value incremented to one. The second MyButton component still contains value zero." >
+<Diagram name="sharing_data_child_clicked" height={367} width={407} alt="نفس الرسم التخطيطي كالسابق ، مع تمييز أول مكون MyButton فرعي يشير إلى نقرة مع زيادة قيمة العد إلى واحد.  لا يزال مكون MyButton الثاني يحتوي على القيمة صفر." >
 
 مكوّن `MyButton` الأول سيقوم بتحديث حالة الـ `count` الخاصة به إلى `1`
 
@@ -439,21 +439,21 @@ button {
 
 </DiagramGroup>
 
-و بالرغم من ذلك، فإنك غالبا ستحتاج أن تقوم المكوّنات بـ ،*مشاركة البيانات و أن يتم تحديثها معا*
+و بالرغم من ذلك، فإنك غالبا ستحتاج أن *تشارك المكوّنات البيانات و أن يتم تحديثها معا*
 و لجعل كلا المكونين `MyButton` يقومان بعرض نفس الـ `count` و يتم تحديثهما معا فسنحتاج إلى نقل الحالة من كل زر بشكل مستقل "إلى الأعلى" لأقرب مكوّن يحوي كلا المكوّنين.
 في هذا المثال `MyApp` يمثل هذا هذا المكون الأب الذي يحوي كل المكونين:
 
 
 <DiagramGroup>
 
-<Diagram name="sharing_data_parent" height={385} width={410} alt="Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. MyApp contains a count value of zero which is passed down to both of the MyButton components, which also show value zero." >
+<Diagram name="sharing_data_parent" height={385} width={410} alt="رسم تخطيطي يوضح شجرة من ثلاثة مكونات ، أحد الوالدين يسمى MyApp وطفلان يسمى MyButton.  يحتوي MyApp على قيمة عد صفرية يتم تمريرها إلى كل من مكوني MyButton ، والتي تعرض أيضًا القيمة صفر." >
 
-في البداية حالة الـ `count` الخاصة بال `MyApp` تساوي `0`، و يتم تمريرها للأسفل لكلا الإبنين.
+في البداية حالة الـ `count` الخاصة بال `MyApp` تساوي `0`، ويتم تمريرها للأسفل لكلا الابنين.
 
 
 </Diagram>
 
-<Diagram name="sharing_data_parent_clicked" height={385} width={410} alt="The same diagram as the previous, with the count of the parent MyApp component highlighted indicating a click with the value incremented to one. The flow to both of the children MyButton components is also highlighted, and the count value in each child is set to one indicating the value was passed down." >
+<Diagram name="sharing_data_parent_clicked" height={385} width={410} alt="نفس الرسم التخطيطي كالسابق ، مع إبراز عدد مكون MyApp الأصلي للإشارة إلى نقرة مع زيادة القيمة إلى واحد.  يتم أيضًا تمييز التدفق إلى كل من مكونات MyButton الأطفال ، ويتم تعيين قيمة العد في كل طفل على واحد يشير إلى أن القيمة قد تم تمريرها لأسفل." >
 
 عند الضغط على أي من الزرين سيقوم ال `MyApp` بتحديث حالة الـ `count` الخاصة به إلى `1` و من ثم يمرر القيمة إلى الأسفل لكلا الإبنين
 
@@ -476,7 +476,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update separately</h1>
+      <h1>العدادات التي تتغير مستقلة</h1>
       <MyButton />
       <MyButton />
     </div>
@@ -484,11 +484,11 @@ export default function MyApp() {
 }
 
 function MyButton() {
-  // ... we're moving code from here ...
+  // ... نقلت كودا من هنا ...
 }
 
 ```
-و من ثم قم *بتمرير الحالة للأسفل* من `MyApp` لكلا مكوّني الـ `MyButton` بالإضافة إلى دالة معالجة الضغط على الزر (click handler). بإمكانك إسال معلومات إلى `MyButton` باستخدام أقواس الـ JSX المعقوفة، تماما كما فعلت سابقا في الأوسمة الجاهزة مثل وسم `<img>`:
+و من ثم قم *بتمرير الحالة للأسفل* من `MyApp` لكلا مكوّني الـ `MyButton` بالإضافة إلى دالة معالجة الضغط على الزر (click handler). بإمكانك إرسال معلومات إلى `MyButton` باستخدام أقواس الـ JSX المعقوفة، تماما كما فعلت سابقا في الأوسمة الجاهزة مثل وسم `<img>`:
 
 
 ```js {11-12}
@@ -501,7 +501,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update together</h1>
+      <h1>العدادات التي تتغير معا</h1>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
@@ -512,14 +512,14 @@ export default function MyApp() {
 هذه المعلومات التي تقوم بتمريرها للأسفل تسمى _props_ أو _خواص المكوّن_. و الآن مكون `MyApp` يحتوي على حالة الـ `count` بالإضافة لمعالج الحدث باسم `handleClick`، و يقوم *بإرسالهما للأسفل* لكلا الزرين.
 
 
-أخيرا قم بتغيير كود `MyButton` ليقوم بـ *قراءة* خواص المكوّن التي قمت بتمريرها إليه من مكوّن الأب:
+أخيرا غيًر كود `MyButton` *ليقرأ* خواص المكوّن التي قمت بتمريرها إليه من مكوّن الأب:
 
 
 ```js {1,3}
 function MyButton({ count, onClick }) {
   return (
     <button onClick={onClick}>
-      Clicked {count} times
+      ضغطت {count} مرات
     </button>
   );
 }
@@ -542,7 +542,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update together</h1>
+      <h1>العدادات التي تتغير معًا</h1>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
@@ -552,7 +552,7 @@ export default function MyApp() {
 function MyButton({ count, onClick }) {
   return (
     <button onClick={onClick}>
-      Clicked {count} times
+      ضغطت {count} مرات
     </button>
   );
 }
@@ -569,6 +569,6 @@ button {
 
 ## الخطوات القادمة {/*next-steps*/}
 
-و الآن أنت تعرف أساسيات بناء كود React!
-اطّلع على [هذا الدرس](/learn/tutorial-tic-tac-toe) لتفعيل هذه الأساسيات بشكل عملي و بناء مشروعك المصغّر الأوّل باستخدام React.
+والآن أنت تعرف أساسيات بناء كود React!
+اطّلع على [هذا الدرس التطبيقي](/learn/tutorial-tic-tac-toe) لتفعيل هذه الأساسيات بشكل عملي وبناء مشروعك المصغّر الأوّل باستخدام React.
 
