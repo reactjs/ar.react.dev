@@ -560,7 +560,7 @@ html.dark .code-step * {
 .mdx-heading {
   scroll-margin-top: calc(4rem + 20px);
   /* Space for the anchor */
-  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .mdx-heading:before {
