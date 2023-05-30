@@ -192,13 +192,13 @@ export default function Profile() {
 
 </Sandpack>
 
-في المثال الموضح أعلاه `style={{}}` تمثل بناءً خاصا، يحوي بداخله كائن جافاسكريبت المعروف `{}` و المعرف بداخل الأقواس المعقوفة الخاصة بال JSX بداخل `style={ }`. يمكنك استخدام خاصية `style` عندما يكون التصميم لديك معتمدا على متغير جافاسكريبت.
+في المثال الموضح أعلاه `style={{}}` لا تمثل بناءً خاصا، بل هو كائن جافاسكريبت المعروف `{}` والمعرف بداخل الأقواس المعقوفة الخاصة بال JSX بداخل `style={ }`. يمكنك استخدام خاصية `style` عندما يكون التصميم لديك معتمدا على متغير JavaScript.
 
 
-## الإظهار الشرطي {/*conditional-rendering*/}
+## التصيير الشرطي {/*conditional-rendering*/}
 
 
-في React، لا يوجد طريقة خاصة لكتابة العبارات الشرطية، و إنما يتم استخدام نفس الطرق المستخدمة في كتابة أكواد الجافاسكريبت الاعتيادية، فعلى سبيل المثال يمكنك استخدام عبارة [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) لإظهار الـ JSX بشكل شرطي:
+في React، لا يوجد طريقة خاصة لكتابة العبارات الشرطية، و إنما يتم استخدام نفس الطرق المستخدمة في كتابة أكواد JavaScript الاعتيادية، فعلى سبيل المثال يمكنك استخدام عبارة [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) لإظهار الـ JSX بشكل شرطي:
 
 
 ```js
@@ -239,7 +239,7 @@ return (
 كل الطرق المذكورة في الأعلى يمكن كذلك استخدامها لتحديد قيم الخواص بشكل شرطي. إذا كان هذا النوع من جمل الجافاسكريبت غير مألوفا لديك فيمكنك دائما استخدام عبارة `if...else` الاعتيادية.
 
 
-## إظهار القوائم {/*rendering-lists*/}
+## تصيير القوائم {/*rendering-lists*/}
 
 ستحتاج إلى الاعتماد على ميزات الجافاسكريبت مثل [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) و كذلك [دالة `map()` الخاصة بالمصفوفات](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  لإظهار القوائم على المكوّنات.
 
@@ -248,9 +248,9 @@ return (
 
 ```js
 const products = [
-  { title: 'Cabbage', id: 1 },
-  { title: 'Garlic', id: 2 },
-  { title: 'Apple', id: 3 },
+  { title: 'ملفوف', id: 1 },
+  { title: 'خضروات', id: 2 },
+  { title: 'تفاح', id: 3 },
 ];
 ```
 قم باستخدام دالة `map()` بداخل المكوّن الخاص بك لتحويل مصفوفة المنتجات إلى مصفوفة من عناصر الـ `<li>`:
@@ -275,9 +275,9 @@ return (
 
 ```js
 const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
+  { title: 'ملفوف', isFruit: false, id: 1 },
+  { title: 'خضروات', isFruit: false, id: 2 },
+  { title: 'تفاح', isFruit: true, id: 3 },
 ];
 
 export default function ShoppingList() {
@@ -302,29 +302,29 @@ export default function ShoppingList() {
 
 ## الاستجابة للأحداث {/*responding-to-events*/}
 
-يمكنك الاستجابة للأحداث عن طريق تعريف ما يعرف بدوال (معالج الحدث) أو الـ *event handler* بداخل المكوّن الخاص بك:
+يمكنك الاستجابة للأحداث عن طريق تعريف (معالج الحدث) أو الـ *event handler* بداخل المكوّن الخاص بك:
 
 
 ```js {2-4,7}
 function MyButton() {
   function handleClick() {
-    alert('You clicked me!');
+    alert('لقد ضغطت هنا!');
   }
 
   return (
     <button onClick={handleClick}>
-      Click me
+      اضغط هنا
     </button>
   );
 }
 ```
 
-لاحظ أن `onClick={handleClick}` لا تحتوي على أقواس الاستدعاء في النهاية! لا تقم باستدعاء معالج الحدث، يكفيك أن تقوم بتمرير اسمها فقط. حيث أن React ستقوم باستدعاء دالة معالجة الحدث عندما يقوم المستخدم بالضغط على الزر.
+لاحظ أن `onClick={handleClick}` لا تحتوي على أقواس الاستدعاء في النهاية! لا تقم _باستدعاء_ معالج الحدث، يكفيك أن تقوم بتمرير اسمها فقط. حيث أن React ستقوم باستدعاء دالة معالجة الحدث عندما يقوم المستخدم بالضغط على الزر.
 
 
 ## تحديث الشاشة {/*updating-the-screen*/}
 
-غالبا ستكون بحاجة أن يقوم المكوّن "بتذكر" المعلومات و عرضها على الشاشة. فمثلا، قد تحتاج إلى عرض عدد المرات التي تم فيها الضغط على زر ما. لتنفيذ ذلك قم بإضافة ما يعرف ب *حالة* أو الـ *state* الخاصة بالمكون:
+غالبا ستحتاج أن "يتذكر" المكوّن المعلومات ويعرضها على الشاشة. فمثلا، قد تحتاج إلى عرض عدد المرات التي تم فيها الضغط على زر ما. لتنفيذ ذلك قم بإضافة ما يعرف ب *حالة* أو الـ *state* الخاصة بالمكون:
 
 
 في البداية، قم باستيراد [`useState`](/reference/react/useState) من React:
@@ -333,7 +333,7 @@ function MyButton() {
 ```js
 import { useState } from 'react';
 ```
-و الآن يمكنك تعريف *متغير الحالة* أو الـ *state variable* بداخل المكوّن:
+والآن يمكنك تعريف *متغير الحالة* أو الـ *state variable* بداخل المكوّن:
 
 
 ```js
@@ -364,7 +364,7 @@ function MyButton() {
 ```
 
 الآن ستقوم React باستدعاء المكوّن الخاص بك مجددا. في هذه المرة قيمة `count` ستكون `1`، و من ثم ستكون `2`، و هكذا.
-إذا قمت بإظهار المكوّن عدة مرات فإن كل مرة ستكون لها الحالة المستقلة الخاصة بها. قم بتجربة الضغط على كل زر على حدة:
+إذا قمت تصيير المكوّن عدة مرات فإن كل مرة ستكون لها الحالة المستقلة الخاصة بها. قم بتجربة الضغط على كل زر على حدة:
 
 <Sandpack>
 
@@ -374,7 +374,7 @@ import { useState } from 'react';
 export default function MyApp() {
   return (
     <div>
-      <h1>Counters that update separately</h1>
+      <h1>العدادات التي تتغير منفصلة</h1>
       <MyButton />
       <MyButton />
     </div>
