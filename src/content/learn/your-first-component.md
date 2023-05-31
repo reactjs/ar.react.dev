@@ -1,20 +1,23 @@
 ---
 title: Your First Component
+العنوان : أول مكون لك
 ---
 
-<Intro>
+<مقدمة >
 
-*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+*المكونات* هي أحد المفاهيم الأساسية لرياكت.
+ إنها الأساس الذي تبني عليه واجهات المستخدم (UI) ،
+  مما يجعلها المكان المثالي لبدء رحلة رياكت الخاصة بك!
 
-</Intro>
+</مقدمة>
 
-<YouWillLearn>
+<سوف تتعلم>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* ماهي المكونات
+* ماهو الدور الذي تلعبه المكونات في تطبيق رياكت 
+* كيف تكتب اول مكون لك في رياكت
 
-</YouWillLearn>
+</سوف تتعلم>
 
 ## Components: UI building blocks {/*components-ui-building-blocks*/}
 
