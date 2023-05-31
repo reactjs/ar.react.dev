@@ -4,7 +4,7 @@ title: أدوات مطوري React
 
 <Intro>
 
-استخدم أدوات مطوري لفحص [المكونات](/learn/your-first-component)، وتعديل [الخصائص](/learn/passing-props-to-a-component) و[الحالة](/learn/state-a-components-memory) وتحديد مشاكل الأداء.
+استخدم أدوات مطور React لفحص [المكونات](/learn/your-first-component)، وتعديل [الخصائص](/learn/passing-props-to-a-component) و[الحالة](/learn/state-a-components-memory) وتحديد مشاكل الأداء.
 
 </Intro>
 
