@@ -42,7 +42,7 @@ export default function App() {
 
 ### جرب React محلياً {/*try-react-locally*/}
 
-جرب React محلياً على جهازك، [حمّل صفحة ال HTML هذه.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) افتحها في محرر النصوص الخاص بك وفي متصفحك!
+لتجربة React محلياً على جهازك، [حمّل صفحة ال HTML هذه.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) افتحها في محرر النصوص الخاص بك وفي متصفحك!
 
 ## ابدأ مشروع React جديد {/*start-a-new-react-project*/}
 
