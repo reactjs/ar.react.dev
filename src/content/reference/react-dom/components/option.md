@@ -4,7 +4,7 @@ title: "<option>"
 
 <Intro>
 
-يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) بعرض خيارات داخل مربع [`<select>`](/reference/react-dom/components/select).
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
@@ -23,7 +23,7 @@ title: "<option>"
 
 ### `<option>` {/*option*/}
 
-يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) بعرض خيارات داخل مربع [`<select>`](/reference/react-dom/components/select).
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
@@ -32,7 +32,7 @@ title: "<option>"
 </select>
 ```
 
-[انظر الى المزيد من الأمثلة في الأسفل.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
 #### الخصائص {/*props*/}
 
@@ -42,13 +42,13 @@ title: "<option>"
 
 * [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled): قيمة منطقية. إذا كانت `true`، فلن يكون الخيار قابلاً للتحديد وسيظهر باهت.
 
-* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): نص. يحدد معنى الخيار. إذا لم يتم تحديده ، فسيتم استخدام النص الموجود داخل الخيار.
+* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): نص. يحدد معنى الخيار. إذا لم يتم تحديده، فسيتم استخدام النص الموجود داخل الخيار.
 
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): القيمة التي سيتم استخدامها [عند إرسال عنصر الأب `<select>` في النموذج](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) إذا تم تحديد هذا الخيار.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): القيمة التي سيتم استخدامها [عند إرسال العنصر الأب `<select>` في النموذج](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) إذا تم اختيار هذا الخيار.
 
 #### تنبيه {/*caveats*/}
 
-* لا تدعم React سمة `selected` في `<option>`. بدلاً من ذلك ، قم بتمرير `value` هذا الخيار إلى العنصر الأب [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option)  وذلك لمربع تحديد غير متحكم فيه، أو [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable)  لمربع تحديد متحكم فيه.
+* لا تدعم React سمة `selected` في `<option>`. بدلاً من ذلك، مرِّر قيمة `value` هذا الخيار إلى العنصر الأب في [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) لعنصر اختيار غير متحكم فيه، أو في [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable)  لمعنصر اختيار متحكم فيه.
 
 ---
 
