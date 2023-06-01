@@ -32,33 +32,33 @@ function PasswordField() {
 
 [يرجى الإطلاع على المزيد من الأمثلة بالأسفل.](#usage)
 
-#### المعاملات {/*parameters*/}
+#### المعاملات (parameters) {/*parameters*/}
 
-`useId` لا يستقبل أي معاملات.
+`useId` لا يقبل أي معاملات.
 
 #### العائدات {/*returns*/}
 
-`useId` يعيد سلسلة بيانات فريدة مرتبطة باستدعاء `useId` المستخدم في هذا المكون تحديدا.
+`useId` يعيد نص فريد مرتبط باستدعاء `useId` المستخدم في هذا المكون تحديدا.
 
 #### تنبيهات {/*caveats*/}
 
-* `useId` هو خطاف, لذلك يمكنك استدعائه فقط **في المستوي الأعلي من مكونك** أو من خلال  الخطافات الخاصة بك. لا يمكنك استدعاء الخطاف داخل الحلقات والشروط. إذا كنت بحاجة إلي ذلك، قم بإستخراج مكون جديد وقم بنقل الحالة إليه.
+* `useId` هو خطاف، لذلك يمكنك استدعائه فقط **في المستوي الأعلي من مكونك** أو من خلال  الخطافات الخاصة بك. لا يمكنك استدعاء الخطاف داخل الحلقات والشروط. إذا كنت بحاجة إلي ذلك، قم بإستخراج مكون جديد وقم بنقل الحالة إليه.
 
 * `useId` **لا ينبغي استخدامه لتوليد المفاتيح** في القائمة. [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
 
 ---
 
-## الإستخدام {/*usage*/}
+## الاستخدام {/*usage*/}
 
 <Pitfall>
 
-**لا تستدعي `useId` لتوليد المفاتيح في القائمة.**  [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
+**لا تستدعِ `useId` لتوليد المفاتيح في القائمة.**  [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
 
 </Pitfall>
 
 ### إنشاء معرفات فريدة لسمات إمكانية الوصول {/*generating-unique-ids-for-accessibility-attributes*/}
 
-استدعي `useId` في المستوي الأعلي من المكون الخاص بك لإنشاء معرف فريد:
+استدعِ `useId` في المستوي الأعلي من المكون الخاص بك لإنشاء معرف فريد:
 
 ```js [[1, 4, "passwordHintId"]]
 import { useId } from 'react';
@@ -81,7 +81,7 @@ function PasswordField() {
 
 [HTML accessibility attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) مثل [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) تتيح لك تحديد أن هناك علامتين مرتبطين ببعضهما البعض. على سبيل المثال، يمكنك تحديد أن العنصر (مثل صندوق الإدخال) يتم وصفه بواسطة عنصر آخر (مثل فقرة).
 
-في HTML ستكتبه بهذا الشكل:
+في HTML العادي ستكتبه بهذا الشكل:
 
 ```html {5,8}
 <label>
@@ -92,11 +92,11 @@ function PasswordField() {
   />
 </label>
 <p id="password-hint">
-  The password should contain at least 18 characters
+  يجب أن تحتوي كلمة السر على 18 حرفًا على الأقل
 </p>
 ```
 
-مع ذلك، تضمين المعرفات بهذا الشكل ليس طريقة جيدة في ريأكت. يمكن أن يتم عرض المكون أكثر من مرة على الصفحة ولكن يجب أن تكون المعرفات فريدة! بدلا من تضمين معرف ثابت، يمكنك توليد معرف فريد باستخدام `useId`:
+مع ذلك، تضمين المعرفات بهذا الشكل ليس طريقة جيدة في React. يمكن أن يتم عرض المكون أكثر من مرة على الصفحة، ولكن يجب أن تكون المعرفات فريدة! بدلا من تضمين معرف ثابت، يمكنك توليد معرف فريد باستخدام `useId`:
 
 ```js {4,11,14}
 import { useId } from 'react';
@@ -113,7 +113,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        يجب أن تحتوي كلمة السر على 18 حرفًا على الأقل
       </p>
     </>
   );
@@ -139,7 +139,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        يجب أن تحتوي كلمة السر على 18 حرفًا على الأقل
       </p>
     </>
   );
@@ -148,9 +148,9 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>أدخل كلمة سر</h2>
       <PasswordField />
-      <h2>Confirm password</h2>
+      <h2>تأكيد كلمة السر</h2>
       <PasswordField />
     </>
   );
@@ -167,7 +167,7 @@ input { margin: 5px; }
 
 <Pitfall>
 
-في [عرض الخادم](/reference/react-dom/server), **`useId` يتطلب وجود نفس شجرة المكونات علي الخادم والعميل**. إذا لم تتطابق الشجرات التي تقوم بعرضها على الخادم والعميل حرفيا، فإن المعرفات المولدة لن تتطابق.
+في [تصيير الخادم](/reference/react-dom/server), **يتطلب `useId` وجود نفس شجرة المكونات علي الخادم والعميل**. إذا لم تتطابق الشجرات التي تقوم بعرضها على الخادم والعميل حرفيا، فإن المعرفات المولدة لن تتطابق.
 
 </Pitfall>
 
@@ -177,11 +177,11 @@ input { margin: 5px; }
 
 قد تتساءل لماذا `useId` أفضل من زيادة متغير عالمي مثل `nextId++`.
 
-الفائدة الأساسية لـ `useId` هي أن ريأكت ستضمن أنه يعمل مع [server rendering.](/reference/react-dom/server) أثناء عرض الخادم, يتم تحويل مكوناتك إلي عناصر HTML. في وقت لاحق، على العميل, [hydration](/reference/react-dom/client/hydrateRoot) يقوم بربط معالجات الأحداث الخاصة بك بعناصر HTML التي تم توليدها. لكي يعمل تحويل العناصر على العميل بشكل صحيح، يجب أن يتطابق إخراج العميل مع HTML الذي علي الخادم.
+الفائدة الأساسية لـ `useId` هي أن React ستضمن أنه يعمل مع [تصيير الخادم.](/reference/react-dom/server) أثناء تصيير الخادم، يتم تحويل مكوناتك إلي عناصر HTML. في وقت لاحق، على العميل، [hydration](/reference/react-dom/client/hydrateRoot) يقوم بربط معالجات الأحداث الخاصة بك بعناصر HTML التي تم توليدها. لكي يعمل تحويل العناصر على العميل بشكل صحيح، يجب أن يتطابق إخراج العميل مع HTML الذي على الخادم.
 
 من الصعب جدا ضمان ذلك باستخدام عداد متزايد لأن ترتيب تحويل المكونات على العميل قد لا يتطابق مع ترتيب إخراج HTML على الخادم. من خلال استدعاء `useId`، ستضمن أن عملية تحويل المكونات ستعمل بشكل صحيح، وسيتطابق الإخراج بين الخادم والعميل.
 
-داخل ريأكت، يتم إنشاء `useId` من الـ "parent path" للمكون الذي يستدعيه. وهذا هو السبب في أنه إذا كانت شجرة العميل وشجرة الخادم متطابقتين، سيتطابق الـ "parent path" بغض النظر عن ترتيب العرض.
+داخل React، يتم إنشاء `useId` من الـ "مسار الأب" للمكون الذي يستدعيه. وهذا هو السبب في أنه إذا كانت شجرة العميل وشجرة الخادم متطابقتين، سيتطابق "مسار لأب" بغض النظر عن ترتيب العرض.
 
 </DeepDive>
 
@@ -200,10 +200,10 @@ export default function Form() {
   const id = useId();
   return (
     <form>
-      <label htmlFor={id + '-firstName'}>First Name:</label>
+      <label htmlFor={id + '-firstName'}>الاسم الأول:</label>
       <input id={id + '-firstName'} type="text" />
       <hr />
-      <label htmlFor={id + '-lastName'}>Last Name:</label>
+      <label htmlFor={id + '-lastName'}>الاسم الأخير:</label>
       <input id={id + '-lastName'} type="text" />
     </form>
   );
@@ -229,7 +229,7 @@ input { margin: 5px; }
 ```html index.html
 <!DOCTYPE html>
 <html>
-  <head><title>My app</title></head>
+  <head><title>تطبيقي</title></head>
   <body>
     <div id="root1"></div>
     <div id="root2"></div>
@@ -253,7 +253,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        يجب أن تحتوي كلمة السر على 18 حرفًا على الأقل
       </p>
     </>
   );
@@ -262,7 +262,7 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>أدخل كلمة السر</h2>
       <PasswordField />
     </>
   );
@@ -274,7 +274,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.js';
 import './styles.css';
 
-const root1 = createRoot(document.getElementById('root1'), {
+const root1 createRoot(document.getElementById('root1'), {
   identifierPrefix: 'my-first-app-'
 });
 root1.render(<App />);
