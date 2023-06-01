@@ -23,7 +23,7 @@ title: "<option>"
 
 ### `<option>` {/*option*/}
 
-يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) بعرض خيارات داخل مربع [`<select>`](/reference/react-dom/components/select).
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) بعرض خيارات داخل مربع [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
