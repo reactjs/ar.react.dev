@@ -102,19 +102,19 @@ img { height: 200px; }
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />;
 ```
 
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
+ولكن إذا لم يكن الترميز موجودًا في نفس السطر مع عبارة `return`، فيجب عليك وضعه بين قوسين:
 
 ```js
 return (
   <div>
-    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
   </div>
 );
 ```
 
 <Pitfall>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+بدون الأقواس, [سيتم تجاهل](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi) أي كود في الأسطر التي تلي عبارة `return`!
 
 </Pitfall>
 
