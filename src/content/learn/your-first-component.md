@@ -1,47 +1,47 @@
 ---
-title: Your First Component
+title: مكوّنك الأول
 ---
 
 <Intro>
 
-*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+*المكونات* هي إحدى المفاهيم الرئيسية في React. هي الأساس الذي تبني عليها واجهات المستخدم. مما يجعلها المكان الصحيح لبدأ رحلتك مع React.
 
 </Intro>
 
 <YouWillLearn>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* ما هو المكوّن
+* ما الدور الذي تلعبه المكوّنات في تطبيق React
+* كيف تكتب أول مكوّن React
 
 </YouWillLearn>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## المكونات: حجر بناء واجهة المستخدم {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+في الويب، تمكننا HTML من إنشاء وثائق مهيكلة غنية باستخدام مجموعة الوسوم المدمجة مثل `<h1>` و `<li>`:
 
 ```html
 <article>
-  <h1>My First Component</h1>
+  <h1>مكوّني الأول</h1>
   <ol>
-    <li>Components: UI Building Blocks</li>
-    <li>Defining a Component</li>
-    <li>Using a Component</li>
+    <li>المكوّنات: حجر بناء واجهة المستخدم</li>
+    <li>تعريف مكوّن</li>
+    <li>إستخدام مكوّن</li>
   </ol>
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+يمثل هذا الترميز المرئي هذه المقالة `<article>`, عنوانها `<h1>`, وفهرس محتويات مختصر في شكل قائمة مرتبة `<ol>`. ترميز مرئي كهذا, مدمج مع CSS من أجل الأنماط التصميمية, و JavaScript من أجل التفاعلية, يكمن وراء كل شريط جانبي, صورة رمزية, نافذة, قائمة منسدلة - كل قطعة من واجهة مستخدم تراها في الويب.
 
-React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+تمكنك React من دمج الترميز المرئي, وCSS, وJavaScript في "مكونات" مخصصة, **عناصر واجهة المستخدم قابلة لإعادة الاستخدام لتطبيقك**. يمكن تحويل كود فهرس المحتوى الذي رأيته أعلاه الى مكوّن `<TableOfContents />` الذي يمكن تصييره في كل صفحة. لا يزال يستخدم هذا المكوّن تحت الخطاء وسوم مثل `<article>`, `<h1>`, إلخ.
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+تمامًا مثل الوسوم HTML، يمكنك تجميع وترتيب وتضمين المكوّنات لتصميم صفحات كاملة. على سبيل المثال، صفحة المستندات التي تقرأها مصنوعة من مكوّنات React.
 
 ```js
 <PageLayout>
   <NavigationHeader>
     <SearchBar />
-    <Link to="/docs">Docs</Link>
+    <Link to="/docs">المستندات</Link>
   </NavigationHeader>
   <Sidebar />
   <PageContent>
@@ -51,11 +51,11 @@ Just like with HTML tags, you can compose, order and nest components to design w
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
+مع نمو مشروعك, ستلاحظ انه يمكن تجميع العديد من تصاميمك بواسطة إعادة استخدام مكوّنات كتبتها مسبقا, مما يسرع عملية  التطوير. يمكن إضافة فهرس المحتويات أعلاه الى أي شاشة عن طريق `<TableOfContents />`! يمكنك أيضا الإنطلاق بسرعة في مشروعك باستخدام آلاف المكوّنات المشتركة من قبل مجتمع React مفتوحة المصدر مثل [Chakra UI](https://chakra-ui.com/) و [Material UI.](https://material-ui.com/).
 
-## Defining a component {/*defining-a-component*/}
+## تعريف مكوّن {/*defining-a-component*/}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
+تقليديًا، عند إنشاء صفحات الويب، يقوم مطورو الويب بترميز المحتوى الخاص بهم ومن ثم يضيفون التفاعل عن طريق إضافة بعض JavaScript. نجح هذا بشكل رائع عندما كان التفاعل مجرد ميزة اضافية جيدة على الويب. الآن يُتوقع وجود التفاعل في العديد من المواقع وجميع التطبيقات. تضع React التفاعلية في المقام الأول مع الاستمرار في استخدام نفس التقنية: **مكوّن React هو دالة JavaScript يمكنك أن تُضف إليها ترميز مرئي.** هنا مثال لذلك (يمكنك تحرير المثال أدناه):
 
 <Sandpack>
 
@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3Am.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   )
 }
@@ -76,30 +76,30 @@ img { height: 200px; }
 
 </Sandpack>
 
-And here's how to build a component:
+وهنا كيفية بناء مكوّن::
 
-### Step 1: Export the component {/*step-1-export-the-component*/}
+### خطوة 1: تصدير المكوّن {/*step-1-export-the-component*/}
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+البادئة `export default` هي جزء من [صيغة JavaScript القياسية](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (ليست محددة لـ React). تتيح لك وضع علامة على الدالة الرئيسية في ملف بحيث يمكنك استيرادها لاحقًا من ملفات أخرى. (للمزيد عن الاستيراد، راجع موضوع [استيراد وتصدير المكوّنات](/learn/importing-and-exporting-components)!)
 
-### Step 2: Define the function {/*step-2-define-the-function*/}
+### خطوة 2: تعريف الدالة {/*step-2-define-the-function*/}
 
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+باستخدام الدالة `Profile() { }` ، تقوم بتعريف دالة JavaScript بإسم "Profile".
 
 <Pitfall>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+مكوّنات React هي عبارة عن دوال JavaScript عادية، ولكن يجب أن يبدأ اسماءها بحرف كبير، وإلا فلن تعمل بشكل صحيح!
 
 </Pitfall>
 
-### Step 3: Add markup {/*step-3-add-markup*/}
+### الخطوة 3: اضف الترميز المرئي {/*step-3-add-markup*/}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+يقوم المكوّن بإرجاع عنصر `<img />` مع خواص `src` و `alt`. يتم كتابة `<img />` بنفس طريقة كتابة HTML، ولكنه في الواقع JavaScript تحت الغطاء! يُطلق على هذه الصيغة [JSX](/learn/writing-markup-with-jsx)، وتتيح لك تضمين ترميز مرئي داخل JavaScript.
 
-Return statements can be written all on one line, as in this component:
+يمكن كتابة عبارات الإرجاع في سطر واحد، كما في هذا المكوّن:
 
 ```js
-return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />;
 ```
 
 But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
@@ -234,8 +234,6 @@ You've just gotten your first taste of React! Let's recap some key points.
 
 </Recap>
 
-
-
 <Challenges>
 
 #### Export the component {/*export-the-component*/}
@@ -299,7 +297,6 @@ Something isn't right about this `return` statement. Can you fix it?
 You may get an "Unexpected token" error while trying to fix this. In that case, check that the semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
 
 </Hint>
-
 
 <Sandpack>
 
