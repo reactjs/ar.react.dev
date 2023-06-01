@@ -4,12 +4,12 @@ title: "<option>"
 
 <Intro>
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
-  <option value="someOption">Some option</option>
-  <option value="otherOption">Other option</option>
+  <option value="someOption">بعض الخيارات</option>
+  <option value="otherOption">خيارات أخرى</option>
 </select>
 ```
 
@@ -19,44 +19,46 @@ The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<option>` {/*option*/}
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
-  <option value="someOption">Some option</option>
-  <option value="otherOption">Other option</option>
+  <option value="someOption">بعض الخيارات</option>
+  <option value="otherOption">خيارات أخرى</option>
 </select>
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-`<option>` supports all [common element props.](/reference/react-dom/components/common#props)
+تدعم `<option>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#props)
 
-Additionally, `<option>` supports these props:
+بالإضافة إلى ذلك ، يدعم `<option>` هذه الخصائص:
 
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled): A boolean. If `true`, the option will not be selectable and will appear dimmed.
-* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): A string. Specifies the meaning of the option. If not specified, the text inside the option is used.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): The value to be used [when submitting the parent `<select>` in a form](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) if this option is selected.
+* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled): قيمة منطقية. إذا كانت `true`، فلن يكون الخيار قابلاً للتحديد وسيظهر باهت.
 
-#### Caveats {/*caveats*/}
+* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): نص. يحدد معنى الخيار. إذا لم يتم تحديده، فسيتم استخدام النص الموجود داخل الخيار.
 
-* React does not support the `selected` attribute on `<option>`. Instead, pass this option's `value` to the parent [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) for an uncontrolled select box, or [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) for a controlled select.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): القيمة التي سيتم استخدامها [عند إرسال العنصر الأب `<select>` في النموذج](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) إذا تم اختيار هذا الخيار.
+
+#### تنبيه {/*caveats*/}
+
+* لا تدعم React سمة `selected` في `<option>`. بدلاً من ذلك، مرِّر قيمة `value` هذا الخيار إلى العنصر الأب في [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) لعنصر اختيار غير متحكم فيه، أو في [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable)  لمعنصر اختيار متحكم فيه.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Displaying a select box with options {/*displaying-a-select-box-with-options*/}
+### عرض عنصر الاختيار مع الخيارات {/*displaying-a-select-box-with-options*/}
 
-Render a `<select>` with a list of `<option>` components inside to display a select box. Give each `<option>` a `value` representing the data to be submitted with the form.
+قم بإنشاء `<select>` يتضمن داخله قائمة من مكونات `<option>` لعرض مربع تحديد. أعط كل `<option>` قيمة `value` تمثل البيانات التي سيتم رفعها مع النموذج.
 
-[Read more about displaying a `<select>` with a list of `<option>` components.](/reference/react-dom/components/select)
+[اقرأ المزيد حول عرض `<select>` بقائمة مكونات `<option>`.](/reference/react-dom/components/select)
 
 <Sandpack>
 
@@ -64,11 +66,11 @@ Render a `<select>` with a list of `<option>` components inside to display a sel
 export default function FruitPicker() {
   return (
     <label>
-      Pick a fruit:
+      اختر فاكهة:
       <select name="selectedFruit">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
+        <option value="apple">تفاح</option>
+        <option value="banana">موز</option>
+        <option value="orange">برتقال</option>
       </select>
     </label>
   );
@@ -79,5 +81,4 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
-
+</Sandpack>
