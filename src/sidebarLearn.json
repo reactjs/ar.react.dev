@@ -15,7 +15,7 @@
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "التفكير على طريقة React",
           "path": "/learn/thinking-in-react"
         }
       ]
@@ -47,7 +47,7 @@
       "sectionHeader": "LEARN REACT"
     },
     {
-      "title": "Describing the UI",
+      "title": "وصف واجهة المستخدم UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
@@ -56,7 +56,7 @@
           "path": "/learn/your-first-component"
         },
         {
-          "title": "Importing and Exporting Components",
+          "title": "استيراد وتصدير المكونات",
           "path": "/learn/importing-and-exporting-components"
         },
         {
