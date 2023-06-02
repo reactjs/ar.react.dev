@@ -457,16 +457,16 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="بحث..."/>
 ```
 
-برغم ذلك، فأنت لم تكتب بعد أي كود للتجاوب مع تفاعلات المستخدم (كالكتابة). هذه ستكون خطوتك الأخيرة.
+ومع ذلك، فأنت لم تكتب بعد أي كود للتجاوب مع تفاعلات المستخدم (كالكتابة). هذه ستكون خطوتك الأخيرة.
 
 
-## الخطوة 5: إضافة تدفق البيانات العكسي {/*step-5-add-inverse-data-flow*/}
+## الخطوة 5: إضافة تدفق البيانات العكسي {/*step-5-add-inverse-data-flow*
 
-يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغير الحالة تبعا لمدخلات المستخدم، سيكون لزاما عليك أن تحسب حسابا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`. 
+يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغيير الحالة وفقًا لمدخلات المستخدم، سيكون لزامًا عليك أن تحسب حسابًا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`. 
 
-يجعل React هذا النوع من تدفق البيانات بسيطا واضحا، لكنه يسلتزم قدرا أكبر من الكتابة مقارنة بالربط المزدوج للبيانات (two-way data binding). إذا ما حاولت الكتابة في خانة البحث أو التحديد على مربع الاختيار، ستجد أن React يتجاهل محاولاتك. وهذا أمر مقصود. بكتابتك `<input value={filterText} />`، فقد حددت خاصية القيمة (`value`) لخانة البحث `input` لأن تكون دوما مطابقة لقيمة الخاصية `filterText` الممررة من حالة المكون `FilterableProductTable`. وحيث أن الحالة `filterText` لم يسبق أن تم تعيينها، فالخانة لن تتغير أبدأ.
+يجعل React هذا النوع من تدفق البيانات بسيطا واضحا، لكنه يسلتزم قدرا أكبر من الكتابة مقارنة بالربط المزدوج للبيانات (two-way data binding). إذا ما حاولت الكتابة في خانة البحث أو التحديد على مربع الاختيار، ستجد أن React يتجاهل محاولاتك. وهذا أمر مقصود. بكتابتك `<input value={filterText} />`، فقد حددت خاصية القيمة (`value`) لخانة البحث `input` لأن تكون دوما مطابقة لقيمة الخاصية `filterText` الممررة من حالة المكون `FilterableProductTable`. وحيث أن الحالة `filterText` لم يتم تعديلها، فالخانة لن تتغير أبدأ.
 
-عليك أن تجعل الأمر ليكون كلما قام المستخدم بتغيير مدخلات النموذج، يتم حينها تحديث الحالة لتعكس هذه التغييرات. المكون `FilterableProductTable` هو من يملك الحالة، فهو فقط من يمكنه استدعاء الدالتين `setFilterText` و `setInStockOnly`. للسماح للمكون `SearchBar` بأن يقوم بتحديث حالة المكون `FilterableProductTable`، سيكون عليك أيضا أن تمرر هذه الدوال للمكون `SearchBar`:
+عليك أن تجعل الأمر ليكون كلما قام المستخدم بتغيير مدخلات النموذج، يتم حينها تحديث الحالة لتعكس هذه التغييرات. المكون `FilterableProductTable` هو من يملك الحالة، فهو فقط من يمكنه استدعاء الدالتين `setFilterText` و`setInStockOnly`. للسماح للمكون `SearchBar` بأن يقوم بتحديث حالة المكون `FilterableProductTable`، سيكون عليك أيضا أن تمرر هذه الدوال للمكون `SearchBar`:
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -488,7 +488,7 @@ function FilterableProductTable({ products }) {
 <input 
   type="text" 
   value={filterText} 
-  placeholder="Search..." 
+  placeholder="بحث..." 
   onChange={(e) => onFilterTextChange(e.target.value)} />
 ```
 
@@ -595,7 +595,7 @@ function SearchBar({
     <form>
       <input 
         type="text" 
-        value={filterText} placeholder="Search..." 
+        value={filterText} placeholder="بحث..." 
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
         <input 
@@ -603,7 +603,7 @@ function SearchBar({
           checked={inStockOnly} 
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
-        Only show products in stock
+        عرض المنتجات المتوفرة فقط
       </label>
     </form>
   );
@@ -646,4 +646,4 @@ td {
 
 ## ماذا بعد؟ {/*where-to-go-from-here*/}
 
-كانت هذه مقدمة مختصرة جدا لكيف يمكنك أن تفكر في بناء المكونات والتطبيقات باستخدام React. يمكنك [البدء في كتابة مشروع بـ React](/learn/installation) فورا أو [أن تتعمق أكثر في الصيغ](/learn/describing-the-ui) المستخدمة في هذا الشرح.
+كانت هذه مقدمة مختصرة جدًا لكيفية التفكير في بناء المكونات والتطبيقات باستخدام React. يمكنك [البدء في كتابة مشروع بـ React](/learn/installation) فورا أو [أن تتعمق أكثر في الصيغ](/learn/describing-the-ui) المستخدمة في هذا الشرح.
