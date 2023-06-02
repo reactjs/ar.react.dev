@@ -19,9 +19,12 @@ title: Your First Component
 
 </سوف تتعلم>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## المكونات: UI building blocks {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+على الويب ، تتيح لنا 
+HTML
+ إنشاء مستندات منظمة غنية بمجموعة علاماتها المضمنة
+  مثل `<h1>` و `<li> ':
 
 ```html
 <article>
@@ -34,11 +37,16 @@ On the Web, HTML lets us create rich structured documents with its built-in set 
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+هذه العلامة تعرض هذه المقالة `<article>` ، انها تحتوي على `<h1>` ، وايضاً (تختصر) جدول من المحتويات كـلستة مرتبة <ol>`. العلامات كهذه ، يتم ربطها مع الـCSS لإضافة التنسيق عليها،
+و JavaScript لإضافة التفاعل ، تقع خلف كل شريط جانبي ، بعد ، مشروط ، قائمة منسدلة — كل جزء من واجهة المستخدم تراه على الويب.
 
-React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+رياكت يسمح لك بدمج الترميز الخاص بك، CSS و JavaScript في "مكونات" مخصصة ، ** عناصر واجهة مستخدم قابلة لإعادة الاستخدام لتطبيقك. ** جدول المكونات الذي رأيته سابقًا يمكن اعادته الى `<TableOfContents />` مكون يمكنك اعادة استخدامه في كل صفحة. تحت الغطاء ، لا يزال يستخدم نفس علامات HTML مثل `<article>` ، `<h1>` ، إلخ.
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+
+
+تمامًا كما هو الحال مع علامات HTML 
+، يمكنك إنشاء المكونات وترتيبها وتداخلها لتصميم صفحات كاملة.
+ على سبيل المثال ، صفحة التوثيق التي تقرأها مصنوعة من مكونات رياكت .
 
 ```js
 <PageLayout>
@@ -54,7 +62,9 @@ Just like with HTML tags, you can compose, order and nest components to design w
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
+
+مع نمو مشروعك ، ستلاحظ أنه يمكن تكوين العديد من تصميماتك عن طريق إعادة استخدام المكونات التي كتبتها بالفعل ، مما يؤدي إلى تسريع عملية التطوير. يمكن إضافة جدول المحتويات أعلاه إلى أي شاشة باستخدام <TableOfContents />` ! يمكنك أيضًا بدء مشروعك من خلال آلاف المكونات التي يشاركها مجتمع رياكت مفتوح المصدر مثل 
+[Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
 
 ## Defining a component {/*defining-a-component*/}
 
