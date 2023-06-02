@@ -1,5 +1,4 @@
 ---
-title: Your First Component
 العنوان : أول مكون لك
 ---
 
