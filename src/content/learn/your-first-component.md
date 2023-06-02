@@ -25,8 +25,8 @@ title: مكوّنك الأول
   <h1>مكوّني الأول</h1>
   <ol>
     <li>المكوّنات: حجر بناء واجهة المستخدم</li>
-    <li>تعريف مكوّن</li>
-    <li>إستخدام مكوّن</li>
+    <li>تعريف المكوّن</li>
+    <li>إستخدام المكوّن</li>
   </ol>
 </article>
 ```
@@ -53,7 +53,7 @@ title: مكوّنك الأول
 
 مع نمو مشروعك, ستلاحظ انه يمكن تجميع العديد من تصاميمك بواسطة إعادة استخدام مكوّنات كتبتها مسبقا, مما يسرع عملية  التطوير. يمكن إضافة فهرس المحتويات أعلاه الى أي شاشة عن طريق `<TableOfContents />`! يمكنك أيضا الإنطلاق بسرعة في مشروعك باستخدام آلاف المكوّنات المشتركة من قبل مجتمع React مفتوحة المصدر مثل [Chakra UI](https://chakra-ui.com/) و [Material UI.](https://material-ui.com/).
 
-## تعريف مكوّن {/*defining-a-component*/}
+## تعريف المكوّن {/*defining-a-component*/}
 
 تقليديًا، عند إنشاء صفحات الويب، يقوم مطورو الويب بترميز المحتوى الخاص بهم ومن ثم يضيفون التفاعل عن طريق إضافة بعض JavaScript. نجح هذا بشكل رائع عندما كان التفاعل مجرد ميزة اضافية جيدة على الويب. الآن يُتوقع وجود التفاعل في العديد من المواقع وجميع التطبيقات. تضع React التفاعلية في المقام الأول مع الاستمرار في استخدام نفس التقنية: **مكوّن React هو دالة JavaScript يمكنك أن تُضف إليها ترميز مرئي.** هنا مثال لذلك (يمكنك تحرير المثال أدناه):
 
@@ -118,9 +118,9 @@ return (
 
 </Pitfall>
 
-## Using a component {/*using-a-component*/}
+## استخدام المكوّن {/*using-a-component*/}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+الآن بعد تعريفك لمكون `Profile`، يمكنك تضمينه داخل مكوّنات أخرى. على سبيل المثال، يمكنك تصدير مكون `Gallery` الذي يستخدم عدة مكونات `Profile`:
 
 <Sandpack>
 
@@ -129,7 +129,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   );
 }
@@ -137,7 +137,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء رائعون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -152,25 +152,27 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### What the browser sees {/*what-the-browser-sees*/}
+### ما يراه المتصفح {/*what-the-browser-sees*/}
 
-Notice the difference in casing:
+لاحظ الفرق في حالة الأحرف:
 
-* `<section>` is lowercase, so React knows we refer to an HTML tag.
-* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+* `<section>` هو بحروف صغيرة، لذا تعرف React أننا نشير إلى وسم HTML.
+* `<Profile />` يبدأ بحرف `P` كبير, لذا تعرف React أننا نريد استخدام مكوّننا الذي إسمه `Profile`.
 
 And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
 
+ومكوّن `Profile` يحتوي على المزيد من HTML:`<img />`. في النهاية, هذا ما يراه المتصفح:
+
 ```html
 <section>
-  <h1>Amazing scientists</h1>
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <h1>علماء رائعون</h1>
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
 </section>
 ```
 
-### Nesting and organizing components {/*nesting-and-organizing-components*/}
+### تضمين وتنظيم المكوّنات {/*nesting-and-organizing-components*/}
 
 Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
 
