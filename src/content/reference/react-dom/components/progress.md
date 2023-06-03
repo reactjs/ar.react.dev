@@ -28,7 +28,7 @@ title: "<progress>"
 
 [اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#  الخصائص {/*props*/}
+###  الخصائص {/*props*/}
 
 يدعم `<progress>` جميع  [خصائص العناصر الشائعة](/reference/react-dom/components/common#props)
 
