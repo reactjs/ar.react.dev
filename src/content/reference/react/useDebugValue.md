@@ -36,8 +36,8 @@ function useOnlineStatus() {
 
 #### المعاملات (parameters) {/*parameters*/}
 
-* `value`: القيمة التي تريد عرضها في React DevTools. يمكن أن يكون لها أي نوع.
-* **اختياري** `format`: دالة تنسيق. عند فحص المكون، React DevTools ستقوم باستدعاء دالة التنسيق مع `value` كمعامل، ثم يتم عرض القيمة التي تم إرجاعها (والتي قد تحتوي على أي نوع). إذا لم تحدد دالة التنسيق، سيتم عرض القيمة الأصلية من المعامل `value`.
+* `value`: القيمة التي تريد عرضها في أدوات مطور React. يمكن أن تكون من أي نوع.
+* **اختياري** `format`: دالة تنسيق. عند فحص المكون، ستقوم أدوات المطور باستدعاء دالة التنسيق مع `value` كمعامل، ثم يتم عرض القيمة التي تم إرجاعها (والتي قد تحتوي على أي نوع). إذا لم تحدد دالة التنسيق، سيتم عرض القيمة الأصلية من المعامل `value`.
 
 #### العائدات {/*returns*/}
 
@@ -47,7 +47,7 @@ function useOnlineStatus() {
 
 ### إضافة تصنيف إلي خطاف مخصص {/*adding-a-label-to-a-custom-hook*/}
 
-قم باستدعاء `useDebugValue` في المستوى الأعلي من [الخطاف المخصص](/learn/reusing-logic-with-custom-hooks) لعرض <CodeStep step={1}>debug value</CodeStep> قابلة للقرائة في [React DevTools.](/learn/react-developer-tools)
+قم باستدعاء `useDebugValue` في المستوى الأعلي من [خطافك المخصص](/learn/reusing-logic-with-custom-hooks) لعرض <CodeStep step={1}>قيمة تصحيح</CodeStep> قابلة للقرائة في [أدوات مطور React.](/learn/react-developer-tools)
 
 ```js [[1, 5, "isOnline ? 'Online' : 'Offline'"]]
 import { useDebugValue } from 'react';
@@ -61,9 +61,9 @@ function useOnlineStatus() {
 
 هذا يتيح للمكونات التي تستدعى `useOnlineStatus` أن تحمل تصنيف مثل `OnlineStatus: "Online"` عندما تقوم بفحصها:
 
-![A screenshot of React DevTools showing the debug value](/images/docs/react-devtools-usedebugvalue.png)
+![لقطة شاشة لأدوات مطور React تعرض قيمة تصحيح](/images/docs/react-devtools-usedebugvalue.png)
 
-بدون استدعاء `useDebugValue`، سيتم عرض فقط البيانات الأساسية دون أي تصنيف (في هذا المثال، `true`).
+بدون استدعاء `useDebugValue`، سيتم عرض البيانات الأساسية فقط دون أي تصنيف (في هذا المثال، `true`).
 
 <Sandpack>
 
@@ -103,7 +103,7 @@ function subscribe(callback) {
 
 <Note>
 
-لا تضيف قيم تصحيح إلى كل خطاف مخصص. تعد أكثر قيمة للخطافات المخصصة التي تشكل جزءا من المكتبات المشتركة والتي تحتوي على هيكل بيانات داخلي معقد يصعب فحصه.
+لا تضف قيم تصحيح إلى كل خطاف مخصص. يعد مفيدًا أكثر للخطافات المخصصة التي تشكل جزءا من المكتبات المشتركة والتي تحتوي على هيكل بيانات داخلي معقد يصعب فحصه.
 
 </Note>
 
@@ -117,6 +117,6 @@ function subscribe(callback) {
 useDebugValue(date, date => date.toDateString());
 ```
 
-ستتلقى دالة التنسيق الخاصة بك <CodeStep step={1}>debug value</CodeStep> كمعامل ويجب أن تعيد <CodeStep step={2}>قيمة عرض منسقة</CodeStep>. عندما يتم فحص مكونك، ستقوم React DevTools باستدعاء هذه الدالة وتعرض القيمة المنسقة التي تم إرجاعها.
+ستتلقى دالة التنسيق الخاصة بك <CodeStep step={1}>قيمة التصحيح</CodeStep> كمعامل ويجب أن تعيد <CodeStep step={2}>قيمة عرض منسقة</CodeStep>. عندما يتم فحص مكونك، ستقوم أدوات مطور React باستدعاء هذه الدالة وتعرض القيمة المنسقة التي تم إرجاعها.
 
 وهذا يتيح لك تجنب تنفيذ منطق التنسيق باهظ التكلفة ما لم يتم فحص المكون فعليا. على سبيل المثال, إذا كان المتغير `date` يحمل قيمة تاريخ, فإن استخدام قيمة التصحيح يساعد في تجنب استدعاء دالة `toDateString()` عليها في كل عملية عرض.
