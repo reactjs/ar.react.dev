@@ -4,7 +4,7 @@ title: useDebugValue
 
 <Intro>
 
-`useDebugValue` هو خطاف React يمكنك من إضافة تصنيف إلي خطاف مخصص في [React DevTools.](/learn/react-developer-tools)
+`useDebugValue` هو خطاف React يمكنك من إضافة تصنيف إلى خطاف مخصص في [أدوات مطور React.](/learn/react-developer-tools)
 
 ```js
 useDebugValue(value, format?)
@@ -20,7 +20,7 @@ useDebugValue(value, format?)
 
 ### `useDebugValue(value, format?)` {/*usedebugvalue*/}
 
-قم باستدعاء `useDebugValue` في المستوى الأعلي من [الخطاف المخصص](/learn/reusing-logic-with-custom-hooks) لعرض قيمة تصحيح قابلة للقراءة:
+قم باستدعاء `useDebugValue` في المستوى الأعلي من [خطافك المخصص](/learn/reusing-logic-with-custom-hooks) لعرض قيمة تصحيح قابلة للقراءة:
 
 ```js
 import { useDebugValue } from 'react';
@@ -32,7 +32,7 @@ function useOnlineStatus() {
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة بالأسفل.](#usage)
 
 #### المعاملات (parameters) {/*parameters*/}
 
