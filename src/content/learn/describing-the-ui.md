@@ -235,7 +235,7 @@ body > div > div { padding: 20px; }
 
 ## تمرير الخصائص (Props) إلى مكون {/*passing-props-to-a-component*/}
 
-المكونات في React تتواصل مع بعضها البعض عن طريق الخصائص (Props). كل مكون في أب يمكن له أن يمرر بعض المعلومات إلى المكونات الأبناء الخاصة به عن طريق إعطائهم خصائص. الخصائص يمكن أن تذكرك بـ"HTML attributes"، ولكن يمكنك أن تمرر أي قيمة JavaScript عن طريقهم، هذا يمكن أن يكون كائن (object) أو مصفوفة (array) أو دالة function أو حتى JSX!
+المكونات في React تتواصل مع بعضها البعض عن طريق الخصائص (Props). كل مكون أب يمكن له أن يمرر بعض المعلومات إلى المكونات الأبناء عن طريق إعطائهم خصائص. الخصائص يمكن أن تذكرك بـ"خصائص HTML"، ولكن يمكنك أن تمرر أي قيمة JavaScript عن طريقهم، هذا يمكن أن يكون كائن (object) أو مصفوفة (array) أو دالة function أو حتى JSX!
 
 <Sandpack>
 
@@ -310,7 +310,7 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-اقرأ **[تمرير الخصائص (Props) إلى مكون](/learn/passing-props-to-a-component)** لتتعلم كيف تقوم بتمرير وقراءة الخصائص.
+اقرأ **[تمرير الخصائص (Props) إلى مكون](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
 
 </LearnMore>
 
