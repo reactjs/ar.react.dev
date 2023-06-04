@@ -1,29 +1,29 @@
 ---
-title: Describing the UI
+title: وصف واجهات المستخدم (UI)
 ---
 
 <Intro>
 
-React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable *components.* From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you'll learn to create, customize, and conditionally display React components.
+تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات حسب الشروط.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
+* [كيفية كتابة أول مكون React لك](/learn/your-first-component)
+* [متى وكيف تنشأ ملفات تحتوى على أكثر من مكون](/learn/importing-and-exporting-components)
+* [كيفية إضافة ترميزات (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
+* [كيفية استخدام الأقواس المجعدة في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
+* [كيفية إعداد المكونات باستخدام الخصائص (Props)](/learn/passing-props-to-a-component)
+* [(Conditional rendering) كيفية عرض المكونات بشكل مشروط](/learn/conditional-rendering)
+* [كيفية عرض أكثر من مكون مرة واحدة](/learn/rendering-lists)
+* [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
-## Your first component {/*your-first-component*/}
+## أول مكون لك {/*your-first-component*/}
 
-React applications are built from isolated pieces of UI called *components*. A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here is a `Gallery` component rendering three `Profile` components:
+يتم بناء تطبيقات React باستخدام قطع معزولة من واجهات المستخدم تسمى مكونات. المكون في React هو عبارة عن دالة JavaScript التى يمكنك إضافة ترميزات إليها. المكونات يمكن أن تكون صغيرة كزرار أو كبيرة كصفحة كاملة. هنا المكون `Gallery` يقوم بعرض ثلاث مكونات `Profile`:
 
 <Sandpack>
 
@@ -57,13 +57,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-Read **[Your First Component](/learn/your-first-component)** to learn how to declare and use React components.
+اقرأ **[مكونك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
 
 </LearnMore>
 
-## Importing and exporting components {/*importing-and-exporting-components*/}
+## استيراد وتصدير المكونات {/*importing-and-exporting-components*/}
 
-You can declare many components in one file, but large files can get difficult to navigate. To solve this, you can *export* a component into its own file, and then *import* that component from another file:
+يمكنك تعريف أكثر من مكون في ملف واحد، ولكن الملفات الكبيرة يمكن أن تصبح صعبة التصفح. لحل هذه المشكلة يمكنك أن تصدر *export* مكون من الملف الخاص به، ثم استخدام *import* لتستخدم هذا المكون في ملف آخر:
 
 
 <Sandpack>
@@ -112,15 +112,15 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-Read **[Importing and Exporting Components](/learn/importing-and-exporting-components)** to learn how to split components into their own files.
+اقرأ **[استيراد وتصدير المكونات](/learn/importing-and-exporting-components)** لتتعلم كيفية تقسيم المكونات إلى ملفات خاصة بها.
 
 </LearnMore>
 
-## Writing markup with JSX {/*writing-markup-with-jsx*/}
+## كتابة ترميزات (Markup) باستخدام JSX {/*writing-markup-with-jsx*/}
 
-Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information.
+كل مكون في React عبارة عن دالة JavaScript التى يمكن أن تحتوي على بعض الترميزات التي يمكن لـ React أن تعرضها في المتصفح. المكونات في React تستخدم صيغة معدلة تسمى JSX لكى تمثل هذه الترميزات. JSX تشبه HTML كثيرا، ولكنها صارمة قليلا وتستطيع أن تعرض محتوى ديناميكي.
 
-If we paste existing HTML markup into a React component, it won't always work:
+إذا قمنا بنسخ ترميزات HTML موجودة سابقا داخل مكون React، لن تعمل دائما:
 
 <Sandpack>
 
@@ -149,7 +149,7 @@ img { height: 90px; }
 
 </Sandpack>
 
-If you have existing HTML like this, you can fix it using a [converter](https://transform.tools/html-to-jsx):
+إذا كان لديك ترميزات HTML مثل هذه، يمكنك أن تصلحها باستخدام [محوّل](https://transform.tools/html-to-jsx):
 
 <Sandpack>
 
@@ -181,13 +181,13 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-Read **[Writing Markup with JSX](/learn/writing-markup-with-jsx)** to learn how to write valid JSX.
+اقرأ **[كتابة ترميزات (Markup) باستخدام JSX](/learn/writing-markup-with-jsx)** لتتعلم كيفية كتابة JSX صحيحة
 
 </LearnMore>
 
-## JavaScript in JSX with curly braces {/*javascript-in-jsx-with-curly-braces*/}
+## استخدام JavaScript في JSX باستخدام الأقواس المجعدة {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to "open a window" to JavaScript:
+تتيح لك JSX أن تكتب ترميزات مشابهة إلى HTML بداخل ملفات JavaScript وأن تعرض محتوى وتبقى المنطق الخاص بالمكونات في نفس المكان. في بعض الأحيان، قد ترغب في إضافة بعض المنطق المكتوب باستخدام JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذا الموقف، يمكنك استخدام الأقواس المجعدة في JSX الخاص بك لفتح نافذة إلى JavaScript:
 
 <Sandpack>
 
@@ -229,13 +229,13 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-Read **[JavaScript in JSX with Curly Braces](/learn/javascript-in-jsx-with-curly-braces)** to learn how to access JavaScript data from JSX.
+اقرأ **[استخدام JavaScript في JSX باستخدام الأقواس المجعدة](/learn/javascript-in-jsx-with-curly-braces)** لتتعلم كيفية الوصول إلى بيانات JavaScript في JSX
 
 </LearnMore>
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## تمرير الخصائص (Props) إلى مكون {/*passing-props-to-a-component*/}
 
-React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!
+المكونات في React تتواصل مع بعضها البعض عن طريق الخصائص (Props). كل مكون أب يمكن له أن يمرر بعض المعلومات إلى المكونات الأبناء عن طريق إعطائهم خصائص. الخصائص يمكن أن تذكرك بـ"خصائص HTML"، ولكن يمكنك أن تمرر أي قيمة JavaScript عن طريقهم، هذا يمكن أن يكون كائن (object) أو مصفوفة (array) أو دالة function أو حتى JSX!
 
 <Sandpack>
 
@@ -310,15 +310,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-Read **[Passing Props to a Component](/learn/passing-props-to-a-component)** to learn how to pass and read props.
+اقرأ **[تمرير الخصائص (Props) إلى مكون](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
 
 </LearnMore>
 
-## Conditional rendering {/*conditional-rendering*/}
+## العرض المشروط (Conditional rendering) {/*conditional-rendering*/}
 
-Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
+غالبًا ما تحتاج مكوناتك إلى عرض أشياء مختلفة تعتمد على شروط مختلفة. في React، يمكنك عرض JSX حسب شروط باستخدام صيغ شبيهه بـ JavaScript مثل التعبيرات الشرطية `if` والمعاملات `&&` و `condition ? if true : else`.
 
-In this example, the JavaScript `&&` operator is used to conditionally render a checkmark:
+في هذا المثال،  معامل `&&` في JavaScript يستخدم لعرض علامة صح بشكل مشروط:
 
 <Sandpack>
 
@@ -358,15 +358,15 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-Read **[Conditional Rendering](/learn/conditional-rendering)** to learn the different ways to render content conditionally.
+اقرأ **[العرض المشروط (Conditional rendering)](/learn/conditional-rendering)** لتتعلم الطرق المختلفة لعرض المحتوى بشكل شرطي.
 
 </LearnMore>
 
-## Rendering lists {/*rendering-lists*/}
+## عرض القوائم (lists) {/*rendering-lists*/}
 
-You will often want to display multiple similar components from a collection of data. You can use JavaScript's `filter()` and `map()` with React to filter and transform your array of data into an array of components.
+غالبًا ما سترغب في عرض عدة مكونات متشابهة من مجموعة البيانات. يمكن استخدام `filter()` و `map()` في JavaScript مع React لتصفية وتحويل مصفوفة البيانات الخاصة بك إلى مصفوفة من المكونات.
 
-For each array item, you will need to specify a `key`. Usually, you will want to use an ID from the database as a `key`. Keys let React keep track of each item's place in the list even if the list changes.
+يتعين عليك تحديد مفتاح `key` لكل عنصر في المصفوفة. عادةً سترغب في استخدام ID من قاعدة البيانات كمفتاح `key`. يتيح المفتاح `key` إلى React أن تتبع مكان كل عنصر في القائمة حتى لو تغيرت القائمة.
 
 <Sandpack>
 
@@ -458,18 +458,18 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-Read **[Rendering Lists](/learn/rendering-lists)** to learn how to render a list of components, and how to choose a key.
+اقرأ **[عرض القوائم (lists)](/learn/rendering-lists)** لتتعلم  كيفية عرض قوائم من المكونات، وكيفية اختيار مفتاح.
 
 </LearnMore>
 
-## Keeping components pure {/*keeping-components-pure*/}
+## الحفاظ على المكونات نقية {/*keeping-components-pure*/}
 
-Some JavaScript functions are *pure.* A pure function:
+بعض دوال JavaScript *نقية*. الدالة النقية:
 
-* **Minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+* **تهتم بشؤونها فقط.** لا تغيّر أي كائنات (objects) أو متغيرات (variables) كانت موجودة من قبل عند استدعائها.
+* **نفس المدخلات، نفس المخرجات.** يجب أن تعيد الدالة النقية دائمًا نفس النتيجة عندما تمرر لها نفس المُدخلات.
 
-By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. Here is an example of an impure component:
+من خلال كتابة مكوناتك بشكل صارم، حيث تكون دوالا نقية فقط، يمكنك تجنب فئة كاملة من الأخطاء صعبة التفسير والسلوك غير المتوقع مع تطور قاعدة الكود (codebase) الخاصّة بك. هنا مثال على مكوّن غير نقي:
 
 <Sandpack>
 
@@ -477,7 +477,7 @@ By strictly only writing your components as pure functions, you can avoid an ent
 let guest = 0;
 
 function Cup() {
-  // Bad: changing a preexisting variable!
+  // سيء: تعديل متغير موجود مسبقًا
   guest = guest + 1;
   return <h2>Tea cup for guest #{guest}</h2>;
 }
@@ -495,7 +495,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-You can make this component pure by passing a prop instead of modifying a preexisting variable:
+يمكنك جعل هذا المكون نقي عن طريق تمرير الخاصية بدلا عن تعديل متغير موجود بالفعل:
 
 <Sandpack>
 
@@ -519,12 +519,12 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-Read **[Keeping Components Pure](/learn/keeping-components-pure)** to learn how to write components as pure, predictable functions.
+اقرأ **[الحفاظ على المكونات نقية](/learn/keeping-components-pure)** لتتعلم كيفية كتابة مكونات نقية ودوال متنبئة.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## ماذا بعد ذلك؟ {/*whats-next*/}
 
-Head over to [Your First Component](/learn/your-first-component) to start reading this chapter page by page!
+توجه إلى [المكون الأول الخاص بك](/learn/your-first-component) لبدء قراءة هذا الفصل صفحة بصفحة!
 
-Or, if you're already familiar with these topics, why not read about [Adding Interactivity](/learn/adding-interactivity)?
+أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن [إضافة التفاعلية (Interactivity)](/learn/adding-interactivity)?
