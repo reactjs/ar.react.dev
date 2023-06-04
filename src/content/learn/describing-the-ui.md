@@ -4,7 +4,7 @@ title: وصف واجهات المستخدم (UI)
 
 <Intro>
 
-تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بأن تجمع هذه العناصر في مكونات (Components) يمكن اعادة استخدامها او تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات بشكل مشروط.
+تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات حسب الشروط.
 
 </Intro>
 
@@ -14,10 +14,10 @@ title: وصف واجهات المستخدم (UI)
 * [متى وكيف تنشأ ملفات تحتوى على أكثر من مكون](/learn/importing-and-exporting-components)
 * [كيفية إضافة ترميزات (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
 * [كيفية استخدام الأقواس المجعدة في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
-* [كيفية اعداد المكونات باستخدام الخصائص (Props)](/learn/passing-props-to-a-component)
+* [كيفية إعداد المكونات باستخدام الخصائص (Props)](/learn/passing-props-to-a-component)
 * [(Conditional rendering) كيفية عرض المكونات بشكل مشروط](/learn/conditional-rendering)
 * [كيفية عرض أكثر من مكون مرة واحدة](/learn/rendering-lists)
-* [كيفية تجنب الثغرات المربكة عن طريق إبقاء المكونات نقية](/learn/keeping-components-pure)
+* [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
@@ -57,7 +57,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-اقرأ **[المكون الأول الخاص بك](/learn/your-first-component)** لتتعلم كيف تقوم بتعرف واستخدام مكونات React.
+اقرأ **[مكونك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
 
 </LearnMore>
 
@@ -112,7 +112,7 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-اقرأ **[استيراد وتصدير المكونات](/learn/importing-and-exporting-components)** لتتعلم كيف تقوم بتقسيم المكونات إلى ملفات خاصة بها.
+اقرأ **[استيراد وتصدير المكونات](/learn/importing-and-exporting-components)** لتتعلم كيفية تقسيم المكونات إلى ملفات خاصة بها.
 
 </LearnMore>
 
