@@ -4,7 +4,7 @@ title: "<progress>"
 
 <Intro>
 
-يتيح لك [مكون `<progress>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) عرض مؤشر التقدم
+يتيح لك [مكون `<progress>` المدمَج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) عرض مؤشر التقدم
 
 ```js
 <progress value={0.5} />
@@ -20,7 +20,7 @@ title: "<progress>"
 
 ### `<progress>` {/*progress*/}
 
-لعرض مؤشر التقدم، قم بتصيير مكون [`<progress>` المدمج في المتصفح ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) 
+لعرض مؤشر التقدم، استخدم عنصر [`<progress>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) 
 
 ```js
 <progress value={0.5} />
