@@ -4,7 +4,7 @@ title: "<option>"
 
 <Intro>
 
-يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
+يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) عرض خيارات داخل عنصر الاختيار [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
@@ -22,8 +22,7 @@ title: "<option>"
 ## المرجع {/*reference*/}
 
 ### `<option>` {/*option*/}
-
-يتيح لك [مكون الـ `<option>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) عرض خيارات داخل عنصر [`<select>`](/reference/react-dom/components/select).
+يتيح لك عنصر [`<option>` المدمَج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) عرض خيار في عنصر الاختيار [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
