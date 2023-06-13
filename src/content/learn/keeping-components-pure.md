@@ -4,11 +4,17 @@ title: Keeping Components Pure
 
 <Intro>
 
+بعض دوال JavaScript *نقية.* الدوال النقية (pure functions) تقوم فقط بإجراء حساب ولا شيء اكثر. من خلال كتابة مكوّناتك (components)  بصرامة كدوال نقية، يمكنك تجنب صنف كامل من الأخطاء (bugs)  المحيرة والسلوك غير المتوقع مع نمو قاعدة التعليمات البرمجية (codebase)  الخاصة بك. للحصول على هذه الفوائد، هناك بعض القواعد التي يجب عليك اتباعها.
+
 Some JavaScript functions are *pure.* Pure functions only perform a calculation and nothing more. By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. To get these benefits, though, there are a few rules you must follow.
 
 </Intro>
 
 <YouWillLearn>
+
+* ما هو النقاء وكيف يساعدك على تجنب الأخطاء (bugs)
+* كيفية الحفاظ على نقاء المكوّنات عن طريق إبقاء التغييرات خارج مرحلة التصيير (render phase)
+* كيفية استخدام الوضع الصارم (Strict Mode) للعثور على الأخطاء في مكوّناتك
 
 * What purity is and how it helps you avoid bugs
 * How to keep components pure by keeping changes out of the render phase
@@ -16,12 +22,33 @@ Some JavaScript functions are *pure.* Pure functions only perform a calculation 
 
 </YouWillLearn>
 
-## Purity: Components as formulas {/*purity-components-as-formulas*/}
+## النقاء: المكوّنات (components) كمعادلات رياضية {/*purity-components-as-formulas*/}
+## Purity: Components as formulas {/*purity-components-as-formulass*/}
+
+في علم الحاسب (وخاصة عالم البرمجة الوظيفية (functional programming)), [الدالة النقية](https://wikipedia.org/wiki/Pure_function) هي دالة بالخواص التالية:
 
 In computer science (and especially the world of functional programming), [a pure function](https://wikipedia.org/wiki/Pure_function) is a function with the following characteristics:
 
+* **تهتم بشؤونها.** لا تغير أي كائنات أو متغيرات كانت موجودة قبل استدعائها.
+* **نفس الدخل، نفس الخرج** بإعطاء نفس المدخلات ، يجب أن تُرجع الدالة النقية نفس النتيجة دائمًا.
+
 * **It minds its own business.** It does not change any objects or variables that existed before it was called.
 * **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
+
+قد تكون بالفعل على دراية بمثال واحد من الوظائف النقية: المعادلات في الرياضيات.
+
+انظر معادلة الرياضيات هذه: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
+
+إذا <Math><MathI>x</MathI> = 2</Math> عندها <Math><MathI>y</MathI> = 4</Math>. دائمًا. 
+
+إذا <Math><MathI>x</MathI> = 3</Math> عندها <Math><MathI>y</MathI> = 6</Math>. دائمًا. 
+
+إذا <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> لن تكون احيانًا <Math>9</Math> أو <Math>–1</Math> أو <Math>2.5</Math> اعتمادًا على الوقت في اليوم أو حالة البورصة.
+
+إذا <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> و <Math><MathI>x</MathI> = 3</Math>، <MathI>y</MathI> ستكون _دائمًا_ <Math>6</Math>. 
+
+إذا قمنا بتحويل هذا إلى دالة JavaScript، فسيبدو كما يلي:
+
 
 You might already be familiar with one example of pure functions: formulas in math.
 
@@ -42,6 +69,37 @@ function double(number) {
   return 2 * number;
 }
 ```
+في المثال أعلاه ، "double" هي **دالة نقية.** إذا مررت بـ "3" ، فستُرجع "6". دائماً.
+
+تم تصميم React حول هذا المفهوم. **تفترض React أن كل مكّون تكتبه هو دالة نقية.** هذا يعني أن مكوّنات React التي تكتبها يجب أن تُرجع دائمًا نفس JSX مع الأخذ في الاعتبار نفس المدخلات:
+
+<Sandpack>
+
+```js App.js
+function Recipe({ drinkers }) {
+  return (
+    <ol>    
+      <li>أغلي {drinkers} كوب ماء.</li>
+      <li>أضف {drinkers} ملعقة شاي و {0.5 * drinkers} ملعقة توابل.</li>
+      <li>أضف {0.5 * drinkers} كوب حليب للغلي وسكر للتذوق</li>
+    </ol>
+  );
+}
+
+export default function App() {
+  return (
+    <section>
+      <h1>وصفة شاي متبل</h1>
+      <h2>لاثنين</h2>
+      <Recipe drinkers={2} />
+      <h2>لتجمًع</h2>
+      <Recipe drinkers={4} />
+    </section>
+  );
+}
+```
+
+</Sandpack>
 
 In the above example, `double` is a **pure function.** If you pass it `3`, it will return `6`. Always.
 
