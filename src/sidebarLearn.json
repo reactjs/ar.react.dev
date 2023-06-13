@@ -1,5 +1,5 @@
 {
-  "title": "Learn React",
+  "title": "تعلم React",
   "path": "/learn",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "GET STARTED"
     },
     {
-      "title": "Quick Start",
+      "title": "بداية سريعة",
       "path": "/learn",
       "routes": [
         {
@@ -15,13 +15,13 @@
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "التفكير على طريقة React",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "title": "Installation",
+      "title": "التثبيت",
       "path": "/learn/installation",
       "routes": [
         {
@@ -29,15 +29,15 @@
           "path": "/learn/start-a-new-react-project"
         },
         {
-          "title": "Add React to an Existing Project",
+          "title": "إضافة React إلى مشروع موجود بالفعل",
           "path": "/learn/add-react-to-an-existing-project"
         },
         {
-          "title": "Editor Setup",
+          "title": "تجهيز المحرر",
           "path": "/learn/editor-setup"
         },
         {
-          "title": "React Developer Tools",
+          "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
         }
       ]
@@ -47,20 +47,20 @@
       "sectionHeader": "LEARN REACT"
     },
     {
-      "title": "Describing the UI",
+      "title": "وصف واجهة المستخدم UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "Your First Component",
+          "title": "مكوّنك الأول",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "Importing and Exporting Components",
+          "title": "استيراد وتصدير المكونات",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "Writing Markup with JSX",
+          "title": "كتابة ترميز البناء بـ JSX",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
@@ -99,7 +99,7 @@
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "Render and Commit",
+          "title": "التصيير والتأكيد",
           "path": "/learn/render-and-commit"
         },
         {
