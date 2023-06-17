@@ -4,10 +4,10 @@
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "ابدأ"
+      "sectionHeader": "البدأ"
     },
     {
-      "title": "البدء السريع",
+      "title": "بداية سريعة",
       "path": "/learn",
       "routes": [
         {
@@ -15,7 +15,7 @@
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "التفكير بطريقة React",
+          "title": "التفكير على طريقة React",
           "path": "/learn/thinking-in-react"
         }
       ]
@@ -25,15 +25,15 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "ابدأ مشروع React جديدًا",
+          "title": "ابدأ مشروع React جديد",
           "path": "/learn/start-a-new-react-project"
         },
         {
-          "title": "أضف React إلى مشروع موجود",
+          "title": "إضافة React إلى مشروع موجود بالفعل",
           "path": "/learn/add-react-to-an-existing-project"
         },
         {
-          "title": "تجهيز المحرر الخاص بك",
+          "title": "تجهيز المحرر",
           "path": "/learn/editor-setup"
         },
         {
@@ -47,12 +47,12 @@
       "sectionHeader": "تعلم React"
     },
     {
-      "title": "وصف واجهة المستخدم",
+      "title": "وصف واجهة المستخدم UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "أول مُكوِّن لك",
+          "title": "مكوّنك الأول",
           "path": "/learn/your-first-component"
         },
         {
@@ -60,97 +60,97 @@
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "كتابة البنية بـ JSX",
+          "title": "كتابة ترميز البناء بـ JSX",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JavaScript في JSX بالأقواس المنحنية",
+          "title": "JavaScript in JSX with Curly Braces",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "تمرير الخصائص إلى المكونات",
+          "title": "Passing Props to a Component",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "التصيير الشرطي",
+          "title": "Conditional Rendering",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "تصيير القوائم",
+          "title": "Rendering Lists",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "حافظ على المكونات نظيفة",
+          "title": "Keeping Components Pure",
           "path": "/learn/keeping-components-pure"
         }
       ]
     },
     {
-      "title": "إضافة تفاعلية",
+      "title": "Adding Interactivity",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
         {
-          "title": "التفاعل مع الأحداث",
+          "title": "Responding to Events",
           "path": "/learn/responding-to-events"
         },
         {
-          "title": "الحالة: ذاكرة المكونات",
+          "title": "State: A Component's Memory",
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "التصيير والالتزام",
+          "title": "التصيير والتأكيد",
           "path": "/learn/render-and-commit"
         },
         {
-          "title": "الحالة مثل اللقطة",
+          "title": "State as a Snapshot",
           "path": "/learn/state-as-a-snapshot"
         },
         {
-          "title": "انتظار سلسلة من التحديثات",
+          "title": "Queueing a Series of State Updates",
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
-          "title": "تحديث الكائنات في الحالة",
+          "title": "Updating Objects in State",
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "تحديث المصفوفات في الحالة",
+          "title": "Updating Arrays in State",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
     },
     {
-      "title": "إدارة الحالة",
+      "title": "Managing State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "الاستجابة للإدخال باستخدام الحالة",
+          "title": "Reacting to Input with State",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "اختيار هيكل الحالة",
+          "title": "Choosing the State Structure",
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "مشاركة الحالة بين المكونات",
+          "title": "Sharing State Between Components",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "الحفاظ على الحال، وإعادة تعيينها",
+          "title": "Preserving and Resetting State",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "استخراج منطق الحالة إلى مُخفِّض (Reducer)",
+          "title": "Extracting State Logic into a Reducer",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "التمرير العميق للبيانات باستخدام السياق (Context)",
+          "title": "Passing Data Deeply with Context",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "التوسع باستخدام المُخفِّض (Reducer) والسياق (Context)",
+          "title": "Scaling Up with Reducer and Context",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
@@ -161,35 +161,35 @@
       "tags": ["advanced"],
       "routes": [
         {
-          "title": "الإشارة إلى القيم باستخدام المراجع (Refs)",
+          "title": "Referencing Values with Refs",
           "path": "/learn/referencing-values-with-refs"
         },
         {
-          "title": "التحكم بـDOM باستخدام المراجع (Refs)",
+          "title": "Manipulating the DOM with Refs",
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "المزامنة مع التأثيرات (Effects)",
+          "title": "Synchronizing with Effects",
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "ربما لا تحتاج إلى تأثير (Effect)",
+          "title": "You Might Not Need an Effect",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "دورة حياة الآثار الردّيّة",
+          "title": "Lifecycle of Reactive Effects",
           "path": "/learn/lifecycle-of-reactive-effects"
         },
         {
-          "title": "فصل الأحداث عن التأثيرات",
+          "title": "Separating Events from Effects",
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "إزالة تبعيات التأثيرات",
-          "path": "/learn/removing-effect-dependencies"              
+          "title": "Removing Effect Dependencies",
+          "path": "/learn/removing-effect-dependencies"
         },
         {
-          "title": "إعادة استخدام المنطق باستخدام الخطافات المخصصة",
+          "title": "Reusing Logic with Custom Hooks",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]
