@@ -4,8 +4,6 @@ title: JavaScript في JSX باستخدام الأقواس المعقوفة
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
-
  تتيح لك JSX كتابة ترميز شبيه بـ HTML داخل ملف JavaScript، مما يسمح بالحفاظ على منطق التصيير والمحتوى في المكان نفسه. في بعض الأحيان، قد ترغب في إضافة بعض منطق لغة JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذه الحالة، يمكنك استخدام الأقواس المعقوفة داخل JSX الخاص بك لفتح نافذة للغة JavaScript.
 
 </Intro>
@@ -19,9 +17,9 @@ JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering 
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## تمرير strings باستخدام علامات التنصيص {/*passing-strings-with-quotes*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+عندما ترغب في تمرير خاصية string إلى JSX، يتم وضعها بين علامات تنصيص مفردة أو مزدوجة:
 
 <Sandpack>
 
@@ -43,9 +41,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+هنا ، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"Gregorio Y. Zara"` في صورة strings.
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+ولكن ماذا لو كنت ترغب في تحديد `src` أو نص `alt` بشكل ديناميكي؟ يمكنك **استخدام قيمة من JavaScript عن طريق استبدال `"`و `"` بـ `{`و `}`**:
 
 <Sandpack>
 
@@ -69,7 +67,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+لاحظ الاختلاف بين `className="avatar"`، الذي يحدد اسم صنف CSS `"avatar"` الذي يجعل الصورة دائرية، و `src={avatar}` الذي يقرأ قيمة متغير JavaScript المسمى `avatar`. هذا لأن الأقواس المعقوفة تتيح لك العمل مع لغة JavaScript مباشرة داخل الترميز الخاصة بك!
 
 ## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
