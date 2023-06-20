@@ -244,9 +244,9 @@ JSX هي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظ
 
 <Challenges>
 
-#### Fix the mistake {/*fix-the-mistake*/}
+#### أصلح الخطأ {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+هذا الكود يتعطل ويظهر خطأ  `Objects are not valid as a React child`:
 
 <Sandpack>
 
@@ -286,15 +286,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+هل يمكنك إيجاد المشكلة؟
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>ابحث عن ما يوجد داخل الأقواس المجعدة. هل يتم وضع الشيء الصحيح هناك؟</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+يحدث هذا بسبب أن هذا المثال يقوم بتصيير *كائن بذاته* في الترميز بدلاً من string: `<h1>{person}'s قائمة المهام</h1>` يحاول عرض كائن `person` بأكمله! إدراج الكائنات المباشرة كمحتوى نصي يُثير خطأ لأن React لا يعرف كيف ترغب في عرضها.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+لحل هذه المشكلة، قم بتبديل `<h1>{person}'s Todos</h1>` بـ `<h1>{person.name}'s Todos</h1>`:
 
 <Sandpack>
 
@@ -336,9 +336,9 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Extract information into an object {/*extract-information-into-an-object*/}
+#### استخرج المعلومات إلى كائن {/*extract-information-into-an-object*/}
 
-Extract the image URL into the `person` object.
+استخرج عنوان URL للصورة إلى كائن `person`.
 
 <Sandpack>
 
@@ -380,7 +380,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+قم بنقل عنوان URL للصورة إلى خاصية تسمى `person.imageUrl` وقم بقراءتها من وسم `<img>` باستخدام الأقواس المعقوفة:
 
 <Sandpack>
 
@@ -423,13 +423,13 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
+#### اكتب تعبيراً داخل أقواس JSX المعقوفة. {/*write-an-expression-inside-jsx-curly-braces*/}
 
-In the object below, the full image URL is split into four parts: base URL, `imageId`, `imageSize`, and file extension.
+في الكائن أدناه، يتم تقسيم العنوان الكامل للصورة إلى أربعة أجزاء: العنوان الأساس و`imageId` و`imageSize` وامتداد الملف.
 
-We want the image URL to combine these attributes together: base URL (always `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
+نريد أن يتم دمج عنوان URL للصورة باستخدام هذه الخصائص معًا: العنوان الأساس (دائمًا `'https://i.imgur.com/'`) و`imageId` (`'7vQD0fP'`) و `imageSize` (`'s'`)، وامتداد الملف (دائمًا `'.jpg'`). ومع ذلك، هناك خطأ في كيفية تحديد الوسم `<img>` لخاصية `src` الخاصة به.
 
-Can you fix it?
+هل يمكنك إصلاح الخطأ؟
 
 <Sandpack>
 
@@ -473,15 +473,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-To check that your fix worked, try changing the value of `imageSize` to `'b'`. The image should resize after your edit.
+للتحقق من نجاح حلك، جرب تغيير قيمة `imageSize` إلى `'b'`. يفترض أن يتغير حجم الصورة بعد تعديلك.
 
 <Solution>
 
-You can write it as `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
+يمكنك كتابته على هذا النحو `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
 
-1. `{` opens the JavaScript expression
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` produces the correct URL string
-3. `}` closes the JavaScript expression
+1. `{` تفتح التعبير الخاص بـ JavaScript
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` ينتج string URL الصحيح
+3. `{` تغلق التعبير الخاص بـ JavaScript
 
 <Sandpack>
 
@@ -524,7 +524,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+يمكنك أيضًا نقل هذا التعبير إلى دالة منفصلة مثل `getImageUrl` في الأسفل:
 
 <Sandpack>
 
@@ -579,7 +579,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Variables and functions can help you keep the markup simple!
+المتغيرات والدوال يمكنها مساعدتك في إبقاء الترميز بسيط!
 
 </Solution>
 
