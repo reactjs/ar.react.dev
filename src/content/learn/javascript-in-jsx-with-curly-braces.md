@@ -233,12 +233,12 @@ JSX هي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظ
 
 <Recap>
 
-Now you know almost everything about JSX:
+الآن تعرف تقريبًا كل شيء عن JSX:
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* يتم تمرير خصائص JSX في شكل strings داخل أقواس تنصيص
+* تسمح لك الأقواس المعقوفة بإضافة منطق ومتغيرات JavaScript داخل الترميز الخاص بك.
+* تعمل الأقواس المعقوفة داخل محتوى وسم JSX أو مباشرة بعد `=` في الخصائص.
+* `{{` و `}}` ليست بصيغة خاصة: إنما هي كائن JavaScript موجود داخل أقواس JSX المعقوفة.
 
 </Recap>
 
