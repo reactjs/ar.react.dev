@@ -1,19 +1,21 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: JavaScript في JSX باستخدام الأقواس المعقوفة
 ---
 
 <Intro>
 
 JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
 
+ تتيح لك JSX كتابة ترميز شبيه بـ HTML داخل ملف JavaScript، مما يسمح بالحفاظ على منطق التصيير والمحتوى في المكان نفسه. في بعض الأحيان، قد ترغب في إضافة بعض منطق لغة JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذه الحالة، يمكنك استخدام الأقواس المعقوفة داخل JSX الخاص بك لفتح نافذة للغة JavaScript.
+
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* كيفية تمرير strings باستخدام علامات التنصيص
+* كيفية الإشارة إلى متغير JavaScript داخل JSX باستخدام الأقواس المعقوفة
+* كيفية استدعاء دالة JavaScript داخل JSX باستخدام الأقواس المعقوفة
+* كيفية استخدام كائن JavaScript داخل JSX باستخدام الأقواس المعقوفة
 
 </YouWillLearn>
 
