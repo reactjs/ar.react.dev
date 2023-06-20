@@ -117,11 +117,11 @@ export default function TodoList() {
 1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـ Gregorio Y. Zara</{tag}>` لن يعمل.
 2. **كخصائص** تأتي فورًا بعد علامة `=`: `src={avatar}` ستقرأ قيمة المتغير `avatar`، ولكن `src="{avatar}"` ستمرر `"{avatar}"` في صورة string.
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## استخدام "أقواس معقوفة مزدوجة": CSS وكائنات أخرى داخل JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+بالإضافة إلى strings والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المعقوفة، مثل `{ name: "Hedy Lamarr", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المعقوفة: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+قد ترى ذلك في أنماط CSS المضمنة في JSX. React لا تتطلب منك استخدام أنماط CSS مضمنة (صنف CSS يعمل جيداً في معظم الحالات). ولكن عندما تحتاج إلى أسلوب مضمن، يمكنك تمرير كائن إلى خاصية `style`:
 
 <Sandpack>
 
@@ -147,9 +147,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+حاول تغيير قيم `backgroundColor` و `color`.
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+يمكنك رؤية كائن JavaScript بوضوح داخل الأقواس المعقوفة عندما تكتبه بهذه الطريقة:
 
 ```js {2-5}
 <ul style={
@@ -160,11 +160,11 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+في المرة القادمة التي ترى `{{` و `}}` في JSX، أعلم أنه ليس سوى كائن داخل أقواس JSX المعقوفة!
 
 <Pitfall>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+خصائص `style` المضمنة تكتب بتنسيق camelCase. على سبيل المثال، عنصر HTML `<ul style="background-color: black">` يتم كتابته في المكون الخاص بك على النحو التالي: `<ul style={{ backgroundColor: 'black' }}>`.
 
 </Pitfall>
 
