@@ -69,9 +69,9 @@ export default function Avatar() {
 
 لاحظ الاختلاف بين `className="avatar"`، الذي يحدد اسم صنف CSS `"avatar"` الذي يجعل الصورة دائرية، و `src={avatar}` الذي يقرأ قيمة متغير JavaScript المسمى `avatar`. هذا لأن الأقواس المعقوفة تتيح لك العمل مع لغة JavaScript مباشرة داخل الترميز الخاصة بك!
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## استخدام الأقواس المعقوفة: نافذة إلى عالم JavaScript {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX هي طريقة خاصة لكتابة JavaScript. وهذا يعني أنه يمكن استخدام JavaScript داخلها - باستخدام الأقواس المعقوفة `{ }`. في المثال أدناه، يتم تعريف اسم للعالم، `name`، ثم يتم تضمينه بواسطة الأقواس المعقوفة داخل عنصر `<h1>`.
 
 <Sandpack>
 
@@ -86,10 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-Try changing the `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the list title changes?
+حاول تغيير قيمة `name` من `'Gregorio Y. Zara'` إلى `'Hedy Lamarr'`. لاحظ كيف يتغير عنوان القائمة؟
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
-
+أي تعبير JavaScript سيعمل بين الأقواس المعقوفة، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
 <Sandpack>
 
 ```js
