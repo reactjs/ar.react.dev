@@ -168,9 +168,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Pitfall>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## المزيد من المرح مع كائنات JavaScript والأقواس المعقوفة! {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+يمكنك دمج العديد من التعابير في كائن واحد والإشارة لهم في JSX الخاص بك داخل الأقواس المعقوفة:
 
 <Sandpack>
 
@@ -210,7 +210,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+في هذا المثال، يحتوي كائن JavaScript `person` على string `name` وكائن `theme`:
 
 ```js
 const person = {
@@ -222,14 +222,14 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+يمكن للمكوّن استخدام قيم من الكائن `person` كالتالي:
 
 ```js
 <div style={person.theme}>
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSX هي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظيم البيانات والمنطق باستخدام JavaScript.
 
 <Recap>
 
