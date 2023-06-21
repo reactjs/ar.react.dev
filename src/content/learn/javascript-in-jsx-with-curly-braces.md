@@ -1,25 +1,25 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: JavaScript في JSX باستخدام الأقواس المنحنية
 ---
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
+ تتيح لك JSX كتابة ترميز شبيه بـ HTML داخل ملف JavaScript، مما يسمح بالحفاظ على منطق التصيير والمحتوى في المكان نفسه. في بعض الأحيان، قد ترغب في إضافة بعض منطق لغة JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذه الحالة، يمكنك استخدام الأقواس المنحنية داخل JSX الخاص بك لفتح نافذة للغة JavaScript.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* كيفية تمرير النصوص (string) باستخدام علامات التنصيص
+* كيفية الإشارة إلى متغير JavaScript داخل JSX باستخدام الأقواس المعقوفة
+* كيفية استدعاء دالة JavaScript داخل JSX باستخدام الأقواس المنحنية
+* كيفية استخدام كائن JavaScript داخل JSX باستخدام الأقواس المعقوفة
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## تمرير النصوص باستخدام علامات التنصيص {/*passing-strings-with-quotes*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+عندما ترغب في تمرير نص إلى JSX، يتم وضعها بين علامات تنصيص مفردة أو مزدوجة:
 
 <Sandpack>
 
@@ -29,7 +29,7 @@ export default function Avatar() {
     <img
       className="avatar"
       src="https://i.imgur.com/7vQD0fPs.jpg"
-      alt="Gregorio Y. Zara"
+      alt="غريغوريو واي زارا"
     />
   );
 }
@@ -41,16 +41,16 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+هنا، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"غريغوريو واي زارا"` كنصوص.
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+ولكن ماذا لو كنت ترغب في تحديد `src` أو نص `alt` بشكل ديناميكي؟ يمكنك **استخدام قيمة من JavaScript عن طريق استبدال `"`و `"` بـ `{`و `}`**:
 
 <Sandpack>
 
 ```js
 export default function Avatar() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg';
-  const description = 'Gregorio Y. Zara';
+  const description = 'غريغوريو واي زارا';
   return (
     <img
       className="avatar"
@@ -67,29 +67,28 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+لاحظ الاختلاف بين `className="avatar"`، الذي يحدد اسم فئة CSS `"avatar"` الذي يجعل الصورة دائرية، و`src={avatar}` الذي يقرأ قيمة متغير JavaScript المسمى `avatar`. هذا لأن الأقواس المنحنية تتيح لك العمل مع لغة JavaScript مباشرة داخل الترميز الخاصة بك!
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## استخدام الأقواس المنحنية: نافذة إلى عالم JavaScript {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX هي طريقة خاصة لكتابة JavaScript. وهذا يعني أنه يمكن استخدام JavaScript داخلها - باستخدام الأقواس المعقوفة `{ }`. في المثال أدناه، يتم تعريف اسم للعالِم، `name`، ثم يتم تضمينه بواسطة الأقواس المنحنية داخل عنصر `<h1>`.
 
 <Sandpack>
 
 ```js
 export default function TodoList() {
-  const name = 'Gregorio Y. Zara';
+  const name = 'غريغوريو واي زارا';
   return (
-    <h1>{name}'s To Do List</h1>
+    <h1>قائمة مهام {name}</h1>
   );
 }
 ```
 
 </Sandpack>
 
-Try changing the `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the list title changes?
+حاول تغيير قيمة `name` من `'غريغوريو واي زارا'` إلى `'هايدي لامار'`. لاحظ كيف يتغير عنوان القائمة؟
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
-
+أي تعبير JavaScript سيعمل بين الأقواس المنحنية، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
 <Sandpack>
 
 ```js
@@ -104,25 +103,25 @@ function formatDate(date) {
 
 export default function TodoList() {
   return (
-    <h1>To Do List for {formatDate(today)}</h1>
+    <h1>قائمة مهام لـ {formatDate(today)}</h1>
   );
 }
 ```
 
 </Sandpack>
 
-### Where to use curly braces {/*where-to-use-curly-braces*/}
+### أين يجب استخدام الأقواس المنحنية؟ {/*where-to-use-curly-braces*/}
 
-You can only use curly braces in two ways inside JSX:
+يمكنك استخدام الأقواس المنحنية في JSX بطريقتين فقط:
 
-1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
-2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `"{avatar}"`.
+1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـغريغوريو واي زارا </{tag}>` لن يعمل.
+2. **كخصائص** تأتي فورًا بعد علامة `=`: `src={avatar}` ستقرأ قيمة المتغير `avatar`، ولكن `src="{avatar}"` ستمرره `"{avatar}"` كنص.
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## استخدام "أقواس منحنية مزدوجة": CSS وكائنات أخرى داخل JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+بالإضافة إلى النصوص والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المنحنية، مثل `{ name: "هايدي لامار", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المنحنية: `person={{ name: "هايدي لامار", inventions: 5 }}`.
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+قد ترى ذلك في أنماط CSS المضمنة فيJSX. React لا تتطلب منك استخدام أنماط CSS مضمنة (فئة CSS يعمل جيداً في معظم الحالات). ولكن عندما تحتاج إلى أسلوب مضمن، يمكنك تمرير كائن إلى خاصية `style`:
 
 <Sandpack>
 
@@ -133,9 +132,9 @@ export default function TodoList() {
       backgroundColor: 'black',
       color: 'pink'
     }}>
-      <li>Improve the videophone</li>
-      <li>Prepare aeronautics lectures</li>
-      <li>Work on the alcohol-fuelled engine</li>
+      <li>تحسين الهاتف</li>
+      <li>تجهيز محاضرات عن الطيران</li>
+      <li>العمل على محرك بالوقود الكحولي</li>
     </ul>
   );
 }
@@ -148,9 +147,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+حاول تغيير قيم `backgroundColor` و `color`.
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+يمكنك رؤية كائن JavaScript بوضوح داخل الأقواس المنحنية عندما تكتبه بهذه الطريقة:
 
 ```js {2-5}
 <ul style={
@@ -161,23 +160,23 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+في المرة القادمة التي ترى `{{` و `}}` في JSX، أعلم أنه ليس سوى كائن داخل أقواس JSX المنحنية!
 
 <Pitfall>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+خصائص `style` المضمنة تكتب بتنسيق camelCase. على سبيل المثال، عنصرHTML `<ul style="background-color: black">` يتم كتابته في المكون الخاص بك على النحو التالي: `<ul style={{ backgroundColor: 'black' }}>`.
 
 </Pitfall>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## المزيد من المرح مع كائنات JavaScript والأقواس المنحنية! {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+يمكنك دمج العديد من التعابير في كائن واحد والإشارة لهم في JSX الخاص بك داخل الأقواس المنحنية:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -191,12 +190,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -211,11 +210,11 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+في هذا المثال، يحتوي كائنJavaScript `person` على نص `name` وكائن `theme`:
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -223,37 +222,37 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+يمكن للمكوّن استخدام قيم من الكائن `person` كالتالي:
 
 ```js
 <div style={person.theme}>
-  <h1>{person.name}'s Todos</h1>
+  <h1>قائمة مهام {person.name}</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSXهي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظيم البيانات والمنطق باستخدام JavaScript.
 
 <Recap>
 
-Now you know almost everything about JSX:
+الآن تعرف تقريبًا كل شيء عن JSX:
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* يتم تمرير خصائص JSX كنصوص داخل أقواس تنصيص
+* تسمح لك الأقواس المنحنية بإضافة منطق ومتغيرات JavaScript داخل الترميز الخاص بك.
+* تعمل الأقواس المنحنية داخل محتوى وسم JSX أو مباشرة بعد `=` في الخصائص.
+* `{{` و `}}` ليست صيغة خاصة: إنما هي كائن JavaScript موجود داخل أقواس JSX المنحنية.
 
 </Recap>
 
 <Challenges>
 
-#### Fix the mistake {/*fix-the-mistake*/}
+#### أصلح الخطأ {/*fix-the-mistake*/}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+هذا الكود يتعطل ويظهر خطأ `Objects are not valid as a React child`:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -270,9 +269,9 @@ export default function TodoList() {
         alt="Gregorio Y. Zara"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -287,21 +286,21 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+هل يمكنك إيجاد المشكلة؟
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>ابحث عن ما يوجد داخل الأقواس المنحنية. هل يتم وضع الشيء الصحيح هناك؟</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+يحدث هذا بسبب أن هذا المثال يقوم بتصيير *كائن بذاته* في الترميز بدلاً من النص: `<h1>قائمة مهام {person}</h1>` يحاول عرض كائن `person` بأكمله! إدراج الكائنات المباشرة كمحتوى نصي يُثير خطأ لأن React لا يعرف كيف ترغب في عرضها.
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+لحل هذه المشكلة، قم بتبديل `<h1>قائمة مهام {person}</h1>` بـ `<h1>قائمة مهام {person.name}</h1>`:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -315,12 +314,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -337,15 +336,15 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Extract information into an object {/*extract-information-into-an-object*/}
+#### استخرج المعلومات إلى كائن {/*extract-information-into-an-object*/}
 
-Extract the image URL into the `person` object.
+استخرج عنوان URL للصورة إلى كائن `person`.
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -359,12 +358,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -381,13 +380,13 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+قم بنقل عنوان URL للصورة إلى خاصية تسمى `person.imageUrl` وقم بقراءتها من وسم `<img>` باستخدام الأقواس المنحنية:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageUrl: "https://i.imgur.com/7vQD0fPs.jpg",
   theme: {
     backgroundColor: 'black',
@@ -402,12 +401,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src={person.imageUrl}
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -424,13 +423,13 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
+#### اكتب تعبيراً داخل أقواس JSX المنحنية. {/*write-an-expression-inside-jsx-curly-braces*/}
 
-In the object below, the full image URL is split into four parts: base URL, `imageId`, `imageSize`, and file extension.
+في الكائن أدناه، يتم تقسيم العنوان الكامل للصورة إلى أربعة أجزاء: العنوان الأساس و`imageId` و`imageSize` وامتداد الملف.
 
-We want the image URL to combine these attributes together: base URL (always `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
+نريد أن يتم دمج عنوان URL للصورة باستخدام هذه الخصائص معًا: العنوان الأساس (دائمًا `'https://i.imgur.com/'`) و`imageId` (`'7vQD0fP'`) و `imageSize` (`'s'`)، وامتداد الملف (دائمًا `'.jpg'`). ومع ذلك، هناك خطأ في كيفية تحديد الوسم `<img>` لخاصية `src` الخاصة به.
 
-Can you fix it?
+هل يمكنك إصلاح الخطأ؟
 
 <Sandpack>
 
@@ -438,7 +437,7 @@ Can you fix it?
 
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -457,9 +456,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -474,22 +473,22 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-To check that your fix worked, try changing the value of `imageSize` to `'b'`. The image should resize after your edit.
+للتحقق من نجاح حلك، جرب تغيير قيمة `imageSize` إلى `'b'`. يفترض أن يتغير حجم الصورة بعد تعديلك.
 
 <Solution>
 
-You can write it as `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
+يمكنك كتابته على هذا النحو `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
 
-1. `{` opens the JavaScript expression
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` produces the correct URL string
-3. `}` closes the JavaScript expression
+1. `{` تفتح التعبير الخاص بـ JavaScript
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` ينتج نص URL الصحيح
+3. `{` تغلق التعبير الخاص بـ JavaScript
 
 <Sandpack>
 
 ```js
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -508,9 +507,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -525,7 +524,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+يمكنك أيضًا نقل هذا التعبير إلى دالة منفصلة مثل `getImageUrl` في الأسفل:
 
 <Sandpack>
 
@@ -533,7 +532,7 @@ You can also move this expression into a separate function like `getImageUrl` be
 import { getImageUrl } from './utils.js'
 
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -552,9 +551,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -580,7 +579,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Variables and functions can help you keep the markup simple!
+المتغيرات والدوال يمكنها مساعدتك في إبقاء الترميز بسيط!
 
 </Solution>
 
