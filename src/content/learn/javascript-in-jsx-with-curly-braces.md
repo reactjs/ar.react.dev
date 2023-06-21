@@ -29,7 +29,7 @@ export default function Avatar() {
     <img
       className="avatar"
       src="https://i.imgur.com/7vQD0fPs.jpg"
-      alt="Gregorio Y. Zara"
+      alt="غريغوريو واي زارا"
     />
   );
 }
@@ -41,7 +41,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-هنا، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"Gregorio Y. Zara"` كنصوص.
+هنا، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"غريغوريو واي زارا"` كنصوص.
 
 ولكن ماذا لو كنت ترغب في تحديد `src` أو نص `alt` بشكل ديناميكي؟ يمكنك **استخدام قيمة من JavaScript عن طريق استبدال `"`و `"` بـ `{`و `}`**:
 
@@ -50,7 +50,7 @@ export default function Avatar() {
 ```js
 export default function Avatar() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg';
-  const description = 'Gregorio Y. Zara';
+  const description = 'غريغوريو واي زارا';
   return (
     <img
       className="avatar"
@@ -77,7 +77,7 @@ JSX هي طريقة خاصة لكتابة JavaScript. وهذا يعني أنه �
 
 ```js
 export default function TodoList() {
-  const name = 'Gregorio Y. Zara';
+  const name = 'غريغوريو واي زارا';
   return (
     <h1>قائمة مهام {name}</h1>
   );
@@ -86,9 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-حاول تغيير قيمة `name` من `'Gregorio Y. Zara'` إلى `'Hedy Lamarr'`. لاحظ كيف يتغير عنوان القائمة؟
+حاول تغيير قيمة `name` من `'غريغوريو واي زارا'` إلى `'هايدي لامار'`. لاحظ كيف يتغير عنوان القائمة؟
 
-أي تعبير JavaScript سيعمل بين الأقواس المعقوفة، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
+أي تعبير JavaScript سيعمل بين الأقواس المنحنية، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
 <Sandpack>
 
 ```js
@@ -114,12 +114,12 @@ export default function TodoList() {
 
 يمكنك استخدام الأقواس المنحنية في JSX بطريقتين فقط:
 
-1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـ Gregorio Y. Zara</{tag}>` لن يعمل.
+1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـغريغوريو واي زارا </{tag}>` لن يعمل.
 2. **كخصائص** تأتي فورًا بعد علامة `=`: `src={avatar}` ستقرأ قيمة المتغير `avatar`، ولكن `src="{avatar}"` ستمرره `"{avatar}"` كنص.
 
 ## استخدام "أقواس منحنية مزدوجة": CSS وكائنات أخرى داخل JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-بالإضافة إلى النصوص والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المنحنية، مثل `{ name: "Hedy Lamarr", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المنحنية: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+بالإضافة إلى النصوص والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المنحنية، مثل `{ name: "هايدي لامار", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المنحنية: `person={{ name: "هايدي لامار", inventions: 5 }}`.
 
 قد ترى ذلك في أنماط CSS المضمنة فيJSX. React لا تتطلب منك استخدام أنماط CSS مضمنة (فئة CSS يعمل جيداً في معظم الحالات). ولكن عندما تحتاج إلى أسلوب مضمن، يمكنك تمرير كائن إلى خاصية `style`:
 
@@ -176,7 +176,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -190,7 +190,7 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
         <li>تحسين الهاتف</li>
@@ -214,7 +214,7 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -252,7 +252,7 @@ JSXهي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظ�
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -300,7 +300,7 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -314,7 +314,7 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
         <li>تحسين الهاتف</li>
@@ -344,7 +344,7 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -358,7 +358,7 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
         <li>تحسين الهاتف</li>
@@ -386,7 +386,7 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageUrl: "https://i.imgur.com/7vQD0fPs.jpg",
   theme: {
     backgroundColor: 'black',
@@ -401,7 +401,7 @@ export default function TodoList() {
       <img
         className="avatar"
         src={person.imageUrl}
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
         <li>تحسين الهاتف</li>
@@ -437,7 +437,7 @@ body > div > div { padding: 20px; }
 
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -488,7 +488,7 @@ body > div > div { padding: 20px; }
 ```js
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -532,7 +532,7 @@ body > div > div { padding: 20px; }
 import { getImageUrl } from './utils.js'
 
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
