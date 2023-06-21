@@ -1,25 +1,25 @@
 ---
-title: JavaScript في JSX باستخدام الأقواس المعقوفة
+title: JavaScript في JSX باستخدام الأقواس المنحنية
 ---
 
 <Intro>
 
- تتيح لك JSX كتابة ترميز شبيه بـ HTML داخل ملف JavaScript، مما يسمح بالحفاظ على منطق التصيير والمحتوى في المكان نفسه. في بعض الأحيان، قد ترغب في إضافة بعض منطق لغة JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذه الحالة، يمكنك استخدام الأقواس المعقوفة داخل JSX الخاص بك لفتح نافذة للغة JavaScript.
+ تتيح لك JSX كتابة ترميز شبيه بـ HTML داخل ملف JavaScript، مما يسمح بالحفاظ على منطق التصيير والمحتوى في المكان نفسه. في بعض الأحيان، قد ترغب في إضافة بعض منطق لغة JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذه الحالة، يمكنك استخدام الأقواس المنحنية داخل JSX الخاص بك لفتح نافذة للغة JavaScript.
 
 </Intro>
 
 <YouWillLearn>
 
-* كيفية تمرير strings باستخدام علامات التنصيص
+* كيفية تمرير النصوص (string) باستخدام علامات التنصيص
 * كيفية الإشارة إلى متغير JavaScript داخل JSX باستخدام الأقواس المعقوفة
-* كيفية استدعاء دالة JavaScript داخل JSX باستخدام الأقواس المعقوفة
+* كيفية استدعاء دالة JavaScript داخل JSX باستخدام الأقواس المنحنية
 * كيفية استخدام كائن JavaScript داخل JSX باستخدام الأقواس المعقوفة
 
 </YouWillLearn>
 
-## تمرير strings باستخدام علامات التنصيص {/*passing-strings-with-quotes*/}
+## تمرير النصوص باستخدام علامات التنصيص {/*passing-strings-with-quotes*/}
 
-عندما ترغب في تمرير خاصية string إلى JSX، يتم وضعها بين علامات تنصيص مفردة أو مزدوجة:
+عندما ترغب في تمرير نص إلى JSX، يتم وضعها بين علامات تنصيص مفردة أو مزدوجة:
 
 <Sandpack>
 
@@ -29,7 +29,7 @@ export default function Avatar() {
     <img
       className="avatar"
       src="https://i.imgur.com/7vQD0fPs.jpg"
-      alt="Gregorio Y. Zara"
+      alt="غريغوريو واي زارا"
     />
   );
 }
@@ -41,7 +41,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-هنا ، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"Gregorio Y. Zara"` في صورة strings.
+هنا، يتم تمرير `"https://i.imgur.com/7vQD0fPs.jpg"` و `"غريغوريو واي زارا"` كنصوص.
 
 ولكن ماذا لو كنت ترغب في تحديد `src` أو نص `alt` بشكل ديناميكي؟ يمكنك **استخدام قيمة من JavaScript عن طريق استبدال `"`و `"` بـ `{`و `}`**:
 
@@ -50,7 +50,7 @@ export default function Avatar() {
 ```js
 export default function Avatar() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg';
-  const description = 'Gregorio Y. Zara';
+  const description = 'غريغوريو واي زارا';
   return (
     <img
       className="avatar"
@@ -67,28 +67,28 @@ export default function Avatar() {
 
 </Sandpack>
 
-لاحظ الاختلاف بين `className="avatar"`، الذي يحدد اسم صنف CSS `"avatar"` الذي يجعل الصورة دائرية، و `src={avatar}` الذي يقرأ قيمة متغير JavaScript المسمى `avatar`. هذا لأن الأقواس المعقوفة تتيح لك العمل مع لغة JavaScript مباشرة داخل الترميز الخاصة بك!
+لاحظ الاختلاف بين `className="avatar"`، الذي يحدد اسم فئة CSS `"avatar"` الذي يجعل الصورة دائرية، و`src={avatar}` الذي يقرأ قيمة متغير JavaScript المسمى `avatar`. هذا لأن الأقواس المنحنية تتيح لك العمل مع لغة JavaScript مباشرة داخل الترميز الخاصة بك!
 
-## استخدام الأقواس المعقوفة: نافذة إلى عالم JavaScript {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## استخدام الأقواس المنحنية: نافذة إلى عالم JavaScript {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX هي طريقة خاصة لكتابة JavaScript. وهذا يعني أنه يمكن استخدام JavaScript داخلها - باستخدام الأقواس المعقوفة `{ }`. في المثال أدناه، يتم تعريف اسم للعالم، `name`، ثم يتم تضمينه بواسطة الأقواس المعقوفة داخل عنصر `<h1>`.
+JSX هي طريقة خاصة لكتابة JavaScript. وهذا يعني أنه يمكن استخدام JavaScript داخلها - باستخدام الأقواس المعقوفة `{ }`. في المثال أدناه، يتم تعريف اسم للعالِم، `name`، ثم يتم تضمينه بواسطة الأقواس المنحنية داخل عنصر `<h1>`.
 
 <Sandpack>
 
 ```js
 export default function TodoList() {
-  const name = 'Gregorio Y. Zara';
+  const name = 'غريغوريو واي زارا';
   return (
-    <h1>{name}'s To Do List</h1>
+    <h1>قائمة مهام {name}</h1>
   );
 }
 ```
 
 </Sandpack>
 
-حاول تغيير قيمة `name` من `'Gregorio Y. Zara'` إلى `'Hedy Lamarr'`. لاحظ كيف يتغير عنوان القائمة؟
+حاول تغيير قيمة `name` من `'غريغوريو واي زارا'` إلى `'هايدي لامار'`. لاحظ كيف يتغير عنوان القائمة؟
 
-أي تعبير JavaScript سيعمل بين الأقواس المعقوفة، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
+أي تعبير JavaScript سيعمل بين الأقواس المنحنية، بما في ذلك استدعاءات الدوال مثل `formatDate()`:
 <Sandpack>
 
 ```js
@@ -103,25 +103,25 @@ function formatDate(date) {
 
 export default function TodoList() {
   return (
-    <h1>To Do List for {formatDate(today)}</h1>
+    <h1>قائمة مهام لـ {formatDate(today)}</h1>
   );
 }
 ```
 
 </Sandpack>
 
-### أين يجب استخدام الأقواس المعقوفة؟ {/*where-to-use-curly-braces*/}
+### أين يجب استخدام الأقواس المنحنية؟ {/*where-to-use-curly-braces*/}
 
-يمكنك استخدام الأقواس المعقوفة في JSX بطريقتين فقط:
+يمكنك استخدام الأقواس المنحنية في JSX بطريقتين فقط:
 
-1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـ Gregorio Y. Zara</{tag}>` لن يعمل.
-2. **كخصائص** تأتي فورًا بعد علامة `=`: `src={avatar}` ستقرأ قيمة المتغير `avatar`، ولكن `src="{avatar}"` ستمرر `"{avatar}"` في صورة string.
+1. **كنص** مباشرة داخل وسم JSX: `<h1>{name}'s قائمة المهام</h1>` يعمل، ولكن `<{tag}>قائمة المهام لـغريغوريو واي زارا </{tag}>` لن يعمل.
+2. **كخصائص** تأتي فورًا بعد علامة `=`: `src={avatar}` ستقرأ قيمة المتغير `avatar`، ولكن `src="{avatar}"` ستمرره `"{avatar}"` كنص.
 
-## استخدام "أقواس معقوفة مزدوجة": CSS وكائنات أخرى داخل JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## استخدام "أقواس منحنية مزدوجة": CSS وكائنات أخرى داخل JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-بالإضافة إلى strings والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المعقوفة، مثل `{ name: "Hedy Lamarr", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المعقوفة: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+بالإضافة إلى النصوص والأرقام وتعابير JavaScript الأخرى، يمكنك تمرير الكائنات في JSX. يتم تمييز الكائنات أيضًا بواسطة الأقواس المنحنية، مثل `{ name: "هايدي لامار", inventions: 5 }`. لذلك، لتمرير كائن JavaScript في JSX، يجب عليك إحاطة الكائن بزوج آخر من الأقواس المنحنية: `person={{ name: "هايدي لامار", inventions: 5 }}`.
 
-قد ترى ذلك في أنماط CSS المضمنة في JSX. React لا تتطلب منك استخدام أنماط CSS مضمنة (صنف CSS يعمل جيداً في معظم الحالات). ولكن عندما تحتاج إلى أسلوب مضمن، يمكنك تمرير كائن إلى خاصية `style`:
+قد ترى ذلك في أنماط CSS المضمنة فيJSX. React لا تتطلب منك استخدام أنماط CSS مضمنة (فئة CSS يعمل جيداً في معظم الحالات). ولكن عندما تحتاج إلى أسلوب مضمن، يمكنك تمرير كائن إلى خاصية `style`:
 
 <Sandpack>
 
@@ -132,9 +132,9 @@ export default function TodoList() {
       backgroundColor: 'black',
       color: 'pink'
     }}>
-      <li>Improve the videophone</li>
-      <li>Prepare aeronautics lectures</li>
-      <li>Work on the alcohol-fuelled engine</li>
+      <li>تحسين الهاتف</li>
+      <li>تجهيز محاضرات عن الطيران</li>
+      <li>العمل على محرك بالوقود الكحولي</li>
     </ul>
   );
 }
@@ -149,7 +149,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 حاول تغيير قيم `backgroundColor` و `color`.
 
-يمكنك رؤية كائن JavaScript بوضوح داخل الأقواس المعقوفة عندما تكتبه بهذه الطريقة:
+يمكنك رؤية كائن JavaScript بوضوح داخل الأقواس المنحنية عندما تكتبه بهذه الطريقة:
 
 ```js {2-5}
 <ul style={
@@ -160,23 +160,23 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 }>
 ```
 
-في المرة القادمة التي ترى `{{` و `}}` في JSX، أعلم أنه ليس سوى كائن داخل أقواس JSX المعقوفة!
+في المرة القادمة التي ترى `{{` و `}}` في JSX، أعلم أنه ليس سوى كائن داخل أقواس JSX المنحنية!
 
 <Pitfall>
 
-خصائص `style` المضمنة تكتب بتنسيق camelCase. على سبيل المثال، عنصر HTML `<ul style="background-color: black">` يتم كتابته في المكون الخاص بك على النحو التالي: `<ul style={{ backgroundColor: 'black' }}>`.
+خصائص `style` المضمنة تكتب بتنسيق camelCase. على سبيل المثال، عنصرHTML `<ul style="background-color: black">` يتم كتابته في المكون الخاص بك على النحو التالي: `<ul style={{ backgroundColor: 'black' }}>`.
 
 </Pitfall>
 
-## المزيد من المرح مع كائنات JavaScript والأقواس المعقوفة! {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## المزيد من المرح مع كائنات JavaScript والأقواس المنحنية! {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-يمكنك دمج العديد من التعابير في كائن واحد والإشارة لهم في JSX الخاص بك داخل الأقواس المعقوفة:
+يمكنك دمج العديد من التعابير في كائن واحد والإشارة لهم في JSX الخاص بك داخل الأقواس المنحنية:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -190,12 +190,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -210,11 +210,11 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-في هذا المثال، يحتوي كائن JavaScript `person` على string `name` وكائن `theme`:
+في هذا المثال، يحتوي كائنJavaScript `person` على نص `name` وكائن `theme`:
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -226,19 +226,19 @@ const person = {
 
 ```js
 <div style={person.theme}>
-  <h1>{person.name}'s Todos</h1>
+  <h1>قائمة مهام {person.name}</h1>
 ```
 
-JSX هي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظيم البيانات والمنطق باستخدام JavaScript.
+JSXهي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظيم البيانات والمنطق باستخدام JavaScript.
 
 <Recap>
 
 الآن تعرف تقريبًا كل شيء عن JSX:
 
-* يتم تمرير خصائص JSX في شكل strings داخل أقواس تنصيص
-* تسمح لك الأقواس المعقوفة بإضافة منطق ومتغيرات JavaScript داخل الترميز الخاص بك.
-* تعمل الأقواس المعقوفة داخل محتوى وسم JSX أو مباشرة بعد `=` في الخصائص.
-* `{{` و `}}` ليست بصيغة خاصة: إنما هي كائن JavaScript موجود داخل أقواس JSX المعقوفة.
+* يتم تمرير خصائص JSX كنصوص داخل أقواس تنصيص
+* تسمح لك الأقواس المنحنية بإضافة منطق ومتغيرات JavaScript داخل الترميز الخاص بك.
+* تعمل الأقواس المنحنية داخل محتوى وسم JSX أو مباشرة بعد `=` في الخصائص.
+* `{{` و `}}` ليست صيغة خاصة: إنما هي كائن JavaScript موجود داخل أقواس JSX المنحنية.
 
 </Recap>
 
@@ -246,13 +246,13 @@ JSX هي لغة قوالب بسيطة جدًا لأنها تسمح لك بتنظ
 
 #### أصلح الخطأ {/*fix-the-mistake*/}
 
-هذا الكود يتعطل ويظهر خطأ  `Objects are not valid as a React child`:
+هذا الكود يتعطل ويظهر خطأ `Objects are not valid as a React child`:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -269,9 +269,9 @@ export default function TodoList() {
         alt="Gregorio Y. Zara"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -288,19 +288,19 @@ body > div > div { padding: 20px; }
 
 هل يمكنك إيجاد المشكلة؟
 
-<Hint>ابحث عن ما يوجد داخل الأقواس المجعدة. هل يتم وضع الشيء الصحيح هناك؟</Hint>
+<Hint>ابحث عن ما يوجد داخل الأقواس المنحنية. هل يتم وضع الشيء الصحيح هناك؟</Hint>
 
 <Solution>
 
-يحدث هذا بسبب أن هذا المثال يقوم بتصيير *كائن بذاته* في الترميز بدلاً من string: `<h1>{person}'s قائمة المهام</h1>` يحاول عرض كائن `person` بأكمله! إدراج الكائنات المباشرة كمحتوى نصي يُثير خطأ لأن React لا يعرف كيف ترغب في عرضها.
+يحدث هذا بسبب أن هذا المثال يقوم بتصيير *كائن بذاته* في الترميز بدلاً من النص: `<h1>قائمة مهام {person}</h1>` يحاول عرض كائن `person` بأكمله! إدراج الكائنات المباشرة كمحتوى نصي يُثير خطأ لأن React لا يعرف كيف ترغب في عرضها.
 
-لحل هذه المشكلة، قم بتبديل `<h1>{person}'s Todos</h1>` بـ `<h1>{person.name}'s Todos</h1>`:
+لحل هذه المشكلة، قم بتبديل `<h1>قائمة مهام {person}</h1>` بـ `<h1>قائمة مهام {person.name}</h1>`:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -314,12 +314,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -344,7 +344,7 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -358,12 +358,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -380,13 +380,13 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-قم بنقل عنوان URL للصورة إلى خاصية تسمى `person.imageUrl` وقم بقراءتها من وسم `<img>` باستخدام الأقواس المعقوفة:
+قم بنقل عنوان URL للصورة إلى خاصية تسمى `person.imageUrl` وقم بقراءتها من وسم `<img>` باستخدام الأقواس المنحنية:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageUrl: "https://i.imgur.com/7vQD0fPs.jpg",
   theme: {
     backgroundColor: 'black',
@@ -401,12 +401,12 @@ export default function TodoList() {
       <img
         className="avatar"
         src={person.imageUrl}
-        alt="Gregorio Y. Zara"
+        alt="غريغوريو واي زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -423,7 +423,7 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-#### اكتب تعبيراً داخل أقواس JSX المعقوفة. {/*write-an-expression-inside-jsx-curly-braces*/}
+#### اكتب تعبيراً داخل أقواس JSX المنحنية. {/*write-an-expression-inside-jsx-curly-braces*/}
 
 في الكائن أدناه، يتم تقسيم العنوان الكامل للصورة إلى أربعة أجزاء: العنوان الأساس و`imageId` و`imageSize` وامتداد الملف.
 
@@ -437,7 +437,7 @@ body > div > div { padding: 20px; }
 
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -456,9 +456,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -480,7 +480,7 @@ body > div > div { padding: 20px; }
 يمكنك كتابته على هذا النحو `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
 
 1. `{` تفتح التعبير الخاص بـ JavaScript
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` ينتج string URL الصحيح
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` ينتج نص URL الصحيح
 3. `{` تغلق التعبير الخاص بـ JavaScript
 
 <Sandpack>
@@ -488,7 +488,7 @@ body > div > div { padding: 20px; }
 ```js
 const baseUrl = 'https://i.imgur.com/';
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -507,9 +507,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -532,7 +532,7 @@ body > div > div { padding: 20px; }
 import { getImageUrl } from './utils.js'
 
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'غريغوريو واي زارا',
   imageId: '7vQD0fP',
   imageSize: 's',
   theme: {
@@ -551,9 +551,9 @@ export default function TodoList() {
         alt={person.name}
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين الهاتف</li>
+        <li>تجهيز محاضرات عن الطيران</li>
+        <li>العمل على محرك بالوقود الكحولي</li>
       </ul>
     </div>
   );
