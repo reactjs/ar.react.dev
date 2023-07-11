@@ -1,24 +1,24 @@
 ---
-title: Conditional Rendering
+title: التصيير الشرطي
 ---
 
 <Intro>
 
-Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
+قد تحتاج مكوناتك أحيانًا إلى عرض أشياء مختلفة اعتمادًا على حالات مختلفة. في React، يمكنك عرض JSX شَرطيّا باستعمال صيغة JavaScript مثل تعليمات `if`، `&&` و عمليات `? :`. 
 
 </Intro>
 
 <YouWillLearn>
 
-* How to return different JSX depending on a condition
-* How to conditionally include or exclude a piece of JSX
-* Common conditional syntax shortcuts you’ll encounter in React codebases
+* كيفية إرجاع JSX مختلف وفقًا لشرط معين؟
+* كيفية تضمين أو استبعاد جزء من JSX شَرطيّا
+* اختصارات بناء الجمل الشرطية الشائعة التي ستصادفها في أكواد React.
 
 </YouWillLearn>
 
-## Conditionally returning JSX {/*conditionally-returning-jsx*/}
+## إرجاع JSX شَرطيّا {/*conditionally-returning-jsx*/}
 
-Let’s say you have a `PackingList` component rendering several `Item`s, which can be marked as packed or not:
+لنفترض أن لديك مكون `PackingList` يقوم بعرض عدة مكونات `Item`،  والتي يمكن تمييزها على أنها محزومة أو لا:
 
 <Sandpack>
 
@@ -52,9 +52,9 @@ export default function PackingList() {
 
 </Sandpack>
 
-Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✔) to packed items if `isPacked={true}`.
+لاحظ أن بعض مكونات `Item` لديها خاصية `isPacked` معينة إلى `true` بدلا من `false`. ترغب في إضافة علامة التحقق (✔) إلى العناصر المحزومة في حالة `isPacked={true}`.
 
-You can write this as an [`if`/`else` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) like so:
+يمكنك كتابة ذلك باستخدام [عبارة `if`/`else`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) على النحو التالي:
 
 ```js
 if (isPacked) {
@@ -63,7 +63,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-If the `isPacked` prop is `true`, this code **returns a different JSX tree.** With this change, some of the items get a checkmark at the end:
+إذا كانت خاصية `isPacked` صحيحة (true)، فإن هذا الكود **يُرجع شجرة JSX مختلفة**. مع هذا التغيير، تحصل بعض العناصر على علامة التحقق في النهاية:
 
 <Sandpack>
 
@@ -100,13 +100,13 @@ export default function PackingList() {
 
 </Sandpack>
 
-Try editing what gets returned in either case, and see how the result changes!
+جرب تعديل ما يتم إرجاعه في كلتا الحالتين، وشاهد كيف تتغير النتيجة!
 
-Notice how you're creating branching logic with JavaScript's `if` and `return` statements. In React, control flow (like conditions) is handled by JavaScript.
+لاحظ أنك تقوم بإنشاء منطق تفريعي باستخدام تعليمات جافاسكريبت `if` و `return`. في React، يتم التحكم في التدفق (مثل الشروط) باستخدام JavaScript.
 
-### Conditionally returning nothing with `null` {/*conditionally-returning-nothing-with-null*/}
+### عدم إرجاع شيء شَرطيّا باستعمال `null` {/*conditionally-returning-nothing-with-null*/}
 
-In some situations, you won't want to render anything at all. For example, say you don't want to show packed items at all. A component must return something. In this case, you can return `null`:
+في بعض الحالات، قد ترغب في عدم عرض أي شيء على الإطلاق. على سبيل المثال، قد ترغب في عدم عرض العناصر المحزومة. يجب على المكون أن يرجع قيمة. في هذه الحالة، يمكنك إرجاع القيمة `null`:
 
 ```js
 if (isPacked) {
@@ -115,7 +115,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-If `isPacked` is true, the component will return nothing, `null`. Otherwise, it will return JSX to render.
+إذا كانت قيمة `isPacked` صحيحة (true)، فلن يُرجع المكون شيئًا، أي `null`. وإلا، سيقوم بإرجاع JSX للعرض.
 
 <Sandpack>
 
@@ -152,23 +152,23 @@ export default function PackingList() {
 
 </Sandpack>
 
-In practice, returning `null` from a component isn't common because it might surprise a developer trying to render it. More often, you would conditionally include or exclude the component in the parent component's JSX. Here's how to do that!
+من الناحية العملية، إعادة قيمة `null` من مكون ليست شائعة لأنها قد تفاجئ المطور الذي يحاول عرضها. غالبًا، ستقوم بتضمين المكون شَرطيّا أو استبعاده في JSX الخاص بالمكون الأب. إليك كيفية القيام بذلك!
 
-## Conditionally including JSX {/*conditionally-including-jsx*/}
+## تضمين JSX شَرطيّا {/*conditionally-including-jsx*/}
 
-In the previous example, you controlled which (if any!) JSX tree would be returned by the component. You may already have noticed some duplication in the render output:
+في المثال السابق، تحكمت في شجرة JSX (إن وجدت!) التي سيُرجعها المكون. ربما لاحظت بالفعل بعض التكرار في ناتج العرض:
 
 ```js
 <li className="item">{name} ✔</li>
 ```
 
-is very similar to
+مشابه جدًا لـ
 
 ```js
 <li className="item">{name}</li>
 ```
 
-Both of the conditional branches return `<li className="item">...</li>`:
+كلا الفرعين المشروطين يعيدان `<li className="item">...</li>`:
 
 ```js
 if (isPacked) {
@@ -177,13 +177,13 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-While this duplication isn't harmful, it could make your code harder to maintain. What if you want to change the `className`? You'd have to do it in two places in your code! In such a situation, you could conditionally include a little JSX to make your code more [DRY.](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+بينما هذا التكرار ليس ضارًا، إلا أنه قد يجعل الكود أكثر صعوبة في الصيانة. ماذا لو أردت تغيير قيمة className؟ ستضطر للقيام بذلك في مكانين في الكود! في مثل هذه الحالة، يمكنك تضمين القليل من JSX شَرطيّا لجعل الكود الخاص بك [خاليًا من التكرار DRY.](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 
-### Conditional (ternary) operator (`? :`) {/*conditional-ternary-operator--*/}
+### العامل (الثلاثي) الشرطي (`? :`) {/*conditional-ternary-operator--*/}
 
-JavaScript has a compact syntax for writing a conditional expression -- the [conditional operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) or "ternary operator".
+يحتوي JavaScript على صيغة مختصرة لكتابة تعبير شرطي -- [العامل الشرطي](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) أو ”العامل الثلاثي“ (ternary operator).
 
-Instead of this:
+بدلا من هذا:
 
 ```js
 if (isPacked) {
@@ -192,7 +192,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-You can write this:
+يمكنك كتابة هذا:
 
 ```js
 return (
@@ -202,17 +202,17 @@ return (
 );
 ```
 
-You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✔'`, otherwise (`:`) render `name`"*.
+يمكنك قرائتها على النحو التالي *”إذا كان `isPacked` صحيحا، إذا قم بعرض `name + ' ✔'`، وإلا (`:`) قم بعرض `name`“.*
 
 <DeepDive>
 
-#### Are these two examples fully equivalent? {/*are-these-two-examples-fully-equivalent*/}
+#### هل هذان المثالان متساويان تمامًا؟ {/*are-these-two-examples-fully-equivalent*/}
 
-If you're coming from an object-oriented programming background, you might assume that the two examples above are subtly different because one of them may create two different "instances" of `<li>`. But JSX elements aren't "instances" because they don't hold any internal state and aren't real DOM nodes. They're lightweight descriptions, like blueprints. So these two examples, in fact, *are* completely equivalent. [Preserving and Resetting State](/learn/preserving-and-resetting-state) goes into detail about how this works.
+إذا كنت قادمًا من خلفية البرمجة كائنية التوجه OOP، فقد تفترض أن المثالين أعلاه يختلفان اختلافًا طفيفًا لأن أحدهما قد ينشئ "حالتين" (instance) مختلفين من `<li>`. لكن عناصر JSX ليست "حالات" لأنها لا تحتوي على أي حالة داخلية وليست عناصر DOM حقيقية. إنما هي أوصاف خفيفة، مثل المخططات. إذن هذان المثالان، في الواقع، متساويان تمامًا. يتناول [الحفاظ على الحالة وإعادة تعيينها](/learn/preserving-and-resetting-state) كيفية عمل هذا بالتفصيل.
 
 </DeepDive>
 
-Now let's say you want to wrap the completed item's text into another HTML tag, like `<del>` to strike it out. You can add even more newlines and parentheses so that it's easier to nest more JSX in each of the cases:
+الآن لنفترض أنك ترغب في وضع النص الخاص بالعناصر المكتملة في عنصر HTML إضافي كـ`<del>` لشطبه. يمكنك إضافة المزيد من الأسطر الجديدة والأقواس حتى يكون من الأسهل تضمين JSX إضافي في كل حالة:
 
 <Sandpack>
 
@@ -256,11 +256,11 @@ export default function PackingList() {
 
 </Sandpack>
 
-This style works well for simple conditions, but use it in moderation. If your components get messy with too much nested conditional markup, consider extracting child components to clean things up. In React, markup is a part of your code, so you can use tools like variables and functions to tidy up complex expressions.
+هذا النمط يعمل جيدًا في الشروط البسيطة، ولكن استخدمه باعتدال. إذا أصبحت مكوناتك فوضوية بسبب العلامات الشرطية المتداخلة، ففكر في استخراج المكونات الفرعية لتنظيف الأمور. في React، يعد الترميز جزءًا من الكود الخاص بك، لذا يمكنك استخدام أدوات مثل المتغيرات والدوال لترتيب التعبيرات المعقدة.
 
-### Logical AND operator (`&&`) {/*logical-and-operator-*/}
+### العامل المنطقي AND (`&&`) {/*logical-and-operator-*/}
 
-Another common shortcut you'll encounter is the [JavaScript logical AND (`&&`) operator.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.) Inside React components, it often comes up when you want to render some JSX when the condition is true, **or render nothing otherwise.** With `&&`, you could conditionally render the checkmark only if `isPacked` is `true`:
+الاختصار الشائع الآخر الذي ستصادفه هو [العامل المنطقي AND (&&) في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.). داخل مكونات React، غالبًا ما تظهر عندما تريد عرض بعض JSX فقط عندما يكون الشرط صحيحًا، **وعدم عرض أي شيء في حالة الشرط غير الصحيح**. باستخدام العامل `&&`، يمكنك عرض علامة التحقق شَرطيّا فقط إذا كانت قيمة `isPacked` صحيحة `true`:
 
 ```js
 return (
@@ -270,9 +270,9 @@ return (
 );
 ```
 
-You can read this as *"if `isPacked`, then (`&&`) render the checkmark, otherwise, render nothing"*.
+يمكنك قرائتها على النحو التالي *"إذا كانت `isPacked` صحيحة، إذن (`&&`) يعرض علامة التحقق، وإلا لا تعرض أي شيء"*
 
-Here it is in action:
+وإليك كيف يتم تطبيقها عمليًا:
 
 <Sandpack>
 
@@ -310,30 +310,29 @@ export default function PackingList() {
 
 </Sandpack>
 
-A [JavaScript && expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) returns the value of its right side (in our case, the checkmark) if the left side (our condition) is `true`. But if the condition is `false`, the whole expression becomes `false`. React considers `false` as a "hole" in the JSX tree, just like `null` or `undefined`, and doesn't render anything in its place.
-
+[عبارة && في JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) تقوم بارجاع الجانب الأيمن من العبارة (في حالتنا، علامة التحقق) إذا كان الجانب الأيسر (شرطنا) صحيحًا `true`. ولكن إذا كان الشرط غير صحيح `false`، فإن التعبير بأكمله يصبح غير صحيح `false`. يعتبر React القيمة غير الصحيحة `false` "فجوة" في شجرة JSX، تمامًا مثل القيمتين `null` أو `undefined`، ولا يتم عرض أي شيء مكانها.
 
 <Pitfall>
 
-**Don't put numbers on the left side of `&&`.**
+**لا تضع أرقامًا على الجانب الأيسر من `&&`.**
 
-To test the condition, JavaScript converts the left side to a boolean automatically. However, if the left side is `0`, then the whole expression gets that value (`0`), and React will happily render `0` rather than nothing.
+لاختبار الشرط، يقوم JavaScript تلقائيًا بتحويل الجانب الأيسر إلى قيمة منطقية (boolean). ومع ذلك، إذا كان الجانب الأيسر هو الرقم `0`، فإن التعبير بأكمله يحصل على تلك القيمة (`0`)، وستقوم React بعرض الرقم `0` بدلاً من عدم عرض أي شيء.
 
-For example, a common mistake is to write code like `messageCount && <p>New messages</p>`. It's easy to assume that it renders nothing when `messageCount` is `0`, but it really renders the `0` itself!
+على سبيل المثال، من الأخطاء الشائعة كتابة كود مثل `messageCount && <p>New messages</p>`. من السهل أن نفترض أنها لا تقوم بعرض أي شيء عندما تكون قيمة `messageCount` هي `0`، ولكنها في الواقع تقوم بعرض الرقم `0` نفسه!
 
-To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
+لإصلاح ذلك، قم بتحويل الجانب الأيسر إلى عبارة منطقية (boolean): `messageCount > 0 && <p>New messages</p>`.
 
 </Pitfall>
 
-### Conditionally assigning JSX to a variable {/*conditionally-assigning-jsx-to-a-variable*/}
+### إسناد JSX إلى متغير شرطيًّا {/*conditionally-assigning-jsx-to-a-variable*/}
 
-When the shortcuts get in the way of writing plain code, try using an `if` statement and a variable. You can reassign variables defined with [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), so start by providing the default content you want to display, the name:
+عندما تعيق الاختصارات كتابة الكود، حاول استخدام عبارة `if` ومتغير. يمكنك إعادة تعيين المتغيرات المعرفة بـ [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)، لذا ابدأ بتوفير المحتوى الافتراضي الذي تريد عرضه، الاسم:
 
 ```js
 let itemContent = name;
 ```
 
-Use an `if` statement to reassign a JSX expression to `itemContent` if `isPacked` is `true`:
+استخدم عبارة `if` لإعادة تعيين تعبير JSX إلى `itemContent` إذا كانت قيمة `isPacked` صحيحة `true`.
 
 ```js
 if (isPacked) {
@@ -341,7 +340,7 @@ if (isPacked) {
 }
 ```
 
-[Curly braces open the "window into JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Embed the variable with curly braces in the returned JSX tree, nesting the previously calculated expression inside of JSX:
+[الأقواس المنحنية تفتح ”نافذة إلى JavaScript“.](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) قم بتضمين المتغير بواسطة الأقواس المنحنية في شجرة JSX المُرجَعة، مدمجًا التعبير المجهز سابقا داخل JSX:
 
 ```js
 <li className="item">
@@ -349,7 +348,7 @@ if (isPacked) {
 </li>
 ```
 
-This style is the most verbose, but it's also the most flexible. Here it is in action:
+هذا النمط هو الأكثر تفصيلاً، ولكنه أيضًا الأكثر مرونة. وإليك كيف يتم تطبيقه عمليًا:
 
 <Sandpack>
 
@@ -391,7 +390,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-Like before, this works not only for text, but for arbitrary JSX too:
+كما هو الحال من قبل، لا يعمل هذا فقط مع النصوص ولكن أيضًا لأي JSX تريده:
 
 <Sandpack>
 
@@ -437,26 +436,24 @@ export default function PackingList() {
 
 </Sandpack>
 
-If you're not familiar with JavaScript, this variety of styles might seem overwhelming at first. However, learning them will help you read and write any JavaScript code -- and not just React components! Pick the one you prefer for a start, and then consult this reference again if you forget how the other ones work.
+إذا لم تكن معتادًا على استخدام JavaScript، فإن هذا التنوع في الأنماط قد يبدو مُرهِقًا في البداية. ومع ذلك، ستساعدك معرفة هذه الأنماط على قراءة وكتابة أي كود JavaScript - وليس فقط مكونات React! اختر الأسلوب الذي تفضله كبداية، وعُد لهذا المرجع مرة أخرى إذا نسيت كيفية عمل الأساليب الأخرى.
 
 <Recap>
 
-* In React, you control branching logic with JavaScript.
-* You can return a JSX expression conditionally with an `if` statement.
-* You can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
-* In JSX, `{cond ? <A /> : <B />}` means *"if `cond`, render `<A />`, otherwise `<B />`"*.
-* In JSX, `{cond && <A />}` means *"if `cond`, render `<A />`, otherwise nothing"*.
-* The shortcuts are common, but you don't have to use them if you prefer plain `if`.
+* في React، يمكنك التحكم في منطق التفريع باستخدام JavaScript.
+* يمكنك إرجاع تعبير JSX شرطيًا باستخدام عبارة `if`.
+* يمكنك حفظ تعبير JSX شرطيًا في متغير ومن ثم تضمينه داخل تعبير JSX آخر باستخدام الأقواس المنحنية.
+* في JSX، `{cond ? <A /> : <B />}` تعني *”إذا `cond`, اعرض `<A />`, وإلا قم بعرض `<B />`“*.
+* في JSX، `{cond && <A />}` تعني *”إذا `cond`، اعرض `<A />`، وإلا لا تقم بعرض أي شيء“*.
+* الاختصارات شائعة، ولكنك لست مضطر استخدامها إذا كنت تفضل استخدام `if`.
 
 </Recap>
 
-
-
 <Challenges>
 
-#### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+#### عرض أيقونة للعناصر غير المكتملة باستخدام `? :` {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+استخدم العامل الشرطي `(cond ? a : b)` لعرض ❌ إذا لم تكن قيمة `isPacked` صحيحة `true`.
 
 <Sandpack>
 
@@ -534,15 +531,15 @@ export default function PackingList() {
 
 </Solution>
 
-#### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+#### إظهار أهمية العنصر باستخدام `&&` {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
+في هذا المثال، يتلقى كل عنصر `Item` خاصية رقمية `importance`. استخدم العامل `&&` لعرض "_(Importance: X)_" بخط مائل (italics)، ولكن فقط للعناصر ذات أهمية غير صفرية. ستكون قائمة العناصر الخاصة بك على النحو التالي:
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
 * Photo of Tam _(Importance: 6)_
 
-Don't forget to add a space between the two labels!
+لا تنسَ إضافة مسافة بين الوسمين!
 
 <Sandpack>
 
@@ -582,7 +579,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+هذا ينبغي أن يقوم بالعملية:
 
 <Sandpack>
 
@@ -624,15 +621,15 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+لاحظ أنه يجب كتابة `importance > 0 && ...` بدلاً من `importance && ...` حتى لا يتم عرض القيمة `0` كنتيجة إذا كانت قيمة `importance` هي `0`.
 
-In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+في هذا الحل، يتم استخدام شرطين منفصلين لإدراج مسافة بين الاسم ووسم الأهمية. بدلاً من ذلك، يمكنك استخدام مكوّن الأجزاء (fragment) مع إضافة مسافة في البداية: `importance > 0 && <> <i>...</i></>` أو إضافة مسافة مباشرة داخل عنصر `<i>`: `importance > 0 && <i> ...</i>`.
 
 </Solution>
 
-#### Refactor a series of `? :` to `if` and variables {/*refactor-a-series-of---to-if-and-variables*/}
+#### إعادة هيكلة سلسلة من عبارات `? :` إلى عبارة `if` ومتغيرات. {/*refactor-a-series-of---to-if-and-variables*/}
 
-This `Drink` component uses a series of `? :` conditions to show different information depending on whether the `name` prop is `"tea"` or `"coffee"`. The problem is that the information about each drink is spread across multiple conditions. Refactor this code to use a single `if` statement instead of three `? :` conditions.
+يستخدم مكون `Drink` سلسلة من العبارات `? :` لعرض معلومات مختلفة اعتمادًا على قيمة الخاصية `name` إذا كانت "tea" أو "coffee". المشكلة هي تشتت المعلومات المتعلقة بكل مشروب عبر عدة شروط. قم بإعادة هيكلة هذا الكود لاستخدام تعليمة `if` واحدة بدلاً من ثلاث عبارات `? :`.
 
 <Sandpack>
 
@@ -665,11 +662,11 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Once you've refactored the code to use `if`, do you have further ideas on how to simplify it?
+بمجرد إعادة هيكلة الكود لاستخدام تعليمة `if`، هل لديك أفكار إضافية حول كيفية تبسيطه؟
 
 <Solution>
 
-There are multiple ways you could go about this, but here is one starting point:
+هناك طرق متعددة يمكنك اتباعها، ولكن إليك نقطة بداية مقترحة:
 
 <Sandpack>
 
@@ -712,9 +709,9 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Here the information about each drink is grouped together instead of being spread across multiple conditions. This makes it easier to add more drinks in the future.
+هنا تم تجميع المعلومات المتعلقة بكل مشروب معًا بدلاً من نشرها عبر عدة شروط. هذا يسهل إضافة مشروبات إضافية في المستقبل.
 
-Another solution would be to remove the condition altogether by moving the information into objects:
+حل آخر سيكون بإزالة الشرط تمامًا من خلال نقل المعلومات إلى كائنات:
 
 <Sandpack>
 
