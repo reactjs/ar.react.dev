@@ -21,7 +21,7 @@ title: "'use server'"
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `'use server'` {/*use-server*/}
 
