@@ -73,7 +73,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "المكونات",
       "path": "/reference/react/components",
       "routes": [
         {
@@ -139,7 +139,7 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
-      "title": "Components",
+      "title": "المكونات",
       "path": "/reference/react-dom/components",
       "routes": [
         {
