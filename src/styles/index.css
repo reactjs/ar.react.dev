@@ -380,6 +380,41 @@
   }
 
   /* Write your own custom base styles here */
+
+  /* Arabic RTL Support */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  .pl-0 div:nth-of-type(1) .text-link {
+    direction: rtl;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding-right: 0 !important;
+  }
+
+  .list-decimal {
+    padding-left: 0;
+    padding-right: 24px;
+  }
+
+  nav > div {
+    flex-direction: row-reverse;
+  }
+  nav div:nth-of-type(1) div:nth-of-type(1) {
+    flex-direction: row-reverse;
+  }
+
   html {
     color-scheme: light;
 
