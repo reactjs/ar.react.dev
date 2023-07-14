@@ -14,8 +14,8 @@ title: "المكونات المدمجة في React"
 
 * [`<Fragment>`](/reference/react/Fragment)، والتي يمكن كتابتها بديلاً عن `<>...</>`، تتيح لك تجميع عدة عناصر JSX معًا.
 * [`<Profiler>`](/reference/react/Profiler) تتيح لك قياس أداء تقديم شجرة React برمجيًا.
-* [`<Suspense>`](/reference/react/Suspense) تتيح لك عرض `fallback` أثناء تحميل عناصر الأطفال.
-* [`<StrictMode>`](/reference/react/StrictMode) يمكنك تمكين فحوصات إضافية للتطوير فقط تساعدك في العثور على الأخطاء في وقت مبكر.
+* [`<Suspense>`](/reference/react/Suspense) تتيح لك عرض `fallback` أثناء تحميل العناصر الأبناء.
+* [`<StrictMode>`](/reference/react/StrictMode) تمكين فحوصات إضافية للتطوير فقط تساعدك في العثور على الأخطاء في وقت مبكر.
 
 ---
 
