@@ -308,3 +308,39 @@ root.unmount();
 
 ---
 
+### تحديث المكون الجذر {/*updating-a-root-component*/}
+
+يمكنك استدعاء `render` أكثر من مرة على نفس الجذر. طالما أن هيكل شجرة المُكوِّن يُطابق ما تم عرضه سابقًا، ستُحافظ React على [الحالة.](/learn/preserving-and-resetting-state) لاحظ كيف يمكنك كتابة نص في المُدخل، مما يعني أن التحديثات الناتجة عن استدعاءات `render` المتكررة كل ثانية في هذا المثال لا تُؤدي إلى حذف البيانات:
+
+<Sandpack>
+
+```js index.js active
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+import App from './App.js';
+
+const root = createRoot(document.getElementById('root'));
+
+let i = 0;
+setInterval(() => {
+  root.render(<App counter={i} />);
+  i++;
+}, 1000);
+```
+
+```js App.js
+export default function App({counter}) {
+  return (
+    <>
+      <h1>مرحبًا بكم {counter}</h1>
+      <input placeholder="اكتب شيئا هنا" />
+    </>
+  );
+}
+```
+
+</Sandpack>
+
+من غير الشائع أن تستدعي `render` عدة مرات. عادةً، يمكن لمنوناتك [تحديث الحالة](/reference/react/useState) بدلاً من ذلك.
+
+---
