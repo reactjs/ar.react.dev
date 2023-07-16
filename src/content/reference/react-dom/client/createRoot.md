@@ -122,3 +122,93 @@ root.unmount();
 
 ---
 
+## الاستخدام {/*usage*/}
+
+### عرض التطبيق المُبني بالكامل بواسطة React {/*rendering-an-app-fully-built-with-react*/}
+
+إذا كان تطبيقك مبنيًا بالكامل بواسطة React، قم بإنشاء جذر واحدة لتطبيقك بالكامل.
+
+```js [[1, 3, "document.getElementById('root')"], [2, 4, "<App />"]]
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+عادةً ما يكون عليك تنفيذ هذا الشيء مرة واحدة فقط عند بدء التشغيل.
+
+ سيقوم بما يلي:
+
+1. العثور على <CodeStep step={1}>عنصر DOM للمتصفح</CodeStep> المعرف في ملف HTML الخاص بك.
+2. عرض <CodeStep step={2}>مكون React</CodeStep> لتطبيقك بداخله.
+
+<Sandpack>
+
+```html index.html
+<!DOCTYPE html>
+<html>
+  <head><title>تطبيقي</title></head>
+  <body>
+    <!-- This is the DOM node -->
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+```js index.js active
+import { createRoot } from 'react-dom/client';
+import App from './App.js';
+import './styles.css';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+```js App.js
+import { useState } from 'react';
+
+export default function App() {
+  return (
+    <>
+      <h1>مرحبًا بكم</h1>
+      <Counter />
+    </>
+  );
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      لقد ضغطت {count} مرات
+    </button>
+  );
+}
+```
+
+</Sandpack>
+
+**إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.** 
+
+من هذه النقطة وما بعدها، سيتولى React إدارة DOM للتطبيق بأكمله. لإضافة مكونات إضافية، [احتضنها داخل المكون `App`.](/learn/importing-and-exporting-components) عندما تحتاج إلى تحديث واجهة المستخدم، يمكن أن تقوم كل من مكوناتك بذلك عن طريق [استخدام الحالة.](/reference/react/useState) وعندما تحتاج إلى عرض محتوى إضافي مثل شاشة نموذجية أو نصائح خارج عنصر DOM، [اعرضه باستخدام `createPortal`.](/reference/react-dom/createPortal)
+
+<Note>
+
+عندما يكون العنصر HTML خاليًا، يرى المستخدم صفحة فارغة حتى يتم تحميل وتشغيل كود JavaScript للتطبيق:
+
+```html
+<div id="root"></div>
+```
+
+يمكن أن يكون هذا بطيئًا جدًا! لحل هذه المشكلة، يمكنك إنشاء العنصر HTML الأولي من مكوناتك [على الخادم أو أثناء البناء.](/reference/react-dom/server) ثم يمكن لزوار موقعك قراءة النص ورؤية الصور والنقر على الروابط قبل تحميل أي كود JavaScript. نوصي بأن تستخدم [إطار عمل](/learn/start-a-new-react-project#production-grade-react-frameworks) يفعل هذا الأمر تلقائيًا. اعتمادًا على موعد تشغيله، يُطلق عليه *تحميل من جانب الخادم (SSR)* أو *توليد المواقع الثابت (SSG).*
+
+</Note>
+
+<Pitfall>
+
+**يجب على التطبيقات التي تستخدم تقنية تصيير الخادم (server rendering) أو التوليد الثابت (static generation) استدعاء [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) بدلاً من `createRoot`.** سيقوم React بعد ذلك بـ *تحييد hydrate* (إعادة استخدام) عناصر DOM من HTML الخاص بك بدلاً من تدميرها وإعادة إنشائها.
+
+</Pitfall>
+
+---
+
