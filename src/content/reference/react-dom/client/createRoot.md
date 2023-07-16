@@ -212,3 +212,99 @@ function Counter() {
 
 ---
 
+### عرض صفحة مبنية جزئيًا بواسطة React {/*rendering-a-page-partially-built-with-react*/}
+
+إذا كانت صفحتك [ليست مبنية بالكامل باستخدام React](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)، يمكنك استدعاء `createRoot` عدة مرات لإنشاء جذر لكل قسم من أقسام واجهة المستخدم الرئيسية التي تُدار بواسطة React. يمكنك عرض محتوى مختلف في كل جذر عن طريق استدعاء [`root.render`](#root-render).
+
+في هذا المثال، يتم عرض نوعين مختلفين من مُكوِّنات React في عنصري DOM موجودين في ملف `index.html`:
+<Sandpack>
+
+```html public/index.html
+<!DOCTYPE html>
+<html>
+  <head><title>My app</title></head>
+  <body>
+    <nav id="navigation"></nav>
+    <main>
+      <p>This paragraph is not rendered by React (open index.html to verify).</p>
+      <section id="comments"></section>
+    </main>
+  </body>
+</html>
+```
+
+```js index.js active
+import './styles.css';
+import { createRoot } from 'react-dom/client';
+import { Comments, Navigation } from './Components.js';
+
+const navDomNode = document.getElementById('navigation');
+const navRoot = createRoot(navDomNode); 
+navRoot.render(<Navigation />);
+
+const commentDomNode = document.getElementById('comments');
+const commentRoot = createRoot(commentDomNode); 
+commentRoot.render(<Comments />);
+```
+
+```js Components.js
+export function Navigation() {
+  return (
+    <ul>
+      <NavLink href="/">الرئيسية</NavLink>
+      <NavLink href="/about">من نحن</NavLink>
+    </ul>
+  );
+}
+
+function NavLink({ href, children }) {
+  return (
+    <li>
+      <a href={href}>{children}</a>
+    </li>
+  );
+}
+
+export function Comments() {
+  return (
+    <>
+      <h2>التعليقات</h2>
+      <Comment text="مرحبًا!" author="رحمة" />
+      <Comment text="كيف حالك?" author="فاطمة" />
+    </>
+  );
+}
+
+function Comment({ text, author }) {
+  return (
+    <p>{text} — <i>{author}</i></p>
+  );
+}
+```
+
+```css
+nav ul { padding: 0; margin: 0; }
+nav ul li { display: inline-block; margin-right: 20px; }
+```
+
+</Sandpack>
+
+يمكنك أيضًا إنشاء عنصر DOM جديد باستخدام [`document.createElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) وإضافتها يدويًا إلى المستند.
+
+```js
+const domNode = document.createElement('div');
+const root = createRoot(domNode); 
+root.render(<Comment />);
+document.body.appendChild(domNode); // يمكنك إضافتها في أي مكان بالمستند
+```
+
+لإزالة شجرة React من عنصر DOM وتنظيف جميع الموارد المستخدمة من قِبلها، استدعِ [`root.unmount`.](#root-unmount)
+
+```js
+root.unmount();
+```
+
+تعتبر هذه الطريقة مفيدة بشكل رئيسي إذا كانت مُكوِّنات React الخاصة بك داخل تطبيق مكتوب بإطار عمل مختلف.
+
+---
+
