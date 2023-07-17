@@ -231,3 +231,43 @@ hydrateRoot(document, <App />);
 
 ---
 
+### كتم تحذيرات الربط غير المرتبطة بالترطيب {/*suppressing-unavoidable-hydration-mismatch-errors*/}
+
+إذا كان هناك اختلاف ضروري بين سمة عنصر واحد أو محتوى النص بين الخادم والعميل (على سبيل المثال ، الطابع الزمني)، فيمكنك إسكات تحذيرات الربط غير المرتبطة بالترطيب.
+
+لكتم تحذيرات الربط على عنصر ما، أضف `suppressHydrationWarning={true}`:
+
+<Sandpack>
+
+```html public/index.html
+<!--
+  HTML content inside <div id="root">...</div>
+  was generated from App by react-dom/server.
+-->
+<div id="root"><h1>Current Date: <!-- -->01/01/2020</h1></div>
+```
+
+```js index.js
+import './styles.css';
+import { hydrateRoot } from 'react-dom/client';
+import App from './App.js';
+
+hydrateRoot(document.getElementById('root'), <App />);
+```
+
+```js App.js active
+export default function App() {
+  return (
+    <h1 suppressHydrationWarning={true}>
+      Current Date: {new Date().toLocaleDateString()}
+    </h1>
+  );
+}
+```
+
+</Sandpack>
+
+هذا يعمل فقط لعنصر واحد عميق، ومقصود أن يكون هروبًا. لا تستخدمه بكثرة. ما لم يكن هو محتوى النص، فإن React لن يحاول تصحيحه، وبالتالي قد يظل غير متسق حتى التحديثات المستقبلية.
+
+---
+
