@@ -271,3 +271,55 @@ export default function App() {
 
 ---
 
+### التعامل مع محتوى مختلف بين العميل والخادم {/*handling-different-client-and-server-content*/}
+
+إذا كنت بحاجة إلى طرح شيء مختلف عند الخادم والعميل بصورة مقصودة، فيمكنك عمل رسم مرحلتين. يمكن للمكوِّنات التي تقوم بعرض شيء مختلف عند العميل أن تقرأ متغير [الحالة](/reference/react/useState) مثل `isClient` ، الذي يمكنك تعيينه على `true` في [التأثير](/reference/react/useEffect):
+
+<Sandpack>
+
+```html public/index.html
+<!--
+  HTML content inside <div id="root">...</div>
+  was generated from App by react-dom/server.
+-->
+<div id="root"><h1>Is Server</h1></div>
+```
+
+```js index.js
+import './styles.css';
+import { hydrateRoot } from 'react-dom/client';
+import App from './App.js';
+
+hydrateRoot(document.getElementById('root'), <App />);
+```
+
+```js App.js active
+import { useState, useEffect } from "react";
+
+export default function App() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return (
+    <h1>
+      {isClient ? 'Is Client' : 'Is Server'}
+    </h1>
+  );
+}
+```
+
+</Sandpack>
+
+بهذه الطريقة، ستقوم عملية الإعادة الأولية بتقديم نفس المحتوى الذي تم تجهيزه على الخادم، مما يمنع حدوث عدم التطابق، لكن سيحدث عبور إضافي بشكل متزامن مباشرة بعد الترطيب.
+
+<Pitfall>
+
+هذا النهج يجعل عملية الترطيب أبطأ نظرًا لاضطرار مكوناتك إلى عرض نفسها مرتين. كن حذرًا من تجربة المستخدم على اتصالات بطيئة. قد يتم تحميل الأكواد البرمجية بشكل كبير في وقت لاحق من العرض الأولي للصفحة، لذلك قد يشعر المستخدم أن التغيير إلى واجهة مستخدم مختلفة مباشرة بعد الترطيب قد يكون مفاجئًا له.
+
+</Pitfall>
+
+---
+
