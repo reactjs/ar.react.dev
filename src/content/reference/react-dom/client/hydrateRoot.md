@@ -323,3 +323,50 @@ export default function App() {
 
 ---
 
+### تحديث مكون جذري مُرطّب {/*updating-a-hydrated-root-component*/}
+
+بعد الانتهاء من ترطيب الجذر، يمكنك استدعاء [`root.render`](#root-render) لتحديث جذر مكون React. **خلافًا لاستخدام [`createRoot`](/reference/react-dom/client/createRoot)، عادةً لن تحتاج إلى القيام بذلك لأن المحتوى الأولي تم عرضه بالفعل كـ HTML.**
+
+إذا استدعيت `root.render` في وقت ما بعد الترطيب، وكانت هيكلة شجرة المكونات مُطابقة لما تم عرضه سابقًا، ستقوم React [بالحفاظ على الحالة](/learn/preserving-and-resetting-state). لاحظ كيف يمكنك الكتابة في الحقل، مما يعني أن التحديثات من استدعاءات `render` المتكررة كل ثانية في هذا المثال لا تؤدي إلى تدمير الحالة:
+
+<Sandpack>
+
+```html public/index.html
+<!--
+  HTML content inside <div id="root">...</div>
+  was generated from App by react-dom/server.
+-->
+<div id="root"><h1>مرحبًا بالعالم! <!-- -->0</h1><input placeholder="اكتب شيئًا هنا"/></div>
+```
+
+```js index.js active
+import { hydrateRoot } from 'react-dom/client';
+import './styles.css';
+import App from './App.js';
+
+const root = hydrateRoot(
+  document.getElementById('root'),
+  <App counter={0} />
+);
+
+let i = 0;
+setInterval(() => {
+  root.render(<App counter={i} />);
+  i++;
+}, 1000);
+```
+
+```js App.js
+export default function App({counter}) {
+  return (
+    <>
+      <h1>مرحبًا بالعالم! {counter}</h1>
+      <input placeholder="اكتب شيئًا هنا" />
+    </>
+  );
+}
+```
+
+</Sandpack>
+
+غالبًا ما يكون استدعاء [`root.render`](#root-render) على جذر مُرطّب أمرًا غير معتاد. عادةً، ستقوم بـ[تحديث الحالة](/reference/react/useState) داخل أحد المكونات بدلاً من ذلك.
