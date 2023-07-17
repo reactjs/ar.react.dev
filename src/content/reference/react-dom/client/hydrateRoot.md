@@ -115,3 +115,86 @@ root.unmount();
 * بمجرد استدعاء `root.unmount`، لا يمكنك استدعاء `root.render` مرة أخرى على نفس الجذر. ستؤدي محاولة استدعاء `root.render` على جذر غير مثبتة إلى إطلاق خطأ "Cannot update an unmounted root". ومع ذلك، يمكنك إنشاء جذر جديد لنفس عنصر DOM بعد إلغاء تثبيت الجذر السابقة لذلك العنصر.
 
 ---
+
+## الاستخدام {/*usage*/}
+
+### ربط HTML تم رسمه بالخادم {/*hydrating-server-rendered-html*/}
+
+إذا تم إنشاء HTML تطبيقك بواسطة [`react-dom/server`](/reference/react-dom/client/createRoot)، فستحتاج إلى *ترطيبه* في جانب الخادم.
+
+```js [[1, 3, "document.getElementById('root')"], [2, 3, "<App />"]]
+import { hydrateRoot } from 'react-dom/client';
+
+hydrateRoot(document.getElementById('root'), <App />);
+```
+
+سيقوم هذا بترطيب HTML الخادم داخل <CodeStep step={1}>عنصر DOM المتصفح</CodeStep> باستخدام <CodeStep step={2}>مكوِّن React</CodeStep> لتطبيقك. عادةً ما تقوم بفعل ذلك مرة واحدة عند بدء التشغيل. إذا كنت تستخدم إطار عمل ما، فقد يقوم الإطار بعمل هذا الأمر بالنيابة عنك.
+
+بهذه الطريقة، سيقوم React بـ "ربط" منطق المكوِّنات الخاصة بك بالـ HTML الأولي الذي تم إنشاؤه من الخادم. يحول الربطُ نسخة HTML الأولية من الخادم إلى تطبيق متفاعل بالكامل يعمل في المتصفح.
+
+<Sandpack>
+
+```html public/index.html
+<!--
+  HTML content inside <div id="root">...</div>
+  was generated from App by react-dom/server.
+-->
+<div id="root"><h1>Hello, world!</h1><button>You clicked me <!-- -->0<!-- --> times</button></div>
+```
+
+```js index.js active
+import './styles.css';
+import { hydrateRoot } from 'react-dom/client';
+import App from './App.js';
+
+hydrateRoot(
+  document.getElementById('root'),
+  <App />
+);
+```
+
+```js App.js
+import { useState } from 'react';
+
+export default function App() {
+  return (
+    <>
+      <h1>Hello, world!</h1>
+      <Counter />
+    </>
+  );
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      You clicked me {count} times
+    </button>
+  );
+}
+```
+
+</Sandpack>
+
+لن تحتاج لاستدعاء `hydrateRoot` مرة أخرى في أي مكان أخر. من هذه النقطة فصاعدًا، سيقوم React بإدارة DOM لتطبيقك. لتحديث واجهة مستخدم، ستقوم المكوِّنات الخاصة بك [باستخدام الحالة](/reference/react/useState) بدلاً من ذلك.
+
+<Pitfall>
+
+عنصر React الذي تمرره إلى `hydrateRoot` يحتاج إلى إنتاج **نفس النتيجة** التي حققها عند الخادم.
+
+هذا مهم لتجربة المستخدم. سيقضي المستخدم بعض الوقت في النظر إلى HTML الذي تم إنشاؤه من الخادم قبل تحميل كود JavaScript الخاص بك. يخلق الرسم من جانب الخادم وهمًا بأن التطبيق يحمل بشكل أسرع عن طريق عرض نسخة HTML المُمنتج. إظهار محتوى مختلف فجأة يكسر هذا الوهم. لهذا السبب، يجب أن يتطابق إخراج الرسم الخادم مع إخراج الرسم الأولي على العميل.
+
+أكثر الأسباب شيوعًا التي تؤدي إلى حدوث أخطاء الربط تشمل:
+
+* فراغ إضافي (مثل الأسطر الجديدة) حول HTML المُنتَج بواسطة React داخل العنصر الجذر.
+* استخدام فحوص مثل `typeof window !== 'undefined'` في منطق الرسم الخاص بك.
+* استخدام واجهات برمجة تطبيقات معتمدة على المتصفح مثل [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) في منطق الرسم الخاص بك.
+* عرض بيانات مختلفة على الخادم والعميل.
+
+يقوم React بالتعافي من بعض أخطاء الربط، ولكن يجب عليك **إصلاحها مثل الأخطاء الأخرى**. في أفضل الحالات، ستؤدي إلى إبطاء الأداء. في أسوأ الحالات، يمكن أن تتم إضافة المعالجات إلى العناصر الخاطئة.
+
+</Pitfall>
+
+---
+
