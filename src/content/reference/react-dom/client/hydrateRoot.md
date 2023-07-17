@@ -58,3 +58,30 @@ const root = hydrateRoot(domNode, reactNode);
 
 ---
 
+### `root.render(reactNode)` {/*root-render*/}
+
+استدعِ `root.render` لتحديث مكون React داخل جذر React في عنصر DOM في المتصفح.
+
+```js
+root.render(<App />);
+```
+
+ستحدث React <App /> في `root` المُجَمّع.
+
+[شاهد المزيد من الأمثلة أدناه.](#usage)
+
+#### المعاملات {/*root-render-parameters*/}
+
+* `reactNode`: *عنصر React* الذي ترغب في عرضه. عادةً ما يكون هذا جزءًا من JSX مثل `<App />`، ولكن يمكنك أيضًا تمرير عنصر React المُنشأ باستخدام [`createElement()`](/reference/react/createElement)، أو نص أو رقم أو `null` أو `undefined`.
+
+
+#### العائدات {/*root-render-returns*/}
+
+تعيد `root.render`: `undefined`.
+
+#### ملاحظات {/*root-render-caveats*/}
+
+* إذا استدعيت `root.render` قبل أن ينتهي الجذر من التجميع، فسيقوم React بمسح محتوى HTML المرسوم بالفعل من الخادم وتحويل الجذر بأكمله إلى الرسم  من جانب العميل.
+
+---
+
