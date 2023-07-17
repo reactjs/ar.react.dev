@@ -198,3 +198,36 @@ function Counter() {
 
 ---
 
+### ربط مستند بأكمله {/*hydrating-an-entire-document*/}
+
+يمكن للتطبيقات المُبنَّية بالكامل بواسطة React أن تعرض المستند بأكمله على شكل JSX، بما في ذلك العلامة [`<html>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html) :
+
+```js {3,13}
+function App() {
+  return (
+    <html>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/styles.css"></link>
+        <title>تطبيقي</title>
+      </head>
+      <body>
+        <Router />
+      </body>
+    </html>
+  );
+}
+```
+
+لترطيب المستند بأكمله، مرر الكائن العام (`document`) كأول معامل إلى `hydrateRoot`:
+
+```js {4}
+import { hydrateRoot } from 'react-dom/client';
+import App from './App.js';
+
+hydrateRoot(document, <App />);
+```
+
+---
+
