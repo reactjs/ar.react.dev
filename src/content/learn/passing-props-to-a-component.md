@@ -193,7 +193,7 @@ function Avatar({ person, size }) {
 }
 ```
 
-هذا الصيغة تسمى ["تدمير"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) and is equivalent to reading properties from a function parameter:
+هذه الصيغة تسمى ["تدمير"](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) وهي ما تعادل قراءة الخصائص من عامل الدالة:
 
 ```js
 function Avatar(props) {
