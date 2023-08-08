@@ -25,7 +25,7 @@ title: "'use server'"
 
 ### `'use server'` {/*use-server*/}
 
-أضف `'use server';` في أعلى دالة غير متزامنة لتمييز أن الدالة يمكن تنفيذها من قبل العميل.
+أضف `'use server';` في أعلى دالة غير متزامنة (async) لتمييز أن الدالة يمكن تنفيذها من قبل العميل.
 
 ```js
 async function addToCart(data) {
