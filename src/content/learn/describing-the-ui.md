@@ -4,7 +4,7 @@ title: وصف واجهات المستخدم (UI)
 
 <Intro>
 
-تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات حسب الشروط.
+تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وتصيير مكونات حسب الشروط.
 
 </Intro>
 
@@ -12,18 +12,18 @@ title: وصف واجهات المستخدم (UI)
 
 * [كيفية كتابة أول مكون React لك](/learn/your-first-component)
 * [متى وكيف تنشأ ملفات تحتوى على أكثر من مكون](/learn/importing-and-exporting-components)
-* [كيفية إضافة ترميزات (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
-* [كيفية استخدام الأقواس المجعدة في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
+* [كيفية إضافة ترميز (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
+* [كيفية استخدام الأقواس المنحنية في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
 * [كيفية إعداد المكونات باستخدام الخصائص (Props)](/learn/passing-props-to-a-component)
-* [(Conditional rendering) كيفية عرض المكونات بشكل مشروط](/learn/conditional-rendering)
-* [كيفية عرض أكثر من مكون مرة واحدة](/learn/rendering-lists)
+* [(Conditional rendering) كيفية تصيير المكونات بشكل شرطي](/learn/conditional-rendering)
+* [كيفية تصيير أكثر من مكون مرة واحدة](/learn/rendering-lists)
 * [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
-## أول مكون لك {/*your-first-component*/}
+## مكوّنك الأول {/*your-first-component*/}
 
-يتم بناء تطبيقات React باستخدام قطع معزولة من واجهات المستخدم تسمى مكونات. المكون في React هو عبارة عن دالة JavaScript التى يمكنك إضافة ترميزات إليها. المكونات يمكن أن تكون صغيرة كزرار أو كبيرة كصفحة كاملة. هنا المكون `Gallery` يقوم بعرض ثلاث مكونات `Profile`:
+يتم بناء تطبيقات React باستخدام قطع معزولة من واجهات المستخدم تسمى مكونات. المكون في React هو عبارة عن دالة JavaScript التى يمكنك إضافة ترميزات إليها. المكونات يمكن أن تكون صغيرة كزرار أو كبيرة كصفحة كاملة. هنا المكون `Gallery` يقوم بتصيير ثلاث مكونات `Profile`:
 
 <Sandpack>
 
@@ -57,14 +57,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-اقرأ **[مكونك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
+اقرأ **[مكوّنك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
 
 </LearnMore>
 
 ## استيراد وتصدير المكونات {/*importing-and-exporting-components*/}
 
 يمكنك تعريف أكثر من مكون في ملف واحد، ولكن الملفات الكبيرة يمكن أن تصبح صعبة التصفح. لحل هذه المشكلة يمكنك أن تصدر *export* مكون من الملف الخاص به، ثم استخدام *import* لتستخدم هذا المكون في ملف آخر:
-
 
 <Sandpack>
 
@@ -116,9 +115,9 @@ img { margin: 0 10px 10px 0; }
 
 </LearnMore>
 
-## كتابة ترميزات (Markup) باستخدام JSX {/*writing-markup-with-jsx*/}
+## كتابة ترميز البناء بـ JSX {/*writing-markup-with-jsx*/}
 
-كل مكون في React عبارة عن دالة JavaScript التى يمكن أن تحتوي على بعض الترميزات التي يمكن لـ React أن تعرضها في المتصفح. المكونات في React تستخدم صيغة معدلة تسمى JSX لكى تمثل هذه الترميزات. JSX تشبه HTML كثيرا، ولكنها صارمة قليلا وتستطيع أن تعرض محتوى ديناميكي.
+كل مكون في React عبارة عن دالة JavaScript التى يمكن أن تحتوي على بعض الترميزات التي يمكن لـ React أن تُصيرها في المتصفح. المكونات في React تستخدم صيغة معدلة تسمى JSX لكى تمثل هذه الترميزات. JSX تشبه HTML كثيرا، ولكنها صارمة قليلا وتستطيع أن تعرض محتوى ديناميكي.
 
 إذا قمنا بنسخ ترميزات HTML موجودة سابقا داخل مكون React، لن تعمل دائما:
 
@@ -229,11 +228,11 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-اقرأ **[استخدام JavaScript في JSX باستخدام الأقواس المجعدة](/learn/javascript-in-jsx-with-curly-braces)** لتتعلم كيفية الوصول إلى بيانات JavaScript في JSX
+اقرأ **[JavaScript في JSX باستخدام الأقواس المنحنية](/learn/javascript-in-jsx-with-curly-braces)** لتتعلم كيفية الوصول إلى بيانات JavaScript في JSX
 
 </LearnMore>
 
-## تمرير الخصائص (Props) إلى مكون {/*passing-props-to-a-component*/}
+## تمرير الخصائص إلى مكوّن {/*passing-props-to-a-component*/}
 
 المكونات في React تتواصل مع بعضها البعض عن طريق الخصائص (Props). كل مكون أب يمكن له أن يمرر بعض المعلومات إلى المكونات الأبناء عن طريق إعطائهم خصائص. الخصائص يمكن أن تذكرك بـ"خصائص HTML"، ولكن يمكنك أن تمرر أي قيمة JavaScript عن طريقهم، هذا يمكن أن يكون كائن (object) أو مصفوفة (array) أو دالة function أو حتى JSX!
 
@@ -310,15 +309,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-اقرأ **[تمرير الخصائص (Props) إلى مكون](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
+اقرأ **[تمرير الخصائص إلى مكوّن](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
 
 </LearnMore>
 
-## العرض المشروط (Conditional rendering) {/*conditional-rendering*/}
+## التصيير الشرطي {/*conditional-rendering*/}
 
-غالبًا ما تحتاج مكوناتك إلى عرض أشياء مختلفة تعتمد على شروط مختلفة. في React، يمكنك عرض JSX حسب شروط باستخدام صيغ شبيهه بـ JavaScript مثل التعبيرات الشرطية `if` والمعاملات `&&` و `condition ? if true : else`.
+غالبًا ما تحتاج مكوناتك إلى عرض أشياء مختلفة تعتمد على شروط مختلفة. في React، يمكنك تصيير JSX حسب شروط باستخدام صيغ شبيهه بـ JavaScript مثل التعبيرات الشرطية `if` والمعاملات `&&` و `condition ? if true : else`.
 
-في هذا المثال،  معامل `&&` في JavaScript يستخدم لعرض علامة صح بشكل مشروط:
+في هذا المثال،  معامل `&&` في JavaScript يستخدم لتصيير علامة صح بشكل مشروط:
 
 <Sandpack>
 
@@ -358,11 +357,11 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-اقرأ **[العرض المشروط (Conditional rendering)](/learn/conditional-rendering)** لتتعلم الطرق المختلفة لعرض المحتوى بشكل شرطي.
+اقرأ **[التصيير الشرطي](/learn/conditional-rendering)** لتتعلم الطرق المختلفة لتصيير المحتوى بشكل شرطي.
 
 </LearnMore>
 
-## عرض القوائم (lists) {/*rendering-lists*/}
+## تصيير القوائم {/*rendering-lists*/}
 
 غالبًا ما سترغب في عرض عدة مكونات متشابهة من مجموعة البيانات. يمكن استخدام `filter()` و `map()` في JavaScript مع React لتصفية وتحويل مصفوفة البيانات الخاصة بك إلى مصفوفة من المكونات.
 
@@ -458,7 +457,7 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-اقرأ **[عرض القوائم (lists)](/learn/rendering-lists)** لتتعلم  كيفية عرض قوائم من المكونات، وكيفية اختيار مفتاح.
+اقرأ **[تصيير القوائم](/learn/rendering-lists)** لتتعلم  كيفية تصيير قوائم من المكونات، وكيفية اختيار مفتاح.
 
 </LearnMore>
 
