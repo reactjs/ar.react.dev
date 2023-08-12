@@ -32,7 +32,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   );
 }
@@ -40,7 +40,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء مذهلون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -83,7 +83,7 @@ import Profile from './Profile.js';
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء مذهلون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -97,7 +97,7 @@ export default function Profile() {
   return (
     <img
       src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+      alt="آلان إل. هارت"
     />
   );
 }
@@ -126,17 +126,17 @@ img { margin: 0 10px 10px 0; }
 ```js
 export default function TodoList() {
   return (
-    // This doesn't quite work!
-    <h1>Hedy Lamarr's Todos</h1>
+    // هذا لن يعمل
+    <h1>قائمة مهام هيدي لامار</h1>
     <img
       src="https://i.imgur.com/yXOvdOSs.jpg"
       alt="Hedy Lamarr"
       class="photo"
     >
     <ul>
-      <li>Invent new traffic lights
-      <li>Rehearse a movie scene
-      <li>Improve spectrum technology
+      <li>اختراع إشارة مرور جديدة
+      <li>تدرب على مشهد فيلم
+      <li>تحسين تكنولوجيا الطيف
     </ul>
   );
 }
@@ -156,16 +156,16 @@ img { height: 90px; }
 export default function TodoList() {
   return (
     <>
-      <h1>Hedy Lamarr's Todos</h1>
+      <h1>قائمة مهام هيدي لامار</h1>
       <img
         src="https://i.imgur.com/yXOvdOSs.jpg"
-        alt="Hedy Lamarr"
+        alt="هيدي لامار"
         className="photo"
       />
       <ul>
-        <li>Invent new traffic lights</li>
-        <li>Rehearse a movie scene</li>
-        <li>Improve spectrum technology</li>
+        <li>اختراع إشارة مرور جديدة</li>
+        <li>تدرب على مشهد فيلم</li>
+        <li>تحسين تكنولوجيا الطيف</li>
       </ul>
     </>
   );
@@ -180,19 +180,19 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-اقرأ **[كتابة ترميزات (Markup) باستخدام JSX](/learn/writing-markup-with-jsx)** لتتعلم كيفية كتابة JSX صحيحة
+اقرأ **[كتابة ترميز البناء بـ JSX](/learn/writing-markup-with-jsx)** لتتعلم كيفية كتابة JSX صحيحة
 
 </LearnMore>
 
-## استخدام JavaScript في JSX باستخدام الأقواس المجعدة {/*javascript-in-jsx-with-curly-braces*/}
+## JavaScript في JSX باستخدام الأقواس المنحنية {/*javascript-in-jsx-with-curly-braces*/}
 
-تتيح لك JSX أن تكتب ترميزات مشابهة إلى HTML بداخل ملفات JavaScript وأن تعرض محتوى وتبقى المنطق الخاص بالمكونات في نفس المكان. في بعض الأحيان، قد ترغب في إضافة بعض المنطق المكتوب باستخدام JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذا الموقف، يمكنك استخدام الأقواس المجعدة في JSX الخاص بك لفتح نافذة إلى JavaScript:
+تتيح لك JSX أن تكتب ترميزات مشابهة إلى HTML بداخل ملفات JavaScript وأن تُصير محتوى وتبقى المنطق الخاص بالمكونات في نفس المكان. في بعض الأحيان، قد ترغب في إضافة بعض المنطق المكتوب باستخدام JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذا الموقف، يمكنك استخدام الأقواس المنحنية في JSX الخاص بك لفتح نافذة إلى JavaScript:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'جريجوري زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -202,16 +202,16 @@ const person = {
 export default function TodoList() {
   return (
     <div style={person.theme}>
-      <h1>{person.name}'s Todos</h1>
+      <h1>قائمة مهام {person.name}</h1>
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="جريجوري زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين هاتف الفيديو</li>
+        <li>اعداد محاضرات طيران</li>
+        <li>العمل على محرك يعمل بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -247,7 +247,7 @@ export default function Profile() {
       <Avatar
         size={100}
         person={{
-          name: 'Katsuko Saruhashi',
+          name: 'قاتسوكو ساروهاشي',
           imageId: 'YfeOqp2'
         }}
       />
@@ -333,19 +333,19 @@ function Item({ name, isPacked }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>قائمة تعبئة سالي رايد</h1>
       <ul>
         <Item
           isPacked={true}
-          name="Space suit"
+          name="بدلة الفضاء"
         />
         <Item
           isPacked={true}
-          name="Helmet with a golden leaf"
+          name="خوذة مع ورقة ذهبية"
         />
         <Item
           isPacked={false}
-          name="Photo of Tam"
+          name="صورة لـ تام"
         />
       </ul>
     </section>
@@ -383,13 +383,13 @@ export default function List() {
       <p>
         <b>{person.name}:</b>
         {' ' + person.profession + ' '}
-        known for {person.accomplishment}
+        معروف بـ {person.accomplishment}
       </p>
     </li>
   );
   return (
     <article>
-      <h1>Scientists</h1>
+      <h1>علماء</h1>
       <ul>{listItems}</ul>
     </article>
   );
@@ -399,33 +399,33 @@ export default function List() {
 ```js data.js
 export const people = [{
   id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
+  name: 'كريولا كاثرين جونسون',
+  profession: ' عالم رياضيات',
+  accomplishment: 'حسابات الرحلات الفضائية',
   imageId: 'MK3eW3A'
 }, {
   id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
+  name: 'ماريو خوسيه مولينا باسكويل هنريكيز',
+  profession: 'كيميائي',
+  accomplishment: 'اكتشاف ثقب الأوزون في منطقة القطب الشمالي',
   imageId: 'mynHUSa'
 }, {
   id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
+  name: 'محمد عبد السلام',
+  profession: 'فزيائى',
+  accomplishment: 'نظرية الكهرومغناطيسية',
   imageId: 'bE7W1ji'
 }, {
   id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+  name: 'بيرسي لافون جوليان',
+  profession: 'كيميائي',
+  accomplishment: 'تطوير أدوية الكورتيزون والستيرويدات وحبوب منع الحمل',
   imageId: 'IOjWm71'
 }, {
   id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
+  name: 'سوبرامانيان شاندراسيخار',
+  profession: 'عالم فيزياء فلكية',
+  accomplishment: 'حسابات كتلة نجم قذم أبيض',
   imageId: 'lrWQx8l'
 }];
 ```
@@ -478,7 +478,7 @@ let guest = 0;
 function Cup() {
   // سيء: تعديل متغير موجود مسبقًا
   guest = guest + 1;
-  return <h2>Tea cup for guest #{guest}</h2>;
+  return <h2>كوب شاى لضيف #{guest}</h2>;
 }
 
 export default function TeaSet() {
@@ -500,7 +500,7 @@ export default function TeaSet() {
 
 ```js
 function Cup({ guest }) {
-  return <h2>Tea cup for guest #{guest}</h2>;
+  return <h2>كوب شاى لضيف #{guest}</h2>;
 }
 
 export default function TeaSet() {
