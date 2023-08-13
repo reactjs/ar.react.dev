@@ -20,7 +20,7 @@ Hooks can only be called inside the body of a function component. \
 
 ## نُسخ غير مُتوافقة من React و React DOM {/*mismatching-versions-of-react-and-react-dom*/}
 
-قد تكون تستخدم نسخة `react-dom` أقل من v16.8.0 أو نُسخة `react-native` أقل من 0.59 واللَّتَانِ لا يدعمان الخطاطيف بعد. يُمكنك تنفيذ "run" أمر `npm ls react-dom` أو `npm ls react-native` في مُجلّد التطبيق خاصتك لمعرفة النُسخة التي تستخدمها. إن وجدت أكثر من نُسخة فقد يخلق ذلك مشاكل (المزيد على ذلك أدناه).
+قد تكون تستخدم نسخة `react-dom` أقل من v16.8.0 أو نُسخة `react-native` أقل من 0.59 واللَّتَانِ لا يدعمان الخطاطيف بعد. يُمكنك تنفيذ أمر `npm ls react-dom` أو `npm ls react-native` في مُجلّد التطبيق خاصتك لمعرفة النُسخة التي تستخدمها. إن وجدت أكثر من نُسخة فقد يخلق ذلك مشاكل (المزيد على ذلك أدناه).
 
 ## خرق قواعد الخطاطيف {/*breaking-the-rules-of-hooks*/}
 
