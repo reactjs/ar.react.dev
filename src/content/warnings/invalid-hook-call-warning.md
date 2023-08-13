@@ -7,7 +7,7 @@ title: Rules of Hooks
 <ConsoleBlock level="error">
 
 Hooks can only be called inside the body of a function component. \
-يُمكن استِدعاء الخطاطيف فقط داخل دالّة مُكوّن.
+يُمكن استِدعاء الخطاطيف فقط داخل مكون دالّة.
 </ConsoleBlock>
 
 هُناك ثلاثة أسباب شائعه لظهور الخطأ أعلاه:
