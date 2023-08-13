@@ -1,30 +1,31 @@
 ---
-title: Managing State
+title: إدارة الحالة
 ---
 
 <Intro>
 
-As your application grows, it helps to be more intentional about how your state is organized and how the data flows between your components. Redundant or duplicate state is a common source of bugs. In this chapter, you'll learn how to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components.
+  مع نمو تطبيقك، من المفيد كونك أكثر حرصا بشأن أن تكون حالتك منظمة وأن تكون البيانات متدفقة خلال مكوناتك. تكرار أو نسخ الحالة هو مصدر شائع للأخطاء. في هذا الفصل، سوف تتعلم كيفية تهيئة حالتك جيدا، كيفية الحفاظ على منطق تحديث حالتك مصانا، وكيفية مشاركة الحالة بين المكونات المتباعدة.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to think about UI changes as state changes](/learn/reacting-to-input-with-state)
-* [How to structure state well](/learn/choosing-the-state-structure)
-* [How to "lift state up" to share it between components](/learn/sharing-state-between-components)
-* [How to control whether the state gets preserved or reset](/learn/preserving-and-resetting-state)
-* [How to consolidate complex state logic in a function](/learn/extracting-state-logic-into-a-reducer)
-* [How to pass information without "prop drilling"](/learn/passing-data-deeply-with-context)
-* [How to scale state management as your app grows](/learn/scaling-up-with-reducer-and-context)
+* [كيفية التفكير في تغييرات واجهة المستخدم كتغيرات في الحالة](/learn/reacting-to-input-with-state)
+* [كيفية هيكلة الحالة جيدا](/learn/choosing-the-state-structure)
+* [كيفية "رفع الحالة لمستوى أعلى" لمشاكارتها بين المكونات](/learn/sharing-state-between-components)
+* [كيفية التحكم في ما إذا تم حفظ الحالة أم إعادة تعيينها](/learn/preserving-and-resetting-state)
+* [كيفية ترسيخ منطق حالة معقد داخل دالة](/learn/extracting-state-logic-into-a-reducer)
+* [كيفية تمرير معلومات بدون "تسرب الخصائص"](/learn/passing-data-deeply-with-context)
+* [كيفية توسيع إدارة الحالة مع نمو تطبيقك](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
 
-## Reacting to input with state {/*reacting-to-input-with-state*/}
+## الاستجابة للمدخلات باستخدام الحالة {/*reacting-to-input-with-state*/}
 
-With React, you won't modify the UI from code directly. For example, you won't write commands like "disable the button", "enable the button", "show the success message", etc. Instead, you will describe the UI you want to see for the different visual states of your component ("initial state", "typing state", "success state"), and then trigger the state changes in response to user input. This is similar to how designers think about UI.
+باستخدام React، لن تستطيع تعديل واجهة المستخدم عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن ترها للحالات المرئية من مكوناتك ("حالة ابتدائية"، "حالة كتابية"، "حالة ناجحة")، ومن بعدها تنشيط تغيرات الحالة بناءا على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
 
-Here is a quiz form built using React. Note how it uses the `status` state variable to determine whether to enable or disable the submit button, and whether to show the success message instead.
+هنا نموذج اختبار صمم باستخدام React. لاحظ كيف يستخدم متغير الحالة `status` لكي يحدد ما إذا سيفعل أم سيعطل زر الإرسال، وما إذا ستظهر رسالة نجاح بدلا عن ذلك.
+
 
 <Sandpack>
 
@@ -37,7 +38,7 @@ export default function Form() {
   const [status, setStatus] = useState('typing');
 
   if (status === 'success') {
-    return <h1>That's right!</h1>
+    return <h1>هذا صحيح!</h1>
   }
 
   async function handleSubmit(e) {
@@ -58,9 +59,9 @@ export default function Form() {
 
   return (
     <>
-      <h2>City quiz</h2>
+      <h2>اختبار المدينة</h2>
       <p>
-        In which city is there a billboard that turns air into drinkable water?
+        في أي مدينة يوجد لوحة إعلانية تقوم بتحويل الهواء إلى مياه صالحة للشرب؟
       </p>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -73,7 +74,7 @@ export default function Form() {
           answer.length === 0 ||
           status === 'submitting'
         }>
-          Submit
+          أرسل
         </button>
         {error !== null &&
           <p className="Error">
@@ -86,12 +87,12 @@ export default function Form() {
 }
 
 function submitForm(answer) {
-  // Pretend it's hitting the network.
+  // محاكاة للتواصل باستخدام الشبكة
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let shouldError = answer.toLowerCase() !== 'lima'
+      let shouldError = answer.toLowerCase() !== 'lima' 
       if (shouldError) {
-        reject(new Error('Good guess but a wrong answer. Try again!'));
+        reject(new Error('توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!'));
       } else {
         resolve();
       }
@@ -108,15 +109,15 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-Read **[Reacting to Input with State](/learn/reacting-to-input-with-state)** to learn how to approach interactions with a state-driven mindset.
+اقرأ **[الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state)** لكي تتعلم كيفية الوصول لتعاملات مع عقلية معتمدة على الحالة.  
 
 </LearnMore>
 
-## Choosing the state structure {/*choosing-the-state-structure*/}
+## اختيار هيكل الحالة {/*choosing-the-state-structure*/}
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn't contain redundant or duplicated information. If there's unnecessary state, it's easy to forget to update it, and introduce bugs!
+هيكلة الحالة جيدا يستطيع أن يصنع فارقا بين مكوّن قابل للإصلاح والتصحيح، وآخر يمثل مصدرا ثابتا للأخطاء. القاعدة الأكثر أهمية هي أنه لا يجب للحالة أن تحتوي على بيانات مكررة أو منسوخة. لو وجدت حالة غير ضرورية، فمن السهل نسيان تحديثها، وحدوث الأخطاء.
 
-For example, this form has a **redundant** `fullName` state variable:
+على سبيل المثال، هذا نموذج يتضمن متغير الحالة `fullName` **مكرر**:
 
 <Sandpack>
 
@@ -140,23 +141,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>دعنا نقم بتسجيلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        اسم العائلة:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        تذكرتك سوف تسلم ل: <b>{fullName}</b>
       </p>
     </>
   );
@@ -169,7 +170,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-You can remove it and simplify the code by calculating `fullName` while the component is rendering:
+يمكنك حذفه وتبسيط الكود عن طريق جمع `fullName` بينما يصيّر المكوّن:
 
 <Sandpack>
 
@@ -192,23 +193,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>دعنا نقم بتسجيلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        اسم العائلة:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        تذكرتك سوف تسلم ل: <b>{fullName}</b>
       </p>
     </>
   );
@@ -221,11 +222,11 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This might seem like a small change, but many bugs in React apps are fixed this way.
+هذا قد يبدو كتغير بسيط، ولكن كثير من الأخطاء في تطبيقات React يتم إصلاحها بهذه الطريقة. 
 
 <LearnMore path="/learn/choosing-the-state-structure">
 
-Read **[Choosing the State Structure](/learn/choosing-the-state-structure)** to learn how to design the state shape to avoid bugs.
+اقرأ **[اختيار هيكل الحالة](/learn/choosing-the-state-structure)** لتتعلم كيفية تصميم بنية الحالة لتجنب الأخطاء.
 
 </LearnMore>
 

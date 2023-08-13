@@ -121,16 +121,16 @@
       ]
     },
     {
-      "title": "Managing State",
+      "title": "إدارة الحالة",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "الاستجابة للمدخلات باستخدام الحالة",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "Choosing the State Structure",
+          "title": "اختيار هيكل الحالة",
           "path": "/learn/choosing-the-state-structure"
         },
         {
