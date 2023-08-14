@@ -11,12 +11,7 @@ These directives are needed only if you're [using React Server Components](/lear
 
 <Intro>
 
-<<<<<<< HEAD
 تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)، والتعليمات اللازمة لذلك.
-=======
-Directives provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
-
 </Intro>
 
 ---
