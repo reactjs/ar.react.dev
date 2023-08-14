@@ -4,7 +4,7 @@ title: useState
 
 <Intro>
 
-`useState` is a React Hook that lets you add a [state variable](/learn/state-a-components-memory) to your component.
+ `useState` هو Hook في React يتيح لك إضافة متغير حالة إلى مكونك
 
 ```js
 const [state, setState] = useState(initialState);
@@ -16,11 +16,12 @@ const [state, setState] = useState(initialState);
 
 ---
 
-## Reference {/*reference*/}
+## الإشارة الى المرجع {/*reference*/}
 
-### `useState(initialState)` {/*usestate*/}
+### `useState(الحالةالأولية)` {/*usestate*/}
 
-Call `useState` at the top level of your component to declare a [state variable.](/learn/state-a-components-memory)
+
+استدعِ `useState` في الطبقة العليا لمكونك لتعريف متغير الحالة.
 
 ```js
 import { useState } from 'react';
@@ -32,33 +33,32 @@ function MyComponent() {
   // ...
 ```
 
-The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
+التقليد هو تسمية متغيرات الحالة بشكل مثل `[something, setSomething]` باستخدام [array destructuring] [تفكيك الصفائف](https://javascript.info/destructuring-assignment)
 
-[See more examples below.](#usage)
+[انظر المزيد من الأمثلة أدناه ](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `initialState`: The value you want the state to be initially. It can be a value of any type, but there is a special behavior for functions. This argument is ignored after the initial render.
-  * If you pass a function as `initialState`, it will be treated as an _initializer function_. It should be pure, should take no arguments, and should return a value of any type. React will call your initializer function when initializing the component, and store its return value as the initial state. [See an example below.](#avoiding-recreating-the-initial-state)
+* `initialState`: القيمة التي تريد أن تكون عليها الحالة في البداية. يمكن أن تكون قيمة من أي نوع، ولكن هناك سلوك خاص للدوال. يتم تجاهل هذه الحجة بعد التقديم الأولى
 
-#### Returns {/*returns*/}
+* إذا مررت بدالة كـ `initialState،` سيتم التعامل معها كحالة التهيئة. يجب أن تكون نقية، ويجب ألا تأخذ أي حجج، ويجب أن تعيد قيمة من أي نوع. سيستدعي React وظيفة البادئ عند تهيئة المكون، ويقوم بتخزين قيمته المرتجعة كحالة أولية. [انظر مثالاً أدناه.](#avoiding-recreating-the-initial-state)
 
-`useState` returns an array with exactly two values:
+#### المرجعات {/*returns*/}
 
-1. The current state. During the first render, it will match the `initialState` you have passed.
-2. The [`set` function](#setstate) that lets you update the state to a different value and trigger a re-render.
+`useState` ترجع قيمتين 
+1. الحالة الحالية. خلال العرض الأولي، ستتطابق مع `initialState` التي قمت بتمريرها.
+2. الدالة [`set`](#setstate) التي تمكنك من تحديث الحالة إلى قيمة مختلفة وتشغيل إعادة العرض.
 
-#### Caveats {/*caveats*/}
+#### التحذيرات {/*caveats*/}
 
-* `useState` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your initializer function twice** in order to [help you find accidental impurities.](#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your initializer function is pure (as it should be), this should not affect the behavior. The result from one of the calls will be ignored.
+* `useState` هو Hook، لذلك يمكنك تسميتها فقط *** في المستوى الأعلى من مكوناتك *** أو الخطاطيف الخاصة بك. لا يمكنك تسميتها داخل الحلقات أو الظروف. إذا كنت بحاجة إلى ذلك، استخراج عنصر جديد وانقل الدولة فيه.
+* في الوضع المقيد، يستدعي React *** وظيفة بدء التشغيل الخاصة بك مرتين *** من أجل [مساعدتك في العثور على الشوائب العرضية.] هذا سلوك تطويري فقط ولا يؤثر على الإنتاج. إذا كانت وظيفتك المبدئة نقية (كما ينبغي أن تكون)، فلا ينبغي أن يؤثر ذلك على السلوك. النتيجة من إحدى المكالمات سيتم تجاهلها.
 
 ---
 
-### `set` functions, like `setSomething(nextState)` {/*setstate*/}
+### `set` مثل, الوظائف `setSomething(الحالة التالية)` {/*setstate*/}
 
-The `set` function returned by `useState` lets you update the state to a different value and trigger a re-render. You can pass the next state directly, or a function that calculates it from the previous state:
-
+تسمح لك الدالة `set` التي ترجعها `useState` بتحديث الحالة إلى قيمة مختلفة وتشغيل إعادة التقديم. يمكنك تمرير الحالة التالية مباشرة، أو دالة تحسبها من الحالة السابقة
 ```js
 const [name, setName] = useState('Edward');
 
@@ -68,34 +68,34 @@ function handleClick() {
   // ...
 ```
 
-#### Parameters {/*setstate-parameters*/}
+#### المعاملات {/*setstate-parameters*/}
 
-* `nextState`: The value that you want the state to be. It can be a value of any type, but there is a special behavior for functions.
-  * If you pass a function as `nextState`, it will be treated as an _updater function_. It must be pure, should take the pending state as its only argument, and should return the next state. React will put your updater function in a queue and re-render your component. During the next render, React will calculate the next state by applying all of the queued updaters to the previous state. [See an example below.](#updating-state-based-on-the-previous-state)
+* `next state`: القيمة التي تريد أن تكون عليها الحالة. يمكن أن تكون قيمة من أي نوع، ولكن هناك سلوك خاص للدوال.
+  * إذا نجحت في اجتياز دالة كـ `next state`، سيتم التعامل معها كدالة _ تحديث. يجب أن تكون نقية، يجب أن تأخذ الحالة المعلقة كحجة وحيدة، ويجب أن تعيد الحالة التالية. رد الفعل سيضع وظيفة التحديث في طابور ويعيد تقديم المكون الخاص بك. خلال العرض التالي، يقوم React بحساب الحالة التالية من خلال تطبيق كل التحديثات الموجودة في قائمة الانتظار على الحالة السابقة. [انظر مثالاً أدناه.](#updating-state-based-on-the-previous-state)
 
-#### Returns {/*setstate-returns*/}
+#### المرجعات {/*setstate-returns*/}
 
-`set` functions do not have a return value.
+الدوال `set` ليس لها قيمة ارتجاعية.
 
-#### Caveats {/*setstate-caveats*/}
+#### التحذيرات {/*setstate-caveats*/}
 
-* The `set` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `set` function, [you will still get the old value](#ive-updated-the-state-but-logging-gives-me-the-old-value) that was on the screen before your call.
+* الدالة `set` *** تقوم بتحديث متغير الحالة فقط لـ * تقديم *** التالي. إذا قرأت متغير الحالة بعد استدعاء الدالة `set`, [ستظل تحصل على القيمة القديمة](#ive-updated-the-state-but-logging-gives-me-the-old-value) التي كانت على الشاشة قبل استدعائك.
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. Although in some cases React may still need to call your component before skipping the children, it shouldn't affect your code.
+* إذا كانت القيمة الجديدة التي تقدمها مطابقة للحالة الحالية، كما تحددها مقارنة ['Object.is'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)، فإن React سيتخطى *** إعادة تقديم المكون وأبناءه. هذا هو التحسين. على الرغم من أنه في بعض الحالات React قد لا يزال بحاجة إلى استدعاء المكون الخاص بك قبل تخطي الأطفال، فإنه لا ينبغي أن يؤثر على شفرتك.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* React [batches state updates.](/learn/queueing-a-series-of-state-updates) يقوم بتحديث الشاشة بعد أن يقوم جميع معالجي الأحداث بتشغيل *** وتسمية وظائف "المجموعة" الخاصة بهم. وهذا يمنع إعادة العروض المتعددة خلال حدث واحد. في الحالات النادرة التي تحتاج فيها إلى تحديث الشاشة في وقت سابق، على سبيل المثال للوصول إلى DOM، يمكنك استخدام [`flushSync`.](/reference/react-dom/flushSync)
 
-* Calling the `set` function *during rendering* is only allowed from within the currently rendering component. React will discard its output and immediately attempt to render it again with the new state. This pattern is rarely needed, but you can use it to **store information from the previous renders**. [See an example below.](#storing-information-from-previous-renders)
+* استدعاء وظيفة `set` أثناء التقديم * مسموح به فقط من داخل مكون التقديم الحالي. سيتجاهل رد الفعل مخرجاته ويحاول على الفور تقديمه مرة أخرى مع الحالة الجديدة. نادرًا ما تكون هناك حاجة إلى هذا النمط، ولكن يمكنك استخدامه للوصول إلى تخزين المعلومات من العروض السابقة *** [انظر مثالاً أدناه.](#storing-information-from-previous-renders)
 
-* In Strict Mode, React will **call your updater function twice** in order to [help you find accidental impurities.](#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your updater function is pure (as it should be), this should not affect the behavior. The result from one of the calls will be ignored.
+* في الوضع المقيد، سيستدعي React *** وظيفة التحديث الخاصة بك مرتين *** من أجل [مساعدتك في العثور على الشوائب العرضية.](#my-initializer-or-updater-function-runs-twice)  هذا سلوك تطويري فقط ولا يؤثر على الإنتاج. إذا كانت وظيفة التحديث الخاصة بك نقية (كما ينبغي أن تكون)، وهذا لا ينبغي أن يؤثر على السلوك. النتيجة من إحدى المكالمات سيتم تجاهلها.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Adding state to a component {/*adding-state-to-a-component*/}
+### إضافة حالة إلى مكون {/*adding-state-to-a-component*/}
 
-Call `useState` at the top level of your component to declare one or more [state variables.](/learn/state-a-components-memory)
+استدعي `useState` في المستوى الأعلى من المكون الخاص بك لإعلان واحد أو أكثر. [state variables.](/learn/state-a-components-memory)
 
 ```js [[1, 4, "age"], [2, 4, "setAge"], [3, 4, "42"], [1, 5, "name"], [2, 5, "setName"], [3, 5, "'Taylor'"]]
 import { useState } from 'react';
@@ -106,14 +106,14 @@ function MyComponent() {
   // ...
 ```
 
-The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
+الإتفاقية هي تسمية متغيرات الحالة مثل `[something, setSomething]` باستخدام [array destructuring.](https://javascript.info/destructuring-assignment)
 
-`useState` returns an array with exactly two items:
+`useState` إرجاع array يحتوي على عنصرين :
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`set` function</CodeStep> that lets you change it to any other value in response to interaction.
+1. <CodeStep step={1}>current state</CodeStep> لمتغير الحالة تم تعيينها مبدئياً <CodeStep step={3}>initial state</CodeStep> التي قدمتها.
+2.  <CodeStep step={2}>`set` الدالة</CodeStep> التي تسمح لك بتغييرها إلى أي قيمة أخرى كرد فعل للتفاعل.
 
-To update what’s on the screen, call the `set` function with some next state:
+لتحديث ما يظهر على الشاشة، اتصل بوظيفة الضبط مع بعض الحالات التالية:
 
 ```js [[2, 2, "setName"]]
 function handleClick() {
@@ -121,11 +121,11 @@ function handleClick() {
 }
 ```
 
-React will store the next state, render your component again with the new values, and update the UI.
+React سيقوم بتخزين `next state` وتقديم المكون مرة أخرى مع القيم الجديدة وتحديث واجهة المستخدم.
 
 <Pitfall>
 
-Calling the `set` function [**does not** change the current state in the already executing code](#ive-updated-the-state-but-logging-gives-me-the-old-value):
+استدعاء `set` الدالة [**لا** يغيرthe current state في الكود المنفذ بالفعل](#ive-updated-the-state-but-logging-gives-me-the-old-value):
 
 ```js {3}
 function handleClick() {
@@ -134,15 +134,15 @@ function handleClick() {
 }
 ```
 
-It only affects what `useState` will return starting from the *next* render.
+فهو يؤثر فقط على ما ستعود إليه `useState` بدءاً من تقديم * التالي.
 
 </Pitfall>
 
 <Recipes titleText="Basic useState examples" titleId="examples-basic">
 
-#### Counter (number) {/*counter-number*/}
+#### العداد (number) {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+ رقما .الضغط علي الزر يزيدها state variable `count` في هذا المثال،يحمل 
 
 <Sandpack>
 
@@ -168,9 +168,10 @@ export default function Counter() {
 
 <Solution />
 
-#### Text field (string) {/*text-field-string*/}
+#### حقل نص (string) {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+
+في هذا المثال، المتغير الحالي `text` يحتوي على سلسلة نصية. عند الكتابة، تقوم دالة `handleChange` بقراءة أحدث قيمة مُدخلة من عنصر DOM لإدخال النص في المتصفح، ثم تستدعي دالة `setText` لتحديث الحالة. هذا يسمح لك بعرض النص الحالي `text` أسفل الصندوق.
 
 <Sandpack>
 
@@ -200,9 +201,9 @@ export default function MyInput() {
 
 <Solution />
 
-#### Checkbox (boolean) {/*checkbox-boolean*/}
+#### خانة الاختيار (boolean) {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+في هذا المثال، المتغير الحالي `liked` يحتوي على قيمة منطقية. عند النقر فوق الخانة، تقوم دالة `setLiked` بتحديث المتغير الحالي `liked` بتمكين أو تعطيل خانة اختيار المتصفح. يُستخدم المتغير `liked` لعرض النص أسفل خانة الاختيار.
 
 <Sandpack>
 
@@ -236,10 +237,9 @@ export default function MyCheckbox() {
 
 <Solution />
 
-#### Form (two variables) {/*form-two-variables*/}
+#### نموذج (متغيرين) {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
-
+يمكنك إعلان أكثر من متغير حالة واحد في نفس المكون. كل متغير حالة مستقل تماما.
 <Sandpack>
 
 ```js
@@ -276,9 +276,9 @@ button { display: block; margin-top: 10px; }
 
 ---
 
-### Updating state based on the previous state {/*updating-state-based-on-the-previous-state*/}
+### تحديث الحالة بناء على الحالة السابقة {/*updating-state-based-on-the-previous-state*/}
 
-Suppose the `age` is `42`. This handler calls `setAge(age + 1)` three times:
+لنفترض أن الـ `age` هو `42`. يتم استدعاء المعالج (handler) هذا بتنفيذ `setAge(age + 1)` ثلاث مرات:
 
 ```js
 function handleClick() {
@@ -288,9 +288,9 @@ function handleClick() {
 }
 ```
 
-However, after one click, `age` will only be `43` rather than `45`! This is because calling the `set` function [does not update](/learn/state-as-a-snapshot) the `age` state variable in the already running code. So each `setAge(age + 1)` call becomes `setAge(43)`.
+ومع ذلك، بعد النقرة الواحدة، سيكون الـ `age` `43` فقط بدلاً من `45`! هذا يحدث لأن استدعاء دالة الضبط (set) [لايحدث تحديثا](/learn/state-as-a-snapshot) المتغير الحالي `age` في الشيفرة القائمة بالفعل. لذا يتحول كل استدعاء `setAge(age + 1)` إلى `setAge(43)`.
 
-To solve this problem, **you may pass an *updater function*** to `setAge` instead of the next state:
+لحل هذه المشكلة **يمكنك ان تمرر  *دالة تحديثية*** الي `setAge` بدلا من next stage.
 
 ```js [[1, 2, "a", 0], [2, 2, "a + 1"], [1, 3, "a", 0], [2, 3, "a + 1"], [1, 4, "a", 0], [2, 4, "a + 1"]]
 function handleClick() {
@@ -300,40 +300,39 @@ function handleClick() {
 }
 ```
 
-Here, `a => a + 1` is your updater function. It takes the <CodeStep step={1}>pending state</CodeStep> and calculates the <CodeStep step={2}>next state</CodeStep> from it.
+هنا, `a => a + 1` هي دالتك التحديثية. تأخذ <CodeStep step={1}>الحالة المعلقة</CodeStep> وتحسب <CodeStep step={2}>next state</CodeStep> من خلالها
 
-React puts your updater functions in a [queue.](/learn/queueing-a-series-of-state-updates) Then, during the next render, it will call them in the same order:
+React يضع دوال التحديث في [قائمة انتظار (Queue).](/learn/queueing-a-series-of-state-updates) ثم، خلال العرض (render) التالي، سيتم استدعاؤها بنفس الترتيب:
 
-1. `a => a + 1` will receive `42` as the pending state and return `43` as the next state.
-1. `a => a + 1` will receive `43` as the pending state and return `44` as the next state.
-1. `a => a + 1` will receive `44` as the pending state and return `45` as the next state.
+1. `a => a + 1` ستتلقى `42` كحالة معلقة وستعيد `43` كحالة تالية.
+2. `a => a + 1` ستتلقى `43` كحالة معلقة وستعيد `44` كحالة تالية.
+3. `a => a + 1` ستتلقى `44` كحالة معلقة وستعيد `45` كحالة تالية.
+لا توجد تحديثات أخرى معلقة، لذا سيقوم React بتخزين `45` كحالة حالية في النهاية.
 
-There are no other queued updates, so React will store `45` as the current state in the end.
+بشكل تقليدي، من الشائع تسمية وسيط الحالة المعلقة باستخدام أول حرف من اسم المتغير الحالي، مثل `a` للـ `age`. ومع ذلك، يمكنك أيضًا تسميته بمثل `prevAge` أو أي شيء آخر تجده أوضح.
 
-By convention, it's common to name the pending state argument for the first letter of the state variable name, like `a` for `age`. However, you may also call it like `prevAge` or something else that you find clearer.
-
-React may [call your updaters twice](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
+ربما react [تستدعي دالتك التحديثية مرتين](#my-initializer-or-updater-function-runs-twice) في التطوير للتحقق من أنها [نقية.](/learn/keeping-components-pure)
 
 <DeepDive>
 
-#### Is using an updater always preferred? {/*is-using-an-updater-always-preferred*/}
+#### هل استخدام المستجدات مفضّل دائما؟ {/*is-using-an-updater-always-preferred*/}
 
-You might hear a recommendation to always write code like `setAge(a => a + 1)` if the state you're setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
+قد تسمع توصية بكتابة الشيفرة دائمًا على النحو التالي `setAge(a => a + 1)` إذا كانت الحالة التي تقوم بتعيينها محسوبة من الحالة السابقة. ليس هناك ضرر في ذلك، ولكنه أيضًا ليس دائمًا ضروريًا.
 
-In most cases, there is no difference between these two approaches. React always makes sure that for intentional user actions, like clicks, the `age` state variable would be updated before the next click. This means there is no risk of a click handler seeing a "stale" `age` at the beginning of the event handler.
+في معظم الحالات، لا يوجد فرق بين هاتين الطريقتين. تضمن React دائمًا أنه للأحداث المستخدمة بوضوح، مثل النقرات، سيتم تحديث المتغير الحالي `age` قبل النقرة التالية. وهذا يعني أنه لا يوجد خطر أن يرى معالج النقر حالة `age` "غير حديثة" في بداية معالج الحدث.
 
-However, if you do multiple updates within the same event, updaters can be helpful. They're also helpful if accessing the state variable itself is inconvenient (you might run into this when optimizing re-renders).
+ومع ذلك، إذا قمت بعمليات تحديث متعددة داخل نفس الحدث، يمكن أن تكون الدوال التحديث مفيدة. كما أنها مفيدة إذا كان الوصول إلى المتغير الحالي نفسه غير ملائم (قد تواجه هذا عند تحسين إعادة العرض).
 
-If you prefer consistency over slightly more verbose syntax, it's reasonable to always write an updater if the state you're setting is calculated from the previous state. If it's calculated from the previous state of some *other* state variable, you might want to combine them into one object and [use a reducer.](/learn/extracting-state-logic-into-a-reducer)
+إذا كنت تفضل التناسق على الصيغة البسيطة إلى حد ما، من المعقول دائمًا كتابة دالة التحديث إذا كانت الحالة التي تقوم بتعيينها محسوبة من الحالة السابقة. إذا تم حسابها من الحالة السابقة لمتغير حالة آخر، قد ترغب في دمجهما في كائن واحد و [استخدام منظم (reducer).](/learn/extracting-state-logic-into-a-reducer)
 
 </DeepDive>
 
-<Recipes titleText="The difference between passing an updater and passing the next state directly" titleId="examples-updater">
+<Recipes titleText="
+ الفرق بين تمرير حديث وتمرير الولاية التالية مباشرة" titleId="examples-updater">
 
-#### Passing the updater function {/*passing-the-updater-function*/}
+#### تمرير وظيفة التحديث {/*passing-the-updater-function*/}
 
-This example passes the updater function, so the "+3" button works.
-
+في هذا المثال، يتم تمرير دالة التحديث، لذا يعمل زر "+3" بشكل صحيح.
 <Sandpack>
 
 ```js
@@ -371,10 +370,9 @@ h1 { display: block; margin: 10px; }
 
 <Solution />
 
-#### Passing the next state directly {/*passing-the-next-state-directly*/}
+#### تمرير الحالة التالية مباشرةً {/*passing-the-next-state-directly*/}
 
-This example **does not** pass the updater function, so the "+3" button **doesn't work as intended**.
-
+في هذا المثال، **لا يتم** تمرير دالة التحديث، لذا زر "+3" **لا يعمل كما هو مقصود**.
 <Sandpack>
 
 ```js
@@ -416,16 +414,15 @@ h1 { display: block; margin: 10px; }
 
 ---
 
-### Updating objects and arrays in state {/*updating-objects-and-arrays-in-state*/}
+### تحديث الأشياء والمصفوفات في الحالة {/*updating-objects-and-arrays-in-state*/}
 
-You can put objects and arrays into state. In React, state is considered read-only, so **you should *replace* it rather than *mutate* your existing objects**. For example, if you have a `form` object in state, don't mutate it:
-
+بإمكانك وضع كائنات ومصفوفات في الحالة. في React، يُعتبر الحالة "للقراءة فقط"، لذا **يجب عليك أن تستبدلها بدلاً من أن تُجفّف (تغيّر) الكائنات الحالية**. على سبيل المثال، إذا كان لديك كائن `form` في الحالة، فلا تُجفّفه:
 ```js
 // 🚩 Don't mutate an object in state like this:
 form.firstName = 'Taylor';
 ```
 
-Instead, replace the whole object by creating a new one:
+بدلاً من ذلك، استبدل الكائن بأكمله عن طريق إنشاء كائن جديد:
 
 ```js
 // ✅ Replace state with a new object
@@ -435,13 +432,13 @@ setForm({
 });
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+اقرأ [تحديث الكائنات في الحالة](/learn/updating-objects-in-state) و [تحديث arrays في الحالة](/learn/updating-arrays-in-state) to learn more.
 
-<Recipes titleText="Examples of objects and arrays in state" titleId="examples-objects">
+<Recipes titleText="أمثلة على objects وarrays في الحالة" titleId="examples-objects">
 
-#### Form (object) {/*form-object*/}
+#### النموذج (كائن) {/*form-object*/}
 
-In this example, the `form` state variable holds an object. Each input has a change handler that calls `setForm` with the next state of the entire form. The `{ ...form }` spread syntax ensures that the state object is replaced rather than mutated.
+في هذا المثال، المتغير الحالي `form` يحتوي على كائن. كل حقل إدخال (input) له معالج تغيير يقوم باستدعاء `setForm` بالحالة التالية للنموذج بأكمله. بناءً على نحو آمن، يضمن نمط الانتشار `{ ...form }` أن الكائن في الحالة يتم استبداله بدلاً من التغيير في مكوناته.
 
 <Sandpack>
 
@@ -512,9 +509,9 @@ input { margin-left: 5px; }
 
 <Solution />
 
-#### Form (nested object) {/*form-nested-object*/}
+#### النموذج (كائن متداخل) {/*form-nested-object*/}
 
-In this example, the state is more nested. When you update nested state, you need to create a copy of the object you're updating, as well as any objects "containing" it on the way upwards. Read [updating a nested object](/learn/updating-objects-in-state#updating-a-nested-object) to learn more.
+في هذا المثال، الحالة متداخلة بشكل أكبر. عند تحديث الحالة المتداخلة، يجب عليك إنشاء نسخة من الكائن الذي تقوم بتحديثه، بالإضافة إلى أي كائنات "تحتوي" عليه على طول الطريق نحو الأعلى. اقرأ[تحديث كائن متداخل](/learn/updating-objects-in-state#updating-a-nested-object) to learn more.
 
 <Sandpack>
 
@@ -624,10 +621,10 @@ img { width: 200px; height: 200px; }
 
 <Solution />
 
-#### List (array) {/*list-array*/}
+#### قائمة (array) {/*list-array*/}
 
-In this example, the `todos` state variable holds an array. Each button handler calls `setTodos` with the next version of that array. The `[...todos]` spread syntax, `todos.map()` and `todos.filter()` ensure the state array is replaced rather than mutated.
 
+ في هذا المثال، يحمل متغير الحالة `todos` مصفوفة. كل معالج أزرار يدعو 'setTodos' مع الإصدار التالي من تلك المجموعة. `[…todos]` انتشار بناء الجملة،` todos.map() `و `todos.filter()` يضمن استبدال مصفوفة الحالة بدلاً من تحوّرها.
 <Sandpack>
 
 ```js App.js
@@ -791,9 +788,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### كتابة موجز منطق التحديث مع  Immer {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+إذا كان تحديث المصفوفات والأشياء بدون طفرة يشعر بالملل، يمكنك استخدام مكتبة مثل[Immer](https://github.com/immerjs/use-immer) لتقليل الكود المتكرر. تسمح لك Immer بكتابة كود مختصر كما لو كنت تحور الكائنات، ولكن تحت غطاء المحرك تقوم بتحديثات غير قابلة للتغيير:
 
 <Sandpack>
 
@@ -882,9 +879,9 @@ function ItemList({ artworks, onToggle }) {
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### تجنب إعادة الحالة الأولية {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+React يحفظ  الحالة الأولية مرة واحدة ويتجاهلها في العروض التالية.
 
 ```js
 function TodoList() {
@@ -892,9 +889,9 @@ function TodoList() {
   // ...
 ```
 
-Although the result of `createInitialTodos()` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+على الرغم من أن نتيجة `createInitialTodos()`تستخدم فقط للترجمة الأولية، إلا أنك لا تزال تدعو هذه الدالة في كل ترجمة. هذا يمكن أن يكون تبذير إذا كان يخلق صفائف كبيرة أو إجراء حسابات مكلفة.
 
-To solve this, you may **pass it as an _initializer_ function** to `useState` instead:
+لحل هذه المشكلة  **يمكنك تمريرها كوظيفة _initializer_ function** الي `useState` بدلا من :
 
 ```js
 function TodoList() {
@@ -904,14 +901,13 @@ function TodoList() {
 
 Notice that you’re passing `createInitialTodos`, which is the *function itself*, and not `createInitialTodos()`, which is the result of calling it. If you pass a function to `useState`, React will only call it during initialization.
 
-React may [call your initializers twice](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
+ربما React [تستدعي initializer الخاص بك مرتين](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="الفرق بين تمرير المبدئ وتمرير الحالة الأولية مباشرة" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### تمرير initializer function {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialTodos` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
-
+هذا المثال يمر دالة البادئ، لذلك يتم تشغيل وظيفة `createInitialTodos` فقط أثناء التهيئة. وهو لا يعمل عند إعادة عرض المكون كما هو الحال عند الكتابة في الإدخال
 <Sandpack>
 
 ```js
@@ -961,9 +957,9 @@ export default function TodoList() {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### تمرير the initial state مباشرة {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialTodos` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+هذا المثال **لا يقوم** بتمرير وظيفة المبتدئ، لذلك يتم تشغيل وظيفة 'createInitialTodos' على كل عرض، كما هو الحال عندما تكتب في الإدخال. لا يوجد فرق ملحوظ في السلوك، ولكن هذا الرمز أقل كفاءة.
 
 <Sandpack>
 
@@ -1018,13 +1014,13 @@ export default function TodoList() {
 
 ---
 
-### Resetting state with a key {/*resetting-state-with-a-key*/}
+### إعادة ضبط الحالة بمفتاح {/*resetting-state-with-a-key*/}
 
-You'll often encounter the `key` attribute when [rendering lists.](/learn/rendering-lists) However, it also serves another purpose.
+غالبًا ما ستواجه السمة `key` عندما [عرض القوائم.](/learn/rendering-lists)ومع ذلك، إنها تخدم أيضًا غرضًا آخر
 
-You can **reset a component's state by passing a different `key` to a component.** In this example, the Reset button changes the `version` state variable, which we pass as a `key` to the `Form`. When the `key` changes, React re-creates the `Form` component (and all of its children) from scratch, so its state gets reset.
+بإمكانك **إعادة ضبط حالة المكوّن عن طريق تمرير مفتاح `key` مختلف للمكوّن.** في هذا المثال، يقوم زر إعادة الضبط بتغيير متغير الحالة `version`، الذي نمرره كـ `key` للمكوّن `Form`. عندما يتغيّر المفتاح، يقوم React بإعادة إنشاء مكوّن `Form` (وجميع أطفاله) من البداية، لذا تتم إعادة ضبط حالته.
 
-Read [preserving and resetting state](/learn/preserving-and-resetting-state) to learn more.
+اقرأ [preserving and resetting state](/learn/preserving-and-resetting-state) لتعلم المزيد.
 
 <Sandpack>
 
@@ -1069,19 +1065,19 @@ button { display: block; margin-bottom: 20px; }
 
 ---
 
-### Storing information from previous renders {/*storing-information-from-previous-renders*/}
+### تخزين المعلومات من العروض السابقة {/*storing-information-from-previous-renders*/}
 
-Usually, you will update state in event handlers. However, in rare cases you might want to adjust state in response to rendering -- for example, you might want to change a state variable when a prop changes.
+عادةً، ستقوم بتحديث الحالة في معالجي الأحداث. ومع ذلك، في الحالات النادرة قد ترغب في ضبط الحالة استجابةً لعملية العرض، على سبيل المثال، قد ترغب في تغيير متغير الحالة عندما تتغير الخاصية (prop).
 
-In most cases, you don't need this:
+في معظم الحالات، لن تحتاج إلى ذلك:
 
-* **If the value you need can be computed entirely from the current props or other state, [remove that redundant state altogether.](/learn/choosing-the-state-structure#avoid-redundant-state)** If you're worried about recomputing too often, the [`useMemo` Hook](/reference/react/useMemo) can help.
-* If you want to reset the entire component tree's state, [pass a different `key` to your component.](#resetting-state-with-a-key)
-* If you can, update all the relevant state in the event handlers.
+* **إذا كان بإمكانك حساب القيمة التي تحتاجها بالكامل من الخصائص الحالية أو حالة أخرى, [فاحذف هذه الحالة المتكررة بشكل كامل.](/learn/choosing-the-state-structure#avoid-redundant-state)** إذا كنت قلقًا من إعادة الحساب بشكل متكرر، فال [`useMemo` Hook](/reference/react/useMemo) يمكنه المساعدة.
+* إذا كنت ترغب في إعادة ضبط حالة شجرة المكوّن بأكمله, [قم بتمرير`key` مختلف إلى المكوّن الخاص بك.](#resetting-state-with-a-key)
+* إذا أمكنك ذلك، قم بتحديث كل الحالات ذات الصلة في معالجي الأحداث.
 
-In the rare case that none of these apply, there is a pattern you can use to update state based on the values that have been rendered so far, by calling a `set` function while your component is rendering.
+في الحالة النادرة التي لا ينطبق أي من هذه الحالات، هناك نمط يمكنك استخدامه لتحديث الحالة استنادًا إلى القيم التي تم عرضها حتى الآن، من خلال استدعاء دالة `set` أثناء عملية عرض المكون.
 
-Here's an example. This `CountLabel` component displays the `count` prop passed to it:
+إليك مثال. هذا المكون `CountLabel` يعرض الخاصية `count` التي يتم تمريرها إليه:
 
 ```js CountLabel.js
 export default function CountLabel({ count }) {
@@ -1089,7 +1085,7 @@ export default function CountLabel({ count }) {
 }
 ```
 
-Say you want to show whether the counter has *increased or decreased* since the last change. The `count` prop doesn't tell you this -- you need to keep track of its previous value. Add the `prevCount` state variable to track it. Add another state variable called `trend` to hold whether the count has increased or decreased. Compare `prevCount` with `count`, and if they're not equal, update both `prevCount` and `trend`. Now you can show both the current count prop and *how it has changed since the last render*.
+لنفترض أنك تريد أن تعرض ما إذا كان عداد قد *زاد أو نقص* منذ آخر تغيير. الخاصية `count` لا تُخبرك بذلك، تحتاج إلى تتبع القيمة السابقة لها. قم بإضافة متغير الحالة `prevCount` لتتبعها. وأضف متغير حالة آخر يسمى `trend` لتخزين ما إذا كان العداد قد زاد أو نقص. قارن `prevCount` مع `count` وإذا لم تكن متساويين، قم بتحديث كل من `prevCount` و `trend`. الآن يمكنك عرض العدد الحالي و*كيفية تغييره منذ آخر عرض*.
 
 <Sandpack>
 
@@ -1138,17 +1134,18 @@ button { margin-bottom: 10px; }
 
 </Sandpack>
 
-Note that if you call a `set` function while rendering, it must be inside a condition like `prevCount !== count`, and there must be a call like `setPrevCount(count)` inside of the condition. Otherwise, your component would re-render in a loop until it crashes. Also, you can only update the state of the *currently rendering* component like this. Calling the `set` function of *another* component during rendering is an error. Finally, your `set` call should still [update state without mutation](#updating-objects-and-arrays-in-state) -- this doesn't mean you can break other rules of [pure functions.](/learn/keeping-components-pure)
+لاحظ أنه إذا استدعيت دالة 'set' أثناء التقديم، يجب أن تكون داخل حالة مثل 'prevCount!== count'، ويجب أن يكون هناك نداء مثل 'setPrevCount(count)' داخل الحالة. وإلا فسيعود جزئك في حلقة حتى ينهار أيضا، يمكنك فقط تحديث حالة مكون تقديم * حاليا على النحو التالي. استدعاء وظيفة 'set' لمكون * آخر أثناء التقديم هو خطأ. وأخيرًا، يجب أن تظل المكالمة المضبوطة [حالة التحديث دون حدوث طفرة](#updating-objects-and-arrays-in-state) -- هذا لا يعني أنه يمكنك كسر قواعد أخرى من [الدوال النقية.](/learn/keeping-components-pure)
 
-This pattern can be hard to understand and is usually best avoided. However, it's better than updating state in an effect. When you call the `set` function during render, React will re-render that component immediately after your component exits with a `return` statement, and before rendering the children. This way, children don't need to render twice. The rest of your component function will still execute (and the result will be thrown away). If your condition is below all the Hook calls, you may add an early `return;` to restart rendering earlier.
+يمكن أن يكون هذا النمط من الصعب فهمه وعادة ما يكون من الأفضل تجنبه. ومع ذلك، فإنه أفضل من تحديث الحالة في التأثير. عندما تقوم باستدعاء وظيفة `set` أثناء التقريب، ستقوم `React` بإعادة تقديم ذلك المكون مباشرة بعد خروج المكون الخاص بك مع عبارة `return` وقبل تقديم الأطفال. بهذه الطريقة، لا يحتاج الأطفال إلى التوليد مرتين. وسيستمر تنفيذ بقية وظيفة المكون الخاصة بك (وسيتم التخلص من النتيجة). وإذا كانت حالتك دون كل مكالمات هوك، يمكنك ان تضيف `return` مبكرا ؛ لتعود الى العرض في وقت ابكر.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء وإصلاحها {/*troubleshooting*/}
 
-### I've updated the state, but logging gives me the old value {/*ive-updated-the-state-but-logging-gives-me-the-old-value*/}
 
-Calling the `set` function **does not change state in the running code**:
+### لقد قمت بتحديث الحالة، ولكن عندما أقوم بتسجيل البيانات، يعطيني القيمة القديمة. {/*ive-updated-the-state-but-logging-gives-me-the-old-value*/}
+
+استدعاء دالة `set`  **لا يقوم بتغيير الحالة في الكود الحالي**:
 
 ```js {4,5,8}
 function handleClick() {
@@ -1163,9 +1160,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `count` JavaScript variable in your already-running event handler.
+ذلك بسبب [الحالات تتصرف كصورة فوتوغرافية.](/learn/state-as-a-snapshot) تحديث الحالة يُطلب عرضًا آخر بقيمة حالة جديدة، ولكنه لا يؤثر على متغير `count` في جافا سكريبت في معالج الأحداث الذي يعمل بالفعل.
 
-If you need to use the next state, you can save it in a variable before passing it to the `set` function:
+إذا كنت بحاجة إلى استخدام الحالة التالية، يمكنك حفظها في متغير قبل تمريرها إلى دالة `set`:
 
 ```js
 const nextCount = count + 1;
@@ -1177,16 +1174,16 @@ console.log(nextCount); // 1
 
 ---
 
-### I've updated the state, but the screen doesn't update {/*ive-updated-the-state-but-the-screen-doesnt-update*/}
+### لقد قمت بتحديث الحالة، ولكن الشاشة لا تُحدّث؟ {/*ive-updated-the-state-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+React سوف **تتجاهل تحديثك إذا كانت الحالة التالية مساوية للحالة السابقة ,** كما يتم تحديدها بواسطة [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) عملية المقارنة. يحدث ذلك عادةً عندما تقوم بتغيير كائن أو مصفوفة في الحالة مباشرةً:
 
 ```js
 obj.x = 10;  // 🚩 Wrong: mutating existing object
 setObj(obj); // 🚩 Doesn't do anything
 ```
 
-You mutated an existing `obj` object and passed it back to `setObj`, so React ignored the update. To fix this, you need to ensure that you're always [_replacing_ objects and arrays in state instead of _mutating_ them](#updating-objects-and-arrays-in-state):
+لقد قمت بتغيير الكائن `obj` الموجود وقمت بتمريره مرة أخرى إلى `setObj`، لذا قام React بتجاهل التحديث. لتصحيح هذا، يجب عليك التأكد دائمًا من أنك تقوم بإنشاء نسخة جديدة من الكائن قبل تمريره إلى `setObj` [_بدلاً من تعديلها، قم بإستبدال الكائنات والمصفوفات في الحالة.](#updating-objects-and-arrays-in-state):
 
 ```js
 // ✅ Correct: creating a new object
@@ -1198,9 +1195,9 @@ setObj({
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### أنت تواجه خطأ "عدد كبير جدًا من عمليات إعادة العرض". {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally setting state *during render*, so your component enters a loop: render, set state (which causes a render), render, set state (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+قد تحصل على خطأ يقول: "عدد كبير جدًا من عمليات إعادة العرض. تحدّ React عدد عمليات العرض لمنع الحلقة اللانهائية." عادةً ما يعني ذلك أنك تقوم بضبط الحالة بشكل غير مشروط *أثناء عملية العرض*، لذلك يدخل المكون في حلقة: عرض، ضبط الحالة (الذي يسبب عملية عرض جديدة)، عرض، ضبط الحالة (الذي يسبب عملية عرض جديدة)، وهكذا. في كثير من الأحيان، يتسبب هذا في حدوث خطأ أثناء تحديد معالج الأحداث:
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1213,13 +1210,13 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `set` function call responsible for the error.
+إذا لم تتمكن من العثور على سبب هذا الخطأ، انقر على السهم المجاور للخطأ في وحدة التحكم وابحث في مكدس الجافاسكريبت للعثور على استدعاء دالة `set` المحدد الذي يسبب الخطأ.
 
 ---
 
-### My initializer or updater function runs twice {/*my-initializer-or-updater-function-runs-twice*/}
+### مُبدّل البداية (initializer) أو دالة التحديث (updater) تعمل مرتين. {/*my-initializer-or-updater-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call some of your functions twice instead of once:
+في [الوضع الصارم](/reference/react/StrictMode), سوف تستدعي Reactfبعص الدوال مرتين بدلاً من مرة واحدة
 
 ```js {2,5-6,11-12}
 function TodoList() {
@@ -1239,11 +1236,11 @@ function TodoList() {
   // ...
 ```
 
-This is expected and shouldn't break your code.
+هذا أمر متوقع ولا يجب أن يؤذي الكود الخاص بك
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and updater functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+هذا **development-only** السلوك يساعدك في الحفاظ على [بقاء المكونات نقية.](/learn/keeping-components-pure) React يستخدم نتيجة إحدى الاستدعاءات ويتجاهل نتيجة الاستدعاء الأخرى. طالما كانت دوال مكونك، ومبدّل البداية، ومبدّل التحديث نقية، فإن هذا لن يؤثر على منطقك. ومع ذلك، إذا كانت هذه الدوال غير نقية عن طريق الخطأ، فإن هذا يساعدك في اكتشاف الأخطاء.
 
-For example, this impure updater function mutates an array in state:
+على سبيل المثال، دالة مبدل التحديث غير النقية تقوم بتعديل مصفوفة في الحالة:
 
 ```js {2,3}
 setTodos(prevTodos => {
@@ -1252,7 +1249,7 @@ setTodos(prevTodos => {
 });
 ```
 
-Because React calls your updater function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](#updating-objects-and-arrays-in-state):
+نظرًا لأن React تستدعي دالة مبدل التحديث مرتين، سترى أن المهمة Todo تمت إضافتها مرتين، وبالتالي ستعلم أن هناك خطأً. في هذا المثال، يمكنك تصحيح الخطأ عن طريق: [استبدال المصفوفة بدلاً من تعديلها.](#updating-objects-and-arrays-in-state):
 
 ```js {2,3}
 setTodos(prevTodos => {
@@ -1261,15 +1258,15 @@ setTodos(prevTodos => {
 });
 ```
 
-Now that this updater function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and updater functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+الآن بما أن دالة مبدل التحديث هذه نقية، فإن استدعائها مرة إضافية لا يؤثر في السلوك. وهذا هو السبب في أن استدعاء React لها مرتين يساعدك في اكتشاف الأخطاء. **فقط دوال المكون، ومبدل البداية، ومبدل التحديث يجب أن تكون نقية.** لا يجب أن تكون معالجات الأحداث نقية، لذلك لن يقوم React أبدًا باستدعاء معالجات الأحداث الخاصة بك مرتين.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+اقرأ [الحفاظ على نقاء المكونات](/learn/keeping-components-pure)لتعلم المزيد.
 
 ---
 
-### I'm trying to set state to a function, but it gets called instead {/*im-trying-to-set-state-to-a-function-but-it-gets-called-instead*/}
+### أنا أحاول تعيين الحالة إلى دالة، ولكنها تتم استدعاؤها بدلاً من ذلك {/*im-trying-to-set-state-to-a-function-but-it-gets-called-instead*/}
 
-You can't put a function into state like this:
+لا يمكنك وضع دالة في الحالة بهذه الطريقة:
 
 ```js
 const [fn, setFn] = useState(someFunction);
@@ -1279,7 +1276,7 @@ function handleClick() {
 }
 ```
 
-Because you're passing a function, React assumes that `someFunction` is an [initializer function](#avoiding-recreating-the-initial-state), and that `someOtherFunction` is an [updater function](#updating-state-based-on-the-previous-state), so it tries to call them and store the result. To actually *store* a function, you have to put `() =>` before them in both cases. Then React will store the functions you pass.
+نظرًا لأنك تمرر دالة، يفترض React أن `someFunction` تمثل[دالة المبدل الأولي](#avoiding-recreating-the-initial-state), وأن `someOtherFunction` هي [دالة المبدل](#updating-state-based-on-the-previous-state), لذلك يحاول استدعاؤها وتخزين النتيجة. لتخزين الوظيفة فعلياً، يجب وضع `() =>` قبلهما في كلا الحالتين. بذلك سيقوم React بتخزين الوظائف التي تمررها.
 
 ```js {1,4}
 const [fn, setFn] = useState(() => someFunction);
