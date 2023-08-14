@@ -34,8 +34,13 @@ title: "<progress>"
 
 بالإضافة إلى ذالك، يدعم `<progress>` هذه الخصائص:
 
+<<<<<<< HEAD
 * [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max): رقم. يحدد القيمة `value` القصوى. القيمة الافتراضية هي `1`.
 * [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value): رقم بين `0` و `max`، أو `null` للتقدم غير المحدد. يحدد مدى الانجاز.
+=======
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): A number. Specifies the maximum `value`. Defaults to `1`.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value): A number between `0` and `max`, or `null` for indeterminate progress. Specifies how much was done.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 ---
 

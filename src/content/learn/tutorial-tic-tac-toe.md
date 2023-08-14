@@ -1188,7 +1188,11 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 الترجمة: عمليات إعادة التصيير كثيرة جدًا. يحدّ React عدد عمليات إعادة التصيير لمنع حدوث حلقة لا نهائية.
 
+<<<<<<< HEAD
 </Note>
+=======
+You could fix this by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 لماذا لم تحدث هذه المشكلة من قبل؟
 

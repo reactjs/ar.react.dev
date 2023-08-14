@@ -52,7 +52,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 هؤلاء موجودون حاليًا في **ملف المكون الأساسي**، المسمى `App.js` في هذا المثال. في [Create React App](https://create-react-app.dev/) ، يكون تطبيقك في `src/App.js`. اعتمادًا على إعدادك، قد يكون مكونك الجذري في ملف آخر. إذا كنت تستخدم إطار عمل مع توجيه معتمد على الملفات (File-based routing)، مثل Next.js، فسيكون مكونك الجذري مختلفًا لكل صفحة.
+=======
+These currently live in a **root component file,** named `App.js` in this example. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 ## تصدير واستيراد المكون {/*exporting-and-importing-a-component*/}
 
