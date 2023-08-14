@@ -1,10 +1,6 @@
 ---
-<<<<<<< HEAD
 title: "التوجيهات (Directives)"
-=======
-title: "Directives"
 canary: true
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 ---
 
 <Canary>
