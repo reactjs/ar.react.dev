@@ -22,7 +22,7 @@ title: إدارة الحالة
 
 ## الاستجابة للمدخلات باستخدام الحالة {/*reacting-to-input-with-state*/}
 
-باستخدام React، لن تستطيع تعديل واجهة المستخدم عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن ترها للحالات المرئية من مكوناتك ("حالة ابتدائية"، "حالة كتابية"، "حالة ناجحة")، ومن بعدها تنشيط تغيرات الحالة بناءا على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
+باستخدام React، لن تستطيع تعديل واجهة المستخدم عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، "أظهر رسالة النجاح"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن ترها للحالات المرئية من مكوناتك ("حالة ابتدائية"، "حالة كتابية"، "حالة ناجحة")، ومن بعدها تنشيط تغيرات الحالة بناءا على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
 
 هنا نموذج اختبار صمم باستخدام React. لاحظ كيف يستخدم متغير الحالة `status` لكي يحدد ما إذا سيفعل أم سيعطل زر الإرسال، وما إذا ستظهر رسالة نجاح بدلا عن ذلك.
 
@@ -157,7 +157,7 @@ export default function Form() {
         />
       </label>
       <p>
-        تذكرتك سوف تسلم ل: <b>{fullName}</b>
+        تذكرتك سوف تسلم لـ: <b>{fullName}</b>
       </p>
     </>
   );
@@ -209,7 +209,7 @@ export default function Form() {
         />
       </label>
       <p>
-        تذكرتك سوف تسلم ل: <b>{fullName}</b>
+        تذكرتك سوف تسلم لـ: <b>{fullName}</b>
       </p>
     </>
   );
@@ -230,11 +230,11 @@ label { display: block; margin-bottom: 5px; }
 
 </LearnMore>
 
-## Sharing state between components {/*sharing-state-between-components*/}
+## مشاركة الحالة بين المكونات {/*sharing-state-between-components*/}
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as "lifting state up", and it's one of the most common things you will do writing React code.
+أحيانا، أنت تريد الحالة ذات المكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف حالة من كليهما، انقلها لأقرب مكون أب، وبعد ذلك مررها لأسفل باستخدام الخصائص. هذا ما يعرف بـ "رفع الحالة لمستوى أعلى"، وهو واحد من أكثر الأشياء شيوعا التي ستسعملها أثناء كتابتك لكود React.
 
-In this example, only one panel should be active at a time. To achieve this, instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children.
+في هذا المثال، في كل مرة يجب أن تكون قائمة واحدة فقط نشطة. لتحقيق ذلك، بدلا من حفظ الحالة النشطة داخل كل قائمة بمفردها، المكونّ الأب يحمل الحالة ويحدد الخصائص لمكوناته الأبناء. 
 
 <Sandpack>
 
@@ -251,14 +251,14 @@ export default function Accordion() {
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+        مع تعداد سكاني يقارب 2 مليون، Almaty هي أكبر مدينة بـ Kazakhstan. منذ 1929 إلى 1997 كانت هي العاصمة.
       </Panel>
       <Panel
         title="Etymology"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخستانية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بـ Almaty تعتبر الموطن الأصلي للتفاحة، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح 
       </Panel>
     </>
   );
@@ -277,7 +277,7 @@ function Panel({
         <p>{children}</p>
       ) : (
         <button onClick={onShow}>
-          Show
+          أظهر
         </button>
       )}
     </section>
@@ -297,15 +297,15 @@ h3, p { margin: 5px 0px; }
 
 <LearnMore path="/learn/sharing-state-between-components">
 
-Read **[Sharing State Between Components](/learn/sharing-state-between-components)** to learn how to lift state up and keep components in sync.
+اقرأ **[مشاركة الحالة بين المكونات](/learn/sharing-state-between-components)** لتتعلم كيفية رفع الحالة لمستوى أعلى والحفاظ على المكونّات منسجمة.
 
 </LearnMore>
 
-## Preserving and resetting state {/*preserving-and-resetting-state*/}
+## حفظ وإعادة تعيين الحالة {/*preserving-and-resetting-state*/}
 
-When you re-render a component, React needs to decide which parts of the tree to keep (and update), and which parts to discard or re-create from scratch. In most cases, React's automatic behavior works well enough. By default, React preserves the parts of the tree that "match up" with the previously rendered component tree.
+عمدما تعيد تصيير مكون، React تحتاج لتقرر أىّ أجزاء من الشجرة لتحفظها (وتحدثها)، وأيّ أجزاء لتلغيها أو تعيد إنشاءها من الصفر. في أغلب الحالات، التصرف التلقائي لـ React يعمل بشكل جيد كفاية. تلقائياـ React تحفظ الأجزاء من الشجرة التي "تتوافق" مع مكون الشجرة المصيير مسبقا. 
 
-However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:
+على كل حال، أحيانا هذا ما لا تريده أنت. في تطبيق المحادثة هذا، كتابة رسالة وتغيير الطرف المستقبل لا يعيد تعيين المدخل. هذا قد يجعل المستخدم يرسل رسالة بغير قصد للشخص الخطأ.
 
 <Sandpack>
 
@@ -368,11 +368,11 @@ export default function Chat({ contact }) {
     <section className="chat">
       <textarea
         value={text}
-        placeholder={'Chat to ' + contact.name}
+        placeholder={'تحدث مع ' + contact.name}
         onChange={e => setText(e.target.value)}
       />
       <br />
-      <button>Send to {contact.email}</button>
+      <button>أرسل لـ {contact.email}</button>
     </section>
   );
 }
@@ -400,7 +400,7 @@ textarea {
 
 </Sandpack>
 
-React lets you override the default behavior, and *force* a component to reset its state by passing it a different `key`, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a *different* `Chat` component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field--even though you render the same component.
+React تعطيك القدرة على تجاوز السلوك الافتراضي، و*تفرض* على المكون إعادة تعيين حالته عن طريق تمرير `key` مختلف لها، مثل `<Chat key={email} />`. هذا يخبر React أن الطرف المستقبل مختلف، ومن الواجب تعيين مكون `Chat` *مختلف* يكون بحاجة إلى إعادة الإنشاء من الصفر ببايانات جديدة (وواجهة مستخدم مثل المدخلات). الآن الانتقال بين المستقبلين يعيد تعيين حقل الإدخال--حتى بالرغم من أنك تعيد تصيير نفس المكون.
 
 <Sandpack>
 
@@ -463,11 +463,11 @@ export default function Chat({ contact }) {
     <section className="chat">
       <textarea
         value={text}
-        placeholder={'Chat to ' + contact.name}
+        placeholder={'تحدث مع ' + contact.name}
         onChange={e => setText(e.target.value)}
       />
       <br />
-      <button>Send to {contact.email}</button>
+      <button>أرسل لـ {contact.email}</button>
     </section>
   );
 }
@@ -497,7 +497,7 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-Read **[Preserving and Resetting State](/learn/preserving-and-resetting-state)** to learn the lifetime of state and how to control it.
+اقرأ **[حفظ وإعادة تعيين الحالة](/learn/preserving-and-resetting-state)** لتتعلم الحياة الزمنية للحالة وكيفية التحكم بها.
 
 </LearnMore>
 
