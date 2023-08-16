@@ -1190,6 +1190,9 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 </Note>
 
+يمكنك إصلاح ذلك عن طريق إنشاء دالة مثل `handleFirstSquareClick` التي تنادي `handleClick(0)`، ودالة مثل `handleSecondSquareClick` التي تنادي `handleClick(0)`، وهكذا... ربما تمرر (بدلًا من مناداة) هذه الدوال كخصائص إلى المكونات الفرعية. مثل `onSquareClick={handleFirstSquareClick}`. هذا قد يحل الدورة اللانهائية.
+
+
 لماذا لم تحدث هذه المشكلة من قبل؟
 
 عندما كنا نمرر `onSquareClick={handleClick}`، كنا نمرر دالة `handleClick` كخاصية. لم نكن نستدعيها! لكن الآن نحن **نستدعي** تلك الدالة على الفور --لاحظ الأقواس في `handleClick(0)`-- وهذا هو السبب في أنها تعمل مبكرًا جدًا. لا نريد أن نستدعي `handleClick` حتى ينقر المستخدم!
