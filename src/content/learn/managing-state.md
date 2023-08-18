@@ -12,10 +12,10 @@ title: إدارة الحالة
 
 * [كيفية التفكير في تغييرات واجهة المستخدم كتغيرات في الحالة](/learn/reacting-to-input-with-state)
 * [كيفية هيكلة الحالة جيدا](/learn/choosing-the-state-structure)
-* [كيفية "رفع الحالة لمستوى أعلى" لمشاكارتها بين المكونات](/learn/sharing-state-between-components)
+* [كيفية "رفع الحالة لمستوى أعلى (lifting state up)" لمشاكارتها بين المكونات](/learn/sharing-state-between-components)
 * [كيفية التحكم في ما إذا تم حفظ الحالة أم إعادة تعيينها](/learn/preserving-and-resetting-state)
-* [كيفية ترسيخ منطق حالة معقد داخل دالة](/learn/extracting-state-logic-into-a-reducer)
-* [كيفية تمرير معلومات بدون "تسرب الخصائص"](/learn/passing-data-deeply-with-context)
+* [كيفية تجميع منطق حالة معقد داخل دالة](/learn/extracting-state-logic-into-a-reducer)
+* [كيفية تمرير معلومات بدون "تسرب الخصائص (Props drilling)"](/learn/passing-data-deeply-with-context)
 * [كيفية توسيع إدارة الحالة مع نمو تطبيقك](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
@@ -232,7 +232,7 @@ label { display: block; margin-bottom: 5px; }
 
 ## مشاركة الحالة بين المكونات {/*sharing-state-between-components*/}
 
-أحيانا، أنت تريد الحالة ذات المكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف حالة من كليهما، انقلها لأقرب مكون أب، وبعد ذلك مررها لأسفل باستخدام الخصائص. هذا ما يعرف بـ "رفع الحالة لمستوى أعلى"، وهو واحد من أكثر الأشياء شيوعا التي ستسعملها أثناء كتابتك لكود React.
+أحيانا، أنت تريد الحالة ذات المكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف حالة من كليهما، انقلها لأقرب مكون أب، وبعد ذلك مررها لأسفل باستخدام الخصائص. هذا ما يعرف بـ "رفع الحالة لمستوى أعلى (lifting state up)"، وهو واحد من أكثر الأشياء شيوعا التي ستسعملها أثناء كتابتك لكود React.
 
 في هذا المثال، في كل مرة يجب أن تكون قائمة واحدة فقط نشطة. لتحقيق ذلك، بدلا من حفظ الحالة النشطة داخل كل قائمة بمفردها، المكونّ الأب يحمل الحالة ويحدد الخصائص لمكوناته الأبناء. 
 
@@ -501,9 +501,9 @@ textarea {
 
 </LearnMore>
 
-## Extracting state logic into a reducer {/*extracting-state-logic-into-a-reducer*/}
+## استخلاص منطق الحالة إلى مخفض (reducer) {/*extracting-state-logic-into-a-reducer*/}
 
-Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called "reducer". Your event handlers become concise because they only specify the user "actions". At the bottom of the file, the reducer function specifies how the state should update in response to each action!
+المكونات ذات تحديثات حالة كثيرة المنتشرة خلال كثير من معالجات الأحداث (event handlers) قد تصبح معقدة. لمثل هذه الأحوال، يمكنك تجميع جميع منطق تحديث الحالة خارج مكوّنك داخل دالة واحدة، تدعى "مخفض (reducer)". معالجات الأحداث خاصتك ستصبح موجزة لأنها تحدد "إجراءات (actions)" المستخدم فقط. في أسفل الملف، دالة المخفض تحدد كيف يجب أن تحدث الحالة إستجابة لكل إجراء!
 
 <Sandpack>
 
@@ -694,15 +694,15 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/extracting-state-logic-into-a-reducer">
 
-Read **[Extracting State Logic into a Reducer](/learn/extracting-state-logic-into-a-reducer)** to learn how to consolidate logic in the reducer function.
+اقرأ **[استخلاص منطق الحالة إلى مخفض (reducer)](/learn/extracting-state-logic-into-a-reducer)** لتتعلم كيفية تجميع منطق داخل دالة المخفض.
 
 </LearnMore>
 
-## Passing data deeply with context {/*passing-data-deeply-with-context*/}
+## تمرير البيانات إلى عمق باستخدام السياق (context) {/*passing-data-deeply-with-context*/}
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become inconvenient if you need to pass some prop through many components, or if many components need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
+عادة، سوف تقوم بتمرير معلومات من مكوّن أب إلى مكوّن ابن بواسطة الخصائص (props). لكن تمرير الخصائص قد يكون غير مجدٍ لو احتجت لتمرير بعض الخصائص خلال مكونات عديدة، أو لو أن العديد من المكونات تحتاج نفس المعلومات. السياق (context) يتيح للمكون الأب جعل بعض المعلومات متوفرة لأي مكون أدناه في الشجرة-لا يهم مقدار عمق المكون-بدون تمريرها مباشرة عن طريق الخصائص.
 
-Here, the `Heading` component determines its heading level by "asking" the closest `Section` for its level. Each `Section` tracks its own level by asking the parent `Section` and adding one to it. Every `Section` provides information to all components below it without passing props--it does that through context.
+هنا، المكوّن `Heading` يحدد مستوى عنوانه عن طريق "سؤال" أقرب `Section` لمستواها. كل `Section` يتتبع مستواه الخاص عن طريق سؤال `Section` الأب وإضافة واحد له. كل `Section` بتوفير معلومات لجميع المكونات أدناه دون نقل الخصائص--وهذا يتم عبر السياق (context).
 
 <Sandpack>
 
@@ -796,15 +796,15 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-context)** to learn about using context as an alternative to passing props.
+اقرأ **[تمرير البيانات إلى عمق باستخدام السياق (context)](/learn/passing-data-deeply-with-context)** لتتعلم عن استخدام السياق (context) كبديل لتمرير الخصائص.
 
 </LearnMore>
 
-## Scaling up with reducer and context {/*scaling-up-with-reducer-and-context*/}
+## التوسع بواسطة المخفض (reducer) و السياق (context) {/*scaling-up-with-reducer-and-context*/}
 
-Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+المخفضات (Reducers) تتيح لك تجميع منطق تحديث الحالة لمكون. السياق (Context) تتيح لك تمرير معلومات بعمق إلى أسفل لمكونات أخرى. يمكنك جمع المخفضات والسايق معا لتدير الحالة الخاصة بشاشة معقدة.
 
-With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+مع هذا النهج، يدير المكون الأب حالة معقدة بواسطة مخفض. المكونات الأخرى في أي عمق كانت داخل الشجرة يمكن قراءة حالتها بواسطة السياق. يمكنهم أيضا إرسال الأوامر لتحديث الحالة.
 
 <Sandpack>
 
@@ -1007,12 +1007,12 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-Read **[Scaling Up with Reducer and Context](/learn/scaling-up-with-reducer-and-context)** to learn how state management scales in a growing app.
+اقرأ **[التوسع بواسطة المخفض (reducer) و السياق (context)](/learn/scaling-up-with-reducer-and-context)** لتتعلم كيف تتوسع إدارة الحالة في تطبيق نامٍ.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## ماذا بعد ذلك؟ {/*whats-next*/}
 
-Head over to [Reacting to Input with State](/learn/reacting-to-input-with-state) to start reading this chapter page by page!
+توجه إلى [الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state) لبدء قراءة هذا الفصل صفحة بصفحة!
 
-Or, if you're already familiar with these topics, why not read about [Escape Hatches](/learn/escape-hatches)?
+أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن  [بوابات الهروب (Escape Hatches)](/learn/escape-hatches)؟

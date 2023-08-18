@@ -134,23 +134,23 @@
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "Sharing State Between Components",
+          "title": "مشاكة الحالة بين المكونات",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "Preserving and Resetting State",
+          "title": "حفظ وإعادة تعيين الحالة",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "Extracting State Logic into a Reducer",
+          "title": "استخلاص منطق الحالة إلى مخفض (reducer)",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "Passing Data Deeply with Context",
+          "title": "تمرير البيانات إلى عمق باستخدام السياق (context)",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "Scaling Up with Reducer and Context",
+          "title": "التوسع بواسطة المخفض (reducer) و السياق (context)",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
