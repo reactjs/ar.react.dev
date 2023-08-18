@@ -1,11 +1,17 @@
 ---
 title: "التوجيهات (Directives)"
+canary: true
 ---
+
+<Canary>
+
+These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+
+</Canary>
 
 <Intro>
 
 تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)، والتعليمات اللازمة لذلك.
-
 </Intro>
 
 ---
