@@ -526,4 +526,4 @@ export default function TeaSet() {
 
 توجه إلى [المكون الأول الخاص بك](/learn/your-first-component) لبدء قراءة هذا الفصل صفحة بصفحة!
 
-أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن [إضافة التفاعلية (Interactivity)](/learn/adding-interactivity)?
+أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن [إضافة التفاعلية](/learn/adding-interactivity)?
