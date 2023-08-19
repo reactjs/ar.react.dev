@@ -1,12 +1,12 @@
 ---
 title: "'use client'"
+canary: true
 ---
 
-<Note>
-
+<Canary>
 هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
 
-</Note>
+</Canary>
 
 
 <Intro>
