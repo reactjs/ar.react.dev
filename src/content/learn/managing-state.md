@@ -883,7 +883,7 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’الطريق الـ', done: true },
+  { id: 0, text: 'Philosopherالطريق الـ', done: true },
   { id: 1, text: 'زيارة المعبد', done: false },
   { id: 2, text: 'شراب الشاي الأخضر (matcha)', done: false }
 ];
