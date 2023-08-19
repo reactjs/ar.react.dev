@@ -121,7 +121,7 @@
       ]
     },
     {
-      "title": "إدارة الحالة",
+      "title": "التحكم في الحالة",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [

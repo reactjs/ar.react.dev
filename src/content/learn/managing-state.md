@@ -1,16 +1,16 @@
 ---
-title: إدارة الحالة
+title: التحكم في الحالة
 ---
 
 <Intro>
 
-  مع نمو تطبيقك، من المفيد كونك أكثر حرصا بشأن أن تكون حالتك منظمة وأن تكون البيانات متدفقة خلال مكوناتك. تكرار أو نسخ الحالة هو مصدر شائع للأخطاء. في هذا الفصل، سوف تتعلم كيفية تهيئة حالتك جيدا، كيفية الحفاظ على منطق تحديث حالتك مصانا، وكيفية مشاركة الحالة بين المكونات المتباعدة.
+  مع نمو تطبيقك، من المفيد كونك أكثر حرصا بشأن أن تكون حالتك منظمة وأن تكون البيانات متدفقة خلال مكوناتك. تكرار أو نسخ الحالة هو مصدر شائع للأخطاء. في هذا الفصل، سوف تتعلم كيفية هيكلة حالتك جيدا، كيفية الحفاظ على منطق تحديث حالتك مصانا، وكيفية مشاركة الحالة بين المكونات المتباعدة.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [كيفية التفكير في تغييرات واجهة المستخدم كتغيرات في الحالة](/learn/reacting-to-input-with-state)
+* [كيفية التفكير في تغييرات واجهة المستخدم (UI) كتغيرات في الحالة](/learn/reacting-to-input-with-state)
 * [كيفية هيكلة الحالة جيدا](/learn/choosing-the-state-structure)
 * [كيفية "رفع الحالة لمستوى أعلى (lifting state up)" لمشاكارتها بين المكونات](/learn/sharing-state-between-components)
 * [كيفية التحكم في ما إذا تم حفظ الحالة أم إعادة تعيينها](/learn/preserving-and-resetting-state)
@@ -22,7 +22,7 @@ title: إدارة الحالة
 
 ## الاستجابة للمدخلات باستخدام الحالة {/*reacting-to-input-with-state*/}
 
-باستخدام React، لن تستطيع تعديل واجهة المستخدم عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، "أظهر رسالة النجاح"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن ترها للحالات المرئية من مكوناتك ("حالة ابتدائية"، "حالة كتابية"، "حالة ناجحة")، ومن بعدها تنشيط تغيرات الحالة بناءا على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
+باستخدام React، لن تستطيع تعديل واجهة المستخدم (UI) عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، "أظهر رسالة النجاح"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن تراها للحالات المرئية من مكوناتك ("حالة ابتدائية (initial state)"، "حالة كتابية (typing state)"، "حالة ناجحة (success state)")، ومن بعدها تنشيط تغيرات الحالة بناء على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
 
 هنا نموذج اختبار صمم باستخدام React. لاحظ كيف يستخدم متغير الحالة `status` لكي يحدد ما إذا سيفعل أم سيعطل زر الإرسال، وما إذا ستظهر رسالة نجاح بدلا عن ذلك.
 
@@ -109,7 +109,7 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-اقرأ **[الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state)** لكي تتعلم كيفية الوصول لتعاملات مع عقلية معتمدة على الحالة.  
+اقرأ **[الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state)** لكي تتعلم كيفية التعامل مع التفاعلات بعقلية موجّهة بناء على الحالة.  
 
 </LearnMore>
 
@@ -232,7 +232,7 @@ label { display: block; margin-bottom: 5px; }
 
 ## مشاركة الحالة بين المكونات {/*sharing-state-between-components*/}
 
-أحيانا، أنت تريد الحالة ذات المكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف حالة من كليهما، انقلها لأقرب مكون أب، وبعد ذلك مررها لأسفل باستخدام الخصائص. هذا ما يعرف بـ "رفع الحالة لمستوى أعلى (lifting state up)"، وهو واحد من أكثر الأشياء شيوعا التي ستسعملها أثناء كتابتك لكود React.
+أحيانا، أنت تريد الحالة ذات المكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف حالة من كليهما، انقلها لأقرب مكون أب، وبعد ذلك مررها لأسفل باستخدام الخصائص (props). هذا ما يعرف بـ "رفع الحالة لمستوى أعلى (lifting state up)"، وهو واحد من أكثر الأشياء شيوعا التي ستسعملها أثناء كتابتك لكود React.
 
 في هذا المثال، في كل مرة يجب أن تكون قائمة واحدة فقط نشطة. لتحقيق ذلك، بدلا من حفظ الحالة النشطة داخل كل قائمة بمفردها، المكونّ الأب يحمل الحالة ويحدد الخصائص لمكوناته الأبناء. 
 
@@ -258,7 +258,7 @@ export default function Accordion() {
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخستانية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بـ Almaty تعتبر الموطن الأصلي للتفاحة، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح 
+        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخستانية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بـ Almaty تعتبر الموطن الأصلي للتفاح، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح لكونه أصل للتفاح المحلي الحديث.
       </Panel>
     </>
   );
@@ -303,7 +303,7 @@ h3, p { margin: 5px 0px; }
 
 ## حفظ وإعادة تعيين الحالة {/*preserving-and-resetting-state*/}
 
-عمدما تعيد تصيير مكون، React تحتاج لتقرر أىّ أجزاء من الشجرة لتحفظها (وتحدثها)، وأيّ أجزاء لتلغيها أو تعيد إنشاءها من الصفر. في أغلب الحالات، التصرف التلقائي لـ React يعمل بشكل جيد كفاية. تلقائياـ React تحفظ الأجزاء من الشجرة التي "تتوافق" مع مكون الشجرة المصيير مسبقا. 
+عندما تعيد تصيير مكون، React تحتاج لتقرر أىّ أجزاء من الشجرة لتحفظها (وتحدثها)، وأيّ أجزاء لتلغيها أو تعيد إنشاءها من الصفر. في أغلب الحالات، التصرف التلقائي لـ React يعمل بشكل جيد كفاية. تلقائيا، React تحفظ الأجزاء من الشجرة التي "تتوافق" مع مكون الشجرة المصيّر مسبقا. 
 
 على كل حال، أحيانا هذا ما لا تريده أنت. في تطبيق المحادثة هذا، كتابة رسالة وتغيير الطرف المستقبل لا يعيد تعيين المدخل. هذا قد يجعل المستخدم يرسل رسالة بغير قصد للشخص الخطأ.
 
@@ -400,7 +400,7 @@ textarea {
 
 </Sandpack>
 
-React تعطيك القدرة على تجاوز السلوك الافتراضي، و*تفرض* على المكون إعادة تعيين حالته عن طريق تمرير `key` مختلف لها، مثل `<Chat key={email} />`. هذا يخبر React أن الطرف المستقبل مختلف، ومن الواجب تعيين مكون `Chat` *مختلف* يكون بحاجة إلى إعادة الإنشاء من الصفر ببايانات جديدة (وواجهة مستخدم مثل المدخلات). الآن الانتقال بين المستقبلين يعيد تعيين حقل الإدخال--حتى بالرغم من أنك تعيد تصيير نفس المكون.
+React تعطيك القدرة على تجاوز السلوك الافتراضي، و*الفرض* على المكون إعادة تعيين حالته عن طريق تمرير `key` مختلف لها، مثل `<Chat key={email} />`. هذا يخبر React أن الطرف المستقبل مختلف، ومن الواجب تعيين مكون `Chat` *مختلف* يكون بحاجة إلى إعادة الإنشاء من الصفر ببايانات جديدة (وواجهة مستخدم مطابقة للمدخلات). الآن الانتقال بين المستقبلين يعيد تعيين حقل الإدخال--حتى بالرغم من أنك تعيد تصيير نفس المكون.
 
 <Sandpack>
 
@@ -497,13 +497,13 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-اقرأ **[حفظ وإعادة تعيين الحالة](/learn/preserving-and-resetting-state)** لتتعلم الحياة الزمنية للحالة وكيفية التحكم بها.
+اقرأ **[حفظ وإعادة تعيين الحالة](/learn/preserving-and-resetting-state)** لتتعلم عن الحياة الزمنية للحالة وكيفية التحكم بها.
 
 </LearnMore>
 
 ## استخلاص منطق الحالة إلى مخفض (reducer) {/*extracting-state-logic-into-a-reducer*/}
 
-المكونات ذات تحديثات حالة كثيرة المنتشرة خلال كثير من معالجات الأحداث (event handlers) قد تصبح معقدة. لمثل هذه الأحوال، يمكنك تجميع جميع منطق تحديث الحالة خارج مكوّنك داخل دالة واحدة، تدعى "مخفض (reducer)". معالجات الأحداث خاصتك ستصبح موجزة لأنها تحدد "إجراءات (actions)" المستخدم فقط. في أسفل الملف، دالة المخفض تحدد كيف يجب أن تحدث الحالة إستجابة لكل إجراء!
+المكونات ذات تحديثات حالة كثيرة المنتشرة خلال كثير من معالجات الأحداث (event handlers) قد تصبح معقدة. لمثل هذه الأحوال، يمكنك تجميع جميع منطق تحديث الحالة خارج مكوّنك داخل دالة واحدة، تدعى "مخفض (reducer)". معالجات الأحداث خاصتك ستصبح موجزة لأنها تحدد "إجراءات (actions)" المستخدم فقط. في أسفل الملف، دالة المخفض تحدد كيف يجب أن تحدث الحالة استجابةً لكل إجراء!
 
 <Sandpack>
 
@@ -542,7 +542,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Prague itinerary</h1>
+      <h1>Prague مخطط رحلة</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -584,9 +584,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Visit Kafka Museum', done: true },
-  { id: 1, text: 'Watch a puppet show', done: false },
-  { id: 2, text: 'Lennon Wall pic', done: false }
+  { id: 0, text: 'زيارة متحف Kafka', done: true },
+  { id: 1, text: 'مشاهدة عرض الدمى', done: false },
+  { id: 2, text: 'Lennon Wall صورة', done: false }
 ];
 ```
 
@@ -598,14 +598,14 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="إضافة مهمة"
         value={text}
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('');
         onAddTask(text);
-      }}>Add</button>
+      }}>أضف</button>
     </>
   )
 }
@@ -649,7 +649,7 @@ function Task({ task, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          حفظ
         </button>
       </>
     );
@@ -658,7 +658,7 @@ function Task({ task, onChange, onDelete }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          تعديل
         </button>
       </>
     );
@@ -677,7 +677,7 @@ function Task({ task, onChange, onDelete }) {
       />
       {taskContent}
       <button onClick={() => onDelete(task.id)}>
-        Delete
+        حذف
       </button>
     </label>
   );
@@ -702,7 +702,7 @@ ul, li { margin: 0; padding: 0; }
 
 عادة، سوف تقوم بتمرير معلومات من مكوّن أب إلى مكوّن ابن بواسطة الخصائص (props). لكن تمرير الخصائص قد يكون غير مجدٍ لو احتجت لتمرير بعض الخصائص خلال مكونات عديدة، أو لو أن العديد من المكونات تحتاج نفس المعلومات. السياق (context) يتيح للمكون الأب جعل بعض المعلومات متوفرة لأي مكون أدناه في الشجرة-لا يهم مقدار عمق المكون-بدون تمريرها مباشرة عن طريق الخصائص.
 
-هنا، المكوّن `Heading` يحدد مستوى عنوانه عن طريق "سؤال" أقرب `Section` لمستواها. كل `Section` يتتبع مستواه الخاص عن طريق سؤال `Section` الأب وإضافة واحد له. كل `Section` بتوفير معلومات لجميع المكونات أدناه دون نقل الخصائص--وهذا يتم عبر السياق (context).
+هنا، المكوّن `Heading` يحدد مستوى عنوانه عن طريق "سؤال" أقرب `Section` لمستواه. كل `Section` يتتبع مستواه الخاص عن طريق سؤال `Section` الأب وإضافة واحد له. كل `Section` يقوم بتوفير معلومات لجميع المكونات أدناه دون نقل الخصائص--وهذا يتم عبر السياق (context).
 
 <Sandpack>
 
@@ -713,19 +713,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>عنوان</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>عنوان رئيسي</Heading>
+        <Heading>عنوان رئيسي</Heading>
+        <Heading>عنوان رئيسي</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>عنوان فرعي</Heading>
+          <Heading>عنوان فرعي</Heading>
+          <Heading>عنوان فرعي</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
           </Section>
         </Section>
       </Section>
@@ -816,7 +816,7 @@ import { TasksProvider } from './TasksContext.js';
 export default function TaskApp() {
   return (
     <TasksProvider>
-      <h1>Day off in Kyoto</h1>
+      <h1>يوم إجازة في Kyoto</h1>
       <AddTask />
       <TaskList />
     </TasksProvider>
@@ -883,9 +883,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Philosopher’الطريق الـ', done: true },
+  { id: 1, text: 'زيارة المعبد', done: false },
+  { id: 2, text: 'شراب الشاي الأخضر (matcha)', done: false }
 ];
 ```
 
@@ -899,7 +899,7 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="إضافة مهمة"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -910,7 +910,7 @@ export default function AddTask({ onAddTask }) {
           id: nextId++,
           text: text,
         });
-      }}>Add</button>
+      }}>أضف</button>
     </>
   );
 }
@@ -954,7 +954,7 @@ function Task({ task }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          حفظ
         </button>
       </>
     );
@@ -963,7 +963,7 @@ function Task({ task }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          تعديل
         </button>
       </>
     );
@@ -990,7 +990,7 @@ function Task({ task }) {
           id: task.id
         });
       }}>
-        Delete
+        حذف
       </button>
     </label>
   );
@@ -1007,7 +1007,7 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-اقرأ **[التوسع بواسطة المخفض (reducer) و السياق (context)](/learn/scaling-up-with-reducer-and-context)** لتتعلم كيف تتوسع إدارة الحالة في تطبيق نامٍ.
+اقرأ **[التوسع بواسطة المخفض (reducer) و السياق (context)](/learn/scaling-up-with-reducer-and-context)** لتتعلم كيف توسيع إدارة الحالة في تطبيق نامٍ.
 
 </LearnMore>
 
