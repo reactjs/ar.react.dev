@@ -138,7 +138,7 @@
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "مشاكة الحالة بين المكونات",
+          "title": "مشاركة الحالة بين المكونات",
           "path": "/learn/sharing-state-between-components"
         },
         {
