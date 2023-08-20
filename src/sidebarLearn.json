@@ -37,6 +37,10 @@
           "path": "/learn/editor-setup"
         },
         {
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
           "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
         }
@@ -86,7 +90,7 @@
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [

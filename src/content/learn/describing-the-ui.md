@@ -4,7 +4,7 @@ title: وصف واجهات المستخدم (UI)
 
 <Intro>
 
-تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وعرض مكونات حسب الشروط.
+تعد React من مكتبات JavaScript المخصَّصة لبناء واجهات المستخدم (UI). يتم بناء واجهات المستخدم من وحدات صغيرة مثل الأزرار والنصوص والصور. تسمح لك React بتجميع هذه العناصر في مكونات (Components) يمكن إعادة استخدامها أو تضمينها داخل بعضها البعض. من مواقع الويب إلى تطبيقات الهاتف الجوال يمكن تقسم كل شئ إلى مكونات. في هذا الفصل، سوف تتعلم كيفية إنشاء وتعديل وتصيير مكونات حسب الشروط.
 
 </Intro>
 
@@ -12,18 +12,18 @@ title: وصف واجهات المستخدم (UI)
 
 * [كيفية كتابة أول مكون React لك](/learn/your-first-component)
 * [متى وكيف تنشأ ملفات تحتوى على أكثر من مكون](/learn/importing-and-exporting-components)
-* [كيفية إضافة ترميزات (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
-* [كيفية استخدام الأقواس المجعدة في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
+* [كيفية إضافة ترميز (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
+* [كيفية استخدام الأقواس المنحنية في JSX لاستخدام وظائف JavaScript في مكوناتك (Components)](/learn/javascript-in-jsx-with-curly-braces)
 * [كيفية إعداد المكونات باستخدام الخصائص (Props)](/learn/passing-props-to-a-component)
-* [(Conditional rendering) كيفية عرض المكونات بشكل مشروط](/learn/conditional-rendering)
-* [كيفية عرض أكثر من مكون مرة واحدة](/learn/rendering-lists)
+* [(Conditional rendering) كيفية تصيير المكونات بشكل شرطي](/learn/conditional-rendering)
+* [كيفية تصيير أكثر من مكون مرة واحدة](/learn/rendering-lists)
 * [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
-## أول مكون لك {/*your-first-component*/}
+## مكوّنك الأول {/*your-first-component*/}
 
-يتم بناء تطبيقات React باستخدام قطع معزولة من واجهات المستخدم تسمى مكونات. المكون في React هو عبارة عن دالة JavaScript التى يمكنك إضافة ترميزات إليها. المكونات يمكن أن تكون صغيرة كزرار أو كبيرة كصفحة كاملة. هنا المكون `Gallery` يقوم بعرض ثلاث مكونات `Profile`:
+يتم بناء تطبيقات React باستخدام قطع معزولة من واجهات المستخدم تسمى مكونات. المكون في React هو عبارة عن دالة JavaScript التى يمكنك إضافة ترميزات إليها. المكونات يمكن أن تكون صغيرة كزرار أو كبيرة كصفحة كاملة. هنا المكون `Gallery` يقوم بتصيير ثلاث مكونات `Profile`:
 
 <Sandpack>
 
@@ -32,7 +32,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   );
 }
@@ -40,7 +40,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء مذهلون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -57,14 +57,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-اقرأ **[مكونك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
+اقرأ **[مكوّنك الأول](/learn/your-first-component)** لتتعلم كيفية تعريف واستخدام مكونات React.
 
 </LearnMore>
 
 ## استيراد وتصدير المكونات {/*importing-and-exporting-components*/}
 
 يمكنك تعريف أكثر من مكون في ملف واحد، ولكن الملفات الكبيرة يمكن أن تصبح صعبة التصفح. لحل هذه المشكلة يمكنك أن تصدر *export* مكون من الملف الخاص به، ثم استخدام *import* لتستخدم هذا المكون في ملف آخر:
-
 
 <Sandpack>
 
@@ -84,7 +83,7 @@ import Profile from './Profile.js';
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء مذهلون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -98,7 +97,7 @@ export default function Profile() {
   return (
     <img
       src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+      alt="آلان إل. هارت"
     />
   );
 }
@@ -116,9 +115,9 @@ img { margin: 0 10px 10px 0; }
 
 </LearnMore>
 
-## كتابة ترميزات (Markup) باستخدام JSX {/*writing-markup-with-jsx*/}
+## كتابة ترميز البناء بـ JSX {/*writing-markup-with-jsx*/}
 
-كل مكون في React عبارة عن دالة JavaScript التى يمكن أن تحتوي على بعض الترميزات التي يمكن لـ React أن تعرضها في المتصفح. المكونات في React تستخدم صيغة معدلة تسمى JSX لكى تمثل هذه الترميزات. JSX تشبه HTML كثيرا، ولكنها صارمة قليلا وتستطيع أن تعرض محتوى ديناميكي.
+كل مكون في React عبارة عن دالة JavaScript التى يمكن أن تحتوي على بعض الترميزات التي يمكن لـ React أن تُصيرها في المتصفح. المكونات في React تستخدم صيغة معدلة تسمى JSX لكى تمثل هذه الترميزات. JSX تشبه HTML كثيرا، ولكنها صارمة قليلا وتستطيع أن تعرض محتوى ديناميكي.
 
 إذا قمنا بنسخ ترميزات HTML موجودة سابقا داخل مكون React، لن تعمل دائما:
 
@@ -127,17 +126,17 @@ img { margin: 0 10px 10px 0; }
 ```js
 export default function TodoList() {
   return (
-    // This doesn't quite work!
-    <h1>Hedy Lamarr's Todos</h1>
+    // هذا لن يعمل
+    <h1>قائمة مهام هيدي لامار</h1>
     <img
       src="https://i.imgur.com/yXOvdOSs.jpg"
       alt="Hedy Lamarr"
       class="photo"
     >
     <ul>
-      <li>Invent new traffic lights
-      <li>Rehearse a movie scene
-      <li>Improve spectrum technology
+      <li>اختراع إشارة مرور جديدة
+      <li>تدرب على مشهد فيلم
+      <li>تحسين تكنولوجيا الطيف
     </ul>
   );
 }
@@ -157,16 +156,16 @@ img { height: 90px; }
 export default function TodoList() {
   return (
     <>
-      <h1>Hedy Lamarr's Todos</h1>
+      <h1>قائمة مهام هيدي لامار</h1>
       <img
         src="https://i.imgur.com/yXOvdOSs.jpg"
-        alt="Hedy Lamarr"
+        alt="هيدي لامار"
         className="photo"
       />
       <ul>
-        <li>Invent new traffic lights</li>
-        <li>Rehearse a movie scene</li>
-        <li>Improve spectrum technology</li>
+        <li>اختراع إشارة مرور جديدة</li>
+        <li>تدرب على مشهد فيلم</li>
+        <li>تحسين تكنولوجيا الطيف</li>
       </ul>
     </>
   );
@@ -181,19 +180,19 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-اقرأ **[كتابة ترميزات (Markup) باستخدام JSX](/learn/writing-markup-with-jsx)** لتتعلم كيفية كتابة JSX صحيحة
+اقرأ **[كتابة ترميز البناء بـ JSX](/learn/writing-markup-with-jsx)** لتتعلم كيفية كتابة JSX صحيحة
 
 </LearnMore>
 
-## استخدام JavaScript في JSX باستخدام الأقواس المجعدة {/*javascript-in-jsx-with-curly-braces*/}
+## JavaScript في JSX باستخدام الأقواس المنحنية {/*javascript-in-jsx-with-curly-braces*/}
 
-تتيح لك JSX أن تكتب ترميزات مشابهة إلى HTML بداخل ملفات JavaScript وأن تعرض محتوى وتبقى المنطق الخاص بالمكونات في نفس المكان. في بعض الأحيان، قد ترغب في إضافة بعض المنطق المكتوب باستخدام JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذا الموقف، يمكنك استخدام الأقواس المجعدة في JSX الخاص بك لفتح نافذة إلى JavaScript:
+تتيح لك JSX أن تكتب ترميزات مشابهة إلى HTML بداخل ملفات JavaScript وأن تُصير محتوى وتبقى المنطق الخاص بالمكونات في نفس المكان. في بعض الأحيان، قد ترغب في إضافة بعض المنطق المكتوب باستخدام JavaScript أو الإشارة إلى خاصية ديناميكية داخل هذا الترميز. في هذا الموقف، يمكنك استخدام الأقواس المنحنية في JSX الخاص بك لفتح نافذة إلى JavaScript:
 
 <Sandpack>
 
 ```js
 const person = {
-  name: 'Gregorio Y. Zara',
+  name: 'جريجوري زارا',
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -203,16 +202,16 @@ const person = {
 export default function TodoList() {
   return (
     <div style={person.theme}>
-      <h1>{person.name}'s Todos</h1>
+      <h1>قائمة مهام {person.name}</h1>
       <img
         className="avatar"
         src="https://i.imgur.com/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
+        alt="جريجوري زارا"
       />
       <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
+        <li>تحسين هاتف الفيديو</li>
+        <li>اعداد محاضرات طيران</li>
+        <li>العمل على محرك يعمل بالوقود الكحولي</li>
       </ul>
     </div>
   );
@@ -229,11 +228,11 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-اقرأ **[استخدام JavaScript في JSX باستخدام الأقواس المجعدة](/learn/javascript-in-jsx-with-curly-braces)** لتتعلم كيفية الوصول إلى بيانات JavaScript في JSX
+اقرأ **[JavaScript في JSX باستخدام الأقواس المنحنية](/learn/javascript-in-jsx-with-curly-braces)** لتتعلم كيفية الوصول إلى بيانات JavaScript في JSX
 
 </LearnMore>
 
-## تمرير الخصائص (Props) إلى مكون {/*passing-props-to-a-component*/}
+## تمرير الخصائص إلى مكوّن {/*passing-props-to-a-component*/}
 
 المكونات في React تتواصل مع بعضها البعض عن طريق الخصائص (Props). كل مكون أب يمكن له أن يمرر بعض المعلومات إلى المكونات الأبناء عن طريق إعطائهم خصائص. الخصائص يمكن أن تذكرك بـ"خصائص HTML"، ولكن يمكنك أن تمرر أي قيمة JavaScript عن طريقهم، هذا يمكن أن يكون كائن (object) أو مصفوفة (array) أو دالة function أو حتى JSX!
 
@@ -248,7 +247,7 @@ export default function Profile() {
       <Avatar
         size={100}
         person={{
-          name: 'Katsuko Saruhashi',
+          name: 'قاتسوكو ساروهاشي',
           imageId: 'YfeOqp2'
         }}
       />
@@ -310,15 +309,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-اقرأ **[تمرير الخصائص (Props) إلى مكون](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
+اقرأ **[تمرير الخصائص إلى مكوّن](/learn/passing-props-to-a-component)** لتتعلم كيفية تمرير وقراءة الخصائص.
 
 </LearnMore>
 
-## العرض المشروط (Conditional rendering) {/*conditional-rendering*/}
+## التصيير الشرطي {/*conditional-rendering*/}
 
-غالبًا ما تحتاج مكوناتك إلى عرض أشياء مختلفة تعتمد على شروط مختلفة. في React، يمكنك عرض JSX حسب شروط باستخدام صيغ شبيهه بـ JavaScript مثل التعبيرات الشرطية `if` والمعاملات `&&` و `condition ? if true : else`.
+غالبًا ما تحتاج مكوناتك إلى عرض أشياء مختلفة تعتمد على شروط مختلفة. في React، يمكنك تصيير JSX حسب شروط باستخدام صيغ شبيهه بـ JavaScript مثل التعبيرات الشرطية `if` والمعاملات `&&` و `condition ? if true : else`.
 
-في هذا المثال،  معامل `&&` في JavaScript يستخدم لعرض علامة صح بشكل مشروط:
+في هذا المثال،  معامل `&&` في JavaScript يستخدم لتصيير علامة صح بشكل مشروط:
 
 <Sandpack>
 
@@ -334,19 +333,19 @@ function Item({ name, isPacked }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>قائمة تعبئة سالي رايد</h1>
       <ul>
         <Item
           isPacked={true}
-          name="Space suit"
+          name="بدلة الفضاء"
         />
         <Item
           isPacked={true}
-          name="Helmet with a golden leaf"
+          name="خوذة مع ورقة ذهبية"
         />
         <Item
           isPacked={false}
-          name="Photo of Tam"
+          name="صورة لـ تام"
         />
       </ul>
     </section>
@@ -358,11 +357,11 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-اقرأ **[العرض المشروط (Conditional rendering)](/learn/conditional-rendering)** لتتعلم الطرق المختلفة لعرض المحتوى بشكل شرطي.
+اقرأ **[التصيير الشرطي](/learn/conditional-rendering)** لتتعلم الطرق المختلفة لتصيير المحتوى بشكل شرطي.
 
 </LearnMore>
 
-## عرض القوائم (lists) {/*rendering-lists*/}
+## تصيير القوائم {/*rendering-lists*/}
 
 غالبًا ما سترغب في عرض عدة مكونات متشابهة من مجموعة البيانات. يمكن استخدام `filter()` و `map()` في JavaScript مع React لتصفية وتحويل مصفوفة البيانات الخاصة بك إلى مصفوفة من المكونات.
 
@@ -384,13 +383,13 @@ export default function List() {
       <p>
         <b>{person.name}:</b>
         {' ' + person.profession + ' '}
-        known for {person.accomplishment}
+        معروف بـ {person.accomplishment}
       </p>
     </li>
   );
   return (
     <article>
-      <h1>Scientists</h1>
+      <h1>علماء</h1>
       <ul>{listItems}</ul>
     </article>
   );
@@ -400,33 +399,33 @@ export default function List() {
 ```js data.js
 export const people = [{
   id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
+  name: 'كريولا كاثرين جونسون',
+  profession: ' عالم رياضيات',
+  accomplishment: 'حسابات الرحلات الفضائية',
   imageId: 'MK3eW3A'
 }, {
   id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
+  name: 'ماريو خوسيه مولينا باسكويل هنريكيز',
+  profession: 'كيميائي',
+  accomplishment: 'اكتشاف ثقب الأوزون في منطقة القطب الشمالي',
   imageId: 'mynHUSa'
 }, {
   id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
+  name: 'محمد عبد السلام',
+  profession: 'فزيائى',
+  accomplishment: 'نظرية الكهرومغناطيسية',
   imageId: 'bE7W1ji'
 }, {
   id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+  name: 'بيرسي لافون جوليان',
+  profession: 'كيميائي',
+  accomplishment: 'تطوير أدوية الكورتيزون والستيرويدات وحبوب منع الحمل',
   imageId: 'IOjWm71'
 }, {
   id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
+  name: 'سوبرامانيان شاندراسيخار',
+  profession: 'عالم فيزياء فلكية',
+  accomplishment: 'حسابات كتلة نجم قذم أبيض',
   imageId: 'lrWQx8l'
 }];
 ```
@@ -458,7 +457,7 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-اقرأ **[عرض القوائم (lists)](/learn/rendering-lists)** لتتعلم  كيفية عرض قوائم من المكونات، وكيفية اختيار مفتاح.
+اقرأ **[تصيير القوائم](/learn/rendering-lists)** لتتعلم  كيفية تصيير قوائم من المكونات، وكيفية اختيار مفتاح.
 
 </LearnMore>
 
@@ -479,7 +478,7 @@ let guest = 0;
 function Cup() {
   // سيء: تعديل متغير موجود مسبقًا
   guest = guest + 1;
-  return <h2>Tea cup for guest #{guest}</h2>;
+  return <h2>كوب شاى لضيف #{guest}</h2>;
 }
 
 export default function TeaSet() {
@@ -501,7 +500,7 @@ export default function TeaSet() {
 
 ```js
 function Cup({ guest }) {
-  return <h2>Tea cup for guest #{guest}</h2>;
+  return <h2>كوب شاى لضيف #{guest}</h2>;
 }
 
 export default function TeaSet() {
@@ -527,4 +526,4 @@ export default function TeaSet() {
 
 توجه إلى [المكون الأول الخاص بك](/learn/your-first-component) لبدء قراءة هذا الفصل صفحة بصفحة!
 
-أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن [إضافة التفاعلية (Interactivity)](/learn/adding-interactivity)?
+أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن [إضافة التفاعلية](/learn/adding-interactivity)?

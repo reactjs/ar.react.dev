@@ -1,14 +1,11 @@
 ---
 title: "'use server'"
+canary: true
 ---
 
-<Wip>
-
-هذا القسم غير مكتمل بعد.
-
+<Canary>
 هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
-
-</Wip>
+</Canary>
 
 
 <Intro>
@@ -46,3 +43,12 @@ async function addToCart(data) {
 * لتجنب الارتباك الذي قد يحدثه خلط الكود من جانب العميل والخادم في نفس الملف، يمكن استخدام `'use server'` فقط في ملفات الخادم؛ يمكن تمرير الدوال الناتجة إلى مكونات العميل عبر الخصائص.
 * لأن الاستدعاءات الشبكية الأساسية دائمًا غير متزامنة، يمكن استخدام `'use server'` فقط في دوال غير متزامنة (async).
 * التوجيهات مثل `'use server'` يجب أن تكون في أعلى الدالة أو الملف، فوق أي كود آخر بما في ذلك الاستيرادات (التعليقات فوق التوجيهات مقبولة). يجب كتابتها بعلامات تنصيص مفردة (`'use server'`) أو مزدوجة (`"use server"`)، وليس علامات تنصيص عكسية backticks (&#x60;`use server`&#x60;). (تشبه تنسيق التوجيهات `'use xyz'` تنسيق تسمية الـ Hooks `useXyz()`، لكن هذا التشابه محض مصادفة.)
+
+## Usage {/*usage*/}
+
+<Wip>
+
+This section is incomplete. See also the [Next.js documentation for Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+
+</Wip>
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
