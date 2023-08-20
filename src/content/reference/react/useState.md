@@ -16,9 +16,9 @@ const [state, setState] = useState(initialState);
 
 ---
 
-## الإشارة الى المرجع {/*reference*/}
+## المرجع {/*reference*/}
 
-### `useState(الحالةالأولية)` {/*usestate*/}
+### `useState(initialState)` {/*usestate*/}
 
 
 استدعِ `useState` في الطبقة العليا لمكونك لتعريف متغير الحالة.
