@@ -4,7 +4,7 @@ title: useState
 
 <Intro>
 
- `useState` هو Hook في React يتيح لك إضافة متغير حالة إلى مكونك
+ `useState` هو Hook في React يتيح لك إضافة [متغير حالة](/learn/state-a-components-memory) إلى مكونك
 
 ```js
 const [state, setState] = useState(initialState);
