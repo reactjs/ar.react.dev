@@ -37,6 +37,10 @@
           "path": "/learn/editor-setup"
         },
         {
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
           "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
         }
@@ -80,13 +84,13 @@
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "Keeping Components Pure",
+          "title": "الحفاظ على نقاء المكونّات",
           "path": "/learn/keeping-components-pure"
         }
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
