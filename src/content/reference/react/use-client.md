@@ -4,14 +4,14 @@ title: "'use client'"
 
 <Note>
 
-These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
 
 </Note>
 
 
 <Intro>
 
-`'use client'` marks source files whose components execute on the client.
+`'use client'` تميز الملفات ليتم تنفيذ مكوناتها في جانب العميل
 
 </Intro>
 
@@ -19,11 +19,11 @@ These directives are needed only if you're [using React Server Components](/lear
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `'use client'` {/*use-client*/}
 
-Add `'use client';` at the very top of a file to mark that the file (including any child components it uses) executes on the client, regardless of where it's imported.
+أضف `'use client'` في أعلى ملف لتمييزه (الملف أو أي مكونات فرعية يحتويها) بأنه يتم تنفيذه عند العميل، بغض النظر عن المكان الذي يتم استيراده منه.
 
 ```js
 'use client';
@@ -34,24 +34,32 @@ export default function RichTextEditor(props) {
   // ...
 ```
 
-When a file marked `'use client'` is imported from a server component, [compatible bundlers](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) will treat the import as the "cut-off point" between server-only code and client code. Components at or below this point in the module graph can use client-only React features like [`useState`](/reference/react/useState).
+عند استيراد ملف معلّم بعبارة `'use client'` من مكوّن في الخادم، ستعامل المجمّعات المتوافقة [bundlers](/learn/start-a-new-react-project#bleeding-edge-reace-frameworks) الاستيراد كـ"نقطة الفصل" بين كود الخادم وكود العميل. يمكن للمكونات الموجودة في هذه النقطة أو أسفلها في الرسم البياني للوحدة الأساسية استخدام الميزات React المخصصة للعميل مثل [`useState`](/reference/react/useState).
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* It's not necessary to add `'use client'` to every file that uses client-only React features, only the files that are imported from server component files. `'use client'` denotes the _boundary_ between server-only and client code; any components further down the tree will automatically be executed on the client. In order to be rendered from server components, components exported from `'use client'` files must have serializable props.
-* When a `'use client'` file is imported from a server file, the imported values can be rendered as a React component or passed via props to a client component. Any other use will throw an exception.
-* When a `'use client'` file is imported from another client file, the directive has no effect. This allows you to write client-only components that are simultaneously usable from server and client components.
-* All the code in `'use client'` file as well as any modules it imports (directly or indirectly) will become a part of the client module graph and must be sent to and executed by the client in order to be rendered by the browser. To reduce client bundle size and take full advantage of the server, move state (and the `'use client'` directives) lower in the tree when possible, and pass rendered server components [as children](/learn/passing-props-to-a-component#passing-jsx-as-children) to client components.
-* Because props are serialized across the server–client boundary, note that the placement of these directives can affect the amount of data sent to the client; avoid data structures that are larger than necessary.
-* Components like a `<MarkdownRenderer>` that use neither server-only nor client-only features should generally not be marked with `'use client'`. That way, they can render exclusively on the server when used from a server component, but they'll be added to the client bundle when used from a client component.
-* Libraries published to npm should include `'use client'` on exported React components that can be rendered with serializable props that use client-only React features, to allow those components to be imported and rendered by server components. Otherwise, users will need to wrap library components in their own `'use client'` files which can be cumbersome and prevents the library from moving logic to the server later. When publishing prebundled files to npm, ensure that `'use client'` source files end up in a bundle marked with `'use client'`, separate from any bundle containing exports that can be used directly on the server.
-* Client components will still run as part of server-side rendering (SSR) or build-time static site generation (SSG), which act as clients to transform React components' initial render output to HTML that can be rendered before JavaScript bundles are downloaded. But they can't use server-only features like reading directly from a database.
-* Directives like `'use client'` must be at the very beginning of a file, above any imports or other code (comments above directives are OK). They must be written with single or double quotes, not backticks. (The `'use xyz'` directive format somewhat resembles the `useXyz()` Hook naming convention, but the similarity is coincidental.)
+* ليس من الضرورة إضافة `'use client'` إلى كل ملف يستخدم ميزات React المخصصة للعميل، بل فقط في الملفات التي يتم استيرادها من ملفات عناصر الخادم. `'use client'` تُشير إلى الحدود بين الكود المخصص للخادم والعميل؛ أي مكونات تكون أسفل هذه الحدود في شجرة العناصر ستُنفَذ تلقائيًا على العميل. لكي يتم تقديمها من عناصر الخادم، يجب أن تحتوي المكونات المصدرة من ملفات `'use client'` على خصائص يمكن تسلسلها.
 
-## Usage {/*usage*/}
+* عند استيراد ملف `'use client'` من ملف خادم، يمكن تقديم القيم المستوردة كمكون React أو تمريرها عبر الـ props إلى مكون عميل. وأي استخدام آخر سيثير خطأ.
+
+* عند استيراد ملف 'use client' من ملف عميل آخر، فإن التوجيه لا يؤثر. هذا يسمح لك بكتابة مكونات خاصة بالعميل يمكن استخدامها في نفس الوقت من عناصر الخادم والعميل.
+
+* ستصبح جميع الأكواد في ملف `'use client'` وأي وحدات يتم استيرادها (مباشرة أو غير مباشرة) جزءًا من شبكة الوحدات الأساسية للعميل ويجب إرسالها وتنفيذها من قِبل العميل ليتم تقديمها من قبل المستعرض. لتقليل حجم حزمة العميل والاستفادة الكاملة من الخادم، قم بنقل الحالة (والتوجيهات `'use client'`) للأسفل في شجرة العناصر عند الحاجة، وقم بتمرير عناصر الخادم المقدمة [كأطفال (children)](/learn/passing-props-to-a-component#passing-jsx-as-children) إلى عناصر العميل.
+
+* نظرًا لأن الخصائص يتم تسلسلها عبر الحدود بين الخادم والعميل، يجب مراعاة أن موقع هذه التوجيهات يمكن أن يؤثر على كمية البيانات المرسلة إلى العميل؛ يُنصح بتجنب هياكل البيانات التي تكون أكبر من اللازم.
+
+* عادةً، يجب ألا يتم وضع `'use client'` على المكونات مثل `<MarkdownRenderer>` التي لا تستخدم ميزات خاصة بالخادم أو العميل. بهذه الطريقة، يمكنها التقديم حصريًا على الخادم عند استخدامها من عنصر خادم، ولكن ستُضاف إلى حزمة العميل عند استخدامها من عنصر عميل.
+
+* يجب أن تشمل المكتبات التي يتم نشرها على npm `'use client'` على المكونات المصدرة من React التي يمكن تقديمها باستخدام خصائص يمكن تسلسلها وتستخدم ميزات React المخصصة للعميل، للسماح بالاستيراد والتقديم من قِبل عناصر الخادم. وإلا، سيحتاج المستخدمون إلى لف مكونات المكتبة في أكوادهم الخاصة بـ `'use client'` وهذا قد يكون مرهقًا ويمنع المكتبة من نقل الخطط إلى الخادم لاحقًا. عند نشر الملفات المجمَّعة مُسبقًا على npm، تأكد من أن المكونات المصدرة مبدوءة بـ `'use client'`، منفصلة عن أي ملف يحتوي على تصديرات يمكن استخدامها مباشرة على الخادم.
+
+* ستستمر مكونات العميل في العمل كجزء من عملية تقديم جانب الخادم (SSR) أو إنشاء الموقع الثابت في وقت التجميع (SSG)، حيث يعملون كعملاء لتحويل الإخراج الأولي لمكونات React إلى HTML يمكن تقديمه قبل تنزيل حزم JavaScript. ولكنها لا يمكنها استخدام ميزات خاصة بالخادم مثل القراءة مباشرةً من قاعدة بيانات.
+
+* يجب أن تكون التوجيهات مثل `'use client'` في بداية الملف، قبل أي استيرادات أو أكواد أخرى (يمكن وضع تعليقات فوق التوجيهات). يجب كتابة التوجيهات باستخدام علامات اقتباس فردية أو مزدوجة، وليس علامات backtick. (تنسيق التوجيه `'use xyz'` يشبه إلى حد ما تنسيق اسماء الـ Hooks مثل `useXyz()`، ولكن هذا التشابه مجرد صدفة.)
+
+## الاستخدام {/*usage*/}
 
 <Wip>
 
-This section is incomplete. See also the [Next.js documentation for Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+هذا القسم غير مكتمل، شاهد أيضًا [توثيق Next.js لمكونات الخادم](https://beta.nextjs.org/docs/rendering/server-and-client-components).
 
 </Wip>
