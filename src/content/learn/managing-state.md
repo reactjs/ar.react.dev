@@ -102,6 +102,7 @@ function submitForm(answer) {
 ```
 
 ```css
+body { direction: rtl; }
 .Error { color: red; }
 ```
 
@@ -217,6 +218,7 @@ export default function Form() {
 ```
 
 ```css
+body { direction: rtl; }
 label { display: block; margin-bottom: 5px; }
 ```
 
@@ -286,6 +288,7 @@ function Panel({
 ```
 
 ```css
+body { direction: rtl; }
 h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
@@ -329,9 +332,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { name: 'Taylor', email: 'taylor@mail.com' },
-  { name: 'Alice', email: 'alice@mail.com' },
-  { name: 'Bob', email: 'bob@mail.com' }
+  { name: 'علي', email: 'ali12@mail.com' },
+  { name: 'هند', email: 'hend@mail.com' },
+  { name: 'سعد', email: 'sa2d@mail.com' }
 ];
 ```
 
@@ -379,6 +382,7 @@ export default function Chat({ contact }) {
 ```
 
 ```css
+body { direction: rtl; }
 .chat, .contact-list {
   float: left;
   margin-bottom: 20px;
@@ -424,9 +428,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { name: 'Taylor', email: 'taylor@mail.com' },
-  { name: 'Alice', email: 'alice@mail.com' },
-  { name: 'Bob', email: 'bob@mail.com' }
+  { name: 'علي', email: 'ali12@mail.com' },
+  { name: 'هند', email: 'hend@mail.com' },
+  { name: 'سعد', email: 'sa2d@mail.com' }
 ];
 ```
 
@@ -474,6 +478,7 @@ export default function Chat({ contact }) {
 ```
 
 ```css
+body { direction: rtl; }
 .chat, .contact-list {
   float: left;
   margin-bottom: 20px;
