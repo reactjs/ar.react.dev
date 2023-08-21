@@ -690,6 +690,7 @@ function Task({ task, onChange, onDelete }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
@@ -789,6 +790,7 @@ export const LevelContext = createContext(0);
 ```
 
 ```css
+body { direction: rtl; }
 .section {
   padding: 10px;
   margin: 5px;
@@ -888,7 +890,7 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 0, text: 'شارع Philosopher', done: true },
   { id: 1, text: 'زيارة المعبد', done: false },
   { id: 2, text: 'شراب الشاي الأخضر (matcha)', done: false }
 ];
@@ -1003,6 +1005,7 @@ function Task({ task }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
