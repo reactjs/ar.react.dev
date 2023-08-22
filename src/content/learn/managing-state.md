@@ -166,6 +166,7 @@ export default function Form() {
 ```
 
 ```css
+body { direction: rtl; }
 label { display: block; margin-bottom: 5px; }
 ```
 
@@ -384,7 +385,7 @@ export default function Chat({ contact }) {
 ```css
 body { direction: rtl; }
 .chat, .contact-list {
-  float: left;
+  float: right;
   margin-bottom: 20px;
 }
 ul, li {
@@ -480,7 +481,7 @@ export default function Chat({ contact }) {
 ```css
 body { direction: rtl; }
 .chat, .contact-list {
-  float: left;
+  float: right;
   margin-bottom: 20px;
 }
 ul, li {
@@ -690,6 +691,7 @@ function Task({ task, onChange, onDelete }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
@@ -789,6 +791,7 @@ export const LevelContext = createContext(0);
 ```
 
 ```css
+body { direction: rtl; }
 .section {
   padding: 10px;
   margin: 5px;
@@ -1003,6 +1006,7 @@ function Task({ task }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
