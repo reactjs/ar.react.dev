@@ -548,7 +548,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Prague مخطط رحلة</h1>
+      <h1>مخطط رحلة Prague</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
