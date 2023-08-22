@@ -250,14 +250,14 @@ export default function Accordion() {
     <>
       <h2>Almaty, Kazakhstan</h2>
       <Panel
-        title="About"
+        title="نبذة"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
         مع تعداد سكاني يقارب 2 مليون، Almaty هي أكبر مدينة بـ Kazakhstan. منذ 1929 إلى 1997 كانت هي العاصمة.
       </Panel>
       <Panel
-        title="Etymology"
+        title="أصل الكلمة"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
@@ -568,7 +568,7 @@ function tasksReducer(tasks, action) {
         id: action.id,
         text: action.text,
         done: false
-      }];
+      }];ِ
     }
     case 'changed': {
       return tasks.map(t => {
@@ -592,7 +592,7 @@ let nextId = 3;
 const initialTasks = [
   { id: 0, text: 'زيارة متحف Kafka', done: true },
   { id: 1, text: 'مشاهدة عرض الدمى', done: false },
-  { id: 2, text: 'Lennon Wall صورة', done: false }
+  { id: 2, text: 'صورة Lennon Wall', done: false }
 ];
 ```
 
