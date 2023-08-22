@@ -568,7 +568,7 @@ function tasksReducer(tasks, action) {
         id: action.id,
         text: action.text,
         done: false
-      }];ِ
+      }];
     }
     case 'changed': {
       return tasks.map(t => {
