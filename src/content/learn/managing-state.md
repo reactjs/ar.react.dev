@@ -171,7 +171,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-يمكنك حذفه وتبسيط الكود عن طريق جمع `fullName` بينما يصيّر المكوّن:
+يمكنك حذفه وتبسيط الكود عن طريق جمع `fullName` بينما يُصيّر المكوّن:
 
 <Sandpack>
 
