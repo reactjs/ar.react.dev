@@ -125,36 +125,36 @@
       ]
     },
     {
-      "title": "التحكم في الحالة",
+      "title": "Managing State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "الاستجابة للمدخلات باستخدام الحالة",
+          "title": "Reacting to Input with State",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "اختيار هيكل الحالة",
+          "title": "Choosing the State Structure",
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "مشاركة الحالة بين المكونات",
+          "title": "Sharing State Between Components",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "حفظ وإعادة تعيين الحالة",
+          "title": "Preserving and Resetting State",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "استخلاص منطق الحالة إلى مخفض (reducer)",
+          "title": "Extracting State Logic into a Reducer",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "تمرير البيانات إلى عمق باستخدام السياق (context)",
+          "title": "Passing Data Deeply with Context",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "التوسع بواسطة المخفض (reducer) و السياق (context)",
+          "title": "Scaling Up with Reducer and Context",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
