@@ -125,7 +125,7 @@
       ]
     },
     {
-      "title": "التحكم في الحالة",
+      "title": "Managing State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
@@ -134,7 +134,7 @@
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "Chossing the State Structure",
+          "title": "Choosing the State Structure",
           "path": "/learn/choosing-the-state-structure"
         },
         {
@@ -146,7 +146,7 @@
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "Extracting State Logic Into a Reducer",
+          "title": "Extracting State Logic into a Reducer",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
