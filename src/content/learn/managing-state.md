@@ -1,30 +1,31 @@
 ---
-title: Managing State
+title: إدارة الحالة
 ---
 
 <Intro>
 
-As your application grows, it helps to be more intentional about how your state is organized and how the data flows between your components. Redundant or duplicate state is a common source of bugs. In this chapter, you'll learn how to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components.
+  مع نمو تطبيقك، من المفيد كونك أكثر حرصا بشأن أن تكون حالتك منظمة وأن تكون البيانات متدفقة خلال مكوناتك. تكرار أو نسخ الحالة هو مصدر شائع للأخطاء. في هذا الفصل، سوف تتعلم كيفية هيكلة حالتك جيدا، كيفية الحفاظ على منطق تحديث حالتك مصانا، وكيفية مشاركة الحالة بين المكونات المتباعدة.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to think about UI changes as state changes](/learn/reacting-to-input-with-state)
-* [How to structure state well](/learn/choosing-the-state-structure)
-* [How to "lift state up" to share it between components](/learn/sharing-state-between-components)
-* [How to control whether the state gets preserved or reset](/learn/preserving-and-resetting-state)
-* [How to consolidate complex state logic in a function](/learn/extracting-state-logic-into-a-reducer)
-* [How to pass information without "prop drilling"](/learn/passing-data-deeply-with-context)
-* [How to scale state management as your app grows](/learn/scaling-up-with-reducer-and-context)
+* [كيفية التفكير في تغييرات واجهة المستخدم (UI) كتغيرات في الحالة](/learn/reacting-to-input-with-state)
+* [كيفية هيكلة الحالة جيدا](/learn/choosing-the-state-structure)
+* [كيفية "رفع الحالة لمستوى أعلى (lifting state up)" لمشاكارتها بين المكونات](/learn/sharing-state-between-components)
+* [كيفية التحكم في ما إذا تم حفظ الحالة أم إعادة تعيينها](/learn/preserving-and-resetting-state)
+* [كيفية تجميع منطق حالة معقد داخل دالة](/learn/extracting-state-logic-into-a-reducer)
+* [كيفية تمرير معلومات بدون "تسرب الخصائص (Props drilling)"](/learn/passing-data-deeply-with-context)
+* [كيفية توسيع إدارة الحالة مع نمو تطبيقك](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
 
-## Reacting to input with state {/*reacting-to-input-with-state*/}
+## الاستجابة للمدخلات باستخدام الحالة {/*reacting-to-input-with-state*/}
 
-With React, you won't modify the UI from code directly. For example, you won't write commands like "disable the button", "enable the button", "show the success message", etc. Instead, you will describe the UI you want to see for the different visual states of your component ("initial state", "typing state", "success state"), and then trigger the state changes in response to user input. This is similar to how designers think about UI.
+باستخدام React، لن تستطيع تعديل واجهة المستخدم (UI) عن طريق الكود مباشرة. على سبيل المثال، لن تكتب أوامر مثل "عطل الزر"، "فعل الزر"، "أظهر رسالة النجاح"، إلخ. بدلا عن ذلك، سوف تصف واجهة المستخدم التي تريد أن تراها للحالات المرئية من مكوناتك ("حالة ابتدائية (initial state)"، "حالة كتابية (typing state)"، "حالة ناجحة (success state)")، ومن بعدها تنشيط تغيرات الحالة بناء على مدخل المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم.
 
-Here is a quiz form built using React. Note how it uses the `status` state variable to determine whether to enable or disable the submit button, and whether to show the success message instead.
+هنا نموذج اختبار صمم باستخدام React. لاحظ كيف يستخدم متغير الحالة `status` لكي يحدد ما إذا سيفعل أم سيعطل زر الإرسال، وما إذا ستظهر رسالة نجاح بدلا عن ذلك.
+
 
 <Sandpack>
 
@@ -37,7 +38,7 @@ export default function Form() {
   const [status, setStatus] = useState('typing');
 
   if (status === 'success') {
-    return <h1>That's right!</h1>
+    return <h1>هذا صحيح!</h1>
   }
 
   async function handleSubmit(e) {
@@ -58,9 +59,9 @@ export default function Form() {
 
   return (
     <>
-      <h2>City quiz</h2>
+      <h2>اختبار المدينة</h2>
       <p>
-        In which city is there a billboard that turns air into drinkable water?
+        في أي مدينة يوجد لوحة إعلانية تقوم بتحويل الهواء إلى مياه صالحة للشرب؟
       </p>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -73,7 +74,7 @@ export default function Form() {
           answer.length === 0 ||
           status === 'submitting'
         }>
-          Submit
+          أرسل
         </button>
         {error !== null &&
           <p className="Error">
@@ -86,12 +87,12 @@ export default function Form() {
 }
 
 function submitForm(answer) {
-  // Pretend it's hitting the network.
+  // محاكاة للتواصل باستخدام الشبكة
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let shouldError = answer.toLowerCase() !== 'lima'
+      let shouldError = answer.toLowerCase() !== 'lima' 
       if (shouldError) {
-        reject(new Error('Good guess but a wrong answer. Try again!'));
+        reject(new Error('توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!'));
       } else {
         resolve();
       }
@@ -101,6 +102,7 @@ function submitForm(answer) {
 ```
 
 ```css
+body { direction: rtl; }
 .Error { color: red; }
 ```
 
@@ -108,15 +110,15 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-Read **[Reacting to Input with State](/learn/reacting-to-input-with-state)** to learn how to approach interactions with a state-driven mindset.
+اقرأ **[الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state)** لكي تتعلم كيفية التعامل مع التفاعلات بعقلية موجّهة بناء على الحالة.  
 
 </LearnMore>
 
-## Choosing the state structure {/*choosing-the-state-structure*/}
+## اختيار هيكل الحالة {/*choosing-the-state-structure*/}
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn't contain redundant or duplicated information. If there's unnecessary state, it's easy to forget to update it, and introduce bugs!
+هيكلة الحالة جيدا يمكن أن يصنع فارقا بين مكوّن قابل للإصلاح والتصحيح، وآخر يمثل مصدرا ثابتا للأخطاء. القاعدة الأكثر أهمية هي أنه لا يجب للحالة أن تحتوي على بيانات مكررة أو منسوخة. لو وجدت حالة غير ضرورية، فمن السهل نسيان تحديثها، وحدوث الأخطاء.
 
-For example, this form has a **redundant** `fullName` state variable:
+على سبيل المثال، هذا نموذج يتضمن متغير الحالة `fullName` **مكرر**:
 
 <Sandpack>
 
@@ -140,23 +142,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>دعنا نقم بتسجيلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        اسم العائلة:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        تذكرتك سوف تسلم لـ: <b>{fullName}</b>
       </p>
     </>
   );
@@ -164,12 +166,13 @@ export default function Form() {
 ```
 
 ```css
+body { direction: rtl; }
 label { display: block; margin-bottom: 5px; }
 ```
 
 </Sandpack>
 
-You can remove it and simplify the code by calculating `fullName` while the component is rendering:
+يمكنك حذفه وتبسيط الكود عن طريق جمع `fullName` بينما يُصيّر المكوّن:
 
 <Sandpack>
 
@@ -192,23 +195,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>دعنا نقم بتسجيلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        اسم العائلة:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        تذكرتك سوف تسلم لـ: <b>{fullName}</b>
       </p>
     </>
   );
@@ -216,24 +219,25 @@ export default function Form() {
 ```
 
 ```css
+body { direction: rtl; }
 label { display: block; margin-bottom: 5px; }
 ```
 
 </Sandpack>
 
-This might seem like a small change, but many bugs in React apps are fixed this way.
+هذا قد يبدو كتغير بسيط، ولكن كثير من الأخطاء في تطبيقات React يتم إصلاحها بهذه الطريقة. 
 
 <LearnMore path="/learn/choosing-the-state-structure">
 
-Read **[Choosing the State Structure](/learn/choosing-the-state-structure)** to learn how to design the state shape to avoid bugs.
+اقرأ **[اختيار هيكل الحالة](/learn/choosing-the-state-structure)** لتتعلم كيفية تصميم بنية الحالة لتجنب الأخطاء.
 
 </LearnMore>
 
-## Sharing state between components {/*sharing-state-between-components*/}
+## مشاركة الحالة بين المكونات {/*sharing-state-between-components*/}
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as "lifting state up", and it's one of the most common things you will do writing React code.
+أحيانا، تريد حالة مكونين أن تتغير دائما مع بعضها البعض. لعمل ذلك، احذف الحالة من كليهما، وانقلها لأقرب مكون أب مشترك، وبعد ذلك مررها لأسفل باستخدام الخصائص (props). هذا ما يعرف بـ "رفع الحالة لمستوى أعلى (lifting state up)"، وهو واحد من أكثر الأشياء شيوعا التي ستستعملها أثناء كتابتك لكود React.
 
-In this example, only one panel should be active at a time. To achieve this, instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children.
+في هذا المثال، في كل مرة يجب أن تكون قائمة واحدة فقط نشطة. لتحقيق ذلك، بدلا من حفظ الحالة النشطة داخل كل قائمة بمفردها، المكونّ الأب يحمل الحالة ويحدد الخصائص لمكوناته الأبناء. 
 
 <Sandpack>
 
@@ -244,20 +248,20 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
+      <h2>ألماتي، كازاخستان</h2>
       <Panel
-        title="About"
+        title="نبذة"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+        مع تعداد سكاني يقارب 2 مليون، ألماتي هي أكبر مدينة بكازاخستان. منذ 1929 إلى 1997 كانت هي العاصمة.
       </Panel>
       <Panel
-        title="Etymology"
+        title="أصل الكلمة"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بألماتي تعتبر الموطن الأصلي للتفاح، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح لكونه أصل للتفاح المحلي الحديث.
       </Panel>
     </>
   );
@@ -276,7 +280,7 @@ function Panel({
         <p>{children}</p>
       ) : (
         <button onClick={onShow}>
-          Show
+          أظهر
         </button>
       )}
     </section>
@@ -285,6 +289,7 @@ function Panel({
 ```
 
 ```css
+body { direction: rtl; }
 h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
@@ -296,15 +301,15 @@ h3, p { margin: 5px 0px; }
 
 <LearnMore path="/learn/sharing-state-between-components">
 
-Read **[Sharing State Between Components](/learn/sharing-state-between-components)** to learn how to lift state up and keep components in sync.
+اقرأ **[مشاركة الحالة بين المكونات](/learn/sharing-state-between-components)** لتتعلم كيفية رفع الحالة لمستوى أعلى والحفاظ على المكونّات منسجمة.
 
 </LearnMore>
 
-## Preserving and resetting state {/*preserving-and-resetting-state*/}
+## حفظ وإعادة تعيين الحالة {/*preserving-and-resetting-state*/}
 
-When you re-render a component, React needs to decide which parts of the tree to keep (and update), and which parts to discard or re-create from scratch. In most cases, React's automatic behavior works well enough. By default, React preserves the parts of the tree that "match up" with the previously rendered component tree.
+عندما تعيد تصيير مكون، React تحتاج لتقرر أىّ أجزاء شجرة المكونات تحفظها (وتحدثها)، وأيّ أجزاءها تلغيها أو تعيد إنشاءها من الصفر. في أغلب الحالات، التصرف التلقائي لـ React يعمل بشكل جيد كفاية. تحفظ React تلقائيًا أجزاء الشجرة التي "تتوافق" مع مكون الشجرة المصيّر مسبقا. 
 
-However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:
+على كل حال، أحيانا هذا ما لا تريده أنت. في تطبيق المحادثة هذا، كتابة رسالة وتغيير الطرف المستقبل لا يعيد تعيين المدخل. هذا قد يجعل المستخدم يرسل رسالة بغير قصد للشخص الخطأ.
 
 <Sandpack>
 
@@ -328,9 +333,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { name: 'Taylor', email: 'taylor@mail.com' },
-  { name: 'Alice', email: 'alice@mail.com' },
-  { name: 'Bob', email: 'bob@mail.com' }
+  { name: 'علي', email: 'ali12@mail.com' },
+  { name: 'هند', email: 'hend@mail.com' },
+  { name: 'سعد', email: 'sa2d@mail.com' }
 ];
 ```
 
@@ -367,19 +372,20 @@ export default function Chat({ contact }) {
     <section className="chat">
       <textarea
         value={text}
-        placeholder={'Chat to ' + contact.name}
+        placeholder={'تحدث مع ' + contact.name}
         onChange={e => setText(e.target.value)}
       />
       <br />
-      <button>Send to {contact.email}</button>
+      <button>أرسل لـ {contact.email}</button>
     </section>
   );
 }
 ```
 
 ```css
+body { direction: rtl; }
 .chat, .contact-list {
-  float: left;
+  float: right;
   margin-bottom: 20px;
 }
 ul, li {
@@ -399,7 +405,7 @@ textarea {
 
 </Sandpack>
 
-React lets you override the default behavior, and *force* a component to reset its state by passing it a different `key`, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a *different* `Chat` component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field--even though you render the same component.
+تعطيك React القدرة على تجاوز السلوك الافتراضي، و*إجبار* المكون إعادة تعيين حالته عن طريق تمرير `key` مختلف لها، مثل `<Chat key={email} />`. هذا يخبر React أن الطرف المستقبل مختلف، ومن الواجب تعيين مكون `Chat` *مختلف* يكون بحاجة إلى إعادة الإنشاء من الصفر ببايانات جديدة (وواجهة مستخدم مطابقة للمدخلات). الآن الانتقال بين المستقبلين يعيد تعيين حقل الإدخال -- حتى بالرغم من أنك تعيد تصيير نفس المكون.
 
 <Sandpack>
 
@@ -423,9 +429,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { name: 'Taylor', email: 'taylor@mail.com' },
-  { name: 'Alice', email: 'alice@mail.com' },
-  { name: 'Bob', email: 'bob@mail.com' }
+  { name: 'علي', email: 'ali12@mail.com' },
+  { name: 'هند', email: 'hend@mail.com' },
+  { name: 'سعد', email: 'sa2d@mail.com' }
 ];
 ```
 
@@ -462,19 +468,20 @@ export default function Chat({ contact }) {
     <section className="chat">
       <textarea
         value={text}
-        placeholder={'Chat to ' + contact.name}
+        placeholder={'تحدث مع ' + contact.name}
         onChange={e => setText(e.target.value)}
       />
       <br />
-      <button>Send to {contact.email}</button>
+      <button>أرسل لـ {contact.email}</button>
     </section>
   );
 }
 ```
 
 ```css
+body { direction: rtl; }
 .chat, .contact-list {
-  float: left;
+  float: right;
   margin-bottom: 20px;
 }
 ul, li {
@@ -496,13 +503,13 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-Read **[Preserving and Resetting State](/learn/preserving-and-resetting-state)** to learn the lifetime of state and how to control it.
+اقرأ **[حفظ وإعادة تعيين الحالة](/learn/preserving-and-resetting-state)** لتتعلم عن الحياة الزمنية للحالة وكيفية التحكم بها.
 
 </LearnMore>
 
-## Extracting state logic into a reducer {/*extracting-state-logic-into-a-reducer*/}
+## استخلاص منطق الحالة إلى مخفض (reducer) {/*extracting-state-logic-into-a-reducer*/}
 
-Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called "reducer". Your event handlers become concise because they only specify the user "actions". At the bottom of the file, the reducer function specifies how the state should update in response to each action!
+المكونات ذات تحديثات حالة كثيرة المنتشرة خلال كثير من معالجات الأحداث (event handlers) قد تصبح معقدة. لمثل هذه الأحوال، يمكنك تجميع جميع منطق تحديث الحالة خارج مكوّنك داخل دالة واحدة، تدعى "مخفض (reducer)". معالجات الأحداث خاصتك ستصبح موجزة لأنها تحدد "إجراءات (actions)" المستخدم فقط. في أسفل الملف، دالة المخفض تحدد كيف يجب أن تحدث الحالة استجابةً لكل إجراء!
 
 <Sandpack>
 
@@ -541,7 +548,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Prague itinerary</h1>
+      <h1>مخطط رحلة Prague</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -583,9 +590,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Visit Kafka Museum', done: true },
-  { id: 1, text: 'Watch a puppet show', done: false },
-  { id: 2, text: 'Lennon Wall pic', done: false }
+  { id: 0, text: 'زيارة متحف Kafka', done: true },
+  { id: 1, text: 'مشاهدة عرض الدمى', done: false },
+  { id: 2, text: 'صورة Lennon Wall', done: false }
 ];
 ```
 
@@ -597,14 +604,14 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="إضافة مهمة"
         value={text}
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('');
         onAddTask(text);
-      }}>Add</button>
+      }}>أضف</button>
     </>
   )
 }
@@ -648,7 +655,7 @@ function Task({ task, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          حفظ
         </button>
       </>
     );
@@ -657,7 +664,7 @@ function Task({ task, onChange, onDelete }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          تعديل
         </button>
       </>
     );
@@ -676,7 +683,7 @@ function Task({ task, onChange, onDelete }) {
       />
       {taskContent}
       <button onClick={() => onDelete(task.id)}>
-        Delete
+        حذف
       </button>
     </label>
   );
@@ -684,6 +691,7 @@ function Task({ task, onChange, onDelete }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
@@ -693,15 +701,15 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/extracting-state-logic-into-a-reducer">
 
-Read **[Extracting State Logic into a Reducer](/learn/extracting-state-logic-into-a-reducer)** to learn how to consolidate logic in the reducer function.
+اقرأ **[استخلاص منطق الحالة إلى مخفض (reducer)](/learn/extracting-state-logic-into-a-reducer)** لتتعلم كيفية تجميع منطق داخل دالة المخفض.
 
 </LearnMore>
 
-## Passing data deeply with context {/*passing-data-deeply-with-context*/}
+## تمرير البيانات إلى عمق باستخدام السياق (context) {/*passing-data-deeply-with-context*/}
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become inconvenient if you need to pass some prop through many components, or if many components need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
+عادة، سوف تقوم بتمرير معلومات من مكوّن أب إلى مكوّن ابن بواسطة الخصائص (props). لكن تمرير الخصائص قد يكون غير مجدٍ لو احتجت لتمرير بعض الخصائص خلال مكونات عديدة، أو لو أن العديد من المكونات تحتاج نفس المعلومات. السياق (context) يتيح للمكون الأب جعل بعض المعلومات متوفرة لأي مكون أدناه في الشجرة -لا يهم مقدار عمق المكون- بدون تمريرها مباشرة عن طريق الخصائص.
 
-Here, the `Heading` component determines its heading level by "asking" the closest `Section` for its level. Each `Section` tracks its own level by asking the parent `Section` and adding one to it. Every `Section` provides information to all components below it without passing props--it does that through context.
+هنا، المكوّن `Heading` يحدد مستوى عنوانه عن طريق "سؤال" أقرب `Section` لمستواه. كل `Section` يتتبع مستواه الخاص عن طريق سؤال `Section` الأب وإضافة واحد له. كل `Section` يقوم بتوفير معلومات لجميع المكونات أدناه دون نقل الخصائص -- وهذا يتم عبر السياق (context).
 
 <Sandpack>
 
@@ -712,19 +720,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>عنوان</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>عنوان رئيسي</Heading>
+        <Heading>عنوان رئيسي</Heading>
+        <Heading>عنوان رئيسي</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>عنوان فرعي</Heading>
+          <Heading>عنوان فرعي</Heading>
+          <Heading>عنوان فرعي</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
+            <Heading>عنوان فرعي ثانٍ</Heading>
           </Section>
         </Section>
       </Section>
@@ -783,6 +791,7 @@ export const LevelContext = createContext(0);
 ```
 
 ```css
+body { direction: rtl; }
 .section {
   padding: 10px;
   margin: 5px;
@@ -795,15 +804,15 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-Read **[Passing Data Deeply with Context](/learn/passing-data-deeply-with-context)** to learn about using context as an alternative to passing props.
+اقرأ **[تمرير البيانات إلى عمق باستخدام السياق (context)](/learn/passing-data-deeply-with-context)** لتتعلم عن استخدام السياق (context) كبديل لتمرير الخصائص.
 
 </LearnMore>
 
-## Scaling up with reducer and context {/*scaling-up-with-reducer-and-context*/}
+## التوسع بواسطة المخفض (reducer) و السياق (context) {/*scaling-up-with-reducer-and-context*/}
 
-Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+المخفضات (Reducers) تتيح لك تجميع منطق تحديث الحالة لمكون. السياق (Context) يتيح لك تمرير معلومات بعمق إلى أسفل لمكونات أخرى. يمكنك جمع المخفضات والسايق معا لتدير الحالة الخاصة بشاشة معقدة.
 
-With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+مع هذا النهج، يدير المكون الأب حالة معقدة بواسطة مخفض. المكونات الأخرى في أي عمق كانت داخل الشجرة يمكن قراءة حالتها بواسطة السياق. يمكنهم أيضا إرسال الأوامر لتحديث الحالة.
 
 <Sandpack>
 
@@ -815,7 +824,7 @@ import { TasksProvider } from './TasksContext.js';
 export default function TaskApp() {
   return (
     <TasksProvider>
-      <h1>Day off in Kyoto</h1>
+      <h1>يوم إجازة في Kyoto</h1>
       <AddTask />
       <TaskList />
     </TasksProvider>
@@ -882,9 +891,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'شارع Philosopher', done: true },
+  { id: 1, text: 'زيارة المعبد', done: false },
+  { id: 2, text: 'شراب الشاي الأخضر (matcha)', done: false }
 ];
 ```
 
@@ -898,7 +907,7 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="إضافة مهمة"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -909,7 +918,7 @@ export default function AddTask({ onAddTask }) {
           id: nextId++,
           text: text,
         });
-      }}>Add</button>
+      }}>أضف</button>
     </>
   );
 }
@@ -953,7 +962,7 @@ function Task({ task }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          حفظ
         </button>
       </>
     );
@@ -962,7 +971,7 @@ function Task({ task }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          تعديل
         </button>
       </>
     );
@@ -989,7 +998,7 @@ function Task({ task }) {
           id: task.id
         });
       }}>
-        Delete
+        حذف
       </button>
     </label>
   );
@@ -997,6 +1006,7 @@ function Task({ task }) {
 ```
 
 ```css
+body { direction: rtl; }
 button { margin: 5px; }
 li { list-style-type: none; }
 ul, li { margin: 0; padding: 0; }
@@ -1006,12 +1016,12 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-Read **[Scaling Up with Reducer and Context](/learn/scaling-up-with-reducer-and-context)** to learn how state management scales in a growing app.
+اقرأ **[التوسع بواسطة المخفض (reducer) و السياق (context)](/learn/scaling-up-with-reducer-and-context)** لتتعلم كيف توسيع إدارة الحالة في تطبيق نامٍ.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## ماذا بعد ذلك؟ {/*whats-next*/}
 
-Head over to [Reacting to Input with State](/learn/reacting-to-input-with-state) to start reading this chapter page by page!
+توجه إلى [الاستجابة للمدخلات باستخدام الحالة](/learn/reacting-to-input-with-state) لبدء قراءة هذا الفصل صفحة بصفحة!
 
-Or, if you're already familiar with these topics, why not read about [Escape Hatches](/learn/escape-hatches)?
+أو، إذا كنت بالفعل على دراية بهذه المواضيع، لماذا لا تقرأ عن  [بوابات الهروب (Escape Hatches)](/learn/escape-hatches)؟
