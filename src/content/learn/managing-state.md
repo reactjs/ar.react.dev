@@ -248,20 +248,20 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
+      <h2>ألماتي، كازاخستان</h2>
       <Panel
         title="نبذة"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        مع تعداد سكاني يقارب 2 مليون، Almaty هي أكبر مدينة بـ Kazakhstan. منذ 1929 إلى 1997 كانت هي العاصمة.
+        مع تعداد سكاني يقارب 2 مليون، ألماتي هي أكبر مدينة بكازاخستان. منذ 1929 إلى 1997 كانت هي العاصمة.
       </Panel>
       <Panel
         title="أصل الكلمة"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بـ Almaty تعتبر الموطن الأصلي للتفاح، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح لكونه أصل للتفاح المحلي الحديث.
+        الاسم مأخوذ من <span lang="kk-KZ">алма</span>، الكلمة الكازاخية التي تعني "تفاحة" وغالبا تترجم على أنها "مليئة بالتفاح". في الحقيقة، المنطقة المحيطة بألماتي تعتبر الموطن الأصلي للتفاح، والنوع البريّ <i lang="la">Malus sieversii</i> يعتبر أقرب مرشح لكونه أصل للتفاح المحلي الحديث.
       </Panel>
     </>
   );
