@@ -1,25 +1,25 @@
 ---
-title: "State: A Component's Memory"
+title: "الحالة: ذاكرة المكون"
 ---
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+غالبًا ما تحتاج المكونات إلى تغيير ما يظهر على الشاشة نتيجةً لتفاعل ما. يجب تحديث حقل الإدخال عند الكتابة في النموذج ، ويجب تغيير الصورة التي يتم عرضها عند النقر فوق "التالي" في الشرائح الدوارة(image carousel) ، ويجب وضع منتج في سلة التسوق عند النقر فوق "شراء". تحتاج المكونات إلى "تذكر" أشياء: قيمة الإدخال الحالية ، الصورة الحالية ، سلة التسوق. في React ، يُطلق على هذا النوع من الذاكرة المخصصة للمكون باسم *الحالة*.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/reference/react/useState) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+* كيفية إضافة متغير حالة باستخدام خطاف (Hook) [`useState`](/reference/react/useState) 
+* أي زوج من القيم يعيد خطاف `useState`
+* كيفية إضافة أكثر من متغير حالة واحد
+* لماذا يُطلق على الحالة اسم محلية
 
 </YouWillLearn>
 
-## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
+## عندما لا يكفي المتغير العادي {/*when-a-regular-variable-isnt-enough*/}
 
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
+هنا مكون يقوم بتقديم صورة منحوت. يجب أن يُظهر النقر على الزر "التالي" الصورة التاليه عن طريق تغيير المؤشر `index` إلى `1` ، ثم `2` ، وهكذا. ومع ذلك ، **لن يعمل** هذا (يمكنك تجربته!):
 
 <Sandpack>
 
@@ -37,7 +37,7 @@ export default function Gallery() {
   return (
     <>
       <button onClick={handleClick}>
-        Next
+        التالي
       </button>
       <h2>
         <i>{sculpture.name} </i> 
@@ -60,77 +60,77 @@ export default function Gallery() {
 
 ```js data.js
 export const sculptureList = [{
-  name: 'Homenaje a la Neurocirugía',
-  artist: 'Marta Colvin Andrade',
-  description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
+  name: 'تحية لجراحة الأعصاب',
+  artist: 'مارتا كولفين أندرادي',
+  description: 'على الرغم من أن كولفين معروفة بشكل أساسي بالمواضيع المجردة التي تلمح إلى الرموز ما قبل الهيسبانية، إلا أن هذا التمثال العملاق، تحية لجراحة الأعصاب، هو واحد من أكثر قطع الفن العامة التي يمكن التعرف عليها.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'تمثال من البرونز ليدين متقاطعتين تحملان براغين الدماغ البشري بأطراف أصابعهما بعناية.'  
 }, {
-  name: 'Floralis Genérica',
-  artist: 'Eduardo Catalano',
-  description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
+  name: 'فلوراليس جينيريكا',
+  artist: 'إدواردو كاتالانو',
+  description: 'هذه الزهرة الفضية الضخمة (75 قدمًا أو 23 مترًا) تقع في بوينس آيرس. تم تصميمها للتحرك، حيث تُغلق بتلاتها في المساء أو عندما تكون الرياح قوية وتُفتح في الصباح.',
   url: 'https://i.imgur.com/ZF6s192m.jpg',
-  alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
+  alt: 'تمثال ضخم من المعدن الفضي يتميز بتلات مرآة تعكس الضوء وسيقان قوية.'
 }, {
-  name: 'Eternal Presence',
-  artist: 'John Woodrow Wilson',
-  description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
+  name: 'الوجود الأبدي',
+  artist: 'جون وودرو ويلسون',
+  description: 'شتُهر ويلسون بشدقه بالمساواة والعدالة الاجتماعية، وكذلك الصفات الأساسية والروحية للبشرية. يمثل هذا التمثال البرونزي الضخم (7 أقدام أو 2.13 متر) ما وصفه بأنه "وجود أسود رمزي مشبوب بشعور بالإنسانية العالمية"',
   url: 'https://i.imgur.com/aTtVpES.jpg',
-  alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
+  alt: 'التمثال الذي يصوّر رأس إنسان يبدو حاضرًا وجديًا دائمًا. إنه ينبعث منه الهدوء والسكينة.'
 }, {
-  name: 'Moai',
-  artist: 'Unknown Artist',
-  description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
+  name: 'مواي',
+  artist: 'فنان مجهول',
+  description: 'تقع على جزيرة الفصح، وهناك 1000 تمثال مواي، أو تماثيل ضخمة موجودة، تم إنشاؤها من قبل شعب رابا نوي الأول في وقت مبكر، ويعتقد البعض أنها تمثل أسلافًا مجسدين.',
   url: 'https://i.imgur.com/RCwLEoQm.jpg',
-  alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
+  alt: 'ثلاثة تماثيل حجرية ضخمة لرؤوس بأوجه كبيرة نسبيًا وتعابير وجوه متجهمة.'
 }, {
-  name: 'Blue Nana',
-  artist: 'Niki de Saint Phalle',
-  description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
+  name: 'نانا الزرقاء',
+  artist: 'نيكي دي سانت فال',
+  description: 'النانا هي مخلوقات ظافرة، رموز للأنوثة والأمومة. في البداية، استخدمت سانت فال القماش والأشياء المعثور عليها للنانا، وفي وقت لاحق قدمت البوليستر لتحقيق تأثير أكثر حيوية.',
   url: 'https://i.imgur.com/Sd1AgUOm.jpg',
-  alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
+  alt: 'تمثال موزاييكي كبير لشخصية أنثوية راقصة غريبة في زي ملون تنبع منها الفرح.'
 }, {
-  name: 'Ultimate Form',
-  artist: 'Barbara Hepworth',
-  description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
+  name: 'النموذج النهائي',
+  artist: 'باربارا هيبورث',
+  description: 'هذا التمثال البرونزي المجرد هو جزء من سلسلة "عائلة الإنسان" الموجودة في حديقة يوركشاير للنحت. اختارت هيبورث عدم إنشاء تمثيلات حرفية للعالم ولكنها طوّرت أشكالًا مجردة مستوحاة من البشر والمناظر الطبيعية..',
   url: 'https://i.imgur.com/2heNQDcm.jpg',
-  alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
+  alt: 'تمثال طويل مصنوع من ثلاثة عناصر مرصوصة فوق بعضها البعض تشبه شكل إنسان.'
 }, {
-  name: 'Cavaliere',
-  artist: 'Lamidi Olonade Fakeye',
-  description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
+  name: 'كافاليير',
+  artist: 'لاميدي أولونادي فاكيهي',
+  description: "نزلت أعمال فاكيهي من أربعة أجيال من نحاتي الخشب، ودمجت أعماله بين المواضيع التقليدية واليوروبية المعاصرة.",
   url: 'https://i.imgur.com/wIdGuZwm.png',
-  alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
+  alt: 'تمثال خشبي معقد لمحارب ذو وجه مركزي على حصان مزين بزخارف.'
 }, {
-  name: 'Big Bellies',
-  artist: 'Alina Szapocznikow',
-  description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
+  name: 'بطون كبيرة',
+  artist: 'ألينا شابوتشنيكوف',
+  description: "شابوتشنيكوف معروفة بتماثيلها المكسورة للجسم كاستعارة لهشاشة وعدم الدوام للشباب والجمال. يصور هذا التمثال بطونًا كبيرة واقعية جدًا مكدسة فوق بعضها البعض، تبلغ ارتفاع كل واحدة حوالي خمسة أقدام (1.5 متر).",
   url: 'https://i.imgur.com/AlHTAdDm.jpg',
-  alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
+  alt: 'التمثال يذكر بشلال من الطيات، مختلف تمامًا عن البطون في التماثيل الكلاسيكية.'
 }, {
   name: 'Terracotta Army',
-  artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  artist: 'فنان غير معروف',
+  description: 'جيش التراكوتا هو مجموعة من تماثيل التراكوتا تصور جيوش قين شي هوانغ، أول إمبراطور للصين. يتألف الجيش من أكثر من 8000 جندي، و130 عربة مع 520 حصانًا، و150 حصانًا فرسانيًا.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
-  alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
+  alt: '12 تمثالًا من التراكوتا لمحاربين جادين، يتميز كل منهم بتعبير وجه فريد'
 }, {
-  name: 'Lunar Landscape',
-  artist: 'Louise Nevelson',
-  description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
+  name: 'منظر طبيعي قمري',
+  artist: 'لويز نيفلسون',
+  description: 'كانت نيفلسون معروفة بالتجميع من الأشياء المتناثرة في شوارع مدينة نيويورك، والتي كانت تقوم بتجميعها لاحقًا في إبداعات ضخمة. في هذا العمل، استخدمت أجزاء متنوعة مثل ساق سرير، وعصا تلاعب، وجزء من مقعد، وقامت بتثبيتها ولصقها في صناديق تعكس تأثير التجريد الهندسي للمكعبات في الفن التكعيبي على الفضاء والشكل.',
   url: 'https://i.imgur.com/rN7hY6om.jpg',
-  alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
+  alt: ' منحوتة سوداء مطفأة حيث يكون من الصعب في البداية تمييز العناصر الفردية.'
 }, {
-  name: 'Aureole',
-  artist: 'Ranjani Shettar',
-  description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
+  name: 'هالة ضوئية',
+  artist: ' رانجاني شيتار',
+  description: 'تدمج شيتار بين التقاليد والحداثة، وبين الطبيعة والصناعة. يركز فنها على العلاقة بين الإنسان والطبيعة. وقد وصفت أعمالها بأنها جذابة بشكل مجرد ومجازي، وتتحدى الجاذبية، وتمثل "توليفًا رائعًا لمواد غير متوقعة."',
   url: 'https://i.imgur.com/okTpbHhm.jpg',
-  alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
+  alt: 'منحوتة شبيهة بالأسلاك الفاتحة مركبة على جدار من الخرسانة وممتدة على الأرض. تبدو خفيفة.'
 }, {
-  name: 'Hippos',
-  artist: 'Taipei Zoo',
-  description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
+  name: 'فرسان نهر',
+  artist: 'حديقة حيوان تايبيه',
+  description: 'قد قامت حديقة حيوان تايبيه بطلب ساحة للفرسان النهريين تتضمن فرسان النهر المغمورين في اللعب.',
   url: 'https://i.imgur.com/6o5Vuyu.jpg',
-  alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
+  alt: 'مجموعة من منحوتات فرسان النهر المصنوعة من البرونز تظهر وكأنها تسبح خارجة من الرصيف كأنها تسبح.'
 }];
 ```
 
@@ -151,46 +151,46 @@ button {
 
 </Sandpack>
 
-The `handleClick` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+معالج الحدث `handleClick` يقوم بتحديث المتغير المحلي `index`. ولكن هناك عاملين يمنعان ظهور هذا التغيير:
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **المتغيرات المحلية لا تستمر بين عمليات التصيير.** عندما يقوم React بتصيير هذا المكون للمرة الثانية، فإنه يعرضه من البداية—لا يأخذ في الاعتبار أي تغييرات في المتغيرات المحلية.
+2. **التغييرات على المتغيرات المحلية لن تؤدي إلى تنشيط عمليات التصيير.** React لا يدرك أنه يحتاج إلى إعادة تصيير المكون مرة أخرى بالبيانات الجديدة.
 
-To update a component with new data, two things need to happen:
+لتحديث المكون ببيانات جديدة، تحتاج إلى حدوث شيئين:
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+1. **الاحتفاظ** بالبيانات بين عمليات التصيير.
+2. **تنشيط** React لإعادة تصيير المكون بالبيانات الجديدة (إعادة التصيير).
 
-The [`useState`](/reference/react/useState) Hook provides those two things:
+يوفر  [`useState`](/reference/react/useState) هذين العنصرين:
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+1. **متغير حالة** للاحتفاظ بالبيانات بين عمليات التصيير
+2. **دالة معينة للحالة** لتحديث المتغير وتنشيط React لإعادة تصيير المكون مرة أخرى.
 
 ## Adding a state variable {/*adding-a-state-variable*/}
 
-To add a state variable, import `useState` from React at the top of the file:
+لإضافة متغير حالة، استورد(import) `useState` من  في أعلى الملف:
 
 ```js
 import { useState } from 'react';
 ```
 
-Then, replace this line:
+ثم، استبدل هذا السطر:
 
 ```js
 let index = 0;
 ```
 
-with
+بهذا
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-`index` is a state variable and `setIndex` is the setter function.
+`index` هو متغير حالة و `setIndex` هو دالة التعيين.
 
-> The `[` and `]` syntax here is called [array destructuring](https://javascript.info/destructuring-assignment) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
+> بناء الجملة `[` و `]` هنا يسمى [تفكيك المصفوفات](https://javascript.info/destructuring-assignment) ويتيح لك قراءة القيم من مصفوفة. تحتوي المصفوفة التي يعيدها `useState` دائمًا على عنصرين بالضبط.
 
-This is how they work together in `handleClick`:
+هكذا يعملان معًا في `handleClick`:
 
 ```js
 function handleClick() {
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-Now clicking the "Next" button switches the current sculpture:
+الآن عند النقر على زر "التالي"، يتم تبديل النموذج النحتي الحالي:
 
 <Sandpack>
 
@@ -217,11 +217,11 @@ export default function Gallery() {
   return (
     <>
       <button onClick={handleClick}>
-        Next
+        التالي
       </button>
       <h2>
         <i>{sculpture.name} </i> 
-        by {sculpture.artist}
+        بواسطة {sculpture.artist}
       </h2>
       <h3>  
         ({index + 1} of {sculptureList.length})
@@ -240,77 +240,77 @@ export default function Gallery() {
 
 ```js data.js
 export const sculptureList = [{
-  name: 'Homenaje a la Neurocirugía',
-  artist: 'Marta Colvin Andrade',
-  description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
+  name: 'تحية لجراحة الأعصاب',
+  artist: 'مارتا كولفين أندرادي',
+  description: 'على الرغم من أن كولفين معروفة بشكل أساسي بالمواضيع المجردة التي تلمح إلى الرموز ما قبل الهيسبانية، إلا أن هذا التمثال العملاق، تحية لجراحة الأعصاب، هو واحد من أكثر قطع الفن العامة التي يمكن التعرف عليها.',
   url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  alt: 'تمثال من البرونز ليدين متقاطعتين تحملان براغين الدماغ البشري بأطراف أصابعهما بعناية.'  
 }, {
-  name: 'Floralis Genérica',
-  artist: 'Eduardo Catalano',
-  description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
+  name: 'فلوراليس جينيريكا',
+  artist: 'إدواردو كاتالانو',
+  description: 'هذه الزهرة الفضية الضخمة (75 قدمًا أو 23 مترًا) تقع في بوينس آيرس. تم تصميمها للتحرك، حيث تُغلق بتلاتها في المساء أو عندما تكون الرياح قوية وتُفتح في الصباح.',
   url: 'https://i.imgur.com/ZF6s192m.jpg',
-  alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
+  alt: 'تمثال ضخم من المعدن الفضي يتميز بتلات مرآة تعكس الضوء وسيقان قوية.'
 }, {
-  name: 'Eternal Presence',
-  artist: 'John Woodrow Wilson',
-  description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
+  name: 'الوجود الأبدي',
+  artist: 'جون وودرو ويلسون',
+  description: 'شتُهر ويلسون بشدقه بالمساواة والعدالة الاجتماعية، وكذلك الصفات الأساسية والروحية للبشرية. يمثل هذا التمثال البرونزي الضخم (7 أقدام أو 2.13 متر) ما وصفه بأنه "وجود أسود رمزي مشبوب بشعور بالإنسانية العالمية"',
   url: 'https://i.imgur.com/aTtVpES.jpg',
-  alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
+  alt: 'التمثال الذي يصوّر رأس إنسان يبدو حاضرًا وجديًا دائمًا. إنه ينبعث منه الهدوء والسكينة.'
 }, {
-  name: 'Moai',
-  artist: 'Unknown Artist',
-  description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
+  name: 'مواي',
+  artist: 'فنان مجهول',
+  description: 'تقع على جزيرة الفصح، وهناك 1000 تمثال مواي، أو تماثيل ضخمة موجودة، تم إنشاؤها من قبل شعب رابا نوي الأول في وقت مبكر، ويعتقد البعض أنها تمثل أسلافًا مجسدين.',
   url: 'https://i.imgur.com/RCwLEoQm.jpg',
-  alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
+  alt: 'ثلاثة تماثيل حجرية ضخمة لرؤوس بأوجه كبيرة نسبيًا وتعابير وجوه متجهمة.'
 }, {
-  name: 'Blue Nana',
-  artist: 'Niki de Saint Phalle',
-  description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
+  name: 'نانا الزرقاء',
+  artist: 'نيكي دي سانت فال',
+  description: 'النانا هي مخلوقات ظافرة، رموز للأنوثة والأمومة. في البداية، استخدمت سانت فال القماش والأشياء المعثور عليها للنانا، وفي وقت لاحق قدمت البوليستر لتحقيق تأثير أكثر حيوية.',
   url: 'https://i.imgur.com/Sd1AgUOm.jpg',
-  alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
+  alt: 'تمثال موزاييكي كبير لشخصية أنثوية راقصة غريبة في زي ملون تنبع منها الفرح.'
 }, {
-  name: 'Ultimate Form',
-  artist: 'Barbara Hepworth',
-  description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
+  name: 'النموذج النهائي',
+  artist: 'باربارا هيبورث',
+  description: 'هذا التمثال البرونزي المجرد هو جزء من سلسلة "عائلة الإنسان" الموجودة في حديقة يوركشاير للنحت. اختارت هيبورث عدم إنشاء تمثيلات حرفية للعالم ولكنها طوّرت أشكالًا مجردة مستوحاة من البشر والمناظر الطبيعية..',
   url: 'https://i.imgur.com/2heNQDcm.jpg',
-  alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
+  alt: 'تمثال طويل مصنوع من ثلاثة عناصر مرصوصة فوق بعضها البعض تشبه شكل إنسان.'
 }, {
-  name: 'Cavaliere',
-  artist: 'Lamidi Olonade Fakeye',
-  description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
+  name: 'كافاليير',
+  artist: 'لاميدي أولونادي فاكيهي',
+  description: "نزلت أعمال فاكيهي من أربعة أجيال من نحاتي الخشب، ودمجت أعماله بين المواضيع التقليدية واليوروبية المعاصرة.",
   url: 'https://i.imgur.com/wIdGuZwm.png',
-  alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
+  alt: 'تمثال خشبي معقد لمحارب ذو وجه مركزي على حصان مزين بزخارف.'
 }, {
-  name: 'Big Bellies',
-  artist: 'Alina Szapocznikow',
-  description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
+  name: 'بطون كبيرة',
+  artist: 'ألينا شابوتشنيكوف',
+  description: "شابوتشنيكوف معروفة بتماثيلها المكسورة للجسم كاستعارة لهشاشة وعدم الدوام للشباب والجمال. يصور هذا التمثال بطونًا كبيرة واقعية جدًا مكدسة فوق بعضها البعض، تبلغ ارتفاع كل واحدة حوالي خمسة أقدام (1.5 متر).",
   url: 'https://i.imgur.com/AlHTAdDm.jpg',
-  alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
+  alt: 'التمثال يذكر بشلال من الطيات، مختلف تمامًا عن البطون في التماثيل الكلاسيكية.'
 }, {
   name: 'Terracotta Army',
-  artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  artist: 'فنان غير معروف',
+  description: 'جيش التراكوتا هو مجموعة من تماثيل التراكوتا تصور جيوش قين شي هوانغ، أول إمبراطور للصين. يتألف الجيش من أكثر من 8000 جندي، و130 عربة مع 520 حصانًا، و150 حصانًا فرسانيًا.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
-  alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
+  alt: '12 تمثالًا من التراكوتا لمحاربين جادين، يتميز كل منهم بتعبير وجه فريد'
 }, {
-  name: 'Lunar Landscape',
-  artist: 'Louise Nevelson',
-  description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
+  name: 'منظر طبيعي قمري',
+  artist: 'لويز نيفلسون',
+  description: 'كانت نيفلسون معروفة بالتجميع من الأشياء المتناثرة في شوارع مدينة نيويورك، والتي كانت تقوم بتجميعها لاحقًا في إبداعات ضخمة. في هذا العمل، استخدمت أجزاء متنوعة مثل ساق سرير، وعصا تلاعب، وجزء من مقعد، وقامت بتثبيتها ولصقها في صناديق تعكس تأثير التجريد الهندسي للمكعبات في الفن التكعيبي على الفضاء والشكل.',
   url: 'https://i.imgur.com/rN7hY6om.jpg',
-  alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
+  alt: ' منحوتة سوداء مطفأة حيث يكون من الصعب في البداية تمييز العناصر الفردية.'
 }, {
-  name: 'Aureole',
-  artist: 'Ranjani Shettar',
-  description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
+  name: 'هالة ضوئية',
+  artist: ' رانجاني شيتار',
+  description: 'تدمج شيتار بين التقاليد والحداثة، وبين الطبيعة والصناعة. يركز فنها على العلاقة بين الإنسان والطبيعة. وقد وصفت أعمالها بأنها جذابة بشكل مجرد ومجازي، وتتحدى الجاذبية، وتمثل "توليفًا رائعًا لمواد غير متوقعة."',
   url: 'https://i.imgur.com/okTpbHhm.jpg',
-  alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
+  alt: 'منحوتة شبيهة بالأسلاك الفاتحة مركبة على جدار من الخرسانة وممتدة على الأرض. تبدو خفيفة.'
 }, {
-  name: 'Hippos',
-  artist: 'Taipei Zoo',
-  description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
+  name: 'فرسان نهر',
+  artist: 'حديقة حيوان تايبيه',
+  description: 'قد قامت حديقة حيوان تايبيه بطلب ساحة للفرسان النهريين تتضمن فرسان النهر المغمورين في اللعب.',
   url: 'https://i.imgur.com/6o5Vuyu.jpg',
-  alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
+  alt: 'مجموعة من منحوتات فرسان النهر المصنوعة من البرونز تظهر وكأنها تسبح خارجة من الرصيف كأنها تسبح.'
 }];
 ```
 
@@ -331,11 +331,11 @@ button {
 
 </Sandpack>
 
-### Meet your first Hook {/*meet-your-first-hook*/}
+### تعرف على الخطاف الأول الخاص بك {/*meet-your-first-hook*/}
 
-In React, `useState`, as well as any other function starting with "`use`", is called a Hook.
+في React, `useState`, بالإضافة إلى أي وظيفة أخرى تبدأ بـ "`use`" ، يُطلق عليها اسم خطاف
 
-*Hooks* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
+*الخطافات* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
 
 State is just one of those features, but you will meet the other Hooks later.
 
