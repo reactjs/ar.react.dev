@@ -124,40 +124,7 @@ export default App = AppTSX;
 النوع الذي يصف خصائص مكونك يمكن أن يكون بسيطاً أو معقداً حسب حاجتك، على الرغم من ذلك يجب أن يكونوا من نوع كائن موصوف إما بنوع `type` أو واجهة `interface`.يمكنك أن تتعلم عن كيفية وصف TypeScript للمكونات في هذا الرابط
  [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) ولكن إذا كنت أيضاً مهتماً باستخدام  [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) لوصف خاصية يمكن أن يكون نوعها واحداً من عدة أنواع مختلفة قليلاً و إرشادات [إنشاء أنواع من أنواع أخرى](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) لحالات استخدام أكثر تقدّماً.
 
-
 ## أمثلة الخطافات  {/*example-hooks*/}
-
-تعريفات النوع من `@types/react` تتضمن أنواعاً للخطافات المدمجة مع React، لذلك يمكنك استخدامهم في مكونك بدون أي إعداد إضافي. يتم بناؤها لتأخد الأكواد التي تكتبها في مكونك بعين الاعتبار، لذلك تسطيع الحصول على  [أنواع مستنتجة](https://www.typescriptlang.org/docs/handbook/type-inference.html) في معظم الأوقات وبشكل مثالي لا تحتاج للتعامل مع تفاصيل تأمين الأنواع. 
-
-علي أي حال، يمكننا إلقاء نظرة على القليل من الأمثلة في كيفية تزويد الخطافات بالأنواع.
-
-### `useState` {/*typing-usestate*/}
-
- [الخطاف `useState`](/reference/react/useState) سيعيد استخدام القيمة التي تم تمريرها إليه كقيمة ابتدائية ليحدد ما هو نوع القيمة.مثال:
-
-```ts
-// استنتاج النوع كنوع "boolean"
-const [enabled, setEnabled] = useState(false);
-```
-
-سيقوم بإسناد النوع `boolean` للقيمة `enabled`، و  `setEnabled` ستكون دالة تقبل إما `boolean` كمعامل، أو دالة تقوم بإرجاع `boolean`. إذا كنت تريد تقدم نوعاً بشكل صريح للحالة، يمكنك فعل ذلك بتقديم نوع لمعاملل  لكي تستدعي  `useState`:
-
-```ts 
-// استنتاج النوع كنوع "boolean"
-const [enabled, setEnabled] = useState<boolean>(false);
-```
-
-إنها ليست مفيدة جداً في هذه الحالة، لكن الحالة الأكثر شيوعاً حيث ربما تريد تقديم نوع يكون عندما تمتلك union type. مثال، `status` هنا يمكن أن تكون واحدة من نصوص مختلفة قليلاً:
-
-```ts
-type Status = "idle" | "loading" | "success" | "error";
-
-const [status, setStatus] = useState<Status>("idle");
-```
-
-أو، كما أوصي في [الاسس لهيكلة الحالات](/learn/choosing-the-state-structure#principles-for-structuring-state), يمكنك تجميع الحالات المرتبطة ككائن وتقوم بوصف الاحتمالات الممكنة من خلال أنواع الكائن: 
-
-```ts## أمثلة الخطافات  {/*example-hooks*/}
 
 تعريفات النوع من `@types/react` تتضمن أنواعاً للخطافات المدمجة مع React، لذلك يمكنك استخدامهم في مكونك بدون أي إعداد إضافي. يتم بناؤها لتأخد الأكواد التي تكتبها في مكونك بعين الاعتبار، لذلك تسطيع الحصول على  [أنواع مستنتجة](https://www.typescriptlang.org/docs/handbook/type-inference.html) في معظم الأوقات وبشكل مثالي لا تحتاج للتعامل مع تفاصيل تأمين الأنواع. 
 
