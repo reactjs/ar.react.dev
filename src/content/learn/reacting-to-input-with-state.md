@@ -1,37 +1,39 @@
 ---
-title: Reacting to Input with State
+title: الاستجابة للمدخلات باستخدام الحالة
 ---
 
 <Intro>
 
-React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+React توفر طريقة تصريحيّة (declarative) لتعديل واجهة المستخدم (UI). بدلا من تعديل أجزاء منفردة من واجهة المستخدم مباشرة، يمكنك وصف الحالات المختلفة التي يأخذها مكوّنك، والانتقال بينهم كاستجابة لمدخلات المستخدم. هذا مشابه لتصور المصممين عن واجهة المستخدم. 
+
 
 </Intro>
 
 <YouWillLearn>
 
-* How declarative UI programming differs from imperative UI programming
-* How to enumerate the different visual states your component can be in
-* How to trigger the changes between the different visual states from code
-
+* كيف تختلف البرمجة التصريحية لواجهة المستخدم (declarative UI programming) عن البرمجة الأمرية لواجهة المستخدم (imperative UI programming)
+* كيفية استعراض الحالات المرئية المختلفة التي يأخذها مكوّنك
+* كيفية تنشيط التغييرات بين الحالات المرئية المختلفة من خلال الكود
+  
 </YouWillLearn>
 
-## How declarative UI compares to imperative {/*how-declarative-ui-compares-to-imperative*/}
+## كيف تُقارَن واجهة المستخدم التصريحية (declarative UI) بالأمرية (imperative) {/*how-declarative-ui-compares-to-imperative*/}
 
-When you design UI interactions, you probably think about how the UI *changes* in response to user actions. Consider a form that lets the user submit an answer:
+عندما تصمم تعاملات واجهة المستخدم، عليك غالبًا التفكير في كيفية *تغيّر* واجهة المستخدم كاستجابة لاجراءات المستخدم. فكر في نموذج يسمح للمستخدم بإرسال إجابة:
 
-* When you type something into the form, the "Submit" button **becomes enabled.**
-* When you press "Submit", both the form and the button **become disabled,** and a spinner **appears.**
-* If the network request succeeds, the form **gets hidden,** and the "Thank you" message **appears.**
-* If the network request fails, an error message **appears,** and the form **becomes enabled** again.
+* عندما تكتب شيئًا داخل النموذج، الزر "أرسل" **يصبح مفعلًا.**
+* عندما تضغط على "أرسل"، كلٌ من النموذج والزر **يصبح معطلا** ومؤشر التحميل **يظهر.**
+* لو نجح طلب الشبكة، النموج **يبدأ بالاختفاء،** ورسالة "شكرًا لك" **تظهر.**
+* لو فشل طلب الشبكة، رسالة خطأٍ **تظهر،** والنموذج **يصبح مفعلًا** مجددا.
 
-In **imperative programming,** the above corresponds directly to how you implement interaction. You have to write the exact instructions to manipulate the UI depending on what just happened. Here's another way to think about this: imagine riding next to someone in a car and telling them turn by turn where to go.
+في **البرمجة الأمرية (imperative programming)**، يتوافق ما ذُكر أعلاه مباشرة مع طريقة تطبيق التعاملات. عليك أن تكتب التعليمات التامة لتعديل واجهة المستخدم معتمدا على ما حصل للتو. إليك طريقة أخرى لتفكر في هذا الأمر: تخيل نفسك راكبا إلى جانب أحدهم في سيارة مع إخباره في كل منعطف تلو الآخر عن وجهة الذهاب. 
 
 <Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="In a car driven by an anxious-looking person representing JavaScript, a passenger orders the driver to execute a sequence of complicated turn by turn navigations." />
 
-They don't know where you want to go, they just follow your commands. (And if you get the directions wrong, you end up in the wrong place!) It's called *imperative* because you have to "command" each element, from the spinner to the button, telling the computer *how* to update the UI.
+هم لا يعلمون إلى أين تريد أن تذهب، هم يتبعون أوامرك فقط. (ولو أنك أعطيتهم الاتجاهات الخاطئة، سوف ينتهي بك المطاف لوجهة خاطئة!) هذا يطلق عليه *أمري (imperative)* لأن عليك أن "تأمر" كل عنصر، بداية من مؤشر التحميل إلى الزر، مخبرًا
+الكمبيوتر عن *كيفية* تحديث واجهة المستخدم (UI).
 
-In this example of imperative UI programming, the form is built *without* React. It only uses the browser [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
+في هذا المثال للبرمجة الأمرية لواجهة المستخدم، النموذج مبنيّ *بدون* React. إنه يستخدم [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) المتصفح فقط:
 
 <Sandpack>
 
@@ -84,10 +86,10 @@ function submitForm(answer) {
   // Pretend it's hitting the network.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (answer.toLowerCase() == 'istanbul') {
+      if (answer.toLowerCase() == 'إسطنبول') {
         resolve();
       } else {
-        reject(new Error('Good guess but a wrong answer. Try again!'));
+        reject(new Error('توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!'));
       }
     }, 1500);
   });
@@ -111,17 +113,17 @@ textarea.oninput = handleTextareaChange;
 
 ```html public/index.html
 <form id="form">
-  <h2>City quiz</h2>
+  <h2>اختبار المدينة</h2>
   <p>
-    What city is located on two continents?
+    ما هي المدينة الواقعة على قارتين؟
   </p>
   <textarea id="textarea"></textarea>
   <br />
-  <button id="button" disabled>Submit</button>
-  <p id="loading" style="display: none">Loading...</p>
+  <button id="button" disabled>أرسل</button>
+  <p id="loading" style="display: none">جارٍ التحميل...</p>
   <p id="error" style="display: none; color: red;"></p>
 </form>
-<h1 id="success" style="display: none">That's right!</h1>
+<h1 id="success" style="display: none">هذا صحيح!</h1>
 
 <style>
 * { box-sizing: border-box; }
@@ -131,37 +133,36 @@ body { font-family: sans-serif; margin: 20px; padding: 0; }
 
 </Sandpack>
 
-Manipulating the UI imperatively works well enough for isolated examples, but it gets exponentially more difficult to manage in more complex systems. Imagine updating a page full of different forms like this one. Adding a new UI element or a new interaction would require carefully checking all existing code to make sure you haven't introduced a bug (for example, forgetting to show or hide something).
+تعديل واجهة المستخدم (UI) أمريًّا يعمل بشكل جيد كفاية للأمثلة المعزولة، ولكنه يصبح أكثر صعوبة بشكل استثنائي عندما تدير أنظمة أكثر تعقيدًا. تخيل تحديث صفحة مليئة بالنماذج المختلفة مثل هذه هنا. إضافة عنصر واجهة مستخدم جديد سيتطلب فحص كامل الكود الموجود بحرص للتأكد من أنك لم تقم بعمل خطأ(على سبيل المثال، نسيان إظهار أو إخفاء شيء ما).
 
-React was built to solve this problem.
+React صُنعت لحل هذه المشكلة. 
 
-In React, you don't directly manipulate the UI--meaning you don't enable, disable, show, or hide components directly. Instead, you **declare what you want to show,** and React figures out how to update the UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It's the driver's job to get you there, and they might even know some shortcuts you haven't considered!
+في React، لن تقوم بتعديل واجهة المستخدم مباشرة -- يعني أنك لن تقوم بتفعيل، تعطيل، إظهار، أو إخفاء مكوّنات مباشرة. بدلا عن ذلك، سوف **تصف ما تريده أن يظهر،** و React سوف تدبر كيفية تحديث واجهة المستخدم. فكر في أخذ سيارة أجرة وإخبار السائق إلي أين تريد أنت تذهب بدلا من إخباره إلي أين ينعطف. وظيفة السائق هي أن يوصلك إلى هناك، وربما قد يعرف اختصارات لم تأخذها أنت بالحسبان.
 
 <Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="In a car driven by React, a passenger asks to be taken to a specific place on the map. React figures out how to do that." />
 
-## Thinking about UI declaratively {/*thinking-about-ui-declaratively*/}
+## التفكير في واجهة المستخدم (UI) تصريحيًا {/*thinking-about-ui-declaratively*/}
 
-You've seen how to implement a form imperatively above. To better understand how to think in React, you'll walk through reimplementing this UI in React below:
+لقد رأيت كيفية تنفيذ نموذج أمريَّا أعلاه. لفهم أفضل لكيفية التفكير في React، سوف تمر بإعادة تنفيذ واجهة المستخدم (UI) هذه باستخدام React أدناه:
 
-1. **Identify** your component's different visual states
-2. **Determine** what triggers those state changes
-3. **Represent** the state in memory using `useState`
-4. **Remove** any non-essential state variables
-5. **Connect** the event handlers to set the state
+1. **عيّن** الحالات المرئية المختلفة لمكوّنك
+2. **حدد** ما ينشط تغيرات  تلك الحالات
+3. **مثّل** الحالة في الذاكرة باستخدام `useState`
+4. **احذف** أيّ متغيرات حالة غير ضرورية
+5. **اربط** معالجات الأحداث لتعيين الحالة
 
-### Step 1: Identify your component's different visual states {/*step-1-identify-your-components-different-visual-states*/}
+### الخطوة 1: عين الحالات المرئية المختلفة لمكوّنك {/*step-1-identify-your-components-different-visual-states*/}
 
-In computer science, you may hear about a ["state machine"](https://en.wikipedia.org/wiki/Finite-state_machine) being in one of several “states”. If you work with a designer, you may have seen mockups for different "visual states". React stands at the intersection of design and computer science, so both of these ideas are sources of inspiration.
+في علوم الحاسب، ربما تسمع عن ["آلة حالة (state machine)"](https://en.wikipedia.org/wiki/Finite-state_machine) كونها واحدة من ضمن "حالات" متعددة.إذا كنت تعمل مع مصمم، لربما رأيت نماذج تجريبية لـ"الحالات المرئية" المختلفة 
 
-First, you need to visualize all the different "states" of the UI the user might see:
+أولًا، أنت تحتاج لتصور جميع "الحالات" المختلفة لواجهة المستخدم (UI) التي قد يراها المستخدم: 
+*  **فارغة**: النموذج يحتوي زر "إرسال" معطل.
+* **كتابة**: النموذج يحتوي زر "إرسال" مفعّل.
+* **إرسال**: النموذج معطل تمامًا. يتم عرض مؤشر التحميل.
+* **نجاح**: يتم عرض رسالة "شكرًا لك" بدلًا من النموذج.
+* **خطأ**: مثل حالة الكتابة، ولكن مع رسالة خطأ إضافية
 
-* **Empty**: Form has a disabled "Submit" button.
-* **Typing**: Form has an enabled "Submit" button.
-* **Submitting**: Form is completely disabled. Spinner is shown.
-* **Success**: "Thank you" message is shown instead of a form.
-* **Error**: Same as Typing state, but with an extra error message.
-
-Just like a designer, you'll want to "mock up" or create "mocks" for the different states before you add logic. For example, here is a mock for just the visual part of the form. This mock is controlled by a prop called `status` with a default value of `'empty'`:
+تمامًا مثل المصمم، سترغب في "تجربة" أو إنشاء "نماذج تجريبية" للحالات المختلفة قبل أن تضيف المنطق. على سبيل المثال، ها هو نموذج تجريبي للجزء المرئي فقط من النموذج. هذا النموذج التجريبي متحكم به بواسطة خاصيّة تدعى `statue` مع قيمة افتراضية `'empty'`:
 
 <Sandpack>
 
@@ -170,19 +171,19 @@ export default function Form({
   status = 'empty'
 }) {
   if (status === 'success') {
-    return <h1>That's right!</h1>
+    return <h1>هذا صحيح!</h1>
   }
   return (
     <>
-      <h2>City quiz</h2>
+      <h2>اختبار المدينة</h2>
       <p>
-        In which city is there a billboard that turns air into drinkable water?
+        في أي مدينة يوجد لوحة إعلانية تقوم بتحويل الهواء لمياه صالحة للشرب؟
       </p>
       <form>
         <textarea />
         <br />
         <button>
-          Submit
+          أرسل
         </button>
       </form>
     </>
@@ -192,23 +193,23 @@ export default function Form({
 
 </Sandpack>
 
-You could call that prop anything you like, the naming is not important. Try editing `status = 'empty'` to `status = 'success'` to see the success message appear. Mocking lets you quickly iterate on the UI before you wire up any logic. Here is a more fleshed out prototype of the same component, still "controlled" by the `status` prop:
+يمكنك تسمية الخاصيّة أيّ شيء تريد، التسمية ليست مهمة. جرب تعديل `status = 'empty'` إلى `status = 'success'` لترى رسالة النجاح تظهر. التجربة تتيح لك التكرار السريع على واجهة المستخدم قبل ربط أي منطق. ها هو نموذج تجريبي أكثر تفصيلًا لنفس المكوّن، يظل "متحكم" بواسطة الخاصية `status`:
 
 <Sandpack>
 
 ```js
 export default function Form({
-  // Try 'submitting', 'error', 'success':
+  // جرب 'submitting'، 'error'، 'success':
   status = 'empty'
 }) {
   if (status === 'success') {
-    return <h1>That's right!</h1>
+    return <h1>هذا صحيح!</h1>
   }
   return (
     <>
       <h2>City quiz</h2>
       <p>
-        In which city is there a billboard that turns air into drinkable water?
+        في أي مدينة يوجد لوحة إعلانية تقوم بتحويل الهواء لمياه صالحة للشرب؟
       </p>
       <form>
         <textarea disabled={
@@ -219,11 +220,11 @@ export default function Form({
           status === 'empty' ||
           status === 'submitting'
         }>
-          Submit
+          أرسل
         </button>
         {status === 'error' &&
           <p className="Error">
-            Good guess but a wrong answer. Try again!
+            توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!
           </p>
         }
       </form>
@@ -240,9 +241,9 @@ export default function Form({
 
 <DeepDive>
 
-#### Displaying many visual states at once {/*displaying-many-visual-states-at-once*/}
+#### عرض عديد من الحالات المرئية مرة واحدة {/*displaying-many-visual-states-at-once*/}
 
-If a component has a lot of visual states, it can be convenient to show them all on one page:
+لو أن لمكون العديد من الحالات المرئية، قد يكون ملائما عرضها جميعها في صفحة واحدة: 
 
 <Sandpack>
 
@@ -262,7 +263,7 @@ export default function App() {
     <>
       {statuses.map(status => (
         <section key={status}>
-          <h4>Form ({status}):</h4>
+          <h4>نموذج ({status}):</h4>
           <Form status={status} />
         </section>
       ))}
@@ -274,7 +275,7 @@ export default function App() {
 ```js Form.js
 export default function Form({ status }) {
   if (status === 'success') {
-    return <h1>That's right!</h1>
+    return <h1>هذا صحيح!</h1>
   }
   return (
     <form>
@@ -286,11 +287,11 @@ export default function Form({ status }) {
         status === 'empty' ||
         status === 'submitting'
       }>
-        Submit
+        أرسل
       </button>
       {status === 'error' &&
         <p className="Error">
-          Good guess but a wrong answer. Try again!
+          توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!
         </p>
       }
     </form>
@@ -307,7 +308,7 @@ body { margin: 0; }
 
 </Sandpack>
 
-Pages like this are often called "living styleguides" or "storybooks".
+صفحات مثل هذه غالبًا يطلق عليها "living styleguides" أو "storybooks" 
 
 </DeepDive>
 
