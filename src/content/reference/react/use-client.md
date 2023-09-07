@@ -59,15 +59,10 @@ export default function RichTextEditor(props) {
 ## الاستخدام {/*usage*/}
 
 <Wip>
-This section is a work in progress. 
+هذا القسم لم يكتمل بعد.
 
-<<<<<<< HEAD
-هذا القسم غير مكتمل، شاهد أيضًا [توثيق Next.js لمكونات الخادم](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
 
+* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+* المزيد يأتي لاحقا...
 </Wip>
-=======
-This API can be used in any framework that supports React Server Components. You may find additional documentation from them.
-* [Next.js documentation](https://nextjs.org/docs/getting-started/react-essentials)
-* More coming soon
-</Wip>
->>>>>>> 722b54640ea8ef146ef59558100819a6bb31c252
