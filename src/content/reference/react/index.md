@@ -114,7 +114,29 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+<<<<<<< HEAD
 ## خطاطيف أخرى {/*other-hooks*/}
+=======
+## Resource Hooks {/*resource-hooks*/}
+
+*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+
+To read a value from a resource, use this Hook:
+
+- [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+
+```js
+function MessageComponent({ messagePromise }) {
+  const message = use(messagePromise);
+  const theme = use(ThemeContext);
+  // ...
+}
+```
+
+---
+
+## Other Hooks {/*other-hooks*/}
+>>>>>>> 5219d736a7c181a830f7646e616eb97774b43272
 
 هذه الخطاطيف مفيدة في الغالب لمؤلفي المكتبات ولا يتم استخدامها بشكل شائع في كود التطبيق.
 
