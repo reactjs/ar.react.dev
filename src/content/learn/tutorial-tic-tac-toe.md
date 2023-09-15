@@ -2309,13 +2309,9 @@ body {
 <li>عصام: 5 مهمات متبقية</li>
 ```
 
-<<<<<<< HEAD
 بالإضافة إلى العدادات المحدثة، فإن الإنسان الذي يقرأ هذا سيقول على الأرجح أنك قمت بتبديل ترتيب عصام وهند، وأضفت سعيد بينهما، ومع ذلك React هو برنامج حاسوبي ولا يمكنه معرفة ما كنت تقصده، لذا تحتاج إلى تحديد خاصية مفتاحية _key_ لكل عنصر في القائمة للتمييز بين كل عنصر في القائمة وإخوته. إذا كانت بياناتك من قاعدة بيانات، فيمكن استخدام معرفات قاعدة بيانات الفريدة (ID). أقصد المعرف الخاص بهند وعصام وسعيد.
 
 عندما لا يكون لديك معرفات مستقرة لتصيير العناصر، ربما تستخدم المسلسل كمفتاح كحل أخير:
-=======
-In addition to the updated counts, a human reading this would probably say that you swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and does not know what you intended, so you need to specify a _key_ property for each list item to differentiate each list item from its siblings. If your data was from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
->>>>>>> 5219d736a7c181a830f7646e616eb97774b43272
 
 ```js {1}
 <li key={user.id}>
