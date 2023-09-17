@@ -59,7 +59,10 @@ export default function RichTextEditor(props) {
 ## الاستخدام {/*usage*/}
 
 <Wip>
+هذا القسم لم يكتمل بعد.
 
-هذا القسم غير مكتمل، شاهد أيضًا [توثيق Next.js لمكونات الخادم](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
 
+* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+* المزيد يأتي لاحقا...
 </Wip>
