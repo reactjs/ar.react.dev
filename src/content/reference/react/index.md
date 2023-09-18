@@ -114,16 +114,13 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-<<<<<<< HEAD
-## خطاطيف أخرى {/*other-hooks*/}
-=======
-## Resource Hooks {/*resource-hooks*/}
+## خطاطيف المصدر {/*resource-hooks*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+يستطيع المكون الوصول *للمصادر* دون امتلاكها كجزء من حالتهم. على سبيل المثال، يمكن للمكون قراء رسالة من وعد (Promise) أو قراءة معلومات التصميم من السياق (Context).
 
-To read a value from a resource, use this Hook:
+لقراءة معلومة من مصدر استخدم هذا الخطاف:
 
-- [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+- [`use`](/reference/react/use) يسمح لك بقراء معلومة من مصدر مثل [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) أو [context](/learn/passing-data-deeply-with-context).
 
 ```js
 function MessageComponent({ messagePromise }) {
@@ -135,8 +132,8 @@ function MessageComponent({ messagePromise }) {
 
 ---
 
-## Other Hooks {/*other-hooks*/}
->>>>>>> bdc60c26848820239db732b7218d41f4c2b204af
+
+## خطاطيف أخرى {/*other-hooks*/}
 
 هذه الخطاطيف مفيدة في الغالب لمؤلفي المكتبات ولا يتم استخدامها بشكل شائع في كود التطبيق.
 
