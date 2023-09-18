@@ -312,57 +312,57 @@ body { margin: 0; }
 
 </DeepDive>
 
-### Step 2: Determine what triggers those state changes {/*step-2-determine-what-triggers-those-state-changes*/}
+###  الخطوة 2: حدد ما ينشط تغيرات تلك الحالة {/*step-2-determine-what-triggers-those-state-changes*/}
 
-You can trigger state updates in response to two kinds of inputs:
+يمكنك تنشيط تحديثات الحالة كاستجابة إلى نوعين من المدخلات:
 
-* **Human inputs,** like clicking a button, typing in a field, navigating a link.
-* **Computer inputs,** like a network response arriving, a timeout completing, an image loading.
+* **مدخلات الإنسان،** مثل الضغط على زر، الكتابة في حقل، زيارة رابط.
+* **مدخلات الكمبيوتر** مثل وصول رد الشبكة، استكمال المؤقت، تحميل الصورة
 
 <IllustrationBlock>
   <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
   <Illustration caption="Computer inputs" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
-In both cases, **you must set [state variables](/learn/state-a-components-memory#anatomy-of-usestate) to update the UI.** For the form you're developing, you will need to change state in response to a few different inputs:
+في كلتا الحالتين، **يجب عليك تعيين [متغيرات الحالة (state variables)](/learn/state-a-components-memory#anatomy-of-usestate) لتُحدّث واجهة المستخدم (UI).** من أجل النموذج الذي تطوره، سوف تحتاج لتغيير الحالة كنتيجة لقليل من المدخلات المختلفة:
 
-* **Changing the text input** (human) should switch it from the *Empty* state to the *Typing* state or back, depending on whether the text box is empty or not.
-* **Clicking the Submit button** (human) should switch it to the *Submitting* state.
+**تغيرت مدخل النص** (الإنسان) سوف يغيرها من الحالة *الفارغة* إلى حالة *الكتابة* أو العكس، يعتمد على ما إذا كان حقل النص فارغًا أم لا.
+**الضغط على زر الإرسال** (الإنسان) سوف يغيرها إلى حالة *الإرسال*
 * **Successful network response** (computer) should switch it to the *Success* state.
 * **Failed network response** (computer) should switch it to the *Error* state with the matching error message.
 
 <Note>
 
-Notice that human inputs often require [event handlers](/learn/responding-to-events)!
+لاحظ أن مدخلات الإنسان غالبًا تتطلب [معالجات أحداث (event handlers)](/learn/responding-to-events)!
 
 </Note>
 
-To help visualize this flow, try drawing each state on paper as a labeled circle, and each change between two states as an arrow. You can sketch out many flows this way and sort out bugs long before implementation.
+للمساعدة على تصوّر هذا التدفق، جرّب رسم كل حالة على ورقة كدائرة مُعنّوَنة. وكل تغيّر بين حالتين كسهم. تستطيع رسم العديد من التدفقات بهذه الطريقة وحل الأخطاء مبكرًا قبل التنفيذ.
 
 <DiagramGroup>
 
 <Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
 
-Form states
+حالات النموذج
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 3: Represent the state in memory with `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
+### الخطوة 3: مثّل الحالة في الذاكرة باستخدام `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
-Next you'll need to represent the visual states of your component in memory with [`useState`.](/reference/react/useState) Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible.** More complexity leads to more bugs!
+يلي ذلك ستحتاج لتمثّل الحالات المرئية لمكوّنك في الذاكرة باستخدام [`useState`.](/reference/react/useState) البساطة هي المفتاح: كل قطعة من الحالة هي "قطعة متحركة"، و**التقليل من "القطع المتحركة" قدر الإمكان هذا ما تريده.** ;كثرة التعقيدات تؤدي إلى كثرة الأخطاء!
 
-Start with the state that *absolutely must* be there. For example, you'll need to store the `answer` for the input, and the `error` (if it exists) to store the last error:
+ابدأ بالحالة التي *لا بدّ* من وجودها. على سبيل المثال، سوف تحتاج لتخزين الإجابة `answer` للمدخل، والخطأ `error` (لو وُجد) لتخزين آخر خطأ: 
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
-Then, you'll need a state variable representing which one of the visual states that you want to display. There's usually more than a single way to represent that in memory, so you'll need to experiment with it.
+بعد ذلك، سوف تحتاج لمتغير حالة يمثّل أي من الحالات المرئية التي تريد عرضها. يوجد غالبًا أكثر من طريقة واحدة لتمثيل ذلك في الذاكرة، لذلك سوف يتعين عليك تجريبها.
 
-If you struggle to think of the best way immediately, start by adding enough state that you're *definitely* sure that all the possible visual states are covered:
+إذا واجهت صعوبة في التفكير في أفضل طريقة على الفور، ابدا بإضافة حالة كافية حتى تكون متأكدًا *تمامًا* من تغطية جميع الحالات المرئية المحتملة: 
 
 ```js
 const [isEmpty, setIsEmpty] = useState(true);
@@ -372,19 +372,19 @@ const [isSuccess, setIsSuccess] = useState(false);
 const [isError, setIsError] = useState(false);
 ```
 
-Your first idea likely won't be the best, but that's ok--refactoring state is a part of the process!
+خطوتك المبدأئية على الأرجح لن تكون هي الأفضل، ولكن هذا لا بأس به -- إعادة تصميم الحالة هو جزء من العملية!
 
-### Step 4: Remove any non-essential state variables {/*step-4-remove-any-non-essential-state-variables*/}
+### خطوة 4: احذف أيّ متغيرات حالة غير ضرورية {/*step-4-remove-any-non-essential-state-variables*/}
 
-You want to avoid duplication in the state content so you're only tracking what is essential. Spending a little time on refactoring your state structure will make your components easier to understand, reduce duplication, and avoid unintended meanings. Your goal is to **prevent the cases where the state in memory doesn't represent any valid UI that you'd want a user to see.** (For example, you never want to show an error message and disable the input at the same time, or the user won't be able to correct the error!)
+ما تريده هو تجنب تكرار محتوى الحالة لذلك أنت فقط تقوم بتعقب ما هو ضروري. قضاء قليل من الوقت في إعادة تصميم هيكل حالتك سوف يجعل مكوّنك أسهل للفهم، يقلل التكرار، ويتجنب المعاني غير المقصودة. هدفك هو **منع الأوضاع التي تكون بها الحالة في الذاكرة لا تمثل أي واجهة مستخدم صالحة تود للمستخدم أن يراها.** )u(على سبيل المثال، لن تريد أبدًا إظهار رسالة خطأ مع تعطيل الإدخال في نفس الوقت، أو أن المستخدم لن يكون قادرًا على تصحيح الخطأ!)
 
-Here are some questions you can ask about your state variables:
+هنا بعض الاسئلة التي يمكن أن تسألها عن متغيرات الحالة:
 
-* **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`.
-* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
-* **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
+* **هل هذه الحالة تسبب معضلة؟** على سبيل المثال، `isTyping` و `isSubmitting` لا يمكن لكليهما أن يكونا بقيمة `true`. المعضلة غالبا تعني أن الحالة ليست مقيدة بالشكل الكافي. هناك أربع احتمالات ممكنة لاثنين من نوع boolean، لكن ثلاث منها فقط يوافقن حالات صالحة. لحذف الحالة "المستحيلة"، يمكنك جمع تلك الحالات داخل `status` التي يجب يجب أن تكون واحدة من ثلاث قيم: `'typing'`, `'submitting'`, أو `'success'`.
+* **هل نفس المعلومات متاحة بالفعل لمتغير حالة آخر؟** معضلة أخرى: `isEmpty` و `isTyping` لا يمكنها أن يكونا `true` في نفس الوقت. بجعلهما متغيرين حالة منفصلين، تخاطر بفقدان الترابط بينهما وإحداث الأخطاء. لحسن الحظ، يمكن حذف `isEmpty` والتحقق من `answer.length === 0` بدلًا عن ذلك.
+* **هل يمكنك الحصول على نفس المعلومات من من عكس متغير حالة آخر؟** `isError` غير ضروري لأنه يمكنك التحقق من `error !== null` بدلًا عن ذلك.
 
-After this clean-up, you're left with 3 (down from 7!) *essential* state variables:
+بعد هذا التبسيط، تبقى لديك 3 (من أصل 7!) متغيرات حالة *ضرورية*:
 
 ```js
 const [answer, setAnswer] = useState('');
@@ -392,18 +392,19 @@ const [error, setError] = useState(null);
 const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 'success'
 ```
 
-You know they are essential, because you can't remove any of them without breaking the functionality.
+أنت تعلم أنها ضرورية، لأنك لا تستطيع إزالة أيّ منها بدون تخريب آلية العمل
 
 <DeepDive>
 
-#### Eliminating “impossible” states with a reducer {/*eliminating-impossible-states-with-a-reducer*/}
+#### إزالة الحالات "المستحيلة" باستخدام مخفض (reducer) {/*eliminating-impossible-states-with-a-reducer*/}
 
-These three variables are a good enough representation of this form's state. However, there are still some intermediate states that don't fully make sense. For example, a non-null `error` doesn't make sense when `status` is `'success'`. To model the state more precisely, you can [extract it into a reducer.](/learn/extracting-state-logic-into-a-reducer) Reducers let you unify multiple state variables into a single object and consolidate all the related logic!
+هذه الثلاث متغيرات تمثيل جيد كفاية لحالة النموذج. مع ذلك، لا تزال هناك بعض الحالات المتوسطة التي لا تشكّل معنى بصورة تامة. على سبيل المثال، `error` التي لا تحمل القيمة null ليس لها معنى عندما تكون `status` تحمل قيمة `success`. لتمثيل الحالة بطريقة أكثر دقة، يمكنك [استخلاصها إلى مخفض.](/learn/extracting-state-logic-into-a-reducer) المخفضات تتيح ليك توحيد العديد من متغيرات الحالة داخل كائن (object) واحد وتجميع كل المنطق المتعلق بها.
 
 </DeepDive>
 
-### Step 5: Connect the event handlers to set state {/*step-5-connect-the-event-handlers-to-set-state*/}
+### الخطوة 5: اربط معالجات الأحداث لتعيين الحالة {/*step-5-connect-the-event-handlers-to-set-state*/}
 
+أخيرًا، إنشاء معالجات الأحداث التي تحدّث الحالة. أدناه هو النموذج النهائي، مع كل معالجات الأحداث متصلة ببعضها: 
 Lastly, create event handlers that update the state. Below is the final form, with all event handlers wired up:
 
 <Sandpack>
@@ -438,9 +439,9 @@ export default function Form() {
 
   return (
     <>
-      <h2>City quiz</h2>
+      <h2>اختبار المدينة</h2>
       <p>
-        In which city is there a billboard that turns air into drinkable water?
+        في أي مدينة يوجد لوحة إعلانية تقوم بتحويل الهواء إلى مياه صالحة للشرب؟
       </p>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -466,7 +467,7 @@ export default function Form() {
 }
 
 function submitForm(answer) {
-  // Pretend it's hitting the network.
+  // محاكاة للتواصل باستخدام الشبكة.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       let shouldError = answer.toLowerCase() !== 'lima'
@@ -486,17 +487,17 @@ function submitForm(answer) {
 
 </Sandpack>
 
-Although this code is longer than the original imperative example, it is much less fragile. Expressing all interactions as state changes lets you later introduce new visual states without breaking existing ones. It also lets you change what should be displayed in each state without changing the logic of the interaction itself.
+بالرغم من أن هذا الكود أطول من المثال الأمريّ الأصلي، إلا أنه أقل هشاشة بكثير. التعبير عن جميع الأوامر على أنها تغيّرات في الحالة يتيح لك لاحقًا إضافة حالات مرئية جديدة دون تعطيل الحالات القائمة بالفعل. كما يتيح لك أيضًا تغيير ما يجب عرضه في كل حالة دون تغيير منطق الأمر نفسه.
 
 <Recap>
 
-* Declarative programming means describing the UI for each visual state rather than micromanaging the UI (imperative).
-* When developing a component:
-  1. Identify all its visual states.
-  2. Determine the human and computer triggers for state changes.
-  3. Model the state with `useState`.
-  4. Remove non-essential state to avoid bugs and paradoxes.
-  5. Connect the event handlers to set state.
+* البرمجة التصريحية تعني وصف واجهة المستخدم لكل حالة مرئية عوضًا عن الإدارة التفصيلية لواجهة المستخدم (الأمريّة).
+* عند تطوير مكوّن:
+  1. حدد كل حالاته المرئية.
+  2. عيّن منشطات الإنسان والكمبيوتر لتغيّرات الحالة.
+  3. مثل الحالة عن طريق `useState`.
+  4. احذف الحالة غير الضرورية لتجنب الأخطاء والمعضلات.
+  5. اربط معالجات الأحداث لتعيين الحالة.
 
 </Recap>
 
