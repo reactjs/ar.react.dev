@@ -44,11 +44,13 @@ async function addToCart(data) {
 * لأن الاستدعاءات الشبكية الأساسية دائمًا غير متزامنة، يمكن استخدام `'use server'` فقط في دوال غير متزامنة (async).
 * التوجيهات مثل `'use server'` يجب أن تكون في أعلى الدالة أو الملف، فوق أي كود آخر بما في ذلك الاستيرادات (التعليقات فوق التوجيهات مقبولة). يجب كتابتها بعلامات تنصيص مفردة (`'use server'`) أو مزدوجة (`"use server"`)، وليس علامات تنصيص عكسية backticks (&#x60;`use server`&#x60;). (تشبه تنسيق التوجيهات `'use xyz'` تنسيق تسمية الـ Hooks `useXyz()`، لكن هذا التشابه محض مصادفة.)
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
 <Wip>
+هذا القسم لم يكتمل بعد.
 
-This section is incomplete. See also the [Next.js documentation for Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
 
+* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+* المزيد يأتي لاحقا...
 </Wip>
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77

@@ -89,14 +89,14 @@ permalink: community/meetups.html
 ## المجر {/*hungary*/}
 ** [بودابست](https://www.meetup.com/React-Budestival/)
 
-## الهند {/*india*/}
-** [بنغالور](https://www.meetup.com/ReactJS-Bangalore/)
-* [بنغالور](https://www.meetup.com/React-Native-Bangalore-Meetup)
-* [شانديغار](https://www.meetup.com/Chandigarh-React-Developers/)
-* [تشيناي](https://www.meetup.com/React-Chennai/)
-* [دلهي إن سي آر](https://www.meetup.com/React-Delhi-NCR/)
-* [جايبور](https://www.meetup.com/JaipurJS-Developer-Meetup/)
-* [بيون](https://www.meetup.com/ReactJS-and-Friends/)
+
+## India {/*india*/}
+* [Ahmedabad](https://www.meetup.com/react-ahmedabad/)
+* [Bangalore (React)](https://www.meetup.com/ReactJS-Bangalore/)
+* [Bangalore (React Native)](https://www.meetup.com/React-Native-Bangalore-Meetup)
+* [Chennai](https://www.meetup.com/React-Chennai/)
+* [Delhi NCR](https://www.meetup.com/React-Delhi-NCR/)
+* [Pune](https://www.meetup.com/ReactJS-and-Friends/)
 
 ## إندونيسيا {/*indonesia*/}
 ** [إندونيسيا](https://www.meetup.com/reactindonesia/)
