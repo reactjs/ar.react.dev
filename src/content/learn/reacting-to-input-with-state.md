@@ -326,10 +326,10 @@ body { margin: 0; }
 
 في كلتا الحالتين، **يجب عليك تعيين [متغيرات الحالة (state variables)](/learn/state-a-components-memory#anatomy-of-usestate) لتُحدّث واجهة المستخدم (UI).** من أجل النموذج الذي تطوره، سوف تحتاج لتغيير الحالة كنتيجة لقليل من المدخلات المختلفة:
 
-**تغيرت مدخل النص** (الإنسان) سوف يغيرها من الحالة *الفارغة* إلى حالة *الكتابة* أو العكس، يعتمد على ما إذا كان حقل النص فارغًا أم لا.
-**الضغط على زر الإرسال** (الإنسان) سوف يغيرها إلى حالة *الإرسال*
-* **Successful network response** (computer) should switch it to the *Success* state.
-* **Failed network response** (computer) should switch it to the *Error* state with the matching error message.
+* **تغيرت مدخل النص** (الإنسان) سوف يغيرها من الحالة *الفارغة* إلى حالة *الكتابة* أو العكس، يعتمد على ما إذا كان حقل النص فارغًا أم لا.
+* **الضغط على زر الإرسال** (الإنسان) سوف يغيرها إلى حالة *الإرسال*
+* **استجابة ناجحة للشبكة** (الكمبيوتر) سوف يغيرها إلى حالة *النجاح*.
+* **استجابة فاشلة للشبكة** (الكمبيوتر) سوف يغيرها إلى حالة *الخطأ* مع رسالة الخطأ المناسبة.
 
 <Note>
 
@@ -376,11 +376,11 @@ const [isError, setIsError] = useState(false);
 
 ### خطوة 4: احذف أيّ متغيرات حالة غير ضرورية {/*step-4-remove-any-non-essential-state-variables*/}
 
-ما تريده هو تجنب تكرار محتوى الحالة لذلك أنت فقط تقوم بتعقب ما هو ضروري. قضاء قليل من الوقت في إعادة تصميم هيكل حالتك سوف يجعل مكوّنك أسهل للفهم، يقلل التكرار، ويتجنب المعاني غير المقصودة. هدفك هو **منع الأوضاع التي تكون بها الحالة في الذاكرة لا تمثل أي واجهة مستخدم صالحة تود للمستخدم أن يراها.** )u(على سبيل المثال، لن تريد أبدًا إظهار رسالة خطأ مع تعطيل الإدخال في نفس الوقت، أو أن المستخدم لن يكون قادرًا على تصحيح الخطأ!)
+ما تريده هو تجنب تكرار محتوى الحالة لذلك أنت فقط تقوم بتعقب ما هو ضروري. قضاء قليل من الوقت في إعادة تصميم هيكل حالتك سوف يجعل مكوّنك أسهل للفهم، يقلل التكرار، ويتجنب المعاني غير المقصودة. هدفك هو **منع الأوضاع التي تكون بها الحالة في الذاكرة لا تمثل أي واجهة مستخدم صالحة تود للمستخدم أن يراها.** (على سبيل المثال، لن تريد أبدًا إظهار رسالة خطأ مع تعطيل الإدخال في نفس الوقت، أو أن المستخدم لن يكون قادرًا على تصحيح الخطأ!)
 
 هنا بعض الاسئلة التي يمكن أن تسألها عن متغيرات الحالة:
 
-* **هل هذه الحالة تسبب معضلة؟** على سبيل المثال، `isTyping` و `isSubmitting` لا يمكن لكليهما أن يكونا بقيمة `true`. المعضلة غالبا تعني أن الحالة ليست مقيدة بالشكل الكافي. هناك أربع احتمالات ممكنة لاثنين من نوع boolean، لكن ثلاث منها فقط يوافقن حالات صالحة. لحذف الحالة "المستحيلة"، يمكنك جمع تلك الحالات داخل `status` التي يجب يجب أن تكون واحدة من ثلاث قيم: `'typing'`, `'submitting'`, أو `'success'`.
+* **هل هذه الحالة تسبب معضلة؟** على سبيل المثال، `isTyping` و `isSubmitting` لا يمكن لكليهما أن يكونا بقيمة `true`. المعضلة غالبا تعني أن الحالة ليست مقيدة بالشكل الكافي. هناك أربع احتمالات ممكنة لقيميتين منطقيتين (boolean). لكن ثلاث منها فقط يوافقن حالات صالحة. لحذف الحالة "المستحيلة"، يمكنك جمع تلك الحالات داخل `status` التي يجب يجب أن تكون واحدة من ثلاث قيم: `'typing'`, `'submitting'`, أو `'success'`.
 * **هل نفس المعلومات متاحة بالفعل لمتغير حالة آخر؟** معضلة أخرى: `isEmpty` و `isTyping` لا يمكنها أن يكونا `true` في نفس الوقت. بجعلهما متغيرين حالة منفصلين، تخاطر بفقدان الترابط بينهما وإحداث الأخطاء. لحسن الحظ، يمكن حذف `isEmpty` والتحقق من `answer.length === 0` بدلًا عن ذلك.
 * **هل يمكنك الحصول على نفس المعلومات من من عكس متغير حالة آخر؟** `isError` غير ضروري لأنه يمكنك التحقق من `error !== null` بدلًا عن ذلك.
 
@@ -405,7 +405,6 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 ### الخطوة 5: اربط معالجات الأحداث لتعيين الحالة {/*step-5-connect-the-event-handlers-to-set-state*/}
 
 أخيرًا، إنشاء معالجات الأحداث التي تحدّث الحالة. أدناه هو النموذج النهائي، مع كل معالجات الأحداث متصلة ببعضها: 
-Lastly, create event handlers that update the state. Below is the final form, with all event handlers wired up:
 
 <Sandpack>
 
@@ -505,11 +504,11 @@ function submitForm(answer) {
 
 <Challenges>
 
-#### Add and remove a CSS class {/*add-and-remove-a-css-class*/}
+#### إضافة وحذف صنف (class) CSS { /*add-and-remove-a-css-class*/}
 
-Make it so that clicking on the picture *removes* the `background--active` CSS class from the outer `<div>`, but *adds* the `picture--active` class to the `<img>`. Clicking the background again should restore the original CSS classes.
+نفذ ذلك بحيث يكون النقر على الصورة *يحذف* صنف CSS `background--active`من الـ`<div>` الخارجي، لكن *يضيف* الصنف `picture--active` لـ`<img>`. النقر على الخلفية مجددًا يجب أن يعيد أصناف CSS الأصلية.
 
-Visually, you should expect that clicking on the picture removes the purple background and highlights the picture border. Clicking outside the picture highlights the background, but removes the picture border highlight.
+عمليًا، يمكنك توقع أن النقر على الصورة يحذف الخلفية البنفسجية ويقوم بتحديد (highlight) إطار الصورة. النقر خارج الصورة يقوم بتحديد الخلفيةـ ولكن يحذف تحديد إطار الصورة.
 
 <Sandpack>
 
@@ -558,14 +557,13 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Solution>
 
-This component has two visual states: when the image is active, and when the image is inactive:
+هذا المكوّن لديه حالتين مرئيتين: عندما تكون الصورة نشطة، وعندما تكون الصورة غير نشطة:
 
-* When the image is active, the CSS classes are `background` and `picture picture--active`.
-* When the image is inactive, the CSS classes are `background background--active` and `picture`.
+* عندما تكون الصورة نشطة، أصناف CSS هي `background` و `picture picture--active`.
+* عندما تكون الصورة غير نشطة، أصناف CSS هي `background background--active` و `picture`.
+متغير حالة قيمة منطقية (boolean) واحد كافي لتذكر ما إذا كانت نشطة. المهمة الأصلية كانت إزالة أو إضافة أصناف CSS. على أية حال، في React تحتاج لـ*تصف* ما تريد رؤيته فضلًا عن *تعديل* عناصر واجهة المستخدم. لذلك تحتاج لحساب كلا صنفيّ CSS اعتمادًا على الحالة الحالية. تحتاج أيضًا إلى [إيقاف الانتشار (propagation)](/learn/responding-to-events#stopping-propagation) بحيث لا يتم تسجيل النقر على الصورة كنقر على الخلفية. 
 
-A single boolean state variable is enough to remember whether the image is active. The original task was to remove or add CSS classes. However, in React you need to *describe* what you want to see rather than *manipulate* the UI elements. So you need to calculate both CSS classes based on the current state. You also need to [stop the propagation](/learn/responding-to-events#stopping-propagation) so that clicking the image doesn't register as a click on the background.
-
-Verify that this version works by clicking the image and then outside of it:
+تأكد من أن هذا الإصدار يعمل عن طريق النقر على الصور وخارجها:
 
 <Sandpack>
 
@@ -632,7 +630,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Alternatively, you could return two separate chunks of JSX:
+بديلًا عن ذلك، يمكنك إرجاع (return) جزئين مختلفين من JSX:
 
 <Sandpack>
 
@@ -699,27 +697,27 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Keep in mind that if two different JSX chunks describe the same tree, their nesting (first `<div>` → first `<img>`) has to line up. Otherwise, toggling `isActive` would recreate the whole tree below and [reset its state.](/learn/preserving-and-resetting-state) This is why, if a similar JSX tree gets returned in both cases, it is better to write them as a single piece of JSX.
+ضع في الحسبان أنه إذا وصف جزئين مختلفين من JSX الشجرة نفسها، فتضمينهما (أول `<div>` → أول `<img>`) يجب أن يصطف. وإلا تغيّر `isActive` سوف يعيد إنشاء الشجرة بأكملها أدناه و [يعيد تعيين حالتها.](/learn/preserving-and-resetting-state) هذا هو السبب، إذا كان يتم إرجاع شجرة JSX مشابهة في كلا الحالتين، فمن الأفضل كتابتهما على كجزء واحد من JSX.
 
 </Solution>
 
-#### Profile editor {/*profile-editor*/}
+#### محرر الملف الشخصي {/*profile-editor*/}
 
-Here is a small form implemented with plain JavaScript and DOM. Play with it to understand its behavior:
+ها هو نموذج مصغر تم تنفيذه بواسطة JavaScript و DOM خالصيّن. جربه لتفهم طريقة عمله:
 
 <Sandpack>
 
 ```js index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
-  if (editButton.textContent === 'Edit Profile') {
-    editButton.textContent = 'Save Profile';
+  if (editButton.textContent === 'عدّل الملف الشخصي') {
+    editButton.textContent = 'احفظ الملف الشخصي';
     hide(firstNameText);
     hide(lastNameText);
     show(firstNameInput);
     show(lastNameInput);
   } else {
-    editButton.textContent = 'Edit Profile';
+    editButton.textContent = 'عدّل الملف الشخصي';
     hide(firstNameInput);
     hide(lastNameInput);
     show(firstNameText);
@@ -730,7 +728,7 @@ function handleFormSubmit(e) {
 function handleFirstNameChange() {
   firstNameText.textContent = firstNameInput.value;
   helloText.textContent = (
-    'Hello ' +
+    'أهلًا ' +
     firstNameInput.value + ' ' +
     lastNameInput.value + '!'
   );
@@ -739,7 +737,7 @@ function handleFirstNameChange() {
 function handleLastNameChange() {
   lastNameText.textContent = lastNameInput.value;
   helloText.textContent = (
-    'Hello ' +
+    'أهلًا ' +
     firstNameInput.value + ' ' +
     lastNameInput.value + '!'
   );
@@ -774,7 +772,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name:
+    الأسم الأول:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -782,15 +780,15 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name:
+    اسم العائلة
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
       value="Jacobs"
       style="display: none">
   </label>
-  <button type="submit" id="editButton">Edit Profile</button>
-  <p><i id="helloText">Hello, Jane Jacobs!</i></p>
+  <button type="submit" id="editButton">عدّل الملف الشخصي</button>
+  <p><i id="helloText">أهلًا، Jane Jacobs!</i></p>
 </form>
 
 <style>
@@ -802,11 +800,11 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-This form switches between two modes: in the editing mode, you see the inputs, and in the viewing mode, you only see the result. The button label changes between "Edit" and "Save" depending on the mode you're in. When you change the inputs, the welcome message at the bottom updates in real time.
+هذا النموذج يتغيّر بين وضعين: في وضع التعديل، ترى حقول الإدخال، وفي وضع المعاينة، ترى النتيجة فقط. عنوان الزر يتغيّر ما بين "عدّل" و"احفظ" اعتمادًا على الوضع الذي أنت عليه. عندما تقوم بتغيير حقول الإدخال، رسالة الترحيب في الأسفل يتم تحديثها للوقت الحالي.
 
-Your task is to reimplement it in React in the sandbox below. For your convenience, the markup was already converted to JSX, but you'll need to make it show and hide the inputs like the original does.
+مهمتك هي إعادة تنفيذها بواسطة React في الـsandbox أدناه. لضمان راحتك، تم تحويل التوصيف (markup) إلى JSX, لكن يتعين عليك جعلها تُظهر وتُخفي المدخلات كما تفعل الأصلية.
 
-Make sure that it updates the text at the bottom, too!
+تأكد من أنها تقوم بتحد النص في الأسفل أيضًا!
 
 <Sandpack>
 
@@ -815,19 +813,19 @@ export default function EditProfile() {
   return (
     <form>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <b>Jane</b>
         <input />
       </label>
       <label>
-        Last name:{' '}
+        اسم العائلة:{' '}
         <b>Jacobs</b>
         <input />
       </label>
       <button type="submit">
-        Edit Profile
+        عدّل الملف الشخصي
       </button>
-      <p><i>Hello, Jane Jacobs!</i></p>
+      <p><i>أهلًا، Jane Jacobs!</i></p>
     </form>
   );
 }
@@ -841,9 +839,9 @@ label { display: block; margin-bottom: 20px; }
 
 <Solution>
 
-You will need two state variables to hold the input values: `firstName` and `lastName`. You're also going to need an `isEditing` state variable that holds whether to display the inputs or not. You should _not_ need a `fullName` variable because the full name can always be calculated from the `firstName` and the `lastName`.
+ستحتاج لمتغيريّ حالة لحمل قيم الإدخال: `firstName` و `lastName`. سوف تحتاج أيَا متغير حالة `isEditing` الذي يحمل ما إذا كان سيعرض حقول الإدخال أم لا. _ليس_ عليك استعمال متغير `fullName` لأن الاسم الكامل يمكن دائمًا إيجاده من الاسم الأول `firstName` واسم العائلة `lastName`.
 
-Finally, you should use [conditional rendering](/learn/conditional-rendering) to show or hide the inputs depending on `isEditing`.
+أخيرًا، يمكنك استخدام [التصيّير الشرطي](/learn/conditional-rendering) لإظهار أو إخفاء حقول الإدخال اعتمادًا على `isEditing`.
 
 <Sandpack>
 
@@ -901,27 +899,27 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Compare this solution to the original imperative code. How are they different?
+قارن بين هذا الحل والكود الأمريّ الأصلي. ما مدى الاختلاف؟
 
 </Solution>
 
-#### Refactor the imperative solution without React {/*refactor-the-imperative-solution-without-react*/}
+#### إعادة تصميم الحل الأمري بدون React {/*refactor-the-imperative-solution-without-react*/}
 
-Here is the original sandbox from the previous challenge, written imperatively without React:
+ها هي الـ sandbox الأصلية من التحدي الماضي، مكتوبة بشكل أمري بدون React:
 
 <Sandpack>
 
 ```js index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
-  if (editButton.textContent === 'Edit Profile') {
-    editButton.textContent = 'Save Profile';
+  if (editButton.textContent === 'عدّل الملف الشخصي') {
+    editButton.textContent = 'احفظ الملف الشخصي';
     hide(firstNameText);
     hide(lastNameText);
     show(firstNameInput);
     show(lastNameInput);
   } else {
-    editButton.textContent = 'Edit Profile';
+    editButton.textContent = 'عدّل الملف الشخصي';
     hide(firstNameInput);
     hide(lastNameInput);
     show(firstNameText);
@@ -932,7 +930,7 @@ function handleFormSubmit(e) {
 function handleFirstNameChange() {
   firstNameText.textContent = firstNameInput.value;
   helloText.textContent = (
-    'Hello ' +
+    'أهلًا ' +
     firstNameInput.value + ' ' +
     lastNameInput.value + '!'
   );
@@ -941,7 +939,7 @@ function handleFirstNameChange() {
 function handleLastNameChange() {
   lastNameText.textContent = lastNameInput.value;
   helloText.textContent = (
-    'Hello ' +
+    'أهلًا ' +
     firstNameInput.value + ' ' +
     lastNameInput.value + '!'
   );
@@ -976,7 +974,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name:
+    الاسم الأول:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -984,15 +982,15 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name:
+    اسم العائلة:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
       value="Jacobs"
       style="display: none">
   </label>
-  <button type="submit" id="editButton">Edit Profile</button>
-  <p><i id="helloText">Hello, Jane Jacobs!</i></p>
+  <button type="submit" id="editButton">عدّل الملف الشخصي</button>
+  <p><i id="helloText">أهلًا، Jane Jacobs!</i></p>
 </form>
 
 <style>
@@ -1004,9 +1002,9 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Imagine React didn't exist. Can you refactor this code in a way that makes the logic less fragile and more similar to the React version? What would it look like if the state was explicit, like in React?
+تصوّر لو أن React غير موجودة. هل يمكنك إعادة تصميم الكود بطريقة تجعل المنطق أقل هشاشة وأكثر مقاربة لنسخة React؟ كيف سيبدو لو كانت حالته بيّنة، كما هو الحال في React؟
 
-If you're struggling to think where to start, the stub below already has most of the structure in place. If you start here, fill in the missing logic in the `updateDOM` function. (Refer to the original code where needed.)
+إذا كنت تواجه صعوبة في تحديد من أين تبدأ، فالمُلق أدناه يحتوي أغلب الهيكل معدًّا. لو بدأت من هنا، املئ المنطق المفقود داخل الدالة `updateDOM`. (راجع الكود الكود الأصلي عند الحاجة.)
 
 <Sandpack>
 
@@ -1045,13 +1043,13 @@ function setIsEditing(value) {
 
 function updateDOM() {
   if (isEditing) {
-    editButton.textContent = 'Save Profile';
-    // TODO: show inputs, hide content
+    editButton.textContent = 'احفظ الملف الشخصي';
+    // قائمة المهام: إظهار حقول الإدخال، إخفاء المحتوى
   } else {
-    editButton.textContent = 'Edit Profile';
-    // TODO: hide inputs, show content
+    editButton.textContent = 'عدّل الملف الشخصي';
+    // قائمة المهام: إخفاء حقول الإدخال، إظهار المحتوى
   }
-  // TODO: update text labels
+  // (text labels) قائمة المهام: تحديث عنواين النص
 }
 
 function hide(el) {
@@ -1083,7 +1081,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name:
+    الاسم الأول:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -1091,15 +1089,15 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name:
+    اسم العائلة:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
       value="Jacobs"
       style="display: none">
   </label>
-  <button type="submit" id="editButton">Edit Profile</button>
-  <p><i id="helloText">Hello, Jane Jacobs!</i></p>
+  <button type="submit" id="editButton">عدّل الملف الشخصي</button>
+  <p><i id="helloText">أهلًا، Jane Jacobs!</i></p>
 </form>
 
 <style>
@@ -1113,7 +1111,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Solution>
 
-The missing logic included toggling the display of inputs and content, and updating the labels:
+المنطق المفقود تضمّن تغيير عرض حقول الإدخال والمحتوى، وتحديث العناوين: 
 
 <Sandpack>
 
@@ -1152,13 +1150,13 @@ function setIsEditing(value) {
 
 function updateDOM() {
   if (isEditing) {
-    editButton.textContent = 'Save Profile';
+    editButton.textContent = 'احفظ الملف الشخصي';
     hide(firstNameText);
     hide(lastNameText);
     show(firstNameInput);
     show(lastNameInput);
   } else {
-    editButton.textContent = 'Edit Profile';
+    editButton.textContent = 'عدّل الملف الشخصي';
     hide(firstNameInput);
     hide(lastNameInput);
     show(firstNameText);
@@ -1167,7 +1165,7 @@ function updateDOM() {
   firstNameText.textContent = firstName;
   lastNameText.textContent = lastName;
   helloText.textContent = (
-    'Hello ' +
+    'أهلًا ' +
     firstName + ' ' +
     lastName + '!'
   );
@@ -1202,7 +1200,7 @@ lastNameInput.oninput = handleLastNameChange;
 ```html public/index.html
 <form id="form">
   <label>
-    First name:
+    الاسم الأول:
     <b id="firstNameText">Jane</b>
     <input
       id="firstNameInput"
@@ -1210,15 +1208,15 @@ lastNameInput.oninput = handleLastNameChange;
       style="display: none">
   </label>
   <label>
-    Last name:
+    اسم العائلة:
     <b id="lastNameText">Jacobs</b>
     <input
       id="lastNameInput"
       value="Jacobs"
       style="display: none">
   </label>
-  <button type="submit" id="editButton">Edit Profile</button>
-  <p><i id="helloText">Hello, Jane Jacobs!</i></p>
+  <button type="submit" id="editButton">عدّل الملف الشخصي</button>
+  <p><i id="helloText">أهلًا، Jane Jacobs!</i></p>
 </form>
 
 <style>
@@ -1230,7 +1228,7 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-The `updateDOM` function you wrote shows what React does under the hood when you set the state. (However, React also avoids touching the DOM for properties that have not changed since the last time they were set.)
+الدالة `updateDOM` التي كتبتها تظهر ما تقوم به React تحت الستار عندم تقوم بتعيين الحالة. (مع ذلك، React تتجنب المس بالـ DOM لأجل الخصائص التي لم تتغير من أخر مرة تم تعيينها فيها.)
 
 </Solution>
 
