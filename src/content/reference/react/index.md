@@ -114,6 +114,25 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+## خطاطيف المصدر {/*resource-hooks*/}
+
+يستطيع المكون الوصول *للمصادر* دون امتلاكها كجزء من حالتهم. على سبيل المثال، يمكن للمكون قراء رسالة من وعد (Promise) أو قراءة معلومات التصميم من السياق (Context).
+
+لقراءة معلومة من مصدر استخدم هذا الخطاف:
+
+- [`use`](/reference/react/use) يسمح لك بقراء معلومة من مصدر مثل [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) أو [context](/learn/passing-data-deeply-with-context).
+
+```js
+function MessageComponent({ messagePromise }) {
+  const message = use(messagePromise);
+  const theme = use(ThemeContext);
+  // ...
+}
+```
+
+---
+
+
 ## خطاطيف أخرى {/*other-hooks*/}
 
 هذه الخطاطيف مفيدة في الغالب لمؤلفي المكتبات ولا يتم استخدامها بشكل شائع في كود التطبيق.
