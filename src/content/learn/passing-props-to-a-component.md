@@ -462,13 +462,8 @@ export default function Gallery() {
             (جائزة نوبل في الفيزياء، جائزة نوبل في الكيمياء، ميدالية دافي، ميدالية ماتيوتشي)
           </li>
           <li>
-<<<<<<< HEAD
             <b>اكتشفت: </b>
-            البولونيوم (عنصر)
-=======
-            <b>Discovered: </b>
-            polonium (chemical element)
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
+            البولونيوم (عنصر كيميائي)
           </li>
         </ul>
       </section>
