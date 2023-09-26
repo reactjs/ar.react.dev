@@ -463,7 +463,7 @@ export default function Gallery() {
           </li>
           <li>
             <b>اكتشفت: </b>
-            البولونيوم (عنصر)
+            البولونيوم (عنصر كيميائي)
           </li>
         </ul>
       </section>
