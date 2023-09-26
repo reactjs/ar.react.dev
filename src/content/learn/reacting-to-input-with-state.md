@@ -504,7 +504,7 @@ function submitForm(answer) {
 
 <Challenges>
 
-#### إضافة وحذف صنف (class) CSS { /*add-and-remove-a-css-class*/}
+#### إضافة وحذف صنف (class) CSS {/*add-and-remove-a-css-class*/}
 
 نفذ ذلك بحيث يكون النقر على الصورة *يحذف* صنف CSS `background--active`من الـ`<div>` الخارجي، لكن *يضيف* الصنف `picture--active` لـ`<img>`. النقر على الخلفية مجددًا يجب أن يعيد أصناف CSS الأصلية.
 
