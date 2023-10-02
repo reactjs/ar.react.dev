@@ -2109,7 +2109,6 @@ export default function Game() {
 }
 ```
 
-<<<<<<< HEAD
 يمكنك رؤية ما يجب أن يبدو عليه الكود أدناه. لاحظ أنه يجب أن ترى خطأ في أدوات المطورين يقول: 
 
 ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.``
@@ -2117,15 +2116,6 @@ export default function Game() {
 ``تحذير: يجب أن يكون لكل طفل في مصفوفة أو محدد خاصية "مفتاح key" فريدة. تحقق من طريقة التصيير لـ `Game`.``
 
  ستقوم بإصلاح هذا الخطأ في القسم التالي.
-=======
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says: 
-
-<ConsoleBlock level="warning">
-Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
-</ConsoleBlock>
-  
-You'll fix this error in the next section.
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <Sandpack>
 

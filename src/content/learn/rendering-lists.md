@@ -1086,11 +1086,7 @@ export const recipes = [{
 
 #### قائمة مع فاصل {/*list-with-a-separator*/}
 
-<<<<<<< HEAD
 هذا المثال يقوم بتصيير haiku المشهورة من قبل كاتسوشيكا هوكوسي، مع كل سطر ملتف في وسم `<p>`. عملك هو إدخال فاصل `<hr />` بين كل فقرة. يجب أن تبدو بنيتك الناتجة كما يلي:
-=======
-This example renders a famous haiku by Tachibana Hokushi, with each line wrapped in a `<p>` tag. Your job is to insert an `<hr />` separator between each paragraph. Your resulting structure should look like this:
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 ```js
 <article>
