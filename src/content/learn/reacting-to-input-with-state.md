@@ -28,7 +28,7 @@ title: الاستجابة للمدخلات باستخدام الحالة
 
 في **البرمجة الأمرية (imperative programming)**، يتوافق ما ذُكر أعلاه مباشرة مع طريقة تطبيق التعاملات. عليك أن تكتب التعليمات التامّة لتعديل واجهة المستخدم معتمدًا على ما حصل للتوّ. إليك طريقة أخرى لتفكر في هذا الأمر: تخيل نفسك راكبًا إلى جانب أحدهم في سيارة مع إخباره في كل منعطف تلو الآخر عن وجهة الذهاب. 
 
-<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="In a car driven by an anxious-looking person representing JavaScript, a passenger orders the driver to execute a sequence of complicated turn by turn navigations." />
+<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="في سيارة يقودها شخص يبدو عليه القلق يمثل جافا سكريبت، يأمر أحد الركاب السائق بتنفيذ سلسلة من المنعطفات المعقدة للتنقل." />
 
 هو لا يعلم إلى أين تريد أن تذهب، هو يتبع أوامرك فقط. (ولو أنك أعطيته الاتجاهات الخاطئة، سوف ينتهي بك المطاف لوجهة خاطئة!) هذا يطلق عليه *أمري (imperative)* لأن عليك أن "تأمر" كل عنصر، بداية من مؤشر التحميل إلى الزر، مخبرًا الكمبيوتر عن *كيفية* تحديث واجهة المستخدم (UI).
 
