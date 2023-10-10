@@ -798,4 +798,4 @@ function ItemList({ artworks, onToggle }) {
 
 إذهب الى [الإستجابة الى الاحداث](/learn/responding-to-events) لتقرأ هذا الفصل صفحة بصفحة!
 
-أو، إذا كنت تفهم هذه المواضيع بالفعل، لماذا لا تقرأ عن [التحكم فى الحالة](/learn/managing-state)؟
+أو، إذا كنت تفهم هذه المواضيع بالفعل، لماذا لا تقرأ عن [إدارة الحالة](/learn/managing-state)؟

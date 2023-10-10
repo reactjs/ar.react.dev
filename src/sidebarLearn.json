@@ -130,7 +130,7 @@
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "الاستجابة للمدخلات باستخدام الحالة",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
