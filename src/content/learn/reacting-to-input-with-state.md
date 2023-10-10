@@ -341,7 +341,7 @@ body { margin: 0; direction: rtl; }
 
 <DiagramGroup>
 
-<Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
+<Diagram name="responding_to_input_flow" height={350} width={688} alt="مخطط التدفق يتحرك من اليسار إلى اليمين مع 5 عناصر. العقدة الأولى المسماة 'فارغة' لها حافة واحدة تسمى 'بدء الكتابة' متصلة بالعقدة المسماة 'الكتابة'. تحتوي هذه العقدة على حافة واحدة تسمى 'اضغط إرسال' متصلة بعقدة تسمى 'إرسال'، والتي لها حافتان. الحافة'اليسرى تحمل علامة 'خطأ في الشبكة' وهي متصلة بعقدة تحمل اسم 'خطأ'. الحافة اليمنى تحمل علامة 'نجاح الشبكة' وتتصل بعقدة تحمل اسم 'النجاح'.">
 
 حالات النموذج
 
