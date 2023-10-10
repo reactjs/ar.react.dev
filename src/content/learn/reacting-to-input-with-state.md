@@ -138,7 +138,7 @@ body { font-family: sans-serif; margin: 20px; padding: 0; direction: rtl; }
 
 في React، لن تقوم بتعديل واجهة المستخدم مباشرة -- يعني أنك لن تقوم بتفعيل، تعطيل، إظهار، أو إخفاء مكوّنات مباشرة. بدلًا عن ذلك، سوف **تصف ما تريده أن يظهر،** و React سوف تدبر كيفية تحديث واجهة المستخدم. فكر في أخذ سيارة أجرة وإخبار السائق إلي أين تريد أنت تذهب بدلًا من إخباره إلي أين ينعطف. وظيفة السائق هي أن يوصلك إلى هناك، وربما قد يعرف اختصارات لم تأخذها أنت بالحُسبان.
 
-<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="In a car driven by React, a passenger asks to be taken to a specific place on the map. React figures out how to do that." />
+<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="في سيارة يقودها React، يطلب أحد الركاب نقله إلى مكان محدد على الخريطة. تكتشف React كيفية القيام بذلك." />
 
 ## التفكير في واجهة المستخدم (UI) تصريحيًا {/*thinking-about-ui-declaratively*/}
 
