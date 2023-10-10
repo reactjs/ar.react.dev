@@ -321,7 +321,7 @@ body { margin: 0; direction: rtl; }
 
 <IllustrationBlock>
   <Illustration caption="مدخلات الإنسان" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
-  <Illustration caption="مدخلات الكمبيوتر" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
+  <Illustration caption="مدخلات الكمبيوتر" alt="آحاد وأصفار" src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
 في كلتا الحالتين، **يجب عليك تعيين [متغيرات الحالة (state variables)](/learn/state-a-components-memory#anatomy-of-usestate) لتُحدّث واجهة المستخدم (UI).** من أجل تطوير النموذج سوف تحتاج لتغيير الحالة كنتيجة لبعض من المدخلات المختلفة:
