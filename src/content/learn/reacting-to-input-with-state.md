@@ -320,7 +320,7 @@ body { margin: 0; direction: rtl; }
 * **مدخلات الكمبيوتر،** مثل وصول رد الشبكة، أو استكمال المؤقت، أو تحميل الصورة.
 
 <IllustrationBlock>
-  <Illustration caption="مدخلات الإنسان" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
+  <Illustration caption="مدخلات الإنسان" alt="إصبع" src="/images/docs/illustrations/i_inputs1.png" />
   <Illustration caption="مدخلات الكمبيوتر" alt="آحاد وأصفار" src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
