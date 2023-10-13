@@ -1,28 +1,26 @@
 ---
-title: استخدام Typescript
+title: استخدام TypeScript
 re: https://github.com/reactjs/react.dev/issues/5960
 ---
 
 <Intro>
 
-استخدام TypeScript هو طريقة شائعة لإضافة تعريفات النوع لأكواد JavaScript التقليدية. بطريقة مبتكرة، TypeScript [تدعم JSX](/learn/writing-markup-with-jsx) ويمكنك الحصول على الدعم Typescript لمكتبة React بشكل كامل عند إضافة [`@types/react`](https://www.npmjs.com/package/@types/react) و [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) لمشروعك.
-
-
+استخدام TypeScript هو طريقة شائعة لإضافة تعريفات النوع لأكواد JavaScript التقليدية. TypeScript تدعم [JSX](/learn/writing-markup-with-jsx) بطريقة مبتكرة. ويمكنك الاستفادة من دعم TypeScript بإضافة [`@types/react`](https://www.npmjs.com/package/@types/react) و [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) لمشروعك.
 
 </Intro>
 
 <YouWillLearn>
 
-* [TypeScript مع مكونات React](/learn/typescript#typescript-with-react-components)
-* [أمثلة عن الكتابة مع الخطافات Hooks](/learn/typescript#example-hooks)
+* [TypeScript في مكونات React](/learn/typescript#typescript-with-react-components)
+* [أمثلة على استخدامها مع الخطافات Hooks](/learn/typescript#example-hooks)
 * [أنواع شائعة من `@types/react`](/learn/typescript/#useful-types)
-* [أماكن للتعلم بشكل أبعد وأعمق](/learn/typescript/#further-learning)
+* [أماكن للتعلم بشكل أعمق](/learn/typescript/#further-learning)
 
 </YouWillLearn>
 
-## التحميل {/*installation*/}
+## التثبيت {/*installation*/}
 
-جميع [أُطر عمل React الإنتاجية](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks) توفر دعماً لاستخدام TypeScript. اتبع إرشادات إطار العمل التي تبيّن طريقة التحميل:
+جميع [أُطر عمل React الإنتاجية](/learn/start-a-new-react-project#production-grade-react-frameworks) توفر دعماً لاستخدام TypeScript. اتبع إرشادات إطار العمل التي تبيّن طريقة التحميل:
 
 - [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -124,7 +122,7 @@ export default App = AppTSX;
 النوع الذي يصف خصائص مكونك يمكن أن يكون بسيطاً أو معقداً حسب حاجتك، على الرغم من ذلك يجب أن يكونوا من نوع كائن موصوف إما بنوع `type` أو واجهة `interface`.يمكنك أن تتعلم عن كيفية وصف TypeScript للمكونات في هذا الرابط
  [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) ولكن إذا كنت أيضاً مهتماً باستخدام  [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) لوصف خاصية يمكن أن يكون نوعها واحداً من عدة أنواع مختلفة قليلاً و إرشادات [إنشاء أنواع من أنواع أخرى](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) لحالات استخدام أكثر تقدّماً.
 
-## أمثلة الخطافات  {/*example-hooks*/}
+## أمثلة الخطافات {/*example-hooks*/}
 
 تعريفات النوع من `@types/react` تتضمن أنواعاً للخطافات المدمجة مع React، لذلك يمكنك استخدامهم في مكونك بدون أي إعداد إضافي. يتم بناؤها لتأخد الأكواد التي تكتبها في مكونك بعين الاعتبار، لذلك تسطيع الحصول على  [أنواع مستنتجة](https://www.typescriptlang.org/docs/handbook/type-inference.html) في معظم الأوقات وبشكل مثالي لا تحتاج للتعامل مع تفاصيل تأمين الأنواع. 
 
