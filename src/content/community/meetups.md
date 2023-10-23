@@ -53,10 +53,20 @@ permalink: community/meetups.html
 ## الصين {/*china*/}
 ** [بكين](https://www.meetup.com/Beijing-ReactJS-Meetup/)
 
+<<<<<<< HEAD
 ## كولومبيا {/*colombia*/}
 ** [بوغوتا](https://www.meetup.com/meetup-group-iHIeHykY/)
 * [ميديلين](https://www.meetup.com/React-Medellin/)
 * [كالي](https://www.meetup.com/reactcali/)
+=======
+## Canada {/*canada*/}
+* [Halifax, NS](https://www.meetup.com/Halifax-ReactJS-Meetup/)
+* [Montreal, QC - React Native](https://www.meetup.com/fr-FR/React-Native-MTL/)
+* [Vancouver, BC](https://www.meetup.com/ReactJS-Vancouver-Meetup/)
+* [Ottawa, ON](https://www.meetup.com/Ottawa-ReactJS-Meetup/)
+* [Saskatoon, SK](https://www.meetup.com/saskatoon-react-meetup/)
+* [Toronto, ON](https://www.meetup.com/Toronto-React-Native/events/)
+>>>>>>> a0cacd7d3a89375e5689ccfba0461e293bfe9eeb
 
 ## الدنمارك {/*denmark*/}
 * 
