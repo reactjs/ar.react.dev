@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "خطاطيف مدمجة في React"
 ---
 
@@ -7,10 +8,19 @@ title: "خطاطيف مدمجة في React"
  تمكنك *الخطاطيف* (Hooks) من استخدام مزايا مختلفة من React في مكوناتك. يمكنك إما استخدام الخطاطيف المدمجة (المبنية مسبقا)، أو استخدامها لبناء الخطاف الخاص بك. ستريك هذه الصفحة جميع الخطاطيف المبنية مسبقًا في React.
 
 
-</Intro>
-
+=======
+title: React Reference Overview
 ---
 
+<Intro>
+This section provides detailed reference documentation for working with React. 
+For an introduction to React, please visit the [Learn](/learn) section. 
+>>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
+</Intro>
+
+Our The React reference documentation is broken down into functional subsections: 
+
+<<<<<<< HEAD
 ## خطاطيف الحالة (State) {/*state-hooks*/}
 
 تسمح *الحالة* للمكون ["بتذكر" معلومات مثل إدخالات المستخدم](/learn/state-a-components-memory). على سبيل المثال، يمكن لمكوّن النموذج Form استخدام الحالة لتخزين قيمة الإدخال، بينما يمكن لمكون معرض الصور استخدام الحالة لتخزين رقم الصورة المختارة.
@@ -146,3 +156,24 @@ function MessageComponent({ messagePromise }) {
 ## الخطاطيف الخاصة بك {/*your-own-hooks*/}
 
  يمكنك أيضًا [تعريف الخطاطيف المخصصة](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) الخاصة بك كدوال JavaScript.
+=======
+## React {/*react*/}
+Programmatic React features:  
+* [Hooks](/reference/react/hooks) - Use different React features from your components.
+* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
+* [APIs](/reference/react/apis) - APIs that are useful for defining components. 
+* [Directives](/reference/react/directives) - Provide instructions to bundlers compatible with React Server Components.
+
+## React DOM {/*react-dom*/}
+React-dom contains features that are only supported for web applications 
+(which run in the browser DOM environment). This section is broken into the following:
+
+* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
+* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
+* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
+* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser). 
+* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+
+## Legacy APIs {/*legacy-apis*/}
+* [Legacy APIs](/reference/react/legacy) - Exported from the react package, but not recommended for use in newly written code. 
+>>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
