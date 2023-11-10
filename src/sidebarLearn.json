@@ -37,6 +37,10 @@
           "path": "/learn/editor-setup"
         },
         {
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
           "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
         }
@@ -68,7 +72,7 @@
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "Passing Props to a Component",
+          "title": " تمرير الخصائص إلى مكوّن",
           "path": "/learn/passing-props-to-a-component"
         },
         {
@@ -80,13 +84,13 @@
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "Keeping Components Pure",
+          "title": "الحفاظ على نقاء المكونّات",
           "path": "/learn/keeping-components-pure"
         }
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
@@ -121,12 +125,12 @@
       ]
     },
     {
-      "title": "Managing State",
+      "title": "إدارة الحالة",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "الاستجابة للمدخلات باستخدام الحالة",
           "path": "/learn/reacting-to-input-with-state"
         },
         {

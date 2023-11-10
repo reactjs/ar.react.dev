@@ -33,11 +33,9 @@ title: "<progress>"
 يدعم `<progress>` جميع  [خصائص العناصر الشائعة](/reference/react-dom/components/common#props)
 
 بالإضافة إلى ذالك، يدعم `<progress>` هذه الخصائص:
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): رقم. يحدد القيمة `value` القصوى. القيمة الافتراضية هي `1`.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value): رقم بين `0` و `max`، أو `null` للتقدم غير المحدد. يحدد مدى الانجاز.
 
-* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max): رقم. يحدد القيمة `value` القصوى. القيمة الافتراضية هي `1`.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value): رقم بين `0` و `max`، أو `null` للتقدم غير المحدد. يحدد مدى الانجاز.
-
----
 
 ## الاستخدام {/*usage*/}
 

@@ -1,19 +1,16 @@
 ---
 title: "'use server'"
+canary: true
 ---
 
-<Wip>
-
-This section is incomplete.
-
-These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
-
-</Wip>
+<Canary>
+هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
+</Canary>
 
 
 <Intro>
 
-`'use server'` marks server-side functions that can be called from client-side code.
+`'use server'` يميّز دوال الخادم (server-side functions) التي يمكن استدعاؤها في الكود من جانب العميل (client-side).
 
 </Intro>
 
@@ -21,11 +18,11 @@ These directives are needed only if you're [using React Server Components](/lear
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `'use server'` {/*use-server*/}
 
-Add `'use server';` at the very top of an async function to mark that the function can be executed by the client.
+أضف `'use server';` في أعلى دالة غير متزامنة (async) لتمييز أن الدالة يمكن تنفيذها من قبل العميل.
 
 ```js
 async function addToCart(data) {
@@ -36,13 +33,24 @@ async function addToCart(data) {
 // <ProductDetailPage addToCart={addToCart} />
 ```
 
-This function can be passed to the client. When called on the client, it will make a network request to the server that includes a serialized copy of any arguments passed. If the server function returns a value, that value will be serialized and returned to the client.
+يمكن تمرير هذه الدالة إلى العميل، عندما تُستدعى، ستنفذ طلب شبكة إلى الخادم يتضمن نسخة متسلسلة من أي معاملات تم تمريرها. إذا كانت دالة الخادم ترجع قيمة، سيتم تسلسلها وإرجاعها إلى العميل.
 
-Alternatively, add `'use server';` at the very top of a file to mark all exports within that file as async server functions that can be used anywhere, including imported in client component files.
+أو بدلا من ذلك، أضف `'use server';` في أعلى ملف لتمييز كل التصديرات في هذا الملف كدوال خادم غير متزامنة يمكن استخدامها في أي مكان، بما في ذلك استيرادها في ملفات مكونات العميل.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* Remember that parameters to functions marked with `'use server'` are fully client-controlled. For security, always treat them as untrusted input, making sure to validate and escape the arguments as appropriate.
-* To avoid the confusion that might result from mixing client- and server-side code in the same file, `'use server'` can only be used in server-side files; the resulting functions can be passed to client components through props.
-* Because the underlying network calls are always asynchronous, `'use server'` can be used only on async functions.
-* Directives like `'use server'` must be at the very beginning of their function or file, above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks. (The `'use xyz'` directive format somewhat resembles the `useXyz()` Hook naming convention, but the similarity is coincidental.)
+* تذكر أن المعاملات الممررة إلى دالة مميزة بـ `'use server'` متحكم بها بالكامل من جانب العميل. للأمان، عاملها دائمًا كإدخال غير موثوق به، وتأكد من التحقق من صحتها وتصفيتها كما يناسبك.
+* لتجنب الارتباك الذي قد يحدثه خلط الكود من جانب العميل والخادم في نفس الملف، يمكن استخدام `'use server'` فقط في ملفات الخادم؛ يمكن تمرير الدوال الناتجة إلى مكونات العميل عبر الخصائص.
+* لأن الاستدعاءات الشبكية الأساسية دائمًا غير متزامنة، يمكن استخدام `'use server'` فقط في دوال غير متزامنة (async).
+* التوجيهات مثل `'use server'` يجب أن تكون في أعلى الدالة أو الملف، فوق أي كود آخر بما في ذلك الاستيرادات (التعليقات فوق التوجيهات مقبولة). يجب كتابتها بعلامات تنصيص مفردة (`'use server'`) أو مزدوجة (`"use server"`)، وليس علامات تنصيص عكسية backticks (&#x60;`use server`&#x60;). (تشبه تنسيق التوجيهات `'use xyz'` تنسيق تسمية الـ Hooks `useXyz()`، لكن هذا التشابه محض مصادفة.)
+
+## الاستخدام {/*usage*/}
+
+<Wip>
+هذا القسم لم يكتمل بعد.
+
+يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
+
+* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+* المزيد يأتي لاحقا...
+</Wip>

@@ -272,7 +272,7 @@ td {
 
 إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`. 
 
-أضف الحالات للمكون باستخدام [خطاف `useState()`.](/reference/react/useState) الخطافات (Hooks) عبارة عن دوال خاصة تسمح لك أن "تربط" مكوناتك بنظام React. أضف متغيرا لكل حالة في بداية الكود الخاص بالمكون `FilterableProductTable` وحدد حالتهم الأولية:
+أضف الحالات للمكون باستخدام [خطاف `useState()`.](/reference/react/useState) الخطاطيف (Hooks) عبارة عن دوال خاصة تسمح لك أن "تربط" مكوناتك بنظام React. أضف متغيرا لكل حالة في بداية الكود الخاص بالمكون `FilterableProductTable` وحدد حالتهم الأولية:
 
 ```js
 function FilterableProductTable({ products }) {

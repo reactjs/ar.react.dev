@@ -21,13 +21,12 @@ title: ابدأ مشروع React جديد
 **[Next.js](https://nextjs.org/) هو إطار عمل React كامل (full-stack).** متعدد الاستخدامات حيث يمكّنك من إنشاء تطبيق React بأي حجم -  من مدونة أغلبها ثابت إلى تطبيق دايناميكي معقد. لإنشاء مشروع Next.js جديد، نفذ في موجه الأوامر (terminal):
 
 <TerminalBlock>
-npx create-next-app
+npx create-next-app@latest
 </TerminalBlock>
 
 لتعلّم Next.js، اطلع على [الدرس تعليمي لـ Next.js](https://nextjs.org/learn/foundations/about-nextjs)
 
-
-يتم الإشراف على Next.js من قبل [Vercel](https://vercel.com/). تستطيع [نشر تطبيق Next.js](https://nextjs.org/docs/deployment) على أي استضافة Node.js أو serverless، أو خادمك الخاص. [تطبيقات Next.js الثابتة بالكامل](https://nextjs.org/docs/advanced-features/static-html-export) يمكن نشرها على أي استضافة ثابتة.
+يتم الإشراف على Next.js من قبل [Vercel](https://vercel.com/). تستطيع [نشر تطبيق Next.js](https://nextjs.org/docs/app/building-your-application/deploying) على أي استضافة Node.js أو serverless، أو خادمك الخاص. [تطبيقات Next.js الثابتة بالكامل](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) يمكن نشرها على أي استضافة ثابتة.
 
 ### Remix {/*remix*/}
 
@@ -95,13 +94,7 @@ npx create-expo-app
 
 **[موجه تطبيق Next.js](https://beta.nextjs.org/docs/getting-started) هو عبارة عن إعادة تصميم للواجهات البرمجية (APIs) الخاصة بـNext.js بهدف تحقيق رؤية فريق React للمعمارية الكاملة (full-stack).** يتيح لك جلب البيانات في مكوّنات غير متزامنة (asynchronous components) تعمل على الخادم أو حتى أثناء البناء.
 
-تتم إدارة Next.js من قبل [Vercel](https://vercel.com/). يمكنك [نشر تطبيق Next.js](https://nextjs.org/docs/deployment) على أي استضافة Node.js أو serverless، أو خادمك الخاص. أيضا Next.js تدعم [التصدير الثابت (static export)](https://beta.nextjs.org/docs/configuring/static-export) والذي لا يحتاج إلى خادم.
-
-<Pitfall>
-
-موجه تطبيق Next.js  **حاليًا في المرحلة التجريبية ولا ينصح باستخدامه بالإنتاج بعد** (مارس 2023). لتجربته في مشروع Next.js موجود، [اتبع هذا الدليل للترحيل التدريجي](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app).
-
-</Pitfall>
+يتم الإشراف على Next.js من قبل [Vercel](https://vercel.com/). تستطيع [نشر تطبيق Next.js](https://nextjs.org/docs/app/building-your-application/deploying) على أي استضافة Node.js أو serverless، أو خادمك الخاص. [تطبيقات Next.js الثابتة بالكامل](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) يمكن نشرها على أي استضافة ثابتة.
 
 <DeepDive>
 
