@@ -66,7 +66,7 @@ const root = hydrateRoot(domNode, reactNode);
 root.render(<App />);
 ```
 
-ستحدث React <App /> في `root` المُجَمّع.
+ستحدث React `<App />` في `root` المُجَمّع.
 
 [شاهد المزيد من الأمثلة أدناه.](#usage)
 

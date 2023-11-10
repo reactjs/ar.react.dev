@@ -35,13 +35,13 @@ const root = createRoot(domNode);
 root.render(<App />);
 ```
 
-يتم عادة إنشاء التطبيق بالكامل باستخدام React بنداء واحد فقط لـ `createRoot` للمكون الجذر. قد يحتوي الموقع الذي يستخدم React لأجزاء من الصفحة على عدد من نقاط البداية الفردية حسب الحاجة.
+يتم عادة إنشاء التطبيق بالكامل باستخدام React بنداء واحد فقط لـ `createRoot` في المكون الجذر. قد يحتوي الموقع الذي يستخدم React لأجزاء محددة من الصفحة على عدد من نقاط البداية الفردية حسب الحاجة.
 
 [انظر المزيد من الأمثلة أدناه.](#usage)
 
 #### المعاملات {/*parameters*/}
 
-* `domNode`: عنصر [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element) يقوم React بإنشاء جذر لهذا العنصر ويتيح لك استدعاء الدوال على الجذر مثل `render` لعرض المحتوى المعروض بواسطة React.
+* `domNode`: عنصر [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element) يقوم React بإنشاء جذر لهذا العنصر ويتيح لك استدعاء الدوال على الجذر مثل `render` لعرض المحتوى الذي تنشئه React.
 
 * `options` **اختياري**: كائن يحتوي على خيارات لجذر React هذا.
 
@@ -53,7 +53,7 @@ root.render(<App />);
 يعيد `createRoot` كائنًا يحتوي على طريقتين: [`render`](#root-render) و [`unmount`](#root-unmount).
 
 #### ملاحظات {/*caveats*/}
-* إذا كان تطبيقك يتم عرضه من الخادم، فإن استخدام `createRoot()` غير مدعوم. استخدم [`hydrateRoot()`](/reference/react-dom/client/hydrateRoot) بدلاً من ذلك.
+* إذا كان تطبيقك يتم عرضه من الخادم SSR، فإن استخدام `createRoot()` غير مدعوم. استخدم [`hydrateRoot()`](/reference/react-dom/client/hydrateRoot) بدلاً من ذلك.
 * من المرجح أن لديك استدعاء واحد فقط لـ `createRoot` في تطبيقك. إذا كنت تستخدم إطار عمل، فقد يستدعيها الإطار نيابةً عنك.
 * عندما ترغب في عرض جزء من JSX في جزء آخر من شجرة DOM التي ليست طفلًا للمكون الخاص بك (على سبيل المثال، نافذة محادثة، أو توضيح Tooltip)، استخدم [`createPortal`](/reference/react-dom/createPortal) بدلاً من `createRoot`.
 
@@ -118,7 +118,7 @@ root.unmount();
 #### ملاحظات {/*root-unmount-caveats*/}
 
 * استدعاء `root.unmount` سيلغي تثبيت جميع المكونات في الشجرة ويفصل React عن عنصر DOM الجذر.
-* بمجرد استدعاء `root.unmount`، لا يمكنك استدعاء `root.render` مرة أخرى على نفس الجذر. ستؤدي محاولة استدعاء `root.render` على جذر غير مثبتة إلى إطلاق خطأ "Cannot update an unmounted root". ومع ذلك، يمكنك إنشاء جذر جديد لنفس عنصر DOM بعد إلغاء تثبيت الجذر السابقة لذلك العنصر.
+* بمجرد استدعاء `root.unmount`، لا يمكنك استدعاء `root.render` مرة أخرى على نفس الجذر. ستؤدي محاولة استدعاء `root.render` على جذر غير مثبتة إلى إطلاق خطأ `"Cannot update an unmounted root"`. ومع ذلك، يمكنك إنشاء جذر جديد لنفس عنصر DOM بعد إلغاء تثبيت الجذر السابقة لذلك العنصر.
 
 ---
 
@@ -190,17 +190,17 @@ function Counter() {
 
 **إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.** 
 
-من هذه النقطة وما بعدها، سيتولى React إدارة DOM للتطبيق بأكمله. لإضافة مكونات إضافية، [احتضنها داخل المكون `App`.](/learn/importing-and-exporting-components) عندما تحتاج إلى تحديث واجهة المستخدم، يمكن أن تقوم كل من مكوناتك بذلك عن طريق [استخدام الحالة.](/reference/react/useState) وعندما تحتاج إلى عرض محتوى إضافي مثل شاشة نموذجية أو نصائح خارج عنصر DOM، [اعرضه باستخدام `createPortal`.](/reference/react-dom/createPortal)
+من هذه النقطة وما بعدها، سيتولى React إدارة DOM للتطبيق بأكمله. لإضافة مكونات إضافية، [احتضنها داخل المكون `App`.](/learn/importing-and-exporting-components) عندما تحتاج إلى تحديث واجهة المستخدم، يمكن أن تقوم كل من مكوناتك بذلك عن طريق [استخدام الحالة.](/reference/react/useState) وعندما تحتاج إلى عرض محتوى إضافي مثل نافذة منبثقة أو نصائح خارج عنصر DOM، [اعرضه باستخدام `createPortal`.](/reference/react-dom/createPortal)
 
 <Note>
 
-عندما يكون العنصر HTML خاليًا، يرى المستخدم صفحة فارغة حتى يتم تحميل وتشغيل كود JavaScript للتطبيق:
+عندما يكون عنصر HTML خاليًا، يرى المستخدم صفحة فارغة حتى يتم تحميل وتشغيل كود JavaScript للتطبيق:
 
 ```html
 <div id="root"></div>
 ```
 
-يمكن أن يكون هذا بطيئًا جدًا! لحل هذه المشكلة، يمكنك إنشاء العنصر HTML الأولي من مكوناتك [على الخادم أو أثناء البناء.](/reference/react-dom/server) ثم يمكن لزوار موقعك قراءة النص ورؤية الصور والنقر على الروابط قبل تحميل أي كود JavaScript. نوصي بأن تستخدم [إطار عمل](/learn/start-a-new-react-project#production-grade-react-frameworks) يفعل هذا الأمر تلقائيًا. اعتمادًا على موعد تشغيله، يُطلق عليه *تحميل من جانب الخادم (SSR)* أو *توليد المواقع الثابت (SSG).*
+يمكن أن يكون هذا بطيئًا جدًا! لحل هذه المشكلة، يمكنك إنشاء عنصر HTML الأولي من مكوناتك [على الخادم أو أثناء البناء.](/reference/react-dom/server) ثم يمكن لزوار موقعك قراءة النص ورؤية الصور والنقر على الروابط قبل تحميل أي كود JavaScript. نوصي بأن تستخدم [إطار عمل](/learn/start-a-new-react-project#production-grade-react-frameworks) يفعل هذا الأمر تلقائيًا. اعتمادًا على موعد تشغيله، يُطلق عليه *تحميل من جانب الخادم (SSR)* أو *توليد المواقع الثابت (SSG).*
 
 </Note>
 
@@ -222,11 +222,11 @@ function Counter() {
 ```html public/index.html
 <!DOCTYPE html>
 <html>
-  <head><title>My app</title></head>
+  <head><title>تطبيقي</title></head>
   <body>
     <nav id="navigation"></nav>
     <main>
-      <p>This paragraph is not rendered by React (open index.html to verify).</p>
+      <p>هذا الجزء ليس مبنيًا بـReact. افتح index.html لتتأكد</p>
       <section id="comments"></section>
     </main>
   </body>
@@ -283,6 +283,7 @@ function Comment({ text, author }) {
 ```
 
 ```css
+body { direction: rtl; }
 nav ul { padding: 0; margin: 0; }
 nav ul li { display: inline-block; margin-right: 20px; }
 ```
@@ -341,7 +342,7 @@ export default function App({counter}) {
 
 </Sandpack>
 
-من غير الشائع أن تستدعي `render` عدة مرات. عادةً، يمكن لمنوناتك [تحديث الحالة](/reference/react/useState) بدلاً من ذلك.
+من غير الشائع أن تستدعي `render` عدة مرات. عادةً، يمكن لمكوناتك [تحديث الحالة](/reference/react/useState) بدلاً من ذلك.
 
 ---
 ## حل المشكلات {/*troubleshooting*/}
@@ -362,7 +363,7 @@ root.render(<App />);
 
 ---
 
-### أواجه خطأ: "Target container is not a DOM element" {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
+### أواجه خطأ: `"Target container is not a DOM element"` {/*im-getting-an-error-target-container-is-not-a-dom-element*/}
 
 هذا الخطأ يعني أن ما تقوم بتمريره إلى `createRoot` ليس عنصر DOM.
 
@@ -377,16 +378,16 @@ root.render(<App />);
 
 على سبيل المثال، إذا كانت `domNode` تساوي `null`، فهذا يعني أن [`getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) قد أرجع `null`. وهذا سيحدث إذا لم يكن هناك عنصر في المستند يحمل المعرف ID المعطاة في وقت استدعائك للدالة. قد تكون هناك بعض الأسباب وراء ذلك:
 
-1. ربما يكون المعرف الذ تبحث عنه مختلف عن المعرف التي استخدمته في ملف HTML. تحقق من الأخطاء الإملائية!
+1. ربما يكون المعرف الذي تبحث عنه مختلف عن المعرف التي استخدمته في ملف HTML. تحقق من الأخطاء الإملائية!
 2. ربما لا يمكن لعنصر `<script>` الخاص بك "رؤية" أي عنصر DOM تظهر *بعده* في HTML.
 
 طريقة شائعة أخرى للحصول على هذا الخطأ هي كتابة `createRoot(<App />)` بدلاً من `createRoot(domNode)`.
 
 ---
 
-### أواجه خطأ: "Functions are not valid as a React child." {/*im-getting-an-error-functions-are-not-valid-as-a-react-child*/}
+### أواجه خطأ: `"Functions are not valid as a React child."` {/*im-getting-an-error-functions-are-not-valid-as-a-react-child*/}
 
-هذا الخطأ يعني أن ما تمريره إلى `root.render` ليس مكوِّن React.
+هذا الخطأ يعني أن ما تمرره إلى `root.render` ليس مكوِّن React.
 
 قد يحدث هذا إذا قمت باستدعاء `root.render` باستخدام `Component` بدلاً من `<Component />`:
 
