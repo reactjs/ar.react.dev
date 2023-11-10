@@ -199,7 +199,7 @@
       ]
     },
     {
-      "title": "APIs العميل",
+      "title": "Client APIs",
       "path": "/reference/react-dom/client",
       "routes": [
         {
