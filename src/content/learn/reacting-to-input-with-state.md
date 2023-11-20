@@ -85,7 +85,7 @@ function submitForm(answer) {
   // Pretend it's hitting the network.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (answer.toLowerCase() == 'istanbul') {
+      if (answer.toLowerCase() === 'istanbul') {
         resolve();
       } else {
         reject(new Error('توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!'));

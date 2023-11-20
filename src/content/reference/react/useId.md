@@ -179,7 +179,11 @@ input { margin: 5px; }
 
 الفائدة الأساسية لـ `useId` هي أن React ستضمن أنه يعمل مع [تصيير الخادم.](/reference/react-dom/server) أثناء تصيير الخادم، يتم تحويل مكوناتك إلي عناصر HTML. في وقت لاحق، على العميل، [hydration](/reference/react-dom/client/hydrateRoot) يقوم بربط معالجات الأحداث الخاصة بك بعناصر HTML التي تم توليدها. لكي يعمل تحويل العناصر على العميل بشكل صحيح، يجب أن يتطابق إخراج العميل مع HTML الذي على الخادم.
 
+<<<<<<< HEAD
 من الصعب جدا ضمان ذلك باستخدام عداد متزايد لأن ترتيب تحويل المكونات على العميل قد لا يتطابق مع ترتيب إخراج HTML على الخادم. من خلال استدعاء `useId`، ستضمن أن عملية تحويل المكونات ستعمل بشكل صحيح، وسيتطابق الإخراج بين الخادم والعميل.
+=======
+This is very difficult to guarantee with an incrementing counter because the order in which the Client Components are hydrated may not match the order in which the server HTML was emitted. By calling `useId`, you ensure that hydration will work, and the output will match between the server and the client.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 داخل React، يتم إنشاء `useId` من الـ "مسار الأب" للمكون الذي يستدعيه. وهذا هو السبب في أنه إذا كانت شجرة العميل وشجرة الخادم متطابقتين، سيتطابق "مسار لأب" بغض النظر عن ترتيب العرض.
 
@@ -302,4 +306,3 @@ input { margin: 5px; }
 ```
 
 </Sandpack>
-

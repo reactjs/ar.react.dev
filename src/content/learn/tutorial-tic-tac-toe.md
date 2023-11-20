@@ -364,11 +364,15 @@ export default function Square() {
 
 <ConsoleBlock level="error">
 
-/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment `<>...</>`?
+/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX Fragment `<>...</>`?
 
 </ConsoleBlock>
 
+<<<<<<< HEAD
 تحتاج مكونات React إلى إرجاع عنصر JSX واحد وليس عناصر JSX المجاورة مثل زرين. لإصلاح هذا يمكنك استخدام *الأجزاء* (Fragments) (`<>` و `</>`) لتجميع عناصر JSX المجاورة مثل هذا:
+=======
+React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *Fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 ```js {3-6}
 export default function Square() {
