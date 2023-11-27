@@ -623,7 +623,11 @@ export default function PackingList() {
 
 لاحظ أنه يجب كتابة `importance > 0 && ...` بدلاً من `importance && ...` حتى لا يتم عرض القيمة `0` كنتيجة إذا كانت قيمة `importance` هي `0`.
 
+<<<<<<< HEAD
 في هذا الحل، يتم استخدام شرطين منفصلين لإدراج مسافة بين الاسم ووسم الأهمية. بدلاً من ذلك، يمكنك استخدام مكوّن الأجزاء (fragment) مع إضافة مسافة في البداية: `importance > 0 && <> <i>...</i></>` أو إضافة مسافة مباشرة داخل عنصر `<i>`: `importance > 0 && <i> ...</i>`.
+=======
+In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 </Solution>
 

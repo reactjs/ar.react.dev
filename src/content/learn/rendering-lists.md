@@ -1145,7 +1145,11 @@ hr {
 
 <Hint>
 
+<<<<<<< HEAD
 أنت إما ستحتاج إلى تحويل `map` إلى حلقة يدوية، أو استخدام fragment.
+=======
+You'll either need to convert `map` to a manual loop, or use a Fragment.
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 </Hint>
 
@@ -1208,7 +1212,11 @@ hr {
 
 استخدام فهرس الخط الأصلي ك `key` لم يعد يعمل بعد الآن  لأن كل فاصل وفقرة هما الآن في المصفوفة نفسها. على أية حال، يمكنك إعطاء كل واحد منهم مفتاحاً مميزاً باستخدام لاحقة. مثال `key={i + '-text'}`.
 
+<<<<<<< HEAD
 بدلاً من ذلك، يمكنك تصيير مجموعة من fragments التي تحتوي `<hr />` و`<p>...</p>`. الصيغة القصيرة `<>...</>` لا تدعم تمرير المفاتيح, لذلك أنت بحاجة لكتابة `<Fragment>` بشكل صريح:
+=======
+Alternatively, you could render a collection of Fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 <Sandpack>
 
@@ -1254,7 +1262,11 @@ hr {
 
 </Sandpack>
 
+<<<<<<< HEAD
 تذكر، fragments (غالباً تكتب ك `<> </>`) تسمح لك بتجميع عقد JSX بدون إضافة عدة `<div>` إضافية!
+=======
+Remember, Fragments (often written as `<> </>`) let you group JSX nodes without adding extra `<div>`s!
+>>>>>>> 6570e6cd79a16ac3b1a2902632eddab7e6abb9ad
 
 </Solution>
 
