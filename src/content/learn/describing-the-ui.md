@@ -10,7 +10,6 @@ title: وصف واجهات المستخدم (UI)
 
 <YouWillLearn isChapter={true}>
 
-<<<<<<< HEAD
 * [كيفية كتابة أول مكون React لك](/learn/your-first-component)
 * [متى وكيف تنشأ ملفات تحتوى على أكثر من مكون](/learn/importing-and-exporting-components)
 * [كيفية إضافة ترميز (Markup) إلى JavaScript باستخدام JSX](/learn/writing-markup-with-jsx)
