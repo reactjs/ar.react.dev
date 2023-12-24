@@ -19,17 +19,7 @@ title: وصف واجهات المستخدم (UI)
 * [(Conditional rendering) كيفية تصيير المكونات بشكل شرطي](/learn/conditional-rendering)
 * [كيفية تصيير أكثر من مكون مرة واحدة](/learn/rendering-lists)
 * [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
-=======
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
-* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+* [لماذا يعد التعرف على واجهتك كشجرة مفيدًا](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
@@ -534,42 +524,37 @@ export default function TeaSet() {
 
 </LearnMore>
 
-<<<<<<< HEAD
-## ماذا بعد ذلك؟ {/*whats-next*/}
-=======
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## واجهتك مثل الشجرة {/*your-ui-as-a-tree*/}
 
-React uses trees to model the relationships between components and modules. 
+React تستخدم الأشجار لنمذجة العلاقات بين العناصر والوحدات.
 
-A React render tree is a representation of the parent and child relationship between components. 
+شجرة العرض في React هي تمثيل للعلاقة الأبوية والفرعية بين العناصر.
 
-<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
+<Diagram name="generic_render_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد، حيث يمثل كل عقد عنصرًا. يقع العقد الجذري في الجزء العلوي من الشجرة ومسمى 'Root Component'. يحتوي على سهمين يمتدان إلى عقدين مسمين 'Component A' و 'Component C'. كل من السهمين مسمى بـ 'يقوم بعرض'. 'Component A' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component B'. 'Component C' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component D'.">
 
-An example React render tree.
+مثال على شجرة العرض في React.
 
 </Diagram>
 
-Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance.
+العناصر القريبة من الجزء العلوي من الشجرة، بجوار العنصر الجذري، تُعتبر عناصرًا على مستوى عالٍ. العناصر التي ليس لديها عناصر فرعية تُعتبر عناصر أوراق. هذا التصنيف للعناصر مفيد لفهم تدفق البيانات وأداء العرض.
 
-Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree. 
+نمذجة العلاقة بين وحدات JavaScript هي طريقة مفيدة أخرى لفهم تطبيقك. نشير إليها باسم شجرة الاعتماد على الوحدة.
 
-<Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">
+<Diagram name="generic_dependency_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد. يُمثل كل عقد وحدة JavaScript. العقد الأعلى مسمى 'RootModule.js'. يمتلك ثلاثة أسهم تمتد إلى العقد: 'ModuleA.js'، 'ModuleB.js'، و 'ModuleC.js'. كل سهم مسمى بـ 'يستورد'. العقد 'ModuleC.js' يحتوي على سهم 'يستورد' واحد يشير إلى عقد مسمى 'ModuleD.js'.">
 
-An example module dependency tree.
+مثال على شجرة اعتماد الوحدة.
 
 </Diagram>
 
-A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues. 
+غالبًا ما يُستخدم شجرة الاعتماد من قِبل أدوات البناء لربط جميع أكواد JavaScript ذات الصلة ليتم تنزيلها وعرضها للعميل. حجم الحزمة الكبير يُسبب تراجعًا في تجربة المستخدم لتطبيقات React. فهم شجرة اعتماد الوحدة مفيد لتصحيح مثل هذه المشاكل.
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
-Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn how to create a render and module dependency trees for a React app and how they're useful mental models for improving user experience and performance.
+اقرأ **[واجهاتك مثل الشجرة](/learn/understanding-your-ui-as-a-tree)** لتعرف كيفية إنشاء شجرة عرض وشجرة اعتماد الوحدة لتطبيق React وكيفية فائدتها كنماذج عقلية مفيدة لتحسين تجربة المستخدم والأداء.
 
 </LearnMore>
 
-
-## What's next? {/*whats-next*/}
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+## ماذا بعد ذلك؟ {/*whats-next*/}
 
 توجه إلى [المكون الأول الخاص بك](/learn/your-first-component) لبدء قراءة هذا الفصل صفحة بصفحة!
 
