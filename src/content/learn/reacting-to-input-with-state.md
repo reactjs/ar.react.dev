@@ -36,7 +36,7 @@ title: الاستجابة للمدخلات باستخدام الحالة
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 async function handleFormSubmit(e) {
   e.preventDefault();
   disable(textarea);
@@ -85,7 +85,7 @@ function submitForm(answer) {
   // Pretend it's hitting the network.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (answer.toLowerCase() == 'istanbul') {
+      if (answer.toLowerCase() === 'istanbul') {
         resolve();
       } else {
         reject(new Error('توقع جيد ولكن إجابة خاطئة. حاول مرة أخرى!'));
@@ -247,7 +247,7 @@ body { direction: rtl; }
 
 <Sandpack>
 
-```js App.js active
+```js src/App.js active
 import Form from './Form.js';
 
 let statuses = [
@@ -272,7 +272,7 @@ export default function App() {
 }
 ```
 
-```js Form.js
+```js src/Form.js
 export default function Form({ status }) {
   if (status === 'success') {
     return <h1>هذا صحيح!</h1>
@@ -708,7 +708,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
   if (editButton.textContent === 'عدّل الملف الشخصي') {
@@ -912,7 +912,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 function handleFormSubmit(e) {
   e.preventDefault();
   if (editButton.textContent === 'عدّل الملف الشخصي') {
@@ -1011,7 +1011,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let firstName = 'Jane';
 let lastName = 'Jacobs';
 let isEditing = false;
@@ -1118,7 +1118,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let firstName = 'Jane';
 let lastName = 'Jacobs';
 let isEditing = false;

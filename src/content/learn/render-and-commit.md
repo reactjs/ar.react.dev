@@ -42,7 +42,7 @@ title: التصيير والتأكيد
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 import Image from './Image.js';
 import { createRoot } from 'react-dom/client';
 
@@ -50,7 +50,7 @@ const root = createRoot(document.getElementById('root'))
 root.render(<Image />);
 ```
 
-```js Image.js
+```js src/Image.js
 export default function Image() {
   return (
     <img
@@ -94,7 +94,7 @@ export default function Image() {
 
 <Sandpack>
 
-```js Gallery.js active
+```js src/Gallery.js active
 export default function Gallery() {
   return (
     <section>
@@ -116,7 +116,7 @@ function Image() {
 }
 ```
 
-```js index.js
+```js src/index.js
 import Gallery from './Gallery.js';
 import { createRoot } from 'react-dom/client';
 
@@ -163,7 +163,7 @@ img { margin: 0 10px 10px 0; }
 
 <Sandpack>
 
-```js Clock.js active
+```js src/Clock.js active
 export default function Clock({ time }) {
   return (
     <>
@@ -174,7 +174,7 @@ export default function Clock({ time }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState, useEffect } from 'react';
 import Clock from './Clock.js';
 

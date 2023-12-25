@@ -179,7 +179,11 @@ input { margin: 5px; }
 
 الفائدة الأساسية لـ `useId` هي أن React ستضمن أنه يعمل مع [تصيير الخادم.](/reference/react-dom/server) أثناء تصيير الخادم، يتم تحويل مكوناتك إلي عناصر HTML. في وقت لاحق، على العميل، [hydration](/reference/react-dom/client/hydrateRoot) يقوم بربط معالجات الأحداث الخاصة بك بعناصر HTML التي تم توليدها. لكي يعمل تحويل العناصر على العميل بشكل صحيح، يجب أن يتطابق إخراج العميل مع HTML الذي على الخادم.
 
+<<<<<<< HEAD
 من الصعب جدا ضمان ذلك باستخدام عداد متزايد لأن ترتيب تحويل المكونات على العميل قد لا يتطابق مع ترتيب إخراج HTML على الخادم. من خلال استدعاء `useId`، ستضمن أن عملية تحويل المكونات ستعمل بشكل صحيح، وسيتطابق الإخراج بين الخادم والعميل.
+=======
+This is very difficult to guarantee with an incrementing counter because the order in which the Client Components are hydrated may not match the order in which the server HTML was emitted. By calling `useId`, you ensure that hydration will work, and the output will match between the server and the client.
+>>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 داخل React، يتم إنشاء `useId` من الـ "مسار الأب" للمكون الذي يستدعيه. وهذا هو السبب في أنه إذا كانت شجرة العميل وشجرة الخادم متطابقتين، سيتطابق "مسار لأب" بغض النظر عن ترتيب العرض.
 
@@ -269,7 +273,7 @@ export default function App() {
 }
 ```
 
-```js index.js active
+```js src/index.js active
 import { createRoot } from 'react-dom/client';
 import App from './App.js';
 import './styles.css';
@@ -303,3 +307,32 @@ input { margin: 5px; }
 
 </Sandpack>
 
+---
+
+### Using the same ID prefix on the client and the server {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
+
+If you [render multiple independent React apps on the same page](#specifying-a-shared-prefix-for-all-generated-ids), and some of these apps are server-rendered, make sure that the `identifierPrefix` you pass to the [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) call on the client side is the same as the `identifierPrefix` you pass to the [server APIs](/reference/react-dom/server) such as [`renderToPipeableStream`.](/reference/react-dom/server/renderToPipeableStream)
+
+```js
+// Server
+import { renderToPipeableStream } from 'react-dom/server';
+
+const { pipe } = renderToPipeableStream(
+  <App />,
+  { identifierPrefix: 'react-app1' }
+);
+```
+
+```js
+// Client
+import { hydrateRoot } from 'react-dom/client';
+
+const domNode = document.getElementById('root');
+const root = hydrateRoot(
+  domNode,
+  reactNode,
+  { identifierPrefix: 'react-app1' }
+);
+```
+
+You do not need to pass `identifierPrefix` if you only have one React app on the page.
