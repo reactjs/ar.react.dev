@@ -5,18 +5,14 @@ canary: true
 ---
 
 <Canary>
-هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
 
+`'use client'` is needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
 </Canary>
 
 
 <Intro>
 
-<<<<<<< HEAD
-`'use client'` تميز الملفات ليتم تنفيذ مكوناتها في جانب العميل
-=======
 `'use client'` lets you mark what code runs on the client.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 </Intro>
 
@@ -24,13 +20,10 @@ canary: true
 
 ---
 
-## المرجع {/*reference*/}
+## Reference {/*reference*/}
 
 ### `'use client'` {/*use-client*/}
 
-<<<<<<< HEAD
-أضف `'use client'` في أعلى ملف لتمييزه (الملف أو أي مكونات فرعية يحتويها) بأنه يتم تنفيذه عند العميل، بغض النظر عن المكان الذي يتم استيراده منه.
-=======
 Add `'use client'` at the top of a file to mark the module and its transitive dependencies as client code.
 
 ```js {1}
@@ -71,7 +64,7 @@ To better illustrate this, consider the following React Server Components app.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import FancyText from './FancyText';
 import InspirationGenerator from './InspirationGenerator';
 import Copyright from './Copyright';
@@ -89,7 +82,7 @@ export default function App() {
 
 ```
 
-```js FancyText.js
+```js src/FancyText.js
 export default function FancyText({title, text}) {
   return title
     ? <h1 className='fancy title'>{text}</h1>
@@ -97,7 +90,7 @@ export default function FancyText({title, text}) {
 }
 ```
 
-```js InspirationGenerator.js
+```js src/InspirationGenerator.js
 'use client';
 
 import { useState } from 'react';
@@ -120,13 +113,13 @@ export default function InspirationGenerator({children}) {
 }
 ```
 
-```js Copyright.js
+```js src/Copyright.js
 export default function Copyright({year}) {
   return <p className='small'>©️ {year}</p>;
 }
 ```
 
-```js inspirations.js
+```js src/inspirations.js
 export default [
   "Don’t let yesterday take up too much of today.” — Will Rogers",
   "Ambition is putting a ladder against the sky.",
@@ -181,7 +174,6 @@ By the above definitions, the component `FancyText` is both a Server and Client 
 First, let's clarify that the term "component" is not very precise. Here are just two ways "component" can be understood:
 
 1. A "component" can refer to a **component definition**. In most cases this will be a function.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 ```js
 // This is a definition of a component
@@ -294,7 +286,7 @@ Notably, these are not supported:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 'use client';
 
 import { useState } from 'react';
@@ -313,40 +305,6 @@ export default function Counter({initialValue = 0}) {
 }
 ```
 
-<<<<<<< HEAD
-عند استيراد ملف معلّم بعبارة `'use client'` من مكوّن في الخادم، ستعامل المجمّعات المتوافقة [bundlers](/learn/start-a-new-react-project#bleeding-edge-reace-frameworks) الاستيراد كـ"نقطة الفصل" بين كود الخادم وكود العميل. يمكن للمكونات الموجودة في هذه النقطة أو أسفلها في الرسم البياني للوحدة الأساسية استخدام الميزات React المخصصة للعميل مثل [`useState`](/reference/react/useState).
-
-#### ملاحظات {/*caveats*/}
-
-* ليس من الضرورة إضافة `'use client'` إلى كل ملف يستخدم ميزات React المخصصة للعميل، بل فقط في الملفات التي يتم استيرادها من ملفات عناصر الخادم. `'use client'` تُشير إلى الحدود بين الكود المخصص للخادم والعميل؛ أي مكونات تكون أسفل هذه الحدود في شجرة العناصر ستُنفَذ تلقائيًا على العميل. لكي يتم تقديمها من عناصر الخادم، يجب أن تحتوي المكونات المصدرة من ملفات `'use client'` على خصائص يمكن تسلسلها.
-
-* عند استيراد ملف `'use client'` من ملف خادم، يمكن تقديم القيم المستوردة كمكون React أو تمريرها عبر الـ props إلى مكون عميل. وأي استخدام آخر سيثير خطأ.
-
-* عند استيراد ملف 'use client' من ملف عميل آخر، فإن التوجيه لا يؤثر. هذا يسمح لك بكتابة مكونات خاصة بالعميل يمكن استخدامها في نفس الوقت من عناصر الخادم والعميل.
-
-* ستصبح جميع الأكواد في ملف `'use client'` وأي وحدات يتم استيرادها (مباشرة أو غير مباشرة) جزءًا من شبكة الوحدات الأساسية للعميل ويجب إرسالها وتنفيذها من قِبل العميل ليتم تقديمها من قبل المستعرض. لتقليل حجم حزمة العميل والاستفادة الكاملة من الخادم، قم بنقل الحالة (والتوجيهات `'use client'`) للأسفل في شجرة العناصر عند الحاجة، وقم بتمرير عناصر الخادم المقدمة [كأطفال (children)](/learn/passing-props-to-a-component#passing-jsx-as-children) إلى عناصر العميل.
-
-* نظرًا لأن الخصائص يتم تسلسلها عبر الحدود بين الخادم والعميل، يجب مراعاة أن موقع هذه التوجيهات يمكن أن يؤثر على كمية البيانات المرسلة إلى العميل؛ يُنصح بتجنب هياكل البيانات التي تكون أكبر من اللازم.
-
-* عادةً، يجب ألا يتم وضع `'use client'` على المكونات مثل `<MarkdownRenderer>` التي لا تستخدم ميزات خاصة بالخادم أو العميل. بهذه الطريقة، يمكنها التقديم حصريًا على الخادم عند استخدامها من عنصر خادم، ولكن ستُضاف إلى حزمة العميل عند استخدامها من عنصر عميل.
-
-* يجب أن تشمل المكتبات التي يتم نشرها على npm `'use client'` على المكونات المصدرة من React التي يمكن تقديمها باستخدام خصائص يمكن تسلسلها وتستخدم ميزات React المخصصة للعميل، للسماح بالاستيراد والتقديم من قِبل عناصر الخادم. وإلا، سيحتاج المستخدمون إلى لف مكونات المكتبة في أكوادهم الخاصة بـ `'use client'` وهذا قد يكون مرهقًا ويمنع المكتبة من نقل الخطط إلى الخادم لاحقًا. عند نشر الملفات المجمَّعة مُسبقًا على npm، تأكد من أن المكونات المصدرة مبدوءة بـ `'use client'`، منفصلة عن أي ملف يحتوي على تصديرات يمكن استخدامها مباشرة على الخادم.
-
-* ستستمر مكونات العميل في العمل كجزء من عملية تقديم جانب الخادم (SSR) أو إنشاء الموقع الثابت في وقت التجميع (SSG)، حيث يعملون كعملاء لتحويل الإخراج الأولي لمكونات React إلى HTML يمكن تقديمه قبل تنزيل حزم JavaScript. ولكنها لا يمكنها استخدام ميزات خاصة بالخادم مثل القراءة مباشرةً من قاعدة بيانات.
-
-* يجب أن تكون التوجيهات مثل `'use client'` في بداية الملف، قبل أي استيرادات أو أكواد أخرى (يمكن وضع تعليقات فوق التوجيهات). يجب كتابة التوجيهات باستخدام علامات اقتباس فردية أو مزدوجة، وليس علامات backtick. (تنسيق التوجيه `'use xyz'` يشبه إلى حد ما تنسيق اسماء الـ Hooks مثل `useXyz()`، ولكن هذا التشابه مجرد صدفة.)
-
-## الاستخدام {/*usage*/}
-
-<Wip>
-هذا القسم لم يكتمل بعد.
-
-يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
-
-* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
-* المزيد يأتي لاحقا...
-</Wip>
-=======
 </Sandpack>
 
 As `Counter` requires both the `useState` Hook and event handlers to increment or decrement the value, this component must be a Client Component and will require a `'use client'` directive at the top.
@@ -419,4 +377,3 @@ These libraries may rely on component Hooks or client APIs. Third-party componen
 If these libraries have been updated to be compatible with React Server Components, then they will already include `'use client'` markers of their own, allowing you to use them directly from your Server Components. If a library hasn't been updated, or if a component needs props like event handlers that can only be specified on the client, you may need to add your own Client Component file in between the third-party Client Component and your Server Component where you'd like to use it.
 
 [TODO]: <> (Troubleshooting - need use-cases)
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
