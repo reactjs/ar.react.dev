@@ -115,7 +115,6 @@ async function requestUsername(formData) {
   // ...
 }
 
-<<<<<<< HEAD
 export default function App() {
   return (
     <form action={requestUsername}>
@@ -123,13 +122,6 @@ export default function App() {
       <button type="submit">Request</button>
     </form>
   );
-=======
-export default App() {
-  <form action={requestUsername}>
-    <input type="text" name="username" />
-    <button type="submit">حفظ</button>
-  </form>
->>>>>>> 7e65f3516a1cde73237acc2a82ab87c7498d94a0
 }
 ```
 
