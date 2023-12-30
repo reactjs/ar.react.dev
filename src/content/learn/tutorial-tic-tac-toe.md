@@ -368,11 +368,7 @@ export default function Square() {
 
 </ConsoleBlock>
 
-<<<<<<< HEAD
-React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *Fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
-=======
 تحتاج مكونات React إلى إرجاع عنصر JSX واحد وليس عناصر JSX المجاورة مثل زرين. لإصلاح هذا يمكنك استخدام *الأجزاء* (Fragments) (`<>` و `</>`) لتجميع عناصر JSX المجاورة مثل هذا:
->>>>>>> 7e65f3516a1cde73237acc2a82ab87c7498d94a0
 
 ```js {3-6}
 export default function Square() {
