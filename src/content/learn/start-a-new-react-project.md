@@ -24,11 +24,7 @@ title: ابدأ مشروع React جديد
 npx create-next-app@latest
 </TerminalBlock>
 
-<<<<<<< HEAD
-If you're new to Next.js, check out the [learn Next.js course.](https://nextjs.org/learn)
-=======
-لتعلّم Next.js، اطلع على [الدرس تعليمي لـ Next.js](https://nextjs.org/learn/foundations/about-nextjs)
->>>>>>> 7e65f3516a1cde73237acc2a82ab87c7498d94a0
+لتعلّم Next.js، اطلع على [الدرس تعليمي لـ Next.js](https://nextjs.org/learn)
 
 يتم الإشراف على Next.js من قبل [Vercel](https://vercel.com/). تستطيع [نشر تطبيق Next.js](https://nextjs.org/docs/app/building-your-application/deploying) على أي استضافة Node.js أو serverless، أو خادمك الخاص. [تطبيقات Next.js الثابتة بالكامل](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) يمكن نشرها على أي استضافة ثابتة.
 
