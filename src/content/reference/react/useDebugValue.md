@@ -4,7 +4,7 @@ title: useDebugValue
 
 <Intro>
 
-`useDebugValue` is a React Hook that lets you add a label to a custom Hook in [React DevTools.](/learn/react-developer-tools)
+`useDebugValue` هو خطاف React يمكنك من إضافة تصنيف إلى خطاف مخصص في [أدوات مطور React.](/learn/react-developer-tools)
 
 ```js
 useDebugValue(value, format?)
@@ -16,11 +16,11 @@ useDebugValue(value, format?)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useDebugValue(value, format?)` {/*usedebugvalue*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable debug value:
+قم باستدعاء `useDebugValue` في المستوى الأعلي من [خطافك المخصص](/learn/reusing-logic-with-custom-hooks) لعرض قيمة تصحيح قابلة للقراءة:
 
 ```js
 import { useDebugValue } from 'react';
@@ -32,22 +32,22 @@ function useOnlineStatus() {
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة بالأسفل.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات (parameters) {/*parameters*/}
 
-* `value`: The value you want to display in React DevTools. It can have any type.
-* **optional** `format`: A formatting function. When the component is inspected, React DevTools will call the formatting function with the `value` as the argument, and then display the returned formatted value (which may have any type). If you don't specify the formatting function, the original `value` itself will be displayed.
+* `value`: القيمة التي تريد عرضها في أدوات مطور React. يمكن أن تكون من أي نوع.
+* **اختياري** `format`: دالة تنسيق. عند فحص المكون، ستقوم أدوات المطور باستدعاء دالة التنسيق مع `value` كمعامل، ثم يتم عرض القيمة التي تم إرجاعها (والتي قد تحتوي على أي نوع). إذا لم تحدد دالة التنسيق، سيتم عرض القيمة الأصلية من المعامل `value`.
 
-#### Returns {/*returns*/}
+#### العائدات {/*returns*/}
 
-`useDebugValue` does not return anything.
+`useDebugValue` لا يعيد أي شيء.
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Adding a label to a custom Hook {/*adding-a-label-to-a-custom-hook*/}
+### إضافة تصنيف إلي خطاف مخصص {/*adding-a-label-to-a-custom-hook*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable <CodeStep step={1}>debug value</CodeStep> for [React DevTools.](/learn/react-developer-tools)
+قم باستدعاء `useDebugValue` في المستوى الأعلي من [خطافك المخصص](/learn/reusing-logic-with-custom-hooks) لعرض <CodeStep step={1}>قيمة تصحيح</CodeStep> قابلة للقرائة في [أدوات مطور React.](/learn/react-developer-tools)
 
 ```js [[1, 5, "isOnline ? 'Online' : 'Offline'"]]
 import { useDebugValue } from 'react';
@@ -59,11 +59,11 @@ function useOnlineStatus() {
 }
 ```
 
-This gives components calling `useOnlineStatus` a label like `OnlineStatus: "Online"` when you inspect them:
+هذا يتيح للمكونات التي تستدعى `useOnlineStatus` أن تحمل تصنيف مثل `OnlineStatus: "Online"` عندما تقوم بفحصها:
 
-![A screenshot of React DevTools showing the debug value](/images/docs/react-devtools-usedebugvalue.png)
+![لقطة شاشة لأدوات مطور React تعرض قيمة تصحيح](/images/docs/react-devtools-usedebugvalue.png)
 
-Without the `useDebugValue` call, only the underlying data (in this example, `true`) would be displayed.
+بدون استدعاء `useDebugValue`، سيتم عرض البيانات الأساسية فقط دون أي تصنيف (في هذا المثال، `true`).
 
 <Sandpack>
 
@@ -103,20 +103,20 @@ function subscribe(callback) {
 
 <Note>
 
-Don't add debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries and that have a complex internal data structure that's difficult to inspect.
+لا تضف قيم تصحيح إلى كل خطاف مخصص. يعد مفيدًا أكثر للخطاطيف المخصصة التي تشكل جزءا من المكتبات المشتركة والتي تحتوي على هيكل بيانات داخلي معقد يصعب فحصه.
 
 </Note>
 
 ---
 
-### Deferring formatting of a debug value {/*deferring-formatting-of-a-debug-value*/}
+### تأجيل التنسيق لقيمة التصحيح (debug value) {/*deferring-formatting-of-a-debug-value*/}
 
-You can also pass a formatting function as the second argument to `useDebugValue`:
+يمكنك أيضا تمرير دالة تنسيق كمعامل (parameter) ثاني إلي `useDebugValue`:
 
 ```js [[1, 1, "date", 18], [2, 1, "date.toDateString()"]]
 useDebugValue(date, date => date.toDateString());
 ```
 
-Your formatting function will receive the <CodeStep step={1}>debug value</CodeStep> as a parameter and should return a <CodeStep step={2}>formatted display value</CodeStep>. When your component is inspected, React DevTools will call this function and display its result.
+ستتلقى دالة التنسيق الخاصة بك <CodeStep step={1}>قيمة التصحيح</CodeStep> كمعامل ويجب أن تعيد <CodeStep step={2}>قيمة عرض منسقة</CodeStep>. عندما يتم فحص مكونك، ستقوم أدوات مطور React باستدعاء هذه الدالة وتعرض القيمة المنسقة التي تم إرجاعها.
 
-This lets you avoid running potentially expensive formatting logic unless the component is actually inspected. For example, if `date` is a Date value, this avoids calling `toDateString()` on it for every render.
+وهذا يتيح لك تجنب تنفيذ منطق التنسيق باهظ التكلفة ما لم يتم فحص المكون فعليا. على سبيل المثال, إذا كان المتغير `date` يحمل قيمة تاريخ, فإن استخدام قيمة التصحيح يساعد في تجنب استدعاء دالة `toDateString()` عليها في كل عملية عرض.

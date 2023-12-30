@@ -1,6 +1,6 @@
-# react.dev
+# reactjs.org
 
-This repo contains the source code and documentation powering [react.dev](https://react.dev/).
+This repo contains the source code and documentation powering [reactjs.org](https://reactjs.org/).
 
 ## Getting started
 
@@ -10,12 +10,12 @@ This repo contains the source code and documentation powering [react.dev](https:
 1. Node: any 12.x version starting with v12.0.0 or greater
 1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
 1. A fork of the repo (for any contributions)
-1. A clone of the [react.dev repo](https://github.com/reactjs/react.dev) on your local machine
+1. A clone of the [ar.react.dev repo](https://github.com/reactjs/ar.react.dev) on your local machine
 
 ### Installation
 
-1. `cd react.dev` to go into the project root
-3. `yarn` to install the website's npm dependencies
+1. `cd ar.react.dev` to go into the project root
+1. `yarn` to install the website's npm dependencies
 
 ### Running locally
 
@@ -28,13 +28,12 @@ This repo contains the source code and documentation powering [react.dev](https:
 
 The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/react.dev/blob/main/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
 
-### Create a branch
 
-1. `git checkout main` from any folder in your local `react.dev` repository
+1. `git checkout main` from any folder in your local `ar.react.dev` repository
 1. `git pull origin main` to ensure you have the latest main code
 1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
 
-### Make the change
+#### Make the change
 
 1. Follow the ["Running locally"](#running-locally) instructions
 1. Save the files and check in the browser
@@ -42,12 +41,12 @@ The documentation is divided into several sections with a different tone and pur
   1. Changes to markdown files in `content` will hot-reload
   1. If working with plugins, you may need to remove the `.cache` directory and restart the server
 
-### Test the change
+#### Test the change
 
 1. If possible, test any visual changes in all latest versions of common browsers, on both desktop and mobile.
 2. Run `yarn check-all`. (This will run Prettier, ESLint and validate types.)
 
-### Push it
+#### Push it
 
 1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`

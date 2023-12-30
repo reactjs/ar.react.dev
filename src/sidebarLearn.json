@@ -1,39 +1,39 @@
 {
-  "title": "Learn React",
+  "title": "تعلم React",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "البدأ"
     },
     {
-      "title": "Quick Start",
+      "title": "بداية سريعة",
       "path": "/learn",
       "routes": [
         {
-          "title": "Tutorial: Tic-Tac-Toe",
+          "title": "شرح تطبيقي: لعبة تيك تاك تو",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "التفكير على طريقة React",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "title": "Installation",
+      "title": "التثبيت",
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "Start a New React Project",
+          "title": "ابدأ مشروع React جديد",
           "path": "/learn/start-a-new-react-project"
         },
         {
-          "title": "Add React to an Existing Project",
+          "title": "إضافة React إلى مشروع موجود بالفعل",
           "path": "/learn/add-react-to-an-existing-project"
         },
         {
-          "title": "Editor Setup",
+          "title": "تجهيز المحرر",
           "path": "/learn/editor-setup"
         },
         {
@@ -41,50 +41,50 @@
           "path": "/learn/typescript"
         },
         {
-          "title": "React Developer Tools",
+          "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "تعلم React"
     },
     {
-      "title": "Describing the UI",
+      "title": "وصف واجهة المستخدم UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "Your First Component",
+          "title": "مكوّنك الأول",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "Importing and Exporting Components",
+          "title": "استيراد وتصدير المكونات",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "Writing Markup with JSX",
+          "title": "كتابة ترميز البناء بـ JSX",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JavaScript in JSX with Curly Braces",
+          "title": "JavaScript في JSX باستخدام الأقواس المنحنية",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "Passing Props to a Component",
+          "title": " تمرير الخصائص إلى مكوّن",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "Conditional Rendering",
+          "title": "التصيير الشرطي",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "Rendering Lists",
+          "title": "تصيير القوائم",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "Keeping Components Pure",
+          "title": "الحفاظ على نقاء المكونّات",
           "path": "/learn/keeping-components-pure"
         },
         {
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
@@ -107,7 +107,7 @@
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "Render and Commit",
+          "title": "التصيير والتأكيد",
           "path": "/learn/render-and-commit"
         },
         {
@@ -129,12 +129,12 @@
       ]
     },
     {
-      "title": "Managing State",
+      "title": "إدارة الحالة",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "الاستجابة للمدخلات باستخدام الحالة",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
@@ -194,7 +194,7 @@
         },
         {
           "title": "Removing Effect Dependencies",
-          "path": "/learn/removing-effect-dependencies"              
+          "path": "/learn/removing-effect-dependencies"
         },
         {
           "title": "Reusing Logic with Custom Hooks",

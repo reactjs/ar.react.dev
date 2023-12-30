@@ -1,47 +1,47 @@
 ---
-title: Your First Component
+title: مكوّنك الأول
 ---
 
 <Intro>
 
-*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+*المكونات* هي إحدى المفاهيم الرئيسية في React. هي الأساس الذي تبني عليه واجهات المستخدم. مما يجعلها المكان الصحيح لبدأ رحلتك مع React.
 
 </Intro>
 
 <YouWillLearn>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* ما هو المكوّن
+* ما الدور الذي تلعبه المكوّنات في تطبيق React
+* كيف تكتب أول مكوّن React
 
 </YouWillLearn>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## المكونات: حجر بناء واجهة المستخدم {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+في الويب، تمكننا HTML من إنشاء صفحات مبنية بجدارة بالعديد من عناصرها المدمَجة مثل `<h1>` و `<li>`:
 
 ```html
 <article>
-  <h1>My First Component</h1>
+  <h1>مكوّني الأول</h1>
   <ol>
-    <li>Components: UI Building Blocks</li>
-    <li>Defining a Component</li>
-    <li>Using a Component</li>
+    <li>المكوّنات: حجر بناء واجهة المستخدم</li>
+    <li>تعريف المكوّن</li>
+    <li>استخدام المكوّن</li>
   </ol>
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+يمثل هذا الترميز هذه المقالة `<article>`، عنوانها `<h1>`، وفهرس محتويات مختصر في شكل قائمة مرتبة `<ol>`. ترميز كهذا, مع بعض CSS للأنماط التصميمية, وJavaScript من أجل التفاعلية، يكمن وراء كل شريط جانبي، أو صورة رمزية، أو نافذة، أو قائمة منسدلة - أو أي قطعة من واجهة مستخدم تراها في الويب.
 
-React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+تمكنك React من دمج الترميز، وCSS، وJavaScript في "مكونات" مخصصة، **عناصر واجهة المستخدم قابلة لإعادة الاستخدام في تطبيقك**. يمكن تحويل كود فهرس المحتوى الذي رأيته أعلاه إلى مكوّن `<TableOfContents />` الذي يمكن تصييره في كل صفحة. لا يزال يستخدم هذا المكوّن خلف الكواليس وسوم مثل `<article>` ،`<h1>`، إلخ.
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+تمامًا مثل عناصر HTML، يمكنك تجميع وترتيب وتضمين المكوّنات لتصميم صفحات كاملة. على سبيل المثال، صفحة المستندات التي تقرأها مصنوعة من مكوّنات React.
 
 ```js
 <PageLayout>
   <NavigationHeader>
     <SearchBar />
-    <Link to="/docs">Docs</Link>
+    <Link to="/docs">المستندات</Link>
   </NavigationHeader>
   <Sidebar />
   <PageContent>
@@ -51,11 +51,11 @@ Just like with HTML tags, you can compose, order and nest components to design w
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
+مع نمو مشروعك، ستلاحظ أنه يمكن تجميع العديد من تصاميمك بواسطة إعادة استخدام مكوّنات كتبتها مسبقا، مما يسرع عملية التطوير. يمكن إضافة فهرس المحتويات أعلاه إلى أي شاشة عن طريق `<TableOfContents />`! يمكنك أيضا الانطلاق بسرعة في مشروعك باستخدام آلاف المكوّنات التي ينشرها مجتمع React مفتوحة المصدر مثل [Chakra UI](https://chakra-ui.com/) و [Material UI.](https://material-ui.com/).
 
-## Defining a component {/*defining-a-component*/}
+## تعريف المكوّن {/*defining-a-component*/}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
+قديمًا، عند إنشاء صفحات الويب، كان مطورو الويب يقومون بترميز المحتوى الخاص بهم ومن ثم يضيفون التفاعل عن طريق إضافة بعض JavaScript. نجح هذا بشكل رائع عندما كان التفاعل مجرد ميزة إضافية جيدة على الويب. الآن يُتوقع وجود التفاعل في العديد من المواقع وجميع التطبيقات. تضع React التفاعلية في المقام الأول مع الاستمرار في استخدام نفس التقنية: **مكوّن React هو دالة JavaScript يمكنك أن تُضيف إليها ترميز مرئي.** هنا مثال لذلك (يمكنك تحرير المثال أدناه):
 
 <Sandpack>
 
@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3Am.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   )
 }
@@ -76,51 +76,51 @@ img { height: 200px; }
 
 </Sandpack>
 
-And here's how to build a component:
+وهنا كيفية بناء مكوّن:
 
-### Step 1: Export the component {/*step-1-export-the-component*/}
+### الخطوة الأولى: تصدير المكوّن {/*step-1-export-the-component*/}
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+البادئة `export default` هي جزء من [صيغة JavaScript القياسية](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (ليست خاصة بـ React). تتيح لك وضع علامة على الدالة الرئيسية في ملف بحيث يمكنك استيرادها لاحقًا من ملفات أخرى. (للمزيد عن الاستيراد، راجع موضوع [استيراد وتصدير المكوّنات](/learn/importing-and-exporting-components)!)
 
-### Step 2: Define the function {/*step-2-define-the-function*/}
+### الخطوة الثانية: تعريف الدالة {/*step-2-define-the-function*/}
 
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+باستخدام الدالة `Profile() { }` ، تقوم بتعريف دالة JavaScript بإسم "Profile".
 
 <Pitfall>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+مكوّنات React هي عبارة عن دوال JavaScript عادية، ولكن يجب أن تبدأ أسماءها بحرف كبير، وإلا فلن تعمل بشكل صحيح!
 
 </Pitfall>
 
-### Step 3: Add markup {/*step-3-add-markup*/}
+### الخطوة الثالثة: أضف الترميز المرئي {/*step-3-add-markup*/}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+يقوم المكوّن بإرجاع عنصر `<img />` مع خواص `src` و `alt`. يتم كتابة `<img />` بنفس طريقة كتابة HTML، ولكنه في الواقع JavaScript خلف الكواليس! يُطلق على هذه الصيغة [JSX](/learn/writing-markup-with-jsx)، وتتيح لك تضمين ترميز مرئي داخل JavaScript.
 
-Return statements can be written all on one line, as in this component:
+يمكن كتابة عبارات الإرجاع في سطر واحد، كما في هذا المكوّن:
 
 ```js
-return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />;
 ```
 
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
+ولكن إذا لم يكن الترميز موجودًا في نفس السطر مع عبارة `return`، فيجب عليك وضعه بين قوسين:
 
 ```js
 return (
   <div>
-    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
   </div>
 );
 ```
 
 <Pitfall>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+بدون الأقواس, [سيتم تجاهل](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi) أي كود في الأسطر التي تلي عبارة `return`!
 
 </Pitfall>
 
-## Using a component {/*using-a-component*/}
+## استخدام المكوّن {/*using-a-component*/}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+الآن بعد تعريفك لمكون `Profile`، يمكنك تضمينه داخل مكوّنات أخرى. على سبيل المثال، يمكنك تصدير مكون `Gallery` الذي يستخدم عدة مكونات `Profile`:
 
 <Sandpack>
 
@@ -129,7 +129,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      alt="كاثرين جونسون"
     />
   );
 }
@@ -137,7 +137,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء رائعون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -152,37 +152,37 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### What the browser sees {/*what-the-browser-sees*/}
+### ما يراه المتصفح {/*what-the-browser-sees*/}
 
-Notice the difference in casing:
+لاحظ الفرق في حالة الأحرف:
 
-* `<section>` is lowercase, so React knows we refer to an HTML tag.
-* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+* `<section>` بحرف صغير `s`، لذا تعرف React أننا نشير إلى عنصر HTML.
+* `<Profile />` يبدأ بحرف `P` كبير, لذا تعرف React أننا نريد استخدام مكوّننا الذي اسمه `Profile`.
 
-And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
+ومكوّن `Profile` يحتوي على المزيد من HTML:`<img />`. في النهاية، هذا ما يراه المتصفح:
 
 ```html
 <section>
-  <h1>Amazing scientists</h1>
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <h1>علماء رائعون</h1>
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
 </section>
 ```
 
-### Nesting and organizing components {/*nesting-and-organizing-components*/}
+### تضمين وتنظيم المكوّنات {/*nesting-and-organizing-components*/}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
+المكوّنات هي دوال JavaScript عادية، لذا يمكنك الاحتفاظ بعدة مكوّنات في نفس الملف. هذا مناسب عندما تكون المكوّنات صغيرة نسبيًا أو تتعلق بشكل وثيق ببعضها البعض. إذا أصبح الملف مكتظًا، يمكنك دائمًا نقل المكوّن `Profile` إلى ملف منفصل. ستتعلم كيفية فعل ذلك قريبًا في [الصفحة التي تتحدث عن الاستيرادات.](/learn/importing-and-exporting-components).
 
-Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+نظرًا لأن مكوّنات `Profile` يتم تصييرها داخل مكوّن `Gallery` - وحتى لعدة مرات! - يمكننا القول بأن مكون `Gallery` هو **المكوّن الأب**، الذي يقوم بتصيير كل مكوّن `Profile` كـ "ابن" . هذا جزء من سحر React: يمكنك تعريف مكوّن مرة واحدة، ثم استخدامه في العديد من الأماكن والعديد من المرات كما تريد.
 
 <Pitfall>
 
-Components can render other components, but **you must never nest their definitions:**
+يمكن للمكوّنات عرض مكوّنات أخرى، ولكن **يجب ألا تقوم أبدا بتضمين تعريفها داخل بعضها البعض**.
 
 ```js {2-5}
 export default function Gallery() {
-  // 🔴 Never define a component inside another component!
+  // 🔴 لا تقم أبدا بتعريف مكوّن داخل مكوّن اخر
   function Profile() {
     // ...
   }
@@ -190,57 +190,55 @@ export default function Gallery() {
 }
 ```
 
-The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
+الكود السابق [بطيء جدًا ويسبب أخطاء.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) بدلاً من ذلك، قم بتعريف كل مكوّن على المستوى الأعلى
 
 ```js {5-8}
 export default function Gallery() {
   // ...
 }
 
-// ✅ Declare components at the top level
+// ✅ قم بتعريف المكوّنات على المستوى الأعلى
 function Profile() {
   // ...
 }
 ```
 
-When a child component needs some data from a parent, [pass it by props](/learn/passing-props-to-a-component) instead of nesting definitions.
+عندما يحتاج المكوّن الابن إلى الحصول على بعض البيانات من المكوّن الأب، يتم [تمريرها كخواص](/learn/passing-props-to-a-component) بدلاً من تضمين تعريفاتها.
 
 </Pitfall>
 
 <DeepDive>
 
-#### Components all the way down {/*components-all-the-way-down*/}
+#### مكوّنات على طول الطريق {/*components-all-the-way-down*/}
 
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+يبدأ تطبيق React الخاص بك في مكوّن "الجذر". عادةً ما يتم إنشاؤه تلقائيًا عند بدء مشروع جديد. على سبيل المثال، إذا كنت تستخدم [CodeSandbox](https://codesandbox.io/)، يتم تعريف مكون الجذر في `src/App.js`. إذا كنت تستخدم إطار العمل [Next.js](https://nextjs.org/)، يتم تعريف مكون الجذر في `pages/index.js`. في هذه الأمثلة، كنت تقوم بتصدير مكونات الجذر.
 
-Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
+معظم تطبيقات React تستخدم مكوّنات على طول الطريق. وهذا يعني أنك لن تستخدم المكونات فقط للأجزاء القابلة لإعادة الاستخدام مثل الأزرار، ولكن أيضًا للأجزاء الأكبر مثل الأشرطة الجانبية، والقوائم، وفي النهاية، الصفحات الكاملة! المكوّنات هي وسيلة مفيدة لتنظيم كود واجهة المستخدم والترميز المرئي، حتى لو كان بعضها لا يستخدم سوى مرة واحدة.
 
-[React-based frameworks](/learn/start-a-new-react-project) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+[أطر العمل المبنية على React](/learn/start-a-new-react-project) تأخذ خطوة إضافية. بحيث بدلاً من استخدام ملف HTML فارغ والسماح لـ React بـ "الاستيلاء" على إدارة الصفحة بواسطة JavaScript، فإنها *أيضًا* تقوم بتوليد كود الـ HTML تلقائيًا من مكوّنات React الخاصة بك. هذا يسمح لتطبيقك بعرض بعض المحتوى قبل تحميل كود JavaScript.
 
-Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+ومع ذلك، لا تزال هناك العديد من المواقع التي تستخدم React فقط [لإضافة التفاعلية إلى صفحات HTML الموجودة مسبقا.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) فلديها العديد من المكوّنات الجذرية بدلاً من وجود مكوّن جذر واحد للصفحة بأكملها. يمكنك استخدام React بالمقدار الذي تحتاج إليه.
 
 </DeepDive>
 
 <Recap>
 
-You've just gotten your first taste of React! Let's recap some key points.
+لقد حصلت للتو على لمحة أولى عن React! دعنا نلخص بعض النقاط الرئيسية.
 
-* React lets you create components, **reusable UI elements for your app.**
-* In a React app, every piece of UI is a component.
-* React components are regular JavaScript functions except:
+* تمكنك React من إنشاء مكوّنات، **عناصر واجهة المستخدم قابلة لإعادة الاستخدام لتطبيقك**
+* في تطبيق React، كل قطعة من واجهة المستخدم تمثل مكوّن
+* مكوّنات React هي عبارة عن دوال JavaScript عادية ما عدا أن:
 
-  1. Their names always begin with a capital letter.
-  2. They return JSX markup.
+  1. اسمها يبدأ دائما بحرف كبير.
+  2. تقوم بإرجاع ترميز مرئي JSX
 
 </Recap>
 
-
-
 <Challenges>
 
-#### Export the component {/*export-the-component*/}
+#### قم بتصدير المكوّن {/*export-the-component*/}
 
-This sandbox doesn't work because the root component is not exported:
+هذا الكود لا يعمل لأن المكوّن الجذري لم يتم تصديره
 
 <Sandpack>
 
@@ -249,7 +247,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/lICfvbD.jpg"
-      alt="Aklilu Lemma"
+      alt="أكليلو ليما"
     />
   );
 }
@@ -261,11 +259,11 @@ img { height: 181px; }
 
 </Sandpack>
 
-Try to fix it yourself before looking at the solution!
+حاول إصلاحه بنفسك قبل أن تلقي نظرة على الحل!
 
 <Solution>
 
-Add `export default` before the function definition like so:
+قم بإضافة `export default` قبل تعريف الدالة بهذا الشكل:
 
 <Sandpack>
 
@@ -274,7 +272,8 @@ export default function Profile() {
   return (
     <img
       src="https://i.imgur.com/lICfvbD.jpg"
-      alt="Aklilu Lemma"
+      alt="أكليلو ليما"
+
     />
   );
 }
@@ -286,27 +285,26 @@ img { height: 181px; }
 
 </Sandpack>
 
-You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components.](/learn/importing-and-exporting-components)
+قد تتساءل لماذا كتابة `export` بمفردها ليس كافيًا لإصلاح هذا المثال. يمكنك معرفة الفرق بين `export` و `export default` في قسم [استيراد وتصدير المكوّنات.](/learn/importing-and-exporting-components)
 
 </Solution>
 
-#### Fix the return statement {/*fix-the-return-statement*/}
+#### قم بإصلاح جملة `return` {/*fix-the-return-statement*/}
 
-Something isn't right about this `return` statement. Can you fix it?
+هناك شي غير صحيح في جملة `return` هذه. هل يمكنك إصلاحه؟
 
 <Hint>
 
-You may get an "Unexpected token" error while trying to fix this. In that case, check that the semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+قد تحصل على خطأ "Unexpected token" أثناء محاولتك لإصلاح هذا. في هذه الحالة، تحقق من أن الفاصلة المنقوطة تظهر *بعد* قوس الإغلاق. ترك فاصلة منقوطة داخل `return ( )` سيسبب خطأ.
 
 </Hint>
-
 
 <Sandpack>
 
 ```js
 export default function Profile() {
   return
-    <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+    <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="كاتسوكو ساروهاشي" />;
 }
 ```
 
@@ -318,13 +316,13 @@ img { height: 180px; }
 
 <Solution>
 
-You can fix this component by moving the return statement to one line like so:
+يمكنك إصلاح هذا المكوّن عن طريق نقل جملة return إلى سطر واحد كما يلي:
 
 <Sandpack>
 
 ```js
 export default function Profile() {
-  return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+  return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="كاتسوكو ساروهاشي" />;
 }
 ```
 
@@ -334,7 +332,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-Or by wrapping the returned JSX markup in parentheses that open right after `return`:
+أو عن طريق إحاطة الترميز المرئي JSX الذي يتم إرجاعه بالأقواس ووضع علامة القوس المفتوحة مباشرة بعد الكلمة `return`.
 
 <Sandpack>
 
@@ -343,7 +341,7 @@ export default function Profile() {
   return (
     <img 
       src="https://i.imgur.com/jA8hHMpm.jpg" 
-      alt="Katsuko Saruhashi" 
+      alt="كاتسوكو ساروهاشي"
     />
   );
 }
@@ -357,9 +355,9 @@ img { height: 180px; }
 
 </Solution>
 
-#### Spot the mistake {/*spot-the-mistake*/}
+#### اكتشف الخطأ {/*spot-the-mistake*/}
 
-Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
+هناك خطأ في كيفية تعريف واستخدام المكوّن `Profile`. هل يمكنك اكتشاف الخطأ؟ (حاول تذكر كيف تمّيز React المكوّنات عن وسوم HTML!)
 
 <Sandpack>
 
@@ -368,7 +366,7 @@ function profile() {
   return (
     <img
       src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+      alt="ألان ل. هارت"
     />
   );
 }
@@ -376,7 +374,7 @@ function profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء رائعون</h1>
       <profile />
       <profile />
       <profile />
@@ -393,9 +391,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Solution>
 
-React component names must start with a capital letter.
+يجب أن تبدأ أسماء مكوّنات React بحرف كبير.
 
-Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
+قم بتغيير `function profile()` إلى`function Profile()`, ثم قم بتغيير كل `<profile />` إلى `<Profile />`:
 
 <Sandpack>
 
@@ -404,7 +402,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+      alt="ألان ل. هارت"
     />
   );
 }
@@ -412,7 +410,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>علماء رائعون</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -429,14 +427,14 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-#### Your own component {/*your-own-component*/}
+#### مكوّنك الخاص {/*your-own-component*/}
 
-Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component that shows `<h1>Good job!</h1>`. Don't forget to export it!
+قم بكتابة مكوّن من الصفر. يمكنك إعطائه أي اسم صالح وإرجاع أي ترميز مرئي. إذا كنت بحاجة إلى أفكار، يمكنك كتابة مكوّن `Congratulations` الذي يعرض `<h1>عمل رائع!</h1>`. لا تنسى تصديره!
 
 <Sandpack>
 
 ```js
-// Write your component below!
+// قم بكتابة مكونك بالأسفل
 
 ```
 
@@ -449,7 +447,7 @@ Write a component from scratch. You can give it any valid name and return any ma
 ```js
 export default function Congratulations() {
   return (
-    <h1>Good job!</h1>
+    <h1>عمل رائع!</h1>
   );
 }
 ```
