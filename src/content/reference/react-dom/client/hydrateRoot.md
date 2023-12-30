@@ -142,7 +142,7 @@ hydrateRoot(document.getElementById('root'), <App />);
 <div id="root"><h1>Hello, world!</h1><button>You clicked me <!-- -->0<!-- --> times</button></div>
 ```
 
-```js index.js active
+```js src/index.js active
 import './styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import App from './App.js';
@@ -153,7 +153,7 @@ hydrateRoot(
 );
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 export default function App() {
@@ -247,7 +247,7 @@ hydrateRoot(document, <App />);
 <div id="root"><h1>Current Date: <!-- -->01/01/2020</h1></div>
 ```
 
-```js index.js
+```js src/index.js
 import './styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import App from './App.js';
@@ -255,7 +255,7 @@ import App from './App.js';
 hydrateRoot(document.getElementById('root'), <App />);
 ```
 
-```js App.js active
+```js src/App.js active
 export default function App() {
   return (
     <h1 suppressHydrationWarning={true}>
@@ -285,7 +285,7 @@ export default function App() {
 <div id="root"><h1>Is Server</h1></div>
 ```
 
-```js index.js
+```js src/index.js
 import './styles.css';
 import { hydrateRoot } from 'react-dom/client';
 import App from './App.js';
@@ -293,7 +293,7 @@ import App from './App.js';
 hydrateRoot(document.getElementById('root'), <App />);
 ```
 
-```js App.js active
+```js src/App.js active
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -339,7 +339,7 @@ export default function App() {
 <div id="root"><h1>مرحبًا بالعالم! <!-- -->0</h1><input placeholder="اكتب شيئًا هنا"/></div>
 ```
 
-```js index.js active
+```js src/index.js active
 import { hydrateRoot } from 'react-dom/client';
 import './styles.css';
 import App from './App.js';
@@ -356,7 +356,7 @@ setInterval(() => {
 }, 1000);
 ```
 
-```js App.js
+```js src/App.js
 export default function App({counter}) {
   return (
     <>

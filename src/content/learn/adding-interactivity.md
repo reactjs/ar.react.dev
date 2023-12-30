@@ -134,7 +134,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تكريم جراحة الأعصاب',
   artist: 'مارتا كولفين أندراد',
