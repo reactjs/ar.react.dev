@@ -5,7 +5,9 @@ canary: true
 ---
 
 <Canary>
+
 هذه التوجيهات لازمة فقط إذا كنت [تستخدم RSC (مكونات الخادم)](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) أو تبني مكتبة متوافقة معها.
+
 </Canary>
 
 
@@ -23,11 +25,7 @@ canary: true
 
 ### `'use server'` {/*use-server*/}
 
-<<<<<<< HEAD
-أضف `'use server';` في أعلى دالة غير متزامنة (async) لتمييز أن الدالة يمكن تنفيذها من قبل العميل.
-=======
-Add `'use server'` at the top of an async function body to mark the function as callable by the client. We call these functions _Server Actions_.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+أضف `'use server';` في أعلى دالة غير متزامنة (async) لتمييز أن الدالة يمكن تنفيذها من قبل العميل. نسمي هذه الدوال Server Actions.
 
 ```js {2}
 async function addToCart(data) {
@@ -36,100 +34,77 @@ async function addToCart(data) {
 }
 ```
 
-<<<<<<< HEAD
-يمكن تمرير هذه الدالة إلى العميل، عندما تُستدعى، ستنفذ طلب شبكة إلى الخادم يتضمن نسخة متسلسلة من أي معاملات تم تمريرها. إذا كانت دالة الخادم ترجع قيمة، سيتم تسلسلها وإرجاعها إلى العميل.
+يمكن تمرير هذه الدالة إلى العميل، عندما تُستدعى، ستنفذ طلب شبكة إلى الخادم يتضمن نسخة متسلسلة من أي معاملات تم تمريرها. إذا كان Server Action ترجع قيمة، سيتم تسلسلها وإرجاعها إلى العميل.
 
-أو بدلا من ذلك، أضف `'use server';` في أعلى ملف لتمييز كل التصديرات في هذا الملف كدوال خادم غير متزامنة يمكن استخدامها في أي مكان، بما في ذلك استيرادها في ملفات مكونات العميل.
+بدلا من وضع `'use server'` في أول الدالة، يمكنك إضافة `'use server';` في أعلى ملف لتمييز كل التصديرات في هذا الملف كدوال خادم غير متزامنة يمكن استخدامها في أي مكان، بما في ذلك استيرادها في ملفات مكونات العميل.
 
 #### ملاحظات {/*caveats*/}
 
-* تذكر أن المعاملات الممررة إلى دالة مميزة بـ `'use server'` متحكم بها بالكامل من جانب العميل. للأمان، عاملها دائمًا كإدخال غير موثوق به، وتأكد من التحقق من صحتها وتصفيتها كما يناسبك.
-* لتجنب الارتباك الذي قد يحدثه خلط الكود من جانب العميل والخادم في نفس الملف، يمكن استخدام `'use server'` فقط في ملفات الخادم؛ يمكن تمرير الدوال الناتجة إلى مكونات العميل عبر الخصائص.
+* يجب أن تكون `'use server'` في بداية الدالة أو الملف. فوق أي كود آخر، بما في ذلك الاستيرادات (التعليقات قبل `'use server'` مسموح به) يجب كتابتها بعلامة تنصيص مفردة أو مزدوجة. ليس backticks.
+* يمكن استخدام `'use server'` في ملفات الخادم فقط، ومن ثَمّ يمكن تمرير Server Actions إلى مكونات العميل من خلال الخصائص (props). اقرأ أيضًا [أنواع التسلسل](#serializable-parameters-and-return-values).
+* عند استيراد Server Action من [كود Client](/reference/react/use-client)، يجب استخدام التوجيهات على مستوى الملف وليس الدالة.
 * لأن الاستدعاءات الشبكية الأساسية دائمًا غير متزامنة، يمكن استخدام `'use server'` فقط في دوال غير متزامنة (async).
-* التوجيهات مثل `'use server'` يجب أن تكون في أعلى الدالة أو الملف، فوق أي كود آخر بما في ذلك الاستيرادات (التعليقات فوق التوجيهات مقبولة). يجب كتابتها بعلامات تنصيص مفردة (`'use server'`) أو مزدوجة (`"use server"`)، وليس علامات تنصيص عكسية backticks (&#x60;`use server`&#x60;). (تشبه تنسيق التوجيهات `'use xyz'` تنسيق تسمية الـ Hooks `useXyz()`، لكن هذا التشابه محض مصادفة.)
-=======
-When calling a Server Action on the client, it will make a network request to the server that includes a serialized copy of any arguments passed. If the Server Action returns a value, that value will be serialized and returned to the client.
+* تذكر أن المعاملات الممررة إلى دالة مميزة بـ `'use server'` متحكم بها بالكامل من جانب العميل. للأمان، عاملها دائمًا كإدخال غير موثوق به، وتأكد من التحقق من صحتها وتصفيتها كما يناسبك.
+* يفضل استعمال Server Actions في [`useTranistion`](/reference/react/useTransition)، أما Server Actions التي يتم تمريرها إلى [`<form action>`](/reference/react-dom/components/form#props) أو [`formAction`](/reference/react-dom/components/input#props) سيتم إضافة transition لهم تلقائيًا.
+* تم تصميم Server Actions لعمليات تعديل حالة الخادم. لا ينصح باستخدامهم في جلب البيانات، ووفقًا لذلك، فإن الإطارات التي تنفذ Server Actions عادة تعالج إجراء واحد في كل مرة وليس لديها طريقة لتخزين قيمة الإرجاع.
 
-Instead of individually marking functions with `'use server'`, you can add the directive to the top of a file to mark all exports within that file as Server Actions that can be used anywhere, including imported in client code.
+### الاعتبارات الأمنية {/*security*/}
 
-#### Caveats {/*caveats*/}
-* `'use server'` must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks.
-* `'use server'` can only be used in server-side files. The resulting Server Actions can be passed to Client Components through props. See supported [types for serialization](#serializable-parameters-and-return-values).
-* To import a Server Action from [client code](/reference/react/use-client), the directive must be used on a module level.
-* Because the underlying network calls are always asynchronous, `'use server'` can only be used on async functions.
-* Always treat arguments to Server Actions as untrusted input and authorize any mutations. See [security considerations](#security).
-* Server Actions should be called in a [transition](/reference/react/useTransition). Server Actions passed to [`<form action>`](/reference/react-dom/components/form#props) or [`formAction`](/reference/react-dom/components/input#props) will automatically be called in a transition.
-* Server Actions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Actions typically process one action at a time and do not have a way to cache the return value.
+تُحكم الوسائط المُرسَلة إلى Server Actions بالكامل من قبل العميل. من أجل الأمان، دائمًا عاملها كمُدخَلات غير موثوق بها، وتأكد دائمًا من التحقق وتهيئة الوسائط بالطريقة المناسبة.
 
-### Security considerations {/*security*/}
-
-Arguments to Server Actions are fully client-controlled. For security, always treat them as untrusted input, and make sure to validate and escape arguments as appropriate.
-
-In any Server Action, make sure to validate that the logged-in user is allowed to perform that action.
+في أي Server Action، تأكد من التحقق من أن المستخدم الذي سجل دخوله مسموح له بأداء تلك العملية.
 
 <Wip>
 
-To prevent sending sensitive data from a Server Action, there are experimental taint APIs to prevent unique values and objects from being passed to client code.
+لمنع إرسال بيانات حساسة من إجراء خادمي، هناك واجهات برمجة تجريبية لمنع تمرير القيم والكائنات الفريدة إلى كود العميل.
 
-See [experimental_taintUniqueValue](/reference/react/experimental_taintUniqueValue) and [experimental_taintObjectReference](/reference/react/experimental_taintObjectReference).
+اطلع على [`experimental_taintUniqueValue`](/reference/react/experimental_taintUniqueValue) و [`experimental_taintObjectReference`](/reference/react/experimental_taintObjectReference).
 
 </Wip>
 
-### Serializable arguments and return values {/*serializable-parameters-and-return-values*/}
+### وسائط وقيم الإرجاع قابلة للتسلسل {/*serializable-parameters-and-return-values*/}
 
-As client code calls the Server Action over the network, any arguments passed will need to be serializable.
+عندما يستدعي كود العميل Server Action عبر الشبكة، فإن أي وسائط يتم تمريرها ستحتاج إلى أن تكون قابلة للتسلسل.
 
-Here are supported types for Server Action arguments:
+فيما يلي الأنواع المدعومة لوسائط إجراء الخادم:
 
-* Primitives
+* البيانات الأساسية
 	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
 	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
 	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
 	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
 	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
-* Iterables containing serializable values
+	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), الرموز المُسجَّلة فقط في سجل الرموز من خلال [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
+
+* مجموعات تحتوي على قيم قابلة للتسلسل
 	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) و [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) instances
-* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
-* Functions that are Server Actions
+* نماذد [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+* [كائنات عادية](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): تلك التي تم إنشاؤها باستخدام [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), مع خصائص متسلسلة
+* دوال Server Actions
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-Notably, these are not supported:
-* React elements, or [JSX](https://react.dev/learn/writing-markup-with-jsx)
-* Functions, including component functions or any other function that is not a Server Action
+وتجدر الإشارة إلى عدم دعم ما يلي:
+* عناصر React، أو [JSX](https://react.dev/learn/writing-markup-with-jsx)
+* الدوال بما في ذلك المكونات أو أي دوال ليست Server Action
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
-* Symbols not registered globally, ex. `Symbol('my new symbol')`
+* كائنات تكون مثيلات من أي Class (بخلاف المدمجة المذكورة) أو كائنات ب [null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* الرموز التي لم تُسجل عالمياً، مثل `Symbol('my new symbol')`
 
-
-Supported serializable return values are the same as [serializable props](/reference/react/use-client#passing-props-from-server-to-client-components) for a boundary Client Component.
-
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+قيم الإرجاع القابلة للتسلسل المدعومة هي نفسها كالخصائص القابلة للتسلسل لـ Boundry Client Component.
 
 ## الاستخدام {/*usage*/}
 
-<<<<<<< HEAD
-<Wip>
-هذا القسم لم يكتمل بعد.
+### Server Actions في النماذج `<form>` {/*server-actions-in-forms*/}
 
-يمكن استخدام هذا النهج في أي إطار عمل يدعم مكونات الخادم. يمكنك العثور على مظيد من المعلومات منهم:
+إن أشهر استخدام للـ Server Actions سيكون مناداة هذه الدوال لتحديث البيانات. في المتصفح، يعتبر عنصر [HTML `<from>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) الطريقة التقليدية للمستخدم لإرسال تعديل. مع React Server Components، تقدم React دعمًا متكاملاً للـ Server Actions في [النماذج](/reference/react-dom/components/form)..
 
-* [وثائق Next.js](https://nextjs.org/docs/getting-started/react-essentials)
-* المزيد يأتي لاحقا...
-</Wip>
-=======
-### Server Actions in forms {/*server-actions-in-forms*/}
-
-The most common use case of Server Actions will be calling server functions that mutate data. On the browser, the [HTML form element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) is the traditional approach for a user to submit a mutation. With React Server Components, React introduces first-class support for Server Actions in [forms](/reference/react-dom/components/form).
-
-Here is a form that allows a user to request a username.
+هذا النموذج يطلب من المستخدم ادخال اسمه:
 
 ```js [[1, 3, "formData"]]
 // App.js
@@ -143,20 +118,20 @@ async function requestUsername(formData) {
 export default App() {
   <form action={requestUsername}>
     <input type="text" name="username" />
-    <button type="submit">Request</button>
+    <button type="submit">حفظ</button>
   </form>
 }
 ```
 
-In this example `requestUsername` is a Server Action passed to a `<form>`. When a user submits this form, there is a network request to the server function `requestUsername`. When calling a Server Action in a form, React will supply the form's <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)</CodeStep> as the first argument to the Server Action.
+في هذا المثال، يتم تمرير `requestUsername` كـ Server Action إلى `<form>`. عندما يقوم المستخدم بإرسال هذا النموذج، يتم إرسال طلب شبكة إلى دالة الخادم `requestUsername`. عند استدعاء Server Action في نموذج، ستقوم React بتزويد <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)</CodeStep> النموذج كالوسيط الأول للـ Server Action.
 
-By passing a Server Action to the form `action`, React can [progressively enhance](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) the form. This means that forms can be submitted before the JavaScript bundle is loaded.
+من خلال تمرير Server Action إلى `action`، يمكن لـ React [تحسين النموذج تدريجيًا](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). وهذا يعني أنه يمكن إرسال النماذج قبل تحميل ملف JavaScript.
 
-#### Handling return values in forms {/*handling-return-values*/}
+#### معالجة القيم الراجعة من النماذج {/*handling-return-values*/}
 
-In the username request form, there might be the chance that a username is not available. `requestUsername` should tell us if it fails or not.
+في نموذج اسم المستخدم السابق، من المحتمل ألا يوجد username. في هذه الحالة يجب على `requrestUsername` أن يخبرنا إن كان فشل أم لا.
 
-To update the UI based on the result of a Server Action while supporting progressive enhancement, use [`useFormState`](/reference/react-dom/hooks/useFormState).
+لتحديث واجهة المستخدم اعتماد على نتيجة Server Action يمكنك استخدام [`useFormState`](/reference/react-dom/hooks/useFormState).
 
 ```js
 // requestUsername.js
@@ -194,13 +169,13 @@ function UsernameForm() {
 }
 ```
 
-Note that like most Hooks, `useFormState` can only be called in <CodeStep step={1}>[client code](/reference/react/use-client)</CodeStep>.
+لاحظ أن `useFormState` يمكن استخدامها فقط في <CodeStep step={1}>[client code](/reference/react/use-client)</CodeStep>.
 
-### Calling a Server Action outside of `<form>` {/*calling-a-server-action-outside-of-form*/}
+### استخدام Server Action خارج `<form>` {/*calling-a-server-action-outside-of-form*/}
 
-Server Actions are exposed server endpoints and can be called anywhere in client code.
+تعتبر Server Actions نقاط نهاية خادم (Endpoint) ويمكن استدعاؤها في أي مكان في كود العميل.
 
-When using a Server Action outside of a [form](/reference/react-dom/components/form), call the Server Action in a [transition](/reference/react/useTransition), which allows you to display a loading indicator, show [optimistic state updates](/reference/react/useOptimistic), and handle unexpected errors. Forms will automatically wrap Server Actions in transitions.
+عند استخدام Server Action خارج `<form>`، استدعها في [transition](/reference/react/useTransition)، والذي يسمح لك بعرض مؤشر التحميل، وعرض [تحديثات الحالة التفاؤلية](/reference/react/useOptimistic)، والتعامل مع الأخطاء غير المتوقعة. ستقوم النماذج تلقائيًا بتغليف Server Actions في transitions.
 
 ```js {9-12}
 import incrementLike from './actions';
@@ -231,11 +206,10 @@ function LikeButton() {
 'use server';
 
 let likeCount = 0;
-export default async incrementLike() {
+export default async function incrementLike() {
   likeCount++;
   return likeCount;
 }
 ```
 
-To read a Server Action return value, you'll need to `await` the promise returned.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+لقراءة القيمة المرجعة، ستحتاج إلى `await` الـ Promise المرجعة.
