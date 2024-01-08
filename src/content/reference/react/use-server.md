@@ -153,7 +153,7 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import {useFormState} from 'react-dom';
+import { useFormState } from 'react-dom';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
