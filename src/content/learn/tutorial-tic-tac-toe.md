@@ -338,7 +338,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 الأسطر من 1 إلى 5 تستدعي كل القطع اللازمة معًا:
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 * React
 * مكتبة React للتحدث مع متصفحات الويب (React DOM)
