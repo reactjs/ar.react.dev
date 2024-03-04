@@ -89,9 +89,15 @@ async function addToCart(data) {
 * دوال Server Actions
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
+<<<<<<< HEAD
 وتجدر الإشارة إلى عدم دعم ما يلي:
 * عناصر React، أو [JSX](https://react.dev/learn/writing-markup-with-jsx)
 * الدوال بما في ذلك المكونات أو أي دوال ليست Server Action
+=======
+Notably, these are not supported:
+* React elements, or [JSX](/learn/writing-markup-with-jsx)
+* Functions, including component functions or any other function that is not a Server Action
+>>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * كائنات تكون مثيلات من أي Class (بخلاف المدمجة المذكورة) أو كائنات ب [null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
 * الرموز التي لم تُسجل عالمياً، مثل `Symbol('my new symbol')`
