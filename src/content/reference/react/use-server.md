@@ -38,7 +38,18 @@ async function addToCart(data) {
 
 بدلا من وضع `'use server'` في أول الدالة، يمكنك إضافة `'use server';` في أعلى ملف لتمييز كل التصديرات في هذا الملف كدوال خادم غير متزامنة يمكن استخدامها في أي مكان، بما في ذلك استيرادها في ملفات مكونات العميل.
 
+<<<<<<< HEAD
 #### ملاحظات {/*caveats*/}
+=======
+#### Caveats {/*caveats*/}
+* `'use server'` must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks.
+* `'use server'` can only be used in server-side files. The resulting Server Actions can be passed to Client Components through props. See supported [types for serialization](#serializable-parameters-and-return-values).
+* To import a Server Action from [client code](/reference/react/use-client), the directive must be used on a module level.
+* Because the underlying network calls are always asynchronous, `'use server'` can only be used on async functions.
+* Always treat arguments to Server Actions as untrusted input and authorize any mutations. See [security considerations](#security).
+* Server Actions should be called in a [Transition](/reference/react/useTransition). Server Actions passed to [`<form action>`](/reference/react-dom/components/form#props) or [`formAction`](/reference/react-dom/components/input#props) will automatically be called in a transition.
+* Server Actions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Actions typically process one action at a time and do not have a way to cache the return value.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 * يجب أن تكون `'use server'` في بداية الدالة أو الملف. فوق أي كود آخر، بما في ذلك الاستيرادات (التعليقات قبل `'use server'` مسموح به) يجب كتابتها بعلامة تنصيص مفردة أو مزدوجة. ليس backticks.
 * يمكن استخدام `'use server'` في ملفات الخادم فقط، ومن ثَمّ يمكن تمرير Server Actions إلى مكونات العميل من خلال الخصائص (props). اقرأ أيضًا [أنواع التسلسل](#serializable-parameters-and-return-values).
@@ -89,9 +100,15 @@ async function addToCart(data) {
 * دوال Server Actions
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
+<<<<<<< HEAD
 وتجدر الإشارة إلى عدم دعم ما يلي:
 * عناصر React، أو [JSX](https://react.dev/learn/writing-markup-with-jsx)
 * الدوال بما في ذلك المكونات أو أي دوال ليست Server Action
+=======
+Notably, these are not supported:
+* React elements, or [JSX](/learn/writing-markup-with-jsx)
+* Functions, including component functions or any other function that is not a Server Action
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * كائنات تكون مثيلات من أي Class (بخلاف المدمجة المذكورة) أو كائنات ب [null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
 * الرموز التي لم تُسجل عالمياً، مثل `Symbol('my new symbol')`
@@ -177,7 +194,11 @@ function UsernameForm() {
 
 تعتبر Server Actions نقاط نهاية خادم (Endpoint) ويمكن استدعاؤها في أي مكان في كود العميل.
 
+<<<<<<< HEAD
 عند استخدام Server Action خارج `<form>`، استدعها في [transition](/reference/react/useTransition)، والذي يسمح لك بعرض مؤشر التحميل، وعرض [تحديثات الحالة التفاؤلية](/reference/react/useOptimistic)، والتعامل مع الأخطاء غير المتوقعة. ستقوم النماذج تلقائيًا بتغليف Server Actions في transitions.
+=======
+When using a Server Action outside of a [form](/reference/react-dom/components/form), call the Server Action in a [Transition](/reference/react/useTransition), which allows you to display a loading indicator, show [optimistic state updates](/reference/react/useOptimistic), and handle unexpected errors. Forms will automatically wrap Server Actions in transitions.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ```js {9-12}
 import incrementLike from './actions';
