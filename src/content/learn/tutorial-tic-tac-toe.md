@@ -264,11 +264,19 @@ body {
 
 يمكنك أيضًا متابعة هذا الشرح التطبيقي باستخدام بيئة التطوير المحلية. للقيام بذلك ، تحتاج إلى:
 
+<<<<<<< HEAD
 1. تثبيت [Node.js](https://nodejs.org/ar/).
 1. في نافذة CodeSandbox التي فتحتها مؤخرًا، اضغط على زر الزاوية اليسرى العليا لفتح القائمة، ثم اختر **File** > **Export to ZIP** في تلك القائمة لتنزيل أرشيف الملفات محليًا.
 1. فك ضغط الأرشيف، ثم افتح موجه الأوامر (Terminal) واكتب `cd` للانتقال إلى الدليل الذي فككت ضغطه.
 1. قم بتثبيت الاعتمادات باستخدام `npm install`.
 1. قم بتشغيل `npm start` لبدء خادم محلي واتبع التعليمات لعرض الكود عاملًا في المتصفح.
+=======
+1. Install [Node.js](https://nodejs.org/en/)
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
+1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
+1. Install the dependencies with `npm install`
+1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 إذا واجهتك مشكلة، لا تدع هذا يوقفك! تابع الشرح التطبيقي عبر الإنترنت بدلاً من ذلك وحاول إعداد بيئة التطوير المحلية مرة أخرى لاحقًا.
 
@@ -338,7 +346,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 الأسطر من 1 إلى 5 تستدعي كل القطع اللازمة معًا:
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 * React
 * مكتبة React للتحدث مع متصفحات الويب (React DOM)

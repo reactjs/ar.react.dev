@@ -484,12 +484,35 @@ function FilterableProductTable({ products }) {
 
 داخل المكون `SearchBar`، ستضيف معالجات حدث التغير `onChange` وتعدل من حالة المكون الأب عبرهما:
 
+<<<<<<< HEAD
 ```js {5}
 <input 
   type="text" 
   value={filterText} 
   placeholder="بحث..." 
   onChange={(e) => onFilterTextChange(e.target.value)} />
+=======
+```js {4,5,13,19}
+function SearchBar({
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange
+}) {
+  return (
+    <form>
+      <input
+        type="text"
+        value={filterText}
+        placeholder="Search..."
+        onChange={(e) => onFilterTextChange(e.target.value)}
+      />
+      <label>
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => onInStockOnlyChange(e.target.checked)}
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 ```
 
 الآن يمكننا القول أن تطبيقنا يعمل بشكل كامل!
