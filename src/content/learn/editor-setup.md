@@ -41,7 +41,11 @@ title: تجهيز محرر الأكواد
 
 ### التنسيق {/*formatting*/}
 
+<<<<<<< HEAD
 آخر شيء تريد القيام به عند مشاركة الكود مع مساهم آخر هو الدخول في مناقشة حول [التباعد بالمسافة الكبيرة tab أم التباعد بالمسافة space](https://www.google.com/search?q=tabs+vs+spaces)! لحسن الحظ، سيقوم [Prettier](https://prettier.io/) بتنظيف الكود الخاص بك عن طريق إعادة تنسيقه ليتوافق مع قواعد مسبقة وقابلة للتكوين. قم بتشغيل Prettier، وسيتم تحويل جميع علامات التبويب إلى مسافات - وسيتم تغيير المسافة البادئة والاقتباسات وما إلى ذلك أيضًا ليتوافق مع التكوين. في الإعداد المثالي، سيتم تشغيل Prettier عند حفظ الملف، مما يجعل هذه التعديلات بسرعة بالنسبة لك.
+=======
+The last thing you want to do when sharing your code with another contributor is get into a discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 يمكنك تثبيت [إضافة Prettier في VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) عن طريق اتباع هذه الخطوات:
 

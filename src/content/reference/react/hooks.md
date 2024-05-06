@@ -112,6 +112,7 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+<<<<<<< HEAD
 ## خطاطيف المصدر {/*resource-hooks*/}
 
 يستطيع المكون الوصول *للمصادر* دون امتلاكها كجزء من حالتهم. على سبيل المثال، يمكن للمكون قراء رسالة من وعد (Promise) أو قراءة معلومات التصميم من السياق (Context).
@@ -131,12 +132,22 @@ function MessageComponent({ messagePromise }) {
 ---
 
 ## خطاطيف أخرى {/*other-hooks*/}
+=======
+## Other Hooks {/*other-hooks*/}
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 هذه الخطاطيف مفيدة في الغالب لمؤلفي المكتبات ولا يتم استخدامها بشكل شائع في كود التطبيق.
 
+<<<<<<< HEAD
 - [`useDebugValue`](/reference/react/useDebugValue) يتيح لك تخصيص التسمية التي تعرضها أدوات مطوري React لخطافك المخصص.
 - [`useId`](/reference/react/useId) يتيح للمكون ربط معرف فريد بنفسه (unique ID). تستخدم عادة مع واجهات برمجة إمكانية الوصول API.
 - [`useSyncExternalStore`](/reference/react/useSyncExternalStore) يتيح للمكون الاشتراك في مُوَزّع خارجي.
+=======
+- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
+- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
+* [`useActionState`](/reference/react/useActionState) allows you to manage state of actions.
+>>>>>>> 556063bdce0ed00f29824bc628f79dac0a4be9f4
 
 ---
 
