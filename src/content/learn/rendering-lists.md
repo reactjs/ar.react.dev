@@ -113,11 +113,21 @@ const people = [{
   name: 'محمد عبد السلام',
   profession: 'فيزيائي',
 }, {
+<<<<<<< HEAD
   name: 'بيرسي لافون جوليان',
   profession: 'كيميائي',
 }, {
   name: 'سوبراهمانيان تشاندراسيخار',
   profession: 'عالم فيزياء الفلك',
+=======
+  id: 3,
+  name: 'Percy Lavon Julian',
+  profession: 'chemist',  
+}, {
+  id: 4,
+  name: 'Subrahmanyan Chandrasekhar',
+  profession: 'astrophysicist',
+>>>>>>> b7bf6c16fb3152626a71c115b3242df6eb93bc6e
 }];
 ```
 
