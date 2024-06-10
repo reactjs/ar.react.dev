@@ -264,11 +264,19 @@ body {
 
 يمكنك أيضًا متابعة هذا الشرح التطبيقي باستخدام بيئة التطوير المحلية. للقيام بذلك ، تحتاج إلى:
 
+<<<<<<< HEAD
 1. تثبيت [Node.js](https://nodejs.org/ar/).
 1. في نافذة CodeSandbox التي فتحتها مؤخرًا، اضغط على زر الزاوية اليسرى العليا لفتح القائمة، ثم اختر **File** > **Export to ZIP** في تلك القائمة لتنزيل أرشيف الملفات محليًا.
 1. فك ضغط الأرشيف، ثم افتح موجه الأوامر (Terminal) واكتب `cd` للانتقال إلى الدليل الذي فككت ضغطه.
 1. قم بتثبيت الاعتمادات باستخدام `npm install`.
 1. قم بتشغيل `npm start` لبدء خادم محلي واتبع التعليمات لعرض الكود عاملًا في المتصفح.
+=======
+1. Install [Node.js](https://nodejs.org/en/)
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
+1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
+1. Install the dependencies with `npm install`
+1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
 
 إذا واجهتك مشكلة، لا تدع هذا يوقفك! تابع الشرح التطبيقي عبر الإنترنت بدلاً من ذلك وحاول إعداد بيئة التطوير المحلية مرة أخرى لاحقًا.
 
@@ -338,7 +346,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 الأسطر من 1 إلى 5 تستدعي كل القطع اللازمة معًا:
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
 
 * React
 * مكتبة React للتحدث مع متصفحات الويب (React DOM)
@@ -2958,4 +2970,8 @@ body {
 1. عندما يفوز أحد، قم بتمييز المربعات الثلاثة التي تسببت في الفوز (وعندما لا يفوز أحد، عرض رسالة حول نتيجة اللعبة).
 1. عرض الموقع لكل خطوة في التنسيق (الصف، العمود) في قائمة تاريخ الخطوات.
 
+<<<<<<< HEAD
 طوال هذا الشرح التطبيقي لمست مفاهيم React بما في ذلك العناصر (elements)، والمكونات (components)، والخصائص (props)، والحالة (state). الآن بعد أن رأيت كيف تعمل هذه المفاهيم عند بناء لعبة، تفقد [التفكير في React](/learn/thinking-in-react) لمعرفة كيف تعمل نفس المفاهيم في React عند بناء واجهة مستخدم تطبيق.
+=======
+Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when building an app's UI.
+>>>>>>> b12743c31af7f5cda2c25534f64281ff030b7205
