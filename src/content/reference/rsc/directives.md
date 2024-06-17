@@ -18,5 +18,10 @@ These directives are needed only if you're [using React Server Components](/lear
 
 ## توجيهات الكود {/*source-code-directives*/}
 
+<<<<<<< HEAD:src/content/reference/react/directives.md
 * [`'use client'`](/reference/react/use-client) تميز الملف بأن ما فيه مكون من جانب العميل (client-side).
 * [`'use server'`](/reference/react/use-server) تميز الدوال من جانب الخادم (server-side) التي يمكن استدعاؤها من الكود من جانب العميل (client-side).
+=======
+* [`'use client'`](/reference/rsc/use-client) lets you mark what code runs on the client.
+* [`'use server'`](/reference/rsc/use-server) marks server-side functions that can be called from client-side code.
+>>>>>>> 56df8af577407c69889f24a4c7d9ddb54745a26b:src/content/reference/rsc/directives.md
