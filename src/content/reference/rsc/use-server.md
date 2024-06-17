@@ -42,10 +42,10 @@ async function addToCart(data) {
 
 * يجب أن تكون `'use server'` في بداية الدالة أو الملف. فوق أي كود آخر، بما في ذلك الاستيرادات (التعليقات قبل `'use server'` مسموح به) يجب كتابتها بعلامة تنصيص مفردة أو مزدوجة. ليس backticks.
 * يمكن استخدام `'use server'` في ملفات الخادم فقط، ومن ثَمّ يمكن تمرير Server Actions إلى مكونات العميل من خلال الخصائص (props). اقرأ أيضًا [أنواع التسلسل](#serializable-parameters-and-return-values).
-* عند استيراد Server Action من [كود Client](/reference/react/use-client)، يجب استخدام التوجيهات على مستوى الملف وليس الدالة.
+* عند استيراد Server Action من [كود Client](/reference/rsc/use-client)، يجب استخدام التوجيهات على مستوى الملف وليس الدالة.
 * لأن الاستدعاءات الشبكية الأساسية دائمًا غير متزامنة، يمكن استخدام `'use server'` فقط في دوال غير متزامنة (async).
 * تذكر أن المعاملات الممررة إلى دالة مميزة بـ `'use server'` متحكم بها بالكامل من جانب العميل. للأمان، عاملها دائمًا كإدخال غير موثوق به، وتأكد من التحقق من صحتها وتصفيتها كما يناسبك.
-* يفضل استعمال Server Actions في [`useTranistion`](/reference/react/useTransition)، أما Server Actions التي يتم تمريرها إلى [`<form action>`](/reference/react-dom/components/form#props) أو [`formAction`](/reference/react-dom/components/input#props) سيتم إضافة transition لهم تلقائيًا.
+* يفضل استعمال Server Actions في [`useTranistion`](/reference/rsc/useTransition)، أما Server Actions التي يتم تمريرها إلى [`<form action>`](/reference/react-dom/components/form#props) أو [`formAction`](/reference/react-dom/components/input#props) سيتم إضافة transition لهم تلقائيًا.
 * تم تصميم Server Actions لعمليات تعديل حالة الخادم. لا ينصح باستخدامهم في جلب البيانات، ووفقًا لذلك، فإن الإطارات التي تنفذ Server Actions عادة تعالج إجراء واحد في كل مرة وليس لديها طريقة لتخزين قيمة الإرجاع.
 
 ### الاعتبارات الأمنية {/*security*/}
@@ -90,7 +90,7 @@ async function addToCart(data) {
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 وتجدر الإشارة إلى عدم دعم ما يلي:
-* عناصر React، أو [JSX](https://react.dev/learn/writing-markup-with-jsx)
+* عناصر React، أو [JSX](/learn/writing-markup-with-jsx)
 * الدوال بما في ذلك المكونات أو أي دوال ليست Server Action
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * كائنات تكون مثيلات من أي Class (بخلاف المدمجة المذكورة) أو كائنات ب [null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
@@ -133,7 +133,7 @@ export default function App() {
 
 في نموذج اسم المستخدم السابق، من المحتمل ألا يوجد username. في هذه الحالة يجب على `requrestUsername` أن يخبرنا إن كان فشل أم لا.
 
-لتحديث واجهة المستخدم اعتماد على نتيجة Server Action يمكنك استخدام [`useFormState`](/reference/react-dom/hooks/useFormState).
+لتحديث واجهة المستخدم اعتماد على نتيجة Server Action يمكنك استخدام [`useActionState`](/reference/react/useActionState).
 
 ```js
 // requestUsername.js
@@ -153,11 +153,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [state, action] = useActionState(requestUsername, null, 'n/a');
 
   return (
     <>
@@ -165,19 +165,19 @@ function UsernameForm() {
         <input type="text" name="username" />
         <button type="submit">Request</button>
       </form>
-      <p>Last submission request returned: {returnValue}</p>
+      <p>Last submission request returned: {state}</p>
     </>
   );
 }
 ```
 
-لاحظ أن `useFormState` يمكن استخدامها فقط في <CodeStep step={1}>[client code](/reference/react/use-client)</CodeStep>.
+لاحظ أن `useActionState` يمكن استخدامها فقط في <CodeStep step={1}>[client code](/reference/rsc/use-client)</CodeStep>.
 
 ### استخدام Server Action خارج `<form>` {/*calling-a-server-action-outside-of-form*/}
 
 تعتبر Server Actions نقاط نهاية خادم (Endpoint) ويمكن استدعاؤها في أي مكان في كود العميل.
 
-عند استخدام Server Action خارج `<form>`، استدعها في [transition](/reference/react/useTransition)، والذي يسمح لك بعرض مؤشر التحميل، وعرض [تحديثات الحالة التفاؤلية](/reference/react/useOptimistic)، والتعامل مع الأخطاء غير المتوقعة. ستقوم النماذج تلقائيًا بتغليف Server Actions في transitions.
+عند استخدام Server Action خارج `<form>`، استدعها في [Transition](/reference/react/useTransition)، والذي يسمح لك بعرض مؤشر التحميل، وعرض [تحديثات الحالة التفاؤلية](/reference/react/useOptimistic)، والتعامل مع الأخطاء غير المتوقعة. ستقوم النماذج تلقائيًا بتغليف Server Actions في Transition.
 
 ```js {9-12}
 import incrementLike from './actions';
