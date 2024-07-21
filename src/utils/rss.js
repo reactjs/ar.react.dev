@@ -56,7 +56,7 @@ exports.generateRssFeed = function () {
           `${id}: Blog posts must include an author in the metadata, for RSS feeds`
         );
       }
-      if (data.date == null || data.date.trim() === '') {
+      if (data.date == null || String(data.date).trim() === '') {
         throw new Error(
           `${id}: Blog posts must include a date in the metadata, for RSS feeds`
         );
