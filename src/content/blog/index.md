@@ -1,8 +1,5 @@
 ---
-title: مدونة ريأكت
-author: فريق ريأكت
-date: 2024-07-21
-description: المصدر الرسمي لتحديثات فريق ريأكت.
+title: مدونة React
 ---
 
 <Intro>
