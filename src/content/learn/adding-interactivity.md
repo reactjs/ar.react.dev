@@ -265,7 +265,11 @@ setCount(count + 1); // Request a re-render with 1
 console.log(count);  // Still 0!
 ```
 
+<<<<<<< HEAD
 يساعدك هذا السلوك على تجنب الثغرات. هنا تطبيق دردشة صغير. حاول تخمين ما يحدث إذا ضغطت على "إرسال" أولاً *ثم* غير المستلم إلى بوب. من سيظهر اسمه في "التنبيه" بعد خمس ثوانٍ؟
+=======
+This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+>>>>>>> 6274d4faf5afcef74357871d06191558050e23d3
 
 <Sandpack>
 
