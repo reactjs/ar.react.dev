@@ -1,53 +1,52 @@
 ---
-title: Choosing the State Structure
+title: اختيار هيكلة الحالة
 ---
 
 <Intro>
-
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.
-
+إن هيكلة للحالة (state) بشكل صحيح هي أحد العناصر الأساسية التي يمكن أن تجعل المكون (component) سهل التعديل والتصحيح عند مواجهة الأخطاء، أو بالعكس، قد تكون مصدراً للتعقيد والمشاكل في مشروعك. لذا، إليك بعض النصائح التي يمكنك اتباعها لهيكلة الحالات (state) بشكل فعّال:
 </Intro>
 
 <YouWillLearn>
 
-* When to use a single vs multiple state variables
-* What to avoid when organizing state
-* How to fix common issues with the state structure
+* متى تستخدم متغير حالة واحد مقابل عدة متغيرات حالة
+* ما يجب تجنبه عند تنظيم الحالة
+* كيفية إصلاح المشكلات الشائعة في هيكلة الحالة
 
 </YouWillLearn>
 
-## Principles for structuring state {/*principles-for-structuring-state*/}
+## مبادئ هيلكة الحالات {/*principles-for-structuring-state*/}
 
-When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+عندما تقوم بكتابة مكون يحتوي على حالة، ستحتاج إلى اتخاذ قرارات بشأن عدد متغيرات الحالة التي ستستخدمها وشكل البيانات التي تحتويها. بينما من الممكن كتابة برامج صحيحة حتى مع هيكلة حالة غير مثلى، هناك بعض المبادئ التي يمكن أن تساعدك في اتخاذ قرارات أفضل:
 
-1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
-2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
-3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
-4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
-5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way.
+1. **دمج الحالات المتشابهة** اذا كنت تحدث اثنين او اكثر من الحالات في آن واحدة. فكر في دمجهم الى حالة واحدة 
+2. **تجنب تناقضات في الحالة.** عندما تكون الحالة مهيكلة بطريقة يكون فيها اجزاء من الحالة متناقضة, فهذا يفتح مجال للأخطاء. حاول تجنبها
+3. **تجنب الحالة الزائدة.** اذا كنت تعالج معلومة ما عن طريق خصائص (prop) او الحالة موجودة مسبقا. فيجب عليك تفادي وضع تلك المعلومة في حالات ذلك المكون
+4. **تجنب تكرار الحالات.** عندما تكون نفس البيانات مكررة بين عدة حالات، أو ضمن كائنات متداخلة، يصبح من الصعب الحفاظ على تزامنها. تفادى التكرار قدر الإمكان.
+5. **تجنب الحالة المتداخلة بعمق.** تجنب الحالة المتداخلة بعمق. الحالة ذات الهيكلية العميقة ليست مناسبة للتحديث. يُفضّل هيكلة الحالة بطريقة مسطحة.
 
-The goal behind these principles is to *make state easy to update without introducing mistakes*. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to ["normalize" the database structure](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) to reduce the chance of bugs. To paraphrase Albert Einstein, **"Make your state as simple as it can be--but no simpler."**
+الهدف من هذه المبادئ هو *تسهيل تحديث الحالة دون فتح مجال للأخطاء*. من خلال إزالة البيانات الزائدة والمتكررة من الحالة، نضمن تماسك جميع أجزائها. هذا مماثل لما قد يفعله مهندس قاعدة المعلومات ["تطبيع" لهيكلة قاعدة المعلومات](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) لتقليل من الأخطاء المحتملة. كما قال أينشتاين, **"اجعل حالتك بسيطة بقدر الإمكان—لكن لا تجعلها أبسط من ذلك."**
+ 
 
-Now let's see how these principles apply in action.
+لنرى الآن كيف يمكن تطبيق هذه المبادئ عملياً.
 
-## Group related state {/*group-related-state*/}
+## جمع الحالة المتعلقة {/*group-related-state*/}
 
-You might sometimes be unsure between using a single or multiple state variables.
+قد تكون أحياناً غير متأكد مما إذا كنت ينبغي أن تستخدم متغير حالة واحداً أم عدة متغيرات حالة.
 
-Should you do this?
+هل يجب عليك فعل هذا؟
 
 ```js
 const [x, setX] = useState(0);
 const [y, setY] = useState(0);
 ```
 
-Or this?
+او هذا؟
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+من الناحية التقنية، يمكنك استخدام أي من هاتين الطريقتين. ولكن  **إذا كان هناك متغيران من الحالة يتغيران دائماً معاً، فقد يكون من الجيد دمجهما في متغير حالة واحد.** بذلك، لن تنسى دائماً الحفاظ على تزامنهما، كما في هذا المثال حيث يؤدي تحريك المؤشر إلى تحديث إحداثيات النقطة الحمراء:
 
 <Sandpack>
 
@@ -61,7 +60,7 @@ export default function MovingDot() {
   });
   return (
     <div
-      onPointerMove={e => {
+      onPointerMove={e => { 
         setPosition({
           x: e.clientX,
           y: e.clientY
@@ -93,17 +92,18 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Another case where you'll group data into an object or an array is when you don't know how many pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
+في حالة أخرى، قد تحتاج إلى جمع بيانات الحالة في كائن أو مصفوفة عندما لا تعرف عدد أجزاء الحالة التي ستحتاجها. على سبيل المثال، ستكون هذه الطريقة مفيدة عندما يكون لديك نموذج يتيح للمستخدم إضافة حقول مخصصة
 
 <Pitfall>
 
-If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+إذا كان متغير الحالة الخاص بك هو كائن، فتذكر أنه [لا يمكنك تحديث حقل واحد فقط فيه](/learn/updating-objects-in-state) دون نسخ الحقول الأخرى بشكل صريح. على سبيل المثال، لا يمكنك استخدام `setPosition({ x: 100 })` في المثال أعلاه لأنه لن يحتوي على خاصية `y` على الإطلاق! بدلاً من ذلك، إذا كنت ترغب في تعيين `x` فقط، يمكنك إما استخدام 
+`setPosition({ ...position, x: 100 })`، أو تقسيمها إلى متغيرين للحالة واستخدام `setX(100)`.
 
 </Pitfall>
 
-## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
+## تجنب التناقضات في حالات {/*avoid-contradictions-in-state*/}
 
-Here is a hotel feedback form with `isSending` and `isSent` state variables:
+هنا نموذج تقييم للفندق يحتوي على متغيري حالة `isSending` و `isSent`:
 
 <Sandpack>
 
@@ -124,12 +124,12 @@ export default function FeedbackForm() {
   }
 
   if (isSent) {
-    return <h1>Thanks for feedback!</h1>
+    return <h1>شكرًا لتقديم الملاحظات!</h1>
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>How was your stay at The Prancing Pony?</p>
+      <p>كيف كانت إقامتك في فندق The Prancing Pony؟</p>
       <textarea
         disabled={isSending}
         value={text}
@@ -140,14 +140,14 @@ export default function FeedbackForm() {
         disabled={isSending}
         type="submit"
       >
-        Send
+        ارسال
       </button>
-      {isSending && <p>Sending...</p>}
+      {isSending && <p>يتم الارسال...</p>}
     </form>
   );
 }
 
-// Pretend to send a message.
+// تظاهر بارسال رسالة
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -157,10 +157,15 @@ function sendMessage(text) {
 
 </Sandpack>
 
-While this code works, it leaves the door open for "impossible" states. For example, if you forget to call `setIsSent` and `setIsSending` together, you may end up in a situation where both `isSending` and `isSent` are `true` at the same time. The more complex your component is, the harder it is to understand what happened.
+بينما يعمل هذا الكود، فإنه يسمح  لحالات "مستحيلة". على سبيل المثال، إذا نسيت منادات `setIsSent` و `setIsSending` معا, قد تجد نفسك في موقف تكون فيه كل من `isSending` و `isSent` بقيمة `true` في نفس الوقت. و كلما زاد تعقيد المكون الخاص بك كلما صعب عليك فهم ما حصل.
 
-**Since `isSending` and `isSent` should never be `true` at the same time, it is better to replace them with one `status` state variable that may take one of *three* valid states:** `'typing'` (initial), `'sending'`, and `'sent'`:
-
+**بما أن `isSending` و `isSent` يجب ان لا يكونا `true` في الوقت نفسه, فمن الافضل استبدالهم ب `status` متغير الحالة الذي يمكنه أخذ *ثلاث* حالات فقط:** `'typing'` (بداية), `'sending'`, و `'sent'`:
+<small> 
+بحيث
+typing يتم الكتابة 
+sending: يتم ارسال
+sent تم ارسال
+</small>
 <Sandpack>
 
 ```js
@@ -181,12 +186,12 @@ export default function FeedbackForm() {
   const isSent = status === 'sent';
 
   if (isSent) {
-    return <h1>Thanks for feedback!</h1>
+   return <h1>شكرًا لتقديم الملاحظات!</h1>
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>How was your stay at The Prancing Pony?</p>
+     <p>كيف كانت إقامتك في فندق The Prancing Pony؟</p>
       <textarea
         disabled={isSending}
         value={text}
@@ -197,14 +202,14 @@ export default function FeedbackForm() {
         disabled={isSending}
         type="submit"
       >
-        Send
+        ارسال
       </button>
-      {isSending && <p>Sending...</p>}
+      {isSending && <p>يتم الارسال...</p>}
     </form>
   );
 }
 
-// Pretend to send a message.
+// تظاهر بارسال رسالة
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -214,20 +219,19 @@ function sendMessage(text) {
 
 </Sandpack>
 
-You can still declare some constants for readability:
+يمكنك تعريف ثابت من أجل تسهيل قراءة:
 
 ```js
 const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
+لكنهم ليسوا متغيرات حالة، لذا لا داعي للقلق بشأن فقدان التزامن بينها.
 
-But they're not state variables, so you don't need to worry about them getting out of sync with each other.
+## تجنب تناقضات في الحالة. {/*avoid-redundant-state*/}
 
-## Avoid redundant state {/*avoid-redundant-state*/}
+إذا كنت تستطيع حساب بعض المعلومات من خصائص المكون أو من متغيرات  الحالة الموجودة أثناء عملية العرض، يجب عليك **عدم وضع** تلك المعلومات في حالة المكون.
 
-If you can calculate some information from the component's props or its existing state variables during rendering, you **should not** put that information into that component's state.
-
-For example, take this form. It works, but can you find any redundant state in it?
+فمثلا, خذ هذا النموذج. إنه يعمل, ولكن هل يمكنك العثور على أي حالة زائدة فيه؟
 
 <Sandpack>
 
@@ -246,28 +250,29 @@ export default function Form() {
 
   function handleLastNameChange(e) {
     setLastName(e.target.value);
+    // هنا يتم اضافت اسم الاول و اخير معا لتشكيل الاسم كاملا
     setFullName(firstName + ' ' + e.target.value);
   }
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>فل نسجلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        الاسم الأخير:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        تذكرتك ستصدر الى: <b>{fullName}</b>
       </p>
     </>
   );
@@ -280,9 +285,9 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This form has three state variables: `firstName`, `lastName`, and `fullName`. However, `fullName` is redundant. **You can always calculate `fullName` from `firstName` and `lastName` during render, so remove it from state.**
+هذا النموذج لديه ثلاث متغيرات الحالة: `firstName`, `lastName`, و `fullName`. مع ذلك, `fullName` غير ضرورية. **يمكنك دائما حساب `fullName` انطلاقا `firstName` و `lastName` اثناء العرض, اذا يمكن حذفها.**
 
-This is how you can do it:
+اليك الطريقة كيف يمكنك قيام بذالك:
 
 <Sandpack>
 
@@ -305,23 +310,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>فل نسجلك</h2>
       <label>
-        First name:{' '}
+        الاسم الأول:{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        الاسم الأخير:{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+          تذكرتك ستصدر الى: <b>{fullName}</b>
       </p>
     </>
   );
@@ -334,50 +339,52 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `fullName` is *not* a state variable. Instead, it's calculated during render:
+هنا, `fullName` *ليس* متغير حالة. ولكن, يتم حسابه أثناء العرض:
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
+نتيجة لذلك، لا تحتاج معالجات التغييرات إلى القيام بشيء خاص لتحديثها. عند استدعاء `setFirstName` أو `setLastName`، فإنك تُحفِّز عملية إعادة العرض، ومن ثم سيتم حساب `fullName` التالي من البيانات الجديدة..
 
 <DeepDive>
 
-#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
+#### لا تنسخ الخصائص الى الحالة {/*don-t-mirror-props-in-state*/}
 
-A common example of redundant state is code like this:
+مثال شائع على الحالة الزائدة هو الكود التالي:
 
 ```js
 function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+هنا, `color` متغير حالة تم تهيئته بالخاصية `messageColor`. المشكل في هذه الطريقة **اذا قدم أب المكون قيمة اخرى للخاصية `messageColor` اثناء العرض (مثلا, `'red'` في مكان `'blue'`), *متغير الحالة* فان `color`  لن يتم تحديثه!** تُهيَّأ الحالة فقط خلال عملية العرض الأولى.
 
-This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+لهذا السبب، يؤدي نسخ الخصائص إلى متغيرات الحالة إلى حدوث ارتباك. بدلاً من ذلك، يمكنك استخدام الخاصية messageColor مباشرةً، أو إذا كنت ترغب في تغيير اسمها في المكون، يمكنك استخدام ثابت
 
 ```js
 function Message({ messageColor }) {
   const color = messageColor;
 ```
 
-This way it won't get out of sync with the prop passed from the parent component.
+بهذه الطريقة، لن تفقد الخاصية التزامن مع المكون الأب.
 
-"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+"النسخ" خاصية الى متغير الحالة يكون منطقيًا فقط عندما تريد ان تجاهل *جميع التحديثات* المتعلقة بالخاصية
+
+ تقليديا, ابدأ اسم الخاصية ب `initial` أو `default` لتوضح أنه سيتم تجاهل القيم الجديدة.
 
 ```js
 function Message({ initialColor }) {
-  // The `color` state variable holds the *first* value of `initialColor`.
-  // Further changes to the `initialColor` prop are ignored.
+  // متغير الحالة `color` يحتفظ ب *أول* قيمة ل `initialColor`.
+  // أما تغيرات جديدة للخاصية `initialColor` سيتم تجاهلها
   const [color, setColor] = useState(initialColor);
 ```
 
 </DeepDive>
 
-## Avoid duplication in state {/*avoid-duplication-in-state*/}
+## تجنب تكرار {/*avoid-duplication-in-state*/}
 
-This menu list component lets you choose a single travel snack out of several:
+تتيح لك هذه المكونة لقائمة القائمة اختيار وجبة خفيفة واحدة من عدة خيارات:
 
 <Sandpack>
 
@@ -385,9 +392,9 @@ This menu list component lets you choose a single travel snack out of several:
 import { useState } from 'react';
 
 const initialItems = [
-  { title: 'pretzels', id: 0 },
-  { title: 'crispy seaweed', id: 1 },
-  { title: 'granola bar', id: 2 },
+{ title: 'بريتزل', id: 0 },
+{ title: 'أعشاب بحرية مقرمشة', id: 1 },
+{ title: 'شريط جرانولا', id: 2 },
 ];
 
 export default function Menu() {
@@ -398,7 +405,7 @@ export default function Menu() {
 
   return (
     <>
-      <h2>What's your travel snack?</h2>
+      <h2>ماهي وجبتك الخفيفة?</h2>
       <ul>
         {items.map(item => (
           <li key={item.id}>
@@ -406,11 +413,11 @@ export default function Menu() {
             {' '}
             <button onClick={() => {
               setSelectedItem(item);
-            }}>Choose</button>
+            }}>اختر</button>
           </li>
         ))}
       </ul>
-      <p>You picked {selectedItem.title}.</p>
+      <p>لقد اخترت {selectedItem.title}.</p>
     </>
   );
 }
@@ -421,10 +428,10 @@ button { margin-top: 10px; }
 ```
 
 </Sandpack>
+حاليا, يتم تخزين العنصر المختار ككائن في `selectedItem` متغير الحالة. ولكن, هذا ليس مثاليًا **بسبب ان محتويات `selectedItem` هي نفسها الكائن كواحد من محتويات قائمة`items` فهذا يعني ان المعلومة حول العنصر متكررة في مكانين
 
-Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+لماذا يعتبر هذا الشيء مشكلة؟ 
 
-Why is this a problem? Let's make each item editable:
 
 <Sandpack>
 
@@ -432,9 +439,9 @@ Why is this a problem? Let's make each item editable:
 import { useState } from 'react';
 
 const initialItems = [
-  { title: 'pretzels', id: 0 },
-  { title: 'crispy seaweed', id: 1 },
-  { title: 'granola bar', id: 2 },
+{ title: 'بريتزل', id: 0 },
+{ title: 'أعشاب بحرية مقرمشة', id: 1 },
+{ title: 'شريط جرانولا', id: 2 },
 ];
 
 export default function Menu() {
@@ -458,7 +465,7 @@ export default function Menu() {
 
   return (
     <>
-      <h2>What's your travel snack?</h2> 
+      <h2>ماهي وجبتك الخفيفة?</h2>
       <ul>
         {items.map((item, index) => (
           <li key={item.id}>
@@ -471,11 +478,11 @@ export default function Menu() {
             {' '}
             <button onClick={() => {
               setSelectedItem(item);
-            }}>Choose</button>
+            }}>اختر</button>
           </li>
         ))}
       </ul>
-      <p>You picked {selectedItem.title}.</p>
+      <p>لقد اخترت {selectedItem.title}.</p>
     </>
   );
 }
@@ -487,9 +494,10 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+لاحظ كيف أنه إذا قمت أولاً بالنقر على "اختر" على عنصر ثم قمت بتعديله، **تتحدث المدخلات ولكن التسمية في الأسفل لا تعكس التعديلات.** وهذا لأن لديك حالة مكررة، ونسيت تحديث `selectedItem`.
 
-Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+
+على الرغم من أنه يمكنك تحديث `selectedItem` أيضًا، فإن الإصلاح الأسهل هو إزالة التكرار. في هذا المثال، بدلاً من استخدام كائن `selectedItem` (الذي يخلق تكرارًا مع الكائنات داخل items)، تحتفظ بـ `selectedId` في الحالة، وثم تحصل على `selectedItem` من خلال البحث في مصفوفة `items`  عن عنصر له هذا المعرف `id`: 
 
 <Sandpack>
 
@@ -497,9 +505,9 @@ Although you could update `selectedItem` too, an easier fix is to remove duplica
 import { useState } from 'react';
 
 const initialItems = [
-  { title: 'pretzels', id: 0 },
-  { title: 'crispy seaweed', id: 1 },
-  { title: 'granola bar', id: 2 },
+{ title: 'بريتزل', id: 0 },
+{ title: 'أعشاب بحرية مقرمشة', id: 1 },
+{ title: 'شريط جرانولا', id: 2 },
 ];
 
 export default function Menu() {
@@ -525,7 +533,7 @@ export default function Menu() {
 
   return (
     <>
-      <h2>What's your travel snack?</h2>
+      <h2>ماهي وجبتك الخفيفة?</h2>
       <ul>
         {items.map((item, index) => (
           <li key={item.id}>
@@ -538,11 +546,11 @@ export default function Menu() {
             {' '}
             <button onClick={() => {
               setSelectedId(item.id);
-            }}>Choose</button>
+            }}>اختر</button>
           </li>
         ))}
       </ul>
-      <p>You picked {selectedItem.title}.</p>
+      <p>لقد اخترت {selectedItem.title}.</p>
     </>
   );
 }
@@ -554,23 +562,23 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-The state used to be duplicated like this:
+الحالة كانت متكررة هكذا:
 
-* `items = [{ id: 0, title: 'pretzels'}, ...]`
-* `selectedItem = {id: 0, title: 'pretzels'}`
+* `items = [{ id: 0, title: 'بريتزل'}, ...]`
+* `selectedItem = {id: 0, title: 'بريتزل'}`
 
-But after the change it's like this:
+ثم بعد التغييرات رجعت كهذا:
 
-* `items = [{ id: 0, title: 'pretzels'}, ...]`
+* `items = [{ id: 0, title: 'بريتزل'}, ...]`
 * `selectedId = 0`
 
-The duplication is gone, and you only keep the essential state!
+تمت إزالة التكرار، وتحتفظ الآن بالحالة الأساسية فقط!
 
-Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+الآن، إذا قمت بتعديل العنصر المحدد، ستُحدَّث الرسالة أدناه على الفور. وذلك لأن `setItems` يُحفِّز إعادة العرض، و `items.find(...)` سيجد العنصر بعنوانه المحدث. لم تكن بحاجة إلى الاحتفاظ بـ العنصر المحدد في الحالة، لأن معرّف العنصر المحدد فقط هو الأساسي. يمكن حساب البقية أثناء العرض.
 
-## Avoid deeply nested state {/*avoid-deeply-nested-state*/}
+## تجنب الحالة المتداخلة بعمق. {/*avoid-deeply-nested-state*/}
 
-Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:
+تخيل خطة سفر تتكون من كواكب وقارات ودول. قد تشعر بالميل لهيكلة حالتها باستخدام كائنات وأ Arrays متداخلة، مثلما في هذا المثال:
 
 <Sandpack>
 
@@ -599,7 +607,7 @@ export default function TravelPlan() {
   const planets = plan.childPlaces;
   return (
     <>
-      <h2>Places to visit</h2>
+      <h2>أماكن لزيارة</h2>
       <ol>
         {planets.map(place => (
           <PlaceTree key={place.id} place={place} />
@@ -616,194 +624,194 @@ export const initialTravelPlan = {
   title: '(Root)',
   childPlaces: [{
     id: 1,
-    title: 'Earth',
+    title: 'الأرض',
     childPlaces: [{
       id: 2,
-      title: 'Africa',
+      title: 'افريقيا',
       childPlaces: [{
         id: 3,
-        title: 'Botswana',
+        title: 'بوتسوانا',
         childPlaces: []
       }, {
         id: 4,
-        title: 'Egypt',
+        title: 'مصر',
         childPlaces: []
       }, {
         id: 5,
-        title: 'Kenya',
+        title: 'كينيا',
         childPlaces: []
       }, {
         id: 6,
-        title: 'Madagascar',
+        title: 'مدغشقر',
         childPlaces: []
       }, {
         id: 7,
-        title: 'Morocco',
+        title: 'المغرب',
         childPlaces: []
       }, {
         id: 8,
-        title: 'Nigeria',
+        title: 'نيجيريا',
         childPlaces: []
       }, {
         id: 9,
-        title: 'South Africa',
+        title: 'افريقيا',
         childPlaces: []
       }]
     }, {
       id: 10,
-      title: 'Americas',
+      title: 'الأمريكتين',
       childPlaces: [{
         id: 11,
-        title: 'Argentina',
+        title: 'الأرجنتين',
         childPlaces: []
       }, {
         id: 12,
-        title: 'Brazil',
+        title: 'البرازيل',
         childPlaces: []
       }, {
         id: 13,
-        title: 'Barbados',
+        title: 'بربادوس',
         childPlaces: []
       }, {
         id: 14,
-        title: 'Canada',
+        title: 'كندا',
         childPlaces: []
       }, {
         id: 15,
-        title: 'Jamaica',
+        title: 'جامايكا',
         childPlaces: []
       }, {
         id: 16,
-        title: 'Mexico',
+        title: 'المكسيك',
         childPlaces: []
       }, {
         id: 17,
-        title: 'Trinidad and Tobago',
+        title: 'ترينيداد وتوباغو',
         childPlaces: []
       }, {
         id: 18,
-        title: 'Venezuela',
+        title: 'فنزويلا',
         childPlaces: []
       }]
     }, {
       id: 19,
-      title: 'Asia',
+      title: 'آسيا',
       childPlaces: [{
         id: 20,
-        title: 'China',
+        title: 'الصين',
         childPlaces: []
       }, {
         id: 21,
-        title: 'India',
+        title: 'الهند',
         childPlaces: []
       }, {
         id: 22,
-        title: 'Singapore',
+        title: 'سنغافورة',
         childPlaces: []
       }, {
         id: 23,
-        title: 'South Korea',
+        title: 'كوريا الجنوبية',
         childPlaces: []
       }, {
         id: 24,
-        title: 'Thailand',
+        title: 'تايلاند',
         childPlaces: []
       }, {
         id: 25,
-        title: 'Vietnam',
+        title: 'فيتنام',
         childPlaces: []
       }]
     }, {
       id: 26,
-      title: 'Europe',
+      title: 'أوروبا',
       childPlaces: [{
         id: 27,
-        title: 'Croatia',
+        title: 'كرواتيا',
         childPlaces: [],
       }, {
         id: 28,
-        title: 'France',
+        title: 'فرنسا',
         childPlaces: [],
       }, {
         id: 29,
-        title: 'Germany',
+        title: 'ألمانيا',
         childPlaces: [],
       }, {
         id: 30,
-        title: 'Italy',
+        title: 'إيطاليا',
         childPlaces: [],
       }, {
         id: 31,
-        title: 'Portugal',
+        title: 'البرتغال',
         childPlaces: [],
       }, {
         id: 32,
-        title: 'Spain',
+        title: 'إسبانيا',
         childPlaces: [],
       }, {
         id: 33,
-        title: 'Turkey',
+        title: 'تركيا',
         childPlaces: [],
       }]
     }, {
       id: 34,
-      title: 'Oceania',
+      title: 'أوقيانوسيا',
       childPlaces: [{
         id: 35,
-        title: 'Australia',
+        title: 'أستراليا',
         childPlaces: [],
       }, {
         id: 36,
-        title: 'Bora Bora (French Polynesia)',
+        title: 'بورا بورا (بولينيزيا الفرنسية)',
         childPlaces: [],
       }, {
         id: 37,
-        title: 'Easter Island (Chile)',
+        title: 'جزيرة القيامة (الشيلي)',
         childPlaces: [],
       }, {
         id: 38,
-        title: 'Fiji',
+        title: 'فيجي',
         childPlaces: [],
       }, {
         id: 39,
-        title: 'Hawaii (the USA)',
+        title: 'هاواي (ولايات متحدة الامريكية)',
         childPlaces: [],
       }, {
         id: 40,
-        title: 'New Zealand',
+        title: 'نيوزلندا',
         childPlaces: [],
       }, {
         id: 41,
-        title: 'Vanuatu',
+        title: 'فانواتو',
         childPlaces: [],
       }]
     }]
   }, {
     id: 42,
-    title: 'Moon',
+    title: 'القمر',
     childPlaces: [{
       id: 43,
-      title: 'Rheita',
+      title: 'ريتا',
       childPlaces: []
     }, {
       id: 44,
-      title: 'Piccolomini',
+      title: 'بيكولوميني',
       childPlaces: []
     }, {
       id: 45,
-      title: 'Tycho',
+      title: 'تايكو',
       childPlaces: []
     }]
   }, {
     id: 46,
-    title: 'Mars',
+    title: 'المريخ',
     childPlaces: [{
       id: 47,
-      title: 'Corn Town',
+      title: 'مدينة الذرة',
       childPlaces: []
     }, {
       id: 48,
-      title: 'Green Hill',
+      title: 'جرين هيل',
       childPlaces: []      
     }]
   }]
@@ -812,11 +820,12 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+الآن لنفترض أنك تريد إضافة زر لحذف مكان زرته بالفعل. كيف ستقوم بذلك؟ [تحديث الحالة المتداخلة](/learn/updating-objects-in-state#updating-a-nested-object) يتطلب تحديث الحالة المتداخلة عمل نسخ للكائنات بدءًا من الجزء الذي تغيّر وصولاً إلى أكبر كائن أب. حذف مكان متداخل بعمق يتطلب نسخ السلسلة كاملة، وهذا يجعل الكود طويلاً جدًا
 
-**If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then store a mapping from each place ID to the corresponding place.
+**إذا كانت الحالة متداخلة جدًا لدرجة يصعب تحديثها، فكر في جعلها مسطحة.** إليك طريقة لإعادة هيكلة البيانات: بدلاً من استخدام هيكل شجري حيث يحتوي كل عنصر على مصفوفة من العناصر الفرعية، يمكنك جعل كل عنصر يحتوي على مصفوفة من معرّفات (ids) العناصر الفرعية. ثم خزّن خريطة تربط كل معرّف عنصر بالمكان الفعلي المقابل له.
 
-This data restructuring might remind you of seeing a database table:
+اعادة الهيكلة هذه قد تذكرك بجدول قاعدة البيانات:
+
 
 <Sandpack>
 
@@ -851,7 +860,7 @@ export default function TravelPlan() {
   const planetIds = root.childIds;
   return (
     <>
-      <h2>Places to visit</h2>
+      <h2>أماكن لزيارة</h2>
       <ol>
         {planetIds.map(id => (
           <PlaceTree
@@ -875,242 +884,242 @@ export const initialTravelPlan = {
   },
   1: {
     id: 1,
-    title: 'Earth',
+    title: 'الأرض',
     childIds: [2, 10, 19, 26, 34]
   },
   2: {
     id: 2,
-    title: 'Africa',
+    title: 'افريقيا',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
   }, 
   3: {
     id: 3,
-    title: 'Botswana',
+    title: 'بوتسوانا',
     childIds: []
   },
   4: {
     id: 4,
-    title: 'Egypt',
+    title: 'مصر',
     childIds: []
   },
   5: {
     id: 5,
-    title: 'Kenya',
+    title: 'كينيا',
     childIds: []
   },
   6: {
     id: 6,
-    title: 'Madagascar',
+    title: 'مدغشقر',
     childIds: []
   }, 
   7: {
     id: 7,
-    title: 'Morocco',
+    title: 'المغرب',
     childIds: []
   },
   8: {
     id: 8,
-    title: 'Nigeria',
+    title: 'نيجيريا',
     childIds: []
   },
   9: {
     id: 9,
-    title: 'South Africa',
+    title: 'افريقيا',
     childIds: []
   },
   10: {
     id: 10,
-    title: 'Americas',
+    title: 'الأمريكتين',
     childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
   },
   11: {
     id: 11,
-    title: 'Argentina',
+    title: 'الأرجنتين',
     childIds: []
   },
   12: {
     id: 12,
-    title: 'Brazil',
+    title: 'البرازيل',
     childIds: []
   },
   13: {
     id: 13,
-    title: 'Barbados',
+    title: 'بربادوس',
     childIds: []
   }, 
   14: {
     id: 14,
-    title: 'Canada',
+    title: 'كندا',
     childIds: []
   },
   15: {
     id: 15,
-    title: 'Jamaica',
+    title: 'جامايكا',
     childIds: []
   },
   16: {
     id: 16,
-    title: 'Mexico',
+    title: 'المكسيك',
     childIds: []
   },
   17: {
     id: 17,
-    title: 'Trinidad and Tobago',
+    title: 'ترينيداد وتوباغو',
     childIds: []
   },
   18: {
     id: 18,
-    title: 'Venezuela',
+    title: 'فنزويلا',
     childIds: []
   },
   19: {
     id: 19,
-    title: 'Asia',
+    title: 'آسيا',
     childIds: [20, 21, 22, 23, 24, 25],   
   },
   20: {
     id: 20,
-    title: 'China',
+    title: 'الصين',
     childIds: []
   },
   21: {
     id: 21,
-    title: 'India',
+    title: 'الهند',
     childIds: []
   },
   22: {
     id: 22,
-    title: 'Singapore',
+    title: 'سنغافورة',
     childIds: []
   },
   23: {
     id: 23,
-    title: 'South Korea',
+    title: 'كوريا الجنوبية',
     childIds: []
   },
   24: {
     id: 24,
-    title: 'Thailand',
+    title: 'تايلاند',
     childIds: []
   },
   25: {
     id: 25,
-    title: 'Vietnam',
+    title: 'فيتنام',
     childIds: []
   },
   26: {
     id: 26,
-    title: 'Europe',
+    title: 'أوروبا',
     childIds: [27, 28, 29, 30, 31, 32, 33],   
   },
   27: {
     id: 27,
-    title: 'Croatia',
+    title: 'كرواتيا',
     childIds: []
   },
   28: {
     id: 28,
-    title: 'France',
+    title: 'فرنسا',
     childIds: []
   },
   29: {
     id: 29,
-    title: 'Germany',
+    title: 'ألمانيا',
     childIds: []
   },
   30: {
     id: 30,
-    title: 'Italy',
+    title: 'إيطاليا',
     childIds: []
   },
   31: {
     id: 31,
-    title: 'Portugal',
+    title: 'البرتغال',
     childIds: []
   },
   32: {
     id: 32,
-    title: 'Spain',
+    title: 'إسبانيا',
     childIds: []
   },
   33: {
     id: 33,
-    title: 'Turkey',
+    title: 'تركيا',
     childIds: []
   },
   34: {
     id: 34,
-    title: 'Oceania',
+    title: 'أوقيانوسيا',
     childIds: [35, 36, 37, 38, 39, 40, 41],   
   },
   35: {
     id: 35,
-    title: 'Australia',
+    title: 'أستراليا',
     childIds: []
   },
   36: {
     id: 36,
-    title: 'Bora Bora (French Polynesia)',
+    title: 'بورا بورا (بولينيزيا الفرنسية)',
     childIds: []
   },
   37: {
     id: 37,
-    title: 'Easter Island (Chile)',
+    title: 'جزيرة القيامة (الشيلي)',
     childIds: []
   },
   38: {
     id: 38,
-    title: 'Fiji',
+    title: 'فيجي',
     childIds: []
   },
   39: {
     id: 40,
-    title: 'Hawaii (the USA)',
+    title: 'هاواي (ولايات متحدة الامريكية)',
     childIds: []
   },
   40: {
     id: 40,
-    title: 'New Zealand',
+    title: 'نيوزلندا',
     childIds: []
   },
   41: {
     id: 41,
-    title: 'Vanuatu',
+    title: 'فانواتو',
     childIds: []
   },
   42: {
     id: 42,
-    title: 'Moon',
+    title: 'القمر',
     childIds: [43, 44, 45]
   },
   43: {
     id: 43,
-    title: 'Rheita',
+    title: 'ريتا',
     childIds: []
   },
   44: {
     id: 44,
-    title: 'Piccolomini',
+    title: 'بيكولوميني',
     childIds: []
   },
   45: {
     id: 45,
-    title: 'Tycho',
+    title: 'تايكو',
     childIds: []
   },
   46: {
     id: 46,
-    title: 'Mars',
+    title: 'المريخ',
     childIds: [47, 48]
   },
   47: {
     id: 47,
-    title: 'Corn Town',
+    title: 'مدينة الذرة',
     childIds: []
   },
   48: {
     id: 48,
-    title: 'Green Hill',
+    title: 'جرين هيل',
     childIds: []
   }
 };
@@ -1118,14 +1127,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**الآن بعد أن أصبحت الحالة "مسطحة" (المعروفة أيضًا بـ "المنظمة")، أصبح تحديث العناصر المتداخلة أسهل.**
 
-In order to remove a place now, you only need to update two levels of state:
+لحذف مكان الآن، تحتاج فقط إلى تحديث مستويين من الحالة:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- يجب أن تُحدث النسخة المعدلة من المكان الأب لتستثني معرّف المكان المحذوف من مصفوفة `childIds`.
+- يجب أن تتضمن النسخة المعدلة من كائن `table` الجذري النسخة المحدثة من المكان الأب.
 
-Here is an example of how you could go about it:
+إليك مثال على كيفية القيام بذلك:
 
 <Sandpack>
 
@@ -1138,17 +1147,17 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     const parent = plan[parentId];
-    // Create a new version of the parent place
-    // that doesn't include this child ID.
+   // أنشئ نسخة جديدة من المكان الأب
+    // لا تشمل معرّف الطفل هذا.
     const nextParent = {
       ...parent,
       childIds: parent.childIds
         .filter(id => id !== childId)
     };
-    // Update the root state object...
+    // حدث الكائن "root"
     setPlan({
       ...plan,
-      // ...so that it has the updated parent.
+      // ...لكي يتضمن النسخة المحدثة من المكان الأب.
       [parentId]: nextParent
     });
   }
@@ -1157,7 +1166,7 @@ export default function TravelPlan() {
   const planetIds = root.childIds;
   return (
     <>
-      <h2>Places to visit</h2>
+      <h2>أماكن لزيارة</h2>
       <ol>
         {planetIds.map(id => (
           <PlaceTree
@@ -1182,7 +1191,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
       <button onClick={() => {
         onComplete(parentId, id);
       }}>
-        Complete
+        انتهى
       </button>
       {childIds.length > 0 &&
         <ol>
@@ -1211,242 +1220,242 @@ export const initialTravelPlan = {
   },
   1: {
     id: 1,
-    title: 'Earth',
+    title: 'الأرض',
     childIds: [2, 10, 19, 26, 34]
   },
   2: {
     id: 2,
-    title: 'Africa',
+    title: 'افريقيا',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
   }, 
   3: {
     id: 3,
-    title: 'Botswana',
+    title: 'بوتسوانا',
     childIds: []
   },
   4: {
     id: 4,
-    title: 'Egypt',
+    title: 'مصر',
     childIds: []
   },
   5: {
     id: 5,
-    title: 'Kenya',
+    title: 'كينيا',
     childIds: []
   },
   6: {
     id: 6,
-    title: 'Madagascar',
+    title: 'مدغشقر',
     childIds: []
   }, 
   7: {
     id: 7,
-    title: 'Morocco',
+    title: 'المغرب',
     childIds: []
   },
   8: {
     id: 8,
-    title: 'Nigeria',
+    title: 'نيجيريا',
     childIds: []
   },
   9: {
     id: 9,
-    title: 'South Africa',
+    title: 'افريقيا',
     childIds: []
   },
   10: {
     id: 10,
-    title: 'Americas',
+    title: 'الأمريكتين',
     childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
   },
   11: {
     id: 11,
-    title: 'Argentina',
+    title: 'الأرجنتين',
     childIds: []
   },
   12: {
     id: 12,
-    title: 'Brazil',
+    title: 'البرازيل',
     childIds: []
   },
   13: {
     id: 13,
-    title: 'Barbados',
+    title: 'بربادوس',
     childIds: []
   }, 
   14: {
     id: 14,
-    title: 'Canada',
+    title: 'كندا',
     childIds: []
   },
   15: {
     id: 15,
-    title: 'Jamaica',
+    title: 'جامايكا',
     childIds: []
   },
   16: {
     id: 16,
-    title: 'Mexico',
+    title: 'المكسيك',
     childIds: []
   },
   17: {
     id: 17,
-    title: 'Trinidad and Tobago',
+    title: 'ترينيداد وتوباغو',
     childIds: []
   },
   18: {
     id: 18,
-    title: 'Venezuela',
+    title: 'فنزويلا',
     childIds: []
   },
   19: {
     id: 19,
-    title: 'Asia',
+    title: 'آسيا',
     childIds: [20, 21, 22, 23, 24, 25],   
   },
   20: {
     id: 20,
-    title: 'China',
+    title: 'الصين',
     childIds: []
   },
   21: {
     id: 21,
-    title: 'India',
+    title: 'الهند',
     childIds: []
   },
   22: {
     id: 22,
-    title: 'Singapore',
+    title: 'سنغافورة',
     childIds: []
   },
   23: {
     id: 23,
-    title: 'South Korea',
+    title: 'كوريا الجنوبية',
     childIds: []
   },
   24: {
     id: 24,
-    title: 'Thailand',
+    title: 'تايلاند',
     childIds: []
   },
   25: {
     id: 25,
-    title: 'Vietnam',
+    title: 'فيتنام',
     childIds: []
   },
   26: {
     id: 26,
-    title: 'Europe',
+    title: 'أوروبا',
     childIds: [27, 28, 29, 30, 31, 32, 33],   
   },
   27: {
     id: 27,
-    title: 'Croatia',
+    title: 'كرواتيا',
     childIds: []
   },
   28: {
     id: 28,
-    title: 'France',
+    title: 'فرنسا',
     childIds: []
   },
   29: {
     id: 29,
-    title: 'Germany',
+    title: 'ألمانيا',
     childIds: []
   },
   30: {
     id: 30,
-    title: 'Italy',
+    title: 'إيطاليا',
     childIds: []
   },
   31: {
     id: 31,
-    title: 'Portugal',
+    title: 'البرتغال',
     childIds: []
   },
   32: {
     id: 32,
-    title: 'Spain',
+    title: 'إسبانيا',
     childIds: []
   },
   33: {
     id: 33,
-    title: 'Turkey',
+    title: 'تركيا',
     childIds: []
   },
   34: {
     id: 34,
-    title: 'Oceania',
+    title: 'أوقيانوسيا',
     childIds: [35, 36, 37, 38, 39, 40, 41],   
   },
   35: {
     id: 35,
-    title: 'Australia',
+    title: 'أستراليا',
     childIds: []
   },
   36: {
     id: 36,
-    title: 'Bora Bora (French Polynesia)',
+    title: 'بورا بورا (بولينيزيا الفرنسية)',
     childIds: []
   },
   37: {
     id: 37,
-    title: 'Easter Island (Chile)',
+    title: 'جزيرة القيامة (الشيلي)',
     childIds: []
   },
   38: {
     id: 38,
-    title: 'Fiji',
+    title: 'فيجي',
     childIds: []
   },
   39: {
     id: 39,
-    title: 'Hawaii (the USA)',
+    title: 'هاواي (ولايات متحدة الامريكية)',
     childIds: []
   },
   40: {
     id: 40,
-    title: 'New Zealand',
+    title: 'نيوزلندا',
     childIds: []
   },
   41: {
     id: 41,
-    title: 'Vanuatu',
+    title: 'فانواتو',
     childIds: []
   },
   42: {
     id: 42,
-    title: 'Moon',
+    title: 'القمر',
     childIds: [43, 44, 45]
   },
   43: {
     id: 43,
-    title: 'Rheita',
+    title: 'ريتا',
     childIds: []
   },
   44: {
     id: 44,
-    title: 'Piccolomini',
+    title: 'بيكولوميني',
     childIds: []
   },
   45: {
     id: 45,
-    title: 'Tycho',
+    title: 'تايكو',
     childIds: []
   },
   46: {
     id: 46,
-    title: 'Mars',
+    title: 'المريخ',
     childIds: [47, 48]
   },
   47: {
     id: 47,
-    title: 'Corn Town',
+    title: 'مدينة الذرة',
     childIds: []
   },
   48: {
     id: 48,
-    title: 'Green Hill',
+    title: 'جرين هيل',
     childIds: []
   }
 };
@@ -1458,13 +1467,15 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+يمكنك تداخل الحالة بقدر ما ترغب، ولكن جعلها "مسطحة" يمكن أن يحل العديد من المشكلات. فهي تجعل تحديث الحالة أسهل، وتساعد على التأكد من عدم وجود تكرار في أجزاء مختلفة من كائن متداخل.
+
 
 <DeepDive>
 
-#### Improving memory usage {/*improving-memory-usage*/}
+#### تحسين من استغلال ذاكرة الوصول العشوائي {/*improving-memory-usage*/}
 
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+من المثالي أيضًا أن تقوم بإزالة العناصر المحذوفة (وأطفالها!) من كائن "الجدول" لتحسين استخدام الذاكرة. هذه النسخة تقوم بذلك. كما أنها [تستعمل خاصية Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+لتجعل تحديث المنطق اكثر دقة
 
 <Sandpack>
 
@@ -1477,12 +1488,12 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     updatePlan(draft => {
-      // Remove from the parent place's child IDs.
+      // إزالة من معرّفات الأطفال للمكان الأب.
       const parent = draft[parentId];
       parent.childIds = parent.childIds
         .filter(id => id !== childId);
 
-      // Forget this place and all its subtree.
+      // انسَ هذا المكان وجميع أجزائه الفرعية.
       deleteAllChildren(childId);
       function deleteAllChildren(id) {
         const place = draft[id];
@@ -1496,7 +1507,7 @@ export default function TravelPlan() {
   const planetIds = root.childIds;
   return (
     <>
-      <h2>Places to visit</h2>
+      <h2>أماكن لزيارة</h2>
       <ol>
         {planetIds.map(id => (
           <PlaceTree
@@ -1521,7 +1532,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
       <button onClick={() => {
         onComplete(parentId, id);
       }}>
-        Complete
+        انتهى
       </button>
       {childIds.length > 0 &&
         <ol>
@@ -1550,242 +1561,242 @@ export const initialTravelPlan = {
   },
   1: {
     id: 1,
-    title: 'Earth',
+    title: 'الأرض',
     childIds: [2, 10, 19, 26, 34]
   },
   2: {
     id: 2,
-    title: 'Africa',
+    title: 'افريقيا',
     childIds: [3, 4, 5, 6 , 7, 8, 9]
   }, 
   3: {
     id: 3,
-    title: 'Botswana',
+    title: 'بوتسوانا',
     childIds: []
   },
   4: {
     id: 4,
-    title: 'Egypt',
+    title: 'مصر',
     childIds: []
   },
   5: {
     id: 5,
-    title: 'Kenya',
+    title: 'كينيا',
     childIds: []
   },
   6: {
     id: 6,
-    title: 'Madagascar',
+    title: 'مدغشقر',
     childIds: []
   }, 
   7: {
     id: 7,
-    title: 'Morocco',
+    title: 'المغرب',
     childIds: []
   },
   8: {
     id: 8,
-    title: 'Nigeria',
+    title: 'نيجيريا',
     childIds: []
   },
   9: {
     id: 9,
-    title: 'South Africa',
+    title: 'افريقيا',
     childIds: []
   },
   10: {
     id: 10,
-    title: 'Americas',
+    title: 'الأمريكتين',
     childIds: [11, 12, 13, 14, 15, 16, 17, 18],   
   },
   11: {
     id: 11,
-    title: 'Argentina',
+    title: 'الأرجنتين',
     childIds: []
   },
   12: {
     id: 12,
-    title: 'Brazil',
+    title: 'البرازيل',
     childIds: []
   },
   13: {
     id: 13,
-    title: 'Barbados',
+    title: 'بربادوس',
     childIds: []
   }, 
   14: {
     id: 14,
-    title: 'Canada',
+    title: 'كندا',
     childIds: []
   },
   15: {
     id: 15,
-    title: 'Jamaica',
+    title: 'جامايكا',
     childIds: []
   },
   16: {
     id: 16,
-    title: 'Mexico',
+    title: 'المكسيك',
     childIds: []
   },
   17: {
     id: 17,
-    title: 'Trinidad and Tobago',
+    title: 'ترينيداد وتوباغو',
     childIds: []
   },
   18: {
     id: 18,
-    title: 'Venezuela',
+    title: 'فنزويلا',
     childIds: []
   },
   19: {
     id: 19,
-    title: 'Asia',
+    title: 'آسيا',
     childIds: [20, 21, 22, 23, 24, 25,],   
   },
   20: {
     id: 20,
-    title: 'China',
+    title: 'الصين',
     childIds: []
   },
   21: {
     id: 21,
-    title: 'India',
+    title: 'الهند',
     childIds: []
   },
   22: {
     id: 22,
-    title: 'Singapore',
+    title: 'سنغافورة',
     childIds: []
   },
   23: {
     id: 23,
-    title: 'South Korea',
+    title: 'كوريا الجنوبية',
     childIds: []
   },
   24: {
     id: 24,
-    title: 'Thailand',
+    title: 'تايلاند',
     childIds: []
   },
   25: {
     id: 25,
-    title: 'Vietnam',
+    title: 'فيتنام',
     childIds: []
   },
   26: {
     id: 26,
-    title: 'Europe',
+    title: 'أوروبا',
     childIds: [27, 28, 29, 30, 31, 32, 33],   
   },
   27: {
     id: 27,
-    title: 'Croatia',
+    title: 'كرواتيا',
     childIds: []
   },
   28: {
     id: 28,
-    title: 'France',
+    title: 'فرنسا',
     childIds: []
   },
   29: {
     id: 29,
-    title: 'Germany',
+    title: 'ألمانيا',
     childIds: []
   },
   30: {
     id: 30,
-    title: 'Italy',
+    title: 'إيطاليا',
     childIds: []
   },
   31: {
     id: 31,
-    title: 'Portugal',
+    title: 'البرتغال',
     childIds: []
   },
   32: {
     id: 32,
-    title: 'Spain',
+    title: 'إسبانيا',
     childIds: []
   },
   33: {
     id: 33,
-    title: 'Turkey',
+    title: 'تركيا',
     childIds: []
   },
   34: {
     id: 34,
-    title: 'Oceania',
+    title: 'أوقيانوسيا',
     childIds: [35, 36, 37, 38, 39, 40,, 41],   
   },
   35: {
     id: 35,
-    title: 'Australia',
+    title: 'أستراليا',
     childIds: []
   },
   36: {
     id: 36,
-    title: 'Bora Bora (French Polynesia)',
+    title: 'بورا بورا (بولينيزيا الفرنسية)',
     childIds: []
   },
   37: {
     id: 37,
-    title: 'Easter Island (Chile)',
+    title: 'جزيرة القيامة (الشيلي)',
     childIds: []
   },
   38: {
     id: 38,
-    title: 'Fiji',
+    title: 'فيجي',
     childIds: []
   },
   39: {
     id: 39,
-    title: 'Hawaii (the USA)',
+    title: 'هاواي (ولايات متحدة الامريكية)',
     childIds: []
   },
   40: {
     id: 40,
-    title: 'New Zealand',
+    title: 'نيوزلندا',
     childIds: []
   },
   41: {
     id: 41,
-    title: 'Vanuatu',
+    title: 'فانواتو',
     childIds: []
   },
   42: {
     id: 42,
-    title: 'Moon',
+    title: 'القمر',
     childIds: [43, 44, 45]
   },
   43: {
     id: 43,
-    title: 'Rheita',
+    title: 'ريتا',
     childIds: []
   },
   44: {
     id: 44,
-    title: 'Piccolomini',
+    title: 'بيكولوميني',
     childIds: []
   },
   45: {
     id: 45,
-    title: 'Tycho',
+    title: 'تايكو',
     childIds: []
   },
   46: {
     id: 46,
-    title: 'Mars',
+    title: 'المريخ',
     childIds: [47, 48]
   },
   47: {
     id: 47,
-    title: 'Corn Town',
+    title: 'مدينة الذرة',
     childIds: []
   },
   48: {
     id: 48,
-    title: 'Green Hill',
+    title: 'جرين هيل',
     childIds: []
   }
 };
@@ -1817,25 +1828,28 @@ button { margin: 10px; }
 
 </DeepDive>
 
-Sometimes, you can also reduce state nesting by moving some of the nested state into the child components. This works well for ephemeral UI state that doesn't need to be stored, like whether an item is hovered.
+في بعض الأحيان، يمكنك تقليل تداخل الحالة عن طريق نقل بعض الحالات المتداخلة إلى المكونات الفرعية. هذه الطريقة مفيدة لحالات واجهة المستخدم المؤقتة التي لا تحتاج إلى تخزين، مثل حالة تمرير الماوس فوق عنصر
+
 
 <Recap>
 
-* If two state variables always update together, consider merging them into one. 
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
+* إذا كانت متغيرات الحالة تتغير دائمًا معًا، فكر في دمجها في متغير واحد.
+* اختر متغيرات الحالة بعناية لتجنب إنشاء حالات مستحيلة.
+* نظم حالتك بطريقة تقلل من فرص ارتكاب الأخطاء أثناء تحديثها.
+* تجنب الحالة الزائدة والتكرار حتى لا تحتاج إلى مزامنتها.
+* لا تضع الخصائص في الحالة إلا إذا كنت ترغب تحديدًا في منع التحديثات.
+* لأنماط واجهة المستخدم مثل الاختيار، احتفظ بالمعرّف أو الفهرس في الحالة بدلاً من الكائن نفسه.
+* إذا كان تحديث الحالة المتداخلة بعمق معقدًا، جرب تسويتها.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a component that's not updating {/*fix-a-component-thats-not-updating*/}
+#### إصلاح مكون لا يتم تحديثه {/*fix-a-component-thats-not-updating*/}
 
-This `Clock` component receives two props: `color` and `time`. When you select a different color in the select box, the `Clock` component receives a different `color` prop from its parent component. However, for some reason, the displayed color doesn't update. Why? Fix the problem.
+المكون التالي `Clock` يستقبل خاصيتين: `color` و `time`.
+عندما تختار لون مختلف في صندوق الاختيار, المكون `Clock` يستقبل خاصية `color` مختلفة من مكون الأب. ولكن لسبب ما, اللون المعروض لا يتم تحديثه. لماذا؟ قم بحل المشكلة.
+
 
 <Sandpack>
 
@@ -1873,11 +1887,11 @@ export default function App() {
   return (
     <div>
       <p>
-        Pick a color:{' '}
+        اختر لونا:{' '}
         <select value={color} onChange={e => setColor(e.target.value)}>
-          <option value="lightcoral">lightcoral</option>
-          <option value="midnightblue">midnightblue</option>
-          <option value="rebeccapurple">rebeccapurple</option>
+          <option value="lightcoral">مرجاني</option>
+          <option value="midnightblue"> أزرق منتصف الليل </option>
+          <option value="rebeccapurple">البنفسجي الريبيكا</option>
         </select>
       </p>
       <Clock color={color} time={time.toLocaleTimeString()} />
@@ -1890,7 +1904,7 @@ export default function App() {
 
 <Solution>
 
-The issue is that this component has `color` state initialized with the initial value of the `color` prop. But when the `color` prop changes, this does not affect the state variable! So they get out of sync. To fix this issue, remove the state variable altogether, and use the `color` prop directly.
+المشكلة هي أن هذا المكون يحتوي على حالة `color` التي تم تهيئتها بالقيمة الأولية لخاصية `color`. لكن عندما تتغير خاصية `color`، فإن هذا التغيير لا يؤثر على متغير الحالة، مما يتسبب في فقدان التزامن بينهما. لحل هذه المشكلة، قم بحذف متغير الحالة تمامًا، واستخدم خاصية `color` مباشرة.
 
 <Sandpack>
 
@@ -1927,11 +1941,11 @@ export default function App() {
   return (
     <div>
       <p>
-        Pick a color:{' '}
+        اختر لونا:{' '}
         <select value={color} onChange={e => setColor(e.target.value)}>
-          <option value="lightcoral">lightcoral</option>
-          <option value="midnightblue">midnightblue</option>
-          <option value="rebeccapurple">rebeccapurple</option>
+          <option value="lightcoral">مرجاني</option>
+          <option value="midnightblue"> أزرق منتصف الليل </option>
+          <option value="rebeccapurple">البنفسجي الريبيكا</option>
         </select>
       </p>
       <Clock color={color} time={time.toLocaleTimeString()} />
@@ -1942,7 +1956,7 @@ export default function App() {
 
 </Sandpack>
 
-Or, using the destructuring syntax:
+أو، باستخدام syntax للتفكيك:
 
 <Sandpack>
 
@@ -1979,11 +1993,11 @@ export default function App() {
   return (
     <div>
       <p>
-        Pick a color:{' '}
+        اختر لونا:{' '}
         <select value={color} onChange={e => setColor(e.target.value)}>
-          <option value="lightcoral">lightcoral</option>
-          <option value="midnightblue">midnightblue</option>
-          <option value="rebeccapurple">rebeccapurple</option>
+          <option value="lightcoral">مرجاني</option>
+          <option value="midnightblue"> أزرق منتصف الليل </option>
+          <option value="rebeccapurple">البنفسجي الريبيكا</option>
         </select>
       </p>
       <Clock color={color} time={time.toLocaleTimeString()} />
@@ -1996,13 +2010,13 @@ export default function App() {
 
 </Solution>
 
-#### Fix a broken packing list {/*fix-a-broken-packing-list*/}
+#### أصلح قائمة تعبئة معطلة {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+تحتوي قائمة التعبئة هذه على تذييل يعرض عدد العناصر التي تم تعبئتها وعدد العناصر الإجمالي. تبدو القائمة تعمل بشكل جيد في البداية، لكن بها أخطاء. على سبيل المثال، إذا قمت بوضع علامة على عنصر كـ "معبأ" ثم قمت بحذفه، فلن يتم تحديث العدّاد بشكل صحيح. قم بإصلاح العدّاد ليظل دقيقًا دائمًا.
 
 <Hint>
 
-Is any state in this example redundant?
+هل هناك أي حالة في هذا المثال مكررة؟
 
 </Hint>
 
@@ -2015,9 +2029,9 @@ import PackingList from './PackingList.js';
 
 let nextId = 3;
 const initialItems = [
-  { id: 0, title: 'Warm socks', packed: true },
-  { id: 1, title: 'Travel journal', packed: false },
-  { id: 2, title: 'Watercolors', packed: false },
+  { id: 0, title: 'جوارب دافئة', packed: true },
+  { id: 1, title: 'دفتر السفر', packed: false },
+  { id: 2, title: 'ألوان مائية', packed: false },
 ];
 
 export default function TravelPlan() {
@@ -2070,7 +2084,7 @@ export default function TravelPlan() {
         onDeleteItem={handleDeleteItem}
       />
       <hr />
-      <b>{packed} out of {total} packed!</b>
+      <b>{packed} من أصل {total} تم تعبئته!</b>
     </>
   );
 }
@@ -2091,7 +2105,7 @@ export default function AddItem({ onAddItem }) {
       <button onClick={() => {
         setTitle('');
         onAddItem(title);
-      }}>Add</button>
+      }}>أضف</button>
     </>
   )
 }
@@ -2124,7 +2138,7 @@ export default function PackingList({
             {item.title}
           </label>
           <button onClick={() => onDeleteItem(item.id)}>
-            Delete
+            احذف
           </button>
         </li>
       ))}
@@ -2143,7 +2157,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-Although you could carefully change each event handler to update the `total` and `packed` counters correctly, the root problem is that these state variables exist at all. They are redundant because you can always calculate the number of items (packed or total) from the `items` array itself. Remove the redundant state to fix the bug:
+بالرغم من أنه يمكنك تعديل كل معالج حدث بعناية لتحديث العدادات `total` و `packed` بشكل صحيح، إلا أن المشكلة الأساسية هي أن هذه المتغيرات الحالة موجودة أصلاً. فهي مكررة لأنه يمكنك دائمًا حساب عدد العناصر (المعبأة أو الكلية) من مصفوفة `items` نفسها. قم بإزالة الحالة المكررة لإصلاح الخطأ:
 
 <Sandpack>
 
@@ -2154,9 +2168,9 @@ import PackingList from './PackingList.js';
 
 let nextId = 3;
 const initialItems = [
-  { id: 0, title: 'Warm socks', packed: true },
-  { id: 1, title: 'Travel journal', packed: false },
-  { id: 2, title: 'Watercolors', packed: false },
+  { id: 0, title: 'جوارب دافئة', packed: true },
+  { id: 1, title: 'دفتر السفر', packed: false },
+  { id: 2, title: 'ألوان مائية', packed: false },
 ];
 
 export default function TravelPlan() {
@@ -2205,7 +2219,7 @@ export default function TravelPlan() {
         onDeleteItem={handleDeleteItem}
       />
       <hr />
-      <b>{packed} out of {total} packed!</b>
+      <b>{packed} من أصل {total} تم تعبئته!</b>
     </>
   );
 }
@@ -2226,7 +2240,7 @@ export default function AddItem({ onAddItem }) {
       <button onClick={() => {
         setTitle('');
         onAddItem(title);
-      }}>Add</button>
+      }}>أضف</button>
     </>
   )
 }
@@ -2259,7 +2273,7 @@ export default function PackingList({
             {item.title}
           </label>
           <button onClick={() => onDeleteItem(item.id)}>
-            Delete
+            احذف
           </button>
         </li>
       ))}
@@ -2276,15 +2290,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Notice how the event handlers are only concerned with calling `setItems` after this change. The item counts are now calculated during the next render from `items`, so they are always up-to-date.
+لاحظ كيف أن معالجات الأحداث تهتم فقط باستدعاء `setItems` بعد هذا التغيير. يتم الآن حساب أعداد العناصر خلال التحديث التالي من `items`، لذا فهي دائمًا محدثة.
 
 </Solution>
 
-#### Fix the disappearing selection {/*fix-the-disappearing-selection*/}
+#### اصلح اختفاء الاختيارات {/*fix-the-disappearing-selection*/}
 
-There is a list of `letters` in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the `highlightedLetter` state variable. You can "star" and "unstar" individual letters, which updates the `letters` array in state.
+توجد قائمة من letters (رسائل) في الحالة. عندما تمرر الماوس فوق رسالة معينة أو تركز عليها، يتم تمييزها. الرسالة المميزة حاليًا يتم تخزينها في متغير الحالة highlightedLetter. يمكنك "تمييز" و"إلغاء تمييز" الرسائل الفردية، مما يؤدي إلى تحديث مصفوفة letters في الحالة.
 
-This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it reappears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.
+يعمل هذا الكود، ولكن هناك خلل بسيط في واجهة المستخدم. عندما تضغط على "تمييز" أو "إلغاء تمييز"، يختفي التمييز للحظة. ومع ذلك، يظهر مرة أخرى بمجرد أن تحرك المؤشر أو تنتقل إلى رسالة أخرى باستخدام لوحة المفاتيح. لماذا يحدث هذا؟ قم بإصلاح المشكلة بحيث لا يختفي التمييز بعد النقر على الزر.
 
 <Sandpack>
 
@@ -2316,7 +2330,7 @@ export default function MailClient() {
 
   return (
     <>
-      <h2>Inbox</h2>
+      <h2>البريد الوارد</h2>
       <ul>
         {letters.map(letter => (
           <Letter
@@ -2357,7 +2371,7 @@ export default function Letter({
       <button onClick={() => {
         onToggleStar(letter);
       }}>
-        {letter.isStarred ? 'Unstar' : 'Star'}
+        {letter.isStarred ? 'الغاء تمييز' : 'مميز'}
       </button>
       {letter.subject}
     </li>
@@ -2368,15 +2382,15 @@ export default function Letter({
 ```js src/data.js
 export const initialLetters = [{
   id: 0,
-  subject: 'Ready for adventure?',
+  subject: 'مستعد للمغامرة؟',
   isStarred: true,
 }, {
   id: 1,
-  subject: 'Time to check in!',
+  subject: 'حان وقت التسجيل!',
   isStarred: false,
 }, {
   id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
+  subject: 'المهرجان يبدأ خلال سبعة أيام فقط!',
   isStarred: false,
 }];
 ```
@@ -2391,9 +2405,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-The problem is that you're holding the letter object in `highlightedLetter`. But you're also holding the same information in the `letters` array. So your state has duplication! When you update the `letters` array after the button click, you create a new letter object which is different from `highlightedLetter`. This is why `highlightedLetter === letter` check becomes `false`, and the highlight disappears. It reappears the next time you call `setHighlightedLetter` when the pointer moves.
+المشكلة هي أنك تحتفظ بكائن الحرف في متغير الحالة `highlightedLetter`. ولكنك أيضًا تحتفظ بنفس المعلومات في مصفوفة `الحروف`. لذا، هناك تكرار في الحالة! عندما تقوم بتحديث مصفوفة `الحروف` بعد النقر على الزر، تقوم بإنشاء كائن حرف جديد يختلف عن `highlightedLetter`. وهذا هو سبب عدم تطابق شرط `highlightedLetter === letter`، مما يؤدي إلى اختفاء التمييز. يظهر التمييز مرة أخرى في المرة التالية التي تستدعي فيها `setHighlightedLetter` عندما يتحرك المؤشر.
 
-To fix the issue, remove the duplication from state. Instead of storing *the letter itself* in two places, store the `highlightedId` instead. Then you can check `isHighlighted` for each letter with `letter.id === highlightedId`, which will work even if the `letter` object has changed since the last render.
+لحل المشكلة، قم بإزالة التكرار من الحالة. بدلاً من تخزين *الحرف نفسه* في مكانين، قم بتخزين `highlightedId` فقط. ثم يمكنك التحقق من `isHighlighted` لكل حرف باستخدام `letter.id === highlightedId`، وهذا سيعمل حتى إذا كان كائن `letter` قد تغير منذ آخر عملية عرض.
 
 <Sandpack>
 
@@ -2425,7 +2439,7 @@ export default function MailClient() {
 
   return (
     <>
-      <h2>Inbox</h2>
+      <h2> البريد الوارد</h2>
       <ul>
         {letters.map(letter => (
           <Letter
@@ -2466,7 +2480,7 @@ export default function Letter({
       <button onClick={() => {
         onToggleStar(letter.id);
       }}>
-        {letter.isStarred ? 'Unstar' : 'Star'}
+        {letter.isStarred ? 'الغاء تمييز' : 'مميز'}
       </button>
       {letter.subject}
     </li>
@@ -2477,15 +2491,15 @@ export default function Letter({
 ```js src/data.js
 export const initialLetters = [{
   id: 0,
-  subject: 'Ready for adventure?',
+  subject: 'هل انت مستعد للمغامرة?',
   isStarred: true,
 }, {
   id: 1,
-  subject: 'Time to check in!',
+  subject: 'حان الوقت لتسجيل',
   isStarred: false,
 }, {
   id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
+  subject: 'المهرجان يبدأ في سبع أيام',
   isStarred: false,
 }];
 ```
@@ -2500,15 +2514,16 @@ li { border-radius: 5px; }
 
 </Solution>
 
-#### Implement multiple selection {/*implement-multiple-selection*/}
+#### تنفيذ التحديد المتعدد {/*implement-multiple-selection*/}
 
-In this example, each `Letter` has an `isSelected` prop and an `onToggle` handler that marks it as selected. This works, but the state is stored as a `selectedId` (either `null` or an ID), so only one letter can get selected at any given time.
+في هذا المثال، كل رسالة `Letter` تحتوي على خاصية `isSelected` ومعالج `onToggle` الذي يميزها كمحددة. يعمل هذا بشكل جيد، لكن الحالة مخزنة كـ `selectedId` (إما `null` أو معرف `id`)، لذا يمكن تحديد رسالة واحدة فقط في أي وقت.
 
-Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independent from the others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.
+غيّر هيكل الحالة لدعم التحديد المتعدد. (كيف ستقوم بهيكلته؟ فكّر في ذلك قبل كتابة الشيفرة.) يجب أن يصبح كل مربع اختيار مستقل عن الآخرين. النقر على رسالة محددة يجب أن يزيل التحديد منها. أخيرًا، يجب أن يظهر التذييل عدد العناصر المحددة بشكل صحيح.
+
 
 <Hint>
 
-Instead of a single selected ID, you might want to hold an array or a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of selected IDs in state.
+بدلاً من استخدام معرف ID واحد فقط، يمكنك الاحتفاظ بمصفوفة أو [مجموعة](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) من المعرفات (IDs) المختارة في الحالة.
 
 </Hint>
 
@@ -2532,7 +2547,7 @@ export default function MailClient() {
 
   return (
     <>
-      <h2>Inbox</h2>
+      <h2>البريد الوارد</h2>
       <ul>
         {letters.map(letter => (
           <Letter
@@ -2548,7 +2563,7 @@ export default function MailClient() {
         <hr />
         <p>
           <b>
-            You selected {selectedCount} letters
+            لقد أخترت {selectedCount} رسالة
           </b>
         </p>
       </ul>
@@ -2565,7 +2580,7 @@ export default function Letter({
 }) {
   return (
     <li className={
-      isSelected ? 'selected' : ''
+      isSelected ? 'تم اختياره' : ''
     }>
       <label>
         <input
@@ -2585,15 +2600,15 @@ export default function Letter({
 ```js src/data.js
 export const letters = [{
   id: 0,
-  subject: 'Ready for adventure?',
+  subject: 'مستعد للمغامرة؟',
   isStarred: true,
 }, {
   id: 1,
-  subject: 'Time to check in!',
+  subject: 'حان وقت التسجيل!',
   isStarred: false,
 }, {
   id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
+  subject: 'المهرجان يبدأ خلال سبعة أيام فقط!',
   isStarred: false,
 }];
 ```
@@ -2609,7 +2624,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-Instead of a single `selectedId`, keep a `selectedIds` *array* in state. For example, if you select the first and the last letter, it would contain `[0, 2]`. When nothing is selected, it would be an empty `[]` array:
+بدلاً من استخدام `selectedId` واحد، احتفظ بمصفوفة `selectedIds` في الحالة. على سبيل المثال، إذا قمت بتحديد الحرف الأول والأخير، فإنها ستحتوي على `[0, 2]`. عندما لا يكون هناك أي تحديد، ستكون المصفوفة فارغة `[]`.
 
 <Sandpack>
 
@@ -2641,7 +2656,7 @@ export default function MailClient() {
 
   return (
     <>
-      <h2>Inbox</h2>
+      <h2>البريد الوارد</h2>
       <ul>
         {letters.map(letter => (
           <Letter
@@ -2656,7 +2671,7 @@ export default function MailClient() {
         <hr />
         <p>
           <b>
-            You selected {selectedCount} letters
+            لقد أخترت {selectedCount} رسالة
           </b>
         </p>
       </ul>
@@ -2673,7 +2688,7 @@ export default function Letter({
 }) {
   return (
     <li className={
-      isSelected ? 'selected' : ''
+      isSelected ? 'تم اختياره' : ''
     }>
       <label>
         <input
@@ -2693,15 +2708,15 @@ export default function Letter({
 ```js src/data.js
 export const letters = [{
   id: 0,
-  subject: 'Ready for adventure?',
+  subject: 'مستعد للمغامرة؟',
   isStarred: true,
 }, {
   id: 1,
-  subject: 'Time to check in!',
+  subject: 'حان وقت التسجيل!',
   isStarred: false,
 }, {
   id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
+  subject: 'المهرجان يبدأ خلال سبعة أيام فقط!',
   isStarred: false,
 }];
 ```
@@ -2715,9 +2730,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-One minor downside of using an array is that for each item, you're calling `selectedIds.includes(letter.id)` to check whether it's selected. If the array is very large, this can become a performance problem because array search with [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) takes linear time, and you're doing this search for each individual item.
+إحدى العيوب الصغيرة لاستخدام المصفوفة هي أنه لكل عنصر، تقوم بالتحقق من `selectedIds.includes(letter.id)` لمعرفة ما إذا كان محددًا. إذا كانت المصفوفة كبيرة جدًا، فقد يصبح هذا مشكلة في الأداء لأن البحث في المصفوفة باستخدام [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) يستغرق وقتًا خطيًا، وأنت تقوم بهذا البحث لكل عنصر على حدة.
 
-To fix this, you can hold a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in state instead, which provides a fast [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) operation:
+لحل هذه المشكلة، يمكنك استخدام [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) في الحالة بدلاً من ذلك، حيث يوفر عملية [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) سريعة.
 
 <Sandpack>
 
@@ -2746,7 +2761,7 @@ export default function MailClient() {
 
   return (
     <>
-      <h2>Inbox</h2>
+      <h2>البريد الوارد</h2>
       <ul>
         {letters.map(letter => (
           <Letter
@@ -2761,7 +2776,7 @@ export default function MailClient() {
         <hr />
         <p>
           <b>
-            You selected {selectedCount} letters
+            لقد أخترت {selectedCount} رسالة
           </b>
         </p>
       </ul>
@@ -2778,7 +2793,7 @@ export default function Letter({
 }) {
   return (
     <li className={
-      isSelected ? 'selected' : ''
+      isSelected ? 'تم اختياره' : ''
     }>
       <label>
         <input
@@ -2798,15 +2813,15 @@ export default function Letter({
 ```js src/data.js
 export const letters = [{
   id: 0,
-  subject: 'Ready for adventure?',
+  subject: 'مستعد للمغامرة؟',
   isStarred: true,
 }, {
   id: 1,
-  subject: 'Time to check in!',
+  subject: 'حان وقت التسجيل!',
   isStarred: false,
 }, {
   id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
+  subject: 'المهرجان يبدأ خلال سبعة أيام فقط!',
   isStarred: false,
 }];
 ```
@@ -2820,9 +2835,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-Now each item does a `selectedIds.has(letter.id)` check, which is very fast.
+الآن، يقوم كل عنصر بالتحقق من `selectedIds.has(letter.id)`، وهو أمر سريع جدًا.
 
-Keep in mind that you [should not mutate objects in state](/learn/updating-objects-in-state), and that includes Sets, too. This is why the `handleToggle` function creates a *copy* of the Set first, and then updates that copy.
+تذكر أنه [ينبغي عليك عدم تغيير الكائنات في الحالة](https://reactjs.org/docs/handling-events.html#updating-objects-in-state)، وهذا يشمل Sets أيضًا. لذلك، تقوم دالة `handleToggle` بإنشاء *نسخة* من الـ Set أولاً، ثم تقوم بتحديث تلك النسخة.
 
 </Solution>
 
