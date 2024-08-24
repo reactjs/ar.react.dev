@@ -1,107 +1,105 @@
 ---
-title: Start a New React Project
+title: بدء مشروع React جديد
 ---
 
 <Intro>
 
-If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community.
+إذا كنت ترغب في بناء تطبيق جديد أو موقع ويب جديد بالكامل باستخدام React، نوصي باختيار أحد الأطر المدعومة بـ React والتي تحظى بشعبية في المجتمع.
 
 </Intro>
 
 
-You can use React without a framework, however we’ve found that most apps and sites eventually build solutions to common problems such as code-splitting, routing, data fetching, and generating HTML. These problems are common to all UI libraries, not just React.
+يمكنك استخدام React بدون إطار عمل، ولكننا وجدنا أن معظم التطبيقات والمواقع في النهاية تبني حلولاً لمشاكل شائعة مثل تقسيم الكود، التوجيه، جلب البيانات، وتوليد HTML. هذه المشاكل شائعة لجميع مكتبات واجهات المستخدم، وليست مقتصرة على React فقط.
 
-By starting with a framework, you can get started with React quickly, and avoid essentially building your own framework later.
+ببدء العمل بإطار عمل، يمكنك البدء بسرعة مع React، وتجنب بناء إطار عمل خاص بك لاحقاً.
 
 <DeepDive>
 
-#### Can I use React without a framework? {/*can-i-use-react-without-a-framework*/}
+#### هل يمكنني استخدام React بدون إطار عمل؟ {/*can-i-use-react-without-a-framework*/}
 
-You can definitely use React without a framework--that's how you'd [use React for a part of your page.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **However, if you're building a new app or a site fully with React, we recommend using a framework.**
+يمكنك بالتأكيد استخدام React بدون إطار عمل — هكذا يمكنك [استخدام React لجزء من صفحتك. ](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **ومع ذلك، إذا كنت تبني تطبيقًا جديدًا أو موقعًا بالكامل باستخدام React، فنوصي باستخدام إطار عمل.**
 
-Here's why.
+إليك السبب:
 
-Even if you don't need routing or data fetching at first, you'll likely want to add some libraries for them. As your JavaScript bundle grows with every new feature, you might have to figure out how to split code for every route individually. As your data fetching needs get more complex, you are likely to encounter server-client network waterfalls that make your app feel very slow. As your audience includes more users with poor network conditions and low-end devices, you might need to generate HTML from your components to display content early--either on the server, or during the build time. Changing your setup to run some of your code on the server or during the build can be very tricky.
+حتى إذا لم تكن بحاجة إلى routing  أو جلب البيانات في البداية، فستحتاج على الأرجح إلى إضافة بعض المكتبات لهذه الأمور. مع زيادة حجم حزمة JavaScript مع كل ميزة جديدة، قد تحتاج إلى معرفة كيفية تقسيم الكود لكل مسار على حدة. مع تزايد تعقيد احتياجات جلب البيانات، قد تواجه حالات من تدفقات الشبكة بين الخادم والعميل تجعل تطبيقك يبدو بطيئًا جدًا. ومع تزايد عدد المستخدمين الذين يعانون من ظروف شبكة ضعيفة وأجهزة منخفضة الأداء، قد تحتاج إلى توليد HTML من مكوناتك لعرض المحتوى مبكرًا — إما على الخادم أو أثناء وقت البناء. يمكن أن يكون تغيير إعداداتك لتشغيل بعض من كودك على الخادم أو أثناء البناء معقدًا جدًا.
 
-**These problems are not React-specific. This is why Svelte has SvelteKit, Vue has Nuxt, and so on.** To solve these problems on your own, you'll need to integrate your bundler with your router and with your data fetching library. It's not hard to get an initial setup working, but there are a lot of subtleties involved in making an app that loads quickly even as it grows over time. You'll want to send down the minimal amount of app code but do so in a single client–server roundtrip, in parallel with any data required for the page. You'll likely want the page to be interactive before your JavaScript code even runs, to support progressive enhancement. You may want to generate a folder of fully static HTML files for your marketing pages that can be hosted anywhere and still work with JavaScript disabled. Building these capabilities yourself takes real work.
+**هذه المشاكل ليست خاصة بـ React. لهذا السبب، يحتوي Svelte على SvelteKit، وVue على Nuxt،** وهكذا. لحل هذه المشاكل بنفسك، ستحتاج إلى دمج أداة البناء الخاصة بك مع router الخاص بك ومع مكتبة جلب البيانات. ليس من الصعب الحصول على إعداد أولي يعمل، ولكن هناك الكثير من التفاصيل المتضمنة في جعل التطبيق يتحمل تحميلًا سريعًا حتى مع نموه بمرور الوقت. ستريد إرسال الحد الأدنى من كود التطبيق ولكن في جولة واحدة بين العميل والخادم، بالتوازي مع أي بيانات مطلوبة للصفحة. من المحتمل أن ترغب في أن تكون الصفحة تفاعلية قبل تشغيل كود JavaScript الخاص بك، لدعم التحسين التدريجي. قد ترغب في توليد مجلد من ملفات HTML ثابتة بالكامل لصفحات التسويق الخاصة بك التي يمكن استضافتها في أي مكان وتعمل حتى مع تعطيل JavaScript. بناء هذه القدرات بنفسك يتطلب عملًا حقيقيًا.
 
-**React frameworks on this page solve problems like these by default, with no extra work from your side.** They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
+**تقوم أطر React على هذه الصفحة بحل مشاكل مثل هذه بشكل افتراضي، دون الحاجة إلى عمل إضافي من جانبك.** تتيح لك البدء بطريقة خفيفة ثم توسيع تطبيقك وفقًا لاحتياجاتك. لكل إطار عمل React مجتمع، لذا فإن العثور على إجابات للأسئلة وترقية الأدوات أسهل. توفر الأطر أيضًا بنية لكودك، مما يساعدك وأشخاص آخرين في الحفاظ على السياق والمهارات بين المشاريع المختلفة. على العكس من ذلك، مع إعداد مخصص، من الأسهل أن تعلق على إصدارات التبعية غير المدعومة، وستنتهي أساسًا بإنشاء إطار عمل خاص بك—رغم أنه بدون مجتمع أو مسار ترقية (وإذا كان مشابهًا لتلك التي قمنا بإنشائها في الماضي، سيكون أكثر تصميمًا عشوائيًا).
 
-If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
-
+إذا كان لتطبيقك قيود غير عادية لا تلبيها هذه الأطر بشكل جيد، أو إذا كنت تفضل حل هذه المشاكل بنفسك، يمكنك  إعداد مخصص باستخدام React. احصل على react و react-dom من npm، واضبط عملية البناء المخصصة الخاصة بك باستخدام أداة بناء مثل [Vite](https://vitejs.dev/) أو [Parcel](https://parceljs.org/), وأضف أدوات أخرى حسب الحاجة للتوجيه أو التوليد الثابت أو التقديم من جانب الخادم، وأكثر.
 </DeepDive>
 
-## Production-grade React frameworks {/*production-grade-react-frameworks*/}
+## أطر React جاهزة للإنتاج {/*production-grade-react-frameworks*/}
 
-These frameworks support all the features you need to deploy and scale your app in production and are working towards supporting our [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). All of the frameworks we recommend are open source with active communities for support, and can be deployed to your own server or a hosting provider. If you’re a framework author interested in being included on this list, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
+تدعم هذه الأطر جميع الميزات التي تحتاجها لنشر وتوسيع تطبيقك في بيئة الإنتاج وتعمل على دعم  [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). لدينا. جميع الأطر التي نوصي بها مفتوحة المصدر ولها مجتمعات نشطة للدعم، ويمكن نشرها على خادمك الخاص أو مزود استضافة. إذا كنت مؤلف إطار عمل مهتمًا بأن تكون مدرجًا في هذه القائمة،[يرجى إبلاغنا.](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
 
 ### Next.js {/*nextjs-pages-router*/}
 
-**[Next.js' Pages Router](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
+**[Router في Next.js ](https://nextjs.org/) هو إطار عمل React كامل النطاق.** إنه متعدد الاستخدامات ويسمح لك بإنشاء تطبيقات React بأي حجم — من مدونة ثابتة إلى تطبيق ديناميكي معقد. لإنشاء مشروع Next.js جديد، نفّذ الأمر التالي في نافذة الأوامر الخاصة بك:
 
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-If you're new to Next.js, check out the [learn Next.js course.](https://nextjs.org/learn)
+إذا كنت جديدًا على Next.js، تحقق من  [ دورة تعلم Next.js.](https://nextjs.org/learn)
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports a [static export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) which doesn't require a server.
+يتم صيانة Next.js بواسطة [Vercel](https://vercel.com/). يمكنك  [ استضافة تطبيق Next.js ](https://nextjs.org/docs/app/building-your-application/deploying) على أي استضافة Node.js أو استضافة بدون خادم، أو على خادمك الخاص. يدعم Next.js أيضً [تصدير ثابت](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)  لا يتطلب خادمًا.
 
 ### Remix {/*remix*/}
 
-**[Remix](https://remix.run/) is a full-stack React framework with nested routing.** It lets you break your app into nested parts that can load data in parallel and refresh in response to the user actions. To create a new Remix project, run:
+**[Remix](https://remix.run/) هو إطار عمل React كامل النطاق مع routing المتداخل. يتيح لك تقسيم تطبيقك إلى أجزاء متداخلة يمكنها** تحميل البيانات بشكل متوازٍ وتحديثها استجابةً لأفعال المستخدم. لإنشاء مشروع Remix جديد، نفّذ:
 
 <TerminalBlock>
 npx create-remix
 </TerminalBlock>
 
-If you're new to Remix, check out the Remix [blog tutorial](https://remix.run/docs/en/main/tutorials/blog) (short) and [app tutorial](https://remix.run/docs/en/main/tutorials/jokes) (long).
+إذا كنت جديدًا على Remix، تحقق من [دورة المدونةl](https://remix.run/docs/en/main/tutorials/blog) (قصير) و [دورة التطبيق](https://remix.run/docs/en/main/tutorials/jokes) (طويل).
 
-Remix is maintained by [Shopify](https://www.shopify.com/). When you create a Remix project, you need to [pick your deployment target](https://remix.run/docs/en/main/guides/deployment). You can deploy a Remix app to any Node.js or serverless hosting by using or writing an [adapter](https://remix.run/docs/en/main/other-api/adapter).
+يتم صيانة Remix بواسطة  [Shopify](https://www.shopify.com/). عند إنشاء مشروع Remix، تحتاج إلى [ اختيار هدف الاستضافة](https://remix.run/docs/en/main/guides/deployment) يمكنك استضافة تطبيق Remix على أي استضافة Node.js أو استضافة بدون خادم باستخدام أو كتابة [adapter](https://remix.run/docs/en/main/other-api/adapter).
 
 ### Gatsby {/*gatsby*/}
 
-**[Gatsby](https://www.gatsbyjs.com/) is a React framework for fast CMS-backed websites.** Its rich plugin ecosystem and its GraphQL data layer simplify integrating content, APIs, and services into one website. To create a new Gatsby project, run:
+**[Gatsby](https://www.gatsbyjs.com/) هو إطار عمل React لمواقع الويب السريعة المدعومة بنظام إدارة المحتوى (CMS).**  تسهّل مجموعة الإضافات الغنية وطبقة بيانات GraphQL دمج المحتوى، وواجهات البرمجة، والخدمات في موقع واحد. لإنشاء مشروع Gatsby جديد، نفّذ:
 
 <TerminalBlock>
 npx create-gatsby
 </TerminalBlock>
 
-If you're new to Gatsby, check out the [Gatsby tutorial.](https://www.gatsbyjs.com/docs/tutorial/)
+إذا كنت جديدًا على Gatsby، تحقق من [دورة Gatsby التعليمية.](https://www.gatsbyjs.com/docs/tutorial/)
 
-Gatsby is maintained by [Netlify](https://www.netlify.com/). You can [deploy a fully static Gatsby site](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) to any static hosting. If you opt into using server-only features, make sure your hosting provider supports them for Gatsby.
+يتم صيانة Gatsby بواسطة[Netlify](https://www.netlify.com/). يمكنك  [ استضافة موقع Gatsby ثابت بالكامل](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting)  على أي استضافة ثابتة. إذا اخترت استخدام الميزات الخاصة بالخادم فقط، تأكد من أن مزود الاستضافة يدعمها لـ Gatsby.
 
-### Expo (for native apps) {/*expo*/}
+### Expo (لتطبيقات الأجهزة المحمولة) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) هو إطار عمل React يتيح لك إنشاء تطبيقات عالمية لأنظمة Android وiOS والويب بواجهات مستخدم أصلية تمامًا.** يوفر SDK لـ[React Native](https://reactnative.dev/) مما يجعل الأجزاء الأصلية أسهل في الاستخدام. لإنشاء مشروع Expo جديد، نفّذ:
 
 <TerminalBlock>
 npx create-expo-app
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+إذا كنت جديدًا على Expo، تحقق من [دورة Expo التعليمية](https://docs.expo.dev/tutorial/introduction/).
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+تتم صيانة Expo بواسطة  [Expo (الشركة)](https://expo.dev/about). بناء التطبيقات باستخدام Expo مجاني، ويمكنك تقديمها إلى متاجر تطبيقات Google وApple دون قيود. بالإضافة إلى ذلك، توفر Expo خدمات سحابية مدفوعة قابلة للتفعيل.
 
-## Bleeding-edge React frameworks {/*bleeding-edge-react-frameworks*/}
+## أطر React المتقدمة للغاية {/*bleeding-edge-react-frameworks*/}
 
-As we've explored how to continue improving React, we realized that integrating React more closely with frameworks (specifically, with routing, bundling, and server technologies) is our biggest opportunity to help React users build better apps. The Next.js team has agreed to collaborate with us in researching, developing, integrating, and testing framework-agnostic bleeding-edge React features like [React Server Components.](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)
+بينما استكشفنا كيفية تحسين React، أدركنا أن دمج React بشكل أكثر قربًا مع الأطر (خصوصًا، مع التوجيه ، والتجميع، وتقنيات الخادم) هو أكبر فرصة لدينا لمساعدة مستخدمي React على بناء تطبيقات أفضل. وافق فريق Next.js على التعاون معنا في البحث والتطوير والتكامل واختبار ميزات React المتقدمة المستقلة عن الأطر مثل [مكونات خادم React.](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)
 
-These features are getting closer to being production-ready every day, and we've been in talks with other bundler and framework developers about integrating them. Our hope is that in a year or two, all frameworks listed on this page will have full support for these features. (If you're a framework author interested in partnering with us to experiment with these features, please let us know!)
+تقترب هذه الميزات من أن تكون جاهزة للإنتاج كل يوم، وقد كنا في محادثات مع مطوري أدوات التجميع والأطر الأخرى حول دمجها. أملنا هو أنه بعد عام أو عامين، ستدعم جميع الأطر المدرجة في هذه الصفحة هذه الميزات بالكامل. (إذا كنت مؤلف إطار عمل مهتمًا بالشراكة معنا لتجربة هذه الميزات، يرجى إبلاغنا!)
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a redesign of the Next.js APIs aiming to fulfill the React team’s full-stack architecture vision.** It lets you fetch data in asynchronous components that run on the server or even during the build.
+**[Next.js's App Router](https://nextjs.org/docs)هو إعادة تصميم لواجهات Next.js تهدف إلى تحقيق رؤية فريق React ل full-stack architecture**  يتيح لك جلب البيانات في مكونات غير متزامنة تعمل على الخادم أو حتى أثناء البناء.
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
-
+يتم صيانة Next.js بواسطة [Vercel](https://vercel.com/). يمكنك  [ استضافة تطبيق Next.js](https://nextjs.org/docs/app/building-your-application/deploying) على أي استضافة Node.js أو استضافة بدون خادم، أو على خادمك الخاص. يدعم Next.js أيضًا[ التصدير الثابت](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)  الذي لا يتطلب خادمًا.
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### ما هي الميزات التي تشكل رؤية فريق React ل full-stack architecture ؟ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+يطبق مجمع App Router في Next.js بالكامل [ مواصفات مكونات خادم React الرسمية](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md).  يتيح لك ذلك مزج المكونات الخاصة بالوقت البني، والمكونات الخاصة بالخادم فقط، والمكونات التفاعلية في شجرة React واحدة.
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+على سبيل المثال، يمكنك كتابة مكوّن React خاص بالخادم فقط كدالة `async` تقوم بقراءة البيانات من قاعدة بيانات أو من ملف. ثم يمكنك تمرير البيانات منه إلى مكوناتك التفاعلية:
 
 ```js
 // This component runs *only* on the server (or during the build).
@@ -117,7 +115,7 @@ async function Talks({ confId }) {
 }
 ```
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
+مجمع App Router في Next.js يدمج أيضًا  [جلب البيانات مع Suspense.](/blog/2022/03/29/react-v18#suspense-in-data-frameworks).  يتيح لك ذلك تحديد حالة تحميل (مثل عنصر تحجيم مبدئي) لأجزاء مختلفة من واجهة المستخدم الخاصة بك مباشرة في شجرة React الخاصة بك:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -125,6 +123,6 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+مكونات الخادم وSuspense هما ميزتان من React بدلاً من كونهما ميزتين في Next.js. ومع ذلك، فإن تبنيهما على مستوى الإطار يتطلب الموافقة وعملية تنفيذ غير بسيطة. في الوقت الحالي، يعتبر مجمع App Router في Next.js هو التنفيذ الأكثر اكتمالاً. يعمل فريق React مع مطوري أدوات التجميع لجعل هذه الميزات أسهل في التنفيذ في الجيل القادم من الأطار.
 
 </DeepDive>
