@@ -52,13 +52,13 @@ export default function PackingList() {
 
 </Sandpack>
 
-لاحظ أن بعض مكونات `Item` لديها خاصية `isPacked` معينة إلى `true` بدلا من `false`. ترغب في إضافة علامة التحقق (✔) إلى العناصر المحزومة في حالة `isPacked={true}`.
+لاحظ أن بعض مكونات `Item` لديها خاصية `isPacked` معينة إلى `true` بدلا من `false`. ترغب في إضافة علامة التحقق (✅) إلى العناصر المحزومة في حالة `isPacked={true}`.
 
 يمكنك كتابة ذلك باستخدام [عبارة `if`/`else`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) على النحو التالي:
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -70,7 +70,7 @@ return <li className="item">{name}</li>;
 ```js
 function Item({ name, isPacked }) {
   if (isPacked) {
-    return <li className="item">{name} ✔</li>;
+    return <li className="item">{name} ✅</li>;
   }
   return <li className="item">{name}</li>;
 }
@@ -159,7 +159,7 @@ export default function PackingList() {
 في المثال السابق، تحكمت في شجرة JSX (إن وجدت!) التي سيُرجعها المكون. ربما لاحظت بالفعل بعض التكرار في ناتج العرض:
 
 ```js
-<li className="item">{name} ✔</li>
+<li className="item">{name} ✅</li>
 ```
 
 مشابه جدًا لـ
@@ -172,7 +172,7 @@ export default function PackingList() {
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -187,7 +187,7 @@ return <li className="item">{name}</li>;
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -197,12 +197,12 @@ return <li className="item">{name}</li>;
 ```js
 return (
   <li className="item">
-    {isPacked ? name + ' ✔' : name}
+    {isPacked ? name + ' ✅' : name}
   </li>
 );
 ```
 
-يمكنك قرائتها على النحو التالي *”إذا كان `isPacked` صحيحا، إذا قم بعرض `name + ' ✔'`، وإلا (`:`) قم بعرض `name`“.*
+يمكنك قرائتها على النحو التالي *”إذا كان `isPacked` صحيحا، إذا قم بعرض name + ' ✅'`، وإلا (`:`) قم بعرض `name`“.*
 
 <DeepDive>
 
@@ -222,7 +222,7 @@ function Item({ name, isPacked }) {
     <li className="item">
       {isPacked ? (
         <del>
-          {name + ' ✔'}
+          {name + ' ✅'}
         </del>
       ) : (
         name
@@ -265,7 +265,7 @@ export default function PackingList() {
 ```js
 return (
   <li className="item">
-    {name} {isPacked && '✔'}
+    {name} {isPacked && '✅'}
   </li>
 );
 ```
@@ -280,7 +280,7 @@ return (
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -336,7 +336,7 @@ let itemContent = name;
 
 ```js
 if (isPacked) {
-  itemContent = name + " ✔";
+  itemContent = name + " ✅";
 }
 ```
 
@@ -356,7 +356,7 @@ if (isPacked) {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
-    itemContent = name + " ✔";
+    itemContent = name + " ✅";
   }
   return (
     <li className="item">
@@ -400,7 +400,7 @@ function Item({ name, isPacked }) {
   if (isPacked) {
     itemContent = (
       <del>
-        {name + " ✔"}
+        {name + " ✅"}
       </del>
     );
   }
@@ -461,7 +461,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -499,7 +499,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked ? '✔' : '❌'}
+      {name} {isPacked ? '✅' : '❌'}
     </li>
   );
 }
