@@ -206,11 +206,7 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-يمكنك قرائتها على النحو التالي *”إذا كان `isPacked` صحيحا، إذا قم بعرض `name + ' ✔'`، وإلا (`:`) قم بعرض `name`“.*
-=======
-You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
+يمكنك قرائتها على النحو التالي *”إذا كان `isPacked` صحيحا، إذا قم بعرض name + ' ✅'`، وإلا (`:`) قم بعرض `name`“.*
 
 <DeepDive>
 
