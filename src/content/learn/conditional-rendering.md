@@ -52,11 +52,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-لاحظ أن بعض مكونات `Item` لديها خاصية `isPacked` معينة إلى `true` بدلا من `false`. ترغب في إضافة علامة التحقق (✔) إلى العناصر المحزومة في حالة `isPacked={true}`.
-=======
-Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
+لاحظ أن بعض مكونات `Item` لديها خاصية `isPacked` معينة إلى `true` بدلا من `false`. ترغب في إضافة علامة التحقق (✅) إلى العناصر المحزومة في حالة `isPacked={true}`.
 
 يمكنك كتابة ذلك باستخدام [عبارة `if`/`else`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) على النحو التالي:
 
