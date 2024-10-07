@@ -264,11 +264,19 @@ td {
 
 حسنا، لنختبر طريقتنا عليهم:
 
+<<<<<<< HEAD
 1. **حدد المكونات التي تستخدم الحالة:**
     * مكون `ProductTable` (جدول المنتجات) يحتاج الحالة ليقوم بتصفية قائمة المنتجات (نص البحث وحالة مربع الاختيار). 
     * مكون `SearchBar` (خانة البحث) يقوم بعرض الحالة نفسها (نص البحث).
 1. **حدد لهم سلفا مشتركا:** السلف المشترك للمكونين هو `FilterableProductTable`.
 2. **حدد أين تضع الحالة**: سنضع نص البحث وحالة مربع الاختيار في المكون `FilterableProductTable`.
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+>>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`. 
 
