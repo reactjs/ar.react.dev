@@ -184,12 +184,16 @@ const ReactCompilerConfig = {
 
 When you have more confidence with rolling out the compiler, you can expand coverage to other directories as well and slowly roll it out to your whole app.
 
+#### New projects {/*new-projects*/}
+
+If you're starting a new project, you can enable the compiler on your entire codebase, which is the default behavior.
+
 ### Using React Compiler with React 17 or 18 {/*using-react-compiler-with-react-17-or-18*/}
 
 React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
 
 <TerminalBlock>
-npm install react-compiler-runtime@experimental
+npm install react-compiler-runtime@beta
 </TerminalBlock>
 
 You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
@@ -209,9 +213,15 @@ module.exports = function () {
 };
 ```
 
-#### New projects {/*new-projects*/}
+### Using the compiler on libraries {/*using-the-compiler-on-libraries*/}
 
-If you're starting a new project, you can enable the compiler on your entire codebase, which is the default behavior.
+React Compiler can also be used to compile libraries. Because React Compiler needs to run on the original source code prior to any code transformations, it is not possible for an application's build pipeline to compile the libraries they use. Hence, our recommendation is for library maintainers to independently compile and test their libraries with the compiler, and ship compiled code to npm.
+
+Because your code is pre-compiled, users of your library will not need to have the compiler enabled in order to benefit from the automatic memoization applied to your library. If your library targets apps not yet on React 19, specify a minimum [`target` and add `react-compiler-runtime` as a direct dependency](#using-react-compiler-with-react-17-or-18). The runtime package will use the correct implementation of APIs depending on the application's version, and polyfill the missing APIs if necessary.
+
+Library code can often require more complex patterns and usage of escape hatches. For this reason, we recommend ensuring that you have sufficient testing in order to identify any issues that might arise from using the compiler on your library. If you identify any issues, you can always opt-out the specific components or hooks with the [`'use no memo'` directive](#something-is-not-working-after-compilation).
+
+Similarly to apps, it is not necessary to fully compile 100% of your components or hooks to see benefits in your library. A good starting point might be to identify the most performance sensitive parts of your library and ensuring that they don't break the [Rules of React](/reference/rules), which you can use `eslint-plugin-react-compiler` to identify.
 
 ### Using React Compiler with React 17 or 18 {/*using-react-compiler-with-react-17-or-18*/}
 
@@ -393,6 +403,16 @@ Please refer to [Rsbuild's docs](https://rsbuild.dev/guide/framework/react#react
 To report issues, please first create a minimal repro on the [React Compiler Playground](https://playground.react.dev/) and include it in your bug report. You can open issues in the [facebook/react](https://github.com/facebook/react/issues) repo.
 
 You can also provide feedback in the React Compiler Working Group by applying to be a member. Please see [the README for more details on joining](https://github.com/reactwg/react-compiler).
+
+### What does the compiler assume? {/*what-does-the-compiler-assume*/}
+
+React Compiler assumes that your code:
+
+1. Is valid, semantic JavaScript.
+2. Tests that nullable/optional values and properties are defined before accessing them (for example, by enabling [`strictNullChecks`](https://www.typescriptlang.org/tsconfig/#strictNullChecks) if using TypeScript), i.e., `if (object.nullableProperty) { object.nullableProperty.foo }` or with optional-chaining `object.nullableProperty?.foo`.
+3. Follows the [Rules of React](https://react.dev/reference/rules).
+
+React Compiler can verify many of the Rules of React statically, and will safely skip compilation when it detects an error. To see the errors we recommend also installing [eslint-plugin-react-compiler](https://www.npmjs.com/package/eslint-plugin-react-compiler).
 
 ### How do I know my components have been optimized? {/*how-do-i-know-my-components-have-been-optimized*/}
 
