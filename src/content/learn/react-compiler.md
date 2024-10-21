@@ -165,7 +165,7 @@ module.exports = {
 The ESLint plugin will display any violations of the rules of React in your editor. When it does this, it means that the compiler has skipped over optimizing that component or hook. This is perfectly okay, and the compiler can recover and continue optimizing other components in your codebase.
 
 <Note>
-**You don't have to fix all ESLint violations straight away.** You can address them at your own pace to increase the amount of components and hooks being optimized, but it is not required to fix everything before you can use the compiler.
+**You don't have to fix all eslint violations straight away.** You can address them at your own pace to increase the amount of components and hooks being optimized, but it is not required to fix everything before you can use the compiler.
 </Note>
 
 ### Rolling out the compiler to your codebase {/*using-the-compiler-effectively*/}
