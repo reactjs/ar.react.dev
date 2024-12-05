@@ -41,7 +41,7 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
-## وظائف ملغاه {/*deprecated-apis*/}
+## APIs محذوفة {/*deprecated-apis*/}
 
 <Deprecated>
 
@@ -53,3 +53,5 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * تقوم [`hydrate`](/reference/react-dom/hydrate) بتركيب شجرة في DOM التي تم إنشاؤها من HTML الذي تم تصييره في الخادم. مهجور لصالح [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
 * تقوم [`render`](/reference/react-dom/render) بتركيب شجرة في DOM. مهجور لصالح [`createRoot`](/reference/react-dom/client/createRoot).
 * تقوم [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) بإلغاء تركيب شجرة من DOM. مهجور لصالح [`root.unmount()`.](/reference/react-dom/client/createRoot#root-unmount)
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
