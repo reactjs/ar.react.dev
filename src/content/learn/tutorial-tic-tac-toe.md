@@ -1148,7 +1148,11 @@ export default function Board() {
 
 <Note>
 
+<<<<<<< HEAD
 تدعم JavaScript [الإغلاقات (closures)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) والتي تعني أن الدالة الداخلية (مثل `handleClick`) لديها وصول إلى المتغيرات والدوال المعرفة في الدالة الخارجية (مثل `Board`). يمكن لدالة `handleClick` قراءة حالة `squares` واستدعاء طريقة `setSquares` لأن كلاهما معرف داخل دالة `Board`.
+=======
+JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in an outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
+>>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
 
 </Note>
 
