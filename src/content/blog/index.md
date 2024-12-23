@@ -10,12 +10,29 @@ title: مدونة React
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="ملخص مؤتمر React 2024" date="22 مايو 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+=======
+<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+
+In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+
+</BlogCard>
+
+<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+
+We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+
+</BlogCard>
+
+<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 الأسبوع الماضي، استضفنا مؤتمر React 2024 الذي استمر ليومين في هندرسون، نيفادا حيث تجمع أكثر من 700 مشارك لمناقشة أحدث المستجدات في هندسة واجهة المستخدم. كان هذا أول مؤتمر حضوري لنا منذ عام 2019، وكنا متحمسين لالتقاء المجتمع معًا مرة أخرى...
 
 </BlogCard>
 
+<<<<<<< HEAD
 <BlogCard title="React 19 RC" date="25 أبريل 2024" url="/blog/2024/04/25/react-19">
 
 في دليل ترقية React 19 RC، شاركنا تعليمات ترقية تطبيقك إلى React 19 خطوة بخطوة. في هذا المنشور، سنقدم نظرة عامة على الميزات الجديدة في React 19، وكيف يمكنك البدء في استخدامها...
@@ -23,6 +40,9 @@ title: مدونة React
 </BlogCard>
 
 <BlogCard title="دليل ترقية React 19 RC" date="25 أبريل 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+=======
+<BlogCard title="React 19 Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 تتطلب التحسينات المضافة لReact 19 بعض التغييرات الجذرية، ولكننا عملنا على جعل الترقية سلسة قدر الإمكان، ولا نتوقع أن تؤثر هذه التغييرات على معظم التطبيقات. في هذا المنشور، سنرشدك خلال خطوات ترقية المكتبات إلى React 19...
 
