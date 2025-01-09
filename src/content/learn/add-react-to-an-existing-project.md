@@ -21,7 +21,7 @@ title: إضافة React إلى مشروع موجود بالفعل
 هنا ما نوصي به لإعداده:
 
 1. **بناء الجزء الخاص بـ React في تطبيقك** باستخدام إحدى [الإطارات المبنية على React](/learn/start-a-new-react-project).
-2. **حدد `/some-app` كـ *مسار أساسي*** في إعدادات إطار العمل الخاص بك (هنا كيف مع: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+2. **حدد `/some-app` كـ *مسار أساسي*** في إعدادات إطار العمل الخاص بك (هنا كيف مع: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **قم بتكوين خادمك أو بروكسي** بحيث يتم التعامل مع جميع الطلبات تحت `/some-app/` من قبل تطبيق React الخاص بك.
 
 يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) المدمجة في تلك الإطارات.
