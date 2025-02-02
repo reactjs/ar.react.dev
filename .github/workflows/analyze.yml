@@ -73,7 +73,7 @@ jobs:
         run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
 
       - name: Upload analysis comment
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3
         with:
           name: analysis_comment.txt
           path: .next/analyze/__bundle_analysis_comment.txt
@@ -82,7 +82,7 @@ jobs:
         run: echo ${{ github.event.number }} > ./pr_number
 
       - name: Upload PR number
-        uses: actions/upload-artifact@v3.1.0
+        uses: actions/upload-artifact@v3
         with:
           name: pr_number
           path: ./pr_number
