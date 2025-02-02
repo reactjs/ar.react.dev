@@ -283,7 +283,7 @@ export function Footer() {
           <div
             className="text-xs text-left rtl:text-right mt-2 pe-0.5"
             dir="ltr">
-            Copyright &copy; Meta Platforms, Inc
+            حقوق الطبع والنشر &copy; منصة ميتا، المحدودة
           </div>
           <div
             className="uwu-visible text-xs cursor-pointer hover:text-link hover:dark:text-link-dark hover:underline"
@@ -312,50 +312,54 @@ export function Footer() {
         </div>
         <div className="flex flex-col">
           <FooterLink href="/learn" isHeader={true}>
-            Learn React
+            تعلم React
           </FooterLink>
-          <FooterLink href="/learn/">Quick Start</FooterLink>
-          <FooterLink href="/learn/installation">Installation</FooterLink>
+          <FooterLink href="/learn/">البدء السريع</FooterLink>
+          <FooterLink href="/learn/installation">تثبيت</FooterLink>
           <FooterLink href="/learn/describing-the-ui">
-            Describing the UI
+            وصف واجهة المستخدم
           </FooterLink>
           <FooterLink href="/learn/adding-interactivity">
-            Adding Interactivity
+            إضافة التفاعل
           </FooterLink>
-          <FooterLink href="/learn/managing-state">Managing State</FooterLink>
-          <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
+          <FooterLink href="/learn/managing-state">إدارة الدولة</FooterLink>
+          <FooterLink href="/learn/escape-hatches">فتحات الهروب</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
-            API Reference
+            API مرجع
           </FooterLink>
-          <FooterLink href="/reference/react">React APIs</FooterLink>
-          <FooterLink href="/reference/react-dom">React DOM APIs</FooterLink>
+          <FooterLink href="/reference/react">
+            واجهات برمجة التطبيقات React
+          </FooterLink>
+          <FooterLink href="/reference/react-dom">
+            واجهات برمجة تطبيقات React DOM
+          </FooterLink>
         </div>
         <div className="md:col-start-2 xl:col-start-4 flex flex-col">
           <FooterLink href="/community" isHeader={true}>
-            Community
+            مجتمع
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            مدونة لقواعد السلوك
           </FooterLink>
-          <FooterLink href="/community/team">Meet the Team</FooterLink>
+          <FooterLink href="/community/team">تعرف على الفريق</FooterLink>
           <FooterLink href="/community/docs-contributors">
-            Docs Contributors
+            مساهمو الوثائق
           </FooterLink>
           <FooterLink href="/community/acknowledgements">
-            Acknowledgements
+            الشكر والتقدير
           </FooterLink>
         </div>
         <div className="flex flex-col">
-          <FooterLink isHeader={true}>More</FooterLink>
-          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink isHeader={true}>أكثر</FooterLink>
+          <FooterLink href="/blog">مدونة</FooterLink>
           <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
-            Privacy
+            خصوصية
           </FooterLink>
           <FooterLink href="https://opensource.fb.com/legal/terms/">
-            Terms
+            شروط
           </FooterLink>
           <div className="flex flex-row items-center mt-8 gap-x-2">
             <ExternalLink
