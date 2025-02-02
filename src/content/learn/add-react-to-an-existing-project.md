@@ -46,7 +46,7 @@ title: إضافة React إلى مشروع موجود بالفعل
 
 * **إذا كان تطبيقك مقسم بالفعل إلى ملفات تستخدم عبارات `import`**، فحاول استخدام الإعداد الذي لديك بالفعل. تحقق مما إذا كان كتابة `<div />` في كود JS الخاص بك يسبب خطأ في البناء. إذا تسبب في خطأ في البناء، فقد تحتاج إلى [تحويل كود JavaScript الخاص بك باستخدام Babel](https://babeljs.io/setup)، وتمكين [Babel React preset](https://babeljs.io/docs/babel-preset-react) لاستخدام JSX.
 
-* **إذا لم يكن لتطبيقك إعداد حالي لتجميع وحدات JavaScript**، فقم بإعداده مع [Vite](https://vitejs.dev/). تحتفظ مجتمع Vite بـ [العديد من التكاملات مع إطارات العمل الخلفية](https://github.com/vitejs/) ، بما في ذلك Rails و Django و Laravel. إذا لم يتم سرد إطار عمل الخلفية الخاص بك، [اتبع هذه الإرشادات](https://vitejs.dev/guide/backend-integration.html) لدمج بناء Vite يدويًا مع إطار عملك.
+* **إذا لم يكن لتطبيقك إعداد حالي لتجميع وحدات JavaScript**، فقم بإعداده مع [Vite](https://vite.dev/). تحتفظ مجتمع Vite بـ [العديد من التكاملات مع إطارات العمل الخلفية]((https://github.com/vitejs/awesome-vite#integrations-with-backends) ، بما في ذلك Rails و Django و Laravel. إذا لم يتم سرد إطار عمل الخلفية الخاص بك، [اتبع هذه الإرشادات](https://vite.dev/guide/backend-integration.html) لدمج بناء Vite يدويًا مع إطار عملك.
 
 للتحقق مما إذا كان إعدادك يعمل، قم بتشغيل هذا الأمر في مجلد مشروعك:
 
@@ -86,7 +86,7 @@ root.render(<h1>مرحبًا بكم!</h1>);
 
 <Note>
 
-دمج بيئة JavaScript معمارية في مشروع موجود قد يبدو مرعبًا أول الأمر، ولكنه يستحق ذلك! إذا تعثرت ، جرب [السؤال في المجتمع](/community) أو [الدردشة في Vite](https://chat.vitejs.dev/).
+دمج بيئة JavaScript معمارية في مشروع موجود قد يبدو مرعبًا أول الأمر، ولكنه يستحق ذلك! إذا تعثرت ، جرب [السؤال في المجتمع](/community) أو [الدردشة في Vite](https://chat.vite.dev/).
 
 </Note>
 
