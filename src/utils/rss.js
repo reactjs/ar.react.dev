@@ -40,7 +40,7 @@ exports.generateRssFeed = function () {
   const files = filesByOldest.reverse();
 
   for (const filePath of files) {
-    const id = path.basename(filePath);
+    const id = filePath.split('/').slice(-1).join('');
     if (id !== 'index.md') {
       const content = fs.readFileSync(filePath, 'utf-8');
       const {data} = matter(content);
