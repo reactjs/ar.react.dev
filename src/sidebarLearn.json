@@ -25,13 +25,23 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "ابدأ مشروع React جديد",
-          "path": "/learn/start-a-new-react-project"
+          "title": "Creating a React App",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Building a React Framework",
+          "path": "/learn/building-a-react-framework"
         },
         {
           "title": "إضافة React إلى مشروع موجود بالفعل",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "تجهيز المحرر",
           "path": "/learn/editor-setup"
