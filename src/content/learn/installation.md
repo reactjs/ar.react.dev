@@ -39,19 +39,21 @@ export default function App() {
 
 إذا أردت بدء مشروع بReact يمكنك [إنشاء تطبيق](/learn/creating-a-react-app) بأحد إطارات العمل التي نرشحها
 
-## إنشاء إطار عمل لـ React {/*build-a-react-framework*/}
+## ابدأ مشروع React من الصفر {/*build-a-react-app-from-scratch*/}
 
-إذا لم تكن إطارات العمل مناسبة لمشروعك أو تفضل ببدء ببناء إطار عمل خاص بك، يمكنك [بناء إطار عمل خاص بك](/learn/building-a-react-framework).
+إذا لم تكن إطارات العمل مناسبة لمشروعك أو تُفضل البدء من الصفر، يمكنك [بدء مشروع React من الصفر](/learn/build-a-react-app-from-scratch).
 
 ## إضافة React إلى مشروع موجود {/*add-react-to-an-existing-project*/}
 
 إذا كنت تريد تجربة استخدام React في تطبيق أو موقع ويب موجود، [إضافة React إلى مشروع موجود.](/learn/add-react-to-an-existing-project)
 
-## الطرق المحذوفة {/*deprecated-options*/}
+<Note>
 
-### Create React App (ملفى) {/*create-react-app-deprecated*/}
+#### هل يمكنني استخدام Create React App? {/*should-i-use-create-react-app*/}
 
-لقد ألغينا Create React App الذي كنا نرشحه سابقًا لإنشاء تطبيقات React. 
+لا. لقد أوقفنا دعم Create React App. لمزيد من المعلومات اقرأ [إيقاف دعم Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+
+</Note>
 
 لمزيد من المعلومات اقرأ [إيقاف دعم Create React App](/blog/2025/02/14/sunsetting-create-react-app).
 
