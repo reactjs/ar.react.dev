@@ -217,4 +217,3 @@ export default function App() {
 * لا يلمس React الـ DOM إذا كانت نتيجة التصيير هي نفسها كالمرة السابقة
 
 </Recap>
-
