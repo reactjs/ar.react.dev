@@ -10,6 +10,12 @@ title: مدونة React
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React Compiler Beta Release" date="21 أكتوبر 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+
+أعلنّا عن إصدار تجريبي لـ React Compiler في مؤتمر React Conf 2024. لقد حقّقنا تقدمًا كبيرًا منذ ذلك الحين، وفي هذا المنشور نود مشاركة ما هو القادم لـ React Compiler ...
+
+</BlogCard>
+
 <BlogCard title="ملخص مؤتمر React 2024" date="22 مايو 2024" url="/blog/2024/05/22/react-conf-2024-recap">
 
 الأسبوع الماضي، استضفنا مؤتمر React 2024 الذي استمر ليومين في هندرسون، نيفادا حيث تجمع أكثر من 700 مشارك لمناقشة أحدث المستجدات في هندسة واجهة المستخدم. كان هذا أول مؤتمر حضوري لنا منذ عام 2019، وكنا متحمسين لالتقاء المجتمع معًا مرة أخرى...
