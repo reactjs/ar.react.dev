@@ -123,4 +123,8 @@ Thanks to [Sathya Gunasekaran](https://twitter.com/_gsathya), [Joe Savona](https
 
 [^2]: Thanks [Vaishali Garg](https://www.linkedin.com/in/vaishaligarg09) for leading this study on React Compiler at Meta, and for reviewing this post.
 
+<<<<<<< HEAD
 [^3]: After controlling on author tenure, diff length/complexity, and other potential confounding factors.
+=======
+[^3]: After controlling on author tenure, diff length/complexity, and other potential confounding factors.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
