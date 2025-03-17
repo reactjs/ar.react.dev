@@ -4,18 +4,47 @@ title: مدونة React
 
 <Intro>
 
+<<<<<<< HEAD
 هذه المدونة هي المصدر الرسمي لتحديثات فريق React. سيتم نشر التحديثات المهمة هنا أولًا بأول، بما في ذلك ملاحظات الإصدار أو تحذيرات الإيقاف. يمكنك أيضًا متابعة حساب [<span dir="ltr">@reactjs</span>](https://twitter.com/reactjs) على تويتر، ولكن لن يفوتك أي شيء أساسي إذا قرأت هذه المدونة فقط.
+=======
+This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. 
+
+You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React Compiler Beta Release" date="21 أكتوبر 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+=======
+<BlogCard title="Sunsetting Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+
+Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch ...
+
+</BlogCard>
+
+<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+
+In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+
+</BlogCard>
+
+<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+
+We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+
+</BlogCard>
+
+<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 أعلنّا عن إصدار تجريبي لـ React Compiler في مؤتمر React Conf 2024. لقد حقّقنا تقدمًا كبيرًا منذ ذلك الحين، وفي هذا المنشور نود مشاركة ما هو القادم لـ React Compiler ...
 
 </BlogCard>
 
+<<<<<<< HEAD
 <BlogCard title="ملخص مؤتمر React 2024" date="22 مايو 2024" url="/blog/2024/05/22/react-conf-2024-recap">
 
 الأسبوع الماضي، استضفنا مؤتمر React 2024 الذي استمر ليومين في هندرسون، نيفادا حيث تجمع أكثر من 700 مشارك لمناقشة أحدث المستجدات في هندسة واجهة المستخدم. كان هذا أول مؤتمر حضوري لنا منذ عام 2019، وكنا متحمسين لالتقاء المجتمع معًا مرة أخرى...
@@ -23,6 +52,9 @@ title: مدونة React
 </BlogCard>
 
 <BlogCard title="React 19 RC" date="25 أبريل 2024" url="/blog/2024/04/25/react-19">
+=======
+<BlogCard title="React 19 Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 في دليل ترقية React 19 RC، شاركنا تعليمات ترقية تطبيقك إلى React 19 خطوة بخطوة. في هذا المنشور، سنقدم نظرة عامة على الميزات الجديدة في React 19، وكيف يمكنك البدء في استخدامها...
 
