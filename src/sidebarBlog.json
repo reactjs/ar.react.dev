@@ -12,6 +12,16 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
+=======
+          "title": "React 19",
+          "titleForHomepage": "React 19",
+          "icon": "blog",
+          "date": "December 05, 2024",
+          "path": "/blog/2024/12/05/react-19"
+        },
+        {
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
           "title": "React Compiler Beta Release and Roadmap",
           "titleForHomepage": "React Compiler Beta Release and Roadmap",
           "icon": "blog",
