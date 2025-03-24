@@ -3,10 +3,16 @@
  */
 
 import {memo} from 'react';
+<<<<<<< HEAD
 
 export const IconBsky = memo<JSX.IntrinsicElements['svg']>(function IconBsky(
   props
 ) {
+=======
+import type {SVGProps} from 'react';
+
+export const IconBsky = memo<SVGProps<SVGSVGElement>>(function IconBsky(props) {
+>>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
   return (
     <svg
       aria-label="Bluesky"
