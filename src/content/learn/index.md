@@ -4,7 +4,11 @@ title: بداية سريعة
 
 <Intro>
 
+<<<<<<< HEAD
 أهلا بك في مستندات react، هذه الصفحة ستعطيك مقدمة ل ٨٠٪ من مفاهيم React التي يتم استخدامها بشكل روتيني في مشاريع React.
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 </Intro>
 

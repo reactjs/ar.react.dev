@@ -296,7 +296,11 @@ export default function Square() {
 }
 ```
 
+<<<<<<< HEAD
 قسم المتصفح يجب أن يعرض زرًا فيه X فيه مثل هذا:
+=======
+The _browser_ section should be displaying a square with an X in it like this:
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 ![مربع يحتوي على X](../images/tutorial/x-filled-square.png)
 
@@ -1351,7 +1355,11 @@ body {
 1. تستخدم `handleClick` الوسيطة (`0`) لتحديث العنصر الأول في مصفوفة `squares` من `null` إلى `X`.
 1. تم تحديث حالة `squares` في عنصر `<Board>`، لذا يتم إعادة تقديم العنصر `<Board>` وجميع عناصره الفرعية. وهذا يؤدي إلى تغيير خاصية `value` لعنصر `<Square>` ذي الترتيب `0` من `null` إلى `X`.
 
+<<<<<<< HEAD
 في النهاية يرى المستخدم أن المربع الأيسر العلوي قد تغير من فارغ إلى `X` بعد النقر عليه.
+=======
+In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 <Note>
 
@@ -1432,7 +1440,11 @@ export default function Board() {
 
 الـ `X` تمت الكتابة فوقها بـ `O`! بينما سيضيف هذا لمسة مثيرة للعبة، لكننا سنلتزم بالقواعد الأصلية الآن.
 
+<<<<<<< HEAD
 عندما تحدد مربع بـ `X` أو `O` فأنت لا تتحقق أولاً مما إذا كان المربع يحتوي بالفعل على قيمة `X` أو `O`. يمكنك إصلاح هذا عن طريق *الخروج مبكرًا*. ستتحقق مما إذا كان المربع يحتوي بالفعل على `X` أو `O`. إذا كان المربع ممتلئًا بالفعل، فستقوم بـ `return` في دالة `handleClick` مبكرًا - قبل محاولة تحديث حالة اللوحة.
+=======
+When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1583,7 +1595,11 @@ function calculateWinner(squares) {
 
 </Note>
 
+<<<<<<< HEAD
 ستنادي دالة `calculateWinner(squares)` في دالة `handleClick` الخاصة بمكون `Board` للتحقق مما إذا كان اللاعب قد فاز. يمكنك تنفيذ هذا التحقق في نفس الوقت الذي تتحقق فيه مما إذا كان المستخدم قد نقر على مربع يحتوي بالفعل على `X` أو `O`. نود أن نوقف تنفيذ الدالة في كلا الحالتين:
+=======
+You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 ```js {2}
 function handleClick(i) {
