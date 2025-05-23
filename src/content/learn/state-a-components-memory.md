@@ -58,7 +58,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -238,7 +238,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -427,7 +427,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -536,7 +536,7 @@ button {
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let componentHooks = [];
 let currentHookIndex = 0;
 
@@ -750,7 +750,7 @@ export default function Page() {
 
 ```
 
-```js Gallery.js
+```js src/Gallery.js
 import { useState } from 'react';
 import { sculptureList } from './data.js';
 
@@ -792,7 +792,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -963,7 +963,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -1125,7 +1125,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 export const sculptureList = [{
   name: 'تحية لجراحة الأعصاب',
   artist: 'مارتا كولفين أندرادي',
@@ -1488,8 +1488,6 @@ export default function FeedbackForm() {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
-
 export default function FeedbackForm() {
   function handleClick() {
     const name = prompt('ما هو إسمك؟');

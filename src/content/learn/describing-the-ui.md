@@ -18,6 +18,7 @@ title: وصف واجهات المستخدم (UI)
 * [(Conditional rendering) كيفية تصيير المكونات بشكل شرطي](/learn/conditional-rendering)
 * [كيفية تصيير أكثر من مكون مرة واحدة](/learn/rendering-lists)
 * [كيفية تجنب الثغرات المحيرة عن طريق الحفاظ على المكونات نقية](/learn/keeping-components-pure)
+* [لماذا يعد التعرف على واجهتك كشجرة مفيدًا](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
@@ -67,7 +68,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Sandpack>
 
-```js App.js hidden
+```js src/App.js hidden
 import Gallery from './Gallery.js';
 
 export default function App() {
@@ -77,7 +78,7 @@ export default function App() {
 }
 ```
 
-```js Gallery.js active
+```js src/Gallery.js active
 import Profile from './Profile.js';
 
 export default function Gallery() {
@@ -92,7 +93,7 @@ export default function Gallery() {
 }
 ```
 
-```js Profile.js
+```js src/Profile.js
 export default function Profile() {
   return (
     <img
@@ -277,7 +278,7 @@ function Card({ children }) {
 
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
     'https://i.imgur.com/' +
@@ -325,7 +326,7 @@ export function getImageUrl(person, size = 's') {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -369,7 +370,7 @@ export default function PackingList() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -396,7 +397,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'كريولا كاثرين جونسون',
@@ -430,7 +431,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -519,6 +520,36 @@ export default function TeaSet() {
 <LearnMore path="/learn/keeping-components-pure">
 
 اقرأ **[الحفاظ على المكونات نقية](/learn/keeping-components-pure)** لتتعلم كيفية كتابة مكونات نقية ودوال متنبئة.
+
+</LearnMore>
+
+## واجهتك مثل الشجرة {/*your-ui-as-a-tree*/}
+
+React تستخدم الأشجار لنمذجة العلاقات بين العناصر والوحدات.
+
+شجرة العرض في React هي تمثيل للعلاقة الأبوية والفرعية بين العناصر.
+
+<Diagram name="generic_render_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد، حيث يمثل كل عقد عنصرًا. يقع العقد الجذري في الجزء العلوي من الشجرة ومسمى 'Root Component'. يحتوي على سهمين يمتدان إلى عقدين مسمين 'Component A' و 'Component C'. كل من السهمين مسمى بـ 'يقوم بعرض'. 'Component A' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component B'. 'Component C' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component D'.">
+
+مثال على شجرة العرض في React.
+
+</Diagram>
+
+العناصر القريبة من الجزء العلوي من الشجرة، بجوار العنصر الجذري، تُعتبر عناصرًا على مستوى عالٍ. العناصر التي ليس لديها عناصر فرعية تُعتبر عناصر أوراق. هذا التصنيف للعناصر مفيد لفهم تدفق البيانات وأداء العرض.
+
+نمذجة العلاقة بين وحدات JavaScript هي طريقة مفيدة أخرى لفهم تطبيقك. نشير إليها باسم شجرة الاعتماد على الوحدة.
+
+<Diagram name="generic_dependency_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد. يُمثل كل عقد وحدة JavaScript. العقد الأعلى مسمى 'RootModule.js'. يمتلك ثلاثة أسهم تمتد إلى العقد: 'ModuleA.js'، 'ModuleB.js'، و 'ModuleC.js'. كل سهم مسمى بـ 'يستورد'. العقد 'ModuleC.js' يحتوي على سهم 'يستورد' واحد يشير إلى عقد مسمى 'ModuleD.js'.">
+
+مثال على شجرة اعتماد الوحدة.
+
+</Diagram>
+
+غالبًا ما يُستخدم شجرة الاعتماد من قِبل أدوات البناء لربط جميع أكواد JavaScript ذات الصلة ليتم تنزيلها وعرضها للعميل. حجم الحزمة الكبير يُسبب تراجعًا في تجربة المستخدم لتطبيقات React. فهم شجرة اعتماد الوحدة مفيد لتصحيح مثل هذه المشاكل.
+
+<LearnMore path="/learn/understanding-your-ui-as-a-tree">
+
+اقرأ **[واجهاتك مثل الشجرة](/learn/understanding-your-ui-as-a-tree)** لتعرف كيفية إنشاء شجرة عرض وشجرة اعتماد الوحدة لتطبيق React وكيفية فائدتها كنماذج عقلية مفيدة لتحسين تجربة المستخدم والأداء.
 
 </LearnMore>
 

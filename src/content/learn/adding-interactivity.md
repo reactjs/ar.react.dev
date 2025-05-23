@@ -134,7 +134,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'تكريم جراحة الأعصاب',
   artist: 'مارتا كولفين أندراد',
@@ -645,7 +645,6 @@ img { width: 200px; height: 200px; }
 ```js
 import { useState } from 'react';
 
-let nextId = 3;
 const initialList = [
   { id: 0, title: 'بطون كبيرة', seen: false },
   { id: 1, title: 'منظر القمر', seen: false },
@@ -713,7 +712,6 @@ function ItemList({ artworks, onToggle }) {
 import { useState } from 'react';
 import { useImmer } from 'use-immer';
 
-let nextId = 3;
 const initialList = [
   { id: 0, title: 'بطون كبيرة', seen: false },
   { id: 1, title: 'منظر القمر', seen: false },
@@ -798,4 +796,4 @@ function ItemList({ artworks, onToggle }) {
 
 إذهب الى [الإستجابة الى الاحداث](/learn/responding-to-events) لتقرأ هذا الفصل صفحة بصفحة!
 
-أو، إذا كنت تفهم هذه المواضيع بالفعل، لماذا لا تقرأ عن [التحكم فى الحالة](/learn/managing-state)؟
+أو، إذا كنت تفهم هذه المواضيع بالفعل، لماذا لا تقرأ عن [إدارة الحالة](/learn/managing-state)؟
