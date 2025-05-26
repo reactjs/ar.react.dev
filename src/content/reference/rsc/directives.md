@@ -1,13 +1,17 @@
 ---
+<<<<<<< HEAD
 title: "التوجيهات (Directives)"
 canary: true
+=======
+title: Directives
+>>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 ---
 
-<Canary>
+<RSC>
 
-These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+Directives are for use in [React Server Components](/reference/rsc/server-components).
 
-</Canary>
+</RSC>
 
 <Intro>
 
