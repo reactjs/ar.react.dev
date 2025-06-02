@@ -1,37 +1,37 @@
 ---
-title: Start a New React Project
+title: بدء مشروع React جديد
 ---
 
 <Intro>
 
-If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community.
+إذا كنت تريد إنشاء تطبيق جديد أو موقع ويب جديد بالكامل باستخدام React، فنوصيك باختيار أحد الأطر المدعومة بـ React والتي تحظى بشعبية في المجتمع.
 
 </Intro>
 
 
-You can use React without a framework, however we’ve found that most apps and sites eventually build solutions to common problems such as code-splitting, routing, data fetching, and generating HTML. These problems are common to all UI libraries, not just React.
+يمكنك استخدام React بدون إطار عمل، ولكننا وجدنا أن معظم التطبيقات والمواقع تبني في النهاية حلولاً لمشاكل شائعة مثل تقسيم التعليمات البرمجية والتوجيه وجلب البيانات وإنشاء HTML. هذه المشاكل شائعة في جميع مكتبات واجهة المستخدم، وليس فقط React.
 
-By starting with a framework, you can get started with React quickly, and avoid essentially building your own framework later.
+من خلال البدء بإطار عمل، يمكنك البدء في استخدام React بسرعة، وتجنب بناء إطار العمل الخاص بك لاحقًا.
 
 <DeepDive>
 
-#### Can I use React without a framework? {/*can-i-use-react-without-a-framework*/}
+#### هل يمكنني استخدام React بدون إطار عمل؟ {/*can-i-use-react-without-a-framework*/}
 
-You can definitely use React without a framework--that's how you'd [use React for a part of your page.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **However, if you're building a new app or a site fully with React, we recommend using a framework.**
+يمكنك بالتأكيد استخدام React بدون إطار عمل - هكذا يمكنك [استخدم React لجزء من صفحتك.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **ومع ذلك، إذا كنت تقوم ببناء تطبيق جديد أو موقع كامل باستخدام React، فنوصيك باستخدام إطار عمل.**
 
-Here's why.
+إليك السبب.
 
-Even if you don't need routing or data fetching at first, you'll likely want to add some libraries for them. As your JavaScript bundle grows with every new feature, you might have to figure out how to split code for every route individually. As your data fetching needs get more complex, you are likely to encounter server-client network waterfalls that make your app feel very slow. As your audience includes more users with poor network conditions and low-end devices, you might need to generate HTML from your components to display content early--either on the server, or during the build time. Changing your setup to run some of your code on the server or during the build can be very tricky.
+حتى إذا لم تكن بحاجة إلى التوجيه أو جلب البيانات في البداية، فمن المحتمل أن ترغب في إضافة بعض المكتبات لها. ومع نمو حزمة JavaScript الخاصة بك مع كل ميزة جديدة، فقد تضطر إلى معرفة كيفية تقسيم التعليمات البرمجية لكل مسار على حدة. ومع تزايد تعقيد احتياجات جلب البيانات، فمن المحتمل أن تواجه شلالات شبكة الخادم والعميل التي تجعل تطبيقك يبدو بطيئًا للغاية. نظرًا لأن جمهورك يتضمن المزيد من المستخدمين الذين يعانون من ظروف شبكة سيئة وأجهزة منخفضة الأداء، فقد تحتاج إلى إنشاء HTML من مكوناتك لعرض المحتوى مبكرًا - إما على الخادم أو أثناء وقت البناء. قد يكون تغيير الإعداد لتشغيل بعض التعليمات البرمجية الخاصة بك على الخادم أو أثناء البناء أمرًا صعبًا للغاية.
 
-**These problems are not React-specific. This is why Svelte has SvelteKit, Vue has Nuxt, and so on.** To solve these problems on your own, you'll need to integrate your bundler with your router and with your data fetching library. It's not hard to get an initial setup working, but there are a lot of subtleties involved in making an app that loads quickly even as it grows over time. You'll want to send down the minimal amount of app code but do so in a single client–server roundtrip, in parallel with any data required for the page. You'll likely want the page to be interactive before your JavaScript code even runs, to support progressive enhancement. You may want to generate a folder of fully static HTML files for your marketing pages that can be hosted anywhere and still work with JavaScript disabled. Building these capabilities yourself takes real work.
+**هذه المشاكل ليست خاصة بـ React. ولهذا السبب فإن Svelte لديه SvelteKit، وVue لديه Nuxt، وما إلى ذلك.** لحل هذه المشاكل بنفسك، ستحتاج إلى دمج bundler الخاص بك مع جهاز التوجيه الخاص بك ومع مكتبة جلب البيانات الخاصة بك. ليس من الصعب تشغيل الإعداد الأولي، ولكن هناك الكثير من التفاصيل الدقيقة المتضمنة في إنشاء تطبيق يتم تحميله بسرعة حتى مع نموه بمرور الوقت. ستحتاج إلى إرسال الحد الأدنى من كود التطبيق ولكن افعل ذلك في رحلة ذهاب وعودة واحدة بين العميل والخادم، بالتوازي مع أي بيانات مطلوبة للصفحة. من المحتمل أن ترغب في أن تكون الصفحة تفاعلية قبل تشغيل كود JavaScript الخاص بك، لدعم التحسين التدريجي. قد ترغب في إنشاء مجلد من ملفات HTML ثابتة تمامًا لصفحات التسويق الخاصة بك والتي يمكن استضافتها في أي مكان ولا تزال تعمل مع تعطيل JavaScript. إن بناء هذه القدرات بنفسك يتطلب عملاً حقيقيًا.
 
-**React frameworks on this page solve problems like these by default, with no extra work from your side.** They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
+**تحل أطر عمل React الموجودة في هذه الصفحة مشكلات مثل هذه افتراضيًا، دون أي عمل إضافي من جانبك.** فهي تتيح لك البدء بشكل بسيط للغاية ثم توسيع نطاق تطبيقك بما يتناسب مع احتياجاتك. يحتوي كل إطار عمل React على مجتمع، لذا فإن العثور على إجابات للأسئلة وترقية الأدوات أسهل. كما تمنح الأطر هيكلًا لكودك، مما يساعدك أنت والآخرين على الاحتفاظ بالسياق والمهارات بين المشاريع المختلفة. وعلى العكس من ذلك، مع الإعداد المخصص، من الأسهل التعثر في إصدارات التبعية غير المدعومة، وستنتهي في الأساس إلى إنشاء إطار العمل الخاص بك - وإن كان بدون مجتمع أو مسار ترقية (وإذا كان يشبه تلك التي صنعناها في الماضي، فهو مصمم بشكل أكثر عشوائية).
 
-If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
+إذا كان تطبيقك يحتوي على قيود غير عادية لا تخدمها هذه الأطر بشكل جيد، أو كنت تفضل حل هذه المشكلات بنفسك، فيمكنك إنشاء إعداد مخصص خاص بك باستخدام React. احصل على `react` و`react-dom` من npm، وقم بإعداد عملية البناء المخصصة الخاصة بك باستخدام حزمة مثل [Vite](https://vitejs.dev/) أو [Parcel](https://parceljs.org/)، وأضف أدوات أخرى حسب الحاجة إليها للتوجيه أو التوليد الثابت أو العرض من جانب الخادم، والمزيد.
 
 </DeepDive>
 
-## Production-grade React frameworks {/*production-grade-react-frameworks*/}
+## أطر عمل React المخصصة للإنتاج {/*production-grade-react-frameworks*/}
 
 These frameworks support all the features you need to deploy and scale your app in production and are working towards supporting our [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). All of the frameworks we recommend are open source with active communities for support, and can be deployed to your own server or a hosting provider. If you’re a framework author interested in being included on this list, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
 
