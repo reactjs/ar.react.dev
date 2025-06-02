@@ -10,6 +10,17 @@ October 21, 2024 by [Lauren Tan](https://twitter.com/potetotes).
 
 ---
 
+<<<<<<< HEAD
+=======
+<Note>
+
+### React Compiler is now in RC! {/*react-compiler-is-now-in-rc*/}
+
+Please see the [RC blog post](/blog/2025/04/21/react-compiler-rc) for details.
+
+</Note>
+
+>>>>>>> 3ee3a60a1bcc687c0b87039a3a6582e3b1d6887c
 <Intro>
 
 The React team is excited to share new updates:
@@ -123,4 +134,8 @@ Thanks to [Sathya Gunasekaran](https://twitter.com/_gsathya), [Joe Savona](https
 
 [^2]: Thanks [Vaishali Garg](https://www.linkedin.com/in/vaishaligarg09) for leading this study on React Compiler at Meta, and for reviewing this post.
 
+<<<<<<< HEAD
 [^3]: After controlling on author tenure, diff length/complexity, and other potential confounding factors.
+=======
+[^3]: After controlling on author tenure, diff length/complexity, and other potential confounding factors.
+>>>>>>> 3ee3a60a1bcc687c0b87039a3a6582e3b1d6887c
