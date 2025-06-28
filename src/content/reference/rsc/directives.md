@@ -10,7 +10,7 @@ Directives are for use in [React Server Components](/reference/rsc/server-compon
 
 <Intro>
 
-تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)، والتعليمات اللازمة لذلك.
+تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/start-a-new-react-project#full-stack-frameworks)، والتعليمات اللازمة لذلك.
 </Intro>
 
 ---
