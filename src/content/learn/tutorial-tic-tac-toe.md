@@ -296,7 +296,11 @@ export default function Square() {
 }
 ```
 
+<<<<<<< HEAD
 قسم المتصفح يجب أن يعرض زرًا فيه X فيه مثل هذا:
+=======
+The _browser_ section should be displaying a square with an X in it like this:
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 ![مربع يحتوي على X](../images/tutorial/x-filled-square.png)
 
@@ -1351,7 +1355,11 @@ body {
 1. تستخدم `handleClick` الوسيطة (`0`) لتحديث العنصر الأول في مصفوفة `squares` من `null` إلى `X`.
 1. تم تحديث حالة `squares` في عنصر `<Board>`، لذا يتم إعادة تقديم العنصر `<Board>` وجميع عناصره الفرعية. وهذا يؤدي إلى تغيير خاصية `value` لعنصر `<Square>` ذي الترتيب `0` من `null` إلى `X`.
 
+<<<<<<< HEAD
 في النهاية يرى المستخدم أن المربع الأيسر العلوي قد تغير من فارغ إلى `X` بعد النقر عليه.
+=======
+In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 <Note>
 
@@ -1432,7 +1440,11 @@ export default function Board() {
 
 الـ `X` تمت الكتابة فوقها بـ `O`! بينما سيضيف هذا لمسة مثيرة للعبة، لكننا سنلتزم بالقواعد الأصلية الآن.
 
+<<<<<<< HEAD
 عندما تحدد مربع بـ `X` أو `O` فأنت لا تتحقق أولاً مما إذا كان المربع يحتوي بالفعل على قيمة `X` أو `O`. يمكنك إصلاح هذا عن طريق *الخروج مبكرًا*. ستتحقق مما إذا كان المربع يحتوي بالفعل على `X` أو `O`. إذا كان المربع ممتلئًا بالفعل، فستقوم بـ `return` في دالة `handleClick` مبكرًا - قبل محاولة تحديث حالة اللوحة.
+=======
+When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1583,7 +1595,11 @@ function calculateWinner(squares) {
 
 </Note>
 
+<<<<<<< HEAD
 ستنادي دالة `calculateWinner(squares)` في دالة `handleClick` الخاصة بمكون `Board` للتحقق مما إذا كان اللاعب قد فاز. يمكنك تنفيذ هذا التحقق في نفس الوقت الذي تتحقق فيه مما إذا كان المستخدم قد نقر على مربع يحتوي بالفعل على `X` أو `O`. نود أن نوقف تنفيذ الدالة في كلا الحالتين:
+=======
+You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 ```js {2}
 function handleClick(i) {
@@ -2284,7 +2300,11 @@ body {
 
 </Sandpack>
 
+<<<<<<< HEAD
 بمجرد أن تمر على مصفوفة `history` بالدالة التي قمت بتمريرها إلى `map`، فإن المعامل (argument) `squares` يشير إلى كل عنصر من عناصر `history`، والمعامل `move` يشير إلى كل مسلسل في المصفوفة: `0`، `1`، `2`، …. (في معظم الحالات، ستحتاج إلى عناصر المصفوفة الفعلية، ولكن لتقديم قائمة من الخطوات، ستحتاج فقط إلى الفهارس).
+=======
+As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+>>>>>>> c0c955ed1d1c4fe3bf3e18c06a8d121902a01619
 
 لكل حركة في تاريخ لعبة "تيك تاك تو"، تنشئ عنصر قائمة `<li>` يحتوي على زر `<button>`. يحتوي الزر على حدث `onClick` الذي يستدعي دالة تسمى `jumpTo` (التي لم تقم بتنفيذها بعد).
 
