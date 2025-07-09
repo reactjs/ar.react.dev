@@ -91,7 +91,7 @@ root.render(<App />);
 * إذا استدعيت `render` في نفس الجذر أكثر من مرة، ستحدث React عناصر DOM اللازمة ليظهر أحدث JSX مررتها، ستقرر React أي أجزاء React يمكن إعادة استخدامها، ,أيها يحتاج لإعادة الإنشاء عن طريق ["مطابقتها"](/learn/preserving-and-resetting-state) مع الشجرة المعروضة سابقًا. استدعاء `render` في نفس الجذر مرة أخرى يشبه مناداة [دالة `set`](/reference/react/useState#setstate) في المكون الجذر: تتجنب React تحديثات DOM غير الضرورية.
 
 
-* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/client/flushSync) to ensure the initial render runs fully synchronously.
+* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
   
   ```js
   const root = createRoot(document.getElementById('root'));
