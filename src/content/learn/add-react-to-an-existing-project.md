@@ -20,11 +20,11 @@ title: إضافة React إلى مشروع موجود بالفعل
 
 هنا ما نوصي به لإعداده:
 
-1. **بناء الجزء الخاص بـ React في تطبيقك** باستخدام إحدى [الإطارات المبنية على React](/learn/start-a-new-react-project).
+1. **بناء الجزء الخاص بـ React في تطبيقك** باستخدام إحدى [الإطارات المبنية على React](/learn/creating-a-react-app).
 2. **حدد `/some-app` كـ *مسار أساسي*** في إعدادات إطار العمل الخاص بك (هنا كيف مع: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **قم بتكوين خادمك أو بروكسي** بحيث يتم التعامل مع جميع الطلبات تحت `/some-app/` من قبل تطبيق React الخاص بك.
 
-يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) المدمجة في تلك الإطارات.
+يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/creating-a-react-app#can-i-use-react-without-a-framework) المدمجة في تلك الإطارات.
 
 العديد من الإطارات القائمة على React هي إطارات full-stack وتتيح لتطبيق React الخاص بك الاستفادة من الخادم. ومع ذلك، يمكنك استخدام نفس النهج حتى إذا لم تتمكن أو لا تريد تشغيل JavaScript على الخادم. في هذه الحالة 
 ، قم بتصدير HTML/CSS/JS ([`next export`](https://nextjs.org/docs/advanced-features/static-html-export) لـ Next.js ، هذا هو الافتراضي لـ Gatsby) في `/some-app/` بدلاً من ذلك.
@@ -151,7 +151,7 @@ root.render(<NavigationBar />);
 
 لاحظ كيف احتفظت بمحتوى HTML الحالي من `index.html`، ولكن مكون React الخاص بك `NavigationBar` الآن يظهر داخل `<nav id="navigation">` من HTML الخاص بك. اقرأ [وثائق استخدام `createRoot`](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) لمعرفة المزيد حول تصيير مكونات React داخل صفحة HTML موجودة.
 
-عندما تضيف React في مشروع موجود، من الشائع أن تبدأ بمكونات تفاعلية صغيرة (مثل الأزرار)، ثم تستمر تدريجيًا في "النمو" حتى تصبح صفحتك بأكملها مبنية بـ React. إذا وصلت إلى هذه النقطة، فإننا نوصي بالانتقال إلى [إطار عمل لـ React](/learn/start-a-new-react-project) مباشرة بعد ذلك للاستفادة القصوى من React.
+عندما تضيف React في مشروع موجود، من الشائع أن تبدأ بمكونات تفاعلية صغيرة (مثل الأزرار)، ثم تستمر تدريجيًا في "النمو" حتى تصبح صفحتك بأكملها مبنية بـ React. إذا وصلت إلى هذه النقطة، فإننا نوصي بالانتقال إلى [إطار عمل لـ React](/learn/creating-a-react-app) مباشرة بعد ذلك للاستفادة القصوى من React.
 
 ## استخدام React Native في تطبيق محمول أصلي موجود {/*using-react-native-in-an-existing-native-mobile-app*/}
 
