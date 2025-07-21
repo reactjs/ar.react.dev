@@ -4,7 +4,11 @@ title: Client React DOM APIs
 
 <Intro>
 
+<<<<<<< HEAD
 تسمح لك واجهات `react-dom/client` بتصيير مكونات React في طرف العميل (أي في المتصفح). تُستخدم هذه الواجهات عادة في المستوى الأعلى في تطبيقك لتهيئة شجرة React الخاصة بك. قد يقوم [إطار العمل الذي تستخدمه](/learn/start-a-new-react-project#production-grade-react-frameworks) بالاتصال بهذه الواجهات بالنيابة عنك. ومعظم مكونات التطبيق لا تحتاج إلى استيرادها أو استخدامها.
+=======
+The `react-dom/client` APIs let you render React components on the client (in the browser). These APIs are typically used at the top level of your app to initialize your React tree. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </Intro>
 
