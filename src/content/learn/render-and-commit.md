@@ -76,9 +76,15 @@ export default function Image() {
 بمجرد أن يتم تصيير المكون لأول مرة، يمكنك تنشيط عمليات التصيير الأخرى عن طريق تحديث حالته باستخدام دالة [`set`](/reference/react/useState#setstate). تحديث حالة المكون الخاص بك يضع تلقائيًا عملية تصيير في قائمة الانتظار. (يمكنك تخيل هذه العمليات على أنها طلبات من زبون المطعم للحصول على الشاي أو الحلويات أو أي شيء آخر بعد طلبه الأول، اعتمادًا على حالة عطشه أو جوعه.)
 
 <IllustrationBlock sequential>
+<<<<<<< HEAD
   <Illustration caption="تحديث الحالة..." alt="React كخادم في مطعم، يقدم واجهة مستخدم بطاقة للمستخدم، ويمثل المستخدم بزبون مع مؤشر لرأسه. يعبر الزبون عن رغبته في الحصول على بطاقة وردية، وليس سوداء!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...يؤدي إلى..." alt="يعود React إلى مطبخ المكونات ويخبر طاهي البطاقات أنه يحتاج إلى بطاقة وردية." src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...تصيير!" alt="يعطي طاهي البطاقات React البطاقة الوردية." src="/images/docs/illustrations/i_rerender3.png" />
+=======
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
+  <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 </IllustrationBlock>
 
 ## الخطوة الثانية: يقوم React بتصيير مكوناتك {/*step-2-react-renders-your-components*/}
@@ -90,7 +96,11 @@ export default function Image() {
 
 هذه العملية تتكرر: إذا كان المكون المحدث يعيد مكونًا آخر، فسيقوم React بتصيير هذا المكون التالي، وإذا كان هذا المكون أيضًا يعيد شيئًا ما، فسيقوم بتصيير هذا المكون التالي، وهكذا. ستستمر العملية حتى لا تكون هناك مكونات متداخلة أخرى ويعرف React بالضبط ما يجب عرضه على الشاشة.
 
+<<<<<<< HEAD
 في المثال التالي، سينفذ React `Gallery()` و `Image()` عدة مرات:
+=======
+In the following example, React will call `Gallery()` and `Image()` several times:
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 <Sandpack>
 
@@ -154,10 +164,17 @@ img { margin: 0 10px 10px 0; }
 
 ## الخطوة الثالثة: يؤكد React التغييرات على DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
+<<<<<<< HEAD
 بعد تصيير (استدعاء) للمكونات، سيعدل React الـ DOM.
 
 * **أثناء التصيير المبدئي** سيستخدمReact [DOM API `appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) لوضع جميع عناصر DOM التي أنشأها على الشاشة.
 * **أثناء إعادة التصيير** سينفذ React العمليات اللازمة (التي تم حسابها أثناء التصيير!) لجعل DOM يتطابق مع أحدث نتيجة تصيير.
+=======
+After rendering (calling) your components, React will modify the DOM.
+
+* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
+* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 **يغيّر React عناصر DOM فقط إذا كان هناك فرق بين التصييرين.** على سبيل المثال، هناك مكون يقوم بإعادة التصيير مع اختلاف الخصائص المُمَرَّرة من المكون الأصلي كل ثانية. لاحظ كيف يمكنك إضافة بعض النص إلى `<input>`، وتحديث `value`، ولكن النص لا يختفي عند إعادة تصيير المكون:
 
