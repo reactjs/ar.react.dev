@@ -30,7 +30,11 @@ title: "<progress>"
 
 ###  الخصائص {/*props*/}
 
+<<<<<<< HEAD
 يدعم `<progress>` جميع  [خصائص العناصر الشائعة](/reference/react-dom/components/common#props)
+=======
+`<progress>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
 
 بالإضافة إلى ذالك، يدعم `<progress>` هذه الخصائص:
 * [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max): رقم. يحدد القيمة `value` القصوى. القيمة الافتراضية هي `1`.

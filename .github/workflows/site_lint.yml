@@ -7,6 +7,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions: {}
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -25,7 +27,11 @@ jobs:
       - name: Restore cached node_modules
         uses: actions/cache@v4
         with:
+<<<<<<< HEAD
           path: "**/node_modules"
+=======
+          path: '**/node_modules'
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
           key: node_modules-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install deps

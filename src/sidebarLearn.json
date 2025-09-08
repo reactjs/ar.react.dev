@@ -25,13 +25,28 @@
       "path": "/learn/installation",
       "routes": [
         {
+<<<<<<< HEAD
           "title": "ابدأ مشروع React جديد",
           "path": "/learn/start-a-new-react-project"
+=======
+          "title": "Creating a React App",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
         },
         {
           "title": "إضافة React إلى مشروع موجود بالفعل",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "تجهيز المحرر",
           "path": "/learn/editor-setup"
@@ -43,11 +58,29 @@
         {
           "title": "أدوات مطوري React",
           "path": "/learn/react-developer-tools"
+        }
+      ]
+    },
+    {
+      "title": "React Compiler",
+      "path": "/learn/react-compiler",
+      "canary": true,
+      "routes": [
+        {
+          "title": "Introduction",
+          "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "React Compiler",
-          "path": "/learn/react-compiler",
-          "canary": true
+          "title": "Installation",
+          "path": "/learn/react-compiler/installation"
+        },
+        {
+          "title": "Incremental Adoption",
+          "path": "/learn/react-compiler/incremental-adoption"
+        },
+        {
+          "title": "Debugging and Troubleshooting",
+          "path": "/learn/react-compiler/debugging"
         }
       ]
     },
