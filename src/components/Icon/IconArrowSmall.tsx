@@ -4,9 +4,10 @@
 
 import {memo} from 'react';
 import cn from 'classnames';
+import type {SVGProps} from 'react';
 
 export const IconArrowSmall = memo<
-  JSX.IntrinsicElements['svg'] & {
+  SVGProps<SVGSVGElement> & {
     /**
      * The direction the arrow should point.
      * `start` and `end` are relative to the current locale.
@@ -18,6 +19,7 @@ export const IconArrowSmall = memo<
   const classes = cn(className, {
     'rotate-180': displayDirection === 'left',
     'rotate-180 rtl:rotate-0': displayDirection === 'start',
+    'rtl:rotate-180': displayDirection === 'end',
     'rotate-90': displayDirection === 'down',
   });
   return (
