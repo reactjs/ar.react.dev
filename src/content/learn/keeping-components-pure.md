@@ -98,7 +98,7 @@ export default function App() {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [5]}}
+```js
 let guest = 0;
 
 function Cup() {
@@ -385,7 +385,7 @@ body > * {
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [7]}} src/Profile.js
+```js src/Profile.js
 import Panel from './Panel.js';
 import { getImageUrl } from './utils.js';
 
@@ -607,7 +607,7 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
+```js src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -703,7 +703,7 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
+```js src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -795,7 +795,7 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
+```js src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
