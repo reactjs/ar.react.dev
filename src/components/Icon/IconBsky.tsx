@@ -1,12 +1,28 @@
+<<<<<<< HEAD
+=======
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
 import {memo} from 'react';
+<<<<<<< HEAD
 
 export const IconBsky = memo<JSX.IntrinsicElements['svg']>(function IconBsky(
   props
 ) {
+=======
+import type {SVGProps} from 'react';
+
+export const IconBsky = memo<SVGProps<SVGSVGElement>>(function IconBsky(props) {
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
   return (
     <svg
       aria-label="Bluesky"
