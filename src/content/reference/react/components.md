@@ -16,6 +16,7 @@ title: "المكونات المدمجة في React"
 * [`<Profiler>`](/reference/react/Profiler) تتيح لك قياس أداء تقديم شجرة React برمجيًا.
 * [`<Suspense>`](/reference/react/Suspense) تتيح لك عرض `fallback` أثناء تحميل العناصر الأبناء.
 * [`<StrictMode>`](/reference/react/StrictMode) تمكين فحوصات إضافية للتطوير فقط تساعدك في العثور على الأخطاء في وقت مبكر.
+* [`<Activity>`](/reference/react/Activity) يسمح لك بإخفاء وإضهار العناصر في الواجهة مع الحفاظ على حالتها الداخلية
 
 ---
 
