@@ -1,17 +1,26 @@
 ---
+<<<<<<< HEAD
 title: "التوجيهات (Directives)"
 canary: true
+=======
+title: Directives
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 ---
 
-<Canary>
+<RSC>
 
-These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+Directives are for use in [React Server Components](/reference/rsc/server-components).
 
-</Canary>
+</RSC>
 
 <Intro>
 
+<<<<<<< HEAD
 تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)، والتعليمات اللازمة لذلك.
+=======
+Directives provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 </Intro>
 
 ---
