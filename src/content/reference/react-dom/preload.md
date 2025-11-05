@@ -1,6 +1,13 @@
 ---
 title: preload
+canary: true
 ---
+
+<Canary>
+
+The `preload` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+
+</Canary>
 
 <Note>
 

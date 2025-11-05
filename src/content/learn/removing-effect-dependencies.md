@@ -303,7 +303,7 @@ Suppressing the linter leads to very unintuitive bugs that are hard to find and 
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [14]}}
+```js
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
@@ -609,6 +609,12 @@ function ChatRoom({ roomId }) {
 
 ### Do you want to read a value without "reacting" to its changes? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
+<Wip>
+
+This section describes an **experimental API that has not yet been released** in a stable version of React.
+
+</Wip>
+
 Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
 
 ```js {3,10-12}
@@ -788,7 +794,7 @@ It is important to declare it as a dependency! This ensures, for example, that i
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [10]}}
+```js
 import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
@@ -1235,7 +1241,7 @@ export default function Timer() {
 
 </Sandpack>
 
-Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, so you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
 
 </Solution>
 
@@ -1253,9 +1259,25 @@ Is there a line of code inside the Effect that should not be reactive? How can y
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect, useRef } from 'react';
-import { useEffectEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { FadeInAnimation } from './animation.js';
 
 function Welcome({ duration }) {
@@ -1364,10 +1386,26 @@ Your Effect needs to read the latest value of `duration`, but you don't want it 
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect, useRef } from 'react';
 import { FadeInAnimation } from './animation.js';
-import { useEffectEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 function Welcome({ duration }) {
   const ref = useRef(null);
@@ -1787,8 +1825,8 @@ Another of these functions only exists to pass some state to an imported API met
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1869,7 +1907,7 @@ export default function App() {
 
 ```js src/ChatRoom.js active
 import { useState, useEffect } from 'react';
-import { useEffectEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
   useEffect(() => {
@@ -2082,8 +2120,8 @@ As a result, the chat re-connects only when something meaningful (`roomId` or `i
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -2151,7 +2189,7 @@ export default function App() {
 
 ```js src/ChatRoom.js active
 import { useState, useEffect } from 'react';
-import { useEffectEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import {
   createEncryptedConnection,
   createUnencryptedConnection,

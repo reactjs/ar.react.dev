@@ -461,11 +461,11 @@ export default function TaskApp() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   // ...
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         ...
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 ```
@@ -509,8 +509,8 @@ export default function TaskApp() {
   }
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         <h1>Day off in Kyoto</h1>
         <AddTask
           onAddTask={handleAddTask}
@@ -520,8 +520,8 @@ export default function TaskApp() {
           onChangeTask={handleChangeTask}
           onDeleteTask={handleDeleteTask}
         />
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
@@ -676,16 +676,16 @@ In the next step, you will remove prop passing.
 Now you don't need to pass the list of tasks or the event handlers down the tree:
 
 ```js {4-5}
-<TasksContext value={tasks}>
-  <TasksDispatchContext value={dispatch}>
+<TasksContext.Provider value={tasks}>
+  <TasksDispatchContext.Provider value={dispatch}>
     <h1>Day off in Kyoto</h1>
     <AddTask />
     <TaskList />
-  </TasksDispatchContext>
-</TasksContext>
+  </TasksDispatchContext.Provider>
+</TasksContext.Provider>
 ```
 
-Instead, any component that needs the task list can read it from the `TasksContext`:
+Instead, any component that needs the task list can read it from the `TaskContext`:
 
 ```js {2}
 export default function TaskList() {
@@ -730,13 +730,13 @@ export default function TaskApp() {
   );
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         <h1>Day off in Kyoto</h1>
         <AddTask />
         <TaskList />
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
@@ -921,11 +921,11 @@ export function TasksProvider({ children }) {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         {children}
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 ```
@@ -963,11 +963,11 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         {children}
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
@@ -1174,11 +1174,11 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         {children}
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
@@ -1363,3 +1363,4 @@ As your app grows, you may have many context-reducer pairs like this. This is a 
 - You can have many context-reducer pairs like this in your app.
 
 </Recap>
+

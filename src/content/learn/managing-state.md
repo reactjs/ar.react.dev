@@ -749,9 +749,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext value={level + 1}>
+      <LevelContext.Provider value={level + 1}>
         {children}
-      </LevelContext>
+      </LevelContext.Provider>
     </section>
   );
 }
@@ -845,11 +845,13 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider
+        value={dispatch}
+      >
         {children}
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 

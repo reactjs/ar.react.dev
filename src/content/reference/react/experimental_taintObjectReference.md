@@ -1,9 +1,8 @@
 ---
 title: experimental_taintObjectReference
-version: experimental
 ---
 
-<Experimental>
+<Wip>
 
 **This API is experimental and is not available in a stable version of React yet.**
 
@@ -17,7 +16,7 @@ Experimental versions of React may contain bugs. Don't use them in production.
 
 This API is only available inside React Server Components.
 
-</Experimental>
+</Wip>
 
 
 <Intro>

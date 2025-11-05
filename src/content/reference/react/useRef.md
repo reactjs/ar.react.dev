@@ -197,7 +197,7 @@ React expects that the body of your component [behaves like a pure function](/le
 
 Reading or writing a ref **during rendering** breaks these expectations.
 
-```js {expectedErrors: {'react-compiler': [4]}} {3-4,6-7}
+```js {3-4,6-7}
 function MyComponent() {
   // ...
   // 🚩 Don't write a ref during rendering
@@ -448,16 +448,16 @@ button { display: block; margin-bottom: 20px; }
 
 #### Exposing a ref to your own component {/*exposing-a-ref-to-your-own-component*/}
 
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
+Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can use a combination of `useRef` to hold the input and [`forwardRef`](/reference/react/forwardRef) to expose it to the parent component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
 
 <Sandpack>
 
 ```js
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
-function MyInput({ ref }) {
-  return <input ref={ref} />;
-};
+const MyInput = forwardRef((props, ref) => {
+  return <input {...props} ref={ref} />;
+});
 
 export default function Form() {
   const inputRef = useRef(null);
@@ -554,7 +554,7 @@ You might get an error in the console:
 
 <ConsoleBlock level="error">
 
-TypeError: Cannot read properties of null
+Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 
 </ConsoleBlock>
 
@@ -573,10 +573,12 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevant child [built-in component](/reference/react-dom/components/common) like this:
+And then wrap it in [`forwardRef`](/reference/react/forwardRef) like this:
 
-```js {1,6}
-function MyInput({ value, onChange, ref }) {
+```js {3,8}
+import { forwardRef } from 'react';
+
+const MyInput = forwardRef(({ value, onChange }, ref) => {
   return (
     <input
       value={value}
@@ -584,7 +586,7 @@ function MyInput({ value, onChange, ref }) {
       ref={ref}
     />
   );
-};
+});
 
 export default MyInput;
 ```

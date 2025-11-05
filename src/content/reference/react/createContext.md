@@ -38,15 +38,14 @@ const ThemeContext = createContext('light');
 
 `createContext` returns a context object.
 
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
+**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext.Provider`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
 
-* `SomeContext` lets you provide the context value to components.
+* `SomeContext.Provider` lets you provide the context value to components.
 * `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
-* `SomeContext.Provider` is a legacy way to provide the context value before React 19.
 
 ---
 
-### `SomeContext` Provider {/*provider*/}
+### `SomeContext.Provider` {/*provider*/}
 
 Wrap your components into a context provider to specify the value of this context for all components inside:
 
@@ -55,20 +54,12 @@ function App() {
   const [theme, setTheme] = useState('light');
   // ...
   return (
-    <ThemeContext value={theme}>
+    <ThemeContext.Provider value={theme}>
       <Page />
-    </ThemeContext>
+    </ThemeContext.Provider>
   );
 }
 ```
-
-<Note>
-
-Starting in React 19, you can render `<SomeContext>` as a provider. 
-
-In older versions of React, use `<SomeContext.Provider>`.
-
-</Note>
 
 #### Props {/*provider-props*/}
 
@@ -93,7 +84,7 @@ function Button() {
 }
 ```
 
-Although this older way still works, **newly written code should read context with [`useContext()`](/reference/react/useContext) instead:**
+Although this older way still works, but **newly written code should read context with [`useContext()`](/reference/react/useContext) instead:**
 
 ```js
 function Button() {
@@ -150,11 +141,11 @@ function App() {
   // ...
 
   return (
-    <ThemeContext value={theme}>
-      <AuthContext value={currentUser}>
+    <ThemeContext.Provider value={theme}>
+      <AuthContext.Provider value={currentUser}>
         <Page />
-      </AuthContext>
-    </ThemeContext>
+      </AuthContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 ```
@@ -196,11 +187,11 @@ import { ThemeContext, AuthContext } from './Contexts.js';
 function App() {
   // ...
   return (
-    <ThemeContext value={theme}>
-      <AuthContext value={currentUser}>
+    <ThemeContext.Provider value={theme}>
+      <AuthContext.Provider value={currentUser}>
         <Page />
-      </AuthContext>
-    </ThemeContext>
+      </AuthContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 ```
@@ -223,3 +214,4 @@ const ThemeContext = createContext('light');
 This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
 
 To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
+

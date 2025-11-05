@@ -46,8 +46,6 @@ function PasswordField() {
 
 * `useId` **لا ينبغي استخدامه لتوليد المفاتيح** في القائمة. [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
 
-* `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
-
 ---
 
 ## الاستخدام {/*usage*/}
@@ -228,7 +226,7 @@ input { margin: 5px; }
 
 <Sandpack>
 
-```html public/index.html
+```html index.html
 <!DOCTYPE html>
 <html>
   <head><title>تطبيقي</title></head>

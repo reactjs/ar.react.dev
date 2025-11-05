@@ -23,9 +23,9 @@ useImperativeHandle(ref, createHandle, dependencies?)
 Call `useImperativeHandle` at the top level of your component to customize the ref handle it exposes:
 
 ```js
-import { useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 
-function MyInput({ ref }) {
+const MyInput = forwardRef(function MyInput(props, ref) {
   useImperativeHandle(ref, () => {
     return {
       // ... your methods ...
@@ -38,17 +38,11 @@ function MyInput({ ref }) {
 
 #### Parameters {/*parameters*/}
 
-* `ref`: The `ref` you received as a prop to the `MyInput` component.
+* `ref`: The `ref` you received as the second argument from the [`forwardRef` render function.](/reference/react/forwardRef#render-function)
 
 * `createHandle`: A function that takes no arguments and returns the ref handle you want to expose. That ref handle can have any type. Usually, you will return an object with the methods you want to expose.
 
 * **optional** `dependencies`: The list of all reactive values referenced inside of the `createHandle` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If a re-render resulted in a change to some dependency, or if you omitted this argument, your `createHandle` function will re-execute, and the newly created handle will be assigned to the ref.
-
-<Note>
-
-Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef) 
-
-</Note>
 
 #### Returns {/*returns*/}
 
@@ -60,38 +54,40 @@ Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-1
 
 ### Exposing a custom ref handle to the parent component {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-To expose a DOM node to the parent element, pass in the `ref` prop to the node.
+By default, components don't expose their DOM nodes to parent components. For example, if you want the parent component of `MyInput` to [have access](/learn/manipulating-the-dom-with-refs) to the `<input>` DOM node, you have to opt in with [`forwardRef`:](/reference/react/forwardRef)
 
-```js {2}
-function MyInput({ ref }) {
-  return <input ref={ref} />;
-};
+```js {4}
+import { forwardRef } from 'react';
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  return <input {...props} ref={ref} />;
+});
 ```
 
-With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
+With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/reference/react/forwardRef#exposing-a-dom-node-to-the-parent-component) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
 
 ```js {4-8}
-import { useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 
-function MyInput({ ref }) {
+const MyInput = forwardRef(function MyInput(props, ref) {
   useImperativeHandle(ref, () => {
     return {
       // ... your methods ...
     };
   }, []);
 
-  return <input />;
-};
+  return <input {...props} />;
+});
 ```
 
-Note that in the code above, the `ref` is no longer passed to the `<input>`.
+Note that in the code above, the `ref` is no longer forwarded to the `<input>`.
 
 For example, suppose you don't want to expose the entire `<input>` DOM node, but you want to expose two of its methods: `focus` and `scrollIntoView`. To do this, keep the real browser DOM in a separate ref. Then use `useImperativeHandle` to expose a handle with only the methods that you want the parent component to call:
 
 ```js {7-14}
-import { useRef, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
 
-function MyInput({ ref }) {
+const MyInput = forwardRef(function MyInput(props, ref) {
   const inputRef = useRef(null);
 
   useImperativeHandle(ref, () => {
@@ -105,8 +101,8 @@ function MyInput({ ref }) {
     };
   }, []);
 
-  return <input ref={inputRef} />;
-};
+  return <input {...props} ref={inputRef} />;
+});
 ```
 
 Now, if the parent component gets a ref to `MyInput`, it will be able to call the `focus` and `scrollIntoView` methods on it. However, it will not have full access to the underlying `<input>` DOM node.
@@ -138,9 +134,9 @@ export default function Form() {
 ```
 
 ```js src/MyInput.js
-import { useRef, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
 
-function MyInput({ ref, ...props }) {
+const MyInput = forwardRef(function MyInput(props, ref) {
   const inputRef = useRef(null);
 
   useImperativeHandle(ref, () => {
@@ -155,7 +151,7 @@ function MyInput({ ref, ...props }) {
   }, []);
 
   return <input {...props} ref={inputRef} />;
-};
+});
 
 export default MyInput;
 ```
@@ -199,11 +195,11 @@ export default function Page() {
 ```
 
 ```js src/Post.js
-import { useRef, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
 import CommentList from './CommentList.js';
 import AddComment from './AddComment.js';
 
-function Post({ ref }) {
+const Post = forwardRef((props, ref) => {
   const commentsRef = useRef(null);
   const addCommentRef = useRef(null);
 
@@ -225,16 +221,16 @@ function Post({ ref }) {
       <AddComment ref={addCommentRef} />
     </>
   );
-};
+});
 
 export default Post;
 ```
 
 
 ```js src/CommentList.js
-import { useRef, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
 
-function CommentList({ ref }) {
+const CommentList = forwardRef(function CommentList(props, ref) {
   const divRef = useRef(null);
 
   useImperativeHandle(ref, () => {
@@ -256,17 +252,17 @@ function CommentList({ ref }) {
       {comments}
     </div>
   );
-}
+});
 
 export default CommentList;
 ```
 
 ```js src/AddComment.js
-import { useRef, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
 
-function AddComment({ ref }) {
+const AddComment = forwardRef(function AddComment(props, ref) {
   return <input placeholder="Add comment..." ref={ref} />;
-}
+});
 
 export default AddComment;
 ```

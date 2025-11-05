@@ -38,11 +38,11 @@ function MyComponent() {
 
 #### Returns {/*returns*/}
 
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
+`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext.Provider` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
 
 #### Caveats {/*caveats*/}
 
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context>` **needs to be *above*** the component doing the `useContext()` call.
+* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context.Provider>` **needs to be *above*** the component doing the `useContext()` call.
 * React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/reference/react/memo) does not prevent the children receiving fresh context values.
 * If your build system produces duplicates modules in the output (which can happen with symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
 
@@ -70,9 +70,9 @@ To pass context to a `Button`, wrap it or one of its parent components into the 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
   return (
-    <ThemeContext value="dark">
+    <ThemeContext.Provider value="dark">
       <Form />
-    </ThemeContext>
+    </ThemeContext.Provider>
   );
 }
 
@@ -98,9 +98,9 @@ const ThemeContext = createContext(null);
 
 export default function MyApp() {
   return (
-    <ThemeContext value="dark">
+    <ThemeContext.Provider value="dark">
       <Form />
-    </ThemeContext>
+    </ThemeContext.Provider>
   )
 }
 
@@ -183,14 +183,14 @@ Often, you'll want the context to change over time. To update context, combine i
 function MyPage() {
   const [theme, setTheme] = useState('dark');
   return (
-    <ThemeContext value={theme}>
+    <ThemeContext.Provider value={theme}>
       <Form />
       <Button onClick={() => {
         setTheme('light');
       }}>
         Switch to light theme
       </Button>
-    </ThemeContext>
+    </ThemeContext.Provider>
   );
 }
 ```
@@ -213,7 +213,7 @@ const ThemeContext = createContext(null);
 export default function MyApp() {
   const [theme, setTheme] = useState('light');
   return (
-    <ThemeContext value={theme}>
+    <ThemeContext.Provider value={theme}>
       <Form />
       <label>
         <input
@@ -225,7 +225,7 @@ export default function MyApp() {
         />
         Use dark mode
       </label>
-    </ThemeContext>
+    </ThemeContext.Provider>
   )
 }
 
@@ -317,14 +317,14 @@ const CurrentUserContext = createContext(null);
 export default function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <CurrentUserContext
+    <CurrentUserContext.Provider
       value={{
         currentUser,
         setCurrentUser
       }}
     >
       <Form />
-    </CurrentUserContext>
+    </CurrentUserContext.Provider>
   );
 }
 
@@ -411,8 +411,8 @@ export default function MyApp() {
   const [theme, setTheme] = useState('light');
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <ThemeContext value={theme}>
-      <CurrentUserContext
+    <ThemeContext.Provider value={theme}>
+      <CurrentUserContext.Provider
         value={{
           currentUser,
           setCurrentUser
@@ -429,8 +429,8 @@ export default function MyApp() {
           />
           Use dark mode
         </label>
-      </CurrentUserContext>
-    </ThemeContext>
+      </CurrentUserContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 
@@ -596,16 +596,16 @@ export default function MyApp() {
 function MyProviders({ children, theme, setTheme }) {
   const [currentUser, setCurrentUser] = useState(null);
   return (
-    <ThemeContext value={theme}>
-      <CurrentUserContext
+    <ThemeContext.Provider value={theme}>
+      <CurrentUserContext.Provider
         value={{
           currentUser,
           setCurrentUser
         }}
       >
         {children}
-      </CurrentUserContext>
-    </ThemeContext>
+      </CurrentUserContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
@@ -775,11 +775,11 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TasksContext value={tasks}>
-      <TasksDispatchContext value={dispatch}>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
         {children}
-      </TasksDispatchContext>
-    </TasksContext>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
@@ -978,9 +978,9 @@ export default function MyApp() {
   const [theme, setTheme] = useState('light');
   return (
     <>
-      <ThemeContext value={theme}>
+      <ThemeContext.Provider value={theme}>
         <Form />
-      </ThemeContext>
+      </ThemeContext.Provider>
       <Button onClick={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
       }}>
@@ -1067,13 +1067,13 @@ function Button({ children, onClick }) {
 You can override the context for a part of the tree by wrapping that part in a provider with a different value.
 
 ```js {3,5}
-<ThemeContext value="dark">
+<ThemeContext.Provider value="dark">
   ...
-  <ThemeContext value="light">
+  <ThemeContext.Provider value="light">
     <Footer />
-  </ThemeContext>
+  </ThemeContext.Provider>
   ...
-</ThemeContext>
+</ThemeContext.Provider>
 ```
 
 You can nest and override providers as many times as you need.
@@ -1093,9 +1093,9 @@ const ThemeContext = createContext(null);
 
 export default function MyApp() {
   return (
-    <ThemeContext value="dark">
+    <ThemeContext.Provider value="dark">
       <Form />
-    </ThemeContext>
+    </ThemeContext.Provider>
   )
 }
 
@@ -1104,9 +1104,9 @@ function Form() {
     <Panel title="Welcome">
       <Button>Sign up</Button>
       <Button>Log in</Button>
-      <ThemeContext value="light">
+      <ThemeContext.Provider value="light">
         <Footer />
-      </ThemeContext>
+      </ThemeContext.Provider>
     </Panel>
   );
 }
@@ -1230,9 +1230,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext value={level + 1}>
+      <LevelContext.Provider value={level + 1}>
         {children}
-      </LevelContext>
+      </LevelContext.Provider>
     </section>
   );
 }
@@ -1302,9 +1302,9 @@ function MyApp() {
   }
 
   return (
-    <AuthContext value={{ currentUser, login }}>
+    <AuthContext.Provider value={{ currentUser, login }}>
       <Page />
-    </AuthContext>
+    </AuthContext.Provider>
   );
 }
 ```
@@ -1330,9 +1330,9 @@ function MyApp() {
   }), [currentUser, login]);
 
   return (
-    <AuthContext value={contextValue}>
+    <AuthContext.Provider value={contextValue}>
       <Page />
-    </AuthContext>
+    </AuthContext.Provider>
   );
 }
 ```
@@ -1349,8 +1349,8 @@ Read more about [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-co
 
 There are a few common ways that this can happen:
 
-1. You're rendering `<SomeContext>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
+1. You're rendering `<SomeContext.Provider>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext.Provider>` *above and outside* the component calling `useContext()`.
+2. You may have forgotten to wrap your component with `<SomeContext.Provider>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
 3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
 
 ### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
@@ -1359,9 +1359,9 @@ You might have a provider without a `value` in the tree:
 
 ```js {1,2}
 // 🚩 Doesn't work: no value prop
-<ThemeContext>
+<ThemeContext.Provider>
    <Button />
-</ThemeContext>
+</ThemeContext.Provider>
 ```
 
 If you forget to specify `value`, it's like passing `value={undefined}`.
@@ -1370,18 +1370,18 @@ You may have also mistakingly used a different prop name by mistake:
 
 ```js {1,2}
 // 🚩 Doesn't work: prop should be called "value"
-<ThemeContext theme={theme}>
+<ThemeContext.Provider theme={theme}>
    <Button />
-</ThemeContext>
+</ThemeContext.Provider>
 ```
 
 In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
 
 ```js {1,2}
 // ✅ Passing the value prop
-<ThemeContext value={theme}>
+<ThemeContext.Provider value={theme}>
    <Button />
-</ThemeContext>
+</ThemeContext.Provider>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext.Provider value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.

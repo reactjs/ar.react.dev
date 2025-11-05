@@ -4,7 +4,7 @@ title: React DOM APIs
 
 <Intro>
 
-The `react-dom` package contains methods that are only supported for the web applications (which run in the browser DOM environment). They are not supported for React Native.
+تحتوي حزمة `react-dom` على الوظائف المدعومة لتطبيقات الويب فقط (التي تعمل في بيئة المتصفح DOM). أي أنها غير مدعومة لـ React Native.
 
 </Intro>
 
@@ -12,10 +12,10 @@ The `react-dom` package contains methods that are only supported for the web app
 
 ## APIs {/*apis*/}
 
-These APIs can be imported from your components. They are rarely used:
+هذه الوظائف يمكن استيرادها في مكوناتك. لكن نادراً ما يتم استخدامها:
 
-* [`createPortal`](/reference/react-dom/createPortal) lets you render child components in a different part of the DOM tree.
-* [`flushSync`](/reference/react-dom/flushSync) lets you force React to flush a state update and update the DOM synchronously.
+* تتيح لك [`createPortal`](/reference/react-dom/createPortal) تقديم مكونات فرعية في جزء مختلف من شجرة DOM.
+* تتيح لك [`flushSync`](/reference/react-dom/flushSync) إجبار React على تفريغ تحديث الحالة وتحديث DOM بشكل متزامن.
 
 ## Resource Preloading APIs {/*resource-preloading-apis*/}
 
@@ -32,22 +32,24 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
-## Entry points {/*entry-points*/}
+## نقاط البداية {/*entry-points*/}
 
-The `react-dom` package provides two additional entry points:
+تقدم حزمة `react-dom` نقطتي بداية إضافيتين:
 
-* [`react-dom/client`](/reference/react-dom/client) contains APIs to render React components on the client (in the browser).
-* [`react-dom/server`](/reference/react-dom/server) contains APIs to render React components on the server.
+* تحتوي [`react-dom/client`](/reference/react-dom/client) على وظائف لتصيير مكونات React في جانب العميل (في المتصفح).
+* تحتوي [`react-dom/server`](/reference/react-dom/server) على وظائف لتصيير مكونات React في الخادم.
 
 ---
 
-## Removed APIs {/*removed-apis*/}
+## وظائف ملغاه {/*deprecated-apis*/}
 
-These APIs were removed in React 19:
+<Deprecated>
 
-* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
-* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
-* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
-* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
-* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+ستتم إزالة هذه الوظائف في إصدار رئيسي مستقبلي من React.
+
+</Deprecated>
+
+* تجد [`findDOMNode`](/reference/react-dom/findDOMNode) أقرب عنصر DOM يتوافق مع مثيل مكون `class`.
+* تقوم [`hydrate`](/reference/react-dom/hydrate) بتركيب شجرة في DOM التي تم إنشاؤها من HTML الذي تم تصييره في الخادم. مهجور لصالح [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
+* تقوم [`render`](/reference/react-dom/render) بتركيب شجرة في DOM. مهجور لصالح [`createRoot`](/reference/react-dom/client/createRoot).
+* تقوم [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) بإلغاء تركيب شجرة من DOM. مهجور لصالح [`root.unmount()`.](/reference/react-dom/client/createRoot#root-unmount)
