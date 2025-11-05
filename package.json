@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@babel/types": "7.28.5",
-    "@codesandbox/sandpack-react": "2.13.5",
+    "@codesandbox/sandpack-react": "^2.20.0",
     "@docsearch/css": "^3.8.3",
     "@docsearch/react": "^3.8.3",
     "@headlessui/react": "^1.7.0",
