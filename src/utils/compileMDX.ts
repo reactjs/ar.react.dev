@@ -98,7 +98,15 @@ export default async function compileMDX(
   const {transform} = require('@babel/core');
   const jsCode = await transform(jsxCode, {
     plugins: ['@babel/plugin-transform-modules-commonjs'],
-    presets: ['@babel/preset-react'],
+    presets: [
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          development: process.env.NODE_ENV === 'development',
+        },
+      ],
+    ],
   }).code;
 
   // Prepare environment for MDX.
@@ -106,6 +114,8 @@ export default async function compileMDX(
   const fakeRequire = (name: string) => {
     if (name === 'react/jsx-runtime') {
       return require('react/jsx-runtime');
+    } else if (name === 'react/jsx-dev-runtime') {
+      return require('react/jsx-dev-runtime');
     } else {
       // For each fake MDX import, give back the string component name.
       // It will get serialized later.
