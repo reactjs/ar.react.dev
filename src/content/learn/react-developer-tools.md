@@ -1,35 +1,33 @@
 ---
-title: أدوات مطوري React
+title: React Developer Tools
 ---
 
 <Intro>
 
-استخدم أدوات مطور React لفحص [المكونات](/learn/your-first-component)، وتعديل [الخصائص](/learn/passing-props-to-a-component) و[الحالة](/learn/state-a-components-memory) وتحديد مشاكل الأداء.
+Use React Developer Tools to inspect React [components](/learn/your-first-component), edit [props](/learn/passing-props-to-a-component) and [state](/learn/state-a-components-memory), and identify performance problems.
 
 </Intro>
 
 <YouWillLearn>
 
-* كيفية تثبيت أدوات مطوري React
+* How to install React Developer Tools
 
 </YouWillLearn>
 
-## إضافة للمتصفح {/*browser-extension*/}
+## Browser extension {/*browser-extension*/}
 
-أسهل طريقة لحل المشاكل البرمجية للمواقع المبنية بـ React أن تثبت إضافة أدوات مطوري React للمتصفح. وهي متوفرة لعدة متصفحات شهيرة:
+The easiest way to debug websites built with React is to install the React Developer Tools browser extension. It is available for several popular browsers:
 
-* [تثبيت لـ **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ar)
-* [تثبيت لـ **Firefox**](https://addons.mozilla.org/ar/firefox/addon/react-devtools/)
-* [تثبيت لـ **Edge**](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+* [Install for **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+* [Install for **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+* [Install for **Edge**](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
-الآن، إن زرت موقعًا **مبنيًا باستخدام React** سترى نافذتي _المكونات (Components)_ و _المُحلل (Profiler)_ في أدوات المطور.
+Now, if you visit a website **built with React,** you will see the _Components_ and _Profiler_ panels.
 
-![إضافة أدوات مطوري React](/images/docs/react-devtools-extension.png)
+![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
-## متصفح Safari والمتصفحات الأخرى {/*safari-and-other-browsers*/}
-
-للمتصفحات الأخرى (مثل Safari)، قم بتثبيت حزمة npm [`react-devtools`](https://www.npmjs.com/package/react-devtools):
-
+### Safari and other browsers {/*safari-and-other-browsers*/}
+For other browsers (for example, Safari), install the [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm package:
 ```bash
 # Yarn
 yarn global add react-devtools
@@ -38,46 +36,26 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-ثم افتح أدوات المطور في موجه الأوامر (Terminal):
-
+Next open the developer tools from the terminal:
 ```bash
 react-devtools
 ```
 
-ثم اربط موقعك بإضافة عنصر `<script>` التالي إلى بداية `<head>` في موقعك:
-
+Then connect your website by adding the following `<script>` tag to the beginning of your website's `<head>`:
 ```html {3}
 <html>
   <head>
     <script src="http://localhost:8097"></script>
 ```
 
-أعد تحميل موقعك الآن في المتصفح لتراه في أدوات المطور.
+Reload your website in the browser now to view it in developer tools.
 
-![أدوات مطوري React المستقلة](/images/docs/react-devtools-standalone.png)
+![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-## الهواتف (React Native) {/*mobile-react-native*/}
+## Mobile (React Native) {/*mobile-react-native*/}
 
-يمكن استخدام أدوات مطوري React لفحص التطبيقات المبنية بـ [React Native](https://reactnative.dev/).
+To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
 
-أسهل طريقة لاستخدام أدوات مطوري React هي تثبيتها على نطاق عام:
+[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
 
-```bash
-# Yarn
-yarn global add react-devtools
-
-# Npm
-npm install -g react-devtools
-```
-
-ثم افتح أدوات المطور في موجه الأوامر (Terminal):
-
-```bash
-react-devtools
-```
-
-من المفترض أنه سيتصل بأي تطبيق React Native محلي إن كان يعمل.
-
-> جرب إعادة تحميل التطبيق إن لم تتصل أدوات المطور بعد ثوانٍ.
-
-[تعرّف على المزيد حول تصحيح أخطاء React Native](https://reactnative.dev/docs/debugging).
+> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.

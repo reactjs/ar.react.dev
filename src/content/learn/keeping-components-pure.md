@@ -1,44 +1,41 @@
 ---
-title: الحفاظ على نقاء المكوّنات
+title: Keeping Components Pure
 ---
 
 <Intro>
 
-بعض دوال JavaScript *نقية.* الدوال النقية تقوم فقط بإجراء حساب ولا شيء اكثر. من خلال كتابة مكوّناتك بصرامة كدوال نقية، يمكنك تجنب صنف كامل من  الأخطاء المحيرة والسلوك غير المتوقع مع نمو قاعدة التعليمات البرمجية الخاصة بك. للحصول على هذه الفوائد، هناك بعض القواعد التي يجب عليك اتباعها.
-
+Some JavaScript functions are *pure.* Pure functions only perform a calculation and nothing more. By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. To get these benefits, though, there are a few rules you must follow.
 
 </Intro>
 
 <YouWillLearn>
 
-* ما هو النقاء وكيف يساعدك على تجنب الأخطاء (bugs)
-* كيفية الحفاظ على نقاء المكوّنات عن طريق إبقاء التغييرات خارج مرحلة التصيير (render phase)
-* كيفية استخدام الوضع الصارم (Strict Mode) للعثور على الأخطاء في مكوّناتك
+* What purity is and how it helps you avoid bugs
+* How to keep components pure by keeping changes out of the render phase
+* How to use Strict Mode to find mistakes in your components
 
 </YouWillLearn>
 
-## النقاء: المكوّنات (components) كمعادلات رياضية {/*purity-components-as-formulas*/}
+## Purity: Components as formulas {/*purity-components-as-formulas*/}
 
-في علم الحاسب (وخاصة عالم البرمجة الوظيفية (functional programming)), [الدالة النقية](https://wikipedia.org/wiki/Pure_function) هي دالة بالخواص التالية:
+In computer science (and especially the world of functional programming), [a pure function](https://wikipedia.org/wiki/Pure_function) is a function with the following characteristics:
 
-* **تهتم بشؤونها.** لا تغير أي كائنات أو متغيرات كانت موجودة قبل استدعائها.
-* **نفس المدخلات تؤدي لنفس المخرجات** بإعطاء نفس المدخلات ، يجب أن تُرجع الدالة النقية نفس النتيجة دائمًا.
+* **It minds its own business.** It does not change any objects or variables that existed before it was called.
+* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
 
-قد تكون بالفعل على دراية بمثال واحد من الوظائف النقية: المعادلات في الرياضيات.
+You might already be familiar with one example of pure functions: formulas in math.
 
-انظر معادلة الرياضيات هذه: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
+Consider this math formula: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
-إذا <Math><MathI>x</MathI> = 2</Math> عندها <Math><MathI>y</MathI> = 4</Math>. دائمًا. 
+If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always. 
 
-إذا <Math><MathI>x</MathI> = 3</Math> عندها <Math><MathI>y</MathI> = 6</Math>. دائمًا. 
+If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always. 
 
-إذا <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> لن تكون احيانًا <Math>9</Math> أو <Math>–1</Math> أو <Math>2.5</Math> اعتمادًا على الوقت في اليوم أو حالة البورصة.
+If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market. 
 
-إذا <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> و <Math><MathI>x</MathI> = 3</Math>، <MathI>y</MathI> ستكون _دائمًا_ <Math>6</Math>. 
+If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>. 
 
-إذا قمنا بتحويل هذا إلى دالة JavaScript، فسيبدو كما يلي:
-
-
+If we made this into a JavaScript function, it would look like this:
 
 ```js
 function double(number) {
@@ -46,9 +43,9 @@ function double(number) {
 }
 ```
 
-في المثال أعلاه ، "double" هي **دالة نقية.** إذا مررت بـ "3" ، فستُرجع "6". دائماً.
+In the above example, `double` is a **pure function.** If you pass it `3`, it will return `6`. Always.
 
-تم تصميم React حول هذا المفهوم. **تفترض React أن كل مكّون تكتبه هو دالة نقية.** هذا يعني أن مكوّنات React التي تكتبها يجب أن تُرجع دائمًا نفس JSX مع الأخذ في الاعتبار نفس المدخلات:
+React is designed around this concept. **React assumes that every component you write is a pure function.** This means that React components you write must always return the same JSX given the same inputs:
 
 <Sandpack>
 
@@ -56,9 +53,9 @@ function double(number) {
 function Recipe({ drinkers }) {
   return (
     <ol>    
-      <li>أغلي {drinkers} كوب ماء.</li>
-      <li>أضف {drinkers} ملعقة شاي و {0.5 * drinkers} ملعقة توابل.</li>
-      <li>أضف {0.5 * drinkers} كوب حليب للغلي وسكر للتذوق</li>
+      <li>Boil {drinkers} cups of water.</li>
+      <li>Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.</li>
+      <li>Add {0.5 * drinkers} cups of milk to boil and sugar to taste.</li>
     </ol>
   );
 }
@@ -66,10 +63,10 @@ function Recipe({ drinkers }) {
 export default function App() {
   return (
     <section>
-      <h1>وصفة شاي متبل</h1>
-      <h2>لاثنين</h2>
+      <h1>Spiced Chai Recipe</h1>
+      <h2>For two</h2>
       <Recipe drinkers={2} />
-      <h2>لتجمّع</h2>
+      <h2>For a gathering</h2>
       <Recipe drinkers={4} />
     </section>
   );
@@ -78,33 +75,31 @@ export default function App() {
 
 </Sandpack>
 
-عند تمرير `drinkers={2}` إلى `Recipe`, ستعيد JSX تحتوي على `2 اكواب من الماء`. دائمًا. 
+When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always. 
 
-إذا قمت بتمرير `drinkers={4}`, ستعيد JSX تحتوي على  `4 اكواب من الماء`. دائمًا.
+If you pass `drinkers={4}`, it will return JSX containing `4 cups of water`. Always.
 
-تمامًا مثل الصيغ الرياضية.
+Just like a math formula. 
 
-يمكنك التفكير في المكوّنات الخاصة بك كوصفات: إذا اتبعتها ولم تقم بإدخال مكوّنات جديدة أثناء عملية الطهي، ستحصل على نفس الطبق في كل مرة. هذا "الطبق" هو ال JSX الذي يقدمه المكوّن لReact [للتصيير.](/learn/render-and-commit)
+You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](/learn/render-and-commit)
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
-## الآثار الجانبية: العواقب (غير المقصودة) {/*side-effects-unintended-consequences*/}
+## Side Effects: (un)intended consequences {/*side-effects-unintended-consequences*/}
 
-يجب أن تكون عملية التصيير في React دائمًا نقية. يجب أن تقوم المكوّنات فقط بـ*إرجاع* JSX الخاص بهم، وعدم *تغيير* أي كائنات أو متغيرات كانت موجودة قبل عملية التصيير-فأن هذا سيجعلهم غير نقيين!
+React's rendering process must always be pure. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure!
 
-
-
-فيما يلي مكوّن يخالف هذه القاعدة:
+Here is a component that breaks this rule:
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [5]}}
 let guest = 0;
 
 function Cup() {
-  // سيئ: تغيير متغير موجود بالفعل!
+  // Bad: changing a preexisting variable!
   guest = guest + 1;
-  return <h2>كوب شاي للضيف رقم {guest}</h2>;
+  return <h2>Tea cup for guest #{guest}</h2>;
 }
 
 export default function TeaSet() {
@@ -120,17 +115,17 @@ export default function TeaSet() {
 
 </Sandpack>
 
-يقوم هذا المكوّن بقراءة وكتابة متغير `guest` المعلن خارجه. هذا يعني أن **استدعاء هذا المكوّن مرات متعددة سينتج JSX مختلف** بل وأكثر من ذلك ، إذا قرأت المكوّنات الأخرى `guest`, سوف تنتج JSX مختلف , أيضًا ، اعتمادًا على متى تم تصييرها! وهذا لا يمكن توقعه
+This component is reading and writing a `guest` variable declared outside of it. This means that **calling this component multiple times will produce different JSX!** And what's more, if _other_ components read `guest`, they will produce different JSX, too, depending on when they were rendered! That's not predictable.
 
-نعود إلى صيغتنا السابقة <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>, الآن حتى إذا كان <Math><MathI>x</MathI> = 2</Math>, لا يمكننا الاعتماد على أن <Math><MathI>y</MathI> = 4</Math>. قد تفشل اختباراتنا ، وقد يصبح المستخدمون مشوشين, وقد تسقط الطائرات من السماء - يمكنك رؤية كيف يمكن أن يؤدي ذلك إلى خلل مربك!
+Going back to our formula <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>, now even if <Math><MathI>x</MathI> = 2</Math>, we cannot trust that <Math><MathI>y</MathI> = 4</Math>. Our tests could fail, our users would be baffled, planes would fall out of the sky—you can see how this would lead to confusing bugs!
 
-يمكنك إصلاح هذا العنصر عن طريق [تمرير `guest` كخاصية](/learn/passing-props-to-a-component):
+You can fix this component by [passing `guest` as a prop instead](/learn/passing-props-to-a-component):
 
 <Sandpack>
 
 ```js
 function Cup({ guest }) {
-  return <h2>كوب شاي للضيف رقم {guest}</h2>;
+  return <h2>Tea cup for guest #{guest}</h2>;
 }
 
 export default function TeaSet() {
@@ -146,41 +141,41 @@ export default function TeaSet() {
 
 </Sandpack>
 
-الآن يعتبر المكوّن الخاص بك نقيًا، حيث أن JSX الذي يُرجعه يعتمد فقط على خاصية `guest`.
+Now your component is pure, as the JSX it returns only depends on the `guest` prop.
 
-بشكل عام، لا يجب عليك أن تتوقع أن يتم تصيير المكوّنات الخاصة بك بترتيب معين. لا يهم إذا قمت بطلب <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> قبل أو بعد <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: ستتم حل كلا الصيغ بشكل مستقل عن بعضهما البعض. بنفس الطريقة، يجب على كل مكوّن "أن يفكر لنفسه" فقط، ولا يحاول التنسيق أو الاعتماد على المكوّنات الأخرى أثناء التصيير. التصيير مثل امتحان مدرسي: يجب على كل مكوّن حساب JSX بمفرده!
+In general, you should not expect your components to be rendered in any particular order. It doesn't matter if you call <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> before or after <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: both formulas will resolve independently of each other. In the same way, each component should only "think for itself", and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own!
 
 <DeepDive>
 
-#### اكتشاف الحسابات غير النقية باستخدام الوضع الصارم {/*detecting-impure-calculations-with-strict-mode*/}
+#### Detecting impure calculations with StrictMode {/*detecting-impure-calculations-with-strict-mode*/}
 
-على الرغم من أنه قد لا تكون قد استخدمت جميعها بعد, في React هناك ثلاثة أنواع من المدخلات التي يمكنك قراءتها أثناء التصيير: [الخصائص](/learn/passing-props-to-a-component), [الحالة](/learn/state-a-components-memory), و [السياق.](/learn/passing-data-deeply-with-context) يجب عليك دائمًا معاملة هذه المدخلات على أنها للقراءة فقط.
+Although you might not have used them all yet, in React there are three kinds of inputs that you can read while rendering: [props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context.](/learn/passing-data-deeply-with-context) You should always treat these inputs as read-only.
 
-عندما تريد *تغيير* شيء ما استجابة لإدخال المستخدم، يجب عليك [تعيين حالة](/learn/state-a-components-memory) بدلاً من الكتابة في متغير. يجب ألا تقوم بتغيير المتغيرات أو الكائنات الموجودة مسبقًا أثناء تصيير المكوّن الخاص بك.
+When you want to *change* something in response to user input, you should [set state](/learn/state-a-components-memory) instead of writing to a variable. You should never change preexisting variables or objects while your component is rendering.
 
-React يوفر "وضعًا صارمًا"(Strict Mode) يقوم فيه باستدعاء دالة كل مكوّن مرتين أثناء التطوير. **من خلال استدعاء وظائف المكوّن مرتين، يساعد الوضع الصارم في العثور على المكوّنات التي تخالف هذه القواعد.**
+React offers a "Strict Mode" in which it calls each component's function twice during development. **By calling the component functions twice, Strict Mode helps find components that break these rules.**
 
-لاحظ كيف عرض المثال الأصلي "Guest #2", "Guest #4", و "Guest #6" بدلاً من "Guest #1", "Guest #2", و "Guest #3". كانت الدالة الأصلية غير نقية، لذا تعطلت عند استدعاءها مرتين. ولكن الإصدار النقي المُصلح يعمل حتى إذا تم استدعاء الوظيفة مرتين. **الدوال النقية تقوم بالحساب فقط، لذلك لن يتغير أي شيء عند استدعائها مرتين**--تمامًا مثل استدعاء `double(2)` مرتين لن يتغير ما يتم إرجاعه، وحل <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> مرتين لن يغير ما هو <MathI>y</MathI>. نفس المدخلات، نفس المخرجات. دائمًا.
+Notice how the original example displayed "Guest #2", "Guest #4", and "Guest #6" instead of "Guest #1", "Guest #2", and "Guest #3". The original function was impure, so calling it twice broke it. But the fixed pure version works even if the function is called twice every time. **Pure functions only calculate, so calling them twice won't change anything**--just like calling `double(2)` twice doesn't change what's returned, and solving <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> twice doesn't change what <MathI>y</MathI> is. Same inputs, same outputs. Always.
 
-الوضع الصارم لا يؤثر في الإنتاج، لذلك لن يبطئ التطبيق لمستخدمينك. يمكنك الانضمام إلى الوضع الصارم, عن طريق تغليف المكّون الجذر(root component) الخاص بك في `<React.StrictMode>`. تفعل بعض الإطارات ذلك افتراضيًا.
+Strict Mode has no effect in production, so it won't slow down the app for your users. To opt into Strict Mode, you can wrap your root component into `<React.StrictMode>`. Some frameworks do this by default.
 
 </DeepDive>
 
-### التغيير المحلي: سر صغير لمكوّناتك {/*local-mutation-your-components-little-secret*/}
+### Local mutation: Your component's little secret {/*local-mutation-your-components-little-secret*/}
 
-في المثال أعلاه، كانت المشكلة في أن المكوّن قام بتغيير متغير *موجود مسبقًا* أثناء التصيير. يُطلق عليها في كثير من الأحيان **"طفرة"** لجعلها تبدو أكثر رعبًا. الدوال النقية لا تغيّر المتغيرات خارج نطاق الدالة أو الكائنات التي تم إنشاؤها قبل الاستدعاء - هذا يجعلها غير نقية!
+In the above example, the problem was that the component changed a *preexisting* variable while rendering. This is often called a **"mutation"** to make it sound a bit scarier. Pure functions don't mutate variables outside of the function's scope or objects that were created before the call—that makes them impure!
 
-ومع ذلك, **فمن المسموح تمامًا بتغيير المتغيرات والكائنات التي قمت بإنشائها *فقط* خلال التصيير** في هذا المثال, قم بإنشاء `[]` مصفوفة, وعيينها إلى متغير  `cups`, ثم ادفع `(push)` اثني عشر كوبًا فيها:
+However, **it's completely fine to change variables and objects that you've *just* created while rendering.** In this example, you create an `[]` array, assign it to a `cups` variable, and then `push` a dozen cups into it:
 
 <Sandpack>
 
 ```js
 function Cup({ guest }) {
-  return <h2>كوب شاي للضيف رقم {guest}</h2>;
+  return <h2>Tea cup for guest #{guest}</h2>;
 }
 
 export default function TeaGathering() {
-  let cups = [];
+  const cups = [];
   for (let i = 1; i <= 12; i++) {
     cups.push(<Cup key={i} guest={i} />);
   }
@@ -190,43 +185,43 @@ export default function TeaGathering() {
 
 </Sandpack>
 
-إذا تم إنشاء متغير `cups` او `[]` مصفوفة خارج دالة `TeaGathering` فستكون هذه مشكلة كبيرة! ستقوم بتغيير كائن *موجود مسبقًا* عند دفع العناصر في تلك المصفوفة.
+If the `cups` variable or the `[]` array were created outside the `TeaGathering` function, this would be a huge problem! You would be changing a *preexisting* object by pushing items into that array.
 
-ومع ذلك, فإنه يعد أمرًا صحيحًا لأنك قمت بإنشائهم *خلال نفس التصيير*, داخل `TeaGathering`. لن يعرف أي كود خارج `TeaGathering` ابدًا أن هذا حدث. يُطلق على هذا **"التغيير المحلي"**—هو مثل سر صغير لمكوّناتك.
+However, it's fine because you've created them *during the same render*, inside `TeaGathering`. No code outside of `TeaGathering` will ever know that this happened. This is called **"local mutation"**—it's like your component's little secret.
 
-## اين يمكنك التسبب بآثار جانبية {/*where-you-_can_-cause-side-effects*/}
+## Where you _can_ cause side effects {/*where-you-_can_-cause-side-effects*/}
 
-على الرغم من أن البرمجة الوظيفية تعتمد بشدة على النقاء، إلا أنه في نقطة ما، في مكان ما ،يجب أن يتغير _شيء_. هذه هي النقطة من البرمجة! هذه التغييرات - تحديث الشاشة، بدء الرسوم المتحركة، تغيير البيانات - تسمى **الآثار الجانبية** إنها أشياء تحدث _"على الجانب"_, وليس خلال التصيير.
+While functional programming relies heavily on purity, at some point, somewhere, _something_ has to change. That's kind of the point of programming! These changes—updating the screen, starting an animation, changing the data—are called **side effects.** They're things that happen _"on the side"_, not during rendering.
 
-في React, **تنتمي الآثار الجانبية عادةً داخل [معالجات الأحداث(event handlers).](/learn/responding-to-events)** معالجات الأحداث هي الدوال التي يقوم React بتشغيلها عندما تقوم بإجراء بعض الإجراءات—على سبيل المثال، عند النقر فوق زر. على الرغم من أن معالجات الأحداث يتم تعريفها *داخل* المكوّن الخاص بك، إلا أنها لا تعمل *خلال* التصيير! **لذلك، فإن معالجات الأحداث لا يجب أن تكون نقية.**
+In React, **side effects usually belong inside [event handlers.](/learn/responding-to-events)** Event handlers are functions that React runs when you perform some action—for example, when you click a button. Even though event handlers are defined *inside* your component, they don't run *during* rendering! **So event handlers don't need to be pure.**
 
-إذا استنفذت كل الخيارات الأخرى ولم تتمكن من العثور على معالج أحداث مناسب للآثار الجانبية، فيمكنك ربطها على الJSX المُرجَع الخاص بك باستدعاء[`useEffect`](/reference/react/useEffect) في مكوّنك. يخبر هذا React بتنفيذها لاحقًا، بعد التصيير، عندما يسمح بالآثار الجانبية. **ومع ذلك، يجب أن يكون هذا النهج هو خيارك الأخير.**
+If you've exhausted all other options and can't find the right event handler for your side effect, you can still attach it to your returned JSX with a [`useEffect`](/reference/react/useEffect) call in your component. This tells React to execute it later, after rendering, when side effects are allowed. **However, this approach should be your last resort.**
 
-عندما يكون ذلك ممكنًا، حاول التعبير عن منطقك فقط من خلال التصيير. ستتفاجأ الى اي مدى يمكن لهذا أن يأخذك! 
+When possible, try to express your logic with rendering alone. You'll be surprised how far this can take you!
 
 <DeepDive>
 
-#### لماذا يهتم React بالنقاء؟ {/*why-does-react-care-about-purity*/}
+#### Why does React care about purity? {/*why-does-react-care-about-purity*/}
 
-يتطلب كتابة الدوال النقية بعض العادات والانضباط. ولكنه يفتح أيضًا فرصًا رائعة:
+Writing pure functions takes some habit and discipline. But it also unlocks marvelous opportunities:
 
-* يمكن لمكوّناتك أن تعمل في بيئة مختلفة - على سبيل المثال، على الخادم! نظرًا لأنها تعيد نفس النتيجة لنفس المدخلات، يمكن لمكوّن واحد أن يخدم العديد من طلبات المستخدم.
-* يمكنك تحسين الأداء من خلال [تخطي تصيير](/reference/react/memo) المكوّنات التي لم تتغير مدخلاتها. هذا آمن لأن الدوال النقية تعيد نفس النتائج دائمًا، لذلك فهي آمنة للتخزين المؤقت (cache).
-* إذا تغيرت بعض البيانات في منتصف تصيير شجرة مكوّنات عميقة، يمكن لـReact إعادة بدء التصيير دون إضاعة الوقت لإنهاء التصيير القديم. يجعل النقاء من الآمن التوقف عن الحساب في أي وقت.
+* Your components could run in a different environment—for example, on the server! Since they return the same result for the same inputs, one component can serve many user requests.
+* You can improve performance by [skipping rendering](/reference/react/memo) components whose inputs have not changed. This is safe because pure functions always return the same results, so they are safe to cache.
+* If some data changes in the middle of rendering a deep component tree, React can restart rendering without wasting time to finish the outdated render. Purity makes it safe to stop calculating at any time.
 
-كل الميزات الجديدة التي نقوم ببنائها في React تستفيد من النقاء. من جلب البيانات إلى الرسوم المتحركة إلى الأداء، الحفاظ على المكوّنات نقية يطلق العنان لقوة نموذج React.
+Every new React feature we're building takes advantage of purity. From data fetching to animations to performance, keeping components pure unlocks the power of the React paradigm.
 
 </DeepDive>
 
 <Recap>
 
-* يجب أن يكون المكوّن نقيًا، مما يعني:
-  * **يهتم بأمره الخاص.** لا يجب أن يغير أي كائنات أو متغيرات كانت موجودة قبل التصيير.
-  * **نفس المدخلات تؤدي لنفس المخرجات.** باعطاء نفس المدخلات، يجب على المكوّن أن يعيد دائمًا نفس JSX. 
-*  يمكن أن يحدث التصيير في أي وقت ، لذلك لا يجب أن تعتمد المكوّنات على تسلسل التصيير لبعضها البعض.
-* لا يجب تغيير أي من المدخلات التي تستخدمها المكوّنات الخاصة بك للتصيير. ويشمل ذلك الخصائص والحالة والسياق. لتحديث الشاشة ، استخدم, ["set" state](/learn/state-a-components-memory) بدلاً من تغيير الكائنات الموجودة مسبقًا.
-* يجب ان تسعى للتعبير عن منطق المكوّن في الJSX الذي تعيده. عندما تحتاج إلى "تغيير الأشياء" ، عادةً ما تريد القيام بذلك في معالج الحدث(event listener). كخيار أخير ، يمكنك استخدام `useEffect`.
-* يتطلب كتابة الدوال النقية بعض الممارسة ، ولكنه يطلق العنان لقوة نموذج React.
+* A component must be pure, meaning:
+  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
 
 </Recap>
 
@@ -234,15 +229,15 @@ export default function TeaGathering() {
   
 <Challenges>
 
-#### إصلاح ساعة مكسورة {/*fix-a-broken-clock*/}
+#### Fix a broken clock {/*fix-a-broken-clock*/}
 
-يحاول هذا المكوّن تعيين فئة(class) CSS لـ `<h1>` إلى `"night"` خلال الفترة من منتصف الليل إلى السادسة صباحًا، و `"day"` في جميع الأوقات الأخرى. ومع ذلك ، لا يعمل. هل يمكنك إصلاح هذا المكوّن؟
+This component tries to set the `<h1>`'s CSS class to `"night"` during the time from midnight to six hours in the morning, and `"day"` at all other times. However, it doesn't work. Can you fix this component?
 
-يمكنك التحقق مما إذا كان حلك يعمل عن طريق تغيير المنطقة الزمنية للحاسوب مؤقتًا. عندما يكون الوقت الحالي بين منتصف الليل والسادسة صباحًا ، يجب أن تكون الساعة قد عكست الوانها!
+You can verify whether your solution works by temporarily changing the computer's timezone. When the current time is between midnight and six in the morning, the clock should have inverted colors!
 
 <Hint>
 
-التصيير هو *حساب*، لا يجب أن يحاول "القيام" بأشياء. هل يمكنك التعبير عن نفس الفكرة بطريقة مختلفة؟
+Rendering is a *calculation*, it shouldn't try to "do" things. Can you express the same idea differently?
 
 </Hint>
 
@@ -250,7 +245,7 @@ export default function TeaGathering() {
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
     document.getElementById('time').className = 'night';
   } else {
@@ -306,13 +301,13 @@ body > * {
 
 <Solution>
 
-يمكنك إصلاح هذا المكوّن عن طريق حساب ال`className` وتضمينه في المَخْرَج الذي تقوم بإرجاعه
+You can fix this component by calculating the `className` and including it in the render output:
 
 <Sandpack>
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   let className;
   if (hours >= 0 && hours <= 6) {
     className = 'night';
@@ -367,25 +362,25 @@ body > * {
 
 </Sandpack>
 
-في هذا المثال، لم يكن الآثر الجانبي (تعديل DOM) ضروريًا على الإطلاق. كان عليك فقط إرجاع JSX.
+In this example, the side effect (modifying the DOM) was not necessary at all. You only needed to return JSX.
 
 </Solution>
 
-#### اصلح الملف الشخصي المكسور {/*fix-a-broken-profile*/}
+#### Fix a broken profile {/*fix-a-broken-profile*/}
 
-يتم تصيير مكوّنين للملف الشخصي `Profile` جنبًا إلى جنب ببيانات مختلفة. اضغط على "Collapse" في الملف الشخصي الأول ، ثم "مدده". ستلاحظ أن الملف الشخصيين يعرضان الآن نفس الشخص. هذا خطأ.
+Two `Profile` components are rendered side by side with different data. Press "Collapse" on the first profile, and then "Expand" it. You'll notice that both profiles now show the same person. This is a bug.
 
-ابحث عن سبب الخطأ وأصلحه.
+Find the cause of the bug and fix it.
 
 <Hint>
 
-الكود المعطوب في ملف `Profile.js`. تأكد من قراءته بالكامل من الأعلى إلى الأسفل!
+The buggy code is in `Profile.js`. Make sure you read it all from top to bottom!
 
 </Hint>
 
 <Sandpack>
 
-```js src/Profile.js
+```js {expectedErrors: {'react-compiler': [7]}} src/Profile.js
 import Panel from './Panel.js';
 import { getImageUrl } from './utils.js';
 
@@ -442,11 +437,11 @@ export default function App() {
     <>
       <Profile person={{
         imageId: 'lrWQx8l',
-        name: 'سوبرامانيان تشاندراسيخار',
+        name: 'Subrahmanyan Chandrasekhar',
       }} />
       <Profile person={{
         imageId: 'MK3eW3A',
-        name: 'كريولا كاثرين جونسون',
+        name: 'Creola Katherine Johnson',
       }} />
     </>
   )
@@ -480,9 +475,9 @@ h1 { margin: 5px; font-size: 18px; }
 
 <Solution>
 
-المشكلة هي أن مكوّن `Profile` يكتب على متغير موجود مسبقًا يسمى `currentPerson`, ويقرأ المكوّنان `Header` و `Avatar` منه. هذا يجعل *الثلاثة منها* غير نقية وصعبة التنبؤ بها.
+The problem is that the `Profile` component writes to a preexisting variable called `currentPerson`, and the `Header` and `Avatar` components read from it. This makes *all three of them* impure and difficult to predict.
 
-لإصلاح الخطأ ، احذف المتغير `currentPerson`. بدلاً من ذلك ، قم بتمرير جميع المعلومات من `Profile` إلى `Header` و `Avatar` عبر الخصائص. ستحتاج إلى إضافة خاصية شخص `person` لكل من المكوّنين وتمريرها حتى النهاية.
+To fix the bug, remove the `currentPerson` variable. Instead, pass all information from `Profile` to `Header` and `Avatar` via props. You'll need to add a `person` prop to both components and pass it all the way down.
 
 <Sandpack>
 
@@ -540,11 +535,11 @@ export default function App() {
     <>
       <Profile person={{
         imageId: 'lrWQx8l',
-        name: 'سوبرامانيان تشاندراسيخار',
+        name: 'Subrahmanyan Chandrasekhar',
       }} />
       <Profile person={{
         imageId: 'MK3eW3A',
-        name: 'سوبرامانيان تشاندراسيخار',
+        name: 'Creola Katherine Johnson',
       }} />
     </>
   );
@@ -576,15 +571,15 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Sandpack>
 
-تذكر أن React لا يضمن تنفيذ دوال المكوّنات في أي ترتيب معين ، لذلك لا يمكنك التواصل بينهم عن طريق تعيين المتغيرات. يجب أن يحدث كل التواصل من خلال الخصائص.
+Remember that React does not guarantee that component functions will execute in any particular order, so you can't communicate between them by setting variables. All communication must happen through props.
 
 </Solution>
 
-#### أصلح علبة قصة مكسورة {/*fix-a-broken-story-tray*/}
+#### Fix a broken story tray {/*fix-a-broken-story-tray*/}
 
-يطلب منك الرئيس التنفيذي لشركتك إضافة "قصص" إلى تطبيق الساعة الخاص بك على الإنترنت ، ولا يمكنك الرفض. لقد كتبت مكوّن `StoryTray` الذي يقبل قائمة من القصص `stories` ، تليها "إنشاء قصة" العنصر النائب.
+The CEO of your company is asking you to add "stories" to your online clock app, and you can't say no. You've written a `StoryTray` component that accepts a list of `stories`, followed by a "Create Story" placeholder.
 
-قمت بتنفيذ "إنشاء قصة" العنصر النائب عن طريق دفع قصة وهمية أخرى في نهاية مصفوفة القصص `stories` التي تتلقاها كخاصية. ولكن لسبب ما ، يظهر "إنشاء قصة" أكثر من مرة. اصلح المشكلة.
+You implemented the "Create Story" placeholder by pushing one more fake story at the end of the `stories` array that you receive as a prop. But for some reason, "Create Story" appears more than once. Fix the issue.
 
 <Sandpack>
 
@@ -592,7 +587,7 @@ h1 { margin: 5px; font-size: 18px; }
 export default function StoryTray({ stories }) {
   stories.push({
     id: 'create',
-    label: 'إنشاء قصة'
+    label: 'Create Story'
   });
 
   return (
@@ -607,21 +602,21 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
-  {id: 0, label: "قصة عنكيت" },
-  {id: 1, label: "قصة تايلور" },
+const initialStories = [
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
-  // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
-  // نحن نكسر قواعدنا الخاصة هنا.
+  // HACK: Prevent the memory from growing forever while you read docs.
+  // We're breaking our own rules here.
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -680,11 +675,11 @@ li {
 
 <Solution>
 
-لاحظ كيف يتم إضافة "إنشاء قصة" *مرتين* في كل مرة يتم فيها تحديث الساعة. هذا يشير إلى أن لدينا تغيير خلال التصصير - يقوم الوضع الصارم (Strict Mode) بنداء المكوّنات مرتين لجعل هذه المشكلات أكثر وضوحًا.
+Notice how whenever the clock updates, "Create Story" is added *twice*. This serves as a hint that we have a mutation during rendering--Strict Mode calls components twice to make these issues more noticeable.
 
-الدالة `StoryTray` ليست نقية. من خلال استدعاء `push` على مصفوفة القصص `stories` التي تم تلقيها (خاصية!), فإنه يتم تغيير كائن تم إنشاؤه *من قبل* بدء `StoryTray` في التصيير. هذا يجعله غير صحيح وصعب جدًا التنبؤ به.
+`StoryTray` function is not pure. By calling `push` on the received `stories` array (a prop!), it is mutating an object that was created *before* `StoryTray` started rendering. This makes it buggy and very difficult to predict.
 
-أبسط إصلاح هو عدم لمس المصفوفة على الإطلاق ، وتصيير "إنشاء قصة" بشكل منفصل:
+The simplest fix is to not touch the array at all, and render "Create Story" separately:
 
 <Sandpack>
 
@@ -697,27 +692,27 @@ export default function StoryTray({ stories }) {
           {story.label}
         </li>
       ))}
-      <li>إنشاء قصة</li>
+      <li>Create Story</li>
     </ul>
   );
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
-  {id: 0, label: "قصة عنكيت" },
-  {id: 1, label: "قصة تايلور" },
+const initialStories = [
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
-  // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
-  // نحن نكسر قواعدنا الخاصة هنا.
+  // HACK: Prevent the memory from growing forever while you read docs.
+  // We're breaking our own rules here.
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -768,19 +763,19 @@ li {
 
 </Sandpack>
 
-بدلًا عن ذلك ، يمكنك إنشاء مصفوفة _جديدة_ (عن طريق نسخ الحالية) قبل دفع عنصر فيها:
+Alternatively, you could create a _new_ array (by copying the existing one) before you push an item into it:
 
 <Sandpack>
 
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
-  // انسخ المصفوفة!
-  let storiesToDisplay = stories.slice();
+  // Copy the array!
+  const storiesToDisplay = stories.slice();
 
-  // لا يؤثر على المصفوفة الأصلية:
+  // Does not affect the original array:
   storiesToDisplay.push({
     id: 'create',
-    label: 'إنشاء قصة'
+    label: 'Create Story'
   });
 
   return (
@@ -795,21 +790,21 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
-  {id: 0, label: "قصة عنكيت" },
-  {id: 1, label: "قصة تايلور" },
+const initialStories = [
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
-  // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
-  // نحن نكسر قواعدنا الخاصة هنا.
+  // HACK: Prevent the memory from growing forever while you read docs.
+  // We're breaking our own rules here.
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -860,9 +855,9 @@ li {
 
 </Sandpack>
 
-هذا يحافظ على تغييرك محليًا ويجعل دالة التصيير الخاصة بك نقية. ومع ذلك ، لا يزال عليك أن تكون حذرًا: على سبيل المثال ، إذا حاولت تغيير أي من العناصر الموجودة في المصفوفة ، فسيتعين عليك استنساخ تلك العناصر أيضًا.
+This keeps your mutation local and your rendering function pure. However, you still need to be careful: for example, if you tried to change any of the array's existing items, you'd have to clone those items too.
 
-من المفيد تذكر العمليات التي تؤثر على المصفوفات والتي لا تؤثر عليها. على سبيل المثال ، ستؤثر `push` و `pop` و `reverse` و `sort` على المصفوفة الأصلية ، لكن `slice` و `filter` و `map` ستقوم بإنشاء مصفوفة جديدة.
+It is useful to remember which operations on arrays mutate them, and which don't. For example, `push`, `pop`, `reverse`, and `sort` will mutate the original array, but `slice`, `filter`, and `map` will create a new one.
 
 </Solution>
 

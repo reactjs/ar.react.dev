@@ -1,44 +1,44 @@
 ---
-title: التصيير والتأكيد
+title: Render and Commit
 ---
 
 <Intro>
 
-قبل أن يتم عرض مكوناتك في الشاشة، يجب أن يتم تصييرها بواسطة React. فهم الخطوات في هذه العملية سيساعدك على التفكير في كيفية تنفيذ الكود الخاص بك وشرح سلوكه.
+Before your components are displayed on screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
 
 </Intro>
 
 <YouWillLearn>
 
-* ماذا يعني التصيير في React
-* متى ولماذا يقوم React بتصيير مكون
-* خطوات عرض مكون في الشاشة
-* لماذا التصيير لا يقدم دائمًا تحديث DOM
+* What rendering means in React
+* When and why React renders a component
+* The steps involved in displaying a component on screen
+* Why rendering does not always produce a DOM update
 
 </YouWillLearn>
 
-تخيل أن مكوناتك طهاة في المطبخ، يطبخون وصفات لذيذة، في هذا السيناريو، React هو النادل الذي يسجل طلبات الزبائن ويقدمها لهم. هذه العملية من طلب وتقديم الواجهة لها ثلاث خطوات:
+Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
 
-1. **تنشيط** عملية التصيير (تسليم طلب الزبون للمطبخ)
-2. **تصيير** المكون (إعداد الطلب في المطبخ)
-3. **التأكيد** على DOM (وضع الطلب على الطاولة)
+1. **Triggering** a render (delivering the guest's order to the kitchen)
+2. **Rendering** the component (preparing the order in the kitchen)
+3. **Committing** to the DOM (placing the order on the table)
 
 <IllustrationBlock sequential>
-  <Illustration caption="تنشيط" alt="تمثل React دور خادم المطعم، تجلب الطلبات من المستخدمين وتوصلها إلى مطبخ المكونات" src="/images/docs/illustrations/i_render-and-commit1.png" />
-  <Illustration catpion="تصيير" alt="يقدم الطاهي (بطاقة Card) مكون Card جديد لـ React" src="/images/docs/illustrations/i_render-and-commit2.png" />
-  <Illustration caption="تأكيد" alt="يقدم React البطاقة للمستخدم على طاولته" src="/images/docs/illustrations/i_render-and-commit3.png" />
+  <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
+  <Illustration caption="Render" alt="The Card Chef gives React a fresh Card component." src="/images/docs/illustrations/i_render-and-commit2.png" />
+  <Illustration caption="Commit" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
-## الخطوة الأولى: تنشيط التصيير {/*step-1-trigger-a-render*/}
+## Step 1: Trigger a render {/*step-1-trigger-a-render*/}
 
-هناك سببان لتنفيذ تصيير المكون:
+There are two reasons for a component to render:
 
-1. التصيير الأوَّلِي للمكون. (initial render)
-2. تم تحديث حالة المكون (أو أحد آبائه). (state)
+1. It's the component's **initial render.**
+2. The component's (or one of its ancestors') **state has been updated.**
 
-### التصيير الأوَّلِي {/*initial-render*/}
+### Initial render {/*initial-render*/}
 
-عند بدء تشغيل التطبيق، تحتاج لبدء التصيير الأوَّلِي، تخفي إطارات العمل ومحررات الأكواد البسيطة هذا الكود، لكنه يتم بواسطة استدعاء [`createRoot`](/reference/react-dom/client/createRoot) مستهدفًا عنصر DOM، ثم استدعاء طريقة `render` مع المكون الخاص بك:
+When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](/reference/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
 
 <Sandpack>
 
@@ -55,7 +55,7 @@ export default function Image() {
   return (
     <img
       src="https://i.imgur.com/ZF6s192.jpg"
-      alt="'Floralis Generica' لإدواردو كاتالانو: منحوتة زهرة معدنية عملاقة بتلات عاكسة للضوء"
+      alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
 }
@@ -63,34 +63,28 @@ export default function Image() {
 
 </Sandpack>
 
-جرب عمل تعليق على السطر الذي يستدعي `root.render()` وانظر كيف تختفي الصورة. 
+Try commenting out the `root.render()` call and see the component disappear!
 
-مثل هذا: 
+### Re-renders when state updates {/*re-renders-when-state-updates*/}
 
-```js
-// root.render(<Image />);
-```
-
-### إعادة التصيير عند تحديث الحالة {/*re-renders-when-state-updates*/}
-
-بمجرد أن يتم تصيير المكون لأول مرة، يمكنك تنشيط عمليات التصيير الأخرى عن طريق تحديث حالته باستخدام دالة [`set`](/reference/react/useState#setstate). تحديث حالة المكون الخاص بك يضع تلقائيًا عملية تصيير في قائمة الانتظار. (يمكنك تخيل هذه العمليات على أنها طلبات من زبون المطعم للحصول على الشاي أو الحلويات أو أي شيء آخر بعد طلبه الأول، اعتمادًا على حالة عطشه أو جوعه.)
+Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function.](/reference/react/useState#setstate) Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
 
 <IllustrationBlock sequential>
-  <Illustration caption="تحديث الحالة..." alt="React كخادم في مطعم، يقدم واجهة مستخدم بطاقة للمستخدم، ويمثل المستخدم بزبون مع مؤشر لرأسه. يعبر الزبون عن رغبته في الحصول على بطاقة وردية، وليس سوداء!" src="/images/docs/illustrations/i_rerender1.png" />
-  <Illustration caption="...يؤدي إلى..." alt="يعود React إلى مطبخ المكونات ويخبر طاهي البطاقات أنه يحتاج إلى بطاقة وردية." src="/images/docs/illustrations/i_rerender2.png" />
-  <Illustration caption="...تصيير!" alt="يعطي طاهي البطاقات React البطاقة الوردية." src="/images/docs/illustrations/i_rerender3.png" />
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
+  <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
-## الخطوة الثانية: يقوم React بتصيير مكوناتك {/*step-2-react-renders-your-components*/}
+## Step 2: React renders your components {/*step-2-react-renders-your-components*/}
 
-بعد تنشيط عملية التصيير، يقوم React بتصيير مكوناتك لمعرفة ما يجب عرضه على الشاشة. **"التصيير" هو استدعاء React لمكوناتك.**
+After you trigger a render, React calls your components to figure out what to display on screen. **"Rendering" is React calling your components.**
 
-* **عند التصيير الأوَّلِي،** سينشئ React المكون الأصل.
-* **عند التصيير اللاحق،** سينشئ React المكون الذي أدى تحديث حالته إلى التصيير.
+* **On initial render,** React will call the root component.
+* **For subsequent renders,** React will call the function component whose state update triggered the render.
 
-هذه العملية تتكرر: إذا كان المكون المحدث يعيد مكونًا آخر، فسيقوم React بتصيير هذا المكون التالي، وإذا كان هذا المكون أيضًا يعيد شيئًا ما، فسيقوم بتصيير هذا المكون التالي، وهكذا. ستستمر العملية حتى لا تكون هناك مكونات متداخلة أخرى ويعرف React بالضبط ما يجب عرضه على الشاشة.
+This process is recursive: if the updated component returns some other component, React will render _that_ component next, and if that component also returns something, it will render _that_ component next, and so on. The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
 
-في المثال التالي، سينفذ React `Gallery()` و `Image()` عدة مرات:
+In the following example, React will call `Gallery()` and `Image()` several times:
 
 <Sandpack>
 
@@ -98,7 +92,7 @@ export default function Image() {
 export default function Gallery() {
   return (
     <section>
-      <h1>منحوتات ملهمة</h1>
+      <h1>Inspiring Sculptures</h1>
       <Image />
       <Image />
       <Image />
@@ -110,7 +104,7 @@ function Image() {
   return (
     <img
       src="https://i.imgur.com/ZF6s192.jpg"
-      alt="'Floralis Generica' لإدواردو كاتالانو: منحوتة زهرة معدنية عملاقة بتلات عاكسة للضوء"
+      alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
 }
@@ -130,36 +124,36 @@ img { margin: 0 10px 10px 0; }
 
 </Sandpack>
 
-* **أثناء التصيير الأولي** ستقوم React [بإنشاء عناصر DOM](https://developer.mozilla.org/docs/Web/API/Document/createElement) لعلامات `<section>`، `<h1>`، وثلاث علامات `<img>`.
-* **أثناء التصيير اللاحق** سيحسب الخصائص التي تغيرت منذ التصيير السابق، إن وجدت. لن يفعل أي شيء بهذه المعلومات حتى الخطوة التالية، وهي مرحلة التأكيد.
+* **During the initial render,** React will [create the DOM nodes](https://developer.mozilla.org/docs/Web/API/Document/createElement) for `<section>`, `<h1>`, and three `<img>` tags. 
+* **During a re-render,** React will calculate which of their properties, if any, have changed since the previous render. It won't do anything with that information until the next step, the commit phase.
 
 <Pitfall>
 
-دائمًا يجب أن يكون التصيير [محسوبًا بدقة](/learn/keeping-components-pure):
+Rendering must always be a [pure calculation](/learn/keeping-components-pure):
 
-* **إن كان نفس المدخلات يجب أن يحصل على نفس الناتج.** بالنظر إلى نفس الطلبات، يجب أن يعيد المكون نفس JSX دائمًا. (عندما يطلب شخص ما سلطة مع الطماطم، فلا ينبغي أن يتلقى سلطة مع البصل!)
-* **يهتم فقط بما يخصه.** لا ينبغي أن يغير أي كائنات أو متغيرات كانت موجودة قبل التصيير. (لا ينبغي أن يؤثر طلب واحد على طلبات الآخرين.)
+* **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. (When someone orders a salad with tomatoes, they should not receive a salad with onions!)
+* **It minds its own business.** It should not change any objects or variables that existed before rendering. (One order should not change anyone else's order.)
 
-وإلا، يمكنك أن تواجه أخطاءً محيّرة وسلوكًا غير متوقع مع تعقيد بيئة الكود. عند التطوير في "وضع صارم (Srrict Mode)"، ينشئ React كل وظيفة مكون مرتين، مما يساعد على كشف الأخطاء الناتجة عن الوظائف غير النقية.
+Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
 
 </Pitfall>
 
 <DeepDive>
 
-#### تحسين الأداء {/*optimizing-performance*/}
+#### Optimizing performance {/*optimizing-performance*/}
 
-التصرف الافتراضي لتصيير كل المكونات المتفرعة عن المكون الذي تم تحديثة ليس مثاليًا للأداء إذا كان المكون المحدث عاليًا جدًا في شجرة المكونات. إذا واجهتك مشكلة في الأداء، فهناك طرق مختلفة لحلها، مشروحة في قسم [الأداء](https://reactjs.org/docs/optimizing-performance.html). **لا تستعجل محاولة تحسين الأداء!**
+The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. If you run into a performance issue, there are several opt-in ways to solve it described in the [Performance](https://reactjs.org/docs/optimizing-performance.html) section. **Don't optimize prematurely!**
 
 </DeepDive>
 
-## الخطوة الثالثة: يؤكد React التغييرات على DOM {/*step-3-react-commits-changes-to-the-dom*/}
+## Step 3: React commits changes to the DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
-بعد تصيير (استدعاء) للمكونات، سيعدل React الـ DOM.
+After rendering (calling) your components, React will modify the DOM.
 
-* **أثناء التصيير المبدئي** سيستخدمReact [DOM API `appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) لوضع جميع عناصر DOM التي أنشأها على الشاشة.
-* **أثناء إعادة التصيير** سينفذ React العمليات اللازمة (التي تم حسابها أثناء التصيير!) لجعل DOM يتطابق مع أحدث نتيجة تصيير.
+* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
+* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 
-**يغيّر React عناصر DOM فقط إذا كان هناك فرق بين التصييرين.** على سبيل المثال، هناك مكون يقوم بإعادة التصيير مع اختلاف الخصائص المُمَرَّرة من المكون الأصلي كل ثانية. لاحظ كيف يمكنك إضافة بعض النص إلى `<input>`، وتحديث `value`، ولكن النص لا يختفي عند إعادة تصيير المكون:
+**React only changes the DOM nodes if there's a difference between renders.** For example, here is a component that re-renders with different props passed from its parent every second. Notice how you can add some text into the `<input>`, updating its `value`, but the text doesn't disappear when the component re-renders:
 
 <Sandpack>
 
@@ -199,22 +193,21 @@ export default function App() {
 
 </Sandpack>
 
-هذا يعمل لأنه أثناء هذه الخطوة الأخيرة، يحدّث React محتوى `<h1>` بالوقت الجديد. يرى React أن `<input>` يظهر في JSX في نفس المكان كالمرة السابقة، لذلك لا يلمس React الـ `<input>` - أو `value`!
+This works because during this last step, React only updates the content of `<h1>` with the new `time`. It sees that the `<input>` appears in the JSX in the same place as last time, so React doesn't touch the `<input>`—or its `value`!
+## Epilogue: Browser paint {/*epilogue-browser-paint*/}
 
-## الخاتمة: رسم المتصفح {/*epilogue-browser-paint*/}
+After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as "browser rendering", we'll refer to it as "painting" to avoid confusion throughout the docs.
 
-بعد الانتهاء من التصيير وتحديث React لـ DOM، سيعيد المتصفح رسم الشاشة. على الرغم من أن هذه العملية معروفة باسم "تصيير المتصفح"، سنشير إليها باسم "رسم" طوال التوثيق لتجنب الخلط.
-
-<Illustration alt="رسم المتصفح: لا يزال حيًَا مع عنصر البطاقة'." src="/images/docs/illustrations/i_browser-paint.png" />
+<Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
 
 <Recap>
 
-* **يحدث أي تحديث على الشاشة في تطبيق React في ثلاث خطوات:**
-  1. **التنشيط**
-  2. **التصيير**
-  3. **التأكيد**
-* يمكنك استخدام **الوضع الصارم** للعثور على الأخطاء في مكوناتك
-* لا يلمس React الـ DOM إذا كانت نتيجة التصيير هي نفسها كالمرة السابقة
+* Any screen update in a React app happens in three steps:
+  1. Trigger
+  2. Render
+  3. Commit
+* You can use Strict Mode to find mistakes in your components
+* React does not touch the DOM if the rendering result is the same as last time
 
 </Recap>
 
