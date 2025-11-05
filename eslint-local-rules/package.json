@@ -6,6 +6,12 @@
   "scripts": {
     "test": "node __tests__/lint-markdown-code-blocks.test.js"
   },
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/parser": "^7.12.9",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^7.0.0"
+  },
   "devDependencies": {
     "eslint-mdx": "^2"
   }
