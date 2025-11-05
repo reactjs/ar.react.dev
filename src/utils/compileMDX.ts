@@ -98,15 +98,7 @@ export default async function compileMDX(
   const {transform} = require('@babel/core');
   const jsCode = await transform(jsxCode, {
     plugins: ['@babel/plugin-transform-modules-commonjs'],
-    presets: [
-      [
-        '@babel/preset-react',
-        {
-          runtime: 'automatic',
-          development: process.env.NODE_ENV === 'development',
-        },
-      ],
-    ],
+    presets: [['@babel/preset-react']],
   }).code;
 
   // Prepare environment for MDX.
