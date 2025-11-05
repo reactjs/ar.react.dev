@@ -17,7 +17,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
-    reactCompiler: true,
+    reactCompiler: false, // Temporarily disabled due to compatibility issues with Next.js 15.1.0
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {
