@@ -23,7 +23,13 @@ function InlineCode({
   return (
     <code
       // dir="ltr" // This is needed to prevent the code from inheriting the RTL direction of <html> in case of RTL languages to avoid like `()console.log` to be rendered as `console.log()`
-      dir={typeof props.children !== "string" ? "ltr" : ["[", "]"].includes(props.children) ? "rtl" : "ltr"}
+      dir={
+        typeof props.children !== 'string'
+          ? 'ltr'
+          : ['[', ']'].includes(props.children)
+          ? 'rtl'
+          : 'ltr'
+      }
       className={cn(
         'inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline',
         {

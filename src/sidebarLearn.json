@@ -1,27 +1,27 @@
 {
-  "title": "تعلم React",
+  "title": "Learn React",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "البدأ"
+      "sectionHeader": "GET STARTED"
     },
     {
-      "title": "بداية سريعة",
+      "title": "Quick Start",
       "path": "/learn",
       "routes": [
         {
-          "title": "شرح تطبيقي: لعبة تيك تاك تو",
+          "title": "Tutorial: Tic-Tac-Toe",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "التفكير على طريقة React",
+          "title": "Thinking in React",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "title": "التثبيت",
+      "title": "Installation",
       "path": "/learn/installation",
       "routes": [
         {
@@ -33,7 +33,7 @@
           "path": "/learn/build-a-react-app-from-scratch"
         },
         {
-          "title": "إضافة React إلى مشروع موجود بالفعل",
+          "title": "Add React to an Existing Project",
           "path": "/learn/add-react-to-an-existing-project"
         }
       ]
@@ -43,7 +43,7 @@
       "path": "/learn/setup",
       "routes": [
         {
-          "title": "تجهيز المحرر",
+          "title": "Editor Setup",
           "path": "/learn/editor-setup"
         },
         {
@@ -51,7 +51,7 @@
           "path": "/learn/typescript"
         },
         {
-          "title": "أدوات مطوري React",
+          "title": "React Developer Tools",
           "path": "/learn/react-developer-tools"
         }
       ]
@@ -81,43 +81,43 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "تعلم React"
+      "sectionHeader": "LEARN REACT"
     },
     {
-      "title": "وصف واجهة المستخدم UI",
+      "title": "Describing the UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "مكوّنك الأول",
+          "title": "Your First Component",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "استيراد وتصدير المكونات",
+          "title": "Importing and Exporting Components",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "كتابة ترميز البناء بـ JSX",
+          "title": "Writing Markup with JSX",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JavaScript في JSX باستخدام الأقواس المنحنية",
+          "title": "JavaScript in JSX with Curly Braces",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": " تمرير الخصائص إلى مكوّن",
+          "title": "Passing Props to a Component",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "التصيير الشرطي",
+          "title": "Conditional Rendering",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "تصيير القوائم",
+          "title": "Rendering Lists",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "الحفاظ على نقاء المكونّات",
+          "title": "Keeping Components Pure",
           "path": "/learn/keeping-components-pure"
         },
         {
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "title": "إضافة التفاعلية",
+      "title": "Adding Interactivity",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
@@ -140,7 +140,7 @@
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "التصيير والتأكيد",
+          "title": "Render and Commit",
           "path": "/learn/render-and-commit"
         },
         {
@@ -162,12 +162,12 @@
       ]
     },
     {
-      "title": "إدارة الحالة",
+      "title": "Managing State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "الاستجابة للمدخلات باستخدام الحالة",
+          "title": "Reacting to Input with State",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
