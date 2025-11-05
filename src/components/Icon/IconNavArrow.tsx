@@ -9,11 +9,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {memo} from 'react';
+import React, {memo} from 'react';
 import cn from 'classnames';
 
 export const IconNavArrow = memo<
-  JSX.IntrinsicElements['svg'] & {
+  React.JSX.IntrinsicElements['svg'] & {
     /**
      * The direction the arrow should point.
      * `start` and `end` are relative to the current locale.
@@ -21,7 +21,13 @@ export const IconNavArrow = memo<
      */
     displayDirection: 'start' | 'end' | 'right' | 'left' | 'down';
   }
->(function IconNavArrow({displayDirection = 'start', className}) {
+>(function IconNavArrow({
+  displayDirection = 'start',
+  className,
+}: {
+  displayDirection?: 'start' | 'end' | 'right' | 'left' | 'down';
+  className?: string;
+}) {
   const classes = cn(
     'duration-100 ease-in transition',
     {

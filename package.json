@@ -57,6 +57,7 @@
     "@types/mdx-js__react": "^1.5.2",
     "@types/node": "22.10.7",
     "@types/parse-numeric-range": "^0.0.1",
+    "@types/prop-types": "^15.7.15",
     "@types/react": "19.2.2",
     "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
