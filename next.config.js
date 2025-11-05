@@ -17,10 +17,20 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
-    reactCompiler: false, // Temporarily disabled due to compatibility issues with Next.js 15.1.0
+    // React Compiler disabled due to known issue in Next.js 15.1.0
+    // Issue: Compilation hangs when processing dynamic routes with MDX
+    // Re-enable with Next.js +15.2 and use babel-plugin-react-compiler directly
+    reactCompiler: false,
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {
+    // Improve chunk loading reliability
+    if (!isServer) {
+      config.output = config.output || {};
+      config.output.chunkLoadingGlobal = 'webpackChunkReactDev';
+      config.output.publicPath = '/_next/';
+    }
+
     if (process.env.ANALYZE) {
       const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
       config.plugins.push(
