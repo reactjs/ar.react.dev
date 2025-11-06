@@ -4,6 +4,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
+    "react-hooks",
     "eslint-plugin-react-compiler",
     "local-rules"
   ],
