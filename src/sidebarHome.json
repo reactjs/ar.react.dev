@@ -1,21 +1,21 @@
 {
-  "title": "React Docs",
+  "title": "توثيق React",
   "path": "/",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "البدأ"
     },
     {
-      "title": "Quick Start",
+      "title": "بداية سريعة",
       "path": "/learn"
     },
     {
-      "title": "Installation",
+      "title": "التثبيت",
       "path": "/learn/installation"
     },
     {
-      "title": "Setup",
+      "title": "الإعداد",
       "path": "/learn/setup"
     },
     {
@@ -24,22 +24,22 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "تعلم React"
     },
     {
-      "title": "Describing the UI",
+      "title": "وصف واجهة المستخدم",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "Managing State",
+      "title": "إدارة الحالة",
       "path": "/learn/managing-state"
     },
     {
-      "title": "Escape Hatches",
+      "title": "مخارج الطوارئ",
       "path": "/learn/escape-hatches"
     },
     {
@@ -51,7 +51,7 @@
       "path": "/reference/react"
     },
     {
-      "title": "Components",
+      "title": "المكونات",
       "path": "/reference/react/components"
     },
     {
@@ -67,7 +67,7 @@
       "sectionHeader": "REACT DOM API"
     },
     {
-      "title": "Components",
+      "title": "المكونات",
       "path": "/reference/react-dom/components"
     },
     {
@@ -87,7 +87,7 @@
       "sectionHeader": "REACT COMPILER API"
     },
     {
-      "title": "Configuration",
+      "title": "الإعدادات",
       "path": "/reference/react-compiler/configuration"
     },
     {
@@ -95,23 +95,23 @@
       "path": "/reference/react-compiler/directives"
     },
     {
-      "title": "Compiling Libraries",
+      "title": "تصريف المكتبات",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "شارك معنا"
     },
     {
-      "title": "React Community",
+      "title": "مجتمع React",
       "path": "/community"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "ابقَ على اطلاع"
     },
     {
-      "title": "React Blog",
+      "title": "مدونة React",
       "path": "/blog"
     }
   ]

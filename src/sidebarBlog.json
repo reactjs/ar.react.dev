@@ -1,13 +1,13 @@
 {
-  "title": "Blog",
+  "title": "المدونة",
   "path": "/blog",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "ابقَ على اطلاع"
     },
     {
-      "title": "Blog",
+      "title": "المدونة",
       "path": "/blog",
       "skipBreadcrumb": true,
       "routes": [
