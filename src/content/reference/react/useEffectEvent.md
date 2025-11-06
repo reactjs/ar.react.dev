@@ -1,10 +1,11 @@
+````markdown
 ---
 title: useEffectEvent
 ---
 
 <Intro>
 
-`useEffectEvent` is a React Hook that lets you extract non-reactive logic from your Effects into a reusable function called an [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event).
+`useEffectEvent` هو React Hook يتيح لك استخراج منطق غير تفاعلي من Effects الخاصة بك إلى دالة قابلة لإعادة الاستخدام تسمى [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event).
 
 ```js
 const onSomething = useEffectEvent(callback)
@@ -14,11 +15,11 @@ const onSomething = useEffectEvent(callback)
 
 <InlineToc />
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useEffectEvent(callback)` {/*useeffectevent*/}
 
-Call `useEffectEvent` at the top level of your component to declare an Effect Event. Effect Events are functions you can call inside Effects, such as `useEffect`:
+استدعِ `useEffectEvent` في المستوى الأعلى من مكونك للإعلان عن Effect Event. Effect Events هي دوال يمكنك استدعاؤها داخل Effects، مثل `useEffect`:
 
 ```js {4-6,11}
 import { useEffectEvent, useEffect } from 'react';
@@ -41,33 +42,33 @@ function ChatRoom({ roomId, theme }) {
 }
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-- `callback`: A function containing the logic for your Effect Event. When you define an Effect Event with `useEffectEvent`, the `callback` always accesses the latest values from props and state when it is invoked. This helps avoid issues with stale closures.
+- `callback`: دالة تحتوي على المنطق الخاص بـ Effect Event الخاص بك. عند تعريف Effect Event باستخدام `useEffectEvent`، يصل `callback` دائمًا إلى أحدث القيم من props و state عند استدعائه. يساعد هذا في تجنب المشاكل مع الإغلاقات القديمة.
 
-#### Returns {/*returns*/}
+#### القيم المرجعة {/*returns*/}
 
-Returns an Effect Event function. You can call this function inside `useEffect`, `useLayoutEffect`, or `useInsertionEffect`.
+تُرجع دالة Effect Event. يمكنك استدعاء هذه الدالة داخل `useEffect` أو `useLayoutEffect` أو `useInsertionEffect`.
 
-#### Caveats {/*caveats*/}
+#### تنبيهات {/*caveats*/}
 
-- **Only call inside Effects:** Effect Events should only be called within Effects. Define them just before the Effect that uses them. Do not pass them to other components or hooks. The [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter (version 6.1.1 or higher) will enforce this restriction to prevent calling Effect Events in the wrong context.
-- **Not a dependency shortcut:** Do not use `useEffectEvent` to avoid specifying dependencies in your Effect's dependency array. This can hide bugs and make your code harder to understand. Prefer explicit dependencies or use refs to compare previous values if needed.
-- **Use for non-reactive logic:** Only use `useEffectEvent` to extract logic that does not depend on changing values.
+- **استدعِ فقط داخل Effects:** يجب استدعاء Effect Events فقط داخل Effects. عرّفها قبل Effect الذي يستخدمها مباشرة. لا تمررها إلى مكونات أو hooks أخرى. سيفرض linter [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) (الإصدار 6.1.1 أو أعلى) هذا القيد لمنع استدعاء Effect Events في السياق الخاطئ.
+- **ليست اختصارًا للتبعيات:** لا تستخدم `useEffectEvent` لتجنب تحديد التبعيات في مصفوفة تبعيات Effect الخاص بك. يمكن أن يخفي هذا الأخطاء ويجعل كودك أصعب في الفهم. فضّل التبعيات الصريحة أو استخدم refs لمقارنة القيم السابقة إذا لزم الأمر.
+- **استخدم للمنطق غير التفاعلي:** استخدم `useEffectEvent` فقط لاستخراج منطق لا يعتمد على القيم المتغيرة.
 
 ___
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Reading the latest props and state {/*reading-the-latest-props-and-state*/}
+### قراءة أحدث props و state {/*reading-the-latest-props-and-state*/}
 
-Typically, when you access a reactive value inside an Effect, you must include it in the dependency array. This makes sure your Effect runs again whenever that value changes, which is usually the desired behavior.
+عادةً، عندما تصل إلى قيمة تفاعلية داخل Effect، يجب تضمينها في مصفوفة التبعيات. يضمن هذا تشغيل Effect الخاص بك مرة أخرى كلما تغيرت تلك القيمة، وهو السلوك المطلوب عادةً.
 
-But in some cases, you may want to read the most recent props or state inside an Effect without causing the Effect to re-run when those values change.
+ولكن في بعض الحالات، قد ترغب في قراءة أحدث props أو state داخل Effect دون التسبب في إعادة تشغيل Effect عند تغيير تلك القيم.
 
-To [read the latest props or state](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events) in your Effect, without making those values reactive, include them in an Effect Event.
+[لقراءة أحدث props أو state](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events) في Effect الخاص بك، دون جعل تلك القيم تفاعلية، قم بتضمينها في Effect Event.
 
 ```js {7-9,12}
 import { useEffect, useContext, useEffectEvent } from 'react';
@@ -88,7 +89,9 @@ function Page({ url }) {
 }
 ```
 
-In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
+في هذا المثال، يجب إعادة تشغيل Effect بعد render عندما يتغير `url` (لتسجيل زيارة الصفحة الجديدة)، ولكن يجب **ألا** يُعاد تشغيله عندما يتغير `numberOfItems`. من خلال تغليف منطق التسجيل في Effect Event، يصبح `numberOfItems` غير تفاعلي. يتم قراءته دائمًا من أحدث قيمة دون تشغيل Effect.
 
-You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
+يمكنك تمرير القيم التفاعلية مثل `url` كوسائط إلى Effect Event للحفاظ على تفاعليتها مع الوصول إلى أحدث القيم غير التفاعلية داخل الحدث.
 
+
+````

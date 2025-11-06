@@ -1,16 +1,17 @@
+````markdown
 ---
 title: panicThreshold
 ---
 
 <Intro>
 
-The `panicThreshold` option controls how the React Compiler handles errors during compilation.
+يتحكم خيار `panicThreshold` في كيفية تعامل React Compiler مع الأخطاء أثناء التجميع.
 
 </Intro>
 
 ```js
 {
-  panicThreshold: 'none' // Recommended
+  panicThreshold: 'none' // موصى به
 }
 ```
 
@@ -18,42 +19,42 @@ The `panicThreshold` option controls how the React Compiler handles errors durin
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `panicThreshold` {/*panicthreshold*/}
 
-Determines whether compilation errors should fail the build or skip optimization.
+يحدد ما إذا كان يجب أن تفشل أخطاء التجميع في البناء أو تخطي التحسين.
 
-#### Type {/*type*/}
+#### النوع {/*type*/}
 
 ```
 'none' | 'critical_errors' | 'all_errors'
 ```
 
-#### Default value {/*default-value*/}
+#### القيمة الافتراضية {/*default-value*/}
 
 `'none'`
 
-#### Options {/*options*/}
+#### الخيارات {/*options*/}
 
-- **`'none'`** (default, recommended): Skip components that can't be compiled and continue building
-- **`'critical_errors'`**: Fail the build only on critical compiler errors
-- **`'all_errors'`**: Fail the build on any compiler diagnostic
+- **`'none'`** (افتراضي، موصى به): تخطي المكونات التي لا يمكن تجميعها ومتابعة البناء
+- **`'critical_errors'`**: فشل البناء فقط عند أخطاء المُجمّع الحرجة
+- **`'all_errors'`**: فشل البناء عند أي تشخيص للمُجمّع
 
-#### Caveats {/*caveats*/}
+#### تنبيهات {/*caveats*/}
 
-- Production builds should always use `'none'`
-- Build failures prevent your application from building
-- The compiler automatically detects and skips problematic code with `'none'`
-- Higher thresholds are only useful during development for debugging
+- يجب أن تستخدم بيئات الإنتاج دائمًا `'none'`
+- فشل البناء يمنع تطبيقك من البناء
+- يكتشف المُجمّع تلقائيًا ويتخطى الكود الإشكالي مع `'none'`
+- العتبات الأعلى مفيدة فقط أثناء التطوير لتصحيح الأخطاء
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Production configuration (recommended) {/*production-configuration*/}
+### إعداد الإنتاج (موصى به) {/*production-configuration*/}
 
-For production builds, always use `'none'`. This is the default value:
+لبيئات الإنتاج، استخدم دائمًا `'none'`. هذه هي القيمة الافتراضية:
 
 ```js
 {
@@ -61,15 +62,15 @@ For production builds, always use `'none'`. This is the default value:
 }
 ```
 
-This ensures:
-- Your build never fails due to compiler issues
-- Components that can't be optimized run normally
-- Maximum components get optimized
-- Stable production deployments
+يضمن هذا:
+- لن يفشل بناؤك أبدًا بسبب مشاكل المُجمّع
+- المكونات التي لا يمكن تحسينها تعمل بشكل طبيعي
+- الحد الأقصى من المكونات يتم تحسينها
+- نشر إنتاج مستقر
 
-### Development debugging {/*development-debugging*/}
+### تصحيح أخطاء التطوير {/*development-debugging*/}
 
-Temporarily use stricter thresholds to find issues:
+استخدم مؤقتًا عتبات أكثر صرامة للعثور على المشاكل:
 
 ```js
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -85,3 +86,4 @@ const isDevelopment = process.env.NODE_ENV === 'development';
   }
 }
 ```
+````
