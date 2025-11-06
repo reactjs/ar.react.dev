@@ -27,19 +27,19 @@
       "sectionHeader": "تعلم React"
     },
     {
-      "title": "وصف واجهة المستخدم",
+      "title": "وصف واجهة المستخدم (UI)",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "إضافة التفاعلية",
+      "title": "إضافة التفاعلية (Interactivity)",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "إدارة الحالة",
+      "title": "إدارة State",
       "path": "/learn/managing-state"
     },
     {
-      "title": "مخارج الطوارئ",
+      "title": "مخارج الطوارئ (Escape Hatches)",
       "path": "/learn/escape-hatches"
     },
     {
@@ -87,7 +87,7 @@
       "sectionHeader": "REACT COMPILER API"
     },
     {
-      "title": "الإعدادات",
+      "title": "الإعدادات (Configuration)",
       "path": "/reference/react-compiler/configuration"
     },
     {
@@ -95,7 +95,7 @@
       "path": "/reference/react-compiler/directives"
     },
     {
-      "title": "تصريف المكتبات",
+      "title": "تصريف المكتبات (Compiling Libraries)",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {

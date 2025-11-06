@@ -191,7 +191,7 @@
       ]
     },
     {
-      "title": "المكونات",
+      "title": "المكونات (Components)",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -353,7 +353,7 @@
       "sectionHeader": "React Compiler"
     },
     {
-      "title": "الإعدادات",
+      "title": "الإعدادات (Configuration)",
       "path": "/reference/react-compiler/configuration",
       "routes": [
         {
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "title": "تصريف المكتبات",
+      "title": "تصريف المكتبات (Compiling Libraries)",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
@@ -486,14 +486,14 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "قواعد React"
+      "sectionHeader": "قواعد React (Rules of React)"
     },
     {
-      "title": "نظرة عامة",
+      "title": "نظرة عامة (Overview)",
       "path": "/reference/rules",
       "routes": [
         {
-          "title": "Components و Hooks يجب أن تكون نقية",
+          "title": "Components و Hooks يجب أن تكون Pure",
           "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {

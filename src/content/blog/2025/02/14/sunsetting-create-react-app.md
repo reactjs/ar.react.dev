@@ -1,113 +1,113 @@
 ---
-title: "Sunsetting Create React App"
+title: "إيقاف Create React App"
 author: Matt Carroll and Ricky Hanlon
 date: 2025/02/14
-description: Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch.
+description: اليوم، نقوم بإيقاف Create React App للتطبيقات الجديدة، ونشجع التطبيقات الحالية على الترحيل إلى إطار عمل، أو الترحيل إلى أداة بناء مثل Vite أو Parcel أو RSBuild. نقدم أيضًا وثائق للحالات التي لا يكون فيها إطار العمل مناسبًا لمشروعك، أو عندما ترغب في بناء إطار عمل خاص بك، أو عندما ترغب فقط في تعلم كيفية عمل React عن طريق بناء تطبيق React من الصفر.
 ---
 
-February 14, 2025 by [Matt Carroll](https://twitter.com/mattcarrollcode) and [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
+14 فبراير 2025 بواسطة [Matt Carroll](https://twitter.com/mattcarrollcode) و [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
 
 ---
 
 <Intro>
 
-Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild. 
+اليوم، نقوم بإيقاف [Create React App](https://create-react-app.dev/) للتطبيقات الجديدة، ونشجع التطبيقات الحالية على الترحيل إلى [إطار عمل](#how-to-migrate-to-a-framework)، أو [الترحيل إلى أداة بناء](#how-to-migrate-to-a-build-tool) مثل Vite أو Parcel أو RSBuild.
 
-We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by [building a React app from scratch](/learn/build-a-react-app-from-scratch).
+نقدم أيضًا وثائق للحالات التي لا يكون فيها إطار العمل مناسبًا لمشروعك، أو عندما ترغب في بناء إطار عمل خاص بك، أو عندما ترغب فقط في تعلم كيفية عمل React عن طريق [بناء تطبيق React من الصفر](/learn/build-a-react-app-from-scratch).
 
 </Intro>
 
 -----
 
-When we released Create React App in 2016, there was no clear way to build a new React app.
+عندما أطلقنا Create React App في عام 2016، لم تكن هناك طريقة واضحة لبناء تطبيق React جديد.
 
-To create a React app, you had to install a bunch of tools and wire them up together yourself to support basic features like JSX, linting, and hot reloading. This was very tricky to do correctly, so the [community](https://github.com/react-boilerplate/react-boilerplate) [created](https://github.com/kriasoft/react-starter-kit) [boilerplates](https://github.com/petehunt/react-boilerplate) for [common](https://github.com/gaearon/react-hot-boilerplate) [setups](https://github.com/erikras/react-redux-universal-hot-example). However, boilerplates were difficult to update and fragmentation made it difficult for React to release new features.
+لإنشاء تطبيق React، كان عليك تثبيت مجموعة من الأدوات وربطها معًا بنفسك لدعم الميزات الأساسية مثل JSX، والتحقق من الأخطاء (linting)، وإعادة التحميل السريع (hot reloading). كان هذا صعبًا جدًا للقيام به بشكل صحيح، لذلك قام [المجتمع](https://github.com/react-boilerplate/react-boilerplate) [بإنشاء](https://github.com/kriasoft/react-starter-kit) [نماذج جاهزة](https://github.com/petehunt/react-boilerplate) [للإعدادات](https://github.com/erikras/react-redux-universal-hot-example) [الشائعة](https://github.com/gaearon/react-hot-boilerplate). ومع ذلك، كانت النماذج الجاهزة صعبة التحديث والتجزئة جعلت من الصعب على React إصدار ميزات جديدة.
 
-Create React App solved these problems by combining several tools into a single recommended configuration. This allowed apps a simple way to upgrade to new tooling features, and allowed the React team to deploy non-trivial tooling changes (Fast Refresh support, React Hooks lint rules) to the broadest possible audience.
+حل Create React App هذه المشاكل من خلال دمج عدة أدوات في تكوين واحد موصى به. سمح هذا للتطبيقات بطريقة بسيطة للترقية إلى ميزات الأدوات الجديدة، وسمح لفريق React بنشر تغييرات كبيرة في الأدوات (دعم Fast Refresh، قواعد التحقق من أخطاء React Hooks) لأوسع جمهور ممكن.
 
-This model became so popular that there's an entire category of tools working this way today.
+أصبح هذا النموذج شائعًا جدًا لدرجة أن هناك فئة كاملة من الأدوات تعمل بهذه الطريقة اليوم.
 
-## Deprecating Create React App {/*deprecating-create-react-app*/}
+## إيقاف Create React App {/*deprecating-create-react-app*/}
 
-Although Create React App makes it easy to get started, [there are several limitations](#limitations-of-build-tools) that make it difficult to build high performant production apps. In principle, we could solve these problems by essentially evolving it into a [framework](#why-we-recommend-frameworks).
+على الرغم من أن Create React App يسهل البدء، إلا أن [هناك العديد من القيود](#limitations-of-build-tools) التي تجعل من الصعب بناء تطبيقات إنتاجية عالية الأداء. من حيث المبدأ، يمكننا حل هذه المشاكل عن طريق تطويره بشكل أساسي إلى [إطار عمل](#why-we-recommend-frameworks).
 
-However, since Create React App currently has no active maintainers, and there are many existing frameworks that solve these problems already, we’ve decided to deprecate Create React App.
+ومع ذلك، نظرًا لأن Create React App ليس لديه حاليًا مشرفون نشطون، وهناك العديد من الأطر الحالية التي تحل هذه المشاكل بالفعل، فقد قررنا إيقاف Create React App.
 
-Starting today, if you install a new app, you will see a deprecation warning:
+بدءًا من اليوم، إذا قمت بتثبيت تطبيق جديد، فسترى تحذيرًا بالإيقاف:
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
 
-create-react-app is deprecated.
+create-react-app تم إيقافه.
 {'\n\n'}
-You can find a list of up-to-date React frameworks on react.dev
-For more info see: react.dev/link/cra
+يمكنك العثور على قائمة بأطر عمل React المحدثة على react.dev
+لمزيد من المعلومات، راجع: react.dev/link/cra
 {'\n\n'}
-This error message will only be shown once per install.
+سيتم عرض رسالة الخطأ هذه مرة واحدة فقط لكل تثبيت.
 
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-We've also added a deprecation notice to the Create React App [website](https://create-react-app.dev/) and GitHub [repo](https://github.com/facebook/create-react-app). Create React App will continue working in maintenance mode, and we've published a new version of Create React App to work with React 19.
+لقد أضفنا أيضًا إشعارًا بالإيقاف إلى [موقع](https://create-react-app.dev/) Create React App ومستودع [GitHub](https://github.com/facebook/create-react-app). سيستمر Create React App في العمل في وضع الصيانة، وقد نشرنا إصدارًا جديدًا من Create React App للعمل مع React 19.
 
-## How to Migrate to a Framework {/*how-to-migrate-to-a-framework*/}
-We recommend [creating new React apps](/learn/creating-a-react-app) with a framework. All the frameworks we recommend support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) and single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and can be deployed to a CDN or static hosting service without a server.
+## كيفية الترحيل إلى إطار عمل {/*how-to-migrate-to-a-framework*/}
+نوصي [بإنشاء تطبيقات React جديدة](/learn/creating-a-react-app) باستخدام إطار عمل. تدعم جميع الأطر التي نوصي بها العرض من جانب العميل ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) وتطبيقات الصفحة الواحدة ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA))، ويمكن نشرها على CDN أو خدمة استضافة ثابتة بدون خادم.
 
-For existing apps, these guides will help you migrate to a client-only SPA:
+بالنسبة للتطبيقات الحالية، ستساعدك هذه الأدلة على الترحيل إلى SPA من جانب العميل فقط:
 
-* [Next.js’ Create React App migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
-* [React Router’s framework adoption guide](https://reactrouter.com/upgrading/component-routes).
-* [Expo webpack to Expo Router migration guide](https://docs.expo.dev/router/migrate/from-expo-webpack/)
+* [دليل ترحيل Next.js من Create React App](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
+* [دليل اعتماد إطار عمل React Router](https://reactrouter.com/upgrading/component-routes).
+* [دليل ترحيل Expo webpack إلى Expo Router](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
-## How to Migrate to a Build Tool {/*how-to-migrate-to-a-build-tool*/}
+## كيفية الترحيل إلى أداة بناء {/*how-to-migrate-to-a-build-tool*/}
 
-If your app has unusual constraints, or you prefer to solve these problems by building your own framework, or you just want to learn how react works from scratch, you can roll your own custom setup with React using Vite, Parcel or Rsbuild.
+إذا كان تطبيقك به قيود غير عادية، أو كنت تفضل حل هذه المشاكل عن طريق بناء إطار عمل خاص بك، أو كنت ترغب فقط في تعلم كيفية عمل React من الصفر، يمكنك إنشاء إعداد مخصص خاص بك مع React باستخدام Vite أو Parcel أو Rsbuild.
 
-For existing apps, these guides will help you migrate to a build tool:
+بالنسبة للتطبيقات الحالية، ستساعدك هذه الأدلة على الترحيل إلى أداة بناء:
 
-* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
-* [Parcel Create React App migration guide](https://parceljs.org/migration/cra/)
-* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
+* [دليل ترحيل Vite من Create React App](https://www.robinwieruch.de/vite-create-react-app/)
+* [دليل ترحيل Parcel من Create React App](https://parceljs.org/migration/cra/)
+* [دليل ترحيل Rsbuild من Create React App](https://rsbuild.dev/guide/migration/cra)
 
-To help get started with Vite, Parcel or Rsbuild, we've added new docs for [Building a React App from Scratch](/learn/build-a-react-app-from-scratch).
+للمساعدة في البدء مع Vite أو Parcel أو Rsbuild، أضفنا وثائق جديدة لـ [بناء تطبيق React من الصفر](/learn/build-a-react-app-from-scratch).
 
 <DeepDive>
 
-#### Do I need a framework? {/*do-i-need-a-framework*/}
+#### هل أحتاج إلى إطار عمل؟ {/*do-i-need-a-framework*/}
 
-Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework. 
+ستستفيد معظم التطبيقات من إطار عمل، ولكن هناك حالات صالحة لبناء تطبيق React من الصفر. قاعدة جيدة هي أنه إذا كان تطبيقك يحتاج إلى توجيه (routing)، فمن المحتمل أن تستفيد من إطار عمل.
 
-Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, [React recommends using a framework](#why-we-recommend-frameworks) that fully integrates routing into features like data-fetching and code-splitting out of the box. This avoids the pain of needing to write your own complex configurations and essentially build a framework yourself.
+تمامًا كما أن Svelte لديه Sveltekit، و Vue لديه Nuxt، و Solid لديه SolidStart، [توصي React باستخدام إطار عمل](#why-we-recommend-frameworks) يدمج التوجيه بالكامل في ميزات مثل جلب البيانات وتقسيم الكود خارج الصندوق. هذا يتجنب عناء الحاجة إلى كتابة تكوينات معقدة خاصة بك وبناء إطار عمل بنفسك بشكل أساسي.
 
-However, you can always [build a React app from scratch](/learn/build-a-react-app-from-scratch) using a build tool like Vite, Parcel, or Rsbuild.
+ومع ذلك، يمكنك دائمًا [بناء تطبيق React من الصفر](/learn/build-a-react-app-from-scratch) باستخدام أداة بناء مثل Vite أو Parcel أو Rsbuild.
 
 </DeepDive>
 
-Continue reading to learn more about the [limitations of build tools](#limitations-of-build-tools) and [why we recommend frameworks](#why-we-recommend-frameworks).
+تابع القراءة لمعرفة المزيد حول [قيود أدوات البناء](#limitations-of-build-tools) و [لماذا نوصي بأطر العمل](#why-we-recommend-frameworks).
 
-## Limitations of Build Tools {/*limitations-of-build-tools*/}
+## قيود أدوات البناء {/*limitations-of-build-tools*/}
 
-Create React App and build tools like it make it easy to get started building a React app. After running `npx create-react-app my-app`, you get a fully configured React app with a development server, linting, and a production build.
+Create React App وأدوات البناء المشابهة تجعل من السهل البدء في بناء تطبيق React. بعد تشغيل `npx create-react-app my-app`، تحصل على تطبيق React مهيأ بالكامل مع خادم تطوير، وتدقيق، وبناء للإنتاج.
 
-For example, if you're building an internal admin tool, you can start with a landing page:
+على سبيل المثال، إذا كنت تبني أداة إدارة داخلية، يمكنك البدء بصفحة هبوط:
 
 ```js
 export default function App() {
   return (
     <div>
-      <h1>Welcome to the Admin Tool!</h1>
+      <h1>مرحبًا بك في أداة الإدارة!</h1>
     </div>
   )
 }
 ```
 
-This allows you to immediately start coding in React with features like JSX, default linting rules, and a bundler to run in both development and production. However, this setup is missing the tools you need to build a real production app.
+يتيح لك هذا البدء فورًا في البرمجة باستخدام React مع ميزات مثل JSX، وقواعد التدقيق الافتراضية، وحزمة لتشغيلها في كل من التطوير والإنتاج. ومع ذلك، يفتقر هذا الإعداد إلى الأدوات التي تحتاجها لبناء تطبيق إنتاجي حقيقي.
 
-Most production apps need solutions to problems like routing, data fetching, and code splitting.
+تحتاج معظم تطبيقات الإنتاج إلى حلول لمشاكل مثل التوجيه، وجلب البيانات، وتقسيم الكود.
 
-### Routing {/*routing*/}
+### التوجيه {/*routing*/}
 
-Create React App does not include a specific routing solution. If you're just getting started, one option is to use `useState` to switch between routes. But doing this means that you can't share links to your app - every link would go to the same page - and structuring your app becomes difficult over time:
+لا يتضمن Create React App حلاً محددًا للتوجيه. إذا كنت قد بدأت للتو، فإن أحد الخيارات هو استخدام `useState` للتبديل بين المسارات. ولكن القيام بذلك يعني أنه لا يمكنك مشاركة روابط لتطبيقك - كل رابط سيؤدي إلى نفس الصفحة - ويصبح تنظيم تطبيقك صعبًا بمرور الوقت:
 
 ```js
 import {useState} from 'react';
@@ -116,7 +116,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 
 export default function App() {
-  // ❌ Routing in state does not create URLs
+  // ❌ التوجيه في الحالة لا ينشئ عناوين URL
   const [route, setRoute] = useState('home');
   return (
     <div>
@@ -127,7 +127,7 @@ export default function App() {
 }
 ```
 
-This is why most apps that use Create React App solve add routing with a routing library like [React Router](https://reactrouter.com/) or [Tanstack Router](https://tanstack.com/router/latest). With a routing library, you can add additional routes to the app, which provides opinions on the structure of your app, and allows you to start sharing links to routes. For example, with React Router you can define routes:
+لهذا السبب، تضيف معظم التطبيقات التي تستخدم Create React App التوجيه باستخدام مكتبة توجيه مثل [React Router](https://reactrouter.com/) أو [Tanstack Router](https://tanstack.com/router/latest). باستخدام مكتبة التوجيه، يمكنك إضافة مسارات إضافية إلى التطبيق، مما يوفر آراء حول بنية تطبيقك، ويسمح لك ببدء مشاركة الروابط إلى المسارات. على سبيل المثال، مع React Router يمكنك تحديد المسارات:
 
 ```js
 import {RouterProvider, createBrowserRouter} from 'react-router';
@@ -135,7 +135,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Each route has it's own URL
+// ✅ كل مسار له عنوان URL خاص به
 const router = createBrowserRouter([
   {path: '/', element: <Home />},
   {path: '/dashboard', element: <Dashboard />}
@@ -148,21 +148,21 @@ export default function App() {
 }
 ```
 
-With this change, you can share a link to `/dashboard` and the app will navigate to the dashboard page . Once you have a routing library, you can add additional features like nested routes, route guards, and route transitions, which are difficult to implement without a routing library.
+مع هذا التغيير، يمكنك مشاركة رابط إلى `/dashboard` وسينتقل التطبيق إلى صفحة لوحة التحكم. بمجرد أن يكون لديك مكتبة توجيه، يمكنك إضافة ميزات إضافية مثل المسارات المتداخلة، وحراس المسار، وانتقالات المسار، والتي يصعب تنفيذها بدون مكتبة توجيه.
 
-There's a tradeoff being made here: the routing library adds complexity to the app, but it also adds features that are difficult to implement without it.
+هناك مقايضة هنا: تضيف مكتبة التوجيه تعقيدًا إلى التطبيق، لكنها تضيف أيضًا ميزات يصعب تنفيذها بدونها.
 
-### Data Fetching {/*data-fetching*/}
+### جلب البيانات {/*data-fetching*/}
 
-Another common problem in Create React App is data fetching. Create React App does not include a specific data fetching solution. If you're just getting started, a common option is to use `fetch` in an effect to load data.
+مشكلة شائعة أخرى في Create React App هي جلب البيانات. لا يتضمن Create React App حلاً محددًا لجلب البيانات. إذا كنت قد بدأت للتو، فإن الخيار الشائع هو استخدام `fetch` في تأثير لتحميل البيانات.
 
-But doing this means that the data is fetched after the component renders, which can cause network waterfalls. Network waterfalls are caused by fetching data when your app renders instead of in parallel while the code is downloading:
+ولكن القيام بذلك يعني أن البيانات يتم جلبها بعد عرض المكون، مما قد يسبب شلالات الشبكة. تحدث شلالات الشبكة بسبب جلب البيانات عند عرض تطبيقك بدلاً من جلبها بالتوازي أثناء تنزيل الكود:
 
 ```js
 export default function Dashboard() {
   const [data, setData] = useState(null);
 
-  // ❌ Fetching data in a component causes network waterfalls
+  // ❌ جلب البيانات في مكون يسبب شلالات الشبكة
   useEffect(() => {
     fetch('/api/data')
       .then(response => response.json())
@@ -177,9 +177,9 @@ export default function Dashboard() {
 }
 ```
 
-Fetching in an effect means the user has to wait longer to see the content, even though the data could have been fetched earlier. To solve this, you can use a data fetching library like [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react), or [Relay](https://relay.dev/) which provide options to prefetch data so the request is started before the component renders.
+يعني الجلب في تأثير أن المستخدم يجب أن ينتظر وقتًا أطول لرؤية المحتوى، على الرغم من أنه كان من الممكن جلب البيانات في وقت سابق. لحل هذه المشكلة، يمكنك استخدام مكتبة جلب بيانات مثل [React Query](https://react-query.tanstack.com/)، [SWR](https://swr.vercel.app/)، [Apollo](https://www.apollographql.com/docs/react)، أو [Relay](https://relay.dev/) التي توفر خيارات لجلب البيانات مسبقًا بحيث يبدأ الطلب قبل عرض المكون.
 
-These libraries work best when integrated with your routing "loader" pattern to specify data dependencies at the route level, which allows the router to optimize your data fetches:
+تعمل هذه المكتبات بشكل أفضل عند دمجها مع نمط "المحمل" الخاص بالتوجيه لتحديد تبعيات البيانات على مستوى المسار، مما يسمح للموجه بتحسين عمليات جلب البيانات الخاصة بك:
 
 ```js
 export async function loader() {
@@ -188,7 +188,7 @@ export async function loader() {
   return data;
 }
 
-// ✅ Fetching data in parallel while the code is downloading
+// ✅ جلب البيانات بالتوازي أثناء تنزيل الكود
 export default function Dashboard({loaderData}) {
   return (
     <div>
@@ -198,21 +198,21 @@ export default function Dashboard({loaderData}) {
 }
 ```
 
-On initial load, the router can fetch the data immediately before the route is rendered. As the user navigates around the app, the router is able to fetch both the data and the route at the same time, parallelizing the fetches. This reduces the time it takes to see the content on the screen, and can improve the user experience.
+عند التحميل الأولي، يمكن للموجه جلب البيانات على الفور قبل عرض المسار. أثناء تنقل المستخدم في التطبيق، يكون الموجه قادرًا على جلب كل من البيانات والمسار في نفس الوقت، مما يوازي عمليات الجلب. هذا يقلل من الوقت الذي يستغرقه رؤية المحتوى على الشاشة، ويمكن أن يحسن تجربة المستخدم.
 
-However, this requires correctly configuring the loaders in your app and trades off complexity for performance.
+ومع ذلك، يتطلب هذا تكوين المحملات بشكل صحيح في تطبيقك ويقايض التعقيد بالأداء.
 
-### Code Splitting {/*code-splitting*/}
+### تقسيم الكود {/*code-splitting*/}
 
-Another common problem in Create React App is [code splitting](https://www.patterns.dev/vanilla/bundle-splitting). Create React App does not include a specific code splitting solution. If you're just getting started, you might not consider code splitting at all.
+مشكلة شائعة أخرى في Create React App هي [تقسيم الكود](https://www.patterns.dev/vanilla/bundle-splitting). لا يتضمن Create React App حلاً محددًا لتقسيم الكود. إذا كنت قد بدأت للتو، فقد لا تفكر في تقسيم الكود على الإطلاق.
 
-This means your app is shipped as a single bundle:
+هذا يعني أن تطبيقك يتم شحنه كحزمة واحدة:
 
 ```txt
 - bundle.js    75kb
 ```
 
-But for ideal performance, you should "split" your code into separate bundles so the user only needs to download what they need. This decreases the time the user needs to wait to load your app, by only downloading the code they need to see the page they are on.
+ولكن للحصول على أداء مثالي، يجب عليك "تقسيم" الكود الخاص بك إلى حزم منفصلة بحيث يحتاج المستخدم فقط إلى تنزيل ما يحتاجه. هذا يقلل من الوقت الذي يحتاجه المستخدم للانتظار لتحميل تطبيقك، عن طريق تنزيل الكود الذي يحتاجه فقط لرؤية الصفحة التي يتصفحها.
 
 ```txt
 - core.js      25kb
@@ -220,101 +220,101 @@ But for ideal performance, you should "split" your code into separate bundles so
 - dashboard.js 25kb
 ```
 
-One way to do code-splitting is with `React.lazy`. However, this means that the code is not fetched until the component renders, which can cause network waterfalls. A more optimal solution is to use a router feature that fetches the code in parallel while the code is downloading. For example, React Router provides a `lazy` option to specify that a route should be code split and optimize when it is loaded:
+إحدى طرق تقسيم الكود هي باستخدام `React.lazy`. ومع ذلك، هذا يعني أن الكود لا يتم جلبه حتى يتم عرض المكون، مما قد يسبب شلالات الشبكة. الحل الأمثل هو استخدام ميزة الموجه التي تجلب الكود بالتوازي أثناء تنزيل الكود. على سبيل المثال، يوفر React Router خيار `lazy` لتحديد أنه يجب تقسيم الكود للمسار وتحسين وقت تحميله:
 
 ```js
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Routes are downloaded before rendering
+// ✅ يتم تنزيل المسارات قبل العرض
 const router = createBrowserRouter([
   {path: '/', lazy: () => import('./Home')},
   {path: '/dashboard', lazy: () => import('Dashboard')}
 ]);
 ```
 
-Optimized code-splitting is tricky to get right, and it's easy to make mistakes that can cause the user to download more code than they need. It works best when integrated with your router and data loading solutions to maximize caching, parallelize fetches, and support ["import on interaction"](https://www.patterns.dev/vanilla/import-on-interaction) patterns.
+من الصعب الحصول على تقسيم الكود المحسن بشكل صحيح، ومن السهل ارتكاب أخطاء يمكن أن تتسبب في تنزيل المستخدم لمزيد من الكود مما يحتاجه. يعمل بشكل أفضل عند دمجه مع حلول التوجيه وتحميل البيانات الخاصة بك لزيادة التخزين المؤقت، وموازاة عمليات الجلب، ودعم أنماط ["الاستيراد عند التفاعل"](https://www.patterns.dev/vanilla/import-on-interaction).
 
-### And more... {/*and-more*/}
+### والمزيد... {/*and-more*/}
 
-These are just a few examples of the limitations of Create React App.
+هذه مجرد أمثلة قليلة على قيود Create React App.
 
-Once you've integrated routing, data-fetching, and code splitting, you now also need to consider pending states, navigation interruptions, error messages to the user, and revalidation of the data. There are entire categories of problems that users need to solve like:
+بمجرد دمج التوجيه وجلب البيانات وتقسيم الكود، تحتاج الآن أيضًا إلى التفكير في الحالات المعلقة، وانقطاعات التنقل، ورسائل الخطأ للمستخدم، وإعادة التحقق من صحة البيانات. هناك فئات كاملة من المشاكل التي يحتاج المستخدمون إلى حلها مثل:
 
 <div style={{display: 'flex', width: '100%', justifyContent: 'space-around'}}>
   <ul>
-    <li>Accessibility</li>
-    <li>Asset loading</li>
-    <li>Authentication</li>
-    <li>Caching</li>
+    <li>إمكانية الوصول</li>
+    <li>تحميل الأصول</li>
+    <li>المصادقة</li>
+    <li>التخزين المؤقت</li>
   </ul>
   <ul>
-    <li>Error handling</li>
-    <li>Mutating data</li>
-    <li>Navigations</li>
-    <li>Optimistic updates</li>
+    <li>معالجة الأخطاء</li>
+    <li>تعديل البيانات</li>
+    <li>التنقلات</li>
+    <li>التحديثات المتفائلة</li>
   </ul>
   <ul>
-    <li>Progressive enhancement</li>
-    <li>Server-side rendering</li>
-    <li>Static site generation</li>
-    <li>Streaming</li>
+    <li>التحسين التدريجي</li>
+    <li>العرض من جانب الخادم</li>
+    <li>إنشاء موقع ثابت</li>
+    <li>البث</li>
   </ul>
 </div>
 
-All of these work together to create the most optimal [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+كل هذه تعمل معًا لإنشاء [تسلسل التحميل](https://www.patterns.dev/vanilla/loading-sequence) الأمثل.
 
-Solving each of these problems individually in Create React App can be difficult as each problem is interconnected with the others and can require deep expertise in problem areas users may not be familiar with. In order to solve these problems, users end up building their own bespoke solutions on top of Create React App, which was the problem Create React App originally tried to solve.
+قد يكون حل كل من هذه المشاكل بشكل فردي في Create React App صعبًا لأن كل مشكلة مترابطة مع الأخرى ويمكن أن تتطلب خبرة عميقة في مجالات المشاكل التي قد لا يكون المستخدمون على دراية بها. من أجل حل هذه المشاكل، ينتهي الأمر بالمستخدمين إلى بناء حلولهم المخصصة فوق Create React App، وهي المشكلة التي حاول Create React App حلها في الأصل.
 
-## Why we Recommend Frameworks {/*why-we-recommend-frameworks*/}
+## لماذا نوصي بأطر العمل {/*why-we-recommend-frameworks*/}
 
-Although you could solve all these pieces yourself in a build tool like Create React App, Vite, or Parcel, it is hard to do well. Just like when Create React App itself integrated several build tools together, you need a tool to integrate all of these features together to provide the best experience to users.
+على الرغم من أنه يمكنك حل كل هذه القطع بنفسك في أداة بناء مثل Create React App أو Vite أو Parcel، إلا أنه من الصعب القيام بذلك بشكل جيد. تمامًا كما هو الحال عندما قام Create React App نفسه بدمج العديد من أدوات البناء معًا، فأنت بحاجة إلى أداة لدمج كل هذه الميزات معًا لتوفير أفضل تجربة للمستخدمين.
 
-This category of tools that integrates build tools, rendering, routing, data fetching, and code splitting are known as "frameworks" -- or if you prefer to call React itself a framework, you might call them "metaframeworks".
+تُعرف هذه الفئة من الأدوات التي تدمج أدوات البناء والعرض والتوجيه وجلب البيانات وتقسيم الكود باسم "أطر العمل" - أو إذا كنت تفضل تسمية React نفسها إطار عمل، فيمكنك تسميتها "أطر عمل فوقية".
 
-Frameworks impose some opinions about structuring your app in order to provide a much better user experience, in the same way build tools impose some opinions to make tooling easier. This is why we started recommending frameworks like [Next.js](https://nextjs.org/), [React Router](https://reactrouter.com/), and [Expo](https://expo.dev/) for new projects.
+تفرض أطر العمل بعض الآراء حول تنظيم تطبيقك من أجل توفير تجربة مستخدم أفضل بكثير، بنفس الطريقة التي تفرض بها أدوات البناء بعض الآراء لجعل الأدوات أسهل. هذا هو السبب في أننا بدأنا في التوصية بأطر عمل مثل [Next.js](https://nextjs.org/) و [React Router](https://reactrouter.com/) و [Expo](https://expo.dev/) للمشاريع الجديدة.
 
-Frameworks provide the same getting started experience as Create React App, but also provide solutions to problems users need to solve anyway in real production apps.
+توفر أطر العمل نفس تجربة البدء مثل Create React App، ولكنها توفر أيضًا حلولًا للمشاكل التي يحتاج المستخدمون إلى حلها على أي حال في تطبيقات الإنتاج الحقيقية.
 
 <DeepDive>
 
-#### Server rendering is optional {/*server-rendering-is-optional*/}
+#### العرض من جانب الخادم اختياري {/*server-rendering-is-optional*/}
 
-The frameworks we recommend all provide the option to create a [client-side rendered (CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR) app.
+توفر جميع الأطر التي نوصي بها خيار إنشاء تطبيق [عرض من جانب العميل (CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR).
 
-In some cases, CSR is the right choice for a page, but many times it's not. Even if most of your app is client-side, there are often individual pages that could benefit from server rendering features like [static-site generation (SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) or [server-side rendering (SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR), for example a Terms of Service page, or documentation.
+في بعض الحالات، يكون CSR هو الخيار الصحيح للصفحة، ولكن في كثير من الأحيان لا يكون كذلك. حتى لو كان معظم تطبيقك من جانب العميل، فغالبًا ما تكون هناك صفحات فردية يمكن أن تستفيد من ميزات العرض من جانب الخادم مثل [إنشاء موقع ثابت (SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) أو [العرض من جانب الخادم (SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR)، على سبيل المثال صفحة شروط الخدمة، أو الوثائق.
 
-Server rendering generally sends less JavaScript to the client, and a full HTML document which produces a faster [First Contentful Paint (FCP)](https://web.dev/articles/fcp) by reducing [Total Blocking Time (TBD)](https://web.dev/articles/tbt), which can also lower [Interaction to Next Paint (INP)](https://web.dev/articles/inp). This is why the [Chrome team has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+يُرسل العرض من جانب الخادم عمومًا كمية أقل من JavaScript إلى العميل، ومستند HTML كامل ينتج [أول رسم محتوى (FCP)](https://web.dev/articles/fcp) أسرع عن طريق تقليل [إجمالي وقت الحظر (TBD)](https://web.dev/articles/tbt)، والذي يمكن أن يقلل أيضًا من [التفاعل مع الرسم التالي (INP)](https://web.dev/articles/inp). هذا هو السبب في أن [فريق Chrome شجع](https://web.dev/articles/rendering-on-the-web) المطورين على التفكير في العرض الثابت أو من جانب الخادم على نهج العميل الكامل لتحقيق أفضل أداء ممكن.
 
-There are tradeoffs to using a server, and it is not always the best option for every page. Generating pages on the server incurs additional cost and takes time to generate which can increase [Time to First Byte (TTFB)](https://web.dev/articles/ttfb). The best performing apps are able to pick the right rendering strategy on a per-page basis, based on the tradeoffs of each strategy.
+هناك مقايضات لاستخدام الخادم، وليس دائمًا الخيار الأفضل لكل صفحة. يترتب على إنشاء الصفحات على الخادم تكلفة إضافية ويستغرق وقتًا لإنشائها مما قد يزيد من [الوقت حتى أول بايت (TTFB)](https://web.dev/articles/ttfb). أفضل التطبيقات أداءً هي تلك التي يمكنها اختيار استراتيجية العرض الصحيحة على أساس كل صفحة على حدة، بناءً على مقايضات كل استراتيجية.
 
-Frameworks provide the option to use a server on any page if you want to, but do not force you to use a server. This allows you to pick the right rendering strategy for each page in your app.
+توفر أطر العمل خيار استخدام الخادم على أي صفحة إذا كنت ترغب في ذلك، ولكنها لا تجبرك على استخدام الخادم. يتيح لك هذا اختيار استراتيجية العرض الصحيحة لكل صفحة في تطبيقك.
 
-#### What About Server Components {/*server-components*/}
+#### ماذا عن مكونات الخادم {/*what-about-server-components*/}
 
-The frameworks we recommend also include support for React Server Components.
+تتضمن الأطر التي نوصي بها أيضًا دعمًا لمكونات خادم React.
 
-Server Components help solve these problems by moving routing and data fetching to the server, and allowing code splitting to be done for client components based on the data you render, instead of just the route rendered, and reducing the amount of JavaScript shipped for the best possible [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+تساعد مكونات الخادم في حل هذه المشاكل عن طريق نقل التوجيه وجلب البيانات إلى الخادم، والسماح بتقسيم الكود لمكونات العميل بناءً على البيانات التي تعرضها، بدلاً من مجرد المسار المعروض، وتقليل كمية JavaScript المشحونة للحصول على أفضل [تسلسل تحميل](https://www.patterns.dev/vanilla/loading-sequence) ممكن.
 
-Server Components do not require a server. They can be run at build time on your CI server to create a static-site generated app (SSG) app, at runtime on a web server for a server-side rendered (SSR) app.
+لا تتطلب مكونات الخادم خادمًا. يمكن تشغيلها في وقت البناء على خادم CI الخاص بك لإنشاء تطبيق تم إنشاؤه بشكل ثابت (SSG)، في وقت التشغيل على خادم ويب لتطبيق معروض من جانب الخادم (SSR).
 
-See [Introducing zero-bundle size React Server Components](/blog/2020/12/21/data-fetching-with-react-server-components) and [the docs](/reference/rsc/server-components) for more info.
+راجع [تقديم مكونات خادم React بدون حزمة](/blog/2020/12/21/data-fetching-with-react-server-components) و [الوثائق](/reference/rsc/server-components) لمزيد من المعلومات.
 
 </DeepDive>
 
 <Note>
 
-#### Server Rendering is not just for SEO {/*server-rendering-is-not-just-for-seo*/}
+#### العرض من جانب الخادم ليس فقط لتحسين محركات البحث {/*server-rendering-is-not-just-for-seo*/}
 
-A common misunderstanding is that server rendering is only for [SEO](https://developer.mozilla.org/en-US/docs/Glossary/SEO).
+من المفاهيم الخاطئة الشائعة أن العرض من جانب الخادم مخصص فقط لـ [تحسين محركات البحث (SEO)](https://developer.mozilla.org/en-US/docs/Glossary/SEO).
 
-While server rendering can improve SEO, it also improves performance by reducing the amount of JavaScript the user needs to download and parse before they can see the content on the screen.
+بينما يمكن أن يحسن العرض من جانب الخادم تحسين محركات البحث، فإنه يحسن أيضًا الأداء عن طريق تقليل كمية JavaScript التي يحتاج المستخدم إلى تنزيلها وتحليلها قبل أن يتمكن من رؤية المحتوى على الشاشة.
 
-This is why the Chrome team [has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+هذا هو السبب في أن فريق Chrome [شجع](https://web.dev/articles/rendering-on-the-web) المطورين على التفكير في العرض الثابت أو من جانب الخادم على نهج العميل الكامل لتحقيق أفضل أداء ممكن.
 
 </Note>
 
 ---
 
-_Thank you to [Dan Abramov](https://bsky.app/profile/danabra.mov) for creating Create React App, and [Joe Haddad](https://github.com/Timer), [Ian Schmitz](https://github.com/ianschmitz), [Brody McKee](https://github.com/mrmckeb), and [many others](https://github.com/facebook/create-react-app/graphs/contributors) for maintaining Create React App over the years. Thank you to [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Devon Govett](https://bsky.app/profile/devongovett.bsky.social), [Eli White](https://x.com/Eli_White), [Jack Herrington](https://bsky.app/profile/jherr.dev), [Joe Savona](https://x.com/en_JS), [Lauren Tan](https://bsky.app/profile/no.lol), [Lee Robinson](https://x.com/leeerob), [Mark Erikson](https://bsky.app/profile/acemarke.dev), [Ryan Florence](https://x.com/ryanflorence), [Sophie Alpert](https://bsky.app/profile/sophiebits.com), [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com), and [Theo Browne](https://x.com/theo) for reviewing and providing feedback on this post._
+_شكرًا لـ [Dan Abramov](https://bsky.app/profile/danabra.mov) على إنشاء Create React App، و [Joe Haddad](https://github.com/Timer)، [Ian Schmitz](https://github.com/ianschmitz)، [Brody McKee](https://github.com/mrmckeb)، و [آخرين كثر](https://github.com/facebook/create-react-app/graphs/contributors) على صيانة Create React App على مر السنين. شكرًا لـ [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social)، [Dan Abramov](https://bsky.app/profile/danabra.mov)، [Devon Govett](https://bsky.app/profile/devongovett.bsky.social)، [Eli White](https://x.com/Eli_White)، [Jack Herrington](https://bsky.app/profile/jherr.dev)، [Joe Savona](https://x.com/en_JS)، [Lauren Tan](https://bsky.app/profile/no.lol)، [Lee Robinson](https://x.com/leeerob)، [Mark Erikson](https://bsky.app/profile/acemarke.dev)، [Ryan Florence](https://x.com/ryanflorence)، [Sophie Alpert](https://bsky.app/profile/sophiebits.com)، [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com)، و [Theo Browne](https://x.com/theo) على مراجعة وتقديم ملاحظات على هذا المنشور._
 

@@ -10,7 +10,7 @@ If you want to build a new app or website with React, we recommend starting with
 
 If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
 
-## Full-stack frameworks {/*full-stack-frameworks*/}
+## Full-stack frameworks {/*full-stack-frameworks*/} {/*production-grade-react-frameworks*/}
 
 These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.
 
@@ -59,7 +59,7 @@ If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutor
 Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
 
 
-## Other frameworks {/*other-frameworks*/}
+## Other frameworks {/*other-frameworks*/} {/*bleeding-edge-react-frameworks*/}
 
 There are other up-and-coming frameworks that are working towards our full stack React vision:
 
@@ -100,7 +100,7 @@ Server Components and Suspense are React features rather than Next.js features. 
 
 </DeepDive>
 
-## Start From Scratch {/*start-from-scratch*/}
+## Start From Scratch {/*start-from-scratch*/} {/*can-i-use-react-without-a-framework*/}
 
 If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.
 

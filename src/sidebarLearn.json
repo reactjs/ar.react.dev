@@ -84,16 +84,16 @@
       "sectionHeader": "تعلم React"
     },
     {
-      "title": "وصف واجهة المستخدم UI",
+      "title": "وصف واجهة المستخدم (UI)",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "مكونك الأول",
+          "title": "مكونك الأول (Component)",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "استيراد وتصدير المكونات",
+          "title": "استيراد وتصدير المكونات (Components)",
           "path": "/learn/importing-and-exporting-components"
         },
         {
@@ -105,132 +105,132 @@
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "تمرير الخصائص إلى مكون",
+          "title": "تمرير الخصائص (Props) إلى مكون",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "التصيير الشرطي",
+          "title": "التصيير الشرطي (Conditional Rendering)",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "تصيير القوائم",
+          "title": "تصيير القوائم (Rendering Lists)",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "الحفاظ على نقاء المكونات",
+          "title": "الحفاظ على نقاء المكونات (Pure Components)",
           "path": "/learn/keeping-components-pure"
         },
         {
-          "title": "واجهتك المستخدم كشجرة",
+          "title": "واجهتك المستخدم كشجرة (UI Tree)",
           "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]
     },
     {
-      "title": "إضافة التفاعلية",
+      "title": "إضافة التفاعلية (Interactivity)",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
         {
-          "title": "الاستجابة للأحداث",
+          "title": "الاستجابة للأحداث (Events)",
           "path": "/learn/responding-to-events"
         },
         {
-          "title": "الحالة: ذاكرة المُكَوِّن",
+          "title": "الحالة (State): ذاكرة المُكَوِّن",
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "التصيير والالتزام",
+          "title": "التصيير والالتزام (Render and Commit)",
           "path": "/learn/render-and-commit"
         },
         {
-          "title": "الحالة كلقطة",
+          "title": "الحالة (State) كلقطة",
           "path": "/learn/state-as-a-snapshot"
         },
         {
-          "title": "إضافة سلسلة من تحديثات الحالة إلى قائمة انتظار",
+          "title": "إضافة سلسلة من تحديثات الحالة (State) إلى قائمة انتظار",
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
-          "title": "تحديث الكائنات في الحالة",
+          "title": "تحديث الكائنات (Objects) في الحالة",
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "تحديث المصفوفات في الحالة",
+          "title": "تحديث المصفوفات (Arrays) في الحالة",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
     },
     {
-      "title": "إدارة الحالة",
+      "title": "إدارة State",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "التفاعل مع المُدخلات باستخدام الحالة",
+          "title": "التفاعل مع Input باستخدام State",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "اختيار بنية الحالة",
+          "title": "اختيار بنية State",
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "مشاركة الحالة بين المكونات",
+          "title": "مشاركة State بين Components",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "الحفاظ على الحالة وإعادة ضبطها",
+          "title": "الحفاظ على State وإعادة ضبطها",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "استخراج منطق الحالة إلى مُخفِّض",
+          "title": "استخراج منطق State إلى Reducer",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "تمرير البيانات بشكل عميق باستخدام السياق",
+          "title": "تمرير البيانات بشكل عميق باستخدام Context",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "التوسع باستخدام المُخفِّض والسياق",
+          "title": "التوسع باستخدام Reducer و Context",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
     },
     {
-      "title": "مخارج الطوارئ",
+      "title": "مخارج الطوارئ (Escape Hatches)",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [
         {
-          "title": "الإشارة إلى القيم باستخدام المراجع",
+          "title": "الإشارة إلى القيم باستخدام Refs",
           "path": "/learn/referencing-values-with-refs"
         },
         {
-          "title": "التلاعب بـ DOM باستخدام المراجع",
+          "title": "التلاعب بـ DOM باستخدام Refs",
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "التزامن مع التأثيرات",
+          "title": "التزامن مع Effects",
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "قد لا تحتاج إلى تأثير",
+          "title": "قد لا تحتاج إلى Effect",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "دورة حياة التأثيرات التفاعلية",
+          "title": "دورة حياة Reactive Effects",
           "path": "/learn/lifecycle-of-reactive-effects"
         },
         {
-          "title": "فصل الأحداث عن التأثيرات",
+          "title": "فصل Events عن Effects",
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "إزالة اعتماديات التأثير",
+          "title": "إزالة اعتماديات Effect",
           "path": "/learn/removing-effect-dependencies"
         },
         {
-          "title": "إعادة استخدام المنطق باستخدام خطافات مخصصة",
+          "title": "إعادة استخدام المنطق باستخدام Custom Hooks",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]

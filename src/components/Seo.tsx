@@ -54,8 +54,8 @@ export const Seo = withRouter(
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
     let description = isHomePage
-      ? 'React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript. React is designed to let you seamlessly combine components written by independent people, teams, and organizations.'
-      : 'The library for web and native user interfaces';
+      ? 'React هي مكتبة بناء واجهات الويب والتطبيقات الأصلية. ابنِ واجهات المستخدم من أجزاء فردية تسمى components مكتوبة بلغة JavaScript. React مصممة لتسمح لك بدمج components مكتوبة من قبل أشخاص وفرق ومنظمات مستقلة بسلاسة.'
+      : 'مكتبة بناء واجهات الويب والتطبيقات الأصلية';
     return (
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

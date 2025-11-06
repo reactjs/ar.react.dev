@@ -20,7 +20,7 @@ function Recap({children}: RecapProps) {
   return (
     <section>
       <H2 isPageAnchor id="recap">
-        Recap
+        خلاصة
       </H2>
       {children}
     </section>
