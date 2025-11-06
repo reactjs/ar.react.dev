@@ -86,7 +86,7 @@ React Compiler can also be used to compile libraries. Because React Compiler nee
 
 Because your code is pre-compiled, users of your library will not need to have the compiler enabled in order to benefit from the automatic memoization applied to your library. If your library targets apps not yet on React 19, specify a minimum `target` and add `react-compiler-runtime` as a direct dependency. The runtime package will use the correct implementation of APIs depending on the application's version, and polyfill the missing APIs if necessary.
 
-[You can find more docs on this here.](/reference/react-compiler/target#using-the-compiler-on-libraries)
+[You can find more docs on this here.](/reference/react-compiler/target#targeting-react-17-or-18)
 
 ## Opening up React Compiler Working Group to everyone {/*opening-up-react-compiler-working-group-to-everyone*/}
 
