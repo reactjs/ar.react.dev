@@ -1,78 +1,78 @@
 ---
-title: Creating a React App
+title: إنشاء تطبيق React
 ---
 
 <Intro>
 
-If you want to build a new app or website with React, we recommend starting with a framework.
+إذا كنت تريد بناء تطبيق أو موقع ويب جديد باستخدام React، فإننا نوصي بالبدء بإطار عمل.
 
 </Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+إذا كان تطبيقك يحتوي على قيود لا تخدمها أطر العمل الموجودة بشكل جيد، أو تفضل بناء إطار العمل الخاص بك، أو تريد فقط تعلم أساسيات تطبيق React، يمكنك [بناء تطبيق React من الصفر](/learn/build-a-react-app-from-scratch).
 
-## Full-stack frameworks {/*full-stack-frameworks*/} {/*production-grade-react-frameworks*/}
+## أطر عمل Full-stack {/*full-stack-frameworks*/} {/*production-grade-react-frameworks*/}
 
-These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.
+تدعم أطر العمل الموصى بها هذه جميع الميزات التي تحتاجها لنشر تطبيقك وتوسيع نطاقه في الإنتاج. لقد دمجت أحدث ميزات React وتستفيد من بنية React.
 
 <Note>
 
-#### Full-stack frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+#### أطر عمل Full-stack لا تتطلب خادمًا. {/*react-frameworks-do-not-require-a-server*/}
 
-All the frameworks on this page support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)), single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). These apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.
+جميع أطر العمل في هذه الصفحة تدعم client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR))، وتطبيقات single-page ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA))، و static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). يمكن نشر هذه التطبيقات على [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) أو خدمة استضافة ثابتة بدون خادم. بالإضافة إلى ذلك، تتيح لك أطر العمل هذه إضافة server-side rendering على أساس كل route، عندما يكون ذلك منطقيًا لحالتك الاستخدامية.
 
-This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework's documentation for configuring the rendering strategy.
+يتيح لك هذا البدء بتطبيق client-only، وإذا تغيرت احتياجاتك لاحقًا، يمكنك الاشتراك في استخدام ميزات server على routes فردية دون إعادة كتابة تطبيقك. راجع مستندات إطار العمل الخاص بك لتكوين استراتيجية التصيير.
 
 </Note>
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a React framework that takes full advantage of React's architecture to enable full-stack React apps.**
+**[Next.js's App Router](https://nextjs.org/docs) هو إطار عمل React يستفيد بشكل كامل من بنية React لتمكين تطبيقات React full-stack.**
 
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+يتم صيانة Next.js بواسطة [Vercel](https://vercel.com/). يمكنك [نشر تطبيق Next.js](https://nextjs.org/docs/app/building-your-application/deploying) على أي مزود استضافة يدعم Node.js أو حاويات Docker، أو على خادمك الخاص. يدعم Next.js أيضًا [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) الذي لا يتطلب خادمًا.
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation) is the most popular routing library for React and can be paired with Vite to create a full-stack React framework**. It emphasizes standard Web APIs and has several [ready to deploy templates](https://github.com/remix-run/react-router-templates) for various JavaScript runtimes and platforms.
+**[React Router](https://reactrouter.com/start/framework/installation) هي مكتبة التوجيه الأكثر شيوعًا لـ React ويمكن دمجها مع Vite لإنشاء إطار عمل React full-stack**. إنها تركز على Web APIs القياسية ولديها العديد من [القوالب الجاهزة للنشر](https://github.com/remix-run/react-router-templates) لـ runtimes و platforms مختلفة من JavaScript.
 
-To create a new React Router framework project, run:
+لإنشاء مشروع إطار عمل React Router جديد، قم بتشغيل:
 
 <TerminalBlock>
 npx create-react-router@latest
 </TerminalBlock>
 
-React Router is maintained by [Shopify](https://www.shopify.com).
+يتم صيانة React Router بواسطة [Shopify](https://www.shopify.com).
 
-### Expo (for native apps) {/*expo*/}
+### Expo (للتطبيقات الأصلية) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) هو إطار عمل React يتيح لك إنشاء تطبيقات Android و iOS و web عالمية مع واجهات مستخدم أصلية حقًا.** يوفر SDK لـ [React Native](https://reactnative.dev/) مما يجعل الأجزاء الأصلية أسهل في الاستخدام. لإنشاء مشروع Expo جديد، قم بتشغيل:
 
 <TerminalBlock>
 npx create-expo-app@latest
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+إذا كنت جديدًا على Expo، تحقق من [دليل Expo التعليمي](https://docs.expo.dev/tutorial/introduction/).
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+يتم صيانة Expo بواسطة [Expo (الشركة)](https://expo.dev/about). بناء التطبيقات باستخدام Expo مجاني، ويمكنك تقديمها إلى متاجر Google و Apple بدون قيود. يوفر Expo أيضًا خدمات سحابية مدفوعة اختيارية.
 
 
-## Other frameworks {/*other-frameworks*/} {/*bleeding-edge-react-frameworks*/}
+## أطر عمل أخرى {/*other-frameworks*/} {/*bleeding-edge-react-frameworks*/}
 
-There are other up-and-coming frameworks that are working towards our full stack React vision:
+هناك أطر عمل أخرى ناشئة تعمل نحو رؤيتنا لـ full stack React:
 
-- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
-- [RedwoodJS](https://redwoodjs.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start هو إطار عمل React full-stack مدعوم بـ TanStack Router. يوفر full-document SSR و streaming و server functions و bundling والمزيد باستخدام أدوات مثل Nitro و Vite.
+- [RedwoodJS](https://redwoodjs.com/): Redwood هو إطار عمل React full stack مع العديد من الحزم والتكوينات المثبتة مسبقًا مما يجعل من السهل بناء تطبيقات ويب full-stack.
 
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### ما هي الميزات التي تشكل رؤية فريق React لبنية full-stack؟ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+يطبق bundler في Next.js's App Router بشكل كامل [مواصفات React Server Components](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) الرسمية. يتيح لك هذا مزج مكونات build-time و server-only والمكونات التفاعلية في شجرة React واحدة.
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+على سبيل المثال، يمكنك كتابة مكون React server-only كدالة `async` تقرأ من قاعدة بيانات أو من ملف. ثم يمكنك تمرير البيانات منها إلى مكوناتك التفاعلية:
 
 ```js
 // This component runs *only* on the server (or during the build).
@@ -88,7 +88,7 @@ async function Talks({ confId }) {
 }
 ```
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
+يدمج Next.js's App Router أيضًا [جلب البيانات مع Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). يتيح لك هذا تحديد حالة تحميل (مثل skeleton placeholder) لأجزاء مختلفة من واجهة المستخدم مباشرة في شجرة React:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -96,18 +96,18 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+Server Components و Suspense هي ميزات React وليست ميزات Next.js. ومع ذلك، فإن اعتمادها على مستوى إطار العمل يتطلب دعمًا وعملاً تنفيذيًا غير تافه. في الوقت الحالي، يعتبر Next.js App Router هو التطبيق الأكثر اكتمالاً. يعمل فريق React مع مطوري bundler لجعل هذه الميزات أسهل في التنفيذ في الجيل التالي من أطر العمل.
 
 </DeepDive>
 
-## Start From Scratch {/*start-from-scratch*/} {/*can-i-use-react-without-a-framework*/}
+## ابدأ من الصفر {/*start-from-scratch*/} {/*can-i-use-react-without-a-framework*/}
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.
+إذا كان تطبيقك يحتوي على قيود لا تخدمها أطر العمل الموجودة بشكل جيد، أو تفضل بناء إطار العمل الخاص بك، أو تريد فقط تعلم أساسيات تطبيق React، هناك خيارات أخرى متاحة لبدء مشروع React من الصفر.
 
-Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.  
+البدء من الصفر يمنحك مرونة أكبر، ولكنه يتطلب منك اتخاذ قرارات حول الأدوات التي ستستخدمها للتوجيه وجلب البيانات وأنماط الاستخدام الشائعة الأخرى. إنه يشبه كثيرًا بناء إطار العمل الخاص بك، بدلاً من استخدام إطار عمل موجود بالفعل. [أطر العمل التي نوصي بها](#full-stack-frameworks) لديها حلول مدمجة لهذه المشاكل.
 
-If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a build tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+إذا كنت تريد بناء الحلول الخاصة بك، راجع دليلنا [لبناء تطبيق React من الصفر](/learn/build-a-react-app-from-scratch) للحصول على تعليمات حول كيفية إعداد مشروع React جديد بدءًا من أداة build مثل [Vite](https://vite.dev/) أو [Parcel](https://parceljs.org/) أو [RSbuild](https://rsbuild.dev/).
 
 -----
 
-_If you’re a framework author interested in being included on this page, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
+_إذا كنت مؤلف إطار عمل مهتمًا بإدراجه في هذه الصفحة، [يرجى إعلامنا](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
