@@ -23,7 +23,7 @@ title: "الحالة: ذاكرة المكوّن"
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7]}}
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
@@ -1229,7 +1229,7 @@ img { width: 120px; height: 120px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [6]}}
 export default function Form() {
   let firstName = '';
   let lastName = '';
@@ -1337,7 +1337,7 @@ h1 { margin-top: 10px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [9]}}
 import { useState } from 'react';
 
 export default function FeedbackForm() {
@@ -1452,7 +1452,7 @@ export default function FeedbackForm() {
 
 #### إزالة الحالة الغير ضرورية {/*remove-unnecessary-state*/}
 
-عند النقر على الزر ، يجب أن يطلب هذا المثال اسم المستخدم ومن ثم يعرض تنبيهًا يُحَيِّيه. حاولت استخدام الحالة للحفاظ على الاسم ، ولكن لسبب ما يظهر دائمًا "مرحبًا ، !".
+عندما يتم الضغط على الزر، يجب أن يطلب هذا المثال اسم المستخدم ثم يعرض تنبيهًا لتحيته. لقد حاولت استخدام state (الحالة) للاحتفاظ بالاسم، ولكن لسببٍ ما في المرة الأولى يظهر التنبيه على شكل "مرحبًا، !" ثم في كل مرة بعد ذلك يظهر "مرحبًا، [الاسم]!" مستخدمًا الاسم المُدخل في المرة السابقة.
 
 لإصلاح هذا الكود ، قم بإزالة المتغير الغير ضروري للحالة. (سنناقش لاحقًا [لماذا لم تعمل هذه الطريقة.](/learn/state-as-a-snapshot) )
 

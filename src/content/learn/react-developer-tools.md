@@ -56,28 +56,11 @@ react-devtools
 
 ![أدوات مطوري React المستقلة](/images/docs/react-devtools-standalone.png)
 
-## الهواتف (React Native) {/*mobile-react-native*/}
 
-يمكن استخدام أدوات مطوري React لفحص التطبيقات المبنية بـ [React Native](https://reactnative.dev/).
+## Mobile (React Native) {/*mobile-react-native*/}
 
-أسهل طريقة لاستخدام أدوات مطوري React هي تثبيتها على نطاق عام:
+To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
 
-```bash
-# Yarn
-yarn global add react-devtools
+[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
 
-# Npm
-npm install -g react-devtools
-```
-
-ثم افتح أدوات المطور في موجه الأوامر (Terminal):
-
-```bash
-react-devtools
-```
-
-من المفترض أنه سيتصل بأي تطبيق React Native محلي إن كان يعمل.
-
-> جرب إعادة تحميل التطبيق إن لم تتصل أدوات المطور بعد ثوانٍ.
-
-[تعرّف على المزيد حول تصحيح أخطاء React Native](https://reactnative.dev/docs/debugging).
+> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.

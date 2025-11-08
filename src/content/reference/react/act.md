@@ -70,13 +70,13 @@ function Counter() {
   }
 
   useEffect(() => {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `You clicked ${count} times`;
   }, [count]);
 
   return (
     <div>
-      <p>You clicked {this.state.count} times</p>
-      <button onClick={this.handleClick}>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>
         Click me
       </button>
     </div>
@@ -152,7 +152,7 @@ Don’t forget that dispatching DOM events only works when the DOM container is 
 
 ## Troubleshooting {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
 Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
 

@@ -33,4 +33,4 @@ title: من أين تحصل على المساعدة
 
 ## الأخبار {/*news*/}
 
-لمتابعة آخر الأخبار حول React، [تابع **@reactjs** على Twitter](https://twitter.com/reactjs) وكذلك [مدوّنة React الرسمة](/blog/) على هذا الموقع.
+لمتابعة آخر الأخبار حول React، [تابع **@reactjs** على Twitter](https://twitter.com/reactjs) و [**@react.dev** في Bluesky](https://bsky.app/profile/react.dev) وكذلك [مدوّنة React الرسمة](/blog/) على هذا الموقع.
