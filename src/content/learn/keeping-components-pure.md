@@ -98,7 +98,7 @@ export default function App() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [5]}}
 let guest = 0;
 
 function Cup() {
@@ -180,7 +180,7 @@ function Cup({ guest }) {
 }
 
 export default function TeaGathering() {
-  let cups = [];
+  const cups = [];
   for (let i = 1; i <= 12; i++) {
     cups.push(<Cup key={i} guest={i} />);
   }
@@ -250,7 +250,7 @@ export default function TeaGathering() {
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   if (hours >= 0 && hours <= 6) {
     document.getElementById('time').className = 'night';
   } else {
@@ -312,7 +312,7 @@ body > * {
 
 ```js src/Clock.js active
 export default function Clock({ time }) {
-  let hours = time.getHours();
+  const hours = time.getHours();
   let className;
   if (hours >= 0 && hours <= 6) {
     className = 'night';
@@ -385,7 +385,7 @@ body > * {
 
 <Sandpack>
 
-```js src/Profile.js
+```js {expectedErrors: {'react-compiler': [7]}} src/Profile.js
 import Panel from './Panel.js';
 import { getImageUrl } from './utils.js';
 
@@ -607,18 +607,18 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
   // نحن نكسر قواعدنا الخاصة هنا.
@@ -703,18 +703,18 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
   // نحن نكسر قواعدنا الخاصة هنا.
@@ -775,7 +775,7 @@ li {
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
   // انسخ المصفوفة!
-  let storiesToDisplay = stories.slice();
+  const storiesToDisplay = stories.slice();
 
   // لا يؤثر على المصفوفة الأصلية:
   storiesToDisplay.push({
@@ -795,18 +795,18 @@ export default function StoryTray({ stories }) {
 }
 ```
 
-```js src/App.js hidden
+```js {expectedErrors: {'react-compiler': [16]}} src/App.js hidden
 import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
-let initialStories = [
+const initialStories = [
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
 ];
 
 export default function App() {
-  let [stories, setStories] = useState([...initialStories])
-  let time = useTime();
+  const [stories, setStories] = useState([...initialStories])
+  const time = useTime();
 
   // خدعة: منع الذاكرة من النمو إلى الأبد أثناء قراءة الوثائق.
   // نحن نكسر قواعدنا الخاصة هنا.

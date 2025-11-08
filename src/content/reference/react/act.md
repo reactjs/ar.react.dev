@@ -70,13 +70,13 @@ function Counter() {
   }
 
   useEffect(() => {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `You clicked ${count} times`;
   }, [count]);
 
   return (
     <div>
-      <p>You clicked {this.state.count} times</p>
-      <button onClick={this.handleClick}>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>
         Click me
       </button>
     </div>
@@ -90,7 +90,7 @@ To test the render output of a component, wrap the render inside `act()`:
 
 ```js  {10,12}
 import {act} from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOMClient from 'react-dom/client';
 import Counter from './Counter';
 
 it('can render and update a counter', async () => {
@@ -99,7 +99,7 @@ it('can render and update a counter', async () => {
   
   // ✅ Render the component inside act().
   await act(() => {
-    ReactDOM.createRoot(container).render(<Counter />);
+    ReactDOMClient.createRoot(container).render(<Counter />);
   });
   
   const button = container.querySelector('button');
@@ -119,7 +119,7 @@ To test events, wrap the event dispatch inside `act()`:
 
 ```js {14,16}
 import {act} from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOMClient from 'react-dom/client';
 import Counter from './Counter';
 
 it.only('can render and update a counter', async () => {
@@ -152,7 +152,7 @@ Don’t forget that dispatching DOM events only works when the DOM container is 
 
 ## Troubleshooting {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
 Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
 

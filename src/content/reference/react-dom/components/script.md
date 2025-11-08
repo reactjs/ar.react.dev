@@ -1,13 +1,6 @@
 ---
 script: "<script>"
-canary: true
 ---
-
-<Canary>
-
-React's extensions to `<script>` are currently only available in React's canary and experimental channels. In stable releases of React `<script>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
 
 <Intro>
 
@@ -38,7 +31,7 @@ To add inline or external scripts to your document, render the [built-in browser
 
 #### Props {/*props*/}
 
-`<script>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<script>` supports all [common element props.](/reference/react-dom/components/common#common-props)
 
 It should have *either* `children` or a `src` prop.
 
