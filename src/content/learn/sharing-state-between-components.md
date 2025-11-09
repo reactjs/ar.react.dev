@@ -1,31 +1,31 @@
 ---
-title: Sharing State Between Components
+title: مشاركة الحالة بين المكونات
 ---
 
 <Intro>
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it's one of the most common things you will do writing React code.
+أحيانًا، تريد أن تتغير حالة مكونين معًا دائمًا. للقيام بذلك، أزل الحالة من كليهما، وانقلها إلى أقرب مكون أب مشترك، ثم مررها إليهما عبر props. يُعرف هذا باسم *رفع الحالة لأعلى،* وهو أحد أكثر الأشياء شيوعًا التي ستفعلها عند كتابة كود React.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to share state between components by lifting it up
-- What are controlled and uncontrolled components
+- كيفية مشاركة الحالة بين المكونات من خلال رفعها لأعلى
+- ما هي المكونات المتحكم فيها وغير المتحكم فيها
 
 </YouWillLearn>
 
-## Lifting state up by example {/*lifting-state-up-by-example*/}
+## رفع الحالة لأعلى بالمثال {/*lifting-state-up-by-example*/}
 
-In this example, a parent `Accordion` component renders two separate `Panel`s:
+في هذا المثال، يصيّر مكون `Accordion` الأب مكونين منفصلين من `Panel`:
 
 * `Accordion`
   - `Panel`
   - `Panel`
 
-Each `Panel` component has a boolean `isActive` state that determines whether its content is visible.
+كل مكون `Panel` لديه حالة `isActive` من نوع boolean تحدد ما إذا كان محتواه مرئيًا.
 
-Press the Show button for both panels:
+اضغط على زر Show لكلا اللوحتين:
 
 <Sandpack>
 
@@ -73,59 +73,59 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Notice how pressing one panel's button does not affect the other panel--they are independent.
+لاحظ أن الضغط على زر لوحة واحدة لا يؤثر على اللوحة الأخرى -- فهما مستقلتان.
 
 <DiagramGroup>
 
-<Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
+<Diagram name="sharing_state_child" height={367} width={477} alt="رسم تخطيطي يوضح شجرة من ثلاثة مكونات، أب واحد باسم Accordion واثنان من الأبناء باسم Panel. كلا مكوني Panel يحتويان على isActive بقيمة false.">
 
-Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+في البداية، حالة `isActive` لكل `Panel` هي `false`، لذا يظهران منطويين
 
 </Diagram>
 
-<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
+<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="نفس الرسم التخطيطي السابق، مع تمييز isActive لمكون Panel الأول الطفل مع الإشارة إلى نقرة مع تعيين قيمة isActive إلى true. مكون Panel الثاني لا يزال يحتوي على القيمة false." >
 
-Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+النقر على زر أي `Panel` سيحدّث حالة `isActive` لذلك `Panel` فقط
 
 </Diagram>
 
 </DiagramGroup>
 
-**But now let's say you want to change it so that only one panel is expanded at any given time.** With that design, expanding the second panel should collapse the first one. How would you do that?
+**لكن الآن دعنا نقول أنك تريد تغييره بحيث يتم توسيع لوحة واحدة فقط في أي وقت.** مع هذا التصميم، يجب أن يؤدي توسيع اللوحة الثانية إلى طي اللوحة الأولى. كيف ستفعل ذلك؟
 
-To coordinate these two panels, you need to "lift their state up" to a parent component in three steps:
+لتنسيق هاتين اللوحتين، تحتاج إلى "رفع حالتهما لأعلى" إلى مكون أب في ثلاث خطوات:
 
-1. **Remove** state from the child components.
-2. **Pass** hardcoded data from the common parent.
-3. **Add** state to the common parent and pass it down together with the event handlers.
+1. **أزل** الحالة من المكونات الفرعية.
+2. **مرر** بيانات مكتوبة بشكل ثابت من الأب المشترك.
+3. **أضف** حالة إلى الأب المشترك ومررها مع معالجات الأحداث.
 
-This will allow the `Accordion` component to coordinate both `Panel`s and only expand one at a time.
+سيسمح هذا لمكون `Accordion` بتنسيق كلا `Panel` وتوسيع واحد فقط في كل مرة.
 
-### Step 1: Remove state from the child components {/*step-1-remove-state-from-the-child-components*/}
+### الخطوة 1: إزالة الحالة من المكونات الفرعية {/*step-1-remove-state-from-the-child-components*/}
 
-You will give control of the `Panel`'s `isActive` to its parent component. This means that the parent component will pass `isActive` to `Panel` as a prop instead. Start by **removing this line** from the `Panel` component:
+ستمنح التحكم في `isActive` لـ `Panel` إلى مكونه الأب. هذا يعني أن مكون الأب سيمرر `isActive` إلى `Panel` كـ prop بدلاً من ذلك. ابدأ بـ **إزالة هذا السطر** من مكون `Panel`:
 
 ```js
 const [isActive, setIsActive] = useState(false);
 ```
 
-And instead, add `isActive` to the `Panel`'s list of props:
+وبدلاً من ذلك، أضف `isActive` إلى قائمة props لـ `Panel`:
 
 ```js
 function Panel({ title, children, isActive }) {
 ```
 
-Now the `Panel`'s parent component can *control* `isActive` by [passing it down as a prop.](/learn/passing-props-to-a-component) Conversely, the `Panel` component now has *no control* over the value of `isActive`--it's now up to the parent component!
+الآن يمكن لمكون أب `Panel` *التحكم* في `isActive` من خلال [تمريرها كـ prop.](/learn/passing-props-to-a-component) على العكس، مكون `Panel` الآن *ليس لديه سيطرة* على قيمة `isActive` -- الأمر الآن متروك لمكون الأب!
 
-### Step 2: Pass hardcoded data from the common parent {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
+### الخطوة 2: تمرير بيانات مكتوبة بشكل ثابت من الأب المشترك {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-To lift state up, you must locate the closest common parent component of *both* of the child components that you want to coordinate:
+لرفع الحالة لأعلى، يجب عليك تحديد موقع أقرب مكون أب مشترك لـ *كلا* المكونين الفرعيين اللذين تريد تنسيقهما:
 
-* `Accordion` *(closest common parent)*
+* `Accordion` *(أقرب أب مشترك)*
   - `Panel`
   - `Panel`
 
-In this example, it's the `Accordion` component. Since it's above both panels and can control their props, it will become the "source of truth" for which panel is currently active. Make the `Accordion` component pass a hardcoded value of `isActive` (for example, `true`) to both panels:
+في هذا المثال، إنه مكون `Accordion`. نظرًا لأنه فوق كلا اللوحتين ويمكنه التحكم في props الخاصة بهما، فسيصبح "مصدر الحقيقة" للوحة النشطة حاليًا. اجعل مكون `Accordion` يمرر قيمة مكتوبة بشكل ثابت من `isActive` (على سبيل المثال، `true`) إلى كلا اللوحتين:
 
 <Sandpack>
 
@@ -172,21 +172,21 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Try editing the hardcoded `isActive` values in the `Accordion` component and see the result on the screen.
+حاول تحرير قيم `isActive` المكتوبة بشكل ثابت في مكون `Accordion` وشاهد النتيجة على الشاشة.
 
-### Step 3: Add state to the common parent {/*step-3-add-state-to-the-common-parent*/}
+### الخطوة 3: إضافة حالة إلى الأب المشترك {/*step-3-add-state-to-the-common-parent*/}
 
-Lifting state up often changes the nature of what you're storing as state.
+رفع الحالة لأعلى غالبًا ما يغير طبيعة ما تخزنه كحالة.
 
-In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
+في هذه الحالة، يجب أن تكون لوحة واحدة فقط نشطة في كل مرة. هذا يعني أن مكون الأب المشترك `Accordion` يحتاج إلى تتبع *أي* لوحة هي النشطة. بدلاً من قيمة `boolean`، يمكن أن يستخدم رقمًا كمؤشر للـ `Panel` النشطة لمتغير الحالة:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
 ```
 
-When the `activeIndex` is `0`, the first panel is active, and when it's `1`, it's the second one.
+عندما يكون `activeIndex` هو `0`، تكون اللوحة الأولى نشطة، وعندما يكون `1`، تكون الثانية.
 
-Clicking the "Show" button in either `Panel` needs to change the active index in `Accordion`. A `Panel` can't set the `activeIndex` state directly because it's defined inside the `Accordion`. The `Accordion` component needs to *explicitly allow* the `Panel` component to change its state by [passing an event handler down as a prop](/learn/responding-to-events#passing-event-handlers-as-props):
+النقر على زر "Show" في أي `Panel` يحتاج إلى تغيير المؤشر النشط في `Accordion`. لا يمكن لـ `Panel` تعيين حالة `activeIndex` مباشرة لأنها معرّفة داخل `Accordion`. يحتاج مكون `Accordion` إلى *السماح بشكل صريح* لمكون `Panel` بتغيير حالته من خلال [تمرير معالج حدث كـ prop](/learn/responding-to-events#passing-event-handlers-as-props):
 
 ```js
 <>
@@ -205,7 +205,7 @@ Clicking the "Show" button in either `Panel` needs to change the active index in
 </>
 ```
 
-The `<button>` inside the `Panel` will now use the `onShow` prop as its click event handler:
+الآن سيستخدم `<button>` داخل `Panel` خاصية `onShow` كمعالج حدث النقر الخاص به:
 
 <Sandpack>
 
@@ -266,19 +266,19 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-This completes lifting state up! Moving state into the common parent component allowed you to coordinate the two panels. Using the active index instead of two "is shown" flags ensured that only one panel is active at a given time. And passing down the event handler to the child allowed the child to change the parent's state.
+هذا يكمل رفع الحالة لأعلى! نقل الحالة إلى مكون الأب المشترك سمح لك بتنسيق اللوحتين. استخدام المؤشر النشط بدلاً من علامتين "is shown" ضمن أن لوحة واحدة فقط نشطة في أي وقت معين. وتمرير معالج الحدث إلى الطفل سمح للطفل بتغيير حالة الأب.
 
 <DiagramGroup>
 
-<Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
+<Diagram name="sharing_state_parent" height={385} width={487} alt="رسم تخطيطي يوضح شجرة من ثلاثة مكونات، أب واحد باسم Accordion واثنان من الأبناء باسم Panel. يحتوي Accordion على قيمة activeIndex صفر والتي تتحول إلى قيمة isActive صحيحة ممررة إلى Panel الأول، وقيمة isActive خاطئة ممررة إلى Panel الثاني." >
 
-Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+في البداية، `activeIndex` لـ `Accordion` هو `0`، لذا يتلقى `Panel` الأول `isActive = true`
 
 </Diagram>
 
-<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
+<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="نفس الرسم التخطيطي السابق، مع تمييز قيمة activeIndex لمكون Accordion الأب مع الإشارة إلى نقرة مع تغيير القيمة إلى واحد. التدفق إلى كلا مكوني Panel الطفلين مميز أيضًا، وقيمة isActive الممررة لكل طفل معينة على العكس: false للـ Panel الأول و true للثاني." >
 
-When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+عندما تتغير حالة `activeIndex` لـ `Accordion` إلى `1`، يتلقى `Panel` الثاني `isActive = true` بدلاً من ذلك
 
 </Diagram>
 
@@ -286,48 +286,48 @@ When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receiv
 
 <DeepDive>
 
-#### Controlled and uncontrolled components {/*controlled-and-uncontrolled-components*/}
+#### المكونات المتحكم فيها وغير المتحكم فيها {/*controlled-and-uncontrolled-components*/}
 
-It is common to call a component with some local state "uncontrolled". For example, the original `Panel` component with an `isActive` state variable is uncontrolled because its parent cannot influence whether the panel is active or not.
+من الشائع تسمية مكون بحالة محلية "غير متحكم فيه". على سبيل المثال، مكون `Panel` الأصلي مع متغير حالة `isActive` غير متحكم فيه لأن أبوه لا يمكنه التأثير على ما إذا كانت اللوحة نشطة أم لا.
 
-In contrast, you might say a component is "controlled" when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. The final `Panel` component with the `isActive` prop is controlled by the `Accordion` component.
+في المقابل، قد تقول أن مكونًا "متحكم فيه" عندما تكون المعلومات المهمة فيه مدفوعة بـ props بدلاً من حالته المحلية الخاصة. هذا يتيح لمكون الأب تحديد سلوكه بالكامل. مكون `Panel` النهائي مع خاصية `isActive` متحكم فيه بواسطة مكون `Accordion`.
 
-Uncontrolled components are easier to use within their parents because they require less configuration. But they're less flexible when you want to coordinate them together. Controlled components are maximally flexible, but they require the parent components to fully configure them with props.
+المكونات غير المتحكم فيها أسهل في الاستخدام داخل آبائها لأنها تتطلب تكوينًا أقل. لكنها أقل مرونة عندما تريد تنسيقها معًا. المكونات المتحكم فيها مرنة إلى أقصى حد، لكنها تتطلب من مكونات الأب تكوينها بالكامل بـ props.
 
-In practice, "controlled" and "uncontrolled" aren't strict technical terms--each component usually has some mix of both local state and props. However, this is a useful way to talk about how components are designed and what capabilities they offer.
+في الممارسة العملية، "متحكم فيه" و "غير متحكم فيه" ليست مصطلحات تقنية صارمة -- كل مكون عادة ما يكون لديه مزيج من كل من الحالة المحلية و props. ومع ذلك، هذه طريقة مفيدة للحديث عن كيفية تصميم المكونات والقدرات التي تقدمها.
 
-When writing a component, consider which information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later.
+عند كتابة مكون، ضع في اعتبارك أي معلومات فيه يجب أن تكون متحكم فيها (عبر props)، وأي معلومات يجب أن تكون غير متحكم فيها (عبر state). ولكن يمكنك دائمًا تغيير رأيك وإعادة الهيكلة لاحقًا.
 
 </DeepDive>
 
-## A single source of truth for each state {/*a-single-source-of-truth-for-each-state*/}
+## مصدر حقيقة واحد لكل حالة {/*a-single-source-of-truth-for-each-state*/}
 
-In a React application, many components will have their own state. Some state may "live" close to the leaf components (components at the bottom of the tree) like inputs. Other state may "live" closer to the top of the app. For example, even client-side routing libraries are usually implemented by storing the current route in the React state, and passing it down by props!
+في تطبيق React، سيكون للعديد من المكونات حالتها الخاصة. قد "تعيش" بعض الحالات بالقرب من المكونات الورقية (المكونات في أسفل الشجرة) مثل المدخلات. قد "تعيش" حالات أخرى بالقرب من أعلى التطبيق. على سبيل المثال، حتى مكتبات routing من جانب client عادة ما يتم تنفيذها من خلال تخزين المسار الحالي في حالة React، وتمريره بـ props!
 
-**For each unique piece of state, you will choose the component that "owns" it.** This principle is also known as having a ["single source of truth".](https://en.wikipedia.org/wiki/Single_source_of_truth) It doesn't mean that all state lives in one place--but that for _each_ piece of state, there is a _specific_ component that holds that piece of information. Instead of duplicating shared state between components, *lift it up* to their common shared parent, and *pass it down* to the children that need it.
+**لكل جزء فريد من الحالة، ستختار المكون الذي "يمتلكه".** هذا المبدأ معروف أيضًا باسم وجود ["مصدر حقيقة واحد".](https://en.wikipedia.org/wiki/Single_source_of_truth) لا يعني ذلك أن كل الحالات تعيش في مكان واحد -- ولكن لـ _كل_ جزء من الحالة، هناك مكون _محدد_ يحتوي على تلك القطعة من المعلومات. بدلاً من تكرار الحالة المشتركة بين المكونات، *ارفعها لأعلى* إلى الأب المشترك الخاص بها، و *مررها لأسفل* إلى الأطفال الذين يحتاجون إليها.
 
-Your app will change as you work on it. It is common that you will move state down or back up while you're still figuring out where each piece of the state "lives". This is all part of the process!
+سيتغير تطبيقك أثناء عملك عليه. من الشائع أن تنقل الحالة لأسفل أو للخلف بينما لا تزال تكتشف أين "تعيش" كل قطعة من الحالة. هذا كله جزء من العملية!
 
-To see what this feels like in practice with a few more components, read [Thinking in React.](/learn/thinking-in-react)
+لمعرفة ما يبدو عليه هذا في الممارسة مع المزيد من المكونات، اقرأ [التفكير على طريقة React.](/learn/thinking-in-react)
 
 <Recap>
 
-* When you want to coordinate two components, move their state to their common parent.
-* Then pass the information down through props from their common parent.
-* Finally, pass the event handlers down so that the children can change the parent's state.
-* It's useful to consider components as "controlled" (driven by props) or "uncontrolled" (driven by state).
+* عندما تريد تنسيق مكونين، انقل حالتهما إلى أبيهما المشترك.
+* ثم مرر المعلومات عبر props من أبيهما المشترك.
+* أخيرًا، مرر معالجات الأحداث بحيث يمكن للأطفال تغيير حالة الأب.
+* من المفيد اعتبار المكونات "متحكم فيها" (مدفوعة بـ props) أو "غير متحكم فيها" (مدفوعة بـ state).
 
 </Recap>
 
 <Challenges>
 
-#### Synced inputs {/*synced-inputs*/}
+#### مدخلات متزامنة {/*synced-inputs*/}
 
-These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa. 
+هذان المدخلان مستقلان. اجعلهما متزامنين: تحرير مدخل واحد يجب أن يحدّث المدخل الآخر بنفس النص، والعكس صحيح.
 
 <Hint>
 
-You'll need to lift their state up into the parent component.
+ستحتاج إلى رفع حالتهما لأعلى إلى مكون الأب.
 
 </Hint>
 
@@ -528,7 +528,7 @@ export const foods = [{
 
 <Solution>
 
-Lift the `query` state up into the `FilterableList` component. Call `filterItems(foods, query)` to get the filtered list and pass it down to the `List`. Now changing the query input is reflected in the list:
+ارفع حالة `query` لأعلى إلى مكون `FilterableList`. استدعِ `filterItems(foods, query)` للحصول على القائمة المفلترة ومررها إلى `List`. الآن تغيير مدخل query ينعكس في القائمة:
 
 <Sandpack>
 

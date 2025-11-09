@@ -24,9 +24,9 @@ interface TerminalBlockProps {
 function LevelText({type}: {type: LogLevel}) {
   switch (type) {
     case 'warning':
-      return <span className="text-yellow-50 bg-none me-1">Warning: </span>;
+      return <span className="text-yellow-50 bg-none me-1">تحذير: </span>;
     case 'error':
-      return <span className="text-red-40 me-1">Error: </span>;
+      return <span className="text-red-40 me-1">خطأ: </span>;
     default:
       return null;
   }
@@ -74,7 +74,7 @@ function TerminalBlock({level = 'info', children}: TerminalBlockProps) {
                 setCopied(true);
               }}>
               <IconCopy className="inline-flex me-2 self-center" />{' '}
-              {copied ? 'Copied' : 'Copy'}
+              {copied ? 'تم النسخ' : 'نسخ'}
             </button>
           </div>
         </div>

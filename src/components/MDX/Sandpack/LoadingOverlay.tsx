@@ -39,15 +39,14 @@ export const LoadingOverlay = ({
     return (
       <div className="sp-overlay sp-error">
         <div className="sp-error-message">
-          Unable to establish connection with the sandpack bundler. Make sure
-          you are online or try again later. If the problem persists, please
-          report it via{' '}
+          غير قادر على إنشاء اتصال مع Sandpack bundler. تأكد من اتصالك بالإنترنت
+          أو حاول مرة أخرى لاحقاً. إذا استمرت المشكلة، يرجى الإبلاغ عنها عبر{' '}
           <a
             className="sp-error-message"
             href="mailto:hello@codesandbox.io?subject=Sandpack Timeout Error">
-            email
+            البريد الإلكتروني
           </a>{' '}
-          or submit an issue on{' '}
+          أو قم بإرسال مشكلة على{' '}
           <a
             className="sp-error-message"
             href="https://github.com/codesandbox/sandpack/issues"
@@ -70,7 +69,7 @@ export const LoadingOverlay = ({
         opacity: stillLoading ? 1 : 0,
         transition: `opacity ${FADE_ANIMATION_DURATION}ms ease-out`,
       }}>
-      <div className="sp-cube-wrapper" title="Open in CodeSandbox">
+      <div className="sp-cube-wrapper" title="افتح في CodeSandbox">
         {/* @ts-ignore: the OpenInCodeSandboxButton type from '@codesandbox/sandpack-react/unstyled' is incompatible with JSX in React 19 */}
         <OpenInCodeSandboxButton />
         <div className="sp-cube">

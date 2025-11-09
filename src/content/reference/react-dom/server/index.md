@@ -1,44 +1,49 @@
 ---
-title: Server React DOM APIs
+title: واجبات Server React DOM
 ---
 
 <Intro>
 
-The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+تتيح لك واجهات `react-dom/server` تصيير مكونات React إلى HTML على الخادم. يتم استخدام هذه الواجهات فقط على الخادم في المستوى الأعلى من تطبيقك لإنشاء HTML الأولي. قد يستدعيها [إطار العمل](/learn/start-a-new-react-project#production-grade-react-frameworks) نيابةً عنك. معظم مكوناتك لا تحتاج لاستيرادها أو استخدامها.
 
 </Intro>
 
 ---
 
-## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
+## واجهات Server لـ Node.js Streams {/*server-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
+هذه الطرق متاحة فقط في البيئات التي تدعم [Node.js Streams:](https://nodejs.org/api/stream.html)
 
-* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
-* [`resume`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerender`](/reference/react-dom/static/prerender) to a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
-
-
-<Note>
-
-Node.js also includes these methods for compatibility, but they are not recommended due to worse performance. Use the [dedicated Node.js APIs](#server-apis-for-nodejs-streams) instead.
-
-</Note>
----
-
-## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
-
-These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
-
-* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
-* [`resumeToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) تصيّر شجرة React إلى [Node.js Stream](https://nodejs.org/api/stream.html) قابل للأنابيب.
+* [`renderToStaticNodeStream`](/reference/react-dom/server/renderToStaticNodeStream) تصيّر شجرة React غير تفاعلية إلى [Node.js Readable Stream.](https://nodejs.org/api/stream.html#readable-streams)
 
 ---
 
-## Legacy Server APIs for non-streaming environments {/*legacy-server-apis-for-non-streaming-environments*/}
+## واجهات Server لـ Web Streams {/*server-apis-for-web-streams*/}
 
-These methods can be used in the environments that don't support streams:
+هذه الطرق متاحة فقط في البيئات التي تدعم [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)، والتي تشمل المتصفحات و Deno وبعض بيئات edge الحديثة:
 
-* [`renderToString`](/reference/react-dom/server/renderToString) renders a React tree to a string.
-* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) renders a non-interactive React tree to a string.
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) تصيّر شجرة React إلى [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
-They have limited functionality compared to the streaming APIs.
+---
+
+## واجهات Server للبيئات غير المدعومة للـ streaming {/*server-apis-for-non-streaming-environments*/}
+
+يمكن استخدام هذه الطرق في البيئات التي لا تدعم streams:
+
+* [`renderToString`](/reference/react-dom/server/renderToString) تصيّر شجرة React إلى string.
+* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) تصيّر شجرة React غير تفاعلية إلى string.
+
+لديها وظائف محدودة مقارنة بواجهات streaming.
+
+---
+
+## واجهات Server المُهملة {/*deprecated-server-apis*/}
+
+<Deprecated>
+
+سيتم إزالة هذه الواجهات في إصدار رئيسي مستقبلي من React.
+
+</Deprecated>
+
+* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) تصيّر شجرة React إلى [Node.js Readable stream.](https://nodejs.org/api/stream.html#readable-streams) (مُهملة.)

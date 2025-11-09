@@ -74,7 +74,7 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
         {exit: isSubmitted}
       )}>
       <p className="w-full text-lg font-bold text-primary dark:text-primary-dark me-4">
-        {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
+        {isSubmitted ? 'شكراً لك على ملاحظاتك!' : 'هل هذه الصفحة مفيدة؟'}
       </p>
       {!isSubmitted && (
         <button

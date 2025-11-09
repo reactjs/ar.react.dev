@@ -9,11 +9,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {memo} from 'react';
+import React, {memo} from 'react';
 import cn from 'classnames';
 
-export const IconSolution = memo<JSX.IntrinsicElements['svg']>(
-  function IconSolution({className}) {
+export const IconSolution = memo<React.JSX.IntrinsicElements['svg']>(
+  function IconSolution({className}: {className?: string}) {
     return (
       <svg
         className={cn('inline', className)}

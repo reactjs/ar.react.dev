@@ -17,7 +17,15 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
-    reactCompiler: true,
+    // React Compiler disabled: babel-plugin-react-compiler@1.0.0 is incompatible with this codebase
+    // Tested approaches that failed:
+    //   1. Next.js experimental.reactCompiler: true - compilation hangs indefinitely
+    //   2. Direct Babel config with babel-plugin-react-compiler - compilation hangs
+    //   3. Annotation mode (opt-in only) - compilation hangs
+    //   4. File exclusions for MDX utilities - compilation hangs
+    // Root cause: babel-plugin-react-compiler@1.0.0 cannot process the MDX compilation pipeline
+    // Wait for babel-plugin-react-compiler@1.1.0+ or Next.js 16 with improved compiler support
+    reactCompiler: false,
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {

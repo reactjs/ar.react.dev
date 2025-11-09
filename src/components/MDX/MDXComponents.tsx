@@ -132,7 +132,7 @@ const CanaryBadge = ({title}: {title: string}) => (
       size="s"
       className={'inline me-1 mb-0.5 text-sm text-gray-60 dark:text-gray-10'}
     />
-    Canary only
+    Canary فقط
   </span>
 );
 
@@ -146,7 +146,7 @@ const ExperimentalBadge = ({title}: {title: string}) => (
       size="s"
       className={'inline me-1 mb-0.5 text-sm text-gray-60 dark:text-gray-10'}
     />
-    Experimental only
+    تجريبي فقط
   </span>
 );
 
@@ -193,16 +193,16 @@ function LearnMore({
       <section className="p-8 mt-16 mb-16 flex flex-row shadow-inner-border dark:shadow-inner-border-dark justify-between items-center bg-card dark:bg-card-dark rounded-2xl">
         <div className="flex-col">
           <h2 className="text-primary font-display dark:text-primary-dark font-bold text-2xl leading-tight">
-            Ready to learn this topic?
+            هل أنت مستعد لتعلم هذا الموضوع؟
           </h2>
           {children}
           {path ? (
             <ButtonLink
               className="mt-1"
-              label="Read More"
+              label="اقرأ المزيد"
               href={path}
               type="primary">
-              Read More
+              اقرأ المزيد
               <IconNavArrow displayDirection="end" className="inline ms-1" />
             </ButtonLink>
           ) : null}
@@ -215,8 +215,8 @@ function LearnMore({
 
 function ReadBlogPost({path}: {path: string}) {
   return (
-    <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
-      Read Post
+    <ButtonLink className="mt-1" label="اقرأ المقال" href={path} type="primary">
+      اقرأ المقال
       <IconNavArrow displayDirection="end" className="inline ms-1" />
     </ButtonLink>
   );
