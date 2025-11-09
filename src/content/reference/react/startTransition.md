@@ -42,7 +42,7 @@ function TabContainer() {
 
 #### المعاملات {/*parameters*/}
 
-* `scope`: دالة تحدّث بعض state عن طريق استدعاء واحدة أو أكثر من [`دوال set`.](/reference/react/useState#setstate) تستدعي React على الفور `scope` بدون وسائط وتضع علامة على جميع تحديثات state المجدولة بشكل متزامن أثناء استدعاء دالة `scope` كـ Transitions. ستكون [غير محظورة](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) و[لن تعرض مؤشرات تحميل غير مرغوب فيها.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
+* `scope`: دالة تحدّث بعض state عن طريق استدعاء واحدة أو أكثر من [`دوال set`.](/reference/react/useState#setstate) تستدعي React على الفور `scope` بدون وسائط وتضع علامة على جميع تحديثات state المجدولة بشكل متزامن أثناء استدعاء دالة `scope` كـ Transitions. ستكون [غير محظورة](/reference/react/useTransition#perform-non-blocking-updates-with-actions) و[لن تعرض مؤشرات تحميل غير مرغوب فيها.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
 
 #### القيم المرجعة {/*returns*/}
 
