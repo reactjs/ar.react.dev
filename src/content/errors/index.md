@@ -7,4 +7,8 @@ In the minified production build of React, we avoid sending down full error mess
 
 We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, the error message will include just a link to the docs for the error.
 
+<<<<<<< HEAD
 For an example, see: [https://ar.react.dev/errors/149](/errors/149).
+=======
+For an example, see: [https://react.dev/errors/149](/errors/149).
+>>>>>>> d271a7ac11d2bf0d6e95ebdfacaf1038421f9be0
