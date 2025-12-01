@@ -69,17 +69,29 @@ To install the compiler:
 
 npm
 <TerminalBlock>
+<<<<<<< HEAD
 {`npm install --save-dev --save-exact babel-plugin-react-compiler@latest`}
+=======
+npm install --save-dev --save-exact babel-plugin-react-compiler@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 pnpm
 <TerminalBlock>
+<<<<<<< HEAD
 {`pnpm add --save-dev --save-exact babel-plugin-react-compiler@latest`}
+=======
+pnpm add --save-dev --save-exact babel-plugin-react-compiler@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 yarn
 <TerminalBlock>
+<<<<<<< HEAD
 {`yarn add --dev --exact babel-plugin-react-compiler@latest`}
+=======
+yarn add --dev --exact babel-plugin-react-compiler@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 As part of the stable release, we've been making React Compiler easier to add to your projects and added optimizations to how the compiler generates memoization. React Compiler now supports optional chains and array indices as dependencies. These improvements ultimately result in fewer re-renders and more responsive UIs, while letting you keep writing idiomatic declarative code.
@@ -101,17 +113,29 @@ To install:
 
 npm
 <TerminalBlock>
+<<<<<<< HEAD
 {`npm install --save-dev eslint-plugin-react-hooks@latest`}
+=======
+npm install --save-dev eslint-plugin-react-hooks@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 pnpm
 <TerminalBlock>
+<<<<<<< HEAD
 {`pnpm add --save-dev eslint-plugin-react-hooks@latest`}
+=======
+pnpm add --save-dev eslint-plugin-react-hooks@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 yarn
 <TerminalBlock>
+<<<<<<< HEAD
 {`yarn add --dev eslint-plugin-react-hooks@latest`}
+=======
+yarn add --dev eslint-plugin-react-hooks@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 ```js {6}
@@ -153,19 +177,31 @@ We have partnered with the Expo, Vite, and Next.js teams to add the compiler to 
 [Expo SDK 54](https://docs.expo.dev/guides/react-compiler/) and up has the compiler enabled by default, so new apps will automatically be able to take advantage of the compiler from the start.
 
 <TerminalBlock>
+<<<<<<< HEAD
 {`npx create-expo-app@latest`}
+=======
+npx create-expo-app@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 [Vite](https://vite.dev/guide/) and [Next.js](https://nextjs.org/docs/app/api-reference/cli/create-next-app) users can choose the compiler enabled templates in `create-vite` and `create-next-app`.
 
 <TerminalBlock>
+<<<<<<< HEAD
 {`npm create vite@latest`}
+=======
+npm create vite@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 <br />
 
 <TerminalBlock>
+<<<<<<< HEAD
 {`npx create-next-app@latest`}
+=======
+npx create-next-app@latest
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 </TerminalBlock>
 
 ## Adopt React Compiler incrementally {/*adopt-react-compiler-incrementally*/}
