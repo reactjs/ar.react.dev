@@ -100,6 +100,15 @@ root.render(<App />);
   console.log(document.body.innerHTML);
   ```
 
+* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
+  
+  ```js
+  const root = createRoot(document.getElementById('root'));
+  root.render(<App />);
+  // 🚩 The HTML will not include the rendered <App /> yet:
+  console.log(document.body.innerHTML);
+  ```
+
 ---
 
 ### `root.unmount()` {/*root-unmount*/}
@@ -211,7 +220,11 @@ function Counter() {
 <div id="root"></div>
 ```
 
+<<<<<<< HEAD
 يمكن أن يكون هذا بطيئًا جدًا! لحل هذه المشكلة، يمكنك إنشاء عنصر HTML الأولي من مكوناتك [على الخادم أو أثناء البناء.](/reference/react-dom/server) ثم يمكن لزوار موقعك قراءة النص ورؤية الصور والنقر على الروابط قبل تحميل أي كود JavaScript. نوصي بأن تستخدم [إطار عمل](/learn/creating-a-react-app#full-stack-frameworks) يفعل هذا الأمر تلقائيًا. اعتمادًا على موعد تشغيله، يُطلق عليه *تحميل من جانب الخادم (SSR)* أو *توليد المواقع الثابت (SSG).*
+=======
+This can feel very slow! To solve this, you can generate the initial HTML from your components [on the server or during the build.](/reference/react-dom/server) Then your visitors can read text, see images, and click links before any of the JavaScript code loads. We recommend [using a framework](/learn/creating-a-react-app#full-stack-frameworks) that does this optimization out of the box. Depending on when it runs, this is called *server-side rendering (SSR)* or *static site generation (SSG).*
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 </Note>
 
@@ -476,9 +489,13 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 
 ---
 ## حل المشكلات {/*troubleshooting*/}
+=======
+## Troubleshooting {/*troubleshooting*/}
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 ### لقد أنشأت جذرًا، ولكن لا يتم عرض أي شيء {/*ive-created-a-root-but-nothing-is-displayed*/}
 
