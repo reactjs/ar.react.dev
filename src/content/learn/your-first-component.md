@@ -215,7 +215,11 @@ function Profile() {
 
 معظم تطبيقات React تستخدم مكوّنات على طول الطريق. وهذا يعني أنك لن تستخدم المكونات فقط للأجزاء القابلة لإعادة الاستخدام مثل الأزرار، ولكن أيضًا للأجزاء الأكبر مثل الأشرطة الجانبية، والقوائم، وفي النهاية، الصفحات الكاملة! المكوّنات هي وسيلة مفيدة لتنظيم كود واجهة المستخدم والترميز المرئي، حتى لو كان بعضها لا يستخدم سوى مرة واحدة.
 
+<<<<<<< HEAD
 [أطر العمل المبنية على React](/learn/creating-a-react-app) تأخذ خطوة إضافية. بحيث بدلاً من استخدام ملف HTML فارغ والسماح لـ React بـ "الاستيلاء" على إدارة الصفحة بواسطة JavaScript، فإنها *أيضًا* تقوم بتوليد كود الـ HTML تلقائيًا من مكوّنات React الخاصة بك. هذا يسمح لتطبيقك بعرض بعض المحتوى قبل تحميل كود JavaScript.
+=======
+[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 ومع ذلك، لا تزال هناك العديد من المواقع التي تستخدم React فقط [لإضافة التفاعلية إلى صفحات HTML الموجودة مسبقا.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) فلديها العديد من المكوّنات الجذرية بدلاً من وجود مكوّن جذر واحد للصفحة بأكملها. يمكنك استخدام React بالمقدار الذي تحتاج إليه.
 
