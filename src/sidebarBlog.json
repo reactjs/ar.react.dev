@@ -12,6 +12,16 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
+=======
+          "title": "Critical Security Vulnerability in React Server Components",
+          "titleForHomepage": "Vulnerability in React Server Components",
+          "icon": "blog",
+          "date": "December 03, 2025",
+          "path": "/blog/2025/12/03/critical-security-vulnerability-in-react-server-components"
+        },
+        {
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
           "title": "React Conf 2025 Recap",
           "titleForHomepage": "React Conf 2025 Recap",
           "icon": "blog",

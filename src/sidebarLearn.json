@@ -27,6 +27,13 @@
         {
           "title": "Creating a React App",
           "path": "/learn/creating-a-react-app"
+<<<<<<< HEAD
+=======
+        },
+        {
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
         },
         {
           "title": "Build a React App from Scratch",

@@ -20,11 +20,19 @@ title: إضافة React إلى مشروع موجود بالفعل
 
 هنا ما نوصي به لإعداده:
 
+<<<<<<< HEAD
 1. **بناء الجزء الخاص بـ React في تطبيقك** باستخدام إحدى [الإطارات المبنية على React](/learn/creating-a-react-app).
 2. **حدد `/some-app` كـ *مسار أساسي*** في إعدادات إطار العمل الخاص بك (هنا كيف مع: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **قم بتكوين خادمك أو بروكسي** بحيث يتم التعامل مع جميع الطلبات تحت `/some-app/` من قبل تطبيق React الخاص بك.
 
 يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/creating-a-react-app#can-i-use-react-without-a-framework) المدمجة في تلك الإطارات.
+=======
+1. **Build the React part of your app** using one of the [React-based frameworks](/learn/creating-a-react-app).
+2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 العديد من الإطارات القائمة على React هي إطارات full-stack وتتيح لتطبيق React الخاص بك الاستفادة من الخادم. ومع ذلك، يمكنك استخدام نفس النهج حتى إذا لم تتمكن أو لا تريد تشغيل JavaScript على الخادم. في هذه الحالة 
 ، قم بتصدير HTML/CSS/JS ([`next export`](https://nextjs.org/docs/advanced-features/static-html-export) لـ Next.js ، هذا هو الافتراضي لـ Gatsby) في `/some-app/` بدلاً من ذلك.
@@ -46,7 +54,11 @@ title: إضافة React إلى مشروع موجود بالفعل
 
 * **إذا كان تطبيقك مقسم بالفعل إلى ملفات تستخدم عبارات `import`**، فحاول استخدام الإعداد الذي لديك بالفعل. تحقق مما إذا كان كتابة `<div />` في كود JS الخاص بك يسبب خطأ في البناء. إذا تسبب في خطأ في البناء، فقد تحتاج إلى [تحويل كود JavaScript الخاص بك باستخدام Babel](https://babeljs.io/setup)، وتمكين [Babel React preset](https://babeljs.io/docs/babel-preset-react) لاستخدام JSX.
 
+<<<<<<< HEAD
 * **إذا لم يكن لتطبيقك إعداد حالي لتجميع وحدات JavaScript**، فقم بإعداده مع [Vite](https://vite.dev/). تحتفظ مجتمع Vite بـ [العديد من التكاملات مع إطارات العمل الخلفية]((https://github.com/vitejs/awesome-vite#integrations-with-backends) ، بما في ذلك Rails و Django و Laravel. إذا لم يتم سرد إطار عمل الخلفية الخاص بك، [اتبع هذه الإرشادات](https://vite.dev/guide/backend-integration.html) لدمج بناء Vite يدويًا مع إطار عملك.
+=======
+* **If your app doesn't have an existing setup for compiling JavaScript modules,** set it up with [Vite](https://vite.dev/). The Vite community maintains [many integrations with backend frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), including Rails, Django, and Laravel. If your backend framework is not listed, [follow this guide](https://vite.dev/guide/backend-integration.html) to manually integrate Vite builds with your backend.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 للتحقق مما إذا كان إعدادك يعمل، قم بتشغيل هذا الأمر في مجلد مشروعك:
 
@@ -63,7 +75,11 @@ npm install react react-dom
 <html>
   <head><title>تطبيقي</title></head>
   <body>
+<<<<<<< HEAD
     <!-- محتوى صفحتك الحالي (في هذا المثال سيتم تبديله) -->
+=======
+    <!-- Your existing page content (in this example, it gets replaced) -->
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
     <div id="root"></div>
   </body>
 </html>
@@ -86,7 +102,11 @@ root.render(<h1>مرحبًا بكم!</h1>);
 
 <Note>
 
+<<<<<<< HEAD
 دمج بيئة JavaScript معمارية في مشروع موجود قد يبدو مرعبًا أول الأمر، ولكنه يستحق ذلك! إذا تعثرت ، جرب [السؤال في المجتمع](/community) أو [الدردشة في Vite](https://chat.vite.dev/).
+=======
+Integrating a modular JavaScript environment into an existing project for the first time can feel intimidating, but it's worth it! If you get stuck, try our [community resources](/community) or the [Vite Chat](https://chat.vite.dev/).
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 </Note>
 
@@ -151,7 +171,11 @@ root.render(<NavigationBar />);
 
 لاحظ كيف احتفظت بمحتوى HTML الحالي من `index.html`، ولكن مكون React الخاص بك `NavigationBar` الآن يظهر داخل `<nav id="navigation">` من HTML الخاص بك. اقرأ [وثائق استخدام `createRoot`](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) لمعرفة المزيد حول تصيير مكونات React داخل صفحة HTML موجودة.
 
+<<<<<<< HEAD
 عندما تضيف React في مشروع موجود، من الشائع أن تبدأ بمكونات تفاعلية صغيرة (مثل الأزرار)، ثم تستمر تدريجيًا في "النمو" حتى تصبح صفحتك بأكملها مبنية بـ React. إذا وصلت إلى هذه النقطة، فإننا نوصي بالانتقال إلى [إطار عمل لـ React](/learn/creating-a-react-app) مباشرة بعد ذلك للاستفادة القصوى من React.
+=======
+When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/creating-a-react-app) right after to get the most out of React.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 ## استخدام React Native في تطبيق محمول أصلي موجود {/*using-react-native-in-an-existing-native-mobile-app*/}
 
