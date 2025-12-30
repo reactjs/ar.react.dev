@@ -1,93 +1,93 @@
 ---
-title: Debugging and Troubleshooting
+title: تصحيح الأخطاء واستكشاف المشكلات
 ---
 
 <Intro>
-This guide helps you identify and fix issues when using React Compiler. Learn how to debug compilation problems and resolve common issues.
+تساعدك هذه الإرشادات على تحديد المشكلات وإصلاحها عند استخدام React Compiler. تعرّف على كيفية تتبُّع أخطاء التجميع وحل المشكلات الشائعة.
 </Intro>
 
 <YouWillLearn>
 
-* The difference between compiler errors and runtime issues
-* Common patterns that break compilation
-* Step-by-step debugging workflow
+* الفرق بين أخطاء المُجمِّع ومشكلات وقت التشغيل
+* الأنماط الشائعة التي تكسر عملية التجميع
+* سير عمل تصحيح الأخطاء خطوة بخطوة
 
 </YouWillLearn>
 
-## Understanding Compiler Behavior {/*understanding-compiler-behavior*/}
+## فهم سلوك المُجمِّع {/*understanding-compiler-behavior*/}
 
-React Compiler is designed to handle code that follows the [Rules of React](/reference/rules). When it encounters code that might break these rules, it safely skips optimization rather than risk changing your app's behavior.
+تم تصميم React Compiler للتعامل مع الشيفرة التي تتبع [قواعد React](/reference/rules). عند مواجهته لشيفرة قد تنتهك هذه القواعد، يتجاوز عملية التحسين بأمان بدلاً من المخاطرة بتغيير سلوك التطبيق.
 
-### Compiler Errors vs Runtime Issues {/*compiler-errors-vs-runtime-issues*/}
+### أخطاء المُجمِّع مقابل مشكلات وقت التشغيل {/*compiler-errors-vs-runtime-issues*/}
 
-**Compiler errors** occur at build time and prevent your code from compiling. These are rare because the compiler is designed to skip problematic code rather than fail.
+**أخطاء المُجمِّع** تحدث أثناء عملية البناء وتمنع الشيفرة من التجميع؛ وهي نادرة لأن المُجمِّع مُهيأ لتجاهل الشيفرة المشكلة بدلًا من الفشل.
 
-**Runtime issues** occur when compiled code behaves differently than expected. Most of the time, if you encounter an issue with React Compiler, it's a runtime issue. This typically happens when your code violates the Rules of React in subtle ways that the compiler couldn't detect, and the compiler mistakenly compiled a component it should have skipped.
+**مشكلات وقت التشغيل** تحدث عندما تتصرف الشيفرة المُجمَّعة بشكل مختلف عن المتوقع. معظم الأحيان، إذا واجهت مشكلة مع React Compiler فهي مشكلة وقت تشغيل. يحدث ذلك عادةً عندما تنتهك الشيفرة قواعد React بطرق دقيقة لا يستطيع الـ ESLint اكتشافها، فيقوم المُجمِّع بتجميع مكوّن كان ينبغي عليه تجاهله.
 
-When debugging runtime issues, focus your efforts on finding Rules of React violations in the affected components that were not detected by the ESLint rule. The compiler relies on your code following these rules, and when they're broken in ways it can't detect, that's when runtime problems occur.
+عند تتبُّع مشكلات وقت التشغيل، ركز على البحث عن انتهاكات قواعد React في المكونات المتأثرة والتي لم يكشفها ESLint. يعتمد المُجمِّع على التزام الشيفرة بهذه القواعد، وعندما تُخالف بطرق لا يستطيع اكتشافها، تظهر مشكلات وقت التشغيل.
 
 
-## Common Breaking Patterns {/*common-breaking-patterns*/}
+## الأنماط الشائعة التي تسبب الأعطال {/*common-breaking-patterns*/}
 
-One of the main ways React Compiler can break your app is if your code was written to rely on memoization for correctness. This means your app depends on specific values being memoized to work properly. Since the compiler may memoize differently than your manual approach, this can lead to unexpected behavior like effects over-firing, infinite loops, or missing updates.
+أحد الأسباب الرئيسية التي قد تُسبب مشاكل عند استخدام React Compiler هو اعتماد الشيفرة على التذكُّر (memoization) كجزء من صحة البرنامج. يعني هذا أن التطبيق يعتمد على قيم محفوظة في الذاكرة لتعمل بشكل صحيح. ولأن المُجمِّع قد يقوم بعمليات تذكُّر مختلفة عن نهجك اليدوي، فقد يؤدي ذلك لسلوك غير متوقع مثل تكرار تنفيذ التأثيرات (effects) بشكل زائد، الحلقات غير المنتهية، أو فقدان التحديثات.
 
-Common scenarios where this occurs:
+سيناريوهات شائعة:
 
-- **Effects that rely on referential equality** - When effects depend on objects or arrays maintaining the same reference across renders
-- **Dependency arrays that need stable references** - When unstable dependencies cause effects to fire too often or create infinite loops
-- **Conditional logic based on reference checks** - When code uses referential equality checks for caching or optimization
+- **تأثيرات تعتمد على التساوي المرجعي** - عندما تعتمد التأثيرات على بقاء مراجع الكائنات أو المصفوفات دون تغيير عبر عمليات العرض
+- **مصفوفات الاعتماد التي تحتاج مراجع مستقرة** - الاعتماد غير المستقر يتسبب في تشغيل التأثيرات كثيرًا أو خلق حلقات لا نهائية
+- **منطق شرطي يعتمد على فحوصات المراجع** - عندما تُستخدم المراجع للاحتفاظ بالكاش أو التحسين
 
-## Debugging Workflow {/*debugging-workflow*/}
+## سير عمل تصحيح الأخطاء {/*debugging-workflow*/}
 
-Follow these steps when you encounter issues:
+اتبع هذه الخطوات عند مواجهة مشكلات:
 
-### Compiler Build Errors {/*compiler-build-errors*/}
+### أخطاء البناء من المُجمِّع {/*compiler-build-errors*/}
 
-If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [facebook/react](https://github.com/facebook/react/issues) repository with:
-- The error message
-- The code that caused the error
-- Your React and compiler versions
+إذا ظهر خطأ من المُجمِّع وكسر عملية البناء بطريقة غير متوقعة، فغالبًا ما يكون ذلك خللاً في المُجمِّع نفسه. أبلِغ عنه في مستودع [facebook/react](https://github.com/facebook/react/issues) مع:
+- رسالة الخطأ
+- الشيفرة التي تسببت في الخطأ
+- إصدارات React والمُجمِّع
 
-### Runtime Issues {/*runtime-issues*/}
+### مشكلات وقت التشغيل {/*runtime-issues*/}
 
-For runtime behavior issues:
+بالنسبة لمشكلات السلوك في وقت التشغيل:
 
-### 1. Temporarily Disable Compilation {/*temporarily-disable-compilation*/}
+### 1. تعطيل التجميع مؤقتًا {/*temporarily-disable-compilation*/}
 
-Use `"use no memo"` to isolate whether an issue is compiler-related:
+استخدم `"use no memo"` لعزل ما إذا كانت المشكلة متعلقة بالمُجمِّع:
 
 ```js
 function ProblematicComponent() {
-  "use no memo"; // Skip compilation for this component
-  // ... rest of component
+  "use no memo"; // تخطي التجميع لهذا المكوّن
+  // ... بقية المكوّن
 }
 ```
 
-If the issue disappears, it's likely related to a Rules of React violation.
+إذا اختفت المشكلة، فمن المرجح أنها متعلقة بانتهاك قواعد React.
 
-You can also try removing manual memoization (useMemo, useCallback, memo) from the problematic component to verify that your app works correctly without any memoization. If the bug still occurs when all memoization is removed, you have a Rules of React violation that needs to be fixed.
+يمكنك أيضًا محاولة إزالة التذكُّر اليدوي (useMemo, useCallback, memo) من المكوّن المتسبب للتحقق مما إذا كان التطبيق يعمل بشكل صحيح بدون أي تذكُّر. إذا بقي الخطأ بعد إزالة كل التذكُّرات، فذلك يدل على وجود انتهاك لقواعد React يجب إصلاحه.
 
-### 2. Fix Issues Step by Step {/*fix-issues-step-by-step*/}
+### 2. إصلاح المشكلات خطوة بخطوة {/*fix-issues-step-by-step*/}
 
-1. Identify the root cause (often memoization-for-correctness)
-2. Test after each fix
-3. Remove `"use no memo"` once fixed
-4. Verify the component shows the ✨ badge in React DevTools
+1. حدّد السبب الجذري (غالبًا ما يكون الاعتماد على التذكُّر من أجل الصحة correctness)
+2. اختبر بعد كل إصلاح
+3. أزل `"use no memo"` بعد حل المشكلة
+4. تحقّق من ظهور شارة ✨ في React DevTools للمكوّن
 
-## Reporting Compiler Bugs {/*reporting-compiler-bugs*/}
+## الإبلاغ عن أخطاء المُجمِّع {/*reporting-compiler-bugs*/}
 
-If you believe you've found a compiler bug:
+إذا اعتقدت أنك وجدت خللًا في المُجمِّع:
 
-1. **Verify it's not a Rules of React violation** - Check with ESLint
-2. **Create a minimal reproduction** - Isolate the issue in a small example
-3. **Test without the compiler** - Confirm the issue only occurs with compilation
-4. **File an [issue](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml)**:
-   - React and compiler versions
-   - Minimal reproduction code
-   - Expected vs actual behavior
-   - Any error messages
+1. **تحقّق أنه ليس انتهاكًا لقواعد React** - افحص بواسطة ESLint
+2. **أنشئ مثالًا مصغرًا لإعادة الإنتاج** - عزِل المشكلة في مثال صغير
+3. **اختبر بدون المُجمِّع** - تَأكَّد أن المشكلة تحدث فقط عند تفعيل التجميع
+4. **افتح [issue](https://github.com/facebook/react/issues/new?template=compiler_bug_report.yml)** مع:
+   - إصدارات React والمُجمِّع
+   - شيفرة إعادة الإنتاج المصغرة
+   - السلوك المتوقع مقابل الفعلي
+   - أي رسائل خطأ
 
-## Next Steps {/*next-steps*/}
+## الخطوات التالية {/*next-steps*/}
 
-- Review the [Rules of React](/reference/rules) to prevent issues
-- Check the [incremental adoption guide](/learn/react-compiler/incremental-adoption) for gradual rollout strategies
+- راجع [قواعد React](/reference/rules) لتجنّب المشكلات
+- اطلع على [دليل التبنّي التدريجي](/learn/react-compiler/incremental-adoption) لاستراتيجيات النشر التدريجي
