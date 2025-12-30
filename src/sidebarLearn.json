@@ -4,7 +4,7 @@
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "البدأ"
+      "sectionHeader": "البدء"
     },
     {
       "title": "بداية سريعة",
@@ -25,11 +25,11 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "Creating a React App",
+          "title": "إنشاء تطبيق React",
           "path": "/learn/creating-a-react-app"
         },
         {
-          "title": "Build a React App from Scratch",
+          "title": "بناء تطبيق React من الصفر",
           "path": "/learn/build-a-react-app-from-scratch"
         },
         {
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "title": "Setup",
+      "title": "الإعداد",
       "path": "/learn/setup",
       "routes": [
         {
@@ -47,7 +47,7 @@
           "path": "/learn/editor-setup"
         },
         {
-          "title": "Using TypeScript",
+          "title": "استخدام TypeScript",
           "path": "/learn/typescript"
         },
         {
@@ -62,19 +62,19 @@
       "canary": true,
       "routes": [
         {
-          "title": "Introduction",
+          "title": "المقدّمة",
           "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "Installation",
+          "title": "التثبيت",
           "path": "/learn/react-compiler/installation"
         },
         {
-          "title": "Incremental Adoption",
+          "title": "التبنّي التدريجي",
           "path": "/learn/react-compiler/incremental-adoption"
         },
         {
-          "title": "Debugging and Troubleshooting",
+          "title": "التصحيح واستكشاف المشكلات",
           "path": "/learn/react-compiler/debugging"
         }
       ]
@@ -84,7 +84,7 @@
       "sectionHeader": "تعلم React"
     },
     {
-      "title": "وصف واجهة المستخدم UI",
+      "title": "وصف واجهة المستخدم",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
@@ -105,7 +105,7 @@
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": " تمرير الخصائص إلى مكوّن",
+          "title": "تمرير الخصائص إلى مكوّن",
           "path": "/learn/passing-props-to-a-component"
         },
         {
@@ -117,11 +117,11 @@
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "الحفاظ على نقاء المكونّات",
+          "title": "الحفاظ على نقاء المكوّنات",
           "path": "/learn/keeping-components-pure"
         },
         {
-          "title": "Your UI as a Tree",
+          "title": "واجهتك كشجرة",
           "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]

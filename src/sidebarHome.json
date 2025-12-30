@@ -24,7 +24,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "تعلم React"
     },
     {
       "title": "Describing the UI",
@@ -44,14 +44,14 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT API"
+      "sectionHeader": "مرجع React"
     },
     {
       "title": "Hooks",
       "path": "/reference/react"
     },
     {
-      "title": "Components",
+      "title": "المكوّنات",
       "path": "/reference/react/components"
     },
     {
@@ -59,12 +59,12 @@
       "path": "/reference/react/apis"
     },
     {
-      "title": "Legacy APIs",
+      "title": "واجهات قديمة",
       "path": "/reference/react/legacy"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT DOM API"
+      "sectionHeader": "مرجع React DOM"
     },
     {
       "title": "Components",
