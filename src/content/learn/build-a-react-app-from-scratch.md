@@ -1,143 +1,143 @@
 ---
-title: Build a React app from Scratch
+title: إنشاء تطبيق React من الصفر
 ---
 
 <Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can build a React app from scratch.
+إذا كانت متطلبات تطبيقك لا تُلبَّى جيدًا بواسطة الأطر الجاهزة، أو تفضّل بناء إطار عمل خاص بك، أو تريد فقط تعلم أساسيات تطبيق React، فيمكنك بناء تطبيق React من الصفر.
 
 </Intro>
 
 <DeepDive>
 
-#### Consider using a framework {/*consider-using-a-framework*/}
+#### التفكير في استخدام إطار عمل {/*consider-using-a-framework*/}
 
-Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for. 
+البدء من الصفر طريقة جيدة للبدء مع React، لكن من المهم أن تعلم أن هذا المسار يشبه غالبًا بناء إطار عمل مخصّص بنفسك. مع تطور المتطلبات، قد تحتاج إلى حل مشكلات على مستوى الإطار والتي تمتلك الأُطر الموصى بها لدينا حلولًا ناضجة ومدعومة لها.
 
-For example, if in the future your app needs support for server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC), you will have to implement those on your own. Similarly, future React features that require integrating at the framework level will have to be implemented on your own if you want to use them.
+على سبيل المثال، إذا احتاج تطبيقك في المستقبل إلى دعم التصيير على الخادم (SSR)، أو توليد الموقع الثابت (SSG)، و/أو مكونات الخادم في React (RSC)، فسيتعيّن عليك تنفيذ هذه الميزات بنفسك. وبالمثل، فإن ميزات React المستقبلية التي تتطلب تكاملاً على مستوى الإطار ستحتاج إلى تنفيذ يدوي إذا رغبت في استخدامها.
 
-Our recommended frameworks also help you build better performing apps. For example, reducing or eliminating waterfalls from network requests makes for a better user experience. This might not be a high priority when you are building a toy project, but if your app gains users you may want to improve its performance.
+الأُطر الموصى بها تساعدك أيضًا في بناء تطبيقات ذات أداء أفضل. على سبيل المثال، تقليل أو إزالة "الشلالات" في طلبات الشبكة يُحسّن من تجربة المستخدم. قد لا تكون هذه أولوية عند بناء مشروع تجريبي، لكن إذا اكتسب تطبيقك مستخدمين فقد ترغب في تحسين أدائه.
 
-Going this route also makes it more difficult to get support, since the way you develop routing, data-fetching, and other features will be unique to your situation. You should only choose this option if you are comfortable tackling these problems on your own, or if you’re confident that you will never need these features.
+كما أن اختيار المسار هذا يجعل الحصول على الدعم أصعب، لأن طريقة تطوير التوجيه، وجلب البيانات، والميزات الأخرى ستكون فريدة وفقًا لظروفك. يجب اختيار هذا الخيار فقط إذا كنت مستعدًا للتعامل مع هذه المشكلات بنفسك أو متأكدًا أنك لن تحتاج لهذه الميزات.
 
-For a list of recommended frameworks, check out [Creating a React App](/learn/creating-a-react-app).
+لقائمة بالأُطر الموصى بها، راجع [Creating a React App](/learn/creating-a-react-app).
 
 </DeepDive>
 
 
-## Step 1: Install a build tool {/*step-1-install-a-build-tool*/}
+## الخطوة 1: تثبيت أداة بناء {/*step-1-install-a-build-tool*/}
 
-The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. These build tools provide features to package and run source code, provide a development server for local development and a build command to deploy your app to a production server.
+الخطوة الأولى هي تثبيت أداة بناء مثل `vite` أو `parcel` أو `rsbuild`. توفر هذه الأدوات ميزات لتجميع وتشغيل الشيفرة المصدرية، وتوفر خادم تطوير محليًا، وأمرًا لبناء التطبيق لنشره على خادم الإنتاج.
 
 ### Vite {/*vite*/}
 
-[Vite](https://vite.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+[Vite](https://vite.dev/) هي أداة بناء تهدف إلى توفير تجربة تطوير أسرع وأكثر خفة للمشاريع الحديثة.
 
 <TerminalBlock>
 {`npm create vite@latest my-app -- --template react-ts`}
 </TerminalBlock>
 
-Vite is opinionated and comes with sensible defaults out of the box. Vite has a rich ecosystem of plugins to support fast refresh, JSX,  Babel/SWC, and other common features. See Vite's [React plugin](https://vite.dev/plugins/#vitejs-plugin-react) or [React SWC plugin](https://vite.dev/plugins/#vitejs-plugin-react-swc) and [React SSR example project](https://vite.dev/guide/ssr.html#example-projects) to get started.
+تأتي Vite بإعدادات افتراضية مدروسة. تمتلك Vite نظامًا غنيًا من الإضافات لدعم إعادة التشغيل السريعة (fast refresh)، وJSX، وBabel/SWC، وميزات شائعة أخرى. اطلع على [إضافة React في Vite](https://vite.dev/plugins/#vitejs-plugin-react) أو [إضافة React SWC](https://vite.dev/plugins/#vitejs-plugin-react-swc) ومشروع المثال الخاص بـ [React SSR](https://vite.dev/guide/ssr.html#example-projects) للبدء.
 
-Vite is already being used as a build tool in one of our [recommended frameworks](/learn/creating-a-react-app): [React Router](https://reactrouter.com/start/framework/installation).
+تُستخدم Vite بالفعل كأداة بناء في أحد [الأُطر الموصى بها](/learn/creating-a-react-app): [React Router](https://reactrouter.com/start/framework/installation).
 
 ### Parcel {/*parcel*/}
 
-[Parcel](https://parceljs.org/) combines a great out-of-the-box development experience with a scalable architecture that can take your project from just getting started to massive production applications.
+[Parcel](https://parceljs.org/) يجمع بين تجربة تطوير رائعة وإعداد قابل للتوسع يمكن أن ينقل مشروعك من مرحلة البداية إلى تطبيقات إنتاجية كبيرة.
 
 <TerminalBlock>
 {`npm install --save-dev parcel`}
 </TerminalBlock>
 
-Parcel supports fast refresh, JSX, TypeScript, Flow, and styling out of the box. See [Parcel's React recipe](https://parceljs.org/recipes/react/#getting-started) to get started.
+يدعم Parcel إعادة التشغيل السريعة وJSX وTypeScript وFlow وأنظمة التنسيق مباشرةً. راجع [دليل Parcel لـ React](https://parceljs.org/recipes/react/#getting-started) للبدء.
 
 ### Rsbuild {/*rsbuild*/}
 
-[Rsbuild](https://rsbuild.dev/) is an Rspack-powered build tool that provides a seamless development experience for React applications. It comes with carefully tuned defaults and performance optimizations ready to use.
+[Rsbuild](https://rsbuild.dev/) هي أداة بناء مبنية على Rspack توفر تجربة تطوير سلسة لتطبيقات React. تأتي مع إعدادات افتراضية مضبوطة وتحسينات أداء جاهزة للاستخدام.
 
 <TerminalBlock>
 {`npx create-rsbuild --template react`}
 </TerminalBlock>
 
-Rsbuild includes built-in support for React features like fast refresh, JSX, TypeScript, and styling. See [Rsbuild's React guide](https://rsbuild.dev/guide/framework/react) to get started.
+يتضمن Rsbuild دعمًا مدمجًا لميزات React مثل إعادة التشغيل السريعة وJSX وTypeScript وأنظمة التنسيق. اطلع على [دليل Rsbuild لـ React](https://rsbuild.dev/guide/framework/react) للبدء.
 
 <Note>
 
-#### Metro for React Native {/*react-native*/}
+#### Metro لـ React Native {/*react-native*/}
 
-If you're starting from scratch with React Native you'll need to use [Metro](https://metrobundler.dev/), the JavaScript bundler for React Native. Metro supports bundling for platforms like iOS and Android, but lacks many features when compared to the tools here. We recommend starting with Vite, Parcel, or Rsbuild unless your project requires React Native support.
+إذا كنت تبدأ من الصفر مع React Native فستحتاج إلى استخدام [Metro](https://metrobundler.dev/)، مُجمِّع JavaScript الخاص بـ React Native. يدعم Metro تجميع المنصات مثل iOS وAndroid، لكنه يفتقر إلى العديد من الميزات مقارنة بالأدوات المذكورة أعلاه. نوصي بالبدء بـ Vite أو Parcel أو Rsbuild إلا إذا تطلّب مشروعك دعم React Native.
 
 </Note>
 
-## Step 2: Build Common Application Patterns {/*step-2-build-common-application-patterns*/}
+## الخطوة 2: بناء أنماط تطبيقية شائعة {/*step-2-build-common-application-patterns*/}
 
-The build tools listed above start off with a client-only, single-page app (SPA), but don't include any further solutions for common functionality like routing, data fetching, or styling.
+تبدأ أدوات البناء المذكورة أعلاه بتطبيق من جهة العميل فقط (SPA)، لكنها لا تتضمن حلولًا إضافية لوظائف شائعة مثل التوجيه، أو جلب البيانات، أو إدارة الأنماط.
 
-The React ecosystem includes many tools for these problems. We've listed a few that are widely used as a starting point, but feel free to choose other tools if those work better for you.
+يتضمن نظام React البيئي العديد من الأدوات لهذه المشكلات. أدرجنا بعض الأدوات الشائعة كنقطة انطلاق، لكن يمكنك اختيار أدوات أخرى إذا كانت تعمل بشكل أفضل لمشروعك.
 
-### Routing {/*routing*/}
+### التوجيه {/*routing*/}
 
-Routing determines what content or pages to display when a user visits a particular URL. You need to set up a router to map URLs to different parts of your app. You'll also need to handle nested routes, route parameters, and query parameters.  Routers can be configured within your code, or defined based on your component folder and file structures.
+التوجيه يحدد المحتوى أو الصفحات التي يتم عرضها عندما يزور المستخدم عنوان URL محددًا. تحتاج إلى إعداد موجه لربط عناوين URL بأجزاء مختلفة من تطبيقك. ستحتاج أيضًا إلى التعامل مع المسارات المتداخلة، ومعاملات المسارات، ومعاملات الاستعلام. يمكن تكوين الموجهات داخل الشيفرة أو تعريفها بناءً على بنية المجلدات والملفات الخاصة بالمكونات.
 
-Routers are a core part of modern applications, and are usually integrated with data fetching (including prefetching data for a whole page for faster loading), code splitting (to minimize client bundle sizes), and page rendering approaches (to decide how each page gets generated).
+الموجهات جزء أساسي من التطبيقات الحديثة، وعادةً ما تُدمج مع جلب البيانات (بما في ذلك الجلب المسبق لصفحة كاملة لتحسين سرعة التحميل)، وتقسيم الشيفرة (لتقليل حجم حزم العميل)، وطرق تصيير الصفحات (لتحديد كيفية توليد كل صفحة).
 
-We suggest using:
+نقترح استخدام:
 
 - [React Router](https://reactrouter.com/start/data/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
 
 
-### Data Fetching {/*data-fetching*/}
+### جلب البيانات {/*data-fetching*/}
 
-Fetching data from a server or other data source is a key part of most applications. Doing this properly requires handling loading states, error states, and caching the fetched data, which can be complex.
+جلب البيانات من خادم أو مصدر بيانات آخر جزء أساسي من معظم التطبيقات. يتطلب القيام بذلك بشكل صحيح التعامل مع حالات التحميل، وحالات الخطأ، وتخزين البيانات مؤقتًا (caching)، وهو أمر قد يكون معقّدًا.
 
-Purpose-built data fetching libraries do the hard work of fetching and caching the data for you, letting you focus on what data your app needs and how to display it.  These libraries are typically used directly in your components, but can also be integrated into routing loaders for faster pre-fetching and better performance, and in server rendering as well.
+تقوم مكتبات جلب البيانات المتخصصة بأداء الجزء الصعب من جلب وتخزين البيانات مؤقتًا نيابةً عنك، مما يتيح لك التركيز على البيانات التي يحتاجها تطبيقك وكيفية عرضها. تُستخدم هذه المكتبات عادةً داخل مكوناتك، ولكن يمكن أيضًا دمجها في محملات الموجه (router loaders) للجلب المسبق وتحسين الأداء، وكذلك في التصيير على الخادم.
 
-Note that fetching data directly in components can lead to slower loading times due to network request waterfalls, so we recommend prefetching data in router loaders or on the server as much as possible!  This allows a page's data to be fetched all at once as the page is being displayed.
+لاحظ أن الجلب المباشر للبيانات داخل المكونات قد يؤدي إلى بطء في أوقات التحميل بسبب شلالات طلبات الشبكة، لذلك نوصي بالجلب المسبق في محملات الموجه أو على الخادم قدر الإمكان! هذا يسمح بجلب بيانات الصفحة دفعة واحدة أثناء عرضها.
 
-If you're fetching data from most backends or REST-style APIs, we suggest using:
+إذا كنت تجلب البيانات من واجهات برمجة تطبيقات تقليدية (REST)، فنوصي باستخدام:
 
 - [TanStack Query](https://tanstack.com/query/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
-If you're fetching data from a GraphQL API, we suggest using:
+إذا كنت تجلب البيانات من واجهة GraphQL، فنوصي باستخدام:
 
 - [Apollo](https://www.apollographql.com/docs/react)
 - [Relay](https://relay.dev/)
 
 
-### Code-splitting {/*code-splitting*/}
+### تقسيم الشيفرة {/*code-splitting*/}
 
-Code-splitting is the process of breaking your app into smaller bundles that can be loaded on demand. An app's code size increases with every new feature and additional dependency. Apps can become slow to load because all of the code for the entire app needs to be sent before it can be used. Caching, reducing features/dependencies, and moving some code to run on the server can help mitigate slow loading but are incomplete solutions that can sacrifice functionality if overused.
+تقسيم الشيفرة هو عملية تقسيم تطبيقك إلى حزم أصغر يمكن تحميلها عند الطلب. يزداد حجم الشيفرة مع كل ميزة وإضافة، وقد تصبح التطبيقات بطيئة في التحميل إذا ما اضطر المستخدم لتحميل كل الشيفرة دفعة واحدة. يمكن أن تساعد التخزين المؤقت، وتقليل الميزات/التبعيات، ونقل بعض الشيفرة لتعمل على الخادم في تخفيف بطء التحميل لكن كلها حلول غير كاملة وقد تضحي بالوظائف إذا أُسيء استخدامها.
 
-Similarly, if you rely on the apps using your framework to split the code, you might encounter situations where loading becomes slower than if no code splitting were happening at all. For example, [lazily loading](/reference/react/lazy) a chart delays sending the code needed to render the chart, splitting the chart code from the rest of the app. [Parcel supports code splitting with React.lazy](https://parceljs.org/recipes/react/#code-splitting). However, if the chart loads its data *after* it has been initially rendered you are now waiting twice. This is a waterfall: rather than fetching the data for the chart and sending the code to render it simultaneously, you must wait for each step to complete one after the other.
+بالمثل، إذا اعتمدت على التطبيقات التي تستخدم إطارك لتقسيم الشيفرة فقد تواجه مواقف يصبح فيها التحميل أبطأ مما لو لم يكن هناك تقسيم على الإطلاق. على سبيل المثال، [التحميل الكسول](/reference/react/lazy) لمخطط بياني يؤخر إرسال الشيفرة اللازمة لعرض المخطط، فيتم فصل شيفرة المخطط عن بقية التطبيق. [Parcel يدعم تقسيم الشيفرة مع React.lazy](https://parceljs.org/recipes/react/#code-splitting). ومع ذلك، إذا حمل المخطط بياناته *بعد* عرضه الأولي فأنت الآن تنتظر مرتين. هذه الحالة تُسمى شلال (waterfall): بدلاً من جلب بيانات المخطط وإرسال الشيفرة اللازمة لتصييره في آنٍ واحد، يجب الانتظار لكل خطوة على حدة.
 
-Splitting code by route, when integrated with bundling and data fetching, can reduce the initial load time of your app and the time it takes for the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+تقسيم الشيفرة حسب المسار، عند دمجه مع التجميع وجلب البيانات، يمكن أن يقلل من وقت التحميل الأولي للتطبيق والوقت اللازم لعرض أكبر محتوى مرئي ([Largest Contentful Paint](https://web.dev/articles/lcp)).
 
-For code-splitting instructions, see your build tool docs:
-- [Vite build optimizations](https://vite.dev/guide/features.html#build-optimizations)
-- [Parcel code splitting](https://parceljs.org/features/code-splitting/)
-- [Rsbuild code splitting](https://rsbuild.dev/guide/optimization/code-splitting)
+للحصول على تعليمات تقسيم الشيفرة، راجع وثائق أداة البناء التي اخترتها:
+- [تحسينات بناء Vite](https://vite.dev/guide/features.html#build-optimizations)
+- [تقسيم الشيفرة في Parcel](https://parceljs.org/features/code-splitting/)
+- [تقسيم الشيفرة في Rsbuild](https://rsbuild.dev/guide/optimization/code-splitting)
 
-### Improving Application Performance {/*improving-application-performance*/}
+### تحسين أداء التطبيق {/*improving-application-performance*/}
 
-Since the build tool you select only supports single page apps (SPAs), you'll need to implement other [rendering patterns](https://www.patterns.dev/vanilla/rendering-patterns) like server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC). Even if you don't need these features at first, in the future there may be some routes that would benefit SSR, SSG or RSC.
+بما أن أداة البناء التي تختارها تدعم بشكل أساسي تطبيقات الصفحة الواحدة (SPA)، فستحتاج إلى تنفيذ أنماط تصيير أخرى مثل التصيير على الخادم (SSR)، وتوليد الموقع الثابت (SSG)، و/أو مكونات خادم React (RSC). حتى لو لم تكن بحاجة لهذه الميزات في البداية، فقد تستفيد بعض المسارات لاحقًا من SSR أو SSG أو RSC.
 
-* **Single-page apps (SPA)** load a single HTML page and dynamically updates the page as the user interacts with the app. SPAs are easier to get started with, but they can have slower initial load times. SPAs are the default architecture for most build tools.
+* **تطبيقات الصفحة الواحدة (SPA)** تحمل صفحة HTML واحدة وتحدّث الصفحة ديناميكيًا أثناء تفاعل المستخدم. SPAs أسهل للبدء، لكنها قد تكون أبطأ في التحميل الأولي. SPAs هي البنية الافتراضية لمعظم أدوات البناء.
 
-* **Streaming Server-side rendering (SSR)** renders a page on the server and sends the fully rendered page to the client. SSR can improve performance, but it can be more complex to set up and maintain than a single-page app. With the addition of streaming, SSR can be very complex to set up and maintain. See [Vite's SSR guide]( https://vite.dev/guide/ssr).
+* **التصيير على الخادم المتدفق (Streaming SSR)** يصيّر الصفحة على الخادم ويُرسل الصفحة المصيّرة بالكامل إلى العميل. يمكن أن يحسّن SSR الأداء، لكنه قد يكون أكثر تعقيدًا لإعداده وصيانته مقارنة بتطبيق صفحة واحدة. مع إضافة البث، يمكن أن يصبح SSR معقدًا جدًا في التكوين والصيانة. راجع [دليل SSR في Vite]( https://vite.dev/guide/ssr).
 
-* **Static site generation (SSG)** generates static HTML files for your app at build time. SSG can improve performance, but it can be more complex to set up and maintain than server-side rendering. See [Vite's SSG guide](https://vite.dev/guide/ssr.html#pre-rendering-ssg).
+* **توليد الموقع الثابت (SSG)** يولّد ملفات HTML ثابتة لتطبيقك أثناء وقت البناء. يمكن أن يحسّن SSG الأداء، لكنه قد يكون أكثر تعقيدًا لإعداده وصيانته مقارنة بالتصيير على الخادم. راجع [دليل SSG في Vite](https://vite.dev/guide/ssr.html#pre-rendering-ssg).
 
-* **React Server Components (RSC)** lets you mix build-time, server-only, and interactive components in a single React tree. RSC can improve performance, but it currently requires deep expertise to set up and maintain. See [Parcel's RSC examples](https://github.com/parcel-bundler/rsc-examples).
+* **مكونات خادم React (RSC)** تتيح لك مزج المكونات التي تعمل أثناء وقت البناء، والمكونات الخاصة بالخادم، والمكونات التفاعلية ضمن شجرة React واحدة. يمكن أن تحسّن RSC الأداء، لكنها تتطلب خبرة عميقة لإعدادها وصيانتها حاليًا. راجع [أمثلة RSC لـ Parcel](https://github.com/parcel-bundler/rsc-examples).
 
-Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering. 
+تحتاج استراتيجيات التصيير إلى التكامل مع الموجّه بحيث تتيح للتطبيقات اختيار استراتيجية التصيير المناسبة لكل مسار. سيُمكّن ذلك استخدام استراتيجيات تصيير مختلفة بدون إعادة كتابة التطبيق بأكمله. على سبيل المثال، قد يكون من الأفضل توليد الصفحة الرئيسية بشكل ثابت (SSG)، بينما قد تكون بعض الصفحات ذات الخلاصة المحتوى أفضل مع التصيير على الخادم.
 
-Using the right rendering strategy for the right routes can decrease the time it takes for the first byte of content to be loaded ([Time to First Byte](https://web.dev/articles/ttfb)), the first piece of content to render ([First Contentful Paint](https://web.dev/articles/fcp)), and the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+استخدام استراتيجية التصيير المناسبة لكل مسار يمكن أن يقلل الوقت اللازم لتحميل البايت الأول من المحتوى ([Time to First Byte](https://web.dev/articles/ttfb))، والوقت لعرض أول قطعة من المحتوى ([First Contentful Paint](https://web.dev/articles/fcp))، والوقت لعرض أكبر محتوى مرئي ([Largest Contentful Paint](https://web.dev/articles/lcp)).
 
-### And more... {/*and-more*/}
+### والمزيد... {/*and-more*/}
 
-These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with. 
+هذه مجرد أمثلة قليلة على الميزات التي سيتعين على التطبيق الجديد أخذها بعين الاعتبار عند البناء من الصفر. العديد من القيود التي ستواجهها قد يكون من الصعب حلها لأن كل مشكلة مترابطة بالأخرى وقد تتطلب خبرة عميقة في مجالات قد لا تكون على دراية بها.
 
-If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box. 
+إذا لم ترغب في حل هذه المشكلات بنفسك، يمكنك [البدء مع إطار عمل](/learn/creating-a-react-app) الذي يوفر هذه الميزات جاهزة.
