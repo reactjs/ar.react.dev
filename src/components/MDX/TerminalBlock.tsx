@@ -79,13 +79,19 @@ function TerminalBlock({level = 'info', children}: TerminalBlockProps) {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div
+=======
+      <pre
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
         className="px-8 pt-4 pb-6 text-primary-dark dark:text-primary-dark font-mono text-code whitespace-pre overflow-x-auto"
         translate="no"
         dir="ltr">
-        <LevelText type={level} />
-        {message}
-      </div>
+        <code>
+          <LevelText type={level} />
+          {message}
+        </code>
+      </pre>
     </div>
   );
 }
