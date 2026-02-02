@@ -35,8 +35,13 @@ root.render(
           eject: 'react-scripts eject',
         },
         dependencies: {
+<<<<<<< HEAD
           react: '^19.2.0',
           'react-dom': '^19.2.0',
+=======
+          react: '^19.2.1',
+          'react-dom': '^19.2.1',
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
           'react-scripts': '^5.0.0',
         },
       },
