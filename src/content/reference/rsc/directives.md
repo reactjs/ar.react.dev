@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: "التوجيهات (Directives)"
+=======
+title: Directives
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 ---
 
 <RSC>
@@ -10,7 +14,12 @@ Directives are for use in [React Server Components](/reference/rsc/server-compon
 
 <Intro>
 
+<<<<<<< HEAD
 تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/creating-a-react-app#full-stack-frameworks)، والتعليمات اللازمة لذلك.
+=======
+Directives provide instructions to [bundlers compatible with React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+
+>>>>>>> bd87c394dc1daf0e54759126f847fcfa927e5a75
 </Intro>
 
 ---
