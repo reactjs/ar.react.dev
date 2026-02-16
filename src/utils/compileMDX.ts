@@ -10,7 +10,11 @@ import {MDXComponents} from 'components/MDX/MDXComponents';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~ IMPORTANT: BUMP THIS IF YOU CHANGE ANY CODE BELOW ~~~
+<<<<<<< HEAD
 const DISK_CACHE_BREAKER = 10;
+=======
+const DISK_CACHE_BREAKER = 11;
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 export default async function compileMDX(

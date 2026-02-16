@@ -35,7 +35,11 @@ title: "<option>"
 
 #### الخصائص {/*props*/}
 
+<<<<<<< HEAD
 تدعم `<option>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
+=======
+`<option>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 
 بالإضافة إلى ذلك ، يدعم `<option>` هذه الخصائص:
 

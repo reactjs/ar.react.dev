@@ -612,8 +612,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 ];
 
 export default function App() {
@@ -708,8 +713,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 ];
 
 export default function App() {
@@ -774,7 +784,11 @@ li {
 
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
+<<<<<<< HEAD
   // انسخ المصفوفة!
+=======
+  // Copy the array!
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
   const storiesToDisplay = stories.slice();
 
   // لا يؤثر على المصفوفة الأصلية:
@@ -800,8 +814,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
 ];
 
 export default function App() {

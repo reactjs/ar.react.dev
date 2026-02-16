@@ -18,6 +18,33 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
     reactCompiler: true,
+<<<<<<< HEAD
+=======
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // Serve markdown when Accept header prefers text/markdown
+        // Useful for LLM agents - https://www.skeptrune.com/posts/use-the-accept-header-to-serve-markdown-instead-of-html-to-llms/
+        {
+          source: '/:path((?!llms.txt).*)',
+          has: [
+            {
+              type: 'header',
+              key: 'accept',
+              value: '(.*text/markdown.*)',
+            },
+          ],
+          destination: '/api/md/:path*',
+        },
+        // Explicit .md extension also serves markdown
+        {
+          source: '/:path*.md',
+          destination: '/api/md/:path*',
+        },
+      ],
+    };
+>>>>>>> 55a317d40781a0054a05a9f6c443ae0bd71f7d7e
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {
