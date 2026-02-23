@@ -44,7 +44,15 @@ function PasswordField() {
 
 * `useId` هو خطاف، لذلك يمكنك استدعائه فقط **في المستوي الأعلي من مكونك** أو من خلال الخطاطيف الخاصة بك. لا يمكنك استدعاء الخطاف داخل الحلقات والشروط. إذا كنت بحاجة إلي ذلك، قم بإستخراج مكون جديد وقم بنقل الحالة إليه.
 
+<<<<<<< HEAD
 * `useId` **لا ينبغي استخدامه لتوليد المفاتيح** في القائمة. [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
+
+* `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
+=======
+* `useId` **should not be used to generate cache keys** for [use()](/reference/react/use). The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
+
+* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+>>>>>>> a1cc2ab4bf06b530f86a7049923c402baf86aca1
 
 * `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
 

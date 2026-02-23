@@ -84,6 +84,9 @@ function ChatRoom({ roomId }) {
 * [`useLayoutEffect`](/reference/react/useLayoutEffect) ينطلق قبل أن يعيد المتصفح اظهار الشاشة. يمكنك قياس التخطيط هنا.
 * [`useInsertionEffect`](/reference/react/useInsertionEffect) ينطلق قبل أن تُجري React تغييرات على DOM. يمكن للمكتبات إدراج CSS الديناميكي هنا.
 
+You can also separate events from Effects:
+
+- [`useEffectEvent`](/reference/react/useEffectEvent) creates a non-reactive event to fire from any Effect hook.
 ---
 
 ## خطاطيف الأداء {/*performance-hooks*/}
