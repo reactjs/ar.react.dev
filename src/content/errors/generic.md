@@ -1,11 +1,11 @@
 <Intro>
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+في بيئة الإنتاج المُصغَّرة من React، نتجنب إرسال رسائل الخطأ الكاملة من أجل تقليل عدد البايتات المُرسَلة عبر الشبكة.
 
 </Intro>
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, this page will reassemble the original error message.
+نوصي بشدة باستخدام بيئة التطوير محليًا عند تصحيح أخطاء تطبيقك لأنها تتعقب معلومات تصحيح إضافية وتوفر تحذيرات مفيدة حول المشاكل المحتملة في تطبيقاتك، ولكن إذا واجهت استثناءً أثناء استخدام بيئة الإنتاج، فستقوم هذه الصفحة بإعادة تجميع رسالة الخطأ الأصلية.
 
-The full text of the error you just encountered is:
+النص الكامل للخطأ الذي واجهته للتو هو:
 
 <ErrorDecoder />

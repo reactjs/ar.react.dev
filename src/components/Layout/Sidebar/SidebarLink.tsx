@@ -85,26 +85,26 @@ export function SidebarLink({
         {title}{' '}
         {version === 'major' && (
           <span
-            title="- This feature is available in React 19 beta and the React canary channel"
+            title="- هذه الميزة متاحة في React 19 بيتا وقناة canary"
             className={`text-xs px-1 ms-1 rounded bg-gray-10 dark:bg-gray-40 dark:bg-opacity-20 text-gray-40 dark:text-gray-40`}>
             React 19
           </span>
         )}
         {version === 'canary' && (
           <IconCanary
-            title=" - This feature is available in the latest Canary version of React"
+            title=" - هذه الميزة متاحة في أحدث إصدار Canary من React"
             className="ms-1 text-gray-30 dark:text-gray-60 inline-block w-3.5 h-3.5 align-[-3px]"
           />
         )}
         {version === 'experimental' && (
           <IconExperimental
-            title=" - This feature is available in the latest Experimental version of React"
+            title=" - هذه الميزة متاحة في أحدث إصدار تجريبي من React"
             className="ms-1 text-gray-30 dark:text-gray-60 inline-block w-3.5 h-3.5 align-[-3px]"
           />
         )}
         {version === 'rc' && (
           <IconCanary
-            title=" - This feature is available in the latest RC version"
+            title=" - هذه الميزة متاحة في أحدث إصدار RC"
             className="ms-1 text-gray-30 dark:text-gray-60 inline-block w-3.5 h-3.5 align-[-3px]"
           />
         )}

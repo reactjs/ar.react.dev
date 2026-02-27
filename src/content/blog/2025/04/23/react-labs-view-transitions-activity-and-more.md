@@ -1,94 +1,96 @@
 ---
-title: "React Labs: View Transitions, Activity, and more"
+title: "مختبرات React: انتقالات العرض، والنشاط، والمزيد"
 author: Ricky Hanlon
 date: 2025/04/23
-description: In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+description: في منشورات مختبرات React، نكتب عن المشاريع قيد البحث والتطوير النشط. في هذا المنشور، نشارك ميزتين تجريبيتين جديدتين جاهزتين للتجربة اليوم، وتحديثات حول المجالات الأخرى التي نعمل عليها الآن.
 ---
 
-April 23, 2025 by [Ricky Hanlon](https://twitter.com/rickhanlonii)
+23 أبريل 2025 بواسطة [Ricky Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+في منشورات مختبرات React، نكتب عن المشاريع قيد البحث والتطوير النشط. في هذا المنشور، نشارك ميزتين تجريبيتين جديدتين جاهزتين للتجربة اليوم، وتحديثات حول المجالات الأخرى التي نعمل عليها الآن.
 
 </Intro>
 
 
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
+اليوم، يسعدنا إصدار وثائق لميزتين تجريبيتين جديدتين جاهزتين للاختبار:
 
-- [View Transitions](#view-transitions)
-- [Activity](#activity)
+- [انتقالات العرض](#view-transitions)
+- [النشاط](#activity)
 
-We're also sharing updates on new features currently in development:
-- [React Performance Tracks](#react-performance-tracks)
-- [Compiler IDE Extension](#compiler-ide-extension)
-- [Automatic Effect Dependencies](#automatic-effect-dependencies)
-- [Fragment Refs](#fragment-refs)
-- [Concurrent Stores](#concurrent-stores)
+نشارك أيضًا تحديثات حول الميزات الجديدة قيد التطوير حاليًا:
+- [مسارات أداء React](#react-performance-tracks)
+- [ملحق IDE للمترجم](#compiler-ide-extension)
+- [تبعيات التأثير التلقائية](#automatic-effect-dependencies)
+- [مراجع الأجزاء](#fragment-refs)
+- [المخازن المتزامنة](#concurrent-stores)
 
 ---
 
-# New Experimental Features {/*new-experimental-features*/}
+# ميزات تجريبية جديدة {/*new-experimental-features*/}
 
 <Note>
 
-`<Activity />` has shipped in `react@19.2`.
+تم شحن `<Activity />` في `react@19.2`.
 
-`<ViewTransition />` and `addTransitionType` are now available in `react@canary`.
+`<ViewTransition />` و `addTransitionType` متاحة الآن في `react@canary`.
 
 </Note>
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
+أصبحت انتقالات العرض والنشاط جاهزة الآن للاختبار في `react@experimental`. تم اختبار هذه الميزات في الإنتاج وهي مستقرة، لكن الواجهة البرمجية النهائية قد تتغير مع دمجنا للملاحظات.
 
-You can try them by upgrading React packages to the most recent experimental version:
+يمكنك تجربتها عن طريق ترقية حزم React إلى أحدث إصدار تجريبي:
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Read on to learn how to use these features in your app, or check out the newly published docs:
+تابع القراءة لمعرفة كيفية استخدام هذه الميزات في تطبيقك، أو تحقق من الوثائق المنشورة حديثًا:
 
-- [`<ViewTransition>`](/reference/react/ViewTransition): A component that lets you activate an animation for a Transition.
-- [`addTransitionType`](/reference/react/addTransitionType): A function that allows you to specify the cause of a Transition.
-- [`<Activity>`](/reference/react/Activity): A component that lets you hide and show parts of the UI.
+- [`<ViewTransition>`](/reference/react/ViewTransition): مكون يتيح لك تنشيط رسم متحرك لانتقال.
+- [`addTransitionType`](/reference/react/addTransitionType): دالة تسمح لك بتحديد سبب الانتقال.
+- [`<Activity>`](/reference/react/Activity): مكون يتيح لك إخفاء وإظهار أجزاء من واجهة المستخدم.
 
-## View Transitions {/*view-transitions*/}
+## انتقالات العرض {/*view-transitions*/}
 
-React View Transitions are a new experimental feature that makes it easier to add animations to UI transitions in your app. Under-the-hood, these animations use the new [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API available in most modern browsers.
+تُعد انتقالات العرض (View Transitions) واجهة برمجة تطبيقات للمتصفح لعمل انتقالات متحركة بين حالتين مختلفتين لواجهة المستخدم. بشكل افتراضي، تقوم انتقالات العرض بعمل تلاشي متقاطع بين الحالة القديمة والجديدة. يتيح React الآن استخدام انتقالات العرض مع `Suspense`. يمكنك تمكين انتقالات العرض عن طريق لف تحديث الحالة الذي يعلق في `startViewTransition`.
 
-To opt-in to animating an element, wrap it in the new `<ViewTransition>` component:
+تعد انتقالات عرض React ميزة تجريبية جديدة تسهل إضافة رسوم متحركة إلى انتقالات واجهة المستخدم في تطبيقك. تحت الغطاء، تستخدم هذه الرسوم المتحركة واجهة برمجة التطبيقات الجديدة [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) المتوفرة في معظم المتصفحات الحديثة.
+
+للاشتراك في تحريك عنصر، قم بلفه في مكون `<ViewTransition>` الجديد:
 
 ```js
-// "what" to animate.
+// "ماذا" تريد تحريكه.
 <ViewTransition>
-  <div>animate me</div>
+  <div>حركني</div>
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated.
+يتيح لك هذا المكون الجديد تحديد "ماذا" تريد تحريكه بشكل تعريفي عند تنشيط الرسوم المتحركة.
 
-You can define "when" to animate by using one of these three triggers for a View Transition:
+يمكنك تحديد "متى" يتم التحريك باستخدام أحد هذه المشغلات الثلاثة لانتقال العرض:
 
 ```js
-// "when" to animate.
+// "متى" يتم التحريك.
 
-// Transitions
+// انتقالات
 startTransition(() => setState(...));
 
-// Deferred Values
+// قيم مؤجلة
 const deferred = useDeferredValue(value);
 
 // Suspense
 <Suspense fallback={<Fallback />}>
-  <div>Loading...</div>
+  <div>جار التحميل...</div>
 </Suspense>
 ```
 
-By default, these animations use the [default CSS animations for View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) applied (typically a smooth cross-fade). You can use [view transition pseudo-selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) to define "how" the animation runs. For example, you can use `*` to change the default animation for all transitions:
+بشكل افتراضي، تستخدم هذه الرسوم المتحركة [رسوم CSS المتحركة الافتراضية لانتقالات العرض](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) المطبقة (عادةً ما تكون تلاشيًا متقاطعًا سلسًا). يمكنك استخدام [محددات CSS الزائفة لانتقال العرض](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) لتحديد "كيف" يتم تشغيل الرسوم المتحركة. على سبيل المثال، يمكنك استخدام `*` لتغيير الرسوم المتحركة الافتراضية لجميع الانتقالات:
 
 ```
-// "how" to animate.
+// "كيف" يتم التحريك.
 ::view-transition-old(*) {
   animation: 300ms ease-out fade-out;
 }
@@ -97,16 +99,16 @@ By default, these animations use the [default CSS animations for View Transition
 }
 ```
 
-When the DOM updates due to an animation trigger&mdash;like `startTransition`, `useDeferredValue`, or a `Suspense` fallback switching to content&mdash;React will use [declarative heuristics](/reference/react/ViewTransition#viewtransition) to automatically determine which `<ViewTransition>` components to activate for the animation. The browser will then run the animation that's defined in CSS.
+عندما يتم تحديث DOM بسبب مشغل رسوم متحركة - مثل `startTransition` أو `useDeferredValue` أو تبديل احتياطي `Suspense` إلى محتوى - سيستخدم React [استدلالات تعريفية](/reference/react/ViewTransition#viewtransition) لتحديد مكونات `<ViewTransition>` التي سيتم تنشيطها للرسوم المتحركة تلقائيًا. سيقوم المتصفح بعد ذلك بتشغيل الرسوم المتحركة المحددة في CSS.
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+إذا كنت على دراية بواجهة برمجة تطبيقات انتقال العرض في المتصفح وتريد معرفة كيفية دعم React لها، فراجع [كيف يعمل `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work) في الوثائق.
 
-In this post, let's take a look at a few examples of how to use View Transitions.
+في هذا المنشور، دعنا نلقي نظرة على بعض الأمثلة حول كيفية استخدام انتقالات العرض.
 
-We'll start with this app, which doesn't animate any of the following interactions:
-- Click a video to view the details.
-- Click "back" to go back to the feed.
-- Type in the list to filter the videos.
+سنبدأ بهذا التطبيق، الذي لا يحرك أيًا من التفاعلات التالية:
+- انقر فوق مقطع فيديو لعرض التفاصيل.
+- انقر فوق "رجوع" للعودة إلى الموجز.
+- اكتب في القائمة لتصفية مقاطع الفيديو.
 
 <Sandpack>
 
@@ -116,7 +118,7 @@ import TalkDetails from './Details'; import Home from './Home'; import {useRoute
 export default function App() {
   const {url} = useRouter();
 
-  // 🚩This version doesn't include any animations yet
+  // 🚩هذا الإصدار لا يتضمن أي رسوم متحركة بعد
   return url === '/' ? <Home /> : <TalkDetails />;
 }
 ```
@@ -162,7 +164,7 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> رجوع
         </div>
       }
     >
@@ -192,7 +194,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        بحث
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -201,7 +203,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="بحث"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -232,11 +234,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const foundVideos = filterVideos(videos, searchText);
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} مقاطع فيديو</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <div className="video-list">
         {foundVideos.length === 0 && (
-          <div className="no-results">No results</div>
+          <div className="no-results">لا توجد نتائج</div>
         )}
         <div className="videos">
           {foundVideos.map((video) => (
@@ -394,8 +396,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// خدعة لأننا لا نملك خلفية حقيقية.
+// على عكس الحالة المحلية، يبقى هذا عند تصفية مقاطع الفيديو.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -404,7 +406,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'إلغاء الحفظ' : 'حفظ'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -1262,17 +1264,17 @@ root.render(
 
 <Note>
 
-#### View Transitions do not replace CSS and JS driven animations {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
+#### انتقالات العرض لا تحل محل الرسوم المتحركة التي تعتمد على CSS و JS {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
 
-View Transitions are meant to be used for UI transitions such as navigation, expanding, opening, or re-ordering. They are not meant to replace all the animations in your app.
+تهدف انتقالات العرض إلى استخدامها في انتقالات واجهة المستخدم مثل التنقل أو التوسيع أو الفتح أو إعادة الترتيب. ليس المقصود منها أن تحل محل جميع الرسوم المتحركة في تطبيقك.
 
-In our example app above, notice that there are already animations when you click the "like" button and in the Suspense fallback glimmer. These are good use cases for CSS animations because they are animating a specific element.
+في مثال تطبيقنا أعلاه، لاحظ أن هناك بالفعل رسومًا متحركة عند النقر فوق زر "أعجبني" وفي وميض `Suspense` الاحتياطي. هذه حالات استخدام جيدة للرسوم المتحركة بـ CSS لأنها تحرك عنصرًا معينًا.
 
 </Note>
 
-### Animating navigations {/*animating-navigations*/}
+### تحريك التنقلات {/*animating-navigations*/}
 
-Our app includes a Suspense-enabled router, with [page transitions already marked as Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), which means navigations are performed with `startTransition`:
+يتضمن تطبيقنا جهاز توجيه يدعم `Suspense`، مع [انتقالات الصفحة التي تم تمييزها بالفعل على أنها انتقالات](/reference/react/useTransition#building-a-suspense-enabled-router)، مما يعني أن التنقلات يتم إجراؤها باستخدام `startTransition`:
 
 ```js
 function navigate(url) {
@@ -1282,19 +1284,19 @@ function navigate(url) {
 }
 ```
 
-`startTransition` is a View Transition trigger, so we can add `<ViewTransition>` to animate between pages:
+`startTransition` هو مشغل انتقال عرض، لذا يمكننا إضافة `<ViewTransition>` لتحريك بين الصفحات:
 
 ```js
-// "what" to animate
+// "ماذا" تريد تحريكه
 <ViewTransition key={url}>
   {url === '/' ? <Home /> : <TalkDetails />}
 </ViewTransition>
 ```
 
-When the `url` changes, the `<ViewTransition>` and new route are rendered. Since the `<ViewTransition>` was updated inside of `startTransition`, the `<ViewTransition>` is activated for an animation.
+عندما يتغير `url`، يتم عرض `<ViewTransition>` والمسار الجديد. نظرًا لأنه تم تحديث `<ViewTransition>` داخل `startTransition`، يتم تنشيط `<ViewTransition>` للرسوم المتحركة.
 
 
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages:
+بشكل افتراضي، تتضمن انتقالات العرض الرسوم المتحركة الافتراضية للمتصفح للتلاشي المتقاطع. بإضافة هذا إلى مثالنا، لدينا الآن تلاشي متقاطع كلما تنقلنا بين الصفحات:
 
 <Sandpack>
 
@@ -2457,17 +2459,17 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation.
+نظرًا لأن جهاز التوجيه الخاص بنا يقوم بالفعل بتحديث المسار باستخدام `startTransition`، فإن هذا التغيير المكون من سطر واحد لإضافة `<ViewTransition>` ينشط مع حركة التلاشي المتقاطع الافتراضية.
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+إذا كنت مهتمًا بمعرفة كيفية عمل ذلك، فراجع وثائق [كيف يعمل `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work)
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### إلغاء الاشتراك في رسوم `<ViewTransition>` المتحركة {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations.
+في هذا المثال، نقوم بلف جذر التطبيق في `<ViewTransition>` للتبسيط، ولكن هذا يعني أن جميع الانتقالات في التطبيق سيتم تحريكها، مما قد يؤدي إلى رسوم متحركة غير متوقعة.
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+لإصلاح ذلك، نقوم بلف أبناء المسار بـ `"none"` حتى تتمكن كل صفحة من التحكم في الرسوم المتحركة الخاصة بها:
 
 ```js
 // Layout.js
@@ -2476,17 +2478,17 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types.
+في الممارسة العملية، يجب أن تتم التنقلات عبر خصائص "enter" و "exit"، أو باستخدام أنواع الانتقال.
 
 </Note>
 
-### Customizing animations {/*customizing-animations*/}
+### تخصيص الرسوم المتحركة {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+بشكل افتراضي، يتضمن `<ViewTransition>` التلاشي المتقاطع الافتراضي من المتصفح.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+لتخصيص الرسوم المتحركة، يمكنك توفير خصائص لمكون `<ViewTransition>` لتحديد الرسوم المتحركة التي سيتم استخدامها، بناءً على [كيفية تنشيط `<ViewTransition>`](/reference/react/ViewTransition#props).
 
-For example, we can slow down the `default` cross fade animation:
+على سبيل المثال، يمكننا إبطاء حركة التلاشي المتقاطع `default`:
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2494,7 +2496,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
+وتعريف `slow-fade` في CSS باستخدام [فئات انتقال العرض](/reference/react/ViewTransition#view-transition-class):
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2506,7 +2508,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+الآن، أصبح التلاشي المتقاطع أبطأ:
 
 <Sandpack>
 
@@ -4894,13 +4896,13 @@ root.render(
 
 </Sandpack>
 
-By default, React automatically generates a unique `name` for each element activated for a transition (see [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work)). When React sees a transition where a `<ViewTransition>` with a `name` is removed and a new `<ViewTransition>` with the same `name` is added, it will activate a shared element transition.
+افتراضيًا، يقوم React تلقائيًا بإنشاء `name` فريد لكل عنصر يتم تنشيطه للانتقال (راجع [كيف يعمل `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work)). عندما يرى React انتقالًا حيث تتم إزالة `<ViewTransition>` باسم `name` وإضافة `<ViewTransition>` جديد بنفس `name`، فسيقوم بتنشيط انتقال عنصر مشترك.
 
-For more info, see the docs for [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element).
+لمزيد من المعلومات، راجع وثائق [تحريك عنصر مشترك](/reference/react/ViewTransition#animating-a-shared-element).
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### التحريك على أساس السبب {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+في بعض الأحيان، قد ترغب في تحريك العناصر بشكل مختلف بناءً على كيفية تشغيلها. لهذه الحالة، أضفنا واجهة برمجة تطبيقات جديدة تسمى `addTransitionType` لتحديد سبب الانتقال:
 
 ```js {4,11}
 function navigate(url) {

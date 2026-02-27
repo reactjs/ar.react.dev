@@ -42,19 +42,19 @@ function PageHeading({
           {title}
           {version === 'canary' && (
             <IconCanary
-              title=" - This feature is available in the latest Canary version of React"
+              title=" - هذه الميزة متاحة في أحدث إصدار Canary من React"
               className="ms-4 mt-1 text-gray-50 dark:text-gray-40 inline-block w-6 h-6 align-[-1px]"
             />
           )}
           {version === 'rc' && (
             <IconCanary
-              title=" - This feature is available in the latest RC version"
+              title=" - هذه الميزة متاحة في أحدث إصدار RC"
               className="ms-4 mt-1 text-gray-50 dark:text-gray-40 inline-block w-6 h-6 align-[-1px]"
             />
           )}
           {version === 'experimental' && (
             <IconExperimental
-              title=" - This feature is available in the latest Experimental version of React"
+              title=" - هذه الميزة متاحة في أحدث إصدار تجريبي من React"
               className="ms-4 mt-1 text-gray-50 dark:text-gray-40 inline-block w-6 h-6 align-[-1px]"
             />
           )}

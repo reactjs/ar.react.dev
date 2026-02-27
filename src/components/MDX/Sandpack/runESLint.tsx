@@ -21,11 +21,20 @@ const getCodeMirrorPosition = (
 
 const linter = new Linter();
 
-const reactRules = require('eslint-plugin-react-hooks').rules;
-linter.defineRules({
-  'react-hooks/rules-of-hooks': reactRules['rules-of-hooks'],
-  'react-hooks/exhaustive-deps': reactRules['exhaustive-deps'],
-});
+let reactRules;
+try {
+  reactRules = require('eslint-plugin-react-hooks').rules;
+  if (reactRules) {
+    linter.defineRules({
+      'react-hooks/rules-of-hooks': reactRules['rules-of-hooks'],
+      'react-hooks/exhaustive-deps': reactRules['exhaustive-deps'],
+    });
+  }
+} catch (e) {
+  console.warn('Could not load react-hooks rules:', e);
+  // Define empty rules as fallback
+  reactRules = {};
+}
 
 const options = {
   parserOptions: {
@@ -33,10 +42,13 @@ const options = {
     sourceType: 'module',
     ecmaFeatures: {jsx: true},
   },
-  rules: {
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
-  },
+  rules:
+    reactRules['rules-of-hooks'] && reactRules['exhaustive-deps']
+      ? {
+          'react-hooks/rules-of-hooks': 'error',
+          'react-hooks/exhaustive-deps': 'error',
+        }
+      : {},
 };
 
 export const runESLint = (

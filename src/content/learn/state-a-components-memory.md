@@ -1,29 +1,29 @@
----
-title: "State: A Component's Memory"
+﻿---
+title: "State: ذاكرة المكون"
 ---
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+غالبًا ما تحتاج المكونات إلى تغيير ما يظهر على الشاشة نتيجة للتفاعل. الكتابة في النموذج يجب أن تحدّث حقل الإدخال، والنقر على "التالي" في عرض الصور المتتابع يجب أن يغير الصورة المعروضة، والنقر على "شراء" يجب أن يضع المنتج في سلة التسوق. تحتاج المكونات إلى "تذكر" الأشياء: قيمة الإدخال الحالية، الصورة الحالية، سلة التسوق. في React، هذا النوع من ذاكرة المكون المحددة يسمى *state (حالة)*.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/reference/react/useState) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+* كيفية إضافة متغير حالة باستخدام [`useState`](/reference/react/useState) Hook
+* ما هو الزوج من القيم الذي يعيده `useState` Hook
+* كيفية إضافة أكثر من متغير حالة واحد
+* لماذا تسمى الحالة محلية
 
 </YouWillLearn>
 
-## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
+## عندما لا يكون المتغير العادي كافيا {/*when-a-regular-variable-isnt-enough*/}
 
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
+إليك مكونا يعرض صورة منحوتة. النقر على زر "Next" يجب أن يعرض المنحوتة التالية عن طريق تغيير `index` إلى `1` ثم `2` وهكذا. ومع ذلك هذا **لن ينجح** (يمكنك تجربته!):
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [7]}}
+```js
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
@@ -151,46 +151,46 @@ button {
 
 </Sandpack>
 
-The `handleClick` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+معالج الحدث `handleClick` يحدّث متغيرًا محليًا، `index`. لكن شيئين يمنعان هذا التغيير من أن يكون مرئيًا:
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **المتغيرات المحلية لا تستمر بين عمليات التصيير.** عندما يصيّر React هذا المكون للمرة الثانية، يصيّره من الصفر — لا يأخذ في الاعتبار أي تغييرات على المتغيرات المحلية.
+2. **التغييرات على المتغيرات المحلية لن تؤدي إلى تشغيل عمليات التصيير.** React لا يدرك أنه بحاجة إلى تصيير المكون مرة أخرى مع البيانات الجديدة.
 
-To update a component with new data, two things need to happen:
+لتحديث مكون ببيانات جديدة، يجب أن يحدث شيئان:
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+1. **الاحتفاظ** بالبيانات بين عمليات التصيير.
+2. **تشغيل** React لتصيير المكون بالبيانات الجديدة (إعادة التصيير).
 
-The [`useState`](/reference/react/useState) Hook provides those two things:
+الـ [`useState`](/reference/react/useState) Hook يوفر هذين الشيئين:
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+1. **متغير حالة** للاحتفاظ بالبيانات بين عمليات التصيير.
+2. **دالة محدّث الحالة** لتحديث المتغير وتشغيل React لتصيير المكون مرة أخرى.
 
-## Adding a state variable {/*adding-a-state-variable*/}
+## إضافة متغير حالة {/*adding-a-state-variable*/}
 
-To add a state variable, import `useState` from React at the top of the file:
+لإضافة متغير حالة، استورد `useState` من React في أعلى الملف:
 
 ```js
 import { useState } from 'react';
 ```
 
-Then, replace this line:
+ثم، استبدل هذا السطر:
 
 ```js
 let index = 0;
 ```
 
-with
+بـ
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-`index` is a state variable and `setIndex` is the setter function.
+`index` هو متغير حالة و `setIndex` هي دالة المُحدّث.
 
-> The `[` and `]` syntax here is called [array destructuring](https://javascript.info/destructuring-assignment) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
+> بناء `[` و `]` هنا يسمى [array destructuring](https://javascript.info/destructuring-assignment) ويتيح لك قراءة القيم من array. الـ array الذي يرجعه `useState` يحتوي دائمًا على عنصرين بالضبط.
 
-This is how they work together in `handleClick`:
+هذه هي كيفية عملهما معًا في `handleClick`:
 
 ```js
 function handleClick() {
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-Now clicking the "Next" button switches the current sculpture:
+الآن النقر على زر "Next" يبدّل المنحوتة الحالية:
 
 <Sandpack>
 
@@ -377,11 +377,11 @@ const [index, setIndex] = useState(0);
 1. **Your component renders the first time.** Because you passed `0` to `useState` as the initial value for `index`, it will return `[0, setIndex]`. React remembers `0` is the latest state value.
 2. **You update the state.** When a user clicks the button, it calls `setIndex(index + 1)`. `index` is `0`, so it's `setIndex(1)`. This tells React to remember `index` is `1` now and triggers another render.
 3. **Your component's second render.** React still sees `useState(0)`, but because React *remembers* that you set `index` to `1`, it returns `[1, setIndex]` instead.
-4. And so on!
+4. وهكذا!
 
-## Giving a component multiple state variables {/*giving-a-component-multiple-state-variables*/}
+## إعطاء مكون متغيرات حالة متعددة {/*giving-a-component-multiple-state-variables*/}
 
-You can have as many state variables of as many types as you like in one component. This component has two state variables, a number `index` and a boolean `showMore` that's toggled when you click "Show details":
+يمكنك الحصول على أي عدد من متغيرات الحالة من أي نوع تريده في مكون واحد. هذا المكون لديه متغيرا حالة، رقم `index` و boolean `showMore` الذي يتم تبديله عند النقر على "Show details":
 
 <Sandpack>
 
@@ -520,19 +520,19 @@ button {
 
 </Sandpack>
 
-It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. Read [Choosing the State Structure](/learn/choosing-the-state-structure) for more tips.
+من الجيد أن يكون لديك متغيرات حالة متعددة إذا كانت حالتها غير مرتبطة، مثل `index` و `showMore` في هذا المثال. ولكن إذا وجدت أنك غالبًا تغيّر متغيري حالة معًا، فقد يكون من الأسهل دمجهما في واحد. على سبيل المثال، إذا كان لديك نموذج به العديد من الحقول، فمن الأفضل أن يكون لديك متغير حالة واحد يحتوي على كائن بدلاً من متغير حالة لكل حقل. اقرأ [اختيار بنية الحالة](/learn/choosing-the-state-structure) للمزيد من النصائح.
 
 <DeepDive>
 
-#### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
+#### كيف يعرف React أي حالة يعيد؟ {/*how-does-react-know-which-state-to-return*/}
 
-You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
+ربما لاحظت أن استدعاء `useState` لا يتلقى أي معلومات حول *أي* متغير حالة يشير إليه. لا يوجد "معرّف" يتم تمريره إلى `useState`، فكيف يعرف أي من متغيرات الحالة يجب إرجاعه؟ هل يعتمد على بعض السحر مثل تحليل دوالك؟ الجواب لا.
 
-Instead, to enable their concise syntax, Hooks **rely on a stable call order on every render of the same component.** This works well in practice because if you follow the rule above ("only call Hooks at the top level"), Hooks will always be called in the same order. Additionally, a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) catches most mistakes.
+بدلاً من ذلك، لتمكين بنيتهم الموجزة، تعتمد الـ Hooks **على ترتيب استدعاء مستقر في كل عرض لنفس المكوّن.** هذا يعمل بشكل جيد في الممارسة لأنه إذا اتبعت القاعدة أعلاه ("استدع الـ Hooks فقط في المستوى الأعلى")، سيتم استدعاء الـ Hooks دائمًا بنفس الترتيب. بالإضافة إلى ذلك، [إضافة linter](https://www.npmjs.com/package/eslint-plugin-react-hooks) تلتقط معظم الأخطاء.
 
-Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to `0` before rendering. Each time you call `useState`, React gives you the next state pair and increments the index. You can read more about this mechanism in [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
+داخليًا، يحتفظ React بمصفوفة من أزواج الحالة لكل مكوّن. كما يحتفظ بفهرس الزوج الحالي، والذي يتم تعيينه إلى `0` قبل العرض. في كل مرة تستدعي فيها `useState`، يعطيك React زوج الحالة التالي ويزيد الفهرس. يمكنك قراءة المزيد عن هذه الآلية في [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
 
-This example **doesn't use React** but it gives you an idea of how `useState` works internally:
+هذا المثال **لا يستخدم React** لكنه يعطيك فكرة عن كيفية عمل `useState` داخليًا:
 
 <Sandpack>
 
@@ -724,15 +724,15 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-You don't have to understand it to use React, but you might find this a helpful mental model.
+ليس عليك فهم هذا لاستخدام React، لكن قد تجد هذا نموذجًا ذهنيًا مفيدًا.
 
 </DeepDive>
 
-## State is isolated and private {/*state-is-isolated-and-private*/}
+## الحالة معزولة وخاصة {/*state-is-isolated-and-private*/}
 
-State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
+الحالة محلية لنسخة المكون على الشاشة. بمعنى آخر، **إذا صيّرت نفس المكون مرتين، فإن كل نسخة ستكون لديها حالة معزولة تمامًا!** تغيير واحدة منها لن يؤثر على الأخرى.
 
-In this example, the `Gallery` component from earlier is rendered twice with no changes to its logic. Try clicking the buttons inside each of the galleries. Notice that their state is independent:
+في هذا المثال، يتم تصيير مكون `Gallery` من قبل مرتين بدون تغييرات على منطقه. جرب النقر على الأزرار داخل كل من المعارض. لاحظ أن حالتهما مستقلة:
 
 <Sandpack>
 
@@ -891,21 +891,21 @@ button {
 
 </Sandpack>
 
-This is what makes state different from regular variables that you might declare at the top of your module. State is not tied to a particular function call or a place in the code, but it's "local" to the specific place on the screen. You rendered two `<Gallery />` components, so their state is stored separately.
+هذا ما يجعل الحالة مختلفة عن المتغيرات العادية التي قد تعلن عنها في أعلى الوحدة النمطية (module) الخاصة بك. الحالة ليست مرتبطة باستدعاء دالة معينة أو مكان في الكود، بل هي "محلية" للمكان المحدد على الشاشة. لقد عرضت مكوّنين `<Gallery />`، لذلك يتم تخزين حالتهما بشكل منفصل.
 
-Also notice how the `Page` component doesn't "know" anything about the `Gallery` state or even whether it has any. Unlike props, **state is fully private to the component declaring it.** The parent component can't change it. This lets you add state to any component or remove it without impacting the rest of the components.
+لاحظ أيضًا كيف أن مكوّن `Page` لا "يعرف" أي شيء عن حالة `Gallery` أو حتى ما إذا كان لديه أي حالة. على عكس الـ props، **الحالة خاصة تمامًا بالمكوّن الذي يعلن عنها.** المكوّن الأب لا يمكنه تغييرها. هذا يتيح لك إضافة حالة إلى أي مكوّن أو إزالتها دون التأثير على باقي المكوّنات.
 
-What if you wanted both galleries to keep their states in sync? The right way to do it in React is to *remove* state from child components and add it to their closest shared parent. The next few pages will focus on organizing state of a single component, but we will return to this topic in [Sharing State Between Components.](/learn/sharing-state-between-components)
+ماذا لو أردت الحفاظ على تزامن حالة كلا المعرضين؟ الطريقة الصحيحة للقيام بذلك في React هي *إزالة* الحالة من المكوّنات الأبناء وإضافتها إلى أقرب أب مشترك. ستركز الصفحات القليلة القادمة على تنظيم حالة مكوّن واحد، لكننا سنعود إلى هذا الموضوع في [مشاركة الحالة بين المكوّنات.](/learn/sharing-state-between-components)
 
 <Recap>
 
-* Use a state variable when a component needs to "remember" some information between renders.
-* State variables are declared by calling the `useState` Hook.
-* Hooks are special functions that start with `use`. They let you "hook into" React features like state.
-* Hooks might remind you of imports: they need to be called unconditionally. Calling Hooks, including `useState`, is only valid at the top level of a component or another Hook.
-* The `useState` Hook returns a pair of values: the current state and the function to update it.
-* You can have more than one state variable. Internally, React matches them up by their order.
-* State is private to the component. If you render it in two places, each copy gets its own state.
+* استخدم متغير حالة عندما يحتاج المكوّن إلى "تذكر" بعض المعلومات بين عمليات العرض (renders).
+* يتم الإعلان عن متغيرات الحالة بواسطة استدعاء الـ Hook المسمى `useState`.
+* الـ Hooks هي دوال خاصة تبدأ بكلمة `use`. تتيح لك "الارتباط" بميزات React مثل الحالة.
+* قد تذكرك الـ Hooks بعمليات الاستيراد: يجب استدعاؤها بشكل غير مشروط. استدعاء الـ Hooks، بما في ذلك `useState`، صالح فقط في المستوى الأعلى من مكوّن أو Hook آخر.
+* الـ Hook المسمى `useState` يُرجع زوجًا من القيم: الحالة الحالية والدالة لتحديثها.
+* يمكنك امتلاك أكثر من متغير حالة واحد. داخليًا، يطابقها React بناءً على ترتيبها.
+* الحالة خاصة بالمكوّن. إذا عرضته في مكانين، تحصل كل نسخة على حالتها الخاصة.
 
 </Recap>
 
@@ -913,11 +913,11 @@ What if you wanted both galleries to keep their states in sync? The right way to
 
 <Challenges>
 
-#### Complete the gallery {/*complete-the-gallery*/}
+#### أكمل المعرض {/*complete-the-gallery*/}
 
-When you press "Next" on the last sculpture, the code crashes. Fix the logic to prevent the crash. You may do this by adding extra logic to event handler or by disabling the button when the action is not possible.
+عندما تضغط على "Next" في آخر منحوتة، ينهار الكود. أصلح المنطق لمنع الانهيار. يمكنك القيام بذلك عن طريق إضافة منطق إضافي إلى معالج الحدث أو عن طريق تعطيل الزر عندما لا يكون الإجراء ممكنًا.
 
-After fixing the crash, add a "Previous" button that shows the previous sculpture. It shouldn't crash on the first sculpture.
+بعد إصلاح الانهيار، أضف زر "Previous" يعرض المنحوتة السابقة. يجب ألا ينهار عند المنحوتة الأولى.
 
 <Sandpack>
 
@@ -1223,13 +1223,13 @@ Notice how `hasPrev` and `hasNext` are used *both* for the returned JSX and insi
 
 </Solution>
 
-#### Fix stuck form inputs {/*fix-stuck-form-inputs*/}
+#### أصلح حقول النموذج العالقة {/*fix-stuck-form-inputs*/}
 
-When you type into the input fields, nothing appears. It's like the input values are "stuck" with empty strings. The `value` of the first `<input>` is set to always match the `firstName` variable, and the `value` for the second `<input>` is set to always match the `lastName` variable. This is correct. Both inputs have `onChange` event handlers, which try to update the variables based on the latest user input (`e.target.value`). However, the variables don't seem to "remember" their values between re-renders. Fix this by using state variables instead.
+عندما تكتب في حقول الإدخال، لا يظهر شيء. يبدو الأمر وكأن قيم الإدخال "عالقة" بسلاسل نصية فارغة. تم تعيين `value` الخاص بأول `<input>` ليطابق دائمًا متغير `firstName`، وتم تعيين `value` الخاص بثاني `<input>` ليطابق دائمًا متغير `lastName`. هذا صحيح. كلا الإدخالين لديهما معالجات أحداث `onChange`، التي تحاول تحديث المتغيرات بناءً على أحدث إدخال للمستخدم (`e.target.value`). ومع ذلك، يبدو أن المتغيرات لا "تتذكر" قيمها بين عمليات إعادة العرض. أصلح ذلك باستخدام متغيرات الحالة بدلاً من ذلك.
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [6]}}
+```js
 export default function Form() {
   let firstName = '';
   let lastName = '';
@@ -1325,19 +1325,19 @@ h1 { margin-top: 10px; }
 
 </Solution>
 
-#### Fix a crash {/*fix-a-crash*/}
+#### أصلح الانهيار {/*fix-a-crash*/}
 
-Here is a small form that is supposed to let the user leave some feedback. When the feedback is submitted, it's supposed to display a thank-you message. However, it crashes with an error message saying "Rendered fewer hooks than expected". Can you spot the mistake and fix it?
+هنا نموذج صغير من المفترض أن يسمح للمستخدم بترك بعض الملاحظات. عند إرسال الملاحظات، من المفترض أن يعرض رسالة شكر. ومع ذلك، ينهار برسالة خطأ تقول "Rendered fewer hooks than expected". هل يمكنك اكتشاف الخطأ وإصلاحه؟
 
 <Hint>
 
-Are there any limitations on _where_ Hooks may be called? Does this component break any rules? Check if there are any comments disabling the linter checks--this is where the bugs often hide!
+هل هناك أي قيود على _أين_ يمكن استدعاء الـ Hooks؟ هل ينتهك هذا المكوّن أي قواعد؟ تحقق مما إذا كانت هناك أي تعليقات تعطل فحوصات linter - هذا هو المكان الذي غالبًا ما تختبئ فيه الأخطاء!
 
 </Hint>
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [9]}}
+```js
 import { useState } from 'react';
 
 export default function FeedbackForm() {
@@ -1407,9 +1407,9 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Remember, Hooks must be called unconditionally and always in the same order!
+تذكر، يجب استدعاء الـ Hooks بشكل غير مشروط ودائمًا بنفس الترتيب!
 
-You could also remove the unnecessary `else` branch to reduce the nesting. However, it's still important that all calls to Hooks happen *before* the first `return`.
+يمكنك أيضًا إزالة فرع `else` غير الضروري لتقليل التداخل. ومع ذلك، لا يزال من المهم أن تحدث جميع استدعاءات الـ Hooks *قبل* أول `return`.
 
 <Sandpack>
 
@@ -1444,19 +1444,19 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Try moving the second `useState` call after the `if` condition and notice how this breaks it again.
+حاول نقل استدعاء `useState` الثاني بعد شرط `if` ولاحظ كيف أن هذا يكسره مرة أخرى.
 
-If your linter is [configured for React](/learn/editor-setup#linting), you should see a lint error when you make a mistake like this. If you don't see an error when you try the faulty code locally, you need to set up linting for your project. 
+إذا كان linter الخاص بك [مُكوَّن لـ React](/learn/editor-setup#linting)، يجب أن ترى خطأ lint عندما ترتكب خطأ مثل هذا. إذا لم تشاهد خطأ عند تجربة الكود المعيب محليًا، فأنت بحاجة إلى إعداد linting لمشروعك. 
 
 </Solution>
 
-#### Remove unnecessary state {/*remove-unnecessary-state*/}
+#### أزل الحالة غير الضرورية {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
+عند النقر على الزر، يجب أن يطلب هذا المثال اسم المستخدم ثم يعرض تنبيهًا يحييهم. حاولت استخدام الحالة للاحتفاظ بالاسم، ولكن لسبب ما يظهر دائمًا "Hello, !".
 
-To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/state-as-a-snapshot) later.)
+لإصلاح هذا الكود، أزل متغير الحالة غير الضروري. (سنناقش [لماذا لم ينجح هذا](/learn/state-as-a-snapshot) لاحقًا.)
 
-Can you explain why this state variable was unnecessary?
+هل يمكنك شرح لماذا كان متغير الحالة هذا غير ضروري؟
 
 <Sandpack>
 
@@ -1483,7 +1483,7 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Here is a fixed version that uses a regular `name` variable declared in the function that needs it:
+إليك نسخة مُصلّحة تستخدم متغيرًا عاديًا `name` معلنًا في الدالة التي تحتاجها:
 
 <Sandpack>
 
@@ -1504,7 +1504,7 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-A state variable is only necessary to keep information between re-renders of a component. Within a single event handler, a regular variable will do fine. Don't introduce state variables when a regular variable works well.
+متغير الحالة ضروري فقط للحفاظ على المعلومات بين عمليات إعادة عرض المكوّن. ضمن معالج حدث واحد، سيفي متغير عادي بالغرض. لا تستخدم متغيرات الحالة عندما يعمل المتغير العادي بشكل جيد.
 
 </Solution>
 

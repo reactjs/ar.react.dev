@@ -78,13 +78,13 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
           {isDeepDive && (
             <>
               <IconDeepDive className="inline me-2 dark:text-purple-30 text-purple-40" />
-              Deep Dive
+              غوص عميق
             </>
           )}
           {isExample && (
             <>
               <IconCodeBlock className="inline me-2 dark:text-yellow-30 text-yellow-50" />
-              Example
+              مثال
             </>
           )}
         </h5>

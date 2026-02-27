@@ -170,14 +170,20 @@ export async function getStaticPaths() {
 
   const files = await getFiles(rootDir);
 
-  const paths = files.map((file) => ({
-    params: {
-      markdownPath: getSegments(file),
-      // ^^^ CAREFUL HERE.
-      // If you rename markdownPath, update patches/next-remote-watch.patch too.
-      // Otherwise you'll break Fast Refresh for all MD files.
-    },
-  }));
+  const paths = files
+    .filter((file) => {
+      // Additional safety check: exclude errors directory
+      const normalizedPath = file.replace(/\\/g, '/');
+      return !normalizedPath.startsWith('errors/');
+    })
+    .map((file) => ({
+      params: {
+        markdownPath: getSegments(file),
+        // ^^^ CAREFUL HERE.
+        // If you rename markdownPath, update patches/next-remote-watch.patch too.
+        // Otherwise you'll break Fast Refresh for all MD files.
+      },
+    }));
 
   return {
     paths: paths,

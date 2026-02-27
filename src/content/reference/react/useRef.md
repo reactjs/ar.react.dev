@@ -234,7 +234,7 @@ When you break these rules, your component might still work, but most of the new
 
 ---
 
-### Manipulating the DOM with a ref {/*manipulating-the-dom-with-a-ref*/}
+### Manipulating the DOM with a ref {/*manipulating-the-dom-with-a-ref*/} {/*examples-dom*/}
 
 It's particularly common to use a ref to manipulate the [DOM.](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) React has built-in support for this.
 

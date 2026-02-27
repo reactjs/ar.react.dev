@@ -80,7 +80,9 @@ async function buildAnchorMap(files) {
     const content = await readFileWithCache(filePath);
     const anchors = extractAnchorsFromContent(content);
     if (anchors.size > 0) {
-      anchorMap.set(filePath, anchors);
+      // Normalize path to use consistent separators
+      const normalizedPath = path.normalize(filePath);
+      anchorMap.set(normalizedPath, anchors);
     }
   }
 }
@@ -244,7 +246,9 @@ async function validateLink(link) {
       }
     }
 
-    const fileAnchors = anchorMap.get(targetFile);
+    // Normalize target file path for comparison with anchorMap keys
+    const normalizedTargetFile = path.normalize(targetFile);
+    const fileAnchors = anchorMap.get(normalizedTargetFile);
 
     if (!fileAnchors || !fileAnchors.has(anchorId)) {
       return {

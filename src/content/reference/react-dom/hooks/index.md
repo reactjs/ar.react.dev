@@ -1,10 +1,11 @@
+````markdown
 ---
-title: "Built-in React DOM Hooks"
+title: "Hooks React DOM المدمجة"
 ---
 
 <Intro>
 
-The `react-dom` package contains Hooks that are only supported for web applications (which run in the browser DOM environment). These Hooks are not supported in non-browser environments like iOS, Android, or Windows applications. If you are looking for Hooks that are supported in web browsers *and other environments* see [the React Hooks page](/reference/react/hooks). This page lists all the Hooks in the `react-dom` package.
+تحتوي حزمة `react-dom` على Hooks المدعومة فقط لتطبيقات الويب (التي تعمل في بيئة المتصفح DOM). هذه Hooks غير مدعومة في بيئات غير المتصفح مثل تطبيقات iOS أو Android أو Windows. إذا كنت تبحث عن Hooks المدعومة في متصفحات الويب *والبيئات الأخرى*، راجع [صفحة React Hooks](/reference/react). تسرد هذه الصفحة جميع Hooks في حزمة `react-dom`.
 
 </Intro>
 
@@ -12,9 +13,15 @@ The `react-dom` package contains Hooks that are only supported for web applicati
 
 ## Form Hooks {/*form-hooks*/}
 
-*Forms* let you create interactive controls for submitting information.  To manage forms in your components, use one of these Hooks:
+<Canary>
 
-* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of a form.
+Form Hooks متاحة حاليًا فقط في قنوات canary و experimental الخاصة بـ React. تعرف على المزيد حول [قنوات إصدار React هنا](/community/versioning-policy#all-release-channels).
+
+</Canary>
+
+تتيح لك *Forms* إنشاء عناصر تحكم تفاعلية لإرسال المعلومات. لإدارة النماذج في مكوناتك، استخدم أحد هذه Hooks:
+
+* يسمح لك [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) بإجراء تحديثات على واجهة المستخدم بناءً على حالة النموذج.
 
 ```js
 function Form({ action }) {
@@ -39,3 +46,5 @@ function Button() {
   );
 }
 ```
+
+````

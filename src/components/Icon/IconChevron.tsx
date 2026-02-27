@@ -9,11 +9,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {memo} from 'react';
+import React, {memo} from 'react';
 import cn from 'classnames';
 
 export const IconChevron = memo<
-  JSX.IntrinsicElements['svg'] & {
+  React.JSX.IntrinsicElements['svg'] & {
     /**
      * The direction the arrow should point.
      * `start` and `end` are relative to the current locale.
@@ -21,7 +21,13 @@ export const IconChevron = memo<
      */
     displayDirection: 'start' | 'end' | 'right' | 'left' | 'up' | 'down';
   }
->(function IconChevron({className, displayDirection}) {
+>(function IconChevron({
+  className,
+  displayDirection,
+}: {
+  className?: string;
+  displayDirection: 'start' | 'end' | 'right' | 'left' | 'up' | 'down';
+}) {
   const classes = cn(
     {
       'rotate-0': displayDirection === 'down',

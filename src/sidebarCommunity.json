@@ -1,46 +1,46 @@
 {
-  "title": "Community",
+  "title": "المجتمع",
   "path": "/community",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "شارك معنا"
     },
     {
-      "title": "Community",
+      "title": "المجتمع",
       "path": "/community",
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Conferences",
+          "title": "مؤتمرات React",
           "path": "/community/conferences"
         },
         {
-          "title": "React Meetups",
+          "title": "لقاءات React",
           "path": "/community/meetups"
         },
         {
-          "title": "React Videos",
+          "title": "فيديوهات React",
           "path": "/community/videos"
         },
         {
-          "title": "Meet the Team",
+          "title": "تعرف على الفريق",
           "path": "/community/team"
         },
         {
-          "title": "Docs Contributors",
+          "title": "المساهمون في التوثيق",
           "path": "/community/docs-contributors"
         },
         {
-          "title": "Translations",
+          "title": "الترجمات",
           "path": "/community/translations"
         },
         {
-          "title": "Acknowledgements",
+          "title": "شكر وتقدير",
           "path": "/community/acknowledgements"
         },
         {
-          "title": "Versioning Policy",
+          "title": "سياسة الإصدارات",
           "path": "/community/versioning-policy"
         }
       ]

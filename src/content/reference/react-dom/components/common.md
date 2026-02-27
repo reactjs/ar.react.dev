@@ -22,7 +22,7 @@ All built-in browser components, such as [`<div>`](https://developer.mozilla.org
 
 [See more examples below.](#usage)
 
-#### Props {/*common-props*/}
+#### Props {/*common-props*/} {/*props*/}
 
 These special React props are supported for all built-in components:
 

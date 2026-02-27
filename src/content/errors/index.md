@@ -1,10 +1,10 @@
 <Intro>
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+في بيئة الإنتاج المُصغَّرة من React، نتجنب إرسال رسائل الخطأ الكاملة من أجل تقليل عدد البايتات المُرسَلة عبر الشبكة.
 
 </Intro>
 
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, the error message will include just a link to the docs for the error.
+نوصي بشدة باستخدام بيئة التطوير محليًا عند تصحيح أخطاء تطبيقك لأنها تتعقب معلومات تصحيح إضافية وتوفر تحذيرات مفيدة حول المشاكل المحتملة في تطبيقاتك، ولكن إذا واجهت استثناءً أثناء استخدام بيئة الإنتاج، فستتضمن رسالة الخطأ فقط رابطًا إلى المستندات الخاصة بالخطأ.
 
-For an example, see: [https://ar.react.dev/errors/149](/errors/149).
+للحصول على مثال، انظر: [https://ar.react.dev/errors/149](/errors/421).

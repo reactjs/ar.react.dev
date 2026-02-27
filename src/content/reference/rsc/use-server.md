@@ -97,7 +97,6 @@ Notably, these are not supported:
 
 Supported serializable return values are the same as [serializable props](/reference/rsc/use-client#serializable-types) for a boundary Client Component.
 
-
 ## Usage {/*usage*/}
 
 ### Server Functions in forms {/*server-functions-in-forms*/}

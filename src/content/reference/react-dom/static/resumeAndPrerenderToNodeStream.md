@@ -4,7 +4,7 @@ title: resumeAndPrerenderToNodeStream
 
 <Intro>
 
-`resumeAndPrerenderToNodeStream` continues a prerendered React tree to a static HTML string using a a [Node.js Stream.](https://nodejs.org/api/stream.html).
+`resumeAndPrerenderToNodeStream` continues a prerendered React tree to a static HTML string using a [Node.js Stream.](https://nodejs.org/api/stream.html)
 
 ```js
 const {prelude, postponed} = await resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)
@@ -24,7 +24,7 @@ This API is specific to Node.js. Environments with [Web Streams,](https://develo
 
 ## Reference {/*reference*/}
 
-### `resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)` {/*resumeandprerendertolnodestream*/}
+### `resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)` {/*resumeandprerendertonodestream*/}
 
 Call `resumeAndPrerenderToNodeStream` to continue a prerendered React tree to a static HTML string.
 
@@ -54,7 +54,7 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 #### Returns {/*returns*/}
 
 `resumeAndPrerenderToNodeStream` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
+- If rendering is successful, the Promise will resolve to an object containing:
   - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
   - `postponed`: an JSON-serializeable, opaque object that can be passed to [`resumeToNodeStream`](/reference/react-dom/server/resume) or [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) if `resumeAndPrerenderToNodeStream` is aborted.
 - If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)

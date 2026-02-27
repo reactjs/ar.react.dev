@@ -9,11 +9,17 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {memo} from 'react';
+import React, {memo} from 'react';
 
 export const IconRocket = memo<
-  JSX.IntrinsicElements['svg'] & {title?: string; size?: 's' | 'md'}
->(function IconRocket({className, size = 'md'}) {
+  React.JSX.IntrinsicElements['svg'] & {title?: string; size?: 's' | 'md'}
+>(function IconRocket({
+  className,
+  size = 'md',
+}: {
+  className?: string;
+  size?: 's' | 'md';
+}) {
   return (
     <svg
       className={className}

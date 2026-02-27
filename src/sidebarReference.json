@@ -1,5 +1,5 @@
 {
-  "title": "API Reference",
+  "title": "مرجع API",
   "path": "/reference/react",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "react@{{version}}"
     },
     {
-      "title": "Overview",
+      "title": "نظرة عامة",
       "path": "/reference/react"
     },
     {
@@ -191,7 +191,7 @@
       ]
     },
     {
-      "title": "المكونات",
+      "title": "المكونات (Components)",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -353,7 +353,7 @@
       "sectionHeader": "React Compiler"
     },
     {
-      "title": "Configuration",
+      "title": "الإعدادات (Configuration)",
       "path": "/reference/react-compiler/configuration",
       "routes": [
         {
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "title": "Compiling Libraries",
+      "title": "تصريف المكتبات (Compiling Libraries)",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
@@ -486,22 +486,22 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Rules of React"
+      "sectionHeader": "قواعد React (Rules of React)"
     },
     {
-      "title": "Overview",
+      "title": "نظرة عامة (Overview)",
       "path": "/reference/rules",
       "routes": [
         {
-          "title": "Components and Hooks must be pure",
+          "title": "Components و Hooks يجب أن تكون Pure",
           "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {
-          "title": "React calls Components and Hooks",
+          "title": "React تستدعي Components و Hooks",
           "path": "/reference/rules/react-calls-components-and-hooks"
         },
         {
-          "title": "Rules of Hooks",
+          "title": "قواعد Hooks",
           "path": "/reference/rules/rules-of-hooks"
         }
       ]

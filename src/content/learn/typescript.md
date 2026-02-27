@@ -1,57 +1,57 @@
 ---
-title: Using TypeScript
+title: استخدام TypeScript
 re: https://github.com/reactjs/react.dev/issues/5960
 ---
 
 <Intro>
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. Out of the box, TypeScript [supports JSX](/learn/writing-markup-with-jsx) and you can get full React Web support by adding [`@types/react`](https://www.npmjs.com/package/@types/react) and [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) to your project.
+TypeScript هي طريقة شائعة لإضافة تعريفات الأنواع إلى قواعد أكواد JavaScript. بشكل افتراضي، يدعم TypeScript [JSX](/learn/writing-markup-with-jsx) ويمكنك الحصول على دعم كامل لـ React Web من خلال إضافة [`@types/react`](https://www.npmjs.com/package/@types/react) و [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) إلى مشروعك.
 
 </Intro>
 
 <YouWillLearn>
 
-* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
-* [Examples of typing with Hooks](/learn/typescript#example-hooks)
-* [Common types from `@types/react`](/learn/typescript#useful-types)
-* [Further learning locations](/learn/typescript#further-learning)
+* [TypeScript مع مكونات React](/learn/typescript#typescript-with-react-components)
+* [أمثلة على الكتابة مع Hooks](/learn/typescript#example-hooks)
+* [أنواع شائعة من `@types/react`](/learn/typescript#useful-types)
+* [مواقع التعلم الإضافية](/learn/typescript#further-learning)
 
 </YouWillLearn>
 
-## Installation {/*installation*/}
+## التثبيت {/*installation*/}
 
-All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+جميع [أطر عمل React الجاهزة للإنتاج](/learn/start-a-new-react-project#production-grade-react-frameworks) توفر دعمًا لاستخدام TypeScript. اتبع الدليل الخاص بإطار العمل للتثبيت:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
 - [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
 - [Expo](https://docs.expo.dev/guides/typescript/)
 
-### Adding TypeScript to an existing React project {/*adding-typescript-to-an-existing-react-project*/}
+### إضافة TypeScript إلى مشروع React موجود {/*adding-typescript-to-an-existing-react-project*/}
 
-To install the latest version of React's type definitions:
+لتثبيت أحدث إصدار من تعريفات أنواع React:
 
 <TerminalBlock>
-npm install --save-dev @types/react @types/react-dom
+npm install @types/react @types/react-dom
 </TerminalBlock>
 
-The following compiler options need to be set in your `tsconfig.json`:
+يجب تعيين خيارات المترجم التالية في ملف `tsconfig.json`:
 
-1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
-2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
-  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
+1. يجب تضمين `dom` في [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (ملاحظة: إذا لم يتم تحديد خيار `lib`، فسيتم تضمين `dom` بشكل افتراضي).
+1. يجب تعيين [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) إلى أحد الخيارات الصالحة. `preserve` يجب أن يكون كافيًا لمعظم التطبيقات.
+  إذا كنت تنشر مكتبة، راجع [وثائق `jsx`](https://www.typescriptlang.org/tsconfig/#jsx) لمعرفة القيمة التي يجب اختيارها.
 
-## TypeScript with React Components {/*typescript-with-react-components*/}
+## TypeScript مع مكونات React {/*typescript-with-react-components*/}
 
 <Note>
 
-Every file containing JSX must use the `.tsx` file extension. This is a TypeScript-specific extension that tells TypeScript that this file contains JSX.
+يجب أن يستخدم كل ملف يحتوي على JSX امتداد الملف `.tsx`. هذا امتداد خاص بـ TypeScript يخبر TypeScript بأن هذا الملف يحتوي على JSX.
 
 </Note>
 
-Writing TypeScript with React is very similar to writing JavaScript with React. The key difference when working with a component is that you can provide types for your component's props. These types can be used for correctness checking and providing inline documentation in editors.
+كتابة TypeScript مع React مشابهة جدًا لكتابة JavaScript مع React. الاختلاف الرئيسي عند العمل مع مكون هو أنه يمكنك توفير أنواع لـ props المكون. يمكن استخدام هذه الأنواع للتحقق من الصحة وتوفير التوثيق المضمن في المحررات.
 
-Taking the [`MyButton` component](/learn#components) from the [Quick Start](/learn) guide, we can add a type describing the `title` for the button:
+مستعيرين [مكون `MyButton`](/learn#components) من دليل [البداية السريعة](/learn)، يمكننا إضافة نوع يصف `title` للزر:
 
 <Sandpack>
 
@@ -80,11 +80,11 @@ export default App = AppTSX;
 
  <Note>
 
-These sandboxes can handle TypeScript code, but they do not run the type-checker. This means you can amend the TypeScript sandboxes to learn, but you won't get any type errors or warnings. To get type-checking, you can use the [TypeScript Playground](https://www.typescriptlang.org/play) or use a more fully-featured online sandbox.
+يمكن لهذه البيئات التجريبية معالجة كود TypeScript، لكنها لا تشغل فاحص الأنواع. هذا يعني أنه يمكنك تعديل البيئات التجريبية لـ TypeScript للتعلم، لكنك لن تحصل على أخطاء أو تحذيرات الأنواع. للحصول على فحص الأنواع، يمكنك استخدام [TypeScript Playground](https://www.typescriptlang.org/play) أو استخدام بيئة تجريبية أكثر اكتمالاً عبر الإنترنت.
 
 </Note>
 
-This inline syntax is the simplest way to provide types for a component, though once you start to have a few fields to describe it can become unwieldy. Instead, you can use an `interface` or `type` to describe the component's props:
+هذا البناء المضمن هو أبسط طريقة لتوفير الأنواع لمكون، على الرغم من أنه بمجرد أن يكون لديك بعض الحقول لوصفها، يمكن أن يصبح غير عملي. بدلاً من ذلك، يمكنك استخدام `interface` أو `type` لوصف props المكون:
 
 <Sandpack>
 
@@ -119,32 +119,32 @@ export default App = AppTSX;
 
 </Sandpack>
 
-The type describing your component's props can be as simple or as complex as you need, though they should be an object type described with either a `type` or `interface`. You can learn about how TypeScript describes objects in [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) but you may also be interested in using [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) to describe a prop that can be one of a few different types and the [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) guide for more advanced use cases.
+النوع الذي يصف props مكونك يمكن أن يكون بسيطًا أو معقدًا حسب حاجتك، على الرغم من أنه يجب أن يكون نوع كائن موصوفًا بـ `type` أو `interface`. يمكنك التعرف على كيفية وصف TypeScript للكائنات في [أنواع الكائنات](https://www.typescriptlang.org/docs/handbook/2/objects.html) لكن قد تكون مهتمًا أيضًا باستخدام [أنواع الاتحاد](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) لوصف prop يمكن أن يكون واحدًا من عدة أنواع مختلفة ودليل [إنشاء أنواع من أنواع](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) لحالات الاستخدام الأكثر تقدمًا.
 
 
-## Example Hooks {/*example-hooks*/}
+## أمثلة Hooks {/*example-hooks*/}
 
-The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types.
+تعريفات الأنواع من `@types/react` تتضمن أنواعًا لـ Hooks المدمجة، لذا يمكنك استخدامها في مكوناتك دون أي إعداد إضافي. تم بناؤها لتأخذ في الاعتبار الكود الذي تكتبه في مكونك، لذا ستحصل على [أنواع مستنتجة](https://www.typescriptlang.org/docs/handbook/type-inference.html) في كثير من الأحيان وبشكل مثالي لن تحتاج إلى التعامل مع تفاصيل توفير الأنواع.
 
-However, we can look at a few examples of how to provide types for Hooks.
+ومع ذلك، يمكننا إلقاء نظرة على بعض الأمثلة حول كيفية توفير أنواع لـ Hooks.
 
 ### `useState` {/*typing-usestate*/}
 
-The [`useState` Hook](/reference/react/useState) will re-use the value passed in as the initial state to determine what the type of the value should be. For example:
+الـ [`useState` Hook](/reference/react/useState) سيعيد استخدام القيمة الممررة كحالة أولية لتحديد ما يجب أن يكون نوع القيمة. على سبيل المثال:
 
 ```ts
-// Infer the type as "boolean"
+// استنتاج النوع كـ "boolean"
 const [enabled, setEnabled] = useState(false);
 ```
 
-This will assign the type of `boolean` to `enabled`, and `setEnabled` will be a function accepting either a `boolean` argument, or a function that returns a `boolean`. If you want to explicitly provide a type for the state, you can do so by providing a type argument to the `useState` call:
+سيعين هذا نوع `boolean` لـ `enabled`، و `setEnabled` ستكون دالة تقبل إما معامل `boolean`، أو دالة تُرجع `boolean`. إذا كنت ترغب في توفير نوع صريح للحالة، يمكنك القيام بذلك من خلال توفير معامل نوع لاستدعاء `useState`:
 
-```ts
-// Explicitly set the type to "boolean"
+```ts 
+// تعيين النوع بشكل صريح إلى "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
-This isn't very useful in this case, but a common case where you may want to provide a type is when you have a union type. For example, `status` here can be one of a few different strings:
+هذا ليس مفيدًا جدًا في هذه الحالة، لكن حالة شائعة قد ترغب فيها في توفير نوع هي عندما يكون لديك نوع اتحاد. على سبيل المثال، `status` هنا يمكن أن يكون واحدًا من عدة strings مختلفة:
 
 ```ts
 type Status = "idle" | "loading" | "success" | "error";
@@ -152,7 +152,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const [status, setStatus] = useState<Status>("idle");
 ```
 
-Or, as recommended in [Principles for structuring state](/learn/choosing-the-state-structure#principles-for-structuring-state), you can group related state as an object and describe the different possibilities via object types:
+أو، كما هو موصى به في [مبادئ هيكلة الحالة](/learn/choosing-the-state-structure#principles-for-structuring-state)، يمكنك تجميع الحالات ذات الصلة ككائن ووصف الاحتمالات المختلفة عبر أنواع الكائنات:
 
 ```ts
 type RequestState =
@@ -166,7 +166,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that takes a reducer function and an initial state. The types for the reducer function are inferred from the initial state. You can optionally provide a type argument to the `useReducer` call to provide a type for the state, but it is often better to set the type on the initial state instead:
+الـ [`useReducer` Hook](/reference/react/useReducer) هو Hook أكثر تعقيدًا يأخذ دالة reducer وحالة أولية. يتم استنتاج الأنواع لدالة reducer من الحالة الأولية. يمكنك اختياريًا توفير معامل نوع لاستدعاء `useReducer` لتوفير نوع للحالة، ولكن غالبًا ما يكون من الأفضل تعيين النوع على الحالة الأولية بدلاً من ذلك:
 
 <Sandpack>
 
@@ -174,7 +174,7 @@ The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that
 import {useReducer} from 'react';
 
 interface State {
-   count: number
+   count: number 
 };
 
 type CounterAction =
@@ -221,14 +221,14 @@ export default App = AppTSX;
 </Sandpack>
 
 
-We are using TypeScript in a few key places:
+نحن نستخدم TypeScript في بعض الأماكن الرئيسية:
 
- - `interface State` describes the shape of the reducer's state.
- - `type CounterAction` describes the different actions which can be dispatched to the reducer.
- - `const initialState: State` provides a type for the initial state, and also the type which is used by `useReducer` by default.
- - `stateReducer(state: State, action: CounterAction): State` sets the types for the reducer function's arguments and return value.
+ - `interface State` يصف شكل حالة reducer.
+ - `type CounterAction` يصف الإجراءات المختلفة التي يمكن إرسالها إلى reducer.
+ - `const initialState: State` يوفر نوعًا للحالة الأولية، وأيضًا النوع الذي يستخدمه `useReducer` بشكل افتراضي.
+ - `stateReducer(state: State, action: CounterAction): State` يعين الأنواع لمعاملات دالة reducer وقيمة الإرجاع.
 
-A more explicit alternative to setting the type on `initialState` is to provide a type argument to `useReducer`:
+بديل أكثر وضوحًا لتعيين النوع على `initialState` هو توفير معامل نوع لـ `useReducer`:
 
 ```ts
 import { stateReducer, State } from './your-reducer-implementation';
@@ -242,9 +242,9 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-The [`useContext` Hook](/reference/react/useContext) is a technique for passing data down the component tree without having to pass props through components. It is used by creating a provider component and often by creating a Hook to consume the value in a child component.
+الـ [`useContext` Hook](/reference/react/useContext) هو تقنية لتمرير البيانات عبر شجرة المكونات دون الحاجة لتمرير props عبر المكونات. يتم استخدامه من خلال إنشاء مكون موفر وغالبًا من خلال إنشاء Hook لاستهلاك القيمة في مكون فرعي.
 
-The type of the value provided by the context is inferred from the value passed to the `createContext` call:
+يتم استنتاج نوع القيمة المقدمة من السياق من القيمة الممررة إلى استدعاء `createContext`:
 
 <Sandpack>
 
@@ -260,9 +260,9 @@ export default function MyApp() {
   const [theme, setTheme] = useState<Theme>('light');
 
   return (
-    <ThemeContext value={theme}>
+    <ThemeContext.Provider value={theme}>
       <MyComponent />
-    </ThemeContext>
+    </ThemeContext.Provider>
   )
 }
 
@@ -284,22 +284,22 @@ export default App = AppTSX;
 
 </Sandpack>
 
-This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`.
+تعمل هذه التقنية عندما يكون لديك قيمة افتراضية منطقية - ولكن هناك حالات أحيانًا لا تكون لديك فيها، وفي هذه الحالات قد يبدو `null` معقولاً كقيمة افتراضية. ومع ذلك، للسماح لنظام الأنواع بفهم الكود الخاص بك، تحتاج إلى تعيين `ContextShape | null` بشكل صريح على `createContext`.
 
-This causes the issue that you need to eliminate the `| null` in the type for context consumers. Our recommendation is to have the Hook do a runtime check for it's existence and throw an error when not present:
+هذا يسبب مشكلة أنك تحتاج إلى إزالة `| null` في النوع لمستهلكي السياق. نوصي بأن يقوم Hook بفحص وجوده في وقت التشغيل ويطرح خطأ عندما لا يكون موجودًا:
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
 
-// This is a simpler example, but you can imagine a more complex object here
+// هذا مثال أبسط، لكن يمكنك تخيل كائن أكثر تعقيدًا هنا
 type ComplexObject = {
   kind: string
 };
 
-// The context is created with `| null` in the type, to accurately reflect the default value.
+// يتم إنشاء السياق مع `| null` في النوع، لتعكس بدقة القيمة الافتراضية.
 const Context = createContext<ComplexObject | null>(null);
 
-// The `| null` will be removed via the check in the Hook.
+// سيتم إزالة `| null` عبر الفحص في Hook.
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -310,9 +310,9 @@ export default function MyApp() {
   const object = useMemo(() => ({ kind: "complex" }), []);
 
   return (
-    <Context value={object}>
+    <Context.Provider value={object}>
       <MyComponent />
-    </Context>
+    </Context.Provider>
   )
 }
 
@@ -329,29 +329,17 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-<Note>
-
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
-
-</Note>
-
-The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+الـ [`useMemo`](/reference/react/useMemo) Hooks سينشئ/يعيد الوصول إلى قيمة محفوظة في الذاكرة من استدعاء دالة، ويعيد تشغيل الدالة فقط عندما تتغير التبعيات الممررة كمعامل ثانٍ. يتم استنتاج نتيجة استدعاء Hook من قيمة الإرجاع من الدالة في المعامل الأول. يمكنك أن تكون أكثر وضوحًا من خلال توفير معامل نوع لـ Hook.
 
 ```ts
-// The type of visibleTodos is inferred from the return value of filterTodos
+// يتم استنتاج نوع visibleTodos من قيمة إرجاع filterTodos
 const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 ```
 
 
 ### `useCallback` {/*typing-usecallback*/}
 
-<Note>
-
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
-
-</Note>
-
-The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+الـ [`useCallback`](/reference/react/useCallback) يوفر مرجعًا مستقرًا لدالة طالما أن التبعيات الممررة إلى المعامل الثاني هي نفسها. مثل `useMemo`، يتم استنتاج نوع الدالة من قيمة إرجاع الدالة في المعامل الأول، ويمكنك أن تكون أكثر وضوحًا من خلال توفير معامل نوع لـ Hook.
 
 
 ```ts
@@ -360,9 +348,9 @@ const handleClick = useCallback(() => {
 }, [todos]);
 ```
 
-When working in TypeScript strict mode `useCallback` requires adding types for the parameters in your callback. This is because the type of the callback is inferred from the return value of the function, and without parameters the type cannot be fully understood.
+عند العمل في وضع TypeScript strict، يتطلب `useCallback` إضافة أنواع للمعاملات في callback الخاص بك. هذا لأن نوع callback يتم استنتاجه من قيمة إرجاع الدالة، وبدون المعاملات لا يمكن فهم النوع بالكامل.
 
-Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback:
+اعتمادًا على تفضيلات أسلوب الكود الخاص بك، يمكنك استخدام دوال `*EventHandler` من أنواع React لتوفير النوع لمعالج الحدث في نفس الوقت الذي تحدد فيه callback: 
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -373,7 +361,7 @@ export default function Form() {
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setValue(event.currentTarget.value);
   }, [setValue])
-
+  
   return (
     <>
       <input value={value} onChange={handleChange} />
@@ -383,13 +371,13 @@ export default function Form() {
 }
 ```
 
-## Useful Types {/*useful-types*/}
+## أنواع مفيدة {/*useful-types*/}
 
-There is quite an expansive set of types which come from the `@types/react` package, it is worth a read when you feel comfortable with how React and TypeScript interact. You can find them [in React's folder in DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). We will cover a few of the more common types here.
+هناك مجموعة واسعة جدًا من الأنواع التي تأتي من حزمة `@types/react`، يستحق القراءة عندما تشعر بالراحة مع كيفية تفاعل React و TypeScript. يمكنك العثور عليها [في مجلد React في DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). سنغطي بعض الأنواع الأكثر شيوعًا هنا.
 
-### DOM Events {/*typing-dom-events*/}
+### أحداث DOM {/*typing-dom-events*/}
 
-When working with DOM events in React, the type of the event can often be inferred from the event handler. However, when you want to extract a function to be passed to an event handler, you will need to explicitly set the type of the event.
+عند العمل مع أحداث DOM في React، يمكن غالبًا استنتاج نوع الحدث من معالج الحدث. ومع ذلك، عندما تريد استخراج دالة لتمريرها إلى معالج حدث، ستحتاج إلى تعيين نوع الحدث بشكل صريح.
 
 <Sandpack>
 
@@ -427,7 +415,7 @@ If you need to use an event that is not included in this list, you can use the `
 
 ### Children {/*typing-children*/}
 
-There are two common paths to describing the children of a component. The first is to use the `React.ReactNode` type, which is a union of all the possible types that can be passed as children in JSX:
+هناك طريقتان شائعتان لوصف children المكون. الأولى هي استخدام نوع `React.ReactNode`، وهو اتحاد من جميع الأنواع الممكنة التي يمكن تمريرها كـ children في JSX:
 
 ```ts
 interface ModalRendererProps {
@@ -445,7 +433,7 @@ interface ModalRendererProps {
 }
 ```
 
-Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children.
+Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children. 
 
 You can see an example of both `React.ReactNode` and `React.ReactElement` with the type-checker in [this TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
 

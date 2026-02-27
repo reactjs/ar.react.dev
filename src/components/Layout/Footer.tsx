@@ -320,50 +320,48 @@ export function Footer() {
         </div>
         <div className="flex flex-col">
           <FooterLink href="/learn" isHeader={true}>
-            Learn React
+            تعلم React
           </FooterLink>
-          <FooterLink href="/learn/">Quick Start</FooterLink>
-          <FooterLink href="/learn/installation">Installation</FooterLink>
+          <FooterLink href="/learn/">بداية سريعة</FooterLink>
+          <FooterLink href="/learn/installation">التثبيت</FooterLink>
           <FooterLink href="/learn/describing-the-ui">
-            Describing the UI
+            وصف واجهة المستخدم (UI)
           </FooterLink>
           <FooterLink href="/learn/adding-interactivity">
-            Adding Interactivity
+            إضافة التفاعلية
           </FooterLink>
-          <FooterLink href="/learn/managing-state">Managing State</FooterLink>
-          <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
+          <FooterLink href="/learn/managing-state">إدارة State</FooterLink>
+          <FooterLink href="/learn/escape-hatches">مخارج الطوارئ</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
-            API Reference
+            مرجع API
           </FooterLink>
           <FooterLink href="/reference/react">React APIs</FooterLink>
           <FooterLink href="/reference/react-dom">React DOM APIs</FooterLink>
         </div>
         <div className="md:col-start-2 xl:col-start-4 flex flex-col">
           <FooterLink href="/community" isHeader={true}>
-            Community
+            المجتمع
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            ميثاق السلوك
           </FooterLink>
-          <FooterLink href="/community/team">Meet the Team</FooterLink>
+          <FooterLink href="/community/team">تعرف على الفريق</FooterLink>
           <FooterLink href="/community/docs-contributors">
-            Docs Contributors
+            المساهمون في التوثيق
           </FooterLink>
-          <FooterLink href="/community/acknowledgements">
-            Acknowledgements
-          </FooterLink>
+          <FooterLink href="/community/acknowledgements">شكر وتقدير</FooterLink>
         </div>
         <div className="flex flex-col">
-          <FooterLink isHeader={true}>More</FooterLink>
-          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink isHeader={true}>المزيد</FooterLink>
+          <FooterLink href="/blog">المدونة</FooterLink>
           <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
-            Privacy
+            الخصوصية
           </FooterLink>
           <FooterLink href="https://opensource.fb.com/legal/terms/">
-            Terms
+            الشروط
           </FooterLink>
           <div className="flex flex-row items-center mt-8 gap-x-2">
             <ExternalLink
