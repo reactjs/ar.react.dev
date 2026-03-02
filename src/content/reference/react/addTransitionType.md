@@ -39,7 +39,11 @@ startTransition(() => {
 
 #### Returns {/*returns*/}
 
+<<<<<<< HEAD
 `startTransition` does not return anything.
+=======
+`addTransitionType` does not return anything.
+>>>>>>> 427f24d694674be458f0fe7cb97ab1c8fe736586
 
 #### Caveats {/*caveats*/}
 
