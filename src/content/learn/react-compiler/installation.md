@@ -114,7 +114,11 @@ Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/nex
 Install `vite-plugin-babel`, and add the compiler's Babel plugin to it:
 
 <TerminalBlock>
+<<<<<<< HEAD
 {`npm install vite-plugin-babel`}
+=======
+npm install vite-plugin-babel
+>>>>>>> 7c90c6eb4bb93a5eacb9cb4ad4ca496c32984636
 </TerminalBlock>
 
 ```js {3-4,16}
