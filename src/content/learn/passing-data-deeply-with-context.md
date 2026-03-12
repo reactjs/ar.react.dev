@@ -1,48 +1,48 @@
 ---
-title: Passing Data Deeply with Context
+title: تمرير البيانات بعمق باستخدام السياق (Context)
 ---
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+عادةً، ستقوم بتمرير المعلومات من المُكوّن الأب (parent component) إلى المُكوّن الابن (child component) عبر الخصائص (props). ولكن، قد يُصبح تمرير الخصائص مُطوّلاً ومُرهقاً إذا اضطررت لتمريرها عبر العديد من المُكوّنات الوسيطة، أو إذا كانت العديد من المُكوّنات في تطبيقك تحتاج إلى نفس المعلومات. يتيح السياق (Context) للمُكوّن الأب جعل بعض المعلومات مُتاحة لأي مُكوّن يقع تحته في شجرة المُكوّنات —بغض النظر عن مدى عُمقه— دون الحاجة لتمريرها صراحةً عبر الخصائص.
 
 </Intro>
 
 <YouWillLearn>
 
-- What "prop drilling" is
-- How to replace repetitive prop passing with context
-- Common use cases for context
-- Common alternatives to context
+- ما هو "تمرير الخصائص المتكرر" (prop drilling)؟
+- كيف تستبدل تمرير الخصائص المتكرر باستخدام السياق (Context)؟
+- حالات الاستخدام الشائعة للسياق (Context)
+- البدائل الشائعة للسياق (Context)
 
 </YouWillLearn>
 
-## The problem with passing props {/*the-problem-with-passing-props*/}
+## مشكلة تمرير الخصائص {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
+يُعد [تمرير الخصائص](/learn/passing-props-to-a-component) طريقة رائعة لتوجيه البيانات صراحةً عبر شجرة واجهة المستخدم (UI tree) إلى المُكوّنات التي تستخدمها.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation called "prop drilling".
+ولكن، قد يُصبح تمرير الخصائص (props) مُطوّلاً ومُرهقاً عندما تحتاج إلى تمرير خاصية ما بعمق عبر الشجرة، أو إذا كانت العديد من المُكوّنات (Components) تحتاج إلى الخاصية ذاتها. قد يكون السلف المشترك الأقرب (nearest common ancestor) بعيداً جداً عن المُكوّنات التي تحتاج إلى البيانات، ورفع الحالة (state) إلى هذا المستوى العالي قد يؤدي إلى حالة تُعرف باسم "التمرير العميق للخصائص" (prop drilling).
 
 <DiagramGroup>
 
-<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="رسم توضيحي لشجرة تتكون من ثلاثة مكونات. يحتوي المكون الأب على فقاعة تمثل قيمة مميزة باللون الأرجواني. تتدفق القيمة إلى الأسفل نحو كل من المكونين الابنين، وكلاهما مميز باللون الأرجواني." >
 
-Lifting state up
+رفع الحالة (Lifting state up)
 
 </Diagram>
-<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="رسم توضيحي لشجرة تتكون من عشر عُقد، كل عقدة لها ابنان أو أقل. تحتوي العقدة الجذرية على فقاعة تمثل قيمة مميزة باللون الأرجواني. تتدفق القيمة إلى الأسفل عبر الابنين، وكل منهما يمرر القيمة ولكنه لا يحتويها. يمرر الابن الأيسر القيمة إلى الأسفل نحو ابنين كلاهما مميز باللون الأرجواني. أما الابن الأيمن للجذر فيمرر القيمة عبر أحد ابنيه - الأيمن منهما، والمميز باللون الأرجواني. ويمرر هذا الابن القيمة عبر ابنه الوحيد، والذي يمررها بدوره إلى كلا ابنيه، وكلاهما مميز باللون الأرجواني.">
 
-Prop drilling
+التمرير العميق للخصائص (Prop drilling)
 
 </Diagram>
 
 </DiagramGroup>
 
-Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
+ألن يكون رائعاً لو كانت هناك طريقة لـ "نقل" (teleport) البيانات إلى المُكوّنات التي تحتاجها في الشجرة دون تمرير الخصائص (props)؟ مع ميزة السياق (Context) في React، هذا ممكن!
 
-## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
+## السياق: بديل لتمرير الخصائص {/*context-an-alternative-to-passing-props*/}
 
-Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
+يُتيح السياق (Context) للمُكوّن الأب توفير البيانات للشجرة بأكملها التي تقع أسفل منه. هناك العديد من الاستخدامات للسياق (Context). إليك أحد الأمثلة. تأمل مُكوّن الترويسة (Heading) هذا، والذي يقبل خاصية المستوى `level` لتحديد حجمه:
 
 <Sandpack>
 
@@ -53,15 +53,16 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
-      <Heading level={2}>Heading</Heading>
-      <Heading level={3}>Sub-heading</Heading>
-      <Heading level={4}>Sub-sub-heading</Heading>
-      <Heading level={5}>Sub-sub-sub-heading</Heading>
-      <Heading level={6}>Sub-sub-sub-sub-heading</Heading>
+      <Heading level={1}>العنوان الرئيسي</Heading>
+      <Heading level={2}>الترويسة</Heading>
+      <Heading level={3}>ترويسة فرعية</Heading>
+      <Heading level={4}>ترويسة فرعية ثانية</Heading>
+      <Heading level={5}>ترويسة فرعية ثالثة</Heading>
+      <Heading level={6}>ترويسة فرعية رابعة</Heading>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -72,6 +73,7 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -90,9 +92,10 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```css
@@ -102,11 +105,12 @@ export default function Heading({ level, children }) {
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-Let's say you want multiple headings within the same `Section` to always have the same size:
+لنفترض أن لديك عدة ترويسات داخل القسم `Section` نفسه، وتريد أن تكون جميعها بنفس الحجم دائماً:
 
 <Sandpack>
 
@@ -117,25 +121,26 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
+      <Heading level={1}>العنوان الرئيسي</Heading>
       <Section>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>الترويسة</Heading>
+        <Heading level={2}>الترويسة</Heading>
+        <Heading level={2}>الترويسة</Heading>
         <Section>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
           <Section>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
           </Section>
         </Section>
       </Section>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -146,6 +151,7 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -164,9 +170,10 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```css
@@ -176,59 +183,62 @@ export default function Heading({ level, children }) {
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-Currently, you pass the `level` prop to each `<Heading>` separately:
+حالياً، تقوم بتمرير الخاصية `level` إلى كل `<Heading>` على حدة:
 
 ```js
 <Section>
-  <Heading level={3}>About</Heading>
-  <Heading level={3}>Photos</Heading>
-  <Heading level={3}>Videos</Heading>
+  <Heading level={3}>حول</Heading>
+  <Heading level={3}>الصور</Heading>
+  <Heading level={3}>الفيديوهات</Heading>
 </Section>
+
 ```
 
-It would be nice if you could pass the `level` prop to the `<Section>` component instead and remove it from the `<Heading>`. This way you could enforce that all headings in the same section have the same size:
+سيكون من الرائع لو كان بإمكانك تمرير الخاصية `level` إلى المُكوّن `<Section>` بدلاً من ذلك وإزالتها من `<Heading>`. بهذه الطريقة، يمكنك ضمان أن جميع الترويسات في القسم نفسه لها الحجم ذاته:
 
 ```js
 <Section level={3}>
-  <Heading>About</Heading>
-  <Heading>Photos</Heading>
-  <Heading>Videos</Heading>
+  <Heading>حول</Heading>
+  <Heading>الصور</Heading>
+  <Heading>الفيديوهات</Heading>
 </Section>
+
 ```
 
-But how can the `<Heading>` component know the level of its closest `<Section>`? **That would require some way for a child to "ask" for data from somewhere above in the tree.**
+ولكن كيف يمكن للمُكوّن `<Heading>` معرفة المستوى الخاص بأقرب `<Section>` إليه؟ **سيتطلب ذلك وجود طريقة ما للمُكوّن الابن لـ "طلب" البيانات من مكان أعلى منه في الشجرة.**
 
-You can't do it with props alone. This is where context comes into play. You will do it in three steps:
+لا يمكنك القيام بذلك باستخدام الخصائص (props) وحدها. هنا يأتي دور السياق (Context). ستقوم بذلك في ثلاث خطوات:
 
-1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
-3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+1. **إنشاء** سياق (Context). (يمكنك تسميته `LevelContext`، بما أنه خاص بمستوى الترويسة.)
+2. **استخدام** ذلك السياق (Context) من المُكوّن الذي يحتاج إلى البيانات. (سيستخدم `Heading` السياق `LevelContext`.)
+3. **توفير** ذلك السياق (Context) من المُكوّن الذي يحدد البيانات. (سيوفر `Section` السياق `LevelContext`.)
 
-Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
+يُتيح السياق (Context) للمُكوّن الأب (Parent component) —حتى وإن كان بعيداً!— توفير بعض البيانات للشجرة بأكملها الموجودة بداخله.
 
 <DiagramGroup>
 
-<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="رسم توضيحي لشجرة تتكون من ثلاثة مكونات. يحتوي المكون الأب على فقاعة تمثل قيمة مميزة باللون البرتقالي والتي تسقط للأسفل نحو الابنين، وكل منهما مميز باللون البرتقالي." >
 
-Using context in close children
+استخدام السياق (Context) مع المُكوّنات الأبناء القريبة
 
 </Diagram>
 
-<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="رسم توضيحي لشجرة تتكون من عشر عقد، كل عقدة لها ابنان أو أقل. تحتوي العقدة الجذرية الأب على فقاعة تمثل قيمة مميزة باللون البرتقالي. تسقط القيمة للأسفل مباشرة إلى أربع أوراق ومكون وسيط واحد في الشجرة، وجميعها مميزة باللون البرتقالي. لا توجد أي من المكونات الوسيطة الأخرى مميزة.">
 
-Using context in distant children
+استخدام السياق (Context) مع المُكوّنات الأبناء البعيدة
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### الخطوة 1: إنشاء السياق {/*step-1-create-the-context*/}
 
-First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
+أولاً، تحتاج إلى إنشاء السياق (Context). ستحتاج إلى **تصديره من ملف** (export it from a file) حتى تتمكن مُكوّناتك (Components) من استخدامه:
 
 <Sandpack>
 
@@ -239,25 +249,26 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
+      <Heading level={1}>العنوان الرئيسي</Heading>
       <Section>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>الترويسة</Heading>
+        <Heading level={2}>الترويسة</Heading>
+        <Heading level={2}>الترويسة</Heading>
         <Section>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
+          <Heading level={3}>ترويسة فرعية</Heading>
           <Section>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
+            <Heading level={4}>ترويسة فرعية ثانية</Heading>
           </Section>
         </Section>
       </Section>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -268,6 +279,7 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -286,15 +298,17 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```js src/LevelContext.js active
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
+
 ```
 
 ```css
@@ -304,61 +318,67 @@ export const LevelContext = createContext(1);
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
+الوسيط الوحيد لدالة `createContext` هو القيمة *الافتراضية* (default value). هنا، يشير `1` إلى مستوى الترويسة الأكبر، ولكن يمكنك تمرير أي نوع من القيم (حتى كائن (object)). سترى أهمية القيمة الافتراضية في الخطوة التالية.
 
-### Step 2: Use the context {/*step-2-use-the-context*/}
+### الخطوة 2: استخدام السياق {/*step-2-use-the-context*/}
 
-Import the `useContext` Hook from React and your context:
+استورد الخطاف (Hook) `useContext` من React والسياق (Context) الخاص بك:
 
 ```js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
+
 ```
 
-Currently, the `Heading` component reads `level` from props:
+حالياً، يقرأ المُكوّن (Component) `Heading` الخاصية `level` من الخصائص (props):
 
 ```js
 export default function Heading({ level, children }) {
   // ...
 }
+
 ```
 
-Instead, remove the `level` prop and read the value from the context you just imported, `LevelContext`:
+بدلاً من ذلك، قم بإزالة الخاصية (prop) `level` واقرأ القيمة من السياق (Context) الذي استوردته للتو، `LevelContext`:
 
 ```js {2}
 export default function Heading({ children }) {
   const level = useContext(LevelContext);
   // ...
 }
+
 ```
 
-`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+`useContext` هو خطاف (Hook). تماماً مثل `useState` و `useReducer`، لا يمكنك استدعاء خطاف (Hook) إلا بشكل مباشر داخل مُكوّن (Component) React (وليس داخل الحلقات التكرارية أو الشروط). **يُخبر `useContext` React أن المُكوّن `Heading` يريد قراءة `LevelContext`.**
 
-Now that the `Heading` component doesn't have a `level` prop, you don't need to pass the level prop to `Heading` in your JSX like this anymore:
+الآن وبما أن المُكوّن (Component) `Heading` لا يملك الخاصية `level`، فلن تحتاج إلى تمريرها إلى `Heading` داخل JSX الخاص بك بهذا الشكل بعد الآن:
 
 ```js
 <Section>
-  <Heading level={4}>Sub-sub-heading</Heading>
-  <Heading level={4}>Sub-sub-heading</Heading>
-  <Heading level={4}>Sub-sub-heading</Heading>
+  <Heading level={4}>ترويسة فرعية ثانية</Heading>
+  <Heading level={4}>ترويسة فرعية ثانية</Heading>
+  <Heading level={4}>ترويسة فرعية ثانية</Heading>
 </Section>
+
 ```
 
-Update the JSX so that it's the `Section` that receives it instead:
+قم بتحديث الـ JSX بحيث يكون المُكوّن (Component) `Section` هو من يتلقاها بدلاً من ذلك:
 
 ```jsx
 <Section level={4}>
-  <Heading>Sub-sub-heading</Heading>
-  <Heading>Sub-sub-heading</Heading>
-  <Heading>Sub-sub-heading</Heading>
+  <Heading>ترويسة فرعية ثانية</Heading>
+  <Heading>ترويسة فرعية ثانية</Heading>
+  <Heading>ترويسة فرعية ثانية</Heading>
 </Section>
+
 ```
 
-As a reminder, this is the markup that you were trying to get working:
+للتذكير، هذا هو الهيكل الذي كنت تحاول جعله يعمل:
 
 <Sandpack>
 
@@ -369,25 +389,26 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>Title</Heading>
+      <Heading>العنوان الرئيسي</Heading>
       <Section level={2}>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
         <Section level={3}>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
           <Section level={4}>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
           </Section>
         </Section>
       </Section>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -398,6 +419,7 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -420,15 +442,17 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
+
 ```
 
 ```css
@@ -438,17 +462,18 @@ export const LevelContext = createContext(1);
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+لاحظ أن هذا المثال لا يعمل تماماً حتى الآن! كل الترويسات لها نفس الحجم لأنك **على الرغم من أنك *تستخدم* السياق (Context)، إلا أنك لم تقم بـ *توفيره* بعد.** لا تعرف React من أين يمكنها الحصول عليه!
 
-If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
+إذا لم تقم بتوفير السياق (Context)، ستستخدم React القيمة الافتراضية التي حددتها في الخطوة السابقة. في هذا المثال، قمت بتحديد `1` كوسيط لـ `createContext`، لذا فإن `useContext(LevelContext)` تُرجع `1`، وتجعل جميع الترويسات تبدو كـ `<h1>`. دعنا نصلح هذه المشكلة بجعل كل `Section` توفر سياقها (Context) الخاص بها.
 
-### Step 3: Provide the context {/*step-3-provide-the-context*/}
+### الخطوة 3: توفير السياق {/*step-3-provide-the-context*/}
 
-The `Section` component currently renders its children:
+يقوم المُكوّن (Component) `Section` حالياً بعرض أبنائه:
 
 ```js
 export default function Section({ children }) {
@@ -458,9 +483,10 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
-**Wrap them with a context provider** to provide the `LevelContext` to them:
+**قم بتغليفهم بمُوفّر سياق** (context provider) لتوفير `LevelContext` لهم:
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
@@ -474,9 +500,10 @@ export default function Section({ level, children }) {
     </section>
   );
 }
+
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
+هذا يخبر React: "إذا طلب أي مُكوّن (Component) داخل هذا الـ `<Section>` السياق `LevelContext`، أعطه هذه الخاصية `level`". سيستخدم المُكوّن قيمة أقرب `<LevelContext>` في شجرة واجهة المستخدم (UI tree) الموجودة أعلاه.
 
 <Sandpack>
 
@@ -487,25 +514,26 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>Title</Heading>
+      <Heading>العنوان الرئيسي</Heading>
       <Section level={2}>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
         <Section level={3}>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
           <Section level={4}>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
           </Section>
         </Section>
       </Section>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -520,6 +548,7 @@ export default function Section({ level, children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -542,15 +571,17 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
+
 ```
 
 ```css
@@ -560,19 +591,20 @@ export const LevelContext = createContext(1);
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
+هذه هي النتيجة نفسها كالكود الأصلي، لكنك لم تحتج إلى تمرير الخاصية (prop) `level` إلى كل مُكوّن (Component) `Heading`! بدلاً من ذلك، فإنه "يكتشف" مستوى الترويسة الخاص به عن طريق سؤال أقرب `Section` يقع فوقه:
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+1. تمرر الخاصية (prop) `level` إلى الـ `<Section>`.
+2. يُغلّف `Section` أبناءه (children) داخل `<LevelContext value={level}>`.
+3. يطلب المُكوّن `Heading` أقرب قيمة لـ `LevelContext` أعلاه باستخدام `useContext(LevelContext)`.
 
-## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
+## استخدام وتوفير السياق من المُكوّن نفسه {/*using-and-providing-context-from-the-same-component*/}
 
-Currently, you still have to specify each section's `level` manually:
+حالياً، لا يزال يتعين عليك تحديد الخاصية `level` لكل قسم يدوياً:
 
 ```js
 export default function Page() {
@@ -583,9 +615,10 @@ export default function Page() {
         ...
         <Section level={3}>
           ...
+
 ```
 
-Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
+بما أن السياق (Context) يتيح لك قراءة المعلومات من مُكوّن (Component) أعلاه، يمكن لكل `Section` قراءة الخاصية `level` من الـ `Section` الذي يعلوه، وتمرير `level + 1` إلى الأسفل تلقائياً. إليك كيف يمكنك القيام بذلك:
 
 ```js src/Section.js {5,8}
 import { useContext } from 'react';
@@ -601,9 +634,10 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
-With this change, you don't need to pass the `level` prop *either* to the `<Section>` or to the `<Heading>`:
+مع هذا التغيير، أنت لا تحتاج إلى تمرير الخاصية (prop) `level` *لا* إلى الـ `<Section>` *ولا* إلى `<Heading>`:
 
 <Sandpack>
 
@@ -614,25 +648,26 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>العنوان الرئيسي</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
+        <Heading>الترويسة</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
+          <Heading>ترويسة فرعية</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
+            <Heading>ترويسة فرعية ثانية</Heading>
           </Section>
         </Section>
       </Section>
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -649,6 +684,7 @@ export default function Section({ children }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -659,7 +695,7 @@ export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
-      throw Error('Heading must be inside a Section!');
+      throw Error('يجب أن تكون الترويسة داخل قسم (Section)!');
     case 1:
       return <h1>{children}</h1>;
     case 2:
@@ -673,15 +709,17 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(0);
+
 ```
 
 ```css
@@ -691,23 +729,24 @@ export const LevelContext = createContext(0);
   border-radius: 5px;
   border: 1px solid #aaa;
 }
+
 ```
 
 </Sandpack>
 
-Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep" they are. And the `Section` wraps its children into the `LevelContext` to specify that anything inside of it is at a "deeper" level.
+الآن يقرأ كل من `Heading` و `Section` السياق `LevelContext` لمعرفة مدى "عمقهم". ويقوم `Section` بتغليف أبنائه في `LevelContext` لتحديد أن أي شيء بداخله يقع في مستوى "أعمق".
 
 <Note>
 
-This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
+يستخدم هذا المثال مستويات الترويسات (headings) لأنها تُظهر بشكل مرئي كيف يمكن للمُكوّنات (Components) المتداخلة تجاوز (override) السياق (Context). لكن السياق (Context) مفيد في العديد من حالات الاستخدام الأخرى أيضاً. يمكنك تمرير أي معلومات تحتاجها الشجرة الفرعية (subtree) بأكملها للأسفل: سمة الألوان الحالية (color theme)، المستخدم المسجل دخوله حالياً، وما إلى ذلك.
 
 </Note>
 
-## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
+## يمر السياق عبر المُكوّنات الوسيطة {/*context-passes-through-intermediate-components*/}
 
-You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
+يمكنك إدراج أي عدد تريده من المُكوّنات (Components) بين المُكوّن الذي يوفر السياق (Context) والمُكوّن الذي يستخدمه. يشمل هذا كلاً من المُكوّنات (Components) المدمجة مثل `<div>` والمُكوّنات التي قد تبنيها بنفسك.
 
-In this example, the same `Post` component (with a dashed border) is rendered at two different nesting levels. Notice that the `<Heading>` inside of it gets its level automatically from the closest `<Section>`:
+في هذا المثال، يتم تصيير المُكوّن (Component) نفسه `Post` (والذي يمتلك حدوداً متقطعة) في مستويين متداخلين مختلفين. لاحظ أن الـ `<Heading>` بداخله يحصل على مستواه تلقائياً من أقرب `<Section>`:
 
 <Sandpack>
 
@@ -718,10 +757,10 @@ import Section from './Section.js';
 export default function ProfilePage() {
   return (
     <Section>
-      <Heading>My Profile</Heading>
+      <Heading>ملفي الشخصي</Heading>
       <Post
-        title="Hello traveller!"
-        body="Read about my adventures."
+        title="مرحباً أيها المسافر!"
+        body="اقرأ عن مغامراتي."
       />
       <AllPosts />
     </Section>
@@ -731,7 +770,7 @@ export default function ProfilePage() {
 function AllPosts() {
   return (
     <Section>
-      <Heading>Posts</Heading>
+      <Heading>المنشورات</Heading>
       <RecentPosts />
     </Section>
   );
@@ -740,14 +779,14 @@ function AllPosts() {
 function RecentPosts() {
   return (
     <Section>
-      <Heading>Recent Posts</Heading>
+      <Heading>أحدث المنشورات</Heading>
       <Post
-        title="Flavors of Lisbon"
-        body="...those pastéis de nata!"
+        title="نكهات لشبونة"
+        body="...تلك الفطائر اللذيذة!"
       />
       <Post
-        title="Buenos Aires in the rhythm of tango"
-        body="I loved it!"
+        title="بوينس آيرس على إيقاع التانغو"
+        body="لقد أحببتها!"
       />
     </Section>
   );
@@ -763,6 +802,7 @@ function Post({ title, body }) {
     </Section>
   );
 }
+
 ```
 
 ```js src/Section.js
@@ -782,6 +822,7 @@ export default function Section({ children, isFancy }) {
     </section>
   );
 }
+
 ```
 
 ```js src/Heading.js
@@ -792,7 +833,7 @@ export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
-      throw Error('Heading must be inside a Section!');
+      throw Error('يجب أن تكون الترويسة داخل قسم (Section)!');
     case 1:
       return <h1>{children}</h1>;
     case 2:
@@ -806,15 +847,17 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('مستوى غير معروف: ' + level);
   }
 }
+
 ```
 
 ```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(0);
+
 ```
 
 ```css
@@ -828,62 +871,65 @@ export const LevelContext = createContext(0);
 .fancy {
   border: 4px dashed pink;
 }
+
 ```
 
 </Sandpack>
 
-You didn't do anything special for this to work. A `Section` specifies the context for the tree inside it, so you can insert a `<Heading>` anywhere, and it will have the correct size. Try it in the sandbox above!
+لم تقم بفعل أي شيء خاص لكي يعمل هذا. يُحدد الـ `Section` السياق (Context) للشجرة التي بداخله، لذا يمكنك إدراج `<Heading>` في أي مكان، وسيكون له الحجم الصحيح. جربه في بيئة الاختبار (sandbox) أعلاه!
 
-**Context lets you write components that "adapt to their surroundings" and display themselves differently depending on _where_ (or, in other words, _in which context_) they are being rendered.**
+**يتيح لك السياق (Context) كتابة مُكوّنات (Components) "تتكيف مع محيطها" وتعرض نفسها بشكل مختلف بناءً على *المكان* (أو بعبارة أخرى، *في أي سياق (Context)*) الذي يتم تصييرها فيه.**
 
-How context works might remind you of [CSS property inheritance.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+قد يُذكرك عمل السياق (Context) بـ [وراثة خصائص CSS (CSS property inheritance).](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) في CSS، يمكنك تحديد `color: blue` لـ `<div>`، وأي عقدة DOM بداخله، بغض النظر عن مدى عمقها، سترث هذا اللون ما لم تتجاوزه عقدة DOM أخرى في المنتصف عبر تحديد `color: green`. وبالمثل، في React، الطريقة الوحيدة لتجاوز سياق (Context) قادم من الأعلى هي تغليف الأبناء (children) في مُوفّر سياق (Context provider) بقيمة مختلفة.
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+في CSS، الخصائص المختلفة مثل `color` و `background-color` لا تتجاوز بعضها البعض. يمكنك تعيين الخاصية `color` لجميع عناصر `<div>` إلى اللون الأحمر دون التأثير على الخاصية `background-color`. وبالمثل، **لا تتجاوز سياقات React (React contexts) المختلفة بعضها البعض.** كل سياق (Context) تقوم بإنشائه باستخدام `createContext()` يكون منفصلاً تماماً عن السياقات الأخرى، ويربط معاً المُكوّنات (Components) التي تستخدم وتوفر *ذلك السياق بالذات*. يمكن لمُكوّن (Component) واحد أن يستخدم أو يوفر العديد من السياقات المختلفة دون أي مشكلة.
 
-## Before you use context {/*before-you-use-context*/}
+## قبل أن تستخدم السياق {/*before-you-use-context*/}
 
-Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
+استخدام السياق (Context) أمر مغرٍ جداً! ومع ذلك، هذا يعني أيضاً أنه من السهل جداً الإفراط في استخدامه. **مجرد أنك تحتاج إلى تمرير بعض الخصائص (props) لعدة مستويات عميقة لا يعني أنه يجب عليك وضع تلك المعلومات في السياق (Context).**
 
-Here's a few alternatives you should consider before using context:
+إليك بعض البدائل التي يجب عليك أخذها في الاعتبار قبل استخدام السياق (Context):
 
-1. **Start by [passing props.](/learn/passing-props-to-a-component)** If your components are not trivial, it's not unusual to pass a dozen props down through a dozen components. It may feel like a slog, but it makes it very clear which components use which data! The person maintaining your code will be glad you've made the data flow explicit with props.
-2. **Extract components and [pass JSX as `children`](/learn/passing-props-to-a-component#passing-jsx-as-children) to them.** If you pass some data through many layers of intermediate components that don't use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like `posts` to visual components that don't use them directly, like `<Layout posts={posts} />`. Instead, make `Layout` take `children` as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. This reduces the number of layers between the component specifying the data and the one that needs it.
+1. **ابدأ بـ [تمرير الخصائص (props).**](https://www.google.com/search?q=/learn/passing-props-to-a-component) إذا كانت مُكوّناتك (Components) ليست بسيطة، فليس من غير المألوف تمرير عشرات الخصائص (props) للأسفل عبر عشرات المُكوّنات. قد يبدو الأمر شاقاً، ولكنه يجعل من الواضح جداً أي المُكوّنات تستخدم أي بيانات! سيكون الشخص الذي يصون كودك ممتناً لأنك جعلت تدفق البيانات صريحاً باستخدام الخصائص (props).
+2. **استخرج المُكوّنات و[مرر JSX كـ `children](https://www.google.com/search?q=/learn/passing-props-to-a-component%23passing-jsx-as-children)` إليها.** إذا كنت تمرر بعض البيانات عبر العديد من طبقات المُكوّنات (Components) الوسيطة التي لا تستخدم تلك البيانات (وتكتفي بتمريرها للأسفل)، فهذا يعني غالباً أنك نسيت استخراج بعض المُكوّنات على طول الطريق. على سبيل المثال، ربما تمرر خصائص (props) بيانات مثل `posts` إلى مُكوّنات مرئية لا تستخدمها مباشرة، مثل `<Layout posts={posts} />`. بدلاً من ذلك، اجعل `Layout` يقبل `children` كخاصية (prop)، وقم بتصيير `<Layout><Posts posts={posts} /></Layout>`. هذا يقلل من عدد الطبقات بين المُكوّن الذي يحدد البيانات والمُكوّن الذي يحتاجها.
 
-If neither of these approaches works well for you, consider context.
+إذا لم تعمل أي من هذه المقاربات بشكل جيد معك، فكر حينها في استخدام السياق (Context).
 
-## Use cases for context {/*use-cases-for-context*/}
+## حالات استخدام السياق {/*use-cases-for-context*/}
 
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
-  
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
+* **السمات (Theming):** إذا كان تطبيقك يتيح للمستخدم تغيير مظهره (مثل الوضع الليلي)، يمكنك وضع مُوفّر سياق (Context provider) في أعلى تطبيقك، واستخدام ذلك السياق (Context) في المُكوّنات (Components) التي تحتاج إلى تعديل مظهرها المرئي.
+* **الحساب الحالي (Current account):** قد تحتاج العديد من المُكوّنات (Components) إلى معرفة المستخدم المسجل دخوله حالياً. وضعه في سياق (Context) يجعله مريحاً للقراءة في أي مكان في الشجرة. تتيح لك بعض التطبيقات أيضاً تشغيل حسابات متعددة في نفس الوقت (مثل ترك تعليق كمستخدم مختلف). في تلك الحالات، قد يكون من المريح تغليف جزء من واجهة المستخدم (UI) بمُوفّر سياق (provider) متداخل يحمل قيمة حساب حالي مختلفة.
+* **التوجيه (Routing):** تستخدم معظم حلول التوجيه السياق (Context) داخلياً للاحتفاظ بالمسار الحالي (route). هكذا "يعرف" كل رابط ما إذا كان نشطاً أم لا. إذا قمت ببناء الموجّه (router) الخاص بك، فربما ترغب في فعل ذلك أيضاً.
+* **إدارة الحالة (Managing state):** مع نمو تطبيقك، قد ينتهي بك الأمر بوجود الكثير من الحالات (state) بالقرب من أعلى تطبيقك. قد ترغب العديد من المُكوّنات (Components) البعيدة بالأسفل في تغييرها. من الشائع [استخدام مُقلّل (reducer) مع سياق (Context)](https://www.google.com/search?q=/learn/scaling-up-with-reducer-and-context) لإدارة الحالات المعقدة وتمريرها للأسفل إلى المُكوّنات البعيدة دون الكثير من العناء.
 
-In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
+لا يقتصر السياق (Context) على القيم الثابتة. إذا مررت قيمة مختلفة في التصيير (render) التالي، ستقوم React بتحديث جميع المُكوّنات (Components) التي تقرأه بالأسفل! هذا هو السبب في أن السياق يُستخدم غالباً بالاشتراك مع الحالة (state).
+
+بشكل عام، إذا كانت بعض المعلومات مطلوبة من قبل مُكوّنات (Components) بعيدة في أجزاء مختلفة من الشجرة، فهذا مؤشر جيد على أن السياق (Context) سيساعدك.
 
 <Recap>
 
-* Context lets a component provide some information to the entire tree below it.
-* To pass context:
-  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
-  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext value={...}>` to provide it from a parent.
-* Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings".
-* Before you use context, try passing props or passing JSX as `children`.
+* يتيح السياق (Context) لمُكوّن (Component) توفير بعض المعلومات للشجرة بأكملها التي تقع أسفله.
+* لتمرير السياق (Context):
+1. قم بإنشائه وتصديره باستخدام `export const MyContext = createContext(defaultValue)`.
+2. مرره إلى الخطاف (Hook) عبر `useContext(MyContext)` لقراءته في أي مُكوّن (Component) ابن، بغض النظر عن مدى عمقه.
+3. غلف الأبناء (children) داخل `<MyContext value={...}>` لتوفيره من مُكوّن أب (parent component).
+
+
+* يمر السياق (Context) عبر أي مُكوّنات (Components) وسيطة في المنتصف.
+* يتيح لك السياق (Context) كتابة مُكوّنات (Components) "تتكيف مع محيطها".
+* قبل استخدام السياق (Context)، جرب تمرير الخصائص (props) أو تمرير JSX كـ `children`.
 
 </Recap>
 
 <Challenges>
 
-#### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
+#### استبدال التمرير العميق للخصائص باستخدام السياق {/*replace-prop-drilling-with-context*/}
 
-In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
+في هذا المثال، يؤدي تبديل مربع الاختيار (checkbox) إلى تغيير الخاصية (prop) المسماة `imageSize` والممررة إلى كل مُكوّن `<PlaceImage>`. يتم الاحتفاظ بحالة (state) مربع الاختيار في المُكوّن ذي المستوى الأعلى `App`، ولكن كل `<PlaceImage>` بحاجة إلى أن يكون على دراية بها.
 
-Currently, `App` passes `imageSize` to `List`, which passes it to each `Place`, which passes it to the `PlaceImage`. Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
+حالياً، يمرر الـ `App` الخاصية `imageSize` إلى `List`، والذي يمررها إلى كل `Place`، والذي بدوره يمررها إلى `PlaceImage`. قم بإزالة الخاصية (prop) `imageSize`، وبدلاً من ذلك مررها من المُكوّن (Component) `App` مباشرة إلى `PlaceImage`.
 
-You can declare context in `Context.js`.
+يمكنك التصريح عن السياق (Context) في الملف `Context.js`.
 
 <Sandpack>
 
@@ -905,7 +951,7 @@ export default function App() {
             setIsLarge(e.target.checked);
           }}
         />
-        Use large images
+        استخدام صور كبيرة
       </label>
       <hr />
       <List imageSize={imageSize} />
@@ -950,59 +996,63 @@ function PlaceImage({ place, imageSize }) {
     />
   );
 }
+
 ```
 
 ```js src/Context.js
+
 
 ```
 
 ```js src/data.js
 export const places = [{
   id: 0,
-  name: 'Bo-Kaap in Cape Town, South Africa',
-  description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
-  imageId: 'K9HVAGH'
+  name: 'مدينة صنعاء القديمة، اليمن',
+  description: 'تتميز بطراز معماري فريد ومبانٍ مزينة بـ "القمرية".',
+  imageId: 'K9HVAGH' 
 }, {
   id: 1, 
-  name: 'Rainbow Village in Taichung, Taiwan',
-  description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
+  name: 'البتراء (المدينة الوردية)، الأردن',
+  description: 'مدينة تاريخية منحوتة في الصخر، وتُعد واحدة من عجائب الدنيا السبع الجديدة.',
   imageId: '9EAYZrt'
 }, {
   id: 2, 
-  name: 'Macromural de Pachuca, Mexico',
-  description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
+  name: 'أهرامات الجيزة، مصر',
+  description: 'من أقدم المعالم التاريخية في العالم، وتُعد شاهداً على عظمة الحضارة الفرعونية.',
   imageId: 'DgXHVwu'
 }, {
   id: 3, 
-  name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
+  name: 'العُلا (مدائن صالح)، السعودية',
+  description: 'موقع أثري مذهل يتميز بالواجهات الصخرية المنحوتة بدقة وسط الطبيعة الصحراوية.',
   imageId: 'aeO3rpI'
 }, {
   id: 4, 
-  name: 'Burano, Italy',
-  description: 'The houses are painted following a specific color system dating back to 16th century.',
+  name: 'شفشاون (المدينة الزرقاء)، المغرب',
+  description: 'مدينة جبلية ساحرة تتميز بمبانيها وشوارعها المطلية بتدرجات اللون الأزرق.',
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
+  name: 'برج خليفة في دبي، الإمارات',
+  description: 'أطول مبنى في العالم، ويُعد تحفة معمارية وهندسية حديثة.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
-  name: 'Gamcheon Culture Village in Busan, South Korea',
-  description: 'In 2009, the village was converted into a cultural hub by painting the houses and featuring exhibitions and art installations.',
+  name: 'قلعة بعلبك، لبنان',
+  description: 'تضم واحدة من أضخم وأفضل الهياكل الرومانية المحفوظة في العالم.',
   imageId: 'ZfQOOzf'
 }];
+
 ```
 
 ```js src/utils.js
 export function getImageUrl(place) {
   return (
-    'https://i.imgur.com/' +
+    '[https://i.imgur.com/](https://i.imgur.com/)' +
     place.imageId +
     'l.jpg'
   );
 }
+
 ```
 
 ```css
@@ -1014,15 +1064,16 @@ li {
   gap: 20px;
   align-items: center;
 }
+
 ```
 
 </Sandpack>
 
 <Solution>
 
-Remove `imageSize` prop from all the components.
+قم بإزالة الخاصية (prop) `imageSize` من جميع المُكوّنات (Components).
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+قم بإنشاء وتصدير `ImageSizeContext` من `Context.js`. ثم قم بتغليف المُكوّن `List` داخل `<ImageSizeContext value={imageSize}>` لتمرير القيمة للأسفل، واستخدم `useContext(ImageSizeContext)` لقراءتها داخل `PlaceImage`:
 
 <Sandpack>
 
@@ -1047,7 +1098,7 @@ export default function App() {
             setIsLarge(e.target.checked);
           }}
         />
-        Use large images
+        استخدام صور كبيرة
       </label>
       <hr />
       <List />
@@ -1087,61 +1138,65 @@ function PlaceImage({ place }) {
     />
   );
 }
+
 ```
 
 ```js src/Context.js
 import { createContext } from 'react';
 
 export const ImageSizeContext = createContext(500);
+
 ```
 
 ```js src/data.js
 export const places = [{
   id: 0,
-  name: 'Bo-Kaap in Cape Town, South Africa',
-  description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
-  imageId: 'K9HVAGH'
+  name: 'مدينة صنعاء القديمة، اليمن',
+  description: 'تتميز بطراز معماري فريد ومبانٍ مزينة بـ "القمرية".',
+  imageId: 'K9HVAGH' 
 }, {
   id: 1, 
-  name: 'Rainbow Village in Taichung, Taiwan',
-  description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
+  name: 'البتراء (المدينة الوردية)، الأردن',
+  description: 'مدينة تاريخية منحوتة في الصخر، وتُعد واحدة من عجائب الدنيا السبع الجديدة.',
   imageId: '9EAYZrt'
 }, {
   id: 2, 
-  name: 'Macromural de Pachuca, Mexico',
-  description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
+  name: 'أهرامات الجيزة، مصر',
+  description: 'من أقدم المعالم التاريخية في العالم، وتُعد شاهداً على عظمة الحضارة الفرعونية.',
   imageId: 'DgXHVwu'
 }, {
   id: 3, 
-  name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people".',
+  name: 'العُلا (مدائن صالح)، السعودية',
+  description: 'موقع أثري مذهل يتميز بالواجهات الصخرية المنحوتة بدقة وسط الطبيعة الصحراوية.',
   imageId: 'aeO3rpI'
 }, {
   id: 4, 
-  name: 'Burano, Italy',
-  description: 'The houses are painted following a specific color system dating back to 16th century.',
+  name: 'شفشاون (المدينة الزرقاء)، المغرب',
+  description: 'مدينة جبلية ساحرة تتميز بمبانيها وشوارعها المطلية بتدرجات اللون الأزرق.',
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
+  name: 'برج خليفة في دبي، الإمارات',
+  description: 'أطول مبنى في العالم، ويُعد تحفة معمارية وهندسية حديثة.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
-  name: 'Gamcheon Culture Village in Busan, South Korea',
-  description: 'In 2009, the village was converted into a cultural hub by painting the houses and featuring exhibitions and art installations.',
+  name: 'قلعة بعلبك، لبنان',
+  description: 'تضم واحدة من أضخم وأفضل الهياكل الرومانية المحفوظة في العالم.',
   imageId: 'ZfQOOzf'
 }];
+
 ```
 
 ```js src/utils.js
 export function getImageUrl(place) {
   return (
-    'https://i.imgur.com/' +
+    '[https://i.imgur.com/](https://i.imgur.com/)' +
     place.imageId +
     'l.jpg'
   );
 }
+
 ```
 
 ```css
@@ -1153,11 +1208,12 @@ li {
   gap: 20px;
   align-items: center;
 }
+
 ```
 
 </Sandpack>
 
-Note how components in the middle don't need to pass `imageSize` anymore.
+لاحظ كيف أن المُكوّنات (Components) في المنتصف لم تعد بحاجة إلى تمرير `imageSize` بعد الآن.
 
 </Solution>
 
