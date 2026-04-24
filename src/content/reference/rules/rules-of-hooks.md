@@ -1,53 +1,53 @@
 ---
-title: Rules of Hooks
+title: قواعد Hooks
 ---
 
 <Intro>
-Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+تُعرَّف الـ Hooks بدوال JavaScript، لكنها تمثّل نوعاً خاصاً من منطق واجهة المستخدم القابل لإعادة الاستخدام مع قيود على أماكن استدعائها.
 </Intro>
 
 <InlineToc />
 
 ---
 
-##  Only call Hooks at the top level {/*only-call-hooks-at-the-top-level*/}
+## استدعِ الـ Hooks في المستوى الأعلى فقط {/*only-call-hooks-at-the-top-level*/}
 
-Functions whose names start with `use` are called [*Hooks*](/reference/react) in React.
+الدوال التي أسماؤها تبدأ بـ `use` تُسمّى [*Hooks*](/reference/react) في React.
 
-**Don’t call Hooks inside loops, conditions, nested functions, or `try`/`catch`/`finally` blocks.** Instead, always use Hooks at the top level of your React function, before any early returns. You can only call Hooks while React is rendering a function component:
+**لا تستدعِ الـ Hooks داخل حلقات أو شروط أو دوال متداخلة أو كتل `try`/`catch`/`finally`.** استخدم الـ Hooks دائماً في أعلى مستوى دالة React، قبل أي `return` مبكر. يمكنك استدعاء الـ Hooks فقط أثناء تصيير مكوّن دالة:
 
-* ✅ Call them at the top level in the body of a [function component](/learn/your-first-component).
-* ✅ Call them at the top level in the body of a [custom Hook](/learn/reusing-logic-with-custom-hooks).
+* ✅ استدعِها في أعلى مستوى جسم [مكوّن دالة](/learn/your-first-component).
+* ✅ استدعِها في أعلى مستوى جسم [Hook مخصّص](/learn/reusing-logic-with-custom-hooks).
 
 ```js{2-3,8-9}
 function Counter() {
-  // ✅ Good: top-level in a function component
+  // ✅ جيد: في المستوى الأعلى داخل مكوّن دالة
   const [count, setCount] = useState(0);
   // ...
 }
 
 function useWindowWidth() {
-  // ✅ Good: top-level in a custom Hook
+  // ✅ جيد: في المستوى الأعلى داخل hook مخصّص
   const [width, setWidth] = useState(window.innerWidth);
   // ...
 }
 ```
 
-It’s **not** supported to call Hooks (functions starting with `use`) in any other cases, for example:
+**لا** يُدعَم استدعاء الـ Hooks (دوال تبدأ بـ `use`) في أي حالات أخرى، مثلاً:
 
-* 🔴 Do not call Hooks inside conditions or loops.
-* 🔴 Do not call Hooks after a conditional `return` statement.
-* 🔴 Do not call Hooks in event handlers.
-* 🔴 Do not call Hooks in class components.
-* 🔴 Do not call Hooks inside functions passed to `useMemo`, `useReducer`, or `useEffect`.
-* 🔴 Do not call Hooks inside `try`/`catch`/`finally` blocks.
+* 🔴 لا تستدعِ الـ Hooks داخل شروط أو حلقات.
+* 🔴 لا تستدعِ الـ Hooks بعد `return` شرطي.
+* 🔴 لا تستدعِ الـ Hooks في معالجات الأحداث.
+* 🔴 لا تستدعِ الـ Hooks في مكوّنات صنفية.
+* 🔴 لا تستدعِ الـ Hooks داخل دوال تُمرَّر إلى `useMemo` أو `useReducer` أو `useEffect`.
+* 🔴 لا تستدعِ الـ Hooks داخل كتل `try`/`catch`/`finally`.
 
-If you break these rules, you might see this error.
+إذا خالفت هذه القواعد، قد ترى الخطأ التالي.
 
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
   if (cond) {
-    // 🔴 Bad: inside a condition (to fix, move it outside!)
+    // 🔴 سيء: داخل شرط (للإصلاح: انقله للخارج!)
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -55,7 +55,7 @@ function Bad({ cond }) {
 
 function Bad() {
   for (let i = 0; i < 10; i++) {
-    // 🔴 Bad: inside a loop (to fix, move it outside!)
+    // 🔴 سيء: داخل حلقة (للإصلاح: انقله للخارج!)
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -65,14 +65,14 @@ function Bad({ cond }) {
   if (cond) {
     return;
   }
-  // 🔴 Bad: after a conditional return (to fix, move it before the return!)
+  // 🔴 سيء: بعد return شرطي (للإصلاح: ضعه قبل return!)
   const theme = useContext(ThemeContext);
   // ...
 }
 
 function Bad() {
   function handleClick() {
-    // 🔴 Bad: inside an event handler (to fix, move it outside!)
+    // 🔴 سيء: داخل معالج حدث (للإصلاح: انقله للخارج!)
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -80,16 +80,16 @@ function Bad() {
 
 function Bad() {
   const style = useMemo(() => {
-    // 🔴 Bad: inside useMemo (to fix, move it outside!)
+    // 🔴 سيء: داخل useMemo (للإصلاح: انقله للخارج!)
     const theme = useContext(ThemeContext);
     return createStyle(theme);
-  });
+  }, []);
   // ...
 }
 
 class Bad extends React.Component {
   render() {
-    // 🔴 Bad: inside a class component (to fix, write a function component instead of a class!)
+    // 🔴 سيء: داخل مكوّن صنفي (للإصلاح: اكتب مكوّن دالة بدلاً من صنف!)
     useEffect(() => {})
     // ...
   }
@@ -97,7 +97,7 @@ class Bad extends React.Component {
 
 function Bad() {
   try {
-    // 🔴 Bad: inside try/catch/finally block (to fix, move it outside!)
+    // 🔴 سيء: داخل try/catch/finally (للإصلاح: انقله للخارج!)
     const [x, setX] = useState(0);
   } catch {
     const [x, setX] = useState(1);
@@ -105,31 +105,31 @@ function Bad() {
 }
 ```
 
-You can use the [`eslint-plugin-react-hooks` plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to catch these mistakes.
+يمكنك استخدام [إضافة `eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) لالتقاط هذه الأخطاء.
 
 <Note>
 
-[Custom Hooks](/learn/reusing-logic-with-custom-hooks) *may* call other Hooks (that's their whole purpose). This works because custom Hooks are also supposed to only be called while a function component is rendering.
+[الـ Hooks المخصّصة](/learn/reusing-logic-with-custom-hooks) *قد* تستدعي Hooks أخرى (لهذا الغرض أصلاً). يعمل ذلك لأن الـ Hooks المخصّصة يفترض أن تُستدعى فقط أثناء تصيير مكوّن دالة أيضاً.
 
 </Note>
 
 ---
 
-## Only call Hooks from React functions {/*only-call-hooks-from-react-functions*/}
+## استدعِ الـ Hooks فقط من دوال React {/*only-call-hooks-from-react-functions*/}
 
-Don’t call Hooks from regular JavaScript functions. Instead, you can:
+لا تستدعِ الـ Hooks من دوال JavaScript عادية. بدلاً من ذلك:
 
-✅ Call Hooks from React function components.
-✅ Call Hooks from [custom Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component).
+✅ استدعِ الـ Hooks من مكوّنات دالة React.
+✅ استدعِ الـ Hooks من [Hooks مخصّصة](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component).
 
-By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+باتباع هذه القاعدة، تضمن أن كل المنطق ذي الحالة في المكوّن واضح من شيفرته.
 
 ```js {2,5}
 function FriendList() {
   const [onlineStatus, setOnlineStatus] = useOnlineStatus(); // ✅
 }
 
-function setOnlineStatus() { // ❌ Not a component or custom Hook!
+function setOnlineStatus() { // ❌ ليست مكوّناً ولا hook مخصّصاً!
   const [onlineStatus, setOnlineStatus] = useOnlineStatus();
 }
 ```

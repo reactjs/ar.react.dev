@@ -1,37 +1,37 @@
 ---
-title: Server Components
+title: مكوّنات الخادم
 ---
 
 <RSC>
 
-Server Components are for use in [React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+مكوّنات الخادم (Server Components) مخصّصة للاستخدام في [React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
 
 </RSC>
 
 <Intro>
 
-Server Components are a new type of Component that renders ahead of time, before bundling, in an environment separate from your client app or SSR server.
+مكوّنات الخادم نوع جديد من المكوّنات تُصيَّر مسبقًا قبل التجميع، في بيئة منفصلة عن تطبيق العميل أو خادم SSR.
 
 </Intro>
 
-This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
+هذه البيئة المنفصلة هي «الخادم» في React Server Components. يمكن لمكوّنات الخادم أن تعمل مرة واحدة وقت البناء على خادم CI، أو أن تُنفَّذ لكل طلب باستخدام خادم ويب.
 
 <InlineToc />
 
 <Note>
 
-#### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
+#### كيف أبني دعمًا لمكوّنات الخادم؟ {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+بينما React Server Components في React 19 مستقرة ولن تنكسر بين الإصدارات الفرعية، فإن واجهات البرمجة الأساسية المستخدمة لتنفيذ أداة تجميع أو إطار عمل لـ React Server Components لا تتبع semver وقد تنكسر بين الإصدارات الفرعية في React 19.x.
 
-To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
+لدعم React Server Components كأداة تجميع أو إطار عمل، نوصي بتثبيت إصدار محدّد من React، أو استخدام إصدار Canary. سنستمر في العمل مع أدوات التجميع والأطر لتثبيت واجهات البرمجة المستخدمة لتنفيذ React Server Components مستقبلًا.
 
 </Note>
 
-### Server Components without a Server {/*server-components-without-a-server*/}
-Server components can run at build time to read from the filesystem or fetch static content, so a web server is not required. For example, you may want to read static data from a content management system.
+### مكوّنات الخادم دون خادم {/*server-components-without-a-server*/}
+يمكن لمكوّنات الخادم أن تعمل وقت البناء لقراءة نظام الملفات أو جلب محتوى ثابت، لذا لا يلزم خادم ويب. على سبيل المثال، قد ترغب في قراءة بيانات ثابتة من نظام إدارة محتوى.
 
-Without Server Components, it's common to fetch static data on the client with an Effect:
+بدون مكوّنات الخادم، يُشاع جلب البيانات الثابتة على العميل باستخدام Effect:
 ```js
 // bundle.js
 import marked from 'marked'; // 35.9K (11.2K gzipped)
@@ -58,9 +58,9 @@ app.get(`/api/content/:page`, async (req, res) => {
 });
 ```
 
-This pattern means users need to download and parse an additional 75K (gzipped) of libraries, and wait for a second request to fetch the data after the page loads, just to render static content that will not change for the lifetime of the page.
+هذا النمط يعني أن المستخدمين يحتاجون إلى تنزيل وتحليل نحو 75 كيلوبايت (مضغوطًا gzip) من المكتبات إضافيًا، والانتظار لطلب ثانٍ لجلب البيانات بعد تحميل الصفحة، فقط لعرض محتوى ثابت لن يتغيّر طوال عمر الصفحة.
 
-With Server Components, you can render these components once at build time:
+باستخدام مكوّنات الخادم، يمكنك تصيير هذه المكوّنات مرة واحدة وقت البناء:
 
 ```js
 import marked from 'marked'; // Not included in bundle
@@ -74,17 +74,17 @@ async function Page({page}) {
 }
 ```
 
-The rendered output can then be server-side rendered (SSR) to HTML and uploaded to a CDN. When the app loads, the client will not see the original `Page` component, or the expensive libraries for rendering the markdown. The client will only see the rendered output:
+يمكن بعد ذلك تصيير المخرجات إلى HTML عبر SSR ورفعها إلى CDN. عند تحميل التطبيق، لن يرى العميل مكوّن `Page` الأصلي، ولا المكتبات الثقيلة لعرض Markdown. سيرى العميل المخرجات المصيَّرة فقط:
 
 ```js
 <div><!-- html for markdown --></div>
 ```
 
-This means the content is visible during first page load, and the bundle does not include the expensive libraries needed to render the static content.
+هذا يعني أن المحتوى يظهر عند أول تحميل للصفحة، وأن الحزمة لا تتضمّن المكتبات الثقيلة اللازمة لعرض المحتوى الثابت.
 
 <Note>
 
-You may notice that the Server Component above is an async function:
+قد تلاحظ أن مكوّن الخادم أعلاه دالة async:
 
 ```js
 async function Page({page}) {
@@ -92,16 +92,16 @@ async function Page({page}) {
 }
 ```
 
-Async Components are a new feature of Server Components that allow you to `await` in render.
+المكوّنات غير المتزامنة (async) ميزة جديدة في مكوّنات الخادم تسمح باستخدام `await` أثناء التصيير.
 
-See [Async components with Server Components](#async-components-with-server-components) below.
+انظر [المكوّنات غير المتزامنة مع مكوّنات الخادم](#async-components-with-server-components) أدناه.
 
 </Note>
 
-### Server Components with a Server {/*server-components-with-a-server*/}
-Server Components can also run on a web server during a request for a page, letting you access your data layer without having to build an API. They are rendered before your application is bundled, and can pass data and JSX as props to Client Components.
+### مكوّنات الخادم مع خادم {/*server-components-with-a-server*/}
+يمكن لمكوّنات الخادم أيضًا أن تعمل على خادم ويب أثناء طلب صفحة، ما يتيح الوصول إلى طبقة البيانات دون بناء API. تُصيَّر قبل تجميع تطبيقك، ويمكنها تمرير البيانات وJSX كخصائص إلى مكوّنات العميل (Client Components).
 
-Without Server Components, it's common to fetch dynamic data on the client in an Effect:
+بدون مكوّنات الخادم، يُشاع جلب البيانات الديناميكية على العميل في Effect:
 
 ```js
 // bundle.js
@@ -150,7 +150,7 @@ app.get(`/api/authors/:id`, async (req, res) => {
 });
 ```
 
-With Server Components, you can read the data and render it in the component:
+باستخدام مكوّنات الخادم، يمكنك قراءة البيانات وتصييرها داخل المكوّن:
 
 ```js
 import db from './database';
@@ -174,7 +174,7 @@ async function Author({id}) {
 }
 ```
 
-The bundler then combines the data, rendered Server Components and dynamic Client Components into a bundle. Optionally, that bundle can then be server-side rendered (SSR) to create the initial HTML for the page. When the page loads, the browser does not see the original `Note` and `Author` components; only the rendered output is sent to the client:
+ثم تجمع أداة التجميع البيانات ومكوّنات الخادم المصيَّرة ومكوّنات العميل الديناميكية في حزمة. يمكن بعد ذلك، اختياريًا، تطبيق SSR على تلك الحزمة لإنشاء HTML الأولي للصفحة. عند تحميل الصفحة، لا يرى المتصفح مكوّني `Note` و`Author` الأصليين؛ يُرسل إلى العميل المخرجات المصيَّرة فقط:
 
 ```js
 <div>
@@ -183,24 +183,24 @@ The bundler then combines the data, rendered Server Components and dynamic Clien
 </div>
 ```
 
-Server Components can be made dynamic by re-fetching them from a server, where they can access the data and render again. This new application architecture combines the simple “request/response” mental model of server-centric Multi-Page Apps with the seamless interactivity of client-centric Single-Page Apps, giving you the best of both worlds.
+يمكن جعل مكوّنات الخادم ديناميكية بإعادة جلبها من خادم حيث يمكنها الوصول إلى البيانات والتصيير مجددًا. يجمع هذا النمط المعماري للتطبيق بين نموذج «طلب/استجابة» البسيط لتطبيقات متعددة الصفحات (MPA) المرتكزة على الخادم، والتفاعل السلس لتطبيقات الصفحة الواحدة (SPA) المرتكزة على العميل، ليمنحك أفضل ما في العالمين.
 
-### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
+### إضافة تفاعلية إلى مكوّنات الخادم {/*adding-interactivity-to-server-components*/}
 
-Server Components are not sent to the browser, so they cannot use interactive APIs like `useState`. To add interactivity to Server Components, you can compose them with Client Component using the `"use client"` directive.
+لا تُرسل مكوّنات الخادم إلى المتصفح، لذا لا يمكنها استخدام واجهات برمجة تفاعلية مثل `useState`. لإضافة تفاعلية إلى مكوّنات الخادم، يمكنك تجميعها مع مكوّن عميل باستخدام التوجيه `"use client"`.
 
 <Note>
 
-#### There is no directive for Server Components. {/*there-is-no-directive-for-server-components*/}
+#### لا يوجد توجيه لمكوّنات الخادم. {/*there-is-no-directive-for-server-components*/}
 
-A common misunderstanding is that Server Components are denoted by `"use server"`, but there is no directive for Server Components. The `"use server"` directive is used for Server Functions.
+سوء فهم شائع هو أن مكوّنات الخادم تُشار إليها بـ `"use server"`، لكن لا يوجد توجيه لمكوّنات الخادم. التوجيه `"use server"` يُستخدم لدوال الخادم (Server Functions).
 
-For more info, see the docs for [Directives](/reference/rsc/directives).
+لمزيد من المعلومات، راجع توثيق [التوجيهات](/reference/rsc/directives).
 
 </Note>
 
 
-In the following example, the `Notes` Server Component imports an `Expandable` Client Component that uses state to toggle its `expanded` state:
+في المثال التالي، مكوّن الخادم `Notes` يستورد مكوّن العميل `Expandable` الذي يستخدم state لتبديل حالة `expanded`:
 ```js
 // Server Component
 import Expandable from './Expandable';
@@ -237,7 +237,7 @@ export default function Expandable({children}) {
 }
 ```
 
-This works by first rendering `Notes` as a Server Component, and then instructing the bundler to create a bundle for the Client Component `Expandable`. In the browser, the Client Components will see output of the Server Components passed as props:
+يعمل ذلك بتصيير `Notes` أولًا كمكوّن خادم، ثم إرشاد أداة التجميع لإنشاء حزمة لمكوّن العميل `Expandable`. في المتصفح، سترى مكوّنات العميل مخرجات مكوّنات الخادم الممرَّرة كخصائص:
 
 ```js
 <head>
@@ -257,11 +257,11 @@ This works by first rendering `Notes` as a Server Component, and then instructin
 </body>
 ```
 
-### Async components with Server Components {/*async-components-with-server-components*/}
+### المكوّنات غير المتزامنة مع مكوّنات الخادم {/*async-components-with-server-components*/}
 
-Server Components introduce a new way to write Components using async/await. When you `await` in an async component, React will suspend and wait for the promise to resolve before resuming rendering. This works across server/client boundaries with streaming support for Suspense.
+تقدّم مكوّنات الخادم طريقة جديدة لكتابة المكوّنات باستخدام async/await. عند استخدام `await` في مكوّن async، يعلّق React التصيير وينتظر حل الوعد قبل استئناف التصيير. يعمل ذلك عبر حدود الخادم/العميل مع دعم البث لـ Suspense.
 
-You can even create a promise on the server, and await it on the client:
+يمكنك حتى إنشاء وعد على الخادم، وانتظاره على العميل:
 
 ```js
 // Server Component
@@ -297,6 +297,6 @@ function Comments({commentsPromise}) {
 }
 ```
 
-The `note` content is important data for the page to render, so we `await` it on the server. The comments are below the fold and lower-priority, so we start the promise on the server, and wait for it on the client with the `use` API. This will Suspend on the client, without blocking the `note` content from rendering.
+محتوى `note` بيانات مهمة لتصيير الصفحة، لذا نستخدم `await` له على الخادم. التعليقات أسفل الطي وأولوية أقل، لذا نبدأ الوعد على الخادم وننتظره على العميل بواجهة `use`. سيُعلّق ذلك على العميل دون حجب تصيير محتوى `note`.
 
-Since async components are not supported on the client, we await the promise with `use`.
+بما أن المكوّنات غير المتزامنة غير مدعومة على العميل، ننتظر الوعد باستخدام `use`.
