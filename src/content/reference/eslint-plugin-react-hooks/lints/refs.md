@@ -4,83 +4,83 @@ title: refs
 
 <Intro>
 
-Validates correct usage of refs, not reading/writing during render. See the "pitfalls" section in [`useRef()` usage](/reference/react/useRef#usage).
+يتحقق من الاستخدام الصحيح للـ refs، دون قراءة/كتابة أثناء التصيير. راجع قسم «المخاطر» في [استخدام `useRef()`](/reference/react/useRef#usage).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Refs hold values that aren't used for rendering. Unlike state, changing a ref doesn't trigger a re-render. Reading or writing `ref.current` during render breaks React's expectations. Refs might not be initialized when you try to read them, and their values can be stale or inconsistent.
+الـ refs تحمل قيماً لا تُستخدم للتصيير. على عكس الحالة، تغيير ref لا يطلق إعادة تصيير. قراءة أو كتابة `ref.current` أثناء التصيير تُخالِف توقعات React. قد لا تُهيَّأ الـ refs عند محاولة قراءتها، وقد تكون قيمها قديمة أو غير متسقة.
 
-## How It Detects Refs {/*how-it-detects-refs*/}
+## كيف يكتشف الـ lint الـ refs {/*how-it-detects-refs*/}
 
-The lint only applies these rules to values it knows are refs. A value is inferred as a ref when the compiler sees any of the following patterns:
+يطبّق الـ lint هذه القواعد فقط على قيم يعرف أنها refs. تُستنتَج القيمة كـ ref عندما يرى المُصرّف أياً من الأنماط التالية:
 
-- Returned from `useRef()` or `React.createRef()`.
+- مُرجَعة من `useRef()` أو `React.createRef()`.
 
   ```js
   const scrollRef = useRef(null);
   ```
 
-- An identifier named `ref` or ending in `Ref` that reads from or writes to `.current`.
+- مُعرّف اسمه `ref` أو ينتهي بـ `Ref` ويقرأ أو يكتب `.current`.
 
   ```js
   buttonRef.current = node;
   ```
 
-- Passed through a JSX `ref` prop (for example `<div ref={someRef} />`).
+- مُمرَّرة عبر خاصّية JSX `ref` (مثلاً `<div ref={someRef} />`).
 
   ```jsx
   <input ref={inputRef} />
   ```
 
-Once something is marked as a ref, that inference follows the value through assignments, destructuring, or helper calls. This lets the lint surface violations even when `ref.current` is accessed inside another function that received the ref as an argument.
+بعد تعليم شيء كـ ref، يتبع هذا الاستنتاج القيمة عبر الإسناد أو التفكيك أو استدعاءات مساعدة. يتيح للـ lint إظهار المخالفات حتى عند الوصول إلى `ref.current` داخل دالة أخرى استلمت الـ ref كوسيط.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-- Reading `ref.current` during render
-- Updating `refs` during render
-- Using `refs` for values that should be state
+- قراءة `ref.current` أثناء التصيير
+- تحديث الـ refs أثناء التصيير
+- استخدام الـ refs لقيم يجب أن تكون state
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Reading ref during render
+// ❌ قراءة ref أثناء التصيير
 function Component() {
   const ref = useRef(0);
-  const value = ref.current; // Don't read during render
+  const value = ref.current; // لا تقرأ أثناء التصيير
   return <div>{value}</div>;
 }
 
-// ❌ Modifying ref during render
+// ❌ تعديل ref أثناء التصيير
 function Component({value}) {
   const ref = useRef(null);
-  ref.current = value; // Don't modify during render
+  ref.current = value; // لا تعدّل أثناء التصيير
   return <div />;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Read ref in effects/handlers
+// ✅ اقرأ ref في الـ effects أو المعالجات
 function Component() {
   const ref = useRef(null);
 
   useEffect(() => {
     if (ref.current) {
-      console.log(ref.current.offsetWidth); // OK in effect
+      console.log(ref.current.offsetWidth); // مسموح في effect
     }
   });
 
   return <div ref={ref} />;
 }
 
-// ✅ Use state for UI values
+// ✅ استخدم state لقيم الواجهة
 function Component() {
   const [count, setCount] = useState(0);
 
@@ -91,25 +91,25 @@ function Component() {
   );
 }
 
-// ✅ Lazy initialization of ref value
+// ✅ تهيئة كسولة لقيمة ref
 function Component() {
   const ref = useRef(null);
 
-  // Initialize only once on first use
+  // تهيئة مرة واحدة عند أول استخدام
   if (ref.current === null) {
-    ref.current = expensiveComputation(); // OK - lazy initialization
+    ref.current = expensiveComputation(); // مسموح — تهيئة كسولة
   }
 
   const handleClick = () => {
-    console.log(ref.current); // Use the initialized value
+    console.log(ref.current); // استخدم القيمة المُهيَّأة
   };
 
   return <button onClick={handleClick}>Click</button>;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### The lint flagged my plain object with `.current` {/*plain-object-current*/}
+### الـ lint أشار لكائن عادي فيه `.current` {/*plain-object-current*/}
 
-The name heuristic intentionally treats `ref.current` and `fooRef.current` as real refs. If you're modeling a custom container object, pick a different name (for example, `box`) or move the mutable value into state. Renaming avoids the lint because the compiler stops inferring it as a ref.
+الاستدلال بالاسم يعامل `ref.current` و`fooRef.current` عمداً كـ refs حقيقية. إذا كنت تُمثّل حاوية مخصّصة، اختر اسماً مختلفاً (مثلاً `box`) أو انقل القيمة القابلة للتغيير إلى state. إعادة التسمية تتجنّب الـ lint لأن المُصرّف يتوقف عن استنتاجها كـ ref.

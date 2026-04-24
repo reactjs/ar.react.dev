@@ -1,30 +1,30 @@
 ---
-title: Static React DOM APIs
+title: واجهات react-dom/static
 ---
 
 <Intro>
 
-The `react-dom/static` APIs let you generate static HTML for React components. They have limited functionality compared to the streaming APIs. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+تتيح واجهات `react-dom/static` توليد HTML ساكن لمكوّنات React. نطاقها أضيق من واجهات البث (streaming). قد تستدعيها [إطار العمل](/learn/creating-a-react-app#full-stack-frameworks) نيابةً عنك. أغلب مكوّناتك لا تحتاج استيرادها أو استخدامها.
 
 </Intro>
 
 ---
 
-## Static APIs for Web Streams {/*static-apis-for-web-streams*/}
+## واجهات ساكنة لـ Web Streams {/*static-apis-for-web-streams*/}
 
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
+تتوفر هذه الدوال فقط في البيئات التي تدعم [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)، بما فيها المتصفّحات وDeno وبعض بيئات الحافة الحديثة:
 
-* [`prerender`](/reference/react-dom/static/prerender) renders a React tree to static HTML with a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
-* <ExperimentalBadge /> [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender) continues a prerendered React tree to static HTML with a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+* [`prerender`](/reference/react-dom/static/prerender) يصيّر شجرة React إلى HTML ساكن مع [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* <ExperimentalBadge /> [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender) يكمل شجرة React مُسبَقة التصيير إلى HTML ساكن مع [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
-Node.js also includes these methods for compatibility, but they are not recommended due to worse performance. Use the [dedicated Node.js APIs](#static-apis-for-nodejs-streams) instead.
+تتضمّن Node.js هذه الدوال للتوافق، لكنها غير موصى بها لأداء أضعف. استخدم [واجهات Node.js المخصّصة](#static-apis-for-nodejs-streams).
 
 ---
 
-## Static APIs for Node.js Streams {/*static-apis-for-nodejs-streams*/}
+## واجهات ساكنة لـ Node.js Streams {/*static-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams](https://nodejs.org/api/stream.html):
+تتوفر هذه الدوال فقط حيث تتوفر [Node.js Streams](https://nodejs.org/api/stream.html):
 
-* [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) renders a React tree to static HTML with a [Node.js Stream.](https://nodejs.org/api/stream.html)
-* <ExperimentalBadge /> [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) continues a prerendered React tree to static HTML with a [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) يصيّر شجرة React إلى HTML ساكن مع [Node.js Stream](https://nodejs.org/api/stream.html)
+* <ExperimentalBadge /> [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) يكمل شجرة React مُسبَقة التصيير إلى HTML ساكن مع [Node.js Stream](https://nodejs.org/api/stream.html)
 

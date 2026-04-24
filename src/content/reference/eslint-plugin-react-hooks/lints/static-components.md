@@ -4,30 +4,30 @@ title: static-components
 
 <Intro>
 
-Validates that components are static, not recreated every render. Components that are recreated dynamically can reset state and trigger excessive re-rendering.
+يتحقق من أن المكوّنات ثابتة، لا تُعاد إنشاؤها كل تصيير. المكوّنات المُعاد إنشاؤها ديناميكياً قد تعيد ضبط الحالة وتطلق إعادة تصيير مفرطة.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Components defined inside other components are recreated on every render. React sees each as a brand new component type, unmounting the old one and mounting the new one, destroying all state and DOM nodes in the process.
+المكوّنات المعرّفة داخل مكوّنات أخرى تُعاد إنشاؤها كل تصيير. يرى React كل واحد كنوع مكوّن جديد تماماً، فيزيل القديم ويثبّت الجديد، ما يدمّر كل الحالة وعقد DOM في العملية.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Component defined inside component
+// ❌ مكوّن معرّف داخل مكوّن
 function Parent() {
-  const ChildComponent = () => { // New component every render!
+  const ChildComponent = () => { // مكوّن جديد كل تصيير!
     const [count, setCount] = useState(0);
     return <button onClick={() => setCount(count + 1)}>{count}</button>;
   };
 
-  return <ChildComponent />; // State resets every render
+  return <ChildComponent />; // الحالة تُصفَّر كل تصيير
 }
 
-// ❌ Dynamic component creation
+// ❌ إنشاء ديناميكي لمكوّن
 function Parent({type}) {
   const Component = type === 'button'
     ? () => <button>Click</button>
@@ -37,36 +37,36 @@ function Parent({type}) {
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Components at module level
+// ✅ مكوّنات على مستوى الوحدة
 const ButtonComponent = () => <button>Click</button>;
 const TextComponent = () => <div>Text</div>;
 
 function Parent({type}) {
   const Component = type === 'button'
-    ? ButtonComponent  // Reference existing component
+    ? ButtonComponent  // مرجع لمكوّن موجود
     : TextComponent;
 
   return <Component />;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I need to render different components conditionally {/*conditional-components*/}
+### أحتاج تصيير مكوّنات مختلفة شرطياً {/*conditional-components*/}
 
-You might define components inside to access local state:
+قد تعرّف مكوّنات داخلياً للوصول لحالة محلية:
 
 ```js {expectedErrors: {'react-compiler': [13]}}
-// ❌ Wrong: Inner component to access parent state
+// ❌ خطأ: مكوّن داخلي للوصول لحالة الأب
 function Parent() {
   const [theme, setTheme] = useState('light');
 
-  function ThemedButton() { // Recreated every render!
+  function ThemedButton() { // يُعاد إنشاؤه كل تصيير!
     return (
       <button className={theme}>
         Click me
@@ -78,10 +78,10 @@ function Parent() {
 }
 ```
 
-Pass data as props instead:
+مرّر البيانات كـ props بدلاً من ذلك:
 
 ```js
-// ✅ Better: Pass props to static component
+// ✅ أفضل: مرّر props لمكوّن ثابت
 function ThemedButton({theme}) {
   return (
     <button className={theme}>
@@ -98,6 +98,6 @@ function Parent() {
 
 <Note>
 
-If you find yourself wanting to define components inside other components to access local variables, that's a sign you should be passing props instead. This makes components more reusable and testable.
+إذا وجدت نفسك تريد تعريف مكوّنات داخل مكوّنات أخرى للوصول لمتغيّرات محلية، فهذه إشارة إلى أنك يجب أن تمرّر props بدلاً من ذلك. يجعل المكوّنات أكثر إعادة استخداماً وقابلية للاختبار.
 
 </Note>

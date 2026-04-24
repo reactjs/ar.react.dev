@@ -1,20 +1,20 @@
 ---
-title: "Built-in React DOM Hooks"
+title: "Hooks مدمجة في React DOM"
 ---
 
 <Intro>
 
-The `react-dom` package contains Hooks that are only supported for web applications (which run in the browser DOM environment). These Hooks are not supported in non-browser environments like iOS, Android, or Windows applications. If you are looking for Hooks that are supported in web browsers *and other environments* see [the React Hooks page](/reference/react/hooks). This page lists all the Hooks in the `react-dom` package.
+تحتوي حزمة `react-dom` على Hooks مدعومة لتطبيقات الويب فقط (التي تعمل في بيئة DOM في المتصفّح). لا تُدعم هذه الـ Hooks في بيئات غير المتصفّح مثل تطبيقات iOS أو Android أو Windows. إن كنت تبحث عن Hooks تعمل في المتصفّح *وفي بيئات أخرى*، راجع [صفحة Hooks في React](/reference/react/hooks). تسرد هذه الصفحة كل الـ Hooks في حزمة `react-dom`.
 
 </Intro>
 
 ---
 
-## Form Hooks {/*form-hooks*/}
+## Hooks للنماذج {/*form-hooks*/}
 
-*Forms* let you create interactive controls for submitting information.  To manage forms in your components, use one of these Hooks:
+*النماذج* تتيح لك إنشاء عناصر تفاعلية لإرسال معلومات. لإدارة النماذج في مكوّناتك، استخدم أحد هذه الـ Hooks:
 
-* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of a form.
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) يتيح تحديث الواجهة بناءً على حالة نموذج.
 
 ```js
 function Form({ action }) {

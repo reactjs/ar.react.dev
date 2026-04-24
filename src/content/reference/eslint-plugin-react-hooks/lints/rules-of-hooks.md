@@ -4,89 +4,89 @@ title: rules-of-hooks
 
 <Intro>
 
-Validates that components and hooks follow the [Rules of Hooks](/reference/rules/rules-of-hooks).
+يتحقق من أن المكوّنات والـ hooks تتبع [Rules of Hooks](/reference/rules/rules-of-hooks).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React relies on the order in which hooks are called to correctly preserve state between renders. Each time your component renders, React expects the exact same hooks to be called in the exact same order. When hooks are called conditionally or in loops, React loses track of which state corresponds to which hook call, leading to bugs like state mismatches and "Rendered fewer/more hooks than expected" errors.
+يعتمد React على ترتيب استدعاء الـ hooks ليحافظ بشكل صحيح على الحالة بين التصييرات. في كل مرة يُصيَّر فيها المكوّن، يتوقع React نفس الـ hooks بنفس الترتيب بالضبط. عند استدعاء الـ hooks شرطياً أو داخل حلقات، يفقد React تتبّع أي حالة تطابق أي استدعاء hook، ما يؤدي إلى أعطال مثل عدم تطابق الحالة وأخطاء «Rendered fewer/more hooks than expected».
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-These patterns violate the Rules of Hooks:
+هذه الأنماط تخالف Rules of Hooks:
 
-- **Hooks in conditions** (`if`/`else`, ternary, `&&`/`||`)
-- **Hooks in loops** (`for`, `while`, `do-while`)
-- **Hooks after early returns**
-- **Hooks in callbacks/event handlers**
-- **Hooks in async functions**
-- **Hooks in class methods**
-- **Hooks at module level**
+- **Hooks داخل شروط** (`if`/`else`، ثلاثي، `&&`/`||`)
+- **Hooks داخل حلقات** (`for`، `while`، `do-while`)
+- **Hooks بعد إرجاع مبكر**
+- **Hooks داخل callbacks أو معالجات أحداث**
+- **Hooks داخل دوال async**
+- **Hooks في طرق صنف**
+- **Hooks على مستوى الوحدة**
 
 <Note>
 
-### `use` hook {/*use-hook*/}
+### hook `use` {/*use-hook*/}
 
-The `use` hook is different from other React hooks. You can call it conditionally and in loops:
+يختلف hook `use` عن بقية hooks في React. يمكن استدعاؤه شرطياً وداخل حلقات:
 
 ```js
-// ✅ `use` can be conditional
+// ✅ يمكن أن يكون `use` شرطياً
 if (shouldFetch) {
   const data = use(fetchPromise);
 }
 
-// ✅ `use` can be in loops
+// ✅ يمكن أن يكون `use` داخل حلقة
 for (const promise of promises) {
   results.push(use(promise));
 }
 ```
 
-However, `use` still has restrictions:
-- Can't be wrapped in try/catch
-- Must be called inside a component or hook
+لكن `use` ما زال له قيود:
+- لا يُلفّ في try/catch
+- يجب استدعاؤه داخل مكوّن أو hook
 
-Learn more: [`use` API Reference](/reference/react/use)
+تعلّم المزيد: [مرجع واجهة `use`](/reference/react/use)
 
 </Note>
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Hook in condition
+// ❌ Hook داخل شرط
 if (isLoggedIn) {
   const [user, setUser] = useState(null);
 }
 
-// ❌ Hook after early return
+// ❌ Hook بعد إرجاع مبكر
 if (!data) return <Loading />;
 const [processed, setProcessed] = useState(data);
 
-// ❌ Hook in callback
+// ❌ Hook داخل callback
 <button onClick={() => {
   const [clicked, setClicked] = useState(false);
 }}/>
 
-// ❌ `use` in try/catch
+// ❌ `use` داخل try/catch
 try {
   const data = use(promise);
 } catch (e) {
   // error handling
 }
 
-// ❌ Hook at module level
-const globalState = useState(0); // Outside component
+// ❌ Hook على مستوى الوحدة
+const globalState = useState(0); // خارج المكوّن
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
 function Component({ isSpecial, shouldFetch, fetchPromise }) {
-  // ✅ Hooks at top level
+  // ✅ Hooks في أعلى المستوى
   const [count, setCount] = useState(0);
   const [name, setName] = useState('');
 
@@ -95,7 +95,7 @@ function Component({ isSpecial, shouldFetch, fetchPromise }) {
   }
 
   if (shouldFetch) {
-    // ✅ `use` can be conditional
+    // ✅ يمكن أن يكون `use` شرطياً
     const data = use(fetchPromise);
     return <div>{data}</div>;
   }
@@ -104,14 +104,14 @@ function Component({ isSpecial, shouldFetch, fetchPromise }) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I want to fetch data based on some condition {/*conditional-data-fetching*/}
+### أريد جلب بيانات بناءً على شرط {/*conditional-data-fetching*/}
 
-You're trying to conditionally call useEffect:
+تحاول استدعاء useEffect شرطياً:
 
 ```js
-// ❌ Conditional hook
+// ❌ Hook شرطي
 if (isLoggedIn) {
   useEffect(() => {
     fetchUserData();
@@ -119,10 +119,10 @@ if (isLoggedIn) {
 }
 ```
 
-Call the hook unconditionally, check condition inside:
+استدعِ الـ hook دون شرط، وتحقق من الشرط داخله:
 
 ```js
-// ✅ Condition inside hook
+// ✅ الشرط داخل الـ hook
 useEffect(() => {
   if (isLoggedIn) {
     fetchUserData();
@@ -132,18 +132,18 @@ useEffect(() => {
 
 <Note>
 
-There are better ways to fetch data rather than in a useEffect. Consider using TanStack Query, useSWR, or React Router 6.4+ for data fetching. These solutions handle deduplicating requests, caching responses, and avoiding network waterfalls.
+هناك طرق أفضل لجلب البيانات بدل useEffect. فكّر في TanStack Query أو useSWR أو React Router 6.4+ لجلب البيانات. تتولى هذه الحلول إزالة التكرار من الطلبات، وتخزين الاستجابات مؤقتاً، وتجنّب شلالات الشبكة.
 
-Learn more: [Fetching Data](/learn/synchronizing-with-effects#fetching-data)
+تعلّم المزيد: [جلب البيانات](/learn/synchronizing-with-effects#fetching-data)
 
 </Note>
 
-### I need different state for different scenarios {/*conditional-state-initialization*/}
+### أحتاج حالة مختلفة لسيناريوهات مختلفة {/*conditional-state-initialization*/}
 
-You're trying to conditionally initialize state:
+تحاول تهيئة الحالة شرطياً:
 
 ```js
-// ❌ Conditional state
+// ❌ حالة شرطية
 if (userType === 'admin') {
   const [permissions, setPermissions] = useState(adminPerms);
 } else {
@@ -151,18 +151,18 @@ if (userType === 'admin') {
 }
 ```
 
-Always call useState, conditionally set the initial value:
+استدعِ useState دائماً، واضبط القيمة الابتدائية شرطياً:
 
 ```js
-// ✅ Conditional initial value
+// ✅ قيمة ابتدائية شرطية
 const [permissions, setPermissions] = useState(
   userType === 'admin' ? adminPerms : userPerms
 );
 ```
 
-## Options {/*options*/}
+## الخيارات {/*options*/}
 
-You can configure custom effect hooks using shared ESLint settings (available in `eslint-plugin-react-hooks` 6.1.1 and later):
+يمكنك تهيئة hooks تأثير مخصّصة عبر إعدادات ESLint المشتركة (متوفرة في `eslint-plugin-react-hooks` 6.1.1 وما بعد):
 
 ```js
 {
@@ -174,6 +174,6 @@ You can configure custom effect hooks using shared ESLint settings (available in
 }
 ```
 
-- `additionalEffectHooks`: Regex pattern matching custom hooks that should be treated as effects. This allows `useEffectEvent` and similar event functions to be called from your custom effect hooks.
+- `additionalEffectHooks`: نمط regex يطابق الـ hooks المخصّصة التي تُعامل كتأثيرات. يتيح استدعاء `useEffectEvent` ودوال أحداث مشابهة من hooks التأثير المخصّصة.
 
-This shared configuration is used by both `rules-of-hooks` and `exhaustive-deps` rules, ensuring consistent behavior across all hook-related linting.
+يُستخدم هذا الإعداد المشترك من قواعد `rules-of-hooks` و`exhaustive-deps` معاً، لسلوك متسق عبر كل lint المتعلّق بالـ hooks.
