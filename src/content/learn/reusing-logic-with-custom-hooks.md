@@ -1,30 +1,30 @@
 ---
-title: 'Reusing Logic with Custom Hooks'
+title: 'إعادة استخدام المنطق بخطافات مخصّصة'
 ---
 
 <Intro>
 
-React comes with several built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you'll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application's needs.
+يأتي React مع عدة خطافات مدمجة مثل `useState` و`useContext` و`useEffect`. أحياناً تتمنى لو كان هناك خطاف لغرض أدق: مثلاً لجلب البيانات، أو لتتبّع ما إذا كان المستخدم متصلاً بالإنترنت، أو للاتصال بغرفة محادثة. قد لا تجد هذه الخطافات في React، لكن يمكنك إنشاء خطافاتك الخاصة لاحتياجات تطبيقك.
 
 </Intro>
 
 <YouWillLearn>
 
-- What custom Hooks are, and how to write your own
-- How to reuse logic between components
-- How to name and structure your custom Hooks
-- When and why to extract custom Hooks
+- ما الخطافات المخصّصة، وكيف تكتب خطافك
+- كيف تعيد استخدام المنطق بين المكوّنات
+- كيف تسمّي خطافاتك المخصّصة وتنظّمها
+- متى ولماذا تستخرج خطافات مخصّصة
 
 </YouWillLearn>
 
-## Custom Hooks: Sharing logic between components {/*custom-hooks-sharing-logic-between-components*/}
+## الخطافات المخصّصة: مشاركة المنطق بين المكوّنات {/*custom-hooks-sharing-logic-between-components*/}
 
-Imagine you're developing an app that heavily relies on the network (as most apps do). You want to warn the user if their network connection has accidentally gone off while they were using your app. How would you go about it? It seems like you'll need two things in your component:
+تخيّل أنك تطوّر تطبيقاً يعتمد بشكل كبير على الشبكة (كمعظم التطبيقات). تريد تنبيه المستخدم إذا انقطع اتصال الشبكة عن طريق الخطأ أثناء استخدامه للتطبيق. كيف تفعل؟ يبدو أنك تحتاج شيئين في مكوّنك:
 
-1. A piece of state that tracks whether the network is online.
-2. An Effect that subscribes to the global [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) and [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) events, and updates that state.
+1. جزءاً من الحالة يتتبّع ما إذا كانت الشبكة متصلة.
+2. تأثيراً يشترك في حدثي [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) و[`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) العامّين، ويحدّث تلك الحالة.
 
-This will keep your component [synchronized](/learn/synchronizing-with-effects) with the network status. You might start with something like this:
+يُبقي ذلك مكوّنك [متزامناً](/learn/synchronizing-with-effects) مع حالة الشبكة. قد تبدأ بشيء كهذا:
 
 <Sandpack>
 
@@ -54,11 +54,11 @@ export default function StatusBar() {
 
 </Sandpack>
 
-Try turning your network on and off, and notice how this `StatusBar` updates in response to your actions.
+جرّب تشغيل الشبكة وإيقافها، ولاحظ كيف يتحدّث `StatusBar` استجابةً لذلك.
 
-Now imagine you *also* want to use the same logic in a different component. You want to implement a Save button that will become disabled and show "Reconnecting..." instead of "Save" while the network is off.
+الآن تخيّل أنك *أيضاً* تريد استخدام المنطق نفسه في مكوّن آخر. تريد زر حفظ يُعطّل ويعرض «Reconnecting...» بدلاً من «Save» بينما الشبكة مقطوعة.
 
-To start, you can copy and paste the `isOnline` state and the Effect into `SaveButton`:
+للبدء، يمكنك نسخ ولصق حالة `isOnline` والتأثير في `SaveButton`:
 
 <Sandpack>
 
@@ -96,13 +96,13 @@ export default function SaveButton() {
 
 </Sandpack>
 
-Verify that, if you turn off the network, the button will change its appearance.
+تحقّق أنه عند إيقاف الشبكة يتغيّر مظهر الزر.
 
-These two components work fine, but the duplication in logic between them is unfortunate. It seems like even though they have different *visual appearance,* you want to reuse the logic between them.
+يعمل المكوّنان جيداً، لكن تكرار المنطق بينهما مزعج. يبدو أنه رغم اختلاف *المظهر*، تريد إعادة استخدام المنطق.
 
-### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
+### استخراج خطاف مخصّص من مكوّن {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/reference/react/useState) and [`useEffect`](/reference/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+تخيّل للحظة أنه، مثل [`useState`](/reference/react/useState) و[`useEffect`](/reference/react/useEffect)، كان هناك خطاف مدمج `useOnlineStatus`. عندها يُبسَّط المكوّنان ويزول التكرار بينهما:
 
 ```js {2,7}
 function StatusBar() {
@@ -125,7 +125,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
+رغم عدم وجود خطاف مدمج كهذا، يمكنك كتابته بنفسك. صرّح بدالة اسمها `useOnlineStatus` وانقل كل الشيفرة المكررة إليها من المكوّنات التي كتبتها سابقاً:
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -148,7 +148,7 @@ function useOnlineStatus() {
 }
 ```
 
-At the end of the function, return `isOnline`. This lets your components read that value:
+في نهاية الدالة، أعد `isOnline`. يتيح ذلك لمكوّناتك قراءة تلك القيمة:
 
 <Sandpack>
 
@@ -209,36 +209,36 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Verify that switching the network on and off updates both components.
+تحقّق أن تشغيل الشبكة وإيقافها يحدّث كلا المكوّنين.
 
-Now your components don't have as much repetitive logic. **More importantly, the code inside them describes *what they want to do* (use the online status!) rather than *how to do it* (by subscribing to the browser events).**
+لم يعد لدى مكوّناتك هذا القدر من التكرار. **والأهم أن الشيفرة داخلها تصف *ما تريد فعله* (استخدام حالة الاتصال!) لا *كيف تفعله* (بالاشتراك في أحداث المتصفح).**
 
-When you extract logic into custom Hooks, you can hide the gnarly details of how you deal with some external system or a browser API. The code of your components expresses your intent, not the implementation.
+عند استخراج المنطق إلى خطافات مخصّصة، يمكنك إخفاء تفاصيل التعامل مع نظام خارجي أو واجهة متصفح. شيفرة مكوّناتك تعبّر عن قصدك لا عن التنفيذ.
 
-### Hook names always start with `use` {/*hook-names-always-start-with-use*/}
+### أسماء الخطافات تبدأ دائماً بـ `use` {/*hook-names-always-start-with-use*/}
 
-React applications are built from components. Components are built from Hooks, whether built-in or custom. You'll likely often use custom Hooks created by others, but occasionally you might write one yourself!
+تُبنى تطبيقات React من مكوّنات. والمكوّنات تُبنى من خطافات، مدمجة أو مخصّصة. غالباً ستستخدم خطافات مخصّصة كتبها آخرون، وأحياناً تكتب واحداً بنفسك!
 
-You must follow these naming conventions:
+يجب اتباع هذه قواعد التسمية:
 
-1. **React component names must start with a capital letter,** like `StatusBar` and `SaveButton`. React components also need to return something that React knows how to display, like a piece of JSX.
-2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/reference/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
+1. **أسماء مكوّنات React تبدأ بحرف كبير،** مثل `StatusBar` و`SaveButton`. كما يجب أن تعيد المكوّنات شيئاً يعرف React عرضه، مثل جزء من JSX.
+2. **أسماء الخطافات تبدأ بـ `use` ثم حرف كبير،** مثل [`useState`](/reference/react/useState) (مدمج) أو `useOnlineStatus` (مخصّص، كما في الصفحة). قد تعيد الخطافات قيماً عشوائية.
 
-This convention guarantees that you can always look at a component and know where its state, Effects, and other React features might "hide". For example, if you see a `getColor()` function call inside your component, you can be sure that it can't possibly contain React state inside because its name doesn't start with `use`. However, a function call like `useOnlineStatus()` will most likely contain calls to other Hooks inside!
+هذا الاتفاق يضمن أنك عند النظر إلى مكوّن تعرف أين قد «تختبئ» حالته وتأثيراته وميزات React الأخرى. مثلاً، إذا رأيت استدعاء `getColor()`، تتأكد أنه لا يمكن أن يحوي حالة React لأن اسمه لا يبدأ بـ `use`. أما استدعاء مثل `useOnlineStatus()` فغالباً يحوي استدعاءات لخطافات أخرى داخله!
 
 <Note>
 
-If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+إذا كان المُدقّق [مهيّأً لـReact،](/learn/editor-setup#linting) سيفرض هذه التسمية. انتقل للـsandbox أعلاه وأعد تسمية `useOnlineStatus` إلى `getOnlineStatus`. لاحظ أن المُدقّق لن يسمح بعدها باستدعاء `useState` أو `useEffect` داخله. فقط الخطافات والمكوّنات تستطيع استدعاء خطافات أخرى!
 
 </Note>
 
 <DeepDive>
 
-#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### هل يجب أن تبدأ كل الدوال المستدعاة أثناء التصيير ببادئة use؟ {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-No. Functions that don't *call* Hooks don't need to *be* Hooks.
+لا. الدوال التي لا *تستدعي* خطافات لا تحتاج أن *تكون* خطافات.
 
-If your function doesn't call any Hooks, avoid the `use` prefix. Instead, write it as a regular function *without* the `use` prefix. For example, `useSorted` below doesn't call Hooks, so call it `getSorted` instead:
+إذا لم تستدعِ دالتك أي خطاف، تجنّب بادئة `use`. اكتبها دالة عادية *بدون* `use`. مثلاً، `useSorted` أدناه لا يستدعي خطافات، فسمّها `getSorted`:
 
 ```js
 // 🔴 Avoid: A Hook that doesn't use Hooks
@@ -252,7 +252,7 @@ function getSorted(items) {
 }
 ```
 
-This ensures that your code can call this regular function anywhere, including conditions:
+يضمن ذلك أن تستطيع استدعاء هذه الدالة العادية في أي مكان، بما في ذلك الشروط:
 
 ```js
 function List({ items, shouldSort }) {
@@ -265,7 +265,7 @@ function List({ items, shouldSort }) {
 }
 ```
 
-You should give `use` prefix to a function (and thus make it a Hook) if it uses at least one Hook inside of it:
+أعطِ دالة بادئة `use` (فتصبح خطافاً) إذا استخدمت خطافاً واحداً على الأقل داخلها:
 
 ```js
 // ✅ Good: A Hook that uses other Hooks
@@ -274,7 +274,7 @@ function useAuth() {
 }
 ```
 
-Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
+تقنياً، React لا يفرض ذلك. من حيث المبدأ يمكنك جعل خطاف لا يستدعي خطافات أخرى. غالباً يكون ذلك مربكاً ومقيّداً فالأفضل تجنّب النمط. لكن قد تكون هناك حالات نادرة مفيدة. مثلاً دالتك لا تستخدم خطافات الآن لكنك تخطط لإضافة استدعاءات لاحقاً. عندها من المنطقي تسميتها ببادئة `use`:
 
 ```js {3-4}
 // ✅ Good: A Hook that will likely use some other Hooks later
@@ -285,13 +285,13 @@ function useAuth() {
 }
 ```
 
-Then components won't be able to call it conditionally. This will become important when you actually add Hook calls inside. If you don't plan to use Hooks inside it (now or later), don't make it a Hook.
+عندها لن تستطيع المكوّنات استدعاؤها شرطياً. يصبح ذلك مهماً عندما تضيف فعلاً استدعاءات خطاف داخلها. إذا لم تخطط لاستخدام خطافات داخلها (الآن أو لاحقاً)، لا تجعلها خطافاً.
 
 </DeepDive>
 
-### Custom Hooks let you share stateful logic, not state itself {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### الخطافات المخصّصة تشارك منطقاً ذا حالة، لا الحالة نفسها {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
-In the earlier example, when you turned the network on and off, both components updated together. However, it's wrong to think that a single `isOnline` state variable is shared between them. Look at this code:
+في المثال السابق، عند تشغيل الشبكة وإيقافها، تحدّث المكوّنان معاً. لكن خطأ الاعتقاد أن متغير حالة `isOnline` واحداً يُشارك بينهما. انظر إلى هذه الشيفرة:
 
 ```js {2,7}
 function StatusBar() {
@@ -305,7 +305,7 @@ function SaveButton() {
 }
 ```
 
-It works the same way as before you extracted the duplication:
+يعمل كما قبل استخراج التكرار:
 
 ```js {2-5,10-13}
 function StatusBar() {
@@ -325,9 +325,9 @@ function SaveButton() {
 }
 ```
 
-These are two completely independent state variables and Effects! They happened to have the same value at the same time because you synchronized them with the same external value (whether the network is on).
+هذان متغيرا حالة وتأثيران مستقلان تماماً! اتفقتا في القيمة في آن واحد لأنك زامنتهما مع نفس القيمة الخارجية (ما إذا كانت الشبكة تعمل).
 
-To better illustrate this, we'll need a different example. Consider this `Form` component:
+لتوضيح ذلك، نحتاج مثلاً آخر. انظر إلى مكوّن `Form` هذا:
 
 <Sandpack>
 
@@ -369,13 +369,13 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-There's some repetitive logic for each form field:
+هناك تكرار في المنطق لكل حقل نموذج:
 
-1. There's a piece of state (`firstName` and `lastName`).
-1. There's a change handler (`handleFirstNameChange` and `handleLastNameChange`).
-1. There's a piece of JSX that specifies the `value` and `onChange` attributes for that input.
+1. جزء من الحالة (`firstName` و`lastName`).
+1. معالج تغيير (`handleFirstNameChange` و`handleLastNameChange`).
+1. جزء JSX يحدد خاصيتي `value` و`onChange` لذلك الحقل.
 
-You can extract the repetitive logic into this `useFormInput` custom Hook:
+يمكنك استخراج التكرار إلى خطاف مخصّص `useFormInput`:
 
 <Sandpack>
 
@@ -428,9 +428,9 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that it only declares *one* state variable called `value`.
+لاحظ أنه يصرّح فقط عن متغير حالة *واحد* اسمه `value`.
 
-However, the `Form` component calls `useFormInput` *two times:*
+لكن مكوّن `Form` يستدعي `useFormInput` *مرتين:*
 
 ```js
 function Form() {
@@ -439,17 +439,17 @@ function Form() {
   // ...
 ```
 
-This is why it works like declaring two separate state variables!
+لهذا يعمل كإعلان متغيري حالة منفصلين!
 
-**Custom Hooks let you share *stateful logic* but not *state itself.* Each call to a Hook is completely independent from every other call to the same Hook.** This is why the two sandboxes above are completely equivalent. If you'd like, scroll back up and compare them. The behavior before and after extracting a custom Hook is identical.
+**الخطافات المخصّصة تشارك *منطقاً ذا حالة* لا *الحالة نفسها.* كل استدعاء لخطاف مستقل تماماً عن أي استدعاء آخر لنفس الخطاف.** لذلك الـsandboxان أعلاه متكافئان تماماً. إن شئت، ارجع وقارنهما. السلوك قبل وبعد استخراج خطاف مخصّص متطابق.
 
-When you need to share the state itself between multiple components, [lift it up and pass it down](/learn/sharing-state-between-components) instead.
+عند الحاجة لمشاركة *الحالة نفسها* بين عدة مكوّنات، [ارفعها ومرّرها للأسفل](/learn/sharing-state-between-components) بدلاً من ذلك.
 
-## Passing reactive values between Hooks {/*passing-reactive-values-between-hooks*/}
+## تمرير قيم تفاعلية بين الخطافات {/*passing-reactive-values-between-hooks*/}
 
-The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks [need to be pure.](/learn/keeping-components-pure) Think of custom Hooks' code as part of your component's body!
+تُعاد تشغيل الشيفرة داخل خطافاتك المخصّصة في كل إعادة تصيير لمكوّنك. لذلك، مثل المكوّنات، الخطافات المخصّصة [يجب أن تكون نقية.](/learn/keeping-components-pure) فكّر في شيفرة الخطافات المخصّصة كجزء من جسم مكوّنك!
 
-Because custom Hooks re-render together with your component, they always receive the latest props and state. To see what this means, consider this chat room example. Change the server URL or the chat room:
+وبما أن الخطافات المخصّصة تعيد التصيير مع مكوّنك، تتلقى دائماً أحدث الخصائص والحالة. لمعنى ذلك، انظر مثال غرفة المحادثة هذا. غيّر عنوان الخادم أو غرفة المحادثة:
 
 <Sandpack>
 
@@ -599,9 +599,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-When you change `serverUrl` or `roomId`, the Effect ["reacts" to your changes](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) and re-synchronizes. You can tell by the console messages that the chat re-connects every time that you change your Effect's dependencies.
+عند تغيير `serverUrl` أو `roomId`، يتفاعل التأثير [مع تغيّراتك](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) ويعيد المزامنة. تلاحظ من رسائل الـconsole أن المحادثة تعيد الاتصال في كل مرة تغيّر فيها تبعيات التأثير.
 
-Now move the Effect's code into a custom Hook:
+الآن انقل شيفرة التأثير إلى خطاف مخصّص:
 
 ```js {2-13}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -620,7 +620,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-This lets your `ChatRoom` component call your custom Hook without worrying about how it works inside:
+يتيح ذلك لمكوّن `ChatRoom` استدعاء خطافك المخصّص دون القلق بكيفية عمله داخلياً:
 
 ```js {4-7}
 export default function ChatRoom({ roomId }) {
@@ -643,9 +643,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-This looks much simpler! (But it does the same thing.)
+يبدو أبسط كثيراً! (لكنه يفعل الشيء نفسه.)
 
-Notice that the logic *still responds* to prop and state changes. Try editing the server URL or the selected room:
+لاحظ أن المنطق *ما زال يستجيب* لتغيّرات الخصائص والحالة. جرّب تعديل عنوان الخادم أو الغرفة المختارة:
 
 <Sandpack>
 
@@ -807,7 +807,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you're taking the return value of one Hook:
+لاحظ كيف تأخذ قيمة الإرجاع من خطاف:
 
 ```js {2}
 export default function ChatRoom({ roomId }) {
@@ -820,7 +820,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-and passing it as an input to another Hook:
+وتمرّرها كمدخل لخطاف آخر:
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -833,11 +833,11 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-Every time your `ChatRoom` component re-renders, it passes the latest `roomId` and `serverUrl` to your Hook. This is why your Effect re-connects to the chat whenever their values are different after a re-render. (If you ever worked with audio or video processing software, chaining Hooks like this might remind you of chaining visual or audio effects. It's as if the output of `useState` "feeds into" the input of the `useChatRoom`.)
+في كل إعادة تصيير لمكوّن `ChatRoom`، يمرّر أحدث `roomId` و`serverUrl` إلى خطافك. لذلك يعيد التأثير الاتصال بالمحادثة عندما تختلف قيمهما بعد إعادة التصيير. (إن عملت سابقاً على برامج معالجة صوت/فيديو، قد يذكرك ربط الخطافات هكذا بربط تأثيرات بصرية أو صوتية. كأن مخرجات `useState` «تتغذى» على مدخل `useChatRoom`.)
 
-### Passing event handlers to custom Hooks {/*passing-event-handlers-to-custom-hooks*/}
+### تمرير معالجات الأحداث إلى خطافات مخصّصة {/*passing-event-handlers-to-custom-hooks*/}
 
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
+مع استخدامك `useChatRoom` في مكوّنات أكثر، قد تريد تمكين المكوّنات من تخصيص سلوكه. مثلاً، منطق ما يحدث عند وصول رسالة مثبّت حالياً داخل الخطاف:
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -856,7 +856,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-Let's say you want to move this logic back to your component:
+لنقل هذا المنطق إلى مكوّنك:
 
 ```js {7-9}
 export default function ChatRoom({ roomId }) {
@@ -872,7 +872,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-To make this work, change your custom Hook to take `onReceiveMessage` as one of its named options:
+ليعمل ذلك، عدّل خطافك المخصّص ليقبل `onReceiveMessage` كأحد خياراته المسماة:
 
 ```js {1,10,13}
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
@@ -891,9 +891,9 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
+سيعمل، لكن هناك تحسين إضافي عندما يقبل خطافك المخصّص معالجات أحداث.
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+إضافة تبعية على `onReceiveMessage` ليست مثالية لأنها تجعل المحادثة تعيد الاتصال في كل إعادة تصيير للمكوّن. [لفّ معالج الحدث هذا في حدث تأثير لإزالته من التبعيات:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
 import { useEffect, useEffectEvent } from 'react';
@@ -917,7 +917,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-Now the chat won't re-connect every time that the `ChatRoom` component re-renders. Here is a fully working demo of passing an event handler to a custom Hook that you can play with:
+الآن لن تعيد المحادثة الاتصال في كل إعادة تصيير لـ`ChatRoom`. هذا عرض كامل يعمل لتمرير معالج حدث إلى خطاف مخصّص يمكنك تجربته:
 
 <Sandpack>
 
@@ -1085,15 +1085,15 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you no longer need to know *how* `useChatRoom` works in order to use it. You could add it to any other component, pass any other options, and it would work the same way. That's the power of custom Hooks.
+لاحظ أنك لم تعد تحتاج معرفة *كيف* يعمل `useChatRoom` لاستخدامه. يمكنك إضافته لأي مكوّن وتمرير خيارات أخرى، وسيعمل بنفس الطريقة. هذه قوة الخطافات المخصّصة.
 
-## When to use custom Hooks {/*when-to-use-custom-hooks*/}
+## متى تستخدم خطافات مخصّصة {/*when-to-use-custom-hooks*/}
 
-You don't need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. For example, extracting a `useFormInput` Hook to wrap a single `useState` call like earlier is probably unnecessary.
+لا تحتاج استخراج خطاف مخصّص لكل تكرار بسيط في الشيفرة. بعض التكرار مقبول. مثلاً، استخراج `useFormInput` ليلف استدعاء `useState` واحداً كما سابقاً غالباً غير ضروري.
 
-However, whenever you write an Effect, consider whether it would be clearer to also wrap it in a custom Hook. [You shouldn't need Effects very often,](/learn/you-might-not-need-an-effect) so if you're writing one, it means that you need to "step outside React" to synchronize with some external system or to do something that React doesn't have a built-in API for. Wrapping it into a custom Hook lets you precisely communicate your intent and how the data flows through it.
+لكن كلما كتبت تأثيراً، فكّر هل يصبح أوضح أيضاً لفّه في خطاف مخصّص. [لا ينبغي أن تحتاج التأثيرات كثيراً،](/learn/you-might-not-need-an-effect) فإن كتبت واحداً فذلك يعني أنك تحتاج «الخطوة خارج React» للمزامنة مع نظام خارجي أو لفعل لا توفر له React واجهة مدمجة. لفّه في خطاف مخصّص يعبّر بدقة عن قصدك وعن تدفّق البيانات.
 
-For example, consider a `ShippingForm` component that displays two dropdowns: one shows the list of cities, and another shows the list of areas in the selected city. You might start with some code that looks like this:
+مثلاً، مكوّن `ShippingForm` يعرض قائمتين منسدلتين: إحداهما مدن، والأخرى مناطق المدينة المختارة. قد تبدأ بشيفرة كهذه:
 
 ```js {3-16,20-35}
 function ShippingForm({ country }) {
@@ -1135,7 +1135,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-Although this code is quite repetitive, [it's correct to keep these Effects separate from each other.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) They synchronize two different things, so you shouldn't merge them into one Effect. Instead, you can simplify the `ShippingForm` component above by extracting the common logic between them into your own `useData` Hook:
+رغم تكرار هذه الشيفرة، [من الصحيح الإبقاء على هذين التأثيرين منفصلين.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) يزامنان شيئين مختلفين، فلا تدمجهما في تأثير واحد. بدلاً من ذلك، بسّط مكوّن `ShippingForm` أعلاه باستخراج المنطق المشترك بينهما إلى خطاف `useData` خاص بك:
 
 ```js {2-18}
 function useData(url) {
@@ -1159,7 +1159,7 @@ function useData(url) {
 }
 ```
 
-Now you can replace both Effects in the `ShippingForm` components with calls to `useData`:
+الآن استبدل كلا التأثيرين في `ShippingForm` باستدعاءات `useData`:
 
 ```js {2,4}
 function ShippingForm({ country }) {
@@ -1169,33 +1169,33 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-Extracting a custom Hook makes the data flow explicit. You feed the `url` in and you get the `data` out. By "hiding" your Effect inside `useData`, you also prevent someone working on the `ShippingForm` component from adding [unnecessary dependencies](/learn/removing-effect-dependencies) to it. With time, most of your app's Effects will be in custom Hooks.
+استخراج خطاف مخصّص يجعل تدفّق البيانات صريحاً. تُدخل `url` وتخرج `data`. بـ«إخفاء» تأثيرك داخل `useData`، تمنع أيضاً من يعمل على `ShippingForm` من إضافة [تبعيات غير ضرورية](/learn/removing-effect-dependencies). مع الوقت، ستكون معظم تأثيرات تطبيقك في خطافات مخصّصة.
 
 <DeepDive>
 
-#### Keep your custom Hooks focused on concrete high-level use cases {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
+#### حافظ على تركيز خطافاتك المخصّصة على حالات استخدام عالية المستوى ومحددة {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
-Start by choosing your custom Hook's name. If you struggle to pick a clear name, it might mean that your Effect is too coupled to the rest of your component's logic, and is not yet ready to be extracted.
+ابدأ باختيار اسم خطافك المخصّص. إذا صعب عليك اسم واضح، قد يعني أن تأثيرك مرتبط بشدة ببقية منطق المكوّن وليس جاهزاً للاستخراج.
 
-Ideally, your custom Hook's name should be clear enough that even a person who doesn't write code often could have a good guess about what your custom Hook does, what it takes, and what it returns:
+مثالياً، يكون الاسم واضحاً لدرجة أن شخصاً لا يكتب شيفرة كثيراً يمكنه تخمين ما يفعله الخطاف وما يأخذ وما يعيد:
 
 * ✅ `useData(url)`
 * ✅ `useImpressionLog(eventName, extraData)`
 * ✅ `useChatRoom(options)`
 
-When you synchronize with an external system, your custom Hook name may be more technical and use jargon specific to that system. It's good as long as it would be clear to a person familiar with that system:
+عند المزامنة مع نظام خارجي، قد يكون الاسم أكثر تقنية ويستخدم مصطلحات ذلك النظام. هذا جيد طالما واضح لمن يعرف النظام:
 
 * ✅ `useMediaQuery(query)`
 * ✅ `useSocket(url)`
 * ✅ `useIntersectionObserver(ref, options)`
 
-**Keep custom Hooks focused on concrete high-level use cases.** Avoid creating and using custom "lifecycle" Hooks that act as alternatives and convenience wrappers for the `useEffect` API itself:
+**حافظ على تركيز الخطافات المخصّصة على حالات استخدام عالية المستوى ومحددة.** تجنّب إنشاء خطافات «دورة حياة» مخصّصة تكون بدائل أو لفّات مريحة لواجهة `useEffect` نفسها:
 
 * 🔴 `useMount(fn)`
 * 🔴 `useEffectOnce(fn)`
 * 🔴 `useUpdateEffect(fn)`
 
-For example, this `useMount` Hook tries to ensure some code only runs "on mount":
+مثلاً، يحاول خطاف `useMount` هذا ضمان تشغيل شيفرة فقط «عند التركيب»:
 
 ```js {4-5,14-15}
 function ChatRoom({ roomId }) {
@@ -1219,9 +1219,9 @@ function useMount(fn) {
 }
 ```
 
-**Custom "lifecycle" Hooks like `useMount` don't fit well into the React paradigm.** For example, this code example has a mistake (it doesn't "react" to `roomId` or `serverUrl` changes), but the linter won't warn you about it because the linter only checks direct `useEffect` calls. It won't know about your Hook.
+**خطافات «دورة حياة» مخصّصة مثل `useMount` لا تنسجم جيداً مع نموذج React.** مثلاً، هذا المثال فيه خطأ (لا «يتفاعل» مع تغيّر `roomId` أو `serverUrl`)، لكن المُدقّق لن ينبهك لأنه يفحص استدعاءات `useEffect` المباشرة فقط. لن يعرف عن خطافك.
 
-If you're writing an Effect, start by using the React API directly:
+إذا كتبت تأثيراً، ابدأ بواجهة React مباشرة:
 
 ```js
 function ChatRoom({ roomId }) {
@@ -1243,7 +1243,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, you can (but don't have to) extract custom Hooks for different high-level use cases:
+ثم يمكنك (دون إلزام) استخراج خطافات مخصّصة لحالات استخدام عالية المستوى مختلفة:
 
 ```js
 function ChatRoom({ roomId }) {
@@ -1256,15 +1256,15 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**A good custom Hook makes the calling code more declarative by constraining what it does.** For example, `useChatRoom(options)` can only connect to the chat room, while `useImpressionLog(eventName, extraData)` can only send an impression log to the analytics. If your custom Hook API doesn't constrain the use cases and is very abstract, in the long run it's likely to introduce more problems than it solves.
+**الخطاف المخصّص الجيد يجعل شيفرة المستدعي أكثر تصريحاً بتحديد ما يفعله.** مثلاً، `useChatRoom(options)` يتصل بالغرفة فقط، بينما `useImpressionLog(eventName, extraData)` يرسل سجل ظهور للتحليلات فقط. إذا لم تقيّد واجهة خطافك حالات الاستخدام وكانت مجردة جداً، فعلى المدى الطويل قد تسبب مشاكل أكثر مما تحل.
 
 </DeepDive>
 
-### Custom Hooks help you migrate to better patterns {/*custom-hooks-help-you-migrate-to-better-patterns*/}
+### الخطافات المخصّصة تساعدك على الانتقال لأنماط أفضل {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effects are an ["escape hatch"](/learn/escape-hatches): you use them when you need to "step outside React" and when there is no better built-in solution for your use case. With time, the React team's goal is to reduce the number of the Effects in your app to the minimum by providing more specific solutions to more specific problems. Wrapping your Effects in custom Hooks makes it easier to upgrade your code when these solutions become available.
+التأثيرات [«مخرج طوارئ»](/learn/escape-hatches): تستخدمها عند الحاجة للخطوة خارج React وعندما لا يوجد حل مدمج أفضل لحالتك. مع الوقت، يهدف فريق React إلى تقليل عدد التأثيرات في تطبيقك قدر الإمكان بتوفير حلول أدق لمشاكل أدق. لفّ تأثيراتك في خطافات مخصّصة يسهّل ترقية شيفرتك عند توفر هذه الحلول.
 
-Let's return to this example:
+لنعد إلى هذا المثال:
 
 <Sandpack>
 
@@ -1325,9 +1325,9 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/reference/react/useState) and [`useEffect`.](/reference/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would not work on the server for generating the initial HTML. In short, this code could be improved.
+في المثال أعلاه، يُنفَّذ `useOnlineStatus` بزوج من [`useState`](/reference/react/useState) و[`useEffect`.](/reference/react/useEffect) لكن هذا ليس أفضل حل ممكن. هناك حالات حافة لا يغطيها. مثلاً يفترض أن `isOnline` عند التركيب `true`، وهذا قد يكون خطأ إذا كانت الشبكة منقطعة مسبقاً. يمكنك استخدام واجهة المتصفح [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) للتحقق، لكن استخدامها مباشرة لا يعمل على الخادم لتوليد HTML الأولي. باختصار، يمكن تحسين هذه الشيفرة.
 
-React includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
+يتضمّن React واجهة مخصّصة اسمها [`useSyncExternalStore`](/reference/react/useSyncExternalStore) تعالج هذه المشاكل. إليك `useOnlineStatus` معاد كتابته لاستغلالها:
 
 <Sandpack>
 
@@ -1387,7 +1387,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Notice how **you didn't need to change any of the components** to make this migration:
+لاحظ أنك **لم تحتج تغيير أي من المكوّنات** لإتمام هذه الهجرة:
 
 ```js {2,7}
 function StatusBar() {
@@ -1401,19 +1401,19 @@ function SaveButton() {
 }
 ```
 
-This is another reason for why wrapping Effects in custom Hooks is often beneficial:
+هذا سبب آخر لكون لفّ التأثيرات في خطافات مخصّصة مفيداً غالباً:
 
-1. You make the data flow to and from your Effects very explicit.
-2. You let your components focus on the intent rather than on the exact implementation of your Effects.
-3. When React adds new features, you can remove those Effects without changing any of your components.
+1. تجعل تدفّق البيانات من تأثيراتك وإليها صريحاً جداً.
+2. تترك مكوّناتك تركز على القصد لا على تنفيذ التأثير بالتفصيل.
+3. عندما يضيف React ميزات جديدة، يمكنك إزالة تلك التأثيرات دون تغيير مكوّناتك.
 
-Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) you might find it helpful to start extracting common idioms from your app's components into custom Hooks. This will keep your components' code focused on the intent, and let you avoid writing raw Effects very often. Many excellent custom Hooks are maintained by the React community.
+مثل [نظام تصميم،](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) قد يفيدك استخراج تعابير شائعة من مكوّنات تطبيقك إلى خطافات مخصّصة. يُبقي ذلك شيفرة المكوّنات على القصد ويقلّل كتابة تأثيرات خاماً. يحافظ مجتمع React على العديد من الخطافات المخصّصة الممتازة.
 
 <DeepDive>
 
-#### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
+#### هل سيوفّر React حلاً مدمجاً لجلب البيانات؟ {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+اليوم، مع واجهة [`use`](/reference/react/use#streaming-data-from-server-to-client)، يمكن قراءة البيانات أثناء التصيير بتمرير [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) إلى `use`:
 
 ```js {1,4,11}
 import { use, Suspense } from "react";
@@ -1432,7 +1432,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+ما زلنا نضبط التفاصيل، لكننا نتوقع أن تكتب جلب البيانات مستقبلاً هكذا:
 
 ```js {1,4,6}
 import { use } from 'react';
@@ -1444,13 +1444,13 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-If you use custom Hooks like `useData` above in your app, it will require fewer changes to migrate to the eventually recommended approach than if you write raw Effects in every component manually. However, the old approach will still work fine, so if you feel happy writing raw Effects, you can continue to do that.
+إذا استخدمت خطافات مخصّصة مثل `useData` أعلاه، ستقل التغييرات عند الهجرة للنهج الموصى به لاحقاً مقارنةً بكتابة تأثيرات خاماً في كل مكوّن يدوياً. لكن النهج القديم ما زال يعمل جيداً، فإن رضيت عن التأثيرات الخام تستطيع الاستمرار.
 
 </DeepDive>
 
-### There is more than one way to do it {/*there-is-more-than-one-way-to-do-it*/}
+### هناك أكثر من طريقة لفعل ذلك {/*there-is-more-than-one-way-to-do-it*/}
 
-Let's say you want to implement a fade-in animation *from scratch* using the browser [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API. You might start with an Effect that sets up an animation loop. During each frame of the animation, you could change the opacity of the DOM node you [hold in a ref](/learn/manipulating-the-dom-with-refs) until it reaches `1`. Your code might start like this:
+لنفترض أنك تريد تنفيذ تلاشٍ للدخول *من الصفر* باستخدام واجهة المتصفح [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). قد تبدأ بتأثير يضبط حلقة رسوم. في كل إطار، تغيّر شفافية عقدة DOM [تحتفظ بها في ref](/learn/manipulating-the-dom-with-refs) حتى تصل إلى `1`. قد تبدأ شيفرتك هكذا:
 
 <Sandpack>
 
@@ -1533,7 +1533,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-To make the component more readable, you might extract the logic into a `useFadeIn` custom Hook:
+لزيادة وضوح المكوّن، قد تستخرج المنطق إلى خطاف مخصّص `useFadeIn`:
 
 <Sandpack>
 
@@ -1624,7 +1624,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-You could keep the `useFadeIn` code as is, but you could also refactor it more. For example, you could extract the logic for setting up the animation loop out of `useFadeIn` into a custom `useAnimationLoop` Hook:
+يمكنك الإبقاء على `useFadeIn` كما هو، أو إعادة هيكلته أكثر. مثلاً، استخرج منطق إعداد حلقة الرسوم من `useFadeIn` إلى خطاف `useAnimationLoop` مخصّص:
 
 <Sandpack>
 
@@ -1712,7 +1712,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-However, you didn't *have to* do that. As with regular functions, ultimately you decide where to draw the boundaries between different parts of your code. You could also take a very different approach. Instead of keeping the logic in the Effect, you could move most of the imperative logic inside a JavaScript [class:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+لكنك لم *تكن مضطراً* لذلك. كالدوال العادية، أنت من يحدد حدود أجزاء شيفرتك. يمكنك أيضاً نهج مختلف تماماً. بدلاً من الإبقاء على المنطق في التأثير، انقل معظم المنطق الإلزامي داخل [صنف](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) JavaScript
 
 <Sandpack>
 
@@ -1810,9 +1810,9 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+التأثيرات تربط React بالأنظمة الخارجية. كلما زادت الحاجة لتنسيق بين التأثيرات (مثلاً لربط عدة رسوم)، زادت منطقية استخراج ذلك المنطق من التأثيرات والخطافات *كلياً* كما في الـsandbox أعلاه. عندها تصبح الشيفرة المستخرجة هي «النظام الخارجي». يبقى تأثيرك بسيطاً لأنه يحتاج فقط إرسال رسائل للنظام الذي نقلته خارج React.
 
-The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
+تفترض الأمثلة أعلاه أن منطق التلاشٍ يُكتب بـJavaScript. لكن هذه الرسوم بالذات أبسط وأكفأ بكثير عند تنفيذها بـ[رسوم CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) عادية:
 
 <Sandpack>
 
@@ -1867,27 +1867,27 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Sometimes, you don't even need a Hook!
+أحياناً لا تحتاج حتى إلى خطاف!
 
 <Recap>
 
-- Custom Hooks let you share logic between components.
-- Custom Hooks must be named starting with `use` followed by a capital letter.
-- Custom Hooks only share stateful logic, not state itself.
-- You can pass reactive values from one Hook to another, and they stay up-to-date.
-- All Hooks re-run every time your component re-renders.
-- The code of your custom Hooks should be pure, like your component's code.
-- Wrap event handlers received by custom Hooks into Effect Events.
-- Don't create custom Hooks like `useMount`. Keep their purpose specific.
-- It's up to you how and where to choose the boundaries of your code.
+- الخطافات المخصّصة تشارك المنطق بين المكوّنات.
+- يجب أن تبدأ أسماء الخطافات المخصّصة بـ `use` ثم حرف كبير.
+- الخطافات المخصّصة تشارك منطقاً ذا حالة فقط، لا الحالة نفسها.
+- يمكنك تمرير قيم تفاعلية من خطاف لآخر، وتبقى محدّثة.
+- كل الخطافات تعيد التشغيل في كل إعادة تصيير لمكوّنك.
+- شيفرة خطافاتك المخصّصة يجب أن تكون نقية، مثل شيفرة المكوّن.
+- لفّ معالجات الأحداث التي تتلقاها الخطافات المخصّصة في أحداث تأثير.
+- لا تنشئ خطافات مثل `useMount`. اجعل الغرض محدداً.
+- أنت من يقرر كيف وأين ترسم حدود شيفرتك.
 
 </Recap>
 
 <Challenges>
 
-#### Extract a `useCounter` Hook {/*extract-a-usecounter-hook*/}
+#### استخراج خطاف `useCounter` {/*extract-a-usecounter-hook*/}
 
-This component uses a state variable and an Effect to display a number that increments every second. Extract this logic into a custom Hook called `useCounter`. Your goal is to make the `Counter` component implementation look exactly like this:
+يستخدم هذا المكوّن متغير حالة وتأثيراً لعرض عدد يزيد كل ثانية. استخرج هذا المنطق إلى خطاف مخصّص اسمه `useCounter`. هدفك أن تبدو تنفيذات مكوّن `Counter` تماماً هكذا:
 
 ```js
 export default function Counter() {
@@ -1896,7 +1896,7 @@ export default function Counter() {
 }
 ```
 
-You'll need to write your custom Hook in `useCounter.js` and import it into the `App.js` file.
+ستكتب خطافك المخصّص في `useCounter.js` وتستورده في `App.js`.
 
 <Sandpack>
 
@@ -1923,7 +1923,7 @@ export default function Counter() {
 
 <Solution>
 
-Your code should look like this:
+يجب أن تبدو شيفرتك هكذا:
 
 <Sandpack>
 
@@ -1953,13 +1953,13 @@ export function useCounter() {
 
 </Sandpack>
 
-Notice that `App.js` doesn't need to import `useState` or `useEffect` anymore.
+لاحظ أن `App.js` لم يعد يحتاج استيراد `useState` أو `useEffect`.
 
 </Solution>
 
-#### Make the counter delay configurable {/*make-the-counter-delay-configurable*/}
+#### جعل تأخير العداد قابلاً للضبط {/*make-the-counter-delay-configurable*/}
 
-In this example, there is a `delay` state variable controlled by a slider, but its value is not used. Pass the `delay` value to your custom `useCounter` Hook, and change the `useCounter` Hook to use the passed `delay` instead of hardcoding `1000` ms.
+في هذا المثال، هناك متغير حالة `delay` يتحكم به منزلق، لكن قيمته غير مستخدمة. مرّر قيمة `delay` إلى خطاف `useCounter` المخصّص، وعدّل الخطاف ليستخدم `delay` الممرّر بدلاً من تثبيت `1000` مللي ثانية.
 
 <Sandpack>
 
@@ -2009,7 +2009,7 @@ export function useCounter() {
 
 <Solution>
 
-Pass the `delay` to your Hook with `useCounter(delay)`. Then, inside the Hook, use `delay` instead of the hardcoded `1000` value. You'll need to add `delay` to your Effect's dependencies. This ensures that a change in `delay` will reset the interval.
+مرّر `delay` إلى خطافك بـ`useCounter(delay)`. ثم داخل الخطاف، استخدم `delay` بدلاً من القيمة الثابتة `1000`. أضف `delay` إلى تبعيات التأثير. يضمن ذلك أن تغيّر `delay` يعيد ضبط الفترة.
 
 <Sandpack>
 
@@ -2059,9 +2059,9 @@ export function useCounter(delay) {
 
 </Solution>
 
-#### Extract `useInterval` out of `useCounter` {/*extract-useinterval-out-of-usecounter*/}
+#### استخراج `useInterval` من `useCounter` {/*extract-useinterval-out-of-usecounter*/}
 
-Currently, your `useCounter` Hook does two things. It sets up an interval, and it also increments a state variable on every interval tick. Split out the logic that sets up the interval into a separate Hook called `useInterval`. It should take two arguments: the `onTick` callback, and the `delay`. After this change, your `useCounter` implementation should look like this:
+حالياً، خطاف `useCounter` يفعل أمرين: يضبط فترة، ويزيد متغير حالة في كل دقة. افصل منطق إعداد الفترة إلى خطاف منفصل اسمه `useInterval`. يجب أن يأخذ وسيطين: رد النداء `onTick`، و`delay`. بعد التغيير، يجب أن يبدو تنفيذ `useCounter` هكذا:
 
 ```js
 export function useCounter(delay) {
@@ -2073,7 +2073,7 @@ export function useCounter(delay) {
 }
 ```
 
-Write `useInterval` in the `useInterval.js` file and import it into the `useCounter.js` file.
+اكتب `useInterval` في الملف `useInterval.js` واستورده في `useCounter.js`.
 
 <Sandpack>
 
@@ -2109,7 +2109,7 @@ export function useCounter(delay) {
 
 <Solution>
 
-The logic inside `useInterval` should set up and clear the interval. It doesn't need to do anything else.
+يجب أن يضبط منطق `useInterval` الفترة ويمحوها. لا يحتاج فعل غير ذلك.
 
 <Sandpack>
 
@@ -2148,17 +2148,17 @@ export function useInterval(onTick, delay) {
 
 </Sandpack>
 
-Note that there is a bit of a problem with this solution, which you'll solve in the next challenge.
+لاحظ أن لهذا الحل مشكلة صغيرة ستحلّها في التحدي التالي.
 
 </Solution>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### إصلاح فترة تُعاد ضبطها {/*fix-a-resetting-interval*/}
 
-In this example, there are *two* separate intervals.
+في هذا المثال، هناك *فترتان* منفصلتان.
 
-The `App` component calls `useCounter`, which calls `useInterval` to update the counter every second. But the `App` component *also* calls `useInterval` to randomly update the page background color every two seconds.
+يستدعي مكوّن `App` الدالة `useCounter`، التي تستدعي `useInterval` لتحديث العداد كل ثانية. لكن `App` *أيضاً* يستدعي `useInterval` لتحديث لون خلفية الصفحة عشوائياً كل ثانيتين.
 
-For some reason, the callback that updates the page background never runs. Add some logs inside `useInterval`:
+لسبب ما، رد النداء الذي يحدّث الخلفية لا يعمل أبداً. أضف بعض السجلات داخل `useInterval`:
 
 ```js {2,5}
   useEffect(() => {
@@ -2171,13 +2171,13 @@ For some reason, the callback that updates the page background never runs. Add s
   }, [onTick, delay]);
 ```
 
-Do the logs match what you expect to happen? If some of your Effects seem to re-synchronize unnecessarily, can you guess which dependency is causing that to happen? Is there some way to [remove that dependency](/learn/removing-effect-dependencies) from your Effect?
+هل تطابق السجلات ما تتوقع؟ إذا بدا أن بعض تأثيراتك تعيد المزامنة دون داعٍ، هل تخمّن أي تبعية تسبب ذلك؟ هل هناك طريقة [لإزالة تلك التبعية](/learn/removing-effect-dependencies) من التأثير؟
 
-After you fix the issue, you should expect the page background to update every two seconds.
+بعد الإصلاح، يفترض أن تتحدّث خلفية الصفحة كل ثانيتين.
 
 <Hint>
 
-It looks like your `useInterval` Hook accepts an event listener as an argument. Can you think of some way to wrap that event listener so that it doesn't need to be a dependency of your Effect?
+يبدو أن `useInterval` يقبل مستمع حدث كوسيط. هل يمكنك تفكير في طريقة للفّ ذلك المستمع بحيث لا يحتاج أن يكون تبعيةً للتأثير؟
 
 </Hint>
 
@@ -2230,11 +2230,11 @@ export function useInterval(onTick, delay) {
 
 <Solution>
 
-Inside `useInterval`, wrap the tick callback into an Effect Event, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
+داخل `useInterval`، لفّ رد نداء الدقة في حدث تأثير، كما فعلت [سابقاً في هذه الصفحة.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
 
-This will allow you to omit `onTick` from dependencies of your Effect. The Effect won't re-synchronize on every re-render of the component, so the page background color change interval won't get reset every second before it has a chance to fire.
+يتيح لك ذلك حذف `onTick` من تبعيات التأثير. لن يعيد التأثير المزامنة في كل إعادة تصيير للمكوّن، فلا تُعاد ضبط فترة تغيير لون الخلفية كل ثانية قبل أن تُنفَّذ.
 
-With this change, both intervals work as expected and don't interfere with each other:
+بهذا التعديل، تعمل الفترتان كما يُتوقع ولا تتداخلان:
 
 <Sandpack>
 
@@ -2285,21 +2285,21 @@ export function useInterval(callback, delay) {
 
 </Solution>
 
-#### Implement a staggering movement {/*implement-a-staggering-movement*/}
+#### تنفيذ حركة متتابعة {/*implement-a-staggering-movement*/}
 
-In this example, the `usePointerPosition()` Hook tracks the current pointer position. Try moving your cursor or your finger over the preview area and see the red dot follow your movement. Its position is saved in the `pos1` variable.
+في هذا المثال، يتتبّع خطاف `usePointerPosition()` موضع المؤشر الحالي. حرّك المؤشر أو إصبعك فوق منطقة المعاينة ولاحظ النقطة الحمراء تتبع الحركة. موضعها محفوظ في `pos1`.
 
-In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
+في الواقع، هناك خمس (!) نقاط حمراء مختلفة تُصيَّر. لا تراها لأنها كلها تظهر في الموضع نفسه حالياً. هذا ما يجب إصلاحه. بدلاً من ذلك تريد حركة «متتابعة»: كل نقطة «تتبع» مسار النقطة السابقة. مثلاً، إذا حرّكت المؤشر بسرعة، تتبعه الأولى فوراً، والثانية تتبع الأولى بتأخير بسيط، والثالثة تتبع الثانية، وهكذا.
 
-You need to implement the `useDelayedValue` custom Hook. Its current implementation returns the `value` provided to it. Instead, you want to return the value back from `delay` milliseconds ago. You might need some state and an Effect to do this.
+تحتاج تنفيذ خطاف مخصّص `useDelayedValue`. التنفيذ الحالي يعيد `value` الممرّرة. بدلاً من ذلك تريد إرجاع القيمة كما كانت قبل `delay` مللي ثانية. قد تحتاج حالة وتأثيراً.
 
-After you implement `useDelayedValue`, you should see the dots move following one another.
+بعد تنفيذ `useDelayedValue`، يجب أن ترى النقاط تتحرك متتابعة.
 
 <Hint>
 
-You'll need to store the `delayedValue` as a state variable inside your custom Hook. When the `value` changes, you'll want to run an Effect. This Effect should update `delayedValue` after the `delay`. You might find it helpful to call `setTimeout`.
+ستحتاج تخزين `delayedValue` كمتغير حالة داخل خطافك المخصّص. عند تغيّر `value`، شغّل تأثيراً. يحدّث هذا التأثير `delayedValue` بعد `delay`. قد يفيدك استدعاء `setTimeout`.
 
-Does this Effect need cleanup? Why or why not?
+هل يحتاج هذا التأثير تنظيفاً؟ لماذا أو لماذا لا؟
 
 </Hint>
 
@@ -2372,7 +2372,7 @@ body { min-height: 300px; }
 
 <Solution>
 
-Here is a working version. You keep the `delayedValue` as a state variable. When `value` updates, your Effect schedules a timeout to update the `delayedValue`. This is why the `delayedValue` always "lags behind" the actual `value`.
+هذا نسخة عاملة. تحتفظ بـ`delayedValue` كمتغير حالة. عند تحديث `value`، يجدول تأثيرك مهلة لتحديث `delayedValue`. لذلك يتأخر `delayedValue` دائماً عن `value` الفعلية.
 
 <Sandpack>
 
@@ -2449,7 +2449,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-Note that this Effect *does not* need cleanup. If you called `clearTimeout` in the cleanup function, then each time the `value` changes, it would reset the already scheduled timeout. To keep the movement continuous, you want all the timeouts to fire.
+لاحظ أن هذا التأثير *لا* يحتاج تنظيفاً. لو استدعيت `clearTimeout` في دالة التنظيف، ففي كل تغيّر لـ`value` ستُلغى المهلة المجدولة مسبقاً. للإبقاء على الحركة متصلة، تريد أن تُنفَّذ كل المهل.
 
 </Solution>
 

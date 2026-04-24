@@ -1,35 +1,35 @@
 ---
-title: Escape Hatches
+title: المخارج الطارئة
 ---
 
 <Intro>
 
-Some of your components may need to control and synchronize with systems outside of React. For example, you might need to focus an input using the browser API, play and pause a video player implemented without React, or connect and listen to messages from a remote server. In this chapter, you'll learn the escape hatches that let you "step outside" React and connect to external systems. Most of your application logic and data flow should not rely on these features.
+قد تحتاج بعض مكوّناتك إلى التحكم والمزامنة مع أنظمة خارج React. مثلًا، التركيز على حقل باستخدام واجهة المتصفح، تشغيل وإيقاف مشغّل فيديو غير مبني بـ React، أو الاتصال والاستماع لرسائل من خادم بعيد. في هذا الفصل، ستتعلم المخارج الطارئة التي تتيح لك «الخطوة خارج» React والاتصال بالأنظمة الخارجية. لا ينبغي أن يعتمد معظم منطق تطبيقك وتدفق بياناته على هذه الميزات.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to "remember" information without re-rendering](/learn/referencing-values-with-refs)
-* [How to access DOM elements managed by React](/learn/manipulating-the-dom-with-refs)
-* [How to synchronize components with external systems](/learn/synchronizing-with-effects)
-* [How to remove unnecessary Effects from your components](/learn/you-might-not-need-an-effect)
-* [How an Effect's lifecycle is different from a component's](/learn/lifecycle-of-reactive-effects)
-* [How to prevent some values from re-triggering Effects](/learn/separating-events-from-effects)
-* [How to make your Effect re-run less often](/learn/removing-effect-dependencies)
-* [How to share logic between components](/learn/reusing-logic-with-custom-hooks)
+* [كيف «تتذكر» معلومات دون إعادة رسم](/learn/referencing-values-with-refs)
+* [كيف تصل لعناصر DOM التي يديرها React](/learn/manipulating-the-dom-with-refs)
+* [كيف تزامن المكوّنات مع أنظمة خارجية](/learn/synchronizing-with-effects)
+* [كيف تزيل التأثيرات غير الضرورية من مكوّناتك](/learn/you-might-not-need-an-effect)
+* [كيف تختلف دورة حياة التأثير عن دورة حياة المكوّن](/learn/lifecycle-of-reactive-effects)
+* [كيف تمنع بعض القيم من إعادة تشغيل التأثيرات](/learn/separating-events-from-effects)
+* [كيف تجعل التأثير يعيد التشغيل أقل](/learn/removing-effect-dependencies)
+* [كيف تشارك المنطق بين المكوّنات](/learn/reusing-logic-with-custom-hooks)
 
 </YouWillLearn>
 
-## Referencing values with refs {/*referencing-values-with-refs*/}
+## الإشارة إلى قيم باستخدام المراجع {/*referencing-values-with-refs*/}
 
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*:
+عندما تريد أن «يتذكر» المكوّن بعض المعلومات، لكنك لا تريد أن تسبب [رسمًا جديدًا](/learn/render-and-commit)، يمكنك استخدام *مرجعًا*:
 
 ```js
 const ref = useRef(0);
 ```
 
-Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not! You can access the current value of that ref through the `ref.current` property.
+كالحالة، React يحتفظ بالمراجع بين إعادات الرسم. لكن تعيين الحالة يُعيد رسم المكوّن. تغيير المرجع لا يفعل ذلك! تصل إلى القيمة الحالية عبر الخاصية `ref.current`.
 
 <Sandpack>
 
@@ -54,17 +54,17 @@ export default function Counter() {
 
 </Sandpack>
 
-A ref is like a secret pocket of your component that React doesn't track. For example, you can use refs to store [timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element), and other objects that don't impact the component's rendering output.
+المرجع مثل جيب سري في مكوّنك لا يتتبعه React. مثلًا، يمكنك تخزين [معرفات المؤقتات](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)، [عناصر DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element)، وكائنات أخرى لا تؤثر على مخرجات الرسم.
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
-Read **[Referencing Values with Refs](/learn/referencing-values-with-refs)** to learn how to use refs to remember information.
+اقرأ **[الإشارة إلى قيم باستخدام المراجع](/learn/referencing-values-with-refs)** لتتعلم استخدام المراجع لتذكّر المعلومات.
 
 </LearnMore>
 
-## Manipulating the DOM with refs {/*manipulating-the-dom-with-refs*/}
+## التعامل مع DOM باستخدام المراجع {/*manipulating-the-dom-with-refs*/}
 
-React automatically updates the DOM to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
+يحدّث React DOM تلقائيًا ليطابق مخرجات الرسم، فلا تحتاج مكوّناتك غالبًا إلى التلاعب به. لكن أحيانًا تحتاج الوصول لعناصر DOM التي يديرها React — مثلًا للتركيز على عقدة، التمرير إليها، أو قياس حجمها وموضعها. لا توجد طريقة مدمجة لذلك في React، فتحتاج مرجعًا إلى عقدة DOM. مثلًا، النقر على الزر يوجّه التركيز للحقل باستخدام مرجع:
 
 <Sandpack>
 
@@ -93,15 +93,15 @@ export default function Form() {
 
 <LearnMore path="/learn/manipulating-the-dom-with-refs">
 
-Read **[Manipulating the DOM with Refs](/learn/manipulating-the-dom-with-refs)** to learn how to access DOM elements managed by React.
+اقرأ **[التعامل مع DOM باستخدام المراجع](/learn/manipulating-the-dom-with-refs)** لتتعلم الوصول لعناصر DOM التي يديرها React.
 
 </LearnMore>
 
-## Synchronizing with Effects {/*synchronizing-with-effects*/}
+## المزامنة بالتأثيرات {/*synchronizing-with-effects*/}
 
-Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Unlike event handlers, which let you handle particular events, *Effects* let you run some code after rendering. Use them to synchronize your component with a system outside of React.
+بعض المكوّنات تحتاج المزامنة مع أنظمة خارجية. مثلًا، التحكم بمكوّن غير React حسب حالة React، إعداد اتصال بخادم، أو إرسال سجل تحليلات عند ظهور المكوّن. بخلاف معالجات الأحداث التي تعالج أحداثًا محددة، *التأثيرات* (`Effects`) تشغّل كودًا بعد الرسم. استخدمها لمزامنة المكوّن مع نظام خارج React.
 
-Press Play/Pause a few times and see how the video player stays synchronized to the `isPlaying` prop value:
+اضغط تشغيل/إيقاف عدة مرات ولاحظ بقاء مشغّل الفيديو متزامنًا مع قيمة الخاصية `isPlaying`:
 
 <Sandpack>
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-Many Effects also "clean up" after themselves. For example, an Effect that sets up a connection to a chat server should return a *cleanup function* that tells React how to disconnect your component from that server:
+كثير من التأثيرات «تنظف» بعد نفسها. مثلًا، تأثير يضبط اتصالًا بخادم دردشة يجب أن يعيد *دالة تنظيف* تخبر React كيف تفصل المكوّن عن ذلك الخادم:
 
 <Sandpack>
 
@@ -183,23 +183,23 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-In development, React will immediately run and clean up your Effect one extra time. This is why you see `"✅ Connecting..."` printed twice. This ensures that you don't forget to implement the cleanup function.
+في التطوير، يشغّل React تأثيرك وينظّفه فورًا مرة إضافية. لذلك ترى `"✅ Connecting..."` مطبوعًا مرتين. يضمن أنك لا تنسى تنفيذ دالة التنظيف.
 
 <LearnMore path="/learn/synchronizing-with-effects">
 
-Read **[Synchronizing with Effects](/learn/synchronizing-with-effects)** to learn how to synchronize components with external systems.
+اقرأ **[المزامنة بالتأثيرات](/learn/synchronizing-with-effects)** لتتعلم مزامنة المكوّنات مع أنظمة خارجية.
 
 </LearnMore>
 
-## You Might Not Need An Effect {/*you-might-not-need-an-effect*/}
+## قد لا تحتاج تأثيرًا {/*you-might-not-need-an-effect*/}
 
-Effects are an escape hatch from the React paradigm. They let you "step outside" of React and synchronize your components with some external system. If there is no external system involved (for example, if you want to update a component's state when some props or state change), you shouldn't need an Effect. Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+التأثيرات مخرج طارئ من نموذج React. تتيح «الخطوة خارج» React ومزامنة المكوّنات مع نظام خارجي. إن لم يكن هناك نظام خارجي (مثلًا، تحديث حالة المكوّن عند تغيّر خصائص أو حالة)، لا ينبغي أن تحتاج تأثيرًا. إزالة التأثيرات غير الضرورية يجعل الكود أوضح، أسرع، وأقل عرضة للخطأ.
 
-There are two common cases in which you don't need Effects:
-- **You don't need Effects to transform data for rendering.**
-- **You don't need Effects to handle user events.**
+حالتان شائعتان لا تحتاجان فيهما تأثيرًا:
+- **لا تحتاج تأثيرات لتحويل البيانات للرسم.**
+- **لا تحتاج تأثيرات لمعالجة أحداث المستخدم.**
 
-For example, you don't need an Effect to adjust some state based on other state:
+مثلًا، لا تحتاج تأثيرًا لضبط حالة بناءً على حالة أخرى:
 
 ```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
@@ -215,7 +215,7 @@ function Form() {
 }
 ```
 
-Instead, calculate as much as you can while rendering:
+بدل ذلك، احسب أثناء الرسم ما أمكن:
 
 ```js {4-5}
 function Form() {
@@ -227,19 +227,19 @@ function Form() {
 }
 ```
 
-However, you *do* need Effects to synchronize with external systems. 
+لكنك *تحتاج* تأثيرات للمزامنة مع أنظمة خارجية. 
 
 <LearnMore path="/learn/you-might-not-need-an-effect">
 
-Read **[You Might Not Need an Effect](/learn/you-might-not-need-an-effect)** to learn how to remove unnecessary Effects.
+اقرأ **[قد لا تحتاج تأثيرًا](/learn/you-might-not-need-an-effect)** لتتعلم إزالة التأثيرات غير الضرورية.
 
 </LearnMore>
 
-## Lifecycle of reactive effects {/*lifecycle-of-reactive-effects*/}
+## دورة حياة التأثيرات التفاعلية {/*lifecycle-of-reactive-effects*/}
 
-Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time.
+للتأثيرات دورة حياة تختلف عن المكوّنات. قد يُثبَّت المكوّن، يُحدَّث، أو يُزال. التأثير يفعل شيئين فقط: بدء مزامنة شيء ما، ولاحقًا إيقاف مزامنته. قد يتكرر هذا الدور إن اعتمد التأثير على خصائص وحالة تتغير مع الزمن.
 
-This Effect depends on the value of the `roomId` prop. Props are *reactive values,* which means they can change on a re-render. Notice that the Effect *re-synchronizes* (and re-connects to the server) if `roomId` changes:
+هذا التأثير يعتمد على قيمة الخاصية `roomId`. الخصائص *قيم تفاعلية،* أي يمكنها التغير عند إعادة الرسم. لاحظ أن التأثير *يعيد المزامنة* (ويعيد الاتصال بالخادم) إن تغيّر `roomId`:
 
 <Sandpack>
 
@@ -302,19 +302,19 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-React provides a linter rule to check that you've specified your Effect's dependencies correctly. If you forget to specify `roomId` in the list of dependencies in the above example, the linter will find that bug automatically.
+يوفّر React قاعدة linter للتحقق من أنك حدّدت تبعيات التأثير صحيحة. إن نسيت `roomId` في قائمة التبعيات في المثال أعلاه، يكتشف الـ linter الخلل تلقائيًا.
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
-Read **[Lifecycle of Reactive Events](/learn/lifecycle-of-reactive-effects)** to learn how an Effect's lifecycle is different from a component's.
+اقرأ **[دورة حياة التأثيرات التفاعلية](/learn/lifecycle-of-reactive-effects)** لتتعلم كيف تختلف دورة حياة التأثير عن دورة حياة المكوّن.
 
 </LearnMore>
 
-## Separating events from Effects {/*separating-events-from-effects*/}
+## فصل الأحداث عن التأثيرات {/*separating-events-from-effects*/}
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+معالجات الأحداث تُعاد فقط عند تكرار نفس التفاعل. بخلافها، التأثيرات تعيد المزامنة إن اختلفت أي قيمة قرأها، مثل الخصائص أو الحالة، عن الرسم السابق. أحيانًا تريد مزيجًا: تأثير يُعاد استجابةً لبعض القيم لا غيرها.
 
-All code inside Effects is *reactive.* It will run again if some reactive value it reads has changed due to a re-render. For example, this Effect will re-connect to the chat if either `roomId` or `theme` have changed:
+كل الكود داخل التأثيرات *تفاعلي.* يُعاد تشغيله إن تغيّرت قيمة تفاعلية قرأها بسبب إعادة رسم. مثلًا، هذا التأثير يعيد الاتصال بالدردشة إن تغيّر `roomId` أو `theme`:
 
 <Sandpack>
 
@@ -442,7 +442,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This is not ideal. You want to re-connect to the chat only if the `roomId` has changed. Switching the `theme` shouldn't re-connect to the chat! Move the code reading `theme` out of your Effect into an *Effect Event*:
+هذا ليس مثاليًا. تريد إعادة الاتصال بالدردشة فقط عند تغيّر `roomId`. تبديل `theme` لا ينبغي أن يعيد الاتصال! انقل الكود الذي يقرأ `theme` خارج التأثير إلى *حدث تأثير* (`Effect Event`):
 
 <Sandpack>
 
@@ -575,19 +575,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Code inside Effect Events isn't reactive, so changing the `theme` no longer makes your Effect re-connect.
+الكود داخل أحداث التأثير ليس تفاعليًا، فلم يعد تغيير `theme` يعيد تشغيل التأثير لإعادة الاتصال.
 
 <LearnMore path="/learn/separating-events-from-effects">
 
-Read **[Separating Events from Effects](/learn/separating-events-from-effects)** to learn how to prevent some values from re-triggering Effects.
+اقرأ **[فصل الأحداث عن التأثيرات](/learn/separating-events-from-effects)** لتتعلم كيف تمنع بعض القيم من إعادة تشغيل التأثيرات.
 
 </LearnMore>
 
-## Removing Effect dependencies {/*removing-effect-dependencies*/}
+## إزالة تبعيات التأثير {/*removing-effect-dependencies*/}
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. The way you remove them depends on the case.
+عند كتابة تأثير، يتحقق الـ linter من تضمين كل قيمة تفاعلية (مثل الخصائص والحالة) التي يقرأها التأثير في قائمة التبعيات. يضمن بقاء التأثير متزامنًا مع أحدث الخصائص والحالة. التبعيات غير الضرورية قد تجعل التأثير يعمل كثيرًا أو تسبب حلقة لا نهائية. طريقة الإزالة تعتمد على الحالة.
 
-For example, this Effect depends on the `options` object which gets re-created every time you edit the input:
+مثلًا، هذا التأثير يعتمد على كائن `options` يُعاد إنشاؤه في كل تعديل للحقل:
 
 <Sandpack>
 
@@ -662,7 +662,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-You don't want the chat to re-connect every time you start typing a message in that chat. To fix this problem, move creation of the `options` object inside the Effect so that the Effect only depends on the `roomId` string:
+لا تريد إعادة الاتصال بالدردشة في كل بدء كتابة رسالة. لإصلاح المشكلة، انقل إنشاء كائن `options` داخل التأثير ليعتمد التأثير فقط على السلسلة `roomId`:
 
 <Sandpack>
 
@@ -736,19 +736,19 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that you didn't start by editing the dependency list to remove the `options` dependency. That would be wrong. Instead, you changed the surrounding code so that the dependency became *unnecessary.* Think of the dependency list as a list of all the reactive values used by your Effect's code. You don't intentionally choose what to put on that list. The list describes your code. To change the dependency list, change the code.
+لاحظ أنك لم تبدأ بتعديل قائمة التبعيات لإزالة `options`. ذلك خطأ. بدلًا من ذلك، غيّرت الكود المحيط حتى أصبحت التبعية *غير ضرورية.* اعتبر قائمة التبعيات قائمة بكل القيم التفاعلية التي يستخدمها كود التأثير. لا تختار عمدًا ما تضعه. القائمة تصف كودك. لتغيير قائمة التبعيات، غيّر الكود.
 
 <LearnMore path="/learn/removing-effect-dependencies">
 
-Read **[Removing Effect Dependencies](/learn/removing-effect-dependencies)** to learn how to make your Effect re-run less often.
+اقرأ **[إزالة تبعيات التأثير](/learn/removing-effect-dependencies)** لتتعلم كيف تجعل التأثير يعيد التشغيل أقل.
 
 </LearnMore>
 
-## Reusing logic with custom Hooks {/*reusing-logic-with-custom-hooks*/}
+## إعادة استخدام المنطق بخطافات مخصصة {/*reusing-logic-with-custom-hooks*/}
 
-React comes with built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. To do this, you can create your own Hooks for your application's needs.
+يأتي React بخطافات مدمجة مثل `useState`، و`useContext`، و`useEffect`. أحيانًا تتمنى وجود Hook لغرض أدق: جلب بيانات، تتبع اتصال المستخدم، أو الاتصال بغرفة دردشة. لذلك يمكنك إنشاء خطافاتك الخاصة لاحتياجات تطبيقك.
 
-In this example, the `usePointerPosition` custom Hook tracks the cursor position, while `useDelayedValue` custom Hook returns a value that's "lagging behind" the value you passed by a certain number of milliseconds. Move the cursor over the sandbox preview area to see a moving trail of dots following the cursor:
+في هذا المثال، الخطاف المخصص `usePointerPosition` يتتبع موضع المؤشر، بينما `useDelayedValue` يعيد قيمة «متأخرة» عن القيمة الممرّرة بعد عدد معين من الميلي ثانية. حرّك المؤشر فوق معاينة الـ sandbox لترى أثرًا من نقاط يتبع المؤشر:
 
 <Sandpack>
 
@@ -829,14 +829,14 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-You can create custom Hooks, compose them together, pass data between them, and reuse them between components. As your app grows, you will write fewer Effects by hand because you'll be able to reuse custom Hooks you already wrote. There are also many excellent custom Hooks maintained by the React community.
+يمكنك إنشاء خطافات مخصصة، دمجها، تمرير البيانات بينها، وإعادة استخدامها بين المكوّنات. مع نمو التطبيق، تكتب تأثيرات يدوية أقل لأنك تعيد استخدام الخطافات التي كتبتها. وهناك أيضًا خطافات ممتازة يحافظ عليها مجتمع React.
 
 <LearnMore path="/learn/reusing-logic-with-custom-hooks">
 
-Read **[Reusing Logic with Custom Hooks](/learn/reusing-logic-with-custom-hooks)** to learn how to share logic between components.
+اقرأ **[إعادة استخدام المنطق بخطافات مخصصة](/learn/reusing-logic-with-custom-hooks)** لتتعلم مشاركة المنطق بين المكوّنات.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## ماذا بعد؟ {/*whats-next*/}
 
-Head over to [Referencing Values with Refs](/learn/referencing-values-with-refs) to start reading this chapter page by page!
+انتقل إلى [الإشارة إلى قيم باستخدام المراجع](/learn/referencing-values-with-refs) لتبدأ قراءة هذا الفصل صفحة بصفحة!
