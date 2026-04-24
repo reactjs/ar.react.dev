@@ -1,18 +1,18 @@
 ---
-title: "Meet the Team"
+title: "تعرّف على الفريق"
 ---
 
 <Intro>
 
-React development is led by a dedicated team working full time at Meta. It also receives contributions from people all over the world.
+تطوير React يقوده فريق متفرّغ في Meta، مع مساهمات من أشخاص حول العالم.
 
 </Intro>
 
 ## React Core {/*react-core*/}
 
-The React Core team members work full time on the core component APIs, the engine that powers React DOM and React Native, React DevTools, and the React documentation website.
+أعضاء فريق React Core يعملون بدوام كامل على واجهات المكوّنات الأساسية، والمحرّك الذي يشغّل React DOM وReact Native، وReact DevTools، وموقع وثائق React.
 
-Current members of the React team are listed in alphabetical order below.
+فيما يلي أعضاء الفريق حالياً بالترتيب الأبجدي.
 
 <TeamMember name="Andrew Clark" permalink="andrew-clark" photo="/images/team/acdlite.jpg" github="acdlite" twitter="acdlite" threads="acdlite" title="Engineer at Vercel">
     Andrew got started with web development by making sites with WordPress, and eventually tricked himself into doing JavaScript. His favorite pastime is karaoke. Andrew is either a Disney villain or a Disney princess, depending on the day.
@@ -98,6 +98,6 @@ Current members of the React team are listed in alphabetical order below.
     Yuzhi studied Computer Science in school. She liked the instant gratification of seeing code come to life without having to physically be in a laboratory. Now she’s a manager in the React org. Before management, she used to work on the Relay data fetching framework. In her spare time, Yuzhi enjoys optimizing her life via gardening and home improvement projects.
 </TeamMember>
 
-## Past contributors {/*past-contributors*/}
+## مساهمون سابقون {/*past-contributors*/}
 
-You can find the past team members and other people who significantly contributed to React over the years on the [acknowledgements](/community/acknowledgements) page.
+تجد أعضاء الفريق السابقين ومن ساهموا بشكل كبير في React على مرّ السنين في صفحة [شكر وتقدير](/community/acknowledgements).

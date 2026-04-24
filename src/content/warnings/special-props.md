@@ -1,7 +1,7 @@
 ---
-title: Special Props Warning
+title: تحذير الخاصّيتين المميزّتين
 ---
 
-Most props on a JSX element are passed on to the component, however, there are two special props (`ref` and `key`) which are used by React, and are thus not forwarded to the component.
+معظم الخاصّيات على عنصر JSX تُمرَّر إلى المكوّن، لكن هناك خاصّيتان مميزّتان (`ref` و`key`) يستخدمهما React ولا يُعاد توجيههما إلى المكوّن.
 
-For instance, you can't read `props.key` from a component. If you need to access the same value within the child component, you should pass it as a different prop (ex: `<ListItemWrapper key={result.id} id={result.id} />` and read `props.id`). While this may seem redundant, it's important to separate app logic from hints to React.
+لا يمكنك مثلاً قراءة `props.key` من داخل المكوّن. إن احتجت نفس القيمة داخل المكوّن الفرعي، مرّرها باسم خاصّية أخرى (مثلاً `<ListItemWrapper key={result.id} id={result.id} />` واقرأ `props.id`). قد يبدو ذلك مكرراً، لكنه يفصل منطق التطبيق عن «تلميحات» لـ React.

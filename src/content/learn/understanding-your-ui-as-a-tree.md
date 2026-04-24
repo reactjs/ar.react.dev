@@ -1,41 +1,41 @@
 ---
-title: Understanding Your UI as a Tree
+title: فهم واجهتك كشجرة
 ---
 
 <Intro>
 
-Your React app is taking shape with many components being nested within each other. How does React keep track of your app's component structure?
+يأخذ تطبيق React شكله مع تداخل العديد من المكوّنات داخل بعضها. كيف يتتبع React هيكل مكوّنات تطبيقك؟
 
-React, and many other UI libraries, model UI as a tree. Thinking of your app as a tree is useful for understanding the relationship between components. This understanding will help you debug future concepts like performance and state management.
+يصوّر React، ومكتبات واجهات أخرى كثيرة، الواجهة كشجرة. التفكير في تطبيقك كشجرة مفيد لفهم العلاقة بين المكوّنات. هذا الفهم يساعدك لاحقًا في تصحيح مفاهيم مثل الأداء وإدارة الحالة.
 
 </Intro>
 
 <YouWillLearn>
 
-* How React "sees" component structures
-* What a render tree is and what it is useful for
-* What a module dependency tree is and what it is useful for
+* كيف «يرى» React هيكل المكوّنات
+* ما شجرة العرض وما فائدتها
+* ما شجرة اعتماد الوحدات وما فائدتها
 
 </YouWillLearn>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## واجهتك كشجرة {/*your-ui-as-a-tree*/}
 
-Trees are a relationship model between items. The UI is often represented using tree structures. For example, browsers use tree structures to model HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) and CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Mobile platforms also use trees to represent their view hierarchy.
+الشجرات نموذج علاقات بين عناصر. غالبًا تُمثَّل الواجهة ببنى شجرية. على سبيل المثال، المتصفحات تستخدم أشجارًا لنمذجة HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) وCSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). المنصات المحمولة أيضًا تستخدم أشجارًا لتمثيل تسلسل العرض.
 
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React DOM'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="مخطط بثلاثة أقسام أفقية. في القسم الأول ثلاث مستطيلات عمودية مع تسميات «Component A» و«Component B» و«Component C». انتقال إلى اللوحة التالية بسهم عليه شعار React ومكتوب «React». القسم الأوسط يحتوي شجرة مكوّنات جذرها «A» وطفلان «B» و«C». الانتقال التالي بسهم عليه شعار React ومكتوب «React DOM». القسم الثالث إطار متصفح فيه شجرة من 8 عقد، مع تمييز جزء فقط (يشير إلى الشجرة الفرعية من القسم الأوسط).">
 
-React creates a UI tree from your components. In this example, the UI tree is then used to render to the DOM.
+ينشئ React شجرة واجهة من مكوّناتك. في هذا المثال تُستخدم شجرة الواجهة بعد ذلك للرسم إلى DOM.
 </Diagram>
 
-Like browsers and mobile platforms, React also uses tree structures to manage and model the relationship between components in a React app. These trees are useful tools to understand how data flows through a React app and how to optimize rendering and app size.
+مثل المتصفحات والمنصات المحمولة، يستخدم React أيضًا بنى شجرية لإدارة ونمذجة العلاقة بين المكوّنات في تطبيق React. هذه الأشجار أدوات مفيدة لفهم كيف تتدفق البيانات عبر التطبيق وكيف تحسّن الرسم وحجم التطبيق.
 
-## The Render Tree {/*the-render-tree*/}
+## شجرة العرض {/*the-render-tree*/}
 
-A major feature of components is the ability to compose components of other components. As we [nest components](/learn/your-first-component#nesting-and-organizing-components), we have the concept of parent and child components, where each parent component may itself be a child of another component.
+من أهم ميزات المكوّنات القدرة على تكوين مكوّنات من مكوّنات أخرى. عندما [نُدخل مكوّنات داخل بعضها](/learn/your-first-component#nesting-and-organizing-components)، نحصل على مفهوم المكوّن الأب والابن، حيث كل أب قد يكون ابنًا لمكوّن آخر.
 
-When we render a React app, we can model this relationship in a tree, known as the render tree.
+عندما نعرض تطبيق React، يمكن نمذجة هذه العلاقة في شجرة تُعرف بشجرة العرض.
 
-Here is a React app that renders inspirational quotes.
+إليك تطبيق React يعرض اقتباسات تحفيزية.
 
 <Sandpack>
 
@@ -47,7 +47,7 @@ import Copyright from './Copyright';
 export default function App() {
   return (
     <>
-      <FancyText title text="Get Inspired App" />
+      <FancyText title text="تطبيق ملهم" />
       <InspirationGenerator>
         <Copyright year={2004} />
       </InspirationGenerator>
@@ -77,9 +77,9 @@ export default function InspirationGenerator({children}) {
 
   return (
     <>
-      <p>Your inspirational quote is:</p>
+      <p>اقتباسك التحفيزي هو:</p>
       <FancyText text={quote} />
-      <button onClick={next}>Inspire me again</button>
+      <button onClick={next}>ألهمني مجددًا</button>
       {children}
     </>
   );
@@ -94,9 +94,9 @@ export default function Copyright({year}) {
 
 ```js src/quotes.js
 export default [
-  "Don’t let yesterday take up too much of today.” — Will Rogers",
-  "Ambition is putting a ladder against the sky.",
-  "A joy that's shared is a joy made double.",
+  "لا تدع الأمس يستهلك الكثير من اليوم." — ويل روجرز",
+  "الطموح أن تضع سلمًا نحو السماء.",
+  "الفرحة المشتركة فرحة مضاعفة.",
   ];
 ```
 
@@ -118,34 +118,34 @@ export default [
 
 </Sandpack>
 
-<Diagram name="render_tree" height={250} width={500} alt="Tree graph with five nodes. Each node represents a component. The root of the tree is App, with two arrows extending from it to 'InspirationGenerator' and 'FancyText'. The arrows are labelled with the word 'renders'. 'InspirationGenerator' node also has two arrows pointing to nodes 'FancyText' and 'Copyright'.">
+<Diagram name="render_tree" height={250} width={500} alt="رسم شجري بخمس عقد. كل عقدة تمثل مكوّنًا. جذر الشجرة App، وسهمان منه إلى InspirationGenerator وFancyText. السهام مكتوب عليها «renders». عقدة InspirationGenerator لها سهمان إلى FancyText وCopyright.">
 
-React creates a *render tree*, a UI tree, composed of the rendered components.
+ينشئ React *شجرة عرض*، أي شجرة واجهة مكوّنة من المكوّنات المرسومة.
 
 
 </Diagram>
 
-From the example app, we can construct the above render tree.
+من تطبيق المثال يمكننا بناء شجرة العرض أعلاه.
 
-The tree is composed of nodes, each of which represents a component. `App`, `FancyText`, `Copyright`, to name a few, are all nodes in our tree.
+الشجرة مكوّنة من عقد، كل عقدة تمثل مكوّنًا. `App` و`FancyText` و`Copyright`، على سبيل المثال لا الحصر، كلها عقد في شجرتنا.
 
-The root node in a React render tree is the [root component](/learn/importing-and-exporting-components#the-root-component-file) of the app. In this case, the root component is `App` and it is the first component React renders. Each arrow in the tree points from a parent component to a child component.
+العقدة الجذرية في شجرة عرض React هي [المكوّن الجذري](/learn/importing-and-exporting-components#the-root-component-file) للتطبيق. هنا المكوّن الجذري هو `App` وهو أول مكوّن يرسمه React. كل سهم في الشجرة يشير من مكوّن أب إلى مكوّن ابن.
 
 <DeepDive>
 
-#### Where are the HTML tags in the render tree? {/*where-are-the-html-elements-in-the-render-tree*/}
+#### أين وسوم HTML في شجرة العرض؟ {/*where-are-the-html-elements-in-the-render-tree*/}
 
-You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](learn/your-first-component#components-ui-building-blocks).
+ستلاحظ أن شجرة العرض أعلاه لا تذكر وسوم HTML التي يرسمها كل مكوّن. ذلك لأن شجرة العرض تتكوّن فقط من [مكوّنات](learn/your-first-component#components-ui-building-blocks) React.
 
-React, as a UI framework, is platform agnostic. On react.dev, we showcase examples that render to the web, which uses HTML markup as its UI primitives. But a React app could just as likely render to a mobile or desktop platform, which may use different UI primitives like [UIView](https://developer.apple.com/documentation/uikit/uiview) or [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0).
+React كإطار واجهة مستقل عن المنصة. على react.dev نعرض أمثلة ترسم للويب الذي يستخدم HTML كوحدات واجهة أساسية. لكن تطبيق React قد يرسم بنفس السهولة إلى منصة محمولة أو سطح مكتب قد تستخدم وحدات واجهة مختلفة مثل [UIView](https://developer.apple.com/documentation/uikit/uiview) أو [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0).
 
-These platform UI primitives are not a part of React. React render trees can provide insight to our React app regardless of what platform your app renders to.
+هذه الوحدات الأساسية للمنصة ليست جزءًا من React. أشجار عرض React يمكن أن تمنح رؤية لتطبيق React بغض النظر عن المنصة التي يرسم إليها.
 
 </DeepDive>
 
-A render tree represents a single render pass of a React application. With [conditional rendering](/learn/conditional-rendering), a parent component may render different children depending on the data passed.
+شجرة العرض تمثل *مرة رسم واحدة* لتطبيق React. مع [الرسم الشرطي](/learn/conditional-rendering)، قد يرسم المكوّن الأب أبناء مختلفين حسب البيانات الممررة.
 
-We can update the app to conditionally render either an inspirational quote or color.
+يمكننا تحديث التطبيق ليرسم شرطًا إما اقتباسًا تحفيزيًا أو لونًا.
 
 <Sandpack>
 
@@ -157,7 +157,7 @@ import Copyright from './Copyright';
 export default function App() {
   return (
     <>
-      <FancyText title text="Get Inspired App" />
+      <FancyText title text="تطبيق ملهم" />
       <InspirationGenerator>
         <Copyright year={2004} />
       </InspirationGenerator>
@@ -194,12 +194,12 @@ export default function InspirationGenerator({children}) {
 
   return (
     <>
-      <p>Your inspirational {inspiration.type} is:</p>
+      <p>{inspiration.type === 'quote' ? 'اقتباسك التحفيزي هو:' : 'لونك الملهم هو:'}</p>
       {inspiration.type === 'quote'
       ? <FancyText text={inspiration.value} />
       : <Color value={inspiration.value} />}
 
-      <button onClick={next}>Inspire me again</button>
+      <button onClick={next}>ألهمني مجددًا</button>
       {children}
     </>
   );
@@ -214,11 +214,11 @@ export default function Copyright({year}) {
 
 ```js src/inspirations.js
 export default [
-  {type: 'quote', value: "Don’t let yesterday take up too much of today.” — Will Rogers"},
+  {type: 'quote', value: "لا تدع الأمس يستهلك الكثير من اليوم." — ويل روجرز"},
   {type: 'color', value: "#B73636"},
-  {type: 'quote', value: "Ambition is putting a ladder against the sky."},
+  {type: 'quote', value: "الطموح أن تضع سلمًا نحو السماء."},
   {type: 'color', value: "#256266"},
-  {type: 'quote', value: "A joy that's shared is a joy made double."},
+  {type: 'quote', value: "الفرحة المشتركة فرحة مضاعفة."},
   {type: 'color', value: "#F9F2B4"},
 ];
 ```
@@ -245,55 +245,55 @@ export default [
 ```
 </Sandpack>
 
-<Diagram name="conditional_render_tree" height={250} width={561} alt="Tree graph with six nodes. The top node of the tree is labelled 'App' with two arrows extending to nodes labelled 'InspirationGenerator' and 'FancyText'. The arrows are solid lines and are labelled with the word 'renders'. 'InspirationGenerator' node also has three arrows. The arrows to nodes 'FancyText' and 'Color' are dashed and labelled with 'renders?'. The last arrow points to the node labelled 'Copyright' and is solid and labelled with 'renders'.">
+<Diagram name="conditional_render_tree" height={250} width={561} alt="رسم شجري بست عقد. العقدة العليا App، وسهمان إلى InspirationGenerator وFancyText. السهام خطوط صلبة ومكتوب عليها «renders». عقدة InspirationGenerator لها ثلاثة أسهم: إلى FancyText وColor بخط متقطع ومكتوب «renders؟»، والسهم الأخير إلى Copyright بخط صلب ومكتوب «renders».">
 
-With conditional rendering, across different renders, the render tree may render different components.
-
-</Diagram>
-
-In this example, depending on what `inspiration.type` is, we may render `<FancyText>` or `<Color>`. The render tree may be different for each render pass.
-
-Although render trees may differ across render passes, these trees are generally helpful for identifying what the *top-level* and *leaf components* are in a React app. Top-level components are the components nearest to the root component and affect the rendering performance of all the components beneath them and often contain the most complexity. Leaf components are near the bottom of the tree and have no child components and are often frequently re-rendered.
-
-Identifying these categories of components are useful for understanding data flow and performance of your app.
-
-## The Module Dependency Tree {/*the-module-dependency-tree*/}
-
-Another relationship in a React app that can be modeled with a tree are an app's module dependencies. As we [break up our components](/learn/importing-and-exporting-components#exporting-and-importing-a-component) and logic into separate files, we create [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) where we may export components, functions, or constants.
-
-Each node in a module dependency tree is a module and each branch represents an `import` statement in that module.
-
-If we take the previous Inspirations app, we can build a module dependency tree, or dependency tree for short.
-
-<Diagram name="module_dependency_tree" height={250} width={658} alt="A tree graph with seven nodes. Each node is labelled with a module name. The top level node of the tree is labelled 'App.js'. There are three arrows pointing to the modules 'InspirationGenerator.js', 'FancyText.js' and 'Copyright.js' and the arrows are labelled with 'imports'. From the 'InspirationGenerator.js' node, there are three arrows that extend to three modules: 'FancyText.js', 'Color.js', and 'inspirations.js'. The arrows are labelled with 'imports'.">
-
-The module dependency tree for the Inspirations app.
+مع الرسم الشرطي، عبر عمليات رسم مختلفة، قد ترسم شجرة العرض مكوّنات مختلفة.
 
 </Diagram>
 
-The root node of the tree is the root module, also known as the entrypoint file. It often is the module that contains the root component.
+في هذا المثال، حسب قيمة `inspiration.type`، قد نرسم `<FancyText>` أو `<Color>`. شجرة العرض قد تختلف في كل مرة رسم.
 
-Comparing to the render tree of the same app, there are similar structures but some notable differences:
+رغم أن أشجار العرض قد تختلف بين مرات الرسم، فهي عمومًا مفيدة لتحديد *المكوّنات ذات المستوى الأعلى* و*مكوّنات الأوراق* في التطبيق. مكوّنات المستوى الأعلى هي الأقرب إلى المكوّن الجذر وتؤثر على أداء رسم كل ما تحتها وغالبًا تحوي أكثر التعقيد. مكوّنات الأوراق قرب أسفل الشجرة وليس لها أبناء وغالبًا تُعاد رسمها كثيرًا.
 
-* The nodes that make-up the tree represent modules, not components.
-* Non-component modules, like `inspirations.js`, are also represented in this tree. The render tree only encapsulates components.
-* `Copyright.js` appears under `App.js` but in the render tree, `Copyright`, the component, appears as a child of `InspirationGenerator`. This is because `InspirationGenerator` accepts JSX as [children props](/learn/passing-props-to-a-component#passing-jsx-as-children), so it renders `Copyright` as a child component but does not import the module.
+تحديد هذه الفئات مفيد لفهم تدفق البيانات وأداء التطبيق.
 
-Dependency trees are useful to determine what modules are necessary to run your React app. When building a React app for production, there is typically a build step that will bundle all the necessary JavaScript to ship to the client. The tool responsible for this is called a [bundler](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem), and bundlers will use the dependency tree to determine what modules should be included.
+## شجرة اعتماد الوحدات {/*the-module-dependency-tree*/}
 
-As your app grows, often the bundle size does too. Large bundle sizes are expensive for a client to download and run. Large bundle sizes can delay the time for your UI to get drawn. Getting a sense of your app's dependency tree may help with debugging these issues.
+علاقة أخرى في تطبيق React يمكن نمذجتها بشجرة هي اعتمادات الوحدات. عندما [نقسّم مكوّناتنا](/learn/importing-and-exporting-components#exporting-and-importing-a-component) والمنطق إلى ملفات منفصلة، ننشئ [وحدات JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) قد نصدّر منها مكوّنات أو دوال أو ثوابت.
+
+كل عقدة في شجرة اعتماد الوحدات هي وحدة، وكل فرع يمثل عبارة `import` في تلك الوحدة.
+
+إذا أخذنا تطبيق الإلهام السابق، يمكننا بناء شجرة اعتماد الوحدات، أو شجرة الاعتماد اختصارًا.
+
+<Diagram name="module_dependency_tree" height={250} width={658} alt="رسم شجري بسبع عقد. كل عقدة مسمّاة باسم وحدة. العقدة العليا App.js. ثلاثة أسهم إلى InspirationGenerator.js وFancyText.js وCopyright.js ومكتوب عليها «imports». من InspirationGenerator.js ثلاثة أسهم إلى FancyText.js وColor.js وinspirations.js ومكتوب عليها «imports».">
+
+شجرة اعتماد الوحدات لتطبيق الإلهام.
+
+</Diagram>
+
+العقدة الجذرية للشجرة هي الوحدة الجذرية، وتُعرف أيضًا بملف نقطة الدخول. غالبًا هي الوحدة التي تحتوي المكوّن الجذري.
+
+مقارنةً بشجرة العرض لنفس التطبيق، هناك تشابهات لكن اختلافات بارزة:
+
+* العقد التي تُكوّن الشجرة تمثل وحداتًا لا مكوّنات.
+* وحدات ليست مكوّنات، مثل `inspirations.js`، تظهر أيضًا في هذه الشجرة. شجرة العرض تقتصر على المكوّنات.
+* يظهر `Copyright.js` تحت `App.js` لكن في شجرة العرض يظهر المكوّن `Copyright` ابنًا لـ`InspirationGenerator`. ذلك لأن `InspirationGenerator` يقبل JSX كـ[children props](/learn/passing-props-to-a-component#passing-jsx-as-children)، فيرسم `Copyright` كابن لكنه لا يستورد الوحدة.
+
+أشجار الاعتماد مفيدة لمعرفة الوحدات اللازمة لتشغيل تطبيق React. عند بناء تطبيق للإنتاج، عادةً خطوة بناء تجمع كل JavaScript اللازم للعميل. الأداة المسؤولة عن ذلك تسمى [bundler](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#the_modern_tooling_ecosystem)، وتستخدم bundlers شجرة الاعتماد لتحديد الوحدات التي تُضمَّن.
+
+مع نمو التطبيق، غالبًا يكبر حجم الحزمة. الحزم الكبيرة مكلفة للعميل تنزيلًا وتشغيلًا وقد تؤخر ظهور الواجهة. الإحساس بشجرة اعتماد التطبيق قد يساعد في تصحيح هذه المشاكل.
 
 [comment]: <> (perhaps we should also deep dive on conditional imports)
 
 <Recap>
 
-* Trees are a common way to represent the relationship between entities. They are often used to model UI.
-* Render trees represent the nested relationship between React components across a single render.
-* With conditional rendering, the render tree may change across different renders. With different prop values, components may render different children components.
-* Render trees help identify what the top-level and leaf components are. Top-level components affect the rendering performance of all components beneath them and leaf components are often re-rendered frequently. Identifying them is useful for understanding and debugging rendering performance.
-* Dependency trees represent the module dependencies in a React app.
-* Dependency trees are used by build tools to bundle the necessary code to ship an app.
-* Dependency trees are useful for debugging large bundle sizes that slow time to paint and expose opportunities for optimizing what code is bundled.
+* الأشجار طريقة شائعة لتمثيل العلاقات بين الكيانات، وغالبًا تُستخدم لنمذجة الواجهة.
+* أشجار العرض تمثل التداخل بين مكوّنات React في مرة رسم واحدة.
+* مع الرسم الشرطي، قد تتغير شجرة العرض بين عمليات الرسم. بقيم props مختلفة، قد يرسم المكوّن أبناء مختلفين.
+* أشجار العرض تساعد في تحديد المكوّنات ذات المستوى الأعلى ومكوّنات الأوراق. المكوّنات ذات المستوى الأعلى تؤثر على أداء رسم كل ما تحتها، ومكوّنات الأوراق غالبًا تُعاد رسمها كثيرًا. تحديدها مفيد لفهم أداء الرسم وتصحيحه.
+* أشجار الاعتماد تمثل اعتمادات الوحدات في تطبيق React.
+* أدوات البناء تستخدم أشجار الاعتماد لحزم الشيفرة اللازمة لشحن التطبيق.
+* أشجار الاعتماد مفيدة لتصحيح حزم كبيرة تبطئ وقت الرسم وتكشف فرص تحسين ما يُحزَم من الشيفرة.
 
 </Recap>
 

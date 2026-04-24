@@ -1,14 +1,14 @@
 ---
-title: React Conferences
+title: مؤتمرات React
 ---
 
 <Intro>
 
-Do you know of a local React.js conference? Add it here! (Please keep the list chronological)
+هل تعرف مؤتمر React في منطقتك؟ أضفه هنا! (يُرجى الإبقاء على القائمة زمنياً)
 
 </Intro>
 
-## Upcoming Conferences {/*upcoming-conferences*/}
+## مؤتمرات قادمة {/*upcoming-conferences*/}
 
 ### React Universe Conf 2025 {/*react-universe-conf-2025*/}
 September 2-4, 2025. Wrocław, Poland.
@@ -68,7 +68,7 @@ April 14-17,  2026. In-person in London
 [Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
 
-## Past Conferences {/*past-conferences*/}
+## مؤتمرات سابقة {/*past-conferences*/}
 
 
 ### React Nexus 2025 {/*react-nexus-2025*/}

@@ -1,5 +1,5 @@
 ---
-title: React DOM APIs
+title: واجهات React DOM البرمجية
 ---
 
 <Intro>
@@ -19,16 +19,16 @@ title: React DOM APIs
 
 ## Resource Preloading APIs {/*resource-preloading-apis*/}
 
-These APIs can be used to make apps faster by pre-loading resources such as scripts, stylesheets, and fonts as soon as you know you need them, for example before navigating to another page where the resources will be used.
+يمكن استخدام هذه الواجهات لتسريع التطبيقات عبر تحميل الموارد مسبقاً — مثل السكربتات وأوراق الأنماط والخطوط — بمجرد أن تعرف أنك ستحتاج إليها، مثلاً قبل الانتقال إلى صفحة أخرى ستُستخدم فيها هذه الموارد.
 
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call these APIs yourself. Consult your framework's documentation for details.
+غالباً ما تتولى [أطر العمل المبنية على React](/learn/creating-a-react-app) تحميل الموارد نيابةً عنك، فقد لا تحتاج إلى استدعاء هذه الواجهات بنفسك. راجع توثيق إطار عملك للتفاصيل.
 
-* [`prefetchDNS`](/reference/react-dom/prefetchDNS) lets you prefetch the IP address of a DNS domain name that you expect to connect to.
-* [`preconnect`](/reference/react-dom/preconnect) lets you connect to a server you expect to request resources from, even if you don't know what resources you'll need yet.
-* [`preload`](/reference/react-dom/preload) lets you fetch a stylesheet, font, image, or external script that you expect to use.
-* [`preloadModule`](/reference/react-dom/preloadModule) lets you fetch an ESM module that you expect to use.
-* [`preinit`](/reference/react-dom/preinit) lets you fetch and evaluate an external script or fetch and insert a stylesheet.
-* [`preinitModule`](/reference/react-dom/preinitModule) lets you fetch and evaluate an ESM module.
+* [`prefetchDNS`](/reference/react-dom/prefetchDNS) تتيح لك جلب عنوان IP لاسم نطاق DNS تتوقع الاتصال به مسبقاً.
+* [`preconnect`](/reference/react-dom/preconnect) تتيح لك الاتصال بخادم تتوقع طلب موارد منه، حتى لو لم تعرف بعد الموارد التي ستحتاجها.
+* [`preload`](/reference/react-dom/preload) تتيح لك جلب ورقة أنماط أو خط أو صورة أو سكربت خارجي تتوقع استخدامه.
+* [`preloadModule`](/reference/react-dom/preloadModule) تتيح لك جلب وحدة ESM تتوقع استخدامها.
+* [`preinit`](/reference/react-dom/preinit) تتيح لك جلب سكربت خارجي وتقييمه، أو جلب ورقة أنماط وإدراجها.
+* [`preinitModule`](/reference/react-dom/preinitModule) تتيح لك جلب وحدة ESM وتقييمها.
 
 ---
 
@@ -53,5 +53,5 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * تقوم [`hydrate`](/reference/react-dom/hydrate) بتركيب شجرة في DOM التي تم إنشاؤها من HTML الذي تم تصييره في الخادم. مهجور لصالح [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
 * تقوم [`render`](/reference/react-dom/render) بتركيب شجرة في DOM. مهجور لصالح [`createRoot`](/reference/react-dom/client/createRoot).
 * تقوم [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) بإلغاء تركيب شجرة من DOM. مهجور لصالح [`root.unmount()`.](/reference/react-dom/client/createRoot#root-unmount)
-* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
-* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): استخدم واجهات [`react-dom/server`](/reference/react-dom/server) بدلاً منها.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): استخدم واجهات [`react-dom/server`](/reference/react-dom/server) بدلاً منها.

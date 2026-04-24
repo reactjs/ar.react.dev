@@ -1,14 +1,14 @@
 ---
-title: react-test-renderer Deprecation Warnings
+title: تحذيرات إهمال react-test-renderer
 ---
 
-## ReactTestRenderer.create() warning {/*reacttestrenderercreate-warning*/}
+## تحذير ReactTestRenderer.create() {/*reacttestrenderercreate-warning*/}
 
-react-test-renderer is deprecated. A warning will fire whenever calling ReactTestRenderer.create() or ReactShallowRender.render(). The react-test-renderer package will remain available on NPM but will not be maintained and may break with new React features or changes to React's internals.
+حزمة react-test-renderer مهملة. يظهر تحذير عند استدعاء `ReactTestRenderer.create()` أو `ReactShallowRender.render()`. ستبقى الحزمة على NPM لكن دون صيانة وقد تنكسر مع ميزات React الجديدة أو تغيّرات داخلية.
 
-The React Team recommends migrating your tests to [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) or [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/docs/start/intro) for a modern and well supported testing experience.
+يُنصح بترحيل الاختبارات إلى [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) أو [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/docs/start/intro) لتجربة اختبار حديثة ومدعومة.
 
 
-## new ShallowRenderer() warning {/*new-shallowrenderer-warning*/}
+## تحذير new ShallowRenderer() {/*new-shallowrenderer-warning*/}
 
-The react-test-renderer package no longer exports a shallow renderer at `react-test-renderer/shallow`. This was simply a repackaging of a previously extracted separate package: `react-shallow-renderer`. Therefore you can continue using the shallow renderer in the same way by installing it directly. See [Github](https://github.com/enzymejs/react-shallow-renderer) / [NPM](https://www.npmjs.com/package/react-shallow-renderer).
+لم تعد حزمة react-test-renderer تصدّر shallow renderer من `react-test-renderer/shallow`. كان ذلك إعادة تغليف لحزمة منفصلة: `react-shallow-renderer`. يمكنك الاستمرار بنفس الأسلوب بتثبيتها مباشرة. راجع [GitHub](https://github.com/enzymejs/react-shallow-renderer) / [NPM](https://www.npmjs.com/package/react-shallow-renderer).
