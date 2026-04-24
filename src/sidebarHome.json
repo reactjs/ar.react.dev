@@ -1,21 +1,21 @@
 {
-  "title": "React Docs",
+  "title": "توثيق React",
   "path": "/",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "ابدأ"
     },
     {
-      "title": "Quick Start",
+      "title": "بداية سريعة",
       "path": "/learn"
     },
     {
-      "title": "Installation",
+      "title": "التثبيت",
       "path": "/learn/installation"
     },
     {
-      "title": "Setup",
+      "title": "الإعداد",
       "path": "/learn/setup"
     },
     {
@@ -24,94 +24,94 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "sectionHeader": "تعلّم React"
     },
     {
-      "title": "Describing the UI",
+      "title": "وصف واجهة المستخدم",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "Adding Interactivity",
+      "title": "إضافة التفاعلية",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "Managing State",
+      "title": "إدارة الحالة",
       "path": "/learn/managing-state"
     },
     {
-      "title": "Escape Hatches",
+      "title": "مخارج طارئة",
       "path": "/learn/escape-hatches"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT API"
+      "sectionHeader": "واجهة React"
     },
     {
       "title": "Hooks",
       "path": "/reference/react"
     },
     {
-      "title": "Components",
+      "title": "المكوّنات",
       "path": "/reference/react/components"
     },
     {
-      "title": "APIs",
+      "title": "واجهات برمجية",
       "path": "/reference/react/apis"
     },
     {
-      "title": "Legacy APIs",
+      "title": "واجهات قديمة",
       "path": "/reference/react/legacy"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT DOM API"
+      "sectionHeader": "واجهة React DOM"
     },
     {
-      "title": "Components",
+      "title": "المكوّنات",
       "path": "/reference/react-dom/components"
     },
     {
-      "title": "APIs",
+      "title": "واجهات برمجية",
       "path": "/reference/react-dom"
     },
     {
-      "title": "Client APIs",
+      "title": "واجهات العميل",
       "path": "/reference/react-dom/client"
     },
     {
-      "title": "Server APIs",
+      "title": "واجهات الخادم",
       "path": "/reference/react-dom/server"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT COMPILER API"
+      "sectionHeader": "واجهة React Compiler"
     },
     {
-      "title": "Configuration",
+      "title": "الإعداد",
       "path": "/reference/react-compiler/configuration"
     },
     {
-      "title": "Directives",
+      "title": "التوجيهات",
       "path": "/reference/react-compiler/directives"
     },
     {
-      "title": "Compiling Libraries",
+      "title": "تجميع المكتبات",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "شارك"
     },
     {
-      "title": "React Community",
+      "title": "المجتمع",
       "path": "/community"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "ابقَ على اطلاع"
     },
     {
-      "title": "React Blog",
+      "title": "مدونة React",
       "path": "/blog"
     }
   ]
