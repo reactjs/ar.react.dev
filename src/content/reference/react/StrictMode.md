@@ -1237,15 +1237,15 @@ li {
 ✅ Adding animal to the map. Total animals: 10
 ```
 
-**This is expected.** Strict Mode confirms that the ref callbacks are cleaned up correctly, so the size never grows above the expected amount. After the fix, there are no memory leaks, and all the features work as expected.
+**هذا متوقع.** يؤكد Strict Mode أن استدعاءات الـ ref تُنظَّف بشكل صحيح، فلا يتجاوز الحجم المقدار المتوقع. بعد الإصلاح، لا تسرّبات ذاكرة، وتعمل كل الميزات كما يُنتظر.
 
-Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
+بدون Strict Mode، كان من السهل تفويت الخطأ حتى تنقر في التطبيق وتلاحظ الميزات المعطلة. Strict Mode جعل الأخطاء تظهر فورًا، قبل دفعها إلى الإنتاج.
 
 ---
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
+### إصلاح تحذيرات الإهلاك التي يفعّلها Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
-React warns if some component anywhere inside a `<StrictMode>` tree uses one of these deprecated APIs:
+تحذّر React إذا استخدم مكوّن ما في أي مكان داخل شجرة `<StrictMode>` إحدى واجهات البرمجة المُهجَرة التالية:
 
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
+* طرق دورة حياة صنفية تبدأ بـ`UNSAFE_` مثل [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [اطلع على البدائل.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 
-These APIs are primarily used in older [class components](/reference/react/Component) so they rarely appear in modern apps.
+تُستخدم هذه الواجهات غالبًا في [مكوّنات صنف](/reference/react/Component) أقدم، لذا نادرًا ما تظهر في التطبيقات الحديثة.
