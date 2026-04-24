@@ -826,22 +826,22 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how the active connection count in the console doesn't keep growing anymore.
+لاحظ أن عدد الاتصالات النشطة في وحدة التحكم لم يعد يتزايد باستمرار.
 
-Without Strict Mode, it was easy to miss that your Effect needed cleanup. By running *setup → cleanup → setup* instead of *setup* for your Effect in development, Strict Mode made the missing cleanup logic more noticeable.
+بدون Strict Mode، كان من السهل تفويت أن تأثيرك يحتاج تنظيمًا. بتشغيل *إعداد → تنظيف → إعداد* بدل *إعداد* فقط لتأثيرك في التطوير، جعل Strict Mode نقص منطق التنظيف أكثر بروزًا.
 
-[Read more about implementing Effect cleanup.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+[اقرأ المزيد عن تنفيذ تنظيف التأثير.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
-### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
+### إصلاح أخطاء يكشفها إعادة تشغيل استدعاءات ref في التطوير {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
+يمكن لـ Strict Mode أيضًا المساعدة في إيجاد أخطاء في [استدعاءات ref (callback refs).](/learn/manipulating-the-dom-with-refs)
 
-Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
+لكل callback `ref` كود إعداد وقد يكون له تنظيف. عادةً، تستدعي React الإعداد عند *إنشاء* العنصر (إضافته إلى DOM) والتنظيف عند *إزالته* من DOM.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every callback `ref`.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+عند تفعيل Strict Mode، تشغّل React أيضًا **دورة إعداد+تنظيف إضافية في التطوير لكل callback `ref`.** قد يبدو ذلك مفاجئًا، لكنه يكشف أخطاء دقيقة يصعُب اصطيادها يدويًا.
 
-Consider this example, which allows you to select an animal and then scroll to one of them. Notice when you switch from "Cats" to "Dogs", the console logs show that the number of animals in the list keeps growing, and the "Scroll to" buttons stop working:
+انظر إلى هذا المثال الذي يتيح اختيار حيوان ثم التمرير إليه. لاحظ عند التبديل بين «Cats» و«Dogs» أن سجلات وحدة التحكم تُظهر أن عدد الحيوانات في القائمة يزداد، وتتوقف أزرار «Scroll to» عن العمل:
 
 <Sandpack>
 
@@ -960,9 +960,9 @@ li {
 </Sandpack>
 
 
-**This is a production bug!** Since the ref callback doesn't remove animals from the list in the cleanup, the list of animals keeps growing. This is a memory leak that can cause performance problems in a real app, and breaks the behavior of the app.
+**هذا خطأ إنتاجي!** بما أن callback الـ ref لا يزيل الحيوانات من القائمة في التنظيف، تستمر القائمة بالنمو. هذا تسرّب ذاكرة قد يسبب مشاكل أداء في تطبيق حقيقي، ويكسر سلوك التطبيق.
 
-The issue is the ref callback doesn't cleanup after itself:
+المشكلة أن callback الـ ref لا ينظّف نفسه:
 
 ```js {6-8}
 <li
@@ -977,7 +977,7 @@ The issue is the ref callback doesn't cleanup after itself:
 </li>
 ```
 
-Now let's wrap the original (buggy) code in `<StrictMode>`:
+الآن لِنلفّ الكود الأصلي (الخاطئ) بـ`<StrictMode>`:
 
 <Sandpack>
 
@@ -1100,9 +1100,9 @@ li {
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem**. Strict Mode runs an extra setup+cleanup cycle for every callback ref. This callback ref has no cleanup logic, so it adds refs but doesn't remove them. This is a hint that you're missing a cleanup function.
+**مع Strict Mode، ترى فورًا أن هناك مشكلة.** يشغّل Strict Mode دورة إعداد+تنظيف إضافية لكل callback ref. هذا الـ callback بلا تنظيف، فيضيف عناصر ولا يزيلها. هذا تلميح بأنك تفتقد دالة تنظيف.
 
-Strict Mode lets you eagerly find mistakes in callback refs. When you fix your callback by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the "Scroll to" bug from before:
+يساعدك Strict Mode على اكتشاف أخطاء callback refs مبكرًا. عندما تُصلح الـ callback بإضافة تنظيف في Strict Mode، *تُصلح* أيضًا أخطاء إنتاج محتملة كثيرة مثل خطأ «Scroll to» السابق:
 
 <Sandpack>
 
@@ -1226,7 +1226,7 @@ li {
 
 </Sandpack>
 
-Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, and setup again:
+الآن عند التركيب الأول في StrictMode، تُستدعى استدعاءات الـ ref كلها: إعداد، ثم تنظيف، ثم إعداد مجددًا:
 
 ```
 ...
