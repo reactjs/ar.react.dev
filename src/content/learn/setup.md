@@ -1,28 +1,28 @@
 ---
-title: Setup
+title: الإعداد
 ---
 <Intro>
 
-React integrates with tools like editors, TypeScript, browser extensions, and compilers. This section will help you get your environment set up.
+يتكامل React مع أدوات مثل المحرّرات، وTypeScript، وإضافات المتصفّح، والمُصرّفات (compilers). يساعدك هذا القسم على تهيئة بيئة العمل.
 
 </Intro>
 
-## Editor Setup {/*editor-setup*/}
+## إعداد المحرّر {/*editor-setup*/}
 
-See our [recommended editors](/learn/editor-setup) and learn how to set them up to work with React.
+راجع [المحرّرات التي ننصح بها](/learn/editor-setup) وكيفية ضبطها للعمل مع React.
 
-## Using TypeScript {/*using-typescript*/}
+## استخدام TypeScript {/*using-typescript*/}
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. [Learn how to integrate TypeScript into your React projects](/learn/typescript).
+TypeScript طريقة شائعة لإضافة أنماط الأنواع إلى مشاريع JavaScript. [تعرّف على دمج TypeScript في مشاريع React](/learn/typescript).
 
 ## React Developer Tools {/*react-developer-tools*/}
 
-React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](learn/react-developer-tools).
+React Developer Tools إضافة للمتصفّح تسمح بفحص مكوّنات React، وتعديل الـ props والحالة، واكتشاف مشاكل الأداء. طريقة التثبيت في [هذه الصفحة](learn/react-developer-tools).
 
 ## React Compiler {/*react-compiler*/}
 
-React Compiler is a tool that automatically optimizes your React app. [Learn more](/learn/react-compiler).
+React Compiler أداة تُحسِّن تطبيق React تلقائياً. [المزيد](/learn/react-compiler).
 
-## Next steps {/*next-steps*/}
+## الخطوة التالية {/*next-steps*/}
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+انتقل إلى [دليل البدء السريع](/learn) لجولة في أهم مفاهيم React التي تصادفها يومياً.

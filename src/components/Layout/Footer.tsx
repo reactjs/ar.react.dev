@@ -26,7 +26,7 @@ export function Footer() {
         <div className="col-span-2 md:col-span-1 justify-items-start mt-3.5">
           <ExternalLink
             href="https://opensource.fb.com/"
-            aria-label="Meta Open Source">
+            aria-label="ميتا للمصدر المفتوح">
             <div>
               <svg
                 width="160"
@@ -291,7 +291,7 @@ export function Footer() {
           <div
             className="text-xs text-left rtl:text-right mt-2 pe-0.5"
             dir="ltr">
-            Copyright &copy; Meta Platforms, Inc
+            حقوق النشر © Meta Platforms, Inc
           </div>
           <div
             className="uwu-visible text-xs cursor-pointer hover:text-link hover:dark:text-link-dark hover:underline"
@@ -299,7 +299,7 @@ export function Footer() {
               // @ts-ignore
               window.__setUwu(false);
             }}>
-            no uwu plz
+            بدون uwu من فضلك
           </div>
           <div
             className="uwu-hidden text-xs cursor-pointer hover:text-link hover:dark:text-link-dark hover:underline"
@@ -307,10 +307,10 @@ export function Footer() {
               // @ts-ignore
               window.__setUwu(true);
             }}>
-            uwu?
+            uwu؟
           </div>
           <div className="uwu-visible text-xs">
-            Logo by
+            شعار من تصميم
             <ExternalLink
               className="ms-1"
               href="https://twitter.com/sawaratsuki1004">
@@ -320,72 +320,72 @@ export function Footer() {
         </div>
         <div className="flex flex-col">
           <FooterLink href="/learn" isHeader={true}>
-            Learn React
+            تعلّم React
           </FooterLink>
-          <FooterLink href="/learn/">Quick Start</FooterLink>
-          <FooterLink href="/learn/installation">Installation</FooterLink>
+          <FooterLink href="/learn/">بدء سريع</FooterLink>
+          <FooterLink href="/learn/installation">التثبيت</FooterLink>
           <FooterLink href="/learn/describing-the-ui">
-            Describing the UI
+            وصف واجهة المستخدم
           </FooterLink>
           <FooterLink href="/learn/adding-interactivity">
-            Adding Interactivity
+            إضافة التفاعلية
           </FooterLink>
-          <FooterLink href="/learn/managing-state">Managing State</FooterLink>
-          <FooterLink href="/learn/escape-hatches">Escape Hatches</FooterLink>
+          <FooterLink href="/learn/managing-state">إدارة الحالة</FooterLink>
+          <FooterLink href="/learn/escape-hatches">منافذ استثنائية</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
-            API Reference
+            مرجع API
           </FooterLink>
-          <FooterLink href="/reference/react">React APIs</FooterLink>
-          <FooterLink href="/reference/react-dom">React DOM APIs</FooterLink>
+          <FooterLink href="/reference/react">واجهات برمجة React</FooterLink>
+          <FooterLink href="/reference/react-dom">
+            واجهات برمجة React DOM
+          </FooterLink>
         </div>
         <div className="md:col-start-2 xl:col-start-4 flex flex-col">
           <FooterLink href="/community" isHeader={true}>
-            Community
+            المجتمع
           </FooterLink>
           <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
-            Code of Conduct
+            مدونة السلوك
           </FooterLink>
-          <FooterLink href="/community/team">Meet the Team</FooterLink>
+          <FooterLink href="/community/team">تعرّف على الفريق</FooterLink>
           <FooterLink href="/community/docs-contributors">
-            Docs Contributors
+            مساهمو الوثائق
           </FooterLink>
-          <FooterLink href="/community/acknowledgements">
-            Acknowledgements
-          </FooterLink>
+          <FooterLink href="/community/acknowledgements">شكر وتقدير</FooterLink>
         </div>
         <div className="flex flex-col">
-          <FooterLink isHeader={true}>More</FooterLink>
-          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink isHeader={true}>المزيد</FooterLink>
+          <FooterLink href="/blog">المدوّنة</FooterLink>
           <FooterLink href="https://reactnative.dev/">React Native</FooterLink>
           <FooterLink href="https://opensource.facebook.com/legal/privacy">
-            Privacy
+            الخصوصية
           </FooterLink>
           <FooterLink href="https://opensource.fb.com/legal/terms/">
-            Terms
+            الشروط
           </FooterLink>
           <div className="flex flex-row items-center mt-8 gap-x-2">
             <ExternalLink
-              aria-label="React on Facebook"
+              aria-label="React على Facebook"
               href="https://www.facebook.com/react"
               className={socialLinkClasses}>
               <IconFacebookCircle />
             </ExternalLink>
             <ExternalLink
-              aria-label="React on Twitter"
+              aria-label="React على X"
               href="https://twitter.com/reactjs"
               className={socialLinkClasses}>
               <IconTwitter />
             </ExternalLink>
             <ExternalLink
-              aria-label="React on Bluesky"
+              aria-label="React على Bluesky"
               href="https://bsky.app/profile/react.dev"
               className={socialLinkClasses}>
               <IconBsky />
             </ExternalLink>
             <ExternalLink
-              aria-label="React on Github"
+              aria-label="React على GitHub"
               href="https://github.com/facebook/react"
               className={socialLinkClasses}>
               <IconGitHub />
