@@ -4,7 +4,7 @@ title: gating
 
 <Intro>
 
-The `gating` option enables conditional compilation, allowing you to control when optimized code is used at runtime.
+يُمكّن خيار `gating` التجميع الشرطي، فتتحكم في وقت استخدام الشيفرة المُحسَّنة وقت التشغيل.
 
 </Intro>
 
@@ -21,13 +21,13 @@ The `gating` option enables conditional compilation, allowing you to control whe
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `gating` {/*gating*/}
 
-Configures runtime feature flag gating for compiled functions.
+يضبط تفعيل ميزات وقت التشغيل (gating) للدوال المُجمَّعة.
 
-#### Type {/*type*/}
+#### النوع {/*type*/}
 
 ```
 {
@@ -36,38 +36,38 @@ Configures runtime feature flag gating for compiled functions.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### القيمة الافتراضية {/*default-value*/}
 
 `null`
 
-#### Properties {/*properties*/}
+#### الخصائص {/*properties*/}
 
-- **`source`**: Module path to import the feature flag from
-- **`importSpecifierName`**: Name of the exported function to import
+- **`source`**: مسار الوحدة لاستيراد دالة الميزة منها
+- **`importSpecifierName`**: اسم الدالة المُصدَرة المطلوب استيرادها
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- The gating function must return a boolean
-- Both compiled and original versions increase bundle size
-- The import is added to every file with compiled functions
+- يجب أن تُرجِع دالة gating قيمة منطقية
+- النسختان المُجمَّعة والأصلية تزيدان حجم الحزمة
+- يُضاف الاستيراد إلى كل ملف فيه دوال مُجمَّعة
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Basic feature flag setup {/*basic-setup*/}
+### إعداد أساسي لميزة {/*basic-setup*/}
 
-1. Create a feature flag module:
+1. أنشئ وحدة ميزات:
 
 ```js
 // src/utils/feature-flags.js
 export function shouldUseCompiler() {
-  // your logic here
+  // منطقك هنا
   return getFeatureFlag('react-compiler-enabled');
 }
 ```
 
-2. Configure the compiler:
+2. اضبط المُصرّف:
 
 ```js
 {
@@ -78,62 +78,62 @@ export function shouldUseCompiler() {
 }
 ```
 
-3. The compiler generates gated code:
+3. يُولّد المُصرّف شيفرة مع gating:
 
 ```js
-// Input
+// المدخلات
 function Button(props) {
   return <button>{props.label}</button>;
 }
 
-// Output (simplified)
+// المخرجات (مبسّطة)
 import { shouldUseCompiler } from './src/utils/feature-flags';
 
 const Button = shouldUseCompiler()
-  ? function Button_optimized(props) { /* compiled version */ }
-  : function Button_original(props) { /* original version */ };
+  ? function Button_optimized(props) { /* نسخة مُجمَّعة */ }
+  : function Button_original(props) { /* نسخة أصلية */ };
 ```
 
-Note that the gating function is evaluated once at module time, so once the JS bundle has been parsed and evaluated the choice of component stays static for the rest of the browser session.
+تُقيَّم دالة gating مرة عند تحميل الوحدة، لذا بعد تحليل حزمة JS وتقييمها يبقى اختيار المكوّن ثابتاً طوال جلسة المتصفّح.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Feature flag not working {/*flag-not-working*/}
+### الميزة لا تعمل {/*flag-not-working*/}
 
-Verify your flag module exports the correct function:
+تحقق أن الوحدة تُصدِر الدالة الصحيحة:
 
 ```js
-// ❌ Wrong: Default export
+// ❌ خطأ: تصدير افتراضي
 export default function shouldUseCompiler() {
   return true;
 }
 
-// ✅ Correct: Named export matching importSpecifierName
+// ✅ صحيح: تصدير مُسمّى يطابق importSpecifierName
 export function shouldUseCompiler() {
   return true;
 }
 ```
 
-### Import errors {/*import-errors*/}
+### أخطاء استيراد {/*import-errors*/}
 
-Ensure the source path is correct:
+تأكد من صحة مسار `source`:
 
 ```js
-// ❌ Wrong: Relative to babel.config.js
+// ❌ خطأ: نسبي إلى babel.config.js
 {
   source: './src/flags',
   importSpecifierName: 'flag'
 }
 
-// ✅ Correct: Module resolution path
+// ✅ صحيح: مسار يحلّه المحلّل
 {
   source: '@myapp/feature-flags',
   importSpecifierName: 'flag'
 }
 
-// ✅ Also correct: Absolute path from project root
+// ✅ صحيح أيضاً: مسار مطلق من جذر المشروع
 {
   source: './src/utils/flags',
   importSpecifierName: 'flag'

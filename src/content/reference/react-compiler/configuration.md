@@ -1,16 +1,16 @@
 ---
-title: Configuration
+title: الإعداد
 ---
 
 <Intro>
 
-This page lists all configuration options available in React Compiler.
+تسرد هذه الصفحة كل خيارات إعداد React Compiler المتاحة.
 
 </Intro>
 
 <Note>
 
-For most apps, the default options should work out of the box. If you have a special need, you can use these advanced options.
+في أغلب التطبيقات، الخيارات الافتراضية كافية دون تعديل. إن كان لديك حاجة خاصة، استخدم هذه الخيارات المتقدمة.
 
 </Note>
 
@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     [
       'babel-plugin-react-compiler', {
-        // compiler options
+        // خيارات المُصرّف
       }
     ]
   ]
@@ -29,55 +29,55 @@ module.exports = {
 
 ---
 
-## Compilation Control {/*compilation-control*/}
+## التحكّم في التجميع {/*compilation-control*/}
 
-These options control *what* the compiler optimizes and *how* it selects components and hooks to compile.
+تتحكم هذه الخيارات في *ما* يُحسّنه المُصرّف و*كيف* يختار المكوّنات والـ hooks المراد تجميعها.
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) controls the strategy for selecting functions to compile (e.g., all functions, only annotated ones, or intelligent detection).
+* [`compilationMode`](/reference/react-compiler/compilationMode) يحدد استراتيجية اختيار الدوال للتجميع (مثلاً: كل الدوال، أو الموسومة فقط، أو الاستنتاج الذكي).
 
 ```js
 {
-  compilationMode: 'annotation' // Only compile "use memo" functions
+  compilationMode: 'annotation' // تجميع دوال «use memo» فقط
 }
 ```
 
 ---
 
-## Version Compatibility {/*version-compatibility*/}
+## توافق الإصدارات {/*version-compatibility*/}
 
-React version configuration ensures the compiler generates code compatible with your React version.
+يضمن إعداد إصدار React أن يُولّد المُصرّف شيفرة متوافقة مع إصدار React لديك.
 
-[`target`](/reference/react-compiler/target) specifies which React version you're using (17, 18, or 19).
+[`target`](/reference/react-compiler/target) يحدد إصدار React الذي تستخدمه (17 أو 18 أو 19).
 
 ```js
-// For React 18 projects
+// لمشاريع React 18
 {
-  target: '18' // Also requires react-compiler-runtime package
+  target: '18' // يتطلب أيضاً حزمة react-compiler-runtime
 }
 ```
 
 ---
 
-## Error Handling {/*error-handling*/}
+## التعامل مع الأخطاء {/*error-handling*/}
 
-These options control how the compiler responds to code that doesn't follow the [Rules of React](/reference/rules).
+تتحكم هذه الخيارات في ردّ المُصرّف على شيفرة لا تتبع [قواعد React](/reference/rules).
 
-[`panicThreshold`](/reference/react-compiler/panicThreshold) determines whether to fail the build or skip problematic components.
+[`panicThreshold`](/reference/react-compiler/panicThreshold) يحدد ما إذا كان يجب إفشال البناء أو تخطّي المكوّنات المشكِلة.
 
 ```js
-// Recommended for production
+// موصى به للإنتاج
 {
-  panicThreshold: 'none' // Skip components with errors instead of failing the build
+  panicThreshold: 'none' // تخطّي المكوّنات ذات الأخطاء بدل إيقاف البناء
 }
 ```
 
 ---
 
-## Debugging {/*debugging*/}
+## التصحيح {/*debugging*/}
 
-Logging and analysis options help you understand what the compiler is doing.
+خيارات التسجيل والتحليل تساعدك على فهم ما يفعله المُصرّف.
 
-[`logger`](/reference/react-compiler/logger) provides custom logging for compilation events.
+[`logger`](/reference/react-compiler/logger) يوفّر تسجيلاً مخصّصاً لأحداث التجميع.
 
 ```js
 {
@@ -93,11 +93,11 @@ Logging and analysis options help you understand what the compiler is doing.
 
 ---
 
-## Feature Flags {/*feature-flags*/}
+## ميزات التفعيل (Feature flags) {/*feature-flags*/}
 
-Conditional compilation lets you control when optimized code is used.
+التجميع الشرطي يتيح لك التحكّم في وقت استخدام الشيفرة المُحسَّنة.
 
-[`gating`](/reference/react-compiler/gating) enables runtime feature flags for A/B testing or gradual rollouts.
+[`gating`](/reference/react-compiler/gating) يفعّل ميزات وقت التشغيل لاختبار A/B أو الطرح التدريجي.
 
 ```js
 {
@@ -110,11 +110,11 @@ Conditional compilation lets you control when optimized code is used.
 
 ---
 
-## Common Configuration Patterns {/*common-patterns*/}
+## أنماط إعداد شائعة {/*common-patterns*/}
 
-### Default configuration {/*default-configuration*/}
+### الإعداد الافتراضي {/*default-configuration*/}
 
-For most React 19 applications, the compiler works without configuration:
+في أغلب تطبيقات React 19 يعمل المُصرّف دون إعداد:
 
 ```js
 // babel.config.js
@@ -125,9 +125,9 @@ module.exports = {
 };
 ```
 
-### React 17/18 projects {/*react-17-18*/}
+### مشاريع React 17/18 {/*react-17-18*/}
 
-Older React versions need the runtime package and target configuration:
+إصدارات React الأقدم تحتاج حزمة التشغيل وإعداد `target`:
 
 ```bash
 npm install react-compiler-runtime@latest
@@ -135,17 +135,16 @@ npm install react-compiler-runtime@latest
 
 ```js
 {
-  target: '18' // or '17'
+  target: '18' // أو '17'
 }
 ```
 
-### Incremental adoption {/*incremental-adoption*/}
+### التبنّي التدريجي {/*incremental-adoption*/}
 
-Start with specific directories and expand gradually:
+ابدأ بمجلدات محدّدة وتوسّع تدريجياً:
 
 ```js
 {
-  compilationMode: 'annotation' // Only compile "use memo" functions
+  compilationMode: 'annotation' // تجميع دوال «use memo» فقط
 }
 ```
-

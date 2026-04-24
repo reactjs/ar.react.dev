@@ -4,7 +4,7 @@ title: logger
 
 <Intro>
 
-The `logger` option provides custom logging for React Compiler events during compilation.
+يوفّر خيار `logger` تسجيلاً مخصّصاً لأحداث React Compiler أثناء التجميع.
 
 </Intro>
 
@@ -22,13 +22,13 @@ The `logger` option provides custom logging for React Compiler events during com
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `logger` {/*logger*/}
 
-Configures custom logging to track compiler behavior and debug issues.
+يضبط تسجيلاً مخصّصاً لتتبّع سلوك المُصرّف وتصحيح المشاكل.
 
-#### Type {/*type*/}
+#### النوع {/*type*/}
 
 ```
 {
@@ -36,35 +36,35 @@ Configures custom logging to track compiler behavior and debug issues.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### القيمة الافتراضية {/*default-value*/}
 
 `null`
 
-#### Methods {/*methods*/}
+#### الدوال {/*methods*/}
 
-- **`logEvent`**: Called for each compiler event with the filename and event details
+- **`logEvent`**: تُستدعى لكل حدث تجميع مع اسم الملف وتفاصيل الحدث
 
-#### Event types {/*event-types*/}
+#### أنواع الأحداث {/*event-types*/}
 
-- **`CompileSuccess`**: Function successfully compiled
-- **`CompileError`**: Function skipped due to errors
-- **`CompileDiagnostic`**: Non-fatal diagnostic information
-- **`CompileSkip`**: Function skipped for other reasons
-- **`PipelineError`**: Unexpected compilation error
-- **`Timing`**: Performance timing information
+- **`CompileSuccess`**: نجح تجميع الدالة
+- **`CompileError`**: تُرِكت الدالة بسبب أخطاء
+- **`CompileDiagnostic`**: معلومات تشخيصية غير قاتلة
+- **`CompileSkip`**: تُرِكت الدالة لأسباب أخرى
+- **`PipelineError`**: خطأ تجميع غير متوقع
+- **`Timing`**: معلومات توقيت الأداء
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- Event structure may change between versions
-- Large codebases generate many log entries
+- قد يتغيّر شكل الحدث بين الإصدارات
+- القواعد الكبيرة تُولّد عدداً كبيراً من السجلات
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Basic logging {/*basic-logging*/}
+### تسجيل أساسي {/*basic-logging*/}
 
-Track compilation success and failures:
+تتبّع نجاح التجميع والفشل:
 
 ```js
 {
@@ -86,9 +86,9 @@ Track compilation success and failures:
 }
 ```
 
-### Detailed error logging {/*detailed-error-logging*/}
+### تسجيل أخطاء مفصّل {/*detailed-error-logging*/}
 
-Get specific information about compilation failures:
+احصل على تفاصيل فشل التجميع:
 
 ```js
 {
@@ -115,4 +115,3 @@ Get specific information about compilation failures:
   }
 }
 ```
-

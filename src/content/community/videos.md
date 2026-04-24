@@ -1,152 +1,152 @@
 ---
-title: React Videos
+title: فيديوهات React
 ---
 
 <Intro>
 
-Videos dedicated to the discussion of React and the React ecosystem.
+فيديوهات مخصّصة لمناقشة React ونظامه البيئي.
 
 </Intro>
 
 ## React Conf 2024 {/*react-conf-2024*/}
 
-At React Conf 2024, Meta CTO [Andrew "Boz" Bosworth](https://www.threads.net/@boztank) shared a welcome message to kick off the conference:
+في React Conf 2024، شارك CTO في Meta [Andrew «Boz» Bosworth](https://www.threads.net/@boztank) رسالة ترحيب لافتتاح المؤتمر:
 
-<YouTubeIframe src="https://www.youtube.com/embed/T8TZQ6k4SLE?t=975s" title="Boz and Seth Intro" />
+<YouTubeIframe src="https://www.youtube.com/embed/T8TZQ6k4SLE?t=975s" title="مقدمة Boz وSeth" />
 
-### React 19 Keynote {/*react-19-keynote*/}
+### كلمة React 19 الرئيسية {/*react-19-keynote*/}
 
-In the Day 1 keynote, we shared vision for React starting with React 19 and the React Compiler. Watch the full keynote from [Joe Savona](https://twitter.com/en_JS), [Lauren Tan](https://twitter.com/potetotes), [Andrew Clark](https://twitter.com/acdlite), [Josh Story](https://twitter.com/joshcstory), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei):
+في الكلمة الرئيسية ليومنا الأول، عرضنا رؤيتنا لـ React بدءاً من React 19 وReact Compiler. شاهد الكلمة كاملة من [Joe Savona](https://twitter.com/en_JS)، [Lauren Tan](https://twitter.com/potetotes)، [Andrew Clark](https://twitter.com/acdlite)، [Josh Story](https://twitter.com/joshcstory)، [Sathya Gunasekaran](https://twitter.com/_gsathya)، و[Mofei Zhang](https://twitter.com/zmofei):
 
 
-<YouTubeIframe src="https://www.youtube.com/embed/lyEKhv8-3n0" title="YouTube video player" />
+<YouTubeIframe src="https://www.youtube.com/embed/lyEKhv8-3n0" title="مشغّل فيديو يوتيوب" />
 
-### React Unpacked: A Roadmap to React 19 {/*react-unpacked-a-roadmap-to-react-19*/}
+### React Unpacked: خارطة طريق إلى React 19 {/*react-unpacked-a-roadmap-to-react-19*/}
 
-React 19 introduced new features including Actions, `use()`, `useOptimistic` and more. For a deep dive on using new features in React 19, see [Sam Selikoff's](https://twitter.com/samselikoff) talk:
+قدّم React 19 ميزات جديدة منها Actions و`use()` و`useOptimistic` وغيرها. لاستكشاف أعمق لاستخدام الميزات الجديدة في React 19، شاهد محاضرة [Sam Selikoff](https://twitter.com/samselikoff):
 
-<YouTubeIframe src="https://www.youtube.com/embed/R0B2HsSM78s" title="React Unpacked: A Roadmap to React 19" />
+<YouTubeIframe src="https://www.youtube.com/embed/R0B2HsSM78s" title="React Unpacked: خارطة طريق إلى React 19" />
 
-### What's New in React 19 {/*whats-new-in-react-19*/}
+### ما الجديد في React 19 {/*whats-new-in-react-19*/}
 
-[Lydia Hallie](https://twitter.com/lydiahallie) gave a visual deep dive of React 19's new features:
+قدّمت [Lydia Hallie](https://twitter.com/lydiahallie) جولة بصرية في ميزات React 19:
 
-<YouTubeIframe src="https://www.youtube.com/embed/AJOGzVygGcY" title="What's New in React 19" />
+<YouTubeIframe src="https://www.youtube.com/embed/AJOGzVygGcY" title="ما الجديد في React 19" />
 
-### React 19 Deep Dive: Coordinating HTML {/*react-19-deep-dive-coordinating-html*/}
+### React 19 بعمق: تنسيق HTML {/*react-19-deep-dive-coordinating-html*/}
 
-[Josh Story](https://twitter.com/joshcstory) provided a deep dive on the document and resource streaming APIs in React 19:
+قدّم [Josh Story](https://twitter.com/joshcstory) تعمقاً في واجهات بث المستند والموارد في React 19:
 
-<YouTubeIframe src="https://www.youtube.com/embed/IBBN-s77YSI" title="React 19 Deep Dive: Coordinating HTML" />
+<YouTubeIframe src="https://www.youtube.com/embed/IBBN-s77YSI" title="React 19 بعمق: تنسيق HTML" />
 
-### React for Two Computers {/*react-for-two-computers*/}
+### React لحاسوبين {/*react-for-two-computers*/}
 
-[Dan Abramov](https://bsky.app/profile/danabra.mov) imagined an alternate history where React started server-first:
+تخيّل [Dan Abramov](https://bsky.app/profile/danabra.mov) تاريخاً بديلاً لو بدأ React من الخادم أولاً:
 
-<YouTubeIframe src="https://www.youtube.com/embed/ozI4V_29fj4" title="React for Two Computers" />
+<YouTubeIframe src="https://www.youtube.com/embed/ozI4V_29fj4" title="React لحاسوبين" />
 
 ### Forget About Memo {/*forget-about-memo*/}
 
-[Lauren Tan](https://twitter.com/potetotes) gave a talk on using the React Compiler in practice:
+قدّمت [Lauren Tan](https://twitter.com/potetotes) محاضرة عن استخدام React Compiler عملياً:
 
 <YouTubeIframe src="https://www.youtube.com/embed/lvhPq5chokM" title="Forget About Memo" />
 
-### React Compiler Deep Dive {/*react-compiler-deep-dive*/}
+### تعمق في React Compiler {/*react-compiler-deep-dive*/}
 
-[Sathya Gunasekaran](https://twitter.com/_gsathya) and [Mofei Zhang](https://twitter.com/zmofei) provided a deep dive on how the React Compiler works:
+قدّم [Sathya Gunasekaran](https://twitter.com/_gsathya) و[Mofei Zhang](https://twitter.com/zmofei) تعمقاً في آلية عمل React Compiler:
 
-<YouTubeIframe src="https://www.youtube.com/embed/uA_PVyZP7AI" title="React Compiler Deep Dive" />
+<YouTubeIframe src="https://www.youtube.com/embed/uA_PVyZP7AI" title="تعمق في React Compiler" />
 
-### And more... {/*and-more-2024*/}
+### والمزيد… {/*and-more-2024*/}
 
-**We also heard talks from the community on Server Components:**
-* [Enhancing Forms with React Server Components](https://www.youtube.com/embed/0ckOUBiuxVY&t=25280s) by [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
-* [And Now You Understand React Server Components](https://www.youtube.com/embed/pOo7x8OiAec) by [Kent C. Dodds](https://twitter.com/kentcdodds)
-* [Real-time Server Components](https://www.youtube.com/embed/6sMANTHWtLM) by [Sunil Pai](https://twitter.com/threepointone)
+**محاضرات من المجتمع عن مكوّنات الخادم:**
+* [Enhancing Forms with React Server Components](https://www.youtube.com/embed/0ckOUBiuxVY&t=25280s) — [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
+* [And Now You Understand React Server Components](https://www.youtube.com/embed/pOo7x8OiAec) — [Kent C. Dodds](https://twitter.com/kentcdodds)
+* [Real-time Server Components](https://www.youtube.com/embed/6sMANTHWtLM) — [Sunil Pai](https://twitter.com/threepointone)
 
-**Talks from React frameworks using new features:**
+**محاضرات من أطر React تستخدم الميزات الجديدة:**
 
-* [Vanilla React](https://www.youtube.com/embed/ZcwA0xt8FlQ) by [Ryan Florence](https://twitter.com/ryanflorence)
-* [React Rhythm & Blues](https://www.youtube.com/embed/rs9X5MjvC4s) by [Lee Robinson](https://twitter.com/leeerob)
-* [RedwoodJS, now with React Server Components](https://www.youtube.com/embed/sjyY4MTECUU) by [Amy Dutton](https://twitter.com/selfteachme)
-* [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/embed/djhEgxQf3Kw) by [Evan Bacon](https://twitter.com/Baconbrix)
+* [Vanilla React](https://www.youtube.com/embed/ZcwA0xt8FlQ) — [Ryan Florence](https://twitter.com/ryanflorence)
+* [React Rhythm & Blues](https://www.youtube.com/embed/rs9X5MjvC4s) — [Lee Robinson](https://twitter.com/leeerob)
+* [RedwoodJS, now with React Server Components](https://www.youtube.com/embed/sjyY4MTECUU) — [Amy Dutton](https://twitter.com/selfteachme)
+* [Introducing Universal React Server Components in Expo Router](https://www.youtube.com/embed/djhEgxQf3Kw) — [Evan Bacon](https://twitter.com/Baconbrix)
 
-**And Q&As with the React and React Native teams:**
-- [React Q&A](https://www.youtube.com/embed/T8TZQ6k4SLE&t=27518s) hosted by [Michael Chan](https://twitter.com/chantastic)
-- [React Native Q&A](https://www.youtube.com/embed/0ckOUBiuxVY&t=27935s) hosted by [Jamon Holmgren](https://twitter.com/jamonholmgren)
+**جلسات أسئلة مع فرق React وReact Native:**
+- [React Q&A](https://www.youtube.com/embed/T8TZQ6k4SLE&t=27518s) — يقدّمها [Michael Chan](https://twitter.com/chantastic)
+- [React Native Q&A](https://www.youtube.com/embed/0ckOUBiuxVY&t=27935s) — يقدّمها [Jamon Holmgren](https://twitter.com/jamonholmgren)
 
-You can watch all of the talks at React Conf 2024 at [conf2024.react.dev](https://conf2024.react.dev/talks).
+يمكنك مشاهدة كل محاضرات React Conf 2024 على [conf2024.react.dev](https://conf2024.react.dev/talks).
 
 ## React Conf 2021 {/*react-conf-2021*/}
 
-### React 18 Keynote {/*react-18-keynote*/}
+### كلمة React 18 الرئيسية {/*react-18-keynote*/}
 
-In the keynote, we shared our vision for the future of React starting with React 18.
+في الكلمة الرئيسية، شاركنا رؤيتنا لمستقبل React بدءاً من React 18.
 
-Watch the full keynote from [Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes), and [Rick Hanlon](https://twitter.com/rickhanlonii) here:
+شاهد الكلمة كاملة من [Andrew Clark](https://twitter.com/acdlite)، [Juan Tejada](https://twitter.com/_jstejada)، [Lauren Tan](https://twitter.com/potetotes)، و[Rick Hanlon](https://twitter.com/rickhanlonii):
 
-<YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="React 18 Keynote" />
+<YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="كلمة React 18 الرئيسية" />
 
-### React 18 for Application Developers {/*react-18-for-application-developers*/}
+### React 18 لمطوّري التطبيقات {/*react-18-for-application-developers*/}
 
-For a demo of upgrading to React 18, see [Shruti Kapoor](https://twitter.com/shrutikapoor08)’s talk here:
+لعرض توضيحي للترقية إلى React 18، شاهد محاضرة [Shruti Kapoor](https://twitter.com/shrutikapoor08):
 
-<YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" title="React 18 for Application Developers" />
+<YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" title="React 18 لمطوّري التطبيقات" />
 
-### Streaming Server Rendering with Suspense {/*streaming-server-rendering-with-suspense*/}
+### تصيير الخادم المتدفق مع Suspense {/*streaming-server-rendering-with-suspense*/}
 
-React 18 also includes improvements to server-side rendering performance using Suspense.
+يتضمّن React 18 أيضاً تحسينات على أداء التصيير على الخادم باستخدام Suspense.
 
-Streaming server rendering lets you generate HTML from React components on the server, and stream that HTML to your users. In React 18, you can use `Suspense` to break down your app into smaller independent units which can be streamed independently of each other without blocking the rest of the app. This means users will see your content sooner and be able to start interacting with it much faster.
+يتيح التصيير المتدفق على الخادم توليد HTML من مكوّنات React على الخادم وإرساله متدفقاً للمستخدمين. في React 18 يمكنك استخدام `Suspense` لتقسيم التطبيق إلى وحدات أصغر مستقلة تُبثّ دون حجب بقية التطبيق. يعني ذلك أن المستخدمين يرون المحتوى أسرع ويتفاعلون معه أسرع.
 
-For a deep dive, see [Shaundai Person](https://twitter.com/shaundai)’s talk here:
+للتعمق، شاهد محاضرة [Shaundai Person](https://twitter.com/shaundai):
 
-<YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="Streaming Server Rendering with Suspense" />
+<YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="تصيير الخادم المتدفق مع Suspense" />
 
-### The first React working group {/*the-first-react-working-group*/}
+### أول مجموعة عمل React {/*the-first-react-working-group*/}
 
-For React 18, we created our first Working Group to collaborate with a panel of experts, developers, library maintainers, and educators. Together we worked to create our gradual adoption strategy and refine new APIs such as `useId`, `useSyncExternalStore`, and `useInsertionEffect`.
+لـ React 18 أنشأنا أول مجموعة عمل للتعاون مع خبراء ومطوّرين وصيانة مكتبات ومعلّمين. عملنا معاً على استراتيجية التبنّي التدريجي وصقل واجهات برمجية جديدة مثل `useId` و`useSyncExternalStore` و`useInsertionEffect`.
 
-For an overview of this work, see [Aakansha' Doshi](https://twitter.com/aakansha1216)'s talk:
+لنظرة عامة على هذا العمل، شاهد محاضرة [Aakansha' Doshi](https://twitter.com/aakansha1216):
 
-<YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" title="The first React working group" />
+<YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" title="أول مجموعة عمل React" />
 
-### React Developer Tooling {/*react-developer-tooling*/}
+### أدوات مطوري React {/*react-developer-tooling*/}
 
-To support the new features in this release, we also announced the newly formed React DevTools team and a new Timeline Profiler to help developers debug their React apps.
+لدعم الميزات في هذا الإصدار، أعلنا عن فريق React DevTools الجديد وملف زمني Timeline Profiler جديد لمساعدة المطوّرين على تصحيح تطبيقات React.
 
-For more information and a demo of new DevTools features, see [Brian Vaughn](https://twitter.com/brian_d_vaughn)’s talk:
+لمزيد من المعلومات وعرض توضيحي لميزات DevTools الجديدة، شاهد محاضرة [Brian Vaughn](https://twitter.com/brian_d_vaughn):
 
-<YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="React Developer Tooling" />
+<YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="أدوات مطوري React" />
 
-### React without memo {/*react-without-memo*/}
+### React بدون memo {/*react-without-memo*/}
 
-Looking further into the future, [Xuan Huang (黄玄)](https://twitter.com/Huxpro) shared an update from our React Labs research into an auto-memoizing compiler. Check out this talk for more information and a demo of the compiler prototype:
+نظراً للمستقبل، شارك [Xuan Huang (黄玄)](https://twitter.com/Huxpro) تحديثاً من React Labs حول مُصرّف يذكّر تلقائياً. شاهد المحاضرة لمزيد من التفاصيل وعرض للنموذج الأولي:
 
-<YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="React without memo" />
+<YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="React بدون memo" />
 
-### React docs keynote {/*react-docs-keynote*/}
+### كلمة توثيق React {/*react-docs-keynote*/}
 
-[Rachel Nabors](https://twitter.com/rachelnabors) kicked off a section of talks about learning and designing with React with a keynote about our investment in React's new docs ([now shipped as react.dev](/blog/2023/03/16/introducing-react-dev)):
+[Rachel Nabors](https://twitter.com/rachelnabors) افتتحت قسماً من المحاضرات عن التعلّم والتصميم مع React بكلمة عن استثمارنا في توثيق React الجديد ([المنشور الآن على react.dev](/blog/2023/03/16/introducing-react-dev)):
 
-<YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" title="React docs keynote" />
+<YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" title="كلمة توثيق React" />
 
-### And more... {/*and-more*/}
+### والمزيد… {/*and-more*/}
 
-**We also heard talks on learning and designing with React:**
+**محاضرات عن التعلّم والتصميم مع React:**
 
 * Debbie O'Brien: [Things I learnt from the new React docs](https://youtu.be/-7odLW_hG7s).
 * Sarah Rainsberger: [Learning in the Browser](https://youtu.be/5X-WEQflCL0).
 * Linton Ye: [The ROI of Designing with React](https://youtu.be/7cPWmID5XAk).
 * Delba de Oliveira: [Interactive playgrounds with React](https://youtu.be/zL8cz2W0z34).
 
-**Talks from the Relay, React Native, and PyTorch teams:**
+**محاضرات من فرق Relay وReact Native وPyTorch:**
 
 * Robert Balicki: [Re-introducing Relay](https://youtu.be/lhVGdErZuN4).
-* Eric Rozell and Steven Moyes: [React Native Desktop](https://youtu.be/9L4FFrvwJwY).
+* Eric Rozell وSteven Moyes: [React Native Desktop](https://youtu.be/9L4FFrvwJwY).
 * Roman Rädle: [On-device Machine Learning for React Native](https://youtu.be/NLj73vrc2I8)
 
-**And talks from the community on accessibility, tooling, and Server Components:**
+**ومحاضرات من المجتمع عن إمكانية الوصول والأدوات ومكوّنات الخادم:**
 
 * Daishi Kato: [React 18 for External Store Libraries](https://youtu.be/oPfSC5bQPR8).
 * Diego Haz: [Building Accessible Components in React 18](https://youtu.be/dcm8fjBfro8).
@@ -154,39 +154,39 @@ Looking further into the future, [Xuan Huang (黄玄)](https://twitter.com/Huxpr
 * Lyle Troxell: [UI tools for artists](https://youtu.be/b3l4WxipFsE).
 * Helen Lin: [Hydrogen + React 18](https://youtu.be/HS6vIYkSNks).
 
-## Older videos {/*older-videos*/}
+## فيديوهات أقدم {/*older-videos*/}
 
 ### React Conf 2019 {/*react-conf-2019*/}
 
-A playlist of videos from React Conf 2019.
+قائمة تشغيل من React Conf 2019.
 <YouTubeIframe title="React Conf 2019" src="https://www.youtube-nocookie.com/embed/playlist?list=PLPxbbTqCLbGHPxZpw4xj_Wwg8-fdNxJRh" />
 
 ### React Conf 2018 {/*react-conf-2018*/}
 
-A playlist of videos from React Conf 2018.
+قائمة تشغيل من React Conf 2018.
 <YouTubeIframe title="React Conf 2018" src="https://www.youtube-nocookie.com/embed/playlist?list=PLPxbbTqCLbGE5AihOSExAa4wUM-P42EIJ" />
 
 ### React.js Conf 2017 {/*reactjs-conf-2017*/}
 
-A playlist of videos from React.js Conf 2017.
+قائمة تشغيل من React.js Conf 2017.
 <YouTubeIframe title="React.js Conf 2017" src="https://www.youtube-nocookie.com/embed/playlist?list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0" />
 
 ### React.js Conf 2016 {/*reactjs-conf-2016*/}
 
-A playlist of videos from React.js Conf 2016.
+قائمة تشغيل من React.js Conf 2016.
 <YouTubeIframe title="React.js Conf 2016" src="https://www.youtube-nocookie.com/embed/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY" />
 
 ### React.js Conf 2015 {/*reactjs-conf-2015*/}
 
-A playlist of videos from React.js Conf 2015.
+قائمة تشغيل من React.js Conf 2015.
 <YouTubeIframe title="React.js Conf 2015" src="https://www.youtube-nocookie.com/embed/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr" />
 
-### Rethinking Best Practices {/*rethinking-best-practices*/}
+### إعادة التفكير في أفضل الممارسات {/*rethinking-best-practices*/}
 
-Pete Hunt's talk at JSConf EU 2013 covers three topics: throwing out the notion of templates and building views with JavaScript, “re-rendering” your entire application when your data changes, and a lightweight implementation of the DOM and events - (2013 - 0h30m).
+محاضرة Pete Hunt في JSConf EU 2013 تغطي ثلاثة مواضيع: التخلي عن قوالب وبناء العروض بـ JavaScript، «إعادة تصيير» التطبيق كاملاً عند تغيّر البيانات، وتنفيذ خفيف للـ DOM والأحداث — (2013 - 30 دقيقة).
 <YouTubeIframe title="Pete Hunt: React: Rethinking Best Practices - JSConf EU 2013" src="https://www.youtube-nocookie.com/embed/x7cQ3mrcKaY" />
 
-### Introduction to React {/*introduction-to-react*/}
+### مقدّمة إلى React {/*introduction-to-react*/}
 
-Tom Occhino and Jordan Walke introduce React at Facebook Seattle - (2013 - 1h20m).
+Tom Occhino وJordan Walke يقدّمان React في Facebook Seattle — (2013 - ساعة و20 دقيقة).
 <YouTubeIframe title="Tom Occhino and Jordan Walke introduce React at Facebook Seattle" src="https://www.youtube-nocookie.com/embed/XxVg_s8xAms" />

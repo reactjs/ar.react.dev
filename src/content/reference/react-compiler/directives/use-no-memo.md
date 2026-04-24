@@ -1,11 +1,11 @@
 ---
 title: "use no memo"
-titleForTitleTag: "'use no memo' directive"
+titleForTitleTag: "توجيه 'use no memo'"
 ---
 
 <Intro>
 
-`"use no memo"` prevents a function from being optimized by React Compiler.
+`"use no memo"` يمنع React Compiler من تحسين دالة معيّنة.
 
 </Intro>
 
@@ -13,11 +13,11 @@ titleForTitleTag: "'use no memo' directive"
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `"use no memo"` {/*use-no-memo*/}
 
-Add `"use no memo"` at the beginning of a function to prevent React Compiler optimization.
+أضف `"use no memo"` في بداية الدالة لمنع تحسين React Compiler.
 
 ```js {1}
 function MyComponent() {
@@ -26,122 +26,122 @@ function MyComponent() {
 }
 ```
 
-When a function contains `"use no memo"`, the React Compiler will skip it entirely during optimization. This is useful as a temporary escape hatch when debugging or when dealing with code that doesn't work correctly with the compiler.
+عندما تحتوي الدالة على `"use no memo"`، يتخطّاها المُصرّف بالكامل أثناء التحسين. مفيد كمخرج طارئ مؤقت أثناء التصحيح أو مع شيفرة لا تعمل جيداً مع المُصرّف.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* `"use no memo"` must be at the very beginning of a function body, before any imports or other code (comments are OK).
-* The directive must be written with double or single quotes, not backticks.
-* The directive must exactly match `"use no memo"` or its alias `"use no forget"`.
-* This directive takes precedence over all compilation modes and other directives.
-* It's intended as a temporary debugging tool, not a permanent solution.
+* يجب أن يكون `"use no memo"` في بداية جسم الدالة قبل أي شيفرة أخرى (التعليقات مسموحة).
+* يُكتب بعلامتي اقتباس مزدوجتين أو مفردتين، لا بفواصل خلفية.
+* يجب أن يطابق حرفياً `"use no memo"` أو الاسم المستعار `"use no forget"`.
+* لهذا التوجيه أسبقية على كل أوضاع التجميع والتوجيهات الأخرى.
+* مخصّص كأداة تصحيح مؤقتة، وليس حلاً دائماً.
 
-### How `"use no memo"` opts-out of optimization {/*how-use-no-memo-opts-out*/}
+### كيف يستبعد `"use no memo"` التحسين {/*how-use-no-memo-opts-out*/}
 
-React Compiler analyzes your code at build time to apply optimizations. `"use no memo"` creates an explicit boundary that tells the compiler to skip a function entirely.
+يحلّل React Compiler شيفرتك وقت البناء لتطبيق التحسينات. `"use no memo"` يضع حداً صريحاً يطلب تخطّي الدالة بالكامل.
 
-This directive takes precedence over all other settings:
-* In `all` mode: The function is skipped despite the global setting
-* In `infer` mode: The function is skipped even if heuristics would optimize it
+لهذا التوجيه أسبقية على الإعدادات الأخرى:
+* في وضع `all`: تُستبعد الدالة رغم الإعداد العام
+* في وضع `infer`: تُستبعد حتى لو اقترح الاستدلال تحسينها
 
-The compiler treats these functions as if the React Compiler wasn't enabled, leaving them exactly as written.
+تُعامَل هذه الدوال كما لو أن المُصرّف غير مفعّل، وتبقى كما كتبت.
 
-### When to use `"use no memo"` {/*when-to-use*/}
+### متى تستخدم `"use no memo"` {/*when-to-use*/}
 
-`"use no memo"` should be used sparingly and temporarily. Common scenarios include:
+استخدم `"use no memo"` باعتدال وبشكل مؤقت. سيناريوهات شائعة:
 
-#### Debugging compiler issues {/*debugging-compiler*/}
-When you suspect the compiler is causing issues, temporarily disable optimization to isolate the problem:
+#### تصحيح مشاكل المُصرّف {/*debugging-compiler*/}
+عند الاشتباه أن المُصرّف يسبب المشكلة، عطّل التحسين مؤقتاً لعزل السبب:
 
 ```js
 function ProblematicComponent({ data }) {
-  "use no memo"; // TODO: Remove after fixing issue #123
+  "use no memo"; // TODO: إزالة بعد إصلاح المشكلة #123
 
-  // Rules of React violations that weren't statically detected
+  // مخالفات لقواعد React لم تُكتشف ساكنياً
   // ...
 }
 ```
 
-#### Third-party library integration {/*third-party*/}
-When integrating with libraries that might not be compatible with the compiler:
+#### تكامل مكتبة طرف ثالث {/*third-party*/}
+مع مكتبات قد لا تكون متوافقة مع المُصرّف:
 
 ```js
 function ThirdPartyWrapper() {
   "use no memo";
 
-  useThirdPartyHook(); // Has side effects that compiler might optimize incorrectly
+  useThirdPartyHook(); // له تأثيرات جانبية قد يُحسّنها المُصرّف بشكل خاطئ
   // ...
 }
 ```
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-The `"use no memo"` directive is placed at the beginning of a function body to prevent React Compiler from optimizing that function:
+يُوضَع `"use no memo"` في بداية جسم الدالة ليمنع تحسين تلك الدالة:
 
 ```js
 function MyComponent() {
   "use no memo";
-  // Function body
+  // جسم الدالة
 }
 ```
 
-The directive can also be placed at the top of a file to affect all functions in that module:
+يمكن وضعه في أعلى الملف لتأثيره على كل الدوال في الوحدة:
 
 ```js
 "use no memo";
 
-// All functions in this file will be skipped by the compiler
+// كل الدوال في هذا الملف يتخطّاها المُصرّف
 ```
 
-`"use no memo"` at the function level overrides the module level directive.
+`"use no memo"` على مستوى الدالة يتجاوز توجيه الوحدة.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Directive not preventing compilation {/*not-preventing*/}
+### التوجيه لا يمنع التجميع {/*not-preventing*/}
 
-If `"use no memo"` isn't working:
+إذا لم يعمل `"use no memo"`:
 
 ```js
-// ❌ Wrong - directive after code
+// ❌ خطأ — التوجيه بعد شيفرة
 function Component() {
   const data = getData();
-  "use no memo"; // Too late!
+  "use no memo"; // متأخر جداً!
 }
 
-// ✅ Correct - directive first
+// ✅ صحيح — التوجيه أولاً
 function Component() {
   "use no memo";
   const data = getData();
 }
 ```
 
-Also check:
-* Spelling - must be exactly `"use no memo"`
-* Quotes - must use single or double quotes, not backticks
+تحقق أيضاً من:
+* الإملاء — يجب أن يكون بالضبط `"use no memo"`
+* علامات الاقتباس — مفردة أو مزدوجة، لا backticks
 
-### Best practices {/*best-practices*/}
+### أفضل الممارسات {/*best-practices*/}
 
-**Always document why** you're disabling optimization:
+**وثّق السبب** دائماً عند تعطيل التحسين:
 
 ```js
-// ✅ Good - clear explanation and tracking
+// ✅ جيد — شرح وتتبّع
 function DataProcessor() {
-  "use no memo"; // TODO: Remove after fixing rule of react violation
+  "use no memo"; // TODO: إزالة بعد إصلاح مخالفة قواعد React
   // ...
 }
 
-// ❌ Bad - no explanation
+// ❌ سيء — بلا تفسير
 function Mystery() {
   "use no memo";
   // ...
 }
 ```
 
-### See also {/*see-also*/}
+### انظر أيضاً {/*see-also*/}
 
-* [`"use memo"`](/reference/react-compiler/directives/use-memo) - Opt into compilation
-* [React Compiler](/learn/react-compiler) - Getting started guide
+* [`"use memo"`](/reference/react-compiler/directives/use-memo) — الإدخال في التجميع
+* [React Compiler](/learn/react-compiler) — دليل البدء
