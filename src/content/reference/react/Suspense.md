@@ -4,7 +4,7 @@ title: <Suspense>
 
 <Intro>
 
-`<Suspense>` lets you display a fallback until its children have finished loading.
+`<Suspense>` يتيح لك عرض بديل (fallback) حتى تنتهي عناصره الفرعية من التحميل.
 
 
 ```js
@@ -19,28 +19,28 @@ title: <Suspense>
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<Suspense>` {/*suspense*/}
 
-#### Props {/*props*/}
-* `children`: The actual UI you intend to render. If `children` suspends while rendering, the Suspense boundary will switch to rendering `fallback`.
-* `fallback`: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a fallback is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to `fallback` when `children` suspends, and back to `children` when the data is ready. If `fallback` suspends while rendering, it will activate the closest parent Suspense boundary.
+#### الخصائص {/*props*/}
+* `children`: الواجهة الفعلية التي تنوي عرضها. إذا علّق `children` أثناء الرسم، ستنتقل حدود Suspense إلى عرض `fallback`.
+* `fallback`: واجهة بديلة تُعرض مكان الواجهة الفعلية إذا لم يكتمل تحميلها. يُقبل أي عقدة React صالحة، وغالبًا ما يكون البديل عرضًا خفيفًا مثل مؤشر تحميل أو هيكل (skeleton). يُبدّل Suspense تلقائيًا إلى `fallback` عندما يعلّق `children`، ويعود إلى `children` عندما تصبح البيانات جاهزة. إذا علّق `fallback` أثناء الرسم، يُفعّل أقرب حد Suspense في المكوّن الأب.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-- React does not preserve any state for renders that got suspended before they were able to mount for the first time. When the component has loaded, React will retry rendering the suspended tree from scratch.
-- If Suspense was displaying content for the tree, but then it suspended again, the `fallback` will be shown again unless the update causing it was caused by [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
-- If React needs to hide the already visible content because it suspended again, it will clean up [layout Effects](/reference/react/useLayoutEffect) in the content tree. When the content is ready to be shown again, React will fire the layout Effects again. This ensures that Effects measuring the DOM layout don't try to do this while the content is hidden.
-- React includes under-the-hood optimizations like *Streaming Server Rendering* and *Selective Hydration* that are integrated with Suspense. Read [an architectural overview](https://github.com/reactwg/react-18/discussions/37) and watch [a technical talk](https://www.youtube.com/watch?v=pj5N-Khihgc) to learn more.
+- لا يحتفظ React بأي حالة للرُسومات التي علّقت قبل أن تتمكن من التركيب لأول مرة. عندما يكتمل تحميل المكوّن، يعيد React محاولة رسم الشجرة المعلّقة من الصفر.
+- إذا كان Suspense يعرض محتوى الشجرة ثم علّق مجددًا، يُعرض `fallback` مرة أخرى ما لم يكن التحديث المسبب ناتجًا عن [`startTransition`](/reference/react/startTransition) أو [`useDeferredValue`](/reference/react/useDeferredValue).
+- إذا احتاج React إلى إخفاء المحتوى الظاهر بالفعل لأنه علّق مجددًا، يُنظّف [تأثيرات التخطيط (layout Effects)](/reference/react/useLayoutEffect) في شجرة المحتوى. عندما يصبح المحتوى جاهزًا للعرض مرة أخرى، يُطلق React تأثيرات التخطيط من جديد. يضمن ذلك ألا تحاول التأثيرات التي تقيس تخطيط DOM القيام بذلك بينما المحتوى مخفي.
+- يتضمّن React تحسينات داخلية مثل *تدفق الرسم من الخادم (Streaming Server Rendering)* و*الترطيب الانتقائي (Selective Hydration)* المتكاملة مع Suspense. اقرأ [نظرة معمارية](https://github.com/reactwg/react-18/discussions/37) وشاهد [حديثًا تقنيًا](https://www.youtube.com/watch?v=pj5N-Khihgc) لتعرف المزيد.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Displaying a fallback while content is loading {/*displaying-a-fallback-while-content-is-loading*/}
+### عرض بديل أثناء تحميل المحتوى {/*displaying-a-fallback-while-content-is-loading*/}
 
-You can wrap any part of your application with a Suspense boundary:
+يمكنك لف أي جزء من تطبيقك داخل حد Suspense:
 
 ```js [[1, 1, "<Loading />"], [2, 2, "<Albums />"]]
 <Suspense fallback={<Loading />}>
@@ -48,9 +48,9 @@ You can wrap any part of your application with a Suspense boundary:
 </Suspense>
 ```
 
-React will display your <CodeStep step={1}>loading fallback</CodeStep> until all the code and data needed by <CodeStep step={2}>the children</CodeStep> has been loaded.
+يعرض React <CodeStep step={1}>بديل التحميل</CodeStep> حتى يُحمَّل كل الكود والبيانات التي يحتاجها <CodeStep step={2}>العناصر الفرعية</CodeStep>.
 
-In the example below, the `Albums` component *suspends* while fetching the list of albums. Until it's ready to render, React switches the closest Suspense boundary above to show the fallback--your `Loading` component. Then, when the data loads, React hides the `Loading` fallback and renders the `Albums` component with data.
+في المثال أدناه، يعلّق مكوّن `Albums` أثناء جلب قائمة الألبومات. حتى يصبح جاهزًا للرسم، يُبدّل React أقرب حد Suspense فوقه لعرض البديل — مكوّن `Loading` الخاص بك. ثم عندما تُحمَّل البيانات، يخفي React بديل `Loading` ويرسم مكوّن `Albums` مع البيانات.
 
 <Sandpack>
 
@@ -205,25 +205,25 @@ async function getAlbums() {
 
 <Note>
 
-**Only Suspense-enabled data sources will activate the Suspense component.** They include:
+**فقط مصادر البيانات المفعّلة لـ Suspense ستُفعّل مكوّن Suspense.** وتشمل:
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a cached Promise with [`use`](/reference/react/use)
+- جلب البيانات مع أُطر تدعم Suspense مثل [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) و[Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
+- تحميل كود المكوّن كسولًا (lazy) باستخدام [`lazy`](/reference/react/lazy)
+- قراءة قيمة وعد (Promise) مخزّن مؤقتًا باستخدام [`use`](/reference/react/use)
 
-Suspense **does not** detect when data is fetched inside an Effect or event handler.
+Suspense **لا** يكتشف جلب البيانات داخل Effect أو معالج أحداث.
 
-The exact way you would load data in the `Albums` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
+الطريقة الدقيقة لتحميل البيانات في مكوّن `Albums` أعلاه تعتمد على إطارك. إذا استخدمت إطارًا يدعم Suspense، ستجد التفاصيل في وثائق جلب البيانات لديه.
 
-Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+جلب البيانات المفعّل لـ Suspense دون إطار رأيي (opinionated) غير مدعوم بعد. متطلبات تنفيذ مصدر بيانات يدعم Suspense غير مستقرة وغير موثّقة. سيُصدَر واجهة رسمية لدمج مصادر البيانات مع Suspense في إصدار مستقبل من React.
 
 </Note>
 
 ---
 
-### Revealing content together at once {/*revealing-content-together-at-once*/}
+### كشف المحتوى دفعة واحدة {/*revealing-content-together-at-once*/}
 
-By default, the whole tree inside Suspense is treated as a single unit. For example, even if *only one* of these components suspends waiting for some data, *all* of them together will be replaced by the loading indicator:
+افتراضيًا، تُعامل الشجرة بأكملها داخل Suspense كوحدة واحدة. على سبيل المثال، حتى لو علّق *مكوّن واحد فقط* منها بانتظار بعض البيانات، ستُستبدل *كلها معًا* بمؤشر التحميل:
 
 ```js {2-5}
 <Suspense fallback={<Loading />}>
@@ -234,9 +234,9 @@ By default, the whole tree inside Suspense is treated as a single unit. For exam
 </Suspense>
 ```
 
-Then, after all of them are ready to be displayed, they will all appear together at once.
+ثم بعد أن تصبح كلها جاهزة للعرض، تظهر كلها معًا دفعة واحدة.
 
-In the example below, both `Biography` and `Albums` fetch some data. However, because they are grouped under a single Suspense boundary, these components always "pop in" together at the same time.
+في المثال أدناه، يجلب كل من `Biography` و`Albums` بعض البيانات. لكن لأنهما مجمّعان تحت حد Suspense واحد، تظهر هذه المكوّنات دائمًا «دفعة واحدة» في نفس الوقت.
 
 <Sandpack>
 
@@ -443,7 +443,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-Components that load data don't have to be direct children of the Suspense boundary. For example, you can move `Biography` and `Albums` into a new `Details` component. This doesn't change the behavior. `Biography` and `Albums` share the same closest parent Suspense boundary, so their reveal is coordinated together.
+لا يلزم أن تكون المكوّنات التي تحمّل البيانات أبناء مباشرين لحد Suspense. على سبيل المثال، يمكنك نقل `Biography` و`Albums` إلى مكوّن `Details` جديد. هذا لا يغيّر السلوك. كلاهما داخل نفس أقرب حد Suspense، لذا يُنسَّق ظهورهما معًا.
 
 ```js {2,8-11}
 <Suspense fallback={<Loading />}>
@@ -464,9 +464,9 @@ function Details({ artistId }) {
 
 ---
 
-### Revealing nested content as it loads {/*revealing-nested-content-as-it-loads*/}
+### كشف المحتوى المتداخل مع تحميله {/*revealing-nested-content-as-it-loads*/}
 
-When a component suspends, the closest parent Suspense component shows the fallback. This lets you nest multiple Suspense components to create a loading sequence. Each Suspense boundary's fallback will be filled in as the next level of content becomes available. For example, you can give the album list its own fallback:
+عندما يعلّق مكوّن، يتولّى أقرب مكوّن Suspense أب عرض البديل. يتيح لك ذلك تداخل عدة مكوّنات Suspense لإنشاء تسلسل تحميل. يُملأ بديل كل حد Suspense عندما يصبح المستوى التالي من المحتوى متاحًا. على سبيل المثال، يمكنك إعطاء قائمة الألبومات بديلًا خاصًا بها:
 
 ```js {3,7}
 <Suspense fallback={<BigSpinner />}>
@@ -479,14 +479,14 @@ When a component suspends, the closest parent Suspense component shows the fallb
 </Suspense>
 ```
 
-With this change, displaying the `Biography` doesn't need to "wait" for the `Albums` to load.
+مع هذا التغيير، لا يحتاج عرض `Biography` إلى «الانتظار» حتى يُحمَّل `Albums`.
 
-The sequence will be:
+سيكون التسلسل كالتالي:
 
-1. If `Biography` hasn't loaded yet, `BigSpinner` is shown in place of the entire content area.
-2. Once `Biography` finishes loading, `BigSpinner` is replaced by the content.
-3. If `Albums` hasn't loaded yet, `AlbumsGlimmer` is shown in place of `Albums` and its parent `Panel`.
-4. Finally, once `Albums` finishes loading, it replaces `AlbumsGlimmer`.
+1. إذا لم يُحمَّل `Biography` بعد، يُعرض `BigSpinner` مكان منطقة المحتوى بأكملها.
+2. عندما يكتمل تحميل `Biography`، يُستبدل `BigSpinner` بالمحتوى.
+3. إذا لم يُحمَّل `Albums` بعد، يُعرض `AlbumsGlimmer` مكان `Albums` و`Panel` الأب.
+4. أخيرًا، عندما يكتمل تحميل `Albums`، يحل محل `AlbumsGlimmer`.
 
 <Sandpack>
 
@@ -722,15 +722,15 @@ async function getAlbums() {
 
 </Sandpack>
 
-Suspense boundaries let you coordinate which parts of your UI should always "pop in" together at the same time, and which parts should progressively reveal more content in a sequence of loading states. You can add, move, or delete Suspense boundaries in any place in the tree without affecting the rest of your app's behavior.
+تتيح لك حدود Suspense تنسيق أي أجزاء من الواجهة يجب أن تظهر دائمًا «دفعة واحدة» في آن واحد، وأي أجزاء يجب أن تكشف تدريجيًا عن المزيد من المحتوى في تسلسل حالات التحميل. يمكنك إضافة حدود Suspense أو نقلها أو حذفها في أي مكان في الشجرة دون التأثير على سلوك بقية التطبيق.
 
-Don't put a Suspense boundary around every component. Suspense boundaries should not be more granular than the loading sequence that you want the user to experience. If you work with a designer, ask them where the loading states should be placed--it's likely that they've already included them in their design wireframes.
+لا تضع حد Suspense حول كل مكوّن. لا ينبغي أن تكون حدود Suspense أدق من تسلسل التحميل الذي تريد للمستخدم تجربته. إذا عملت مع مصمّم، اسأله أين يجب وضع حالات التحميل — من المرجح أنها مضمّنة بالفعل في مخططات التصميم.
 
 ---
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### إظهار محتوى قديم أثناء تحميل محتوى جديد {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-In this example, the `SearchResults` component suspends while fetching the search results. Type `"a"`, wait for the results, and then edit it to `"ab"`. The results for `"a"` will get replaced by the loading fallback.
+في هذا المثال، يعلّق مكوّن `SearchResults` أثناء جلب نتائج البحث. اكتب `"a"`، انتظر النتائج، ثم عدّلها إلى `"ab"`. ستُستبدل نتائج `"a"` ببديل التحميل.
 
 <Sandpack>
 
@@ -877,7 +877,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list and to keep showing the previous results until the new results are ready. The [`useDeferredValue`](/reference/react/useDeferredValue) Hook lets you pass a deferred version of the query down: 
+نمط واجهة شائع بديل هو *تأجيل* تحديث القائمة والإبقاء على عرض النتائج السابقة حتى تصبح النتائج الجديدة جاهزة. يتيح لك Hook [`useDeferredValue`](/reference/react/useDeferredValue) تمرير نسخة مؤجلة من الاستعلام إلى الأسفل: 
 
 ```js {3,11}
 export default function App() {
@@ -897,9 +897,9 @@ export default function App() {
 }
 ```
 
-The `query` will update immediately, so the input will display the new value. However, the `deferredQuery` will keep its previous value until the data has loaded, so `SearchResults` will show the stale results for a bit.
+سيُحدَّث `query` فورًا، لذا سيُظهر الحقل القيمة الجديدة. لكن `deferredQuery` يحتفظ بقيمته السابقة حتى تُحمَّل البيانات، لذا يعرض `SearchResults` النتائج القديمة لبعض الوقت.
 
-To make it more obvious to the user, you can add a visual indication when the stale result list is displayed:
+لجعل ذلك أوضح للمستخدم، يمكنك إضافة مؤشر بصري عند عرض قائمة النتائج القديمة:
 
 ```js {2}
 <div style={{
@@ -909,7 +909,7 @@ To make it more obvious to the user, you can add a visual indication when the st
 </div>
 ```
 
-Enter `"a"` in the example below, wait for the results to load, and then edit the input to `"ab"`. Notice how instead of the Suspense fallback, you now see the dimmed stale result list until the new results have loaded:
+أدخل `"a"` في المثال أدناه، انتظر تحميل النتائج، ثم عدّل المدخل إلى `"ab"`. لاحظ أنه بدلًا من بديل Suspense، ترى الآن قائمة النتائج القديمة باهتة حتى تُحمَّل النتائج الجديدة:
 
 
 <Sandpack>
@@ -1063,15 +1063,15 @@ input { margin: 10px; }
 
 <Note>
 
-Both deferred values and [Transitions](#preventing-already-revealed-content-from-hiding) let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it "lag behind" the rest of the UI.
+كل من القيم المؤجلة و[الانتقالات (Transitions)](#preventing-already-revealed-content-from-hiding) تتيحان تجنّب عرض بديل Suspense لصالح مؤشرات مضمّنة. توسم الانتقالات التحديث بأكمله كغير عاجل، لذا تستخدمها عادة الأُطر ومكتبات التوجيه للتنقّل. أما القيم المؤجلة فمفيدة غالبًا في كود التطبيق عندما تريد توسيم جزء من الواجهة كغير عاجل وتركه «يتأخر» عن بقية الواجهة.
 
 </Note>
 
 ---
 
-### Preventing already revealed content from hiding {/*preventing-already-revealed-content-from-hiding*/}
+### منع إخفاء المحتوى الظاهر بالفعل {/*preventing-already-revealed-content-from-hiding*/}
 
-When a component suspends, the closest parent Suspense boundary switches to showing the fallback. This can lead to a jarring user experience if it was already displaying some content. Try pressing this button:
+عندما يعلّق مكوّن، يُبدّل أقرب حد Suspense في المكوّن الأب إلى عرض البديل. قد يؤدي ذلك إلى تجربة مزعجة إذا كان يعرض بالفعل بعض المحتوى. جرّب الضغط على هذا الزر:
 
 <Sandpack>
 
@@ -1365,9 +1365,9 @@ main {
 
 </Sandpack>
 
-When you pressed the button, the `Router` component rendered `ArtistPage` instead of `IndexPage`. A component inside `ArtistPage` suspended, so the closest Suspense boundary started showing the fallback. The closest Suspense boundary was near the root, so the whole site layout got replaced by `BigSpinner`.
+عند الضغط على الزر، رسم مكوّن `Router` صفحة `ArtistPage` بدلًا من `IndexPage`. علّق مكوّن داخل `ArtistPage`، فبدأ أقرب حد Suspense بعرض البديل. كان أقرب حد Suspense قريبًا من الجذر، لذا استُبدل تخطيط الموقع بأكمله بـ `BigSpinner`.
 
-To prevent this, you can mark the navigation state update as a *Transition* with [`startTransition`:](/reference/react/startTransition)
+لمنع ذلك، يمكنك توسيم تحديث حالة التنقّل كـ *Transition* باستخدام [`startTransition`:](/reference/react/startTransition)
 
 ```js {5,7}
 function Router() {
@@ -1381,7 +1381,7 @@ function Router() {
   // ...
 ```
 
-This tells React that the state transition is not urgent, and it's better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button "waits" for the `Biography` to load:
+يخبر هذا React أن انتقال الحالة ليس عاجلاً، وأنه من الأفضل الإبقاء على الصفحة السابقة بدلًا من إخفاء أي محتوى ظهر بالفعل. الآن ينتظر الضغط على الزر حتى يُحمَّل `Biography`:
 
 <Sandpack>
 
@@ -1677,19 +1677,19 @@ main {
 
 </Sandpack>
 
-A Transition doesn't wait for *all* content to load. It only waits long enough to avoid hiding already revealed content. For example, the website `Layout` was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested `Suspense` boundary around `Albums` is new, so the Transition doesn't wait for it.
+لا تنتظر الانتقالة (Transition) حتى يُحمَّل *كل* المحتوى. إنما تنتظر فقط ما يكفي لتجنّب إخفاء المحتوى الظاهر بالفعل. على سبيل المثال، كان `Layout` الموقع قد ظهر بالفعل، لذا كان سيئًا إخفاؤه خلف مؤشر تحميل. أما حد `Suspense` المتداخل حول `Albums` فجديد، لذا لا تنتظره الانتقالة.
 
 <Note>
 
-Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.
+يُتوقَّع من أجهزة التوجيه المفعّلة لـ Suspense أن تلف تحديثات التنقّل في انتقالات (Transitions) افتراضيًا.
 
 </Note>
 
 ---
 
-### Indicating that a Transition is happening {/*indicating-that-a-transition-is-happening*/}
+### دلالة على جريان انتقالة (Transition) {/*indicating-that-a-transition-is-happening*/}
 
-In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace [`startTransition`](/reference/react/startTransition) with [`useTransition`](/reference/react/useTransition) which gives you a boolean `isPending` value. In the example below, it's used to change the website header styling while a Transition is happening:
+في المثال أعلاه، بعد الضغط على الزر لا يوجد مؤشر بصري على أن التنقّل قيد التنفيذ. لإضافة مؤشر، يمكنك استبدال [`startTransition`](/reference/react/startTransition) بـ [`useTransition`](/reference/react/useTransition) الذي يمنحك قيمة منطقية `isPending`. في المثال أدناه، تُستخدم لتغيير تنسيق رأس الموقع أثناء حدوث انتقالة:
 
 <Sandpack>
 
@@ -1990,27 +1990,27 @@ main {
 
 ---
 
-### Resetting Suspense boundaries on navigation {/*resetting-suspense-boundaries-on-navigation*/}
+### إعادة ضبط حدود Suspense عند التنقّل {/*resetting-suspense-boundaries-on-navigation*/}
 
-During a Transition, React will avoid hiding already revealed content. However, if you navigate to a route with different parameters, you might want to tell React it is *different* content. You can express this with a `key`:
+أثناء انتقالة (Transition)، يتجنّب React إخفاء المحتوى الظاهر بالفعل. لكن إذا انتقلت إلى مسار بمعاملات مختلفة، قد ترغب في إخبار React أنه محتوى *مختلف*. يمكنك التعبير عن ذلك بـ `key`:
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-Imagine you're navigating within a user's profile page, and something suspends. If that update is wrapped in a Transition, it will not trigger the fallback for already visible content. That's the expected behavior.
+تخيّل أنك تتنقّل داخل صفحة ملف مستخدم وشيء ما يعلّق. إذا كان ذلك التحديث ملفوفًا في انتقالة، فلن يُفعّل البديل للمحتوى الظاهر بالفعل. هذا السلوك متوقع.
 
-However, now imagine you're navigating between two different user profiles. In that case, it makes sense to show the fallback. For example, one user's timeline is *different content* from another user's timeline. By specifying a `key`, you ensure that React treats different users' profiles as different components, and resets the Suspense boundaries during navigation. Suspense-integrated routers should do this automatically.
+لكن تخيّل الآن الانتقال بين ملفي مستخدمين مختلفين. هنا يكون من المنطقي عرض البديل. على سبيل المثال، خط زمني لمستخدم *محتوى مختلف* عن خط زمني لمستخدم آخر. بتحديد `key`، تضمن أن React تعامل ملفات المستخدمين المختلفة كمكوّنات مختلفة، وتُصفّر حدود Suspense أثناء التنقّل. يجب أن تفعل أجهزة التوجيه المتكاملة مع Suspense ذلك تلقائيًا.
 
 ---
 
-### Providing a fallback for server errors and client-only content {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
+### توفير بديل لأخطاء الخادم ومحتوى للعميل فقط {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
-If you use one of the [streaming server rendering APIs](/reference/react-dom/server) (or a framework that relies on them), React will also use your `<Suspense>` boundaries to handle errors on the server. If a component throws an error on the server, React will not abort the server render. Instead, it will find the closest `<Suspense>` component above it and include its fallback (such as a spinner) into the generated server HTML. The user will see a spinner at first.
+إذا استخدمت إحدى [واجهات رسم الخادم بالتدفق](/reference/react-dom/server) (أو إطارًا يعتمد عليها)، سيستخدم React أيضًا حدود `<Suspense>` لديك للتعامل مع الأخطاء على الخادم. إذا رمى مكوّن خطأ على الخادم، لن يُلغِ React رسم الخادم. بدلًا من ذلك، يجد أقرب `<Suspense>` فوقه ويُضمّن بديله (مثل مؤشر دوار) في HTML المُنشَأ على الخادم. سيرى المستخدم مؤشرًا أولًا.
 
-On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest [Error Boundary.](/reference/react/Component#static-getderivedstatefromerror) However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
+على العميل، يحاول React رسم نفس المكوّن مرة أخرى. إذا رمى خطأ على العميل أيضًا، يرمي React الخطأ ويعرض أقرب [حد خطأ (Error Boundary).](/reference/react/Component#static-getderivedstatefromerror) أما إذا لم يحدث خطأ على العميل، فلن يعرض React الخطأ للمستخدم لأن المحتوى ظهر في النهاية بنجاح.
 
-You can use this to opt out some components from rendering on the server. To do this, throw an error in the server environment and then wrap them in a `<Suspense>` boundary to replace their HTML with fallbacks:
+يمكنك استخدام ذلك لاستبعاد بعض المكوّنات من الرسم على الخادم. لفعل ذلك، ارمِ خطأ في بيئة الخادم ثم لفّ المكوّنات في `<Suspense>` ليُستبدل HTML الخاص بها ببدائل:
 
 ```js
 <Suspense fallback={<Loading />}>
@@ -2025,17 +2025,17 @@ function Chat() {
 }
 ```
 
-The server HTML will include the loading indicator. It will be replaced by the `Chat` component on the client.
+سيضمّن HTML الخادم مؤشر التحميل. يُستبدل بمكوّن `Chat` على العميل.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### How do I prevent the UI from being replaced by a fallback during an update? {/*preventing-unwanted-fallbacks*/}
+### كيف أمنع استبدال الواجهة ببديل أثناء تحديث؟ {/*preventing-unwanted-fallbacks*/}
 
-Replacing visible UI with a fallback creates a jarring user experience. This can happen when an update causes a component to suspend, and the nearest Suspense boundary is already showing content to the user.
+استبدال واجهة ظاهرة ببديل يخلق تجربة مزعجة. قد يحدث ذلك عندما يسبب تحديث تعليق مكوّن، وحد Suspense الأقرب يعرض بالفعل محتوى للمستخدم.
 
-To prevent this from happening, [mark the update as non-urgent using `startTransition`](#preventing-already-revealed-content-from-hiding). During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
+لمنع ذلك، [وسم التحديث كغير عاجل باستخدام `startTransition`](#preventing-already-revealed-content-from-hiding). أثناء انتقالة (Transition)، ينتظر React حتى يُحمَّل ما يكفي من البيانات لتجنّب ظهور بديل غير مرغوب:
 
 ```js {2-3,5}
 function handleNextPageClick() {
@@ -2046,8 +2046,8 @@ function handleNextPageClick() {
 }
 ```
 
-This will avoid hiding existing content. However, any newly rendered `Suspense` boundaries will still immediately display fallbacks to avoid blocking the UI and let the user see the content as it becomes available.
+سيُجنّب ذلك إخفاء المحتوى الموجود. لكن أي حدود `Suspense` تُرسم حديثًا ستعرض بدائلها فورًا لتجنّب حظر الواجهة وليُرى المستخدم المحتوى كلما أصبح متاحًا.
 
-**React will only prevent unwanted fallbacks during non-urgent updates**. It will not delay a render if it's the result of an urgent update. You must opt in with an API like [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
+**React يمنع البدائل غير المرغوبة فقط أثناء التحديثات غير العاجلة**. لن يؤخر الرسم إذا كان ناتجًا عن تحديث عاجل. يجب الاشتراك صراحةً بواجهة مثل [`startTransition`](/reference/react/startTransition) أو [`useDeferredValue`](/reference/react/useDeferredValue).
 
-If your router is integrated with Suspense, it should wrap its updates into [`startTransition`](/reference/react/startTransition) automatically.
+إذا كان جهاز التوجيه متكاملًا مع Suspense، فينبغي أن يلف تحديثاته في [`startTransition`](/reference/react/startTransition) تلقائيًا.

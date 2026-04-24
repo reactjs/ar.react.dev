@@ -1,10 +1,10 @@
 ---
-title: createElement
+title: "دالة createElement"
 ---
 
 <Intro>
 
-`createElement` lets you create a React element. It serves as an alternative to writing [JSX.](/learn/writing-markup-with-jsx)
+`createElement` تنشئ عنصر React. تُستخدم بديلًا لكتابة [JSX.](/learn/writing-markup-with-jsx)
 
 ```js
 const element = createElement(type, props, ...children)
@@ -16,11 +16,11 @@ const element = createElement(type, props, ...children)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `createElement(type, props, ...children)` {/*createelement*/}
 
-Call `createElement` to create a React element with the given `type`, `props`, and `children`.
+استدعِ `createElement` لإنشاء عنصر React بالـ `type` و`props` و`children` المعطاة.
 
 ```js
 import { createElement } from 'react';
@@ -34,44 +34,44 @@ function Greeting({ name }) {
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `type`: The `type` argument must be a valid React component type. For example, it could be a tag name string (such as `'div'` or `'span'`), or a React component (a function, a class, or a special component like [`Fragment`](/reference/react/Fragment)).
+* `type`: يجب أن يكون `type` نوع مكوّن React صالحًا. مثلًا، قد يكون سلسلة اسم وسم (مثل `'div'` أو `'span'`)، أو مكوّن React (دالة أو صنف أو مكوّن خاص مثل [`Fragment`](/reference/react/Fragment)).
 
-* `props`: The `props` argument must either be an object or `null`. If you pass `null`, it will be treated the same as an empty object. React will create an element with props matching the `props` you have passed. Note that `ref` and `key` from your `props` object are special and will *not* be available as `element.props.ref` and `element.props.key` on the returned `element`. They will be available as `element.ref` and `element.key`.
+* `props`: يجب أن يكون `props` إما كائنًا أو `null`. إذا مررت `null`، يُعامل ككائن فارغ. ينشئ React عنصرًا بخصائص تطابق `props` التي مررتها. لاحظ أن `ref` و`key` من كائن `props` خاصان ولن يكونا متاحين كـ `element.props.ref` و`element.props.key` على العنصر المُرجَع. سيظهران كـ `element.ref` و`element.key`.
 
-* **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes.
+* **اختياري** `...children`: صفر أو أكثر من العقد الفرعية. يمكن أن تكون أي عقد React، بما فيها عناصر React وسلاسل وأرقامًا و[بوابات](/reference/react-dom/createPortal) وعقدًا فارغة (`null` و`undefined` و`true` و`false`) ومصفوفات من عقد React.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`createElement` returns a React element object with a few properties:
+`createElement` تُرجع كائن عنصر React ببعض الخصائص:
 
-* `type`: The `type` you have passed.
-* `props`: The `props` you have passed except for `ref` and `key`.
-* `ref`: The `ref` you have passed. If missing, `null`.
-* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+* `type`: الـ `type` الذي مررته.
+* `props`: الـ `props` التي مررتها باستثناء `ref` و`key`.
+* `ref`: الـ `ref` الذي مررته. إن غاب، `null`.
+* `key`: الـ `key` الذي مررته بعد تحويله إلى سلسلة. إن غاب، `null`.
 
-Usually, you'll return the element from your component or make it a child of another element. Although you may read the element's properties, it's best to treat every element as opaque after it's created, and only render it.
+عادةً تُرجع العنصر من مكوّنك أو تجعله فرعًا لعنصر آخر. رغم أنه يمكنك قراءة خصائص العنصر، من الأفضل اعتبار كل عنصر معتمًا بعد إنشائه والاكتفاء بعرضه.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* You must **treat React elements and their props as [immutable](https://en.wikipedia.org/wiki/Immutable_object)** and never change their contents after creation. In development, React will [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) the returned element and its `props` property shallowly to enforce this.
+* يجب **اعتبار عناصر React وخصائصها [ثابتة (immutable)](https://en.wikipedia.org/wiki/Immutable_object)** وعدم تغيير محتواها بعد الإنشاء. في وضع التطوير، React ستجمد ([freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)) العنصر المُرجَع وخاصية `props` سطحيًا لفرض ذلك.
 
-* When you use JSX, **you must start a tag with a capital letter to render your own custom component.** In other words, `<Something />` is equivalent to `createElement(Something)`, but `<something />` (lowercase) is equivalent to `createElement('something')` (note it's a string, so it will be treated as a built-in HTML tag).
+* عند استخدام JSX، **يجب أن تبدأ الوسم بحرف كبير لعرض مكوّنك المخصص.** بعبارة أخرى، `<Something />` يعادل `createElement(Something)`، لكن `<something />` (صغير) يعادل `createElement('something')` (سلسلة، أي يُعامل كوسم HTML مدمج).
 
-* You should only **pass children as multiple arguments to `createElement` if they are all statically known,** like `createElement('h1', {}, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `createElement('ul', {}, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
+* يجب أن **تمرر الأبناء كمعاملات متعددة لـ `createElement` فقط إذا كانت كلها معروفة ثابتًا،** مثل `createElement('h1', {}, child1, child2, child3)`. إذا كانت الأبناء ديناميكية، مرر المصفوفة كاملة كالمعامل الثالث: `createElement('ul', {}, listItems)`. يضمن ذلك أن React [تحذّرك من `key` الناقصة](/learn/rendering-lists#keeping-list-items-in-order-with-key) لأي قوائم ديناميكية. للقوائم الثابتة هذا غير لازم لأنها لا تُعاد ترتيبها.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Creating an element without JSX {/*creating-an-element-without-jsx*/}
+### إنشاء عنصر بدون JSX {/*creating-an-element-without-jsx*/}
 
-If you don't like [JSX](/learn/writing-markup-with-jsx) or can't use it in your project, you can use `createElement` as an alternative.
+إذا لم يعجبك [JSX](/learn/writing-markup-with-jsx) أو لا يمكنك استخدامه في مشروعك، استخدم `createElement` بديلًا.
 
-To create an element without JSX, call `createElement` with some <CodeStep step={1}>type</CodeStep>, <CodeStep step={2}>props</CodeStep>, and <CodeStep step={3}>children</CodeStep>:
+لإنشاء عنصر بدون JSX، استدعِ `createElement` مع <CodeStep step={1}>type</CodeStep> و<CodeStep step={2}>props</CodeStep> و<CodeStep step={3}>children</CodeStep>:
 
 ```js [[1, 5, "'h1'"], [2, 6, "{ className: 'greeting' }"], [3, 7, "'Hello ',"], [3, 8, "createElement('i', null, name),"], [3, 9, "'. Welcome!'"]]
 import { createElement } from 'react';
@@ -87,7 +87,7 @@ function Greeting({ name }) {
 }
 ```
 
-The <CodeStep step={3}>children</CodeStep> are optional, and you can pass as many as you need (the example above has three children). This code will display a `<h1>` header with a greeting. For comparison, here is the same example rewritten with JSX:
+<CodeStep step={3}>children</CodeStep> اختياري، ويمكنك تمرير أكثر من حاجة (المثال أعلاه له ثلاثة أبناء). يعرض هذا رأس `<h1>` مع تحية. للمقارنة، نفس المثال بـ JSX:
 
 ```js [[1, 3, "h1"], [2, 3, "className=\\"greeting\\""], [3, 4, "Hello <i>{name}</i>. Welcome!"], [1, 5, "h1"]]
 function Greeting({ name }) {
@@ -99,7 +99,7 @@ function Greeting({ name }) {
 }
 ```
 
-To render your own React component, pass a function like `Greeting` as the <CodeStep step={1}>type</CodeStep> instead of a string like `'h1'`:
+لعرض مكوّن React خاص بك، مرّر دالة مثل `Greeting` كـ <CodeStep step={1}>type</CodeStep> بدل سلسلة مثل `'h1'`:
 
 ```js [[1, 2, "Greeting"], [2, 2, "{ name: 'Taylor' }"]]
 export default function App() {
@@ -107,7 +107,7 @@ export default function App() {
 }
 ```
 
-With JSX, it would look like this:
+بـ JSX يبدو هكذا:
 
 ```js [[1, 2, "Greeting"], [2, 2, "name=\\"Taylor\\""]]
 export default function App() {
@@ -115,7 +115,7 @@ export default function App() {
 }
 ```
 
-Here is a complete example written with `createElement`:
+مثال كامل بـ `createElement`:
 
 <Sandpack>
 
@@ -149,7 +149,7 @@ export default function App() {
 
 </Sandpack>
 
-And here is the same example written using JSX:
+ونفس المثال بـ JSX:
 
 <Sandpack>
 
@@ -176,13 +176,13 @@ export default function App() {
 
 </Sandpack>
 
-Both coding styles are fine, so you can use whichever one you prefer for your project. The main benefit of using JSX compared to `createElement` is that it's easy to see which closing tag corresponds to which opening tag.
+كلتا الأسلوبين جائزتان، فاختر ما يناسب مشروعك. الفائدة الرئيسية لـ JSX مقارنة بـ `createElement` هي سهولة رؤية أي وسم إغلاق يقابل أي وسم فتح.
 
 <DeepDive>
 
-#### What is a React element, exactly? {/*what-is-a-react-element-exactly*/}
+#### ما هو عنصر React بالضبط؟ {/*what-is-a-react-element-exactly*/}
 
-An element is a lightweight description of a piece of the user interface. For example, both `<Greeting name="Taylor" />` and `createElement(Greeting, { name: 'Taylor' })` produce an object like this:
+العنصر وصف خفيف لجزء من واجهة المستخدم. مثلًا، `<Greeting name="Taylor" />` و`createElement(Greeting, { name: 'Taylor' })` ينتجان كائنًا مثل:
 
 ```js
 // Slightly simplified
@@ -196,10 +196,10 @@ An element is a lightweight description of a piece of the user interface. For ex
 }
 ```
 
-**Note that creating this object does not render the `Greeting` component or create any DOM elements.**
+**لاحظ أن إنشاء هذا الكائن لا يعرض مكوّن `Greeting` ولا ينشئ أي عقد DOM.**
 
-A React element is more like a description--an instruction for React to later render the `Greeting` component. By returning this object from your `App` component, you tell React what to do next.
+عنصر React أشبه بوصف—تعليمات لـ React لاحقًا لعرض مكوّن `Greeting`. بإرجاع هذا الكائن من مكوّن `App`، تخبر React بما يجب فعله بعد ذلك.
 
-Creating elements is extremely cheap so you don't need to try to optimize or avoid it.
+إنشاء العناصر رخيص جدًا فلا حاجة لمحاولة تحسينه أو تجنبه.
 
 </DeepDive>

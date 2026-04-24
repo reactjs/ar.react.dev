@@ -5,7 +5,7 @@ title: <StrictMode>
 
 <Intro>
 
-`<StrictMode>` lets you find common bugs in your components early during development.
+`<StrictMode>` يتيح لك اكتشاف أخطاء شائعة في مكوّناتك مبكرًا أثناء التطوير.
 
 
 ```js
@@ -20,11 +20,11 @@ title: <StrictMode>
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<StrictMode>` {/*strictmode*/}
 
-Use `StrictMode` to enable additional development behaviors and warnings for the component tree inside:
+استخدم `StrictMode` لتفعيل سلوكيات وتنبيهات إضافية للتطوير لشجرة المكوّنات بداخله:
 
 ```js
 import { StrictMode } from 'react';
@@ -38,33 +38,33 @@ root.render(
 );
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-Strict Mode enables the following development-only behaviors:
+Strict Mode يفعّل السلوكيات التالية في التطوير فقط:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- ستُعاد [مكوّناتك رسمًا مرة إضافية](#fixing-bugs-found-by-double-rendering-in-development) لاكتشاف أخطاء ناتجة عن رسم غير نقي.
+- ستُعاد [تشغيل التأثيرات مرة إضافية](#fixing-bugs-found-by-re-running-effects-in-development) لاكتشاف أخطاء ناتجة عن نقص تنظيف التأثير.
+- ستُعاد [استدعاءات ref callbacks مرة إضافية](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) لاكتشاف أخطاء ناتجة عن نقص تنظيف الـ ref.
+- ستُفحص [مكوّناتك لاستخدام واجهات برمجة مُهجَرة.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
 #### Props {/*props*/}
 
-`StrictMode` accepts no props.
+`StrictMode` لا يقبل props.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-* There is no way to opt out of Strict Mode inside a tree wrapped in `<StrictMode>`. This gives you confidence that all components inside `<StrictMode>` are checked. If two teams working on a product disagree whether they find the checks valuable, they need to either reach consensus or move `<StrictMode>` down in the tree.
+* لا يمكن تعطيل Strict Mode داخل شجرة ملفوفة بـ `<StrictMode>`. هذا يمنحك ثقة أن كل المكوّنات داخله تُفحص. إذا اختلف فريقان حول فائدة الفحوصات، يجب التوصل لاتفاق أو نقل `<StrictMode>` لأسفل في الشجرة.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Enabling Strict Mode for entire app {/*enabling-strict-mode-for-entire-app*/}
+### تفعيل Strict Mode للتطبيق كله {/*enabling-strict-mode-for-entire-app*/}
 
-Strict Mode enables extra development-only checks for the entire component tree inside the `<StrictMode>` component. These checks help you find common bugs in your components early in the development process.
+يُفعّل Strict Mode فحوصات إضافية للتطوير فقط على شجرة المكوّنات بأكملها داخل مكوّن `<StrictMode>`. تساعدك هذه الفحوصات على اكتشاف أخطاء شائعة في مكوّناتك مبكرًا أثناء التطوير.
 
 
-To enable Strict Mode for your entire app, wrap your root component with `<StrictMode>` when you render it:
+لتفعيل Strict Mode لتطبيقك كله، لفّ المكوّن الجذري بـ`<StrictMode>` عند رسمه:
 
 ```js {6,8}
 import { StrictMode } from 'react';
@@ -78,28 +78,28 @@ root.render(
 );
 ```
 
-We recommend wrapping your entire app in Strict Mode, especially for newly created apps. If you use a framework that calls [`createRoot`](/reference/react-dom/client/createRoot) for you, check its documentation for how to enable Strict Mode.
+ننصح بلفّ التطبيق كله بـ Strict Mode، خصوصًا للتطبيقات الجديدة. إذا كان إطارك يستدعي [`createRoot`](/reference/react-dom/client/createRoot) نيابةً عنك، راجع توثيقه لمعرفة كيفية تفعيل Strict Mode.
 
-Although the Strict Mode checks **only run in development,** they help you find bugs that already exist in your code but can be tricky to reliably reproduce in production. Strict Mode lets you fix bugs before your users report them.
+رغم أن فحوصات Strict Mode **تعمل في التطوير فقط،** فهي تساعدك على إيجاد أخطاء موجودة أصلًا في كودك يصعُب إعادة إنتاجها بثبات في الإنتاج. يتيح لك Strict Mode إصلاح الأخطاء قبل أن يبلغك المستخدمون.
 
 <Note>
 
-Strict Mode enables the following checks in development:
+يُفعّل Strict Mode الفحوصات التالية في التطوير:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- ستُعاد [رسم مكوّناتك مرة إضافية](#fixing-bugs-found-by-double-rendering-in-development) لاكتشاف أخطاء ناتجة عن رسم غير نقي.
+- ستُعاد [تشغيل التأثيرات مرة إضافية](#fixing-bugs-found-by-re-running-effects-in-development) لاكتشاف أخطاء ناتجة عن نقص تنظيف التأثير.
+- ستُعاد [استدعاءات ref callbacks مرة إضافية](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) لاكتشاف أخطاء ناتجة عن نقص تنظيف الـ ref.
+- ستُفحص [مكوّناتك لاستخدام واجهات برمجة مُهجَرة.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
-**All of these checks are development-only and do not impact the production build.**
+**كل هذه الفحوصات للتطوير فقط ولا تؤثر على بنية الإنتاج.**
 
 </Note>
 
 ---
 
-### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
+### تفعيل Strict Mode لجزء من التطبيق {/*enabling-strict-mode-for-a-part-of-the-app*/}
 
-You can also enable Strict Mode for any part of your application:
+يمكنك أيضًا تفعيل Strict Mode لأي جزء من التطبيق:
 
 ```js {7,12}
 import { StrictMode } from 'react';
@@ -120,31 +120,31 @@ function App() {
 }
 ```
 
-In this example, Strict Mode checks will not run against the `Header` and `Footer` components. However, they will run on `Sidebar` and `Content`, as well as all of the components inside them, no matter how deep.
+في هذا المثال، لن تُشغَّل فحوصات Strict Mode على مكوّني `Header` و`Footer`. لكنها ستُشغَّل على `Sidebar` و`Content` وكل المكوّنات بداخلهما مهما عمقت الشجرة.
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+عند تفعيل `StrictMode` لجزء من التطبيق، تُفعّل React فقط السلوكيات الممكنة في الإنتاج. مثلًا، إذا لم يُفعَّل `<StrictMode>` عند الجذر، فلن [تُعاد تشغيل التأثيرات مرة إضافية](#fixing-bugs-found-by-re-running-effects-in-development) عند التركيب الأول، لأن ذلك سيجعل تأثيرات الأبناء تُشغَّل مرتين دون تأثيرات الآباء، وهو ما لا يحدث في الإنتاج.
 
 </Note>
 
 ---
 
-### Fixing bugs found by double rendering in development {/*fixing-bugs-found-by-double-rendering-in-development*/}
+### إصلاح أخطاء يكشفها الرسم المزدوج في التطوير {/*fixing-bugs-found-by-double-rendering-in-development*/}
 
-[React assumes that every component you write is a pure function.](/learn/keeping-components-pure) This means that React components you write must always return the same JSX given the same inputs (props, state, and context).
+[React يفترض أن كل مكوّن تكتبه دالة نقية.](/learn/keeping-components-pure) أي أن مكوّنات React التي تكتبها يجب أن تعيد دائمًا نفس JSX عند نفس المدخلات (props والحالة والسياق).
 
-Components breaking this rule behave unpredictably and cause bugs. To help you find accidentally impure code, Strict Mode calls some of your functions (only the ones that should be pure) **twice in development.** This includes:
+المكوّنات التي تخرق هذا القاعدة تتصرف بشكل غير متوقع وتسبب أخطاء. لمساعدتك على إيجاد كود غير نقي بالخطأ، يستدعي Strict Mode بعض دوالك (التي يفترض أن تكون نقية فقط) **مرتين في التطوير.** يشمل ذلك:
 
-- Your component function body (only top-level logic, so this doesn't include code inside event handlers)
-- Functions that you pass to [`useState`](/reference/react/useState), [`set` functions](/reference/react/useState#setstate), [`useMemo`](/reference/react/useMemo), or [`useReducer`](/reference/react/useReducer)
-- Some class component methods like [`constructor`](/reference/react/Component#constructor), [`render`](/reference/react/Component#render), [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([see the whole list](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
+- جسم دالة المكوّن (منطق المستوى الأعلى فقط، ولا يشمل الكود داخل معالجات الأحداث)
+- الدوال التي تمررها إلى [`useState`](/reference/react/useState)، أو [دوال `set`](/reference/react/useState#setstate)، أو [`useMemo`](/reference/react/useMemo)، أو [`useReducer`](/reference/react/useReducer)
+- بعض طرق مكوّنات الصنف مثل [`constructor`](/reference/react/Component#constructor)، و[`render`](/reference/react/Component#render)، و[`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([اطلع على القائمة كاملة](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
 
-If a function is pure, running it twice does not change its behavior because a pure function produces the same result every time. However, if a function is impure (for example, it mutates the data it receives), running it twice tends to be noticeable (that's what makes it impure!) This helps you spot and fix the bug early.
+إذا كانت الدالة نقية، فتشغيلها مرتين لا يغيّر سلوكها لأنها تُنتج نفس النتيجة في كل مرة. أما إن كانت غير نقية (مثلًا تعدّل البيانات التي تتلقاها)، فغالبًا يظهر تشغيلها مرتين (وهذا ما يجعلها غير نقية!) فيساعدك ذلك على اكتشاف الخطأ وإصلاحه مبكرًا.
 
-**Here is an example to illustrate how double rendering in Strict Mode helps you find bugs early.**
+**إليك مثال يوضّح كيف يساعدك الرسم المزدوج في Strict Mode على إيجاد الأخطاء مبكرًا.**
 
-This `StoryTray` component takes an array of `stories` and adds one last "Create Story" item at the end:
+يأخذ مكوّن `StoryTray` هذا مصفوفة `stories` ويضيف عنصرًا أخيرًا «Create Story» في النهاية:
 
 <Sandpack>
 
@@ -222,9 +222,9 @@ li {
 
 </Sandpack>
 
-There is a mistake in the code above. However, it is easy to miss because the initial output appears correct.
+يوجد خطأ في الكود أعلاه. لكن من السهل تفويته لأن المخرج الأول يبدو صحيحًا.
 
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
+يصبح الخطأ أوضح إذا أعاد مكوّن `StoryTray` الرسم عدة مرات. مثلًا، لنجعل `StoryTray` يُعاد رسمه بلون خلفية مختلف عند تمرير المؤشر فوقه:
 
 <Sandpack>
 
@@ -311,9 +311,9 @@ li {
 
 </Sandpack>
 
-Notice how every time you hover over the `StoryTray` component, "Create Story" gets added to the list again. The intention of the code was to add it once at the end. But `StoryTray` directly modifies the `stories` array from the props. Every time `StoryTray` renders, it adds "Create Story" again at the end of the same array. In other words, `StoryTray` is not a pure function--running it multiple times produces different results.
+لاحظ أنه في كل مرة تمرّر فيها المؤشر فوق `StoryTray`، تُضاف «Create Story» إلى القائمة مجددًا. كان المقصود إضافتها مرة واحدة في النهاية. لكن `StoryTray` يعدّل مصفوفة `stories` القادمة من الـ props مباشرة. في كل مرة يُرسم فيها `StoryTray`، يُضاف «Create Story» مرة أخرى إلى نهاية نفس المصفوفة. بعبارة أخرى، `StoryTray` ليست دالة نقية — تشغيلها عدة مرات يُنتج نتائج مختلفة.
 
-To fix this problem, you can make a copy of the array, and modify that copy instead of the original one:
+لإصلاح المشكلة، انسخ المصفوفة وعدّل النسخة بدل الأصل:
 
 ```js {2}
 export default function StoryTray({ stories }) {
@@ -322,9 +322,9 @@ export default function StoryTray({ stories }) {
   items.push({ id: 'create', label: 'Create Story' });
 ```
 
-This would [make the `StoryTray` function pure.](/learn/keeping-components-pure) Each time it is called, it would only modify a new copy of the array, and would not affect any external objects or variables. This solves the bug, but you had to make the component re-render more often before it became obvious that something is wrong with its behavior.
+هذا [يجعل دالة `StoryTray` نقية.](/learn/keeping-components-pure) في كل استدعاء تعدّل نسخة جديدة فقط من المصفوفة، ولا تؤثر على كائنات أو متغيرات خارجية. يحل ذلك الخطأ، لكنك احتجت لإعادة رسم المكوّن أكثر قبل أن يصبح واضحًا أن سلوكه خاطئ.
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**في المثال الأصلي، لم يكن الخطأ واضحًا. الآن لِنلفّ الكود الأصلي (الخاطئ) بـ`<StrictMode>`:**
 
 <Sandpack>
 
@@ -407,7 +407,7 @@ li {
 
 </Sandpack>
 
-**Strict Mode *always* calls your rendering function twice, so you can see the mistake right away** ("Create Story" appears twice). This lets you notice such mistakes early in the process. When you fix your component to render in Strict Mode, you *also* fix many possible future production bugs like the hover functionality from before:
+**Strict Mode يستدعي دالة الرسم *دائمًا* مرتين، فترى الخطأ فورًا** (تظهر «Create Story» مرتين). يتيح لك ذلك ملاحظة مثل هذه الأخطاء مبكرًا. عندما تُصلح المكوّن ليعمل في Strict Mode، *تُصلح* أيضًا أخطاء إنتاج محتملة كثيرة مثل سلوك التمرير السابق:
 
 <Sandpack>
 
@@ -499,29 +499,29 @@ li {
 
 </Sandpack>
 
-Without Strict Mode, it was easy to miss the bug until you added more re-renders. Strict Mode made the same bug appear right away. Strict Mode helps you find bugs before you push them to your team and to your users.
+بدون Strict Mode، كان من السهل تفويت الخطأ حتى تضيف المزيد من إعادات الرسم. Strict Mode جعل نفس الخطأ يظهر فورًا. يساعدك Strict Mode على إيجاد الأخطاء قبل دفعها لفريقك ومستخدميك.
 
-[Read more about keeping components pure.](/learn/keeping-components-pure)
+[اقرأ المزيد عن إبقاء المكوّنات نقية.](/learn/keeping-components-pure)
 
 <Note>
 
-If you have [React DevTools](/learn/react-developer-tools) installed, any `console.log` calls during the second render call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
+إذا ثبّتت [أدوات مطوّري React](/learn/react-developer-tools)، ستظهر استدعاءات `console.log` أثناء الرسم الثاني باهتة قليلًا. توفر React DevTools أيضًا إعدادًا (معطّلًا افتراضيًا) لإخفائها بالكامل.
 
 </Note>
 
 ---
 
-### Fixing bugs found by re-running Effects in development {/*fixing-bugs-found-by-re-running-effects-in-development*/}
+### إصلاح أخطاء يكشفها إعادة تشغيل التأثيرات في التطوير {/*fixing-bugs-found-by-re-running-effects-in-development*/}
 
-Strict Mode can also help find bugs in [Effects.](/learn/synchronizing-with-effects)
+يمكن لـ Strict Mode أيضًا المساعدة في إيجاد أخطاء في [التأثيرات.](/learn/synchronizing-with-effects)
 
-Every Effect has some setup code and may have some cleanup code. Normally, React calls setup when the component *mounts* (is added to the screen) and calls cleanup when the component *unmounts* (is removed from the screen). React then calls cleanup and setup again if its dependencies changed since the last render.
+لكل تأثير كود إعداد وقد يكون له كود تنظيف. عادةً، تستدعي React الإعداد عند *تركيب* المكوّن (إضافته للشاشة) والتنظيف عند *إلغاء تركيبه* (إزالته من الشاشة). ثم تستدعي التنظيف والإعداد مجددًا إذا تغيّرت تبعياته منذ آخر رسم.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every Effect.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+عند تفعيل Strict Mode، تشغّل React أيضًا **دورة إعداد+تنظيف إضافية في التطوير لكل تأثير.** قد يبدو ذلك مفاجئًا، لكنه يكشف أخطاء دقيقة يصعُب اصطيادها يدويًا.
 
-**Here is an example to illustrate how re-running Effects in Strict Mode helps you find bugs early.**
+**إليك مثال يوضّح كيف تساعدك إعادة تشغيل التأثيرات في Strict Mode على إيجاد الأخطاء مبكرًا.**
 
-Consider this example that connects a component to a chat:
+انظر إلى هذا المثال الذي يصل مكوّنًا بخدمة دردشة:
 
 <Sandpack>
 
@@ -578,9 +578,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-There is an issue with this code, but it might not be immediately clear.
+هناك مشكلة في هذا الكود، لكنها قد لا تكون واضحة فورًا.
 
-To make the issue more obvious, let's implement a feature. In the example below, `roomId` is not hardcoded. Instead, the user can select the `roomId` that they want to connect to from a dropdown. Click "Open chat" and then select different chat rooms one by one. Keep track of the number of active connections in the console:
+لنجعل المشكلة أوضح، لننفّذ ميزة. في المثال أدناه، `roomId` ليس ثابتًا في الكود. بدلًا من ذلك، يختار المستخدم `roomId` الذي يريد الاتصال به من قائمة منسدلة. انقر «Open chat» ثم اختر غرف دردشة مختلفة واحدة تلو الأخرى. تتبع عدد الاتصالات النشطة في وحدة التحكم:
 
 <Sandpack>
 
@@ -662,7 +662,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-You'll notice that the number of open connections always keeps growing. In a real app, this would cause performance and network problems. The issue is that [your Effect is missing a cleanup function:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
+ستلاحظ أن عدد الاتصالات المفتوحة يزداد دائمًا. في تطبيق حقيقي، يسبب ذلك مشاكل أداء وشبكة. المشكلة أن [تأثيرك يفتقد دالة تنظيف:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
 
 ```js {4}
   useEffect(() => {
@@ -672,9 +672,9 @@ You'll notice that the number of open connections always keeps growing. In a rea
   }, [roomId]);
 ```
 
-Now that your Effect "cleans up" after itself and destroys the outdated connections, the leak is solved. However, notice that the problem did not become visible until you've added more features (the select box).
+بعد أن يصبح تأثيرك «ينظّف» نفسه ويدمر الاتصالات القديمة، تُحل التسرّب. لكن لاحظ أن المشكلة لم تظهر حتى أضفت ميزات أكثر (مربع الاختيار).
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**في المثال الأصلي، لم يكن الخطأ واضحًا. الآن لِنلفّ الكود الأصلي (الخاطئ) بـ`<StrictMode>`:**
 
 <Sandpack>
 
@@ -736,9 +736,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem** (the number of active connections jumps to 2). Strict Mode runs an extra setup+cleanup cycle for every Effect. This Effect has no cleanup logic, so it creates an extra connection but doesn't destroy it. This is a hint that you're missing a cleanup function.
+**مع Strict Mode، ترى فورًا أن هناك مشكلة** (عدد الاتصالات النشطة يقفز إلى 2). يشغّل Strict Mode دورة إعداد+تنظيف إضافية لكل تأثير. هذا التأثير بلا تنظيف، فيُنشئ اتصالًا إضافيًا ولا يدمّره. هذا تلميح بأنك تفتقد دالة تنظيف.
 
-Strict Mode lets you notice such mistakes early in the process. When you fix your Effect by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the select box from before:
+يساعدك Strict Mode على ملاحظة مثل هذه الأخطاء مبكرًا. عندما تُصلح التأثير بإضافة تنظيف في Strict Mode، *تُصلح* أيضًا أخطاء إنتاج محتملة كثيرة مثل مربع الاختيار السابق:
 
 <Sandpack>
 

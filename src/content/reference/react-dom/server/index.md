@@ -1,44 +1,44 @@
 ---
-title: Server React DOM APIs
+title: واجهات React DOM للخادم
 ---
 
 <Intro>
 
-The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/creating-a-react-app#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+تتيح لك واجهات `react-dom/server` تصيير مكوّنات React إلى HTML على الخادم. تُستخدَم هذه الواجهات على الخادم فقط عند أعلى مستوى في تطبيقك لتوليد HTML الأولي. قد تستدعيها [إطار العمل](/learn/creating-a-react-app#full-stack-frameworks) نيابةً عنك. لا تحتاج معظم مكوّناتك إلى استيرادها أو استخدامها.
 
 </Intro>
 
 ---
 
-## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
+## واجهات الخادم لتيارات الويب (Web Streams) {/*server-apis-for-web-streams*/}
 
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
+تتوفر هذه الدوال فقط في البيئات التي تدعم [تيارات الويب (Web Streams)](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)، بما في ذلك المتصفحات وDeno وبعض بيئات الحافة الحديثة:
 
-* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
-* [`resume`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerender`](/reference/react-dom/static/prerender) to a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) يصيّر شجرة React إلى [تيار ويب للقراءة (Readable Web Stream).](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`resume`](/reference/react-dom/server/resume) يُكمِل [`prerender`](/reference/react-dom/static/prerender) إلى [تيار ويب للقراءة (Readable Web Stream)](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 
 <Note>
 
-Node.js also includes these methods for compatibility, but they are not recommended due to worse performance. Use the [dedicated Node.js APIs](#server-apis-for-nodejs-streams) instead.
+تتضمّن Node.js هذه الدوال أيضاً للتوافق، لكنها غير مُوصى بها بسبب أداء أضعف. استخدم [واجهات Node.js المخصّصة](#server-apis-for-nodejs-streams) بدلاً من ذلك.
 
 </Note>
 ---
 
-## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
+## واجهات الخادم لتيارات Node.js {/*server-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
+تتوفر هذه الدوال فقط في البيئات التي تدعم [تيارات Node.js:](https://nodejs.org/api/stream.html)
 
-* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
-* [`resumeToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) يصيّر شجرة React إلى [تيار Node.js](https://nodejs.org/api/stream.html) قابل للربط بالأنابيب (pipeable).
+* [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) يُكمِل [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) إلى [تيار Node.js](https://nodejs.org/api/stream.html) قابل للربط بالأنابيب.
 
 ---
 
-## Legacy Server APIs for non-streaming environments {/*legacy-server-apis-for-non-streaming-environments*/}
+## واجهات الخادم القديمة لبيئات غير داعمة للتيارات {/*legacy-server-apis-for-non-streaming-environments*/}
 
-These methods can be used in the environments that don't support streams:
+يمكن استخدام هذه الدوال في البيئات التي لا تدعم التيارات:
 
-* [`renderToString`](/reference/react-dom/server/renderToString) renders a React tree to a string.
-* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) renders a non-interactive React tree to a string.
+* [`renderToString`](/reference/react-dom/server/renderToString) يصيّر شجرة React إلى سلسلة نصية.
+* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) يصيّر شجرة React غير تفاعلية إلى سلسلة نصية.
 
-They have limited functionality compared to the streaming APIs.
+وظائفها أقل مقارنةً بواجهات التدفق (streaming).

@@ -1,16 +1,16 @@
 ---
-title: preinitModule
+title: "تهيئة الوحدة مسبقًا (preinitModule)"
 ---
 
 <Note>
 
-[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[أُطر React](/learn/creating-a-react-app) غالبًا تتولى تحميل الموارد نيابةً عنك، فقد لا تحتاج لاستدعاء هذه الواجهة بنفسك. راجع توثيق إطارك للتفاصيل.
 
 </Note>
 
 <Intro>
 
-`preinitModule` lets you eagerly fetch and evaluate an ESM module.
+تمكنك `preinitModule` من جلب ورَدّ وتقييم وحدة ESM بشكل استباقي.
 
 ```js
 preinitModule("https://example.com/module.js", {as: "script"});
@@ -22,11 +22,11 @@ preinitModule("https://example.com/module.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `preinitModule(href, options)` {/*preinitmodule*/}
 
-To preinit an ESM module, call the `preinitModule` function from `react-dom`.
+لتهيئة وحدة ESM مسبقًا، استدعِ الدالة `preinitModule` من `react-dom`.
 
 ```js
 import { preinitModule } from 'react-dom';
@@ -38,36 +38,36 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[المزيد من الأمثلة أدناه.](#usage)
 
-The `preinitModule` function provides the browser with a hint that it should start downloading and executing the given module, which can save time. Modules that you `preinit` are executed when they finish downloading.
+توفّر `preinitModule` للمتصفّح تلميحًا بأن يبدأ تنزيل الوحدة وتنفيذها، ما قد يوفر وقتًا. الوحدات التي تهيئها مسبقًا تُنفَّذ عند انتهاء تنزيلها.
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `href`: a string. The URL of the module you want to download and execute.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. It must be `'script'`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+* `href`: سلسلة نصية. عنوان URL للوحدة التي تريد تنزيلها وتنفيذها.
+* `options`: كائن يحتوي الخصائص التالية:
+  *  `as`: سلسلة مطلوبة. يجب أن تكون `'script'`.
+  * `crossOrigin`: سلسلة. [سياسة CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) المستخدمة. القيم الممكنة `anonymous` و`use-credentials`.
+  * `integrity`: سلسلة نصية. تجزئة تشفيرية للوحدة لـ [التحقق من سلامتها](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  * `nonce`: سلسلة نصية. [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) تشفيري للسماح بالوحدة مع سياسة أمان محتوى صارمة.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`preinitModule` returns nothing.
+لا تُرجِع `preinitModule` شيئًا.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* Multiple calls to `preinitModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinitModule` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preinitModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* عدة استدعاءات لـ `preinitModule` بنفس `href` لها نفس أثر استدعاء واحد.
+* في المتصفّح يمكن استدعاء `preinitModule` في أي موضع: أثناء تصيير مكوّن، أو في Effect، أو في معالج حدث، إلخ.
+* في التصيير على الخادم أو عند تصيير مكوّنات الخادم، لا يكون لـ `preinitModule` أثر إلا إذا استُدعي أثناء تصيير مكوّن أو في سياق async منبثق من تصيير مكوّن. تُتجاهل أي استدعاءات أخرى.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### التحميل المسبق أثناء التصيير {/*preloading-when-rendering*/}
 
-Call `preinitModule` when rendering a component if you know that it or its children will use a specific module and you're OK with the module being evaluated and thereby taking effect immediately upon being downloaded.
+استدعِ `preinitModule` أثناء تصيير مكوّن إن كنت تعلم أنه أو أبناؤه سيستخدمون وحدة محددة، وأنت موافق على تقييم الوحدة فورًا بعد تنزيلها.
 
 ```js
 import { preinitModule } from 'react-dom';
@@ -78,11 +78,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to download the module but not to execute it right away, use [`preloadModule`](/reference/react-dom/preloadModule) instead. If you want to preinit a script that isn't an ESM module, use [`preinit`](/reference/react-dom/preinit).
+إن أردت أن يحمّل المتصفّح الوحدة دون تنفيذها فورًا، استخدم [`preloadModule`](/reference/react-dom/preloadModule) بدلًا من ذلك. إن أردت تهيئة سكربت ليس وحدة ESM، استخدم [`preinit`](/reference/react-dom/preinit).
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### التحميل المسبق في معالج حدث {/*preloading-in-an-event-handler*/}
 
-Call `preinitModule` in an event handler before transitioning to a page or state where the module will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+استدعِ `preinitModule` في معالج حدث قبل الانتقال إلى صفحة أو حالة ستُحتاج فيها الوحدة. يبدأ ذلك مبكرًا أكثر من الاستدعاء أثناء تصيير الصفحة أو الحالة الجديدة.
 
 ```js
 import { preinitModule } from 'react-dom';
@@ -93,7 +93,7 @@ function CallToAction() {
     startWizard();
   }
   return (
-    <button onClick={onClick}>Start Wizard</button>
+    <button onClick={onClick}>ابدأ المعالج</button>
   );
 }
 ```

@@ -1,10 +1,10 @@
 ---
-title: useDeferredValue
+title: تأجيل القيمة — useDeferredValue
 ---
 
 <Intro>
 
-`useDeferredValue` is a React Hook that lets you defer updating a part of the UI.
+`useDeferredValue` هو Hook في React يتيح لك تأجيل تحديث جزء من الواجهة.
 
 ```js
 const deferredValue = useDeferredValue(value)
@@ -16,11 +16,11 @@ const deferredValue = useDeferredValue(value)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useDeferredValue(value, initialValue?)` {/*usedeferredvalue*/}
 
-Call `useDeferredValue` at the top level of your component to get a deferred version of that value.
+استدعِ `useDeferredValue` في أعلى مستوى مكوّنك للحصول على نسخة مؤجلة من تلك القيمة.
 
 ```js
 import { useState, useDeferredValue } from 'react';
@@ -32,41 +32,41 @@ function SearchPage() {
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `value`: The value you want to defer. It can have any type.
-* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+* `value`: القيمة التي تريد تأجيلها. يمكن أن تكون من أي نوع.
+* **اختياري** `initialValue`: قيمة تُستخدم أثناء الـ render الأول للمكوّن. إذا حذفت هذا الخيار، فلن يؤجّل `useDeferredValue` أثناء الـ render الأول، لأنه لا توجد نسخة سابقة من `value` يمكن عرضها بدلًا منها.
 
 
-#### Returns {/*returns*/}
+#### القيمة المعادة {/*returns*/}
 
-- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+- `currentValue`: أثناء الـ render الأول، تكون القيمة المؤجلة المعادة إما `initialValue` أو نفس القيمة التي قدمتها. أثناء التحديثات، يحاول React أولًا إعادة الرسم بالقيمة القديمة (فيُعاد القيمة القديمة)، ثم يحاول إعادة رسم أخرى في الخلفية بالقيمة الجديدة (فيُعاد القيمة المحدّثة).
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-- When an update is inside a Transition, `useDeferredValue` always returns the new `value` and does not spawn a deferred render, since the update is already deferred.
+- عندما يكون التحديث داخل Transition، يعيد `useDeferredValue` دائمًا `value` الجديدة ولا ينشئ renderًا مؤجلًا، لأن التحديث مؤجّل أصلًا.
 
-- The values you pass to `useDeferredValue` should either be primitive values (like strings and numbers) or objects created outside of rendering. If you create a new object during rendering and immediately pass it to `useDeferredValue`, it will be different on every render, causing unnecessary background re-renders.
+- ينبغي أن تكون القيم التي تمرّرها إلى `useDeferredValue` إما قيمًا أولية (مثل السلاسل والأرقام) أو كائنات أُنشئت خارج الرسم. إذا أنشأت كائنًا جديدًا أثناء الرسم ومررته فورًا إلى `useDeferredValue`، فسيختلف في كل render، ما يسبب إعادات رسم خلفية غير ضرورية.
 
-- When `useDeferredValue` receives a different value (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), in addition to the current render (when it still uses the previous value), it schedules a re-render in the background with the new value. The background re-render is interruptible: if there's another update to the `value`, React will restart the background re-render from scratch. For example, if the user is typing into an input faster than a chart receiving its deferred value can re-render, the chart will only re-render after the user stops typing.
+- عندما يتلقى `useDeferredValue` قيمة مختلفة (بالمقارنة مع [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is))، بالإضافة إلى الـ render الحالي (حيث ما زال يستخدم القيمة السابقة)، يجدول إعادة رسم في الخلفية بالقيمة الجديدة. إعادة الرسم الخلفية قابلة للمقاطعة: إذا حدث تحديث آخر لـ `value`، تعيد React إعادة الرسم الخلفي من الصفر. مثلًا، إذا كان المستخدم يكتب في حقل أسرع مما يستطيع مخطط يتلقى قيمته المؤجلة أن يعيد الرسم، فلن يعيد المخطط الرسم إلا بعد أن يتوقف المستخدم عن الكتابة.
 
-- `useDeferredValue` is integrated with [`<Suspense>`.](/reference/react/Suspense) If the background update caused by a new value suspends the UI, the user will not see the fallback. They will see the old deferred value until the data loads.
+- `useDeferredValue` متكامل مع [`<Suspense>`.](/reference/react/Suspense) إذا علّق التحديث الخلفي الناتج عن قيمة جديدة الواجهة، فلن يرى المستخدم الـ fallback. سيرى القيمة المؤجلة القديمة حتى تُحمَّل البيانات.
 
-- `useDeferredValue` does not by itself prevent extra network requests.
+- `useDeferredValue` لا يمنع من تلقاء نفسه طلبات شبكة إضافية.
 
-- There is no fixed delay caused by `useDeferredValue` itself. As soon as React finishes the original re-render, React will immediately start working on the background re-render with the new deferred value. Any updates caused by events (like typing) will interrupt the background re-render and get prioritized over it.
+- لا يوجد تأخير ثابت يسببه `useDeferredValue` بحد ذاته. بمجرد أن تنتهي React من الـ render الأصلي، تبدأ فورًا العمل على إعادة الرسم الخلفية بالقيمة المؤجلة الجديدة. أي تحديثات ناتجة عن أحداث (مثل الكتابة) تقاطع إعادة الرسم الخلفية وتُعطى أولوية عليها.
 
-- The background re-render caused by `useDeferredValue` does not fire Effects until it's committed to the screen. If the background re-render suspends, its Effects will run after the data loads and the UI updates.
+- إعادة الرسم الخلفية الناتجة عن `useDeferredValue` لا تشغّل Effects حتى تُلتزم على الشاشة. إذا علّقت إعادة الرسم الخلفية، فتُشغَّل Effectsها بعد تحميل البيانات وتحديث الواجهة.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### عرض محتوى قديم أثناء تحميل المحتوى الجديد {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-Call `useDeferredValue` at the top level of your component to defer updating some part of your UI.
+استدعِ `useDeferredValue` في أعلى مستوى مكوّنك لتأجيل تحديث جزء من الواجهة.
 
 ```js [[1, 5, "query"], [2, 5, "deferredQuery"]]
 import { useState, useDeferredValue } from 'react';
@@ -78,26 +78,26 @@ function SearchPage() {
 }
 ```
 
-During the initial render, the <CodeStep step={2}>deferred value</CodeStep> will be the same as the <CodeStep step={1}>value</CodeStep> you provided.
+أثناء الـ render الأول، تكون <CodeStep step={2}>القيمة المؤجلة</CodeStep> نفس <CodeStep step={1}>القيمة</CodeStep> التي قدمتها.
 
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in the background.
+أثناء التحديثات، تتأخر <CodeStep step={2}>القيمة المؤجلة</CodeStep> عن أحدث <CodeStep step={1}>قيمة</CodeStep>. على وجه الخصوص، تعيد React الرسم أولًا *دون* تحديث القيمة المؤجلة، ثم تحاول إعادة الرسم بالقيمة المستلمة حديثًا في الخلفية.
 
-**Let's walk through an example to see when this is useful.**
+**لنمضِ في مثال لنرى متى يكون ذلك مفيدًا.**
 
 <Note>
 
-This example assumes you use a Suspense-enabled data source:
+يفترض هذا المثال أنك تستخدم مصدر بيانات يدعم Suspense:
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a Promise with [`use`](/reference/react/use)
+- جلب البيانات مع أطر تدعم Suspense مثل [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) و[Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
+- تحميل كود المكوّن كسولًا بـ [`lazy`](/reference/react/lazy)
+- قراءة قيمة Promise بـ [`use`](/reference/react/use)
 
-[Learn more about Suspense and its limitations.](/reference/react/Suspense)
+[تعرّف أكثر على Suspense وقيوده.](/reference/react/Suspense)
 
 </Note>
 
 
-In this example, the `SearchResults` component [suspends](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading) while fetching the search results. Try typing `"a"`, waiting for the results, and then editing it to `"ab"`. The results for `"a"` get replaced by the loading fallback.
+في هذا المثال، يعلّق مكوّن `SearchResults` أثناء جلب نتائج البحث. جرّب كتابة `"a"`، انتظر النتائح، ثم عدّلها إلى `"ab"`. تُستبدل نتائج `"a"` بـ fallback التحميل.
 
 <Sandpack>
 
@@ -244,7 +244,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down:
+نمط واجهة شائع بديل هو *تأجيل* تحديث قائمة النتائج والإبقاء على النتائج السابقة حتى تجهز الجديدة. استدعِ `useDeferredValue` لتمرير نسخة مؤجلة من الاستعلام:
 
 ```js {3,11}
 export default function App() {
@@ -264,9 +264,9 @@ export default function App() {
 }
 ```
 
-The `query` will update immediately, so the input will display the new value. However, the `deferredQuery` will keep its previous value until the data has loaded, so `SearchResults` will show the stale results for a bit.
+يتحدّث `query` فورًا، فيعرض الحقل القيمة الجديدة. أما `deferredQuery` فيحتفظ بقيمته السابقة حتى تُحمَّل البيانات، فيعرض `SearchResults` النتائج القديمة لبرهة.
 
-Enter `"a"` in the example below, wait for the results to load, and then edit the input to `"ab"`. Notice how instead of the Suspense fallback, you now see the stale result list until the new results have loaded:
+أدخل `"a"` في المثال أدناه، انتظر تحميل النتائح، ثم عدّل الإدخال إلى `"ab"`. لاحظ أنك بدلًا من fallback الخاص بـ Suspense ترى قائمة النتائج القديمة حتى تُحمَّل النتائج الجديدة:
 
 <Sandpack>
 
@@ -416,25 +416,25 @@ input { margin: 10px; }
 
 <DeepDive>
 
-#### How does deferring a value work under the hood? {/*how-does-deferring-a-value-work-under-the-hood*/}
+#### كيف يعمل تأجيل القيمة داخليًا؟ {/*how-does-deferring-a-value-work-under-the-hood*/}
 
-You can think of it as happening in two steps:
+يمكنك تخيّله على خطوتين:
 
-1. **First, React re-renders with the new `query` (`"ab"`) but with the old `deferredQuery` (still `"a"`).** The `deferredQuery` value, which you pass to the result list, is *deferred:* it "lags behind" the `query` value.
+1. **أولًا، تعيد React الرسم بـ `query` الجديدة (`"ab"`) لكن بـ `deferredQuery` القديمة (ما زالت `"a"`).** قيمة `deferredQuery` التي تمررها لقائمة النتائج *مؤجلة:* تتأخر عن قيمة `query`.
 
-2. **In the background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
+2. **في الخلفية، تحاول React إعادة الرسم مع تحديث *كلٍ* من `query` و`deferredQuery` إلى `"ab"`.** إذا اكتملت إعادة الرسم هذه، تعرضها React على الشاشة. لكن إذا علّقت (لم تُحمَّل بعد نتائج `"ab"`)، تتخلى React عن محاولة الرسم هذه، وتعيد محاولة إعادة الرسم بعد تحميل البيانات. يظل المستخدم يرى القيمة المؤجلة القديمة حتى تجهز البيانات.
 
-The deferred "background" rendering is interruptible. For example, if you type into the input again, React will abandon it and restart with the new value. React will always use the latest provided value.
+إعادة الرسم الخلفية المؤجلة قابلة للمقاطعة. مثلًا، إذا كتبت في الحقل مجددًا، تتخلى React عنها وتبدأ بالقيمة الجديدة. تستخدم React دائمًا أحدث قيمة مقدَّمة.
 
-Note that there is still a network request per each keystroke. What's being deferred here is displaying results (until they're ready), not the network requests themselves. Even if the user continues typing, responses for each keystroke get cached, so pressing Backspace is instant and doesn't fetch again.
+لاحظ أنه ما زال يوجد طلب شبكة لكل ضغطة مفتاح. ما يُؤجَّل هنا هو عرض النتائح (حتى تجهز)، لا طلبات الشبكة نفسها. حتى إذا واصل المستخدم الكتابة، تُخزَّن استجابات كل ضغطة، فيكون الرجوع بالمسافة فوريًا دون إعادة جلب.
 
 </DeepDive>
 
 ---
 
-### Indicating that the content is stale {/*indicating-that-the-content-is-stale*/}
+### إظهار أن المحتوى قديم {/*indicating-that-the-content-is-stale*/}
 
-In the example above, there is no indication that the result list for the latest query is still loading. This can be confusing to the user if the new results take a while to load. To make it more obvious to the user that the result list does not match the latest query, you can add a visual indication when the stale result list is displayed:
+في المثال أعلاه، لا يوجد ما يدل على أن قائمة النتائج لأحدث استعلام ما زالت تُحمَّل. قد يُربك المستخدم إذا طال انتظار النتائج الجديدة. لتوضيح أن قائمة النتائج لا تطابق أحدث استعلام، أضف مؤشرًا بصريًا عند عرض قائمة النتائج القديمة:
 
 ```js {2}
 <div style={{
@@ -444,7 +444,7 @@ In the example above, there is no indication that the result list for the latest
 </div>
 ```
 
-With this change, as soon as you start typing, the stale result list gets slightly dimmed until the new result list loads. You can also add a CSS transition to delay dimming so that it feels gradual, like in the example below:
+مع هذا التغيير، بمجرد أن تبدأ الكتابة، تخفت قائمة النتائج القديمة قليلًا حتى تُحمَّل القائمة الجديدة. يمكنك أيضًا إضافة انتقال CSS لتأخير الخفوت فيبدو تدريجيًا، كفي المثال أدناه:
 
 <Sandpack>
 
@@ -600,11 +600,11 @@ input { margin: 10px; }
 
 ---
 
-### Deferring re-rendering for a part of the UI {/*deferring-re-rendering-for-a-part-of-the-ui*/}
+### تأجيل إعادة الرسم لجزء من الواجهة {/*deferring-re-rendering-for-a-part-of-the-ui*/}
 
-You can also apply `useDeferredValue` as a performance optimization. It is useful when a part of your UI is slow to re-render, there's no easy way to optimize it, and you want to prevent it from blocking the rest of the UI.
+يمكنك أيضًا استخدام `useDeferredValue` كتحسين للأداء. يفيد عندما يكون جزء من الواجهة بطيئًا في إعادة الرسم، ولا يوجد تحسين سهل، وتريد منعه من حجب بقية الواجهة.
 
-Imagine you have a text field and a component (like a chart or a long list) that re-renders on every keystroke:
+تخيّل حقل نصًا ومكوّنًا (مثل مخطط أو قائمة طويلة) يعيد الرسم عند كل ضغطة مفتاح:
 
 ```js
 function App() {
@@ -618,7 +618,7 @@ function App() {
 }
 ```
 
-First, optimize `SlowList` to skip re-rendering when its props are the same. To do this, [wrap it in `memo`:](/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
+أولًا، حسّن `SlowList` لتتخطى إعادة الرسم عندما تكون الخصائص نفسها. لفعل ذلك، [لفّه بـ `memo`:](/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
 
 ```js {1,3}
 const SlowList = memo(function SlowList({ text }) {
@@ -626,9 +626,9 @@ const SlowList = memo(function SlowList({ text }) {
 });
 ```
 
-However, this only helps if the `SlowList` props are *the same* as during the previous render. The problem you're facing now is that it's slow when they're *different,* and when you actually need to show different visual output.
+لكن هذا يساعد فقط إذا كانت خصائص `SlowList` *نفسها* كما في الـ render السابق. المشكلة الآن أنها بطيئة عندما تكون *مختلفة*، حين تحتاج فعلًا إلى مخرجات مرئية مختلفة.
 
-Concretely, the main performance problem is that whenever you type into the input, the `SlowList` receives new props, and re-rendering its entire tree makes the typing feel janky. In this case, `useDeferredValue` lets you prioritize updating the input (which must be fast) over updating the result list (which is allowed to be slower):
+عمليًا، المشكلة الأدائية الرئيسية أنه كلما كتبت في الحقل، يتلقى `SlowList` خصائص جديدة، وإعادة رسم الشجرة كاملة تجعل الكتابة تبدو متقطعة. هنا، يتيح لك `useDeferredValue` إعطاء أولوية لتحديث الحقل (الذي ينبغي أن يكون سريعًا) على تحديث قائمة النتائج (التي يُسمح أن تكون أبطأ):
 
 ```js {3,7}
 function App() {
@@ -643,13 +643,13 @@ function App() {
 }
 ```
 
-This does not make re-rendering of the `SlowList` faster. However, it tells React that re-rendering the list can be deprioritized so that it doesn't block the keystrokes. The list will "lag behind" the input and then "catch up". Like before, React will attempt to update the list as soon as possible, but will not block the user from typing.
+هذا لا يسرّع إعادة رسم `SlowList` نفسها. لكنه يخبر React أن إعادة رسم القائمة يمكن خفض أولويتها حتى لا تحجب ضغطات المفاتيح. تتأخر القائمة عن الحقل ثم «تلحق». كسابقه، تحاول React تحديث القائمة بأسرع ما يمكن، دون أن تمنع المستخدم من الكتابة.
 
-<Recipes titleText="The difference between useDeferredValue and unoptimized re-rendering" titleId="examples">
+<Recipes titleText="الفرق بين useDeferredValue وإعادة رسم غير محسّنة" titleId="examples">
 
-#### Deferred re-rendering of the list {/*deferred-re-rendering-of-the-list*/}
+#### إعادة رسم مؤجلة للقائمة {/*deferred-re-rendering-of-the-list*/}
 
-In this example, each item in the `SlowList` component is **artificially slowed down** so that you can see how `useDeferredValue` lets you keep the input responsive. Type into the input and notice that typing feels snappy while the list "lags behind" it.
+في هذا المثال، **يُبطّأ كل عنصر** في مكوّن `SlowList` اصطناعيًا حتى ترى كيف يحافظ `useDeferredValue` على استجابة الحقل. اكتب في الحقل ولاحظ أن الكتابة تبدو سلسة بينما القائمة «تتأخر» عنه.
 
 <Sandpack>
 
@@ -723,11 +723,11 @@ export default SlowList;
 
 <Solution />
 
-#### Unoptimized re-rendering of the list {/*unoptimized-re-rendering-of-the-list*/}
+#### إعادة رسم غير محسّنة للقائمة {/*unoptimized-re-rendering-of-the-list*/}
 
-In this example, each item in the `SlowList` component is **artificially slowed down**, but there is no `useDeferredValue`.
+في هذا المثال، **يُبطّأ كل عنصر** في `SlowList` اصطناعيًا، لكن بلا `useDeferredValue`.
 
-Notice how typing into the input feels very janky. This is because without `useDeferredValue`, each keystroke forces the entire list to re-render immediately in a non-interruptible way.
+لاحظ أن الكتابة في الحقل تبدو متقطعة جدًا. ذلك لأنه بلا `useDeferredValue`، كل ضغطة تجبر القائمة كاملة على إعادة رسم فورية غير قابلة للمقاطعة.
 
 <Sandpack>
 
@@ -804,25 +804,25 @@ export default SlowList;
 
 <Pitfall>
 
-This optimization requires `SlowList` to be wrapped in [`memo`.](/reference/react/memo) This is because whenever the `text` changes, React needs to be able to re-render the parent component quickly. During that re-render, `deferredText` still has its previous value, so `SlowList` is able to skip re-rendering (its props have not changed). Without [`memo`,](/reference/react/memo) it would have to re-render anyway, defeating the point of the optimization.
+يتطلب هذا التحسين لف `SlowList` بـ [`memo`.](/reference/react/memo) لأنه كلما تغيّر `text`، ينبغي أن تعيد React رسم المكوّن الأب بسرعة. أثناء ذلك الـ render، ما زال `deferredText` يحمل قيمته السابقة، فيستطيع `SlowList` تخطي إعادة الرسم (خصائصه لم تتغيّر). بلا [`memo`,](/reference/react/memo) لاضطر لإعادة الرسم على أي حال، فيُبطل غرض التحسين.
 
 </Pitfall>
 
 <DeepDive>
 
-#### How is deferring a value different from debouncing and throttling? {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
+#### كيف يختلف تأجيل القيمة عن debouncing وthrottling؟ {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
 
-There are two common optimization techniques you might have used before in this scenario:
+تقنيتان شائعتان للتحسين ربما استخدمتهما في هذا السيناريو:
 
-- *Debouncing* means you'd wait for the user to stop typing (e.g. for a second) before updating the list.
-- *Throttling* means you'd update the list every once in a while (e.g. at most once a second).
+- *Debouncing* تعني انتظار توقف المستخدم عن الكتابة (مثلًا ثانية) قبل تحديث القائمة.
+- *Throttling* تعني تحديث القائمة بين حين وآخر (مثلًا مرة في الثانية على الأكثر).
 
-While these techniques are helpful in some cases, `useDeferredValue` is better suited to optimizing rendering because it is deeply integrated with React itself and adapts to the user's device.
+رغم فائدتهما أحيانًا، فـ`useDeferredValue` أنسب لتحسين الرسم لأنه متكامل عميقًا مع React ويتكيّف مع جهاز المستخدم.
 
-Unlike debouncing or throttling, it doesn't require choosing any fixed delay. If the user's device is fast (e.g. powerful laptop), the deferred re-render would happen almost immediately and wouldn't be noticeable. If the user's device is slow, the list would "lag behind" the input proportionally to how slow the device is.
+على عكس debouncing أو throttling، لا يتطلب اختيار تأخير ثابت. إذا كان الجهاز سريعًا (مثل حاسوب محمول قوي)، تحدث إعادة الرسم المؤجلة تقريبًا فورًا دون أن تُلاحظ. إذا كان الجهاز بطيئًا، تتأخر القائمة عن الحقل بما يتناسب مع البطء.
 
-Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in the background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
+أيضًا، على عكس debouncing أو throttling، إعادات الرسم المؤجلة بـ`useDeferredValue` قابلة للمقاطعة افتراضيًا. أي إذا كانت React في منتصف إعادة رسم قائمة كبيرة والمستخدم ضغط مفتاحًا آخر، تتخلى React عن ذلك الـ render وتعالج الضغطة ثم تبدأ الرسم في الخلفية من جديد. بالمقابل، debouncing وthrottling ما زالا ينتجان تجربة متقطعة لأنهما *يحجبان*: يؤجلان فقط لحظة حجب الرسم لضغطات المفاتيح.
 
-If the work you're optimizing doesn't happen during rendering, debouncing and throttling are still useful. For example, they can let you fire fewer network requests. You can also use these techniques together.
+إذا كان العمل الذي تحسّنه لا يحدث أثناء الرسم، فلا يزال debouncing وthrottling مفيدين. مثلًا، يقللان طلبات الشبكة. يمكنك أيضًا الجمع بين هذه التقنيات.
 
 </DeepDive>

@@ -4,7 +4,7 @@ title: useOptimistic
 
 <Intro>
 
-`useOptimistic` is a React Hook that lets you optimistically update the UI.
+`useOptimistic` هو Hook في React يتيح لك تحديث الواجهة تفاؤليًا.
 
 ```js
   const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
@@ -20,9 +20,9 @@ title: useOptimistic
 
 ### `useOptimistic(state, updateFn)` {/*use*/}
 
-`useOptimistic` is a React Hook that lets you show a different state while an async action is underway. It accepts some state as an argument and returns a copy of that state that can be different during the duration of an async action such as a network request. You provide a function that takes the current state and the input to the action, and returns the optimistic state to be used while the action is pending.
+`useOptimistic` هو Hook في React يتيح لك عرض حالة مختلفة أثناء تنفيذ إجراء غير متزامن. يقبل حالة كمعامل ويُرجع نسخة من تلك الحالة قد تختلف أثناء عملية غير متزامنة مثل طلب شبكة. تزوّد بدالة تأخذ الحالة الحالية ومدخل الإجراء، وتُرجع الحالة التفاؤلية المستخدمة أثناء انتظار الإجراء.
 
-This state is called the "optimistic" state because it is usually used to immediately present the user with the result of performing an action, even though the action actually takes time to complete.
+تُسمى هذه الحالة «تفاؤلية» لأنها تُستخدم عادةً لعرض نتيجة الإجراء للمستخدم فورًا حتى لو استغرق الإجراء وقتًا ليُكمَل.
 
 ```js
 import { useOptimistic } from 'react';
@@ -32,25 +32,25 @@ function AppContainer() {
     state,
     // updateFn
     (currentState, optimisticValue) => {
-      // merge and return new state
-      // with optimistic value
+      // دمج وإرجاع حالة جديدة
+      // مع القيمة التفاؤلية
     }
   );
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `state`: the value to be returned initially and whenever no action is pending.
-* `updateFn(currentState, optimisticValue)`: a function that takes the current state and the optimistic value passed to `addOptimistic` and returns the resulting optimistic state. It must be a pure function. `updateFn` takes in two parameters. The `currentState` and the `optimisticValue`. The return value will be the merged value of the `currentState` and `optimisticValue`.
+* `state`: القيمة المُرجعة في البداية وكلما لم يكن هناك إجراء قيد التنفيذ.
+* `updateFn(currentState, optimisticValue)`: دالة تأخذ الحالة الحالية والقيمة التفاؤلية المُمرَّرة إلى `addOptimistic` وتُرجع الحالة التفاؤلية الناتجة. يجب أن تكون دالة نقية. تأخذ `updateFn` معاملين: `currentState` و`optimisticValue`. القيمة المُرجعة ستكون الدمج بين `currentState` و`optimisticValue`.
 
 
 #### Returns {/*returns*/}
 
-* `optimisticState`: The resulting optimistic state. It is equal to `state` unless an action is pending, in which case it is equal to the value returned by `updateFn`.
-* `addOptimistic`: `addOptimistic` is the dispatching function to call when you have an optimistic update. It takes one argument, `optimisticValue`, of any type and will call the `updateFn` with `state` and `optimisticValue`.
+* `optimisticState`: الحالة التفاؤلية الناتجة. تساوي `state` ما لم يكن هناك إجراء قيد التنفيذ، وفي هذه الحالة تساوي القيمة التي تُرجعها `updateFn`.
+* `addOptimistic`: دالة الإرسال التي تستدعيها عند وجود تحديث تفاؤلي. تأخذ معاملًا واحدًا `optimisticValue` من أي نوع وتستدعي `updateFn` مع `state` و`optimisticValue`.
 
 ---
 
@@ -58,9 +58,9 @@ function AppContainer() {
 
 ### Optimistically updating forms {/*optimistically-updating-with-forms*/}
 
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+يوفّر Hook `useOptimistic` طريقة لتحديث واجهة المستخدم تفاؤليًا قبل اكتمال عملية خلفية مثل طلب شبكة. في سياق النماذج، تساعد هذه التقنية على جعل التطبيقات تبدو أكثر استجابة. عند إرسال نموذج، بدل انتظار استجابة الخادم لعرض التغييرات، تُحدَّث الواجهة فورًا بالنتيجة المتوقعة.
 
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
+على سبيل المثال، عندما يكتب المستخدم رسالة في النموذج ويضغط «إرسال»، يسمح Hook `useOptimistic` بظهور الرسالة فورًا في القائمة مع تسمية «جاري الإرسال...» حتى قبل إرسال الرسالة فعليًا إلى الخادم. هذا النهج «التفاؤلي» يعطي انطباعًا بالسرعة والاستجابة. يحاول النموذج بعدها إرسال الرسالة فعليًا في الخلفية. عند تأكيد الخادم استلام الرسالة، تُزال تسمية «جاري الإرسال...».
 
 <Sandpack>
 

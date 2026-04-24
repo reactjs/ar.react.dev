@@ -4,7 +4,7 @@ title: resume
 
 <Intro>
 
-`resume` streams a pre-rendered React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+`resume` يدفّق شجرة React المُصيَّرة مسبقاً إلى [تيار ويب للقراءة (Readable Web Stream).](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
 ```js
 const stream = await resume(reactNode, postponedState, options?)
@@ -16,17 +16,17 @@ const stream = await resume(reactNode, postponedState, options?)
 
 <Note>
 
-This API depends on [Web Streams.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) For Node.js, use [`resumeToNodeStream`](/reference/react-dom/server/renderToPipeableStream) instead.
+تعتمد هذه الواجهة على [تيارات الويب (Web Streams).](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) لـ Node.js، استخدم [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) بدلاً من ذلك.
 
 </Note>
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `resume(node, postponedState, options?)` {/*resume*/}
 
-Call `resume` to resume rendering a pre-rendered React tree as HTML into a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+استدعِ `resume` لاستئناف تصيير شجرة React مُصيَّرة مسبقاً كـ HTML في [تيار ويب للقراءة (Readable Web Stream).](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
 ```js
 import { resume } from 'react-dom/server';
@@ -39,39 +39,39 @@ async function handler(request, writable) {
 }
 ```
 
-[See more examples below.](#usage)
+[انظر المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
-* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
-* **optional** `options`: An object with streaming options.
-  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
-  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
-  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+* `reactNode`: عقدة React التي استدعيت معها `prerender`، مثل عنصر JSX مثل `<App />`. يُفترض أن تمثّل المستند بالكامل، لذا يجب أن يصيّر مكوّن `App` وسم `<html>`.
+* `postponedState`: الكائن المعتم `postpone` الذي تعيده [واجهة prerender](/reference/react-dom/static/index)، بعد تحميله من مكان تخزينه (مثل redis أو ملف أو S3).
+* `options` **اختياري**: كائن بخيارات التدفق.
+  * `nonce` **اختياري**: سلسلة [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) للسماح بالنصوص ضمن [`script-src` في Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
+  * `signal` **اختياري**: [إشارة إلغاء (abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) تتيح لك [إيقاف التصيير على الخادم](#aborting-server-rendering) وتصيير الباقي على العميل.
+  * `onError` **اختياري**: دالة استدعاء تُنفَّذ عند حدوث خطأ على الخادم، سواء كان [قابلاً للاسترداد](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) أو [غير ذلك.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) افتراضياً، تستدعي `console.error` فقط. إذا غيّرتها [لتسجيل تقارير الأعطال،](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) فتأكد أنك ما زلت تستدعي `console.error`.
 
 
-#### Returns {/*returns*/}
+#### العائدات {/*returns*/}
 
-`resume` returns a Promise:
+يعيد `resume` وعداً (Promise):
 
-- If `resume` successfully produced a [shell](/reference/react-dom/server/renderToReadableStream#specifying-what-goes-into-the-shell), that Promise will resolve to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) that can be piped to a [Writable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream).
-- If an error happens in the shell, the Promise will reject with that error.
+- إذا نجح `resume` في إنتاج [الغلاف (shell)](/reference/react-dom/server/renderToReadableStream#specifying-what-goes-into-the-shell)، يُحلّ الوعد إلى [تيار ويب للقراءة](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) يمكن توجيهه إلى [تيار ويب للكتابة (Writable Web Stream).](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream)
+- إذا حدث خطأ في الغلاف، يُرفض الوعد بذلك الخطأ.
 
-The returned stream has an additional property:
+للتيار المُعاد خاصية إضافية:
 
-* `allReady`: A Promise that resolves when all rendering is complete. You can `await stream.allReady` before returning a response [for crawlers and static generation.](/reference/react-dom/server/renderToReadableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation) If you do that, you won't get any progressive loading. The stream will contain the final HTML.
+* `allReady`: وعد يُحلّ عند اكتمال كل التصيير. يمكنك `await stream.allReady` قبل إرجاع الاستجابة [لمحركات الزحف والتوليد الثابت.](/reference/react-dom/server/renderToReadableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation) إذا فعلت ذلك، لن يحدث تحميل تدريجي. سيحتوي التيار على HTML النهائي.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- `resume` does not accept options for `bootstrapScripts`, `bootstrapScriptContent`, or `bootstrapModules`. Instead, you need to pass these options to the `prerender` call that generates the `postponedState`. You can also inject bootstrap content into the writable stream manually.
-- `resume` does not accept `identifierPrefix` since the prefix needs to be the same in both `prerender` and `resume`.
-- Since `nonce` cannot be provided to prerender, you should only provide `nonce` to `resume` if you're not providing scripts to prerender.
-- `resume` re-renders from the root until it finds a component that was not fully pre-rendered. Only fully prerendered Components (the Component and its children finished prerendering) are skipped entirely.
+- لا يقبل `resume` خيارات `bootstrapScripts` أو `bootstrapScriptContent` أو `bootstrapModules`. مرّر هذه الخيارات بدلاً من ذلك إلى استدعاء `prerender` الذي يولّد `postponedState`. يمكنك أيضاً حقن محتوى التمهيد يدوياً في التيار القابل للكتابة.
+- لا يقبل `resume` خاصية `identifierPrefix` لأن البادئة يجب أن تكون نفسها في `prerender` و`resume`.
+- بما أن `nonce` لا يمكن تمريره إلى prerender، يجب تمرير `nonce` إلى `resume` فقط إذا لم تكن تمرّر نصوصاً إلى prerender.
+- يعيد `resume` التصيير من الجذر حتى يجد مكوّناً لم يُكمَل تصييره مسبقاً بالكامل. تُتخطى بالكامل فقط المكوّنات المُصيَّرة مسبقاً بالكامل (اكتمل تصيير المكوّن وأطفاله).
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Resuming a prerender {/*resuming-a-prerender*/}
+### استئناف prerender {/*resuming-a-prerender*/}
 
 <Sandpack>
 
@@ -230,7 +230,7 @@ export function sleep(timeoutMS) {
 
 </Sandpack>
 
-### Further reading {/*further-reading*/}
+### للاطلاع أكثر {/*further-reading*/}
 
-Resuming behaves like `renderToReadableStream`. For more examples, check out the [usage section of `renderToReadableStream`](/reference/react-dom/server/renderToReadableStream#usage).
-The [usage section of `prerender`](/reference/react-dom/static/prerender#usage) includes examples of how to use `prerender` specifically.
+سلوك الاستئناف يشبه `renderToReadableStream`. لمزيد من الأمثلة، راجع [قسم الاستخدام في `renderToReadableStream`](/reference/react-dom/server/renderToReadableStream#usage).
+يتضمّن [قسم الاستخدام في `prerender`](/reference/react-dom/static/prerender#usage) أمثلة لاستخدام `prerender` تحديداً.

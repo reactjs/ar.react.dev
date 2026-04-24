@@ -1,10 +1,10 @@
 ---
-title: captureOwnerStack
+title: "دالة captureOwnerStack"
 ---
 
 <Intro>
 
-`captureOwnerStack` reads the current Owner Stack in development and returns it as a string if available.
+`captureOwnerStack` تقرأ Owner Stack الحالي في وضع التطوير وتُرجعه كسلسلة إن وُجد.
 
 ```js
 const stack = captureOwnerStack();
@@ -16,11 +16,11 @@ const stack = captureOwnerStack();
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `captureOwnerStack()` {/*captureownerstack*/}
 
-Call `captureOwnerStack` to get the current Owner Stack.
+استدعِ `captureOwnerStack` للحصول على Owner Stack الحالي.
 
 ```js {5,5}
 import * as React from 'react';
@@ -33,33 +33,33 @@ function Component() {
 }
 ```
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-`captureOwnerStack` does not take any parameters.
+`captureOwnerStack` لا تأخذ معاملات.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`captureOwnerStack` returns `string | null`.
+`captureOwnerStack` تُرجع `string | null`.
 
-Owner Stacks are available in
-- Component render
-- Effects (e.g. `useEffect`)
-- React's event handlers (e.g. `<button onClick={...} />`)
-- React error handlers ([React Root options](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, and `onUncaughtError`)
+تتوفر Owner Stacks في:
+- عرض المكوّن
+- Effects (مثل `useEffect`)
+- معالجات أحداث React (مثل `<button onClick={...} />`)
+- معالجات أخطاء React ([خيارات React Root](/reference/react-dom/client/createRoot#parameters) `onCaughtError` و`onRecoverableError` و`onUncaughtError`)
 
-If no Owner Stack is available, `null` is returned (see [Troubleshooting: The Owner Stack is `null`](#the-owner-stack-is-null)).
+إذا لم يكن Owner Stack متاحًا، تُرجع `null` (راجع [استكشاف الأخطاء: Owner Stack هو `null`](#the-owner-stack-is-null)).
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- Owner Stacks are only available in development. `captureOwnerStack` will always return `null` outside of development.
+- Owner Stacks متاحة في التطوير فقط. `captureOwnerStack` تُرجع دائمًا `null` خارج التطوير.
 
 <DeepDive>
 
-#### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
+#### Owner Stack مقابل Component Stack {/*owner-stack-vs-component-stack*/}
 
-The Owner Stack is different from the Component Stack available in React error handlers like [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#error-logging-in-production).
+Owner Stack يختلف عن Component Stack المتاح في معالجات أخطاء React مثل [`errorInfo.componentStack` في `onUncaughtError`](/reference/react-dom/client/hydrateRoot#error-logging-in-production).
 
-For example, consider the following code:
+مثلًا، انظر الشيفرة التالية:
 
 <Sandpack>
 
@@ -136,8 +136,8 @@ createRoot(document.createElement('div'), {
 
 </Sandpack>
 
-`SubComponent` would throw an error.
-The Component Stack of that error would be
+`SubComponent` سيرمي خطأ.
+Component Stack لهذا الخطأ سيكون
 
 ```
 at SubComponent
@@ -148,23 +148,23 @@ at React.Suspense
 at App
 ```
 
-However, the Owner Stack would only read
+أما Owner Stack فيقرأ فقط
 
 ```
 at Component
 ```
 
-Neither `App` nor the DOM components (e.g. `fieldset`) are considered Owners in this Stack since they didn't contribute to "creating" the node containing `SubComponent`. `App` and DOM components only forwarded the node. `App` just rendered the `children` node as opposed to `Component` which created a node containing `SubComponent` via `<SubComponent />`.
+لا يُعتبر `App` ولا مكوّنات DOM (مثل `fieldset`) مالكين (Owners) في هذا الStack لأنهما لم يساهما في «إنشاء» العقدة التي تحتوي `SubComponent`. `App` ومكوّنات DOM أعادتا فقط توجيه العقدة. `App` عرضت عقدة `children` فقط، بخلاف `Component` التي أنشأت عقدة تحتوي `SubComponent` عبر `<SubComponent />`.
 
-Neither `Navigation` nor `legend` are in the stack at all since it's only a sibling to a node containing `<SubComponent />`.
+لا يظهر `Navigation` ولا `legend` في الStack لأنهما مجرد أشقاء لعقدة تحتوي `<SubComponent />`.
 
-`SubComponent` is omitted because it's already part of the callstack.
+يُستبعد `SubComponent` لأنه جزء من call stack أصلًا.
 
 </DeepDive>
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Enhance a custom error overlay {/*enhance-a-custom-error-overlay*/}
+### تحسين طبقة أخطاء مخصّصة {/*enhance-a-custom-error-overlay*/}
 
 ```js [[1, 5, "console.error"], [4, 7, "captureOwnerStack"]]
 import { captureOwnerStack } from "react";
@@ -183,7 +183,7 @@ console.error = function patchedConsoleError(...args) {
 };
 ```
 
-If you intercept <CodeStep step={1}>`console.error`</CodeStep> calls to highlight them in an error overlay, you can call <CodeStep step={2}>`captureOwnerStack`</CodeStep> to include the Owner Stack.
+إذا اعترضت استدعاءات <CodeStep step={1}>`console.error`</CodeStep> لإبرازها في طبقة أخطاء، يمكنك استدعاء <CodeStep step={2}>`captureOwnerStack`</CodeStep> لتضمين Owner Stack.
 
 <Sandpack>
 
@@ -347,13 +347,13 @@ export default function App() {
 
 </Sandpack>
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### The Owner Stack is `null` {/*the-owner-stack-is-null*/}
+### Owner Stack هو `null` {/*the-owner-stack-is-null*/}
 
-The call of `captureOwnerStack` happened outside of a React controlled function e.g. in a `setTimeout` callback, after a `fetch` call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. `hydrateRoot#options.onCaughtError`) Owner Stacks should be available.
+حدث استدعاء `captureOwnerStack` خارج دالة يتحكم بها React، مثلًا في استدعاء `setTimeout`، أو بعد `fetch`، أو في معالج حدث DOM مخصّص. أثناء العرض، وEffects، ومعالجات أحداث React، ومعالجات أخطاء React (مثل `hydrateRoot#options.onCaughtError`) يجب أن تكون Owner Stacks متاحة.
 
-In the example below, clicking the button will log an empty Owner Stack because `captureOwnerStack` was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of `captureOwnerStack` into the Effect body.
+في المثال أدناه، النقر على الزر يسجّل Owner Stack فارغًا لأن `captureOwnerStack` اُستدعيت أثناء معالج حدث DOM مخصّص. يجب التقاط Owner Stack مبكرًا، مثلًا بنقل استدعاء `captureOwnerStack` إلى جسم Effect.
 <Sandpack>
 
 ```js
@@ -381,9 +381,9 @@ export default function App() {
 
 </Sandpack>
 
-### `captureOwnerStack` is not available {/*captureownerstack-is-not-available*/}
+### `captureOwnerStack` غير متاح {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack` is only exported in development builds. It will be `undefined` in production builds. If `captureOwnerStack` is used in files that are bundled for production and development, you should conditionally access it from a namespace import.
+`captureOwnerStack` تُصدَّر فقط في بنيات التطوير. ستكون `undefined` في بنيات الإنتاج. إذا وُجدت `captureOwnerStack` في ملفات تُجمَّع للإنتاج والتطوير معًا، يجب الوصول إليها شرطيًا عبر استيراد مساحة أسماء.
 
 ```js
 // Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.

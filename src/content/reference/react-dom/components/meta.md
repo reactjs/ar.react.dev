@@ -1,10 +1,10 @@
 ---
-meta: "<meta>"
+meta: "مكوّن <meta>"
 ---
 
 <Intro>
 
-The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta) lets you add metadata to the document.
+يتيح لك [مكوّن `<meta>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta) إضافة بيانات وصفية إلى المستند.
 
 ```js
 <meta name="keywords" content="React, JavaScript, semantic markup, html" />
@@ -16,43 +16,43 @@ The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<meta>` {/*meta*/}
 
-To add document metadata, render the [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). You can render `<meta>` from any component and React will always place the corresponding DOM element in the document head.
+لإضافة بيانات وصفية للمستند، صيّر [مكوّن `<meta>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). يمكنك تصيير `<meta>` من أي مكوّن وسيضع React دائمًا عنصر DOM المقابل في رأس المستند.
 
 ```js
 <meta name="keywords" content="React, JavaScript, semantic markup, html" />
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-`<meta>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+يدعم `<meta>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
 
-It should have *exactly one* of the following props: `name`, `httpEquiv`, `charset`, `itemProp`. The `<meta>` component does something different depending on which of these props is specified.
+يجب أن يكون لديه *واحد بالضبط* من الخصائص التالية: `name`، أو `httpEquiv`، أو `charset`، أو `itemProp`. يفعل مكوّن `<meta>` شيئًا مختلفًا بحسب أي هذه الخصائص مُحدَّدة.
 
-* `name`: a string. Specifies the [kind of metadata](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name) to be attached to the document. 
-* `charset`: a string. Specifies the character set used by the document. The only valid value is `"utf-8"`.
-* `httpEquiv`: a string. Specifies a directive for processing the document.
-* `itemProp`: a string. Specifies metadata about a particular item within the document rather than the document as a whole.
-* `content`: a string. Specifies the metadata to be attached when used with the `name` or `itemProp` props or the behavior of the directive when used with the `httpEquiv` prop.
+* `name`: نص. يحدد [نوع البيانات الوصفية](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name) المرفقة بالمستند. 
+* `charset`: نص. يحدد مجموعة الأحرف المستخدمة في المستند. القيمة الصالحة الوحيدة هي `"utf-8"`.
+* `httpEquiv`: نص. يحدد توجيهًا لمعالجة المستند.
+* `itemProp`: نص. يحدد بيانات وصفية عن عنصر معيّن داخل المستند بدلًا من المستند ككل.
+* `content`: نص. يحدد البيانات الوصفية المرفقة عند استخدام `name` أو `itemProp`، أو سلوك التوجيه عند استخدام `httpEquiv`.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### سلوك تصيير خاص {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<meta>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<meta>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render `<meta>` components itself. 
+سيضع React دائمًا عنصر DOM المقابل لمكوّن `<meta>` داخل `<head>` للمستند، بغضّ النظر عن مكان تصييره في شجرة React. `<head>` هو المكان الصالح الوحيد لوجود `<meta>` في DOM، مع أنه من المريح أن يمثّل مكوّن الصفحة بياناته الوصفية بنفسه. 
 
-There is one exception to this: if `<meta>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent metadata about the document but rather metadata about a specific part of the page. 
+يستثنى من ذلك: إذا كان لـ `<meta>` سمة [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop)، فلا يوجد سلوك خاص، لأن الحالة هنا لا تمثل بيانات وصفية عن المستند بل عن جزء معيّن من الصفحة. 
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Annotating the document with metadata {/*annotating-the-document-with-metadata*/}
+### إثراء المستند ببيانات وصفية {/*annotating-the-document-with-metadata*/}
 
-You can annotate the document with metadata such as keywords, a summary, or the author’s name. React will place this metadata within the document `<head>` regardless of where in the React tree it is rendered. 
+يمكنك إثراء المستند ببيانات وصفية مثل الكلمات المفتاحية، أو ملخص، أو اسم المؤلف. سيضع React هذه البيانات داخل `<head>` للمستند بغضّ النظر عن مكان تصييرها في شجرة React. 
 
 ```html
 <meta name="author" content="John Smith" />
@@ -60,7 +60,7 @@ You can annotate the document with metadata such as keywords, a summary, or the 
 <meta name="description" content="API reference for the <meta> component in React DOM" />
 ```
 
-You can render the `<meta>` component from any component. React will put a `<meta>` DOM node in the document `<head>`.
+يمكنك تصيير مكوّن `<meta>` من أي مكوّن. سيضع React عقدة `<meta>` في `<head>` للمستند.
 
 <SandpackWithHTMLOutput>
 
@@ -81,9 +81,9 @@ export default function SiteMapPage() {
 
 </SandpackWithHTMLOutput>
 
-### Annotating specific items within the document with metadata {/*annotating-specific-items-within-the-document-with-metadata*/}
+### إثراء عناصر محددة داخل المستند ببيانات وصفية {/*annotating-specific-items-within-the-document-with-metadata*/}
 
-You can use the `<meta>` component with the `itemProp` prop to annotate specific items within the document with metadata. In this case, React will *not* place these annotations within the document `<head>` but will place them like any other React component. 
+يمكنك استخدام مكوّن `<meta>` مع خاصية `itemProp` لإثراء عناصر محددة داخل المستند ببيانات وصفية. في هذه الحالة، *لن* يضع React هذه التعليقات داخل `<head>` بل يضعها كأي مكوّن React آخر. 
 
 ```js
 <section itemScope>

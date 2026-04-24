@@ -1,16 +1,16 @@
 ---
-title: cache
+title: "دالة cache"
 ---
 
 <RSC>
 
-`cache` is only for use with [React Server Components](/reference/rsc/server-components).
+`cache` مخصّصة للاستخدام مع [مكوّنات خادم React](/reference/rsc/server-components).
 
 </RSC>
 
 <Intro>
 
-`cache` lets you cache the result of a data fetch or computation.
+`cache` تتيح تخزين نتيجة جلب بيانات أو حساب في الذاكرة المؤقتة.
 
 ```js
 const cachedFn = cache(fn);
@@ -22,11 +22,11 @@ const cachedFn = cache(fn);
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `cache(fn)` {/*cache*/}
 
-Call `cache` outside of any components to create a version of the function with caching.
+استدعِ `cache` خارج أي مكوّن لإنشاء نسخة من الدالة مع تخزين مؤقت.
 
 ```js {4,7}
 import {cache} from 'react';
@@ -40,40 +40,40 @@ function Chart({data}) {
 }
 ```
 
-When `getMetrics` is first called with `data`, `getMetrics` will call `calculateMetrics(data)` and store the result in cache. If `getMetrics` is called again with the same `data`, it will return the cached result instead of calling `calculateMetrics(data)` again.
+عند أول استدعاء لـ `getMetrics` مع `data`، تستدعي `getMetrics` الدالة `calculateMetrics(data)` وتخزن النتيجة في الذاكرة المؤقتة. إذا اُستدعيت `getMetrics` مجددًا بنفس `data`، تُرجع النتيجة المخزّنة بدل استدعاء `calculateMetrics(data)` مرة أخرى.
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-- `fn`: The function you want to cache results for. `fn` can take any arguments and return any value.
+- `fn`: الدالة التي تريد تخزين نتائجها. يمكن أن تأخذ `fn` أي معاملات وتُرجع أي قيمة.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`cache` returns a cached version of `fn` with the same type signature. It does not call `fn` in the process.
+`cache` تُرجع نسخة مخزّنة مؤقتًا من `fn` بنفس توقيع الأنواع. لا تستدعي `fn` أثناء ذلك.
 
-When calling `cachedFn` with given arguments, it first checks if a cached result exists in the cache. If a cached result exists, it returns the result. If not, it calls `fn` with the arguments, stores the result in the cache, and returns the result. The only time `fn` is called is when there is a cache miss.
+عند استدعاء `cachedFn` بمعاملات معيّنة، تتحقق أولًا مما إذا كانت نتيجة مخزّنة موجودة. إن وُجدت تُرجعها. وإلا تستدعي `fn` بالمعاملات، تخزن النتيجة، وتُرجعها. يُستدعى `fn` فقط عند فشل التخزين المؤقت (cache miss).
 
 <Note>
 
-The optimization of caching return values based on inputs is known as [_memoization_](https://en.wikipedia.org/wiki/Memoization). We refer to the function returned from `cache` as a memoized function.
+تحسين تخزين القيم المُرجعة بناءً على المدخلات يُعرف بـ [_memoization_](https://en.wikipedia.org/wiki/Memoization). نسمّي الدالة المُرجعة من `cache` دالة مذكّرة (memoized).
 
 </Note>
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- React will invalidate the cache for all memoized functions for each server request.
-- Each call to `cache` creates a new function. This means that calling `cache` with the same function multiple times will return different memoized functions that do not share the same cache.
-- `cachedFn` will also cache errors. If `fn` throws an error for certain arguments, it will be cached, and the same error is re-thrown when `cachedFn` is called with those same arguments.
-- `cache` is for use in [Server Components](/reference/rsc/server-components) only.
+- تُبطل React الذاكرة المؤقتة لكل الدوال المذكّرة عند كل طلب خادم.
+- كل استدعاء لـ `cache` ينشئ دالة جديدة. أي أن استدعاء `cache` بنفس الدالة عدة مرات يُرجع دوالًا مذكّرة مختلفة لا تشارك نفس الذاكرة المؤقتة.
+- `cachedFn` تخزّن الأخطاء أيضًا. إذا رمت `fn` خطأً لمعاملات معيّنة، يُخزَّن الخطأ ويُعاد رميه عند استدعاء `cachedFn` بنفس المعاملات.
+- `cache` للاستخدام في [مكوّنات الخادم](/reference/rsc/server-components) فقط.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Cache an expensive computation {/*cache-expensive-computation*/}
+### تخزين حساب مكلف {/*cache-expensive-computation*/}
 
-Use `cache` to skip duplicate work.
+استخدم `cache` لتخطي العمل المكرر.
 
 ```js [[1, 7, "getUserMetrics(user)"],[2, 13, "getUserMetrics(user)"]]
 import {cache} from 'react';
@@ -95,19 +95,19 @@ function TeamReport({users}) {
 }
 ```
 
-If the same `user` object is rendered in both `Profile` and `TeamReport`, the two components can share work and only call `calculateUserMetrics` once for that `user`.
+إذا اُعرض نفس كائن `user` في `Profile` و`TeamReport` معًا، يمكن للمكوّنين مشاركة العمل واستدعاء `calculateUserMetrics` مرة واحدة فقط لذلك `user`.
 
-Assume `Profile` is rendered first. It will call <CodeStep step={1}>`getUserMetrics`</CodeStep>, and check if there is a cached result. Since it is the first time `getUserMetrics` is called with that `user`, there will be a cache miss. `getUserMetrics` will then call `calculateUserMetrics` with that `user` and write the result to cache.
+لنفترض أن `Profile` يُعرض أولًا. يستدعي <CodeStep step={1}>`getUserMetrics`</CodeStep> ويتحقق من وجود نتيجة مخزّنة. بما أنه أول استدعاء لـ `getUserMetrics` مع ذلك `user`، يحدث cache miss. ثم تستدعي `getUserMetrics` الدالة `calculateUserMetrics` مع ذلك `user` وتكتب النتيجة إلى الذاكرة المؤقتة.
 
-When `TeamReport` renders its list of `users` and reaches the same `user` object, it will call <CodeStep step={2}>`getUserMetrics`</CodeStep> and read the result from cache.
+عندما يعرض `TeamReport` قائمة `users` ويصل إلى نفس كائن `user`، يستدعي <CodeStep step={2}>`getUserMetrics`</CodeStep> ويقرأ النتيجة من الذاكرة المؤقتة.
 
-If `calculateUserMetrics` can be aborted by passing an [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal), you can use [`cacheSignal()`](/reference/react/cacheSignal) to cancel the expensive computation if React has finished rendering. `calculateUserMetrics` may already handle cancellation internally by using `cacheSignal` directly.
+إذا كان يمكن إلغاء `calculateUserMetrics` بتمرير [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)، يمكنك استخدام [`cacheSignal()`](/reference/react/cacheSignal) لإلغاء الحساب المكلف إذا انتهى عرض React. قد تتعامل `calculateUserMetrics` مع الإلغاء داخليًا باستخدام `cacheSignal` مباشرة.
 
 <Pitfall>
 
-##### Calling different memoized functions will read from different caches. {/*pitfall-different-memoized-functions*/}
+##### استدعاء دوال مذكّرة مختلفة يقرأ من ذاكرات مؤقتة مختلفة. {/*pitfall-different-memoized-functions*/}
 
-To access the same cache, components must call the same memoized function.
+للوصول إلى نفس الذاكرة المؤقتة، يجب أن تستدعي المكوّنات نفس الدالة المذكّرة.
 
 ```js [[1, 7, "getWeekReport"], [1, 7, "cache(calculateWeekReport)"], [1, 8, "getWeekReport"]]
 // Temperature.js
@@ -136,11 +136,11 @@ export function Precipitation({cityData}) {
 }
 ```
 
-In the above example, <CodeStep step={2}>`Precipitation`</CodeStep> and <CodeStep step={1}>`Temperature`</CodeStep> each call `cache` to create a new memoized function with their own cache look-up. If both components render for the same `cityData`, they will do duplicate work to call `calculateWeekReport`.
+في المثال أعلاه، <CodeStep step={2}>`Precipitation`</CodeStep> و<CodeStep step={1}>`Temperature`</CodeStep> كلاهما يستدعي `cache` لإنشاء دالة مذكّرة جديدة ببحث ذاكرة مؤقتة خاص. إذا عُرض المكوّنان لنفس `cityData`، يُكرران العمل لاستدعاء `calculateWeekReport`.
 
-In addition, `Temperature` creates a <CodeStep step={1}>new memoized function</CodeStep> each time the component is rendered which doesn't allow for any cache sharing.
+إضافة إلى ذلك، `Temperature` تنشئ <CodeStep step={1}>دالة مذكّرة جديدة</CodeStep> في كل عرض للمكوّن، ما يمنع أي مشاركة للذاكرة المؤقتة.
 
-To maximize cache hits and reduce work, the two components should call the same memoized function to access the same cache. Instead, define the memoized function in a dedicated module that can be [`import`-ed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) across components.
+لزيادة نجاحات التخزين المؤقت وتقليل العمل، يجب أن تستدعي المكوّنات نفس الدالة المذكّرة للوصول إلى نفس الذاكرة المؤقتة. عرّف الدالة المذكّرة بدلًا من ذلك في وحدة مخصّصة يمكن [`استيرادها`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) عبر المكوّنات.
 
 ```js [[3, 5, "export default cache(calculateWeekReport)"]]
 // getWeekReport.js
@@ -169,12 +169,12 @@ export default function Precipitation({cityData}) {
   // ...
 }
 ```
-Here, both components call the <CodeStep step={3}>same memoized function</CodeStep> exported from `./getWeekReport.js` to read and write to the same cache.
+هنا، يستدعي كلا المكوّنين <CodeStep step={3}>نفس الدالة المذكّرة</CodeStep> المُصدَّرة من `./getWeekReport.js` للقراءة والكتابة إلى نفس الذاكرة المؤقتة.
 </Pitfall>
 
-### Share a snapshot of data {/*take-and-share-snapshot-of-data*/}
+### مشاركة لقطة بيانات {/*take-and-share-snapshot-of-data*/}
 
-To share a snapshot of data between components, call `cache` with a data-fetching function like `fetch`. When multiple components make the same data fetch, only one request is made and the data returned is cached and shared across components. All components refer to the same snapshot of data across the server render.
+لمشاركة لقطة بيانات بين المكوّنات، استدعِ `cache` مع دالة جلب بيانات مثل `fetch`. عندما تجري عدة مكوّنات نفس جلب البيانات، يُنفَّذ طلب واحد فقط وتُخزَّن البيانات المُرجعة وتُشارَك بين المكوّنات. كل المكوّنات تشير إلى نفس لقطة البيانات عبر عرض الخادم.
 
 ```js [[1, 4, "city"], [1, 5, "fetchTemperature(city)"], [2, 4, "getTemperature"], [2, 9, "getTemperature"], [1, 9, "city"], [2, 14, "getTemperature"], [1, 14, "city"]]
 import {cache} from 'react';
@@ -195,15 +195,15 @@ async function MinimalWeatherCard({city}) {
 }
 ```
 
-If `AnimatedWeatherCard` and `MinimalWeatherCard` both render for the same <CodeStep step={1}>city</CodeStep>, they will receive the same snapshot of data from the <CodeStep step={2}>memoized function</CodeStep>.
+إذا عُرض `AnimatedWeatherCard` و`MinimalWeatherCard` لنفس <CodeStep step={1}>city</CodeStep>، يتلقيان نفس لقطة البيانات من <CodeStep step={2}>الدالة المذكّرة</CodeStep>.
 
-If `AnimatedWeatherCard` and `MinimalWeatherCard` supply different <CodeStep step={1}>city</CodeStep> arguments to <CodeStep step={2}>`getTemperature`</CodeStep>, then `fetchTemperature` will be called twice and each call site will receive different data.
+إذا مرّر `AnimatedWeatherCard` و`MinimalWeatherCard` معاملات <CodeStep step={1}>city</CodeStep> مختلفة إلى <CodeStep step={2}>`getTemperature`</CodeStep>، يُستدعى `fetchTemperature` مرتين ويحصل كل موضع استدعاء على بيانات مختلفة.
 
-The <CodeStep step={1}>city</CodeStep> acts as a cache key.
+<CodeStep step={1}>city</CodeStep> تعمل كمفتاح للذاكرة المؤقتة.
 
 <Note>
 
-<CodeStep step={3}>Asynchronous rendering</CodeStep> is only supported for Server Components.
+<CodeStep step={3}>العرض غير المتزامن (Asynchronous rendering)</CodeStep> مدعوم فقط لمكوّنات الخادم.
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
@@ -212,13 +212,13 @@ async function AnimatedWeatherCard({city}) {
 }
 ```
 
-To render components that use asynchronous data in Client Components, see [`use()` documentation](/reference/react/use).
+لعرض مكوّنات تستخدم بيانات غير متزامنة في مكوّنات العميل، راجع [توثيق `use()`](/reference/react/use).
 
 </Note>
 
-### Preload data {/*preload-data*/}
+### تحميل مسبق للبيانات {/*preload-data*/}
 
-By caching a long-running data fetch, you can kick off asynchronous work prior to rendering the component.
+بتخزين جلب بيانات طويل الأمد مؤقتًا، يمكنك بدء العمل غير المتزامن قبل عرض المكوّن.
 
 ```jsx [[2, 6, "await getUser(id)"], [1, 17, "getUser(id)"]]
 const getUser = cache(async (id) => {
@@ -247,17 +247,17 @@ function Page({id}) {
 }
 ```
 
-When rendering `Page`, the component calls <CodeStep step={1}>`getUser`</CodeStep> but note that it doesn't use the returned data. This early <CodeStep step={1}>`getUser`</CodeStep> call kicks off the asynchronous database query that occurs while `Page` is doing other computational work and rendering children.
+عند عرض `Page`، يستدعي المكوّن <CodeStep step={1}>`getUser`</CodeStep> لكن لاحظ أنه لا يستخدم البيانات المُرجَعة. استدعاء <CodeStep step={1}>`getUser`</CodeStep> المبكر يبدأ استعلام قاعدة البيانات غير المتزامن بينما `Page` تنفّذ حسابات أخرى وتعرض الأبناء.
 
-When rendering `Profile`, we call <CodeStep step={2}>`getUser`</CodeStep> again. If the initial <CodeStep step={1}>`getUser`</CodeStep> call has already returned and cached the user data, when `Profile` <CodeStep step={2}>asks and waits for this data</CodeStep>, it can simply read from the cache without requiring another remote procedure call. If the <CodeStep step={1}> initial data request</CodeStep> hasn't been completed, preloading data in this pattern reduces delay in data-fetching.
+عند عرض `Profile`، نستدعي <CodeStep step={2}>`getUser`</CodeStep> مجددًا. إذا كان استدعاء <CodeStep step={1}>`getUser`</CodeStep> الأول قد اكتمل وخزّن بيانات المستخدم، عندما <CodeStep step={2}>تطلب Profile هذه البيانات وتنتظرها</CodeStep> يمكنها ببساطة القراءة من الذاكرة المؤقتة دون استدعاء بعيد آخر. إذا لم يكتمل <CodeStep step={1}>طلب البيانات الأول</CodeStep>، يقلّل تحميل البيانات مسبقًا بهذا النمط التأخير في الجلب.
 
 <DeepDive>
 
-#### Caching asynchronous work {/*caching-asynchronous-work*/}
+#### تخزين العمل غير المتزامن مؤقتًا {/*caching-asynchronous-work*/}
 
-When evaluating an [asynchronous function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), you will receive a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) for that work. The promise holds the state of that work (_pending_, _fulfilled_, _failed_) and its eventual settled result.
+عند تقييم [دالة async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)، تحصل على [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) لهذا العمل. الـ Promise تحمل حالة العمل (_pending_، _fulfilled_، _failed_) والنتيجة النهائية.
 
-In this example, the asynchronous function <CodeStep step={1}>`fetchData`</CodeStep> returns a promise that is awaiting the `fetch`.
+في هذا المثال، الدالة غير المتزامنة <CodeStep step={1}>`fetchData`</CodeStep> تُرجع promise تنتظر `fetch`.
 
 ```js [[1, 1, "fetchData()"], [2, 8, "getData()"], [3, 10, "getData()"]]
 async function fetchData() {
@@ -274,18 +274,18 @@ async function MyComponent() {
 }
 ```
 
-In calling <CodeStep step={2}>`getData`</CodeStep> the first time, the promise returned from <CodeStep step={1}>`fetchData`</CodeStep> is cached. Subsequent look-ups will then return the same promise.
+عند استدعاء <CodeStep step={2}>`getData`</CodeStep> أول مرة، يُخزَّن الـ promise المُرجَع من <CodeStep step={1}>`fetchData`</CodeStep>. عمليات البحث اللاحقة تُرجع نفس الـ promise.
 
-Notice that the first <CodeStep step={2}>`getData`</CodeStep> call does not `await` whereas the <CodeStep step={3}>second</CodeStep> does. [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) is a JavaScript operator that will wait and return the settled result of the promise. The first <CodeStep step={2}>`getData`</CodeStep> call simply initiates the `fetch` to cache the promise for the second <CodeStep step={3}>`getData`</CodeStep> to look-up.
+لاحظ أن أول استدعاء لـ <CodeStep step={2}>`getData`</CodeStep> لا يستخدم `await` بينما <CodeStep step={3}>الثاني</CodeStep> يستخدمه. [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) عامل JavaScript ينتظر ويُرجع النتيجة المستقرة للـ promise. أول استدعاء لـ <CodeStep step={2}>`getData`</CodeStep> يبدأ فقط `fetch` لتخزين الـ promise ليبحث عنه استدعاء <CodeStep step={3}>`getData`</CodeStep> الثاني.
 
-If by the <CodeStep step={3}>second call</CodeStep> the promise is still _pending_, then `await` will pause for the result. The optimization is that while we wait on the `fetch`, React can continue with computational work, thus reducing the wait time for the <CodeStep step={3}>second call</CodeStep>.
+إذا كان الـ promise ما زال _pending_ عند <CodeStep step={3}>الاستدعاء الثاني</CodeStep>، يتوقف `await` عن النتيجة. التحسين أنه أثناء انتظار `fetch` يمكن لـ React مواصلة الحسابات، ما يقلل زمن انتظار <CodeStep step={3}>الاستدعاء الثاني</CodeStep>.
 
-If the promise is already settled, either to an error or the _fulfilled_ result, `await` will return that value immediately. In both outcomes, there is a performance benefit.
+إذا كان الـ promise قد استقر بالفعل إلى خطأ أو نتيجة _fulfilled_، يُرجع `await` تلك القيمة فورًا. في الحالتين هناك فائدة أداء.
 </DeepDive>
 
 <Pitfall>
 
-##### Calling a memoized function outside of a component will not use the cache. {/*pitfall-memoized-call-outside-component*/}
+##### استدعاء دالة مذكّرة خارج مكوّن لا يستخدم الذاكرة المؤقتة. {/*pitfall-memoized-call-outside-component*/}
 
 ```jsx [[1, 3, "getUser"]]
 import {cache} from 'react';
@@ -304,21 +304,21 @@ async function DemoProfile() {
 }
 ```
 
-React only provides cache access to the memoized function in a component. When calling <CodeStep step={1}>`getUser`</CodeStep> outside of a component, it will still evaluate the function but not read or update the cache.
+توفر React وصولًا للذاكرة المؤقتة للدالة المذكّرة داخل مكوّن فقط. عند استدعاء <CodeStep step={1}>`getUser`</CodeStep> خارج مكوّن، ما زالت الدالة تُنفَّذ لكن دون قراءة أو تحديث للذاكرة المؤقتة.
 
-This is because cache access is provided through a [context](/learn/passing-data-deeply-with-context) which is only accessible from a component.
+ذلك لأن وصول الذاكرة المؤقتة يُوفَّر عبر [سياق (context)](/learn/passing-data-deeply-with-context) متاح فقط من داخل مكوّن.
 
 </Pitfall>
 
 <DeepDive>
 
-#### When should I use `cache`, [`memo`](/reference/react/memo), or [`useMemo`](/reference/react/useMemo)? {/*cache-memo-usememo*/}
+#### متى أستخدم `cache` أو [`memo`](/reference/react/memo) أو [`useMemo`](/reference/react/useMemo)? {/*cache-memo-usememo*/}
 
-All mentioned APIs offer memoization but the difference is what they're intended to memoize, who can access the cache, and when their cache is invalidated.
+كل الواجهات المذكورة تقدّم تذكيرًا (memoization) لكنها تختلف فيما تُذكَّر، ومن يصل للذاكرة المؤقتة، ومتى تُبطَل.
 
 #### `useMemo` {/*deep-dive-use-memo*/}
 
-In general, you should use [`useMemo`](/reference/react/useMemo) for caching an expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
+بشكل عام، استخدم [`useMemo`](/reference/react/useMemo) لتخزين حساب مكلف في مكوّن عميل عبر عمليات العرض. مثلًا، لتذكير تحويل بيانات داخل مكوّن.
 
 ```jsx {expectedErrors: {'react-compiler': [4]}} {4}
 'use client';
@@ -338,13 +338,13 @@ function App() {
   );
 }
 ```
-In this example, `App` renders two `WeatherReport`s with the same record. Even though both components do the same work, they cannot share work. `useMemo`'s cache is only local to the component.
+في هذا المثال، `App` تعرض مكوّني `WeatherReport` بنفس السجل. رغم أن المكوّنين ينفّذان نفس العمل، لا يمكنهما مشاركة العمل. ذاكرة `useMemo` محلية بالمكوّن فقط.
 
-However, `useMemo` does ensure that if `App` re-renders and the `record` object doesn't change, each component instance would skip work and use the memoized value of `avgTemp`. `useMemo` will only cache the last computation of `avgTemp` with the given dependencies.
+مع ذلك، `useMemo` تضمن أنه إذا أُعيد عرض `App` ولم يتغيّر كائن `record`، تتخطى كل نسخة العمل وتستخدم القيمة المذكّرة لـ `avgTemp`. `useMemo` تخزّن فقط آخر حساب لـ `avgTemp` بالتبعيات المعطاة.
 
 #### `cache` {/*deep-dive-cache*/}
 
-In general, you should use `cache` in Server Components to memoize work that can be shared across components.
+بشكل عام، استخدم `cache` في مكوّنات الخادم لتذكير عمل يمكن مشاركته بين المكوّنات.
 
 ```js [[1, 12, "<WeatherReport city={city} />"], [3, 13, "<WeatherReport city={city} />"], [2, 1, "cache(fetchReport)"]]
 const cachedFetchReport = cache(fetchReport);
@@ -364,13 +364,13 @@ function App() {
   );
 }
 ```
-Re-writing the previous example to use `cache`, in this case the <CodeStep step={3}>second instance of `WeatherReport`</CodeStep> will be able to skip duplicate work and read from the same cache as the <CodeStep step={1}>first `WeatherReport`</CodeStep>. Another difference from the previous example is that `cache` is also recommended for <CodeStep step={2}>memoizing data fetches</CodeStep>, unlike `useMemo` which should only be used for computations.
+بإعادة كتابة المثال السابق باستخدام `cache`، في هذه الحالة ستتمكن <CodeStep step={3}>النسخة الثانية من `WeatherReport`</CodeStep> من تخطي العمل المكرر والقراءة من نفس ذاكرة <CodeStep step={1}>أول `WeatherReport`</CodeStep>. فرق آخر عن المثال السابق أن `cache` موصى بها أيضًا لـ <CodeStep step={2}>تذكير جلب البيانات</CodeStep>، بخلاف `useMemo` التي يجب أن تُستخدم للحسابات فقط.
 
-At this time, `cache` should only be used in Server Components and the cache will be invalidated across server requests.
+حاليًا، يجب استخدام `cache` في مكوّنات الخادم فقط، وتُبطل الذاكرة المؤقتة بين طلبات الخادم.
 
 #### `memo` {/*deep-dive-memo*/}
 
-You should use [`memo`](reference/react/memo) to prevent a component re-rendering if its props are unchanged.
+استخدم [`memo`](reference/react/memo) لمنع إعادة عرض مكوّن إذا لم تتغيّر خصائصه.
 
 ```js
 'use client';
@@ -393,27 +393,27 @@ function App() {
 }
 ```
 
-In this example, both `MemoWeatherReport` components will call `calculateAvg` when first rendered. However, if `App` re-renders, with no changes to `record`, none of the props have changed and `MemoWeatherReport` will not re-render.
+في هذا المثال، يستدعي كلا مكوّني `MemoWeatherReport` الدالة `calculateAvg` عند أول عرض. لكن إذا أُعيد عرض `App` دون تغيّر `record`، لم تتغيّر الخصائص ولن يُعاد عرض `MemoWeatherReport`.
 
-Compared to `useMemo`, `memo` memoizes the component render based on props vs. specific computations. Similar to `useMemo`, the memoized component only caches the last render with the last prop values. Once the props change, the cache invalidates and the component re-renders.
+مقارنة بـ `useMemo`، `memo` تذكّر عرض المكوّن بناءً على الخصائص مقابل حسابات محددة. مثل `useMemo`، المكوّن المذكّر يخزّن فقط آخر عرض بآخر قيم خصائص. عند تغيّر الخصائص، تُبطل الذاكرة ويُعاد عرض المكوّن.
 
 </DeepDive>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### My memoized function still runs even though I've called it with the same arguments {/*memoized-function-still-runs*/}
+### ما زالت دالتي المذكّرة تُنفَّذ رغم استدعائيها بنفس المعاملات {/*memoized-function-still-runs*/}
 
-See prior mentioned pitfalls
-* [Calling different memoized functions will read from different caches.](#pitfall-different-memoized-functions)
-* [Calling a memoized function outside of a component will not use the cache.](#pitfall-memoized-call-outside-component)
+راجع الفخاخ المذكورة سابقًا
+* [استدعاء دوال مذكّرة مختلفة يقرأ من ذاكرات مؤقتة مختلفة.](#pitfall-different-memoized-functions)
+* [استدعاء دالة مذكّرة خارج مكوّن لا يستخدم الذاكرة المؤقتة.](#pitfall-memoized-call-outside-component)
 
-If none of the above apply, it may be a problem with how React checks if something exists in cache.
+إذا لم ينطبق شيء مما سبق، قد تكون المشكلة في كيفية تحقق React من وجود نتيجة في الذاكرة المؤقتة.
 
-If your arguments are not [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (ex. objects, functions, arrays), ensure you're passing the same object reference.
+إذا لم تكن معاملاتك [أوليات (primitives)](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (مثل كائنات أو دوال أو مصفوفات)، تأكد أنك تمرّر نفس مرجع الكائن.
 
-When calling a memoized function, React will look up the input arguments to see if a result is already cached. React will use shallow equality of the arguments to determine if there is a cache hit.
+عند استدعاء دالة مذكّرة، تبحث React عن المعاملات المدخلة لمعرفة ما إذا كانت النتيجة مخزّنة. تستخدم React المساواة السطحية للمعاملات لتحديد وجود تطابق في الذاكرة المؤقتة.
 
 ```js
 import {cache} from 'react';
@@ -438,9 +438,9 @@ function App() {
 }
 ```
 
-In this case the two `MapMarker`s look like they're doing the same work and calling `calculateNorm` with the same value of `{x: 10, y: 10, z:10}`. Even though the objects contain the same values, they are not the same object reference as each component creates its own `props` object.
+في هذه الحالة يبدو أن `MapMarker` الاثنين ينفّذان نفس العمل ويستدعيان `calculateNorm` بنفس القيمة `{x: 10, y: 10, z:10}`. رغم تطابق القيم، المراجع ليست نفس مرجع الكائن لأن كل مكوّن ينشئ كائن `props` خاصًا به.
 
-React will call [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) on the input to verify if there is a cache hit.
+ستستدعي React [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) على المدخلات للتحقق من وجود تطابق في الذاكرة المؤقتة.
 
 ```js {3,9}
 import {cache} from 'react';
@@ -465,9 +465,9 @@ function App() {
 }
 ```
 
-One way to address this could be to pass the vector dimensions to `calculateNorm`. This works because the dimensions themselves are primitives.
+إحدى الطرق تمرير أبعاد المتجه إلى `calculateNorm`. ينجح ذلك لأن الأبعاد نفسها أوليات.
 
-Another solution may be to pass the vector object itself as a prop to the component. We'll need to pass the same object to both component instances.
+حل آخر تمرير كائن المتجه نفسه كخاصية للمكوّن. نحتاج تمرير نفس الكائن إلى نسختي المكوّن.
 
 ```js {3,9,14}
 import {cache} from 'react';
