@@ -1,16 +1,16 @@
 ---
-title: cacheSignal
+title: "دالة cacheSignal"
 ---
 
 <RSC>
 
-`cacheSignal` is currently only used with [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components).
+`cacheSignal` تُستخدم حاليًا مع [مكوّنات خادم React](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components).
 
 </RSC>
 
 <Intro>
 
-`cacheSignal` allows you to know when the `cache()` lifetime is over.
+`cacheSignal` تسمح لك بمعرفة متى ينتهي عمر `cache()`.
 
 ```js
 const signal = cacheSignal();
@@ -22,11 +22,11 @@ const signal = cacheSignal();
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `cacheSignal` {/*cachesignal*/}
 
-Call `cacheSignal` to get an `AbortSignal`.
+استدعِ `cacheSignal` للحصول على `AbortSignal`.
 
 ```js {3,7}
 import {cacheSignal} from 'react';
@@ -35,32 +35,32 @@ async function Component() {
 }
 ```
 
-When React has finished rendering, the `AbortSignal` will be aborted. This allows you to cancel any in-flight work that is no longer needed.
-Rendering is considered finished when:
-- React has successfully completed rendering
-- the render was aborted
-- the render has failed
+عندما ينتهي React من العرض، سيُلغى `AbortSignal`. يتيح ذلك إلغاء أي عمل قيد التنفيذ لم يعد مطلوبًا.
+يُعتبر العرض منتهيًا عندما:
+- يكمل React العرض بنجاح
+- يُلغى العرض
+- يفشل العرض
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-This function does not accept any parameters.
+هذه الدالة لا تقبل معاملات.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`cacheSignal` returns an `AbortSignal` if called during rendering. Otherwise `cacheSignal()` returns `null`.
+`cacheSignal` تُرجع `AbortSignal` إذا اُستدعيت أثناء العرض. وإلا `cacheSignal()` تُرجع `null`.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- `cacheSignal` is currently for use in [React Server Components](/reference/rsc/server-components) only. In Client Components, it will always return `null`. In the future it will also be used for Client Component when a client cache refreshes or invalidates. You should not assume it'll always be null on the client.
-- If called outside of rendering, `cacheSignal` will return `null` to make it clear that the current scope isn't cached forever.
+- `cacheSignal` مخصّصة حاليًا لـ [مكوّنات خادم React](/reference/rsc/server-components) فقط. في مكوّنات العميل ستُرجع دائمًا `null`. لاحقًا ستُستخدم أيضًا لمكوّن العميل عند تحديث ذاكرة التخزين المؤقت أو إبطالها. لا تفترض أنها ستبقى `null` دائمًا على العميل.
+- إذا اُستدعيت خارج العرض، تُرجع `cacheSignal` قيمة `null` ليوضح أن النطاق الحالي ليس مخزّنًا إلى الأبد.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Cancel in-flight requests {/*cancel-in-flight-requests*/}
+### إلغاء الطلبات الجارية {/*cancel-in-flight-requests*/}
 
-Call <CodeStep step={1}>`cacheSignal`</CodeStep> to abort in-flight requests.
+استدعِ <CodeStep step={1}>`cacheSignal`</CodeStep> لإلغاء الطلبات الجارية.
 
 ```js [[1, 4, "cacheSignal()"]]
 import {cache, cacheSignal} from 'react';
@@ -71,7 +71,7 @@ async function Component() {
 ```
 
 <Pitfall>
-You can't use `cacheSignal` to abort async work that was started outside of rendering e.g.
+لا يمكنك استخدام `cacheSignal` لإلغاء عمل async بدأ خارج العرض، مثلًا:
 
 ```js
 import {cacheSignal} from 'react';
@@ -83,9 +83,9 @@ async function Component() {
 ```
 </Pitfall>
 
-### Ignore errors after React has finished rendering {/*ignore-errors-after-react-has-finished-rendering*/}
+### تجاهل الأخطاء بعد انتهاء عرض React {/*ignore-errors-after-react-has-finished-rendering*/}
 
-If a function throws, it may be due to cancellation (e.g. <CodeStep step={1}>the Database connection</CodeStep> has been closed). You can use the <CodeStep step={2}>`aborted` property</CodeStep> to check if the error was due to cancellation or a real error. You may want to <CodeStep step={3}>ignore errors</CodeStep> that were due to cancellation.
+إذا رمت دالة خطأ، قد يكون بسبب الإلغاء (مثلًا إغلاق <CodeStep step={1}>اتصال قاعدة البيانات</CodeStep>). يمكنك استخدام <CodeStep step={2}>خاصية `aborted`</CodeStep> للتحقق مما إذا كان الخطأ بسبب الإلغاء أم خطأ حقيقي. قد ترغب في <CodeStep step={3}>تجاهل الأخطاء</CodeStep> الناتجة عن الإلغاء فقط.
 
 ```js [[1, 2, "./database"], [2, 8, "cacheSignal()?.aborted"], [3, 12, "return null"]]
 import {cacheSignal} from "react";

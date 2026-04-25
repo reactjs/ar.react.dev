@@ -1,33 +1,32 @@
 ---
-title: React Compiler
+title: مُصرّف React
 ---
 
-## Introduction {/*introduction*/}
+## مقدمة {/*introduction*/}
 
-Learn [what React Compiler does](/learn/react-compiler/introduction) and how it automatically optimizes your React application by handling memoization for you, eliminating the need for manual `useMemo`, `useCallback`, and `React.memo`.
+تعرّف على [ما يفعله مُصرّف React](/learn/react-compiler/introduction) وكيف يُحسِّن تطبيقك تلقائياً عبر التعامل مع التذكّر (memoization) نيابةً عنك، فلا تحتاج إلى `useMemo` و`useCallback` و`React.memo` يدوياً.
 
-## Installation {/*installation*/}
+## التثبيت {/*installation*/}
 
-Get started with [installing React Compiler](/learn/react-compiler/installation) and learn how to configure it with your build tools.
+ابدأ بـ [تثبيت مُصرّف React](/learn/react-compiler/installation) وتعرّف على ضبطه مع أدوات البناء لديك.
 
+## التبني التدريجي {/*incremental-adoption*/}
 
-## Incremental Adoption {/*incremental-adoption*/}
+تعرّف على [استراتيجيات تبني مُصرّف React تدريجياً](/learn/react-compiler/incremental-adoption) في قاعدة الشيفرة الحالية إن لم تكن مستعداً لتفعيله في كل مكان بعد.
 
-Learn [strategies for gradually adopting React Compiler](/learn/react-compiler/incremental-adoption) in your existing codebase if you're not ready to enable it everywhere yet.
+## التصحيح واستكشاف الأخطاء {/*debugging-and-troubleshooting*/}
 
-## Debugging and Troubleshooting {/*debugging-and-troubleshooting*/}
+عندما لا يعمل كل شيء كما تتوقع، استخدم [دليل التصحيح](/learn/react-compiler/debugging) لفهم الفرق بين أخطاء المُصرّف ومشكلات وقت التشغيل، وتحديد أنماط الاختراق الشائعة، واتباع مسار تصحيح منظم.
 
-When things don't work as expected, use our [debugging guide](/learn/react-compiler/debugging) to understand the difference between compiler errors and runtime issues, identify common breaking patterns, and follow a systematic debugging workflow.
+## الإعداد والمرجع {/*configuration-and-reference*/}
 
-## Configuration and Reference {/*configuration-and-reference*/}
+لخيارات الإعداد التفصيلية ومرجع واجهة البرمجة:
 
-For detailed configuration options and API reference:
+- [خيارات الإعداد](/reference/react-compiler/configuration) — كل خيارات المُصرّف بما فيها التوافق مع إصدارات React
+- [التوجيهات](/reference/react-compiler/directives) — التحكم في التجميع على مستوى الدالة
+- [تجميع المكتبات](/reference/react-compiler/compiling-libraries) — شحن مكتبات مُجمَّعة مسبقاً
 
-- [Configuration Options](/reference/react-compiler/configuration) - All compiler configuration options including React version compatibility
-- [Directives](/reference/react-compiler/directives) - Function-level compilation control
-- [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Shipping pre-compiled libraries
+## موارد إضافية {/*additional-resources*/}
 
-## Additional resources {/*additional-resources*/}
-
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
+إضافةً إلى هذه الوثائق، ننصح بمراجعة [مجموعة عمل مُصرّف React](https://github.com/reactwg/react-compiler) لمزيد من المعلومات والنقاش حول المُصرّف.
 

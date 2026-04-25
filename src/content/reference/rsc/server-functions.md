@@ -1,18 +1,18 @@
 ---
-title: Server Functions
+title: دوال الخادم
 ---
 
 <RSC>
 
-Server Functions are for use in [React Server Components](/reference/rsc/server-components).
+[دوال الخادم](/reference/rsc/server-functions) مخصّصة للاستخدام مع [مكوّنات خادم React](/reference/rsc/server-components).
 
-**Note:** Until September 2024, we referred to all Server Functions as "Server Actions". If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions. The naming in this documentation has been updated to reflect that Server Functions can be used for multiple purposes.
+**ملاحظة:** حتى سبتمبر 2024، كنّا نسمّي كل دوال الخادم «Server Actions». إذا اُمرّرت دالة خادم إلى خاصّية `action` أو استُدعيت من داخل action فهي Server Action، لكن ليست كل دوال الخادم هي Server Actions. حُدّثت التسمية في هذا التوثيق ليعكس أن دوال الخادم يمكن استخدامها لأغراض متعددة.
 
 </RSC>
 
 <Intro>
 
-Server Functions allow Client Components to call async functions executed on the server.
+تتيح دوال الخادم لمكوّنات العميل استدعاء دوال async تُنفَّذ على الخادم.
 
 </Intro>
 
@@ -20,23 +20,23 @@ Server Functions allow Client Components to call async functions executed on the
 
 <Note>
 
-#### How do I build support for Server Functions? {/*how-do-i-build-support-for-server-functions*/}
+#### كيف أبني دعماً لدوال الخادم؟ {/*how-do-i-build-support-for-server-functions*/}
 
-While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+بينما دوال الخادم في React 19 مستقرة ولن تنكسر بين الإصدارات الفرعية، فإن واجهات البرمجة الأساسية المستخدمة لتنفيذ دوال الخادم في مُجمّع أو إطار عمل لـ React Server Components لا تتبع semver وقد تنكسر بين الإصدارات الفرعية في React 19.x.
 
-To support Server Functions as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement Server Functions in the future.
+لدعم دوال الخادم كمُجمّع أو إطار عمل، نوصي بتثبيت إصدار محدّد من React، أو استخدام إصدار Canary. سنواصل العمل مع المُجمّعات والأطر لاستقرار واجهات تنفيذ دوال الخادم لاحقاً.
 
 </Note>
 
-When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+عند تعريف دالة خادم بتوجيه [`"use server"`](/reference/rsc/use-server)، ينشئ إطار العمل تلقائياً مرجعاً إلى دالة الخادم ويُمرّره إلى مكوّن العميل. عند استدعاء الدالة على العميل، يرسل React طلباً إلى الخادم لتنفيذ الدالة وإرجاع النتيجة.
 
-Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
+يمكن إنشاء دوال الخادم في مكوّنات الخادم وتمريرها كـ props إلى مكوّنات العميل، أو استيرادها واستخدامها داخل مكوّنات العميل.
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Creating a Server Function from a Server Component {/*creating-a-server-function-from-a-server-component*/}
+### إنشاء دالة خادم من مكوّن خادم {/*creating-a-server-function-from-a-server-component*/}
 
-Server Components can define Server Functions with the `"use server"` directive:
+يمكن لمكوّنات الخادم تعريف دوال خادم بتوجيه `"use server"`:
 
 ```js [[2, 7, "'use server'"], [1, 5, "createNoteAction"], [1, 12, "createNoteAction"]]
 // Server Component
@@ -54,7 +54,7 @@ function EmptyNote () {
 }
 ```
 
-When React renders the `EmptyNote` Server Component, it will create a reference to the `createNoteAction` function, and pass that reference to the `Button` Client Component. When the button is clicked, React will send a request to the server to execute the `createNoteAction` function with the reference provided:
+عندما يُصيّر React مكوّن الخادم `EmptyNote`، ينشئ مرجعاً إلى الدالة `createNoteAction` ويُمرّره إلى مكوّن العميل `Button`. عند النقر على الزر، يرسل React طلباً إلى الخادم لتنفيذ `createNoteAction` بالمرجع الموفَّر:
 
 ```js {5}
 "use client";
@@ -66,12 +66,12 @@ export default function Button({onClick}) {
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+لمزيد من التفاصيل، راجع [`"use server"`](/reference/rsc/use-server).
 
 
-### Importing Server Functions from Client Components {/*importing-server-functions-from-client-components*/}
+### استيراد دوال الخادم من مكوّنات العميل {/*importing-server-functions-from-client-components*/}
 
-Client Components can import Server Functions from files that use the `"use server"` directive:
+يمكن لمكوّنات العميل استيراد دوال الخادم من ملفات تستخدم توجيه `"use server"`:
 
 ```js [[1, 3, "createNote"]]
 "use server";
@@ -82,7 +82,7 @@ export async function createNote() {
 
 ```
 
-When the bundler builds the `EmptyNote` Client Component, it will create a reference to the `createNote` function in the bundle. When the `button` is clicked, React will send a request to the server to execute the `createNote` function using the reference provided:
+عندما يُجمّع المُجمّع مكوّن العميل `EmptyNote`، ينشئ مرجعاً إلى الدالة `createNote` في الحزمة. عند النقر على الزر، يرسل React طلباً إلى الخادم لتنفيذ `createNote` باستخدام المرجع:
 
 ```js [[1, 2, "createNote"], [1, 5, "createNote"], [1, 7, "createNote"]]
 "use client";
@@ -95,11 +95,11 @@ function EmptyNote() {
 }
 ```
 
-For more, see the docs for [`"use server"`](/reference/rsc/use-server).
+لمزيد من التفاصيل، راجع [`"use server"`](/reference/rsc/use-server).
 
-### Server Functions with Actions {/*server-functions-with-actions*/}
+### دوال الخادم مع Actions {/*server-functions-with-actions*/}
 
-Server Functions can be called from Actions on the client:
+يمكن استدعاء دوال الخادم من Actions على العميل:
 
 ```js [[1, 3, "updateName"]]
 "use server";
@@ -143,15 +143,15 @@ function UpdateName() {
 }
 ```
 
-This allows you to access the `isPending` state of the Server Function by wrapping it in an Action on the client.
+هذا يتيح الوصول إلى حالة `isPending` لدالة الخادم بلفّها في Action على العميل.
 
-For more, see the docs for [Calling a Server Function outside of `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form)
+لمزيد من التفاصيل، راجع [استدعاء دالة خادم خارج `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form)
 
-### Server Functions with Form Actions {/*using-server-functions-with-form-actions*/}
+### دوال الخادم مع Form Actions {/*using-server-functions-with-form-actions*/}
 
-Server Functions work with the new Form features in React 19.
+تعمل دوال الخادم مع ميزات النماذج الجديدة في React 19.
 
-You can pass a Server Function to a Form to automatically submit the form to the server:
+يمكنك تمرير دالة خادم إلى `<form>` لإرسال النموذج تلقائياً إلى الخادم:
 
 
 ```js [[1, 3, "updateName"], [1, 7, "updateName"]]
@@ -168,13 +168,13 @@ function UpdateName() {
 }
 ```
 
-When the Form submission succeeds, React will automatically reset the form. You can add `useActionState` to access the pending state, last response, or to support progressive enhancement.
+عند نجاح إرسال النموذج، يُصفّر React النموذج تلقائياً. يمكنك إضافة `useActionState` للوصول إلى حالة التعليق، آخر استجابة، أو لدعم التحسين التدريجي.
 
-For more, see the docs for [Server Functions in Forms](/reference/rsc/use-server#server-functions-in-forms).
+لمزيد من التفاصيل، راجع [دوال الخادم في النماذج](/reference/rsc/use-server#server-functions-in-forms).
 
-### Server Functions with `useActionState` {/*server-functions-with-use-action-state*/}
+### دوال الخادم مع `useActionState` {/*server-functions-with-use-action-state*/}
 
-You can call Server Functions with `useActionState` for the common case where you just need access to the action pending state and last returned response:
+يمكن استدعاء دوال الخادم مع `useActionState` للحالة الشائعة التي تحتاج فيها فقط إلى حالة تعليق الـ action وآخر استجابة:
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "submitAction"], [2, 9, "submitAction"]]
 "use client";
@@ -193,13 +193,13 @@ function UpdateName() {
 }
 ```
 
-When using `useActionState` with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated.
+عند استخدام `useActionState` مع دوال الخادم، يعيد React أيضاً تشغيل إرسالات النموذج التي أُدخلت قبل انتهاء الترطيب. يعني ذلك أن المستخدمين يمكنهم التفاعل مع تطبيقك حتى قبل اكتمال الترطيب.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+لمزيد من التفاصيل، راجع [`useActionState`](/reference/react/useActionState).
 
-### Progressive enhancement with `useActionState` {/*progressive-enhancement-with-useactionstate*/}
+### التحسين التدريجي مع `useActionState` {/*progressive-enhancement-with-useactionstate*/}
 
-Server Functions also support progressive enhancement with the third argument of `useActionState`.
+تدعم دوال الخادم التحسين التدريجي عبر الوسيط الثالث لـ `useActionState`.
 
 ```js [[1, 3, "updateName"], [1, 6, "updateName"], [2, 6, "/name/update"], [3, 6, "submitAction"], [3, 9, "submitAction"]]
 "use client";
@@ -217,6 +217,6 @@ function UpdateName() {
 }
 ```
 
-When the <CodeStep step={2}>permalink</CodeStep> is provided to `useActionState`, React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads.
+عند تمرير <CodeStep step={2}>permalink</CodeStep> إلى `useActionState`، يُعيد React التوجيه إلى عنوان URL الموفَّر إذا أُرسل النموذج قبل تحميل حزمة JavaScript.
 
-For more, see the docs for [`useActionState`](/reference/react/useActionState).
+لمزيد من التفاصيل، راجع [`useActionState`](/reference/react/useActionState).

@@ -4,13 +4,13 @@ title: PureComponent
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+نوصي بتعريف المكوّنات كدوال بدل الصنوف. [اطلع على كيفية الترحيل.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`PureComponent` is similar to [`Component`](/reference/react/Component) but it skips re-renders for same props and state. Class components are still supported by React, but we don't recommend using them in new code.
+`PureComponent` مشابه لـ [`Component`](/reference/react/Component) لكنه يتخطى إعادة الرسم عند تطابق الـ props والحالة. ما زالت مكوّنات الصنف مدعومة في React، لكننا لا نوصي باستخدامها في كود جديد.
 
 ```js
 class Greeting extends PureComponent {
@@ -30,7 +30,7 @@ class Greeting extends PureComponent {
 
 ### `PureComponent` {/*purecomponent*/}
 
-To skip re-rendering a class component for same props and state, extend `PureComponent` instead of [`Component`:](/reference/react/Component)
+لتخطي إعادة رسم مكوّن صنف عند تطابق الـ props والحالة، ورّث `PureComponent` بدل [`Component`:](/reference/react/Component)
 
 ```js
 import { PureComponent } from 'react';
@@ -42,10 +42,10 @@ class Greeting extends PureComponent {
 }
 ```
 
-`PureComponent` is a subclass of `Component` and supports [all the `Component` APIs.](/reference/react/Component#reference) Extending `PureComponent` is equivalent to defining a custom [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) method that shallowly compares props and state.
+`PureComponent` هو صنف فرعي من `Component` ويدعم [جميع واجهات `Component`.](/reference/react/Component#reference) وراثة `PureComponent` تكافئ تعريف دالة [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) مخصصة تقارن الـ props والحالة بشكل سطحي.
 
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
 ---
 
@@ -53,7 +53,7 @@ class Greeting extends PureComponent {
 
 ### Skipping unnecessary re-renders for class components {/*skipping-unnecessary-re-renders-for-class-components*/}
 
-React normally re-renders a component whenever its parent re-renders. As an optimization, you can create a component that React will not re-render when its parent re-renders so long as its new props and state are the same as the old props and state. [Class components](/reference/react/Component) can opt into this behavior by extending `PureComponent`:
+يعيد React عادةً رسم المكوّن كلما أعاد الأب الرسم. كتحسين، يمكنك إنشاء مكوّن لا يعيد React رسمه عند إعادة رسم الأب طالما أن الـ props والحالة الجديدة مطابقة للقديمة. يمكن [لمكوّنات الصنف](/reference/react/Component) اختيار هذا السلوك بوراثة `PureComponent`:
 
 ```js {1}
 class Greeting extends PureComponent {
@@ -63,9 +63,9 @@ class Greeting extends PureComponent {
 }
 ```
 
-A React component should always have [pure rendering logic.](/learn/keeping-components-pure) This means that it must return the same output if its props, state, and context haven't changed. By using `PureComponent`, you are telling React that your component complies with this requirement, so React doesn't need to re-render as long as its props and state haven't changed. However, your component will still re-render if a context that it's using changes.
+يجب أن يكون لمكوّن React دائمًا [منطق رسم نقي.](/learn/keeping-components-pure) أي أنه يجب أن يُرجع نفس المخرجات إذا لم تتغيّر الـ props والحالة والسياق. باستخدام `PureComponent`، تخبر React أن مكوّنك يلتزم بهذا المطلوب، لذا لا يحتاج React لإعادة الرسم طالما أن الـ props والحالة لم تتغيّر. لكن المكوّن سيُعاد رسمه إذا تغيّر سياق يستخدمه.
 
-In this example, notice that the `Greeting` component re-renders whenever `name` is changed (because that's one of its props), but not when `address` is changed (because it's not passed to `Greeting` as a prop):
+في هذا المثال، لاحظ أن مكوّن `Greeting` يُعاد رسمه عند تغيّر `name` (لأنه أحد الـ props)، وليس عند تغيّر `address` (لأنه لا يُمرَّر إلى `Greeting` كـ prop):
 
 <Sandpack>
 
@@ -109,7 +109,7 @@ label {
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+نوصي بتعريف المكوّنات كدوال بدل الصنوف. [اطلع على كيفية الترحيل.](#alternatives)
 
 </Pitfall>
 
@@ -119,7 +119,7 @@ We recommend defining components as functions instead of classes. [See how to mi
 
 ### Migrating from a `PureComponent` class component to a function {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `PureComponent`, here is how you can convert them. This is the original code:
+نوصي باستخدام مكوّنات الدالة بدل [مكوّنات الصنف](/reference/react/Component) في كود جديد. إذا كان لديك مكوّنات صنف قائمة تستخدم `PureComponent`، إليك كيفية تحويلها. هذا هو الكود الأصلي:
 
 <Sandpack>
 
@@ -161,7 +161,7 @@ label {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) wrap it in [`memo`:](/reference/react/memo)
+عند [تحويل هذا المكوّن من صنف إلى دالة،](/reference/react/Component#alternatives) لفّه بـ [`memo`:](/reference/react/memo)
 
 <Sandpack>
 
@@ -203,6 +203,6 @@ label {
 
 <Note>
 
-Unlike `PureComponent`, [`memo`](/reference/react/memo) does not compare the new and the old state. In function components, calling the [`set` function](/reference/react/useState#setstate) with the same state [already prevents re-renders by default,](/reference/react/memo#updating-a-memoized-component-using-state) even without `memo`.
+على عكس `PureComponent`، [`memo`](/reference/react/memo) لا يقارن الحالة الجديدة بالقديمة. في مكوّنات الدالة، استدعاء [دالة `set`](/reference/react/useState#setstate) بنفس الحالة [يمنع إعادة الرسم افتراضيًا](/reference/react/memo#updating-a-memoized-component-using-state) حتى بدون `memo`.
 
 </Note>

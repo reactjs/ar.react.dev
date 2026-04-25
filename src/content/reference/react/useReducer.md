@@ -1,10 +1,10 @@
 ---
-title: useReducer
+title: دالة useReducer
 ---
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer` هو Hook في React يتيح لك إضافة [reducer](/learn/extracting-state-logic-into-a-reducer) إلى مكوّنك.
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+استدعِ `useReducer` في أعلى مستوى مكوّنك لإدارة حالته بـ [reducer.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js
 import { useReducer } from 'react';
@@ -34,32 +34,32 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: دالة الـ reducer التي تحدد كيفية تحديث الحالة. يجب أن تكون نقية، وتأخذ الحالة والـ action كوسائط، وتعيد الحالة التالية. يمكن أن تكون الحالة والـ action من أي نوع.
+* `initialArg`: القيمة التي تُحسب منها الحالة الأولية. يمكن أن تكون من أي نوع. طريقة حساب الحالة الأولية منها تعتمد على وسيط `init` التالي.
+* **اختياري** `init`: دالة تهيئة يجب أن تعيد الحالة الأولية. إذا لم تُحدَّد، تُضبط الحالة الأولية إلى `initialArg`. وإلا تُضبط إلى نتيجة استدعاء `init(initialArg)`.
 
-#### Returns {/*returns*/}
+#### القيمة المعادة {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer` يعيد مصفوفة بقيمتين بالضبط:
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. الحالة الحالية. في أول render، تُضبط إلى `init(initialArg)` أو `initialArg` (إن لم يكن هناك `init`).
+2. [دالة `dispatch`](#dispatch) التي تتيح تحديث الحالة إلى قيمة مختلفة وإطلاق إعادة رسم.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* The `dispatch` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer` هو Hook، فتستدعيه **في أعلى مستوى المكوّن** أو في Hooks خاصة بك فقط. لا تستدعه داخل حلقات أو شروط. إذا احتجت ذلك، استخرج مكوّنًا جديدًا وانقل الـ state إليه.
+* دالة `dispatch` لهوية مستقرة، فغالبًا تُحذف من تبعيات Effects، لكن تضمينها لا يجعل الـ Effect يشتغل. إذا سمح linter بحذف تبعية بلا أخطاء، فالأمر آمن. [تعرّف أكثر على إزالة تبعيات Effect.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* في Strict Mode، تستدعي React **reducerك ومهيئك مرتين** من أجل [مساعدتك على اكتشاف الشوائب غير المقصودة.](#my-reducer-or-initializer-function-runs-twice) هذا للتطوير فقط ولا يؤثر على الإنتاج. إذا كانا نقيين (كما ينبغي)، فلا يؤثر ذلك على المنطق. تُتجاهل نتيجة أحد الاستدعاءين.
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### دالة `dispatch` {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+دالة `dispatch` التي يعيدها `useReducer` تتيح تحديث الحالة إلى قيمة مختلفة وإطلاق إعادة رسم. مرّر الـ action كالوسيط الوحيد لـ`dispatch`:
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -69,31 +69,31 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+تضبط React الحالة التالية إلى نتيجة استدعاء دالة `reducer` التي وفرتها بالحالة الحالية والـ action التي مررتها إلى `dispatch`.
 
-#### Parameters {/*dispatch-parameters*/}
+#### المعاملات {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: الفعل الذي نفّذه المستخدم. يمكن أن يكون من أي نوع. بالاصطلاح، يكون الـ action غالبًا كائنًا فيه خاصية `type` تميّزه، واختياريًا خصائص أخرى لمعلومات إضافية.
 
-#### Returns {/*dispatch-returns*/}
+#### القيمة المعادة {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+دوال `dispatch` لا تعيد قيمة.
 
-#### Caveats {/*setstate-caveats*/}
+#### ملاحظات مهمة {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* دالة `dispatch` **تحدّث متغير الحالة لـ*الـ* render التالي فقط**. إذا قرأت متغير الحالة بعد استدعاء `dispatch`، [ستحصل على القيمة القديمة](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) التي كانت على الشاشة قبل الاستدعاء.
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* إذا كانت القيمة الجديدة مطابقة للحالة الحالية `state` حسب مقارنة [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)، **تتخطى React إعادة رسم المكوّن وأبناءه.** هذا تحسين. قد تحتاج React لاستدعاء مكوّنك قبل تجاهل النتيجة، لكن ذلك لا ينبغي أن يؤثر على كودك.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* React [تجمع تحديثات الحالة.](/learn/queueing-a-series-of-state-updates) تحدّث الشاشة **بعد أن تنتهي كل معالجات الأحداث** وتستدعي دوال `set` الخاصة بها. ذلك يمنع إعادات رسم متعددة في حدث واحد. في الحالات النادرة التي تحتاج فيها لإجبار React على التحديث مبكرًا، مثل الوصول إلى DOM، يمكنك استخدام [`flushSync`.](/reference/react-dom/flushSync)
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### إضافة reducer إلى مكوّن {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+استدعِ `useReducer` في أعلى مستوى مكوّنك لإدارة الحالة بـ [reducer.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -107,12 +107,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+يعيد `useReducer` مصفوفة بعنصرين بالضبط:
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. <CodeStep step={1}>الحالة الحالية</CodeStep> لهذا المتغير، مضبوطة مبدئيًا إلى <CodeStep step={3}>الحالة الأولية</CodeStep> التي قدمتها.
+2. <CodeStep step={2}>دالة `dispatch`</CodeStep> التي تغيّرها استجابة للتفاعل.
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+لتحديث ما على الشاشة، استدعِ <CodeStep step={2}>`dispatch`</CodeStep> بكائن يمثل ما فعله المستخدم، يُسمى *action*:
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -120,7 +120,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+تمرّر React الحالة الحالية والـ action إلى <CodeStep step={4}>دالة reducer</CodeStep>. يحسب reducerك ويعيد الحالة التالية. تخزّن React تلك الحالة، ترسم مكوّنك بها، وتحدّث الواجهة.
 
 <Sandpack>
 
@@ -158,13 +158,13 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer` قريب جدًا من [`useState`](/reference/react/useState)، لكنه ينقل منطق تحديث الحالة من معالجات الأحداث إلى دالة واحدة خارج المكوّن. اقرأ المزيد عن [الاختيار بين `useState` و`useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### كتابة دالة الـ reducer {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+تُصرَّح عن دالة reducer هكذا:
 
 ```js
 function reducer(state, action) {
@@ -172,7 +172,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+ثم تملأ الكود الذي يحسب ويعيد الحالة التالية. بالاصطلاح، يُكتب غالبًا كـ [`switch`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) لكل `case` في `switch`، احسب وأعد حالةً تالية.
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -194,7 +194,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+يمكن أن يكون للـ actions أي شكل. بالاصطلاح، شائع تمرير كائنات فيها خاصية `type` تميّز الـ action. ينبغي أن تتضمن أقل المعلومات اللازمة لحساب الحالة التالية.
 
 ```js {5,9-12}
 function Form() {
@@ -213,13 +213,13 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+أسماء أنواع الـ action محلية لمكوّنك. [كل action يصف تفاعلًا واحدًا، حتى إذا أدى إلى تغييرات متعددة في البيانات.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) شكل الحالة اختياري، لكنه غالبًا كائن أو مصفوفة.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+اقرأ [استخراج منطق الحالة إلى reducer](/learn/extracting-state-logic-into-a-reducer) للمزيد.
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+الحالة للقراءة فقط. لا تعدّل كائنات أو مصفوفات في الحالة:
 
 ```js {4,5}
 function reducer(state, action) {
@@ -231,7 +231,7 @@ function reducer(state, action) {
     }
 ```
 
-Instead, always return new objects from your reducer:
+بدلًا من ذلك، أعد دائمًا كائنات جديدة من reducer:
 
 ```js {4-8}
 function reducer(state, action) {
@@ -245,15 +245,15 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+اقرأ [تحديث الكائنات في الحالة](/learn/updating-objects-in-state) و[تحديث المصفوفات في الحالة](/learn/updating-arrays-in-state) للمزيد.
 
 </Pitfall>
 
-<Recipes titleText="Basic useReducer examples" titleId="examples-basic">
+<Recipes titleText="أمثلة أساسية لـ useReducer" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### نموذج (كائن) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+في هذا المثال، يدير الـ reducer كائن حالة بحقلين: `name` و`age`.
 
 <Sandpack>
 
@@ -317,9 +317,9 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### قائمة مهام (مصفوفة) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+في هذا المثال، يدير الـ reducer مصفوفة مهام. يجب تحديث المصفوفة [دون تعديل مباشر.](/learn/updating-arrays-in-state)
 
 <Sandpack>
 
@@ -510,9 +510,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### كتابة منطق تحديث موجز مع Immer {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+إذا كان تحديث المصفوفات والكائنات دون تعديل مباشر مملًا، يمكنك استخدام مكتبة مثل [Immer](https://github.com/immerjs/use-immer#useimmerreducer) لتقليل التكرار. يتيح Immer كودًا موجزًا كأنك تعدّل الكائنات، لكنه ينفّذ تحديثات غير قابلة للتعديل تحت الغطاء:
 
 <Sandpack>
 
@@ -724,9 +724,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### تجنب إعادة إنشاء الحالة الأولية {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+تحفظ React الحالة الأولية مرة واحدة وتتجاهلها في الـ renders التالية.
 
 ```js
 function createInitialState(username) {
@@ -738,9 +738,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+رغم أن نتيجة `createInitialState(username)` تُستخدم فقط للـ render الأول، فما زلت تستدعي الدالة في كل render. قد يكون ذلك مهدورًا إذا أنشأت مصفوفات كبيرة أو حسابات مكلفة.
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+لحل ذلك، **مرّرها كدالة _مهيئة_** كالوسيط الثالث لـ`useReducer`:
 
 ```js {6}
 function createInitialState(username) {
@@ -752,15 +752,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+لاحظ أنك تمرّر `createInitialState` أي *الدالة نفسها*، وليس `createInitialState()` أي نتيجة استدعائها. بهذا لا تُعاد إنشاء الحالة الأولية بعد التهيئة.
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+في المثال أعلاه، تأخذ `createInitialState` وسيطًا `username`. إذا لم يحتج مهيئك لمعلومات لحساب الحالة الأولية، يمكنك تمرير `null` كالوسيط الثاني لـ`useReducer`.
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="الفرق بين تمرير مهيئ وتمرير الحالة الأولية مباشرة" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### تمرير دالة المهيئ {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+يمرّر هذا المثال دالة المهيئ، فيُنفَّذ `createInitialState` فقط أثناء التهيئة. لا يُنفَّذ عند إعادة رسم المكوّن، مثلًا عند الكتابة في الحقل.
 
 <Sandpack>
 
@@ -846,9 +846,9 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### تمرير الحالة الأولية مباشرة {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+هذا المثال **لا** يمرّر دالة المهيئ، فيُنفَّذ `createInitialState` في كل render، مثلًا عند الكتابة في الحقل. لا فرق ملحوظ في السلوك، لكن الكود أقل كفاءة.
 
 <Sandpack>
 
@@ -937,11 +937,11 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### أرسلت action لكن التسجيل يعطيني قيمة الحالة القديمة {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+استدعاء `dispatch` **لا يغيّر الحالة في الكود الجاري**:
 
 ```js {4,5,8}
 function handleClick() {
@@ -956,9 +956,9 @@ function handleClick() {
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+ذلك لأن [الحالة تتصرّف كلمحة.](/learn/state-as-a-snapshot) تحديث الحالة يطلب renderًا آخر بالقيمة الجديدة، لكنه لا يؤثر على متغير `state` في JavaScript داخل معالج الحدث الذي يعمل بالفعل.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+إذا احتجت تقدير الحالة التالية، احسبها يدويًا باستدعاء reducer بنفسك:
 
 ```js
 const action = { type: 'incremented_age' };
@@ -971,9 +971,9 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### أرسلت action لكن الشاشة لا تتحدّث {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+**تتجاهل React تحديثك** إذا كانت الحالة التالية مساوية للسابقة حسب [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is). يحدث ذلك غالبًا عند تعديل كائن أو مصفوفة في الحالة مباشرة:
 
 ```js {4-5,9-10}
 function reducer(state, action) {
@@ -993,7 +993,7 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+عدّلت كائن `state` قائمًا وأعدته، فتجاهلت React التحديث. لإصلاح ذلك، تأكد دائمًا من [تحديث الكائنات في الحالة](/learn/updating-objects-in-state) و[تحديث المصفوفات في الحالة](/learn/updating-arrays-in-state) بدل تعديلها مباشرة:
 
 ```js {4-8,11-15}
 function reducer(state, action) {
@@ -1019,9 +1019,9 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### جزء من حالة reducer يصبح undefined بعد الإرسال {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+تأكد أن كل فرع `case` **ينسخ كل الحقول الموجودة** عند إرجاع الحالة الجديدة:
 
 ```js {5}
 function reducer(state, action) {
@@ -1035,13 +1035,13 @@ function reducer(state, action) {
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+بلا `...state` أعلاه، ستكون الحالة التالية المعادة تحتوي حقل `age` فقط دون غيره.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### حالة reducer كاملة تصبح undefined بعد الإرسال {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+إذا أصبحت حالتك `undefined` بغتة، فغالبًا نسيت `return state` في أحد الفروع، أو نوع الـ action لا يطابق أي `case`. لمعرفة السبب، ألقِ خطأ خارج `switch`:
 
 ```js {10}
 function reducer(state, action) {
@@ -1057,13 +1057,13 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+يمكنك أيضًا استخدام فاحص أنواع ثابت مثل TypeScript لالتقاط مثل هذه الأخطاء.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### أتلقى خطأ: «Too many re-renders» {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+قد يظهر خطأ: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` غالبًا يعني أنك ترسل action *أثناء الرسم* بلا شرط، فيدخل المكوّن حلقة: رسم، إرسال (فيُسبب رسمًا)، رسم، إرسال، وهكذا. غالبًا السبب خطأ في تعريف معالج الحدث:
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
@@ -1076,17 +1076,17 @@ return <button onClick={handleClick}>Click me</button>
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+إذا لم تجد سبب الخطأ، انقر السهم بجانب الخطأ في وحدة التحكم وافحص مكدس JavaScript للعثور على استدعاء `dispatch` المسبب.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### يعمل reducer أو المهيئ مرتين {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+في [Strict Mode](/reference/react/StrictMode)، تستدعي React reducerك ومهيئك مرتين. لا ينبغي أن يكسر ذلك كودك.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+هذا السلوك **للتطوير فقط** يساعدك على [إبقاء المكوّنات نقية.](/learn/keeping-components-pure) تستخدم React نتيجة أحد الاستدعاءين وتتجاهل نتيجة الآخر. طالما المكوّن والمهيئ والـ reducer نقيون، لا يؤثر ذلك على المنطق. لكن إذا كانوا شوائب بالخطأ، يساعدك ذلك على ملاحظة الأخطاء.
 
-For example, this impure reducer function mutates an array in state:
+مثلًا، يعدّل reducer غير نقي مصفوفة في الحالة:
 
 ```js {4-6}
 function reducer(state, action) {
@@ -1101,7 +1101,7 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+بما أن React تستدعي reducerك مرتين، سترى المهمة أُضيفت مرتين، فتعرف أن هناك خطأ. في هذا المثال، أصلح الخطأ [باستبدال المصفوفة بدل تعديلها](/learn/updating-arrays-in-state#adding-to-an-array):
 
 ```js {4-11}
 function reducer(state, action) {
@@ -1121,6 +1121,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+الآن بعد أن أصبح reducer نقيًا، لا يغيّر استدعاؤه مرة إضافية السلوك. لذلك يساعدك استدعاء React له مرتين على إيجاد الأخطاء. **دوال المكوّن والمهيئ والـ reducer فقط ينبغي أن تكون نقية.** معالجات الأحداث لا تحتاج النقاء، ولن تستدعي React معالج حدثك مرتين.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+اقرأ [إبقاء المكوّنات نقية](/learn/keeping-components-pure) للمزيد.

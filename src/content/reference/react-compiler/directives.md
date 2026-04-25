@@ -1,14 +1,14 @@
 ---
-title: Directives
+title: التوجيهات
 ---
 
 <Intro>
-React Compiler directives are special string literals that control whether specific functions are compiled.
+توجيهات React Compiler هي حرفيات نصية خاصة تتحكم فيما إذا كانت دوال معيّنة تُجمَّع أم لا.
 </Intro>
 
 ```js
 function MyComponent() {
-  "use memo"; // Opt this component into compilation
+  "use memo"; // إدخال هذا المكوّن في التجميع
   return <div>{/* ... */}</div>;
 }
 ```
@@ -17,53 +17,53 @@ function MyComponent() {
 
 ---
 
-## Overview {/*overview*/}
+## نظرة عامة {/*overview*/}
 
-React Compiler directives provide fine-grained control over which functions are optimized by the compiler. They are string literals placed at the beginning of a function body or at the top of a module.
+توفّر توجيهات React Compiler تحكّماً دقيقاً في أي الدوال يُحسِّنها المُصرّف. هي حرفيات نصية تُوضَع في بداية جسم الدالة أو في أعلى الوحدة.
 
-### Available directives {/*available-directives*/}
+### التوجيهات المتاحة {/*available-directives*/}
 
-* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - Opts a function into compilation
-* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - Opts a function out of compilation
+* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** — إدخال دالة في التجميع
+* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** — استبعاد دالة من التجميع
 
-### Quick comparison {/*quick-comparison*/}
+### مقارنة سريعة {/*quick-comparison*/}
 
-| Directive | Purpose | When to use |
+| التوجيه | الغرض | متى تستخدمه |
 |-----------|---------|-------------|
-| [`"use memo"`](/reference/react-compiler/directives/use-memo) | Force compilation | When using `annotation` mode or to override `infer` mode heuristics |
-| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | Prevent compilation | Debugging issues or working with incompatible code |
+| [`"use memo"`](/reference/react-compiler/directives/use-memo) | فرض التجميع | في وضع `annotation` أو لتجاوز استدلال وضع `infer` |
+| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | منع التجميع | أثناء التصحيح أو مع شيفرة غير متوافقة |
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Function-level directives {/*function-level*/}
+### توجيهات على مستوى الدالة {/*function-level*/}
 
-Place directives at the beginning of a function to control its compilation:
+ضع التوجيهات في بداية الدالة للتحكم في تجميعها:
 
 ```js
-// Opt into compilation
+// الإدخال في التجميع
 function OptimizedComponent() {
   "use memo";
   return <div>This will be optimized</div>;
 }
 
-// Opt out of compilation
+// الاستبعاد من التجميع
 function UnoptimizedComponent() {
   "use no memo";
   return <div>This won't be optimized</div>;
 }
 ```
 
-### Module-level directives {/*module-level*/}
+### توجيهات على مستوى الوحدة {/*module-level*/}
 
-Place directives at the top of a file to affect all functions in that module:
+ضع التوجيه في أعلى الملف لتأثيره على كل الدوال في تلك الوحدة:
 
 ```js
-// At the very top of the file
+// في أعلى الملف تماماً
 "use memo";
 
-// All functions in this file will be compiled
+// كل الدوال في هذا الملف ستُجمَّع
 function Component1() {
   return <div>Compiled</div>;
 }
@@ -72,31 +72,31 @@ function Component2() {
   return <div>Also compiled</div>;
 }
 
-// Can be overridden at function level
+// يمكن تجاوزه على مستوى الدالة
 function Component3() {
-  "use no memo"; // This overrides the module directive
+  "use no memo"; // يتجاوز توجيه الوحدة
   return <div>Not compiled</div>;
 }
 ```
 
-### Compilation modes interaction {/*compilation-modes*/}
+### التفاعل مع أوضاع التجميع {/*compilation-modes*/}
 
-Directives behave differently depending on your [`compilationMode`](/reference/react-compiler/compilationMode):
+تختلف سلوكيات التوجيهات حسب [`compilationMode`](/reference/react-compiler/compilationMode):
 
-* **`annotation` mode**: Only functions with `"use memo"` are compiled
-* **`infer` mode**: Compiler decides what to compile, directives override decisions
-* **`all` mode**: Everything is compiled, `"use no memo"` can exclude specific functions
+* **وضع `annotation`**: تُجمَّع فقط الدوال التي تحتوي `"use memo"`
+* **وضع `infer`**: المُصرّف يقرر ما يُجمَّع، والتوجيهات تتجاوز القرار
+* **وضع `all`**: يُجمَّع كل شيء، و`"use no memo"` يمكنه استبعاد دوال محدّدة
 
 ---
 
-## Best practices {/*best-practices*/}
+## أفضل الممارسات {/*best-practices*/}
 
-### Use directives sparingly {/*use-sparingly*/}
+### استخدم التوجيهات باعتدال {/*use-sparingly*/}
 
-Directives are escape hatches. Prefer configuring the compiler at the project level:
+التوجيهات مخارج طارئة. فضّل إعداد المُصرّف على مستوى المشروع:
 
 ```js
-// ✅ Good - project-wide configuration
+// ✅ جيد — إعداد للمشروع كله
 {
   plugins: [
     ['babel-plugin-react-compiler', {
@@ -105,70 +105,70 @@ Directives are escape hatches. Prefer configuring the compiler at the project le
   ]
 }
 
-// ⚠️ Use directives only when needed
+// ⚠️ استخدم التوجيهات عند الحاجة فقط
 function SpecialCase() {
-  "use no memo"; // Document why this is needed
+  "use no memo"; // وثّق سبب الحاجة
   // ...
 }
 ```
 
-### Document directive usage {/*document-usage*/}
+### وثّق استخدام التوجيه {/*document-usage*/}
 
-Always explain why a directive is used:
+اشرح دائماً لماذا يُستخدم التوجيه:
 
 ```js
-// ✅ Good - clear explanation
+// ✅ جيد — شرح واضح
 function DataGrid() {
-  "use no memo"; // TODO: Remove after fixing issue with dynamic row heights (JIRA-123)
-  // Complex grid implementation
+  "use no memo"; // TODO: إزالة بعد إصلاح مشكلة ارتفاع الصفوف الديناميكي (JIRA-123)
+  // تنفيذ شبكة معقّدة
 }
 
-// ❌ Bad - no explanation
+// ❌ سيء — بلا تفسير
 function Mystery() {
   "use no memo";
   // ...
 }
 ```
 
-### Plan for removal {/*plan-removal*/}
+### خطّ للإزالة {/*plan-removal*/}
 
-Opt-out directives should be temporary:
+توجيهات الاستبعاد يفترض أن تكون مؤقتة:
 
-1. Add the directive with a TODO comment
-2. Create a tracking issue
-3. Fix the underlying problem
-4. Remove the directive
+1. أضف التوجيه مع تعليق TODO
+2. أنشئ مهمة تتبّع
+3. أصلح السبب الجذري
+4. أزل التوجيه
 
 ```js
 function TemporaryWorkaround() {
-  "use no memo"; // TODO: Remove after upgrading ThirdPartyLib to v2.0
+  "use no memo"; // TODO: إزالة بعد ترقية ThirdPartyLib إلى v2.0
   return <ThirdPartyComponent />;
 }
 ```
 
 ---
 
-## Common patterns {/*common-patterns*/}
+## أنماط شائعة {/*common-patterns*/}
 
-### Gradual adoption {/*gradual-adoption*/}
+### تبنّي تدريجي {/*gradual-adoption*/}
 
-When adopting the React Compiler in a large codebase:
+عند تبنّي React Compiler في قاعدة شيفرة كبيرة:
 
 ```js
-// Start with annotation mode
+// ابدأ بوضع annotation
 {
   compilationMode: 'annotation'
 }
 
-// Opt in stable components
+// أدخل المكوّنات المستقرة
 function StableComponent() {
   "use memo";
-  // Well-tested component
+  // مكوّن مختبر جيداً
 }
 
-// Later, switch to infer mode and opt out problematic ones
+// لاحقاً انتقل إلى infer واستبعد المشكلات
 function ProblematicComponent() {
-  "use no memo"; // Fix issues before removing
+  "use no memo"; // أصلح المشاكل قبل الإزالة
   // ...
 }
 ```
@@ -176,23 +176,23 @@ function ProblematicComponent() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-For specific issues with directives, see the troubleshooting sections in:
+لمشكلات محدّدة مع التوجيهات، راجع أقسام استكشاف الأعطال في:
 
-* [`"use memo"` troubleshooting](/reference/react-compiler/directives/use-memo#troubleshooting)
-* [`"use no memo"` troubleshooting](/reference/react-compiler/directives/use-no-memo#troubleshooting)
+* [استكشاف أعطال `"use memo"`](/reference/react-compiler/directives/use-memo#troubleshooting)
+* [استكشاف أعطال `"use no memo"`](/reference/react-compiler/directives/use-no-memo#troubleshooting)
 
-### Common issues {/*common-issues*/}
+### مشاكل شائعة {/*common-issues*/}
 
-1. **Directive ignored**: Check placement (must be first) and spelling
-2. **Compilation still happens**: Check `ignoreUseNoForget` setting
-3. **Module directive not working**: Ensure it's before all imports
+1. **التوجيه مُتجاهَل**: تحقق من الموضع (يجب أن يكون أولاً) والإملاء
+2. **التجميع ما زال يحدث**: راجع إعداد `ignoreUseNoForget`
+3. **توجيه الوحدة لا يعمل**: تأكد أنه قبل كل الـ imports
 
 ---
 
-## See also {/*see-also*/}
+## انظر أيضاً {/*see-also*/}
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
-* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
-* [React Compiler documentation](https://react.dev/learn/react-compiler) - Getting started guide
+* [`compilationMode`](/reference/react-compiler/compilationMode) — ضبط كيفية اختيار المُصرّف لما يُحسَّن
+* [`Configuration`](/reference/react-compiler/configuration) — كل خيارات إعداد المُصرّف
+* [توثيق React Compiler](https://react.dev/learn/react-compiler) — دليل البدء

@@ -1,30 +1,30 @@
 ---
-title: Compiling Libraries
+title: تجميع المكتبات
 ---
 
 <Intro>
-This guide helps library authors understand how to use React Compiler to ship optimized library code to their users.
+يساعدك هذا الدليل كمؤلف مكتبة على استخدام React Compiler لنشر شيفرة مكتبتك مُحسَّنة لمستخدميك.
 </Intro>
 
 <InlineToc />
 
-## Why Ship Compiled Code? {/*why-ship-compiled-code*/}
+## لماذا تنشر شيفرة مُجمَّعة؟ {/*why-ship-compiled-code*/}
 
-As a library author, you can compile your library code before publishing to npm. This provides several benefits:
+كمؤلف مكتبة يمكنك تجميع شيفرة المكتبة قبل النشر إلى npm. الفوائد تشمل:
 
-- **Performance improvements for all users** - Your library users get optimized code even if they aren't using React Compiler yet
-- **No configuration required by users** - The optimizations work out of the box
-- **Consistent behavior** - All users get the same optimized version regardless of their build setup
+- **تحسين الأداء لجميع المستخدمين** — يحصل مستخدمو مكتبتك على شيفرة مُحسَّنة حتى إن لم يفعّلوا React Compiler بعد
+- **لا إعداد مطلوب من المستخدمين** — التحسينات تعمل مباشرة
+- **سلوك متسق** — كل المستخدمون يحصلون على النسخة المُحسَّنة بغض النظر عن إعداد البناء
 
-## Setting Up Compilation {/*setting-up-compilation*/}
+## إعداد التجميع {/*setting-up-compilation*/}
 
-Add React Compiler to your library's build process:
+أضف React Compiler إلى عملية بناء مكتبتك:
 
 <TerminalBlock>
 npm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
-Configure your build tool to compile your library. For example, with Babel:
+اضبط أداة البناء لتجميع المكتبة. مثال مع Babel:
 
 ```js
 // babel.config.js
@@ -32,17 +32,17 @@ module.exports = {
   plugins: [
     'babel-plugin-react-compiler',
   ],
-  // ... other config
+  // ... إعداد آخر
 };
 ```
 
-## Backwards Compatibility {/*backwards-compatibility*/}
+## التوافق مع الإصدارات السابقة {/*backwards-compatibility*/}
 
-If your library supports React versions below 19, you'll need additional configuration:
+إذا كانت مكتبتك تدعم إصدارات React أقل من 19، ستحتاج إعداداً إضافياً:
 
-### 1. Install the runtime package {/*install-runtime-package*/}
+### 1. تثبيت حزمة التشغيل {/*install-runtime-package*/}
 
-We recommend installing react-compiler-runtime as a direct dependency:
+نوصي بتثبيت `react-compiler-runtime` كتبعية مباشرة:
 
 <TerminalBlock>
 npm install react-compiler-runtime@latest
@@ -59,48 +59,48 @@ npm install react-compiler-runtime@latest
 }
 ```
 
-### 2. Configure the target version {/*configure-target-version*/}
+### 2. ضبط إصدار الاستهداف {/*configure-target-version*/}
 
-Set the minimum React version your library supports:
+عيّن أقل إصدار React تدعمه المكتبة:
 
 ```js
 {
-  target: '17', // Minimum supported React version
+  target: '17', // أقل إصدار React مدعوم
 }
 ```
 
-## Testing Strategy {/*testing-strategy*/}
+## استراتيجية الاختبار {/*testing-strategy*/}
 
-Test your library both with and without compilation to ensure compatibility. Run your existing test suite against the compiled code, and also create a separate test configuration that bypasses the compiler. This helps catch any issues that might arise from the compilation process and ensures your library works correctly in all scenarios.
+اختبر مكتبتك مع التجميع وبدونه لضمان التوافق. شغّل مجموعة الاختبارات الحالية على الشيفرة المُجمَّعة، وأنشئ إعداد اختبار منفصلاً يتخطّى المُصرّف. يساعد ذلك على اكتشاف مشاكل قد تنشأ عن التجميع ويضمن عمل المكتبة في كل السيناريوهات.
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Library doesn't work with older React versions {/*library-doesnt-work-with-older-react-versions*/}
+### المكتبة لا تعمل مع React أقدم {/*library-doesnt-work-with-older-react-versions*/}
 
-If your compiled library throws errors in React 17 or 18:
+إذا رمت المكتبة المُجمَّعة أخطاء في React 17 أو 18:
 
-1. Verify you've installed `react-compiler-runtime` as a dependency
-2. Check that your `target` configuration matches your minimum supported React version
-3. Ensure the runtime package is included in your published bundle
+1. تحقق من تثبيت `react-compiler-runtime` كتبعية
+2. تأكد أن إعداد `target` يطابق أقل إصدار React تدعمه
+3. تأكد من تضمين حزمة التشغيل في الحزمة المنشورة
 
-### Compilation conflicts with other Babel plugins {/*compilation-conflicts-with-other-babel-plugins*/}
+### تعارض التجميع مع إضافات Babel أخرى {/*compilation-conflicts-with-other-babel-plugins*/}
 
-Some Babel plugins may conflict with React Compiler:
+قد تتعارض بعض إضافات Babel مع React Compiler:
 
-1. Place `babel-plugin-react-compiler` early in your plugin list
-2. Disable conflicting optimizations in other plugins
-3. Test your build output thoroughly
+1. ضع `babel-plugin-react-compiler` مبكراً في قائمة الإضافات
+2. عطّل تحسينات متعارضة في إضافات أخرى
+3. اختبر مخرجات البناء بدقة
 
-### Runtime module not found {/*runtime-module-not-found*/}
+### وحدة التشغيل غير موجودة {/*runtime-module-not-found*/}
 
-If users see "Cannot find module 'react-compiler-runtime'":
+إذا رأى المستخدمون «Cannot find module 'react-compiler-runtime'»:
 
-1. Ensure the runtime is listed in `dependencies`, not `devDependencies`
-2. Check that your bundler includes the runtime in the output
-3. Verify the package is published to npm with your library
+1. تأكد أن التشغيل في `dependencies` وليس `devDependencies`
+2. تحقق أن المُجمّع يضمّن التشغيل في المخرجات
+3. تأكد أن الحزمة منشورة على npm مع مكتبتك
 
-## Next Steps {/*next-steps*/}
+## الخطوات التالية {/*next-steps*/}
 
-- Learn about [debugging techniques](/learn/react-compiler/debugging) for compiled code
-- Check the [configuration options](/reference/react-compiler/configuration) for all compiler options
-- Explore [compilation modes](/reference/react-compiler/compilationMode) for selective optimization
+- تعرّف على [تقنيات التصحيح](/learn/react-compiler/debugging) للشيفرة المُجمَّعة
+- راجع [خيارات الإعداد](/reference/react-compiler/configuration) لكل خيارات المُصرّف
+- استكشف [أوضاع التجميع](/reference/react-compiler/compilationMode) للتحسين الانتقائي

@@ -1,25 +1,25 @@
 ---
-title: Extracting State Logic into a Reducer
+title: استخراج منطق الحالة إلى مخفّض (Reducer)
 ---
 
 <Intro>
 
-Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called a _reducer._
+قد تصبح المكوّنات التي تحتوي على تحديثات حالة كثيرة موزّعة على معالجات أحداث عديدة صعبة الإدارة. في مثل هذه الحالات، يمكنك تجميع كل منطق تحديث الحالة خارج المكوّن في دالة واحدة تُسمى _مخفّضًا (reducer)._
 
 </Intro>
 
 <YouWillLearn>
 
-- What a reducer function is
-- How to refactor `useState` to `useReducer`
-- When to use a reducer
-- How to write one well
+- ما هي دالة المخفّض
+- كيف تعيد هيكلة `useState` إلى `useReducer`
+- متى تستخدم المخفّض
+- كيف تكتب مخفّضًا جيدًا
 
 </YouWillLearn>
 
-## Consolidate state logic with a reducer {/*consolidate-state-logic-with-a-reducer*/}
+## تجميع منطق الحالة بمخفّض {/*consolidate-state-logic-with-a-reducer*/}
 
-As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the `TaskApp` component below holds an array of `tasks` in state and uses three different event handlers to add, remove, and edit tasks:
+مع ازدياد تعقيد المكوّنات، يصعب أحيانًا رؤية جميع الطرق التي تُحدَّث بها حالة المكوّن دفعة واحدة. على سبيل المثال، المكوّن `TaskApp` أدناه يحتفظ بمصفوفة `tasks` في الحالة ويستخدم ثلاثة معالجات أحداث مختلفة لإضافة المهام وحذفها وتعديلها:
 
 <Sandpack>
 
@@ -179,17 +179,17 @@ li {
 
 </Sandpack>
 
-Each of its event handlers calls `setTasks` in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-access place, you can move that state logic into a single function outside your component, **called a "reducer".**
+كل معالج أحداث يستدعي `setTasks` لتحديث الحالة. ومع نمو هذا المكوّن، يزداد منطق الحالة المنتشر فيه. لتقليل هذا التعقيد وجعل كل المنطق في مكان واحد سهل الوصول إليه، يمكنك نقل منطق الحالة إلى دالة واحدة خارج المكوّن، **تُسمى «مخفّضًا» (reducer).**
 
-Reducers are a different way to handle state. You can migrate from `useState` to `useReducer` in three steps:
+المخفّضات طريقة مختلفة للتعامل مع الحالة. يمكنك الانتقال من `useState` إلى `useReducer` في ثلاث خطوات:
 
-1. **Move** from setting state to dispatching actions.
-2. **Write** a reducer function.
-3. **Use** the reducer from your component.
+1. **الانتقال** من تعيين الحالة إلى إرسال الإجراءات (dispatch).
+2. **كتابة** دالة مخفّض.
+3. **استخدام** المخفّض من المكوّن.
 
-### Step 1: Move from setting state to dispatching actions {/*step-1-move-from-setting-state-to-dispatching-actions*/}
+### الخطوة 1: من تعيين الحالة إلى إرسال الإجراءات {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
-Your event handlers currently specify _what to do_ by setting state:
+معالجات الأحداث لديك تحدد حاليًا _ماذا تفعل_ بتعيين الحالة:
 
 ```js
 function handleAddTask(text) {
@@ -220,13 +220,13 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-Remove all the state setting logic. What you are left with are three event handlers:
+أزل كل منطق تعيين الحالة. يتبقى لديك ثلاثة معالجات أحداث:
 
-- `handleAddTask(text)` is called when the user presses "Add".
-- `handleChangeTask(task)` is called when the user toggles a task or presses "Save".
-- `handleDeleteTask(taskId)` is called when the user presses "Delete".
+- `handleAddTask(text)` تُستدعى عندما يضغط المستخدم «Add».
+- `handleChangeTask(task)` تُستدعى عندما يبدّل المستخدم حالة مهمة أو يضغط «Save».
+- `handleDeleteTask(taskId)` تُستدعى عندما يضغط المستخدم «Delete».
 
-Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will live elsewhere!) So instead of "setting `tasks`" via an event handler, you're dispatching an "added/changed/deleted a task" action. This is more descriptive of the user's intent.
+إدارة الحالة بالمخفّضات تختلف قليلًا عن تعيين الحالة مباشرة. بدل أن تخبر React «ماذا تفعل» بتعيين الحالة، تحدد «ماذا فعل المستخدم للتو» بإرسال «إجراءات» (actions) من معالجات الأحداث. (منطق تحديث الحالة سيكون في مكان آخر!) فبدل «تعيين `tasks`» عبر معالج حدث، ترسل إجراءًا يعني إضافة/تعديل/حذف مهمة. وهذا أوضح في وصف نية المستخدم.
 
 ```js
 function handleAddTask(text) {
@@ -252,7 +252,7 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-The object you pass to `dispatch` is called an "action":
+الكائن الذي تمرره إلى `dispatch` يُسمى «إجراءً» (action):
 
 ```js {3-7}
 function handleDeleteTask(taskId) {
@@ -266,13 +266,13 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-It is a regular JavaScript object. You decide what to put in it, but generally it should contain the minimal information about _what happened_. (You will add the `dispatch` function itself in a later step.)
+إنه كائن JavaScript عادي. أنت تقرر ماذا تضع فيه، لكنه عادة يجب أن يحتوي على أقل قدر من المعلومات عن _ما الذي حدث_. (ستضيف دالة `dispatch` نفسها في خطوة لاحقة.)
 
 <Note>
 
-An action object can have any shape.
+يمكن أن يكون لكائن الإجراء أي شكل.
 
-By convention, it is common to give it a string `type` that describes what happened, and pass any additional information in other fields. The `type` is specific to a component, so in this example either `'added'` or `'added_task'` would be fine. Choose a name that says what happened!
+وفقًا للعرف، شائع إعطاؤه سلسلة `type` تصف ما حدث، وتمرير أي معلومات إضافية في حقول أخرى. الحقل `type` خاص بالمكوّن، لذا في هذا المثال يكفي `'added'` أو `'added_task'`. اختر اسمًا يصف ما حدث!
 
 ```js
 dispatch({
@@ -284,9 +284,9 @@ dispatch({
 
 </Note>
 
-### Step 2: Write a reducer function {/*step-2-write-a-reducer-function*/}
+### الخطوة 2: كتابة دالة مخفّض {/*step-2-write-a-reducer-function*/}
 
-A reducer function is where you will put your state logic. It takes two arguments, the current state and the action object, and it returns the next state:
+دالة المخفّض هي حيث تضع منطق الحالة. تأخذ وسيطين: الحالة الحالية وكائن الإجراء، وتعيد الحالة التالية:
 
 ```js
 function yourReducer(state, action) {
@@ -294,15 +294,15 @@ function yourReducer(state, action) {
 }
 ```
 
-React will set the state to what you return from the reducer.
+ستضبط React الحالة على ما تعيده من المخفّض.
 
-To move your state setting logic from your event handlers to a reducer function in this example, you will:
+لنقل منطق تعيين الحالة من معالجات الأحداث إلى دالة مخفّض في هذا المثال:
 
-1. Declare the current state (`tasks`) as the first argument.
-2. Declare the `action` object as the second argument.
-3. Return the _next_ state from the reducer (which React will set the state to).
+1. صرّح بالحالة الحالية (`tasks`) كأول وسيط.
+2. صرّح بكائن `action` كثاني وسيط.
+3. أعد _الحالة التالية_ من المخفّض (التي ستضبط React الحالة عليها).
 
-Here is all the state setting logic migrated to a reducer function:
+إليك كل منطق تعيين الحالة بعد نقله إلى دالة مخفّض:
 
 ```js
 function tasksReducer(tasks, action) {
@@ -331,13 +331,13 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-Because the reducer function takes state (`tasks`) as an argument, you can **declare it outside of your component.** This decreases the indentation level and can make your code easier to read.
+لأن دالة المخفّض تأخذ الحالة (`tasks`) كوسيط، يمكنك **إعلانها خارج المكوّن.** وهذا يقلل مستوى الإزاحة وقد يجعل القراءة أسهل.
 
 <Note>
 
-The code above uses if/else statements, but it's a convention to use [switch statements](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) inside reducers. The result is the same, but it can be easier to read switch statements at a glance.
+الكود أعلاه يستخدم if/else، لكن العرف استخدام [عبارات switch](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) داخل المخفّضات. النتيجة نفسها، لكن قراءة switch قد تكون أسهل في لمحة.
 
-We'll be using them throughout the rest of this documentation like so:
+سنستخدمها في بقية هذه الوثائق كالتالي:
 
 ```js
 function tasksReducer(tasks, action) {
@@ -371,19 +371,19 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-We recommend wrapping each `case` block into the `{` and `}` curly braces so that variables declared inside of different `case`s don't clash with each other. Also, a `case` should usually end with a `return`. If you forget to `return`, the code will "fall through" to the next `case`, which can lead to mistakes!
+نوصي بلف كل كتلة `case` بين `{` و `}` حتى لا تتعارض المتغيرات المعلنة داخل `case` مختلفة. كذلك يجب أن ينتهي `case` عادة بـ `return`. إذا نسيت `return`، ينزل الكود «بالسقوط» إلى `case` التالي، وهذا قد يسبب أخطاء!
 
-If you're not yet comfortable with switch statements, using if/else is completely fine.
+إذا لم تكن مرتاحًا بعد لعبارات switch، فاستخدام if/else مقبول تمامًا.
 
 </Note>
 
 <DeepDive>
 
-#### Why are reducers called this way? {/*why-are-reducers-called-this-way*/}
+#### لماذا سُميت المخفّضات بهذا الاسم؟ {/*why-are-reducers-called-this-way*/}
 
-Although reducers can "reduce" the amount of code inside your component, they are actually named after the [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) operation that you can perform on arrays.
+رغم أن المخفّضات قد «تخفّض» حجم الكود داخل المكوّن، فاسمها في الأصل مأخوذ من عملية [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) التي يمكن تنفيذها على المصفوفات.
 
-The `reduce()` operation lets you take an array and "accumulate" a single value out of many:
+تتيح لك عملية `reduce()` أخذ مصفوفة و«تراكم» قيمة واحدة من عناصر كثيرة:
 
 ```
 const arr = [1, 2, 3, 4, 5];
@@ -392,9 +392,9 @@ const sum = arr.reduce(
 ); // 1 + 2 + 3 + 4 + 5
 ```
 
-The function you pass to `reduce` is known as a "reducer". It takes the _result so far_ and the _current item,_ then it returns the _next result._ React reducers are an example of the same idea: they take the _state so far_ and the _action_, and return the _next state._ In this way, they accumulate actions over time into state.
+الدالة التي تمررها إلى `reduce` تُعرف باسم «مخفّض». تأخذ _النتيجة حتى الآن_ والعنصر _الحالي_، ثم تعيد _النتيجة التالية._ مخفّضات React مثال على الفكرة نفسها: تأخذ _الحالة حتى الآن_ والإجراء، وتعيد _الحالة التالية._ بهذه الطريقة تتراكم الإجراءات مع الزمن في الحالة.
 
-You could even use the `reduce()` method with an `initialState` and an array of `actions` to calculate the final state by passing your reducer function to it:
+يمكنك حتى استخدام `reduce()` مع `initialState` ومصفوفة من `actions` لحساب الحالة النهائية بتمرير دالة المخفّض إليها:
 
 <Sandpack>
 
@@ -453,43 +453,43 @@ export default function tasksReducer(tasks, action) {
 
 </Sandpack>
 
-You probably won't need to do this yourself, but this is similar to what React does!
+لن تحتاج غالبًا لفعل هذا بنفسك، لكنه قريب مما تفعله React!
 
 </DeepDive>
 
-### Step 3: Use the reducer from your component {/*step-3-use-the-reducer-from-your-component*/}
+### الخطوة 3: استخدام المخفّض من المكوّن {/*step-3-use-the-reducer-from-your-component*/}
 
-Finally, you need to hook up the `tasksReducer` to your component. Import the `useReducer` Hook from React:
+أخيرًا، اربط `tasksReducer` بالمكوّن. استورد خطاف `useReducer` من React:
 
 ```js
 import { useReducer } from 'react';
 ```
 
-Then you can replace `useState`:
+ثم يمكنك استبدال `useState`:
 
 ```js
 const [tasks, setTasks] = useState(initialTasks);
 ```
 
-with `useReducer` like so:
+بـ `useReducer` كالتالي:
 
 ```js
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-The `useReducer` Hook is similar to `useState`—you must pass it an initial state and it returns a stateful value and a way to set state (in this case, the dispatch function). But it's a little different.
+خطاف `useReducer` يشبه `useState`—يجب تمرير حالة ابتدائية إليه ويعيد قيمة ذات حالة وطريقة لتعيين الحالة (هنا دالة الإرسال dispatch). لكنه يختلف قليلًا.
 
-The `useReducer` Hook takes two arguments:
+خطاف `useReducer` يأخذ وسيطين:
 
-1. A reducer function
-2. An initial state
+1. دالة مخفّض
+2. حالة ابتدائية
 
-And it returns:
+ويعيد:
 
-1. A stateful value
-2. A dispatch function (to "dispatch" user actions to the reducer)
+1. قيمة ذات حالة
+2. دالة إرسال (لـ «إرسال» إجراءات المستخدم إلى المخفّض)
 
-Now it's fully wired up! Here, the reducer is declared at the bottom of the component file:
+الآن كل شيء موصول! هنا، المخفّض معلن في أسفل ملف المكوّن:
 
 <Sandpack>
 
@@ -674,7 +674,7 @@ li {
 
 </Sandpack>
 
-If you want, you can even move the reducer to a different file:
+إذا شئت، يمكنك نقل المخفّض إلى ملف آخر:
 
 <Sandpack>
 
@@ -862,30 +862,30 @@ li {
 
 </Sandpack>
 
-Component logic can be easier to read when you separate concerns like this. Now the event handlers only specify _what happened_ by dispatching actions, and the reducer function determines _how the state updates_ in response to them.
+منطق المكوّن يصبح أسهل قراءة عند فصل الاهتمامات هكذا. معالجات الأحداث تحدد الآن _ما الذي حدث_ فقط بإرسال الإجراءات، ودالة المخفّض تحدد _كيف تتحدث الحالة_ استجابة لها.
 
-## Comparing `useState` and `useReducer` {/*comparing-usestate-and-usereducer*/}
+## مقارنة `useState` و`useReducer` {/*comparing-usestate-and-usereducer*/}
 
-Reducers are not without downsides! Here's a few ways you can compare them:
+للمخفّضات عيوب أيضًا! إليك بعض وجوه المقارنة:
 
-- **Code size:** Generally, with `useState` you have to write less code upfront. With `useReducer`, you have to write both a reducer function _and_ dispatch actions. However, `useReducer` can help cut down on the code if many event handlers modify state in a similar way.
-- **Readability:** `useState` is very easy to read when the state updates are simple. When they get more complex, they can bloat your component's code and make it difficult to scan. In this case, `useReducer` lets you cleanly separate the _how_ of update logic from the _what happened_ of event handlers.
-- **Debugging:** When you have a bug with `useState`, it can be difficult to tell _where_ the state was set incorrectly, and _why_. With `useReducer`, you can add a console log into your reducer to see every state update, and _why_ it happened (due to which `action`). If each `action` is correct, you'll know that the mistake is in the reducer logic itself. However, you have to step through more code than with `useState`.
-- **Testing:** A reducer is a pure function that doesn't depend on your component. This means that you can export and test it separately in isolation. While generally it's best to test components in a more realistic environment, for complex state update logic it can be useful to assert that your reducer returns a particular state for a particular initial state and action.
-- **Personal preference:** Some people like reducers, others don't. That's okay. It's a matter of preference. You can always convert between `useState` and `useReducer` back and forth: they are equivalent!
+- **حجم الكود:** غالبًا مع `useState` تكتب كودًا أقل في البداية. مع `useReducer` تكتب دالة مخفّض _و_ إرسال إجراءات. لكن `useReducer` قد يقلل الكود إذا عدّلت معالجات أحداث كثيرة الحالة بطريقة متشابهة.
+- **القابلية للقراءة:** `useState` سهل القراءة عندما تكون تحديثات الحالة بسيطة. عند التعقيد قد ينتفخ كود المكوّن ويصعب مسحه. هنا يسمح `useReducer` بفصل نظيف بين _كيفية_ منطق التحديث و_ما حدث_ في معالجات الأحداث.
+- **التصحيح:** عند وجود خطأ مع `useState` قد يصعب معرفة _أين_ ضُبطت الحالة خطأ و_لماذا_. مع `useReducer` يمكنك إضافة `console.log` في المخفّض لرؤية كل تحديث للحالة و_سببه_ (أي `action`). إذا كان كل `action` صحيحًا، فالخطأ في منطق المخفّض نفسه. لكنك تتنقل في كود أكثر من `useState`.
+- **الاختبار:** المخفّض دالة نقية لا تعتمد على المكوّن، فيمكن تصديرها واختبارها منفصلة. رغم أن اختبار المكوّنات في بيئة واقعية أفضل غالبًا، فلمنطق تحديث حالة معقّد يفيد التأكد أن المخفّض يعيد حالة معيّنة لحالة ابتدائية وإجراء معيّنين.
+- **الذوق الشخصي:** من يحب المخفّضات ومن لا. وهذا مقبول. يمكنك التحويل بين `useState` و`useReducer` في الاتجاهين: هما متكافئان!
 
-We recommend using a reducer if you often encounter bugs due to incorrect state updates in some component, and want to introduce more structure to its code. You don't have to use reducers for everything: feel free to mix and match! You can even `useState` and `useReducer` in the same component.
+نوصي باستخدام مخفّض إذا واجهت كثيرًا أخطاء من تحديثات حالة خاطئة في مكوّن وتريد هيكلة أكبر لكوده. لا يلزم استخدام المخفّضات لكل شيء: امزج كما تشاء. يمكنك حتى استخدام `useState` و`useReducer` في نفس المكوّن.
 
-## Writing reducers well {/*writing-reducers-well*/}
+## كتابة مخفّضات جيدة {/*writing-reducers-well*/}
 
-Keep these two tips in mind when writing reducers:
+احفظ نصيحتين عند كتابة المخفّضات:
 
-- **Reducers must be pure.** Similar to [state updater functions](/learn/queueing-a-series-of-state-updates), reducers run during rendering! (Actions are queued until the next render.) This means that reducers [must be pure](/learn/keeping-components-pure)—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update [objects](/learn/updating-objects-in-state) and [arrays](/learn/updating-arrays-in-state) without mutations.
-- **Each action describes a single user interaction, even if that leads to multiple changes in the data.** For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one `reset_form` action rather than five separate `set_field` actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!
+- **يجب أن تكون المخفّضات نقية.** كما في [دوال تحديث الحالة](/learn/queueing-a-series-of-state-updates)، تُنفَّذ المخفّضات أثناء العرض! (تُصفّ الإجراءات حتى العرض التالي.) أي أن المخفّضات [يجب أن تكون نقية](/learn/keeping-components-pure)—نفس المدخلات تعطي دائمًا نفس المخرجات. لا ترسل طلبات ولا تجدول مؤقتات ولا تنفّذ آثارًا جانبية (عمليات تؤثر خارج المكوّن). حدّث [الكائنات](/learn/updating-objects-in-state) و[المصفوفات](/learn/updating-arrays-in-state) دون تعديل مباشر (mutation).
+- **كل إجراء يصف تفاعل مستخدم واحدًا، حتى لو أدى إلى تغييرات متعددة في البيانات.** مثلاً إذا ضغط المستخدم «Reset» في نموذج بخمس حقول تديرها مخفّض، من المنطقي إرسال إجراء `reset_form` واحد بدل خمسة `set_field`. إذا سجّلت كل إجراء في المخفّض، يجب أن يكون السجل واضحًا لإعادة بناء التفاعلات أو الاستجابات بالترتيب. هذا يساعد في التصحيح!
 
-## Writing concise reducers with Immer {/*writing-concise-reducers-with-immer*/}
+## مخفّضات موجزة باستخدام Immer {/*writing-concise-reducers-with-immer*/}
 
-Just like with [updating objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) and [arrays](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer) in regular state, you can use the Immer library to make reducers more concise. Here, [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) lets you mutate the state with `push` or `arr[i] =` assignment:
+كما في [تحديث الكائنات](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) و[المصفوفات](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer) في الحالة العادية، يمكنك استخدام مكتبة Immer لجعل المخفّضات أقصر. هنا [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) يسمح بتعديل الحالة بـ `push` أو تعيين `arr[i] =`:
 
 <Sandpack>
 
@@ -1082,34 +1082,34 @@ li {
 
 </Sandpack>
 
-Reducers must be pure, so they shouldn't mutate state. But Immer provides you with a special `draft` object which is safe to mutate. Under the hood, Immer will create a copy of your state with the changes you made to the `draft`. This is why reducers managed by `useImmerReducer` can mutate their first argument and don't need to return state.
+يجب أن تكون المخفّضات نقية، فلا تعدّل الحالة مباشرة. لكن Immer يعطيك كائن `draft` خاصًا آمِنًا للتعديل. في الخلفية، ينشئ Immer نسخة من حالتك مع التغييرات على `draft`. لذلك يمكن لمخفّضات `useImmerReducer` تعديل وسيطها الأول دون الحاجة لإرجاع الحالة.
 
 <Recap>
 
-- To convert from `useState` to `useReducer`:
-  1. Dispatch actions from event handlers.
-  2. Write a reducer function that returns the next state for a given state and action.
-  3. Replace `useState` with `useReducer`.
-- Reducers require you to write a bit more code, but they help with debugging and testing.
-- Reducers must be pure.
-- Each action describes a single user interaction.
-- Use Immer if you want to write reducers in a mutating style.
+- للتحويل من `useState` إلى `useReducer`:
+  1. أرسل الإجراءات من معالجات الأحداث.
+  2. اكتب دالة مخفّض تعيد الحالة التالية لحالة وإجراء معيّنين.
+  3. استبدل `useState` بـ `useReducer`.
+- المخفّضات تتطلب كودًا أكثر قليلًا، لكنها تساعد في التصحيح والاختبار.
+- يجب أن تكون المخفّضات نقية.
+- كل إجراء يصف تفاعل مستخدم واحدًا.
+- استخدم Immer إذا أردت كتابة مخفّضات بأسلوب تعديل مباشر.
 
 </Recap>
 
 <Challenges>
 
-#### Dispatch actions from event handlers {/*dispatch-actions-from-event-handlers*/}
+#### إرسال الإجراءات من معالجات الأحداث {/*dispatch-actions-from-event-handlers*/}
 
-Currently, the event handlers in `ContactList.js` and `Chat.js` have `// TODO` comments. This is why typing into the input doesn't work, and clicking on the buttons doesn't change the selected recipient.
+حاليًا، معالجات الأحداث في `ContactList.js` و`Chat.js` تحتوي على تعليقات `// TODO`. لذلك لا تعمل الكتابة في حقل الإدخال، ولا يغيّر النقر على الأزرار المستلم المختار.
 
-Replace these two `// TODO`s with the code to `dispatch` the corresponding actions. To see the expected shape and the type of the actions, check the reducer in `messengerReducer.js`. The reducer is already written so you won't need to change it. You only need to dispatch the actions in `ContactList.js` and `Chat.js`.
+استبدل هذين `// TODO` بالكود الذي يستدعي `dispatch` للإجراءات المناسبة. لمعرفة شكل الإجراء ونوعه، راجع المخفّض في `messengerReducer.js`. المخفّض مكتوب مسبقًا فلا تحتاج لتغييره. عليك فقط إرسال الإجراءات من `ContactList.js` و`Chat.js`.
 
 <Hint>
 
-The `dispatch` function is already available in both of these components because it was passed as a prop. So you need to call `dispatch` with the corresponding action object.
+دالة `dispatch` متوفرة في المكوّنين لأنها مُمرَّرة كخاصية. استدعِ `dispatch` بكائن الإجراء المناسب.
 
-To check the action object shape, you can look at the reducer and see which `action` fields it expects to see. For example, the `changed_selection` case in the reducer looks like this:
+لمعرفة شكل كائن الإجراء، انظر المخفّض وما يتوقعه من حقول `action`. مثلاً حالة `changed_selection` في المخفّض تبدو هكذا:
 
 ```js
 case 'changed_selection': {
@@ -1120,7 +1120,7 @@ case 'changed_selection': {
 }
 ```
 
-This means that your action object should have a `type: 'changed_selection'`. You also see the `action.contactId` being used, so you need to include a `contactId` property into your action.
+يعني أن كائن الإجراء يجب أن يحتوي `type: 'changed_selection'`. ويُستخدم `action.contactId`، فأضف خاصية `contactId` إلى إجرائك.
 
 </Hint>
 
@@ -1256,7 +1256,7 @@ textarea {
 
 <Solution>
 
-From the reducer code, you can infer that actions need to look like this:
+من كود المخفّض يمكنك استنتاج أن الإجراءات يجب أن تبدو هكذا:
 
 ```js
 // When the user presses "Alice"
@@ -1272,7 +1272,7 @@ dispatch({
 });
 ```
 
-Here is the example updated to dispatch the corresponding messages:
+إليك المثال بعد تحديثه لإرسال الإجراءات المناسبة:
 
 <Sandpack>
 
@@ -1411,12 +1411,12 @@ textarea {
 
 </Solution>
 
-#### Clear the input on sending a message {/*clear-the-input-on-sending-a-message*/}
+#### مسح الحقل عند إرسال الرسالة {/*clear-the-input-on-sending-a-message*/}
 
-Currently, pressing "Send" doesn't do anything. Add an event handler to the "Send" button that will:
+حاليًا، الضغط على «Send» لا يفعل شيئًا. أضف معالج حدث لزر «Send» يقوم بـ:
 
-1. Show an `alert` with the recipient's email and the message.
-2. Clear the message input.
+1. عرض `alert` يتضمن بريد المستلم والرسالة.
+2. مسح حقل الرسالة.
 
 <Sandpack>
 
@@ -1555,7 +1555,7 @@ textarea {
 
 <Solution>
 
-There are a couple of ways you could do it in the "Send" button event handler. One approach is to show an alert and then dispatch an `edited_message` action with an empty `message`:
+هناك أكثر من طريقة في معالج زر «Send». إحدى الطرق: عرض تنبيه ثم إرسال إجراء `edited_message` برسالة فارغة `message`:
 
 <Sandpack>
 
@@ -1701,9 +1701,9 @@ textarea {
 
 </Sandpack>
 
-This works and clears the input when you hit "Send".
+هذا يعمل ويمسح الحقل عند الضغط على «Send».
 
-However, _from the user's perspective_, sending a message is a different action than editing the field. To reflect that, you could instead create a _new_ action called `sent_message`, and handle it separately in the reducer:
+لكن _من منظور المستخدم_، إرسال الرسالة فعل مختلف عن تعديل الحقل. ليعكس ذلك، يمكنك إنشاء إجراء _جديد_ اسمه `sent_message` ومعالجته منفصلًا في المخفّض:
 
 <Sandpack>
 
@@ -1854,15 +1854,15 @@ textarea {
 
 </Sandpack>
 
-The resulting behavior is the same. But keep in mind that action types should ideally describe "what the user did" rather than "how you want the state to change". This makes it easier to later add more features.
+السلوك الناتج نفسه. لكن تذكر أن أنواع الإجراءات يفضل أن تصف «ما فعله المستخدم» لا «كيف تريد أن تتغير الحالة». هذا يسهل إضافة ميزات لاحقًا.
 
-With either solution, it's important that you **don't** place the `alert` inside a reducer. The reducer should be a pure function--it should only calculate the next state. It should not "do" anything, including displaying messages to the user. That should happen in the event handler. (To help catch mistakes like this, React will call your reducers multiple times in Strict Mode. This is why, if you put an alert in a reducer, it fires twice.)
+في أي من الحلين، من المهم **ألا** تضع `alert` داخل المخفّض. يجب أن يكون المخفّض دالة نقية—يحسب الحالة التالية فقط. لا يجب أن «يفعل» شيئًا، بما في ذلك عرض رسائل للمستخدم. ذلك في معالج الأحداث. (لمساعدتك على اكتشاف الأخطاء، React تستدعي مخفّضاتك عدة مرات في الوضع الصارم Strict Mode. لذلك إذا وضعت alert في المخفّض، يظهر مرتين.)
 
 </Solution>
 
-#### Restore input values when switching between tabs {/*restore-input-values-when-switching-between-tabs*/}
+#### استعادة قيم الحقول عند التبديل بين التبويبات {/*restore-input-values-when-switching-between-tabs*/}
 
-In this example, switching between different recipients always clears the text input:
+في هذا المثال، التبديل بين مستلمين مختلفين يمسح حقل النص دائمًا:
 
 ```js
 case 'changed_selection': {
@@ -1873,13 +1873,13 @@ case 'changed_selection': {
   };
 ```
 
-This is because you don't want to share a single message draft between several recipients. But it would be better if your app "remembered" a draft for each contact separately, restoring them when you switch contacts.
+لأنك لا تريد مشاركة مسودة رسالة واحدة بين عدة مستلمين. لكن الأفضل أن «يتذكر» التطبيق مسودة لكل جهة اتصال على حدة ويستعيدها عند التبديل.
 
-Your task is to change the way the state is structured so that you remember a separate message draft _per contact_. You would need to make a few changes to the reducer, the initial state, and the components.
+مهمتك هي تغيير هيكلة الحالة لتتذكر مسودة رسالة منفصلة _لكل جهة اتصال_. ستحتاج لتعديلات على المخفّض والحالة الابتدائية والمكوّنات.
 
 <Hint>
 
-You can structure your state like this:
+يمكنك هيكلة الحالة هكذا:
 
 ```js
 export const initialState = {
@@ -1891,7 +1891,7 @@ export const initialState = {
 };
 ```
 
-The `[key]: value` [computed property](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) syntax can help you update the `messages` object:
+صيغة الخاصية المحسوبة `[key]: value` ([computed property](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names)) تساعدك على تحديث كائن `messages`:
 
 ```js
 {
@@ -2053,7 +2053,7 @@ textarea {
 
 <Solution>
 
-You'll need to update the reducer to store and update a separate message draft per contact:
+ستحدّث المخفّض لتخزين وتحديث مسودة رسالة منفصلة لكل جهة اتصال:
 
 ```js
 // When the input is edited
@@ -2071,13 +2071,13 @@ case 'edited_message': {
 }
 ```
 
-You would also update the `Messenger` component to read the message for the currently selected contact:
+ستحدّث أيضًا مكوّن `Messenger` لقراءة الرسالة لجهة الاتصال المختارة حاليًا:
 
 ```js
 const message = state.messages[state.selectedId];
 ```
 
-Here is the complete solution:
+إليك الحل الكامل:
 
 <Sandpack>
 
@@ -2237,19 +2237,19 @@ textarea {
 
 </Sandpack>
 
-Notably, you didn't need to change any of the event handlers to implement this different behavior. Without a reducer, you would have to change every event handler that updates the state.
+لاحظ أنك لم تحتج لتغيير أي معالج أحداث لتحقيق هذا السلوك المختلف. بدون مخفّض، لكنت ستضطر إلى تعديل كل معالج يحدّث الحالة.
 
 </Solution>
 
-#### Implement `useReducer` from scratch {/*implement-usereducer-from-scratch*/}
+#### تنفيذ `useReducer` من الصفر {/*implement-usereducer-from-scratch*/}
 
-In the earlier examples, you imported the `useReducer` Hook from React. This time, you will implement _the `useReducer` Hook itself!_ Here is a stub to get you started. It shouldn't take more than 10 lines of code.
+في الأمثلة السابقة، استوردت خطاف `useReducer` من React. هذه المرة، ستنفّذ _خطاف `useReducer` نفسه!_ إليك هيكل أولي للبدء. لا ينبغي أن يتجاوز الأمر عشرة أسطر.
 
-To test your changes, try typing into the input or select a contact.
+لاختبار التغييرات، جرّب الكتابة في الحقل أو اختيار جهة اتصال.
 
 <Hint>
 
-Here is a more detailed sketch of the implementation:
+إليك مخطط أوضح للتنفيذ:
 
 ```js
 export function useReducer(reducer, initialState) {
@@ -2263,7 +2263,7 @@ export function useReducer(reducer, initialState) {
 }
 ```
 
-Recall that a reducer function takes two arguments--the current state and the action object--and it returns the next state. What should your `dispatch` implementation do with it?
+تذكر أن دالة المخفّض تأخذ وسيطين—الحالة الحالية وكائن الإجراء—وتعيد الحالة التالية. ماذا يفترض أن تفعل تنفيذات `dispatch` بذلك؟
 
 </Hint>
 
@@ -2439,7 +2439,7 @@ textarea {
 
 <Solution>
 
-Dispatching an action calls a reducer with the current state and the action, and stores the result as the next state. This is what it looks like in code:
+إرسال إجراء يستدعي المخفّض بالحالة الحالية والإجراء، ويخزن النتيجة كالحالة التالية. في الكود يبدو هكذا:
 
 <Sandpack>
 
@@ -2614,7 +2614,7 @@ textarea {
 
 </Sandpack>
 
-Though it doesn't matter in most cases, a slightly more accurate implementation looks like this:
+رغم أنه لا يهم في أغلب الحالات، فتنفيذ أدق قليلًا يبدو هكذا:
 
 ```js
 function dispatch(action) {
@@ -2622,7 +2622,7 @@ function dispatch(action) {
 }
 ```
 
-This is because the dispatched actions are queued until the next render, [similar to the updater functions.](/learn/queueing-a-series-of-state-updates)
+لأن الإجراءات المُرسَلة تُصفّ حتى العرض التالي، [مثل دوال التحديث.](/learn/queueing-a-series-of-state-updates)
 
 </Solution>
 

@@ -1,5 +1,5 @@
 {
-  "title": "API Reference",
+  "title": "مرجع الواجهات البرمجية",
   "path": "/reference/react",
   "routes": [
     {
@@ -7,7 +7,7 @@
       "sectionHeader": "react@{{version}}"
     },
     {
-      "title": "Overview",
+      "title": "نظرة عامة",
       "path": "/reference/react"
     },
     {
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "واجهات برمجية",
       "path": "/reference/react/apis",
       "routes": [
         {
@@ -195,7 +195,7 @@
       "path": "/reference/react-dom/components",
       "routes": [
         {
-          "title": "Common (e.g. <div>)",
+          "title": "شائعة (مثل <div>)",
           "path": "/reference/react-dom/components/common"
         },
         {
@@ -245,7 +245,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "واجهات برمجية",
       "path": "/reference/react-dom",
       "routes": [
         {
@@ -283,7 +283,7 @@
       ]
     },
     {
-      "title": "Client APIs",
+      "title": "واجهات العميل",
       "path": "/reference/react-dom/client",
       "routes": [
         {
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "title": "Server APIs",
+      "title": "واجهات الخادم",
       "path": "/reference/react-dom/server",
       "routes": [
         {
@@ -327,7 +327,7 @@
       ]
     },
     {
-      "title": "Static APIs",
+      "title": "واجهات ساكنة",
       "path": "/reference/react-dom/static",
       "routes": [
         {
@@ -353,7 +353,7 @@
       "sectionHeader": "React Compiler"
     },
     {
-      "title": "Configuration",
+      "title": "الإعداد",
       "path": "/reference/react-compiler/configuration",
       "routes": [
         {
@@ -379,7 +379,7 @@
       ]
     },
     {
-      "title": "Directives",
+      "title": "التوجيهات",
       "path": "/reference/react-compiler/directives",
       "routes": [
         {
@@ -393,15 +393,15 @@
       ]
     },
     {
-      "title": "Compiling Libraries",
+      "title": "تجميع المكتبات",
       "path": "/reference/react-compiler/compiling-libraries"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React DevTools"
+      "sectionHeader": "أدوات تطوير React"
     },
     {
-      "title": "React Performance tracks",
+      "title": "مسارات أداء React",
       "path": "/reference/dev-tools/react-performance-tracks"
     },
     {
@@ -409,117 +409,117 @@
       "sectionHeader": "eslint-plugin-react-hooks"
     },
     {
-      "title": "Lints",
+      "title": "قواعد الفحص",
       "path": "/reference/eslint-plugin-react-hooks",
       "routes": [
         {
-          "title": "exhaustive-deps",
+          "title": "التبعيات الكاملة",
           "path": "/reference/eslint-plugin-react-hooks/lints/exhaustive-deps"
         },
         {
-          "title": "rules-of-hooks",
+          "title": "قواعد Hooks",
           "path": "/reference/eslint-plugin-react-hooks/lints/rules-of-hooks"
         },
         {
-          "title": "component-hook-factories",
+          "title": "مصانع المكوّنات والـ hooks",
           "path": "/reference/eslint-plugin-react-hooks/lints/component-hook-factories"
         },
         {
-          "title": "config",
+          "title": "التحقق من الإعداد",
           "path": "/reference/eslint-plugin-react-hooks/lints/config"
         },
         {
-          "title": "error-boundaries",
+          "title": "حدود الأخطاء",
           "path": "/reference/eslint-plugin-react-hooks/lints/error-boundaries"
         },
         {
-          "title": "gating",
+          "title": "Gating",
           "path": "/reference/eslint-plugin-react-hooks/lints/gating"
         },
         {
-          "title": "globals",
+          "title": "المتغيّرات العامة",
           "path": "/reference/eslint-plugin-react-hooks/lints/globals"
         },
         {
-          "title": "immutability",
+          "title": "عدم التعديل المباشر",
           "path": "/reference/eslint-plugin-react-hooks/lints/immutability"
         },
         {
-          "title": "incompatible-library",
+          "title": "مكتبات غير متوافقة",
           "path": "/reference/eslint-plugin-react-hooks/lints/incompatible-library"
         },
 
         {
-          "title": "preserve-manual-memoization",
+          "title": "الحفاظ على التذكّر اليدوي",
           "path": "/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization"
         },
         {
-          "title": "purity",
+          "title": "النقاء",
           "path": "/reference/eslint-plugin-react-hooks/lints/purity"
         },
         {
-          "title": "refs",
+          "title": "المراجع (refs)",
           "path": "/reference/eslint-plugin-react-hooks/lints/refs"
         },
 
         {
-          "title": "set-state-in-effect",
+          "title": "setState داخل Effect",
           "path": "/reference/eslint-plugin-react-hooks/lints/set-state-in-effect"
         },
         {
-          "title": "set-state-in-render",
+          "title": "setState أثناء التصيير",
           "path": "/reference/eslint-plugin-react-hooks/lints/set-state-in-render"
         },
         {
-          "title": "static-components",
+          "title": "مكوّنات ثابتة",
           "path": "/reference/eslint-plugin-react-hooks/lints/static-components"
         },
         {
-          "title": "unsupported-syntax",
+          "title": "صياغة غير مدعومة",
           "path": "/reference/eslint-plugin-react-hooks/lints/unsupported-syntax"
         },
         {
-          "title": "use-memo",
+          "title": "hook useMemo",
           "path": "/reference/eslint-plugin-react-hooks/lints/use-memo"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Rules of React"
+      "sectionHeader": "قواعد React"
     },
     {
-      "title": "Overview",
+      "title": "نظرة عامة",
       "path": "/reference/rules",
       "routes": [
         {
-          "title": "Components and Hooks must be pure",
+          "title": "يجب أن تكون المكوّنات والـ Hooks نقية",
           "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {
-          "title": "React calls Components and Hooks",
+          "title": "React تستدعي المكوّنات والـ Hooks",
           "path": "/reference/rules/react-calls-components-and-hooks"
         },
         {
-          "title": "Rules of Hooks",
+          "title": "قواعد Hooks",
           "path": "/reference/rules/rules-of-hooks"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React Server Components"
+      "sectionHeader": "مكوّنات خادم React"
     },
     {
-      "title": "Server Components",
+      "title": "مكوّنات الخادم",
       "path": "/reference/rsc/server-components"
     },
     {
-      "title": "Server Functions",
+      "title": "دوال الخادم",
       "path": "/reference/rsc/server-functions"
     },
     {
-      "title": "Directives",
+      "title": "التوجيهات",
       "path": "/reference/rsc/directives",
       "routes": [
         {
@@ -534,10 +534,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
+      "sectionHeader": "واجهات قديمة"
     },
     {
-      "title": "Legacy React APIs",
+      "title": "واجهات React القديمة",
       "path": "/reference/react/legacy",
       "routes": [
         {

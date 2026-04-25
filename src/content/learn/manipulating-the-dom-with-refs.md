@@ -1,52 +1,52 @@
 ---
-title: 'Manipulating the DOM with Refs'
+title: التلاعب بـ DOM باستخدام المراجع
 ---
 
 <Intro>
 
-React automatically updates the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a *ref* to the DOM node.
+يحدّث React تلقائيًا [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) ليطابق مخرجات التصيير، لذا لا تحتاج مكوّناتك غالبًا إلى التلاعب به. لكن أحيانًا قد تحتاج إلى الوصول إلى عناصر DOM التي يديرها React—مثلًا لوضع التركيز على عقدة، أو التمرير إليها، أو قياس حجمها وموضعها. لا توجد في React طريقة مدمجة لفعل ذلك، لذا ستحتاج إلى *مرجع* (ref) إلى عقدة DOM.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to access a DOM node managed by React with the `ref` attribute
-- How the `ref` JSX attribute relates to the `useRef` Hook
-- How to access another component's DOM node
-- In which cases it's safe to modify the DOM managed by React
+- كيفية الوصول إلى عقدة DOM يديرها React باستخدام خاصية `ref`
+- كيف ترتبط خاصية `ref` في JSX بخطاف `useRef`
+- كيفية الوصول إلى عقدة DOM لمكوّن آخر
+- في أي الحالات يكون تعديل DOM الذي يديره React آمنًا
 
 </YouWillLearn>
 
-## Getting a ref to the node {/*getting-a-ref-to-the-node*/}
+## الحصول على مرجع إلى العقدة {/*getting-a-ref-to-the-node*/}
 
-To access a DOM node managed by React, first, import the `useRef` Hook:
+للوصول إلى عقدة DOM يديرها React، استورد أولًا خطاف `useRef`:
 
 ```js
 import { useRef } from 'react';
 ```
 
-Then, use it to declare a ref inside your component:
+ثم استخدمه للإعلان عن مرجع داخل مكوّنك:
 
 ```js
 const myRef = useRef(null);
 ```
 
-Finally, pass your ref as the `ref` attribute to the JSX tag for which you want to get the DOM node:
+أخيرًا، مرّر مرجعك كخاصية `ref` على وسم JSX الذي تريد الحصول على عقدة DOM له:
 
 ```js
 <div ref={myRef}>
 ```
 
-The `useRef` Hook returns an object with a single property called `current`. Initially, `myRef.current` will be `null`. When React creates a DOM node for this `<div>`, React will put a reference to this node into `myRef.current`. You can then access this DOM node from your [event handlers](/learn/responding-to-events) and use the built-in [browser APIs](https://developer.mozilla.org/docs/Web/API/Element) defined on it.
+يعيد خطاف `useRef` كائنًا فيه خاصية واحدة اسمها `current`. في البداية، ستكون `myRef.current` قيمتها `null`. عندما ينشئ React عقدة DOM لهذا `<div>`، يضع مرجعًا إلى هذه العقدة داخل `myRef.current`. يمكنك بعدها الوصول إلى عقدة DOM من [معالجات الأحداث](/learn/responding-to-events) واستخدام [واجهات المتصفح](https://developer.mozilla.org/docs/Web/API/Element) المدمَحة المعرفة عليها.
 
 ```js
 // You can use any browser APIs, for example:
 myRef.current.scrollIntoView();
 ```
 
-### Example: Focusing a text input {/*example-focusing-a-text-input*/}
+### مثال: تركيز حقل نصي {/*example-focusing-a-text-input*/}
 
-In this example, clicking the button will focus the input:
+في هذا المثال، النقر على الزر يضع التركيز في الحقل:
 
 <Sandpack>
 
@@ -73,18 +73,18 @@ export default function Form() {
 
 </Sandpack>
 
-To implement this:
+لتنفيذ ذلك:
 
-1. Declare `inputRef` with the `useRef` Hook.
-2. Pass it as `<input ref={inputRef}>`. This tells React to **put this `<input>`'s DOM node into `inputRef.current`.**
-3. In the `handleClick` function, read the input DOM node from `inputRef.current` and call [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on it with `inputRef.current.focus()`.
-4. Pass the `handleClick` event handler to `<button>` with `onClick`.
+1. صرّح عن `inputRef` بخطاف `useRef`.
+2. مرّره كـ`<input ref={inputRef}>`. هذا يخبر React بأن **يضع عقدة DOM لهذا `<input>` داخل `inputRef.current`.**
+3. في الدالة `handleClick`، اقرأ عقدة الإدخال من `inputRef.current` واستدعِ [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) عليها بـ`inputRef.current.focus()`.
+4. مرّر معالج الحدث `handleClick` إلى `<button>` بـ`onClick`.
 
-While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. Refs are like state variables that don't trigger re-renders when you set them. Read about refs in [Referencing Values with Refs.](/learn/referencing-values-with-refs)
+رغم أن التلاعب بـ DOM هو الاستخدام الأشهر للمراجع، يمكن استخدام خطاف `useRef` لتخزين أشياء أخرى خارج React، مثل معرّفات المؤقتات. مثل الحالة، تبقى المراجع بين عمليات التصيير. المراجع تشبه متغيرات الحالة التي لا تُطلِق إعادة تصيير عند تعيينها. اطّلع على المراجع في [الإشارة إلى قيم بالمراجع](/learn/referencing-values-with-refs).
 
-### Example: Scrolling to an element {/*example-scrolling-to-an-element*/}
+### مثال: التمرير إلى عنصر {/*example-scrolling-to-an-element*/}
 
-You can have more than a single ref in a component. In this example, there is a carousel of three images. Each button centers an image by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method on the corresponding DOM node:
+يمكن أن يكون لديك أكثر من مرجع واحد في المكوّن. في هذا المثال، هناك شريط صور من ثلاث صور. كل زر يمركز صورة باستدعاء [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) في المتصفح على عقدة DOM المقابلة:
 
 <Sandpack>
 
@@ -193,9 +193,9 @@ li {
 
 <DeepDive>
 
-#### How to manage a list of refs using a ref callback {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
+#### كيفية إدارة قائمة من المراجع باستخدام دالة مرجع {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
 
-In the above examples, there is a predefined number of refs. However, sometimes you might need a ref to each item in the list, and you don't know how many you will have. Something like this **wouldn't work**:
+في الأمثلة أعلاه، عدد المراجع معلوم مسبقًا. لكن أحيانًا قد تحتاج مرجعًا لكل عنصر في القائمة، ولا تعرف كم سيكون عددها. شيء كهذا **لن يعمل**:
 
 ```js
 <ul>
@@ -207,13 +207,13 @@ In the above examples, there is a predefined number of refs. However, sometimes 
 </ul>
 ```
 
-This is because **Hooks must only be called at the top-level of your component.** You can't call `useRef` in a loop, in a condition, or inside a `map()` call.
+السبب أن **الخطافات يجب أن تُستدعى فقط في المستوى الأعلى من المكوّن.** لا يمكنك استدعاء `useRef` داخل حلقة أو شرط أو داخل استدعاء `map()`.
 
-One possible way around this is to get a single ref to their parent element, and then use DOM manipulation methods like [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) to "find" the individual child nodes from it. However, this is brittle and can break if your DOM structure changes.
+إحدى الطرق الممكنة هي الحصول على مرجع واحد لعنصر الأب، ثم استخدام طرق DOM مثل [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) لـ«إيجاد» العقد الفرعية منه. لكن هذا هش وقد ينكسر عند تغيّر بنية DOM.
 
-Another solution is to **pass a function to the `ref` attribute.** This is called a [`ref` callback.](/reference/react-dom/components/common#ref-callback) React will call your ref callback with the DOM node when it's time to set the ref, and call the cleanup function returned from the callback when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
+حل آخر هو **تمرير دالة إلى خاصية `ref`.** يُسمّى هذا [`ref` callback.](/reference/react-dom/components/common#ref-callback) سيستدعي React دالة المرجع مع عقدة DOM عند تعيين المرجع، ويستدعي دالة التنظيف المعادة من الدالة عند إزالة المرجع. هذا يتيح لك الإبقاء على مصفوفة خاصة بك أو [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)، والوصول لأي مرجع بفهرسه أو نوع من المعرّفات.
 
-This example shows how you can use this approach to scroll to an arbitrary node in a long list:
+يوضح هذا المثال كيف تستخدم هذا الأسلوب للتمرير إلى عقدة عشوائية في قائمة طويلة:
 
 <Sandpack>
 
@@ -322,7 +322,7 @@ li {
 
 </Sandpack>
 
-In this example, `itemsRef` doesn't hold a single DOM node. Instead, it holds a [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map) from item ID to a DOM node. ([Refs can hold any values!](/learn/referencing-values-with-refs)) The [`ref` callback](/reference/react-dom/components/common#ref-callback) on every list item takes care to update the Map:
+في هذا المثال، لا يحتفظ `itemsRef` بعقدة DOM واحدة. بل يحتفظ بـ[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map) من عنصر إلى عقدة DOM. ([يمكن للمراجع أن تحتفظ بأي قيم!](/learn/referencing-values-with-refs)) تتولى [`ref` callback](/reference/react-dom/components/common#ref-callback) على كل عنصر في القائمة تحديث الـMap:
 
 ```js
 <li
@@ -340,25 +340,25 @@ In this example, `itemsRef` doesn't hold a single DOM node. Instead, it holds a 
 >
 ```
 
-This lets you read individual DOM nodes from the Map later.
+هذا يتيح لك قراءة عقد DOM فردية من الـMap لاحقًا.
 
 <Note>
 
-When Strict Mode is enabled, ref callbacks will run twice in development.
+عند تفعيل Strict Mode، تُنفَّذ دوال مرجع الـref مرتين في وضع التطوير.
 
-Read more about [how this helps find bugs](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) in callback refs.
+اقرأ المزيد عن [كيف يساعد هذا في إيجاد الأخطاء](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) في مراجع الـcallback.
 
 </Note>
 
 </DeepDive>
 
-## Accessing another component's DOM nodes {/*accessing-another-components-dom-nodes*/}
+## الوصول إلى عقد DOM لمكوّن آخر {/*accessing-another-components-dom-nodes*/}
 
 <Pitfall>
-Refs are an escape hatch. Manually manipulating _another_ component's DOM nodes can make your code fragile.
+المراجع مخرج طوارئ. التلاعب يدويًا بعقد DOM *لمكوّن آخر* قد يجعل شيفرتك هشة.
 </Pitfall>
 
-You can pass refs from parent component to child components [just like any other prop](/learn/passing-props-to-a-component).
+يمكنك تمرير المراجع من المكوّن الأب إلى الأبناء [مثل أي خاصية أخرى](/learn/passing-props-to-a-component).
 
 ```js {3-4,9}
 import { useRef } from 'react';
@@ -373,9 +373,9 @@ function MyForm() {
 }
 ```
 
-In the above example, a ref is created in the parent component, `MyForm`, and is passed to the child component, `MyInput`. `MyInput` then passes the ref to `<input>`. Because `<input>` is a [built-in component](/reference/react-dom/components/common) React sets the `.current` property of the ref to the `<input>` DOM element.
+في المثال أعلاه، يُنشأ مرجع في المكوّن الأب `MyForm`، ويُمرَّر إلى المكوّن الابن `MyInput`. يمرّر `MyInput` بعدها المرجع إلى `<input>`. لأن `<input>` [مكوّنًا مدمجًا](/reference/react-dom/components/common)، يضبط React خاصية `.current` للمرجع على عنصر DOM لـ`<input>`.
 
-The `inputRef` created in `MyForm` now points to the `<input>` DOM element returned by `MyInput`. A click handler created in `MyForm` can access `inputRef` and call `focus()` to set the focus on `<input>`.
+أصبح `inputRef` المُنشأ في `MyForm` يشير إلى عنصر DOM لـ`<input>` الذي يعيده `MyInput`. يمكن لمعالج نقر مُنشأ في `MyForm` الوصول إلى `inputRef` واستدعاء `focus()` لوضع التركيز على `<input>`.
 
 <Sandpack>
 
@@ -408,9 +408,9 @@ export default function MyForm() {
 
 <DeepDive>
 
-#### Exposing a subset of the API with an imperative handle {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
+#### كشف جزء من الواجهة بمقبض أمرَي {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
-In the above example, the ref passed to `MyInput` is passed on to the original DOM input element. This lets the parent component call `focus()` on it. However, this also lets the parent component do something else--for example, change its CSS styles. In uncommon cases, you may want to restrict the exposed functionality. You can do that with [`useImperativeHandle`](/reference/react/useImperativeHandle):
+في المثال أعلاه، يُمرَّر المرجع إلى `MyInput` ثم إلى عنصر إدخال DOM الأصلي. هذا يتيح للمكوّن الأب استدعاء `focus()` عليه. لكنه يتيح أيضًا فعل أشياء أخرى—مثلًا تغيير أنماط CSS. في حالات نادرة قد ترغب في تقييد الوظائف المكشوفة. يمكنك ذلك بـ[`useImperativeHandle`](/reference/react/useImperativeHandle):
 
 <Sandpack>
 
@@ -446,28 +446,28 @@ export default function Form() {
 
 </Sandpack>
 
-Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, [`useImperativeHandle`](/reference/react/useImperativeHandle) instructs React to provide your own special object as the value of a ref to the parent component. So `inputRef.current` inside the `Form` component will only have the `focus` method. In this case, the ref "handle" is not the DOM node, but the custom object you create inside [`useImperativeHandle`](/reference/react/useImperativeHandle) call.
+هنا، يحتفظ `realInputRef` داخل `MyInput` بعقدة إدخال DOM الفعلية. لكن [`useImperativeHandle`](/reference/react/useImperativeHandle) يوجّه React لتوفير كائن خاص بك كقيمة مرجع للمكوّن الأب. لذا سيكون لدى `inputRef.current` داخل `Form` فقط الدالة `focus`. في هذه الحالة، «مقبض» المرجع ليس عقدة DOM، بل الكائن المخصّص الذي تنشئه داخل استدعاء [`useImperativeHandle`](/reference/react/useImperativeHandle).
 
 </DeepDive>
 
-## When React attaches the refs {/*when-react-attaches-the-refs*/}
+## متى يربط React المراجع {/*when-react-attaches-the-refs*/}
 
-In React, every update is split in [two phases](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom):
+في React، يُقسَم كل تحديث إلى [مرحلتين](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom):
 
-* During **render,** React calls your components to figure out what should be on the screen.
-* During **commit,** React applies changes to the DOM.
+* أثناء **التصيير،** يستدعي React مكوّناتك ليعرف ما يجب أن يظهر على الشاشة.
+* أثناء **الإيداع (commit)،** يطبّق React التغييرات على DOM.
 
-In general, you [don't want](/learn/referencing-values-with-refs#best-practices-for-refs) to access refs during rendering. That goes for refs holding DOM nodes as well. During the first render, the DOM nodes have not yet been created, so `ref.current` will be `null`. And during the rendering of updates, the DOM nodes haven't been updated yet. So it's too early to read them.
+عمومًا، [لا ترغب](/learn/referencing-values-with-refs#best-practices-for-refs) بالوصول إلى المراجع أثناء التصيير. وهذا ينطبق على المراجع التي تحتفظ بعقد DOM. في التصيير الأول لم تُنشأ عقد DOM بعد، لذا ستكون `ref.current` قيمتها `null`. وفي تصيير التحديثات لم تُحدَّث عقد DOM بعد، فالوصول مبكر جدًا.
 
-React sets `ref.current` during the commit. Before updating the DOM, React sets the affected `ref.current` values to `null`. After updating the DOM, React immediately sets them to the corresponding DOM nodes.
+يضبط React `ref.current` أثناء الإيداع. قبل تحديث DOM، يضبط React قيم `ref.current` المتأثرة إلى `null`. وبعد تحديث DOM، يضبطها فورًا إلى عقد DOM المقابلة.
 
-**Usually, you will access refs from event handlers.** If you want to do something with a ref, but there is no particular event to do it in, you might need an Effect. We will discuss Effects on the next pages.
+**غالبًا ستصل إلى المراجع من معالجات الأحداث.** إن أردت فعل شيء بمرجع دون حدث معيّن، قد تحتاج إلى Effect. سنناقش التأثيرات في الصفحات التالية.
 
 <DeepDive>
 
-#### Flushing state updates synchronously with flushSync {/*flushing-state-updates-synchronously-with-flush-sync*/}
+#### دفع تحديثات الحالة متزامنًا بـ`flushSync` {/*flushing-state-updates-synchronously-with-flush-sync*/}
 
-Consider code like this, which adds a new todo and scrolls the screen down to the last child of the list. Notice how, for some reason, it always scrolls to the todo that was *just before* the last added one:
+انظر شيفرة كهذه، تضيف مهمة جديدة وتمرّر الشاشة إلى آخر ابن في القائمة. لاحظ كيف أنها دائمًا تتمرّر إلى المهمة التي *سبقت مباشرة* آخر مهمة أُضيفت:
 
 <Sandpack>
 
@@ -521,16 +521,16 @@ for (let i = 0; i < 20; i++) {
 
 </Sandpack>
 
-The issue is with these two lines:
+المشكلة في هذين السطرين:
 
 ```js
 setTodos([ ...todos, newTodo]);
 listRef.current.lastChild.scrollIntoView();
 ```
 
-In React, [state updates are queued.](/learn/queueing-a-series-of-state-updates) Usually, this is what you want. However, here it causes a problem because `setTodos` does not immediately update the DOM. So the time you scroll the list to its last element, the todo has not yet been added. This is why scrolling always "lags behind" by one item.
+في React، [تُصفَّ تحديثات الحالة في طابور.](/learn/queueing-a-series-of-state-updates) عادةً هذا ما تريده. لكن هنا يسبب مشكلة لأن `setTodos` لا يحدّث DOM فورًا. لذا عند التمرير إلى آخر عنصر، لم تُضف المهمة بعد. لهذا يتأخر التمرير دائمًا بعنصر واحد.
 
-To fix this issue, you can force React to update ("flush") the DOM synchronously. To do this, import `flushSync` from `react-dom` and **wrap the state update** into a `flushSync` call:
+لإصلاح ذلك، يمكنك إجبار React على تحديث DOM («دفعه») متزامنًا. لذلك استورد `flushSync` من `react-dom` و**لفّ تحديث الحالة** داخل استدعاء `flushSync`:
 
 ```js
 flushSync(() => {
@@ -539,7 +539,7 @@ flushSync(() => {
 listRef.current.lastChild.scrollIntoView();
 ```
 
-This will instruct React to update the DOM synchronously right after the code wrapped in `flushSync` executes. As a result, the last todo will already be in the DOM by the time you try to scroll to it:
+هذا يوجّه React لتحديث DOM متزامنًا مباشرة بعد تنفيذ الشيفرة الملفوفة بـ`flushSync`. فيصبح آخر عنصر موجودًا في DOM عند محاولة التمرير إليه:
 
 <Sandpack>
 
@@ -598,15 +598,15 @@ for (let i = 0; i < 20; i++) {
 
 </DeepDive>
 
-## Best practices for DOM manipulation with refs {/*best-practices-for-dom-manipulation-with-refs*/}
+## أفضل ممارسات التلاعب بـ DOM باستخدام المراجع {/*best-practices-for-dom-manipulation-with-refs*/}
 
-Refs are an escape hatch. You should only use them when you have to "step outside React". Common examples of this include managing focus, scroll position, or calling browser APIs that React does not expose.
+المراجع مخرج طوارئ. استخدمها فقط عندما تضطر إلى «الخطوة خارج React». من الأمثلة الشائعة إدارة التركيز، وموضع التمرير، أو استدعاء واجهات المتصفح التي لا يعرضها React.
 
-If you stick to non-destructive actions like focusing and scrolling, you shouldn't encounter any problems. However, if you try to **modify** the DOM manually, you can risk conflicting with the changes React is making.
+إن التزمت بإجراءات غير مدمرة مثل التركيز والتمرير، فلن تواجه مشاكل غالبًا. لكن إن حاولت **تعديل** DOM يدويًا، فقد تتعارض مع التغييرات التي يجريها React.
 
-To illustrate this problem, this example includes a welcome message and two buttons. The first button toggles its presence using [conditional rendering](/learn/conditional-rendering) and [state](/learn/state-a-components-memory), as you would usually do in React. The second button uses the [`remove()` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove) to forcefully remove it from the DOM outside of React's control.
+لتوضيح المشكلة، يتضمن هذا المثال رسالة ترحيب وزرين. الزر الأول يبدّل ظهورها بـ[تصيير شرطي](/learn/conditional-rendering) و[حالة](/learn/state-a-components-memory)، كما تفعل عادةً في React. الزر الثاني يستخدم [واجهة `remove()` في DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove) لإزالتها قسرًا من DOM خارج سيطرة React.
 
-Try pressing "Toggle with setState" a few times. The message should disappear and appear again. Then press "Remove from the DOM". This will forcefully remove it. Finally, press "Toggle with setState":
+جرّب الضغط على «Toggle with setState» عدة مرات. يجب أن تختفي الرسالة وتظهر. ثم اضغط «Remove from the DOM». هذا يزيلها قسرًا. أخيرًا اضغط «Toggle with setState»:
 
 <Sandpack>
 
@@ -647,20 +647,20 @@ button {
 
 </Sandpack>
 
-After you've manually removed the DOM element, trying to use `setState` to show it again will lead to a crash. This is because you've changed the DOM, and React doesn't know how to continue managing it correctly.
+بعد إزالة عنصر DOM يدويًا، محاولة استخدام `setState` لإظهاره مجددًا تؤدي إلى تعطل. لأنك غيّرت DOM ولم يعد React يعرف كيف يديره بشكل صحيح.
 
-**Avoid changing DOM nodes managed by React.** Modifying, adding children to, or removing children from elements that are managed by React can lead to inconsistent visual results or crashes like above.
+**تجنّب تغيير عقد DOM التي يديرها React.** تعديلها أو إضافة أبناء إليها أو إزالة أبناء منها قد يؤدي إلى نتائج بصرية غير متسقة أو تعطل كما أعلاه.
 
-However, this doesn't mean that you can't do it at all. It requires caution. **You can safely modify parts of the DOM that React has _no reason_ to update.** For example, if some `<div>` is always empty in the JSX, React won't have a reason to touch its children list. Therefore, it is safe to manually add or remove elements there.
+لكن هذا لا يعني أنك لا تستطيع أبدًا. الأمر يتطلّب حذرًا. **يمكنك بأمان تعديل أجزاء من DOM ليس لدى React سبب لتحديثها.** مثلًا، إذا كان `<div>` ما فارغًا دائمًا في JSX، فلن يكون لدى React سبب للمس قائمة أبنائه، فيكون آمناً إضافة أو إزالة عناصر يدويًا هناك.
 
 <Recap>
 
-- Refs are a generic concept, but most often you'll use them to hold DOM elements.
-- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
-- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
-- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using the `ref` prop.
-- Avoid changing DOM nodes managed by React.
-- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
+- المراجع مفهوم عام، لكنك غالبًا تستخدمها لاحتجاز عناصر DOM.
+- توجّه React لوضع عقدة DOM في `myRef.current` بتمرير `<div ref={myRef}>`.
+- غالبًا تستخدم المراجع لإجراءات غير مدمرة مثل التركيز والتمرير أو قياس عناصر DOM.
+- لا يكشف المكوّن عن عقد DOM افتراضيًا. يمكنك اختياريًا كشف عقدة DOM باستخدام خاصية `ref`.
+- تجنّب تغيير عقد DOM التي يديرها React.
+- إن عدّلت عقد DOM يديرها React، فعدّل أجزاء ليس لدى React سبب لتحديثها.
 
 </Recap>
 
@@ -668,9 +668,9 @@ However, this doesn't mean that you can't do it at all. It requires caution. **Y
 
 <Challenges>
 
-#### Play and pause the video {/*play-and-pause-the-video*/}
+#### تشغيل الفيديو وإيقافه {/*play-and-pause-the-video*/}
 
-In this example, the button toggles a state variable to switch between a playing and a paused state. However, in order to actually play or pause the video, toggling state is not enough. You also need to call [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) on the DOM element for the `<video>`. Add a ref to it, and make the button work.
+في هذا المثال، يبدّل الزر متغير حالة بين التشغيل والإيقاف. لكن لتشغيل الفيديو أو إيقافه فعليًا، تبديل الحالة لا يكفي. تحتاج أيضًا إلى استدعاء [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) و[`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) على عنصر DOM لـ`<video>`. أضف مرجعًا إليه، واجعل الزر يعمل.
 
 <Sandpack>
 
@@ -707,11 +707,11 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-For an extra challenge, keep the "Play" button in sync with whether the video is playing even if the user right-clicks the video and plays it using the built-in browser media controls. You might want to listen to `onPlay` and `onPause` on the video to do that.
+لتحدٍ إضافي، أبقِ زر «Play» متزامنًا مع تشغيل الفيديو حتى لو نقر المستخدم بالزر الأيمن وشغّل الفيديو من عناصر التحكم المدمجة في المتصفح. قد ترغب في الاستماع إلى `onPlay` و`onPause` على الفيديو لذلك.
 
 <Solution>
 
-Declare a ref and put it on the `<video>` element. Then call `ref.current.play()` and `ref.current.pause()` in the event handler depending on the next state.
+صرّح عن مرجع وضعه على عنصر `<video>`. ثم استدعِ `ref.current.play()` و`ref.current.pause()` في معالج الحدث حسب الحالة التالية.
 
 <Sandpack>
 
@@ -760,13 +760,13 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-In order to handle the built-in browser controls, you can add `onPlay` and `onPause` handlers to the `<video>` element and call `setIsPlaying` from them. This way, if the user plays the video using the browser controls, the state will adjust accordingly.
+للتعامل مع عناصر التحكم المدمجة في المتصفح، أضف معالجي `onPlay` و`onPause` إلى `<video>` واستدعِ `setIsPlaying` منهما. هكذا إذا شغّل المستخدم الفيديو من عناصر المتصفح، تتكيّف الحالة.
 
 </Solution>
 
-#### Focus the search field {/*focus-the-search-field*/}
+#### تركيز حقل البحث {/*focus-the-search-field*/}
 
-Make it so that clicking the "Search" button puts focus into the field.
+اجعل النقر على زر «Search» يضع التركيز في الحقل.
 
 <Sandpack>
 
@@ -793,7 +793,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-Add a ref to the input, and call `focus()` on the DOM node to focus it:
+أضف مرجعًا إلى الإدخال، واستدعِ `focus()` على عقدة DOM لوضع التركيز:
 
 <Sandpack>
 
@@ -828,9 +828,9 @@ button { display: block; margin-bottom: 10px; }
 
 </Solution>
 
-#### Scrolling an image carousel {/*scrolling-an-image-carousel*/}
+#### تمرير شريط صور {/*scrolling-an-image-carousel*/}
 
-This image carousel has a "Next" button that switches the active image. Make the gallery scroll horizontally to the active image on click. You will want to call [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) on the DOM node of the active image:
+لهذا الشريط زر «Next» يبدّل الصورة النشطة. اجعل المعرض يتمرّر أفقيًا إلى الصورة النشطة عند النقر. ستستدعي [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) على عقدة DOM للصورة النشطة:
 
 ```js
 node.scrollIntoView({
@@ -842,7 +842,7 @@ node.scrollIntoView({
 
 <Hint>
 
-You don't need to have a ref to every image for this exercise. It should be enough to have a ref to the currently active image, or to the list itself. Use `flushSync` to ensure the DOM is updated *before* you scroll.
+لا تحتاج مرجعًا لكل صورة في هذا التمرين. يكفي مرجع للصورة النشطة حاليًا، أو للقائمة نفسها. استخدم `flushSync` لضمان تحديث DOM *قبل* التمرير.
 
 </Hint>
 
@@ -955,15 +955,15 @@ img {
 
 <Solution>
 
-You can declare a `selectedRef`, and then pass it conditionally only to the current image:
+يمكنك الإعلان عن `selectedRef`، ثم تمريره شرطيًا فقط للصورة الحالية:
 
 ```js
 <li ref={index === i ? selectedRef : null}>
 ```
 
-When `index === i`, meaning that the image is the selected one, the `<li>` will receive the `selectedRef`. React will make sure that `selectedRef.current` always points at the correct DOM node.
+عندما `index === i`، أي أن الصورة هي المختارة، يستقبل `<li>` الـ`selectedRef`. يضمن React أن `selectedRef.current` يشير دائمًا إلى عقدة DOM الصحيحة.
 
-Note that the `flushSync` call is necessary to force React to update the DOM before the scroll. Otherwise, `selectedRef.current` would always point at the previously selected item.
+لاحظ أن استدعاء `flushSync` ضروري لإجبار React على تحديث DOM قبل التمرير. وإلا فسيشير `selectedRef.current` دائمًا إلى العنصر الذي كان مختارًا سابقًا.
 
 <Sandpack>
 
@@ -1090,13 +1090,13 @@ img {
 
 </Solution>
 
-#### Focus the search field with separate components {/*focus-the-search-field-with-separate-components*/}
+#### تركيز حقل البحث مع مكوّنات منفصلة {/*focus-the-search-field-with-separate-components*/}
 
-Make it so that clicking the "Search" button puts focus into the field. Note that each component is defined in a separate file and shouldn't be moved out of it. How do you connect them together?
+اجعل النقر على «Search» يضع التركيز في الحقل. لاحظ أن كل مكوّن في ملف منفصل ولا يجب نقله منه. كيف تربطهما؟
 
 <Hint>
 
-You'll need to pass `ref` as a prop to opt into exposing a DOM node from your own component like `SearchInput`.
+ستحتاج لتمرير `ref` كخاصية للموافقة على كشف عقدة DOM من مكوّنك الخاص مثل `SearchInput`.
 
 </Hint>
 
@@ -1146,7 +1146,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-You'll need to add an `onClick` prop to the `SearchButton`, and make the `SearchButton` pass it down to the browser `<button>`. You'll also pass a ref down to `<SearchInput>`, which will forward it to the real `<input>` and populate it. Finally, in the click handler, you'll call `focus` on the DOM node stored inside that ref.
+أضف خاصية `onClick` إلى `SearchButton`، واجعل `SearchButton` يمرّرها إلى `<button>` في المتصفح. مرّر أيضًا مرجعًا إلى `<SearchInput>` الذي يعيد توجيهه إلى `<input>` الحقيقي. أخيرًا، في معالج النقر، استدعِ `focus` على عقدة DOM المخزنة في ذلك المرجع.
 
 <Sandpack>
 

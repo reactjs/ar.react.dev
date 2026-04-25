@@ -4,18 +4,18 @@ title: "التوجيهات (Directives)"
 
 <RSC>
 
-Directives are for use in [React Server Components](/reference/rsc/server-components).
+التوجيهات مخصّصة للاستخدام مع [مكوّنات خادم React](/reference/rsc/server-components).
 
 </RSC>
 
 <Intro>
 
-تستخدم React علامتي توجيه، لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكونات من جانب الخادم RSC](/learn/creating-a-react-app#full-stack-frameworks)، والتعليمات اللازمة لذلك.
+تستخدم React علامتي توجيه لإعلام أدوات التجميع (bundlers) بأن ملفاتك تحتوي على [مكوّنات خادم React (RSC)](/learn/creating-a-react-app#full-stack-frameworks)، والتعليمات اللازمة لذلك.
 </Intro>
 
 ---
 
-## توجيهات الكود {/*source-code-directives*/}
+## توجيهات الشيفرة {/*source-code-directives*/}
 
-* [`'use client'`](/reference/rsc/use-client) تميز الملف بأن ما فيه مكون من جانب العميل (client-side).
-* [`'use server'`](/reference/rsc/use-server) تميز الدوال من جانب الخادم (server-side) التي يمكن استدعاؤها من الكود من جانب العميل (client-side).
+* [`'use client'`](/reference/rsc/use-client) يوسّم الملف بأن ما فيه يُنفَّذ على جانب العميل (client).
+* [`'use server'`](/reference/rsc/use-server) يوسّم الدوال التي تعمل على الخادم ويمكن استدعاؤها من شيفرة العميل.

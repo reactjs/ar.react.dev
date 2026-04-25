@@ -1,48 +1,48 @@
 ---
-title: Passing Data Deeply with Context
+title: تمرير البيانات عميقًا بالسياق
 ---
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+عادةً، تمرّر المعلومات من مكوّن أب إلى ابن عبر الخصائص (props). لكن تمرير الخصائص قد يصير مطوّلًا ومزعجًا إذا اضطررت لتمريرها عبر كثير من المكوّنات الوسيطة، أو إذا احتاجت كثير من المكوّنات في تطبيقك إلى نفس المعلومة. يتيح *السياق* (Context) للمكوّن الأب جعل بعض المعلومات متاحة لأي مكوّن في الشجرة أسفله—مهما عمّ—دون تمريرها صراحةً عبر الخصائص.
 
 </Intro>
 
 <YouWillLearn>
 
-- What "prop drilling" is
-- How to replace repetitive prop passing with context
-- Common use cases for context
-- Common alternatives to context
+- ما هو «ثقب الخصائص» (prop drilling)
+- كيفية استبدال تمرير الخصائص المتكرر بالسياق
+- حالات استخدام شائعة للسياق
+- بدائل شائعة للسياق
 
 </YouWillLearn>
 
-## The problem with passing props {/*the-problem-with-passing-props*/}
+## مشكلة تمرير الخصائص {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
+[تمرير الخصائص](/learn/passing-props-to-a-component) وسيلة ممتازة لتوجيه البيانات صراحةً عبر شجرة واجهتك إلى المكوّنات التي تستخدمها.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation called "prop drilling".
+لكن تمرير الخصائص قد يصير مطوّلًا ومزعجًا عندما تحتاج لتمرير خاصية عميقًا في الشجرة، أو إذا احتاجت كثير من المكوّنات إلى نفس الخاصية. قد يكون السلف المشترك الأقرب بعيدًا عن المكوّنات التي تحتاج البيانات، و[رفع الحالة](/learn/sharing-state-between-components) إلى ذلك المستوى قد يؤدي إلى ما يُسمّى «ثقب الخصائص».
 
 <DiagramGroup>
 
-<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="مخطط بشجرة من ثلاثة مكوّنات. الأب يحوي فقاعة تمثّل قيمة مميّزة بالبنفسجي. القيمة تتدفق إلى كل ابنين، كلاهما مميّز بالبنفسجي." >
 
-Lifting state up
+رفع الحالة
 
 </Diagram>
-<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="مخطط بشجرة عشر عقد، لكل عقدة ابنان على الأكثر. الجذر يحوي فقاعة قيمة بالبنفسجي. القيمة تمر عبر الابنين دون أن يحتفظا بها. الابن الأيسر يمرّرها إلى ابنين بالبنفسجي. الابن الأيمن للجذر يمرّرها إلى أحد ابنيه الأيمن بالبنفسجي، ثم عبر ابن واحد إلى ابنين بالبنفسجي.">
 
-Prop drilling
+ثقب الخصائص
 
 </Diagram>
 
 </DiagramGroup>
 
-Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
+أليس من الرائع لو وُجدت طريقة «لنقل» البيانات إلى المكوّنات التي تحتاجها في الشجرة دون تمرير خصائص؟ مع ميزة السياق في React، وُجدت!
 
-## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
+## السياق: بديل عن تمرير الخصائص {/*context-an-alternative-to-passing-props*/}
 
-Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
+يتيح السياق لمكوّن أب أن يوفّر بيانات لكامل الشجرة أسفله. لاستخدامات السياق أشكال كثيرة. إليك مثال واحد. انظر إلى مكوّن `Heading` هذا الذي يقبل `level` لحجمه:
 
 <Sandpack>
 
@@ -106,7 +106,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Let's say you want multiple headings within the same `Section` to always have the same size:
+لنقل تريد أن تكون كل العناوين داخل نفس `Section` بنفس الحجم دائمًا:
 
 <Sandpack>
 
@@ -180,7 +180,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Currently, you pass the `level` prop to each `<Heading>` separately:
+حاليًا، تمرّر خاصية `level` إلى كل `<Heading>` على حدة:
 
 ```js
 <Section>
@@ -190,7 +190,7 @@ Currently, you pass the `level` prop to each `<Heading>` separately:
 </Section>
 ```
 
-It would be nice if you could pass the `level` prop to the `<Section>` component instead and remove it from the `<Heading>`. This way you could enforce that all headings in the same section have the same size:
+من الجيد لو مررت خاصية `level` إلى `<Section>` بدلًا من ذلك وأزلتها من `<Heading>`. هكذا تفرض أن كل العناوين في القسم نفسه لها نفس الحجم:
 
 ```js
 <Section level={3}>
@@ -200,35 +200,35 @@ It would be nice if you could pass the `level` prop to the `<Section>` component
 </Section>
 ```
 
-But how can the `<Heading>` component know the level of its closest `<Section>`? **That would require some way for a child to "ask" for data from somewhere above in the tree.**
+لكن كيف يعرف مكوّن `<Heading>` مستوى أقرب `<Section>` له؟ **هذا يتطلّب طريقة لابن أن «يطلب» بيانات من أعلى الشجرة.**
 
-You can't do it with props alone. This is where context comes into play. You will do it in three steps:
+لا يمكن فعل ذلك بالخصائص وحدها. هنا يدخل السياق. ستفعل ذلك في ثلاث خطوات:
 
-1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
-3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+1. **إنشاء** سياق. (يمكنك تسميته `LevelContext` لأنه لمستوى العنوان.)
+2. **استخدام** ذلك السياق من المكوّن الذي يحتاج البيانات. (`Heading` سيستخدم `LevelContext`.)
+3. **توفير** ذلك السياق من المكوّن الذي يحدد البيانات. (`Section` سيوفّر `LevelContext`.)
 
-Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
+يتيح السياق للأب—حتى لو كان بعيدًا!—أن يوفّر بيانات لكامل الشجرة داخله.
 
 <DiagramGroup>
 
-<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="مخطط بثلاثة مكوّنات. الأب يحوي فقاعة قيمة بالبرتقالي يمتد تأثيرها إلى الابنين، كلاهما بالبرتقالي." >
 
-Using context in close children
+استخدام السياق مع أبناء قريبين
 
 </Diagram>
 
-<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="مخطط بعشر عقد. الجذر يحوي فقاعة بالبرتقالي. القيمة تمتد مباشرة إلى أربع أوراق ومكوّن وسيط واحد بالبرتقالي. بقية الوسطى غير مميّزة.">
 
-Using context in distant children
+استخدام السياق مع أبناء بعيدين
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### الخطوة 1: إنشاء السياق {/*step-1-create-the-context*/}
 
-First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
+أولًا، أنشئ السياق. ستحتاج إلى **تصديره من ملف** لتتمكّن مكوّناتك من استخدامه:
 
 <Sandpack>
 
@@ -308,18 +308,18 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
+الوسيط الوحيد لـ`createContext` هو القيمة _الافتراضية_. هنا، `1` تشير إلى أكبر مستوى عنوان، لكن يمكنك تمرير أي نوع من القيم (حتى كائن). ستفهم أهمية القيمة الافتراضية في الخطوة التالية.
 
-### Step 2: Use the context {/*step-2-use-the-context*/}
+### الخطوة 2: استخدام السياق {/*step-2-use-the-context*/}
 
-Import the `useContext` Hook from React and your context:
+استورد خطاف `useContext` من React وسياقك:
 
 ```js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 ```
 
-Currently, the `Heading` component reads `level` from props:
+حاليًا، يقرأ مكوّن `Heading` قيمة `level` من الخصائص:
 
 ```js
 export default function Heading({ level, children }) {
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-Instead, remove the `level` prop and read the value from the context you just imported, `LevelContext`:
+بدلًا من ذلك، أزل خاصية `level` واقرأ القيمة من السياق الذي استوردته للتو، `LevelContext`:
 
 ```js {2}
 export default function Heading({ children }) {
@@ -336,9 +336,9 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+`useContext` خطاف. مثل `useState` و`useReducer`، يمكنك استدعاء الخطاف فقط مباشرةً داخل مكوّن React (لا داخل حلقات أو شروط). **`useContext` يخبر React أن مكوّن `Heading` يريد قراءة `LevelContext`.**
 
-Now that the `Heading` component doesn't have a `level` prop, you don't need to pass the level prop to `Heading` in your JSX like this anymore:
+بما أن `Heading` لم يعد له خاصية `level`، لم تعد بحاجة لتمرير `level` إلى `Heading` في JSX هكذا:
 
 ```js
 <Section>
@@ -348,7 +348,7 @@ Now that the `Heading` component doesn't have a `level` prop, you don't need to 
 </Section>
 ```
 
-Update the JSX so that it's the `Section` that receives it instead:
+حدّث JSX بحيث يستقبلها `Section` بدلًا من ذلك:
 
 ```jsx
 <Section level={4}>
@@ -358,7 +358,7 @@ Update the JSX so that it's the `Section` that receives it instead:
 </Section>
 ```
 
-As a reminder, this is the markup that you were trying to get working:
+للتذكير، هذا الترميز الذي كنت تحاول جعله يعمل:
 
 <Sandpack>
 
@@ -442,13 +442,13 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+لاحظ أن هذا المثال لا يعمل بعد بالكامل! كل العناوين بنفس الحجم لأنك **رغم أنك *تستخدم* السياق، لم *توفّره* بعد.** لا يعرف React من أين يأخذ القيمة!
 
-If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
+إن لم توفّر السياق، يستخدم React القيمة الافتراضية التي حددتها في الخطوة السابقة. في هذا المثال، مررت `1` إلى `createContext`، لذا يعيد `useContext(LevelContext)` القيمة `1`، فتصبح كل العناوين `<h1>`. لنصلح ذلك بأن يوفّر كل `Section` سياقه الخاص.
 
-### Step 3: Provide the context {/*step-3-provide-the-context*/}
+### الخطوة 3: توفير السياق {/*step-3-provide-the-context*/}
 
-The `Section` component currently renders its children:
+مكوّن `Section` حاليًا يصيّر أبناءه:
 
 ```js
 export default function Section({ children }) {
@@ -460,7 +460,7 @@ export default function Section({ children }) {
 }
 ```
 
-**Wrap them with a context provider** to provide the `LevelContext` to them:
+**لفّهم بموفّر سياق** لتوفير `LevelContext` لهم:
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
@@ -476,7 +476,7 @@ export default function Section({ level, children }) {
 }
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
+هذا يخبر React: «إذا طلب أي مكوّن داخل هذا `<Section>` الـ`LevelContext`، أعطه هذه قيمة `level`.» سيستخدم المكوّن قيمة أقرب `<LevelContext>` فوقه في شجرة الواجهة.
 
 <Sandpack>
 
@@ -564,15 +564,15 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
+نفس نتيجة الشيفرة الأصلية، لكنك لم تعد بحاجة لتمرير `level` إلى كل `Heading`! بدلًا من ذلك، يستنتج مستوى عنوانه بسؤال أقرب `Section` فوقه:
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+1. تمرّر خاصية `level` إلى `<Section>`.
+2. يلفّ `Section` أبناءه بـ`<LevelContext value={level}>`.
+3. يطلب `Heading` أقرب قيمة لـ`LevelContext` فوقه بـ`useContext(LevelContext)`.
 
-## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
+## استخدام السياق وتوفيره من نفس المكوّن {/*using-and-providing-context-from-the-same-component*/}
 
-Currently, you still have to specify each section's `level` manually:
+ما زلت تحدد `level` لكل قسم يدويًا:
 
 ```js
 export default function Page() {
@@ -585,7 +585,7 @@ export default function Page() {
           ...
 ```
 
-Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
+بما أن السياق يتيح قراءة معلومات من مكوّن أعلى، يمكن لكل `Section` أن يقرأ `level` من `Section` الأعلى، ويمرّر `level + 1` للأسفل تلقائيًا. إليك كيفية فعل ذلك:
 
 ```js src/Section.js {5,8}
 import { useContext } from 'react';
@@ -603,7 +603,7 @@ export default function Section({ children }) {
 }
 ```
 
-With this change, you don't need to pass the `level` prop *either* to the `<Section>` or to the `<Heading>`:
+بهذا التغيير، لم تعد بحاجة لتمرير `level` *لا* إلى `<Section>` *ولا* إلى `<Heading>`:
 
 <Sandpack>
 
@@ -695,19 +695,19 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep" they are. And the `Section` wraps its children into the `LevelContext` to specify that anything inside of it is at a "deeper" level.
+الآن كل من `Heading` و`Section` يقرآن `LevelContext` ليعرفا عمقهما. ويلفّ `Section` أبناءه بـ`LevelContext` ليحدّد أن كل ما بداخله في مستوى «أعمق».
 
 <Note>
 
-This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
+يستخدم هذا المثال مستويات العناوين لأنها تبيّن بصريًا كيف يمكن للمكوّنات المتداخلة أن تلغي السياق. لكن السياق مفيد لحالات كثيرة أخرى. يمكنك تمرير أي معلومة يحتاجها الشجرة الفرعية بأكملها: سمة الألوان الحالية، المستخدم المسجّل حاليًا، وغير ذلك.
 
 </Note>
 
-## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
+## السياق يمر عبر المكوّنات الوسيطة {/*context-passes-through-intermediate-components*/}
 
-You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
+يمكنك إدراج أي عدد من المكوّنات بين المكوّن الذي يوفّر السياق والمكوّن الذي يستخدمه. يشمل ذلك المكوّنات المدمجة مثل `<div>` ومكوّناتك الخاصة.
 
-In this example, the same `Post` component (with a dashed border) is rendered at two different nesting levels. Notice that the `<Heading>` inside of it gets its level automatically from the closest `<Section>`:
+في هذا المثال، يُصيّر نفس مكوّن `Post` (بحدّ متقطع) على مستويين مختلفين من التداخل. لاحظ أن `<Heading>` بداخله يأخذ مستواه تلقائيًا من أقرب `<Section>`:
 
 <Sandpack>
 
@@ -832,58 +832,58 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-You didn't do anything special for this to work. A `Section` specifies the context for the tree inside it, so you can insert a `<Heading>` anywhere, and it will have the correct size. Try it in the sandbox above!
+لم تفعل شيئًا خاصًا ليعمل هذا. `Section` يحدد السياق للشجرة بداخله، فيمكنك إدراج `<Heading>` في أي مكان وسيأخذ الحجم الصحيح. جرّب في الصندوق أعلاه!
 
-**Context lets you write components that "adapt to their surroundings" and display themselves differently depending on _where_ (or, in other words, _in which context_) they are being rendered.**
+**السياق يتيح لك كتابة مكوّنات «تتأقلم مع محيطها» وتعرض نفسها بشكل مختلف حسب _أين_ (أي _في أي سياق_) تُصيَّر.**
 
-How context works might remind you of [CSS property inheritance.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+قد يذكرك عمل السياق بـ[وراثة خصائص CSS.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) في CSS، يمكنك ضبط `color: blue` لـ`<div>`، فترث أي عقدة DOM بداخلها ذلك اللون مهما عمّت، ما لم تعترضها عقدة أخرى بـ`color: green`. بالمثل، في React الطريقة الوحيدة لتجاوز سياق قادم من الأعلى هي لفّ الأبناء بموفّر سياق بقيمة مختلفة.
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+في CSS، خصائص مختلفة مثل `color` و`background-color` لا تلغي بعضها. يمكنك ضبط `color` لكل `<div>` على أحمر دون التأثير على `background-color`. بالمثل، **سياقات React مختلفة لا تلغي بعضها.** كل سياق تنشئه بـ`createContext()` منفصل تمامًا عن غيره، ويربط المكوّنات التي تستخدمه وتوفّره بـ*ذلك* السياق تحديدًا. قد يستخدم مكوّن واحد أو يوفّر عدة سياقات دون مشكلة.
 
-## Before you use context {/*before-you-use-context*/}
+## قبل استخدام السياق {/*before-you-use-context*/}
 
-Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
+السياق مغرٍ جدًا للاستخدام! لكن هذا يعني أيضًا أن الإفراط فيه سهل. **مجرد أنك تحتاج لتمرير بعض الخصائص عدة مستويات لا يعني أنك يجب أن تضع تلك المعلومات في السياق.**
 
-Here's a few alternatives you should consider before using context:
+إليك بعض البدائل التي تفكّر فيها قبل السياق:
 
-1. **Start by [passing props.](/learn/passing-props-to-a-component)** If your components are not trivial, it's not unusual to pass a dozen props down through a dozen components. It may feel like a slog, but it makes it very clear which components use which data! The person maintaining your code will be glad you've made the data flow explicit with props.
-2. **Extract components and [pass JSX as `children`](/learn/passing-props-to-a-component#passing-jsx-as-children) to them.** If you pass some data through many layers of intermediate components that don't use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like `posts` to visual components that don't use them directly, like `<Layout posts={posts} />`. Instead, make `Layout` take `children` as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. This reduces the number of layers between the component specifying the data and the one that needs it.
+1. **ابدأ بـ[تمرير الخصائص.](/learn/passing-props-to-a-component)** إن لم تكن مكوّناتك تافهة، فليس غريبًا تمرير عشرات الخصائص عبر عشرات المكوّنات. قد يبدو ذلك مملًا، لكنه يوضّح أي مكوّن يستخدم أي بيانات! من يصون شيفرتك سيرحب بأنك جعلت تدفق البيانات صريحًا بالخصائص.
+2. **استخرج مكوّنات و[مرّر JSX كـ`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) إليها.** إن مررت بيانات عبر طبقات كثيرة من مكوّنات وسيطة لا تستخدمها (بل تمرّرها فقط)، فغالبًا نسيت استخراج مكوّنات في الطريق. مثلًا، قد تمرّر `posts` إلى مكوّنات عرض لا تستخدمها مباشرة مثل `<Layout posts={posts} />`. بدلًا من ذلك، اجعل `Layout` يأخذ `children` وصيّر `<Layout><Posts posts={posts} /></Layout>`. هذا يقلّل الطبقات بين المكوّن الذي يحدد البيانات والذي يحتاجها.
 
-If neither of these approaches works well for you, consider context.
+إن لم تنفع إحدى الطريقتين جيدًا معك، فكّر بالسياق.
 
-## Use cases for context {/*use-cases-for-context*/}
+## حالات استخدام السياق {/*use-cases-for-context*/}
 
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
+* **السمات (Theming):** إن كان تطبيقك يسمح بتغيير المظهر (مثل الوضع الداكن)، يمكنك وضع موفّر سياق أعلى التطبيق، واستخدام ذلك السياق في المكوّنات التي تحتاج تعديل المظهر.
+* **الحساب الحالي:** قد تحتاج كثير من المكوّنات لمعرفة المستخدم المسجّل. وضعه في السياق يسهّل قراءته في أي مكان في الشجرة. بعض التطبيقات تسمح بعدة حسابات في آن (مثل ترك تعليق كمستخدم آخر). حينها قد يكون مناسبًا لف جزء من الواجهة بموفّر متداخل بقيمة حساب مختلفة.
+* **التوجيه:** معظم حلول التوجيه تستخدم السياق داخليًا لاحتجاز المسار الحالي. هكذا يعرف كل رابط إن كان نشطًا. إن بنيت موجّهك الخاص، قد تفعل المثل.
+* **إدارة الحالة:** مع نموّ التطبيق قد تتراكم حالة كثيرة قرب أعلى التطبيق. قد تريد مكوّنات بعيدة تغييرها. شائع [استخدام مُخفّض مع السياق](/learn/scaling-up-with-reducer-and-context) لإدارة حالة معقّدة وتمريرها لمكوّنات بعيدة دون عناء كبير.
   
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
+السياق لا يقتصر على قيم ثابتة. إن مررت قيمة مختلفة في التصيير التالي، يحدّث React كل المكوّنات التي تقرأه أسفلها! لذلك يُستخدم السياق غالبًا مع الحالة.
 
-In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
+بشكل عام، إذا احتاجت مكوّنات بعيدة في أجزاء مختلفة من الشجرة إلى معلومة ما، فذلك مؤشر جيد أن السياق سيساعدك.
 
 <Recap>
 
-* Context lets a component provide some information to the entire tree below it.
-* To pass context:
-  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
-  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext value={...}>` to provide it from a parent.
-* Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings".
-* Before you use context, try passing props or passing JSX as `children`.
+* السياق يتيح لمكوّن أن يوفّر معلومة لكامل الشجرة أسفله.
+* لتمرير السياق:
+  1. أنشئه وصدّره بـ`export const MyContext = createContext(defaultValue)`.
+  2. مرّره إلى خطاف `useContext(MyContext)` لقراءته في أي مكوّن ابن، مهما عمّ.
+  3. لفّ الأبناء بـ`<MyContext value={...}>` لتوفيره من الأب.
+* السياق يمر عبر أي مكوّنات في الوسط.
+* السياق يتيح كتابة مكوّنات «تتأقلم مع محيطها».
+* قبل استخدام السياق، جرّب تمرير الخصائص أو تمرير JSX كـ`children`.
 
 </Recap>
 
 <Challenges>
 
-#### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
+#### استبدال ثقب الخصائص بالسياق {/*replace-prop-drilling-with-context*/}
 
-In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
+في هذا المثال، تبديل خانة الاختيار يغيّر خاصية `imageSize` الممرّرة إلى كل `<PlaceImage>`. حالة خانة الاختيار في `App` الأعلى، لكن كل `<PlaceImage>` يحتاج الاطلاع عليها.
 
-Currently, `App` passes `imageSize` to `List`, which passes it to each `Place`, which passes it to the `PlaceImage`. Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
+حاليًا، يمرّر `App` قيمة `imageSize` إلى `List`، التي تمرّرها إلى كل `Place`، التي تمرّرها إلى `PlaceImage`. أزل خاصية `imageSize`، ومرّرها بدلًا من ذلك من `App` مباشرةً إلى `PlaceImage`.
 
-You can declare context in `Context.js`.
+يمكنك إعلان السياق في `Context.js`.
 
 <Sandpack>
 
@@ -1020,9 +1020,9 @@ li {
 
 <Solution>
 
-Remove `imageSize` prop from all the components.
+أزل خاصية `imageSize` من كل المكوّنات.
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+أنشئ وصدّر `ImageSizeContext` من `Context.js`. ثم لفّ `List` بـ`<ImageSizeContext value={imageSize}>` لتمرير القيمة للأسفل، واستخدم `useContext(ImageSizeContext)` لقراءتها في `PlaceImage`:
 
 <Sandpack>
 
@@ -1157,7 +1157,7 @@ li {
 
 </Sandpack>
 
-Note how components in the middle don't need to pass `imageSize` anymore.
+لاحظ أن المكوّنات الوسطى لم تعد بحاجة لتمرير `imageSize`.
 
 </Solution>
 

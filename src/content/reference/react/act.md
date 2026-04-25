@@ -1,10 +1,10 @@
 ---
-title: act
+title: "دالة act"
 ---
 
 <Intro>
 
-`act` is a test helper to apply pending React updates before making assertions.
+`act` مساعد للاختبارات لتطبيق تحديثات React المعلّقة قبل إجراء التأكيدات (assertions).
 
 ```js
 await act(async actFn)
@@ -12,10 +12,10 @@ await act(async actFn)
 
 </Intro>
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `await act()` call. This makes your test run closer to how React works in the browser.
+لتهيئة مكوّن للتأكيدات، لفّ الشيفرة التي تعرضه وتُحدّثه داخل استدعاء `await act()`. يجعل ذلك اختبارك أقرب لسلوك React في المتصفح.
 
 <Note>
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), whose helpers are wrapped with `act()`.
+قد تجد استخدام `act()` مباشرةً مزعجًا بعض الشيء. لتقليل التكرار، يمكنك استخدام مكتبة مثل [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)، التي تلفّ مساعداتها بـ `act()`.
 </Note>
 
 
@@ -23,13 +23,13 @@ You might find using `act()` directly a bit too verbose. To avoid some of the bo
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `await act(async actFn)` {/*await-act-async-actfn*/}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as “units” of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these “units” have been processed and applied to the DOM before you make any assertions.
+عند كتابة اختبارات واجهة، يمكن اعتبار مهامًا مثل العرض، أو أحداث المستخدم، أو جلب البيانات «وحدات» تفاعل مع واجهة المستخدم. يوفّر React مساعدًا اسمه `act()` يضمن معالجة كل التحديثات المرتبطة بهذه «الوحدات» وتطبيقها على DOM قبل أي تأكيدات.
 
-The name `act` comes from the [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) pattern.
+اسم `act` مستوحى من نمط [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert).
 
 ```js {2,4}
 it ('renders with button disabled', async () => {
@@ -42,25 +42,25 @@ it ('renders with button disabled', async () => {
 
 <Note>
 
-We recommend using `act` with `await` and an `async` function. Although the sync version works in many cases, it doesn't work in all cases and due to the way React schedules updates internally, it's difficult to predict when you can use the sync version.
+نوصي باستخدام `act` مع `await` ودالة `async`. رغم أن النسخة المتزامنة تعمل في كثير من الحالات، فهي لا تعمل في كل الحالات، وبسبب جدولة React للتحديثات داخليًا يصعب التنبؤ بمتى يمكن استخدام النسخة المتزامنة.
 
-We will deprecate and remove the sync version in the future.
+سنُهمل النسخة المتزامنة ونزيلها لاحقًا.
 
 </Note>
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `async actFn`: An async function wrapping renders or interactions for components being tested. Any updates triggered within the `actFn`, are added to an internal act queue, which are then flushed together to process and apply any changes to the DOM. Since it is async, React will also run any code that crosses an async boundary, and flush any updates scheduled.
+* `async actFn`: دالة async تلفّ عمليات العرض أو التفاعل للمكوّنات المختبرة. أي تحديثات تُطلق داخل `actFn` تُضاف إلى طابور act داخلي، ثم تُفرغ معًا لمعالجة التغييرات وتطبيقها على DOM. وبما أنها async، سينفّذ React أيضًا أي شيفرة تعبر حد async، ويُفرغ التحديثات المجدولة.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`act` does not return anything.
+`act` لا تُرجع أي قيمة.
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-When testing a component, you can use `act` to make assertions about its output.
+عند اختبار مكوّن، يمكنك استخدام `act` للتأكد من مخرجاته.
 
-For example, let’s say we have this `Counter` component, the usage examples below show how to test it:
+مثلًا، لنفترض أن لدينا مكوّن `Counter`، الأمثلة أدناه توضح كيفية اختباره:
 
 ```js
 function Counter() {
@@ -84,9 +84,9 @@ function Counter() {
 }
 ```
 
-### Rendering components in tests {/*rendering-components-in-tests*/}
+### عرض المكوّنات في الاختبارات {/*rendering-components-in-tests*/}
 
-To test the render output of a component, wrap the render inside `act()`:
+لاختبار مخرجات العرض، لفّ العرض داخل `act()`:
 
 ```js  {10,12}
 import {act} from 'react';
@@ -109,13 +109,13 @@ it('can render and update a counter', async () => {
 });
 ```
 
-Here, we create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
+هنا ننشئ حاوية، نُلحقها بالمستند، ونعرض مكوّن `Counter` داخل `act()`. يضمن ذلك أن يُعرض المكوّن وتُطبَّق تأثيراته قبل التأكيدات.
 
-Using `act` ensures that all updates have been applied before we make assertions.
+استخدام `act` يضمن تطبيق كل التحديثات قبل إجراء التأكيدات.
 
-### Dispatching events in tests {/*dispatching-events-in-tests*/}
+### إرسال الأحداث في الاختبارات {/*dispatching-events-in-tests*/}
 
-To test events, wrap the event dispatch inside `act()`:
+لاختبار الأحداث، لفّ إرسال الحدث داخل `act()`:
 
 ```js {14,16}
 import {act} from 'react';
@@ -142,21 +142,21 @@ it.only('can render and update a counter', async () => {
 });
 ```
 
-Here, we render the component with `act`, and then dispatch the event inside another `act()`. This ensures that all updates from the event are applied before making assertions.
+نعرض المكوّن بـ `act`، ثم نُرسل الحدث داخل `act()` آخر. يضمن ذلك تطبيق كل التحديثات الناتجة عن الحدث قبل التأكيدات.
 
 <Pitfall>
 
-Don’t forget that dispatching DOM events only works when the DOM container is added to the document. You can use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) to reduce the boilerplate code.
+لا تنسَ أن إرسال أحداث DOM يعمل فقط عند إضافة حاوية DOM إلى المستند. يمكنك استخدام مكتبة مثل [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) لتقليل الشيفرة المتكررة.
 
 </Pitfall>
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### أتلقى خطأ: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
-Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
+استخدام `act` يتطلب ضبط `global.IS_REACT_ACT_ENVIRONMENT=true` في بيئة الاختبار. الهدف التأكد من استخدام `act` في البيئة الصحيحة فقط.
 
-If you don't set the global, you will see an error like this:
+إن لم تضبط المتغير العام، ستظهر رسالة مثل:
 
 <ConsoleBlock level="error">
 
@@ -164,7 +164,7 @@ Warning: The current testing environment is not configured to support act(...)
 
 </ConsoleBlock>
 
-To fix, add this to your global setup file for React tests:
+للإصلاح، أضف هذا إلى ملف الإعداد العام لاختبارات React:
 
 ```js
 global.IS_REACT_ACT_ENVIRONMENT=true
@@ -172,6 +172,6 @@ global.IS_REACT_ACT_ENVIRONMENT=true
 
 <Note>
 
-In testing frameworks like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), `IS_REACT_ACT_ENVIRONMENT` is already set for you.
+في أُطر اختبار مثل [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)، يكون `IS_REACT_ACT_ENVIRONMENT` مضبوطًا مسبقًا.
 
 </Note>

@@ -4,82 +4,82 @@ title: unsupported-syntax
 
 <Intro>
 
-Validates against syntax that React Compiler does not support. If you need to, you can still use this syntax outside of React, such as in a standalone utility function.
+يتحقق من صياغة لا يدعمها React Compiler. إن لزم، يمكنك ما زال استخدام هذه الصياغة خارج React، مثلاً في دالة مساعدة مستقلة.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React Compiler needs to statically analyze your code to apply optimizations. Features like `eval` and `with` make it impossible to statically understand what the code does at compile time, so the compiler can't optimize components that use them.
+يحتاج React Compiler إلى تحليل شيفرتك ساكنياً لتطبيق التحسينات. ميزات مثل `eval` و`with` تجعل فهم ما تفعله الشيفرة وقت التجميع مستحيلاً ساكنياً، لذا لا يستطيع المُصرّف تحسين مكوّنات تستخدمها.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Using eval in component
+// ❌ استخدام eval في المكوّن
 function Component({ code }) {
-  const result = eval(code); // Can't be analyzed
+  const result = eval(code); // لا يُحلَّل
   return <div>{result}</div>;
 }
 
-// ❌ Using with statement
+// ❌ استخدام with
 function Component() {
-  with (Math) { // Changes scope dynamically
+  with (Math) { // يغيّر النطاق ديناميكياً
     return <div>{sin(PI / 2)}</div>;
   }
 }
 
-// ❌ Dynamic property access with eval
+// ❌ وصول ديناميكي لخاصّية مع eval
 function Component({propName}) {
   const value = eval(`props.${propName}`);
   return <div>{value}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Use normal property access
+// ✅ وصول عادي للخصائص
 function Component({propName, props}) {
-  const value = props[propName]; // Analyzable
+  const value = props[propName]; // قابل للتحليل
   return <div>{value}</div>;
 }
 
-// ✅ Use standard Math methods
+// ✅ دوال Math القياسية
 function Component() {
   return <div>{Math.sin(Math.PI / 2)}</div>;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I need to evaluate dynamic code {/*evaluate-dynamic-code*/}
+### أحتاج تقييم شيفرة ديناميكية {/*evaluate-dynamic-code*/}
 
-You might need to evaluate user-provided code:
+قد تحتاج لتقييم شيفرة يوفّرها المستخدم:
 
 ```js {expectedErrors: {'react-compiler': [3]}}
-// ❌ Wrong: eval in component
+// ❌ خطأ: eval في المكوّن
 function Calculator({expression}) {
-  const result = eval(expression); // Unsafe and unoptimizable
+  const result = eval(expression); // غير آمن وغير قابل للتحسين
   return <div>Result: {result}</div>;
 }
 ```
 
-Use a safe expression parser instead:
+استخدم محلّل تعبيرات آمناً بدلاً من ذلك:
 
 ```js
-// ✅ Better: Use a safe parser
-import {evaluate} from 'mathjs'; // or similar library
+// ✅ أفضل: محلّل آمن
+import {evaluate} from 'mathjs'; // أو مكتبة مشابهة
 
 function Calculator({expression}) {
   const [result, setResult] = useState(null);
 
   const calculate = () => {
     try {
-      // Safe mathematical expression evaluation
+      // تقييم آمن لتعبير رياضي
       setResult(evaluate(expression));
     } catch (error) {
       setResult('Invalid expression');
@@ -97,6 +97,6 @@ function Calculator({expression}) {
 
 <Note>
 
-Never use `eval` with user input - it's a security risk. Use dedicated parsing libraries for specific use cases like mathematical expressions, JSON parsing, or template evaluation.
+لا تستخدم `eval` مع مدخلات المستخدم — خطر أمني. استخدم مكتبات تحليل مخصّصة لحالات مثل التعبيرات الرياضية أو تحليل JSON أو تقييم القوالب.
 
 </Note>

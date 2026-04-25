@@ -4,85 +4,85 @@ title: immutability
 
 <Intro>
 
-Validates against mutating props, state, and other values that [are immutable](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable).
+يتحقق من عدم تعديل الـ props أو الحالة أو قيم أخرى [غير قابلة للتغيير](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-A component’s props and state are immutable snapshots. Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+props وstate المكوّن لقطات غير قابلة للتغيير. لا تعدّلها مباشرة. مرّر props جديدة للأسفل، واستخدم دالة setter من `useState`.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
 ```js
-// ❌ Array push mutation
+// ❌ تعديل مصفوفة بـ push
 function Component() {
   const [items, setItems] = useState([1, 2, 3]);
 
   const addItem = () => {
-    items.push(4); // Mutating!
-    setItems(items); // Same reference, no re-render
+    items.push(4); // تعديل!
+    setItems(items); // نفس المرجع، لا إعادة تصيير
   };
 }
 
-// ❌ Object property assignment
+// ❌ إسناد خاصّية كائن
 function Component() {
   const [user, setUser] = useState({name: 'Alice'});
 
   const updateName = () => {
-    user.name = 'Bob'; // Mutating!
-    setUser(user); // Same reference
+    user.name = 'Bob'; // تعديل!
+    setUser(user); // نفس المرجع
   };
 }
 
-// ❌ Sort without spreading
+// ❌ sort بدون نشر
 function Component() {
   const [items, setItems] = useState([3, 1, 2]);
 
   const sortItems = () => {
-    setItems(items.sort()); // sort mutates!
+    setItems(items.sort()); // sort يعدّل!
   };
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
 ```js
-// ✅ Create new array
+// ✅ أنشئ مصفوفة جديدة
 function Component() {
   const [items, setItems] = useState([1, 2, 3]);
 
   const addItem = () => {
-    setItems([...items, 4]); // New array
+    setItems([...items, 4]); // مصفوفة جديدة
   };
 }
 
-// ✅ Create new object
+// ✅ أنشئ كائناً جديداً
 function Component() {
   const [user, setUser] = useState({name: 'Alice'});
 
   const updateName = () => {
-    setUser({...user, name: 'Bob'}); // New object
+    setUser({...user, name: 'Bob'}); // كائن جديد
   };
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I need to add items to an array {/*add-items-array*/}
+### أحتاج إضافة عناصر لمصفوفة {/*add-items-array*/}
 
-Mutating arrays with methods like `push()` won't trigger re-renders:
+تعديل المصفوفات بدوال مثل `push()` لا يطلق إعادة تصيير:
 
 ```js
-// ❌ Wrong: Mutating the array
+// ❌ خطأ: تعديل المصفوفة
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (id, text) => {
     todos.push({id, text});
-    setTodos(todos); // Same array reference!
+    setTodos(todos); // نفس مرجع المصفوفة!
   };
 
   return (
@@ -93,16 +93,16 @@ function TodoList() {
 }
 ```
 
-Create a new array instead:
+أنشئ مصفوفة جديدة:
 
 ```js
-// ✅ Better: Create a new array
+// ✅ أفضل: مصفوفة جديدة
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (id, text) => {
     setTodos([...todos, {id, text}]);
-    // Or: setTodos(todos => [...todos, {id: Date.now(), text}])
+    // أو: setTodos(todos => [...todos, {id: Date.now(), text}])
   };
 
   return (
@@ -113,12 +113,12 @@ function TodoList() {
 }
 ```
 
-### I need to update nested objects {/*update-nested-objects*/}
+### أحتاج تحديث كائنات متداخلة {/*update-nested-objects*/}
 
-Mutating nested properties doesn't trigger re-renders:
+تعديل الخصائص المتداخلة لا يطلق إعادة تصيير:
 
 ```js
-// ❌ Wrong: Mutating nested object
+// ❌ خطأ: تعديل كائن متداخل
 function UserProfile() {
   const [user, setUser] = useState({
     name: 'Alice',
@@ -129,16 +129,16 @@ function UserProfile() {
   });
 
   const toggleTheme = () => {
-    user.settings.theme = 'dark'; // Mutation!
-    setUser(user); // Same object reference
+    user.settings.theme = 'dark'; // تعديل!
+    setUser(user); // نفس مرجع الكائن
   };
 }
 ```
 
-Spread at each level that needs updating:
+انشر على كل مستوى يحتاج تحديثاً:
 
 ```js
-// ✅ Better: Create new objects at each level
+// ✅ أفضل: كائنات جديدة على كل مستوى
 function UserProfile() {
   const [user, setUser] = useState({
     name: 'Alice',

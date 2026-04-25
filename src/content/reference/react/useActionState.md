@@ -4,7 +4,7 @@ title: useActionState
 
 <Intro>
 
-`useActionState` is a Hook that allows you to update state based on the result of a form action.
+`useActionState` هو Hook يتيح لك تحديث الحالة بناءً على نتيجة إجراء نموذج (form action).
 
 ```js
 const [state, formAction, isPending] = useActionState(fn, initialState, permalink?);
@@ -14,7 +14,7 @@ const [state, formAction, isPending] = useActionState(fn, initialState, permalin
 
 <Note>
 
-In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
+في إصدارات React Canary الأقدم، كانت هذه الواجهة جزءًا من React DOM وتُسمى `useFormState`.
 
 </Note>
 
@@ -29,7 +29,7 @@ In earlier React Canary versions, this API was part of React DOM and called `use
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-Call `useActionState` at the top level of your component to create component state that is updated [when a form action is invoked](/reference/react-dom/components/form). You pass `useActionState` an existing form action function as well as an initial state, and it returns a new action that you use in your form, along with the latest form state and whether the Action is still pending. The latest form state is also passed to the function that you provided.
+استدعِ `useActionState` في أعلى مكوّنك لإنشاء حالة للمكوّن تُحدَّث [عند استدعاء إجراء نموذج](/reference/react-dom/components/form). تمرّر إلى `useActionState` دالة إجراء نموذج موجودة بالإضافة إلى حالة أولية، فيُرجع إجراءً جديدًا تستخدمه في النموذج، مع أحدث حالة للنموذج وما إذا كان الإجراء لا يزال قيد التنفيذ. تُمرَّر أحدث حالة النموذج أيضًا إلى الدالة التي زوّدتها.
 
 ```js
 import { useActionState } from "react";
@@ -49,32 +49,32 @@ function StatefulForm({}) {
 }
 ```
 
-The form state is the value returned by the action when the form was last submitted. If the form has not yet been submitted, it is the initial state that you pass.
+حالة النموذج هي القيمة التي أرجعها الإجراء عند آخر إرسال للنموذج. إذا لم يُرسَل النموذج بعد، فهي الحالة الأولية التي مررتها.
 
-If used with a Server Function, `useActionState` allows the server's response from submitting the form to be shown even before hydration has completed.
+عند الاستخدام مع دالة خادم (Server Function)، يتيح `useActionState` عرض استجابة الخادم من إرسال النموذج حتى قبل اكتمال الترطيب (hydration).
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
-* `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
-* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+* `fn`: الدالة المُستدعاة عند إرسال النموذج أو الضغط على زر. عند استدعائها، تستلم الحالة السابقة للنموذج (في البداية `initialState` التي مررتها، ثم قيمة إرجاعها السابقة) كأول معامل، يليها المعاملات التي يستلمها إجراء النموذج عادةً.
+* `initialState`: القيمة التي تريد أن تبدأ بها الحالة. يمكن أن تكون أي قيمة قابلة للتسلسل. يُتجاهل هذا المعامل بعد أول استدعاء للإجراء.
+* **اختياري** `permalink`: سلسلة تحتوي على عنوان URL الفريد للصفحة التي يعدّلها هذا النموذج. للاستخدام في صفحات ذات محتوى ديناميكي (مثل الخلاصات) مع التحسين التدريجي: إذا كانت `fn` [دالة خادم](/reference/rsc/server-functions) وأُرسِل النموذج قبل تحميل حزمة JavaScript، فسينتقل المتصفح إلى عنوان `permalink` المحدد بدلًا من عنوان الصفحة الحالية. تأكد من عرض مكوّن النموذج نفسه في صفحة الوجهة (بما في ذلك نفس الإجراء `fn` و`permalink`) حتى يعرف React كيف يمرّر الحالة. بعد ترطيب النموذج، لا يكون لهذا المعامل أثر.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
 #### Returns {/*returns*/}
 
-`useActionState` returns an array with the following values:
+`useActionState` يُرجع مصفوفة بالقيم التالية:
 
-1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
-2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
-3. The `isPending` flag that tells you whether there is a pending Transition.
+1. الحالة الحالية. أثناء أول رسم، تطابق `initialState` التي مررتها. بعد استدعاء الإجراء، تطابق القيمة التي أرجعها الإجراء.
+2. إجراء جديد يمكنك تمريره كـ prop `action` لمكوّن `form` أو كـ prop `formAction` لأي زر `button` داخل النموذج. يمكن أيضًا استدعاء الإجراء يدويًا داخل [`startTransition`](/reference/react/startTransition).
+3. العلم `isPending` الذي يخبرك ما إذا كان هناك انتقال (Transition) قيد التنفيذ.
 
 #### Caveats {/*caveats*/}
 
-* When used with a framework that supports React Server Components, `useActionState` lets you make forms interactive before JavaScript has executed on the client. When used without Server Components, it is equivalent to component local state.
-* The function passed to `useActionState` receives an extra argument, the previous or initial state, as its first argument. This makes its signature different than if it were used directly as a form action without using `useActionState`.
+* عند الاستخدام مع إطار يدعم React Server Components، يتيح `useActionState` جعل النماذج تفاعلية قبل تنفيذ JavaScript على العميل. بدون Server Components، يعادل الحالة المحلية للمكوّن.
+* الدالة المُمرَّرة إلى `useActionState` تستلم معاملًا إضافيًا، وهو الحالة السابقة أو الأولية للنموذج، كأول معامل. هذا يجعل توقيعها مختلفًا عن استخدامها مباشرة كإجراء نموذج دون `useActionState`.
 
 ---
 
@@ -82,7 +82,7 @@ If used with a Server Function, `useActionState` allows the server's response fr
 
 ### Using information returned by a form action {/*using-information-returned-by-a-form-action*/}
 
-Call `useActionState` at the top level of your component to access the return value of an action from the last time a form was submitted.
+استدعِ `useActionState` في أعلى مكوّنك للوصول إلى القيمة المُرجعة من إجراء آخر مرة أُرسِل فيها نموذج.
 
 ```js [[1, 5, "state"], [2, 5, "formAction"], [3, 5, "action"], [4, 5, "null"], [2, 8, "formAction"]]
 import { useActionState } from 'react';
@@ -99,15 +99,15 @@ function MyComponent() {
 }
 ```
 
-`useActionState` returns an array with the following items:
+`useActionState` يُرجع مصفوفة بالعناصر التالية:
 
-1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
-2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
-3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
+1. <CodeStep step={1}>الحالة الحالية</CodeStep> للنموذج، وتُضبط في البداية إلى <CodeStep step={4}>الحالة الأولية</CodeStep> التي زوّدت بها، وبعد إرسال النموذج تُضبط إلى القيمة المُرجعة من <CodeStep step={3}>الإجراء</CodeStep> الذي زوّدت به.
+2. <CodeStep step={2}>إجراء جديد</CodeStep> تمرّره إلى `<form>` كـ prop `action` أو تستدعيه يدويًا داخل `startTransition`.
+3. <CodeStep step={1}>حالة انتظار</CodeStep> يمكنك استخدامها أثناء معالجة الإجراء.
 
-When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
+عند إرسال النموذج، تُستدعى دالة <CodeStep step={3}>الإجراء</CodeStep> التي زوّدت بها. تصبح قيمة إرجاعها <CodeStep step={1}>الحالة الحالية</CodeStep> الجديدة للنموذج.
 
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useActionState` had not been used.
+يستلم <CodeStep step={3}>الإجراء</CodeStep> الذي زوّدت به أيضًا معاملًا أولًا جديدًا، وهو <CodeStep step={1}>الحالة الحالية</CodeStep> للنموذج. عند أول إرسال، تكون هذه هي <CodeStep step={4}>الحالة الأولية</CodeStep> التي زوّدت بها، وفي الإرسالات اللاحقة تكون قيمة الإرجاع من آخر استدعاء للإجراء. بقية المعاملات كما لو لم تُستخدم `useActionState`.
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
@@ -120,7 +120,7 @@ function action(currentState, formData) {
 
 #### Display form errors {/*display-form-errors*/}
 
-To display messages such as an error message or toast that's returned by a Server Function, wrap the action in a call to `useActionState`.
+لعرض رسائل مثل رسالة خطأ أو toast تُرجعها دالة خادم، لفّ الإجراء باستدعاء `useActionState`.
 
 <Sandpack>
 
@@ -184,7 +184,7 @@ form button {
 
 #### Display structured information after submitting a form {/*display-structured-information-after-submitting-a-form*/}
 
-The return value from a Server Function can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
+يمكن أن تكون القيمة المُرجعة من دالة الخادم أي قيمة قابلة للتسلسل. على سبيل المثال، قد يكون كائنًا يتضمن قيمة منطقية تشير إلى نجاح الإجراء، أو رسالة خطأ، أو معلومات محدَّثة.
 
 <Sandpack>
 
@@ -263,7 +263,7 @@ form button {
 
 ### My action can no longer read the submitted form data {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-When you wrap an action with `useActionState`, it gets an extra argument *as its first argument*. The submitted form data is therefore its *second* argument instead of its first as it would usually be. The new first argument that gets added is the current state of the form.
+عند لفّ إجراء بـ `useActionState`، يُضاف معامل إضافي *كأول معامل*. بيانات النموذج المُرسَل تكون إذن معاملها *الثاني* بدل الأول كما هو المعتاد. المعامل الأول الجديد هو الحالة الحالية للنموذج.
 
 ```js
 function action(currentState, formData) {

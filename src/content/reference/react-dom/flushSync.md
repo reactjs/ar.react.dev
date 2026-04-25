@@ -1,16 +1,16 @@
 ---
-title: flushSync
+title: "التنفيذ المتزامن (flushSync)"
 ---
 
 <Pitfall>
 
-Using `flushSync` is uncommon and can hurt the performance of your app.
+استخدام `flushSync` نادر وقد يضر بأداء تطبيقك.
 
 </Pitfall>
 
 <Intro>
 
-`flushSync` lets you force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+تمكنك `flushSync` من إجبار React على دفع أي تحديثات داخل الدالة الممرَّرة بشكل متزامن. يضمن ذلك تحديث DOM فورًا.
 
 ```js
 flushSync(callback)
@@ -22,11 +22,11 @@ flushSync(callback)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `flushSync(callback)` {/*flushsync*/}
 
-Call `flushSync` to force React to flush any pending work and update the DOM synchronously.
+استدعِ `flushSync` لإجبار React على دفع أي عمل معلّق وتحديث DOM بشكل متزامن.
 
 ```js
 import { flushSync } from 'react-dom';
@@ -36,50 +36,50 @@ flushSync(() => {
 });
 ```
 
-Most of the time, `flushSync` can be avoided. Use `flushSync` as last resort.
+في أغلب الأحيان يمكن تجنّب `flushSync`. استخدمه كملاذ أخير.
 
-[See more examples below.](#usage)
+[المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
 
-* `callback`: A function. React will immediately call this callback and flush any updates it contains synchronously. It may also flush any pending updates, or Effects, or updates inside of Effects. If an update suspends as a result of this `flushSync` call, the fallbacks may be re-shown.
+* `callback`: دالة. يستدعيها React فورًا ويدفع أي تحديثات بداخلها بشكل متزامن. قد يدفع أيضًا تحديثات معلّقة أو Effects أو تحديثات داخل Effects. إن علّق تحديث نتيجة استدعاء `flushSync` هذا، قد تُعاد إظهار حالات الـ fallback.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`flushSync` returns `undefined`.
+تُرجِع `flushSync` القيمة `undefined`.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* `flushSync` can significantly hurt performance. Use sparingly.
-* `flushSync` may force pending Suspense boundaries to show their `fallback` state.
-* `flushSync` may run pending Effects and synchronously apply any updates they contain before returning.
-* `flushSync` may flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
+* قد يضر `flushSync` بالأداء بشكل كبير. استخدمه باعتدال.
+* قد يجبر `flushSync` حدود Suspense المعلّقة على إظهار حالة `fallback`.
+* قد يشغّل `flushSync` Effects معلّقة ويطبّق أي تحديثات فيها متزامنًا قبل العودة.
+* قد يدفع `flushSync` تحديثات خارج الدالة عند الحاجة لدفع ما بداخلها. مثلاً، إن وُجدت تحديثات معلّقة من نقرة، قد يدفع React تلك قبل تحديثات داخل الدالة.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Flushing updates for third-party integrations {/*flushing-updates-for-third-party-integrations*/}
+### دفع التحديثات لتكاملات الطرف الثالث {/*flushing-updates-for-third-party-integrations*/}
 
-When integrating with third-party code such as browser APIs or UI libraries, it may be necessary to force React to flush updates. Use `flushSync` to force React to flush any <CodeStep step={1}>state updates</CodeStep> inside the callback synchronously:
+عند التكامل مع شيفرة خارجية مثل واجهات المتصفح أو مكتبات واجهة، قد تحتاج لإجبار React على دفع التحديثات. استخدم `flushSync` لدفع أي <CodeStep step={1}>تحديثات حالة</CodeStep> داخل الدالة بشكل متزامن:
 
 ```js [[1, 2, "setSomething(123)"]]
 flushSync(() => {
   setSomething(123);
 });
-// By this line, the DOM is updated.
+// عند هذا السطر، DOM محدّث.
 ```
 
-This ensures that, by the time the next line of code runs, React has already updated the DOM.
+يضمن ذلك أن React حدّث DOM قبل تنفيذ السطر التالي.
 
-**Using `flushSync` is uncommon, and using it often can significantly hurt the performance of your app.** If your app only uses React APIs, and does not integrate with third-party libraries, `flushSync` should be unnecessary.
+**استخدام `flushSync` نادر، وكثرته تضر بالأداء بشكل كبير.** إن كان تطبيقك يعتمد فقط على واجهات React ولا يتكامل مع مكتبات خارجية، فغالبًا لا حاجة لـ `flushSync`.
 
-However, it can be helpful for integrating with third-party code like browser APIs.
+ومع ذلك قد يفيد في التكامل مع شيفرة مثل واجهات المتصفح.
 
-Some browser APIs expect results inside of callbacks to be written to the DOM synchronously, by the end of the callback, so the browser can do something with the rendered DOM. In most cases, React handles this for you automatically. But in some cases it may be necessary to force a synchronous update.
+تتوقع بعض واجهات المتصفح أن تُكتب نتائج داخل دوال الاستدعاء إلى DOM متزامنًا بحلول نهاية الدالة ليتمكن المتصفح من استخدام DOM المُصَيَّر. في أغلب الحالات يتولى React ذلك تلقائيًا. لكن أحيانًا يلزم إجبار تحديث متزامن.
 
-For example, the browser `onbeforeprint` API allows you to change the page immediately before the print dialog opens. This is useful for applying custom print styles that allow the document to display better for printing. In the example below, you use `flushSync` inside of the `onbeforeprint` callback to immediately "flush" the React state to the DOM. Then, by the time the print dialog opens, `isPrinting` displays "yes":
+مثلاً، واجهة `onbeforeprint` تسمح بتغيير الصفحة مباشرة قبل فتح حوار الطباعة، مفيدة لتطبيق أنماط طباعة مخصّصة. في المثال أدناه، تستخدم `flushSync` داخل `onbeforeprint` لـ«دفع» حالة React إلى DOM فورًا. بحلول فتح حوار الطباعة، يعرض `isPrinting` «نعم»:
 
 <Sandpack>
 
@@ -111,9 +111,9 @@ export default function PrintApp() {
 
   return (
     <>
-      <h1>isPrinting: {isPrinting ? 'yes' : 'no'}</h1>
+      <h1>isPrinting: {isPrinting ? 'نعم' : 'لا'}</h1>
       <button onClick={() => window.print()}>
-        Print
+        طباعة
       </button>
     </>
   );
@@ -122,24 +122,24 @@ export default function PrintApp() {
 
 </Sandpack>
 
-Without `flushSync`, the print dialog will display `isPrinting` as "no". This is because React batches the updates asynchronously and the print dialog is displayed before the state is updated.
+بدون `flushSync`، يعرض حوار الطباعة `isPrinting` كـ«لا» لأن React يجمع التحديثات بشكل غير متزامن ويُفتح الحوار قبل تحديث الحالة.
 
 <Pitfall>
 
-`flushSync` can significantly hurt performance, and may unexpectedly force pending Suspense boundaries to show their fallback state.
+قد يضر `flushSync` بالأداء بشكل كبير، وقد يجبر حدود Suspense المعلّقة غير متوقعًا على إظهار حالة fallback.
 
-Most of the time, `flushSync` can be avoided, so use `flushSync` as a last resort.
+في أغلب الأحيان يمكن تجنّب `flushSync`، فاستخدمه كملاذ أخير.
 
 </Pitfall>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## حل المشكلات {/*troubleshooting*/}
 
-### I'm getting an error: "flushSync was called from inside a lifecycle method" {/*im-getting-an-error-flushsync-was-called-from-inside-a-lifecycle-method*/}
+### أتلقى خطأ: "flushSync was called from inside a lifecycle method" {/*im-getting-an-error-flushsync-was-called-from-inside-a-lifecycle-method*/}
 
 
-React cannot `flushSync` in the middle of a render. If you do, it will noop and warn:
+لا يستطيع React تنفيذ `flushSync` وسط التصيير. إن فعلت، يتجاهل التنفيذ ويُحذّر:
 
 <ConsoleBlock level="error">
 
@@ -147,13 +147,13 @@ Warning: flushSync was called from inside a lifecycle method. React cannot flush
 
 </ConsoleBlock>
 
-This includes calling `flushSync` inside:
+يشمل ذلك استدعاء `flushSync` داخل:
 
-- rendering a component.
-- `useLayoutEffect` or `useEffect` hooks.
-- Class component lifecycle methods.
+- تصيير مكوّن.
+- خطافي `useLayoutEffect` أو `useEffect`.
+- دوال دورة حياة مكوّنات الصنف.
 
-For example, calling `flushSync` in an Effect will noop and warn:
+مثلاً، استدعاء `flushSync` داخل Effect يتجاهل ويُحذّر:
 
 ```js
 import { useEffect } from 'react';
@@ -161,7 +161,7 @@ import { flushSync } from 'react-dom';
 
 function MyComponent() {
   useEffect(() => {
-    // 🚩 Wrong: calling flushSync inside an effect
+    // 🚩 خطأ: استدعاء flushSync داخل effect
     flushSync(() => {
       setSomething(newValue);
     });
@@ -171,11 +171,11 @@ function MyComponent() {
 }
 ```
 
-To fix this, you usually want to move the `flushSync` call to an event:
+للإصلاح، غالبًا تنقل استدعاء `flushSync` إلى حدث:
 
 ```js
 function handleClick() {
-  // ✅ Correct: flushSync in event handlers is safe
+  // ✅ صحيح: flushSync في معالجات الأحداث آمن
   flushSync(() => {
     setSomething(newValue);
   });
@@ -183,11 +183,11 @@ function handleClick() {
 ```
 
 
-If it's difficult to move to an event, you can defer `flushSync` in a microtask:
+إن كان نقله إلى حدث صعبًا، يمكنك تأجيل `flushSync` في microtask:
 
 ```js {3,7}
 useEffect(() => {
-  // ✅ Correct: defer flushSync to a microtask
+  // ✅ صحيح: تأجيل flushSync إلى microtask
   queueMicrotask(() => {
     flushSync(() => {
       setSomething(newValue);
@@ -196,10 +196,10 @@ useEffect(() => {
 }, []);
 ```
 
-This will allow the current render to finish and schedule another syncronous render to flush the updates.
+يسمح ذلك بإنهاء التصيير الحالي وجدولة تصيير متزامن آخر لدفع التحديثات.
 
 <Pitfall>
 
-`flushSync` can significantly hurt performance, but this particular pattern is even worse for performance. Exhaust all other options before calling `flushSync` in a microtask as an escape hatch.
+قد يضر `flushSync` بالأداء، وهذا النمط أسوأ للأداء. استنفد كل الخيارات قبل استدعاء `flushSync` في microtask كمخرج طوارئ.
 
 </Pitfall>

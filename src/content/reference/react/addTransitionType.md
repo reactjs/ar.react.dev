@@ -1,19 +1,19 @@
 ---
-title: addTransitionType
+title: "دالة addTransitionType"
 version: canary
 ---
 
 <Canary>
 
-**The `addTransitionType` API is currently only available in React’s Canary and Experimental channels.** 
+**واجهة `addTransitionType` متاحة حاليًا فقط في قناتي React Canary و Experimental.**
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[تعرّف على قنوات إصدارات React هنا.](/community/versioning-policy#all-release-channels)
 
 </Canary>
 
 <Intro>
 
-`addTransitionType` lets you specify the cause of a transition.
+`addTransitionType` تسمح لك بتحديد سبب الانتقال (transition).
 
 
 ```js
@@ -29,30 +29,30 @@ startTransition(() => {
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `addTransitionType` {/*addtransitiontype*/}
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-- `type`: The type of transition to add. This can be any string.
+- `type`: نوع الانتقال المراد إضافته. يمكن أن يكون أي سلسلة.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`startTransition` does not return anything.
+`startTransition` لا تُرجع أي قيمة.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- If multiple transitions are combined, all Transition Types are collected. You can also add more than one type to a Transition.
-- Transition Types are reset after each commit. This means a `<Suspense>` fallback will associate the types after a `startTransition`, but revealing the content does not.
+- إذا دُمجت عدة انتقالات، تُجمع كل أنواع الانتقال. يمكنك أيضًا إضافة أكثر من نوع لانتقال واحد.
+- تُعاد تهيئة أنواع الانتقال بعد كل commit. يعني ذلك أن `<Suspense>` fallback سيربط الأنواع بعد `startTransition`، لكن كشف المحتوى لا يربطها.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Adding the cause of a transition {/*adding-the-cause-of-a-transition*/}
+### إضافة سبب الانتقال {/*adding-the-cause-of-a-transition*/}
 
-Call `addTransitionType` inside of `startTransition` to indicate the cause of a transition:
+استدعِ `addTransitionType` داخل `startTransition` للإشارة إلى سبب الانتقال:
 
 ``` [[1, 6, "addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
 import { startTransition, addTransitionType } from 'react';
@@ -70,22 +70,22 @@ function Submit({action) {
 
 ```
 
-When you call <CodeStep step={1}>addTransitionType</CodeStep> inside the scope of <CodeStep step={2}>startTransition</CodeStep>, React will associate <CodeStep step={3}>submit-click</CodeStep> as one of the causes for the Transition.
+عند استدعاء <CodeStep step={1}>addTransitionType</CodeStep> ضمن نطاق <CodeStep step={2}>startTransition</CodeStep>، تربط React <CodeStep step={3}>submit-click</CodeStep> كأحد أسباب الانتقال.
 
-Currently, Transition Types can be used to customize different animations based on what caused the Transition. You have three different ways to choose from for how to use them:
+حاليًا، يمكن استخدام أنواع الانتقال لتخصيص رسوم مختلفة حسب ما سبب الانتقال. لديك ثلاث طرق:
 
-- [Customize animations using browser view transition types](#customize-animations-using-browser-view-transition-types)
-- [Customize animations using `View Transition` Class](#customize-animations-using-view-transition-class)
-- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events) 
+- [تخصيص الرسوم باستخدام أنواع انتقال العرض في المتصفح](#customize-animations-using-browser-view-transition-types)
+- [تخصيص الرسوم باستخدام صنف `View Transition`](#customize-animations-using-view-transition-class)
+- [تخصيص الرسوم باستخدام أحداث `ViewTransition`](#customize-animations-using-viewtransition-events)
 
-In the future, we plan to support more use cases for using the cause of a transition.
+مستقبلًا، نخطط لدعم حالات استخدام أخرى لسبب الانتقال.
 
 ---
-### Customize animations using browser view transition types {/*customize-animations-using-browser-view-transition-types*/}
+### تخصيص الرسوم باستخدام أنواع انتقال العرض في المتصفح {/*customize-animations-using-browser-view-transition-types*/}
 
-When a [`ViewTransition`](/reference/react/ViewTransition) activates from a transition, React adds all the Transition Types as browser [view transition types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples) to the element.
+عندما يُفعَّل [`ViewTransition`](/reference/react/ViewTransition) من انتقال، تضيف React كل أنواع الانتقال كـ [أنواع انتقال العرض (view transition types)](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples) في المتصفح إلى العنصر.
 
-This allows you to customize different animations based on CSS scopes:
+يتيح لك تخصيص رسوم مختلفة حسب نطاقات CSS:
 
 ```js [11]
 function Component() {
@@ -112,9 +112,9 @@ startTransition(() => {
 
 ---
 
-### Customize animations using `View Transition` Class {/*customize-animations-using-view-transition-class*/}
+### تخصيص الرسوم باستخدام صنف `View Transition` {/*customize-animations-using-view-transition-class*/}
 
-You can customize animations for an activated `ViewTransition` based on type by passing an object to the View Transition Class:
+يمكنك تخصيص الرسوم لـ `ViewTransition` المُفعَّل حسب النوع بتمرير كائن إلى صنف انتقال العرض:
 
 ```js
 function Component() {
@@ -134,9 +134,9 @@ startTransition(() => {
 });
 ```
 
-If multiple types match, then they're joined together. If no types match then the special "default" entry is used instead. If any type has the value "none" then that wins and the ViewTransition is disabled (not assigned a name).
+إذا تطابقت عدة أنواع، تُدمج معًا. إذا لم يطابق أي نوع، يُستخدم الإدخال الخاص «default». إذا كانت قيمة أي نوع «none» فتلك تفوز ويُعطّل ViewTransition (لا يُعيَّن له اسم).
 
-These can be combined with enter/exit/update/layout/share props to match based on kind of trigger and Transition Type.
+يمكن دمجها مع خصائص enter/exit/update/layout/share لمطابقة نوع المُحفّز ونوع الانتقال.
 
 ```js
 <ViewTransition enter={{
@@ -151,9 +151,9 @@ exit={{
 
 ---
 
-### Customize animations using `ViewTransition` events {/*customize-animations-using-viewtransition-events*/}
+### تخصيص الرسوم باستخدام أحداث `ViewTransition` {/*customize-animations-using-viewtransition-events*/}
 
-You can imperatively customize animations for an activated `ViewTransition` based on type using View Transition events:
+يمكنك تخصيص الرسوم أمرًا لـ `ViewTransition` المُفعَّل حسب النوع باستخدام أحداث انتقال العرض:
 
 ```
 <ViewTransition onUpdate={(inst, types) => {
@@ -167,4 +167,4 @@ You can imperatively customize animations for an activated `ViewTransition` base
 }}>
 ```
 
-This allows you to pick different imperative Animations based on the cause.
+يتيح لك اختيار رسوم أمرية مختلفة حسب السبب.

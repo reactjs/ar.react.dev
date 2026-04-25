@@ -4,94 +4,94 @@ title: exhaustive-deps
 
 <Intro>
 
-Validates that dependency arrays for React hooks contain all necessary dependencies.
+يتحقق من أن مصفوفات تبعيات hooks في React تتضمّن كل التبعيات اللازمة.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React hooks like `useEffect`, `useMemo`, and `useCallback` accept dependency arrays. When a value referenced inside these hooks isn't included in the dependency array, React won't re-run the effect or recalculate the value when that dependency changes. This causes stale closures where the hook uses outdated values.
+تقبل hooks في React مثل `useEffect` و`useMemo` و`useCallback` مصفوفات تبعيات. عندما لا تُدرَج قيمة يُشار إليها داخل هذه الـ hooks في مصفوفة التبعيات، لن يُعاد تشغيل التأثير أو إعادة حساب القيمة عند تغيّر تلك التبعية. ينتج عن ذلك إغلاقات قديمة حيث يستخدم الـ hook قيماً عفا عليها الزمن.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-This error often happens when you try to "trick" React about dependencies to control when an effect runs. Effects should synchronize your component with external systems. The dependency array tells React which values the effect uses, so React knows when to re-synchronize.
+يحدث هذا الخطأ غالباً عند محاولة «خداع» React بشأن التبعيات للتحكّم في وقت تشغيل تأثير. يجب أن تزامن التأثيرات مكوّنك مع أنظمة خارجية. تخبر مصفوفة التبعيات React أي القيم يستخدمها التأثير، فيعرف React متى يُعاد المزامنة.
 
-If you find yourself fighting with the linter, you likely need to restructure your code. See [Removing Effect Dependencies](/learn/removing-effect-dependencies) to learn how.
+إذا وجدت نفسك تتصارع مع الـ linter، غالباً تحتاج إعادة هيكلة الشيفرة. راجع [إزالة تبعيات التأثير](/learn/removing-effect-dependencies) لتعلّم الطريقة.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Missing dependency
+// ❌ تبعية ناقصة
 useEffect(() => {
   console.log(count);
-}, []); // Missing 'count'
+}, []); // 'count' ناقص
 
-// ❌ Missing prop
+// ❌ prop ناقص
 useEffect(() => {
   fetchUser(userId);
-}, []); // Missing 'userId'
+}, []); // 'userId' ناقص
 
-// ❌ Incomplete dependencies
+// ❌ تبعيات غير كاملة
 useMemo(() => {
   return items.sort(sortOrder);
-}, [items]); // Missing 'sortOrder'
+}, [items]); // 'sortOrder' ناقص
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ All dependencies included
+// ✅ كل التبعيات مضمّنة
 useEffect(() => {
   console.log(count);
 }, [count]);
 
-// ✅ All dependencies included
+// ✅ كل التبعيات مضمّنة
 useEffect(() => {
   fetchUser(userId);
 }, [userId]);
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Adding a function dependency causes infinite loops {/*function-dependency-loops*/}
+### إضافة تبعية دالة تسبب حلقات لانهائية {/*function-dependency-loops*/}
 
-You have an effect, but you're creating a new function on every render:
+لديك تأثير لكنك تنشئ دالة جديدة كل تصيير:
 
 ```js
-// ❌ Causes infinite loop
+// ❌ يسبب حلقة لانهائية
 const logItems = () => {
   console.log(items);
 };
 
 useEffect(() => {
   logItems();
-}, [logItems]); // Infinite loop!
+}, [logItems]); // حلقة لانهائية!
 ```
 
-In most cases, you don't need the effect. Call the function where the action happens instead:
+في أغلب الحالات لا تحتاج التأثير. استدعِ الدالة حيث يحدث الإجراء:
 
 ```js
-// ✅ Call it from the event handler
+// ✅ استدعِها من معالج الحدث
 const logItems = () => {
   console.log(items);
 };
 
 return <button onClick={logItems}>Log</button>;
 
-// ✅ Or derive during render if there's no side effect
+// ✅ أو اشتق أثناء التصيير إن لم يكن هناك تأثير جانبي
 items.forEach(item => {
   console.log(item);
 });
 ```
 
-If you genuinely need the effect (for example, to subscribe to something external), make the dependency stable:
+إذا احتجت فعلاً للتأثير (مثلاً للاشتراك في شيء خارجي)، ثبّت التبعية:
 
 ```js
-// ✅ useCallback keeps the function reference stable
+// ✅ useCallback يحافظ على مرجع الدالة
 const logItems = useCallback(() => {
   console.log(items);
 }, [items]);
@@ -100,32 +100,32 @@ useEffect(() => {
   logItems();
 }, [logItems]);
 
-// ✅ Or move the logic straight into the effect
+// ✅ أو انقل المنطق مباشرة داخل التأثير
 useEffect(() => {
   console.log(items);
 }, [items]);
 ```
 
-### Running an effect only once {/*effect-on-mount*/}
+### تشغيل تأثير مرة واحدة فقط {/*effect-on-mount*/}
 
-You want to run an effect once on mount, but the linter complains about missing dependencies:
+تريد تشغيل تأثير مرة عند التركيب، لكن الـ linter يشتكي من تبعيات ناقصة:
 
 ```js
-// ❌ Missing dependency
+// ❌ تبعية ناقصة
 useEffect(() => {
   sendAnalytics(userId);
-}, []); // Missing 'userId'
+}, []); // 'userId' ناقص
 ```
 
-Either include the dependency (recommended) or use a ref if you truly need to run once:
+إمّا تضمّن التبعية (موصى به) أو تستخدم ref إن احتجت حقاً التشغيل مرة واحدة:
 
 ```js
-// ✅ Include dependency
+// ✅ تضمين التبعية
 useEffect(() => {
   sendAnalytics(userId);
 }, [userId]);
 
-// ✅ Or use a ref guard inside an effect
+// ✅ أو حارس ref داخل تأثير
 const sent = useRef(false);
 
 useEffect(() => {
@@ -138,9 +138,9 @@ useEffect(() => {
 }, [userId]);
 ```
 
-## Options {/*options*/}
+## الخيارات {/*options*/}
 
-You can configure custom effect hooks using shared ESLint settings (available in `eslint-plugin-react-hooks` 6.1.1 and later):
+يمكنك تهيئة hooks تأثير مخصّصة عبر إعدادات ESLint المشتركة (متوفرة في `eslint-plugin-react-hooks` 6.1.1 وما بعد):
 
 ```js
 {
@@ -152,9 +152,9 @@ You can configure custom effect hooks using shared ESLint settings (available in
 }
 ```
 
-- `additionalEffectHooks`: Regex pattern matching custom hooks that should be checked for exhaustive dependencies. This configuration is shared across all `react-hooks` rules.
+- `additionalEffectHooks`: نمط regex يطابق الـ hooks المخصّصة التي يجب فحص تبعياتها بشكل شامل. هذا الإعداد مشترك عبر كل قواعد `react-hooks`.
 
-For backward compatibility, this rule also accepts a rule-level option:
+للتوافق مع الإصدارات السابقة، تقبل هذه القاعدة أيضاً خياراً على مستوى القاعدة:
 
 ```js
 {
@@ -166,4 +166,4 @@ For backward compatibility, this rule also accepts a rule-level option:
 }
 ```
 
-- `additionalHooks`: Regex for hooks that should be checked for exhaustive dependencies. **Note:** If this rule-level option is specified, it takes precedence over the shared `settings` configuration.
+- `additionalHooks`: regex للـ hooks التي يجب فحص تبعياتها بشكل شامل. **ملاحظة:** إذا حُدّد خيار القاعدة هذا، له الأسبقية على إعدادات `settings` المشتركة.

@@ -1,52 +1,52 @@
 ---
-title: Updating Arrays in State
+title: تحديث المصفوفات في الحالة
 ---
 
 <Intro>
 
-Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+المصفوفات قابلة للتعديل في JavaScript، لكن يجب التعامل معها كأنها غير قابلة للتعديل عند تخزينها في الحالة. وكما في الكائنات، عندما تريد تحديث مصفوفة مخزّنة في الحالة، أنشئ مصفوفة جديدًا (أو انسخًا من مصفوفة موجودة)، ثم اضبط الحالة لتستخدم المصفوفة الجديدة.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
+- كيفية إضافة عناصر أو إزالتها أو تغييرها في مصفوفة داخل حالة React
+- كيفية تحديث كائن داخل مصفوفة
+- كيف تقلل تكرار نسخ المصفوفات باستخدام Immer
 
 </YouWillLearn>
 
-## Updating arrays without mutation {/*updating-arrays-without-mutation*/}
+## تحديث المصفوفات دون تعديل موضعي {/*updating-arrays-without-mutation*/}
 
-In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only.** This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
+في JavaScript، المصفوفات نوع آخر من الكائنات. [كما في الكائنات](/learn/updating-objects-in-state)، **عامل المصفوفات في حالة React وكأنها للقراءة فقط.** أي لا تعيد تعيين عناصر داخل المصفوفة مثل `arr[0] = 'bird'`، ولا تستخدم دوالًا تعدّل المصفوفة موضعيًا مثل `push()` و`pop()`.
 
-Instead, every time you want to update an array, you'll want to pass a *new* array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like `filter()` and `map()`. Then you can set your state to the resulting new array.
+بدلًا من ذلك، في كل مرة تريد فيها تحديث مصفوفة، مرّر *مصفوفة جديدة* إلى دالة ضبط الحالة. لذلك يمكنك إنشاء مصفوفة جديدة من المصفوفة الأصلية في حالتك باستدعاء دوالها غير المعدّلة موضعيًا مثل `filter()` و`map()`، ثم تضبط الحالة على المصفوفة الناتجة.
 
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
+فيما يلي جدول مرجعي لعمليات شائعة على المصفوفات. عند التعامل مع مصفوفات داخل حالة React، تجنّب الدوال في العمود الأيسر، ويفضّل استخدام الدوال في العمود الأيمن:
 
-|           | avoid (mutates the array)           | prefer (returns a new array)                                        |
+|           | تجنّب (يعدّل المصفوفة)           | يُفضّل (يعيد مصفوفة جديدة)                                        |
 | --------- | ----------------------------------- | ------------------------------------------------------------------- |
-| adding    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array)) |
-| removing  | `pop`, `shift`, `splice`            | `filter`, `slice` ([example](#removing-from-an-array))              |
-| replacing | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))                     |
-| sorting   | `reverse`, `sort`                   | copy the array first ([example](#making-other-changes-to-an-array)) |
+| إضافة    | `push`, `unshift`                   | `concat`, صيغة الانتشار `[...arr]` ([مثال](#adding-to-an-array)) |
+| إزالة  | `pop`, `shift`, `splice`            | `filter`, `slice` ([مثال](#removing-from-an-array))              |
+| استبدال | `splice`, `arr[i] = ...` assignment | `map` ([مثال](#replacing-items-in-an-array))                     |
+| ترتيب   | `reverse`, `sort`                   | انسخ المصفوفة أولًا ([مثال](#making-other-changes-to-an-array)) |
 
-Alternatively, you can [use Immer](#write-concise-update-logic-with-immer) which lets you use methods from both columns.
+بديلًا، يمكنك [استخدام Immer](#write-concise-update-logic-with-immer) الذي يسمح لك باستخدام دوال من العمودين.
 
 <Pitfall>
 
-Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
+لسوء الحظ، [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) و[`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) اسمهما متشابه لكنهما مختلفان جدًا:
 
-* `slice` lets you copy an array or a part of it.
-* `splice` **mutates** the array (to insert or delete items).
+* `slice` تنسخ مصفوفة أو جزءًا منها.
+* `splice` **تعدّل** المصفوفة موضعيًا (لإدراج أو حذف عناصر).
 
-In React, you will be using `slice` (no `p`!) a lot more often because you don't want to mutate objects or arrays in state. [Updating Objects](/learn/updating-objects-in-state) explains what mutation is and why it's not recommended for state.
+في React، ستستخدم `slice` (بدون حرف p!) كثيرًا لأنك لا تريد تعديل الكائنات أو المصفوفات في الحالة. صفحة [تحديث الكائنات](/learn/updating-objects-in-state) تشرح ما التعديل الموضعي ولماذا لا يُنصح به للحالة.
 
 </Pitfall>
 
-### Adding to an array {/*adding-to-an-array*/}
+### الإضافة إلى مصفوفة {/*adding-to-an-array*/}
 
-`push()` will mutate an array, which you don't want:
+`push()` تعدّل المصفوفة موضعيًا، وهذا ما لا تريده:
 
 <Sandpack>
 
@@ -88,18 +88,18 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [array spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_array_literals) syntax:
+بدلًا من ذلك، أنشئ *مصفوفة جديدة* تحتوي العناصر الموجودة *و* عنصرًا جديدًا في النهاية. طرق عدة لفعل ذلك، لكن الأسهل استخدام صيغة [انتشار المصفوفة `...`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_array_literals):
 
 ```js
-setArtists( // Replace the state
-  [ // with a new array
-    ...artists, // that contains all the old items
-    { id: nextId++, name: name } // and one new item at the end
+setArtists( // استبدل الحالة
+  [ // بمصفوفة جديدة
+    ...artists, // تحتوي كل العناصر القديمة
+    { id: nextId++, name: name } // وعنصرًا جديدًا في النهاية
   ]
 );
 ```
 
-Now it works correctly:
+الآن يعمل بشكل صحيح:
 
 <Sandpack>
 
@@ -141,20 +141,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-The array spread syntax also lets you prepend an item by placing it *before* the original `...artists`:
+تسمح صيغة انتشار المصفوفة أيضًا بإدراج عنصر في المقدمة بوضعه *قبل* `...artists` الأصلية:
 
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // Put old items at the end
+  ...artists // ضع العناصر القديمة في النهاية
 ]);
 ```
 
-In this way, spread can do the job of both `push()` by adding to the end of an array and `unshift()` by adding to the beginning of an array. Try it in the sandbox above!
+بهذا، يؤدي الانتشار عمل `push()` بإضافة في نهاية المصفوفة وعمل `unshift()` بإضافة في بدايتها. جرّب ذلك في صندوق الرمل أعلاه!
 
-### Removing from an array {/*removing-from-an-array*/}
+### الإزالة من مصفوفة {/*removing-from-an-array*/}
 
-The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
+أسهل طريقة لإزالة عنصر من مصفوفة هي *تصفيته*. أي تنتج مصفوفة جديدة لا تحتوي ذلك العنصر. لفعل ذلك، استخدم الدالة `filter`، مثلاً:
 
 <Sandpack>
 
@@ -198,7 +198,7 @@ export default function List() {
 
 </Sandpack>
 
-Click the "Delete" button a few times, and look at its click handler.
+انقر زر «Delete» عدة مرات، وانظر إلى معالج النقر.
 
 ```js
 setArtists(
@@ -206,13 +206,13 @@ setArtists(
 );
 ```
 
-Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`". In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+هنا، `artists.filter(a => a.id !== artist.id)` تعني «أنشئ مصفوفة من `artists` الذين معرفاتهم تختلف عن `artist.id`». أي أن زر «Delete» لكل فنان يصفّي _ذلك_ الفنان من المصفوفة، ثم يطلب إعادة تصيير بالمصفوفة الناتجة. لاحظ أن `filter` لا تعدّل المصفوفة الأصلية.
 
-### Transforming an array {/*transforming-an-array*/}
+### تحويل مصفوفة {/*transforming-an-array*/}
 
-If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
+إن أردت تغيير بعض عناصر المصفوفة أو كلها، يمكنك استخدام `map()` لإنشاء مصفوفة **جديدة**. الدالة التي تمرّرها إلى `map` تقرر ما تفعله بكل عنصر بناءً على بياناته أو فهرسه (أو كليهما).
 
-In this example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 50 pixels. It does this by producing a new array of data using `map()`:
+في هذا المثال، تحتفظ مصفوفة بإحداثيات دائرتين ومربع. عند الضغط على الزر، تحرّك الدائرتين فقط لأسفل 50 بكسلًا، بإنتاج مصفوفة بيانات جديدة باستخدام `map()`:
 
 <Sandpack>
 
@@ -278,11 +278,11 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array {/*replacing-items-in-an-array*/}
+### استبدال عناصر في مصفوفة {/*replacing-items-in-an-array*/}
 
-It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
+شائع جدًا رغبة استبدال عنصر أو أكثر في مصفوفة. تعيينات مثل `arr[0] = 'bird'` تعدّل المصفوفة الأصلية، لذا تريد استخدام `map` لهذا أيضًا.
 
-To replace an item, create a new array with `map`. Inside your `map` call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:
+لاستبدال عنصر، أنشئ مصفوفة جديدة بـ `map`. داخل استدعاء `map`، تستقبل فهرس العنصر كوسيط ثانٍ. استخدمه لتحديد إن كنت تعيد العنصر الأصلي (الوسيط الأول) أو شيئًا آخر:
 
 <Sandpack>
 
@@ -332,11 +332,11 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### Inserting into an array {/*inserting-into-an-array*/}
+### الإدراج في مصفوفة {/*inserting-into-an-array*/}
 
-Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread syntax together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
+أحيانًا تريد إدراج عنصر في موضع معيّن ليس في البداية ولا في النهاية. لذلك يمكنك استخدام صيغة انتشار المصفوفة `...` مع الدالة `slice()`. تسمح `slice()` بقطع «شريحة» من المصفوفة. لإدراج عنصر، تنشئ مصفوفة تبثّ الشريحة _قبل_ نقطة الإدراج، ثم العنصر الجديد، ثم بقية المصفوفة الأصلية.
 
-In this example, the Insert button always inserts at the index `1`:
+في هذا المثال، زر الإدراج يدرج دائمًا عند الفهرس `1`:
 
 <Sandpack>
 
@@ -396,13 +396,13 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### Making other changes to an array {/*making-other-changes-to-an-array*/}
+### إجراء تغييرات أخرى على مصفوفة {/*making-other-changes-to-an-array*/}
 
-There are some things you can't do with the spread syntax and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
+هناك أمور لا يمكنك فعلها بصيغة الانتشار وحدها أو بدوال غير معدّلة مثل `map()` و`filter()`. مثلاً قد تريد عكس مصفوفة أو ترتيبها. دوال JavaScript `reverse()` و`sort()` تعدّل المصفوفة الأصلية، فلا يمكنك استخدامها مباشرة.
 
-**However, you can copy the array first, and then make changes to it.**
+**لكن يمكنك نسخ المصفوفة أولًا، ثم إجراء التغييرات عليها.**
 
-For example:
+مثال:
 
 <Sandpack>
 
@@ -441,25 +441,25 @@ export default function List() {
 
 </Sandpack>
 
-Here, you use the `[...list]` spread syntax to create a copy of the original array first. Now that you have a copy, you can use mutating methods like `nextList.reverse()` or `nextList.sort()`, or even assign individual items with `nextList[0] = "something"`.
+هنا تستخدم صيغة الانتشار `[...list]` لإنشاء نسخة من المصفوفة الأصلية أولًا. بمجرد حصولك على نسخة، يمكنك استخدام دوال تعديل موضعي مثل `nextList.reverse()` أو `nextList.sort()`، أو حتى تعيين عناصر بـ `nextList[0] = "something"`.
 
-However, **even if you copy an array, you can't mutate existing items _inside_ of it directly.** This is because copying is shallow--the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
+لكن **حتى إن نسخت المصفوفة، لا يمكنك تعديل العناصر الموجودة _داخلها_ مباشرة.** لأن النسخ سطحي—المصفوفة الجديدة تحتوي نفس العناصر التي في الأصلية. فإن عدّلت كائنًا داخل المصفوفة المنسوخة، تعدّل الحالة الموجودة. مثلاً، كود كهذا مشكلة.
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // Problem: mutates list[0]
+nextList[0].seen = true; // مشكلة: يعدّل list[0]
 setList(nextList);
 ```
 
-Although `nextList` and `list` are two different arrays, **`nextList[0]` and `list[0]` point to the same object.** So by changing `nextList[0].seen`, you are also changing `list[0].seen`. This is a state mutation, which you should avoid! You can solve this issue in a similar way to [updating nested JavaScript objects](/learn/updating-objects-in-state#updating-a-nested-object)--by copying individual items you want to change instead of mutating them. Here's how.
+رغم أن `nextList` و`list` مصفوفتان مختلفتان، **`nextList[0]` و`list[0]` يشيران إلى نفس الكائن.** فبتغيير `nextList[0].seen` تغيّر أيضًا `list[0].seen`. هذا تعديل موضعي للحالة يجب تجنّبه! يمكنك حل المشكلة كما في [تحديث كائنات JavaScript متداخلة](/learn/updating-objects-in-state#updating-a-nested-object)—بنسخ العناصر الفردية التي تريد تغييرها بدل تعديلها موضعيًا. إليك الطريقة.
 
-## Updating objects inside arrays {/*updating-objects-inside-arrays*/}
+## تحديث كائنات داخل مصفوفات {/*updating-objects-inside-arrays*/}
 
-Objects are not _really_ located "inside" arrays. They might appear to be "inside" in code, but each object in an array is a separate value, to which the array "points". This is why you need to be careful when changing nested fields like `list[0]`. Another person's artwork list may point to the same element of the array!
+الكائنات ليست _موجودة حقًا_ «داخل» المصفوفات. قد تبدو «داخلًا» في الكود، لكن كل كائن في المصفوفة قيمة منفصلة «يشير» إليها المصفوفة. لذلك كن حذرًا عند تغيير حقول متداخلة مثل `list[0]`. قد تشير قائمة أعمال فنية لشخص آخر إلى نفس عنصر المصفوفة!
 
-**When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level.** Let's see how this works.
+**عند تحديث حالة متداخلة، أنشئ نسخًا من موضع التحديث حتى المستوى الأعلى.** لنرَ كيف يعمل.
 
-In this example, two separate artwork lists have the same initial state. They are supposed to be isolated, but because of a mutation, their state is accidentally shared, and checking a box in one list affects the other list:
+في هذا المثال، قائمتان منفصلتان للأعمال الفنية لهما نفس الحالة الابتدائية. من المفترض أن تكونا معزولتين، لكن بسبب تعديل موضعي تتشاركان الحالة بالخطأ، فيؤثر تفعيل خانة في إحداهما على الأخرى:
 
 <Sandpack>
 
@@ -539,18 +539,18 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-The problem is in code like this:
+المشكلة في كود كهذا:
 
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // Problem: mutates an existing item
+artwork.seen = nextSeen; // مشكلة: يعدّل عنصرًا موجودًا
 setMyList(myNextList);
 ```
 
-Although the `myNextList` array itself is new, the *items themselves* are the same as in the original `myList` array. So changing `artwork.seen` changes the *original* artwork item. That artwork item is also in `yourList`, which causes the bug. Bugs like this can be difficult to think about, but thankfully they disappear if you avoid mutating state.
+رغم أن مصفوفة `myNextList` جديدة، *العناصر نفسها* مطابقة لعناصر `myList` الأصلية. فتغيير `artwork.seen` يغيّر عنصر العمل الفني *الأصلي*. وهذا العنصر موجود أيضًا في `yourList`، فيسبب الخلل. مثل هذه الأخطاء صعبة التصور، لكنها تختفي إن تجنبت التعديل الموضعي للحالة.
 
-**You can use `map` to substitute an old item with its updated version without mutation.**
+**يمكنك استخدام `map` لاستبدال عنصر قديم بنسخته المحدّثة دون تعديل موضعي.**
 
 ```js
 setMyList(myList.map(artwork => {
@@ -564,9 +564,9 @@ setMyList(myList.map(artwork => {
 }));
 ```
 
-Here, `...` is the object spread syntax used to [create a copy of an object.](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax)
+هنا، `...` هي صيغة انتشار الكائن المستخدمة لـ [إنشاء نسخة من كائن.](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax)
 
-With this approach, none of the existing state items are being mutated, and the bug is fixed:
+بهذا النهج، لا يُعدّل أي عنصر من عناصر الحالة الموجودة، ويُصلح الخلل:
 
 <Sandpack>
 
@@ -652,16 +652,16 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-In general, **you should only mutate objects that you have just created.** If you were inserting a *new* artwork, you could mutate it, but if you're dealing with something that's already in state, you need to make a copy.
+بشكل عام، **عدّل موضعيًا فقط الكائنات التي أنشأتها للتو.** إن أدرجت عملًا فنيًا *جديدًا*، يمكنك تعديله، لكن إن تعاملت مع شيء في الحالة بالفعل، تحتاج نسخًا.
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### اكتب منطق التحديث بإيجاز باستخدام Immer {/*write-concise-update-logic-with-immer*/}
 
-Updating nested arrays without mutation can get a little bit repetitive. [Just as with objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
+تحديث مصفوفات متداخلة دون تعديل موضعي قد يصبح مكررًا قليلًا. [كما في الكائنات](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
-- Generally, you shouldn't need to update state more than a couple of levels deep. If your state objects are very deep, you might want to [restructure them differently](/learn/choosing-the-state-structure#avoid-deeply-nested-state) so that they are flat.
-- If you don't want to change your state structure, you might prefer to use [Immer](https://github.com/immerjs/use-immer), which lets you write using the convenient but mutating syntax and takes care of producing the copies for you.
+- غالبًا لا تحتاج لتحديث الحالة أعمق من مستويين. إن كانت كائنات الحالة عميقة جدًا، قد ترغب في [إعادة هيكلتها](/learn/choosing-the-state-structure#avoid-deeply-nested-state) لتصبح مسطحة.
+- إن لم ترد تغيير بنية الحالة، قد تفضّل [Immer](https://github.com/immerjs/use-immer)، الذي يسمح بكتابة مريحة تبدو كتعديل موضعي بينما ينتج النسخ عنك.
 
-Here is the Art Bucket List example rewritten with Immer:
+إليك مثال Art Bucket List معاد كتابته بـ Immer:
 
 <Sandpack>
 
@@ -762,7 +762,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-Note how with Immer, **mutation like `artwork.seen = nextSeen` is now okay:**
+لاحظ أنه مع Immer، **تعديل موضعي مثل `artwork.seen = nextSeen` أصبح مقبولًا:**
 
 ```js
 updateMyTodos(draft => {
@@ -771,17 +771,17 @@ updateMyTodos(draft => {
 });
 ```
 
-This is because you're not mutating the _original_ state, but you're mutating a special `draft` object provided by Immer. Similarly, you can apply mutating methods like `push()` and `pop()` to the content of the `draft`.
+لأنك لا تعدّل الحالة *الأصلية*، بل كائن `draft` الخاص الذي يوفّره Immer. وبالمثل، يمكنك تطبيق دوال تعديل موضعي مثل `push()` و`pop()` على محتوى `draft`.
 
-Behind the scenes, Immer always constructs the next state from scratch according to the changes that you've done to the `draft`. This keeps your event handlers very concise without ever mutating state.
+في الخلفية، يبني Immer الحالة التالية من الصفر وفق التغييرات التي أجريتها على `draft`. هذا يبقي معالجات الأحداث موجزة دون تعديل الحالة موضعيًا أبدًا.
 
 <Recap>
 
-- You can put arrays into state, but you can't change them.
-- Instead of mutating an array, create a *new* version of it, and update the state to it.
-- You can use the `[...arr, newItem]` array spread syntax to create arrays with new items.
-- You can use `filter()` and `map()` to create new arrays with filtered or transformed items.
-- You can use Immer to keep your code concise.
+- يمكنك وضع مصفوفات في الحالة، لكن لا تغيّرها مباشرة.
+- بدل تعديل مصفوفة موضعيًا، أنشئ *نسخة جديدة* منها، وحدّث الحالة إليها.
+- يمكنك استخدام صيغة انتشار المصفوفة `[...arr, newItem]` لإنشاء مصفوفات بعناصر جديدة.
+- يمكنك استخدام `filter()` و`map()` لإنشاء مصفوفات جديدة بعناصر مفلترة أو محوّلة.
+- يمكنك استخدام Immer لإبقاء الكود موجزًا.
 
 </Recap>
 
@@ -789,9 +789,10 @@ Behind the scenes, Immer always constructs the next state from scratch according
 
 <Challenges>
 
-#### Update an item in the shopping cart {/*update-an-item-in-the-shopping-cart*/}
+#### حدّث عنصرًا في سلة التسوق {/*update-an-item-in-the-shopping-cart*/}
 
-Fill in the `handleIncreaseClick` logic so that pressing "+" increases the corresponding number:
+أكمل منطق `handleIncreaseClick` بحيث يزيد الضغط على «+» العدد المقابل:
+
 
 <Sandpack>
 
@@ -849,7 +850,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can use the `map` function to create a new array, and then use the `...` object spread syntax to create a copy of the changed object for the new array:
+يمكنك استخدام `map` لإنشاء مصفوفة جديدة، ثم صيغة انتشار الكائن `...` لإنشاء نسخة من الكائن المتغيّر داخل المصفوفة الجديدة:
 
 <Sandpack>
 
@@ -916,9 +917,9 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Remove an item from the shopping cart {/*remove-an-item-from-the-shopping-cart*/}
+#### أزل عنصرًا من سلة التسوق {/*remove-an-item-from-the-shopping-cart*/}
 
-This shopping cart has a working "+" button, but the "–" button doesn't do anything. You need to add an event handler to it so that pressing it decreases the `count` of the corresponding product. If you press "–" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.
+سلة التسوق هذه فيها زر «+» يعمل، لكن زر «–» لا يفعل شيئًا. أضف معالج حدث يقلّل `count` للمنتج المقابل عند الضغط. إن ضغطت «–» عندما يكون العدد 1، يُزال المنتج تلقائيًا من السلة. تأكد ألا يظهر 0 أبدًا.
 
 <Sandpack>
 
@@ -988,7 +989,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can first use `map` to produce a new array, and then `filter` to remove products with a `count` set to `0`:
+يمكنك أولًا استخدام `map` لإنتاج مصفوفة جديدة، ثم `filter` لإزالة المنتجات التي `count` لها يساوي `0`:
 
 <Sandpack>
 
@@ -1077,9 +1078,9 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Fix the mutations using non-mutative methods {/*fix-the-mutations-using-non-mutative-methods*/}
+#### أصلح التعديلات الموضعية بدوال غير معدّلة {/*fix-the-mutations-using-non-mutative-methods*/}
 
-In this example, all of the event handlers in `App.js` use mutation. As a result, editing and deleting todos doesn't work. Rewrite `handleAddTodo`, `handleChangeTodo`, and `handleDeleteTodo` to use the non-mutative methods:
+في هذا المثال، كل معالجات الأحداث في `App.js` تستخدم تعديلًا موضعيًا. لذلك لا يعمل تعديل وحذف المهام. أعد كتابة `handleAddTodo` و`handleChangeTodo` و`handleDeleteTodo` لاستخدام دوال غير معدّلة موضعيًا:
 
 <Sandpack>
 
@@ -1242,7 +1243,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-In `handleAddTodo`, you can use the array spread syntax. In `handleChangeTodo`, you can create a new array with `map`. In `handleDeleteTodo`, you can create a new array with `filter`. Now the list works correctly:
+في `handleAddTodo`، استخدم صيغة انتشار المصفوفة. في `handleChangeTodo`، أنشئ مصفوفة جديدة بـ `map`. في `handleDeleteTodo`، أنشئ مصفوفة جديدة بـ `filter`. الآن تعمل القائمة بشكل صحيح:
 
 <Sandpack>
 
@@ -1410,9 +1411,9 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-#### Fix the mutations using Immer {/*fix-the-mutations-using-immer*/}
+#### أصلح التعديلات الموضعية باستخدام Immer {/*fix-the-mutations-using-immer*/}
 
-This is the same example as in the previous challenge. This time, fix the mutations by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `todos` state variable to use it.
+هذا نفس المثال من التحدي السابق. هذه المرة أصلح التعديل الموضعي باستخدام Immer. لراحتك، `useImmer` مستورد مسبقًا، فغيّر متغير حالة `todos` ليستخدمه.
 
 <Sandpack>
 
@@ -1594,7 +1595,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-With Immer, you can write code in the mutative fashion, as long as you're only mutating parts of the `draft` that Immer gives you. Here, all mutations are performed on the `draft` so the code works:
+مع Immer، يمكنك كتابة الكود بأسلوب يبدو تعديلًا موضعيًا، ما دمت تعدّل فقط أجزاء `draft` التي يعطيك إياها Immer. هنا، تُجرى كل التعديلات على `draft`، فيعمل الكود بشكل سليم:
 
 <Sandpack>
 
@@ -1780,9 +1781,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also mix and match the mutative and non-mutative approaches with Immer.
+يمكنك أيضًا الجمع بين الأسلوب التعديلي الظاهري وغير المعدّل مع Immer.
 
-For example, in this version `handleAddTodo` is implemented by mutating the Immer `draft`, while `handleChangeTodo` and `handleDeleteTodo` use the non-mutative `map` and `filter` methods:
+مثلاً، في هذا الإصدار `handleAddTodo` يطبّق بتعديل `draft` من Immer، بينما `handleChangeTodo` و`handleDeleteTodo` يستخدمان `map` و`filter` غير المعدّلة:
 
 <Sandpack>
 
@@ -1965,7 +1966,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-With Immer, you can pick the style that feels the most natural for each separate case.
+مع Immer، يمكنك اختيار الأسلوب الأنسب لكل حالة على حدة.
 
 </Solution>
 
