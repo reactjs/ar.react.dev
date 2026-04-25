@@ -4,70 +4,70 @@ title: preserve-manual-memoization
 
 <Intro>
 
-Validates that existing manual memoization is preserved by the compiler. React Compiler will only compile components and hooks if its inference [matches or exceeds the existing manual memoization](/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo).
+يتحقق من أن المُصرّف يحافظ على التذكّر اليدوي الموجود. يجمّع React Compiler المكوّنات والـ hooks فقط إذا كان استنتاجه [يطابق أو يتجاوز التذكّر اليدوي الحالي](/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React Compiler preserves your existing `useMemo`, `useCallback`, and `React.memo` calls. If you've manually memoized something, the compiler assumes you had a good reason and won't remove it. However, incomplete dependencies prevent the compiler from understanding your code's data flow and applying further optimizations.
+يحافظ React Compiler على استدعاءاتك الحالية لـ `useMemo` و`useCallback` و`React.memo`. إذا ذكّرت شيئاً يدوياً، يفترض المُصرّف أن لديك سبباً ولن يزيله. لكن التبعيات الناقصة تمنع المُصرّف من فهم تدفّق البيانات في شيفرتك وتطبيق تحسينات إضافية.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Missing dependencies in useMemo
+// ❌ تبعيات ناقصة في useMemo
 function Component({ data, filter }) {
   const filtered = useMemo(
     () => data.filter(filter),
-    [data] // Missing 'filter' dependency
+    [data] // تبعية 'filter' ناقصة
   );
 
   return <List items={filtered} />;
 }
 
-// ❌ Missing dependencies in useCallback
+// ❌ تبعيات ناقصة في useCallback
 function Component({ onUpdate, value }) {
   const handleClick = useCallback(() => {
     onUpdate(value);
-  }, [onUpdate]); // Missing 'value'
+  }, [onUpdate]); // 'value' ناقص
 
   return <button onClick={handleClick}>Update</button>;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Complete dependencies
+// ✅ تبعيات كاملة
 function Component({ data, filter }) {
   const filtered = useMemo(
     () => data.filter(filter),
-    [data, filter] // All dependencies included
+    [data, filter] // كل التبعيات مضمّنة
   );
 
   return <List items={filtered} />;
 }
 
-// ✅ Or let the compiler handle it
+// ✅ أو دع المُصرّف يتولى الأمر
 function Component({ data, filter }) {
-  // No manual memoization needed
+  // لا حاجة لتذكّر يدوي
   const filtered = data.filter(filter);
   return <List items={filtered} />;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Should I remove my manual memoization? {/*remove-manual-memoization*/}
+### هل أزيل التذكّر اليدوي؟ {/*remove-manual-memoization*/}
 
-You might wonder if React Compiler makes manual memoization unnecessary:
+قد تتساءل إن كان React Compiler يجعل التذكّر اليدوي غير لازم:
 
 ```js
-// Do I still need this?
+// هل ما زلت أحتاج هذا؟
 function Component({items, sortBy}) {
   const sorted = useMemo(() => {
     return [...items].sort((a, b) => {
@@ -79,10 +79,10 @@ function Component({items, sortBy}) {
 }
 ```
 
-You can safely remove it if using React Compiler:
+يمكنك إزالته بأمان عند استخدام React Compiler:
 
 ```js
-// ✅ Better: Let the compiler optimize
+// ✅ أفضل: دع المُصرّف يحسّن
 function Component({items, sortBy}) {
   const sorted = [...items].sort((a, b) => {
     return a[sortBy] - b[sortBy];

@@ -4,13 +4,13 @@ title: compilationMode
 
 <Intro>
 
-The `compilationMode` option controls how the React Compiler selects which functions to compile.
+يتحكم خيار `compilationMode` في كيفية اختيار React Compiler للدوال التي يُجمّعها.
 
 </Intro>
 
 ```js
 {
-  compilationMode: 'infer' // or 'annotation', 'syntax', 'all'
+  compilationMode: 'infer' // أو 'annotation' أو 'syntax' أو 'all'
 }
 ```
 
@@ -18,48 +18,48 @@ The `compilationMode` option controls how the React Compiler selects which funct
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `compilationMode` {/*compilationmode*/}
 
-Controls the strategy for determining which functions the React Compiler will optimize.
+يحدد الاستراتيجية لمعرفة أي الدوال سيُحسِّنها React Compiler.
 
-#### Type {/*type*/}
+#### النوع {/*type*/}
 
 ```
 'infer' | 'syntax' | 'annotation' | 'all'
 ```
 
-#### Default value {/*default-value*/}
+#### القيمة الافتراضية {/*default-value*/}
 
 `'infer'`
 
-#### Options {/*options*/}
+#### الخيارات {/*options*/}
 
-- **`'infer'`** (default): The compiler uses intelligent heuristics to identify React components and hooks:
-  - Functions explicitly annotated with `"use memo"` directive
-  - Functions that are named like components (PascalCase) or hooks (`use` prefix) AND create JSX and/or call other hooks
+- **`'infer'`** (الافتراضي): يستخدم المُصرّف استدلالاً لتحديد مكوّنات React وhooks:
+  - دوال موسومة صراحة بتوجيه `"use memo"`
+  - دوال تُسمّى كمكوّنات (PascalCase) أو hooks (بادئة `use`) **وتُنشئ JSX** و/أو **تستدعي hooks أخرى**
 
-- **`'annotation'`**: Only compile functions explicitly marked with the `"use memo"` directive. Ideal for incremental adoption.
+- **`'annotation'`**: يُجمّع فقط الدوال الموسومة بتوجيه `"use memo"`. مناسب للتبنّي التدريجي.
 
-- **`'syntax'`**: Only compile components and hooks that use Flow's [component](https://flow.org/en/docs/react/component-syntax/) and [hook](https://flow.org/en/docs/react/hook-syntax/) syntax.
+- **`'syntax'`**: يُجمّع فقط المكوّنات والـ hooks التي تستخدم صياغة Flow لـ [component](https://flow.org/en/docs/react/component-syntax/) و[hook](https://flow.org/en/docs/react/hook-syntax/).
 
-- **`'all'`**: Compile all top-level functions. Not recommended as it may compile non-React functions.
+- **`'all'`**: يُجمّع كل الدوال على المستوى الأعلى. غير موصى به لأنه قد يُجمّع دوالاً ليست من React.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-- The `'infer'` mode requires functions to follow React naming conventions to be detected
-- Using `'all'` mode may negatively impact performance by compiling utility functions
-- The `'syntax'` mode requires Flow and won't work with TypeScript
-- Regardless of mode, functions with `"use no memo"` directive are always skipped
+- وضع `'infer'` يتطلّب تسمية تتبع اصطلاحات React ليُكتشف المكوّن
+- وضع `'all'` قد يضرّ بالأداء بتجميع دوال مساعدة
+- وضع `'syntax'` يتطلّب Flow ولا يعمل مع TypeScript
+- بغض النظر عن الوضع، الدوال التي تحتوي `"use no memo"` تُستبعد دائماً
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Default inference mode {/*default-inference-mode*/}
+### وضع الاستنتاج الافتراضي {/*default-inference-mode*/}
 
-The default `'infer'` mode works well for most codebases that follow React conventions:
+وضع `'infer'` الافتراضي يناسب أغلب القواعد التي تتبع اصطلاحات React:
 
 ```js
 {
@@ -67,35 +67,35 @@ The default `'infer'` mode works well for most codebases that follow React conve
 }
 ```
 
-With this mode, these functions will be compiled:
+في هذا الوضع تُجمَّع أمثلة مثل:
 
 ```js
-// ✅ Compiled: Named like a component + returns JSX
+// ✅ يُجمَّع: اسم كمكوّن + يعيد JSX
 function Button(props) {
   return <button>{props.label}</button>;
 }
 
-// ✅ Compiled: Named like a hook + calls hooks
+// ✅ يُجمَّع: اسم كـ hook + يستدعي hooks
 function useCounter() {
   const [count, setCount] = useState(0);
   return [count, setCount];
 }
 
-// ✅ Compiled: Explicit directive
+// ✅ يُجمَّع: توجيه صريح
 function expensiveCalculation(data) {
   "use memo";
   return data.reduce(/* ... */);
 }
 
-// ❌ Not compiled: Not a component/hook pattern
+// ❌ لا يُجمَّع: ليس نمط مكوّن/hook
 function calculateTotal(items) {
   return items.reduce((a, b) => a + b, 0);
 }
 ```
 
-### Incremental adoption with annotation mode {/*incremental-adoption*/}
+### تبنّي تدريجي بوضع annotation {/*incremental-adoption*/}
 
-For gradual migration, use `'annotation'` mode to only compile marked functions:
+للهجرة التدريجية استخدم `'annotation'` لتجميع الدوال الموسومة فقط:
 
 ```js
 {
@@ -103,10 +103,10 @@ For gradual migration, use `'annotation'` mode to only compile marked functions:
 }
 ```
 
-Then explicitly mark functions to compile:
+ثم علّم الدوال يدوياً:
 
 ```js
-// Only this function will be compiled
+// هذه الدالة فقط تُجمَّع
 function ExpensiveList(props) {
   "use memo";
   return (
@@ -118,15 +118,15 @@ function ExpensiveList(props) {
   );
 }
 
-// This won't be compiled without the directive
+// بدون التوجيه لا تُجمَّع
 function NormalComponent(props) {
   return <div>{props.content}</div>;
 }
 ```
 
-### Using Flow syntax mode {/*flow-syntax-mode*/}
+### وضع صياغة Flow {/*flow-syntax-mode*/}
 
-If your codebase uses Flow instead of TypeScript:
+إذا كانت قاعدتك تستخدم Flow بدل TypeScript:
 
 ```js
 {
@@ -134,35 +134,35 @@ If your codebase uses Flow instead of TypeScript:
 }
 ```
 
-Then use Flow's component syntax:
+ثم استخدم صياغة مكوّنات Flow:
 
 ```js
-// Compiled: Flow component syntax
+// يُجمَّع: صياغة مكوّن Flow
 component Button(label: string) {
   return <button>{label}</button>;
 }
 
-// Compiled: Flow hook syntax
+// يُجمَّع: صياغة hook في Flow
 hook useCounter(initial: number) {
   const [count, setCount] = useState(initial);
   return [count, setCount];
 }
 
-// Not compiled: Regular function syntax
+// لا يُجمَّع: دالة عادية
 function helper(data) {
   return process(data);
 }
 ```
 
-### Opting out specific functions {/*opting-out*/}
+### استبعاد دوال محدّدة {/*opting-out*/}
 
-Regardless of compilation mode, use `"use no memo"` to skip compilation:
+بغض النظر عن وضع التجميع، استخدم `"use no memo"` لتخطّي التجميع:
 
 ```js
 function ComponentWithSideEffects() {
-  "use no memo"; // Prevent compilation
+  "use no memo"; // منع التجميع
 
-  // This component has side effects that shouldn't be memoized
+  // هذا المكوّن له تأثيرات جانبية لا يجب تذكّرها
   logToAnalytics('component_rendered');
 
   return <div>Content</div>;
@@ -171,29 +171,29 @@ function ComponentWithSideEffects() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Component not being compiled in infer mode {/*component-not-compiled-infer*/}
+### المكوّن لا يُجمَّع في وضع infer {/*component-not-compiled-infer*/}
 
-In `'infer'` mode, ensure your component follows React conventions:
+في `'infer'` تأكد من اصطلاحات React:
 
 ```js
-// ❌ Won't be compiled: lowercase name
+// ❌ لن يُجمَّع: اسم بحروف صغيرة
 function button(props) {
   return <button>{props.label}</button>;
 }
 
-// ✅ Will be compiled: PascalCase name
+// ✅ سيُجمَّع: PascalCase
 function Button(props) {
   return <button>{props.label}</button>;
 }
 
-// ❌ Won't be compiled: doesn't create JSX or call hooks
+// ❌ لن يُجمَّع: لا ينشئ JSX ولا يستدعي hooks
 function useData() {
   return window.localStorage.getItem('data');
 }
 
-// ✅ Will be compiled: calls a hook
+// ✅ سيُجمَّع: يستدعي hook
 function useData() {
   const [data] = useState(() => window.localStorage.getItem('data'));
   return data;

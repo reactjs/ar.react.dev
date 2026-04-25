@@ -4,67 +4,67 @@ title: purity
 
 <Intro>
 
-Validates that [components/hooks are pure](/reference/rules/components-and-hooks-must-be-pure) by checking that they do not call known-impure functions.
+يتحقق من أن [المكوّنات/الـ hooks نقية](/reference/rules/components-and-hooks-must-be-pure) بعدم استدعاء دوال معروفة بعدم النقاء.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React components must be pure functions - given the same props, they should always return the same JSX. When components use functions like `Math.random()` or `Date.now()` during render, they produce different output each time, breaking React's assumptions and causing bugs like hydration mismatches, incorrect memoization, and unpredictable behavior.
+يجب أن تكون مكوّنات React دوال نقية — لنفس الـ props يجب أن تعيد دائماً نفس JSX. عند استخدام دوال مثل `Math.random()` أو `Date.now()` أثناء التصيير تُنتج مخرجات مختلفة في كل مرة، ما يكسر افتراضات React ويسبب أعطالاً مثل عدم تطابق الترطيب، وتذكّراً خاطئاً، وسلوكاً غير متوقع.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-In general, any API that returns a different value for the same inputs violates this rule. Usual examples include:
+بشكل عام، أي واجهة تُرجِع قيمة مختلفة لنفس المدخلات تخالف القاعدة. أمثلة شائعة:
 
 - `Math.random()`
 - `Date.now()` / `new Date()`
 - `crypto.randomUUID()`
 - `performance.now()`
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Math.random() in render
+// ❌ Math.random() في التصيير
 function Component() {
-  const id = Math.random(); // Different every render
+  const id = Math.random(); // مختلف كل تصيير
   return <div key={id}>Content</div>;
 }
 
-// ❌ Date.now() for values
+// ❌ Date.now() للقيم
 function Component() {
-  const timestamp = Date.now(); // Changes every render
+  const timestamp = Date.now(); // يتغيّر كل تصيير
   return <div>Created at: {timestamp}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Stable IDs from initial state
+// ✅ معرّفات ثابتة من الحالة الابتدائية
 function Component() {
   const [id] = useState(() => crypto.randomUUID());
   return <div key={id}>Content</div>;
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I need to show the current time {/*current-time*/}
+### أحتاج عرض الوقت الحالي {/*current-time*/}
 
-Calling `Date.now()` during render makes your component impure:
+استدعاء `Date.now()` أثناء التصيير يجعل المكوّن غير نقي:
 
 ```js {expectedErrors: {'react-compiler': [3]}}
-// ❌ Wrong: Time changes every render
+// ❌ خطأ: الوقت يتغيّر كل تصيير
 function Clock() {
   return <div>Current time: {Date.now()}</div>;
 }
 ```
 
-Instead, [move the impure function outside of render](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent):
+بدلاً من ذلك، [انقل الدالة غير النقية خارج التصيير](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent):
 
 ```js
 function Clock() {

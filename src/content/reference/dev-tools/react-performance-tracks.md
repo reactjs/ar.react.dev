@@ -1,159 +1,159 @@
 ---
-title: React Performance tracks
+title: مسارات أداء React
 ---
 
 <Intro>
 
-React Performance tracks are specialized custom entries that appear on the Performance panel's timeline in your browser developer tools.
+مسارات أداء React (React Performance tracks) هي إدخالات مخصّصة تظهر على خط زمن لوحة الأداء (Performance) في أدوات مطور المتصفّح.
 
 </Intro>
 
-These tracks are designed to provide developers with comprehensive insights into their React application's performance by visualizing React-specific events and metrics alongside other critical data sources such as network requests, JavaScript execution, and event loop activity, all synchronized on a unified timeline within the Performance panel for a complete understanding of application behavior.
+صممت هذه المسارات لتعطي مطوري تطبيقات React رؤية أوضح لأداء التطبيق، عبر تصوير أحداث ومقاييس خاصة بـ React بجانب مصادر أخرى مثل طلبات الشبكة وتنفيذ JavaScript ونشاط حلقة الأحداث، كلها على خط زمن موحّد في لوحة الأداء لفهم سلوك التطبيق كاملاً.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/overview.png" alt="React Performance Tracks" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/overview.dark.png" alt="React Performance Tracks" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/overview.png" alt="مسارات أداء React" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/overview.dark.png" alt="مسارات أداء React" />
 </div>
 
 <InlineToc />
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-React Performance tracks are only available in development and profiling builds of React:
+مسارات أداء React متاحة فقط في بنيات التطوير والملف الشخصي (profiling) لـ React:
 
-- **Development**: enabled by default.
-- **Profiling**: Only Scheduler tracks are enabled by default. The Components track only lists Components that are in subtrees wrapped with [`<Profiler>`](/reference/react/Profiler). If you have [React Developer Tools extension](/learn/react-developer-tools) enabled, all Components are included in the Components track even if they're not wrapped in `<Profiler>`. Server tracks are not available in profiling builds.
+- **التطوير**: مفعّلة افتراضياً.
+- **الملف الشخصي**: مسارات الجدولة (Scheduler) مفعّلة افتراضياً. مسار المكوّنات يعرض فقط المكوّنات في الأشجار الفرعية الملفوفة بـ [`<Profiler>`](/reference/react/Profiler). إن كان [امتداد React Developer Tools](/learn/react-developer-tools) مفعّلاً، تُدرَج كل المكوّنات في مسار المكوّنات حتى دون `<Profiler>`. مسارات الخادم غير متاحة في بنيات الملف الشخصي.
 
-If enabled, tracks should appear automatically in the traces you record with the Performance panel of browsers that provide [extensibility APIs](https://developer.chrome.com/docs/devtools/performance/extension).
+إن وُفعّلت، تظهر المسارات تلقائياً في التتبّعات التي تسجّلها لوحة الأداء في المتصفّحات التي توفّر [واجهات التوسعة](https://developer.chrome.com/docs/devtools/performance/extension).
 
 <Pitfall>
 
-The profiling instrumentation that powers React Performance tracks adds some additional overhead, so it is disabled in production builds by default.
-Server Components and Server Requests tracks are only available in development builds.
+أداة القياس التي تدعم مسارات أداء React تضيف بعض العبء الإضافي، لذا تكون معطّلة افتراضياً في بنيات الإنتاج.
+مسارات مكوّنات الخادم وطلبات الخادم متاحة فقط في بنيات التطوير.
 
 </Pitfall>
 
-### Using profiling builds {/*using-profiling-builds*/}
+### استخدام بنيات الملف الشخصي {/*using-profiling-builds*/}
 
-In addition to production and development builds, React also includes a special profiling build.
-To use profiling builds, you have to use `react-dom/profiling` instead of `react-dom/client`.
-We recommend that you alias `react-dom/client` to `react-dom/profiling` at build time via bundler aliases instead of manually updating each `react-dom/client` import.
-Your framework might have built-in support for enabling React's profiling build.
+بالإضافة إلى بنيات الإنتاج والتطوير، يوفّر React بنية ملف شخصي خاصة.
+لاستخدامها استبدل `react-dom/client` بـ `react-dom/profiling`.
+نوصي بربط الاسم `react-dom/client` إلى `react-dom/profiling` وقت البناء عبر aliases المُجمّع بدل تعديل كل استيراد يدوياً.
+قد يدعم إطار العمل لديك تفعيل بنية الملف الشخصي مدمجاً.
 
 ---
 
-## Tracks {/*tracks*/}
+## المسارات {/*tracks*/}
 
-### Scheduler {/*scheduler*/}
+### الجدولة (Scheduler) {/*scheduler*/}
 
-The Scheduler is an internal React concept used for managing tasks with different priorities. This track consists of 4 subtracks, each representing work of a specific priority:
+الجدولة مفهوم داخلي في React لإدارة مهام بأولويات مختلفة. يتكوّن هذا المسار من أربعة مسارات فرعية لكل أولوية عمل:
 
-- **Blocking** - The synchronous updates, which could've been initiated by user interactions.
-- **Transition** - Non-blocking work that happens in the background, usually initiated via [`startTransition`](/reference/react/startTransition).
-- **Suspense** - Work related to Suspense boundaries, such as displaying fallbacks or revealing content.
-- **Idle** - The lowest priority work that is done when there are no other tasks with higher priority.
+- **Blocking** — التحديثات المتزامنة، وغالباً ما تبدأ من تفاعلات المستخدم.
+- **Transition** — عمل غير حاجز في الخلفية، غالباً عبر [`startTransition`](/reference/react/startTransition).
+- **Suspense** — عمل مرتبط بحدود Suspense، مثل عرض الحالات البديلة أو كشف المحتوى.
+- **Idle** — أدنى أولوية، يُنفَّذ عندما لا توجد مهام أعلى أولوية.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler.png" alt="Scheduler track" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler.dark.png" alt="Scheduler track" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler.png" alt="مسار الجدولة" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler.dark.png" alt="مسار الجدولة" />
 </div>
 
-#### Renders {/*renders*/}
+#### التصييرات {/*renders*/}
 
-Every render pass consists of multiple phases that you can see on a timeline:
+كل مرور تصيير يمرّ بعدة مراحل تظهر على الخط الزمني:
 
-- **Update** - this is what caused a new render pass.
-- **Render** - React renders the updated subtree by calling render functions of components. You can see the rendered components subtree on [Components track](#components), which follows the same color scheme.
-- **Commit** - After rendering components, React will submit the changes to the DOM and run layout effects, like [`useLayoutEffect`](/reference/react/useLayoutEffect).
-- **Remaining Effects** - React runs passive effects of a rendered subtree. This usually happens after the paint, and this is when React runs hooks like [`useEffect`](/reference/react/useEffect). One known exception is user interactions, like clicks, or other discrete events. In this scenario, this phase could run before the paint.
+- **Update** — ما الذي سبب مرور تصييراً جديداً.
+- **Render** — يصيّر React الشجرة المحدّثة باستدعاء دوال تصيير المكوّنات. يمكنك رؤية الشجرة المصوّرة على [مسار المكوّنات](#components) بنفس نظام الألوان.
+- **Commit** — بعد التصيير، يطبّق React التغييرات على DOM ويشغّل تأثيرات التخطيط مثل [`useLayoutEffect`](/reference/react/useLayoutEffect).
+- **Remaining Effects** — يشغّل React التأثيرات السلبية للشجرة المصوّرة. غالباً بعد الرسم، وهنا يشغّل hooks مثل [`useEffect`](/reference/react/useEffect). استثناء معروف: تفاعلات المستخدم (نقرات وغيرها) قد تجعل هذه المرحلة تعمل قبل الرسم.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-update.png" alt="Scheduler track: updates" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-update.dark.png" alt="Scheduler track: updates" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-update.png" alt="مسار الجدولة: التحديثات" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-update.dark.png" alt="مسار الجدولة: التحديثات" />
 </div>
 
-[Learn more about renders and commits](/learn/render-and-commit).
+[تعرّف أكثر على التصيير والتأكيد](/learn/render-and-commit).
 
-#### Cascading updates {/*cascading-updates*/}
+#### التحديثات المتسلسلة {/*cascading-updates*/}
 
-Cascading updates is one of the patterns for performance regressions. If an update was scheduled during a render pass, React could discard completed work and start a new pass.
+التحديثات المتسلسلة من أنماط تراجع الأداء الشائعة. إذا جُدول تحديث أثناء مرور تصيير، قد يلغي React العمل المنجز ويبدأ مروراً جديداً.
 
-In development builds, React can show you which Component scheduled a new update. This includes both general updates and cascading ones. You can see the enhanced stack trace by clicking on the "Cascading update" entry, which should also display the name of the method that scheduled an update.
+في بنيات التطوير يمكن لـ React إظهار أي مكوّن جدول تحديثاً جديداً، بما في ذلك التحديثات المتسلسلة. انقر على إدخال «Cascading update» لرؤية مكدس موسّع يعرض أيضاً اسم الدالة التي جدولت التحديث.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-cascading-update.png" alt="Scheduler track: cascading updates" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-cascading-update.dark.png" alt="Scheduler track: cascading updates" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/scheduler-cascading-update.png" alt="مسار الجدولة: تحديثات متسلسلة" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/scheduler-cascading-update.dark.png" alt="مسار الجدولة: تحديثات متسلسلة" />
 </div>
 
-[Learn more about Effects](/learn/you-might-not-need-an-effect).
+[تعرّف أكثر على التأثيرات](/learn/you-might-not-need-an-effect).
 
-### Components {/*components*/}
+### المكوّنات {/*components*/}
 
-The Components track visualizes the durations of React components. They are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.
+يصوّر مسار المكوّنات مدّة تصيير مكوّنات React كمخطط لهب، حيث يمثّل كل إدخال مدّة تصيير ذلك المكوّن وجميع الأبناء في الشجرة الفرعية.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/components-render.png" alt="Components track: render durations" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-render.dark.png" alt="Components track: render durations" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/components-render.png" alt="مسار المكوّنات: مدد التصيير" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-render.dark.png" alt="مسار المكوّنات: مدد التصيير" />
 </div>
 
-Similar to render durations, effect durations are also represented as a flamegraph, but with a different color scheme that aligns with the corresponding phase on the Scheduler track.
+كما في مدد التصيير، تُعرَض مدد التأثيرات كمخطط لهب بلون يتماشى مع المرحلة المقابلة على مسار الجدولة.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/components-effects.png" alt="Components track: effects durations" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-effects.dark.png" alt="Components track: effects durations" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/components-effects.png" alt="مسار المكوّنات: مدد التأثيرات" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/components-effects.dark.png" alt="مسار المكوّنات: مدد التأثيرات" />
 </div>
 
 <Note>
 
-Unlike renders, not all effects are shown on the Components track by default.
+على عكس التصيير، لا تُعرَض كل التأثيرات على مسار المكوّنات افتراضياً.
 
-To maintain performance and prevent UI clutter, React will only display those effects, which had a duration of 0.05ms or longer, or triggered an update.
+للحفاظ على الأداء وتجنّب ازدحام الواجهة، يعرض React فقط التأثيرات التي استغرقت 0.05ms أو أكثر، أو التي أطلقت تحديثاً.
 
 </Note>
 
-Additional events may be displayed during the render and effects phases:
+قد تظهر أحداث إضافية أثناء مراحل التصيير والتأثيرات:
 
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Mount</span> - A corresponding subtree of component renders or effects was mounted.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Unmount</span> - A corresponding subtree of component renders or effects was unmounted.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> - Similar to Mount, but limited to cases when [`<Activity>`](/reference/react/Activity) is used.
-- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Disconnect</span> - Similar to Unmount, but limited to cases when [`<Activity>`](/reference/react/Activity) is used.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Mount</span> — وُضِعت شجرة فرعية من التصييرات أو التأثيرات.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Unmount</span> — أُزيلت شجرة فرعية مماثلة.
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Reconnect</span> — شبيه بـ Mount، عند استخدام [`<Activity>`](/reference/react/Activity).
+- <span style={{padding: '0.125rem 0.25rem', backgroundColor: '#facc15', color: '#1f1f1fff'}}>Disconnect</span> — شبيه بـ Unmount، عند استخدام [`<Activity>`](/reference/react/Activity).
 
-#### Changed props {/*changed-props*/}
+#### الخصائص المتغيّرة {/*changed-props*/}
 
-In development builds, when you click on a component render entry, you can inspect potential changes in props. You can use this information to identify unnecessary renders.
-
-<div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/changed-props.png" alt="Components track: changed props" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/changed-props.dark.png" alt="Components track: changed props" />
-</div>
-
-### Server {/*server*/}
+في بنيات التطوير، عند النقر على إدخال تصيير لمكوّن يمكنك فحص تغيّرات محتملة في الـ props لتحديد تصييرات غير لازمة.
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-  <img className="w-full light-image" src="/images/docs/performance-tracks/server-overview.png" alt="React Server Performance Tracks" />
-  <img className="w-full dark-image" src="/images/docs/performance-tracks/server-overview.dark.png" alt="React Server Performance Tracks" />
+  <img className="w-full light-image" src="/images/docs/performance-tracks/changed-props.png" alt="مسار المكوّنات: props متغيّرة" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/changed-props.dark.png" alt="مسار المكوّنات: props متغيّرة" />
 </div>
 
-#### Server Requests {/*server-requests*/}
+### الخادم {/*server*/}
 
-The Server Requests track visualized all Promises that eventually end up in a React Server Component. This includes any `async` operations like calling `fetch` or async Node.js file operations. 
+<div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
+  <img className="w-full light-image" src="/images/docs/performance-tracks/server-overview.png" alt="مسارات أداء خادم React" />
+  <img className="w-full dark-image" src="/images/docs/performance-tracks/server-overview.dark.png" alt="مسارات أداء خادم React" />
+</div>
 
-React will try to combine Promises that are started from inside third-party code into a single span representing the the duration of the entire operation blocking 1st party code.
-For example, a third party library method called `getUser` that calls `fetch` internally multiple times will be represented as a single span called `getUser`, instead of showing multiple `fetch` spans.
+#### طلبات الخادم {/*server-requests*/}
 
-Clicking on spans will show you a stack trace of where the Promise was created as well as a view of the value that the Promise resolved to, if available.
+يصوّر مسار طلبات الخادم كل الوعود (Promises) التي تنتهي في مكوّن خادم React، بما فيها عمليات `async` مثل استدعاء `fetch` أو عمليات ملفات Node.js غير المتزامنة.
 
-Rejected Promises are displayed as red with their rejected value.
+يحاول React دمج الوعود التي تبدأ من كود طرف ثالث في span واحد يمثّل مدة العملية التي تحجب كودك.
+مثلاً: دالة طرف ثالث `getUser` تستدعي `fetch` عدة مرات داخلياً تظهر كـ span واحد باسم `getUser` بدل عدة spans لـ `fetch`.
 
-#### Server Components {/*server-components*/}
+النقر على span يعرض مكدس إنشاء الوعد وعرضاً لقيمة الوعد إن وُجدت.
 
-The Server Components tracks visualize the durations of React Server Components Promises they awaited. Timings are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.
+تُعرَض الوعود المرفوضة باللون الأحمر مع قيمة الرفض.
 
-If you await a Promise, React will display duration of that Promise. To see all I/O operations, use the Server Requests track.
+#### مكوّنات الخادم {/*server-components*/}
 
-Different colors are used to indicate the duration of the component render. The darker the color, the longer the duration.
+تمثّل مسارات مكوّنات الخادم مدة وعود مكوّنات خادم React التي انتظرتها. تُعرَض الأزمنة كمخطط لهب؛ كل إدخال يمثّل مدّة تصيير ذلك المكوّن والأبناء في الشجرة الفرعية.
 
-The Server Components track group will always contain a "Primary" track. If React is able to render Server Components concurrently, it will display addititional "Parallel" tracks.
-If more than 8 Server Components are rendered concurrently, React will associate them with the last "Parallel" track instead of adding more tracks.
+إذا انتظرت وعداً (Promise)، يعرض React مدة ذلك الوعد. لرؤية كل عمليات I/O استخدم مسار طلبات الخادم.
+
+تُستخدم ألوان مختلفة لطول مدة التصيير؛ كلما كان اللون أغمق، كانت المدة أطول.
+
+يحتوي مجموعة مسار مكوّنات الخادم دائماً على مسار «Primary». إذا استطاع React تصيير مكوّنات الخادم بالتوازي، تظهر مسارات «Parallel» إضافية.
+إذا وُجد أكثر من 8 مكوّنات خادم بالتوازي، يربطها React بآخر مسار «Parallel» بدل إضافة مسارات أكثر.

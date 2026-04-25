@@ -4,35 +4,35 @@ title: error-boundaries
 
 <Intro>
 
-Validates usage of Error Boundaries instead of try/catch for errors in child components.
+يتحقق من استخدام Error Boundaries بدلاً من try/catch لأخطاء المكوّنات الفرعية.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Try/catch blocks can't catch errors that happen during React's rendering process. Errors thrown in rendering methods or hooks bubble up through the component tree. Only [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) can catch these errors.
+لا تستطيع كتل try/catch التقاط أخطاء تحدث أثناء عملية التصيير في React. الأخطاء المرمية في دوال التصيير أو الـ hooks تنتقل عبر شجرة المكوّنات. فقط [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) يمكنها التقاط هذه الأخطاء.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js {expectedErrors: {'react-compiler': [4]}}
-// ❌ Try/catch won't catch render errors
+// ❌ try/catch لن يلتقط أخطاء التصيير
 function Parent() {
   try {
-    return <ChildComponent />; // If this throws, catch won't help
+    return <ChildComponent />; // إذا رُمي خطأ هنا، catch لن يفيد
   } catch (error) {
     return <div>Error occurred</div>;
   }
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Using error boundary
+// ✅ استخدام Error Boundary
 function Parent() {
   return (
     <ErrorBoundary>
@@ -42,24 +42,24 @@ function Parent() {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Why is the linter telling me not to wrap `use` in `try`/`catch`? {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
+### لماذا يطلب مني الـ linter عدم لفّ `use` داخل `try`/`catch`؟ {/*why-is-the-linter-telling-me-not-to-wrap-use-in-trycatch*/}
 
-The `use` hook doesn't throw errors in the traditional sense, it suspends component execution. When `use` encounters a pending promise, it suspends the component and lets React show a fallback. Only Suspense and Error Boundaries can handle these cases. The linter warns against `try`/`catch` around `use` to prevent confusion as the `catch` block would never run.
+لا يرمي الـ hook `use` أخطاء بالمعنى التقليدي؛ بل يعلّق تنفيذ المكوّن. عندما يصادف `use` وعداً معلّقاً، يعلّق المكوّن ويترك لـ React عرض حالة بديلة. فقط Suspense وError Boundaries يمكنها التعامل مع هذه الحالات. يحذّر الـ linter من `try`/`catch` حول `use` لتجنّب الالتباس لأن كتلة `catch` لن تعمل أبداً.
 
 ```js {expectedErrors: {'react-compiler': [5]}}
-// ❌ Try/catch around `use` hook
+// ❌ try/catch حول hook `use`
 function Component({promise}) {
   try {
-    const data = use(promise); // Won't catch - `use` suspends, not throws
+    const data = use(promise); // لن يلتقط — `use` يعلّق لا يرمي
     return <div>{data}</div>;
   } catch (error) {
-    return <div>Failed to load</div>; // Unreachable
+    return <div>Failed to load</div>; // لا يُنفَّذ
   }
 }
 
-// ✅ Error boundary catches `use` errors
+// ✅ Error boundary تلتقط أخطاء `use`
 function App() {
   return (
     <ErrorBoundary fallback={<div>Failed to load</div>}>

@@ -1,10 +1,10 @@
 ---
-script: "<script>"
+script: "مكوّن <script>"
 ---
 
 <Intro>
 
-The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) lets you add a script to your document.
+يتيح لك [مكوّن `<script>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) إضافة نص برمجي إلى مستندك.
 
 ```js
 <script> alert("hi!") </script>
@@ -16,71 +16,71 @@ The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<script>` {/*script*/}
 
-To add inline or external scripts to your document, render the [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). You can render `<script>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical scripts.
+لإضافة نصوص برمجية مضمّنة أو خارجية إلى مستندك، صيّر [مكوّن `<script>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). يمكنك تصيير `<script>` من أي مكوّن وسيضع React في [حالات معيّنة](#special-rendering-behavior) عنصر DOM المقابل في رأس المستند ويزيل التكرار للنصوص المتطابقة.
 
 ```js
 <script> alert("hi!") </script>
 <script src="script.js" />
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-`<script>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+يدعم `<script>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
 
-It should have *either* `children` or a `src` prop.
+يجب أن يكون لديه *إما* `children` أو خاصية `src`.
 
-* `children`: a string. The source code of an inline script.
-* `src`: a string. The URL of an external script.
+* `children`: نص. شيفرة النص البرمجي المضمّن.
+* `src`: نص. عنوان URL لنص برمجي خارجي.
 
-Other supported props:
+خصائص مدعومة أخرى:
 
-* `async`: a boolean. Allows the browser to defer execution of the script until the rest of the document has been processed — the preferred behavior for performance.
-*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-* `fetchPriority`: a string. Lets the browser rank scripts in priority when fetching multiple scripts at the same time. Can be `"high"`, `"low"`, or `"auto"` (the default).
-* `integrity`: a string. A cryptographic hash of the script, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-* `noModule`: a boolean. Disables the script in browsers that support ES modules — allowing for a fallback script for browsers that do not.
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `referrer`: a string. Says [what Referer header to send](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) when fetching the script and any resources that the script fetches in turn. 
-* `type`: a string. Says whether the script is a [classic script, ES module, or import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
+* `async`: قيمة منطقية. تسمح للمتصفح بتأجيل تنفيذ النص حتى تُعالج بقية المستند — السلوك المفضل للأداء.
+*  `crossOrigin`: نص. [سياسة CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) المستخدمة. القيم المحتملة: `anonymous` و `use-credentials`.
+* `fetchPriority`: نص. يتيح للمتصفح ترتيب أولوية النصوص عند جلب عدة نصوص معًا. يمكن أن تكون `"high"` أو `"low"` أو `"auto"` (الافتراضي).
+* `integrity`: نص. تجزئة تشفيرية للنص، [للتحقق من سلامته](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+* `noModule`: قيمة منطقية. تعطّل النص في المتصفحات التي تدعم وحدات ES — لتوفير نص بديل للمتصفحات التي لا تدعمها.
+* `nonce`: نص. [nonce تشفيري للسماح بالمورد](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) عند استخدام سياسة أمان محتوى صارمة.
+* `referrer`: نص. يحدد [رأس Referer المرسل](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) عند جلب النص وأي موارد يجلبها النص لاحقًا. 
+* `type`: نص. يحدد ما إذا كان النص [نصًا كلاسيكيًا أو وحدة ES أو خريطة استيراد](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
 
-Props that disable React's [special treatment of scripts](#special-rendering-behavior):
+خصائص تعطّل [المعاملة الخاصة للنصوص](#special-rendering-behavior) في React:
 
-* `onError`: a function. Called when the script fails to load.
-* `onLoad`: a function. Called when the script finishes being loaded.
+* `onError`: دالة. تُستدعى عند فشل تحميل النص.
+* `onLoad`: دالة. تُستدعى عند انتهاء تحميل النص.
 
-Props that are **not recommended** for use with React:
+خصائص **لا يُنصح** باستخدامها مع React:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the scriptsheet is loaded. React provides more fine-grained control using Suspense.
-* `defer`: a string. Prevents the browser from executing the script until the document is done loading. Not compatible with streaming server-rendered components. Use the `async` prop instead.
+* `blocking`: نص. إذا ضُبطت إلى `"render"`، يوجّه المتصفح بعدم تصيير الصفحة حتى يُحمَّل النص. يوفّر React تحكمًا أدق باستخدام Suspense.
+* `defer`: نص. يمنع المتصفح من تنفيذ النص حتى انتهاء تحميل المستند. غير متوافق مع مكوّنات الخادم المعروضة بالبث. استخدم خاصية `async` بدلًا من ذلك.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### سلوك تصيير خاص {/*special-rendering-behavior*/}
 
-React can move `<script>` components to the document's `<head>` and de-duplicate identical scripts.
+يمكن لReact نقل مكوّنات `<script>` إلى `<head>` للمستند وإزالة تكرار النصوص المتطابقة.
 
-To opt into this behavior, provide the `src` and `async={true}` props. React will de-duplicate scripts if they have the same `src`. The `async` prop must be true to allow scripts to be safely moved.
+لتفعيل هذا السلوك، مرِّر خاصيتي `src` و `async={true}`. يزيل React التكرار إذا كان لها نفس `src`. يجب أن تكون `async` true ليسمح بنقل النصوص بأمان.
 
-This special treatment comes with two caveats:
+يصحب هذا المعاملة الخاصة تحذيران:
 
-* React will ignore changes to props after the script has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the script in the DOM even after the component that rendered it has been unmounted. (This has no effect as scripts just execute once when they are inserted into the DOM.)
+* React يتجاهل تغييرات الخصائص بعد تصيير النص. (سيُصدِر تحذيرًا في وضع التطوير إذا حدث ذلك.)
+* قد يبقي React النص في DOM حتى بعد إلغاء تركيب المكوّن الذي صيّره. (لا أثر عملي لأن النصوص تُنفَّذ مرة واحدة عند إدراجها في DOM.)
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Rendering an external script {/*rendering-an-external-script*/}
+### تصيير نص برمجي خارجي {/*rendering-an-external-script*/}
 
-If a component depends on certain scripts in order to be displayed correctly, you can render a `<script>` within the component.
-However, the component might be committed before the script has finished loading.
-You can start depending on the script content once the `load` event is fired e.g. by using the `onLoad` prop.
+إذا اعتمد مكوّن على نصوص معيّنة ليُعرض بشكل صحيح، يمكنك تصيير `<script>` داخل المكوّن.
+قد يُرسَم المكوّن قبل انتهاء تحميل النص.
+يمكنك الاعتماد على محتوى النص بعد إطلاق حدث `load` مثلاً عبر خاصية `onLoad`.
 
-React will de-duplicate scripts that have the same `src`, inserting only one of them into the DOM even if multiple components render it.
+يزيل React التكرار للنصوص ذات نفس `src`، ويُدرج واحدًا فقط في DOM حتى لو صيَّرته عدة مكوّنات.
 
 <SandpackWithHTMLOutput>
 
@@ -108,12 +108,12 @@ export default function Page() {
 </SandpackWithHTMLOutput>
 
 <Note>
-When you want to use a script, it can be beneficial to call the [preinit](/reference/react-dom/preinit) function. Calling this function may allow the browser to start fetching the script earlier than if you just render a `<script>` component, for example by sending an [HTTP Early Hints response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+عندما تريد استخدام نص برمجي، قد يكون مفيدًا استدعاء دالة [preinit](/reference/react-dom/preinit). قد يسمح ذلك للمتصفح ببدء الجلب أبكر من مجرد تصيير `<script>`، مثلاً عبر [استجابة HTTP Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
 </Note>
 
-### Rendering an inline script {/*rendering-an-inline-script*/}
+### تصيير نص برمجي مضمّن {/*rendering-an-inline-script*/}
 
-To include an inline script, render the `<script>` component with the script source code as its children. Inline scripts are not de-duplicated or moved to the document `<head>`.
+لتضمين نص برمجي مضمّن، صيّر `<script>` مع شيفرة النص كأبناء. لا يُزال التكرار للنصوص المضمّنة ولا تُنقل إلى `<head>` للمستند.
 
 <SandpackWithHTMLOutput>
 

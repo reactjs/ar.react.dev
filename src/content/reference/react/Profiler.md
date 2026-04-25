@@ -1,10 +1,10 @@
 ---
-title: <Profiler>
+title: "مكوّن <Profiler>"
 ---
 
 <Intro>
 
-`<Profiler>` lets you measure rendering performance of a React tree programmatically.
+`<Profiler>` يتيح قياس أداء العرض لشجرة React برمجيًا.
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -18,11 +18,11 @@ title: <Profiler>
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<Profiler>` {/*profiler*/}
 
-Wrap a component tree in a `<Profiler>` to measure its rendering performance.
+لفّ شجرة مكوّنات بـ `<Profiler>` لقياس أداء عرضها.
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -30,20 +30,20 @@ Wrap a component tree in a `<Profiler>` to measure its rendering performance.
 </Profiler>
 ```
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-* `id`: A string identifying the part of the UI you are measuring.
-* `onRender`: An [`onRender` callback](#onrender-callback) that React calls every time components within the profiled tree update. It receives information about what was rendered and how much time it took.
+* `id`: سلسلة تعرّف جزء واجهة المستخدم الذي تقيسه.
+* `onRender`: [استدعاء `onRender`](#onrender-callback) تستدعيه React في كل مرة تُحدَّث فيها المكوّنات ضمن الشجرة الملفوفة. يتلقى معلومات عما تم عرضه وكم استغرق من الوقت.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
+* يضيف التنميط (Profiling) بعض العبء الإضافي، لذلك **يُعطّل في بناء الإنتاج افتراضيًا.** للموافقة على التنميط في الإنتاج، تحتاج إلى تفعيل [بناء إنتاج خاص بالتنميط.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
 
 ---
 
-### `onRender` callback {/*onrender-callback*/}
+### استدعاء `onRender` {/*onrender-callback*/}
 
-React will call your `onRender` callback with information about what was rendered.
+ستستدعي React دالة `onRender` مع معلومات عما تم عرضه.
 
 ```js
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
@@ -51,22 +51,22 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 }
 ```
 
-#### Parameters {/*onrender-parameters*/}
+#### المعاملات {/*onrender-parameters*/}
 
-* `id`: The string `id` prop of the `<Profiler>` tree that has just committed. This lets you identify which part of the tree was committed if you are using multiple profilers.
-* `phase`: `"mount"`, `"update"` or `"nested-update"`. This lets you know whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or Hooks.
-* `actualDuration`: The number of milliseconds spent rendering the `<Profiler>` and its descendants for the current update. This indicates how well the subtree makes use of memoization (e.g. [`memo`](/reference/react/memo) and [`useMemo`](/reference/react/useMemo)). Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.
-* `baseDuration`: The number of milliseconds estimating how much time it would take to re-render the entire `<Profiler>` subtree without any optimizations. It is calculated by summing up the most recent render durations of each component in the tree. This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization). Compare `actualDuration` against it to see if memoization is working.
-* `startTime`: A numeric timestamp for when React began rendering the current update.
-* `commitTime`: A numeric timestamp for when React committed the current update. This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
+* `id`: سلسلة خاصية `id` لشجرة `<Profiler>` التي أُكملت للتو. يتيح لك معرفة أي جزء من الشجرة أُكمل إذا استخدمت أكثر من محلل.
+* `phase`: `"mount"` أو `"update"` أو `"nested-update"`. يخبرك ما إذا كانت الشجرة قد رُكبت لأول مرة أو أُعيد عرضها بسبب تغيّر في الخصائص أو الحالة أو الخطافات.
+* `actualDuration`: عدد الميلي ثانية المستغرقة في عرض `<Profiler>` وأحفاده للتحديث الحالي. يدل على مدى استفادة الشجرة الفرعية من التذكير (مثل [`memo`](/reference/react/memo) و[`useMemo`](/reference/react/useMemo)). من المفترض أن ينخفض هذا القيم كثيرًا بعد الركوب الأول إذ يحتاج كثير من الأحفاد لإعادة العرض فقط عند تغيّر خصائصها.
+* `baseDuration`: عدد الميلي ثانية تقديري لوقت إعادة عرض شجرة `<Profiler>` كاملة بلا أي تحسينات. يُحسب بجمع أطول مدد العرض الأخيرة لكل مكوّن في الشجرة. يقدّر تكلفة أسوأ حالة للعرض (مثل الركوب الأول أو شجرة بلا تذكير). قارن `actualDuration` به لترى ما إذا كان التذكير يعمل.
+* `startTime`: طابع زمني رقمي لبداية عرض React للتحديث الحالي.
+* `commitTime`: طابع زمني رقمي لالتزام React بالتحديث الحالي. تُشارك هذه القيمة بين كل المحللات في التزام واحد، ما يتيح تجميعها إن رغبت.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Measuring rendering performance programmatically {/*measuring-rendering-performance-programmatically*/}
+### قياس أداء العرض برمجيًا {/*measuring-rendering-performance-programmatically*/}
 
-Wrap the `<Profiler>` component around a React tree to measure its rendering performance.
+لفّ مكوّن `<Profiler>` حول شجرة React لقياس أداء عرضها.
 
 ```js {2,4}
 <App>
@@ -77,28 +77,28 @@ Wrap the `<Profiler>` component around a React tree to measure its rendering per
 </App>
 ```
 
-It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.
+يتطلب خاصيتين: `id` (سلسلة) واستدعاء `onRender` (دالة) تستدعيه React في أي وقت «تلتزم» فيه مكوّنات داخل الشجرة بتحديث.
 
 <Pitfall>
 
-Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
+يضيف التنميط بعض العبء الإضافي، لذلك **يُعطّل في بناء الإنتاج افتراضيًا.** للموافقة على التنميط في الإنتاج، تحتاج إلى تفعيل [بناء إنتاج خاص بالتنميط.](/reference/dev-tools/react-performance-tracks#using-profiling-builds)
 
 </Pitfall>
 
 <Note>
 
-`<Profiler>` lets you gather measurements programmatically. If you're looking for an interactive profiler, try the Profiler tab in [React Developer Tools](/learn/react-developer-tools). It exposes similar functionality as a browser extension.
+`<Profiler>` يجمع القياسات برمجيًا. إذا كنت تبحث عن محلل تفاعلي، جرّب تبويب Profiler في [أدوات مطور React](/learn/react-developer-tools). يوفّر وظائف مشابهة كإضافة للمتصفح.
 
-Components wrapped in `<Profiler>` will also be marked in the [Component tracks](/reference/dev-tools/react-performance-tracks#components) of React Performance tracks even in profiling builds.
-In development builds, all components are marked in the Components track regardless of whether they're wrapped in `<Profiler>`.
+المكوّنات الملفوفة بـ `<Profiler>` ستُوسَّم أيضًا في [مسارات المكوّنات](/reference/dev-tools/react-performance-tracks#components) في React Performance حتى في بنيات التنميط.
+في بنيات التطوير، تُوسَّم كل المكوّنات في مسار المكوّنات سواء أُلفت بـ `<Profiler>` أم لا.
 
 </Note>
 
 ---
 
-### Measuring different parts of the application {/*measuring-different-parts-of-the-application*/}
+### قياس أجزاء مختلفة من التطبيق {/*measuring-different-parts-of-the-application*/}
 
-You can use multiple `<Profiler>` components to measure different parts of your application:
+يمكنك استخدام أكثر من `<Profiler>` لقياس أجزاء مختلفة:
 
 ```js {5,7}
 <App>
@@ -111,7 +111,7 @@ You can use multiple `<Profiler>` components to measure different parts of your 
 </App>
 ```
 
-You can also nest `<Profiler>` components:
+يمكنك أيضًا تداخل `<Profiler>`:
 
 ```js {5,7,9,12}
 <App>
@@ -129,7 +129,6 @@ You can also nest `<Profiler>` components:
 </App>
 ```
 
-Although `<Profiler>` is a lightweight component, it should be used only when necessary. Each use adds some CPU and memory overhead to an application.
+رغم أن `<Profiler>` مكوّن خفيف، يُفضَّل استخدامه عند الحاجة فقط. كل استخدام يضيف بعض عبء المعالج والذاكرة.
 
 ---
-

@@ -4,27 +4,27 @@ title: component-hook-factories
 
 <Intro>
 
-Validates against higher order functions defining nested components or hooks. Components and hooks should be defined at the module level.
+يتحقق من عدم استخدام دوال رتبة أعلى تعرّف مكوّنات أو hooks متداخلة. يجب تعريف المكوّنات والـ hooks على مستوى الوحدة.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Defining components or hooks inside other functions creates new instances on every call. React treats each as a completely different component, destroying and recreating the entire component tree, losing all state, and causing performance problems.
+تعريف مكوّنات أو hooks داخل دوال أخرى ينشئ نسخاً جديدة كل استدعاء. يعامل React كل نسخة كمكوّن مختلف تماماً، فيدمّر ويعيد إنشاء شجرة المكوّن بالكامل، يفقد كل الحالة، ويسبب مشاكل أداء.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js {expectedErrors: {'react-compiler': [14]}}
-// ❌ Factory function creating components
+// ❌ دالة مصنع تُنشئ مكوّنات
 function createComponent(defaultValue) {
   return function Component() {
     // ...
   };
 }
 
-// ❌ Component defined inside component
+// ❌ مكوّن معرّف داخل مكوّن
 function Parent() {
   function Child() {
     // ...
@@ -33,7 +33,7 @@ function Parent() {
   return <Child />;
 }
 
-// ❌ Hook factory function
+// ❌ دالة مصنع لـ hook
 function createCustomHook(endpoint) {
   return function useData() {
     // ...
@@ -41,30 +41,30 @@ function createCustomHook(endpoint) {
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Component defined at module level
+// ✅ مكوّن معرّف على مستوى الوحدة
 function Component({ defaultValue }) {
   // ...
 }
 
-// ✅ Custom hook at module level
+// ✅ hook مخصّص على مستوى الوحدة
 function useData(endpoint) {
   // ...
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I need dynamic component behavior {/*dynamic-behavior*/}
+### أحتاج سلوكاً ديناميكياً للمكوّن {/*dynamic-behavior*/}
 
-You might think you need a factory to create customized components:
+قد تظن أنك تحتاج مصنعاً لإنشاء مكوّنات مخصّصة:
 
 ```js
-// ❌ Wrong: Factory pattern
+// ❌ خطأ: نمط مصنع
 function makeButton(color) {
   return function Button({children}) {
     return (
@@ -79,10 +79,10 @@ const RedButton = makeButton('red');
 const BlueButton = makeButton('blue');
 ```
 
-Pass [JSX as children](/learn/passing-props-to-a-component#passing-jsx-as-children) instead:
+مرّر [JSX كأبناء](/learn/passing-props-to-a-component#passing-jsx-as-children) بدلاً من ذلك:
 
 ```js
-// ✅ Better: Pass JSX as children
+// ✅ أفضل: مرّر JSX كأبناء
 function Button({color, children}) {
   return (
     <button style={{backgroundColor: color}}>

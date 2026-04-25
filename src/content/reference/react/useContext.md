@@ -1,10 +1,10 @@
 ---
-title: useContext
+title: دالة useContext
 ---
 
 <Intro>
 
-`useContext` is a React Hook that lets you read and subscribe to [context](/learn/passing-data-deeply-with-context) from your component.
+`useContext` هو Hook في React يتيح لك قراءة [السياق](/learn/passing-data-deeply-with-context) والاشتراك فيه من مكوّنك.
 
 ```js
 const value = useContext(SomeContext)
@@ -16,11 +16,11 @@ const value = useContext(SomeContext)
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+استدعِ `useContext` في أعلى مستوى مكوّنك لقراءة [السياق](/learn/passing-data-deeply-with-context) والاشتراك فيه.
 
 ```js
 import { useContext } from 'react';
@@ -30,30 +30,30 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `SomeContext`: The context that you've previously created with [`createContext`](/reference/react/createContext). The context itself does not hold the information, it only represents the kind of information you can provide or read from components.
+* `SomeContext`: السياق الذي أنشأته سابقًا باستخدام [`createContext`](/reference/react/createContext). السياق نفسه لا يحتفظ بالمعلومات، بل يمثل فقط نوع المعلومات التي يمكنك تمريرها أو قراءتها من المكوّنات.
 
-#### Returns {/*returns*/}
+#### القيمة المعادة {/*returns*/}
 
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
+تُرجِع `useContext` قيمة السياق للمكوّن الذي يستدعيها. تُحدَّد كالقيمة `value` الممرَّرة إلى أقرب `SomeContext` فوق المكوّن المستدعي في الشجرة. إذا لم يوجد مزوّد كهذا، فستكون القيمة المُرجَعة هي `defaultValue` التي مررتها إلى [`createContext`](/reference/react/createContext) لذلك السياق. القيمة المُرجَعة دائمًا محدَّثة. يعيد React رسم المكوّنات التي تقرأ سياقًا معينًا تلقائيًا إذا تغيّرت قيمته.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context>` **needs to be *above*** the component doing the `useContext()` call.
-* React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/reference/react/memo) does not prevent the children receiving fresh context values.
-* If your build system produces duplicates modules in the output (which can happen with symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
+* استدعاء `useContext()` داخل مكوّن لا يتأثر بالمزوّدين المُرجَعين من *نفس* المكوّن. يجب أن يكون `<Context>` المقابل **فوق** المكوّن الذي يستدعي `useContext()`.
+* يعيد React **رسم جميع الأبناء** الذين يستخدمون سياقًا معينًا تلقائيًا بدءًا من المزوّد الذي تلقّى `value` مختلفة. تُقارَن القيمة السابقة والتالية باستخدام [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is). إن تخطّي إعادة الرسم باستخدام [`memo`](/reference/react/memo) لا يمنع الأبناء من تلقّي قيم سياق جديدة.
+* إذا كان نظام البناء لديك ينتج وحدات مكرّرة في المخرجات (وهذا قد يحدث مع الروابط الرمزية)، فقد ينكسر السياق. لا يعمل تمرير شيء عبر السياق إلا إذا كان `SomeContext` الذي تستخدمه للتوفير و`SomeContext` الذي تستخدمه للقراءة **نفس الكائن تمامًا**، وفق مقارنة `===`.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
 
-### Passing data deeply into the tree {/*passing-data-deeply-into-the-tree*/}
+### تمرير البيانات عميقًا في الشجرة {/*passing-data-deeply-into-the-tree*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+استدعِ `useContext` في أعلى مستوى مكوّنك لقراءة [السياق](/learn/passing-data-deeply-with-context) والاشتراك فيه.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
@@ -63,9 +63,9 @@ function Button() {
   // ... 
 ```
 
-`useContext` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+تُرجِع `useContext` <CodeStep step={2}>قيمة السياق</CodeStep> للـ <CodeStep step={1}>سياق</CodeStep> الذي مررته. لتحديد قيمة السياق، يبحث React في شجرة المكوّنات ويجد **أقرب مزوّد سياق فوق** ذلك السياق بالتحديد.
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider:
+لتمرير السياق إلى `Button`، لفّه أو أحد مكوّناته الأب في مزوّد السياق المناسب:
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -81,11 +81,11 @@ function Form() {
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `useContext(ThemeContext)`, it will receive `"dark"` as the value.
+لا يهم عدد طبقات المكوّنات بين المزوّد و`Button`. عندما يستدعي `Button` في *أي* مكان داخل `Form` الدالة `useContext(ThemeContext)`، سيستلم `"dark"` كقيمة.
 
 <Pitfall>
 
-`useContext()` always looks for the closest provider *above* the component that calls it. It searches upwards and **does not** consider providers in the component from which you're calling `useContext()`.
+`useContext()` تبحث دائمًا عن أقرب مزوّد *فوق* المكوّن الذي يستدعيها. تبحث للأعلى و**لا** تأخذ في الاعتبار المزوّدين داخل المكوّن الذي تستدعي منه `useContext()`.
 
 </Pitfall>
 
@@ -175,9 +175,9 @@ function Button({ children }) {
 
 ---
 
-### Updating data passed via context {/*updating-data-passed-via-context*/}
+### تحديث البيانات الممرَّرة عبر السياق {/*updating-data-passed-via-context*/}
 
-Often, you'll want the context to change over time. To update context, combine it with [state.](/reference/react/useState) Declare a state variable in the parent component, and pass the current state down as the <CodeStep step={2}>context value</CodeStep> to the provider.
+غالبًا تريد أن يتغيّر السياق مع الزمن. لتحديث السياق، اجمعه مع [الحالة](/reference/react/useState). عرّف متغيّر حالة في المكوّن الأب، ومرّر الحالة الحالية كـ <CodeStep step={2}>قيمة سياق</CodeStep> إلى المزوّد.
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
@@ -195,13 +195,13 @@ function MyPage() {
 }
 ```
 
-Now any `Button` inside of the provider will receive the current `theme` value. If you call `setTheme` to update the `theme` value that you pass to the provider, all `Button` components will re-render with the new `'light'` value.
+الآن أي `Button` داخل المزوّد سيستلم قيمة `theme` الحالية. إذا استدعيت `setTheme` لتحديث قيمة `theme` التي تمرّرها إلى المزوّد، ستُعاد رسم جميع مكوّنات `Button` بالقيمة الجديدة `'light'`.
 
-<Recipes titleText="Examples of updating context" titleId="examples-basic">
+<Recipes titleText="أمثلة على تحديث السياق" titleId="examples-basic">
 
-#### Updating a value via context {/*updating-a-value-via-context*/}
+#### تحديث قيمة عبر السياق {/*updating-a-value-via-context*/}
 
-In this example, the `MyApp` component holds a state variable which is then passed to the `ThemeContext` provider. Checking the "Dark mode" checkbox updates the state. Changing the provided value re-renders all the components using that context.
+في هذا المثال، يحتفظ مكوّن `MyApp` بمتغيّر حالة يُمرَّر بعد ذلك إلى مزوّد `ThemeContext`. تفعيل خانة "الوضع الداكن" يحدّث الحالة. تغيير القيمة الموفَّرة يعيد رسم جميع المكوّنات التي تستخدم ذلك السياق.
 
 <Sandpack>
 
@@ -299,13 +299,13 @@ function Button({ children }) {
 
 </Sandpack>
 
-Note that `value="dark"` passes the `"dark"` string, but `value={theme}` passes the value of the JavaScript `theme` variable with [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) Curly braces also let you pass context values that aren't strings.
+لاحظ أن `value="dark"` يمرّر السلسلة `"dark"`، بينما `value={theme}` يمرّر قيمة متغيّر JavaScript `theme` باستخدام [أقواس JSX المعقوفة.](/learn/javascript-in-jsx-with-curly-braces) تسمح الأقواس المعقوفة أيضًا بتمرير قيم سياق ليست سلاسل نصية.
 
 <Solution />
 
-#### Updating an object via context {/*updating-an-object-via-context*/}
+#### تحديث كائن عبر السياق {/*updating-an-object-via-context*/}
 
-In this example, there is a `currentUser` state variable which holds an object. You combine `{ currentUser, setCurrentUser }` into a single object and pass it down through the context inside the `value={}`. This lets any component below, such as `LoginButton`, read both `currentUser` and `setCurrentUser`, and then call `setCurrentUser` when needed.
+في هذا المثال، يوجد متغيّر حالة `currentUser` يحمل كائنًا. تجمع `{ currentUser, setCurrentUser }` في كائن واحد وتمرّره عبر السياق داخل `value={}`. يتيح ذلك لأي مكوّن أسفل الشجرة، مثل `LoginButton`، قراءة `currentUser` و`setCurrentUser` معًا، ثم استدعاء `setCurrentUser` عند الحاجة.
 
 <Sandpack>
 
@@ -395,9 +395,9 @@ label {
 
 <Solution />
 
-#### Multiple contexts {/*multiple-contexts*/}
+#### سياقات متعددة {/*multiple-contexts*/}
 
-In this example, there are two independent contexts. `ThemeContext` provides the current theme, which is a string, while `CurrentUserContext` holds the object representing the current user.
+في هذا المثال، يوجد سياقان مستقلان. يوفّر `ThemeContext` السمة الحالية وهي سلسلة نصية، بينما يحتفظ `CurrentUserContext` بالكائن الذي يمثّل المستخدم الحالي.
 
 <Sandpack>
 
@@ -562,9 +562,9 @@ label {
 
 <Solution />
 
-#### Extracting providers to a component {/*extracting-providers-to-a-component*/}
+#### استخراج المزوّدين إلى مكوّن {/*extracting-providers-to-a-component*/}
 
-As your app grows, it is expected that you'll have a "pyramid" of contexts closer to the root of your app. There is nothing wrong with that. However, if you dislike the nesting aesthetically, you can extract the providers into a single component. In this example, `MyProviders` hides the "plumbing" and renders the children passed to it inside the necessary providers. Note that the `theme` and `setTheme` state is needed in `MyApp` itself, so `MyApp` still owns that piece of the state.
+مع نمو تطبيقك، من المتوقع أن يتكوّن «هرم» من السياقات قرب جذر التطبيق. لا بأس بذلك. إن لم يعجبك التداخل من الناحية الجمالية، يمكنك استخراج المزوّدين إلى مكوّن واحد. في هذا المثال، يخفي `MyProviders` «الأنابيب» ويعرض الأبناء الممرَّرين إليه داخل المزوّدين اللازمين. لاحظ أن حالة `theme` و`setTheme` ما زالت مطلوبة في `MyApp` نفسه، لذا يظل `MyApp` يملك ذلك الجزء من الحالة.
 
 <Sandpack>
 
@@ -737,11 +737,11 @@ label {
 
 <Solution />
 
-#### Scaling up with context and a reducer {/*scaling-up-with-context-and-a-reducer*/}
+#### التوسّع باستخدام السياق وموجّه الحالة (reducer) {/*scaling-up-with-context-and-a-reducer*/}
 
-In larger apps, it is common to combine context with a [reducer](/reference/react/useReducer) to extract the logic related to some state out of components. In this example, all the "wiring" is hidden in the `TasksContext.js`, which contains a reducer and two separate contexts.
+في التطبيقات الأكبر، شائع الجمع بين السياق و[المُوجّه](/reference/react/useReducer) لاستخراج منطق حالة معيّنة خارج المكوّنات. في هذا المثال، يُخفى كل «التوصيل» في `TasksContext.js`، الذي يحتوي على مُوجّه وسياقين منفصلين.
 
-Read a [full walkthrough](/learn/scaling-up-with-reducer-and-context) of this example.
+اقرأ [شرحًا كاملًا](/learn/scaling-up-with-reducer-and-context) لهذا المثال.
 
 <Sandpack>
 
@@ -947,25 +947,25 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Specifying a fallback default value {/*specifying-a-fallback-default-value*/}
+### تحديد قيمة افتراضية احتياطية {/*specifying-a-fallback-default-value*/}
 
-If React can't find any providers of that particular <CodeStep step={1}>context</CodeStep> in the parent tree, the context value returned by `useContext()` will be equal to the <CodeStep step={3}>default value</CodeStep> that you specified when you [created that context](/reference/react/createContext):
+إذا لم يجد React أي مزوّد لذلك الـ <CodeStep step={1}>سياق</CodeStep> بالتحديد في الشجرة الأب، فستكون قيمة السياق التي تُرجِعها `useContext()` مساوية لـ <CodeStep step={3}>القيمة الافتراضية</CodeStep> التي حددتها عند [إنشاء ذلك السياق](/reference/react/createContext):
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
 
-The default value **never changes**. If you want to update context, use it with state as [described above.](#updating-data-passed-via-context)
+القيمة الافتراضية **لا تتغيّر أبدًا**. إذا أردت تحديث السياق، استخدمه مع الحالة كما [وُضّح أعلاه.](#updating-data-passed-via-context)
 
-Often, instead of `null`, there is some more meaningful value you can use as a default, for example:
+غالبًا بدلًا من `null`، توجد قيمة أكثر معنى يمكن استخدامها كافتراضي، مثل:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "light"]]
 const ThemeContext = createContext('light');
 ```
 
-This way, if you accidentally render some component without a corresponding provider, it won't break. This also helps your components work well in a test environment without setting up a lot of providers in the tests.
+بهذه الطريقة، إذا رسمت مكوّنًا دون مزوّد مطابق بالخطأ، لن ينكسر التطبيق. يساعد ذلك أيضًا مكوّناتك على العمل جيدًا في بيئة اختبار دون إعداد الكثير من المزوّدين في الاختبارات.
 
-In the example below, the "Toggle theme" button is always light because it's **outside any theme context provider** and the default context theme value is `'light'`. Try editing the default theme to be `'dark'`.
+في المثال أدناه، زر «تبديل السمة» يبقى فاتحًا دائمًا لأنه **خارج أي مزوّد سياق سمة**، وقيمة السياق الافتراضية للسمة هي `'light'`. جرّب تعديل السمة الافتراضية لتكون `'dark'`.
 
 <Sandpack>
 
@@ -1062,9 +1062,9 @@ function Button({ children, onClick }) {
 
 ---
 
-### Overriding context for a part of the tree {/*overriding-context-for-a-part-of-the-tree*/}
+### تجاوز السياق لجزء من الشجرة {/*overriding-context-for-a-part-of-the-tree*/}
 
-You can override the context for a part of the tree by wrapping that part in a provider with a different value.
+يمكنك تجاوز السياق لجزء من الشجرة بلفّ ذلك الجزء في مزوّد بقيمة مختلفة.
 
 ```js {3,5}
 <ThemeContext value="dark">
@@ -1076,13 +1076,13 @@ You can override the context for a part of the tree by wrapping that part in a p
 </ThemeContext>
 ```
 
-You can nest and override providers as many times as you need.
+يمكنك تداخل المزوّدين وتجاوزهم بقدر ما تحتاج.
 
-<Recipes titleText="Examples of overriding context">
+<Recipes titleText="أمثلة على تجاوز السياق">
 
-#### Overriding a theme {/*overriding-a-theme*/}
+#### تجاوز السمة {/*overriding-a-theme*/}
 
-Here, the button *inside* the `Footer` receives a different context value (`"light"`) than the buttons outside (`"dark"`).
+هنا، الزر *داخل* `Footer` يستلم قيمة سياق مختلفة (`"light"`) عن الأزرار خارجها (`"dark"`).
 
 <Sandpack>
 
@@ -1186,11 +1186,11 @@ footer {
 
 <Solution />
 
-#### Automatically nested headings {/*automatically-nested-headings*/}
+#### عناوين متداخلة تلقائيًا {/*automatically-nested-headings*/}
 
-You can "accumulate" information when you nest context providers. In this example, the `Section` component keeps track of the `LevelContext` which specifies the depth of the section nesting. It reads the `LevelContext` from the parent section, and provides the `LevelContext` number increased by one to its children. As a result, the `Heading` component can automatically decide which of the `<h1>`, `<h2>`, `<h3>`, ..., tags to use based on how many `Section` components it is nested inside of.
+يمكنك «تراكم» المعلومات عند تداخل مزوّدي السياق. في هذا المثال، يتتبّع مكوّن `Section` الـ `LevelContext` الذي يحدّد عمق تداخل الأقسام. يقرأ `LevelContext` من القسم الأب، ويوفّر لأبنائه رقم `LevelContext` مزيدًا بواحد. نتيجة لذلك، يمكن لمكوّن `Heading` أن يقرر تلقائيًا أي وسم من `<h1>`، `<h2>`، `<h3>`، … يستخدم بناءً على عدد مكوّنات `Section` التي يتداخل داخلها.
 
-Read a [detailed walkthrough](/learn/passing-data-deeply-with-context) of this example.
+اقرأ [شرحًا تفصيليًا](/learn/passing-data-deeply-with-context) لهذا المثال.
 
 <Sandpack>
 
@@ -1288,9 +1288,9 @@ export const LevelContext = createContext(0);
 
 ---
 
-### Optimizing re-renders when passing objects and functions {/*optimizing-re-renders-when-passing-objects-and-functions*/}
+### تحسين إعادة الرسم عند تمرير كائنات ودوال {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
-You can pass any values via context, including objects and functions.
+يمكنك تمرير أي قيم عبر السياق، بما في ذلك الكائنات والدوال.
 
 ```js [[2, 10, "{ currentUser, login }"]] 
 function MyApp() {
@@ -1309,9 +1309,9 @@ function MyApp() {
 }
 ```
 
-Here, the <CodeStep step={2}>context value</CodeStep> is a JavaScript object with two properties, one of which is a function. Whenever `MyApp` re-renders (for example, on a route update), this will be a *different* object pointing at a *different* function, so React will also have to re-render all components deep in the tree that call `useContext(AuthContext)`.
+هنا، <CodeStep step={2}>قيمة السياق</CodeStep> هي كائن JavaScript فيه خاصيتان، إحداهما دالة. في كل مرة يعيد فيها `MyApp` الرسم (مثلًا عند تحديث المسار)، يكون ذلك *كائنًا مختلفًا* يشير إلى *دالة مختلفة*، فيتعين على React أيضًا إعادة رسم كل المكوّنات العميقة في الشجرة التي تستدعي `useContext(AuthContext)`.
 
-In smaller apps, this is not a problem. However, there is no need to re-render them if the underlying data, like `currentUser`, has not changed. To help React take advantage of that fact, you may wrap the `login` function with [`useCallback`](/reference/react/useCallback) and wrap the object creation into [`useMemo`](/reference/react/useMemo). This is a performance optimization:
+في التطبيقات الأصغر لا يمثل ذلك مشكلة. لكن لا داعي لإعادة رسمها إذا لم تتغيّر البيانات الأساسية مثل `currentUser`. لمساعدة React على الاستفادة من ذلك، لفّ دالة `login` بـ [`useCallback`](/reference/react/useCallback) ولفّ إنشاء الكائن بـ [`useMemo`](/reference/react/useMemo). هذا تحسين للأداء:
 
 ```js {6,9,11,14,17}
 import { useCallback, useMemo } from 'react';
@@ -1337,51 +1337,51 @@ function MyApp() {
 }
 ```
 
-As a result of this change, even if `MyApp` needs to re-render, the components calling `useContext(AuthContext)` won't need to re-render unless `currentUser` has changed.
+نتيجة لهذا التغيير، حتى إذا احتاج `MyApp` إلى إعادة الرسم، فلن تحتاج المكوّنات التي تستدعي `useContext(AuthContext)` إلى إعادة الرسم ما لم يتغيّر `currentUser`.
 
-Read more about [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) and [`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
+اطلع على المزيد حول [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) و[`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### My component doesn't see the value from my provider {/*my-component-doesnt-see-the-value-from-my-provider*/}
+### لا يرى مكوّني القيمة من المزوّد {/*my-component-doesnt-see-the-value-from-my-provider*/}
 
-There are a few common ways that this can happen:
+هناك عدة أسباب شائعة:
 
-1. You're rendering `<SomeContext>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
+1. تعرض `<SomeContext>` في نفس المكوّن (أو أسفله) حيث تستدعي `useContext()`. انقل `<SomeContext>` *فوق وخارج* المكوّن الذي يستدعي `useContext()`.
+2. ربما نسيت لفّ مكوّنك بـ `<SomeContext>`، أو وضعته في موضع مختلف في الشجرة عما ظننت. تحقق من صحة التسلسل الهرمي باستخدام [أدوات مطوّري React.](/learn/react-developer-tools)
+3. قد تواجه مشكلة بناء في أدواتك تجعل `SomeContext` كما يُرى من مكوّن التوفير و`SomeContext` كما يُرى من مكوّن القراءة كائنين مختلفين. قد يحدث ذلك مثلًا عند استخدام الروابط الرمزية. يمكنك التحقق بتعيينهما إلى عموميات مثل `window.SomeContext1` و`window.SomeContext2` ثم التحقق في وحدة التحكم من `window.SomeContext1 === window.SomeContext2`. إن لم يكونا متطابقين، أصلح المشكلة على مستوى أداة البناء.
 
-### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### أستلم دائمًا `undefined` من السياق رغم أن القيمة الافتراضية مختلفة {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
-You might have a provider without a `value` in the tree:
+قد يكون لديك مزوّد بلا خاصية `value` في الشجرة:
 
 ```js {1,2}
-// 🚩 Doesn't work: no value prop
+// 🚩 لا يعمل: لا توجد خاصية value
 <ThemeContext>
    <Button />
 </ThemeContext>
 ```
 
-If you forget to specify `value`, it's like passing `value={undefined}`.
+إذا نسيت تحديد `value`، فالأمر كتمرير `value={undefined}`.
 
-You may have also mistakingly used a different prop name by mistake:
+قد تكون استخدمت خطأً اسم خاصية مختلفًا:
 
 ```js {1,2}
-// 🚩 Doesn't work: prop should be called "value"
+// 🚩 لا يعمل: يجب أن تُسمّى الخاصية "value"
 <ThemeContext theme={theme}>
    <Button />
 </ThemeContext>
 ```
 
-In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
+في الحالتين يجب أن ترى تحذيرًا من React في وحدة التحكم. لإصلاحهما، سمّ الخاصية `value`:
 
 ```js {1,2}
-// ✅ Passing the value prop
+// ✅ تمرير خاصية value
 <ThemeContext value={theme}>
    <Button />
 </ThemeContext>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+لاحظ أن [القيمة الافتراضية من استدعاء `createContext(defaultValue)`](#specifying-a-fallback-default-value) تُستخدم فقط **إذا لم يوجد أي مزوّد مطابق في الأعلى على الإطلاق.** إذا وُجد مكوّن `<SomeContext value={undefined}>` في مكان ما في شجرة الآباء، فسيستلم المكوّن الذي يستدعي `useContext(SomeContext)` قيمة `undefined` كقيمة السياق.

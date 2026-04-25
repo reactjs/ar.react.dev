@@ -1,10 +1,10 @@
 ---
-style: "<style>"
+style: "مكوّن <style>"
 ---
 
 <Intro>
 
-The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) lets you add inline CSS stylesheets to your document.
+يتيح لك [مكوّن `<style>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) إضافة أوراق أنماط CSS مضمّنة إلى مستندك.
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -16,58 +16,58 @@ The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<style>` {/*style*/}
 
-To add inline styles to your document, render the [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). You can render `<style>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical styles.
+لإضافة أنماط مضمّنة إلى مستندك، صيّر [مكوّن `<style>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). يمكنك تصيير `<style>` من أي مكوّن وسيضع React في [حالات معيّنة](#special-rendering-behavior) عنصر DOM المقابل في رأس المستند ويزيل التكرار للأنماط المتطابقة.
 
 ```js
 <style>{` p { color: red; } `}</style>
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-`<style>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+يدعم `<style>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
 
-* `children`: a string, required. The contents of the stylesheet.
-* `precedence`: a string. Tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `href`: a string. Allows React to [de-duplicate styles](#special-rendering-behavior) that have the same `href`.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `children`: نص، مطلوب. محتوى ورقة الأنماط.
+* `precedence`: نص. يخبر React بمكان ترتيب عقدة `<style>` في DOM نسبةً إلى غيرها في `<head>` للمستند، مما يحدد أي ورقة أنماط يمكنها تجاوز الأخرى. يستنتج React أن قيم `precedence` المكتشفة أولًا «أدنى» والمكتشفة لاحقًا «أعلى». يمكن لأنظمة أنماط كثيرة الاكتفاء بقيمة واحدة لأن القواعد ذرية. أوراق بنفس `precedence` تُجمَّع سواء كانت `<link>` أو `<style>` مضمّنة أو محمّلة عبر [`preinit`](/reference/react-dom/preinit).
+* `href`: نص. يسمح لReact [بإزالة تكرار الأنماط](#special-rendering-behavior) التي لها نفس `href`.
+* `media`: نص. يقيّد ورقة الأنماط بـ [استعلام وسائط](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) معيّن.
+* `nonce`: نص. [nonce تشفيري للسماح بالمورد](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) عند استخدام سياسة أمان محتوى صارمة.
+* `title`: نص. يحدد اسم [ورقة أنماط بديلة](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
 
-Props that are **not recommended** for use with React:
+خصائص **لا يُنصح** باستخدامها مع React:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: نص. إذا ضُبطت إلى `"render"`، يوجّه المتصفح بعدم تصيير الصفحة حتى تُحمَّل ورقة الأنماط. يوفّر React تحكمًا أدق باستخدام Suspense.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### سلوك تصيير خاص {/*special-rendering-behavior*/}
 
-React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
+يمكن لReact نقل مكوّنات `<style>` إلى `<head>` للمستند، وإزالة تكرار أوراق الأنماط المتطابقة، والتوقف مؤقتًا ([suspend](/reference/react/Suspense)) أثناء تحميل ورقة الأنماط.
 
-To opt into this behavior, provide the `href` and `precedence` props. React will de-duplicate styles if they have the same `href`. The precedence prop tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other.
+لتفعيل هذا السلوك، مرِّر خاصيتي `href` و `precedence`. يزيل React التكرار إذا كان لها نفس `href`. تخبر خاصية `precedence` React بمكان ترتيب عقدة `<style>` نسبةً إلى غيرها في `<head>`.
 
-This special treatment comes with three caveats:
+يصحب هذا المعاملة الخاصة ثلاثة تحذيرات:
 
-* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
-* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
-* React may leave the style in the DOM even after the component that rendered it has been unmounted.
+* React يتجاهل تغييرات الخصائص بعد تصيير النمط. (سيُصدِر تحذيرًا في وضع التطوير إذا حدث ذلك.)
+* React يُسقِط كل الخصائص الزائدة عند استخدام خاصية `precedence` (ما عدا `href` و `precedence`).
+* قد يبقي React النمط في DOM حتى بعد إلغاء تركيب المكوّن الذي صيّره.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Rendering an inline CSS stylesheet {/*rendering-an-inline-css-stylesheet*/}
+### تصيير ورقة أنماط CSS مضمّنة {/*rendering-an-inline-css-stylesheet*/}
 
-If a component depends on certain CSS styles in order to be displayed correctly, you can render an inline stylesheet within the component.
+إذا اعتمد مكوّن على أنماط CSS معيّنة ليُعرض بشكل صحيح، يمكنك تصيير ورقة أنماط مضمّنة داخل المكوّن.
 
-The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
-If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+يجب أن تُعرّف خاصية `href` ورقة الأنماط بشكل فريد، لأن React يزيل التكرار للأوراق ذات نفس `href`.
+إذا مرّرت خاصية `precedence`، يعيد React ترتيب أوراق الأنماط المضمّنة بحسب ترتيب ظهور هذه القيم في شجرة المكوّنات.
 
-Inline stylesheets will not trigger Suspense boundaries while they're loading.
-Even if they load async resources like fonts or images.
+أوراق الأنماط المضمّنة **لا** تُطلِق حدود Suspense أثناء التحميل.
+حتى إذا حمّلت موارد غير متزامنة مثل خطوط أو صور.
 
 <SandpackWithHTMLOutput>
 

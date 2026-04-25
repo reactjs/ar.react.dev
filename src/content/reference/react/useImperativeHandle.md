@@ -4,7 +4,7 @@ title: useImperativeHandle
 
 <Intro>
 
-`useImperativeHandle` is a React Hook that lets you customize the handle exposed as a [ref.](/learn/manipulating-the-dom-with-refs)
+`useImperativeHandle` هو Hook في React يتيح لك تخصيص المقبض (handle) المعرَّض كـ [ref.](/learn/manipulating-the-dom-with-refs)
 
 ```js
 useImperativeHandle(ref, createHandle, dependencies?)
@@ -20,7 +20,7 @@ useImperativeHandle(ref, createHandle, dependencies?)
 
 ### `useImperativeHandle(ref, createHandle, dependencies?)` {/*useimperativehandle*/}
 
-Call `useImperativeHandle` at the top level of your component to customize the ref handle it exposes:
+استدعِ `useImperativeHandle` في أعلى مكوّنك لتخصيص مقبض الـ ref الذي يعرضه:
 
 ```js
 import { useImperativeHandle } from 'react';
@@ -34,25 +34,25 @@ function MyInput({ ref }) {
   // ...
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `ref`: The `ref` you received as a prop to the `MyInput` component.
+* `ref`: الـ `ref` الذي استلمته كـ prop لمكوّن `MyInput`.
 
-* `createHandle`: A function that takes no arguments and returns the ref handle you want to expose. That ref handle can have any type. Usually, you will return an object with the methods you want to expose.
+* `createHandle`: دالة لا تأخذ معاملات وتُرجع مقبض الـ ref الذي تريد تعريضه. يمكن أن يكون لهذا المقبض أي نوع. عادةً ستُرجع كائنًا بالدوال التي تريد تعريضها.
 
-* **optional** `dependencies`: The list of all reactive values referenced inside of the `createHandle` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If a re-render resulted in a change to some dependency, or if you omitted this argument, your `createHandle` function will re-execute, and the newly created handle will be assigned to the ref.
+* **اختياري** `dependencies`: قائمة بجميع القيم التفاعلية المُشار إليها داخل كود `createHandle`. تشمل القيم التفاعلية الـ props والحالة وجميع المتغيرات والدوال المعرّفة مباشرة في جسم المكوّن. إذا كان linter الخاص بك [مهيأ لـ React](/learn/editor-setup#linting)، فسيتحقق من أن كل قيمة تفاعلية مُحدَّدة كتبعية. يجب أن يكون عدد عناصر قائمة التبعيات ثابتًا وتُكتب مضمّنة مثل `[dep1, dep2, dep3]`. يقارن React كل تبعية بقيمتها السابقة باستخدام [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is). إذا أدت إعادة الرسم إلى تغيّر بعض التبعيات، أو إذا حذفت هذا المعامل، ستُعاد تنفيذ دالة `createHandle` ويُعيَّن المقبض الجديد إلى الـ ref.
 
 <Note>
 
-Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef) 
+بدءًا من React 19، [`ref` متاح كـ prop.](/blog/2024/12/05/react-19#ref-as-a-prop) في React 18 وأقدم، كان يجب الحصول على `ref` من [`forwardRef`.](/reference/react/forwardRef) 
 
 </Note>
 
 #### Returns {/*returns*/}
 
-`useImperativeHandle` returns `undefined`.
+`useImperativeHandle` تُرجع `undefined`.
 
 ---
 
@@ -60,7 +60,7 @@ Starting with React 19, [`ref` is available as a prop.](/blog/2024/12/05/react-1
 
 ### Exposing a custom ref handle to the parent component {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-To expose a DOM node to the parent element, pass in the `ref` prop to the node.
+لتعريض عقدة DOM للعنصر الأب، مرّر prop الـ `ref` إلى العقدة.
 
 ```js {2}
 function MyInput({ ref }) {
@@ -68,7 +68,7 @@ function MyInput({ ref }) {
 };
 ```
 
-With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
+مع الكود أعلاه، [سيستلم ref إلى `MyInput` عقدة `<input>` في DOM.](/learn/manipulating-the-dom-with-refs) لكن يمكنك تعريض قيمة مخصصة بدلًا من ذلك. لتخصيص المقبض المعرَّض، استدعِ `useImperativeHandle` في أعلى مكوّنك:
 
 ```js {4-8}
 import { useImperativeHandle } from 'react';
@@ -84,9 +84,9 @@ function MyInput({ ref }) {
 };
 ```
 
-Note that in the code above, the `ref` is no longer passed to the `<input>`.
+لاحظ أنه في الكود أعلاه لم يعد يُمرَّر الـ `ref` إلى `<input>`.
 
-For example, suppose you don't want to expose the entire `<input>` DOM node, but you want to expose two of its methods: `focus` and `scrollIntoView`. To do this, keep the real browser DOM in a separate ref. Then use `useImperativeHandle` to expose a handle with only the methods that you want the parent component to call:
+على سبيل المثال، لنفترض أنك لا تريد تعريض عقدة `<input>` كاملة في DOM، بل تريد تعريض طريقتين منها: `focus` و`scrollIntoView`. للقيام بذلك، احتفظ بعقدة DOM الحقيقية في ref منفصل. ثم استخدم `useImperativeHandle` لتعريض مقبض يحتوي فقط على الدوال التي تريد أن يستدعيها المكوّن الأب:
 
 ```js {7-14}
 import { useRef, useImperativeHandle } from 'react';
@@ -109,7 +109,7 @@ function MyInput({ ref }) {
 };
 ```
 
-Now, if the parent component gets a ref to `MyInput`, it will be able to call the `focus` and `scrollIntoView` methods on it. However, it will not have full access to the underlying `<input>` DOM node.
+الآن، إذا حصل المكوّن الأب على ref إلى `MyInput`، يمكنه استدعاء الدالتين `focus` و`scrollIntoView` عليه. لكنه لن يملك وصولًا كاملًا إلى عقدة `<input>` الأساسية في DOM.
 
 <Sandpack>
 
@@ -172,7 +172,7 @@ input {
 
 ### Exposing your own imperative methods {/*exposing-your-own-imperative-methods*/}
 
-The methods you expose via an imperative handle don't have to match the DOM methods exactly. For example, this `Post` component exposes a `scrollAndFocusAddComment` method via an imperative handle. This lets the parent `Page` scroll the list of comments *and* focus the input field when you click the button:
+الدوال التي تعرّضها عبر مقبض imperative لا يجب أن تطابق دوال DOM حرفيًا. على سبيل المثال، يعرّض مكوّن `Post` الدالة `scrollAndFocusAddComment` عبر مقبض imperative. هذا يتيح للمكوّن الأب `Page` تمرير قائمة التعليقات *والتركيز* على حقل الإدخال عند النقر على الزر:
 
 <Sandpack>
 
@@ -285,8 +285,8 @@ export default AddComment;
 
 <Pitfall>
 
-**Do not overuse refs.** You should only use refs for *imperative* behaviors that you can't express as props: for example, scrolling to a node, focusing a node, triggering an animation, selecting text, and so on.
+**لا تفرط في استخدام refs.** استخدم refs فقط للسلوكيات *الإلزامية (imperative)* التي لا يمكن التعبير عنها بالـ props: مثل التمرير إلى عقدة، التركيز، تشغيل رسوم متحركة، تحديد نص، وهكذا.
 
-**If you can express something as a prop, you should not use a ref.** For example, instead of exposing an imperative handle like `{ open, close }` from a `Modal` component, it is better to take `isOpen` as a prop like `<Modal isOpen={isOpen} />`. [Effects](/learn/synchronizing-with-effects) can help you expose imperative behaviors via props.
+**إذا أمكن التعبير عن شيء كـ prop، لا تستخدم ref.** على سبيل المثال، بدل تعريض مقبض imperative مثل `{ open, close }` من مكوّن `Modal`، من الأفضل أخذ `isOpen` كـ prop مثل `<Modal isOpen={isOpen} />`. يمكن [للتأثيرات](/learn/synchronizing-with-effects) المساعدة على تعريض السلوك الإلزامي عبر الـ props.
 
 </Pitfall>

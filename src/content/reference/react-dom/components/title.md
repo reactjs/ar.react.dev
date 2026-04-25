@@ -4,7 +4,7 @@ title: "<title>"
 
 <Intro>
 
-The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) lets you specify the title of the document.
+يتيح لك [مكوّن `<title>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) تحديد عنوان المستند.
 
 ```js
 <title>My Blog</title>
@@ -16,45 +16,45 @@ The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `<title>` {/*title*/}
 
-To specify the title of the document, render the [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). You can render `<title>` from any component and React will always place the corresponding DOM element in the document head.
+لتحديد عنوان المستند، صيّر [مكوّن `<title>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). يمكنك تصيير `<title>` من أي مكوّن وسيضع React دائمًا عنصر DOM المقابل في رأس المستند.
 
 ```js
 <title>My Blog</title>
 ```
 
-[See more examples below.](#usage)
+[اطّلع على المزيد من الأمثلة في الأسفل.](#usage)
 
-#### Props {/*props*/}
+#### الخصائص {/*props*/}
 
-`<title>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+يدعم `<title>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
 
-* `children`: `<title>` accepts only text as a child. This text will become the title of the document. You can also pass your own components as long as they only render text.
+* `children`: يقبل `<title>` نصًا فقط كابن. يصبح هذا النص عنوان المستند. يمكنك أيضًا تمرير مكوّناتك الخاصة طالما أنها تصيّر نصًا فقط.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### سلوك تصيير خاص {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<title>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<title>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render its `<title>` itself. 
+سيضع React دائمًا عنصر DOM المقابل لمكوّن `<title>` داخل `<head>` للمستند، بغضّ النظر عن مكان تصييره في شجرة React. `<head>` هو المكان الصالح الوحيد لوجود `<title>` في DOM، مع أنه من المريح أن يمثّل مكوّن الصفحة عنوانه بنفسه.
 
-There are two exception to this:
-* If `<title>` is within an `<svg>` component, then there is no special behavior, because in this context it doesn’t represent the document’s title but rather is an [accessibility annotation for that SVG graphic](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
-* If the `<title>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent the document’s title but rather metadata about a specific part of the page. 
+يستثنى من ذلك أمران:
+* إذا كان `<title>` داخل مكوّن `<svg>`، فلا يوجد سلوك خاص، لأن السياق هنا لا يمثل عنوان المستند بل [تعليقًا للوصولية على الرسم SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
+* إذا كان لـ `<title>` سمة [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop)، فلا يوجد سلوك خاص، لأن الحالة هنا لا تمثل عنوان المستند بل بيانات وصفية عن جزء معيّن من الصفحة. 
 
 <Pitfall>
 
-Only render a single `<title>` at a time. If more than one component renders a `<title>` tag at the same time, React will place all of those titles in the document head. When this happens, the behavior of browsers and search engines is undefined.
+صيّر `<title>` واحدًا فقط في كل مرة. إذا صيَّر أكثر من مكوّن وسوم `<title>` في آن واحد، سيضع React كل هذه العناوين في رأس المستند. عندها يكون سلوك المتصفحات ومحركات البحث غير محدد.
 
 </Pitfall>
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Set the document title {/*set-the-document-title*/}
+### تعيين عنوان المستند {/*set-the-document-title*/}
 
-Render the `<title>` component from any component with text as its children. React will put a `<title>` DOM node in the document `<head>`.
+صيّر مكوّن `<title>` من أي مكوّن مع نص كأبناء. سيضع React عقدة `<title>` في `<head>` للمستند.
 
 <SandpackWithHTMLOutput>
 
@@ -74,15 +74,15 @@ export default function ContactUsPage() {
 
 </SandpackWithHTMLOutput>
 
-### Use variables in the title {/*use-variables-in-the-title*/}
+### استخدام متغيرات في العنوان {/*use-variables-in-the-title*/}
 
-The children of the `<title>` component must be a single string of text. (Or a single number or a single object with a `toString` method.) It might not be obvious, but using JSX curly braces like this:
+يجب أن تكون أبناء مكوّن `<title>` سلسلة نصية واحدة. (أو رقمًا واحدًا أو كائنًا واحدًا له طريقة `toString`.) قد لا يبدو واضحًا أن استخدام أقواس JSX هكذا:
 
 ```js
 <title>Results page {pageNumber}</title> // 🔴 Problem: This is not a single string
 ```
 
-... actually causes the `<title>` component to get a two-element array as its children (the string `"Results page"` and the value of `pageNumber`). This will cause an error. Instead, use string interpolation to pass `<title>` a single string:
+... يجعل أبناء `<title>` في الواقع مصفوفة من عنصرين (السلسلة `"Results page"` وقيمة `pageNumber`). ذلك يسبب خطأ. بدلًا من ذلك، استخدم دمج السلاسل لتمرير سلسلة واحدة إلى `<title>`:
 
 ```js
 <title>{`Results page ${pageNumber}`}</title>

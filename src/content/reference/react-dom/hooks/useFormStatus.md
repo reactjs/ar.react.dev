@@ -1,10 +1,10 @@
 ---
-title: useFormStatus
+title: "حالة النموذج (useFormStatus)"
 ---
 
 <Intro>
 
-`useFormStatus` is a Hook that gives you status information of the last form submission.
+`useFormStatus` خطاف يعطيك معلومات حالة عن آخر إرسال لنموذج.
 
 ```js
 const { pending, data, method, action } = useFormStatus();
@@ -16,11 +16,11 @@ const { pending, data, method, action } = useFormStatus();
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useFormStatus()` {/*use-form-status*/}
 
-The `useFormStatus` Hook provides status information of the last form submission.
+يوفّر خطاف `useFormStatus` معلومات حالة عن آخر إرسال لنموذج.
 
 ```js {5},[[1, 6, "status.pending"]]
 import { useFormStatus } from "react-dom";
@@ -28,7 +28,7 @@ import action from './actions';
 
 function Submit() {
   const status = useFormStatus();
-  return <button disabled={status.pending}>Submit</button>
+  return <button disabled={status.pending}>إرسال</button>
 }
 
 export default function App() {
@@ -40,42 +40,42 @@ export default function App() {
 }
 ```
 
-To get status information, the `Submit` component must be rendered within a `<form>`. The Hook returns information like the <CodeStep step={1}>`pending`</CodeStep> property which tells you if the form is actively submitting. 
+للحصول على معلومات الحالة، يجب أن يُصَيَّر مكوّن `Submit` داخل `<form>`. يُرجِع الخطاف معلومات مثل خاصية <CodeStep step={1}>`pending`</CodeStep> التي تخبرك إن كان النموذج قيد الإرسال.
 
-In the above example, `Submit` uses this information to disable `<button>` presses while the form is submitting.
+في المثال أعلاه، يستخدم `Submit` ذلك لتعطيل النقر على `<button>` أثناء إرسال النموذج.
 
-[See more examples below.](#usage)
+[المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-`useFormStatus` does not take any parameters.
+لا يقبل `useFormStatus` أي معاملات.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-A `status` object with the following properties:
+كائن `status` بالخصائص التالية:
 
-* `pending`: A boolean. If `true`, this means the parent `<form>` is pending submission. Otherwise, `false`.
+* `pending`: قيمة منطقية. إن كانت `true`، فنموذج `<form>` الأب قيد الإرسال. وإلا `false`.
 
-* `data`: An object implementing the [`FormData interface`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) that contains the data the parent `<form>` is submitting. If there is no active submission or no parent `<form>`, it will be `null`.
+* `data`: كائن يطبّق [واجهة FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) ويحتوي بيانات النموذج الأب المُرسَلَة. إن لم يكن هناك إرسال نشط أو لا يوجد `<form>` أب، تكون القيمة `null`.
 
-* `method`: A string value of either `'get'` or `'post'`. This represents whether the parent `<form>` is submitting with either a `GET` or `POST` [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). By default, a `<form>` will use the `GET` method and can be specified by the [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method) property.
+* `method`: سلسلة إما `'get'` أو `'post'`. تمثّل ما إن كان النموذج الأب يُرسَل بـ GET أو POST [وفق طريقة HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). افتراضيًا يستخدم `<form>` طريقة `GET` ويمكن ضبطها بخاصية [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method).
 
 [//]: # (Link to `<form>` documentation. "Read more on the `action` prop on `<form>`.")
-* `action`: A reference to the function passed to the `action` prop on the parent `<form>`. If there is no parent `<form>`, the property is `null`. If there is a URI value provided to the `action` prop, or no `action` prop specified, `status.action` will be `null`.
+* `action`: مرجع إلى الدالة الممرَّرة لخاصية `action` على `<form>` الأب. إن لم يكن هناك `<form>` أب، الخاصية `null`. إن وُجدت قيمة URI لـ `action` أو لم تُحدَّد خاصية `action`، يكون `status.action` هو `null`.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* The `useFormStatus` Hook must be called from a component that is rendered inside a `<form>`. 
-* `useFormStatus` will only return status information for a parent `<form>`. It will not return status information for any `<form>` rendered in that same component or children components.
+* يجب استدعاء خطاف `useFormStatus` من مكوّن يُصَيَّر داخل `<form>`.
+* يُرجِع `useFormStatus` معلومات الحالة لـ `<form>` أب فقط. لا يُرجِع معلومات لأي `<form>` يُصَيَّر في ذلك المكوّن نفسه أو في أبنائه.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Display a pending state during form submission {/*display-a-pending-state-during-form-submission*/}
-To display a pending state while a form is submitting, you can call the `useFormStatus` Hook in a component rendered in a `<form>` and read the `pending` property returned.
+### عرض حالة التعليق أثناء إرسال النموذج {/*display-a-pending-state-during-form-submission*/}
+لعرض حالة تعليق أثناء إرسال النموذج، استدعِ خطاف `useFormStatus` في مكوّن يُصَيَّر داخل `<form>` واقرأ الخاصية `pending` المُرجَعة.
 
-Here, we use the `pending` property to indicate the form is submitting. 
+هنا نستخدم `pending` لإظهار أن النموذج يُرسَل.
 
 <Sandpack>
 
@@ -87,7 +87,7 @@ function Submit() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending}>
-      {pending ? "Submitting..." : "Submit"}
+      {pending ? "جارٍ الإرسال..." : "إرسال"}
     </button>
   );
 }
@@ -114,30 +114,30 @@ export async function submitForm(query) {
 
 <Pitfall>
 
-##### `useFormStatus` will not return status information for a `<form>` rendered in the same component. {/*useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component*/}
+##### لن يُرجِع `useFormStatus` معلومات حالة لـ `<form>` يُصَيَّر في المكوّن نفسه. {/*useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component*/}
 
-The `useFormStatus` Hook only returns status information for a parent `<form>` and not for any `<form>` rendered in the same component calling the Hook, or child components.
+يُرجِع خطاف `useFormStatus` معلومات الحالة لـ `<form>` أب فقط، لا لأي `<form>` يُصَيَّر في المكوّن الذي يستدعي الخطاف أو في أبنائه.
 
 ```js
 function Form() {
-  // 🚩 `pending` will never be true
-  // useFormStatus does not track the form rendered in this component
+  // 🚩 لن تكون `pending` أبدًا true
+  // useFormStatus لا يتتبع النموذج المُصَيَّر في هذا المكوّن
   const { pending } = useFormStatus();
   return <form action={submit}></form>;
 }
 ```
 
-Instead call `useFormStatus` from inside a component that is located inside `<form>`.
+بدلًا من ذلك استدعِ `useFormStatus` من داخل مكوّن يقع داخل `<form>`.
 
 ```js
 function Submit() {
-  // ✅ `pending` will be derived from the form that wraps the Submit component
+  // ✅ تُشتق `pending` من النموذج الذي يلف مكوّن Submit
   const { pending } = useFormStatus(); 
   return <button disabled={pending}>...</button>;
 }
 
 function Form() {
-  // This is the <form> `useFormStatus` tracks
+  // هذا هو `<form>` الذي يتتبعه useFormStatus
   return (
     <form action={submit}>
       <Submit />
@@ -148,11 +148,11 @@ function Form() {
 
 </Pitfall>
 
-### Read the form data being submitted {/*read-form-data-being-submitted*/}
+### قراءة بيانات النموذج المُرسَلَة {/*read-form-data-being-submitted*/}
 
-You can use the `data` property of the status information returned from `useFormStatus` to display what data is being submitted by the user.
+يمكنك استخدام خاصية `data` من معلومات الحالة المُرجَعة من `useFormStatus` لعرض البيانات التي يُرسِلها المستخدم.
 
-Here, we have a form where users can request a username. We can use `useFormStatus` to display a temporary status message confirming what username they have requested.
+هنا نموذج يطلب اسم مستخدم. نستخدم `useFormStatus` لعرض رسالة حالة مؤقتة تؤكد اسم المستخدم المطلوب.
 
 <Sandpack>
 
@@ -165,13 +165,13 @@ export default function UsernameForm() {
 
   return (
     <div>
-      <h3>Request a Username: </h3>
+      <h3>طلب اسم مستخدم: </h3>
       <input type="text" name="username" disabled={pending}/>
       <button type="submit" disabled={pending}>
-        Submit
+        إرسال
       </button>
       <br />
-      <p>{data ? `Requesting ${data?.get("username")}...`: ''}</p>
+      <p>{data ? `جارٍ طلب ${data?.get("username")}...`: ''}</p>
     </div>
   );
 }
@@ -219,12 +219,12 @@ button {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## حل المشكلات {/*troubleshooting*/}
 
-### `status.pending` is never `true` {/*pending-is-never-true*/}
+### `status.pending` لا تكون أبدًا `true` {/*pending-is-never-true*/}
 
-`useFormStatus` will only return status information for a parent `<form>`. 
+يُرجِع `useFormStatus` معلومات الحالة لـ `<form>` أب فقط.
 
-If the component that calls `useFormStatus` is not nested in a `<form>`, `status.pending` will always return `false`. Verify `useFormStatus` is called in a component that is a child of a `<form>` element.
+إن لم يكن المكوّن الذي يستدعي `useFormStatus` متداخلًا في `<form>`، ستكون `status.pending` دائمًا `false`. تحقق أن `useFormStatus` يُستدعى من مكوّن هو ابن عنصر `<form>`.
 
-`useFormStatus` will not track the status of a `<form>` rendered in the same component. See [Pitfall](#useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component) for more details.
+لن يتتبع `useFormStatus` حالة `<form>` يُصَيَّر في المكوّن نفسه. انظر [الفخ](#useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component) للمزيد.

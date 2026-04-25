@@ -4,59 +4,59 @@ title: incompatible-library
 
 <Intro>
 
-Validates against usage of libraries which are incompatible with memoization (manual or automatic).
+يتحقق من عدم استخدام مكتبات غير متوافقة مع التذكّر (اليدوي أو التلقائي).
 
 </Intro>
 
 <Note>
 
-These libraries were designed before React's memoization rules were fully documented. They made the correct choices at the time to optimize for ergonomic ways to keep components just the right amount of reactive as app state changes. While these legacy patterns worked, we have since discovered that it's incompatible with React's programming model. We will continue working with library authors to migrate these libraries to use patterns that follow the Rules of React.
+صُممت هذه المكتبات قبل توثيق قواعد تذكّر React بالكامل. اتخذت خيارات صحيحة آنذلك لتحسين تجربة الإبقاء على المكوّنات تفاعلية بالقدر المناسب مع تغيّر حالة التطبيق. بينما كانت هذه الأنماط القديمة تعمل، اكتشفنا لاحقاً أنها غير متوافقة مع نموذج برمجة React. سنواصل العمل مع مؤلفي المكتبات لترحيلها إلى أنماط تتبع Rules of React.
 
 </Note>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Some libraries use patterns that aren't supported by React. When the linter detects usages of these APIs from a [known list](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts), it flags them under this rule. This means that React Compiler can automatically skip over components that use these incompatible APIs, in order to avoid breaking your app.
+تستخدم بعض المكتبات أنماطاً غير مدعومة في React. عندما يلتقط الـ lint استخدام هذه الواجهات من [قائمة معروفة](https://github.com/facebook/react/blob/main/compiler/packages/babel-plugin-react-compiler/src/HIR/DefaultModuleTypeProvider.ts)، يوسمها تحت هذه القاعدة. يعني ذلك أن React Compiler يمكنه تخطّي المكوّنات التي تستخدم واجهات غير متوافقة تلقائياً لتجنّب كسر تطبيقك.
 
 ```js
-// Example of how memoization breaks with these libraries
+// مثال لكيفية كسر التذكّر مع هذه المكتبات
 function Form() {
   const { watch } = useForm();
 
-  // ❌ This value will never update, even when 'name' field changes
+  // ❌ هذه القيمة لن تتحدّث حتى عند تغيّر حقل 'name'
   const name = useMemo(() => watch('name'), [watch]);
 
-  return <div>Name: {name}</div>; // UI appears "frozen"
+  return <div>Name: {name}</div>; // الواجهة تبدو «مجمّدة»
 }
 ```
 
-React Compiler automatically memoizes values following the Rules of React. If something breaks with manual `useMemo`, it will also break the compiler's automatic optimization. This rule helps identify these problematic patterns.
+يذكّر React Compiler القيم تلقائياً وفق Rules of React. إذا انكسر شيء مع `useMemo` يدوياً، سينكسر أيضاً تحسين المُصرّف التلقائي. تساعدك هذه القاعدة على تحديد هذه الأنماط المشكِلة.
 
 <DeepDive>
 
-#### Designing APIs that follow the Rules of React {/*designing-apis-that-follow-the-rules-of-react*/}
+#### تصميم واجهات تتبع Rules of React {/*designing-apis-that-follow-the-rules-of-react*/}
 
-One question to think about when designing a library API or hook is whether calling the API can be safely memoized with `useMemo`. If it can't, then both manual and React Compiler memoizations will break your user's code.
+سؤال يُفكَّر فيه عند تصميم واجهة مكتبة أو hook: هل يمكن استدعاء الواجهة بأمان مع `useMemo`؟ إن لم يكن ذلك ممكناً، فكل من التذكّر اليدوي وتذكّر React Compiler سيكسران شيفرة المستخدم.
 
-For example, one such incompatible pattern is "interior mutability". Interior mutability is when an object or function keeps its own hidden state that changes over time, even though the reference to it stays the same. Think of it like a box that looks the same on the outside but secretly rearranges its contents. React can't tell anything changed because it only checks if you gave it a different box, not what's inside. This breaks memoization, since React relies on the outer object (or function) changing if part of its value has changed.
+مثلاً، أحد الأنماط غير المتوافقة هو «التعديل الداخلي» (interior mutability): عندما يحتفظ كائن أو دالة بحالة خفية تتغيّر مع الزمن رغم بقاء المرجع نفسه. فكّر فيها كصندوق يبدو من الخارج كما هو لكنه يعيد ترتيب محتواه سراً. لا يستطيع React معرفة أن شيئاً تغيّر لأنه يتحقق فقط مما إذا أعطيته صندوقاً مختلفاً لا ما بداخله. هذا يكسر التذكّر لأن React يعتمد على تغيّر الكائن الخارجي (أو الدالة) إذا تغيّر جزء من قيمته.
 
-As a rule of thumb, when designing React APIs, think about whether `useMemo` would break it:
+كقاعدة إبهام عند تصميم واجهات React، فكّر هل سينكسر `useMemo`:
 
 ```js
 function Component() {
   const { someFunction } = useLibrary();
-  // it should always be safe to memoize functions like this
+  // يجب أن يكون آمناً دائماً لتذكّر دوال كهذه
   const result = useMemo(() => someFunction(), [someFunction]);
 }
 ```
 
-Instead, design APIs that return immutable state and use explicit update functions:
+بدلاً من ذلك، صمّم واجهات تُرجِع حالة غير قابلة للتغيير وتستخدم دوال تحديث صريحة:
 
 ```js
-// ✅ Good: Return immutable state that changes reference when updated
+// ✅ جيد: إرجاع حالة غير قابلة للتغيير يتغيّر مرجعها عند التحديث
 function Component() {
   const { field, updateField } = useLibrary();
-  // this is always safe to memo
+  // هذا آمناً دائماً للتذكّر
   const greeting = useMemo(() => `Hello, ${field.name}!`, [field.name]);
 
   return (
@@ -73,26 +73,26 @@ function Component() {
 
 </DeepDive>
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ react-hook-form `watch`
+// ❌ `watch` من react-hook-form
 function Component() {
   const {watch} = useForm();
-  const value = watch('field'); // Interior mutability
+  const value = watch('field'); // تعديل داخلي
   return <div>{value}</div>;
 }
 
-// ❌ TanStack Table `useReactTable`
+// ❌ `useReactTable` من TanStack Table
 function Component({data}) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-  // table instance uses interior mutability
+  // مثيل الجدول يستخدم تعديلاً داخلياً
   return <Table table={table} />;
 }
 ```
@@ -101,10 +101,10 @@ function Component({data}) {
 
 #### MobX {/*mobx*/}
 
-MobX patterns like `observer` also break memoization assumptions, but the linter does not yet detect them. If you rely on MobX and find that your app doesn't work with React Compiler, you may need to use the `"use no memo" directive`.
+أنماط MobX مثل `observer` تكسر أيضاً افتراضات التذكّر، لكن الـ lint لا يكتشفها بعد. إذا اعتمدت على MobX ووجدت أن تطبيقك لا يعمل مع React Compiler، قد تحتاج توجيه `"use no memo"`.
 
 ```js
-// ❌ MobX `observer`
+// ❌ `observer` من MobX
 const Component = observer(() => {
   const [timer] = useState(() => new Timer());
   return <span>Seconds passed: {timer.secondsPassed}</span>;
@@ -113,12 +113,12 @@ const Component = observer(() => {
 
 </Pitfall>
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ For react-hook-form, use `useWatch`:
+// ✅ مع react-hook-form استخدم `useWatch`:
 function Component() {
   const {register, control} = useForm();
   const watchedValue = useWatch({
@@ -135,4 +135,4 @@ function Component() {
 }
 ```
 
-Some other libraries do not yet have alternative APIs that are compatible with React's memoization model. If the linter doesn't automatically skip over your components or hooks that call these APIs, please [file an issue](https://github.com/facebook/react/issues) so we can add it to the linter.
+لا تملك بعض المكتبات بعد واجهات بديلة متوافقة مع نموذج تذكّر React. إذا لم يتخطّ الـ lint تلقائياً مكوّناتك أو hooks التي تستدعي هذه الواجهات، يرجى [فتح issue](https://github.com/facebook/react/issues) لنضيفها للـ linter.

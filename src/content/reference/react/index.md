@@ -1,57 +1,57 @@
 ---
-title: React Reference Overview
+title: نظرة عامة على مرجع React
 ---
 
 <Intro>
 
-This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+يوفّر هذا القسم مرجعاً تفصيلياً للعمل مع React. لمقدمة عن React، يُرجى زيارة قسم [التعلّم](/learn).
 
 </Intro>
 
-The React reference documentation is broken down into functional subsections:
+يُقسَّم مرجع React إلى أقسام فرعية وظيفية:
 
 ## React {/*react*/}
 
-Programmatic React features:
+ميزات React البرمجية:
 
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+* [Hooks](/reference/react/hooks) - استخدام ميزات React المختلفة من مكوناتك.
+* [Components](/reference/react/components) - مكونات مدمجة يمكنك استخدامها في JSX.
+* [APIs](/reference/react/apis) - واجهات برمجية مفيدة لتعريف المكونات.
+* [Directives](/reference/rsc/directives) - تعليمات لأدوات التجميع المتوافقة مع React Server Components.
 
 ## React DOM {/*react-dom*/}
 
-React DOM contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
+يحتوي React DOM على ميزات مدعومة لتطبيقات الويب فقط (التي تعمل في بيئة DOM في المتصفح). يُقسَّم هذا القسم إلى ما يلي:
 
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
-* [Static APIs](/reference/react-dom/static) - The `react-dom/static` APIs let you generate static HTML for React components.
+* [Hooks](/reference/react-dom/hooks) - خطافات لتطبيقات الويب التي تعمل في بيئة DOM في المتصفح.
+* [Components](/reference/react-dom/components) - يدعم React جميع مكونات HTML وSVG المدمجة في المتصفح.
+* [APIs](/reference/react-dom) - تحتوي حزمة `react-dom` على دوال مدعومة في تطبيقات الويب فقط.
+* [Client APIs](/reference/react-dom/client) - واجهات `react-dom/client` تتيح لك تصيير مكونات React على العميل (في المتصفح).
+* [Server APIs](/reference/react-dom/server) - واجهات `react-dom/server` تتيح لك تصيير مكونات React إلى HTML على الخادم.
+* [Static APIs](/reference/react-dom/static) - واجهات `react-dom/static` تتيح لك توليد HTML ثابت لمكونات React.
 
 ## React Compiler {/*react-compiler*/}
 
-The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+يُعدّ React Compiler أداة تحسين تُشغَّل وقت البناء وتطبّق التخزين المؤقت (memoization) تلقائياً على مكونات React وقيمك:
 
-* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
-* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
-* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+* [Configuration](/reference/react-compiler/configuration) - خيارات إعداد React Compiler.
+* [Directives](/reference/react-compiler/directives) - توجيهات على مستوى الدالة للتحكم في التجميع.
+* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - دليل لشحن شيفرة مكتبة مُجمَّعة مسبقاً.
 
 ## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
 
-The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
+[إضافة ESLint لخطافات React](/reference/eslint-plugin-react-hooks) تساعد على فرض قواعد React:
 
-* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+* [Lints](/reference/eslint-plugin-react-hooks) - توثيق تفصيلي لكل قاعدة تحقق (lint) مع أمثلة.
 
 ## Rules of React {/*rules-of-react*/}
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+لدى React صيغ — أو قواعد — لكيفية التعبير عن الأنماط بطريقة سهلة الفهم وتُنتِج تطبيقات عالية الجودة:
 
-* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
-* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
-* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) - النقاء يجعل شيفرتك أسهل للفهم والتصحيح، ويتيح لـ React تحسين مكوناتك وخطافاتك تلقائياً بشكل صحيح.
+* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) - React مسؤول عن تصيير المكونات والخطافات عند الحاجة لتحسين تجربة المستخدم.
+* [Rules of Hooks](/reference/rules/rules-of-hooks) - تُعرَّف الخطافات بدوال JavaScript، لكنها تمثّل نوعاً خاصاً من منطق واجهة المستخدم القابل لإعادة الاستخدام مع قيود على أماكن استدعائها.
 
 ## Legacy APIs {/*legacy-apis*/}
 
-* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+* [Legacy APIs](/reference/react/legacy) - تُصدَّر من حزمة `react`، لكنها غير مُوصى بها في الشيفرة الجديدة.

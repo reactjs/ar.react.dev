@@ -1,53 +1,53 @@
 ---
-title: Choosing the State Structure
+title: اختيار هيكلة الحالة
 ---
 
 <Intro>
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.
+هيكلة الحالة جيدًا قد يفرق بين مكوّن مريح التعديل والتصحيح، ومكوّن يكون مصدرًا دائمًا للأخطاء. إليك بعض النصائح التي يفضل مراعاتها عند هيكلة الحالة.
 
 </Intro>
 
 <YouWillLearn>
 
-* When to use a single vs multiple state variables
-* What to avoid when organizing state
-* How to fix common issues with the state structure
+* متى تستخدم متغير حالة واحدًا مقابل عدة متغيرات
+* ما الذي يجب تجنبه عند تنظيم الحالة
+* كيف تعالج مشكلات شائعة في هيكلة الحالة
 
 </YouWillLearn>
 
-## Principles for structuring state {/*principles-for-structuring-state*/}
+## مبادئ هيكلة الحالة {/*principles-for-structuring-state*/}
 
-When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+عند كتابة مكوّن يحتفظ بحالة، ستختار عدد متغيرات الحالة وشكل بياناتها. وإن أمكن كتابة برامج صحيحة حتى بهيكلة دون المثلى، فهناك مبادئ توجهك لخيارات أفضل:
 
-1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
-2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
-3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
-4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
-5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way.
+1. **جمّع الحالة المترابطة.** إذا حدّثت دائمًا متغيري حالة أو أكثر معًا، ففكّر بدمجها في متغير حالة واحد.
+2. **تجنب التناقض في الحالة.** عندما تُهيكَل الحالة بحيث قد تتعارض قطع متعددة وتتنازع، تترك مجالًا للأخطاء. حاول تجنب ذلك.
+3. **تجنب الحالة الزائدة.** إذا استطعت حساب معلومة من خصائص المكوّن أو متغيرات حالته أثناء العرض، فلا تضع تلك المعلومة في حالة المكوّن.
+4. **تجنب التكرار في الحالة.** عند تكرار نفس البيانات بين متغيرات حالة أو داخل كائنات متداخلة، يصعب إبقاؤها متزامنة. قلل التكرار عندما يمكن.
+5. **تجنب التعمق الشديد في الحالة.** الحالة الهرمية العميقة غير مريحة للتحديث. إن أمكن، فضّل هيكلة مسطحة.
 
-The goal behind these principles is to *make state easy to update without introducing mistakes*. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to ["normalize" the database structure](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) to reduce the chance of bugs. To paraphrase Albert Einstein, **"Make your state as simple as it can be--but no simpler."**
+الهدف من هذه المبادئ هو *جعل الحالة سهلة التحديث دون إدخال أخطاء*. إزالة البيانات الزائدة والمكررة من الحالة تساعد على بقاء أجزائها متزامنة. هذا يشبه ما قد يريده مهندس قواعد بيانات من [«تطبيع» هيكل قاعدة البيانات](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) لتقليل احتمال الأخطاء. بإعادة صياغة قول أينشتاين: **«اجعل حالتك بسيطة قدر الإمكان—ولا أبسط من ذلك.»**
 
-Now let's see how these principles apply in action.
+فلنرَ كيف تُطبَّق هذه المبادئ عمليًا.
 
-## Group related state {/*group-related-state*/}
+## تجميع الحالة المترابطة {/*group-related-state*/}
 
-You might sometimes be unsure between using a single or multiple state variables.
+قد تتردد أحيانًا بين متغير حالة واحد أو عدة متغيرات.
 
-Should you do this?
+هل تفعل هذا؟
 
 ```js
 const [x, setX] = useState(0);
 const [y, setY] = useState(0);
 ```
 
-Or this?
+أم هذا؟
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+تقنيًا يمكنك أيًا من الأسلوبين. لكن **إذا تغيّر متغيرا حالة معًا دائمًا، فقد يكون من الحكمة دمجهما في متغير حالة واحد.** حتى لا تنسى إبقاءهما متزامنين، كهذا المثال حيث تحريك المؤشر يحدّث إحداثيي النقطة الحمراء معًا:
 
 <Sandpack>
 
@@ -93,17 +93,17 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Another case where you'll group data into an object or an array is when you don't know how many pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
+حالة أخرى تُجمّع فيها البيانات في كائن أو مصفوفة هي عندما لا تعرف كم قطعة حالة تحتاج. مثلاً عند نموذج يمكن للمستخدم إضافة حقول مخصصة إليه.
 
 <Pitfall>
 
-If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+إذا كان متغير الحالة كائنًا، تذكر أنه [لا يمكنك تحديث حقل واحد فقط فيه](/learn/updating-objects-in-state) دون نسخ الحقول الأخرى صراحة. مثلاً لا يمكنك `setPosition({ x: 100 })` في المثال أعلاه لأن الكائن لن يحتوي خاصية `y` أصلًا! بدلًا من ذلك، لضبط `x` وحدها، إما `setPosition({ ...position, x: 100 })`، أو تقسيمهما إلى متغيري حالة و`setX(100)`.
 
 </Pitfall>
 
-## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
+## تجنب التناقض في الحالة {/*avoid-contradictions-in-state*/}
 
-Here is a hotel feedback form with `isSending` and `isSent` state variables:
+إليك نموذج ملاحظات فندق بمتغيري حالة `isSending` و`isSent`:
 
 <Sandpack>
 
@@ -157,9 +157,9 @@ function sendMessage(text) {
 
 </Sandpack>
 
-While this code works, it leaves the door open for "impossible" states. For example, if you forget to call `setIsSent` and `setIsSending` together, you may end up in a situation where both `isSending` and `isSent` are `true` at the same time. The more complex your component is, the harder it is to understand what happened.
+هذا الكود يعمل، لكنه يترك بابًا لحالات «مستحيلة». مثلاً إذا نسيت استدعاء `setIsSent` و`setIsSending` معًا، قد تصل لحيث `isSending` و`isSent` كلاهما `true` معًا. كلما زاد تعقيد المكوّن، ازداد صعوبة فهم ما حدث.
 
-**Since `isSending` and `isSent` should never be `true` at the same time, it is better to replace them with one `status` state variable that may take one of *three* valid states:** `'typing'` (initial), `'sending'`, and `'sent'`:
+**بما أن `isSending` و`isSent` لا يجب أن يكونا `true` معًا، من الأفضل استبدالهما بمتغير حالة `status` واحد يأخذ واحدة من *ثلاث* حالات صالحة:** `'typing'` (ابتدائي)، و`'sending'`، و`'sent'`:
 
 <Sandpack>
 
@@ -214,20 +214,20 @@ function sendMessage(text) {
 
 </Sandpack>
 
-You can still declare some constants for readability:
+يمكنك الإبقاء على ثوابت للقراءة:
 
 ```js
 const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
 
-But they're not state variables, so you don't need to worry about them getting out of sync with each other.
+لكنها ليست متغيرات حالة، فلا تقلق من تزامنها مع بعضها.
 
-## Avoid redundant state {/*avoid-redundant-state*/}
+## تجنب الحالة الزائدة {/*avoid-redundant-state*/}
 
-If you can calculate some information from the component's props or its existing state variables during rendering, you **should not** put that information into that component's state.
+إذا استطعت حساب معلومة من خصائص المكوّن أو متغيرات حالته أثناء العرض، **فلا** تضع تلك المعلومة في حالة المكوّن.
 
-For example, take this form. It works, but can you find any redundant state in it?
+خذ هذا النموذج. يعمل، لكن هل تجد حالة زائدة فيه؟
 
 <Sandpack>
 
@@ -280,9 +280,9 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This form has three state variables: `firstName`, `lastName`, and `fullName`. However, `fullName` is redundant. **You can always calculate `fullName` from `firstName` and `lastName` during render, so remove it from state.**
+لهذا النموذج ثلاثة متغيرات حالة: `firstName` و`lastName` و`fullName`. لكن `fullName` زائد. **يمكنك دائمًا حساب `fullName` من `firstName` و`lastName` أثناء العرض، فأزله من الحالة.**
 
-This is how you can do it:
+هكذا يمكن فعل ذلك:
 
 <Sandpack>
 
@@ -334,37 +334,37 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `fullName` is *not* a state variable. Instead, it's calculated during render:
+هنا `fullName` *ليس* متغير حالة. بل يُحسب أثناء العرض:
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
+لذلك لا تحتاج معالجات التغيير لفعل شيء خاص لتحديثه. عند استدعاء `setFirstName` أو `setLastName`، يُعاد العرض ثم يُحسب `fullName` التالي من البيانات الجديدة.
 
 <DeepDive>
 
-#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
+#### لا تعكس الخصائص في الحالة {/*don-t-mirror-props-in-state*/}
 
-A common example of redundant state is code like this:
+مثال شائع للحالة الزائدة هو كود كهذا:
 
 ```js
 function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+هنا متغير حالة `color` يُهيأ من خاصية `messageColor`. المشكلة أن **إذا مرّر المكوّن الأب قيمة مختلفة لـ`messageColor` لاحقًا (مثلاً `'red'` بدل `'blue'`)، فلن يُحدَّث متغير الحالة `color`!** الحالة تُهيأ فقط في العرض الأول.
 
-This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+لذلك قد يؤدي «عكس» خاصية في متغير حالة إلى لبس. استخدم خاصية `messageColor` مباشرة. إن أردت اسمًا أقصر، استخدم ثابتًا:
 
 ```js
 function Message({ messageColor }) {
   const color = messageColor;
 ```
 
-This way it won't get out of sync with the prop passed from the parent component.
+بهذا لا يخرج عن تزامن مع الخاصية القادمة من الأب.
 
-"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+«عكس» الخصائص إلى الحالة يكون منطقيًا فقط عندما *تريد* تجاهل كل التحديثات لخاصية معيّنة. وفق العرف، ابدأ اسم الخاصية بـ`initial` أو `default` ليوضح أن القيم الجديدة تُتجاهل:
 
 ```js
 function Message({ initialColor }) {
@@ -375,9 +375,9 @@ function Message({ initialColor }) {
 
 </DeepDive>
 
-## Avoid duplication in state {/*avoid-duplication-in-state*/}
+## تجنب التكرار في الحالة {/*avoid-duplication-in-state*/}
 
-This menu list component lets you choose a single travel snack out of several:
+مكوّن قائمة القائمة هذا يتيح اختيار وجبة خفيفة واحدة للسفر من بين عدة خيارات:
 
 <Sandpack>
 
@@ -422,9 +422,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+حاليًا، يخزّن العنصر المختار ككائن في متغير الحالة `selectedItem`. وهذا ليس مثاليًا: **محتوى `selectedItem` هو نفس كائن أحد العناصر داخل قائمة `items`.** أي أن معلومات العنصر نفسها مكررة في مكانين.
 
-Why is this a problem? Let's make each item editable:
+لماذا هذه مشكلة؟ لنجعل كل عنصر قابلًا للتعديل:
 
 <Sandpack>
 
@@ -487,9 +487,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+لاحظ أنه إذا ضغطت «Choose» على عنصر *ثم* عدّلته، **يتحدث الحقل لكن التسمية في الأسفل لا تعكس التعديلات.** لأن الحالة مكررة ونسيت تحديث `selectedItem`.
 
-Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+رغم أنك قد تحدّث `selectedItem` أيضًا، فإزالة التكرار أبسط. في هذا المثال، بدل كائن `selectedItem` (الذي يكرر كائنًا داخل `items`)، احتفظ بـ`selectedId` في الحالة، *ثم* احصل على `selectedItem` بالبحث في `items` عن عنصر بهذا المعرّف:
 
 <Sandpack>
 
@@ -554,23 +554,23 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-The state used to be duplicated like this:
+كانت الحالة مكررة هكذا:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`
 
-But after the change it's like this:
+وبعد التغيير أصبحت هكذا:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedId = 0`
 
-The duplication is gone, and you only keep the essential state!
+ذهب التكرار وبقيت الحالة الجوهرية فقط!
 
-Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+الآن إذا عدّلت العنصر *المختار*، تتحدّث الرسالة في الأسفل فورًا. لأن `setItems` يُعيد العرض، و`items.find(...)` يجد العنصر بالعنوان المحدّث. لم تحتج لحفظ *العنصر المختار* في الحالة، لأن *معرّف الاختيار* وحده جوهري. الباقي يُحسب أثناء العرض.
 
-## Avoid deeply nested state {/*avoid-deeply-nested-state*/}
+## تجنب التعمق الشديد في الحالة {/*avoid-deeply-nested-state*/}
 
-Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:
+تخيّل خطة سفر تتكون من كواكب وقارات ودول. قد يغريك هيكلة حالتها بكائنات ومصفوفات متداخلة، كهذا المثال:
 
 <Sandpack>
 
@@ -812,11 +812,11 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+لنقل تريد زرًا لحذف مكان زرته بالفعل. كيف تفعل؟ [تحديث الحالة المتداخلة](/learn/updating-objects-in-state#updating-a-nested-object) يتطلب نسخ الكائنات صعودًا من الجزء الذي تغيّر. حذف مكان عميق التداخل يعني نسخ سلسلة الآباء كاملة. قد يصبح الكود طويلًا جدًا.
 
-**If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then store a mapping from each place ID to the corresponding place.
+**إذا كانت الحالة متداخلة أكثر مما يسهل تحديثها، ففكّر بتسطيحها.** إليك إعادة هيكلة للبيانات. بدل شجرة حيث لكل `place` مصفوفة من *أماكنه الفرعية*، يمكن لكل مكان أن يحتفظ بمصفوفة من *معرّفات أماكنه الفرعية*. ثم خزّن خريطة من كل معرّف مكان إلى المكان نفسه.
 
-This data restructuring might remind you of seeing a database table:
+قد تذكّرك إعادة الهيكلة هذه بجدول قاعدة بيانات:
 
 <Sandpack>
 
@@ -1118,14 +1118,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**الآن بعد أن أصبحت الحالة «مسطحة» (تُعرف أيضًا بأنها «مطبّعة» normalized)، يصبح تحديث العناصر المتداخلة أسهل.**
 
-In order to remove a place now, you only need to update two levels of state:
+لإزالة مكان الآن، تحتاج فقط لمستويين من التحديث:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- النسخة المحدّثة من مكان *الأب* يجب أن تستبعد المعرّف المحذوف من مصفوفة `childIds`.
+- النسخة المحدّثة من كائن الجذر «الجدول» يجب أن تتضمن النسخة المحدّثة من مكان الأب.
 
-Here is an example of how you could go about it:
+إليك مثال لكيفية القيام بذلك:
 
 <Sandpack>
 
@@ -1458,13 +1458,13 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+يمكنك تداخل الحالة كما تشاء، لكن التسطيح يحل مشكلات كثيرة. يجعل التحديث أسهل ويساعد على عدم تكرار البيانات في أجزاء مختلفة من كائن متداخل.
 
 <DeepDive>
 
-#### Improving memory usage {/*improving-memory-usage*/}
+#### تحسين استخدام الذاكرة {/*improving-memory-usage*/}
 
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+مثاليًا، تزيل أيضًا العناصر المحذوفة (وأبناءها!) من كائن «الجدول» لتحسين الذاكرة. هذا الإصدار يفعل ذلك. كما أنه [يستخدم Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) لجعل منطق التحديث أقصر.
 
 <Sandpack>
 
@@ -1817,25 +1817,25 @@ button { margin: 10px; }
 
 </DeepDive>
 
-Sometimes, you can also reduce state nesting by moving some of the nested state into the child components. This works well for ephemeral UI state that doesn't need to be stored, like whether an item is hovered.
+أحيانًا يمكنك تقليل تداخل الحالة بنقل جزء منها إلى المكوّنات الفرعية. هذا يناسب حالة واجهة عابرة لا تحتاج تخزينًا، مثل كون عنصرًا تحت المؤشر.
 
 <Recap>
 
-* If two state variables always update together, consider merging them into one. 
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
+* إذا حدّث متغيرا حالة معًا دائمًا، ففكّر بدمجهما في واحد.
+* اختر متغيرات الحالة بعناية لتجنب حالات «مستحيلة».
+* هيكل الحالة بحيث تقل احتمالية الخطأ عند التحديث.
+* تجنب الحالة الزائدة والمكررة حتى لا تضطر لمزامنتها يدويًا.
+* لا تضع الخصائص *في* الحالة إلا إذا أردت صراحة منع التحديثات.
+* لأنماط واجهة مثل الاختيار، احتفظ بالمعرّف أو الفهرس في الحالة بدل الكائن نفسه.
+* إذا كان تحديث الحالة العميقة معقدًا، جرّب التسطيح.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a component that's not updating {/*fix-a-component-thats-not-updating*/}
+#### إصلاح مكوّن لا يتحدّث {/*fix-a-component-thats-not-updating*/}
 
-This `Clock` component receives two props: `color` and `time`. When you select a different color in the select box, the `Clock` component receives a different `color` prop from its parent component. However, for some reason, the displayed color doesn't update. Why? Fix the problem.
+مكوّن `Clock` هذا يستقبل خاصيتين: `color` و`time`. عند اختيار لون مختلف من القائمة، يستقبل `Clock` خاصية `color` مختلفة من الأب. لكن لسبب ما اللون المعروض لا يتحدّث. لماذا؟ أصلح المشكلة.
 
 <Sandpack>
 
@@ -1890,7 +1890,7 @@ export default function App() {
 
 <Solution>
 
-The issue is that this component has `color` state initialized with the initial value of the `color` prop. But when the `color` prop changes, this does not affect the state variable! So they get out of sync. To fix this issue, remove the state variable altogether, and use the `color` prop directly.
+المشكلة أن المكوّن يهيئ حالة `color` بقيمة خاصية `color` الابتدائية. لكن عند تغيّر خاصية `color`، لا يتأثر متغير الحالة! فيخرجان عن التزامن. لإصلاح ذلك، أزل متغير الحالة واستخدم خاصية `color` مباشرة.
 
 <Sandpack>
 
@@ -1942,7 +1942,7 @@ export default function App() {
 
 </Sandpack>
 
-Or, using the destructuring syntax:
+أو باستخدام صيغة التفكيك:
 
 <Sandpack>
 
@@ -1996,13 +1996,13 @@ export default function App() {
 
 </Solution>
 
-#### Fix a broken packing list {/*fix-a-broken-packing-list*/}
+#### إصلاح قائمة تعبئة معطوبة {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+لهذه قائمة التعبئة تذييل يعرض عدد العناصر المعبأة والعدد الكلي. يبدو أنها تعمل أولًا، لكن فيها خلل. مثلاً إذا علّمت عنصرًا كمعبأ ثم حذفته، لا يتحدّث العداد بشكل صحيح. أصلح العداد ليكون دائمًا صحيحًا.
 
 <Hint>
 
-Is any state in this example redundant?
+هل أي حالة في هذا المثال زائدة؟
 
 </Hint>
 
@@ -2143,7 +2143,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-Although you could carefully change each event handler to update the `total` and `packed` counters correctly, the root problem is that these state variables exist at all. They are redundant because you can always calculate the number of items (packed or total) from the `items` array itself. Remove the redundant state to fix the bug:
+رغم أنك قد تعدّل كل معالج حدث بحذر لتحديث العدادين `total` و`packed`، فالمشكلة الجذرية أن متغيرات الحالة هذه موجودة أصلًا. هي زائدة لأنك تستطيع دائمًا حساب عدد العناصر (المعبأة أو الكلية) من مصفوفة `items` نفسها. أزل الحالة الزائدة لإصلاح الخلل:
 
 <Sandpack>
 
@@ -2276,15 +2276,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Notice how the event handlers are only concerned with calling `setItems` after this change. The item counts are now calculated during the next render from `items`, so they are always up-to-date.
+لاحظ أن معالجات الأحداث تهتم فقط باستدعاء `setItems` بعد هذا التغيير. أعداد العناصر تُحسب الآن في العرض التالي من `items`، فتبقى محدّثة دائمًا.
 
 </Solution>
 
-#### Fix the disappearing selection {/*fix-the-disappearing-selection*/}
+#### إصلاح اختفاء التمييز {/*fix-the-disappearing-selection*/}
 
-There is a list of `letters` in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the `highlightedLetter` state variable. You can "star" and "unstar" individual letters, which updates the `letters` array in state.
+هناك قائمة من `letters` في الحالة. عند التمرير أو التركيز على رسالة معيّنة تُميَّز. الرسالة المميّزة حاليًا في متغير الحالة `highlightedLetter`. يمكنك «تمييز نجمة» و«إلغاء تمييز» رسائل فردية، مما يحدّث مصفوفة `letters` في الحالة.
 
-This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it reappears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.
+الكود يعمل، لكن فيه خلل بسيط في الواجهة. عند الضغط على «Star» أو «Unstar» يختفي التمييز لحظة. ثم يعود بمجرد تحريك المؤشر أو الانتقال برسالة أخرى باللوحة. لماذا يحدث هذا؟ أصلحه بحيث لا يختفي التمييز بعد النقر على الزر.
 
 <Sandpack>
 
@@ -2391,9 +2391,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-The problem is that you're holding the letter object in `highlightedLetter`. But you're also holding the same information in the `letters` array. So your state has duplication! When you update the `letters` array after the button click, you create a new letter object which is different from `highlightedLetter`. This is why `highlightedLetter === letter` check becomes `false`, and the highlight disappears. It reappears the next time you call `setHighlightedLetter` when the pointer moves.
+المشكلة أنك تحتفظ بكائن الرسالة في `highlightedLetter` بينما نفس المعلومات موجودة في مصفوفة `letters`. إذن الحالة مكررة! عند تحديث `letters` بعد النقر، تنشئ كائن رسالة جديدًا يختلف عن `highlightedLetter`. لذلك يصبح فحص `highlightedLetter === letter` خاطئًا ويختفي التمييز. يعود عند استدعاء `setHighlightedLetter` مرة أخرى عند تحريك المؤشر.
 
-To fix the issue, remove the duplication from state. Instead of storing *the letter itself* in two places, store the `highlightedId` instead. Then you can check `isHighlighted` for each letter with `letter.id === highlightedId`, which will work even if the `letter` object has changed since the last render.
+لإصلاح ذلك، أزل التكرار من الحالة. بدل تخزين *الرسالة نفسها* في مكانين، خزّن `highlightedId`. ثم تحقق من `isHighlighted` لكل رسالة بـ`letter.id === highlightedId`، وهذا يعمل حتى لو تغيّر كائن `letter` منذ العرض السابق.
 
 <Sandpack>
 
@@ -2500,15 +2500,15 @@ li { border-radius: 5px; }
 
 </Solution>
 
-#### Implement multiple selection {/*implement-multiple-selection*/}
+#### تنفيذ اختيار متعدد {/*implement-multiple-selection*/}
 
-In this example, each `Letter` has an `isSelected` prop and an `onToggle` handler that marks it as selected. This works, but the state is stored as a `selectedId` (either `null` or an ID), so only one letter can get selected at any given time.
+في هذا المثال، لكل `Letter` خاصية `isSelected` ومعالج `onToggle` يعلّمها كمختارة. هذا يعمل، لكن الحالة مخزّنة كـ`selectedId` (`null` أو معرّف)، فيمكن اختيار رسالة واحدة فقط في الوقت نفسه.
 
-Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independent from the others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.
+غيّر هيكلة الحالة لدعم اختيار متعدد. (كيف تُهيكلها؟ فكّر قبل الكتابة.) يجب أن يصبح كل مربع اختيار مستقلًا عن الآخرين. النقر على رسالة مختارة يلغي اختيارها. وأخيرًا يجب أن يعرض التذييل العدد الصحيح للعناصر المختارة.
 
 <Hint>
 
-Instead of a single selected ID, you might want to hold an array or a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of selected IDs in state.
+بدل معرّف واحد، قد تحتفظ بمصفوفة أو [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) من معرّفات المختارين في الحالة.
 
 </Hint>
 
@@ -2609,7 +2609,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-Instead of a single `selectedId`, keep a `selectedIds` *array* in state. For example, if you select the first and the last letter, it would contain `[0, 2]`. When nothing is selected, it would be an empty `[]` array:
+بدل `selectedId` واحد، احتفظ بمصفوفة `selectedIds` في الحالة. مثلاً إذا اخترت الرسالة الأولى والأخيرة، تحتوي `[0, 2]`. عند عدم اختيار شيء، تكون `[]` فارغة:
 
 <Sandpack>
 
@@ -2715,9 +2715,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-One minor downside of using an array is that for each item, you're calling `selectedIds.includes(letter.id)` to check whether it's selected. If the array is very large, this can become a performance problem because array search with [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) takes linear time, and you're doing this search for each individual item.
+عيب بسيط للمصفوفة أنك لكل عنصر تستدعي `selectedIds.includes(letter.id)` للتحقق من الاختيار. إذا كبرت المصفوفة كثيرًا، قد يصبح ذلك مشكلة أداء لأن البحث بـ[`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) خطي الزمن، وتكرر البحث لكل عنصر.
 
-To fix this, you can hold a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in state instead, which provides a fast [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) operation:
+للتخفيف، احتفظ بـ[Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) في الحالة بدلًا من ذلك، فهو يوفّر عملية [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) سريعة:
 
 <Sandpack>
 
@@ -2820,9 +2820,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-Now each item does a `selectedIds.has(letter.id)` check, which is very fast.
+الآن كل عنصر يجرى فحص `selectedIds.has(letter.id)`، وهو سريع جدًا.
 
-Keep in mind that you [should not mutate objects in state](/learn/updating-objects-in-state), and that includes Sets, too. This is why the `handleToggle` function creates a *copy* of the Set first, and then updates that copy.
+تذكر أنه [لا يجب تعديل الكائنات في الحالة](/learn/updating-objects-in-state)، وهذا يشمل Set أيضًا. لذلك تنشئ `handleToggle` *نسخة* من Set أولًا ثم تعدّل النسخة.
 
 </Solution>
 

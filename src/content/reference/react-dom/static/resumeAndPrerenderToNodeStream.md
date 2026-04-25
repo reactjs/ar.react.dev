@@ -1,10 +1,10 @@
 ---
-title: resumeAndPrerenderToNodeStream
+title: "resumeAndPrerenderToNodeStream (استئناف التصيير المسبق إلى تدفق Node)"
 ---
 
 <Intro>
 
-`resumeAndPrerenderToNodeStream` continues a prerendered React tree to a static HTML string using a a [Node.js Stream.](https://nodejs.org/api/stream.html).
+تُكمِل الدالة `resumeAndPrerenderToNodeStream` شجرة React مُسبَقة التصيير إلى HTML ساكن باستخدام [تدفق Node.js (Node.js Stream).](https://nodejs.org/api/stream.html)
 
 ```js
 const {prelude, postponed} = await resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)
@@ -16,17 +16,17 @@ const {prelude, postponed} = await resumeAndPrerenderToNodeStream(reactNode, pos
 
 <Note>
 
-This API is specific to Node.js. Environments with [Web Streams,](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) like Deno and modern edge runtimes, should use [`prerender`](/reference/react-dom/static/prerender) instead.
+هذه الواجهة خاصة بـ Node.js. البيئات التي تدعم [تدفقات الويب (Web Streams)،](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) مثل Deno وبعض بيئات الحافة الحديثة، يفضّل فيها استخدام [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender) بدلًا منها.
 
 </Note>
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)` {/*resumeandprerendertolnodestream*/}
 
-Call `resumeAndPrerenderToNodeStream` to continue a prerendered React tree to a static HTML string.
+استدعِ `resumeAndPrerenderToNodeStream` لمتابعة شجرة React مُسبَقة التصيير إلى سلسلة HTML ساكنة.
 
 ```js
 import { resumeAndPrerenderToNodeStream } from 'react-dom/static';
@@ -39,46 +39,45 @@ async function handler(request, writable) {
 }
 ```
 
-On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to make the server-generated HTML interactive.
+على العميل، استدعِ [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) لتفعيل التفاعل مع HTML المُولَّد على الخادم.
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-* `reactNode`: The React node you called `prerender` (or a previous `resumeAndPrerenderToNodeStream`) with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
-* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
-* **optional** `options`: An object with streaming options.
-  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
-  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](#recovering-from-errors-outside-the-shell) or [not.](#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](#logging-crashes-on-the-server) make sure that you still call `console.error`.
+* `reactNode`: عقدة React التي استدعيت معها `prerender` (أو استدعاء `resumeAndPrerenderToNodeStream` سابق). مثلًا عنصر JSX مثل `<App />`. يُفترض أن تمثل المستند بالكامل، لذا يجب أن يصيّر مكوّن `App` وسم `<html>`.
+* `postponedState`: الكائن المعتم `postponed` المُرجَع من [واجهة تصيير مسبق](/reference/react-dom/static/index)، بعد تحميله من مكان تخزينه (مثلًا Redis أو ملف أو S3).
+* **اختياري** `options`: كائن يحوي خيارات البث.
+  * **اختياري** `signal`: [إشارة إلغاء (abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) تسمح لك [بإيقاف تصيير الخادم](#aborting-server-rendering) وتصيير الباقي على العميل.
+  * **اختياري** `onError`: دالة استدعاء تُنفَّذ عند حدوث خطأ على الخادم، سواء كان [قابلاً للاسترداد](#recovering-from-errors-outside-the-shell) أو [غير قابل للاسترداد.](#recovering-from-errors-inside-the-shell) افتراضيًا تستدعي `console.error` فقط. إن استبدلتها [لتسجيل تقارير الأعطال،](#logging-crashes-on-the-server) فتأكد أنك ما زلت تستدعي `console.error`.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`resumeAndPrerenderToNodeStream` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
-  - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
-  - `postponed`: an JSON-serializeable, opaque object that can be passed to [`resumeToNodeStream`](/reference/react-dom/server/resume) or [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) if `resumeAndPrerenderToNodeStream` is aborted.
-- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
+تُرجِع `resumeAndPrerenderToNodeStream` وعدًا (Promise):
+- إذا نجح التصيير، يُحقَّق الوعد بكائن يحتوي على:
+  - `prelude`: [تدفق Node.js](https://nodejs.org/api/stream.html) من HTML. يمكنك استخدامه لإرسال الاستجابة على دفعات، أو قراءة التدفق كاملًا إلى سلسلة.
+  - `postponed`: كائن معتم يمكن تسلسله بصيغة JSON ويُمرَّر إلى [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) أو [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) إذا أُوقِف استدعاء `resumeAndPrerenderToNodeStream`.
+- إذا فشل التصيير، يُرفَض الوعد. [استخدم ذلك لإخراج غلاف احتياطي.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
 
-#### Caveats {/*caveats*/}
+#### ملاحظات مهمة {/*caveats*/}
 
-`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
+`nonce` ليس خيارًا متاحًا أثناء التصيير المسبق. يجب أن تكون قيم `nonce` فريدة لكل طلب، وإن استخدمتها لتأمين التطبيق عبر [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) فمن غير المناسب وغير الآمن تضمين قيمة الـ nonce في التصيير المسبق نفسه.
 
 <Note>
 
-### When should I use `resumeAndPrerenderToNodeStream`? {/*when-to-use-prerender*/}
+### متى أستخدم `resumeAndPrerenderToNodeStream`؟ {/*when-to-use-prerender*/}
 
-The static `resumeAndPrerenderToNodeStream` API is used for static server-side generation (SSG). Unlike `renderToString`, `resumeAndPrerenderToNodeStream` waits for all data to load before resolving. This makes it suitable for generating static HTML for a full page, including data that needs to be fetched using Suspense. To stream content as it loads, use a streaming server-side render (SSR) API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
+تُستخدم الواجهة الساكنة `resumeAndPrerenderToNodeStream` لتوليد HTML من جانب الخادم بشكل ساكن (SSG). على عكس `renderToString`، تنتظر `resumeAndPrerenderToNodeStream` تحميل كل البيانات قبل أن تُحقِّق الوعد. لذلك تناسب توليد HTML ساكن لصفحة كاملة، بما في ذلك البيانات التي تُجلب عبر Suspense. لبث المحتوى أثناء تحمّله، استخدم واجهة SSR تدعم البث مثل [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
 
-`resumeAndPrerenderToNodeStream` can be aborted and later either continued with another `resumeAndPrerenderToNodeStream` or resumed with `resume` to support partial pre-rendering.
+يمكن إيقاف `resumeAndPrerenderToNodeStream` ثم متابعته لاحقًا إما باستدعاء `resumeAndPrerenderToNodeStream` آخر أو بـ `resumeToPipeableStream` لدعم التصيير المسبق الجزئي.
 
 </Note>
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Further reading {/*further-reading*/}
+### مطالعة إضافية {/*further-reading*/}
 
-`resumeAndPrerenderToNodeStream` behaves similarly to [`prerender`](/reference/react-dom/static/prerender) but can be used to continue a previously started prerendering process that was aborted.
-For more information about resuming a prerendered tree, see the [resume documentation](/reference/react-dom/server/resume#resuming-a-prerender).
-
+تتصرف `resumeAndPrerenderToNodeStream` بشكل مشابه لـ [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) لكنها تُستخدم لمتابعة عملية تصيير مسبق بدأت سابقًا ثم أُوقِفت.
+لمزيد من المعلومات حول استئناف شجرة مُسبَقة التصيير، راجع [توثيق `resume`](/reference/react-dom/server/resume#resuming-a-prerender).

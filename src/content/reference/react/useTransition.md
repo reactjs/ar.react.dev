@@ -1,10 +1,10 @@
 ---
-title: useTransition
+title: دالة useTransition
 ---
 
 <Intro>
 
-`useTransition` is a React Hook that lets you render a part of the UI in the background.
+`useTransition` هو Hook في React يتيح لك عرض جزء من الواجهة في الخلفية.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -16,11 +16,11 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
-Call `useTransition` at the top level of your component to mark some state updates as Transitions.
+استدعِ `useTransition` في أعلى مكوّنك لتوسيم بعض تحديثات الحالة كانتقالات (Transitions).
 
 ```js
 import { useTransition } from 'react';
@@ -31,24 +31,24 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-`useTransition` does not take any parameters.
+لا يأخذ `useTransition` أي معاملات.
 
-#### Returns {/*returns*/}
+#### القيمة المعادة {/*returns*/}
 
-`useTransition` returns an array with exactly two items:
+يعيد `useTransition` مصفوفة من عنصرين بالضبط:
 
-1. The `isPending` flag that tells you whether there is a pending Transition.
-2. The [`startTransition` function](#starttransition) that lets you mark updates as a Transition.
+1. العلم `isPending` الذي يخبرك ما إذا كانت هناك انتقالة (Transition) معلّقة.
+2. [دالة `startTransition`](#starttransition) التي تتيح لك توسيم التحديثات كانتقالة.
 
 ---
 
 ### `startTransition(action)` {/*starttransition*/}
 
-The `startTransition` function returned by `useTransition` lets you mark an update as a Transition.
+دالة `startTransition` التي يعيدها `useTransition` تتيح لك توسيم تحديث كانتقالة (Transition).
 
 ```js {6,8}
 function TabContainer() {
@@ -65,9 +65,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### Functions called in `startTransition` are called "Actions". {/*functions-called-in-starttransition-are-called-actions*/}
+#### الدوال المستدعاة داخل `startTransition` تُسمّى «إجراءات» (Actions). {/*functions-called-in-starttransition-are-called-actions*/}
 
-The function passed to `startTransition` is called an "Action". By convention, any callback called inside `startTransition` (such as a callback prop) should be named `action` or include the "Action" suffix:
+الدالة المُمرَّرة إلى `startTransition` تُسمّى «إجراءً» (Action). وفقًا للعرف، يُفضَّل تسمية أي callback يُستدعى داخل `startTransition` (مثل خاصية callback) بـ `action` أو إضافة لاحقة «Action»:
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -93,37 +93,37 @@ function SubmitButton({ submitAction }) {
 
 
 
-#### Parameters {/*starttransition-parameters*/}
+#### المعاملات {/*starttransition-parameters*/}
 
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
+* `action`: دالة تحدّث بعض الحالة باستدعاء واحدة أو أكثر من [دوال `set`](/reference/react/useState#setstate). يستدعي React `action` فورًا دون معاملات ويوسّم كل تحديثات الحالة المجدولة بشكل متزامن أثناء استدعاء دالة `action` كانتقالات. أي استدعاءات غير متزامنة تُنتظر (`await`) داخل `action` تُدرج في الانتقالة، لكنها حاليًا تتطلّب لفّ أي دوال `set` بعد `await` في `startTransition` إضافي (راجع [استكشاف الأخطاء](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). تحديثات الحالة الموسومة كانتقالات تكون [غير حاجزة](#marking-a-state-update-as-a-non-blocking-transition) و[لا تعرض مؤشرات تحميل غير مرغوبة](#preventing-unwanted-loading-indicators).
 
-#### Returns {/*starttransition-returns*/}
+#### القيمة المعادة {/*starttransition-returns*/}
 
-`startTransition` does not return anything.
+لا تعيد `startTransition` أي قيمة.
 
-#### Caveats {/*starttransition-caveats*/}
+#### ملاحظات مهمة {/*starttransition-caveats*/}
 
-* `useTransition` is a Hook, so it can only be called inside components or custom Hooks. If you need to start a Transition somewhere else (for example, from a data library), call the standalone [`startTransition`](/reference/react/startTransition) instead.
+* `useTransition` هو Hook، لذا يُستدعى فقط داخل المكوّنات أو الـ Hooks المخصّصة. إذا احتجت لبدء انتقالة في مكان آخر (مثلًا من مكتبة بيانات)، استدعِ [`startTransition`](/reference/react/startTransition) المستقل بدلًا من ذلك.
 
-* You can wrap an update into a Transition only if you have access to the `set` function of that state. If you want to start a Transition in response to some prop or a custom Hook value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* يمكنك لفّ تحديث في انتقالة فقط إذا كان بإمكانك الوصول إلى دالة `set` لتلك الحالة. إذا أردت بدء انتقالة استجابةً لخاصية أو قيمة من Hook مخصّص، جرّب [`useDeferredValue`](/reference/react/useDeferredValue) بدلًا من ذلك.
 
-* The function you pass to `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+* الدالة التي تُمرّرها إلى `startTransition` تُستدعى فورًا، فيُوسَّم كل تحديث حالة يحدث أثناء تنفيذها كانتقالات. إذا حاولت تنفيذ تحديثات حالة داخل `setTimeout` مثلًا، فلن تُوسَّم كانتقالات.
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* يجب لفّ أي تحديثات حالة بعد أي طلبات غير متزامنة في `startTransition` آخر لتوسيمها كانتقالات. هذا قيد معروف وسيُصلَح مستقبلًا (راجع [استكشاف الأخطاء](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
 
-* The `startTransition` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* دالة `startTransition` لهوية مستقرة، لذا غالبًا تُحذف من تبعيات التأثيرات، لكن تضمينها لن يُطلِق التأثير. إذا سمح linter بحذف تبعية دون أخطاء، فالأمر آمن. [تعرّف أكثر على إزالة تبعيات التأثيرات.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-* A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input update.
+* قد يُقاطع تحديث الحالة الموسوم كانتقالة بتحديثات حالة أخرى. على سبيل المثال، إذا حدّثت مكوّن مخطط داخل انتقالة ثم بدأت الكتابة في حقل إدخال بينما المخطط في منتصف إعادة الرسم، يعيد React عمل الرسم على مكوّن المخطط بعد معالجة تحديث الإدخال.
 
-* Transition updates can't be used to control text inputs.
+* لا يمكن استخدام تحديثات الانتقالة للتحكم في حقول النص.
 
-* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.
+* إذا كانت هناك عدة انتقالات جارية، يجمع React حاليًا بينها. هذا قيد قد يُزال في إصدار لاحق.
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Perform non-blocking updates with Actions {/*perform-non-blocking-updates-with-actions*/}
+### تنفيذ تحديثات غير حاجزة بإجراءات (Actions) {/*perform-non-blocking-updates-with-actions*/}
 
-Call `useTransition` at the top of your component to create Actions, and access the pending state:
+استدعِ `useTransition` في أعلى مكوّنك لإنشاء إجراءات (Actions) والوصول إلى حالة التعليق:
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import {useState, useTransition} from 'react';
@@ -134,12 +134,12 @@ function CheckoutForm() {
 }
 ```
 
-`useTransition` returns an array with exactly two items:
+يعيد `useTransition` مصفوفة من عنصرين بالضبط:
 
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending Transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you create an Action.
+1. <CodeStep step={1}>علم `isPending`</CodeStep> الذي يخبرك ما إذا كانت هناك انتقالة معلّقة.
+2. <CodeStep step={2}>دالة `startTransition`</CodeStep> التي تتيح لك إنشاء إجراء (Action).
 
-To start a Transition, pass a function to `startTransition` like this:
+لبدء انتقالة، مرّر دالة إلى `startTransition` هكذا:
 
 ```js
 import {useState, useTransition} from 'react';
@@ -161,17 +161,17 @@ function CheckoutForm() {
 }
 ```
 
-The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
+الدالة المُمرَّرة إلى `startTransition` تُسمّى «الإجراء» (Action). يمكنك تحديث الحالة و(اختياريًا) تنفيذ تأثيرات جانبية داخل إجراء، ويُنفَّذ العمل في الخلفية دون حظر تفاعلات المستخدم مع الصفحة. قد تشمل الانتقالة عدة إجراءات، وطالما الانتقالة قيد التقدم تبقى واجهتك مستجيبة. على سبيل المثال، إذا نقرت على تبويب ثم غيّرت رأيك ونقرت تبويبًا آخر، يُعالَج النقر الثاني فورًا دون انتظار انتهاء التحديث الأول.
 
-To give the user feedback about in-progress Transitions, the `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
+لإعطاء المستخدم ملاحظات عن الانتقالات الجارية، تتحول حالة `isPending` إلى `true` عند أول استدعاء لـ `startTransition` وتبقى `true` حتى تكتمل كل الإجراءات وتُعرض الحالة النهائية للمستخدم. تضمن الانتقالات اكتمال التأثيرات الجانبية في الإجراءات بترتيب يُساعد على [منع مؤشرات التحميل غير المرغوبة](#preventing-unwanted-loading-indicators)، ويمكنك إعطاء ملاحظات فورية أثناء الانتقالة باستخدام `useOptimistic`.
 
-<Recipes titleText="The difference between Actions and regular event handling">
+<Recipes titleText="الفرق بين الإجراءات والتعامل العادي مع الأحداث">
 
-#### Updating the quantity in an Action {/*updating-the-quantity-in-an-action*/}
+#### تحديث الكمية داخل إجراء {/*updating-the-quantity-in-an-action*/}
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+في هذا المثال، تحاكي دالة `updateQuantity` طلبًا إلى الخادم لتحديث كمية العنصر في السلة. هذه الدالة *مُبطَّأة عن قصد* بحيث يستغرق الطلب ثانية على الأقل.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests are in progress, and the "Total" updates only after the final request is complete. Because the update is in an Action, the "quantity" can continue to be updated while the request is in progress.
+حدّث الكمية عدة مرات بسرعة. لاحظ أن حالة «الإجمالي» المعلّقة تظهر أثناء أي طلبات جارية، وأن «الإجمالي» يتحدّث فقط بعد اكتمال الطلب الأخير. لأن التحديث داخل إجراء، يمكن أن تستمر «الكمية» بالتحديث أثناء سير الطلب.
 
 <Sandpack>
 
@@ -305,22 +305,22 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This is a basic example to demonstrate how Actions work, but this example does not handle requests completing out of order. When updating the quantity multiple times, it's possible for the previous requests to finish after later requests causing the quantity to update out of order. This is a known limitation that we will fix in the future (see [Troubleshooting](#my-state-updates-in-transitions-are-out-of-order) below).
+هذا مثال أساسي يوضّح عمل الإجراءات، لكنه لا يتعامل مع اكتمال الطلبات بترتيب خاطئ. عند تحديث الكمية عدة مرات، قد تنتهي طلبات سابقة بعد طلبات لاحقة فيُحدَّث الترتيب بشكل خاطئ. هذا قيد معروف وسيُصلَح مستقبلًا (راجع [استكشاف الأخطاء](#my-state-updates-in-transitions-are-out-of-order) أدناه).
 
-For common use cases, React provides built-in abstractions such as:
+لحالات الاستخدام الشائعة، يوفّر React تجريدات مدمجة مثل:
 - [`useActionState`](/reference/react/useActionState)
-- [`<form>` actions](/reference/react-dom/components/form)
-- [Server Functions](/reference/rsc/server-functions)
+- [إجراءات `<form>`](/reference/react-dom/components/form)
+- [دوال الخادم (Server Functions)](/reference/rsc/server-functions)
 
-These solutions handle request ordering for you. When using Transitions to build your own custom hooks or libraries that manage async state transitions, you have greater control over the request ordering, but you must handle it yourself.
+تتولى هذه الحلول ترتيب الطلبات نيابةً عنك. عند استخدام الانتقالات لبناء Hooks أو مكتبات خاصة تدير انتقالات حالة غير متزامنة، يزداد تحكّمك بترتيب الطلبات، لكن عليك التعامل معه بنفسك.
 
 <Solution />
 
-#### Updating the quantity without an Action {/*updating-the-users-name-without-an-action*/}
+#### تحديث الكمية دون إجراء {/*updating-the-users-name-without-an-action*/}
 
-In this example, the `updateQuantity` function also simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+في هذا المثال، تحاكي دالة `updateQuantity` أيضًا طلبًا إلى الخادم لتحديث كمية العنصر في السلة. هذه الدالة *مُبطَّأة عن قصد* بحيث يستغرق الطلب ثانية على الأقل.
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests is in progress, but the "Total" updates multiple times for each time the "quantity" was clicked:
+حدّث الكمية عدة مرات بسرعة. لاحظ أن حالة «الإجمالي» المعلّقة تظهر أثناء أي طلبات جارية، لكن «الإجمالي» يتحدّث عدة مرات مع كل نقرة على «الكمية»:
 
 <Sandpack>
 
@@ -447,7 +447,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-A common solution to this problem is to prevent the user from making changes while the quantity is updating:
+حل شائع لهذه المشكلة هو منع المستخدم من إجراء تغييرات أثناء تحديث الكمية:
 
 <Sandpack>
 
@@ -573,7 +573,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This solution makes the app feel slow, because the user must wait each time they update the quantity. It's possible to add more complex handling manually to allow the user to interact with the UI while the quantity is updating, but Actions handle this case with a straight-forward built-in API.
+هذا الحل يجعل التطبيق يبدو بطيئًا لأن المستخدم ينتظر في كل مرة يحدّث فيها الكمية. يمكن إضافة تعامل أيدوي أعقّد للسماح بالتفاعل مع الواجهة أثناء التحديث، لكن الإجراءات تتولى هذه الحالة بواجهة مدمجة مباشرة.
 
 <Solution />
 
@@ -581,11 +581,11 @@ This solution makes the app feel slow, because the user must wait each time they
 
 ---
 
-### Exposing `action` prop from components {/*exposing-action-props-from-components*/}
+### كشف خاصية `action` من المكوّنات {/*exposing-action-props-from-components*/}
 
-You can expose an `action` prop from a component to allow a parent to call an Action.
+يمكنك كشف خاصية `action` من مكوّن لتسمح للأب باستدعاء إجراء.
 
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+على سبيل المثال، يلفّ مكوّن `TabButton` هذا منطق `onClick` في خاصية `action`:
 
 ```js {8-12}
 export default function TabButton({ action, children, isActive }) {
@@ -607,7 +607,7 @@ export default function TabButton({ action, children, isActive }) {
 }
 ```
 
-Because the parent component updates its state inside the `action`, that state update gets marked as a Transition. This means you can click on "Posts" and then immediately click "Contact" and it does not block user interactions:
+لأن المكوّن الأب يحدّث حالته داخل `action`، يُوسَّم ذلك التحديث كانتقالة. يعني ذلك أنه يمكنك النقر على «Posts» ثم النقر فورًا على «Contact» دون حظر تفاعلات المستخدم:
 
 <Sandpack>
 
@@ -742,17 +742,17 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-When exposing an `action` prop from a component, you should `await` it inside the transition.
+عند كشف خاصية `action` من مكوّن، يُفضَّل `await` لها داخل الانتقالة.
 
-This allows the `action` callback to be either synchronous or asynchronous without requiring an additional `startTransition` to wrap the `await` in the action.
+يسمح ذلك لـ callback الـ `action` أن يكون متزامنًا أو غير متزامن دون الحاجة إلى `startTransition` إضافي يلفّ `await` داخل الإجراء.
 
 </Note>
 
 ---
 
-### Displaying a pending visual state {/*displaying-a-pending-visual-state*/}
+### عرض حالة بصرية للتعليق {/*displaying-a-pending-visual-state*/}
 
-You can use the `isPending` boolean value returned by `useTransition` to indicate to the user that a Transition is in progress. For example, the tab button can have a special "pending" visual state:
+يمكنك استخدام القيمة المنطقية `isPending` التي يعيدها `useTransition` لإعلام المستخدم أن انتقالة قيد التنفيذ. على سبيل المثال، يمكن أن يكون للزر حالة بصرية خاصة بـ «معلّق»:
 
 ```js {4-6}
 function TabButton({ action, children, isActive }) {
@@ -764,7 +764,7 @@ function TabButton({ action, children, isActive }) {
   // ...
 ```
 
-Notice how clicking "Posts" now feels more responsive because the tab button itself updates right away:
+لاحظ أن النقر على «Posts» يبدو أكثر استجابة لأن زر التبويب نفسه يتحدّث فورًا:
 
 <Sandpack>
 
@@ -897,9 +897,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Preventing unwanted loading indicators {/*preventing-unwanted-loading-indicators*/}
+### منع مؤشرات التحميل غير المرغوبة {/*preventing-unwanted-loading-indicators*/}
 
-In this example, the `PostsTab` component fetches some data using [use](/reference/react/use). When you click the "Posts" tab, the `PostsTab` component *suspends*, causing the closest loading fallback to appear:
+في هذا المثال، يجلب مكوّن `PostsTab` بعض البيانات باستخدام [use](/reference/react/use). عند النقر على تبويب «Posts»، يعلّق مكوّن `PostsTab`، فيظهر أقرب بديل تحميل:
 
 <Sandpack>
 
@@ -1053,9 +1053,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Hiding the entire tab container to show a loading indicator leads to a jarring user experience. If you add `useTransition` to `TabButton`, you can instead display the pending state in the tab button instead.
+إخفاء حاوية التبويبات بأكملها لإظهار مؤشر تحميل يخلق تجربة مزعجة. إذا أضفت `useTransition` إلى `TabButton`، يمكنك بدلًا من ذلك عرض حالة التعليق في زر التبويب نفسه.
 
-Notice that clicking "Posts" no longer replaces the entire tab container with a spinner:
+لاحظ أن النقر على «Posts» لم يعد يستبدل حاوية التبويبات بأكملها بمؤشر دوار:
 
 <Sandpack>
 
@@ -1217,19 +1217,19 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-[Read more about using Transitions with Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[اقرأ المزيد عن استخدام الانتقالات مع Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
 
 <Note>
 
-Transitions only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the Transition would not "wait" for it.
+لا تنتظر الانتقالات (Transitions) إلا ما يكفي لتجنّب إخفاء محتوى *ظهر بالفعل* (مثل حاوية التبويبات). إذا كان لتبويب Posts [حد `<Suspense>` متداخل،](/reference/react/Suspense#revealing-nested-content-as-it-loads) فلن «تنتظر»ه الانتقالة.
 
 </Note>
 
 ---
 
-### Building a Suspense-enabled router {/*building-a-suspense-enabled-router*/}
+### بناء موجّه يدعم Suspense {/*building-a-suspense-enabled-router*/}
 
-If you're building a React framework or a router, we recommend marking page navigations as Transitions.
+إذا كنت تبني إطار React أو موجّهًا (router)، نوصي بتوسيم تنقّلات الصفحات كانتقالات (Transitions).
 
 ```js {3,6,8}
 function Router() {
@@ -1244,13 +1244,13 @@ function Router() {
   // ...
 ```
 
-This is recommended for three reasons:
+يُنصَح بذلك لثلاثة أسباب:
 
-- [Transitions are interruptible,](#marking-a-state-update-as-a-non-blocking-transition) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
-- [Transitions wait for all pending actions](#perform-non-blocking-updates-with-actions) which lets the user wait for side effects to complete before the new page is shown.
+- [الانتقالات قابلة للمقاطعة،](#marking-a-state-update-as-a-non-blocking-transition) ما يتيح للمستخدم النقر بعيدًا دون انتظار اكتمال إعادة الرسم.
+- [الانتقالات تمنع مؤشرات التحميل غير المرغوبة،](#preventing-unwanted-loading-indicators) ما يجنّب المستخدم قفزات مزعجة عند التنقّل.
+- [الانتقالات تنتظر كل الإجراءات المعلّقة](#perform-non-blocking-updates-with-actions) ما يتيح اكتمال التأثيرات الجانبية قبل إظهار الصفحة الجديدة.
 
-Here is a simplified router example using Transitions for navigations.
+فيما يلي مثال موجّه مبسّط يستخدم الانتقالات للتنقّلات.
 
 <Sandpack>
 
@@ -1551,15 +1551,15 @@ main {
 
 <Note>
 
-[Suspense-enabled](/reference/react/Suspense) routers are expected to wrap the navigation updates into Transitions by default.
+يُتوقَّع من [الموجّهات المفعّلة لـ Suspense](/reference/react/Suspense) أن تلفّ تحديثات التنقّل في انتقالات افتراضيًا.
 
 </Note>
 
 ---
 
-### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+### عرض خطأ للمستخدم بحد خطأ (Error Boundary) {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If a function passed to `startTransition` throws an error, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+إذا رمت الدالة المُمرَّرة إلى `startTransition` خطأ، يمكنك عرض الخطأ للمستخدم باستخدام [حد خطأ (error boundary)](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). لاستخدام حد خطأ، لفّ المكوّن الذي تستدعي فيه `useTransition` داخل حد خطأ. عندما تفشل الدالة المُمرَّرة إلى `startTransition`، يُعرض بديل حد الخطأ.
 
 <Sandpack>
 
@@ -1639,11 +1639,11 @@ root.render(
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأخطاء {/*troubleshooting*/}
 
-### Updating an input in a Transition doesn't work {/*updating-an-input-in-a-transition-doesnt-work*/}
+### تحديث حقل إدخال داخل انتقالة لا يعمل {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-You can't use a Transition for a state variable that controls an input:
+لا يمكنك استخدام انتقالة لمتغير حالة يتحكم في حقل إدخال:
 
 ```js {4,10}
 const [text, setText] = useState('');
@@ -1658,16 +1658,16 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-This is because Transitions are non-blocking, but updating an input in response to the change event should happen synchronously. If you want to run a Transition in response to typing, you have two options:
+ذلك لأن الانتقالات غير حاجزة، بينما يجب أن يحدث تحديث الإدخال استجابةً لحدث التغيير بشكل متزامن. إذا أردت تشغيل انتقالة استجابةً للكتابة، لديك خياران:
 
-1. You can declare two separate state variables: one for the input state (which always updates synchronously), and one that you will update in a Transition. This lets you control the input using the synchronous state, and pass the Transition state variable (which will "lag behind" the input) to the rest of your rendering logic.
-2. Alternatively, you can have one state variable, and add [`useDeferredValue`](/reference/react/useDeferredValue) which will "lag behind" the real value. It will trigger non-blocking re-renders to "catch up" with the new value automatically.
+1. يمكنك تعريف متغيري حالة منفصلين: أحدهما لحالة الإدخال (يتحدّث دائمًا بشكل متزامن)، وآخر تُحدّثه داخل انتقالة. يتيح لك ذلك التحكم في الإدخال بالحالة المتزامنة، وتمرير متغير حالة الانتقالة (الذي سيتأخر عن الإدخال) إلى بقية منطق الرسم.
+2. أو يمكنك الاكتفاء بمتغير حالة واحد وإضافة [`useDeferredValue`](/reference/react/useDeferredValue) الذي سيتأخر عن القيمة الحقيقية. سيُطلِق إعادة رسم غير حاجزة لتلحق بالقيمة الجديدة تلقائيًا.
 
 ---
 
-### React doesn't treat my state update as a Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React لا يعامل تحديث حالتي كانتقالة {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-When you wrap a state update in a Transition, make sure that it happens *during* the `startTransition` call:
+عند لفّ تحديث حالة في انتقالة، تأكد أنه يحدث *أثناء* استدعاء `startTransition`:
 
 ```js
 startTransition(() => {
@@ -1676,7 +1676,7 @@ startTransition(() => {
 });
 ```
 
-The function you pass to `startTransition` must be synchronous. You can't mark an update as a Transition like this:
+يجب أن تكون الدالة المُمرَّرة إلى `startTransition` متزامنة. لا يمكنك توسيم تحديث كانتقالة هكذا:
 
 ```js
 startTransition(() => {
@@ -1687,7 +1687,7 @@ startTransition(() => {
 });
 ```
 
-Instead, you could do this:
+بدلًا من ذلك يمكنك فعل التالي:
 
 ```js
 setTimeout(() => {
@@ -1700,9 +1700,9 @@ setTimeout(() => {
 
 ---
 
-### React doesn't treat my state update after `await` as a Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
+### React لا يعامل تحديث حالتي بعد `await` كانتقالة {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
 
-When you use `await` inside a `startTransition` function, the state updates that happen after the `await` are not marked as Transitions. You must wrap state updates after each `await` in a `startTransition` call:
+عند استخدام `await` داخل دالة `startTransition`، لا تُوسَّم تحديثات الحالة التي تحدث بعد `await` كانتقالات. يجب لفّ تحديثات الحالة بعد كل `await` في استدعاء `startTransition`:
 
 ```js
 startTransition(async () => {
@@ -1712,7 +1712,7 @@ startTransition(async () => {
 });
 ```
 
-However, this works instead:
+لكن هذا يعمل:
 
 ```js
 startTransition(async () => {
@@ -1724,19 +1724,19 @@ startTransition(async () => {
 });
 ```
 
-This is a JavaScript limitation due to React losing the scope of the async context. In the future, when [AsyncContext](https://github.com/tc39/proposal-async-context) is available, this limitation will be removed.
+هذا قيد في JavaScript لأن React يفقد نطاق السياق غير المتزامن. مستقبلًا، عندما يتوفر [AsyncContext](https://github.com/tc39/proposal-async-context)، سيُزال هذا القيد.
 
 ---
 
-### I want to call `useTransition` from outside a component {/*i-want-to-call-usetransition-from-outside-a-component*/}
+### أريد استدعاء `useTransition` من خارج مكوّن {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-You can't call `useTransition` outside a component because it's a Hook. In this case, use the standalone [`startTransition`](/reference/react/startTransition) method instead. It works the same way, but it doesn't provide the `isPending` indicator.
+لا يمكنك استدعاء `useTransition` خارج مكوّن لأنه Hook. في هذه الحالة استخدم [`startTransition`](/reference/react/startTransition) المستقل. يعمل بنفس الأسلوب لكنه لا يوفّر مؤشر `isPending`.
 
 ---
 
-### The function I pass to `startTransition` executes immediately {/*the-function-i-pass-to-starttransition-executes-immediately*/}
+### الدالة التي أُمرّرها إلى `startTransition` تُنفَّذ فورًا {/*the-function-i-pass-to-starttransition-executes-immediately*/}
 
-If you run this code, it will print 1, 2, 3:
+إذا شغّلت هذا الكود، سيُطبَع 1، 2، 3:
 
 ```js {1,3,6}
 console.log(1);
@@ -1747,7 +1747,7 @@ startTransition(() => {
 console.log(3);
 ```
 
-**It is expected to print 1, 2, 3.** The function you pass to `startTransition` does not get delayed. Unlike with the browser `setTimeout`, it does not run the callback later. React executes your function immediately, but any state updates scheduled *while it is running* are marked as Transitions. You can imagine that it works like this:
+**من المتوقع أن يُطبَع 1، 2، 3.** الدالة المُمرَّرة إلى `startTransition` لا تُؤجَّل. على عكس `setTimeout` في المتصفح، لا يُشغَّل الـ callback لاحقًا. ينفّذ React دالتك فورًا، لكن أي تحديثات حالة مجدولة *أثناء تشغيلها* تُوسَّم كانتقالات. يمكنك تخيّل أنها تعمل هكذا:
 
 ```js
 // A simplified version of how React works
@@ -1769,13 +1769,13 @@ function setState() {
 }
 ```
 
-### My state updates in Transitions are out of order {/*my-state-updates-in-transitions-are-out-of-order*/}
+### تحديثات حالتي في الانتقالات خارج الترتيب {/*my-state-updates-in-transitions-are-out-of-order*/}
 
-If you `await` inside `startTransition`, you might see the updates happen out of order.
+إذا استخدمت `await` داخل `startTransition`، قد ترى التحديثات تحدث بترتيب خاطئ.
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+في هذا المثال، تحاكي دالة `updateQuantity` طلبًا إلى الخادم لتحديث كمية العنصر في السلة. هذه الدالة *تُرجِع عن قصد كل طلب ثانٍ بعد السابق* لمحاكاة سباقات طلبات الشبكة.
 
-Try updating the quantity once, then update it quickly multiple times. You might see the incorrect total:
+جرّب تحديث الكمية مرة، ثم حدّثها بسرعة عدة مرات. قد ترى إجماليًا غير صحيح:
 
 <Sandpack>
 
@@ -1943,12 +1943,12 @@ export async function updateQuantity(newName) {
 </Sandpack>
 
 
-When clicking multiple times, it's possible for previous requests to finish after later requests. When this happens, React currently has no way to know the intended order. This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary.
+عند النقر عدة مرات، قد تنتهي طلبات سابقة بعد طلبات لاحقة. عندها لا يملك React حاليًا وسيلة لمعرفة الترتيب المقصود. ذلك لأن التحديثات تُجدول بشكل غير متزامن، ويفقد React سياق الترتيب عبر حدود غير متزامنة.
 
-This is expected, because Actions within a Transition do not guarantee execution order. For common use cases, React provides higher-level abstractions like [`useActionState`](/reference/react/useActionState) and [`<form>` actions](/reference/react-dom/components/form) that handle ordering for you. For advanced use cases, you'll need to implement your own queuing and abort logic to handle this.
+هذا متوقع، لأن الإجراءات داخل انتقالة لا تضمن ترتيب التنفيذ. لحالات الاستخدام الشائعة، يوفّر React تجريدات أعلى مثل [`useActionState`](/reference/react/useActionState) و[إجراءات `<form>`](/reference/react-dom/components/form) تتولى الترتيب نيابةً عنك. للحالات المتقدمة، ستحتاج لتنفيذ منطق طوابير وإلغاء خاص بك.
 
 
-Example of `useActionState` handling execution order:
+مثال على `useActionState` يتعامل مع ترتيب التنفيذ:
 
 <Sandpack>
 

@@ -1,40 +1,40 @@
 ---
-title: "React DOM Components"
+title: "مكوّنات React DOM"
 ---
 
 <Intro>
 
-React supports all of the browser built-in [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) and [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) components.
+يدعم React جميع مكوّنات [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) و [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) المدمجة في المتصفح.
 
 </Intro>
 
 ---
 
-## Common components {/*common-components*/}
+## المكوّنات الشائعة {/*common-components*/}
 
-All of the built-in browser components support some props and events.
+تدعم جميع مكوّنات المتصفح المدمجة بعض الخصائص والأحداث.
 
-* [Common components (e.g. `<div>`)](/reference/react-dom/components/common)
+* [مكوّنات شائعة (مثل `<div>`)](/reference/react-dom/components/common)
 
-This includes React-specific props like `ref` and `dangerouslySetInnerHTML`.
+يشمل ذلك خصائص React الخاصة مثل `ref` و `dangerouslySetInnerHTML`.
 
 ---
 
-## Form components {/*form-components*/}
+## مكوّنات النماذج {/*form-components*/}
 
-These built-in browser components accept user input:
+تقبل مكوّنات المتصفح المدمجة هذه إدخال المستخدم:
 
 * [`<input>`](/reference/react-dom/components/input)
 * [`<select>`](/reference/react-dom/components/select)
 * [`<textarea>`](/reference/react-dom/components/textarea)
 
-They are special in React because passing the `value` prop to them makes them *[controlled.](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)*
+تتميّز في React لأن تمرير خاصية `value` إليها يجعلها *[متحكَّمًا فيها.](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)*
 
 ---
 
-## Resource and Metadata Components {/*resource-and-metadata-components*/}
+## مكوّنات الموارد والبيانات الوصفية {/*resource-and-metadata-components*/}
 
-These built-in browser components let you load external resources or annotate the document with metadata:
+تتيح لك مكوّنات المتصفح المدمجة هذه تحميل موارد خارجية أو إثراء المستند ببيانات وصفية:
 
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
@@ -42,13 +42,13 @@ These built-in browser components let you load external resources or annotate th
 * [`<style>`](/reference/react-dom/components/style)
 * [`<title>`](/reference/react-dom/components/title)
 
-They are special in React because React can render them into the document head, suspend while resources are loading, and enact other behaviors that are described on the reference page for each specific component.
+تتميّز في React لأن React يمكنه تصييرها في رأس المستند، وتعليق التنفيذ أثناء تحميل الموارد، وتطبيق سلوكيات أخرى تُوضَّح في صفحة المرجع لكل مكوّن.
 
 ---
 
-## All HTML components {/*all-html-components*/}
+## جميع مكوّنات HTML {/*all-html-components*/}
 
-React supports all built-in browser HTML components. This includes:
+يدعم React جميع مكوّنات HTML المدمجة في المتصفح. من ذلك:
 
 * [`<aside>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
 * [`<audio>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
@@ -154,39 +154,39 @@ React supports all built-in browser HTML components. This includes:
 
 <Note>
 
-Similar to the [DOM standard,](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) React uses a `camelCase` convention for prop names. For example, you'll write `tabIndex` instead of `tabindex`. You can convert existing HTML to JSX with an [online converter.](https://transform.tools/html-to-jsx)
+مثل [معيار DOM،](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) يستخدم React تسمية `camelCase` لأسماء الخصائص. مثلاً تكتب `tabIndex` بدلًا من `tabindex`. يمكنك تحويل HTML الحالي إلى JSX باستخدام [محوّل على الويب.](https://transform.tools/html-to-jsx)
 
 </Note>
 
 ---
 
-### Custom HTML elements {/*custom-html-elements*/}
+### عناصر HTML مخصصة {/*custom-html-elements*/}
 
-If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+إذا صيّرت وسمًا يحتوي على شرطة، مثل `<my-element>`، فسيفترض React أنك تريد تصيير [عنصر HTML مخصص.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 
-If you render a built-in browser HTML element with an [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) attribute, it will also be treated as a custom element.
+إذا صيّرت عنصر HTML مدمجًا مع سمة [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is)، فسيُعامل أيضًا كعنصر مخصص.
 
-#### Setting values on custom elements {/*attributes-vs-properties*/}
+#### تعيين القيم على العناصر المخصصة {/*attributes-vs-properties*/}
 
-Custom elements have two methods of passing data into them:
+للعناصر المخصصة طريقتان لتمرير البيانات إليها:
 
-1) Attributes: Which are displayed in markup and can only be set to string values
-2) Properties: Which are not displayed in markup and can be set to arbitrary JavaScript values
+1) السمات: تظهر في التعليمات ولا يمكن تعيينها إلا لقيم نصية  
+2) الخصائص: لا تظهر في التعليمات ويمكن تعيينها لقيم JavaScript بأي نوع
 
-By default, React will pass values bound in JSX as attributes:
+بشكل افتراضي، يمرّر React القيم المربوطة في JSX كسمات:
 
 ```jsx
 <my-element value="Hello, world!"></my-element>
 ```
 
-Non-string JavaScript values passed to custom elements will be serialized by default:
+تُسلسل القيم غير النصية الممرَّرة للعناصر المخصصة افتراضيًا:
 
 ```jsx
-// Will be passed as `"1,2,3"` as the output of `[1,2,3].toString()`
+// ستُمرَّر كـ `"1,2,3"` أي ناتج `[1,2,3].toString()`
 <my-element value={[1,2,3]}></my-element>
 ```
 
-React will, however, recognize an custom element's property as one that it may pass arbitrary values to if the property name shows up on the class during construction:
+سيتعرّف React مع ذلك على خاصية عنصر مخصص يمكنه تمرير قيم بأي نوع إليها إذا ظهر اسم الخاصية على الصنف أثناء الإنشاء:
 
 <Sandpack>
 
@@ -224,9 +224,9 @@ export function App() {
 
 </Sandpack>
 
-#### Listening for events on custom elements {/*custom-element-events*/}
+#### الاستماع للأحداث على العناصر المخصصة {/*custom-element-events*/}
 
-A common pattern when using custom elements is that they may dispatch [`CustomEvent`s](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) rather than accept a function to call when an event occur. You can listen for these events using an `on` prefix when binding to the event via JSX.
+من الأنماط الشائعة مع العناصر المخصصة أنها قد ترسل [`CustomEvent`s](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) بدل قبول دالة تُستدعى عند حدوث الحدث. يمكنك الاستماع لهذه الأحداث باستخدام بادئة `on` عند الربط عبر JSX.
 
 <Sandpack>
 
@@ -285,7 +285,7 @@ export function App() {
 
 <Note>
 
-Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
+الأحداث حسّاسة لحالة الأحرف وتدعم الشرطات (`-`). احفظ حالة الأحرف في اسم الحدث وضمّن كل الشرطات عند الاستماع لأحداث العنصر المخصص:
 
 ```jsx
 // Listens for `say-hi` events
@@ -297,9 +297,9 @@ Events are case-sensitive and support dashes (`-`). Preserve the casing of the e
 </Note>
 ---
 
-## All SVG components {/*all-svg-components*/}
+## جميع مكوّنات SVG {/*all-svg-components*/}
 
-React supports all built-in browser SVG components. This includes:
+يدعم React جميع مكوّنات SVG المدمجة في المتصفح. من ذلك:
 
 * [`<a>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a)
 * [`<animate>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate)
@@ -370,20 +370,20 @@ React supports all built-in browser SVG components. This includes:
 
 <Note>
 
-Similar to the [DOM standard,](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) React uses a `camelCase` convention for prop names. For example, you'll write `tabIndex` instead of `tabindex`. You can convert existing SVG to JSX with an [online converter.](https://transform.tools/)
+مثل [معيار DOM،](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) يستخدم React تسمية `camelCase` لأسماء الخصائص. مثلاً تكتب `tabIndex` بدلًا من `tabindex`. يمكنك تحويل SVG الحالي إلى JSX باستخدام [محوّل على الويب.](https://transform.tools/)
 
-Namespaced attributes also have to be written without the colon:
+يجب كتابة السمات ذات المساحة الاسمية بدون النقطتين:
 
-* `xlink:actuate` becomes `xlinkActuate`.
-* `xlink:arcrole` becomes `xlinkArcrole`.
-* `xlink:href` becomes `xlinkHref`.
-* `xlink:role` becomes `xlinkRole`.
-* `xlink:show` becomes `xlinkShow`.
-* `xlink:title` becomes `xlinkTitle`.
-* `xlink:type` becomes `xlinkType`.
-* `xml:base` becomes `xmlBase`.
-* `xml:lang` becomes `xmlLang`.
-* `xml:space` becomes `xmlSpace`.
-* `xmlns:xlink` becomes `xmlnsXlink`.
+* `xlink:actuate` تصبح `xlinkActuate`.
+* `xlink:arcrole` تصبح `xlinkArcrole`.
+* `xlink:href` تصبح `xlinkHref`.
+* `xlink:role` تصبح `xlinkRole`.
+* `xlink:show` تصبح `xlinkShow`.
+* `xlink:title` تصبح `xlinkTitle`.
+* `xlink:type` تصبح `xlinkType`.
+* `xml:base` تصبح `xmlBase`.
+* `xml:lang` تصبح `xmlLang`.
+* `xml:space` تصبح `xmlSpace`.
+* `xmlns:xlink` تصبح `xmlnsXlink`.
 
 </Note>

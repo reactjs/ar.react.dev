@@ -1,16 +1,16 @@
 ---
-title: createRef
+title: "دالة createRef"
 ---
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` تُستخدم غالبًا مع [المكوّنات الصنفية.](/reference/react/Component) مكوّنات الدالة تعتمد عادةً على [`useRef`](/reference/react/useRef) بدلًا منها.
 
 </Pitfall>
 
 <Intro>
 
-`createRef` creates a [ref](/learn/referencing-values-with-refs) object which can contain arbitrary value.
+`createRef` تنشئ كائن [مرجع (ref)](/learn/referencing-values-with-refs) يمكن أن يحتوي على قيمة عشوائية.
 
 ```js
 class MyInput extends Component {
@@ -25,11 +25,11 @@ class MyInput extends Component {
 
 ---
 
-## Reference {/*reference*/}
+## المرجع {/*reference*/}
 
 ### `createRef()` {/*createref*/}
 
-Call `createRef` to declare a [ref](/learn/referencing-values-with-refs) inside a [class component.](/reference/react/Component)
+استدعِ `createRef` للإعلان عن [مرجع](/learn/referencing-values-with-refs) داخل [مكوّن صنفي.](/reference/react/Component)
 
 ```js
 import { createRef, Component } from 'react';
@@ -40,31 +40,31 @@ class MyComponent extends Component {
   // ...
 ```
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
-#### Parameters {/*parameters*/}
+#### المعاملات {/*parameters*/}
 
-`createRef` takes no parameters.
+`createRef` لا تأخذ معاملات.
 
-#### Returns {/*returns*/}
+#### القيمة المُرجَعة {/*returns*/}
 
-`createRef` returns an object with a single property:
+`createRef` تُرجع كائنًا بخاصية واحدة:
 
-* `current`: Initially, it's set to the `null`. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
+* `current`: في البداية تُضبط إلى `null`. يمكنك لاحقًا تعيينها لشيء آخر. إذا مررت كائن المرجع إلى React كسمة `ref` لعقدة JSX، ستضبط React خاصية `current`.
 
-#### Caveats {/*caveats*/}
+#### ملاحظات {/*caveats*/}
 
-* `createRef` always returns a *different* object. It's equivalent to writing `{ current: null }` yourself.
-* In a function component, you probably want [`useRef`](/reference/react/useRef) instead which always returns the same object.
-* `const ref = useRef()` is equivalent to `const [ref, _] = useState(() => createRef(null))`.
+* `createRef` تُرجع دائمًا كائنًا *مختلفًا*. يعادل كتابة `{ current: null }` بنفسك.
+* في مكوّن دالة، غالبًا تريد [`useRef`](/reference/react/useRef) التي تُرجع دائمًا نفس الكائن.
+* `const ref = useRef()` يعادل `const [ref, _] = useState(() => createRef(null))`.
 
 ---
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Declaring a ref in a class component {/*declaring-a-ref-in-a-class-component*/}
+### الإعلان عن مرجع في مكوّن صنفي {/*declaring-a-ref-in-a-class-component*/}
 
-To declare a ref inside a [class component,](/reference/react/Component) call `createRef` and assign its result to a class field:
+للإعلان عن مرجع داخل [مكوّن صنفي،](/reference/react/Component) استدعِ `createRef` وعيّن ناتجها إلى حقل صنف:
 
 ```js {4}
 import { Component, createRef } from 'react';
@@ -76,7 +76,7 @@ class Form extends Component {
 }
 ```
 
-If you now pass `ref={this.inputRef}` to an `<input>` in your JSX, React will populate `this.inputRef.current` with the input DOM node. For example, here is how you make a button that focuses the input:
+إذا مررت `ref={this.inputRef}` إلى `<input>` في JSX، ستملأ React `this.inputRef.current` بعقدة DOM للإدخال. مثلًا، إليك زر يركّز الإدخل:
 
 <Sandpack>
 
@@ -107,17 +107,17 @@ export default class Form extends Component {
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` تُستخدم غالبًا مع [المكوّنات الصنفية.](/reference/react/Component) مكوّنات الدالة تعتمد عادةً على [`useRef`](/reference/react/useRef) بدلًا منها.
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## البدائل {/*alternatives*/}
 
-### Migrating from a class with `createRef` to a function with `useRef` {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
+### الهجرة من صنف يستخدم `createRef` إلى دالة تستخدم `useRef` {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `createRef`, here is how you can convert them. This is the original code:
+نوصي باستخدام مكوّنات الدالة بدل الصنفية في الشيفرة الجديدة. إذا كان لديك مكوّنات صنفية تستخدم `createRef`، إليك التحويل. هذا هو الأصل:
 
 <Sandpack>
 
@@ -146,7 +146,7 @@ export default class Form extends Component {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) replace calls to `createRef` with calls to [`useRef`:](/reference/react/useRef)
+عند [تحويل المكوّن من صنف إلى دالة،](/reference/react/Component#alternatives) استبدل استدعاءات `createRef` باستدعاءات [`useRef`:](/reference/react/useRef)
 
 <Sandpack>
 

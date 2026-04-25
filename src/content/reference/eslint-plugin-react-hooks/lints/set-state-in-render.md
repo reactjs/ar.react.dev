@@ -4,37 +4,37 @@ title: set-state-in-render
 
 <Intro>
 
-Validates against unconditionally setting state during render, which can trigger additional renders and potential infinite render loops.
+يتحقق من عدم ضبط الحالة دون شرط أثناء التصيير، ما قد يطلق تصييرات إضافية وحلقات تصيير لانهائية.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Calling `setState` during render unconditionally triggers another render before the current one finishes. This creates an infinite loop that crashes your app.
+استدعاء `setState` أثناء التصيير دون شرط يطلق تصييراً آخراً قبل انتهاء الحالي. ينتج عن ذلك حلقة لانهائية تُسقِط التطبيق.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
 ```js {expectedErrors: {'react-compiler': [4]}}
-// ❌ Unconditional setState directly in render
+// ❌ setState غير مشروط مباشرة في التصيير
 function Component({value}) {
   const [count, setCount] = useState(0);
-  setCount(value); // Infinite loop!
+  setCount(value); // حلقة لانهائية!
   return <div>{count}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
 ```js
-// ✅ Derive during render
+// ✅ اشتق أثناء التصيير
 function Component({items}) {
-  const sorted = [...items].sort(); // Just calculate it in render
+  const sorted = [...items].sort(); // احسبه في التصيير
   return <ul>{sorted.map(/*...*/)}</ul>;
 }
 
-// ✅ Set state in event handler
+// ✅ عيّن الحالة في معالج حدث
 function Component() {
   const [count, setCount] = useState(0);
   return (
@@ -44,20 +44,20 @@ function Component() {
   );
 }
 
-// ✅ Derive from props instead of setting state
+// ✅ اشتق من props بدل ضبط state
 function Component({user}) {
   const name = user?.name || '';
   const email = user?.email || '';
   return <div>{name}</div>;
 }
 
-// ✅ Conditionally derive state from props and state from previous renders
+// ✅ اشتق شرطياً من props وحالة من تصييرات سابقة
 function Component({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
 
   const [prevItems, setPrevItems] = useState(items);
-  if (items !== prevItems) { // This condition makes it valid
+  if (items !== prevItems) { // هذا الشرط يجعله صالحاً
     setPrevItems(items);
     setSelection(null);
   }
@@ -65,14 +65,14 @@ function Component({ items }) {
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### I want to sync state to a prop {/*clamp-state-to-prop*/}
+### أريد مزامنة الحالة مع prop {/*clamp-state-to-prop*/}
 
-A common problem is trying to "fix" state after it renders. Suppose you want to keep a counter from exceeding a `max` prop:
+مشكلة شائعة هي محاولة «إصلاح» الحالة بعد التصيير. لنفترض أنك تريد منع عدّاد من تجاوز prop اسمه `max`:
 
 ```js
-// ❌ Wrong: clamps during render
+// ❌ خطأ: تقييد أثناء التصيير
 function Counter({max}) {
   const [count, setCount] = useState(0);
 
@@ -88,12 +88,12 @@ function Counter({max}) {
 }
 ```
 
-As soon as `count` exceeds `max`, an infinite loop is triggered.
+ما إن يتجاوز `count` قيمة `max` حتى تُطلَق حلقة لانهائية.
 
-Instead, it's often better to move this logic to the event (the place where the state is first set). For example, you can enforce the maximum at the moment you update state:
+غالباً الأفضل نقل هذا المنطق إلى الحدث (المكان الذي تُضبَط فيه الحالة أولاً). مثلاً يمكنك فرض الحد الأقصى لحظة تحديث الحالة:
 
 ```js
-// ✅ Clamp when updating
+// ✅ قيّد عند التحديث
 function Counter({max}) {
   const [count, setCount] = useState(0);
 
@@ -105,6 +105,6 @@ function Counter({max}) {
 }
 ```
 
-Now the setter only runs in response to the click, React finishes the render normally, and `count` never crosses `max`.
+الآن يُستدعى setter فقط استجابة للنقرة، ينهي React التصيير طبيعياً، ولا يتجاوز `count` قيمة `max`.
 
-In rare cases, you may need to adjust state based on information from previous renders. For those, follow [this pattern](https://react.dev/reference/react/useState#storing-information-from-previous-renders) of setting state conditionally.
+في حالات نادرة قد تحتاج لتعديل الحالة بناءً على معلومات من تصييرات سابقة. اتبع [هذا النمط](https://react.dev/reference/react/useState#storing-information-from-previous-renders) لضبط الحالة شرطياً.

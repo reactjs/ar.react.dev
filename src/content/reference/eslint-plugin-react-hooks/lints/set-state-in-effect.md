@@ -4,60 +4,60 @@ title: set-state-in-effect
 
 <Intro>
 
-Validates against calling setState synchronously in an effect, which can lead to re-renders that degrade performance.
+يتحقق من عدم استدعاء setState متزامناً داخل effect، ما قد يؤدي إلى إعادة تصيير تُضعف الأداء.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Setting state immediately inside an effect forces React to restart the entire render cycle. When you update state in an effect, React must re-render your component, apply changes to the DOM, and then run effects again. This creates an extra render pass that could have been avoided by transforming data directly during render or deriving state from props. Transform data at the top level of your component instead. This code will naturally re-run when props or state change without triggering additional render cycles.
+ضبط الحالة فوراً داخل effect يجبر React على إعادة تشغيل دورة التصيير بالكامل. عند تحديث الحالة في effect يجب أن يُعاد تصيير المكوّن وتطبيق التغييرات على DOM ثم تشغيل الـ effects مجدداً. ينتج عن ذلك مرور تصيير إضافي كان يمكن تجنّبه بتحويل البيانات مباشرة أثناء التصيير أو باشتقاق الحالة من الـ props. حوّل البيانات في أعلى مستوى المكوّن؛ ستُعاد الشيفرة طبيعياً عند تغيّر الـ props أو الحالة دون إطلاق دورات تصيير إضافية.
 
-Synchronous `setState` calls in effects trigger immediate re-renders before the browser can paint, causing performance issues and visual jank. React has to render twice: once to apply the state update, then again after effects run. This double rendering is wasteful when the same result could be achieved with a single render.
+استدعاءات `setState` المتزامنة في الـ effects تطلق إعادة تصيير فورية قبل أن يرسم المتصفّح، ما يسبب مشاكل أداء وارتجاجاً بصرياً. يحتاج React إلى التصيير مرتين: مرة لتطبيق تحديث الحالة ثم مرة أخرى بعد تشغيل الـ effects. هذا التصيير المزدوج مُهدَر عندما يمكن تحقيق النتيجة بتصيير واحد.
 
-In many cases, you may also not need an effect at all. Please see [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) for more information.
+في كثير من الحالات قد لا تحتاج إلى effect أصلاً. راجع [قد لا تحتاج إلى Effect](/learn/you-might-not-need-an-effect) لمزيد من التفاصيل.
 
-## Common Violations {/*common-violations*/}
+## مخالفات شائعة {/*common-violations*/}
 
-This rule catches several patterns where synchronous setState is used unnecessarily:
+تلتقط هذه القاعدة عدة أنماط حيث يُستخدم setState متزامن دون داعٍ:
 
-- Setting loading state synchronously
-- Deriving state from props in effects
-- Transforming data in effects instead of render
+- ضبط حالة التحميل متزامناً
+- اشتقاق الحالة من الـ props في الـ effects
+- تحويل البيانات في الـ effects بدل التصيير
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Synchronous setState in effect
+// ❌ setState متزامن في effect
 function Component({data}) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(data); // Extra render, use initial state instead
+    setItems(data); // تصيير إضافي؛ استخدم الحالة الابتدائية
   }, [data]);
 }
 
-// ❌ Setting loading state synchronously
+// ❌ ضبط حالة التحميل متزامناً
 function Component() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true); // Synchronous, causes extra render
+    setLoading(true); // متزامن، يسبب تصييراً إضافياً
     fetchData().then(() => setLoading(false));
   }, []);
 }
 
-// ❌ Transforming data in effect
+// ❌ تحويل البيانات في effect
 function Component({rawData}) {
   const [processed, setProcessed] = useState([]);
 
   useEffect(() => {
-    setProcessed(rawData.map(transform)); // Should derive in render
+    setProcessed(rawData.map(transform)); // يجب الاشتقاق في التصيير
   }, [rawData]);
 }
 
-// ❌ Deriving state from props
+// ❌ اشتقاق الحالة من الـ props
 function Component({selectedId, items}) {
   const [selected, setSelected] = useState(null);
 
@@ -67,12 +67,12 @@ function Component({selectedId, items}) {
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ setState in an effect is fine if the value comes from a ref
+// ✅ setState في effect مقبول إذا جاءت القيمة من ref
 function Tooltip() {
   const ref = useRef(null);
   const [tooltipHeight, setTooltipHeight] = useState(0);
@@ -83,11 +83,11 @@ function Tooltip() {
   }, []);
 }
 
-// ✅ Calculate during render
+// ✅ احسب أثناء التصيير
 function Component({selectedId, items}) {
   const selected = items.find(i => i.id === selectedId);
   return <div>{selected?.name}</div>;
 }
 ```
 
-**When something can be calculated from the existing props or state, don't put it in state.** Instead, calculate it during rendering. This makes your code faster, simpler, and less error-prone. Learn more in [You Might Not Need an Effect](/learn/you-might-not-need-an-effect).
+**عندما يمكن حساب شيء من الـ props أو الحالة الحالية، لا تضعه في state.** احسبه أثناء التصيير. يجعل شيفرتك أسرع وأبسط وأقل عرضة للأخطاء. تعلّم المزيد في [قد لا تحتاج إلى Effect](/learn/you-might-not-need-an-effect).

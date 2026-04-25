@@ -1,40 +1,40 @@
 ---
-title: Components and Hooks must be pure
+title: يجب أن تكون المكوّنات والـ Hooks نقية
 ---
 
 <Intro>
-Pure functions only perform a calculation and nothing more. It makes your code easier to understand, debug, and allows React to automatically optimize your components and Hooks correctly.
+الدوال النقية تقوم فقط بإجراء حساب ولا شيء غير ذلك. ذلك يجعل الكود أسهل للفهم والتصحيح، ويتيح لـ React تحسين مكوّناتك و Hooks تلقائياً بالشكل الصحيح.
 </Intro>
 
 <Note>
-This reference page covers advanced topics and requires familiarity with the concepts covered in the [Keeping Components Pure](/learn/keeping-components-pure) page.
+تغطي صفحة المرجع هذه مواضيع متقدمة وتفترض الإلمام بالمفاهيم الواردة في صفحة [الحفاظ على نقاء المكوّنات](/learn/keeping-components-pure).
 </Note>
 
 <InlineToc />
 
-### Why does purity matter? {/*why-does-purity-matter*/}
+### لماذا يهم النقاء؟ {/*why-does-purity-matter*/}
 
-One of the key concepts that makes React, _React_ is _purity_. A pure component or hook is one that is:
+من المفاهيم الأساسية التي تجعل React هو _React_ هو _النقاء_. المكوّن أو الـ Hook النقي هو الذي يكون:
 
-* **Idempotent** – You [always get the same result every time](/learn/keeping-components-pure#purity-components-as-formulas) you run it with the same inputs – props, state, context for component inputs; and arguments for hook inputs.
-* **Has no side effects in render** – Code with side effects should run [**separately from rendering**](#how-does-react-run-your-code). For example as an [event handler](/learn/responding-to-events) – where the user interacts with the UI and causes it to update; or as an [Effect](/reference/react/useEffect) – which runs after render.
-* **Does not mutate non-local values**: Components and Hooks should [never modify values that aren't created locally](#mutation) in render.
+* **أيديمبوتنت (idempotent)** – [تحصل دائماً على نفس النتيجة في كل مرة](/learn/keeping-components-pure#purity-components-as-formulas) تشغّل فيها الكود مع نفس المدخلات – أي props و state و context لمكوّنات؛ والوسائط (arguments) لمدخلات الـ Hook.
+* **بلا آثار جانبية (side effects) في التصيير (render)** – يجب أن يعمل الكود ذو الآثار الجانبية [**منفصلاً عن التصيير**](#how-does-react-run-your-code). مثلاً في [معالج حدث (event handler)](/learn/responding-to-events) – حيث يتفاعل المستخدم مع الواجهة فيُحدّثها؛ أو في [Effect](/reference/react/useEffect) – الذي يعمل بعد التصيير.
+* **لا يغيّر قيماً غير محلية**: يجب ألا [تعدّل المكوّنات والـ Hooks قيماً لم تُنشأ محلياً](#mutation) أثناء التصيير.
 
-When render is kept pure, React can understand how to prioritize which updates are most important for the user to see first. This is made possible because of render purity: since components don't have side effects [in render](#how-does-react-run-your-code), React can pause rendering components that aren't as important to update, and only come back to them later when it's needed.
+عندما يبقى التصيير نقياً، يستطيع React فهم كيفية ترتيب أولويات التحديثات الأهم للمستخدم ليراها أولاً. يصبح ذلك ممكناً بفضل نقاء التصيير: بما أن المكوّنات لا تُحدّث آثاراً جانبية [أثناء التصيير](#how-does-react-run-your-code)، يمكن لـ React إيقاف تصيير مكوّنات أقل أهمية للتحديث والعودة إليها لاحقاً عند الحاجة.
 
-Concretely, this means that rendering logic can be run multiple times in a way that allows React to give your user a pleasant user experience. However, if your component has an untracked side effect – like modifying the value of a global variable [during render](#how-does-react-run-your-code) – when React runs your rendering code again, your side effects will be triggered in a way that won't match what you want. This often leads to unexpected bugs that can degrade how your users experience your app. You can see an [example of this in the Keeping Components Pure page](/learn/keeping-components-pure#side-effects-unintended-consequences).
+عملياً، يعني ذلك أن منطق التصيير قد يُشغَّل عدة مرات بطريقة تسمح لـ React بتقديم تجربة مستخدم سلسة. أما إذا كان لمكوّنك أثر جانبي غير مُتتبَّع – مثل تعديل قيمة متغيّر عام [أثناء التصيير](#how-does-react-run-your-code) – فعند إعادة تشغيل كود التصيير ستُفعَّل الآثار الجانبية بطريقة لا تتوافق مع ما تريد. غالباً ما يؤدي ذلك إلى أخطاء غير متوقعة تُضعف تجربة المستخدم. يمكنك رؤية [مثال لذلك في صفحة الحفاظ على نقاء المكوّنات](/learn/keeping-components-pure#side-effects-unintended-consequences).
 
-#### How does React run your code? {/*how-does-react-run-your-code*/}
+#### كيف يشغّل React كودك؟ {/*how-does-react-run-your-code*/}
 
-React is declarative: you tell React _what_ to render, and React will figure out _how_ best to display it to your user. To do this, React has a few phases where it runs your code. You don't need to know about all of these phases to use React well. But at a high level, you should know about what code runs in _render_, and what runs outside of it.
+React تصريحي (declarative): تخبر React _ماذا_ تُصيّر، وReact يحدد _كيف_ يعرض ذلك بأفضل شكل للمستخدم. لذلك يمر React بعدة مراحل يشغّل فيها كودك. لا تحتاج معرفة كل هذه المراحل لاستخدام React جيداً. لكن على مستوى عام يجب أن تعرف ما الذي يعمل في _التصيير (render)_ وما الذي يعمل خارجه.
 
-_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, [Effects](/reference/react/useEffect) are _flushed_ (meaning they are run until there are no more left) and may update the calculation if the Effects have impacts on layout. React takes this new calculation and compares it to the calculation used to create the previous version of your UI, then _commits_ just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to catch it up to the latest version.
+_التصيير_ يعني حساب شكل النسخة التالية من واجهتك. بعد التصيير، تُنفَّذ [Effects](/reference/react/useEffect) بالكامل (تُشغَّل حتى لا يبقى منها شيء) وقد يُحدَّث الحساب إذا أثرت الـ Effects على التخطيط (layout). يأخذ React هذا الحساب الجديد ويقارنه بالحساب المستخدم لإنشاء النسخة السابقة من الواجهة، ثم _يُلتزم (commits)_ بالحد الأدنى من التغييرات إلى [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (ما يراه المستخدم فعلياً) لمواكبة أحدث نسخة.
 
 <DeepDive>
 
-#### How to tell if code runs in render {/*how-to-tell-if-code-runs-in-render*/}
+#### كيف تعرف أن الكود يعمل أثناء التصيير؟ {/*how-to-tell-if-code-runs-in-render*/}
 
-One quick heuristic to tell if code runs during render is to examine where it is: if it's written at the top level like in the example below, there's a good chance it runs during render.
+طريقة سريعة لمعرفة ما إذا كان الكود يعمل أثناء التصيير هي النظر إلى مكانه: إذا كان مكتوباً في المستوى الأعلى كما في المثال أدناه، فالاحتمال كبير أنه يعمل أثناء التصيير.
 
 ```js {2}
 function Dropdown() {
@@ -43,7 +43,7 @@ function Dropdown() {
 }
 ```
 
-Event handlers and Effects don't run in render:
+معالجات الأحداث والـ Effects لا تعمل أثناء التصيير:
 
 ```js {4}
 function Dropdown() {
@@ -68,11 +68,11 @@ function Dropdown() {
 
 ---
 
-## Components and Hooks must be idempotent {/*components-and-hooks-must-be-idempotent*/}
+## يجب أن تكون المكوّنات والـ Hooks أيديمبوتنت {/*components-and-hooks-must-be-idempotent*/}
 
-Components must always return the same output with respect to their inputs – props, state, and context. This is known as _idempotency_. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) is a term popularized in functional programming. It refers to the idea that you [always get the same result every time](learn/keeping-components-pure) you run that piece of code with the same inputs.
+يجب أن تُرجع المكوّنات دائماً نفس المخرجات بالنسبة لمدخلاتها – props و state و context. يُعرف ذلك بـ _الأيديمبوتنسية (idempotency)_. [الأيديمبوتنسية](https://en.wikipedia.org/wiki/Idempotence) مصطلح شائع في البرمجة الوظيفية (functional programming). تقصد أنك [تحصل دائماً على نفس النتيجة في كل مرة](learn/keeping-components-pure) تشغّل فيها ذلك الجزء من الكود مع نفس المدخلات.
 
-This means that _all_ code that runs [during render](#how-does-react-run-your-code) must also be idempotent in order for this rule to hold. For example, this line of code is not idempotent (and therefore, neither is the component):
+يعني ذلك أن _كل_ الكود الذي يعمل [أثناء التصيير](#how-does-react-run-your-code) يجب أن يكون أيديمبوتنت أيضاً حتى تُطبَّق هذه القاعدة. مثلاً، هذا السطر ليس أيديمبوتنت (وبالتالي المكوّن كذلك ليس كذلك):
 
 ```js {2}
 function Clock() {
@@ -81,9 +81,9 @@ function Clock() {
 }
 ```
 
-`new Date()` is not idempotent as it always returns the current date and changes its result every time it's called. When you render the above component, the time displayed on the screen will stay stuck on the time that the component was rendered. Similarly, functions like `Math.random()` also aren't idempotent, because they return different results every time they're called, even when the inputs are the same.
+`new Date()` ليس أيديمبوتنت لأنه يُرجع التاريخ الحالي ويختلف ناتجه في كل استدعاء. عند تصيير المكوّن أعلاه، يبقى الوقت المعروض على الشاشة عالقاً عند وقت تصيير المكوّن. وبالمثل، دوال مثل `Math.random()` ليست أيديمبوتنت لأنها تُرجع نتائج مختلفة في كل مرة حتى مع نفس المدخلات.
 
-This doesn't mean you shouldn't use non-idempotent functions like `new Date()` _at all_ – you should just avoid using them [during render](#how-does-react-run-your-code). In this case, we can _synchronize_ the latest date to this component using an [Effect](/reference/react/useEffect):
+هذا لا يعني أنه يجب ألا تستخدم دوالاً غير أيديمبوتنت مثل `new Date()` _إطلاقاً_ – بل يجب فقط تجنب استخدامها [أثناء التصيير](#how-does-react-run-your-code). في هذه الحالة يمكننا _مزامنة_ أحدث تاريخ مع هذا المكوّن باستخدام [Effect](/reference/react/useEffect):
 
 <Sandpack>
 
@@ -116,28 +116,28 @@ export default function Clock() {
 
 </Sandpack>
 
-By wrapping the non-idempotent `new Date()` call in an Effect, it moves that calculation [outside of rendering](#how-does-react-run-your-code).
+بتغليف استدعاء `new Date()` غير الأيديمبوتنت داخل Effect، ننقل ذلك الحساب [خارج التصيير](#how-does-react-run-your-code).
 
-If you don't need to synchronize some external state with React, you can also consider using an [event handler](/learn/responding-to-events) if it only needs to be updated in response to a user interaction.
+إذا لم تكن بحاجة لمزامنة حالة خارجية مع React، يمكنك أيضاً النظر في [معالج حدث (event handler)](/learn/responding-to-events) إذا كان التحديث مطلوباً فقط استجابةً لتفاعل المستخدم.
 
 ---
 
-## Side effects must run outside of render {/*side-effects-must-run-outside-of-render*/}
+## يجب أن تعمل الآثار الجانبية خارج التصيير {/*side-effects-must-run-outside-of-render*/}
 
-[Side effects](/learn/keeping-components-pure#side-effects-unintended-consequences) should not run [in render](#how-does-react-run-your-code), as React can render components multiple times to create the best possible user experience.
+لا ينبغي أن تعمل [الآثار الجانبية](/learn/keeping-components-pure#side-effects-unintended-consequences) [أثناء التصيير](#how-does-react-run-your-code)، لأن React قد يُصيّر المكوّنات أكثر من مرة لتحقيق أفضل تجربة ممكنة للمستخدم.
 
 <Note>
-Side effects are a broader term than Effects. Effects specifically refer to code that's wrapped in `useEffect`, while a side effect is a general term for code that has any observable effect other than its primary result of returning a value to the caller.
+الآثار الجانبية مصطلح أوسع من Effects. تشير Effects تحديداً إلى الكود الملفوف في `useEffect`، بينما الأثر الجانبي مصطلح عام لأي كود له أثر ملحوظ غير نتيجته الأساسية وهي إرجاع قيمة لمن استدعاه.
 
-Side effects are typically written inside of [event handlers](/learn/responding-to-events) or Effects. But never during render.
+تُكتب الآثار الجانبية عادة داخل [معالجات الأحداث](/learn/responding-to-events) أو Effects. لكن لا أثناء التصيير أبداً.
 </Note>
 
-While render must be kept pure, side effects are necessary at some point in order for your app to do anything interesting, like showing something on the screen! The key point of this rule is that side effects should not run [in render](#how-does-react-run-your-code), as React can render components multiple times. In most cases, you'll use [event handlers](learn/responding-to-events) to handle side effects. Using an event handler explicitly tells React that this code doesn't need to run during render, keeping render pure. If you've exhausted all options – and only as a last resort – you can also handle side effects using `useEffect`.
+رغم أن التصيير يجب أن يبقى نقياً، فالآثار الجانبية ضرورية في مرحلة ما حتى يفعل تطبيقك شيئاً مفيداً، مثل إظهار شيء على الشاشة! جوهر هذه القاعدة أن الآثار الجانبية لا يجب أن تعمل [أثناء التصيير](#how-does-react-run-your-code)، لأن React قد يُصيّر المكوّنات عدة مرات. في أغلب الحالات ستستخدم [معالجات الأحداث](learn/responding-to-events) للتعامل مع الآثار الجانبية. استخدام معالج حدث يخبر React صراحة أن هذا الكود لا يحتاج للعمل أثناء التصيير، فيبقى التصيير نقياً. إذا استنفدت كل الخيارات – وفقط كملاذ أخير – يمكنك أيضاً التعامل مع الآثار الجانبية عبر `useEffect`.
 
-### When is it okay to have mutation? {/*mutation*/}
+### متى يُسمح بالتغيير المباشر (mutation)؟ {/*mutation*/}
 
-#### Local mutation {/*local-mutation*/}
-One common example of a side effect is mutation, which in JavaScript refers to changing the value of a non-[primitive](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) value. In general, while mutation is not idiomatic in React, _local_ mutation is absolutely fine:
+#### التغيير المباشر المحلي {/*local-mutation*/}
+من الأمثلة الشائعة للأثر الجانبي هو التغيير المباشر (mutation)، وفي JavaScript يقصد به تغيير قيمة غير [أولية (primitive)](https://developer.mozilla.org/en-US/docs/Glossary/Primitive). بشكل عام، رغم أن التغيير المباشر ليس أسلوباً شائعاً في React، فالتغيير المباشر _المحلي_ مقبول تماماً:
 
 ```js {2,7}
 function FriendList({ friends }) {
@@ -152,11 +152,11 @@ function FriendList({ friends }) {
 }
 ```
 
-There is no need to contort your code to avoid local mutation. [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) could also be used here for brevity, but there is nothing wrong with creating a local array and then pushing items into it [during render](#how-does-react-run-your-code).
+لا حاجة لإجبار الكود على تجنب التغيير المباشر المحلي. يمكن استخدام [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) هنا للاختصار، لكن لا بأس بإنشاء مصفوفة محلية ثم دفع عناصر إليها [أثناء التصيير](#how-does-react-run-your-code).
 
-Even though it looks like we are mutating `items`, the key point to note is that this code only does so _locally_ – the mutation isn't "remembered" when the component is rendered again. In other words, `items` only stays around as long as the component does. Because `items` is always _recreated_ every time `<FriendList />` is rendered, the component will always return the same result.
+رغم أن الأمر يبدو وكأننا نغيّر `items` مباشرة، فالنقطة المهمة أن هذا الكود يفعل ذلك _محلياً_ فقط – التغيير لا يُحفَظ عند إعادة تصيير المكوّن. بمعنى آخر، `items` لا يدوم إلا طالما المكوّن قائم. وبما أن `items` يُعاد _إنشاؤه_ في كل مرة يُصيَّر فيها `<FriendList />`، فالمكوّن سيعيد دائماً نفس النتيجة.
 
-On the other hand, if `items` was created outside of the component, it holds on to its previous values and remembers changes:
+من ناحية أخرى، إذا وُجد `items` خارج المكوّن، فهو يحتفظ بقيمه السابقة ويتذكر التغييرات:
 
 ```js {1,7}
 const items = []; // 🔴 Bad: created outside of the component
@@ -171,11 +171,11 @@ function FriendList({ friends }) {
 }
 ```
 
-When `<FriendList />` runs again, we will continue appending `friends` to `items` every time that component is run, leading to multiple duplicated results. This version of `<FriendList />` has observable side effects [during render](#how-does-react-run-your-code) and **breaks the rule**.
+عند إعادة تشغيل `<FriendList />`، سنستمر في إلحاق `friends` بـ `items` في كل مرة يُشغَّل فيها المكوّن، ما يؤدي إلى تكرار النتائج. هذه النسخة من `<FriendList />` لها آثار جانبية ملحوظة [أثناء التصيير](#how-does-react-run-your-code) وت**خالف القاعدة**.
 
-#### Lazy initialization {/*lazy-initialization*/}
+#### التهيئة الكسولة {/*lazy-initialization*/}
 
-Lazy initialization is also fine despite not being fully "pure":
+التهيئة الكسولة (lazy initialization) مقبولة أيضاً رغم أنها ليست «نقية» بالمعنى الصارم:
 
 ```js {2}
 function ExpenseForm() {
@@ -184,9 +184,9 @@ function ExpenseForm() {
 }
 ```
 
-#### Changing the DOM {/*changing-the-dom*/}
+#### تغيير DOM {/*changing-the-dom*/}
 
-Side effects that are directly visible to the user are not allowed in the render logic of React components. In other words, merely calling a component function shouldn’t by itself produce a change on the screen.
+لا يُسمح بآثار جانبية يظهر أثرها مباشرة للمستخدم في منطق تصيير مكوّنات React. بمعنى آخر، لا ينبغي أن يؤدي استدعاء دالة المكوّن وحده إلى تغيير يظهر على الشاشة.
 
 ```js {2}
 function ProductDetailPage({ product }) {
@@ -194,20 +194,20 @@ function ProductDetailPage({ product }) {
 }
 ```
 
-One way to achieve the desired result of updating `document.title` outside of render is to [synchronize the component with `document`](/learn/synchronizing-with-effects).
+من الطرق لتحقيق تحديث `document.title` خارج التصيير [مزامنة المكوّن مع `document`](/learn/synchronizing-with-effects).
 
-As long as calling a component multiple times is safe and doesn’t affect the rendering of other components, React doesn’t care if it’s 100% pure in the strict functional programming sense of the word. It is more important that [components must be idempotent](/reference/rules/components-and-hooks-must-be-pure).
+طالما أن استدعاء المكوّن عدة مرات آمناً ولا يؤثر على تصيير مكوّنات أخرى، فلا يهم React إن كان «نقياً» بنسبة 100% بالمعنى البرمجة الوظيفية الصارم. الأهم أن [المكوّنات يجب أن تكون أيديمبوتنت](/reference/rules/components-and-hooks-must-be-pure).
 
 ---
 
-## Props and state are immutable {/*props-and-state-are-immutable*/}
+## الـ props والـ state غير قابلة للتغيير المباشر {/*props-and-state-are-immutable*/}
 
-A component's props and state are immutable [snapshots](learn/state-as-a-snapshot). Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+props و state للمكوّن هما [لقطات (snapshots)](learn/state-as-a-snapshot) غير قابلة للتغيير المباشر. لا تغيّرهما مباشرة أبداً. بدلاً من ذلك مرّر props جديدة للأسفل، واستخدم دالة الضبط (setter) من `useState`.
 
-You can think of the props and state values as snapshots that are updated after rendering. For this reason, you don't modify the props or state variables directly: instead you pass new props, or use the setter function provided to you to tell React that state needs to update the next time the component is rendered.
+يمكنك اعتبار قيم props و state لقطات تُحدَّث بعد التصيير. لذلك لا تعدّل متغيّرات props أو state مباشرة: بل مرّر props جديدة، أو استخدم دالة الضبط المُزوَّدة لتخبر React أن الـ state يحتاج للتحديث في التصيير التالي للمكوّن.
 
-### Don't mutate Props {/*props*/}
-Props are immutable because if you mutate them, the application will produce inconsistent output, which can be hard to debug as it may or may not work depending on the circumstances.
+### لا تغيّر الـ props مباشرة {/*props*/}
+الـ props غير قابلة للتغيير المباشر لأن تعديلها يُنتج مخرجات غير متسقة للتطبيق، وقد يصعب تصحيحها لأنها قد تعمل أو لا تعمل حسب الظروف.
 
 ```js {expectedErrors: {'react-compiler': [2]}} {2}
 function Post({ item }) {
@@ -223,14 +223,14 @@ function Post({ item }) {
 }
 ```
 
-### Don't mutate State {/*state*/}
-`useState` returns the state variable and a setter to update that state.
+### لا تغيّر الـ state مباشرة {/*state*/}
+`useState` يُرجع متغيّر الـ state ودالة ضبط لتحديث ذلك الـ state.
 
 ```js
 const [stateVariable, setter] = useState(0);
 ```
 
-Rather than updating the state variable in-place, we need to update it using the setter function that is returned by `useState`. Changing values on the state variable doesn't cause the component to update, leaving your users with an outdated UI. Using the setter function informs React that the state has changed, and that we need to queue a re-render to update the UI.
+بدلاً من تحديث متغيّر الـ state في مكانه، نحدّثه باستخدام دالة الضبط التي يُرجعها `useState`. تغيير القيم على متغيّر الـ state مباشرة لا يُسبّب تحديث المكوّن، فيبقى المستخدم أمام واجهة قديمة. استخدام دالة الضبط يُعلِم React أن الـ state تغيّر، وأننا نحتاج لإدراج إعادة تصيير لتحديث الواجهة.
 
 ```js {expectedErrors: {'react-compiler': [2, 5]}} {5}
 function Counter() {
@@ -266,9 +266,9 @@ function Counter() {
 
 ---
 
-## Return values and arguments to Hooks are immutable {/*return-values-and-arguments-to-hooks-are-immutable*/}
+## قيم الإرجاع والوسائط الممرَّرة إلى Hooks غير قابلة للتغيير المباشر {/*return-values-and-arguments-to-hooks-are-immutable*/}
 
-Once values are passed to a hook, you should not modify them. Like props in JSX, values become immutable when passed to a hook.
+بعد تمرير القيم إلى hook، لا يجب تعديلها. كما في props داخل JSX، تصبح القيم غير قابلة للتغيير المباشر عند تمريرها إلى hook.
 
 ```js {expectedErrors: {'react-compiler': [4]}} {4}
 function useIconStyle(icon) {
@@ -291,7 +291,7 @@ function useIconStyle(icon) {
 }
 ```
 
-One important principle in React is _local reasoning_: the ability to understand what a component or hook does by looking at its code in isolation. Hooks should be treated like "black boxes" when they are called. For example, a custom hook might have used its arguments as dependencies to memoize values inside it:
+من المبادئ المهمة في React _الاستدلال المحلي (local reasoning)_: القدرة على فهم ما يفعله مكوّن أو hook بمجرد النظر إلى كوده بمعزل عن غيره. يجب التعامل مع Hooks كـ «صناديق سوداء» عند استدعائها. مثلاً، قد يستخدم hook مخصّص وسائطه كتبعيات (dependencies) لحفظ قيم داخلياً عبر memoization:
 
 ```js {4}
 function useIconStyle(icon) {
@@ -307,7 +307,7 @@ function useIconStyle(icon) {
 }
 ```
 
-If you were to mutate the Hook's arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
+إذا غيّرت وسائط الـ Hook مباشرة، يصبح حفظ القيم داخل الـ hook المخصّص غير صحيح، لذا من المهم تجنب ذلك.
 
 ```js {4}
 style = useIconStyle(icon);         // `style` is memoized based on `icon`
@@ -321,15 +321,15 @@ icon = { ...icon, enabled: false }; // Good: ✅ make a copy instead
 style = useIconStyle(icon);         // new value of `style` is calculated
 ```
 
-Similarly, it's important to not modify the return values of Hooks, as they may have been memoized.
+وبالمثل، من المهم ألا تعدّل قيم الإرجاع من Hooks، لأنها قد تكون محفوظة عبر memoization.
 
 ---
 
-## Values are immutable after being passed to JSX {/*values-are-immutable-after-being-passed-to-jsx*/}
+## القيم غير قابلة للتغيير المباشر بعد تمريرها إلى JSX {/*values-are-immutable-after-being-passed-to-jsx*/}
 
-Don't mutate values after they've been used in JSX. Move the mutation to before the JSX is created.
+لا تغيّر القيم بعد استخدامها في JSX. انقل التغيير المباشر إلى ما قبل إنشاء JSX.
 
-When you use JSX in an expression, React may eagerly evaluate the JSX before the component finishes rendering. This means that mutating values after they've been passed to JSX can lead to outdated UIs, as React won't know to update the component's output.
+عند استخدام JSX في تعبير، قد يقيّم React الـ JSX مبكراً قبل أن ينتهي المكوّن من التصيير. يعني ذلك أن تغيير القيم بعد تمريرها إلى JSX قد يؤدي إلى واجهات قديمة، لأن React لن يعرف أنه يجب تحديث مخرجات المكوّن.
 
 ```js {expectedErrors: {'react-compiler': [4]}} {4}
 function Page({ colour }) {

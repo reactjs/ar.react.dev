@@ -4,55 +4,55 @@ title: globals
 
 <Intro>
 
-Validates against assignment/mutation of globals during render, part of ensuring that [side effects must run outside of render](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render).
+يتحقق من عدم الإسناد أو التعديل على عامات أثناء التصيير، ضمن ضمان أن [التأثيرات الجانبية تُنفَّذ خارج التصيير](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render).
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-Global variables exist outside React's control. When you modify them during render, you break React's assumption that rendering is pure. This can cause components to behave differently in development vs production, break Fast Refresh, and make your app impossible to optimize with features like React Compiler.
+المتغيّرات العامة خارج سيطرة React. عند تعديلها أثناء التصيير تُخالِف افتراض React أن التصيير نقي. قد يجعل ذلك المكوّنات تتصرف بشكل مختلف بين التطوير والإنتاج، ويكسر Fast Refresh، ويجعل التطبيق صعب التحسين بميزات مثل React Compiler.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Global counter
+// ❌ عدّاد عام
 let renderCount = 0;
 function Component() {
-  renderCount++; // Mutating global
+  renderCount++; // تعديل عام
   return <div>Count: {renderCount}</div>;
 }
 
-// ❌ Modifying window properties
+// ❌ تعديل خصائص window
 function Component({userId}) {
-  window.currentUser = userId; // Global mutation
+  window.currentUser = userId; // تعديل عام
   return <div>User: {userId}</div>;
 }
 
-// ❌ Global array push
+// ❌ دفع إلى مصفوفة عامة
 const events = [];
 function Component({event}) {
-  events.push(event); // Mutating global array
+  events.push(event); // تعديل مصفوفة عامة
   return <div>Events: {events.length}</div>;
 }
 
-// ❌ Cache manipulation
+// ❌ التلاعب بذاكرة تخزين مؤقت عامة
 const cache = {};
 function Component({id}) {
   if (!cache[id]) {
-    cache[id] = fetchData(id); // Modifying cache during render
+    cache[id] = fetchData(id); // تعديل الذاكرة أثناء التصيير
   }
   return <div>{cache[id]}</div>;
 }
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Use state for counters
+// ✅ استخدم state للعدادات
 function Component() {
   const [clickCount, setClickCount] = useState(0);
 
@@ -67,16 +67,16 @@ function Component() {
   );
 }
 
-// ✅ Use context for global values
+// ✅ استخدم context للقيم «العامة» داخل React
 function Component() {
   const user = useContext(UserContext);
   return <div>User: {user.id}</div>;
 }
 
-// ✅ Synchronize external state with React
+// ✅ زامن الحالة الخارجية مع React
 function Component({title}) {
   useEffect(() => {
-    document.title = title; // OK in effect
+    document.title = title; // مسموح في effect
   }, [title]);
 
   return <div>Page: {title}</div>;

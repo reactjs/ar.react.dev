@@ -1,49 +1,49 @@
 ---
-title: Incremental Adoption
+title: التبني التدريجي
 ---
 
 <Intro>
-React Compiler can be adopted incrementally, allowing you to try it on specific parts of your codebase first. This guide shows you how to gradually roll out the compiler in existing projects.
+يمكن تبني مُصرّف React تدريجياً، فيسمح لك بتجربته على أجزاء محددة من قاعدة الشيفرة أولاً. يوضح هذا الدليل كيفية تفعيل المُصرّف تدريجياً في مشاريع قائمة.
 </Intro>
 
 <YouWillLearn>
 
-* Why incremental adoption is recommended
-* Using Babel overrides for directory-based adoption
-* Using the "use memo" directive for opt-in compilation
-* Using the "use no memo" directive to exclude components
-* Runtime feature flags with gating
-* Monitoring your adoption progress
+* لماذا يُنصح بالتبني التدريجي
+* استخدام تجاوزات Babel للتبني حسب المجلد
+* استخدام توجيه «use memo» للاشتراك في التجميع
+* استخدام توجيه «use no memo» لاستبعاد مكوّنات
+* أعلام الميزات وقت التشغيل مع البوابات (gating)
+* مراقبة تقدّم التبني
 
 </YouWillLearn>
 
-## Why Incremental Adoption? {/*why-incremental-adoption*/}
+## لماذا التبني التدريجي؟ {/*why-incremental-adoption*/}
 
-React Compiler is designed to optimize your entire codebase automatically, but you don't have to adopt it all at once. Incremental adoption gives you control over the rollout process, letting you test the compiler on small parts of your app before expanding to the rest.
+صُمم مُصرّف React ليُحسِّن قاعدة الشيفرة بأكملها تلقائياً، لكن لا يلزمك تبنيه دفعة واحدة. يمنحك التبني التدريجي تحكماً في عملية التفعيل، لتختبر المُصرّف على أجزاء صغيرة من التطبيق قبل التوسع.
 
-Starting small helps you build confidence in the compiler's optimizations. You can verify that your app behaves correctly with compiled code, measure performance improvements, and identify any edge cases specific to your codebase. This approach is especially valuable for production applications where stability is critical.
+البدء بجزء صغير يبني ثقتك في تحسينات المُصرّف. يمكنك التحقق من أن التطبيق يتصرف بشكل صحيح مع الشيفرة المُجمَّعة، وقياس تحسينات الأداء، وتحديد أي حالات حافة خاصة بقاعدة الشيفرة. هذا مفيد خصوصاً للتطبيقات الإنتاجية حيث الاستقرار حاسم.
 
-Incremental adoption also makes it easier to address any Rules of React violations the compiler might find. Instead of fixing violations across your entire codebase at once, you can tackle them systematically as you expand compiler coverage. This keeps the migration manageable and reduces the risk of introducing bugs.
+يسهّل التبني التدريجي أيضاً معالجة أي مخالفات لقواعد React قد يجدها المُصرّف. بدلاً من إصلاح المخالفات في كل القاعدة دفعة واحدة، يمكنك معالجتها بشكل منظم مع توسيع تغطية المُصرّف. يبقي ذلك الهجرة قابلة للإدارة ويقلل خطر إدخال أخطاء.
 
-By controlling which parts of your code get compiled, you can also run A/B tests to measure the real-world impact of the compiler's optimizations. This data helps you make informed decisions about full adoption and demonstrates the value to your team.
+بالتحكم في الأجزاء المُجمَّعة من الشيفرة، يمكنك أيضاً تشغيل اختبارات A/B لقياس أثر التحسينات في الواقع. تساعدك هذه البيانات على اتخاذ قرارات مستنيرة بشأن التبني الكامل وإظهار القيمة لفريقك.
 
-## Approaches to Incremental Adoption {/*approaches-to-incremental-adoption*/}
+## أساليب التبني التدريجي {/*approaches-to-incremental-adoption*/}
 
-There are three main approaches to adopt React Compiler incrementally:
+هناك ثلاثة أساليب رئيسية لتبني مُصرّف React تدريجياً:
 
-1. **Babel overrides** - Apply the compiler to specific directories
-2. **Opt-in with "use memo"** - Only compile components that explicitly opt in
-3. **Runtime gating** - Control compilation with feature flags
+1. **تجاوزات Babel** — تطبيق المُصرّف على مجلدات محددة
+2. **الاشتراك بتوجيه «use memo»** — تجميع المكوّنات التي تختار صراحةً الاشتراك فقط
+3. **البوابات وقت التشغيل** — التحكم في التجميع بأعلام ميزات
 
-All approaches allow you to test the compiler on specific parts of your application before full rollout.
+كل الأساليب تسمح لك باختبار المُصرّف على أجزاء محددة من التطبيق قبل التفعيل الكامل.
 
-## Directory-Based Adoption with Babel Overrides {/*directory-based-adoption*/}
+## التبني حسب المجلد بتجاوزات Babel {/*directory-based-adoption-with-babel-overrides*/}
 
-Babel's `overrides` option lets you apply different plugins to different parts of your codebase. This is ideal for gradually adopting React Compiler directory by directory.
+خيار `overrides` في Babel يتيح تطبيق إضافات مختلفة على أجزاء مختلفة من قاعدة الشيفرة. مثالي لتبني مُصرّف React مجلداً مجلداً.
 
-### Basic Configuration {/*basic-configuration*/}
+### الإعداد الأساسي {/*basic-configuration*/}
 
-Start by applying the compiler to a specific directory:
+ابدأ بتطبيق المُصرّف على مجلد محدد:
 
 ```js
 // babel.config.js
@@ -62,9 +62,9 @@ module.exports = {
 };
 ```
 
-### Expanding Coverage {/*expanding-coverage*/}
+### توسيع التغطية {/*expanding-coverage*/}
 
-As you gain confidence, add more directories:
+مع ازدياد الثقة، أضف مجلدات أكثر:
 
 ```js
 // babel.config.js
@@ -89,9 +89,9 @@ module.exports = {
 };
 ```
 
-### With Compiler Options {/*with-compiler-options*/}
+### مع خيارات المُصرّف {/*with-compiler-options*/}
 
-You can also configure compiler options per override:
+يمكنك أيضاً ضبط خيارات المُصرّف لكل تجاوز:
 
 ```js
 // babel.config.js
@@ -119,15 +119,15 @@ module.exports = {
 ```
 
 
-## Opt-in Mode with "use memo" {/*opt-in-mode-with-use-memo*/}
+## وضع الاشتراك بتوجيه «use memo» {/*opt-in-mode-with-use-memo*/}
 
-For maximum control, you can use `compilationMode: 'annotation'` to only compile components and hooks that explicitly opt in with the `"use memo"` directive.
+لأقصى تحكم، يمكنك استخدام `compilationMode: 'annotation'` لتجميع المكوّنات والخطافات التي تختار صراحةً الاشتراك بتوجيه `"use memo"` فقط.
 
 <Note>
-This approach gives you fine-grained control over individual components and hooks. It's useful when you want to test the compiler on specific components without affecting entire directories.
+يمنحك هذا الأسلوب تحكماً دقيقاً في كل مكوّن وخطاف. مفيد عندما تريد اختبار المُصرّف على مكوّنات محددة دون تأثير مجلدات بأكملها.
 </Note>
 
-### Annotation Mode Configuration {/*annotation-mode-configuration*/}
+### إعداد وضع التعليقات {/*annotation-mode-configuration*/}
 
 ```js
 // babel.config.js
@@ -140,9 +140,9 @@ module.exports = {
 };
 ```
 
-### Using the Directive {/*using-the-directive*/}
+### استخدام التوجيه {/*using-the-directive*/}
 
-Add `"use memo"` at the beginning of functions you want to compile:
+أضف `"use memo"` في بداية الدوال التي تريد تجميعها:
 
 ```js
 function TodoList({ todos }) {
@@ -166,22 +166,22 @@ function useSortedData(data) {
 }
 ```
 
-With `compilationMode: 'annotation'`, you must:
-- Add `"use memo"` to every component you want optimized
-- Add `"use memo"` to every custom hook
-- Remember to add it to new components
+مع `compilationMode: 'annotation'`، يجب أن:
+- تضيف `"use memo"` إلى كل مكوّن تريد تحسينه
+- تضيف `"use memo"` إلى كل خطاف مخصص
+- تتذكر إضافته للمكوّنات الجديدة
 
-This gives you precise control over which components are compiled while you evaluate the compiler's impact.
+يمنحك ذلك تحكماً دقيقاً في المكوّنات المُجمَّعة أثناء تقييم أثر المُصرّف.
 
-## Runtime Feature Flags with Gating {/*runtime-feature-flags-with-gating*/}
+## أعلام الميزات وقت التشغيل مع البوابات {/*runtime-feature-flags-with-gating*/}
 
-The `gating` option enables you to control compilation at runtime using feature flags. This is useful for running A/B tests or gradually rolling out the compiler based on user segments.
+خيار `gating` يتيح التحكم في التجميع وقت التشغيل باستخدام أعلام ميزات. مفيد لتشغيل اختبارات A/B أو تفعيل المُصرّف تدريجياً حسب شرائح المستخدمين.
 
-### How Gating Works {/*how-gating-works*/}
+### كيف تعمل البوابات {/*how-gating-works*/}
 
-The compiler wraps optimized code in a runtime check. If the gate returns `true`, the optimized version runs. Otherwise, the original code runs.
+يلفّ المُصرّف الشيفرة المُحسَّنة بفحص وقت تشغيل. إن أعادت البوابة `true`، يعمل الإصدار المُحسَّن. وإلا تعمل الشيفرة الأصلية.
 
-### Gating Configuration {/*gating-configuration*/}
+### إعداد البوابات {/*gating-configuration*/}
 
 ```js
 // babel.config.js
@@ -197,9 +197,9 @@ module.exports = {
 };
 ```
 
-### Implementing the Feature Flag {/*implementing-the-feature-flag*/}
+### تنفيذ علم الميزة {/*implementing-the-feature-flag*/}
 
-Create a module that exports your gating function:
+أنشئ وحدة تصدّر دالة البوابة:
 
 ```js
 // ReactCompilerFeatureFlags.js
@@ -209,17 +209,17 @@ export function isCompilerEnabled() {
 }
 ```
 
-## Troubleshooting Adoption {/*troubleshooting-adoption*/}
+## استكشاف أخطاء التبني {/*troubleshooting-adoption*/}
 
-If you encounter issues during adoption:
+إن واجهت مشكلات أثناء التبني:
 
-1. Use `"use no memo"` to temporarily exclude problematic components
-2. Check the [debugging guide](/learn/react-compiler/debugging) for common issues
-3. Fix Rules of React violations identified by the ESLint plugin
-4. Consider using `compilationMode: 'annotation'` for more gradual adoption
+1. استخدم `"use no memo"` لاستبعاد المكوّنات المشكوك فيها مؤقتاً
+2. راجع [دليل التصحيح](/learn/react-compiler/debugging) للمشكلات الشائعة
+3. أصلح مخالفات قواعد React التي يحددها إضافة ESLint
+4. فكّر في `compilationMode: 'annotation'` لتبني أكثر تدرجاً
 
-## Next Steps {/*next-steps*/}
+## الخطوات التالية {/*next-steps*/}
 
-- Read the [configuration guide](/reference/react-compiler/configuration) for more options
-- Learn about [debugging techniques](/learn/react-compiler/debugging)
-- Check the [API reference](/reference/react-compiler/configuration) for all compiler options
+- اقرأ [دليل الإعداد](/reference/react-compiler/configuration) لمزيد من الخيارات
+- تعرّف على [تقنيات التصحيح](/learn/react-compiler/debugging)
+- راجع [مرجع واجهة البرمجة](/reference/react-compiler/configuration) لكل خيارات المُصرّف

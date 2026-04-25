@@ -4,44 +4,44 @@ title: config
 
 <Intro>
 
-Validates the compiler [configuration options](/reference/react-compiler/configuration).
+يتحقق من [خيارات إعداد](/reference/react-compiler/configuration) المُصرّف.
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## تفاصيل القاعدة {/*rule-details*/}
 
-React Compiler accepts various [configuration options](/reference/react-compiler/configuration)  to control its behavior. This rule validates that your configuration uses correct option names and value types, preventing silent failures from typos or incorrect settings.
+يقبل React Compiler عدة [خيارات إعداد](/reference/react-compiler/configuration) للتحكّم في سلوكه. تتحقق هذه القاعدة من أن إعدادك يستخدم أسماء خيارات صحيحة وأنواع قيم صحيحة، لتجنّب فشل صامت بسبب أخطاء مطبعية أو إعدادات خاطئة.
 
-### Invalid {/*invalid*/}
+### غير صالح {/*invalid*/}
 
-Examples of incorrect code for this rule:
+أمثلة لشيفرة غير صحيحة لهذه القاعدة:
 
 ```js
-// ❌ Unknown option name
+// ❌ اسم خيار غير معروف
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      compileMode: 'all' // Typo: should be compilationMode
+      compileMode: 'all' // خطأ مطبعي: يجب أن يكون compilationMode
     }]
   ]
 };
 
-// ❌ Invalid option value
+// ❌ قيمة خيار غير صالحة
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      compilationMode: 'everything' // Invalid: use 'all' or 'infer'
+      compilationMode: 'everything' // غير صالح: استخدم 'all' أو 'infer'
     }]
   ]
 };
 ```
 
-### Valid {/*valid*/}
+### صالح {/*valid*/}
 
-Examples of correct code for this rule:
+أمثلة لشيفرة صحيحة لهذه القاعدة:
 
 ```js
-// ✅ Valid compiler configuration
+// ✅ إعداد مُصرّف صالح
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
@@ -52,38 +52,38 @@ module.exports = {
 };
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## استكشاف الأعطال {/*troubleshooting*/}
 
-### Configuration not working as expected {/*config-not-working*/}
+### الإعداد لا يعمل كما تتوقع {/*config-not-working*/}
 
-Your compiler configuration might have typos or incorrect values:
+قد يحتوي إعداد المُصرّف على أخطاء مطبعية أو قيم خاطئة:
 
 ```js
-// ❌ Wrong: Common configuration mistakes
+// ❌ خطأ: أخطاء إعداد شائعة
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      // Typo in option name
+      // خطأ مطبعي في اسم الخيار
       compilationMod: 'all',
-      // Wrong value type
+      // نوع قيمة خاطئ
       panicThreshold: true,
-      // Unknown option
+      // خيار غير معروف
       optimizationLevel: 'max'
     }]
   ]
 };
 ```
 
-Check the [configuration documentation](/reference/react-compiler/configuration) for valid options:
+راجع [توثيق الإعداد](/reference/react-compiler/configuration) للخيارات الصالحة:
 
 ```js
-// ✅ Better: Valid configuration
+// ✅ أفضل: إعداد صالح
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      compilationMode: 'all', // or 'infer'
-      panicThreshold: 'none', // or 'critical_errors', 'all_errors'
-      // Only use documented options
+      compilationMode: 'all', // أو 'infer'
+      panicThreshold: 'none', // أو 'critical_errors' أو 'all_errors'
+      // استخدم فقط الخيارات الموثّقة
     }]
   ]
 };

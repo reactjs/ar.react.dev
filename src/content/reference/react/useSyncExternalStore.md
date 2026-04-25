@@ -4,7 +4,7 @@ title: useSyncExternalStore
 
 <Intro>
 
-`useSyncExternalStore` is a React Hook that lets you subscribe to an external store.
+`useSyncExternalStore` هو Hook في React يتيح لك الاشتراك في مخزن خارجي (external store).
 
 ```js
 const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)
@@ -20,7 +20,7 @@ const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?
 
 ### `useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)` {/*usesyncexternalstore*/}
 
-Call `useSyncExternalStore` at the top level of your component to read a value from an external data store.
+استدعِ `useSyncExternalStore` في أعلى مكوّنك لقراءة قيمة من مخزن بيانات خارجي.
 
 ```js
 import { useSyncExternalStore } from 'react';
@@ -32,36 +32,36 @@ function TodosApp() {
 }
 ```
 
-It returns the snapshot of the data in the store. You need to pass two functions as arguments:
+يُرجع لقطة (snapshot) البيانات في المخزن. تحتاج لتمرير دالتين كمعاملات:
 
-1. The `subscribe` function should subscribe to the store and return a function that unsubscribes.
-2. The `getSnapshot` function should read a snapshot of the data from the store.
+1. دالة `subscribe` يجب أن تشترك في المخزن وتُرجع دالة لإلغاء الاشتراك.
+2. دالة `getSnapshot` يجب أن تقرأ لقطة للبيانات من المخزن.
 
-[See more examples below.](#usage)
+[اطلع على المزيد من الأمثلة أدناه.](#usage)
 
 #### Parameters {/*parameters*/}
 
-* `subscribe`: A function that takes a single `callback` argument and subscribes it to the store. When the store changes, it should invoke the provided `callback`, which will cause React to re-call `getSnapshot` and (if needed) re-render the component. The `subscribe` function should return a function that cleans up the subscription.
+* `subscribe`: دالة تأخذ معامل `callback` واحد وتشترك به في المخزن. عند تغيّر المخزن، يجب استدعاء `callback` المُزوَّد، مما يجعل React يعيد استدعاء `getSnapshot` ويعيد رسم المكوّن عند الحاجة. يجب أن تُرجع دالة `subscribe` دالة تنظّف الاشتراك.
 
-* `getSnapshot`: A function that returns a snapshot of the data in the store that's needed by the component. While the store has not changed, repeated calls to `getSnapshot` must return the same value. If the store changes and the returned value is different (as compared by [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), React re-renders the component.
+* `getSnapshot`: دالة تُرجع لقطة للبيانات في المخزن التي يحتاجها المكوّن. طالما لم يتغيّر المخزن، يجب أن تُرجع استدعاءات `getSnapshot` المتكررة نفس القيمة. إذا تغيّر المخزن وأصبحت القيمة المُرجعة مختلفة (بالمقارنة بـ [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is))، يُعيد React رسم المكوّن.
 
-* **optional** `getServerSnapshot`: A function that returns the initial snapshot of the data in the store. It will be used only during server rendering and during hydration of server-rendered content on the client. The server snapshot must be the same between the client and the server, and is usually serialized and passed from the server to the client. If you omit this argument, rendering the component on the server will throw an error.
+* **اختياري** `getServerSnapshot`: دالة تُرجع اللقطة الأولية للبيانات في المخزن. تُستخدم فقط أثناء العرض على الخادم وخلال ترطيب المحتوى المرسوم على الخادم على العميل. يجب أن تكون لقطة الخادم مطابقة بين العميل والخادم، وعادةً تُسلسل وتُمرَّر من الخادم إلى العميل. إذا حذفت هذا المعامل، فسيُرمى خطأ عند رسم المكوّن على الخادم.
 
 #### Returns {/*returns*/}
 
-The current snapshot of the store which you can use in your rendering logic.
+اللقطة الحالية للمخزن التي يمكنك استخدامها في منطق الرسم.
 
 #### Caveats {/*caveats*/}
 
-* The store snapshot returned by `getSnapshot` must be immutable. If the underlying store has mutable data, return a new immutable snapshot if the data has changed. Otherwise, return a cached last snapshot.
+* يجب أن تكون لقطة المخزن التي تُرجعها `getSnapshot` غير قابلة للتغيير. إذا كان المخزن الأساسي يحتوي بيانات قابلة للتغيير، أرجع لقطة غير قابلة للتغيير جديدة إذا تغيّرت البيانات. وإلا أرجع آخر لقطة مخبأة.
 
-* If a different `subscribe` function is passed during a re-render, React will re-subscribe to the store using the newly passed `subscribe` function. You can prevent this by declaring `subscribe` outside the component.
+* إذا مُرِّرت دالة `subscribe` مختلفة أثناء إعادة الرسم، سيعيد React الاشتراك في المخزن باستخدام `subscribe` الجديدة. يمكنك منع ذلك بتعريف `subscribe` خارج المكوّن.
 
-* If the store is mutated during a [non-blocking Transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, for every Transition update, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
+* إذا حُور المخزن أثناء [تحديث انتقال غير حاجز](/reference/react/useTransition)، سيعود React لتنفيذ ذلك التحديث كحاجز. تحديدًا، لكل تحديث انتقال، يستدعي React `getSnapshot` مرة ثانية قبل تطبيق التغييرات على DOM. إذا أرجعت قيمة مختلفة عن المرة الأولى، سيعيد React التحديث من الصفر هذه المرة كتحديث حاجز لضمان أن كل المكوّنات على الشاشة تعكس نفس إصدار المخزن.
 
-* It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be marked as [non-blocking Transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
+* لا يُنصح بـ *تعليق* الرسم بناءً على قيمة مخزن تُرجعها `useSyncExternalStore`. السبب أن تغييرات المخزن الخارجي لا يمكن وضع علامة عليها كـ [تحديثات انتقال غير حاجزة](/reference/react/useTransition)، لذا ستُفعّل أقرب [`Suspense fallback`](/reference/react/Suspense) وتستبدل المحتوى المرسوم بمؤشر تحميل، وهذا عادةً يُسيء لتجربة المستخدم.
 
-  For example, the following are discouraged:
+  على سبيل المثال، يُنصح بعدم ما يلي:
 
   ```js
   const LazyProductDetailPage = lazy(() => import('./ProductDetailPage.js'));
@@ -69,10 +69,10 @@ The current snapshot of the store which you can use in your rendering logic.
   function ShoppingApp() {
     const selectedProductId = useSyncExternalStore(...);
 
-    // ❌ Calling `use` with a Promise dependent on `selectedProductId`
+    // ❌ استدعاء `use` مع Promise يعتمد على `selectedProductId`
     const data = use(fetchItem(selectedProductId))
 
-    // ❌ Conditionally rendering a lazy component based on `selectedProductId`
+    // ❌ عرض شرطي لمكوّن كسول يعتمد على `selectedProductId`
     return selectedProductId != null ? <LazyProductDetailPage /> : <FeaturedProducts />;
   }
   ```
@@ -83,12 +83,12 @@ The current snapshot of the store which you can use in your rendering logic.
 
 ### Subscribing to an external store {/*subscribing-to-an-external-store*/}
 
-Most of your React components will only read data from their [props,](/learn/passing-props-to-a-component) [state,](/reference/react/useState) and [context.](/reference/react/useContext) However, sometimes a component needs to read some data from some store outside of React that changes over time. This includes:
+معظم مكوّنات React تقرأ البيانات من [الـ props](/learn/passing-props-to-a-component) و[الحالة](/reference/react/useState) و[السياق](/reference/react/useContext). لكن أحيانًا يحتاج المكوّن لقراءة بيانات من مخزن خارج React يتغيّر مع الزمن. يشمل ذلك:
 
-* Third-party state management libraries that hold state outside of React.
-* Browser APIs that expose a mutable value and events to subscribe to its changes.
+* مكتبات إدارة حالة طرف ثالث تحتفظ بالحالة خارج React.
+* واجهات متصفح تعرض قيمة قابلة للتغيير وأحداثًا للاشتراك في تغيّرها.
 
-Call `useSyncExternalStore` at the top level of your component to read a value from an external data store.
+استدعِ `useSyncExternalStore` في أعلى مكوّنك لقراءة قيمة من مخزن بيانات خارجي.
 
 ```js [[1, 5, "todosStore.subscribe"], [2, 5, "todosStore.getSnapshot"], [3, 5, "todos", 0]]
 import { useSyncExternalStore } from 'react';
@@ -100,14 +100,14 @@ function TodosApp() {
 }
 ```
 
-It returns the <CodeStep step={3}>snapshot</CodeStep> of the data in the store. You need to pass two functions as arguments:
+يُرجع <CodeStep step={3}>لقطة</CodeStep> البيانات في المخزن. مرّر دالتين:
 
-1. The <CodeStep step={1}>`subscribe` function</CodeStep> should subscribe to the store and return a function that unsubscribes.
-2. The <CodeStep step={2}>`getSnapshot` function</CodeStep> should read a snapshot of the data from the store.
+1. دالة <CodeStep step={1}>`subscribe`</CodeStep> تشترك في المخزن وتُرجع دالة لإلغاء الاشتراك.
+2. دالة <CodeStep step={2}>`getSnapshot`</CodeStep> تقرأ لقطة للبيانات من المخزن.
 
-React will use these functions to keep your component subscribed to the store and re-render it on changes.
+سيستخدم React هذه الدوال لإبقاء المكوّن مشتركًا في المخزن وإعادة رسمه عند التغيّر.
 
-For example, in the sandbox below, `todosStore` is implemented as an external store that stores data outside of React. The `TodosApp` component connects to that external store with the `useSyncExternalStore` Hook. 
+في الـ sandbox أدناه، `todosStore` مخزن خارجي يحتفظ بالبيانات خارج React. يتصل مكوّن `TodosApp` بهذا المخزن عبر Hook `useSyncExternalStore`. 
 
 <Sandpack>
 
@@ -169,7 +169,7 @@ function emitChange() {
 
 <Note>
 
-When possible, we recommend using built-in React state with [`useState`](/reference/react/useState) and [`useReducer`](/reference/react/useReducer) instead. The `useSyncExternalStore` API is mostly useful if you need to integrate with existing non-React code.
+عند الإمكان، نوصي باستخدام حالة React المدمجة مع [`useState`](/reference/react/useState) و[`useReducer`](/reference/react/useReducer). واجهة `useSyncExternalStore` مفيدة غالبًا عند التكامل مع كود غير React قائم.
 
 </Note>
 
@@ -177,9 +177,9 @@ When possible, we recommend using built-in React state with [`useState`](/refere
 
 ### Subscribing to a browser API {/*subscribing-to-a-browser-api*/}
 
-Another reason to add `useSyncExternalStore` is when you want to subscribe to some value exposed by the browser that changes over time. For example, suppose that you want your component to display whether the network connection is active. The browser exposes this information via a property called [`navigator.onLine`.](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine)
+سبب آخر لإضافة `useSyncExternalStore` هو الاشتراك في قيمة يوفّرها المتصفح وتتغيّر مع الزمن. لنفترض أنك تريد عرض ما إذا كان الاتصال بالشبكة نشطًا. يوفّر المتصفح هذه المعلومات عبر الخاصية [`navigator.onLine`.](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine)
 
-This value can change without React's knowledge, so you should read it with `useSyncExternalStore`.
+يمكن أن تتغيّر هذه القيمة دون علم React، لذا يجب قراءتها بـ `useSyncExternalStore`.
 
 ```js
 import { useSyncExternalStore } from 'react';
@@ -190,7 +190,7 @@ function ChatIndicator() {
 }
 ```
 
-To implement the `getSnapshot` function, read the current value from the browser API:
+لتنفيذ دالة `getSnapshot`، اقرأ القيمة الحالية من واجهة المتصفح:
 
 ```js
 function getSnapshot() {
@@ -198,7 +198,7 @@ function getSnapshot() {
 }
 ```
 
-Next, you need to implement the `subscribe` function. For example, when `navigator.onLine` changes, the browser fires the [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) and [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) events on the `window` object. You need to subscribe the `callback` argument to the corresponding events, and then return a function that cleans up the subscriptions:
+ثم نفّذ دالة `subscribe`. عند تغيّر `navigator.onLine`، يطلق المتصفح الحدثين [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) و[`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) على كائن `window`. اشترك بمعامل `callback` في الأحداث المناسبة، ثم أرجع دالة تنظّف الاشتراكات:
 
 ```js
 function subscribe(callback) {
@@ -211,7 +211,7 @@ function subscribe(callback) {
 }
 ```
 
-Now React knows how to read the value from the external `navigator.onLine` API and how to subscribe to its changes. Disconnect your device from the network and notice that the component re-renders in response:
+الآن يعرف React كيف يقرأ القيمة من واجهة `navigator.onLine` الخارجية وكيف يشترك في تغيّراتها. افصل جهازك عن الشبكة ولاحظ إعادة رسم المكوّن:
 
 <Sandpack>
 
@@ -243,9 +243,9 @@ function subscribe(callback) {
 
 ### Extracting the logic to a custom Hook {/*extracting-the-logic-to-a-custom-hook*/}
 
-Usually you won't write `useSyncExternalStore` directly in your components. Instead, you'll typically call it from your own custom Hook. This lets you use the same external store from different components.
+عادةً لن تكتب `useSyncExternalStore` مباشرة في مكوّناتك. غالبًا تستدعيه من Hook مخصص. هذا يتيح استخدام نفس المخزن الخارجي من مكوّنات مختلفة.
 
-For example, this custom `useOnlineStatus` Hook tracks whether the network is online:
+على سبيل المثال، يتتبع Hook المخصص `useOnlineStatus` ما إذا كانت الشبكة متصلة:
 
 ```js {3,6}
 import { useSyncExternalStore } from 'react';
@@ -264,7 +264,7 @@ function subscribe(callback) {
 }
 ```
 
-Now different components can call `useOnlineStatus` without repeating the underlying implementation:
+الآن يمكن لمكوّنات مختلفة استدعاء `useOnlineStatus` دون تكرار التنفيذ الأساسي:
 
 <Sandpack>
 
@@ -328,12 +328,12 @@ function subscribe(callback) {
 
 ### Adding support for server rendering {/*adding-support-for-server-rendering*/}
 
-If your React app uses [server rendering,](/reference/react-dom/server) your React components will also run outside the browser environment to generate the initial HTML. This creates a few challenges when connecting to an external store:
+إذا كان تطبيق React يستخدم [العرض على الخادم،](/reference/react-dom/server) ستعمل مكوّناتك أيضًا خارج بيئة المتصفح لتوليد HTML الأولي. هذا يطرح تحديات عند الاتصال بمخزن خارجي:
 
-- If you're connecting to a browser-only API, it won't work because it does not exist on the server.
-- If you're connecting to a third-party data store, you'll need its data to match between the server and client.
+* إذا اتصلت بواجهة خاصة بالمتصفح فقط، لن تعمل لأنها غير موجودة على الخادم.
+* إذا اتصلت بمخزن بيانات طرف ثالث، تحتاج تطابق بياناته بين الخادم والعميل.
 
-To solve these issues, pass a `getServerSnapshot` function as the third argument to `useSyncExternalStore`:
+لحل ذلك، مرّر دالة `getServerSnapshot` كالمعامل الثالث إلى `useSyncExternalStore`:
 
 ```js {4,12-14}
 import { useSyncExternalStore } from 'react';
@@ -356,16 +356,16 @@ function subscribe(callback) {
 }
 ```
 
-The `getServerSnapshot` function is similar to `getSnapshot`, but it runs only in two situations:
+تشغّل دالة `getServerSnapshot` مثل `getSnapshot` لكنها تعمل فقط في حالتين:
 
-- It runs on the server when generating the HTML.
-- It runs on the client during [hydration](/reference/react-dom/client/hydrateRoot), i.e. when React takes the server HTML and makes it interactive.
+- على الخادم عند توليد HTML.
+- على العميل أثناء [الترطيب](/reference/react-dom/client/hydrateRoot)، أي عندما يأخذ React HTML الخادم ويجعله تفاعليًا.
 
-This lets you provide the initial snapshot value which will be used before the app becomes interactive. If there is no meaningful initial value for the server rendering, omit this argument to [force rendering on the client.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
+هذا يتيح لك توفير قيمة اللقطة الأولية قبل أن يصبح التطبيق تفاعليًا. إذا لم تكن هناك قيمة أولية ذات معنى للعرض على الخادم، احذف هذا المعامل لـ [إجبار الرسم على العميل.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
 
 <Note>
 
-Make sure that `getServerSnapshot` returns the same exact data on the initial client render as it returned on the server. For example, if `getServerSnapshot` returned some prepopulated store content on the server, you need to transfer this content to the client. One way to do this is to emit a `<script>` tag during server rendering that sets a global like `window.MY_STORE_DATA`, and read from that global on the client in `getServerSnapshot`. Your external store should provide instructions on how to do that.
+تأكد أن `getServerSnapshot` تُرجع نفس البيانات تمامًا في أول رسم على العميل كما أرجعتها على الخادم. على سبيل المثال، إذا أرجعت `getServerSnapshot` محتوى مخزن مُسبق التعبئة على الخادم، تحتاج لنقل هذا المحتوى إلى العميل. إحدى الطرق هي إصدار وسم `<script>` أثناء عرض الخادم يضبط عامًا مثل `window.MY_STORE_DATA`، وقراءته على العميل في `getServerSnapshot`. يجب أن يوفّر المخزن الخارجي تعليمات لكيفية فعل ذلك.
 
 </Note>
 
@@ -375,39 +375,39 @@ Make sure that `getServerSnapshot` returns the same exact data on the initial cl
 
 ### I'm getting an error: "The result of `getSnapshot` should be cached" {/*im-getting-an-error-the-result-of-getsnapshot-should-be-cached*/}
 
-This error means your `getSnapshot` function returns a new object every time it's called, for example:
+يعني هذا الخطأ أن دالة `getSnapshot` تُرجع كائنًا جديدًا في كل استدعاء، مثلًا:
 
 ```js {2-5}
 function getSnapshot() {
-  // 🔴 Do not return always different objects from getSnapshot
+  // 🔴 لا تُرجع دائمًا كائنات مختلفة من getSnapshot
   return {
     todos: myStore.todos
   };
 }
 ```
 
-React will re-render the component if `getSnapshot` return value is different from the last time. This is why, if you always return a different value, you will enter an infinite loop and get this error.
+سيعيد React رسم المكوّن إذا كانت قيمة إرجاع `getSnapshot` مختلفة عن المرة السابقة. لذلك إذا أرجعت دائمًا قيمة مختلفة، تدخل في حلقة لا نهائية ويظهر هذا الخطأ.
 
-Your `getSnapshot` object should only return a different object if something has actually changed. If your store contains immutable data, you can return that data directly:
+يجب أن تُرجع `getSnapshot` كائنًا مختلفًا فقط إذا تغيّر شيء فعليًا. إذا كانت بيانات المخزن غير قابلة للتغيير، يمكنك إرجاعها مباشرة:
 
 ```js {2-3}
 function getSnapshot() {
-  // ✅ You can return immutable data
+  // ✅ يمكنك إرجاع بيانات غير قابلة للتغيير
   return myStore.todos;
 }
 ```
 
-If your store data is mutable, your `getSnapshot` function should return an immutable snapshot of it. This means it *does* need to create new objects, but it shouldn't do this for every single call. Instead, it should store the last calculated snapshot, and return the same snapshot as the last time if the data in the store has not changed. How you determine whether mutable data has changed depends on your mutable store.
+إذا كانت بيانات المخزن قابلة للتغيير، يجب أن تُرجع `getSnapshot` لقطة غير قابلة للتغيير. أي أنها *تنشئ* كائنات جديدة، لكن ليس في كل استدعاء. بدلًا من ذلك، خزّن آخر لقطة محسوبة، وأرجع نفس اللقطة إذا لم تتغيّر بيانات المخزن. كيفية تحديد تغيّر البيانات القابلة للتغيير يعتمد على مخزنك.
 
 ---
 
 ### My `subscribe` function gets called after every re-render {/*my-subscribe-function-gets-called-after-every-re-render*/}
 
-This `subscribe` function is defined *inside* a component so it is different on every re-render:
+دالة `subscribe` هذه مُعرَّفة *داخل* المكوّن فهي مختلفة في كل إعادة رسم:
 
 ```js {2-5}
 function ChatIndicator() {
-  // 🚩 Always a different function, so React will resubscribe on every re-render
+  // 🚩 دائمًا دالة مختلفة، لذا سيعيد React الاشتراك في كل إعادة رسم
   function subscribe() {
     // ...
   }
@@ -418,10 +418,10 @@ function ChatIndicator() {
 }
 ```
   
-React will resubscribe to your store if you pass a different `subscribe` function between re-renders. If this causes performance issues and you'd like to avoid resubscribing, move the `subscribe` function outside:
+سيعيد React الاشتراك في المخزن إذا مررت دالة `subscribe` مختلفة بين إعادات الرسم. إذا سبب ذلك مشاكل أداء وتريد تجنب إعادة الاشتراك، انقل `subscribe` خارج المكوّن:
 
 ```js {1-4}
-// ✅ Always the same function, so React won't need to resubscribe
+// ✅ دائمًا نفس الدالة، لذا لن يحتاج React لإعادة الاشتراك
 function subscribe() {
   // ...
 }
@@ -432,11 +432,11 @@ function ChatIndicator() {
 }
 ```
 
-Alternatively, wrap `subscribe` into [`useCallback`](/reference/react/useCallback) to only resubscribe when some argument changes:
+بدلًا من ذلك، لفّ `subscribe` بـ [`useCallback`](/reference/react/useCallback) لإعادة الاشتراك فقط عند تغيّر معامل:
 
 ```js {2-5}
 function ChatIndicator({ userId }) {
-  // ✅ Same function as long as userId doesn't change
+  // ✅ نفس الدالة طالما userId لم يتغيّر
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);

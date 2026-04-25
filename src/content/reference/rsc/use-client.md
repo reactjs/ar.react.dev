@@ -1,18 +1,18 @@
 ---
 title: "'use client'"
-titleForTitleTag: "'use client' directive"
+titleForTitleTag: "توجيه 'use client'"
 ---
 
 <RSC>
 
-`'use client'` is for use with [React Server Components](/reference/rsc/server-components).
+`'use client'` مخصص للاستخدام مع [مكونات React من جانب الخادم](/reference/rsc/server-components).
 
 </RSC>
 
 
 <Intro>
 
-`'use client'` lets you mark what code runs on the client.
+`'use client'` يتيح لك تحديد أي الكود يعمل على العميل.
 
 </Intro>
 
@@ -20,11 +20,11 @@ titleForTitleTag: "'use client' directive"
 
 ---
 
-## Reference {/*reference*/}
+## مرجع {/*reference*/}
 
 ### `'use client'` {/*use-client*/}
 
-Add `'use client'` at the top of a file to mark the module and its transitive dependencies as client code.
+أضف `'use client'` في أعلى الملف لوسم الوحدة وكل تبعياتها غير المباشرة (transitive) على أنها كود عميل.
 
 ```js {1}
 'use client';
@@ -41,26 +41,26 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/creating-a-react-app#full-stack-frameworks) will treat the module import as a boundary between server-run and client-run code.
+عند استيراد ملف موسوم بـ `'use client'` من مكون خادم، ستعامل [أدوات التجميع المتوافقة](/learn/creating-a-react-app#full-stack-frameworks) استيراد الوحدة كحدّ يفصل بين الكود الذي يعمل على الخادم والكود الذي يعمل على العميل.
 
-As dependencies of `RichTextEditor`, `formatDate` and `Button` will also be evaluated on the client regardless of whether their modules contain a `'use client'` directive. Note that a single module may be evaluated on the server when imported from server code and on the client when imported from client code.
+وبصفتها تبعيات لـ `RichTextEditor`، ستُقيَّم أيضًا `formatDate` و`Button` على العميل بغض النظر عن احتواء وحداتها على توجيه `'use client'` أم لا. لاحظ أنه قد تُقيَّم وحدة واحدة على الخادم عند استيرادها من كود خادم، وعلى العميل عند استيرادها من كود عميل.
 
-#### Caveats {/*caveats*/}
+#### تحذيرات {/*caveats*/}
 
-* `'use client'` must be at the very beginning of a file, above any imports or other code (comments are OK). They must be written with single or double quotes, but not backticks.
-* When a `'use client'` module is imported from another client-rendered module, the directive has no effect.
-* When a component module contains a `'use client'` directive, any usage of that component is guaranteed to be a Client Component. However, a component can still be evaluated on the client even if it does not have a `'use client'` directive.
-	* A component usage is considered a Client Component if it is defined in module with `'use client'` directive or when it is a transitive dependency of a module that contains a `'use client'` directive. Otherwise, it is a Server Component.
-* Code that is marked for client evaluation is not limited to components. All code that is a part of the Client module sub-tree is sent to and run by the client.
-* When a server evaluated module imports values from a `'use client'` module, the values must either be a React component or [supported serializable prop values](#passing-props-from-server-to-client-components) to be passed to a Client Component. Any other use case will throw an exception.
+* يجب أن يكون `'use client'` في بداية الملف تمامًا، فوق أي استيراد أو كود آخر (التعليقات مسموحة). يجب كتابته بعلامتي اقتباس مفردتين أو مزدوجتين، وليس بعلامات الاقتباس الخلفية (backticks).
+* عند استيراد وحدة `'use client'` من وحدة أخرى تُصيَّر على العميل، لا يكون للتوجيه أي أثر.
+* عندما تحتوي وحدة مكوّن على توجيه `'use client'`، فإن أي استخدام لهذا المكوّن يُضمن أن يكون مكوّن عميل. مع ذلك، قد يُقيَّم المكوّن على العميل حتى لو لم يكن في وحدته توجيه `'use client'`.
+	* يُعتبر استخدام المكوّن مكوّن عميلًا إذا عُرّف في وحدة تحتوي على توجيه `'use client'`، أو عندما يكون تبعية غير مباشرة لوحدة تحتوي على `'use client'`. وإلا فهو مكون خادم.
+* الكود الموسوم للتقييم على العميل ليس مقتصرًا على المكوّنات؛ كل الكود الذي يقع ضمن شجرة فرعية لوحدة عميل يُرسل إلى العميل ويُنفَّذ عليه.
+* عندما تستورد وحدة تُقيَّم على الخادم قيمًا من وحدة `'use client'`، يجب أن تكون القيم إما مكوّن React أو [قيم خصائص قابلة للتسلسل مدعومة](#passing-props-from-server-to-client-components) لتُمرَّر إلى مكوّن عميل. أي استخدام آخر سيرمي استثناءً.
 
-### How `'use client'` marks client code {/*how-use-client-marks-client-code*/}
+### كيف يوسم `'use client'` كود العميل {/*how-use-client-marks-client-code*/}
 
-In a React app, components are often split into separate files, or [modules](/learn/importing-and-exporting-components#exporting-and-importing-a-component).
+في تطبيق React، غالبًا تُقسَّم المكوّنات إلى ملفات منفصلة، أو [وحدات](/learn/importing-and-exporting-components#exporting-and-importing-a-component).
 
-For apps that use React Server Components, the app is server-rendered by default. `'use client'` introduces a server-client boundary in the [module dependency tree](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree), effectively creating a subtree of Client modules.
+في التطبيقات التي تستخدم مكونات React من جانب الخادم، يُصيَّر التطبيق على الخادم افتراضيًا. يُدخل `'use client'` حدًا بين الخادم والعميل في [شجرة تبعيات الوحدات](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree)، مما يُنشئ فعليًا شجرة فرعية من وحدات العميل.
 
-To better illustrate this, consider the following React Server Components app.
+لتوضيح ذلك، انظر تطبيق مكونات React من جانب الخادم التالي.
 
 <Sandpack>
 
@@ -145,35 +145,35 @@ export default [
 
 </Sandpack>
 
-In the module dependency tree of this example app, the `'use client'` directive in `InspirationGenerator.js` marks that module and all of its transitive dependencies as Client modules. The subtree starting at `InspirationGenerator.js` is now marked as Client modules.
+في شجرة تبعيات الوحدات لهذا المثال، يوسم توجيه `'use client'` في `InspirationGenerator.js` تلك الوحدة وكل تبعياتها غير المباشرة على أنها وحدات عميل. الشجرة الفرعية التي تبدأ من `InspirationGenerator.js` أصبحت الآن موسومة كوحدات عميل.
 
-<Diagram name="use_client_module_dependency" height={250} width={545} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` segments the module dependency tree of the React Server Components app, marking `InspirationGenerator.js` and all of its dependencies as client-rendered.
+<Diagram name="use_client_module_dependency" height={250} width={545} alt="رسم بياني شجري يمثل العقدة العليا كوحدة 'App.js'. لـ 'App.js' ثلاثة أبناء: 'Copyright.js' و'FancyText.js' و'InspirationGenerator.js'. لـ 'InspirationGenerator.js' ابنان: 'FancyText.js' و'inspirations.js'. العقد تحت 'InspirationGenerator.js' وبما فيها ذات خلفية صفراء تدل على أن هذه الشجرة الفرعية تُصيَّر على العميل بسبب توجيه 'use client' في 'InspirationGenerator.js'.">
+يقسم `'use client'` شجرة تبعيات الوحدات لتطبيق مكونات React من جانب الخادم، ويوسم `InspirationGenerator.js` وكل تبعياتها على أنها تُصيَّر على العميل.
 </Diagram>
 
-During render, the framework will server-render the root component and continue through the [render tree](/learn/understanding-your-ui-as-a-tree#the-render-tree), opting-out of evaluating any code imported from client-marked code.
+أثناء التصيير، يصيّر الإطار مكوّن الجذر على الخادم ويستمر عبر [شجرة التصيير](/learn/understanding-your-ui-as-a-tree#the-render-tree)، متجنبًا تقييم أي كود مستورد من كود موسوم كعميل.
 
-The server-rendered portion of the render tree is then sent to the client. The client, with its client code downloaded, then completes rendering the rest of the tree.
+يُرسل بعدها الجزء من شجرة التصيير الذي صُيّر على الخادم إلى العميل. ثم يكمل العميل — بعد تنزيل كود العميل — تصيير بقية الشجرة.
 
-<Diagram name="use_client_render_tree" height={250} width={500} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">
-The render tree for the React Server Components app. `InspirationGenerator` and its child component `FancyText` are components exported from client-marked code and considered Client Components.
+<Diagram name="use_client_render_tree" height={250} width={500} alt="رسم بياني شجري حيث تمثل كل عقدة مكوّنًا وأبناءه كمكوّنات فرعية. العقدة العليا مسمّاة 'App' ولها ابنان 'InspirationGenerator' و'FancyText'. لـ 'InspirationGenerator' ابنان 'FancyText' و'Copyright'. كل من 'InspirationGenerator' ومكوّنه الفرعي 'FancyText' موسومان للتصيير على العميل.">
+شجرة التصيير لتطبيق مكونات React من جانب الخادم. `InspirationGenerator` ومكوّنه الفرعي `FancyText` هما مكوّنان مُصدَّران من كود موسوم بالعميل ويُعتبران مكوّني عميل.
 </Diagram>
 
-We introduce the following definitions:
+نقدّم التعريفات التالية:
 
-* **Client Components** are components in a render tree that are rendered on the client.
-* **Server Components** are components in a render tree that are rendered on the server.
+* **مكوّنات العميل** هي مكوّنات في شجرة التصيير تُصيَّر على العميل.
+* **مكوّنات الخادم** هي مكوّنات في شجرة التصيير تُصيَّر على الخادم.
 
-Working through the example app, `App`, `FancyText` and `Copyright` are all server-rendered and considered Server Components. As `InspirationGenerator.js` and its transitive dependencies are marked as client code, the component `InspirationGenerator` and its child component `FancyText` are Client Components.
+في مثال التطبيق، `App` و`FancyText` و`Copyright` كلها تُصيَّر على الخادم وتُعتبر مكوّنات خادم. وبما أن `InspirationGenerator.js` وتبعياتها غير المباشرة موسومة ككود عميل، فإن المكوّن `InspirationGenerator` ومكوّنه الفرعي `FancyText` هما مكوّنا عميل.
 
 <DeepDive>
-#### How is `FancyText` both a Server and a Client Component? {/*how-is-fancytext-both-a-server-and-a-client-component*/}
+#### كيف يكون `FancyText` مكوّن خادم ومكوّن عميل معًا؟ {/*how-is-fancytext-both-a-server-and-a-client-component*/}
 
-By the above definitions, the component `FancyText` is both a Server and Client Component, how can that be?
+بحسب التعريفات أعلاه، المكوّن `FancyText` هو مكوّن خادم ومكوّن عميل في آن واحد؛ كيف يكون ذلك؟
 
-First, let's clarify that the term "component" is not very precise. Here are just two ways "component" can be understood:
+أولًا، لنوضح أن مصطلح «مكوّن» ليس دقيقًا جدًا. إليك طريقتان فقط لفهم «المكوّن»:
 
-1. A "component" can refer to a **component definition**. In most cases this will be a function.
+1. قد يشير «المكوّن» إلى **تعريف المكوّن**. في أغلب الأحيان يكون دالة.
 
 ```js
 // This is a definition of a component
@@ -182,7 +182,7 @@ function MyComponent() {
 }
 ```
 
-2. A "component" can also refer to a **component usage** of its definition.
+2. وقد يشير «المكوّن» أيضًا إلى **استخدام المكوّن** لتعريفه.
 ```js
 import MyComponent from './MyComponent';
 
@@ -192,97 +192,97 @@ function App() {
 }
 ```
 
-Often, the imprecision is not important when explaining concepts, but in this case it is.
+غالبًا لا تهم هذه الدقة عند شرح المفاهيم، لكنها مهمة هنا.
 
-When we talk about Server or Client Components, we are referring to component usages.
+عندما نتحدث عن مكوّنات الخادم أو العميل، نعني **استخدامات** المكوّن.
 
-* If the component is defined in a module with a `'use client'` directive, or the component is imported and called in a Client Component, then the component usage is a Client Component.
-* Otherwise, the component usage is a Server Component.
+* إذا عُرّف المكوّن في وحدة تحتوي على توجيه `'use client'`، أو استُورد واستُدعي داخل مكوّن عميل، فاستخدام المكوّن هو مكوّن عميل.
+* وإلا فاستخدام المكوّن هو مكوّن خادم.
 
 
-<Diagram name="use_client_render_tree" height={150} width={450} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">A render tree illustrates component usages.</Diagram>
+<Diagram name="use_client_render_tree" height={150} width={450} alt="رسم بياني شجري حيث تمثل كل عقدة مكوّنًا وأبناءه كمكوّنات فرعية. العقدة العليا مسمّاة 'App' ولها ابنان 'InspirationGenerator' و'FancyText'. لـ 'InspirationGenerator' ابنان 'FancyText' و'Copyright'. كل من 'InspirationGenerator' ومكوّنه الفرعي 'FancyText' موسومان للتصيير على العميل.">شجرة التصيير توضح استخدامات المكوّن.</Diagram>
 
-Back to the question of `FancyText`, we see that the component definition does _not_ have a `'use client'` directive and it has two usages.
+بالعودة إلى سؤال `FancyText`، نرى أن تعريف المكوّن _لا_ يحتوي على توجيه `'use client'`، وله استخدامان.
 
-The usage of `FancyText` as a child of `App`, marks that usage as a Server Component. When `FancyText` is imported and called under `InspirationGenerator`, that usage of `FancyText` is a Client Component as `InspirationGenerator` contains a `'use client'` directive.
+استخدام `FancyText` كابن لـ `App` يجعل ذلك الاستخدام مكوّن خادم. عندما يُستورد `FancyText` ويُستدعى تحت `InspirationGenerator`، فذلك الاستخدام لـ `FancyText` هو مكوّن عميل لأن `InspirationGenerator` يحتوي على توجيه `'use client'`.
 
-This means that the component definition for `FancyText` will both be evaluated on the server and also downloaded by the client to render its Client Component usage.
+هذا يعني أن تعريف المكوّن `FancyText` سيُقيَّم على الخادم ويُنزَّل أيضًا إلى العميل لتصيير استخدامه كمكوّن عميل.
 
 </DeepDive>
 
 <DeepDive>
 
-#### Why is `Copyright` a Server Component? {/*why-is-copyright-a-server-component*/}
+#### لماذا `Copyright` مكوّن خادم؟ {/*why-is-copyright-a-server-component*/}
 
-Because `Copyright` is rendered as a child of the Client Component `InspirationGenerator`, you might be surprised that it is a Server Component.
+بما أن `Copyright` يُصيَّر كابن للمكوّن العميل `InspirationGenerator`، قد تتفاجأ بأنه مكوّن خادم.
 
-Recall that `'use client'` defines the boundary between server and client code on the _module dependency tree_, not the render tree.
+تذكّر أن `'use client'` يحدّد الحدّ بين كود الخادم والعميل على **شجرة تبعيات الوحدات**، لا على شجرة التصيير.
 
-<Diagram name="use_client_module_dependency" height={200} width={500} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` defines the boundary between server and client code on the module dependency tree.
+<Diagram name="use_client_module_dependency" height={200} width={500} alt="رسم بياني شجري يمثل العقدة العليا كوحدة 'App.js'. لـ 'App.js' ثلاثة أبناء: 'Copyright.js' و'FancyText.js' و'InspirationGenerator.js'. لـ 'InspirationGenerator.js' ابنان: 'FancyText.js' و'inspirations.js'. العقد تحت 'InspirationGenerator.js' وبما فيها ذات خلفية صفراء تدل على أن هذه الشجرة الفرعية تُصيَّر على العميل بسبب توجيه 'use client' في 'InspirationGenerator.js'.">
+يحدّد `'use client'` الفصل بين كود الخادم والعميل على شجرة تبعيات الوحدات.
 </Diagram>
 
-In the module dependency tree, we see that `App.js` imports and calls `Copyright` from the `Copyright.js` module. As `Copyright.js` does not contain a `'use client'` directive, the component usage is rendered on the server. `App` is rendered on the server as it is the root component.
+في شجرة تبعيات الوحدات، نرى أن `App.js` يستورد `Copyright` ويستدعيه من وحدة `Copyright.js`. وبما أن `Copyright.js` لا تحتوي على `'use client'`، فاستخدام المكوّن يُصيَّر على الخادم. ويُصيَّر `App` على الخادم لأنه مكوّن الجذر.
 
-Client Components can render Server Components because you can pass JSX as props. In this case, `InspirationGenerator` receives `Copyright` as [children](/learn/passing-props-to-a-component#passing-jsx-as-children). However, the `InspirationGenerator` module never directly imports the `Copyright` module nor calls the component, all of that is done by `App`. In fact, the `Copyright` component is fully executed before `InspirationGenerator` starts rendering.
+يمكن لمكوّنات العميل أن تصيّر مكوّنات خادم لأنك تستطيع تمرير JSX كخصائص. هنا، يستقبل `InspirationGenerator` مكوّن `Copyright` كـ [children](/learn/passing-props-to-a-component#passing-jsx-as-children). مع ذلك، وحدة `InspirationGenerator` لا تستورد وحدة `Copyright` مباشرة ولا تستدعي المكوّن؛ كل ذلك يفعله `App`. في الواقع، يُنفَّذ مكوّن `Copyright` بالكامل قبل أن يبدأ `InspirationGenerator` التصيير.
 
-The takeaway is that a parent-child render relationship between components does not guarantee the same render environment.
+الخلاصة أن علاقة أب–ابن في التصيير بين المكوّنات لا تضمن نفس بيئة التصيير.
 
 </DeepDive>
 
-### When to use `'use client'` {/*when-to-use-use-client*/}
+### متى تستخدم `'use client'` {/*when-to-use-use-client*/}
 
-With `'use client'`, you can determine when components are Client Components. As Server Components are default, here is a brief overview of the advantages and limitations to Server Components to determine when you need to mark something as client rendered.
+باستخدام `'use client'` تتحكم في متى تكون المكوّنات مكوّنات عميل. وبما أن مكوّنات الخادم هي الافتراض، إليك نظرة سريعة على مزايا وقيود مكوّنات الخادم لتحديد متى تحتاج لوسم شيء كتصيير على العميل.
 
-For simplicity, we talk about Server Components, but the same principles apply to all code in your app that is server run.
+للبساطة نتحدث عن مكوّنات الخادم، لكن المبادئ نفسها تنطبق على كل الكود في تطبيقك الذي يعمل على الخادم.
 
-#### Advantages of Server Components {/*advantages*/}
-* Server Components can reduce the amount of code sent and run by the client. Only Client modules are bundled and evaluated by the client.
-* Server Components benefit from running on the server. They can access the local filesystem and may experience low latency for data fetches and network requests.
+#### مزايا مكوّنات الخادم {/*advantages*/}
+* يمكن لمكوّنات الخادم أن تقلل حجم الكود المُرسل والمنفَّذ على العميل؛ إذ تُجمَّع وتُقيَّم على العميل وحدات العميل فقط.
+* تستفيد مكوّنات الخادم من العمل على الخادم. يمكنها الوصول إلى نظام الملفات المحلي وقد تستفيد من زمن استجابة منخفض لجلب البيانات وطلبات الشبكة.
 
-#### Limitations of Server Components {/*limitations*/}
-* Server Components cannot support interaction as event handlers must be registered and triggered by a client.
-	* For example, event handlers like `onClick` can only be defined in Client Components.
-* Server Components cannot use most Hooks.
-	* When Server Components are rendered, their output is essentially a list of components for the client to render. Server Components do not persist in memory after render and cannot have their own state.
+#### قيود مكوّنات الخادم {/*limitations*/}
+* لا تدعم مكوّنات الخادم التفاعل بنفس الطريقة لأن معالجات الأحداث يجب أن تُسجَّل وتُفعَّل على العميل.
+	* على سبيل المثال، معالجات مثل `onClick` لا يمكن تعريفها إلا في مكوّنات عميل.
+* لا تستطيع مكوّنات الخادم استخدام معظم الـ Hooks.
+	* عند تصيير مكوّنات الخادم، مخرجاتها تُختصر في قائمة مكوّنات للعميل لتصييرها. مكوّنات الخادم لا تبقى في الذاكرة بعد التصيير ولا يمكن أن يكون لها حالة خاصة.
 
-### Serializable types returned by Server Components {/*serializable-types*/}
+### الأنواع القابلة للتسلسل التي تُرجعها مكوّنات الخادم {/*serializable-types*/}
 
-As in any React app, parent components pass data to child components. As they are rendered in different environments, passing data from a Server Component to a Client Component requires extra consideration.
+كما في أي تطبيق React، تمرّر المكوّنات الأب البيانات إلى الأبناء. وبما أنها تُصيَّر في بيئات مختلفة، يتطلب تمرير البيانات من مكوّن خادم إلى مكوّن عميل اعتبارًا إضافيًا.
 
-Prop values passed from a Server Component to Client Component must be serializable.
+يجب أن تكون قيم الخصائص الممرَّرة من مكوّن خادم إلى مكوّن عميل قابلة للتسلسل.
 
-Serializable props include:
-* Primitives
+من ضمن الخصائص القابلة للتسلسل:
+* القيم البدائية
 	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
 	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
 	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
 	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
 	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
-* Iterables containing serializable values
+	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)، فقط الرموز المسجَّلة في سجل Symbol العام عبر [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
+* تكرارات تحتوي قيمًا قابلة للتسلسل
 	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) و[ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
-* Functions that are [Server Functions](/reference/rsc/server-functions)
-* Client or Server Component elements (JSX)
+* [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) عادية: المُنشأة بـ [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)، وخصائصها قابلة للتسلسل
+* دوال هي [دوال خادم](/reference/rsc/server-functions)
+* عناصر مكوّن عميل أو خادم (JSX)
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-Notably, these are not supported:
-* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) that are not exported from client-marked modules or marked with [`'use server'`](/reference/rsc/use-server)
+ومما يلفت الانتباه أن هذه **غير** مدعومة:
+* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) غير المُصدَّرة من وحدات موسومة بالعميل أو غير الموسومة بـ [`'use server'`](/reference/rsc/use-server)
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
-* Symbols not registered globally, ex. `Symbol('my new symbol')`
+* كائنات هي مثيلات لأي صنف (غير المدمجة المذكورة) أو كائنات ذات [نموذج أولي فارغ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* رموز غير مسجَّلة عالميًا، مثل `Symbol('my new symbol')`
 
 
-## Usage {/*usage*/}
+## الاستخدام {/*usage*/}
 
-### Building with interactivity and state {/*building-with-interactivity-and-state*/}
+### البناء مع التفاعل والحالة {/*building-with-interactivity-and-state*/}
 
 <Sandpack>
 
@@ -307,9 +307,9 @@ export default function Counter({initialValue = 0}) {
 
 </Sandpack>
 
-As `Counter` requires both the `useState` Hook and event handlers to increment or decrement the value, this component must be a Client Component and will require a `'use client'` directive at the top.
+بما أن `Counter` يحتاج إلى Hook `useState` ومعالجات أحداث لزيادة القيمة أو إنقاصها، يجب أن يكون هذا المكوّن مكوّن عميل وسيحتاج إلى توجيه `'use client'` في أعلى الملف.
 
-In contrast, a component that renders UI without interaction will not need to be a Client Component.
+في المقابل، مكوّن يصيّر واجهة دون تفاعل لن يحتاج أن يكون مكوّن عميل.
 
 ```js
 import { readFile } from 'node:fs/promises';
@@ -321,9 +321,9 @@ export default async function CounterContainer() {
 }
 ```
 
-For example, `Counter`'s parent component, `CounterContainer`, does not require `'use client'` as it is not interactive and does not use state. In addition, `CounterContainer` must be a Server Component as it reads from the local file system on the server, which is possible only in a Server Component.
+على سبيل المثال، المكوّن الأب لـ `Counter` وهو `CounterContainer` لا يحتاج `'use client'` لأنه غير تفاعلي ولا يستخدم الحالة. إضافة إلى ذلك، يجب أن يكون `CounterContainer` مكوّن خادم لأنه يقرأ من نظام الملفات المحلي على الخادم، وهو ما يمكن فقط في مكوّن خادم.
 
-There are also components that don't use any server or client-only features and can be agnostic to where they render. In our earlier example, `FancyText` is one such component.
+هناك أيضًا مكوّنات لا تستخدم ميزات خاصة بالخادم أو العميل ويمكن أن تكون محايدة بشأن مكان التصيير. في مثالنا السابق، `FancyText` من هذا النوع.
 
 ```js
 export default function FancyText({title, text}) {
@@ -333,15 +333,15 @@ export default function FancyText({title, text}) {
 }
 ```
 
-In this case, we don't add the `'use client'` directive, resulting in `FancyText`'s _output_ (rather than its source code) to be sent to the browser when referenced from a Server Component. As demonstrated in the earlier Inspirations app example, `FancyText` is used as both a Server or Client Component, depending on where it is imported and used.
+هنا لا نضيف توجيه `'use client'`، فيُرسل **مخرج** `FancyText` (وليس شفرته المصدرية) إلى المتصفح عند الإشارة إليه من مكوّن خادم. كما بيّن مثال التطبيق السابق، يُستخدم `FancyText` كمكوّن خادم أو عميل حسب مكان الاستيراد والاستخدام.
 
-But if `FancyText`'s HTML output was large relative to its source code (including dependencies), it might be more efficient to force it to always be a Client Component. Components that return a long SVG path string are one case where it may be more efficient to force a component to be a Client Component.
+لكن إذا كان مخرج HTML لـ `FancyText` كبيرًا نسبةً إلى شفرته المصدرية (بما في ذلك التبعيات)، قد يكون أكثر كفاءة إجباره دائمًا على أن يكون مكوّن عميل. المكوّنات التي تُرجع سلسلة مسار SVG طويلة من الحالات التي قد يكون فيها إجبار المكوّن على أن يكون مكوّن عميل أكثر كفاءة.
 
-### Using client APIs {/*using-client-apis*/}
+### استخدام واجهات برمجة العميل {/*using-client-apis*/}
 
-Your React app may use client-specific APIs, such as the browser's APIs for web storage, audio and video manipulation, and device hardware, among [others](https://developer.mozilla.org/en-US/docs/Web/API).
+قد يستخدم تطبيق React واجهات خاصة بالعميل، مثل واجهات المتصفح للتخزين، ومعالجة الصوت والفيديو، وأجهزة الجهاز، وغيرها من [الواجهات](https://developer.mozilla.org/en-US/docs/Web/API).
 
-In this example, the component uses [DOM APIs](https://developer.mozilla.org/en-US/docs/Glossary/DOM) to manipulate a [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) element. Since those APIs are only available in the browser, it must be marked as a Client Component.
+في هذا المثال، يستخدم المكوّن [واجهات DOM](https://developer.mozilla.org/en-US/docs/Glossary/DOM) للتعامل مع عنصر [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas). وبما أن هذه الواجهات متاحة فقط في المتصفح، يجب أن يُوسم كمكوّن عميل.
 
 ```js
 'use client';
@@ -362,18 +362,18 @@ export default function Circle() {
 }
 ```
 
-### Using third-party libraries {/*using-third-party-libraries*/}
+### استخدام مكتبات طرف ثالث {/*using-third-party-libraries*/}
 
-Often in a React app, you'll leverage third-party libraries to handle common UI patterns or logic.
+غالبًا في تطبيق React ستستفيد من مكتبات طرف ثالث لمعالجة أنماط واجهة أو منطق شائع.
 
-These libraries may rely on component Hooks or client APIs. Third-party components that use any of the following React APIs must run on the client:
+قد تعتمد هذه المكتبات على Hooks للمكوّنات أو واجهات العميل. مكوّنات الطرف الثالث التي تستخدم أيًا مما يلي من واجهات React يجب أن تعمل على العميل:
 * [createContext](/reference/react/createContext)
-* [`react`](/reference/react/hooks) and [`react-dom`](/reference/react-dom/hooks) Hooks, excluding [`use`](/reference/react/use) and [`useId`](/reference/react/useId)
+* Hooks [`react`](/reference/react/hooks) و[`react-dom`](/reference/react-dom/hooks)، باستثناء [`use`](/reference/react/use) و[`useId`](/reference/react/useId)
 * [forwardRef](/reference/react/forwardRef)
 * [memo](/reference/react/memo)
 * [startTransition](/reference/react/startTransition)
-* If they use client APIs, ex. DOM insertion or native platform views
+* إذا استخدمت واجهات العميل، مثل إدراج DOM أو عروض المنصة الأصلية
 
-If these libraries have been updated to be compatible with React Server Components, then they will already include `'use client'` markers of their own, allowing you to use them directly from your Server Components. If a library hasn't been updated, or if a component needs props like event handlers that can only be specified on the client, you may need to add your own Client Component file in between the third-party Client Component and your Server Component where you'd like to use it.
+إذا حُدّثت هذه المكتبات لتكون متوافقة مع مكونات React من جانب الخادم، فستتضمن عادةً علامات `'use client'` الخاصة بها، مما يسمح باستخدامها مباشرة من مكوّنات الخادم. إذا لم تُحدَّث مكتبة، أو إذا احتاج مكوّن إلى خصائص مثل معالجات أحداث لا يمكن تحديدها إلا على العميل، فقد تحتاج إلى إضافة ملف مكوّن عميل خاص بك بين مكوّن الطرف الثالث العميل ومكوّن الخادم حيث تريد استخدامه.
 
-[TODO]: <> (Troubleshooting - need use-cases)
+[TODO]: <> (استكشاف الأخطاء — حالات استخدام مطلوبة)
