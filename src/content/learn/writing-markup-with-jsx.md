@@ -69,10 +69,17 @@ JSX و React هما شيئان منفصلان عن بعضهما البعض. غا
 لنفترض أن لديك بعض أكواد HTML (الصالحة تمامًا).
 
 ```html
+<<<<<<< HEAD
 <h1>مَهمَّات هايدي ليمار</h1>
 <img
   src="https://i.imgur.com/yXOvdOSs.jpg"
   alt="هايدي"
+=======
+<h1>Hedy Lamarr's Todos</h1>
+<img
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   class="photo"
 >
 <ul>
@@ -99,11 +106,19 @@ export default function TodoList() {
 ```js
 export default function TodoList() {
   return (
+<<<<<<< HEAD
     // هذا لا بعمل
     <h1>مَهمَّات هايدي ليمار</h1>
     <img
       src="https://i.imgur.com/yXOvdOSs.jpg"
       alt="هايدي"
+=======
+    // This doesn't quite work!
+    <h1>Hedy Lamarr's Todos</h1>
+    <img
+      src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+      alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
       class="photo"
     >
     <ul>
@@ -139,10 +154,17 @@ img { height: 90px }
 
 ```js {1,11}
 <div>
+<<<<<<< HEAD
   <h1>مَهام هايدي ليمار</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="هايدي" 
+=======
+  <h1>Hedy Lamarr's Todos</h1>
+  <img
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     class="photo"
   >
   <ul>
@@ -155,10 +177,17 @@ img { height: 90px }
 
 ```js {1,11}
 <>
+<<<<<<< HEAD
   <h1>مَهام هايدي ليمار</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="هايدي" 
+=======
+  <h1>Hedy Lamarr's Todos</h1>
+  <img
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     class="photo"
   >
   <ul>
@@ -185,9 +214,15 @@ img { height: 90px }
 
 ```js {2-6,8-10}
 <>
+<<<<<<< HEAD
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="هايدي"
+=======
+  <img
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     class="photo"
   />
   <ul>
@@ -205,9 +240,15 @@ img { height: 90px }
 لهذا السبب، في React، تكتب العديد من السمات HTML و SVG بـ camelCase. على سبيل المثال، بدلاً من `stroke-width` تستخدم `strokeWidth`. نظرًا لأن `class` هي كلمة محجوزة، في React تكتب `className` بدلاً من ذلك، مسماة على [خاصية DOM البديلة](https://developer.mozilla.org/en-US/docs/Web/API/Element/className):
 
 ```js {4}
+<<<<<<< HEAD
 <img 
   src="https://i.imgur.com/yXOvdOSs.jpg" 
   alt="هايدي"
+=======
+<img
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   className="photo"
 />
 ```
@@ -232,10 +273,17 @@ img { height: 90px }
 export default function TodoList() {
   return (
     <>
+<<<<<<< HEAD
       <h1>مهمات هايدي</h1>
       <img 
         src="https://i.imgur.com/yXOvdOSs.jpg" 
         alt="هايدي"
+=======
+      <h1>Hedy Lamarr's Todos</h1>
+      <img
+        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+        alt="Hedy Lamarr"
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
         className="photo"
       />
       <ul>

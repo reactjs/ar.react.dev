@@ -40,7 +40,7 @@ export default function App() {
 }
 ```
 
-To get status information, the `Submit` component must be rendered within a `<form>`. The Hook returns information like the <CodeStep step={1}>`pending`</CodeStep> property which tells you if the form is actively submitting. 
+To get status information, the `Submit` component must be rendered within a `<form>`. The Hook returns information like the <CodeStep step={1}>`pending`</CodeStep> property which tells you if the form is actively submitting.
 
 In the above example, `Submit` uses this information to disable `<button>` presses while the form is submitting.
 
@@ -65,7 +65,7 @@ A `status` object with the following properties:
 
 #### Caveats {/*caveats*/}
 
-* The `useFormStatus` Hook must be called from a component that is rendered inside a `<form>`. 
+* The `useFormStatus` Hook must be called from a component that is rendered inside a `<form>`.
 * `useFormStatus` will only return status information for a parent `<form>`. It will not return status information for any `<form>` rendered in that same component or children components.
 
 ---
@@ -75,7 +75,7 @@ A `status` object with the following properties:
 ### Display a pending state during form submission {/*display-a-pending-state-during-form-submission*/}
 To display a pending state while a form is submitting, you can call the `useFormStatus` Hook in a component rendered in a `<form>` and read the `pending` property returned.
 
-Here, we use the `pending` property to indicate the form is submitting. 
+Here, we use the `pending` property to indicate the form is submitting.
 
 <Sandpack>
 
@@ -110,7 +110,11 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
+<<<<<<< HEAD
 </Sandpack>  
+=======
+</Sandpack>
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Pitfall>
 
@@ -132,7 +136,7 @@ Instead call `useFormStatus` from inside a component that is located inside `<fo
 ```js
 function Submit() {
   // ✅ `pending` will be derived from the form that wraps the Submit component
-  const { pending } = useFormStatus(); 
+  const { pending } = useFormStatus();
   return <button disabled={pending}>...</button>;
 }
 
@@ -215,7 +219,11 @@ button {
 
 ```
 
+<<<<<<< HEAD
 </Sandpack>  
+=======
+</Sandpack>
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ---
 
@@ -223,7 +231,7 @@ button {
 
 ### `status.pending` is never `true` {/*pending-is-never-true*/}
 
-`useFormStatus` will only return status information for a parent `<form>`. 
+`useFormStatus` will only return status information for a parent `<form>`.
 
 If the component that calls `useFormStatus` is not nested in a `<form>`, `status.pending` will always return `false`. Verify `useFormStatus` is called in a component that is a child of a `<form>` element.
 

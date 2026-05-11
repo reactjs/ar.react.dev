@@ -31,8 +31,12 @@ title: تجهيز محرر الأكواد
 
 ### الفحص {/*linting*/}
 
+<<<<<<< HEAD
 فحص الكود لاكتشاف الأخطاء في الكود أثناء الكتابة، مما يساعدك على إصلاحها في وقت مبكر. 
 [ESLint](https://eslint.org/) هو فاحص شائع ومفتوح المصدر لـ JavaScript.
+=======
+Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript.
+>>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 * [قم بتثبيت ESLint مع التكوين الموصى به لـ React](https://www.npmjs.com/package/eslint-config-react-app) (تأكد من تثبيت [Node!](https://nodejs.org/en/download/current/))
 * [دمج ESLint في VSCode مع الإضافة الرسمية](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
