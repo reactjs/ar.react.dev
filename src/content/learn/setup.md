@@ -17,7 +17,7 @@ title: الإعداد
 
 ## أدوات مطوري React {/*react-developer-tools*/}
 
-أدوات مطوري React (React Developer Tools) هي إضافة للمتصفح يمكنها فحص مكونات React، وتعديل الخصائص (props) والحالة (state)، وتحديد مشاكل الأداء. تعلم كيفية تثبيتها [هنا](learn/react-developer-tools).
+أدوات مطوري React (React Developer Tools) هي إضافة للمتصفح يمكنها فحص مكونات React، وتعديل الخصائص (props) والحالة (state)، وتحديد مشاكل الأداء. تعلم كيفية تثبيتها [هنا](/learn/react-developer-tools).
 
 ## مترجم React {/*react-compiler*/}
 

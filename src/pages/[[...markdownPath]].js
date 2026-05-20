@@ -154,7 +154,11 @@ export async function getStaticPaths() {
       files
         .flat()
         // ignores `errors/*.md`, they will be handled by `pages/errors/[errorCode].tsx`
-        .filter((file) => file.endsWith('.md') && !file.startsWith('errors/'))
+        .filter(
+          (file) =>
+            file.endsWith('.md') &&
+            !file.replace(/\\/g, '/').startsWith('errors/')
+        )
     );
   }
 
