@@ -227,7 +227,7 @@ td {
 
 لنقم بمراجعتهم واحد تلو الآخر مرة أخرى:
 
-1. القائمة الأصلية للمنتجات **يتم تمريرها ضمن الخصائص، فهي ليست حالة.** 
+1. القائمة الأصلية للمنتجات **يتم تمريرها ضمن الخصائص، فهي ليست حالة.**
 2. كلمات البحث تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
 3. حالة مربع الاختيار تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
 4. قائمة المنتجات بعد التصفية **ليست حالة إذ يمكن اشتقاقها** عبر تصفية قائمة المنتجات الأصلية وفقا لكلمات البحث وحالة مربع الاختيار.
@@ -265,29 +265,29 @@ td {
 حسنا، لنختبر طريقتنا عليهم:
 
 1. **حدد المكونات التي تستخدم الحالة:**
-    * مكون `ProductTable` (جدول المنتجات) يحتاج الحالة ليقوم بتصفية قائمة المنتجات (نص البحث وحالة مربع الاختيار). 
+    * مكون `ProductTable` (جدول المنتجات) يحتاج الحالة ليقوم بتصفية قائمة المنتجات (نص البحث وحالة مربع الاختيار).
     * مكون `SearchBar` (خانة البحث) يقوم بعرض الحالة نفسها (نص البحث).
 1. **حدد لهم سلفا مشتركا:** السلف المشترك للمكونين هو `FilterableProductTable`.
 2. **حدد أين تضع الحالة**: سنضع نص البحث وحالة مربع الاختيار في المكون `FilterableProductTable`.
 
-إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`. 
+إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`.
 
 أضف الحالات للمكون باستخدام [خطاف `useState()`.](/reference/react/useState) الخطاطيف (Hooks) عبارة عن دوال خاصة تسمح لك أن "تربط" مكوناتك بنظام React. أضف متغيرا لكل حالة في بداية الكود الخاص بالمكون `FilterableProductTable` وحدد حالتهم الأولية:
 
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);  
+  const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
 ثم مرر المتغير `filterText` و`inStockOnly` للمكونين `ProductTable` و`SearchBar` كخاصية ضمن خصائص كل منهما:
 
 ```js
 <div>
-  <SearchBar 
-    filterText={filterText} 
+  <SearchBar
+    filterText={filterText}
     inStockOnly={inStockOnly} />
-  <ProductTable 
+  <ProductTable
     products={products}
     filterText={filterText}
     inStockOnly={inStockOnly} /></div>
@@ -306,10 +306,10 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly} />
-      <ProductTable 
+      <ProductTable
         products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
@@ -387,13 +387,13 @@ function ProductTable({ products, filterText, inStockOnly }) {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="بحث..."/>
       <label>
-        <input 
-          type="checkbox" 
+        <input
+          type="checkbox"
           checked={inStockOnly} />
         {' '}
         عرض المنتجات المتوفرة فقط
@@ -438,7 +438,7 @@ td {
 لاحظ أنك لو عدّلت مباشرة على نموذج البحث فلن يحدث شيء. هناك رسالة خطأ في الـsandbox أعلاه تخبرك لماذا:
 
 <ConsoleBlock level="error">
-  
+
 You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
 
 لقد قمت بتمرير \`قيمة\` إحدى الخصائص لإحدى خانات نموذج دون تحديد معالج لحدث تغير القيمة \`onChange\`. سينتج عن هذا خانة قابلة للقراءة فقط.
@@ -451,9 +451,9 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="بحث..."/>
 ```
 
@@ -462,7 +462,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## الخطوة 5: إضافة تدفق البيانات العكسي {/*step-5-add-inverse-data-flow*/}
 
-يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغيير الحالة وفقًا لمدخلات المستخدم، سيكون لزامًا عليك أن تحسب حسابًا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`. 
+يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغيير الحالة وفقًا لمدخلات المستخدم، سيكون لزامًا عليك أن تحسب حسابًا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`.
 
 يجعل React هذا النوع من تدفق البيانات بسيطا واضحا، لكنه يسلتزم قدرا أكبر من الكتابة مقارنة بالربط المزدوج للبيانات (two-way data binding). إذا ما حاولت الكتابة في خانة البحث أو التحديد على مربع الاختيار، ستجد أن React يتجاهل محاولاتك. وهذا أمر مقصود. بكتابتك `<input value={filterText} />`، فقد حددت خاصية القيمة (`value`) لخانة البحث `input` لأن تكون دوما مطابقة لقيمة الخاصية `filterText` الممررة من حالة المكون `FilterableProductTable`. وحيث أن الحالة `filterText` لم يتم تعديلها، فالخانة لن تتغير أبدأ.
 
@@ -475,8 +475,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -519,13 +519,13 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
+      <ProductTable
+        products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
     </div>
@@ -607,14 +607,14 @@ function SearchBar({
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="بحث..." 
+      <input
+        type="text"
+        value={filterText} placeholder="بحث..."
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
+        <input
+          type="checkbox"
+          checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
         عرض المنتجات المتوفرة فقط

@@ -5,7 +5,7 @@ version: canary
 
 <Canary>
 
-**The `<ViewTransition />` API is currently only available in React’s Canary and Experimental channels.** 
+**The `<ViewTransition />` API is currently only available in React’s Canary and Experimental channels.**
 
 [Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
 
@@ -79,7 +79,7 @@ By default, `<ViewTransition>` animates with a smooth cross-fade. You can custom
 * **optional** `exit`: A string or object. The [View Transition Class](#view-transition-class) to apply when exit is activated.
 * **optional** `update`: A string or object. The [View Transition Class](#view-transition-class) to apply when an update is activated.
 * **optional** `share`: A string or object. The [View Transition Class](#view-transition-class) to apply when a shared element is activated.
-* **optional** `default`: A string or object. The [View Transition Class](#view-transition-class) used when no other matching activation prop is found. 
+* **optional** `default`: A string or object. The [View Transition Class](#view-transition-class) used when no other matching activation prop is found.
 * **optional** `name`: A string or object. The name of the View Transition used for shared element transitions. If not provided, React will use a unique name for each View Transition to prevent unexpected animations.
 
 #### Callback {/*events*/}
@@ -124,7 +124,7 @@ When the `<ViewTransition>` activates an "enter" animation, React will add the c
 
 ```css
 ::view-transition-group(.slide-in) {
-  
+
 }
 ::view-transition-old(.slide-in) {
 
@@ -169,7 +169,7 @@ function Parent() {
 }
 ```
 
-When `setShow` is called, `show` switches to `true` and the `Child` component is rendered. When `setShow` is called inside `startTransition`, and `Child` renders a `ViewTransition` before any other DOM nodes, an `enter` animation is triggered. 
+When `setShow` is called, `show` switches to `true` and the `Child` component is rendered. When `setShow` is called inside `startTransition`, and `Child` renders a `ViewTransition` before any other DOM nodes, an `enter` animation is triggered.
 
 When `show` switches back to `false`, an `exit` animation is triggered.
 
@@ -688,7 +688,7 @@ export default function Component() {
     </>
   );
 }
-  
+
 
 ```
 
@@ -892,7 +892,7 @@ export default function Component() {
     </>
   );
 }
-  
+
 
 ```
 
@@ -1795,7 +1795,7 @@ For example, to customize the animation for all forward and backward navigations
  }}>
   <div>...</div>
 </ViewTransition>
- 
+
 // in your router:
 startTransition(() => {
   addTransitionType('navigation-' + navigationType);
@@ -2138,7 +2138,7 @@ function Component() {
 
 To fix, ensure that the `<ViewTransition>` comes before any other DOM nodes:
 
-```js [3, 5] 
+```js [3, 5]
 function Component() {
   return (
     <ViewTransition>

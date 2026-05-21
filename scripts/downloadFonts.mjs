@@ -2,12 +2,8 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import { exec } from 'child_process';
-import { mkdir, promises as fsPromises } from 'fs';
+import { promises as fsPromises } from 'fs';
 import { dirname } from 'path';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
 
 // Taken from Downloads on https://www.facebook.com/brand/meta/typography/.
 // To refresh the list, go to the Conf website's public/fonts/ folder and run this:
@@ -69,8 +65,12 @@ await Promise.all(
     const localDir = dirname(localPath);
     await fsPromises.mkdir(localDir, { recursive: true });
 
-    const command = `curl ${baseURL}${path} --output ${localPath}`;
-    await execAsync(command);
+    const response = await fetch(`${baseURL}${path}`);
+    if (!response.ok) {
+      throw new Error(`Failed to download ${path}: ${response.statusText}`);
+    }
+    const buffer = Buffer.from(await response.arrayBuffer());
+    await fsPromises.writeFile(localPath, buffer);
     console.log(`Downloaded ${path}`);
   })
 );

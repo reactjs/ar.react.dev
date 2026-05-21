@@ -20,7 +20,7 @@ title: "<progress>"
 
 ### `<progress>` {/*progress*/}
 
-لعرض مؤشر التقدم، استخدم عنصر [`<progress>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) 
+لعرض مؤشر التقدم، استخدم عنصر [`<progress>` المدمج في المتصفح](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 
 ```js
 <progress value={0.5} />

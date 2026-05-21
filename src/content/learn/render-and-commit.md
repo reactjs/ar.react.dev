@@ -63,9 +63,9 @@ export default function Image() {
 
 </Sandpack>
 
-جرب عمل تعليق على السطر الذي يستدعي `root.render()` وانظر كيف تختفي الصورة. 
+جرب عمل تعليق على السطر الذي يستدعي `root.render()` وانظر كيف تختفي الصورة.
 
-مثل هذا: 
+مثل هذا:
 
 ```js
 // root.render(<Image />);
