@@ -101,7 +101,7 @@ function Thread({ messages, sendMessageAction }) {
           {!!message.sending && <small> (Sending...)</small>}
         </div>
       ))}
-      
+
     </>
   );
 }

@@ -118,7 +118,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ربما تواجه ملفات تترك امتداد الملف `.js` مثل هذا:
 
-```js 
+```js
 import Gallery from './Gallery';
 ```
 
@@ -247,7 +247,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
-#### تقسيم المكونات بشكل أعمق  {/*split-the-components-further*/}
+#### تقسيم المكونات بشكل أعمق {/*split-the-components-further*/}
 
 حاليًا، يصدر `Gallery.js` كل من `Profile` و `Gallery`، وهو أمر محير قليلاً.
 

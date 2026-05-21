@@ -140,9 +140,9 @@ img { height: 90px }
 ```js {1,11}
 <div>
   <h1>مَهام هايدي ليمار</h1>
-  <img 
-    src="https://i.imgur.com/yXOvdOSs.jpg" 
-    alt="هايدي" 
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
+    alt="هايدي"
     class="photo"
   >
   <ul>
@@ -156,9 +156,9 @@ img { height: 90px }
 ```js {1,11}
 <>
   <h1>مَهام هايدي ليمار</h1>
-  <img 
-    src="https://i.imgur.com/yXOvdOSs.jpg" 
-    alt="هايدي" 
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
+    alt="هايدي"
     class="photo"
   >
   <ul>
@@ -185,8 +185,8 @@ img { height: 90px }
 
 ```js {2-6,8-10}
 <>
-  <img 
-    src="https://i.imgur.com/yXOvdOSs.jpg" 
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
     alt="هايدي"
     class="photo"
   />
@@ -205,8 +205,8 @@ img { height: 90px }
 لهذا السبب، في React، تكتب العديد من السمات HTML و SVG بـ camelCase. على سبيل المثال، بدلاً من `stroke-width` تستخدم `strokeWidth`. نظرًا لأن `class` هي كلمة محجوزة، في React تكتب `className` بدلاً من ذلك، مسماة على [خاصية DOM البديلة](https://developer.mozilla.org/en-US/docs/Web/API/Element/className):
 
 ```js {4}
-<img 
-  src="https://i.imgur.com/yXOvdOSs.jpg" 
+<img
+  src="https://i.imgur.com/yXOvdOSs.jpg"
   alt="هايدي"
   className="photo"
 />
@@ -233,8 +233,8 @@ export default function TodoList() {
   return (
     <>
       <h1>مهمات هايدي</h1>
-      <img 
-        src="https://i.imgur.com/yXOvdOSs.jpg" 
+      <img
+        src="https://i.imgur.com/yXOvdOSs.jpg"
         alt="هايدي"
         className="photo"
       />

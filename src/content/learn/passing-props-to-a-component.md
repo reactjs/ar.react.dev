@@ -69,7 +69,7 @@ export default function Profile() {
 
 ### الخطوة الأولى: تمرير الخصائص إلى مكوّن طفل {/*step-1-pass-props-to-the-child-component*/}
 
-أولاً، يجب تمرير بعض الخصائص إلى  `Avatar`. على سبيل المثال، دعونا نمرر خاصيتين: `person` (كائن)، و `size` (رقم): 
+أولاً، يجب تمرير بعض الخصائص إلى  `Avatar`. على سبيل المثال، دعونا نمرر خاصيتين: `person` (كائن)، و `size` (رقم):
 
 ```js
 export default function Profile() {
@@ -127,21 +127,21 @@ export default function Profile() {
     <div>
       <Avatar
         size={100}
-        person={{ 
-          name: 'كاتسوكو ساروهاشي', 
+        person={{
+          name: 'كاتسوكو ساروهاشي',
           imageId: 'YfeOqp2'
         }}
       />
       <Avatar
         size={80}
         person={{
-          name: 'أكليلو ليما', 
+          name: 'أكليلو ليما',
           imageId: 'OKS67lh'
         }}
       />
       <Avatar
         size={50}
-        person={{ 
+        person={{
           name: 'لين لانين',
           imageId: '1bX5QH6'
         }}
@@ -292,7 +292,7 @@ export default function Profile() {
     <Card>
       <Avatar
         size={100}
-        person={{ 
+        person={{
           name: 'كاتسوكو ساروهاشي',
           imageId: 'YfeOqp2'
         }}
@@ -454,11 +454,11 @@ export default function Gallery() {
         />
         <ul>
           <li>
-            <b>المهنة: </b> 
+            <b>المهنة: </b>
             عالمة فيزياء وكيمياء
           </li>
           <li>
-            <b>الجوائز: 4 </b> 
+            <b>الجوائز: 4 </b>
             (جائزة نوبل في الفيزياء، جائزة نوبل في الكيمياء، ميدالية دافي، ميدالية ماتيوتشي)
           </li>
           <li>
@@ -478,11 +478,11 @@ export default function Gallery() {
         />
         <ul>
           <li>
-            <b>المهنة: </b> 
+            <b>المهنة: </b>
             جيوكيميائية
           </li>
           <li>
-            <b>الجوائز: 2 </b> 
+            <b>الجوائز: 2 </b>
             (جائزة مياكي للجيوكيمياء، جائزة تاناكا)
           </li>
           <li>
@@ -759,8 +759,8 @@ export default function Profile() {
   return (
     <Avatar
       size={40}
-      person={{ 
-        name: 'غريغوريو ي. زارا', 
+      person={{
+        name: 'غريغوريو ي. زارا',
         imageId: '7vQD0fP'
       }}
     />
@@ -815,15 +815,15 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-        person={{ 
-          name: 'غريغوريو ي. زارا', 
+        person={{
+          name: 'غريغوريو ي. زارا',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-        person={{ 
-          name: 'غريغوريو ي. زارا', 
+        person={{
+          name: 'غريغوريو ي. زارا',
           imageId: '7vQD0fP'
         }}
       />
@@ -879,22 +879,22 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-        person={{ 
-          name: 'غريغوريو ي. زارا', 
+        person={{
+          name: 'غريغوريو ي. زارا',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={70}
-        person={{ 
-          name: 'غريغوريو ي. زارا', 
+        person={{
+          name: 'غريغوريو ي. زارا',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-        person={{ 
-          name: 'غريغوريو ي. زارا', 
+        person={{
+          name: 'غريغوريو ي. زارا',
           imageId: '7vQD0fP'
         }}
       />

@@ -26,7 +26,7 @@ title: إضافة React إلى مشروع موجود بالفعل
 
 يضمن هذا أن الجزء الخاص بـ React من تطبيقك يمكن أن يستفيد من [أفضل الممارسات](/learn/creating-a-react-app#full-stack-frameworks) المدمجة في تلك الإطارات.
 
-العديد من الإطارات القائمة على React هي إطارات full-stack وتتيح لتطبيق React الخاص بك الاستفادة من الخادم. ومع ذلك، يمكنك استخدام نفس النهج حتى إذا لم تتمكن أو لا تريد تشغيل JavaScript على الخادم. في هذه الحالة 
+العديد من الإطارات القائمة على React هي إطارات full-stack وتتيح لتطبيق React الخاص بك الاستفادة من الخادم. ومع ذلك، يمكنك استخدام نفس النهج حتى إذا لم تتمكن أو لا تريد تشغيل JavaScript على الخادم. في هذه الحالة
 ، قم بتصدير HTML/CSS/JS ([`next export`](https://nextjs.org/docs/advanced-features/static-html-export) لـ Next.js ، هذا هو الافتراضي لـ Gatsby) في `/some-app/` بدلاً من ذلك.
 
 ## استخدام React لجزء من صفحتك الحالية {/*using-react-for-a-part-of-your-existing-page*/}

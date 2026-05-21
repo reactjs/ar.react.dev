@@ -78,7 +78,7 @@ export default function MyApp() {
 
 عبارة `export default` تحدد المكوّن الأساسي في الملف. إذا لم يكن لديك معرفة كافية عن طريقة بناء وكتابة الكود في JavaScript، فيمكنك الرجوع للمصادر التالية:
 [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)
-[javascript.info](https://javascript.info/import-export) 
+[javascript.info](https://javascript.info/import-export)
 
 
 ## بناء الترميز المرئي للواجهة باستخدام JSX {/*writing-markup-with-jsx*/}
@@ -123,8 +123,8 @@ function AboutPage() {
 ```
 
 React لا تحدد لك كيف يجب عليك إضافة ملفات الـ CSS  لملف الـ HTML.
-ببساطة  يمكنك إضافة وسم [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) لملف الـ html الخاص بك. 
- إذا كنت تستخدم أداة بناء معينة أو إطار عمل فاستفسر عن طريقة إضافة ملفات الـ CSS لمشروعك من خلال المستندات الخاصة بالأداة. 
+ببساطة  يمكنك إضافة وسم [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) لملف الـ html الخاص بك.
+ إذا كنت تستخدم أداة بناء معينة أو إطار عمل فاستفسر عن طريقة إضافة ملفات الـ CSS لمشروعك من خلال المستندات الخاصة بالأداة.
 
 
 ## عرض البيانات {/*displaying-data*/}
@@ -150,7 +150,7 @@ return (
 );
 ```
 
-يمكنك كذلك وضع تعبيرات برمجية أكثر تعقيدا بداخل أقواس الـ JSX المعقوفة، مثلا [دمج النصوص](https://javascript.info/operators#string-concatenation-with-binary): 
+يمكنك كذلك وضع تعبيرات برمجية أكثر تعقيدا بداخل أقواس الـ JSX المعقوفة، مثلا [دمج النصوص](https://javascript.info/operators#string-concatenation-with-binary):
 
 
 <Sandpack>

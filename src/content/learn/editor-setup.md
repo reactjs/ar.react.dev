@@ -31,7 +31,7 @@ title: تجهيز محرر الأكواد
 
 ### الفحص {/*linting*/}
 
-فحص الكود لاكتشاف الأخطاء في الكود أثناء الكتابة، مما يساعدك على إصلاحها في وقت مبكر. 
+فحص الكود لاكتشاف الأخطاء في الكود أثناء الكتابة، مما يساعدك على إصلاحها في وقت مبكر.
 [ESLint](https://eslint.org/) هو فاحص شائع ومفتوح المصدر لـ JavaScript.
 
 * [قم بتثبيت ESLint مع التكوين الموصى به لـ React](https://www.npmjs.com/package/eslint-config-react-app) (تأكد من تثبيت [Node!](https://nodejs.org/en/download/current/))
