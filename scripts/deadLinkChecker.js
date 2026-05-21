@@ -11,8 +11,8 @@ const path = require('path');
 const globby = require('globby');
 const chalk = require('chalk');
 
-const CONTENT_DIR = path.join(__dirname, '../src/content');
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const CONTENT_DIR = path.join(__dirname, '../src/content').replace(/\\/g, '/');
+const PUBLIC_DIR = path.join(__dirname, '../public').replace(/\\/g, '/');
 const fileCache = new Map();
 const anchorMap = new Map(); // Map<filepath, Set<anchorId>>
 const contributorMap = new Map(); // Map<anchorId, URL>
@@ -135,7 +135,7 @@ async function findTargetFile(urlPath) {
 
     for (const p of publicPaths) {
       if (await fileExists(p)) {
-        return p;
+        return p.replace(/\\/g, '/');
       }
     }
   }
@@ -154,7 +154,7 @@ async function findTargetFile(urlPath) {
 
   for (const p of possiblePaths) {
     if (await fileExists(p)) {
-      return p;
+      return p.replace(/\\/g, '/');
     }
   }
   return null;
