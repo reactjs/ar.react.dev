@@ -284,9 +284,15 @@ body {
 
 ![CodeSandbox مع الكود المبدئي](../images/tutorial/react-starter-code-codesandbox.png)
 
+<<<<<<< HEAD
 1. قسم _الملفات_ فيه قائمة بالملفات مثل `App.js` و `index.js` و `styles.css` ومجلد يسمى `public`.
 1. _محرر الكود_ حيث سترى الكود للملف المحدد.
 1. قسم _المتصفح_ حيث سترى كيف سيتم عرض الكود الذي كتبته.
+=======
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ملف _App.js_ يجب أن يكون محددًا في قسم الملفات. يجب أن يظهر محتوى هذا الملف في محرر الأكواد:
 
@@ -296,7 +302,11 @@ export default function Square() {
 }
 ```
 
+<<<<<<< HEAD
 قسم المتصفح يجب أن يعرض زرًا فيه X فيه مثل هذا:
+=======
+The _browser_ section should be displaying a square with an X in it like this:
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ![مربع يحتوي على X](../images/tutorial/x-filled-square.png)
 
@@ -338,7 +348,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 الأسطر من 1 إلى 5 تستدعي كل القطع اللازمة معًا:
+=======
+Lines 1-5 bring all the necessary pieces together:
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 * React
 * مكتبة React للتحدث مع متصفحات الويب (React DOM)
@@ -556,7 +570,11 @@ export default function Board() {
 }
 ```
 
+<<<<<<< HEAD
 لاحظ كيف تبدأ المكونات الخاصة بك `Board` و `Square` بحرف كبير _على عكس عناصر `div` في المتصفح_.
+=======
+Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 دعنا نلقي نظرة:
 
@@ -1108,8 +1126,12 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
+<<<<<<< HEAD
 الآن ستوصل `onSquareClick` إلى دالة في مكون `Board` سنسميها `handleClick`. لتوصل `onSquareClick` إلى `handleClick` سنمرر دالة إلى خاصية `onSquareClick` لأول مكون `Square`:
 
+=======
+Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ```js {7}
 export default function Board() {
@@ -1351,7 +1373,11 @@ body {
 1. تستخدم `handleClick` الوسيطة (`0`) لتحديث العنصر الأول في مصفوفة `squares` من `null` إلى `X`.
 1. تم تحديث حالة `squares` في عنصر `<Board>`، لذا يتم إعادة تقديم العنصر `<Board>` وجميع عناصره الفرعية. وهذا يؤدي إلى تغيير خاصية `value` لعنصر `<Square>` ذي الترتيب `0` من `null` إلى `X`.
 
+<<<<<<< HEAD
 في النهاية يرى المستخدم أن المربع الأيسر العلوي قد تغير من فارغ إلى `X` بعد النقر عليه.
+=======
+In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 <Note>
 
@@ -1432,7 +1458,11 @@ export default function Board() {
 
 الـ `X` تمت الكتابة فوقها بـ `O`! بينما سيضيف هذا لمسة مثيرة للعبة، لكننا سنلتزم بالقواعد الأصلية الآن.
 
+<<<<<<< HEAD
 عندما تحدد مربع بـ `X` أو `O` فأنت لا تتحقق أولاً مما إذا كان المربع يحتوي بالفعل على قيمة `X` أو `O`. يمكنك إصلاح هذا عن طريق *الخروج مبكرًا*. ستتحقق مما إذا كان المربع يحتوي بالفعل على `X` أو `O`. إذا كان المربع ممتلئًا بالفعل، فستقوم بـ `return` في دالة `handleClick` مبكرًا - قبل محاولة تحديث حالة اللوحة.
+=======
+When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1583,7 +1613,11 @@ function calculateWinner(squares) {
 
 </Note>
 
+<<<<<<< HEAD
 ستنادي دالة `calculateWinner(squares)` في دالة `handleClick` الخاصة بمكون `Board` للتحقق مما إذا كان اللاعب قد فاز. يمكنك تنفيذ هذا التحقق في نفس الوقت الذي تتحقق فيه مما إذا كان المستخدم قد نقر على مربع يحتوي بالفعل على `X` أو `O`. نود أن نوقف تنفيذ الدالة في كلا الحالتين:
+=======
+You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ```js {2}
 function handleClick(i) {
@@ -2109,6 +2143,7 @@ export default function Game() {
 }
 ```
 
+<<<<<<< HEAD
 يمكنك رؤية ما يجب أن يبدو عليه الكود أدناه. لاحظ أنه يجب أن ترى خطأ في أدوات المطورين يقول: 
 
 ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.``
@@ -2116,6 +2151,15 @@ export default function Game() {
 ``تحذير: يجب أن يكون لكل طفل في مصفوفة أو محدد خاصية "مفتاح key" فريدة. تحقق من طريقة التصيير لـ `Game`.``
 
  ستقوم بإصلاح هذا الخطأ في القسم التالي.
+=======
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
+
+<ConsoleBlock level="warning">
+Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
+</ConsoleBlock>
+
+You'll fix this error in the next section.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 <Sandpack>
 
@@ -2284,7 +2328,11 @@ body {
 
 </Sandpack>
 
+<<<<<<< HEAD
 بمجرد أن تمر على مصفوفة `history` بالدالة التي قمت بتمريرها إلى `map`، فإن المعامل (argument) `squares` يشير إلى كل عنصر من عناصر `history`، والمعامل `move` يشير إلى كل مسلسل في المصفوفة: `0`، `1`، `2`، …. (في معظم الحالات، ستحتاج إلى عناصر المصفوفة الفعلية، ولكن لتقديم قائمة من الخطوات، ستحتاج فقط إلى الفهارس).
+=======
+As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 لكل حركة في تاريخ لعبة "تيك تاك تو"، تنشئ عنصر قائمة `<li>` يحتوي على زر `<button>`. يحتوي الزر على حدث `onClick` الذي يستدعي دالة تسمى `jumpTo` (التي لم تقم بتنفيذها بعد).
 

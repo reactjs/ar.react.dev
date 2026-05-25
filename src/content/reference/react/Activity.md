@@ -43,12 +43,20 @@ In this way, Activity can be thought of as a mechanism for rendering "background
 #### Props {/*props*/}
 
 * `children`: The UI you intend to show and hide.
+<<<<<<< HEAD
 * `mode`: A string value of either `'visible'` or `'hidden'`. If omitted, defaults to `'visible'`. 
+=======
+* `mode`: A string value of either `'visible'` or `'hidden'`. If omitted, defaults to `'visible'`.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 #### Caveats {/*caveats*/}
 
 - If an Activity is rendered inside of a [ViewTransition](/reference/react/ViewTransition), and it becomes visible as a result of an update caused by [startTransition](/reference/react/startTransition), it will activate the ViewTransition's `enter` animation. If it becomes hidden, it will activate its `exit` animation.
+<<<<<<< HEAD
 - An Activity that just renders text will not render anything rather than rendering hidden text, because there’s no corresponding DOM element to apply visibility changes to. For example, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>` will not produce any output in the DOM for `const ComponentThatJustReturnsText = () => "Hello, World!"`.
+=======
+- A *hidden* Activity that just renders text will not render anything rather than rendering hidden text, because there’s no corresponding DOM element to apply visibility changes to. For example, `<Activity mode="hidden"><ComponentThatJustReturnsText /></Activity>` will not produce any output in the DOM for `const ComponentThatJustReturnsText = () => "Hello, World!"`. `<Activity mode="visible"><ComponentThatJustReturnsText /></Activity>` will render visible text.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ---
 
@@ -111,7 +119,11 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -219,7 +231,11 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -287,7 +303,11 @@ In this example, the Contact tab has a `<textarea>` where the user can enter a m
 
 <Sandpack>
 
+<<<<<<< HEAD
 ```js src/App.js 
+=======
+```js src/App.js
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 import { useState } from 'react';
 import TabButton from './TabButton.js';
 import Home from './Home.js';
@@ -434,7 +454,11 @@ export default function Home() {
 }
 ```
 
+<<<<<<< HEAD
 ```js src/Contact.js 
+=======
+```js src/Contact.js
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 export default function Contact() {
   return (
     <div>
@@ -765,7 +789,11 @@ Activity **does not** detect data that is fetched inside an Effect.
 
 The exact way you would load data in the `Posts` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
 
+<<<<<<< HEAD
 Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+=======
+Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 </Note>
 
@@ -903,7 +931,11 @@ function Page() {
       </Activity>
     </>
   );
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 ```
 
 ---
@@ -975,7 +1007,11 @@ export default function Home() {
 }
 ```
 
+<<<<<<< HEAD
 ```js src/Video.js 
+=======
+```js src/Video.js
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 export default function Video() {
   return (
     <video
@@ -1068,7 +1104,11 @@ export default function Home() {
 }
 ```
 
+<<<<<<< HEAD
 ```js src/Video.js 
+=======
+```js src/Video.js
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 export default function Video() {
   return (
     <video
@@ -1185,7 +1225,11 @@ export default function Home() {
 }
 ```
 
+<<<<<<< HEAD
 ```js src/Video.js 
+=======
+```js src/Video.js
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 import { useRef, useLayoutEffect } from 'react';
 
 export default function Video() {
@@ -1238,7 +1282,11 @@ The most common cases of this will be from the following tags:
 
 Typically, though, most of your React components should already be robust to being hidden by an Activity boundary. And conceptually, you should think of "hidden" Activities as being unmounted.
 
+<<<<<<< HEAD
 To eagerly discover other Effects that don't have proper cleanup, which is important not only for Activity boundaries but for many other behaviors in React, we recommend using [`<StrictMode>`](/reference/react/StrictMode). 
+=======
+To eagerly discover other Effects that don't have proper cleanup, which is important not only for Activity boundaries but for many other behaviors in React, we recommend using [`<StrictMode>`](/reference/react/StrictMode).
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ---
 
@@ -1249,4 +1297,8 @@ When an `<Activity>` is "hidden", all its children's Effects are cleaned up. Con
 
 If you're relying on an Effect mounting to clean up a component's side effects, refactor the Effect to do the work in the returned cleanup function instead.
 
+<<<<<<< HEAD
 To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side-effects. 
+=======
+To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side-effects.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb

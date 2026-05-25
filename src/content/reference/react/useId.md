@@ -44,7 +44,15 @@ function PasswordField() {
 
 * `useId` هو خطاف، لذلك يمكنك استدعائه فقط **في المستوي الأعلي من مكونك** أو من خلال الخطاطيف الخاصة بك. لا يمكنك استدعاء الخطاف داخل الحلقات والشروط. إذا كنت بحاجة إلي ذلك، قم بإستخراج مكون جديد وقم بنقل الحالة إليه.
 
+<<<<<<< HEAD
 * `useId` **لا ينبغي استخدامه لتوليد المفاتيح** في القائمة. [يجب أن تتم إنشاء المفاتيح من البيانات الخاصة بك.](/learn/rendering-lists#where-to-get-your-key)
+
+* `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
+=======
+* `useId` **should not be used to generate cache keys** for [use()](/reference/react/use). The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
+
+* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 * `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
 
@@ -191,7 +199,11 @@ input { margin: 5px; }
 
 ### توليد معرفات لعدة عناصر ذات صلة {/*generating-ids-for-several-related-elements*/}
 
+<<<<<<< HEAD
 إذا كنت بحاجة إلى تعيين معرفات لعدة عناصر ذات صلة، يمكنك استدعاء `useId` لتوليد بادئة مشتركة لها: 
+=======
+If you need to give IDs to multiple related elements, you can call `useId` to generate a shared prefix for them:
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 <Sandpack>
 

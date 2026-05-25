@@ -4,7 +4,11 @@ title: بداية سريعة
 
 <Intro>
 
+<<<<<<< HEAD
 أهلا بك في مستندات react، هذه الصفحة ستعطيك مقدمة ل ٨٠٪ من مفاهيم React التي يتم استخدامها بشكل روتيني في مشاريع React.
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 </Intro>
 
@@ -157,8 +161,13 @@ return (
 
 ```js
 const user = {
+<<<<<<< HEAD
   name: 'هايدي لامار',
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+=======
+  name: 'Hedy Lamarr',
+  imageUrl: 'https://react.dev/images/docs/scientists/yXOvdOSs.jpg',
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
   imageSize: 90,
 };
 

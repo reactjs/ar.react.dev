@@ -35,7 +35,11 @@ title: "<option>"
 
 #### الخصائص {/*props*/}
 
+<<<<<<< HEAD
 تدعم `<option>` [جميع خصائص العناصر الشائعة.](/reference/react-dom/components/common#common-props)
+=======
+`<option>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 بالإضافة إلى ذلك ، يدعم `<option>` هذه الخصائص:
 
@@ -81,3 +85,7 @@ select { margin: 5px; }
 ```
 
 </Sandpack>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
