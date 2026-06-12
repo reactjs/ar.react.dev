@@ -64,9 +64,38 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
+<<<<<<< HEAD
 If you use Vite, you can add the plugin to vite-plugin-react:
 
 ```js {3,9}
+=======
+If you use Vite with version 6.0.0 or later of `@vitejs/plugin-react`, you can use the `reactCompilerPreset`:
+
+<TerminalBlock>
+npm install -D @rolldown/plugin-babel
+</TerminalBlock>
+
+```js {3-4,9-11}
+// vite.config.js
+import { defineConfig } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({
+      presets: [reactCompilerPreset()]
+    }),
+  ],
+});
+```
+
+<Note>
+In `@vitejs/plugin-react@6.0.0`, the inline Babel option was removed. If you're using an older version, you can use:
+
+```js
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 // vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -81,6 +110,7 @@ export default defineConfig({
   ],
 });
 ```
+<<<<<<< HEAD
 
 Alternatively, if you prefer a separate Babel plugin for Vite:
 
@@ -93,14 +123,29 @@ npm install -D vite-plugin-babel
 import babel from 'vite-plugin-babel';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+=======
+</Note>
+
+Alternatively, you can use the Babel plugin directly with `@rolldown/plugin-babel`:
+
+```js {3,9}
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 export default defineConfig({
   plugins: [
     react(),
     babel({
+<<<<<<< HEAD
       babelConfig: {
         plugins: ['babel-plugin-react-compiler'],
       },
+=======
+      plugins: ['babel-plugin-react-compiler'],
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     }),
   ],
 });
@@ -114,7 +159,11 @@ Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/nex
 Install `vite-plugin-babel`, and add the compiler's Babel plugin to it:
 
 <TerminalBlock>
+<<<<<<< HEAD
 {`npm install vite-plugin-babel`}
+=======
+npm install vite-plugin-babel
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 </TerminalBlock>
 
 ```js {3-4,16}

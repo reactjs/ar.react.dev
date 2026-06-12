@@ -6,7 +6,11 @@ title: forwardRef
 
 In React 19, `forwardRef` is no longer necessary. Pass `ref` as a prop instead.
 
+<<<<<<< HEAD
 `forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/12/05/react-19#ref-as-a-prop).
+=======
+`forwardRef` will be deprecated in a future release. Learn more [here](/blog/2024/04/25/react-19#ref-as-a-prop).
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 </Deprecated>
 
@@ -336,7 +340,7 @@ const FormField = forwardRef(function FormField({ label, isRequired }, ref) {
         ref={ref}
         label={label}
         value={value}
-        onChange={e => setValue(e.target.value)} 
+        onChange={e => setValue(e.target.value)}
       />
       {(isRequired && value === '') &&
         <i>Required</i>
