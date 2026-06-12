@@ -1111,6 +1111,7 @@ function Square({ value, onSquareClick }) {
 الآن ستوصل `onSquareClick` إلى دالة في مكون `Board` سنسميها `handleClick`. لتوصل `onSquareClick` إلى `handleClick` سنمرر دالة إلى خاصية `onSquareClick` لأول مكون `Square`:
 
 
+
 ```js {7}
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));

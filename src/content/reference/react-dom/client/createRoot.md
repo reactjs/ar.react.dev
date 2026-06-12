@@ -100,6 +100,15 @@ root.render(<App />);
   console.log(document.body.innerHTML);
   ```
 
+* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
+
+  ```js
+  const root = createRoot(document.getElementById('root'));
+  root.render(<App />);
+  // 🚩 The HTML will not include the rendered <App /> yet:
+  console.log(document.body.innerHTML);
+  ```
+
 ---
 
 ### `root.unmount()` {/*root-unmount*/}
@@ -199,7 +208,7 @@ function Counter() {
 
 </Sandpack>
 
-**إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.** 
+**إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.**
 
 من هذه النقطة وما بعدها، سيتولى React إدارة DOM للتطبيق بأكمله. لإضافة مكونات إضافية، [احتضنها داخل المكون `App`.](/learn/importing-and-exporting-components) عندما تحتاج إلى تحديث واجهة المستخدم، يمكن أن تقوم كل من مكوناتك بذلك عن طريق [استخدام الحالة.](/reference/react/useState) وعندما تحتاج إلى عرض محتوى إضافي مثل نافذة منبثقة أو نصائح خارج عنصر DOM، [اعرضه باستخدام `createPortal`.](/reference/react-dom/createPortal)
 
@@ -250,11 +259,11 @@ import { createRoot } from 'react-dom/client';
 import { Comments, Navigation } from './Components.js';
 
 const navDomNode = document.getElementById('navigation');
-const navRoot = createRoot(navDomNode); 
+const navRoot = createRoot(navDomNode);
 navRoot.render(<Navigation />);
 
 const commentDomNode = document.getElementById('comments');
-const commentRoot = createRoot(commentDomNode); 
+const commentRoot = createRoot(commentDomNode);
 commentRoot.render(<Comments />);
 ```
 
@@ -305,7 +314,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ```js
 const domNode = document.createElement('div');
-const root = createRoot(domNode); 
+const root = createRoot(domNode);
 root.render(<Comment />);
 document.body.appendChild(domNode); // يمكنك إضافتها في أي مكان بالمستند
 ```
@@ -512,7 +521,7 @@ To fix, pass the root options to `createRoot(...)`, not `root.render(...)`:
 root.render(App, {onUncaughtError});
 
 // ✅ Correct: pass options to createRoot.
-const root = createRoot(container, {onUncaughtError}); 
+const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
 

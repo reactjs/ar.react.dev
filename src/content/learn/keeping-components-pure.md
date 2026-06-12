@@ -39,7 +39,6 @@ title: الحفاظ على نقاء المكوّنات
 إذا قمنا بتحويل هذا إلى دالة JavaScript، فسيبدو كما يلي:
 
 
-
 ```js
 function double(number) {
   return 2 * number;
@@ -231,7 +230,7 @@ export default function TeaGathering() {
 </Recap>
 
 
-  
+
 <Challenges>
 
 #### إصلاح ساعة مكسورة {/*fix-a-broken-clock*/}
@@ -456,7 +455,7 @@ export default function App() {
 ```js src/utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -554,7 +553,7 @@ export default function App() {
 ```js src/utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'

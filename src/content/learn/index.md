@@ -158,7 +158,7 @@ return (
 ```js
 const user = {
   name: 'هايدي لامار',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageUrl: 'https://react.dev/images/docs/scientists/yXOvdOSs.jpg',
   imageSize: 90,
 };
 

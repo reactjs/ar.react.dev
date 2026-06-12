@@ -265,7 +265,7 @@ export default function TodoList() {
       <h1>مهام {person}</h1>
       <img
         className="avatar"
-        src="https://i.imgur.com/NpGVLas.jpg"
+        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
         alt="Gregorio Y. Zara"
       />
       <ul>
@@ -435,7 +435,7 @@ body > div > div { padding: 20px; }
 
 ```js
 
-const baseUrl = 'https://i.imgur.com/';
+const baseUrl = 'https://react.dev/images/docs/scientists/';
 const person = {
   name: 'نجيب محفوظ',
   imageId: 'NpGVLas',
@@ -486,7 +486,7 @@ body > div > div { padding: 20px; }
 <Sandpack>
 
 ```js
-const baseUrl = 'https://i.imgur.com/';
+const baseUrl = 'https://react.dev/images/docs/scientists/';
 const person = {
   name: 'نجيب محفوظ',
   imageId: 'NpGVLas',
@@ -563,7 +563,7 @@ export default function TodoList() {
 ```js src/utils.js
 export function getImageUrl(person) {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     person.imageSize +
     '.jpg'

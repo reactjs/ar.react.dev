@@ -29,7 +29,7 @@ function Avatar() {
   return (
     <img
       className="avatar"
-      src="https://i.imgur.com/1bX5QH6.jpg"
+      src="https://react.dev/images/docs/scientists/1bX5QH6.jpg"
       alt="Lin Lanying"
       width={100}
       height={100}
@@ -154,7 +154,7 @@ export default function Profile() {
 ```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -321,7 +321,7 @@ export default function Avatar({ person, size }) {
 ```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -485,10 +485,6 @@ export default function Gallery() {
             <b>الجوائز: 2 </b> 
             (جائزة مياكي للجيوكيمياء، جائزة تاناكا)
           </li>
-          <li>
-            <b>اكتشفت: </b>
-            طريقة لقياس ثاني أكسيد الكربون في المياه البحرية
-          </li>
         </ul>
       </section>
     </div>
@@ -499,7 +495,7 @@ export default function Gallery() {
 ```js src/utils.js
 export function getImageUrl(imageId, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     imageId +
     size +
     '.jpg'
@@ -607,7 +603,7 @@ export default function Gallery() {
 ```js src/utils.js
 export function getImageUrl(imageId, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     imageId +
     size +
     '.jpg'
@@ -704,7 +700,7 @@ export default function Gallery() {
 ```js src/utils.js
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -757,10 +753,10 @@ function Avatar({ person, size }) {
 
 export default function Profile() {
   return (
-    <Avatar
-      size={40}
-      person={{ 
-        name: 'غريغوريو ي. زارا', 
+      <Avatar
+        size={40}
+        person={{ 
+          name: 'غريغوريو ي. زارا', 
         imageId: '7vQD0fP'
       }}
     />
@@ -771,7 +767,7 @@ export default function Profile() {
 ```js src/utils.js
 export function getImageUrl(person, size) {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -830,12 +826,12 @@ export default function Profile() {
     </>
   );
 }
-```
+
 
 ```js src/utils.js
 export function getImageUrl(person, size) {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -906,7 +902,7 @@ export default function Profile() {
 ```js src/utils.js
 export function getImageUrl(person, size) {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -939,7 +935,7 @@ export default function Profile() {
           <h1>صورة</h1>
           <img
             className="avatar"
-            src="https://i.imgur.com/OKS67lhm.jpg"
+            src="https://react.dev/images/docs/scientists/OKS67lhm.jpg"
             alt="Aklilu Lemma"
             width={70}
             height={70}
@@ -1012,7 +1008,7 @@ export default function Profile() {
         <h1>صورة</h1>
         <img
           className="avatar"
-          src="https://i.imgur.com/OKS67lhm.jpg"
+          src="https://react.dev/images/docs/scientists/OKS67lhm.jpg"
           alt="Aklilu Lemma"
           width={100}
           height={100}
@@ -1074,7 +1070,7 @@ export default function Profile() {
       <Card title="صورة">
         <img
           className="avatar"
-          src="https://i.imgur.com/OKS67lhm.jpg"
+          src="https://react.dev/images/docs/scientists/OKS67lhm.jpg"
           alt="Aklilu Lemma"
           width={100}
           height={100}
