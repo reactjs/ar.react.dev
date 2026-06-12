@@ -12,8 +12,6 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-<<<<<<< HEAD
-=======
           "title": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
           "titleForHomepage": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
           "icon": "blog",
@@ -35,7 +33,6 @@
           "path": "/blog/2025/12/03/critical-security-vulnerability-in-react-server-components"
         },
         {
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           "title": "React Conf 2025 Recap",
           "titleForHomepage": "React Conf 2025 Recap",
           "icon": "blog",

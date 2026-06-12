@@ -204,11 +204,7 @@ export function NavigationBar({
         <DownloadButton providedFiles={providedFiles} />
         <ReloadButton onReload={handleReload} />
         <ClearButton onClear={handleClear} />
-<<<<<<< HEAD
-        <OpenInCodeSandboxButton />
-=======
         {showOpenInCodeSandbox && <OpenInCodeSandboxButton />}
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
         {activeFile.endsWith('.tsx') && (
           <OpenInTypeScriptPlaygroundButton
             content={sandpack.files[activeFile]?.code || ''}

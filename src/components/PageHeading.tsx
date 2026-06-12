@@ -18,11 +18,8 @@ import {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import {IconCanary} from './Icon/IconCanary';
 import {IconExperimental} from './Icon/IconExperimental';
-<<<<<<< HEAD
-=======
 import {IconCopy} from './Icon/IconCopy';
 import {Button} from './Button';
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 interface PageHeadingProps {
   title: string;

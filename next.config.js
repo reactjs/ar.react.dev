@@ -18,8 +18,6 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
     reactCompiler: true,
-<<<<<<< HEAD
-=======
   },
   async rewrites() {
     return {
@@ -44,7 +42,6 @@ const nextConfig = {
         },
       ],
     };
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {
