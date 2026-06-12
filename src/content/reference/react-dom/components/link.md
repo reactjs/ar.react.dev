@@ -151,7 +151,11 @@ export default function SiteMapPage() {
 
 ### Controlling stylesheet precedence {/*controlling-stylesheet-precedence*/}
 
+<<<<<<< HEAD
 Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`. 
+=======
+Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <SandpackWithHTMLOutput>
 

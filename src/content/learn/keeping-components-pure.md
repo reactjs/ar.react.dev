@@ -28,6 +28,7 @@ title: الحفاظ على نقاء المكوّنات
 
 انظر معادلة الرياضيات هذه: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
+<<<<<<< HEAD
 إذا <Math><MathI>x</MathI> = 2</Math> عندها <Math><MathI>y</MathI> = 4</Math>. دائمًا. 
 
 إذا <Math><MathI>x</MathI> = 3</Math> عندها <Math><MathI>y</MathI> = 6</Math>. دائمًا. 
@@ -38,6 +39,15 @@ title: الحفاظ على نقاء المكوّنات
 
 إذا قمنا بتحويل هذا إلى دالة JavaScript، فسيبدو كما يلي:
 
+=======
+If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always.
+
+If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always.
+
+If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market.
+
+If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 
 ```js
@@ -55,10 +65,17 @@ function double(number) {
 ```js src/App.js
 function Recipe({ drinkers }) {
   return (
+<<<<<<< HEAD
     <ol>    
       <li>أغلي {drinkers} كوب ماء.</li>
       <li>أضف {drinkers} ملعقة شاي و {0.5 * drinkers} ملعقة توابل.</li>
       <li>أضف {0.5 * drinkers} كوب حليب للغلي وسكر للتذوق</li>
+=======
+    <ol>
+      <li>Boil {drinkers} cups of water.</li>
+      <li>Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.</li>
+      <li>Add {0.5 * drinkers} cups of milk to boil and sugar to taste.</li>
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     </ol>
   );
 }
@@ -78,11 +95,19 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 عند تمرير `drinkers={2}` إلى `Recipe`, ستعيد JSX تحتوي على `2 اكواب من الماء`. دائمًا. 
+=======
+When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 إذا قمت بتمرير `drinkers={4}`, ستعيد JSX تحتوي على  `4 اكواب من الماء`. دائمًا.
 
+<<<<<<< HEAD
 تمامًا مثل الصيغ الرياضية.
+=======
+Just like a math formula.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 يمكنك التفكير في المكوّنات الخاصة بك كوصفات: إذا اتبعتها ولم تقم بإدخال مكوّنات جديدة أثناء عملية الطهي، ستحصل على نفس الطبق في كل مرة. هذا "الطبق" هو ال JSX الذي يقدمه المكوّن لReact [للتصيير.](/learn/render-and-commit)
 
@@ -220,6 +245,7 @@ export default function TeaGathering() {
 
 <Recap>
 
+<<<<<<< HEAD
 * يجب أن يكون المكوّن نقيًا، مما يعني:
   * **يهتم بأمره الخاص.** لا يجب أن يغير أي كائنات أو متغيرات كانت موجودة قبل التصيير.
   * **نفس المدخلات تؤدي لنفس المخرجات.** باعطاء نفس المدخلات، يجب على المكوّن أن يعيد دائمًا نفس JSX. 
@@ -227,11 +253,20 @@ export default function TeaGathering() {
 * لا يجب تغيير أي من المدخلات التي تستخدمها المكوّنات الخاصة بك للتصيير. ويشمل ذلك الخصائص والحالة والسياق. لتحديث الشاشة ، استخدم, ["set" state](/learn/state-a-components-memory) بدلاً من تغيير الكائنات الموجودة مسبقًا.
 * يجب ان تسعى للتعبير عن منطق المكوّن في الJSX الذي تعيده. عندما تحتاج إلى "تغيير الأشياء" ، عادةً ما تريد القيام بذلك في معالج الحدث(event listener). كخيار أخير ، يمكنك استخدام `useEffect`.
 * يتطلب كتابة الدوال النقية بعض الممارسة ، ولكنه يطلق العنان لقوة نموذج React.
+=======
+* A component must be pure, meaning:
+  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX.
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 </Recap>
 
 
-  
+
 <Challenges>
 
 #### إصلاح ساعة مكسورة {/*fix-a-broken-clock*/}
@@ -456,7 +491,7 @@ export default function App() {
 ```js src/utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -554,7 +589,7 @@ export default function App() {
 ```js src/utils.js hidden
 export function getImageUrl(person, size = 's') {
   return (
-    'https://i.imgur.com/' +
+    'https://react.dev/images/docs/scientists/' +
     person.imageId +
     size +
     '.jpg'
@@ -612,8 +647,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ];
 
 export default function App() {
@@ -708,8 +748,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ];
 
 export default function App() {
@@ -774,7 +819,11 @@ li {
 
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
+<<<<<<< HEAD
   // انسخ المصفوفة!
+=======
+  // Copy the array!
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   const storiesToDisplay = stories.slice();
 
   // لا يؤثر على المصفوفة الأصلية:
@@ -800,8 +849,13 @@ import { useState, useEffect } from 'react';
 import StoryTray from './StoryTray.js';
 
 const initialStories = [
+<<<<<<< HEAD
   {id: 0, label: "قصة عنكيت" },
   {id: 1, label: "قصة تايلور" },
+=======
+  {id: 0, label: "Ankit's Story" },
+  {id: 1, label: "Taylor's Story" },
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ];
 
 export default function App() {
