@@ -10,25 +10,11 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {/*upcoming-conferences*/}
 
-<<<<<<< HEAD
-### React Universe Conf 2025 {/*react-universe-conf-2025*/}
-September 2-4, 2025. Wrocław, Poland.
-=======
 ### React Paris 2026 {/*react-paris-2026*/}
 March 26 - 27, 2026. In-person in Paris, France (hybrid event)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 [Website](https://react.paris/) - [Twitter](https://x.com/BeJS_)
 
-<<<<<<< HEAD
-### React Alicante 2025 {/*react-alicante-2025*/}
-October 2-4, 2025. Alicante, Spain.
-
-[Website](https://reactalicante.es/) - [Twitter](https://x.com/ReactAlicante) - [Bluesky](https://bsky.app/profile/reactalicante.es) - [YouTube](https://www.youtube.com/channel/UCaSdUaITU1Cz6PvC97A7e0w)
-
-### RenderCon Kenya 2025 {/*rendercon-kenya-2025*/}
-October 04, 2025. Nairobi, Kenya
-=======
 ### CityJS London 2026 {/*cityjs-london-2026*/}
 April 14-17,  2026. In-person in London
 
@@ -36,32 +22,14 @@ April 14-17,  2026. In-person in London
 
 ### ZurichJS Conf 2026 {/*zurichjs-conf-2026*/}
 September 10-11,  2026. In-person in Zurich, Switzerland
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 [Website](https://conf.zurichjs.com?utm_campaign=ZurichJS_Conf&utm_source=referral&utm_content=reactjs_community_conferences) - [Twitter](https://x.com/zurichjs) - [LinkedIn](https://www.linkedin.com/company/zurichjs/)
 
-<<<<<<< HEAD
-### React Conf 2025 {/*react-conf-2025*/}
-October 7-8, 2025. Henderson, Nevada, USA and free livestream
-
-[Website](https://conf.react.dev/) - [Twitter](https://x.com/reactjs) - [Bluesky](https://bsky.app/profile/react.dev)
-
-### React India 2025 {/*react-india-2025*/}
-October 31 - November 01, 2025. In-person in Goa, India (hybrid event) + Oct 15 2025 - remote day
-=======
 ### React Conf Japan 2027 {/*react-conf-japan-2027*/}
 April 24,  2027. In-person in Tokyo, Japan
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 [Website](https://reactconf.jp/) - [Twitter](https://x.com/reactconfjp)
 
-<<<<<<< HEAD
-### React Summit US 2025 {/*react-summit-us-2025*/}
-November 18 - 21, 2025. In-person in New York, USA + remote (hybrid event)
-
-[Website](https://reactsummit.us/) - [Twitter](https://x.com/reactsummit)
-
-=======
 ## Past Conferences {/*past-conferences*/}
 
 ### CityJS New Delhi 2026 {/*cityjs-newdelhi-2026*/}
@@ -73,40 +41,11 @@ February 12-13,  2026. In-person in New Delhi, India
 February 4-6,  2026. In-person in Singapore
 
 [Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
-
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ### React Advanced London 2025 {/*react-advanced-london-2025*/}
 November 28 & December 1, 2025. In-person in London, UK + online (hybrid event)
 
 [Website](https://reactadvanced.com/) - [Twitter](https://x.com/reactadvanced)
 
-<<<<<<< HEAD
-### CityJS Singapore 2026 {/*cityjs-singapore-2026*/}
-February 4-6,  2026. In-person in Singapore
-
-[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
-
-### CityJS New Delhi 2026 {/*cityjs-newdelhi-2026*/}
-February 12-13,  2026. In-person in New Delhi, India
-
-[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
-
-
-### React Paris 2026 {/*react-paris-2026*/}
-March 26 - 27, 2026. In-person in Paris, France (hybrid event)
-
-[Website](https://react.paris/) - [Twitter](https://x.com/BeJS_)
-
-
-### CityJS London 2026 {/*cityjs-london-2026*/}
-April 14-17,  2026. In-person in London
-
-[Website](https://india.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
-
-
-## Past Conferences {/*past-conferences*/}
-
-=======
 ### React Summit US 2025 {/*react-summit-us-2025*/}
 November 18 - 21, 2025. In-person in New York, USA + remote (hybrid event)
 
@@ -136,7 +75,6 @@ October 2-4, 2025. Alicante, Spain.
 September 2-4, 2025. Wrocław, Poland.
 
 [Website](https://www.reactuniverseconf.com/) - [Twitter](https://twitter.com/react_native_eu) - [LinkedIn](https://www.linkedin.com/events/reactuniverseconf7163919537074118657/)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ### React Nexus 2025 {/*react-nexus-2025*/}
 July 03 - 05, 2025. In-person in Bangalore, India

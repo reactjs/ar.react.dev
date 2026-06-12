@@ -112,11 +112,7 @@ This will run the following codemods from `react-codemod`:
 - [`replace-reactdom-render`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-reactdom-render)
 - [`replace-string-ref`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-string-ref)
 - [`replace-act-import`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-act-import)
-<<<<<<< HEAD
-- [`replace-use-form-state`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-use-form-state) 
-=======
 - [`replace-use-form-state`](https://github.com/reactjs/react-codemod?tab=readme-ov-file#replace-use-form-state)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 - [`prop-types-typescript`](https://github.com/reactjs/react-codemod#react-proptypes-to-prop-types)
 
 This does not include the TypeScript changes. See [TypeScript changes](#typescript-changes) below.

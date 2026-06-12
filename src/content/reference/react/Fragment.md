@@ -45,11 +45,7 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 
 **Layout methods:**
 - `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-<<<<<<< HEAD
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned. 
-=======
   - If the Fragment has children, the native `compareDocumentPosition` value is returned.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
   - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
 - `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
@@ -285,11 +281,7 @@ function VisibilityObserverFragment({ threshold = 0.5, onVisibilityChange, child
       },
       { threshold }
     );
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     fragmentRef.current.observeUsing(observer);
     return () => fragmentRef.current.unobserveUsing(observer);
   }, [threshold, onVisibilityChange]);

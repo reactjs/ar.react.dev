@@ -114,13 +114,8 @@ const people = [{
   profession: 'فيزيائي',
 }, {
   id: 3,
-<<<<<<< HEAD
   name: 'بيرسي لافون جوليان',
   profession: 'كيميائي',
-=======
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }, {
   id: 4,
   name: 'سوبراهمانيان تشاندراسيخار',

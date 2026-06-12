@@ -123,11 +123,7 @@ root.unmount();
 
 هذا يكون مفيدًا بشكل أساسي إذا كان عنصر جذر React الخاصة بك (أو أي من العناصر الأسلاف لها) قد يتم إزالتها من DOM بواسطة بعض الأكواد الأخرى. على سبيل المثال، تخيل أن لديك لوحة علامات jQuery تقوم بإزالة علامات غير نشطة من DOM. إذا تمت إزالة علامة ما، فإن كل ما بداخلها (بما في ذلك جذور React الداخلية) سيتم إزالته من DOM أيضًا. في هذه الحالة، تحتاج إلى إخبار React بأنه يجب "إيقاف" إدارة محتوى الجذر المزال عن طريق استدعاء `root.unmount`. وإلا، فإن المكونات الداخلية في الجذر المزال لن تعرف كيفية التنظيف وتحرير الموارد العامة مثل الاشتراكات.
 
-<<<<<<< HEAD
 عند استدعاء `root.unmount`، سيتم إلغاء تثبيت جميع المكونات في الجذر" و"فصل" React عن عنصر DOM الجذر، بما في ذلك إزالة أي معالجات أحداث أو حالة في الشجرة.
-=======
-Calling `root.unmount` will unmount all the components in the root and "detach" React from the root DOM node, including removing any event handlers or state in the tree.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 
 #### المعاملات {/*root-unmount-parameters*/}
@@ -212,11 +208,7 @@ function Counter() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-**إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.** 
-=======
-**If your app is fully built with React, you shouldn't need to create any more roots, or to call [`root.render`](#root-render) again.**
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
+**إذا كان تطبيقك مبنيًا بالكامل بواسطة React، فغالبًا لن تحتاج إلى إنشاء مزيد من الجذور أو استدعاء [`root.render`](#root-render) مرة أخرى.**
 
 من هذه النقطة وما بعدها، سيتولى React إدارة DOM للتطبيق بأكمله. لإضافة مكونات إضافية، [احتضنها داخل المكون `App`.](/learn/importing-and-exporting-components) عندما تحتاج إلى تحديث واجهة المستخدم، يمكن أن تقوم كل من مكوناتك بذلك عن طريق [استخدام الحالة.](/reference/react/useState) وعندما تحتاج إلى عرض محتوى إضافي مثل نافذة منبثقة أو نصائح خارج عنصر DOM، [اعرضه باستخدام `createPortal`.](/reference/react-dom/createPortal)
 
@@ -228,11 +220,7 @@ function Counter() {
 <div id="root"></div>
 ```
 
-<<<<<<< HEAD
 يمكن أن يكون هذا بطيئًا جدًا! لحل هذه المشكلة، يمكنك إنشاء عنصر HTML الأولي من مكوناتك [على الخادم أو أثناء البناء.](/reference/react-dom/server) ثم يمكن لزوار موقعك قراءة النص ورؤية الصور والنقر على الروابط قبل تحميل أي كود JavaScript. نوصي بأن تستخدم [إطار عمل](/learn/creating-a-react-app#full-stack-frameworks) يفعل هذا الأمر تلقائيًا. اعتمادًا على موعد تشغيله، يُطلق عليه *تحميل من جانب الخادم (SSR)* أو *توليد المواقع الثابت (SSG).*
-=======
-This can feel very slow! To solve this, you can generate the initial HTML from your components [on the server or during the build.](/reference/react-dom/server) Then your visitors can read text, see images, and click links before any of the JavaScript code loads. We recommend [using a framework](/learn/creating-a-react-app#full-stack-frameworks) that does this optimization out of the box. Depending on when it runs, this is called *server-side rendering (SSR)* or *static site generation (SSG).*
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 </Note>
 
@@ -497,13 +485,9 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 
 ---
 ## حل المشكلات {/*troubleshooting*/}
-=======
-## Troubleshooting {/*troubleshooting*/}
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ### لقد أنشأت جذرًا، ولكن لا يتم عرض أي شيء {/*ive-created-a-root-but-nothing-is-displayed*/}
 

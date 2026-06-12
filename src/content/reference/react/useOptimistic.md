@@ -210,59 +210,6 @@ This example sets optimistic state inside a `<form>` `submitAction` prop:
 <Sandpack>
 
 ```js src/App.js
-<<<<<<< HEAD
-import { useOptimistic, useState, useRef, startTransition } from "react";
-import { deliverMessage } from "./actions.js";
-
-function Thread({ messages, sendMessageAction }) {
-  const formRef = useRef();
-  function formAction(formData) {
-    addOptimisticMessage(formData.get("message"));
-    formRef.current.reset();
-    startTransition(async () => {
-      await sendMessageAction(formData);
-    });
-  }
-  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
-    messages,
-    (state, newMessage) => [
-      {
-        text: newMessage,
-        sending: true
-      },
-      ...state,
-    ]
-  );
-
-  return (
-    <>
-      <form action={formAction} ref={formRef}>
-        <input type="text" name="message" placeholder="Hello!" />
-        <button type="submit">Send</button>
-      </form>
-      {optimisticMessages.map((message, index) => (
-        <div key={index}>
-          {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
-        </div>
-      ))}
-      
-    </>
-  );
-}
-
-export default function App() {
-  const [messages, setMessages] = useState([
-    { text: "Hello there!", sending: false, key: 1 }
-  ]);
-  async function sendMessageAction(formData) {
-    const sentMessage = await deliverMessage(formData.get("message"));
-    startTransition(() => {
-      setMessages((messages) => [{ text: sentMessage }, ...messages]);
-    })
-  }
-  return <Thread messages={messages} sendMessageAction={sendMessageAction} />;
-=======
 import { useState, startTransition } from 'react';
 import EditName from './EditName';
 
@@ -303,25 +250,15 @@ export default function EditName({ name, action }) {
       </p>
     </form>
   );
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 
 ```js src/actions.js hidden
 export async function updateName(name) {
   await new Promise((res) => setTimeout(res, 1000));
-<<<<<<< HEAD
-  return message;
-}
-```
-
-
-=======
   return name;
 }
 ```
-
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 </Sandpack>
 
 In this example, when the user submits the form, the `optimisticName` updates immediately to show the `newName` optimistically while the server request is in progress. When the request completes, `name` and `optimisticName` are rendered with the actual `updatedName` from the response.

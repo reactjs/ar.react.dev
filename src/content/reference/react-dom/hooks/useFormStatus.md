@@ -110,11 +110,7 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-<<<<<<< HEAD
-</Sandpack>  
-=======
 </Sandpack>
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <Pitfall>
 
@@ -218,12 +214,7 @@ button {
 }
 
 ```
-
-<<<<<<< HEAD
-</Sandpack>  
-=======
 </Sandpack>
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ---
 

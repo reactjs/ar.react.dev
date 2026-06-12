@@ -32,13 +32,8 @@ title: وصف واجهات المستخدم (UI)
 function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3As.jpg"
       alt="كاثرين جونسون"
-=======
-      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
-      alt="Katherine Johnson"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -102,13 +97,8 @@ export default function Gallery() {
 export default function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="آلان إل. هارت"
-=======
-      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -169,13 +159,8 @@ export default function TodoList() {
     <>
       <h1>قائمة مهام هيدي لامار</h1>
       <img
-<<<<<<< HEAD
         src="https://i.imgur.com/yXOvdOSs.jpg"
         alt="هيدي لامار"
-=======
-        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-        alt="Hedy Lamarr"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
         className="photo"
       />
       <ul>
@@ -221,13 +206,8 @@ export default function TodoList() {
       <h1>قائمة مهام {person.name}</h1>
       <img
         className="avatar"
-<<<<<<< HEAD
         src="https://i.imgur.com/7vQD0fPs.jpg"
         alt="جريجوري زارا"
-=======
-        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
       />
       <ul>
         <li>تحسين هاتف الفيديو</li>
@@ -545,15 +525,9 @@ export default function TeaSet() {
 
 ## واجهتك مثل الشجرة {/*your-ui-as-a-tree*/}
 
-<<<<<<< HEAD
 React تستخدم الأشجار لنمذجة العلاقات بين العناصر والوحدات.
 
 شجرة العرض في React هي تمثيل للعلاقة الأبوية والفرعية بين العناصر.
-=======
-React uses trees to model the relationships between components and modules.
-
-A React render tree is a representation of the parent and child relationship between components.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <Diagram name="generic_render_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد، حيث يمثل كل عقد عنصرًا. يقع العقد الجذري في الجزء العلوي من الشجرة ومسمى 'Root Component'. يحتوي على سهمين يمتدان إلى عقدين مسمين 'Component A' و 'Component C'. كل من السهمين مسمى بـ 'يقوم بعرض'. 'Component A' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component B'. 'Component C' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component D'.">
 
@@ -563,11 +537,7 @@ A React render tree is a representation of the parent and child relationship bet
 
 العناصر القريبة من الجزء العلوي من الشجرة، بجوار العنصر الجذري، تُعتبر عناصرًا على مستوى عالٍ. العناصر التي ليس لديها عناصر فرعية تُعتبر عناصر أوراق. هذا التصنيف للعناصر مفيد لفهم تدفق البيانات وأداء العرض.
 
-<<<<<<< HEAD
 نمذجة العلاقة بين وحدات JavaScript هي طريقة مفيدة أخرى لفهم تطبيقك. نشير إليها باسم شجرة الاعتماد على الوحدة.
-=======
-Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد. يُمثل كل عقد وحدة JavaScript. العقد الأعلى مسمى 'RootModule.js'. يمتلك ثلاثة أسهم تمتد إلى العقد: 'ModuleA.js'، 'ModuleB.js'، و 'ModuleC.js'. كل سهم مسمى بـ 'يستورد'. العقد 'ModuleC.js' يحتوي على سهم 'يستورد' واحد يشير إلى عقد مسمى 'ModuleD.js'.">
 
@@ -575,11 +545,7 @@ Modelling the relationship between JavaScript modules is another useful way to u
 
 </Diagram>
 
-<<<<<<< HEAD
 غالبًا ما يُستخدم شجرة الاعتماد من قِبل أدوات البناء لربط جميع أكواد JavaScript ذات الصلة ليتم تنزيلها وعرضها للعميل. حجم الحزمة الكبير يُسبب تراجعًا في تجربة المستخدم لتطبيقات React. فهم شجرة اعتماد الوحدة مفيد لتصحيح مثل هذه المشاكل.
-=======
-A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 

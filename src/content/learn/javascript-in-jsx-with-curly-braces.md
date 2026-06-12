@@ -28,13 +28,8 @@ export default function Avatar() {
   return (
     <img
       className="avatar"
-<<<<<<< HEAD
       src="https://i.imgur.com/NpGVLas.jpg"
       alt="نجيب محفوظ"
-=======
-      src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
-      alt="Gregorio Y. Zara"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -46,11 +41,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 هنا، يتم تمرير `"https://i.imgur.com/NpGVLas.jpg"` و `"نجيب محفوظ"` كنصوص.
-=======
-Here, `"https://react.dev/images/docs/scientists/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ولكن ماذا لو كنت ترغب في تحديد `src` أو نص `alt` بشكل ديناميكي؟ يمكنك **استخدام قيمة من JavaScript عن طريق استبدال `"`و `"` بـ `{`و `}`**:
 
@@ -58,13 +49,8 @@ Here, `"https://react.dev/images/docs/scientists/7vQD0fPs.jpg"` and `"Gregorio Y
 
 ```js
 export default function Avatar() {
-<<<<<<< HEAD
   const avatar = 'https://i.imgur.com/NpGVLas.jpg';
   const description = 'نجيب محفوظ';
-=======
-  const avatar = 'https://react.dev/images/docs/scientists/7vQD0fPs.jpg';
-  const description = 'Gregorio Y. Zara';
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   return (
     <img
       className="avatar"
@@ -203,13 +189,8 @@ export default function TodoList() {
       <h1>مهام {person.name}</h1>
       <img
         className="avatar"
-<<<<<<< HEAD
         src="https://i.imgur.com/NpGVLas.jpg"
         alt="نجيب محفوظ"
-=======
-        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
       />
       <ul>
         <li>كتابة روايات وأعمال أدبية</li>
@@ -284,11 +265,7 @@ export default function TodoList() {
       <h1>مهام {person}</h1>
       <img
         className="avatar"
-<<<<<<< HEAD
-        src="https://i.imgur.com/NpGVLas.jpg"
-=======
         src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
         alt="Gregorio Y. Zara"
       />
       <ul>
@@ -336,13 +313,8 @@ export default function TodoList() {
       <h1>مهام {person.name}</h1>
       <img
         className="avatar"
-<<<<<<< HEAD
         src="https://i.imgur.com/NpGVLas.jpg"
         alt="نجيب محفوظ"
-=======
-        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
       />
       <ul>
         <li>كتابة روايات وأعمال أدبية</li>
@@ -385,13 +357,8 @@ export default function TodoList() {
       <h1>مهام {person.name}</h1>
       <img
         className="avatar"
-<<<<<<< HEAD
         src="https://i.imgur.com/NpGVLas.jpg"
         alt="نجيب محفوظ"
-=======
-        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
-        alt="Gregorio Y. Zara"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
       />
       <ul>
         <li>كتابة روايات وأعمال أدبية</li>
@@ -419,13 +386,8 @@ body > div > div { padding: 20px; }
 
 ```js
 const person = {
-<<<<<<< HEAD
   name: 'نجيب محفوظ',
   imageUrl: "https://i.imgur.com/NpGVLas.jpg",
-=======
-  name: 'Gregorio Y. Zara',
-  imageUrl: "https://react.dev/images/docs/scientists/7vQD0fPs.jpg",
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   theme: {
     backgroundColor: 'black',
     color: 'pink'
@@ -465,11 +427,7 @@ body > div > div { padding: 20px; }
 
 في الكائن أدناه، يتم تقسيم العنوان الكامل للصورة إلى أربعة أجزاء: العنوان الأساس و`imageId` و`imageSize` وامتداد الملف.
 
-<<<<<<< HEAD
 نريد أن يتم دمج عنوان URL للصورة باستخدام هذه الخصائص معًا: العنوان الأساس (دائمًا `'https://i.imgur.com/'`) و`imageId` (`'NpGVLas'`) و `imageSize` (`'s'`)، وامتداد الملف (دائمًا `'.jpg'`). ومع ذلك، هناك خطأ في كيفية تحديد الوسم `<img>` لخاصية `src` الخاصة به.
-=======
-We want the image URL to combine these attributes together: base URL (always `'https://react.dev/images/docs/scientists/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 هل يمكنك إصلاح الخطأ؟
 

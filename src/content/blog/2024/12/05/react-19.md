@@ -330,11 +330,7 @@ We've added two new APIs to `react-dom/static` for static site generation:
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
-<<<<<<< HEAD
-These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
-=======
 These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`:
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ```js
 import { prerender } from 'react-dom/static';
@@ -359,22 +355,14 @@ For more information, see [React DOM Static APIs](/reference/react-dom/static).
 
 Server Components are a new option that allows rendering components ahead of time, before bundling, in an environment separate from your client application or SSR server. This separate environment is the "server" in React Server Components. Server Components can run once at build time on your CI server, or they can be run for each request using a web server.
 
-<<<<<<< HEAD
-React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision). 
-=======
 React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision).
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 
 <Note>
 
 #### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
 
-<<<<<<< HEAD
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
-=======
 While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
 

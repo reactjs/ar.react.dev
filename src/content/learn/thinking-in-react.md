@@ -37,15 +37,9 @@ title: التفكير على طريقة React
 
 قد تختلف طريقة التفكير في تقسيم التصميم لمكونات بناء على خلفيتك المهنية إلى عدة طرق؛ من حيث:
 
-<<<<<<< HEAD
 * **البرمجة**--استخدم نفس الأساليب لتقرر ما إذا كان عليك إنشاء دالة (function) أو كائن. أحد الأساليب هو [مبدأ المهمة الواحدة](https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%A7%D9%84%D9%85%D9%87%D9%85%D8%A9_%D8%A7%D9%84%D9%88%D8%A7%D8%AD%D8%AF%D8%A9)، والتي تشير إلى أنه في أحسن الأحوال، يكون للمكون الواحد وظيفة واحدة فقط. وكلما زادت مهمات المكون، يجب تقسيمها لمكونات فرعية أصغر.
 * **التنسيق (CSS)**--فكر فيما ستقوم بتخصيص أسماء تصنيفات (classes) له. (مع أن المكونات أصلا يفترض أنها صغيرة الحجم).
 * **التصميم**--فكر كيف ستقوم بتنظيم طبقات التصميم.
-=======
-* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
-* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
-* **Design**--consider how you would organize the design's layers.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 إذا كان الـJSON الذي تستخدمه مهيأ بشكل جيد، فكثيرا ما ستجده يطابق وصفك وتقسيمك لمكونات واجهتك بكل سلاسة. ذلك أن واجهة المستخدم ونماذج البيانات عادة ما يكون لهما نفس بنية المعلومات. بمعنى آخر، لهما نفس الشكل. فقسم واجهتك إلى مكونات، حيث يتماشى كل مكون مع أحد أجزاء نموذج البيانات.
 
@@ -233,17 +227,10 @@ td {
 
 لنقم بمراجعتهم واحد تلو الآخر مرة أخرى:
 
-<<<<<<< HEAD
 1. القائمة الأصلية للمنتجات **يتم تمريرها ضمن الخصائص، فهي ليست حالة.** 
 2. كلمات البحث تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
 3. حالة مربع الاختيار تبدو كحالة بما أنها تتغير مع مرور الوقت ولا يمكن اشتقاقها من أي شيء آخر.
 4. قائمة المنتجات بعد التصفية **ليست حالة إذ يمكن اشتقاقها** عبر تصفية قائمة المنتجات الأصلية وفقا لكلمات البحث وحالة مربع الاختيار.
-=======
-1. The original list of products is **passed in as props, so it's not state.**
-2. The search text seems to be state since it changes over time and can't be computed from anything.
-3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
-4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 هذا يعني أن كلمات البحث وحالة مربع الاختيار فقط هما ما يعتبران حالات محتملة للتطبيق! أحسنت عملا!
 
@@ -277,7 +264,6 @@ td {
 
 حسنا، لنختبر طريقتنا عليهم:
 
-<<<<<<< HEAD
 1. **حدد المكونات التي تستخدم الحالة:**
     * مكون `ProductTable` (جدول المنتجات) يحتاج الحالة ليقوم بتصفية قائمة المنتجات (نص البحث وحالة مربع الاختيار). 
     * مكون `SearchBar` (خانة البحث) يقوم بعرض الحالة نفسها (نص البحث).
@@ -285,15 +271,6 @@ td {
 2. **حدد أين تضع الحالة**: سنضع نص البحث وحالة مربع الاختيار في المكون `FilterableProductTable`.
 
 إذا، فقيم الحالات ستكون محفوظة لدى المكون `FilterableProductTable`. 
-=======
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
-    * `SearchBar` needs to display that state (search text and checkbox value).
-2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
-
-So the state values will live in `FilterableProductTable`.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 أضف الحالات للمكون باستخدام [خطاف `useState()`.](/reference/react/useState) الخطاطيف (Hooks) عبارة عن دوال خاصة تسمح لك أن "تربط" مكوناتك بنظام React. أضف متغيرا لكل حالة في بداية الكود الخاص بالمكون `FilterableProductTable` وحدد حالتهم الأولية:
 
@@ -410,17 +387,10 @@ function ProductTable({ products, filterText, inStockOnly }) {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-<<<<<<< HEAD
       <input 
         type="text" 
         value={filterText} 
         placeholder="بحث..."/>
-=======
-      <input
-        type="text"
-        value={filterText}
-        placeholder="Search..."/>
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
       <label>
         <input
           type="checkbox"
@@ -481,17 +451,10 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-<<<<<<< HEAD
       <input 
         type="text" 
         value={filterText} 
         placeholder="بحث..."/>
-=======
-      <input
-        type="text"
-        value={filterText}
-        placeholder="Search..."/>
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ```
 
 ومع ذلك، فأنت لم تكتب بعد أي كود للتجاوب مع تفاعلات المستخدم (كالكتابة). هذه ستكون خطوتك الأخيرة.
@@ -499,11 +462,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## الخطوة 5: إضافة تدفق البيانات العكسي {/*step-5-add-inverse-data-flow*/}
 
-<<<<<<< HEAD
 يعمل تطبيقك الآن بشكل صحيح، حيث تنساب الخصائص والحالات خلال شجرة المكونات. لكن لتغيير الحالة وفقًا لمدخلات المستخدم، سيكون لزامًا عليك أن تحسب حسابًا لدفق البيانات من الاتجاه الآخر: مكونات النموذج في أسفل الشجرة، تريد تعديل الحالة المتمركزة في المكون `FilterableProductTable`. 
-=======
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 يجعل React هذا النوع من تدفق البيانات بسيطا واضحا، لكنه يسلتزم قدرا أكبر من الكتابة مقارنة بالربط المزدوج للبيانات (two-way data binding). إذا ما حاولت الكتابة في خانة البحث أو التحديد على مربع الاختيار، ستجد أن React يتجاهل محاولاتك. وهذا أمر مقصود. بكتابتك `<input value={filterText} />`، فقد حددت خاصية القيمة (`value`) لخانة البحث `input` لأن تكون دوما مطابقة لقيمة الخاصية `filterText` الممررة من حالة المكون `FilterableProductTable`. وحيث أن الحالة `filterText` لم يتم تعديلها، فالخانة لن تتغير أبدأ.
 
@@ -648,15 +607,9 @@ function SearchBar({
 }) {
   return (
     <form>
-<<<<<<< HEAD
       <input 
         type="text" 
         value={filterText} placeholder="بحث..." 
-=======
-      <input
-        type="text"
-        value={filterText} placeholder="Search..."
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
         <input

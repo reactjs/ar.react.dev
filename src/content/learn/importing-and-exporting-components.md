@@ -28,13 +28,8 @@ title: استيراد وتصدير المكونات
 function Profile() {
   return (
     <img
-<<<<<<< HEAD
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="كاترين جونسون"
-=======
       src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
-      alt="Katherine Johnson"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
+      alt="كاترين جونسون"
     />
   );
 }

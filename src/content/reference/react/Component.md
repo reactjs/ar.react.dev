@@ -1275,11 +1275,7 @@ By default, if your application throws an error during rendering, React will rem
 Error boundaries do not catch errors for:
 
 - Event handlers [(learn more)](/learn/responding-to-events)
-<<<<<<< HEAD
-- [Server side rendering](/reference/react-dom/server) 
-=======
 - [Server side rendering](/reference/react-dom/server)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 - Errors thrown in the error boundary itself (rather than its children)
 - Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks); an exception is the usage of the [`startTransition`](/reference/react/useTransition#starttransition) function returned by the [`useTransition`](/reference/react/useTransition) Hook. Errors thrown inside the transition function are caught by error boundaries [(learn more)](/reference/react/useTransition#displaying-an-error-to-users-with-error-boundary)
 

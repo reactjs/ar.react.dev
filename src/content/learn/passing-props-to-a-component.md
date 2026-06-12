@@ -127,36 +127,22 @@ export default function Profile() {
     <div>
       <Avatar
         size={100}
-<<<<<<< HEAD
         person={{ 
           name: 'كاتسوكو ساروهاشي', 
-=======
-        person={{
-          name: 'Katsuko Saruhashi',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: 'YfeOqp2'
         }}
       />
       <Avatar
         size={80}
         person={{
-<<<<<<< HEAD
           name: 'أكليلو ليما', 
-=======
-          name: 'Aklilu Lemma',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: 'OKS67lh'
         }}
       />
       <Avatar
         size={50}
-<<<<<<< HEAD
         person={{ 
           name: 'لين لانين',
-=======
-        person={{
-          name: 'Lin Lanying',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '1bX5QH6'
         }}
       />
@@ -306,13 +292,8 @@ export default function Profile() {
     <Card>
       <Avatar
         size={100}
-<<<<<<< HEAD
         person={{ 
           name: 'كاتسوكو ساروهاشي',
-=======
-        person={{
-          name: 'Katsuko Saruhashi',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: 'YfeOqp2'
         }}
       />
@@ -473,21 +454,12 @@ export default function Gallery() {
         />
         <ul>
           <li>
-<<<<<<< HEAD
             <b>المهنة: </b> 
             عالمة فيزياء وكيمياء
           </li>
           <li>
             <b>الجوائز: 4 </b> 
             (جائزة نوبل في الفيزياء، جائزة نوبل في الكيمياء، ميدالية دافي، ميدالية ماتيوتشي)
-=======
-            <b>Profession: </b>
-            physicist and chemist
-          </li>
-          <li>
-            <b>Awards: 4 </b>
-            (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           </li>
           <li>
             <b>اكتشفت: </b>
@@ -506,25 +478,12 @@ export default function Gallery() {
         />
         <ul>
           <li>
-<<<<<<< HEAD
             <b>المهنة: </b> 
             جيوكيميائية
           </li>
           <li>
             <b>الجوائز: 2 </b> 
             (جائزة مياكي للجيوكيمياء، جائزة تاناكا)
-=======
-            <b>Profession: </b>
-            geochemist
-          </li>
-          <li>
-            <b>Awards: 2 </b>
-            (Miyake Prize for geochemistry, Tanaka Prize)
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
-          </li>
-          <li>
-            <b>اكتشفت: </b>
-            طريقة لقياس ثاني أكسيد الكربون في المياه البحرية
           </li>
         </ul>
       </section>
@@ -794,15 +753,10 @@ function Avatar({ person, size }) {
 
 export default function Profile() {
   return (
-    <Avatar
-      size={40}
-<<<<<<< HEAD
-      person={{ 
-        name: 'غريغوريو ي. زارا', 
-=======
-      person={{
-        name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
+      <Avatar
+        size={40}
+        person={{ 
+          name: 'غريغوريو ي. زارا', 
         imageId: '7vQD0fP'
       }}
     />
@@ -857,32 +811,22 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-<<<<<<< HEAD
         person={{ 
           name: 'غريغوريو ي. زارا', 
-=======
-        person={{
-          name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-<<<<<<< HEAD
         person={{ 
           name: 'غريغوريو ي. زارا', 
-=======
-        person={{
-          name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '7vQD0fP'
         }}
       />
     </>
   );
 }
-```
+
 
 ```js src/utils.js
 export function getImageUrl(person, size) {
@@ -931,37 +875,22 @@ export default function Profile() {
     <>
       <Avatar
         size={40}
-<<<<<<< HEAD
         person={{ 
           name: 'غريغوريو ي. زارا', 
-=======
-        person={{
-          name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={70}
-<<<<<<< HEAD
         person={{ 
           name: 'غريغوريو ي. زارا', 
-=======
-        person={{
-          name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
-<<<<<<< HEAD
         person={{ 
           name: 'غريغوريو ي. زارا', 
-=======
-        person={{
-          name: 'Gregorio Y. Zara',
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
           imageId: '7vQD0fP'
         }}
       />

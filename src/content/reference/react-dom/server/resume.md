@@ -75,11 +75,7 @@ The returned stream has an additional property:
 
 <Sandpack>
 
-<<<<<<< HEAD
-```js src/App.js hidden 
-=======
 ```js src/App.js hidden
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ```
 
 ```html public/index.html

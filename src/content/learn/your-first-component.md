@@ -63,13 +63,8 @@ title: مكوّنك الأول
 export default function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3Am.jpg"
       alt="كاثرين جونسون"
-=======
-      src="https://react.dev/images/docs/scientists/MK3eW3Am.jpg"
-      alt="Katherine Johnson"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   )
 }
@@ -103,24 +98,16 @@ img { height: 200px; }
 
 يمكن كتابة عبارات الإرجاع في سطر واحد، كما في هذا المكوّن:
 
-```js
-<<<<<<< HEAD
+\`\`\`js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />;
-=======
-return <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />;
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
-```
+\`\`\`
 
 ولكن إذا لم يكن الترميز موجودًا في نفس السطر مع عبارة `return`، فيجب عليك وضعه بين قوسين:
 
 ```js
 return (
   <div>
-<<<<<<< HEAD
     <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
-=======
-    <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   </div>
 );
 ```
@@ -141,13 +128,8 @@ return (
 function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3As.jpg"
       alt="كاثرين جونسون"
-=======
-      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
-      alt="Katherine Johnson"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -181,17 +163,10 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ```html
 <section>
-<<<<<<< HEAD
   <h1>علماء رائعون</h1>
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="كاثرين جونسون" />
-=======
-  <h1>Amazing scientists</h1>
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 </section>
 ```
 
@@ -240,11 +215,7 @@ function Profile() {
 
 معظم تطبيقات React تستخدم مكوّنات على طول الطريق. وهذا يعني أنك لن تستخدم المكونات فقط للأجزاء القابلة لإعادة الاستخدام مثل الأزرار، ولكن أيضًا للأجزاء الأكبر مثل الأشرطة الجانبية، والقوائم، وفي النهاية، الصفحات الكاملة! المكوّنات هي وسيلة مفيدة لتنظيم كود واجهة المستخدم والترميز المرئي، حتى لو كان بعضها لا يستخدم سوى مرة واحدة.
 
-<<<<<<< HEAD
 [أطر العمل المبنية على React](/learn/creating-a-react-app) تأخذ خطوة إضافية. بحيث بدلاً من استخدام ملف HTML فارغ والسماح لـ React بـ "الاستيلاء" على إدارة الصفحة بواسطة JavaScript، فإنها *أيضًا* تقوم بتوليد كود الـ HTML تلقائيًا من مكوّنات React الخاصة بك. هذا يسمح لتطبيقك بعرض بعض المحتوى قبل تحميل كود JavaScript.
-=======
-[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 ومع ذلك، لا تزال هناك العديد من المواقع التي تستخدم React فقط [لإضافة التفاعلية إلى صفحات HTML الموجودة مسبقا.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) فلديها العديد من المكوّنات الجذرية بدلاً من وجود مكوّن جذر واحد للصفحة بأكملها. يمكنك استخدام React بالمقدار الذي تحتاج إليه.
 
@@ -275,13 +246,8 @@ function Profile() {
 function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/lICfvbD.jpg"
       alt="أكليلو ليما"
-=======
-      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
-      alt="Aklilu Lemma"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -305,14 +271,9 @@ img { height: 181px; }
 export default function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/lICfvbD.jpg"
       alt="أكليلو ليما"
 
-=======
-      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
-      alt="Aklilu Lemma"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -343,11 +304,7 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return
-<<<<<<< HEAD
     <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="كاتسوكو ساروهاشي" />;
-=======
-    <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 
@@ -365,11 +322,7 @@ img { height: 180px; }
 
 ```js
 export default function Profile() {
-<<<<<<< HEAD
   return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="كاتسوكو ساروهاشي" />;
-=======
-  return <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 
@@ -386,15 +339,9 @@ img { height: 180px; }
 ```js
 export default function Profile() {
   return (
-<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/jA8hHMpm.jpg" 
       alt="كاتسوكو ساروهاشي"
-=======
-    <img
-      src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg"
-      alt="Katsuko Saruhashi"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -418,13 +365,8 @@ img { height: 180px; }
 function profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="ألان ل. هارت"
-=======
-      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -459,13 +401,8 @@ img { margin: 0 10px 10px 0; height: 90px; }
 function Profile() {
   return (
     <img
-<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="ألان ل. هارت"
-=======
-      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
->>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
