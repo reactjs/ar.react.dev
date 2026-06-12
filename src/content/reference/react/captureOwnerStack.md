@@ -257,7 +257,11 @@ pre.nowrap {
 }
 
 .hidden {
+<<<<<<< HEAD
  display: none;  
+=======
+ display: none;
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 

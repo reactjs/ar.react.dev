@@ -28,8 +28,13 @@ title: استيراد وتصدير المكونات
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3As.jpg"
       alt="كاترين جونسون"
+=======
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -80,7 +85,7 @@ export default function App() {
 function Profile() {
   return (
     <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
       alt="Alan L. Hart"
     />
   );
@@ -118,7 +123,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ربما تواجه ملفات تترك امتداد الملف `.js` مثل هذا:
 
-```js 
+```js
 import Gallery from './Gallery';
 ```
 
@@ -198,7 +203,7 @@ export default function App() {
 export function Profile() {
   return (
     <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
       alt="Alan L. Hart"
     />
   );
@@ -286,7 +291,7 @@ export default function App() {
 export function Profile() {
   return (
     <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
       alt="Alan L. Hart"
     />
   );
@@ -354,7 +359,7 @@ export default function Gallery() {
 export function Profile() {
   return (
     <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
       alt="Alan L. Hart"
     />
   );
@@ -404,7 +409,7 @@ export default function Gallery() {
 export default function Profile() {
   return (
     <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
       alt="Alan L. Hart"
     />
   );
