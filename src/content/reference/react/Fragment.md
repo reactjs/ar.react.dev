@@ -4,9 +4,7 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node. 
-
-<Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
+`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
 
 <Canary>Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements.</Canary>
 
@@ -761,19 +759,12 @@ function VisibleGroup({ onVisibilityChange, children }) {
         onVisibilityChange(visibleElements.size > 0);
       }
     );
-<<<<<<< HEAD
-    
-    fragmentRef.current.observeUsing(observer);
-    return () => fragmentRef.current.unobserveUsing(observer);
-  }, [threshold, onVisibilityChange]);
-=======
     const fragmentInstance = fragmentRef.current;
     fragmentInstance.observeUsing(observer);
     return () => {
       fragmentInstance.unobserveUsing(observer);
     };
   }, [onVisibilityChange]);
->>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
   return (
     <Fragment ref={fragmentRef}>
