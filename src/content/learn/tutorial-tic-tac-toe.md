@@ -907,6 +907,7 @@ body {
 
 ### أدوات مطور React (React DevTools) {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 أدوات مطور React تتيح لك التحقق من الخصائص والحالة لمكونات React الخاصة بك. يمكنك العثور على علامة تبويب أدوات مطوري React في أسفل قسم المتصفح في CodeSandbox:
 
 ![أدوات مطوري React في CodeSandbox](../images/tutorial/codesandbox-devtools.png)
@@ -914,12 +915,26 @@ body {
 لفحص مكون معين على الشاشة، استخدم الزر في الزاوية اليسرى العليا من أدوات مطوري React:
 
 ![تحديد مكونات في الصفحة من أدوات مطوري React](../images/tutorial/devtools-select.gif)
+=======
+React Developer Tools let you check the props and the state of your React components. It is available as a [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), and [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) browser extension.
 
-<Note>
+After you install it, a new *Components* tab will appear in your browser Developer Tools for sites using React. If you're following along in CodeSandbox, you'd need to first open your sandbox preview in a new tab:
 
+![opening in new tab](../images/tutorial/sandbox-new-tab.png)
+
+Then, on the preview page, open your browser's DevTools and find the *Components* tab:
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
+
+![components tab](../images/tutorial/components-tab.png)
+
+<<<<<<< HEAD
 إن كنت تستخدم بيئة التطوير المحلية، أدوات مطوري React متوفرة كإضافة لمتصفحات [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ar)، [Firefox](https://addons.mozilla.org/ar/firefox/addon/react-devtools/)، و [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil). قم بتثبيتها، وستظهر علامة التبويب *Components* في أدوات المطور لمتصفحك للمواقع التي تستخدم React.
+=======
+To inspect a particular component on the screen, use the button in the top left corner of the Components tab:
 
-</Note>
+![inspecting with devtools](../images/tutorial/devtools-inspect.gif)
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
+
 
 ## إكمال اللعبة {/*completing-the-game*/}
 

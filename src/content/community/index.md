@@ -13,7 +13,11 @@ title: من أين تحصل على المساعدة
 
 ## Code of Conduct {/*code-of-conduct*/}
 
+<<<<<<< HEAD
 قبل المشاركة، الرجاء منك [أن تقرأ قواعدنا السلوكية](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)، لقد تبنّينا [ميثاق القواعد السلوكية للمساهمين](https://www.contributor-covenant.org/ar/version/1/4/code-of-conduct) ونتطلّع إلى أن يحترم أعضاء المجتمع قواعده.
+=======
+Before participating in React's communities, [please read our Code of Conduct.](https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 ## Stack Overflow {/*stack-overflow*/}
 
