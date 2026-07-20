@@ -141,7 +141,11 @@ window.React2 = require('react');
 console.log(window.React1 === window.React2);
 ```
 
+<<<<<<< HEAD
 إن طُبِعَ `false` فأنّه من المُمكن أن يكون لديك اثنان من React و عليك معرفة سبب حصول ذلك. [هذه التذكره "issue"](https://github.com/facebook/react/issues/13991) تحتوي على بعض الأسباب الشائعة.
+=======
+If it prints `false` then you might have two Reacts and need to figure out why that happened. [This issue](https://github.com/react/react/issues/13991) includes some common reasons encountered by the community.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 هذه المُشكلة قد تظهر عند تنفيذك لأمر `npm link` أو أمرًا مشابه له. في تلك الحالة ، فأن المُجَمِّع "bundler" قد يَرى اثنان React - واحدة في مُجلّد التطبيق والأُخرى في مُجلّد المكتبة. اعتِبارًا `myapp` و `mylib` مُجلّدان إخوة (على نفس المُستوى) فقد يكون تنفيذ أمر `npm link ../myapp/node_modules/react` من `mylib` حلًا مُحتَملًا. يقوم ذلك بجعل المكتبة تستخدم نسخة React للتطبيق.
 
@@ -153,4 +157,8 @@ console.log(window.React1 === window.React2);
 
 ## أسباب أُخرى {/*other-causes*/}
 
+<<<<<<< HEAD
 إن كُنت لازلت تواجه المشاكل، الرجاء ترك تعليف في [هذه التذكره](https://github.com/facebook/react/issues/13991) وسَنُحاول مُساعدَتُك. إن أمكن، حاوِل انشاء مثال لإعادة إنتاج الخطأ فقد تكتشف المُشكلة حينها.
+=======
+If none of this worked, please comment in [this issue](https://github.com/react/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
