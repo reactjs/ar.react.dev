@@ -1,28 +1,28 @@
 ---
-title: Introduction
+title: مقدمة
 ---
 
 <Intro>
-React Compiler is a new build-time tool that automatically optimizes your React app. It works with plain JavaScript, and understands the [Rules of React](/reference/rules), so you don't need to rewrite any code to use it.
+React Compiler هي أداة جديدة تعمل في وقت البناء وتحسّن تطبيق React الخاص بك تلقائياً. وهي تعمل مع JavaScript العادي، وتفهم [قواعد React](/reference/rules)، لذا لا تحتاج إلى إعادة كتابة أي كود لاستخدامها.
 </Intro>
 
 <YouWillLearn>
 
-* What React Compiler does
-* Getting started with the compiler
-* Incremental adoption strategies
-* Debugging and troubleshooting when things go wrong
-* Using the compiler on your React library
+* ما الذي يفعله React Compiler
+* البدء مع الcompiler
+* استراتيجيات التبني التدريجي
+* تصحيح الأخطاء واستكشاف المشاكل عند حدوث خطأ ما
+* استخدام الcompiler على مكتبة React الخاصة بك
 
 </YouWillLearn>
 
-## What does React Compiler do? {/*what-does-react-compiler-do*/}
+## ما الذي يفعله React Compiler؟ {/*what-does-react-compiler-do*/}
 
-React Compiler automatically optimizes your React application at build time. React is often fast enough without optimization, but sometimes you need to manually memoize components and values to keep your app responsive. This manual memoization is tedious, easy to get wrong, and adds extra code to maintain. React Compiler does this optimization automatically for you, freeing you from this mental burden so you can focus on building features.
+يحسّن React Compiler تطبيق React تلقائياً أثناء عملية البناء. غالباً ما يكون React سريعاً بما يكفي دون الحاجة إلى تحسينات، لكن في بعض الحالات قد تحتاج إلى استخدام memoization يدوياً للمكونات والقيم للحفاظ على استجابة تطبيقك. هذا الـ memoization اليدوي مُرهق، ومن السهل ارتكاب أخطاء عند استخدامه، كما يؤدي إلى كتابة شيفرة إضافية تحتاج إلى صيانتها. يتولى React Compiler تنفيذ هذه التحسينات تلقائياً، مما يخفف عنك هذا العبء الذهني ويتيح لك التركيز على تطوير الميزات.
 
-### Before React Compiler {/*before-react-compiler*/}
+### قبل React Compiler {/*before-react-compiler*/}
 
-Without the compiler, you need to manually memoize components and values to optimize re-renders:
+بدون React Compiler، تحتاج إلى تطبيق memoization يدوياً على المكونات والقيم لتحسين عمليات إعادة الrender.
 
 ```js
 import { useMemo, useCallback, memo } from 'react';
@@ -46,24 +46,23 @@ const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
 });
 ```
 
-
 <Note>
 
-This manual memoization has a subtle bug that breaks memoization:
+يحتوي هذا التذكر اليدوي على خطأ دقيق يكسر التذكر:
 
 ```js [[2, 1, "() => handleClick(item)"]]
 <Item key={item.id} onClick={() => handleClick(item)} />
 ```
 
-Even though `handleClick` is wrapped in `useCallback`, the arrow function `() => handleClick(item)` creates a new function every time the component renders. This means that `Item` will always receive a new `onClick` prop, breaking memoization.
+حتى وإن تم التفاف handleClick في useCallback، فإن دالة السهم `() => handleClick(item)` تنشئ دالة جديدة في كل مرة يتم فيها render للمكون. وهذا يعني أن `Item` سوف تتلقى دائماً خاصية onClick جديدة، مما يكسر التذكر.
 
-React Compiler is able to optimize this correctly with or without the arrow function, ensuring that `Item` only re-renders when `props.onClick` changes.
+يمكن لـ React Compiler تحسين هذا بشكل صحيح مع أو بدون دالة السهم، مما يضمن أن Item سيتم إعادة render له فقط عندما تتغير props.onClick.
 
 </Note>
 
-### After React Compiler {/*after-react-compiler*/}
+### بعد React Compiler {/*after-react-compiler*/}
 
-With React Compiler, you write the same code without manual memoization:
+مع React Compiler، تكتب نفس الكود بدون تذكر يدوي:
 
 ```js
 function ExpensiveComponent({ data, onClick }) {
@@ -83,23 +82,23 @@ function ExpensiveComponent({ data, onClick }) {
 }
 ```
 
-_[See this example in the React Compiler Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)_
+_[شاهد هذا المثال في React Compiler Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)_
 
-React Compiler automatically applies the optimal memoization, ensuring your app only re-renders when necessary.
+يطبّق React Compiler تلقائيًا ما يعادل الـ `memoization` اليدوي، مما يضمن أن تطبيقك سيتم إعادة render له فقط عند الضرورة.
 
 <DeepDive>
-#### What kind of memoization does React Compiler add? {/*what-kind-of-memoization-does-react-compiler-add*/}
+#### ما نوع التذكر الذي يضيفه React Compiler؟ {/*what-kind-of-memoization-does-react-compiler-add*/}
 
-React Compiler's automatic memoization is primarily focused on **improving update performance** (re-rendering existing components), so it focuses on these two use cases:
+يركز التذكر التلقائي في React Compiler في المقام الأول على **تحسين أداء التحديثات** (إعادة render المكونات الموجودة)، لذلك فإنه يركز على حالات الاستخدام التاليتين:
 
-1. **Skipping cascading re-rendering of components**
-    * Re-rendering `<Parent />` causes many components in its component tree to re-render, even though only `<Parent />` has changed
-1. **Skipping expensive calculations from outside of React**
-    * For example, calling `expensivelyProcessAReallyLargeArrayOfObjects()` inside of your component or hook that needs that data
+1. **تخطي إعادة render المكونات المتسلسلة**
+    * إعادة render `<Parent />` تسبب إعادة render العديد من المكونات في شجرة المكون الخاصة بها، حتى وإن كان فقط `<Parent />` الوحيد الذي قد تغير
+1. **تجنّب إعادة تنفيذ العمليات الحسابية المكلفة التي لا ينفذها React نفسه.**
+    * على سبيل المثال، عندما يستدعي أحد المكوّنات أو الـ Hook الدالة `expensivelyProcessAReallyLargeArrayOfObjects()` للحصول على تلك البيانات.
 
-#### Optimizing Re-renders {/*optimizing-re-renders*/}
+### تحسين إعادة التصيير {/*optimizing-re-renders*/}
 
-React lets you express your UI as a function of their current state (more concretely: their props, state, and context). In its current implementation, when a component's state changes, React will re-render that component _and all of its children_ — unless you have applied some form of manual memoization with `useMemo()`, `useCallback()`, or `React.memo()`. For example, in the following example, `<MessageButton>` will re-render whenever `<FriendList>`'s state changes:
+يسمح React لك بالتعبير عن واجهتك كدالة من حالتها الحالية (بشكل أكثر دقة: props والحالة والـ context الخاصة بها). في التطبيق الحالي، عندما تتغير حالة المكون، سيُعيد React تنفيذ عملية الـ render لهذا المكوّن الفرعية له — ما لم تكن قد طبقت بعض أشكال التذكر اليدوي باستخدام `useMemo()` أو `useCallback()` أو `React.memo()`. على سبيل المثال، في المثال التالي، سيتم إعادة تصيير `<MessageButton>` عندما تتغير حالة `<FriendList>`:
 
 ```javascript
 function FriendList({ friends }) {
@@ -118,74 +117,76 @@ function FriendList({ friends }) {
   );
 }
 ```
-[_See this example in the React Compiler Playground_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
-React Compiler automatically applies the equivalent of manual memoization, ensuring that only the relevant parts of an app re-render as state changes, which is sometimes referred to as "fine-grained reactivity". In the above example, React Compiler determines that the return value of `<FriendListCard />` can be reused even as `friends` changes, and can avoid recreating this JSX _and_ avoid re-rendering `<MessageButton>` as the count changes.
+_[شاهد هذا المثال في React Compiler Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
-#### Expensive calculations also get memoized {/*expensive-calculations-also-get-memoized*/}
+يطبق React Compiler تلقائياً ما يعادل التذكر اليدوي، مما يضمن أن إعادة تصيير فقط الأجزاء ذات الصلة من التطبيق عند تغيير الحالة، وهو ما يُشار إليه أحياناً باسم "التفاعل الدقيق". في المثال أعلاه، يحدد React Compiler أن قيمة الإرجاع `<FriendListCard />` يمكن إعادة استخدامها حتى عندما يتغير friends، ويمكن تجنب إعادة إنشاء JSX هذا وتجنب إعادة تصيير `<MessageButton>` عند تغيير العدد.
 
-React Compiler can also automatically memoize expensive calculations used during rendering:
+
+#### تُطبَّق تقنية `memoization` أيضًا على العمليات الحسابية المكلفة تلقائيًا {/*expensive-calculations-also-get-memoized*/}
+
+يمكن لـ React Compiler أيضًا تطبيق `memoization` تلقائيًا على العمليات الحسابية المكلفة التي تُستخدم أثناء عملية الـ render:
 
 ```js
-// **Not** memoized by React Compiler, since this is not a component or hook
+// **لم يتم** memoize بواسطة React Compiler، لأن هذا ليس مكوناً أو hook
 function expensivelyProcessAReallyLargeArrayOfObjects() { /* ... */ }
 
-// Memoized by React Compiler since this is a component
+// Memoized بواسطة React Compiler لأن هذا مكون
 function TableContainer({ items }) {
-  // This function call would be memoized:
+  // سيتم memoize استدعاء الدالة هذا:
   const data = expensivelyProcessAReallyLargeArrayOfObjects(items);
   // ...
 }
 ```
-[_See this example in the React Compiler Playground_](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
 
-However, if `expensivelyProcessAReallyLargeArrayOfObjects` is truly an expensive function, you may want to consider implementing its own memoization outside of React, because:
+_[شاهد هذا المثال في React Compiler Playground](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)_
 
-- React Compiler only memoizes React components and hooks, not every function
-- React Compiler's memoization is not shared across multiple components or hooks
+ومع ذلك، إذا كانت `expensivelyProcessAReallyLargeArrayOfObjects` دالة مكلفة حقاً، فقد تريد التفكير في تطبيق التذكر الخاص بها خارج React، لأن:
 
-So if `expensivelyProcessAReallyLargeArrayOfObjects` was used in many different components, even if the same exact items were passed down, that expensive calculation would be run repeatedly. We recommend [profiling](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) first to see if it really is that expensive before making code more complicated.
+- يقوم React Compiler فقط بـ memoize مكونات React و hooks، وليس كل دالة
+- التذكر في React Compiler لا تتم مشاركته عبر عدة مكونات أو hooks
+
+لذلك، إذا استُخدمت الدالة `expensivelyProcessAReallyLargeArrayOfObjects` في العديد من المكوّنات المختلفة، فسيُعاد تنفيذ هذه العملية الحسابية المكلفة مرارًا وتكرارًا، حتى وإن مُرِّرت إليها البيانات نفسها في كل مرة. لذلك، ننصح أولًا بإجراء [تحليل الأداء](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) للتأكد من أن هذه العملية مكلفة فعلًا، قبل زيادة تعقيد الشيفرة
 </DeepDive>
 
-## Should I try out the compiler? {/*should-i-try-out-the-compiler*/}
+## هل يجب أن أجرب المترجم؟ {/*should-i-try-out-the-compiler*/}
 
-We encourage everyone to start using React Compiler. While the compiler is still an optional addition to React today, in the future some features may require the compiler in order to fully work.
+نحن نشجع الجميع على البدء في استخدام React Compiler. في حين أن المترجم لا يزال إضافة اختيارية لـ React اليوم، قد تتطلب بعض الميزات في المستقبل المترجم لكي تعمل بشكل كامل.
 
-### Is it safe to use? {/*is-it-safe-to-use*/}
+### هل من الآمن استخدامه؟ {/*is-it-safe-to-use*/}
 
-React Compiler is now stable and has been tested extensively in production. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
+React Compiler مستقر الآن وقد تم اختباره بشكل مكثف في الإنتاج. في حين تم استخدامه في الإنتاج في شركات مثل Meta، فإن نشر المترجم للإنتاج في تطبيقك سيعتمد على صحة codebase الخاص بك وكيف اتبعت جيداً [قواعد React](/reference/rules).
 
-## What build tools are supported? {/*what-build-tools-are-supported*/}
+## ما أدوات البناء المدعومة؟ {/*what-build-tools-are-supported*/}
 
-React Compiler can be installed across [several build tools](/learn/react-compiler/installation) such as Babel, Vite, Metro, and Rsbuild.
+يمكن تثبيت React Compiler مع [العديد من أدوات البناء](/learn/react-compiler/installation)، مثل Babel وVite وMetro وRsbuild.
 
-React Compiler is primarily a light Babel plugin wrapper around the core compiler, which was designed to be decoupled from Babel itself. While the initial stable version of the compiler will remain primarily a Babel plugin, we are working with the swc and [oxc](https://github.com/oxc-project/oxc/issues/10048) teams to build first class support for React Compiler so you won't have to add Babel back to your build pipelines in the future.
+يعتمد React Compiler في الأساس على إضافة (Plugin) خفيفة لـ Babel تعمل كغلاف (Wrapper) حول المترجم الأساسي، والذي صُمم ليكون مستقلاً عن Babel نفسه. ورغم أن الإصدار المستقر الأول من React Compiler سيظل يعتمد في المقام الأول على إضافة لـ Babel، فإننا نعمل بالتعاون مع فريقي swc و[oxc](https://github.com/oxc-project/oxc/issues/10048) لتوفير دعمٍ أصيل (First-class support) لـ React Compiler، بحيث لن تضطر مستقبلًا إلى إعادة إضافة Babel إلى مسارات البناء (Build Pipelines) الخاصة بك.
 
-Next.js users can enable the swc-invoked React Compiler by using [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) and up.
+يمكن لمستخدمي Next.js تفعيل React Compiler الذي يستدعيه swc باستخدام الإصدار [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) أو أحدث.
 
-## What should I do about useMemo, useCallback, and React.memo? {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
+## ماذا ينبغي أن أفعل بشأن useMemo وuseCallback وReact.memo؟ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
-By default, React Compiler will memoize your code based on its analysis and heuristics. In most cases, this memoization will be as precise, or moreso, than what you may have written.
+بشكل افتراضي، يطبق React Compiler تقنية `memoization` على شيفرتك اعتمادًا على تحليله والاستدلالات (heuristics) التي يستخدمها. وفي معظم الحالات، يكون هذا الـ `memoization` بنفس دقة ما قد تكتبه يدويًا، أو حتى أكثر دقة.
 
-However, in some cases developers may need more control over memoization. The `useMemo` and `useCallback` hooks can continue to be used with React Compiler as an escape hatch to provide control over which values are memoized. A common use-case for this is if a memoized value is used as an effect dependency, in order to ensure that an effect does not fire repeatedly even when its dependencies do not meaningfully change.
+ومع ذلك، قد يحتاج المطورون في بعض الحالات إلى قدر أكبر من التحكم في الـ `memoization`. ويمكن الاستمرار في استخدام الـ Hooks ‏`useMemo` و`useCallback` مع React Compiler باعتبارهما وسيلة تمنحك تحكمًا في القيم التي تُطبَّق عليها تقنية `memoization`. ومن أكثر الحالات شيوعًا لاستخدام ذلك أن تكون قيمة خضعت لـ `memoization` مستخدمةً كاعتماد (Dependency) داخل أحد الـ Effects، لضمان عدم إعادة تشغيل الـ Effect بشكل متكرر عندما لا تتغير اعتماداته بصورة مؤثرة.
 
-For new code, we recommend relying on the compiler for memoization and using `useMemo`/`useCallback` where needed to achieve precise control.
+بالنسبة إلى الشيفرات الجديدة، نوصي بالاعتماد على React Compiler لتطبيق `memoization`، واستخدام `useMemo` و`useCallback` فقط عند الحاجة إلى تحكم أكثر دقة.
 
-For existing code, we recommend either leaving existing memoization in place (removing it can change compilation output) or carefully testing before removing the memoization.
+أما بالنسبة إلى الشيفرات الحالية، فنوصي إما بالإبقاء على الـ `memoization` الموجود كما هو (لأن إزالته قد تؤثر في ناتج عملية الترجمة)، أو اختباره بعناية قبل إزالته.
 
-## Try React Compiler {/*try-react-compiler*/}
+## جرّب React Compiler {/*try-react-compiler*/}
 
-This section will help you get started with React Compiler and understand how to use it effectively in your projects.
+سيساعدك هذا القسم على البدء باستخدام React Compiler وفهم كيفية الاستفادة منه بفعالية في مشاريعك.
 
-* **[Installation](/learn/react-compiler/installation)** - Install React Compiler and configure it for your build tools
-* **[React Version Compatibility](/reference/react-compiler/target)** - Support for React 17, 18, and 19
-* **[Configuration](/reference/react-compiler/configuration)** - Customize the compiler for your specific needs
-* **[Incremental Adoption](/learn/react-compiler/incremental-adoption)** - Strategies for gradually rolling out the compiler in existing codebases
-* **[Debugging and Troubleshooting](/learn/react-compiler/debugging)** - Identify and fix issues when using the compiler
-* **[Compiling Libraries](/reference/react-compiler/compiling-libraries)** - Best practices for shipping compiled code
-* **[API Reference](/reference/react-compiler/configuration)** - Detailed documentation of all configuration options
+* **[التثبيت](/learn/react-compiler/installation)** - تعرّف على كيفية تثبيت React Compiler وإعداده ليتوافق مع أدوات البناء التي تستخدمها.
+* **[التوافق مع إصدارات React](/reference/react-compiler/target)** - دعم React 17 و18 و19.
+* **[الإعدادات](/reference/react-compiler/configuration)** - تعرّف على كيفية تخصيص React Compiler بما يناسب احتياجات مشروعك.
+* **[التبنّي التدريجي](/learn/react-compiler/incremental-adoption)** - استراتيجيات لتطبيق React Compiler تدريجيًا في قواعد الشيفرة الحالية.
+* **[تصحيح الأخطاء واستكشاف المشكلات وإصلاحها](/learn/react-compiler/debugging)** - تعرّف على كيفية تحديد المشكلات وإصلاحها عند استخدام React Compiler.
+* **[تجميع المكتبات](/reference/react-compiler/compiling-libraries)** - أفضل الممارسات لنشر الشيفرة بعد تجميعها.
+* **[مرجع واجهة البرمجة (API Reference)](/reference/react-compiler/configuration)** - توثيق تفصيلي لجميع خيارات الإعداد.
 
-## Additional resources {/*additional-resources*/}
+## موارد إضافية {/*additional-resources*/}
 
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
-
+إلى جانب هذا الدليل، ننصح بالاطلاع على [React Compiler Working Group](https://github.com/reactwg/react-compiler) للحصول على مزيد من المعلومات والمناقشات المتعلقة بـ React Compiler.
