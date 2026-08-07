@@ -20,14 +20,14 @@ export default function NotFound() {
     <Page toc={[]} meta={{title: 'Not Found'}} routeTree={sidebarLearn}>
       <MaxWidth>
         <Intro>
-          <P>This page doesn’t exist.</P>
+          <P>هذه الصفحة غير متوفرة.</P>
           <P>
-            If this is a mistake{', '}
+            إن كنت تظن أن هذا خطءً{', '}
             <A href="https://github.com/reactjs/react.dev/issues/new">
-              let us know
+              ابلغنا
             </A>
             {', '}
-            and we will try to fix it!
+            وسنحاول إصلاحه!
           </P>
         </Intro>
       </MaxWidth>
