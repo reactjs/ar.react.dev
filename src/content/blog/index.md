@@ -130,7 +130,11 @@ React 18 متاح الآن على npm! في منشورنا الأخير، شار
 
 ### جميع ملاحظات الإصدارات {/*all-release-notes*/}
 
+<<<<<<< HEAD
 ليس كل إصدار React يستحق منشور مدونة خاص به، ولكن يمكنك العثور على سجل تغيير مفصل لكل إصدار في ملف [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) في مستودع React، وكذلك في صفحة [الإصدارات](https://github.com/facebook/react/releases).
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/react/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/react/react/releases) page.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ---
 
