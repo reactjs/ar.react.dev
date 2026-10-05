@@ -12,6 +12,12 @@ title: مدونة React
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React 19.3" date="September 9, 2026" url="/blog/2026/09/09/react-19-3">
+
+React 19.3 adds new features like View Transitions, Fragment Refs, browser(), Trusted Types, and more. In this post ...
+
+</BlogCard>
+
 <BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
 
 The React Foundation has officially launched under the Linux Foundation.
@@ -130,7 +136,11 @@ React 18 متاح الآن على npm! في منشورنا الأخير، شار
 
 ### جميع ملاحظات الإصدارات {/*all-release-notes*/}
 
+<<<<<<< HEAD
 ليس كل إصدار React يستحق منشور مدونة خاص به، ولكن يمكنك العثور على سجل تغيير مفصل لكل إصدار في ملف [`CHANGELOG.md`](https://github.com/facebook/react/blob/main/CHANGELOG.md) في مستودع React، وكذلك في صفحة [الإصدارات](https://github.com/facebook/react/releases).
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/react/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/react/react/releases) page.
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
 
 ---
 
