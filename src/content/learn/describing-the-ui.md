@@ -529,7 +529,11 @@ React تستخدم الأشجار لنمذجة العلاقات بين العن�
 
 شجرة العرض في React هي تمثيل للعلاقة الأبوية والفرعية بين العناصر.
 
+<<<<<<< HEAD
 <Diagram name="generic_render_tree" height={250} width={500} alt="رسم بياني لشجرة تحتوي على خمسة عقد، حيث يمثل كل عقد عنصرًا. يقع العقد الجذري في الجزء العلوي من الشجرة ومسمى 'Root Component'. يحتوي على سهمين يمتدان إلى عقدين مسمين 'Component A' و 'Component C'. كل من السهمين مسمى بـ 'يقوم بعرض'. 'Component A' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component B'. 'Component C' لديه سهم 'يقوم بعرض' واحد يشير إلى عقد مسمى 'Component D'.">
+=======
+<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top of the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 مثال على شجرة العرض في React.
 

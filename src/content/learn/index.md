@@ -363,8 +363,14 @@ function MyButton() {
 }
 ```
 
+<<<<<<< HEAD
 الآن ستقوم React باستدعاء المكوّن الخاص بك مجددا. في هذه المرة قيمة `count` ستكون `1`، ومن ثم ستكون `2`، وهكذا.
 إذا قمت تصيير المكوّن عدة مرات فإن كل مرة ستكون لها الحالة المستقلة الخاصة بها. قم بتجربة الضغط على كل زر على حدة:
+=======
+Calling `setCount` tells React to call your component function again. This is called a *re-render*. This time, `count` will be `1`. Then it will be `2`. And so on.
+
+If you render the same component multiple times, each will get its own state. Click each button separately:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 <Sandpack>
 

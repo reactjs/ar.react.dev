@@ -30,6 +30,12 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * [`preinit`](/reference/react-dom/preinit) lets you fetch and evaluate an external script or fetch and insert a stylesheet.
 * [`preinitModule`](/reference/react-dom/preinitModule) lets you fetch and evaluate an ESM module.
 
+## Server Rendering APIs {/*server-rendering-apis*/}
+
+This API controls how components render on the server:
+
+* [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
+
 ---
 
 ## نقاط البداية {/*entry-points*/}
@@ -48,5 +54,9 @@ These APIs were removed in React 19:
 * [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
 * [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
 * [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+<<<<<<< HEAD
+=======
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 * [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
 * [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
