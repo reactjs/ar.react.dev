@@ -100,7 +100,7 @@ root.render(<App />);
   console.log(document.body.innerHTML);
   ```
 
-* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
+* Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
 
   ```js
   const root = createRoot(document.getElementById('root'));
@@ -390,7 +390,7 @@ The <CodeStep step={1}>onCaughtError</CodeStep> option is a function called with
 1. The <CodeStep step={2}>error</CodeStep> that was thrown.
 2. An <CodeStep step={3}>errorInfo</CodeStep> object that contains the <CodeStep step={4}>componentStack</CodeStep> of the error.
 
-Together with `onUncaughtError` and `onRecoverableError`, you can can implement your own error reporting system:
+Together with `onUncaughtError` and `onRecoverableError`, you can implement your own error reporting system:
 
 <Sandpack>
 
@@ -430,7 +430,7 @@ const container = document.getElementById("root");
 const root = createRoot(container, {
   // Keep in mind to remove these options in development to leverage
   // React's default handlers or implement your own overlay for development.
-  // The handlers are only specfied unconditionally here for demonstration purposes.
+  // The handlers are only specified unconditionally here for demonstration purposes.
   onCaughtError: onCaughtErrorProd,
   onRecoverableError: onRecoverableErrorProd,
   onUncaughtError: onUncaughtErrorProd,
